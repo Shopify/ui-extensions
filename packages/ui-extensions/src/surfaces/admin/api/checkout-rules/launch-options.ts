@@ -36,6 +36,8 @@ interface ShopifyFunction {
 
 /**
  * The `data` object exposed to validation settings extensions in the `admin.settings.validation.render` target. Use this to access the current validation configuration and populate your settings interface with existing values.
+ *
+ * @publicDocs
  */
 export interface ValidationData {
   /** The validation configuration containing the validation ID and metafields. Present when editing an existing validation, absent when creating a new validation. Use the presence of this value to determine if you're in create or edit mode. */

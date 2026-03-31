@@ -2,6 +2,7 @@ import type {CountryCode} from '../../../checkout';
 
 import type {AddressAutocompleteSuggestion} from './shared';
 
+/** @publicDocs */
 export interface AddressAutocompleteSuggestApi {
   /**
    * The signal that the extension should listen to for cancellation requests.

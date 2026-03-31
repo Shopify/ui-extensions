@@ -2228,6 +2228,11 @@ export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
+/**
+ * Configure the following properties on the embed component. This component must be a direct child of the screen component.
+ *
+ * @publicDocs
+ */
 export interface EmbedProps extends GlobalProps, SizingProps {
   /**
    * The content type of the file to display.
@@ -5262,6 +5267,11 @@ declare module 'preact' {
 }
 
 declare const tagName$4 = 's-tab-list';
+/**
+ * The tab list component contains the tab buttons. It must be a direct child of the tabs component.
+ *
+ * @publicDocs
+ */
 interface TabListJSXProps extends Pick<TabListProps, 'children'> {
   children?: ComponentChildren;
 }
@@ -5445,11 +5455,21 @@ export type {
   TimePickerJSXProps,
 };
 
+/**
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface LinkEvents {
   /** Called when the link is activated. */
   click?: (event: CallbackEvent<typeof tagName$a>) => void;
 }
 
+/**
+ * Configure the following properties on the link component.
+ *
+ * @publicDocs
+ */
 interface Link {
   /** A unique identifier for the element. */
   id?: string;
@@ -5483,6 +5503,11 @@ interface Link {
   accessibilityLabel?: string;
 }
 
+/**
+ * The empty state component supports slots for adding graphics and actions. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface EmptyStateSlots {
   /** The primary action to perform, provided as a button or link type element. */
   'primary-action'?: HTMLElement;
@@ -5492,6 +5517,11 @@ interface EmptyStateSlots {
   graphic?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the empty state component.
+ *
+ * @publicDocs
+ */
 interface EmptyState {
   /** The subheading of the empty state. */
   subheading?: string;
@@ -5499,6 +5529,11 @@ interface EmptyState {
   heading?: string;
 }
 
+/**
+ * Configure the following properties on the embed component. This component must be a direct child of the screen component.
+ *
+ * @publicDocs
+ */
 interface Embed {
   /**
    * Adjust the block size.
@@ -5557,6 +5592,11 @@ interface Embed {
   accessibilityLabel?: string;
 }
 
+/**
+ * Configure the following properties on the spinner component.
+ *
+ * @publicDocs
+ */
 interface Spinner {
   /** A unique identifier for the element. */
   id?: string;
@@ -5570,11 +5610,21 @@ interface Spinner {
   accessibilityLabel?: string;
 }
 
+/**
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface SwitchEvents {
   input?: (event: CallbackEvent<typeof tagName$6>) => void;
   change?: (event: CallbackEvent<typeof tagName$6>) => void;
 }
 
+/**
+ * Configure the following properties on the switch component.
+ *
+ * @publicDocs
+ */
 interface Switch {
   /** The value used in form data when the control is checked. */
   value?: string;
@@ -5627,10 +5677,20 @@ interface Switch {
   >;
 }
 
+/**
+ * The tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface TabsEvents {
   change?: (event: CallbackEvent<typeof tagName$5>) => void;
 }
 
+/**
+ * Configure the following properties on the tabs component.
+ *
+ * @publicDocs
+ */
 interface Tabs {
   /**
    * The value of the selected tab.
@@ -5652,6 +5712,11 @@ interface Tabs {
   disabled?: boolean;
 }
 
+/**
+ * The tab component represents an individual tab button. It must be placed within a tab list and should use the `controls` property to associate it with a corresponding tab panel.
+ *
+ * @publicDocs
+ */
 interface Tab {
   /** Corresponds to the `id` property of the tab panel component that will be displayed when selected */
   controls?: string;
@@ -5662,6 +5727,11 @@ interface Tab {
   disabled?: boolean;
 }
 
+/**
+ * The tab panel component contains the content for each tab. It must have an `id` that matches the `controls` property of the corresponding tab.
+ *
+ * @publicDocs
+ */
 interface TabPanel {
   /**
    * The id of the tab panel used for identification in the tabs component.
@@ -5670,6 +5740,11 @@ interface TabPanel {
   id?: string;
 }
 
+/**
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface TextAreaEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$f>) => void;
@@ -5681,6 +5756,11 @@ interface TextAreaEvents {
   focus?: (event: CallbackEvent<typeof tagName$f>) => void;
 }
 
+/**
+ * Configure the following properties on the text area component.
+ *
+ * @publicDocs
+ */
 interface TextArea {
   /** A unique identifier for the element. */
   id?: string;
@@ -5728,6 +5808,11 @@ interface TextArea {
   rows?: number;
 }
 
+/**
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface EmailFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$t>) => void;
@@ -5739,6 +5824,11 @@ interface EmailFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$t>) => void;
 }
 
+/**
+ * Configure the following properties on the email field component.
+ *
+ * @publicDocs
+ */
 interface EmailField {
   /** A unique identifier for the element. */
   id?: string;
@@ -5781,11 +5871,21 @@ interface EmailField {
   details?: string;
 }
 
+/**
+ * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface ButtonEvents {
   /** Called when the button is activated. */
   click?: (event: CallbackEvent<typeof tagName$B>) => void;
 }
 
+/**
+ * Configure the following properties on the button component.
+ *
+ * @publicDocs
+ */
 interface Button {
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
@@ -5833,6 +5933,11 @@ interface Button {
   loading?: boolean;
 }
 
+/**
+ * Configure the following properties on the text component.
+ *
+ * @publicDocs
+ */
 interface Text {
   /**
    * Modify the color to be more or less intense.
@@ -5862,6 +5967,11 @@ interface Text {
   id?: string;
 }
 
+/**
+ * Configure the following properties on the scroll box component.
+ *
+ * @publicDocs
+ */
 interface ScrollBox {
   /**
    * Adjust the block size.
@@ -5963,11 +6073,21 @@ interface ScrollBox {
   id?: string;
 }
 
+/**
+ * The tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface TileEvents {
   /** Callback when the tile is activated. */
   click?: (event: CallbackEvent<typeof tagName$d>) => void;
 }
 
+/**
+ * Configure the following properties on the tile component.
+ *
+ * @publicDocs
+ */
 interface Tile {
   /**
    * Disables the tile meaning it cannot be clicked or receive focus.
@@ -6000,11 +6120,21 @@ interface Tile {
   subheading?: string;
 }
 
+/**
+ * The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface BannerSlots {
   /** The action taken when the banner is pressed. */
   'primary-action'?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the banner component.
+ *
+ * @publicDocs
+ */
 interface Banner {
   /**
    * Determines whether the banner is hidden.
@@ -6025,6 +6155,11 @@ interface Banner {
   id?: string;
 }
 
+/**
+ * Configure the following properties on the Box component.
+ *
+ * @publicDocs
+ */
 interface Box {
   /** A unique identifier for the element. */
   id?: string;
@@ -6126,6 +6261,11 @@ interface Box {
   paddingInlineEnd?: '' | PaddingKeyword;
 }
 
+/**
+ * Configure the following properties on the icon component.
+ *
+ * @publicDocs
+ */
 interface Icon {
   /**
    * The type of icon to display.
@@ -6151,6 +6291,11 @@ interface Icon {
   size?: SizeKeyword;
 }
 
+/**
+ * Configure the following properties on the stack component.
+ *
+ * @publicDocs
+ */
 interface Stack {
   /**
    * Adjust the padding of all edges.
@@ -6295,6 +6440,11 @@ interface Stack {
   id?: string;
 }
 
+/**
+ * Configure the following properties on the Badge component.
+ *
+ * @publicDocs
+ */
 interface Badge {
   /**
    * Sets the tone of the badge, based on the intention of the information being conveyed.
@@ -6312,6 +6462,11 @@ interface Badge {
   id?: string;
 }
 
+/**
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface ChoiceListEvents {
   /** Callback when the user changes a choice. Fires simultaneously with onChange. */
   input?: (event: CallbackEvent<typeof tagName$z>) => void;
@@ -6319,6 +6474,11 @@ interface ChoiceListEvents {
   change?: (event: CallbackEvent<typeof tagName$z>) => void;
 }
 
+/**
+ * Configure the following properties on the choice list component.
+ *
+ * @publicDocs
+ */
 interface ChoiceList {
   /** A unique identifier for the element. */
   id?: string;
@@ -6335,6 +6495,11 @@ interface ChoiceList {
   multiple?: boolean;
 }
 
+/**
+ * The choice component creates options that let merchants select one or multiple items from a list of choices.
+ *
+ * @publicDocs
+ */
 interface Choice {
   /** A unique identifier for the element. */
   id?: string;
@@ -6352,6 +6517,11 @@ interface Choice {
   selected?: boolean;
 }
 
+/**
+ * The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface DateFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$x>) => void;
@@ -6363,6 +6533,11 @@ interface DateFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$x>) => void;
 }
 
+/**
+ * Configure the following properties on the date field component.
+ *
+ * @publicDocs
+ */
 interface DateField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6398,6 +6573,11 @@ interface DateField {
   required?: boolean;
 }
 
+/**
+ * The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface ModalEvents {
   /** Callback when the modal is hidden. */
   hide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
@@ -6405,6 +6585,11 @@ interface ModalEvents {
   show?: (event: CallbackEvent<typeof tagName$p>) => void | null;
 }
 
+/**
+ * The modal component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface ModalSlots {
   /**
    * The primary action button displayed in the modal.
@@ -6418,6 +6603,11 @@ interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the modal component.
+ *
+ * @publicDocs
+ */
 interface Modal {
   /** A unique identifier for the element. */
   id?: string;
@@ -6425,6 +6615,11 @@ interface Modal {
   heading?: string;
 }
 
+/**
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface TextFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$e>) => void;
@@ -6436,11 +6631,21 @@ interface TextFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$e>) => void;
 }
 
+/**
+ * The text field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface TextFieldSlots {
   /** Additional content to be displayed in the field. Commonly used to display clickable text. */
   accessory?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the text field component.
+ *
+ * @publicDocs
+ */
 interface TextField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6483,6 +6688,11 @@ interface TextField {
   maxLength?: number;
 }
 
+/**
+ * The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface SearchFieldEvents {
   /** Callback when the user changes the value in the field. */
   input?: (event: CallbackEvent<typeof tagName$j>) => void;
@@ -6494,6 +6704,11 @@ interface SearchFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$j>) => void;
 }
 
+/**
+ * Configure the following properties on the search field component.
+ *
+ * @publicDocs
+ */
 interface SearchField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6508,11 +6723,21 @@ interface SearchField {
   value?: string;
 }
 
+/**
+ * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface ClickableEvents {
   /** Callback when the element is activated. */
   click?: (event: CallbackEvent<typeof tagName$y>) => void;
 }
 
+/**
+ * Configure the following properties on the clickable component.
+ *
+ * @publicDocs
+ */
 interface Clickable {
   /** A unique identifier for the element. */
   id?: string;
@@ -6530,6 +6755,11 @@ interface Clickable {
   disabled?: boolean;
 }
 
+/**
+ * The time field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface TimeFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$c>) => void;
@@ -6541,6 +6771,11 @@ interface TimeFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$c>) => void;
 }
 
+/**
+ * Configure the following properties on the time field component.
+ *
+ * @publicDocs
+ */
 interface TimeField {
   /** A unique identifier for the element. */
   id?: string;
@@ -6589,6 +6824,11 @@ interface TimeField {
   required?: boolean;
 }
 
+/**
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface NumberFieldEvents {
   /** Callback when the user makes any changes in the field. */
   input?: (event: CallbackEvent<typeof tagName$o>) => void;
@@ -6600,6 +6840,11 @@ interface NumberFieldEvents {
   focus?: (event: CallbackEvent<typeof tagName$o>) => void;
 }
 
+/**
+ * The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface NumberFieldSlots {
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
@@ -6609,6 +6854,11 @@ interface NumberFieldSlots {
   accessory?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the number field component.
+ *
+ * @publicDocs
+ */
 interface NumberField {
   /**
    * Content to use as the field label.
@@ -6697,6 +6947,11 @@ interface NumberField {
   min?: number;
 }
 
+/**
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface DatePickerEvents {
   /** Callback when the user selects a date from the picker. */
   input?: (event: CallbackEvent<typeof tagName$w>) => void | null;
@@ -6708,6 +6963,11 @@ interface DatePickerEvents {
   focus?: (event: CallbackEvent<typeof tagName$w>) => void | null;
 }
 
+/**
+ * Configure the following properties on the date picker component.
+ *
+ * @publicDocs
+ */
 interface DatePicker {
   /** A unique identifier for the element. */
   id?: string;
@@ -6728,6 +6988,11 @@ interface DatePicker {
   value?: string;
 }
 
+/**
+ * The date spinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface DateSpinnerEvents {
   /** Callback when the user makes a selection. */
   input?: (event: CallbackEvent<typeof tagName$v>) => void | null;
@@ -6739,6 +7004,11 @@ interface DateSpinnerEvents {
   focus?: (event: CallbackEvent<typeof tagName$v>) => void | null;
 }
 
+/**
+ * Configure the following properties on the date spinner component.
+ *
+ * @publicDocs
+ */
 interface DateSpinner {
   /** A unique identifier for the element. */
   id?: string;
@@ -6751,11 +7021,21 @@ interface DateSpinner {
   value?: string;
 }
 
+/**
+ * The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface SectionSlots {
   /** Button element to display in the section heading. A single button is supported. */
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the section component.
+ *
+ * @publicDocs
+ */
 interface Section {
   /**
    * A title that describes the content of the section.
@@ -6767,11 +7047,21 @@ interface Section {
   id?: string;
 }
 
+/**
+ * Configure the following properties on the heading component.
+ *
+ * @publicDocs
+ */
 interface Heading {
   /** A unique identifier for the element. */
   id?: string;
 }
 
+/**
+ * The time picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
+ * @publicDocs
+ */
 interface TimePickerEvents {
   /** Callback when the user selects a time from the picker. */
   input?: (event: CallbackEvent<typeof tagName$b>) => void | null;
@@ -6783,6 +7073,11 @@ interface TimePickerEvents {
   focus?: (event: CallbackEvent<typeof tagName$b>) => void | null;
 }
 
+/**
+ * Configure the following properties on the time picker component.
+ *
+ * @publicDocs
+ */
 interface TimePicker {
   /** A unique identifier for the element. */
   id?: string;
@@ -6806,6 +7101,11 @@ interface TimePicker {
   value?: string;
 }
 
+/**
+ * Configure the following properties on the image component.
+ *
+ * @publicDocs
+ */
 interface Image {
   /**
    * The displayed inline width of the image.
@@ -6855,6 +7155,11 @@ interface Image {
   alt?: string;
 }
 
+/**
+ * The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface PageSlots {
   /** Button element to display in the action bar. Only a single button is supported. */
   'secondary-actions'?: HTMLElement;
@@ -6862,6 +7167,11 @@ interface PageSlots {
   aside?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the page component.
+ *
+ * @publicDocs
+ */
 interface Page {
   /**
    * The main page heading, displayed in the action bar at the top of the page.
@@ -6874,11 +7184,21 @@ interface Page {
   id?: string;
 }
 
+/**
+ * The POS block component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ *
+ * @publicDocs
+ */
 interface PosBlockSlots {
   /** The secondary actions to perform, provided as button or link type elements. */
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * Configure the following properties on the POS block component.
+ *
+ * @publicDocs
+ */
 interface PosBlock {
   /** A unique identifier for the element. */
   id?: string;
@@ -6890,6 +7210,11 @@ interface PosBlock {
   heading?: string;
 }
 
+/**
+ * The POS block component renders a QR code when the block is used within a receipt target.
+ *
+ * @publicDocs
+ */
 interface QrCode {
   /** A unique identifier for the element. */
   id?: string;
@@ -6901,6 +7226,11 @@ interface QrCode {
   content?: string;
 }
 
+/**
+ * Configure the following properties on the divider component.
+ *
+ * @publicDocs
+ */
 interface Divider {
   /** A unique identifier for the element. */
   id?: string;

@@ -12,6 +12,7 @@ interface MetafieldFilter {
  * Returns a single filtered `Metafield` or `undefined`.
  * @arg {MetafieldFilter} - filter the list of returned metafields to a single metafield
  * @deprecated `useMetafield` is deprecated. Use `useAppMetafields` with cart metafields instead.
+ * @publicDocs
  */
 export function useMetafield(filters: MetafieldFilter): Metafield | undefined {
   const {namespace, key} = filters;

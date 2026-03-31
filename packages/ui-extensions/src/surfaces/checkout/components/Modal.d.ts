@@ -12,6 +12,7 @@ import type {ModalProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     /**
@@ -38,18 +40,26 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-modal";
+/**
+ * The modal component displays content in an overlay. Use to create a distraction-free experience such as a confirmation dialog or a settings panel.
+ *
+ * A button triggers the modal using the `commandFor` attribute. Content within the modal scrolls if it exceeds available height.
+ * @publicDocs
+ */
 export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     /**
      * The size of the modal.
@@ -65,6 +75,10 @@ export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabe
      */
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface ModalElementSlots {
     /**
      * The main action button displayed in the modal footer, representing the primary action users should take. Only accepts a single button component.
@@ -77,11 +91,20 @@ export interface ModalElementSlots {
 }
 /**
  * The event callbacks for monitoring modal visibility changes.
+ * @publicDocs
  */
 export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
+/**
+ * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
+ * @publicDocs
+ */
 export interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ModalElementEvents {
     /**
      * A callback fired when the modal is hidden, after any hide animations have completed.
@@ -102,6 +125,7 @@ export interface ModalElementEvents {
 }
 /**
  * The HTML element interface for the `s-modal` custom element.
+ * @publicDocs
  */
 export interface ModalElement extends ModalElementProps, ModalElementMethods, Omit<HTMLElement, 'id'> {
     onafterhide: ModalEvents['onAfterHide'];
@@ -111,6 +135,7 @@ export interface ModalElement extends ModalElementProps, ModalElementMethods, Om
 }
 /**
  * The properties for the modal component when it's used in JSX.
+ * @publicDocs
  */
 export interface ModalProps extends ModalElementProps, ModalEvents {
 }

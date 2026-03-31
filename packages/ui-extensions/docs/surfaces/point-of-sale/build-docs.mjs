@@ -8,7 +8,6 @@ import {
   generateFiles,
   copyGeneratedToShopifyDev,
   replaceFileContent,
-  resolveShopifyDevPath,
 } from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2];
@@ -30,26 +29,18 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = await resolveShopifyDevPath(rootPath);
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
 
 const tsconfig = 'tsconfig.docs.json';
-
-const transformJson = async (filePath) => {
-  let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
-
-  jsonData = jsonData.filter(Boolean);
-  await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
-};
 
 const cleanup = async () => {
   try {
@@ -129,22 +120,13 @@ const generateExtensionsDocs = async () => {
     scripts,
     outputDir,
     rootPath,
-    generatedDocsDataFile,
     generatedStaticPagesFile,
-    transformJson,
-  });
-
-  // Update API version in relative doc links
-  await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
-    searchValue: '/docs/api/pos-ui-extensions/[^/]*/',
-    replaceValue: `/docs/api/pos-ui-extensions/${EXTENSIONS_API_VERSION}/`,
   });
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
@@ -182,8 +164,8 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await cleanup();

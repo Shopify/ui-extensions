@@ -16,6 +16,7 @@ import type {
 
 /**
  * A callback event with a strongly-typed `currentTarget` property that corresponds to a specific HTML element. This provides better type safety when handling events from custom elements.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -25,6 +26,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener function type for callback events with a strongly-typed `currentTarget`. This ensures the event handler receives the correct element type.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -33,6 +35,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements without children. Provides `key`, `ref`, and `slot` properties for element identification, DOM access, and slot-based positioning.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -50,6 +53,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements with children. Extends `PreactBaseElementProps` with the ability to render child elements.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -61,6 +65,7 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * The configuration for icons used within Button components. Defines the visual appearance, size, and semantic meaning of icons displayed in buttons.
+ * @publicDocs
  */
 export interface IconProps
   extends Pick<
@@ -107,6 +112,7 @@ export interface IconProps
 
 /**
  * The button-specific properties extracted from the base button props type, used internally for type safety.
+ * @publicDocs
  */
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -116,6 +122,7 @@ export type ButtonOnlyProps = Extract<
 >;
 /**
  * The base required properties for the button component, including all essential button configuration options. This type ensures all button properties have default values.
+ * @publicDocs
  */
 export type ButtonBaseProps = Required<
   Pick<
@@ -138,6 +145,7 @@ export type ButtonBaseProps = Required<
 >;
 /**
  * The properties for the button component. Buttons trigger actions or navigation when clicked, with customizable visual styles, states, and optional icons.
+ * @publicDocs
  */
 export interface ButtonProps extends ButtonBaseProps {
   /**
@@ -159,10 +167,12 @@ export interface ButtonProps extends ButtonBaseProps {
 
 /**
  * The CSS styles as a string, used for styling web components within their shadow DOM.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -176,6 +186,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -197,6 +208,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -249,6 +261,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The properties for controlling overlay interactions via commands. These properties enable buttons to control other components like modals, popovers, and dialogs using declarative commands.
+ * @publicDocs
  */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
@@ -358,6 +371,7 @@ declare module 'preact' {
 declare const tagName = 's-button';
 /**
  * The JSX props for the button component. These properties extend `ButtonProps` with event callbacks and additional options for rendering buttons in JSX.
+ * @publicDocs
  */
 export interface ButtonJSXProps
   extends Partial<ButtonProps>,
@@ -447,4 +461,7 @@ export interface ButtonJSXProps
 }
 
 export {Button};
+/**
+ * @publicDocs
+ */
 export type {ButtonJSXProps};

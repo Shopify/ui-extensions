@@ -12,6 +12,7 @@ import type {DetailsProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,33 +21,47 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
+/** @publicDocs */
 export type ToggleState = 'open' | 'closed';
+/** @publicDocs */
 export interface ToggleArgumentsEvent {
     oldState?: ToggleState;
     newState?: ToggleState;
 }
 
 declare const tagName = "s-details";
+/**
+ * Creates a collapsible content area that can be expanded or collapsed by users. Use with Summary to provide expandable sections for additional information or settings.
+ * @publicDocs
+ */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
+/** @publicDocs */
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DetailsElementEvents {
     /**
      * Callback straight after the element state changes.
@@ -74,10 +89,12 @@ export interface DetailsElementEvents {
      */
     aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
+/** @publicDocs */
 export interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];
     onaftertoggle: DetailsEvents['onAfterToggle'];
 }
+/** @publicDocs */
 export interface DetailsProps extends DetailsElementProps, DetailsEvents {
 }
 declare global {

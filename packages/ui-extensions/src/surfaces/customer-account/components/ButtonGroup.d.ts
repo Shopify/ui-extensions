@@ -1,5 +1,7 @@
 import {BaseElementPropsWithChildren, IdProps} from './shared';
-
+/**
+ * @publicDocs
+ */
 export interface ButtonGroupProps extends IdProps {
   /**
    * Label for the button group that describes the content of the group for screen reader users to understand what's included.
@@ -7,6 +9,9 @@ export interface ButtonGroupProps extends IdProps {
   accessibilityLabel?: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ButtonGroupElementSlots {
   /**
    * The primary action for the group. Accepts a single [Button](/docs/api/checkout-ui-extensions/web-components/actions/button) element.
@@ -18,6 +23,9 @@ export interface ButtonGroupElementSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ButtonGroupElement
   extends ButtonGroupProps,
     Omit<HTMLElement, 'id'> {}

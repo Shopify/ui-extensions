@@ -65,6 +65,8 @@ export interface ProductComponent {
 
 /**
  * The `ProductDetailsConfigurationApi` object provides methods for configuring product bundles and relationships. Access the following properties on the `ProductDetailsConfigurationApi` object to build product configuration interfaces.
+ *
+ * @publicDocs
  */
 export interface ProductDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,

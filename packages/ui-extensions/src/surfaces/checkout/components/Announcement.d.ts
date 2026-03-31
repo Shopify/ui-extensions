@@ -12,6 +12,7 @@ import type {AnnouncementProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,31 +21,41 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
+/** @publicDocs */
 export type ToggleState = 'open' | 'closed';
+/** @publicDocs */
 export interface ToggleArgumentsEvent {
     oldState?: ToggleState;
     newState?: ToggleState;
 }
 
 declare const tagName = "s-announcement";
+/** @publicDocs */
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface AnnouncementElementEvents {
     /**
      * Callback fired when the element state changes **after** any animations have finished.
@@ -77,16 +88,23 @@ export interface AnnouncementElementEvents {
      */
     toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
+/** @publicDocs */
 export interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLElement, 'id' | 'ontoggle'> {
     onaftertoggle?: AnnouncementEvents['onAfterToggle'];
     ondismiss?: AnnouncementEvents['onDismiss'];
     ontoggle?: AnnouncementEvents['onToggle'];
 }
+/** @publicDocs */
 export interface AnnouncementProps extends AnnouncementEvents {
 }
+/** @publicDocs */
 export interface AnnouncementMethods {
     dismiss: () => void;
 }
+/**
+ * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
+ * @publicDocs
+ */
 export interface AnnouncementElementMethods {
     dismiss: AnnouncementMethods['dismiss'];
 }

@@ -13,7 +13,8 @@
           "ActionApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
             "name": "ActionApiContent",
-            "description": "",
+            "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
@@ -91,7 +92,8 @@
           "CameraApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/camera-api/camera-api.ts",
             "name": "CameraApiContent",
-            "description": "Provides camera capabilities for the POS device.",
+            "description": "The `CameraApi` object provides properties for capturing photos using the device camera. Access these properties through `shopify.camera` to take photos and retrieve image data with metadata.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/camera-api/camera-api.ts",
@@ -256,7 +258,8 @@
           "CartApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
             "name": "CartApiContent",
-            "description": "",
+            "description": "The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -567,6 +570,7 @@
             "syntaxKind": "EnumDeclaration",
             "name": "CountryCode",
             "value": "export enum CountryCode {\n  AF = 'AF',\n  AX = 'AX',\n  AL = 'AL',\n  DZ = 'DZ',\n  AD = 'AD',\n  AO = 'AO',\n  AI = 'AI',\n  AG = 'AG',\n  AR = 'AR',\n  AM = 'AM',\n  AW = 'AW',\n  AC = 'AC',\n  AU = 'AU',\n  AT = 'AT',\n  AZ = 'AZ',\n  BS = 'BS',\n  BH = 'BH',\n  BD = 'BD',\n  BB = 'BB',\n  BY = 'BY',\n  BE = 'BE',\n  BZ = 'BZ',\n  BJ = 'BJ',\n  BM = 'BM',\n  BT = 'BT',\n  BO = 'BO',\n  BA = 'BA',\n  BW = 'BW',\n  BV = 'BV',\n  BR = 'BR',\n  IO = 'IO',\n  BN = 'BN',\n  BG = 'BG',\n  BF = 'BF',\n  BI = 'BI',\n  KH = 'KH',\n  CA = 'CA',\n  CV = 'CV',\n  BQ = 'BQ',\n  KY = 'KY',\n  CF = 'CF',\n  TD = 'TD',\n  CL = 'CL',\n  CN = 'CN',\n  CX = 'CX',\n  CC = 'CC',\n  CO = 'CO',\n  KM = 'KM',\n  CG = 'CG',\n  CD = 'CD',\n  CK = 'CK',\n  CR = 'CR',\n  HR = 'HR',\n  CU = 'CU',\n  CW = 'CW',\n  CY = 'CY',\n  CZ = 'CZ',\n  CI = 'CI',\n  DK = 'DK',\n  DJ = 'DJ',\n  DM = 'DM',\n  DO = 'DO',\n  EC = 'EC',\n  EG = 'EG',\n  SV = 'SV',\n  GQ = 'GQ',\n  ER = 'ER',\n  EE = 'EE',\n  SZ = 'SZ',\n  ET = 'ET',\n  FK = 'FK',\n  FO = 'FO',\n  FJ = 'FJ',\n  FI = 'FI',\n  FR = 'FR',\n  GF = 'GF',\n  PF = 'PF',\n  TF = 'TF',\n  GA = 'GA',\n  GM = 'GM',\n  GE = 'GE',\n  DE = 'DE',\n  GH = 'GH',\n  GI = 'GI',\n  GR = 'GR',\n  GL = 'GL',\n  GD = 'GD',\n  GP = 'GP',\n  GT = 'GT',\n  GG = 'GG',\n  GN = 'GN',\n  GW = 'GW',\n  GY = 'GY',\n  HT = 'HT',\n  HM = 'HM',\n  VA = 'VA',\n  HN = 'HN',\n  HK = 'HK',\n  HU = 'HU',\n  IS = 'IS',\n  IN = 'IN',\n  ID = 'ID',\n  IR = 'IR',\n  IQ = 'IQ',\n  IE = 'IE',\n  IM = 'IM',\n  IL = 'IL',\n  IT = 'IT',\n  JM = 'JM',\n  JP = 'JP',\n  JE = 'JE',\n  JO = 'JO',\n  KZ = 'KZ',\n  KE = 'KE',\n  KI = 'KI',\n  KP = 'KP',\n  XK = 'XK',\n  KW = 'KW',\n  KG = 'KG',\n  LA = 'LA',\n  LV = 'LV',\n  LB = 'LB',\n  LS = 'LS',\n  LR = 'LR',\n  LY = 'LY',\n  LI = 'LI',\n  LT = 'LT',\n  LU = 'LU',\n  MO = 'MO',\n  MG = 'MG',\n  MW = 'MW',\n  MY = 'MY',\n  MV = 'MV',\n  ML = 'ML',\n  MT = 'MT',\n  MQ = 'MQ',\n  MR = 'MR',\n  MU = 'MU',\n  YT = 'YT',\n  MX = 'MX',\n  MD = 'MD',\n  MC = 'MC',\n  MN = 'MN',\n  ME = 'ME',\n  MS = 'MS',\n  MA = 'MA',\n  MZ = 'MZ',\n  MM = 'MM',\n  NA = 'NA',\n  NR = 'NR',\n  NP = 'NP',\n  NL = 'NL',\n  AN = 'AN',\n  NC = 'NC',\n  NZ = 'NZ',\n  NI = 'NI',\n  NE = 'NE',\n  NG = 'NG',\n  NU = 'NU',\n  NF = 'NF',\n  MK = 'MK',\n  NO = 'NO',\n  OM = 'OM',\n  PK = 'PK',\n  PS = 'PS',\n  PA = 'PA',\n  PG = 'PG',\n  PY = 'PY',\n  PE = 'PE',\n  PH = 'PH',\n  PN = 'PN',\n  PL = 'PL',\n  PT = 'PT',\n  QA = 'QA',\n  CM = 'CM',\n  RE = 'RE',\n  RO = 'RO',\n  RU = 'RU',\n  RW = 'RW',\n  BL = 'BL',\n  SH = 'SH',\n  KN = 'KN',\n  LC = 'LC',\n  MF = 'MF',\n  PM = 'PM',\n  WS = 'WS',\n  SM = 'SM',\n  ST = 'ST',\n  SA = 'SA',\n  SN = 'SN',\n  RS = 'RS',\n  SC = 'SC',\n  SL = 'SL',\n  SG = 'SG',\n  SX = 'SX',\n  SK = 'SK',\n  SI = 'SI',\n  SB = 'SB',\n  SO = 'SO',\n  ZA = 'ZA',\n  GS = 'GS',\n  KR = 'KR',\n  SS = 'SS',\n  ES = 'ES',\n  LK = 'LK',\n  VC = 'VC',\n  SD = 'SD',\n  SR = 'SR',\n  SJ = 'SJ',\n  SE = 'SE',\n  CH = 'CH',\n  SY = 'SY',\n  TW = 'TW',\n  TJ = 'TJ',\n  TZ = 'TZ',\n  TH = 'TH',\n  TL = 'TL',\n  TG = 'TG',\n  TK = 'TK',\n  TO = 'TO',\n  TT = 'TT',\n  TA = 'TA',\n  TN = 'TN',\n  TR = 'TR',\n  TM = 'TM',\n  TC = 'TC',\n  TV = 'TV',\n  UG = 'UG',\n  UA = 'UA',\n  AE = 'AE',\n  GB = 'GB',\n  US = 'US',\n  UM = 'UM',\n  UY = 'UY',\n  UZ = 'UZ',\n  VU = 'VU',\n  VE = 'VE',\n  VN = 'VN',\n  VG = 'VG',\n  WF = 'WF',\n  EH = 'EH',\n  YE = 'YE',\n  ZM = 'ZM',\n  ZW = 'ZW',\n  ZZ = 'ZZ',\n}",
+            "description": "The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes representing all countries and territories. These standard codes are used for addresses, shipping destinations, tax jurisdictions, and regional settings.",
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
@@ -2922,7 +2926,8 @@
           "CartLineItemApi": {
             "filePath": "src/surfaces/point-of-sale/api/cart-line-item-api/cart-line-item-api.ts",
             "name": "CartLineItemApi",
-            "description": "The `CartLineItemApi` object provides access to the current line item. Access this property through `api.cartLineItem` to interact with the current line item context.",
+            "description": "The `CartLineItemApi` object provides access to the current line item. Access these properties through `api.cartLineItem` to interact with the current line item context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/cart-line-item-api/cart-line-item-api.ts",
@@ -3398,7 +3403,8 @@
           "CashDrawerApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/cash-drawer-api/cash-drawer-api.ts",
             "name": "CashDrawerApiContent",
-            "description": "The `CashDrawerApi` object provides methods for controlling cash drawer hardware. Access these methods through `shopify.cashDrawer` to trigger cash drawer operations.",
+            "description": "The `CashDrawerApi` object provides properties for controlling cash drawer hardware. Access these properties through `shopify.cashDrawer` to trigger cash drawer operations.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/cash-drawer-api/cash-drawer-api.ts",
@@ -3463,7 +3469,8 @@
           "ConnectivityApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityApiContent",
-            "description": "",
+            "description": "The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
@@ -3572,7 +3579,8 @@
           "CustomerApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/customer-api/customer-api.ts",
             "name": "CustomerApiContent",
-            "description": "",
+            "description": "The `CustomerApi` object provides access to customer data. Access these properties through `shopify.customer` to interact with the current customer context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/customer-api/customer-api.ts",
@@ -3637,7 +3645,8 @@
           "DeviceApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/device-api/device-api.ts",
             "name": "DeviceApiContent",
-            "description": "",
+            "description": "The `DeviceApi` object provides access to device information and capabilities. Access these properties through `shopify.device` to retrieve device details and check device characteristics.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/device-api/device-api.ts",
@@ -3743,7 +3752,8 @@
           "DraftOrderApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/draft-order-api/draft-order-api.ts",
             "name": "DraftOrderApiContent",
-            "description": "",
+            "description": "The `DraftOrderApi` object provides access to draft order data. Access these properties through `api.draftOrder` to interact with the current draft order context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/draft-order-api/draft-order-api.ts",
@@ -3836,7 +3846,8 @@
           "LocaleApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/locale-api/locale-api.ts",
             "name": "LocaleApiContent",
-            "description": "",
+            "description": "The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `shopify.locale` to retrieve and monitor locale data.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/locale-api/locale-api.ts",
@@ -3917,7 +3928,8 @@
           "Navigation": {
             "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
             "name": "Navigation",
-            "description": "",
+            "description": "The global `navigation` object provides web-standard navigation functionality. Access these properties directly through the global `navigation` object to manage navigation within modal interfaces.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
@@ -4027,13 +4039,14 @@
           "Window": {
             "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
             "name": "Window",
-            "description": "The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.",
+            "description": "The global `window` object provides control over the extension screen lifecycle. Access these properties directly through the global `window` object to manage the modal interface.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
                 "syntaxKind": "MethodSignature",
                 "name": "close",
-                "value": "{ (): void; (): void; }",
+                "value": "() => void",
                 "description": "Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI."
               }
             ],
@@ -4118,7 +4131,8 @@
           "OrderApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/order-api/order-api.ts",
             "name": "OrderApiContent",
-            "description": "The `OrderApi` object provides access to order data. Access this property through `shopify.order` to interact with the current order context.",
+            "description": "The `OrderApi` object provides access to order data. Access these properties through `shopify.order` to interact with the current order context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/order-api/order-api.ts",
@@ -4211,7 +4225,8 @@
           "PinPadApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/pin-pad-api.ts",
             "name": "PinPadApiContent",
-            "description": "",
+            "description": "The `PinPadApi` object provides properties for displaying secure PIN entry interfaces. Access these properties through `shopify.pinPad` to show PIN pad modals and handle PIN validation.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/pin-pad-api.ts",
@@ -4419,7 +4434,8 @@
           "PrintApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/print-api/print-api.ts",
             "name": "PrintApiContent",
-            "description": "The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.",
+            "description": "The `PrintApi` object provides properties for triggering document printing. Access these properties through `shopify.print` to initiate print operations with various document types.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/print-api/print-api.ts",
@@ -4510,7 +4526,8 @@
           "ProductApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/product-api/product-api.ts",
             "name": "ProductApiContent",
-            "description": "",
+            "description": "The `ProductApi` object provides access to product data. Access these properties through `shopify.product` to interact with the current product context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/product-api/product-api.ts",
@@ -4595,7 +4612,8 @@
           "ProductSearchApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/product-search-api/product-search-api.ts",
             "name": "ProductSearchApiContent",
-            "description": "",
+            "description": "The `ProductSearchApi` object provides properties for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/product-search-api/product-search-api.ts",
@@ -5301,7 +5319,8 @@
           "ScannerApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
             "name": "ScannerApiContent",
-            "description": "",
+            "description": "The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
@@ -5470,7 +5489,8 @@
           "SessionApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/session-api/session-api.ts",
             "name": "SessionApiContent",
-            "description": "",
+            "description": "The `SessionApi` object provides access to current session information and authentication. Access these properties through `shopify.session` to retrieve shop data and generate secure tokens. These properties enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/session-api/session-api.ts",
@@ -5623,7 +5643,7 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `shopify.storage` to store, retrieve, and manage data that persists across sessions.",
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -5765,7 +5785,8 @@
           "ToastApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/toast-api/toast-api.ts",
             "name": "ToastApiContent",
-            "description": "",
+            "description": "The `ToastApi` object provides properties for displaying temporary notification messages. Access these properties through `shopify.toast` to show user feedback and status updates.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/toast-api/toast-api.ts",
@@ -6380,7 +6401,8 @@
           "ConnectivityApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityApiContent",
-            "description": "",
+            "description": "The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
@@ -6533,7 +6555,7 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `shopify.storage` to store, retrieve, and manage data that persists across sessions.",
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -7496,6 +7518,14 @@
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
                 "syntaxKind": "PropertySignature",
+                "name": "exchangeId",
+                "value": "number",
+                "description": "The exchange ID if the return is part of an exchange transaction.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
                 "name": "executedAt",
                 "value": "string",
                 "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
@@ -7512,7 +7542,23 @@
                 "syntaxKind": "PropertySignature",
                 "name": "lineItems",
                 "value": "OrderLineItem[]",
-                "description": "An array of line items included in the sale transaction."
+                "description": "An array of line items included in the transaction."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsAdded",
+                "value": "LineItem[]",
+                "description": "An array of line items added to the customer in the exchange.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsRemoved",
+                "value": "LineItem[]",
+                "description": "An array of line items removed from the customer in the exchange.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -7528,6 +7574,22 @@
                 "name": "paymentMethods",
                 "value": "Payment[]",
                 "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "refundId",
+                "value": "number",
+                "description": "The refund ID if a refund was issued for the return.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "returnId",
+                "value": "number",
+                "description": "The return ID for the completed return transaction.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -7572,10 +7634,10 @@
                 "syntaxKind": "PropertySignature",
                 "name": "transactionType",
                 "value": "'Reprint'",
-                "description": "The transaction type identifier, always 'Sale' for sale transactions."
+                "description": "The transaction type identifier, always 'Reprint' for reprint transactions."
               }
             ],
-            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: OrderLineItem[];\n}"
+            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Reprint' for reprint transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the transaction.\n   */\n  lineItems: OrderLineItem[];\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded?: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved?: LineItem[];\n}"
           },
           "OrderLineItem": {
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -7851,7 +7913,8 @@
           "ConnectivityApiContent": {
             "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityApiContent",
-            "description": "",
+            "description": "The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
@@ -8004,7 +8067,7 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `shopify.storage` to store, retrieve, and manage data that persists across sessions.",
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -8967,6 +9030,14 @@
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
                 "syntaxKind": "PropertySignature",
+                "name": "exchangeId",
+                "value": "number",
+                "description": "The exchange ID if the return is part of an exchange transaction.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
                 "name": "executedAt",
                 "value": "string",
                 "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
@@ -8983,7 +9054,23 @@
                 "syntaxKind": "PropertySignature",
                 "name": "lineItems",
                 "value": "OrderLineItem[]",
-                "description": "An array of line items included in the sale transaction."
+                "description": "An array of line items included in the transaction."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsAdded",
+                "value": "LineItem[]",
+                "description": "An array of line items added to the customer in the exchange.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsRemoved",
+                "value": "LineItem[]",
+                "description": "An array of line items removed from the customer in the exchange.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -8999,6 +9086,22 @@
                 "name": "paymentMethods",
                 "value": "Payment[]",
                 "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "refundId",
+                "value": "number",
+                "description": "The refund ID if a refund was issued for the return.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "returnId",
+                "value": "number",
+                "description": "The return ID for the completed return transaction.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -9043,10 +9146,10 @@
                 "syntaxKind": "PropertySignature",
                 "name": "transactionType",
                 "value": "'Reprint'",
-                "description": "The transaction type identifier, always 'Sale' for sale transactions."
+                "description": "The transaction type identifier, always 'Reprint' for reprint transactions."
               }
             ],
-            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: OrderLineItem[];\n}"
+            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Reprint' for reprint transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the transaction.\n   */\n  lineItems: OrderLineItem[];\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded?: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved?: LineItem[];\n}"
           },
           "OrderLineItem": {
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -9389,7 +9492,8 @@
           "Badge": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Badge",
-            "description": "",
+            "description": "Configure the following properties on the Badge component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -9460,7 +9564,8 @@
           "Banner": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Banner",
-            "description": "",
+            "description": "Configure the following properties on the banner component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -9510,7 +9615,8 @@
           "BannerSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "BannerSlots",
-            "description": "",
+            "description": "The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -9566,7 +9672,8 @@
           "Box": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Box",
-            "description": "",
+            "description": "Configure the following properties on the Box component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -9788,7 +9895,8 @@
           "Button": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Button",
-            "description": "",
+            "description": "Configure the following properties on the button component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -9864,7 +9972,8 @@
           "ButtonEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ButtonEvents",
-            "description": "",
+            "description": "The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -9981,7 +10090,8 @@
           "ChoiceList": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ChoiceList",
-            "description": "",
+            "description": "Configure the following properties on the choice list component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10021,7 +10131,8 @@
           "ChoiceListEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ChoiceListEvents",
-            "description": "",
+            "description": "The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10113,7 +10224,8 @@
           "Choice": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Choice",
-            "description": "",
+            "description": "The choice component creates options that let merchants select one or multiple items from a list of choices.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10242,7 +10354,8 @@
           "Clickable": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Clickable",
-            "description": "",
+            "description": "Configure the following properties on the clickable component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10273,7 +10386,8 @@
           "ClickableEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ClickableEvents",
-            "description": "",
+            "description": "The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10396,7 +10510,8 @@
           "DateField": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "DateField",
-            "description": "",
+            "description": "Configure the following properties on the date field component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10469,7 +10584,8 @@
           "DateFieldEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "DateFieldEvents",
-            "description": "",
+            "description": "The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10627,7 +10743,8 @@
           "DatePicker": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "DatePicker",
-            "description": "",
+            "description": "Configure the following properties on the date picker component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10659,7 +10776,8 @@
           "DatePickerEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "DatePickerEvents",
-            "description": "",
+            "description": "The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10829,7 +10947,8 @@
           "DateSpinner": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "DateSpinner",
-            "description": "",
+            "description": "Configure the following properties on the date spinner component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10861,7 +10980,8 @@
           "DateSpinnerEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "DateSpinnerEvents",
-            "description": "",
+            "description": "The date spinner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11031,7 +11151,8 @@
           "Divider": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Divider",
-            "description": "",
+            "description": "Configure the following properties on the divider component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11096,7 +11217,8 @@
           "EmailField": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "EmailField",
-            "description": "",
+            "description": "Configure the following properties on the email field component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11186,7 +11308,8 @@
           "EmailFieldEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "EmailFieldEvents",
-            "description": "",
+            "description": "The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11344,7 +11467,8 @@
           "EmbedProps": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "EmbedProps",
-            "description": "",
+            "description": "Configure the following properties on the embed component. This component must be a direct child of the screen component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11513,7 +11637,8 @@
           "EmptyState": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "EmptyState",
-            "description": "",
+            "description": "Configure the following properties on the empty state component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11544,7 +11669,8 @@
           "EmptyStateSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "EmptyStateSlots",
-            "description": "",
+            "description": "The empty state component supports slots for adding graphics and actions. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11609,7 +11735,8 @@
           "Heading": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Heading",
-            "description": "",
+            "description": "Configure the following properties on the heading component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11665,7 +11792,8 @@
           "Icon": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Icon",
-            "description": "",
+            "description": "Configure the following properties on the icon component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11785,7 +11913,8 @@
           "Image": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Image",
-            "description": "",
+            "description": "Configure the following properties on the image component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11882,7 +12011,8 @@
           "Link": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Link",
-            "description": "",
+            "description": "Configure the following properties on the link component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -11930,7 +12060,8 @@
           "LinkEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "LinkEvents",
-            "description": "",
+            "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12047,7 +12178,8 @@
           "Modal": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Modal",
-            "description": "",
+            "description": "Configure the following properties on the modal component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12078,7 +12210,8 @@
           "ModalSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ModalSlots",
-            "description": "",
+            "description": "The modal component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12109,7 +12242,8 @@
           "ModalEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ModalEvents",
-            "description": "",
+            "description": "The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12240,7 +12374,8 @@
           "NumberField": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "NumberField",
-            "description": "",
+            "description": "Configure the following properties on the number field component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12356,7 +12491,8 @@
           "NumberFieldSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "NumberFieldSlots",
-            "description": "",
+            "description": "The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12379,7 +12515,8 @@
           "NumberFieldEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "NumberFieldEvents",
-            "description": "",
+            "description": "The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12549,7 +12686,8 @@
           "Page": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Page",
-            "description": "",
+            "description": "Configure the following properties on the page component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12589,7 +12727,8 @@
           "PageSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "PageSlots",
-            "description": "",
+            "description": "The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12659,7 +12798,8 @@
           "PosBlock": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "PosBlock",
-            "description": "",
+            "description": "Configure the following properties on the POS block component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12690,7 +12830,8 @@
           "QrCode": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "QrCode",
-            "description": "",
+            "description": "The POS block component renders a QR code when the block is used within a receipt target.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12721,7 +12862,8 @@
           "PosBlockSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "PosBlockSlots",
-            "description": "",
+            "description": "The POS block component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12777,7 +12919,8 @@
           "ScrollBox": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "ScrollBox",
-            "description": "",
+            "description": "Configure the following properties on the scroll box component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -12999,7 +13142,8 @@
           "SearchField": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "SearchField",
-            "description": "",
+            "description": "Configure the following properties on the search field component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13047,7 +13191,8 @@
           "SearchFieldEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "SearchFieldEvents",
-            "description": "",
+            "description": "The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13168,7 +13313,7 @@
         "type": "Generic",
         "anchorLink": "best-practices",
         "title": "Best practices",
-        "sectionContent": "\n- **Use for inline search and filtering:** Choose search field for filtering within specific sections or lists, not for global navigation or complex multi-step searches.\n- **Follow placeholder pattern:** Use \"Search {items}\" format like \"Search products\" or \"Search customers\" to clarify scope.\n- **Choose the right event:** Use `input` for real-time filtering as users type. Use `change` for expensive operations that should wait until typing completes.\n- **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.\n"
+        "sectionContent": "\n- **Use for inline search and filtering:** Choose search field for filtering within specific sections or lists, not for global navigation or complex multi-step searches.\n- **Follow placeholder pattern:** Use `\"Search {items}\"` format like `\"Search products\"` or `\"Search customers\"` to clarify scope.\n- **Choose the right event:** Use `input` for real-time filtering as users type. Use `change` for expensive operations that should wait until typing completes.\n- **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.\n"
       }
     ],
     "related": [],
@@ -13205,7 +13350,8 @@
           "Section": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Section",
-            "description": "",
+            "description": "Configure the following properties on the section component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13236,7 +13382,8 @@
           "SectionSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "SectionSlots",
-            "description": "",
+            "description": "The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13292,7 +13439,8 @@
           "Spinner": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Spinner",
-            "description": "",
+            "description": "Configure the following properties on the spinner component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13356,7 +13504,8 @@
           "Stack": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Stack",
-            "description": "",
+            "description": "Configure the following properties on the stack component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13695,7 +13844,8 @@
           "Switch": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Switch",
-            "description": "",
+            "description": "Configure the following properties on the switch component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13786,7 +13936,8 @@
           "SwitchEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "SwitchEvents",
-            "description": "",
+            "description": "The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13928,7 +14079,8 @@
           "Tabs": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Tabs",
-            "description": "",
+            "description": "Configure the following properties on the tabs component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -13967,7 +14119,8 @@
           "TabsEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TabsEvents",
-            "description": "",
+            "description": "The tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14051,7 +14204,8 @@
           "TabListJSXProps": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TabListJSXProps",
-            "description": "",
+            "description": "The tab list component contains the tab buttons. It must be a direct child of the tabs component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14081,7 +14235,8 @@
           "Tab": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Tab",
-            "description": "",
+            "description": "The tab component represents an individual tab button. It must be placed within a tab list and should use the `controls` property to associate it with a corresponding tab panel.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14113,7 +14268,8 @@
           "TabPanel": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TabPanel",
-            "description": "",
+            "description": "The tab panel component contains the content for each tab. It must have an `id` that matches the `controls` property of the corresponding tab.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14186,7 +14342,8 @@
           "Text": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Text",
-            "description": "",
+            "description": "Configure the following properties on the text component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14282,7 +14439,8 @@
           "TextArea": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TextArea",
-            "description": "",
+            "description": "Configure the following properties on the text area component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14381,7 +14539,8 @@
           "TextAreaEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TextAreaEvents",
-            "description": "",
+            "description": "The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14551,7 +14710,8 @@
           "TextField": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TextField",
-            "description": "",
+            "description": "Configure the following properties on the text field component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14641,7 +14801,8 @@
           "TextFieldSlots": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TextFieldSlots",
-            "description": "",
+            "description": "The text field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14664,7 +14825,8 @@
           "TextFieldEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TextFieldEvents",
-            "description": "",
+            "description": "The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14852,7 +15014,8 @@
           "Tile": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "Tile",
-            "description": "",
+            "description": "Configure the following properties on the tile component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -14919,7 +15082,8 @@
           "TileEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TileEvents",
-            "description": "",
+            "description": "The tile component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -15042,7 +15206,8 @@
           "TimeField": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TimeField",
-            "description": "",
+            "description": "Configure the following properties on the time field component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -15115,7 +15280,8 @@
           "TimeFieldEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TimeFieldEvents",
-            "description": "",
+            "description": "The time field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -15273,7 +15439,8 @@
           "TimePicker": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TimePicker",
-            "description": "",
+            "description": "Configure the following properties on the time picker component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -15305,7 +15472,8 @@
           "TimePickerEvents": {
             "filePath": "src/surfaces/point-of-sale/components.ts",
             "name": "TimePickerEvents",
-            "description": "",
+            "description": "The time picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/components.ts",

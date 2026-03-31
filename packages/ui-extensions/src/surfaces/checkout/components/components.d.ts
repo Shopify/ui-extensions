@@ -11,9 +11,12 @@
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
+ * @publicDocs
  */
 export type ComponentChildren = any;
+/** @publicDocs */
 export type StringChildren = string;
+/** @publicDocs */
 export interface GlobalProps {
 	/**
 	 * A unique identifier for the element.
@@ -36,6 +39,7 @@ interface AbbreviationProps$1 extends GlobalProps {
 	 */
 	title?: string;
 }
+/** @publicDocs */
 export interface ActionSlots {
 	/**
 	 * The primary action to perform, provided as a button or link type element.
@@ -46,6 +50,7 @@ export interface ActionSlots {
 	 */
 	secondaryActions?: ComponentChildren;
 }
+/** @publicDocs */
 export interface BaseOverlayProps {
 	/**
 	 * A callback fired immediately after the overlay is shown.
@@ -71,6 +76,7 @@ export interface BaseOverlayProps {
  * - Components implementing this interface must provide all methods
  * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
  * - Consumers expect these methods to be consistently available on all instances
+ * @publicDocs
  */
 export interface BaseOverlayMethods {
 	/**
@@ -92,6 +98,7 @@ export interface BaseOverlayMethods {
 	 */
 	toggleOverlay: () => void;
 }
+/** @publicDocs */
 export interface FocusEventProps {
 	/**
 	 * Callback when the element loses focus.
@@ -106,6 +113,7 @@ export interface FocusEventProps {
 	 */
 	onFocus?: (event: FocusEvent) => void;
 }
+/** @publicDocs */
 export interface ToggleEventProps {
 	/**
 	 * A callback fired when the element state changes, after any toggle animations have finished.
@@ -130,11 +138,13 @@ export interface ToggleEventProps {
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
+/** @publicDocs */
 export type ToggleState = "open" | "closed";
 interface ToggleEvent$1 extends Event {
 	readonly newState: ToggleState;
 	readonly oldState: ToggleState;
 }
+/** @publicDocs */
 export interface ExtendableEvent extends Event {
 	/**
 	 * Provide a promise that signals the length, and eventual success or failure of actions relating to the event.
@@ -163,6 +173,7 @@ interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
 }
 /**
  * The design system's size scale, used to control the dimensions of components like avatars, icons, and thumbnails. Values range from `"small-500"` (smallest) through `"base"` (standard) to `"large-500"` (largest). Not all components support every size — check the component's `size` property type for its available options.
+ * @publicDocs
  */
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
 /**
@@ -171,9 +182,12 @@ export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" 
  * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
  * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
  * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
+ * @publicDocs
  */
 export type ColorKeyword = "subdued" | "base" | "strong";
+/** @publicDocs */
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
+/** @publicDocs */
 export interface BackgroundProps {
 	/**
 	 * Adjust the background of the element.
@@ -191,6 +205,7 @@ export interface BackgroundProps {
  * In some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component.
  *
  * @default 'auto'
+ * @publicDocs
  */
 export type ToneKeyword = "auto" | "neutral" | "info" | "success" | "caution" | "warning" | "critical" | "accent" | "custom";
 declare const privateIconArray: readonly [
@@ -742,9 +757,11 @@ declare const privateIconArray: readonly [
 	"x-circle",
 	"x-circle-filled"
 ];
+/** @publicDocs */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
+ * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
 /**
@@ -754,6 +771,7 @@ export type ExtractStrict<T, U extends T> = Extract<T, U>;
  * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
  * - `${T} ${T} ${T}`: Three values for block-start (top), inline axis (left/right), and block-end (bottom).
  * - `${T} ${T} ${T} ${T}`: Four values for block-start (top), inline-end (right), block-end (bottom), and inline-start (left).
+ * @publicDocs
  */
 export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`;
 /**
@@ -761,6 +779,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` 
  *
  * - `T`: Single value that applies to both dimensions.
  * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
+ * @publicDocs
  */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
 /**
@@ -768,6 +787,7 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  *
  * - `T`: Base value that applies in all conditions.
  * - `@container${string}`: Container query string for conditional responsive styling based on container size.
+ * @publicDocs
  */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
@@ -777,6 +797,7 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * //   ^? string
  * type PropName = 'foo' | 'bar' | (string & {})
  * //   ^? 'foo' | 'bar' | (string & {})
+ * @publicDocs
  */
 export type AnyString = string & {};
 /**
@@ -784,6 +805,7 @@ export type AnyString = string & {};
  * to have a space or not in the string literal types.
  *
  * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ * @publicDocs
  */
 export type optionalSpace = "" | " ";
 interface BadgeProps$1 extends GlobalProps {
@@ -895,6 +917,7 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
 	 */
 	hidden?: boolean;
 }
+/** @publicDocs */
 export interface DisplayProps {
 	/**
 	 * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
@@ -907,6 +930,7 @@ export interface DisplayProps {
 	 */
 	display?: MaybeResponsive<"auto" | "none">;
 }
+/** @publicDocs */
 export interface AccessibilityRoleProps {
 	/**
 	 * Sets the semantic meaning of the component’s content. When set,
@@ -920,7 +944,8 @@ export interface AccessibilityRoleProps {
 	 */
 	accessibilityRole?: AccessibilityRole;
 }
-export type AccessibilityRole = 
+/** @publicDocs */
+export type AccessibilityRole =
 /**
  * Used to indicate the primary content.
  *
@@ -1035,6 +1060,7 @@ export type AccessibilityRole =
  * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
  */
  | "none";
+/** @publicDocs */
 export interface AccessibilityVisibilityProps {
 	/**
 	 * Changes the visibility of the element.
@@ -1047,6 +1073,7 @@ export interface AccessibilityVisibilityProps {
 	 */
 	accessibilityVisibility?: "visible" | "hidden" | "exclusive";
 }
+/** @publicDocs */
 export interface LabelAccessibilityVisibilityProps {
 	/**
 	 * Changes the visibility of the component's label.
@@ -1063,8 +1090,10 @@ export interface LabelAccessibilityVisibilityProps {
  *
  * - `SizeKeyword`: Standard padding sizes from the size scale for consistent spacing.
  * - `none`: No padding.
+ * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | "none";
+/** @publicDocs */
 export interface PaddingProps {
 	/**
 	 * Adjust the padding of all edges.
@@ -1146,6 +1175,7 @@ export interface PaddingProps {
  * - `` `${number}px` ``: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
  * - `` `${number}%` ``: Relative size as a percentage of the parent container (such as `50%`, `100%`).
  * - `0`: Zero size, equivalent to no dimension.
+ * @publicDocs
  */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 /**
@@ -1153,6 +1183,7 @@ export type SizeUnits = `${number}px` | `${number}%` | `0`;
  *
  * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
  * - `auto`: Automatically sizes based on content and layout constraints. Learn more about the [auto value](https://developer.mozilla.org/en-US/docs/Web/CSS/width#auto).
+ * @publicDocs
  */
 export type SizeUnitsOrAuto = SizeUnits | "auto";
 /**
@@ -1160,8 +1191,10 @@ export type SizeUnitsOrAuto = SizeUnits | "auto";
  *
  * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
  * - `none`: No size constraint, allowing unlimited growth. Learn more about the [none value](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width#none).
+ * @publicDocs
  */
 export type SizeUnitsOrNone = SizeUnits | "none";
+/** @publicDocs */
 export interface SizingProps {
 	/**
 	 * Adjust the block size.
@@ -1220,6 +1253,7 @@ export interface SizingProps {
  * - `dashed`: A series of short dashes.
  * - `dotted`: A series of round dots.
  * - `auto`: The border style is determined automatically based on the surface's design system.
+ * @publicDocs
  */
 export type BorderStyleKeyword = "none" | "solid" | "dashed" | "dotted" | "auto";
 /**
@@ -1227,6 +1261,7 @@ export type BorderStyleKeyword = "none" | "solid" | "dashed" | "dotted" | "auto"
  *
  * - `SizeKeyword`: Standard border widths from the size scale for consistent thickness.
  * - `none`: No border width (removes the border).
+ * @publicDocs
  */
 export type BorderSizeKeyword = SizeKeyword | "none";
 /**
@@ -1234,12 +1269,15 @@ export type BorderSizeKeyword = SizeKeyword | "none";
  *
  * - `max`: The maximum possible radius, creating a pill or circular shape.
  * - `none`: No rounding — corners are sharp (0 radius).
+ * @publicDocs
  */
 export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
+ * @publicDocs
  */
 export type BorderShorthand = BorderSizeKeyword | `${BorderSizeKeyword} ${ColorKeyword}` | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
+/** @publicDocs */
 export interface BorderProps {
 	/**
 	 * Set the border via the shorthand property.
@@ -1324,6 +1362,7 @@ export interface BorderProps {
 	 */
 	borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
+/** @publicDocs */
 export interface OverflowProps {
 	/**
 	 * Sets the overflow behavior of the element.
@@ -1337,6 +1376,7 @@ export interface OverflowProps {
 	 */
 	overflow?: "hidden" | "visible";
 }
+/** @publicDocs */
 export interface BaseBoxProps extends AccessibilityVisibilityProps, BackgroundProps, DisplayProps, SizingProps, PaddingProps, BorderProps, OverflowProps {
 	/**
 	 * The content of the Box.
@@ -1350,10 +1390,12 @@ export interface BaseBoxProps extends AccessibilityVisibilityProps, BackgroundPr
 	 */
 	accessibilityLabel?: string;
 }
+/** @publicDocs */
 export interface BaseBoxPropsWithRole extends BaseBoxProps, AccessibilityRoleProps {
 }
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {
 }
+/** @publicDocs */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The behavior of the Button.
@@ -1389,6 +1431,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	loading?: boolean;
 }
+/** @publicDocs */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The URL to link to.
@@ -1425,6 +1468,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	onClick?: (event: Event) => void;
 }
+/** @publicDocs */
 export interface InteractionProps {
 	/**
 	 * ID of a component that should respond to activations (e.g. clicks) on this component.
@@ -1455,6 +1499,7 @@ export interface InteractionProps {
 	 */
 	interestFor?: string;
 }
+/** @publicDocs */
 export interface BaseClickableProps extends ButtonBehaviorProps, LinkBehaviorProps {
 }
 interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
@@ -1504,6 +1549,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	 */
 	lang?: string;
 }
+/** @publicDocs */
 export interface BaseInputProps {
 	/**
 	 * An identifier for the field that is unique within the nearest containing form.
@@ -1516,6 +1562,7 @@ export interface BaseInputProps {
 	 */
 	disabled?: boolean;
 }
+/** @publicDocs */
 export interface InputProps extends BaseInputProps {
 	/**
 	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
@@ -1540,6 +1587,7 @@ export interface InputProps extends BaseInputProps {
 	 */
 	defaultValue?: string;
 }
+/** @publicDocs */
 export interface MultipleInputProps extends BaseInputProps {
 	/**
 	 * Callback when the user has selected option(s).
@@ -1560,6 +1608,7 @@ export interface MultipleInputProps extends BaseInputProps {
 	 */
 	values?: string[];
 }
+/** @publicDocs */
 export interface FileInputProps extends BaseInputProps {
 	/**
 	 * Callback when the user has **finished selecting** a file or files.
@@ -1589,6 +1638,7 @@ export interface FileInputProps extends BaseInputProps {
 	 */
 	files?: readonly File[];
 }
+/** @publicDocs */
 export interface FieldErrorProps {
 	/**
 	 * Indicate an error to the user. The field will be given a specific stylistic treatment
@@ -1596,6 +1646,7 @@ export interface FieldErrorProps {
 	 */
 	error?: string;
 }
+/** @publicDocs */
 export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisibilityProps {
 	/**
 	 * Whether the field needs a value. This requirement adds semantic value
@@ -1611,6 +1662,7 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 */
 	label?: string;
 }
+/** @publicDocs */
 export interface FieldDetailsProps {
 	/**
 	 * Additional text to provide context or guidance for the field.
@@ -1621,12 +1673,14 @@ export interface FieldDetailsProps {
 	 */
 	details?: string;
 }
+/** @publicDocs */
 export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps, FieldDetailsProps {
 	/**
 	 * A short hint that describes the expected value of the field.
 	 */
 	placeholder?: string;
 }
+/** @publicDocs */
 export interface BaseTextFieldProps extends FieldProps {
 	/**
 	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
@@ -1635,6 +1689,7 @@ export interface BaseTextFieldProps extends FieldProps {
 	 */
 	readOnly?: boolean;
 }
+/** @publicDocs */
 export interface FieldDecorationProps {
 	/**
 	 * A value to be displayed immediately after the editable portion of the field.
@@ -1674,6 +1729,7 @@ export interface FieldDecorationProps {
 	 */
 	accessory?: ComponentChildren;
 }
+/** @publicDocs */
 export interface NumberConstraintsProps {
 	/**
 	 * The highest decimal or integer to be accepted for the field.
@@ -1716,6 +1772,7 @@ export interface NumberConstraintsProps {
 	 */
 	controls?: "auto" | "stepper" | "none";
 }
+/** @publicDocs */
 export interface MinMaxLengthProps {
 	/**
 	 * Specifies the maximum number of characters allowed.
@@ -1730,6 +1787,7 @@ export interface MinMaxLengthProps {
 	 */
 	minLength?: number;
 }
+/** @publicDocs */
 export interface BaseSelectableProps {
 	/**
 	 * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
@@ -1747,6 +1805,7 @@ export interface BaseSelectableProps {
 	 */
 	value?: string;
 }
+/** @publicDocs */
 export interface BaseOptionProps extends BaseSelectableProps {
 	/**
 	 * Whether the control is active.
@@ -1763,6 +1822,7 @@ export interface BaseOptionProps extends BaseSelectableProps {
 	 */
 	defaultSelected?: boolean;
 }
+/** @publicDocs */
 export interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
 	/**
 	 * Visual content to use as the control label.
@@ -1834,6 +1894,7 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 	 */
 	required?: boolean;
 }
+/** @publicDocs */
 export interface ChipProps$1 {
 	/**
 	 * The content of the chip.
@@ -2028,6 +2089,7 @@ interface ClipboardItemProps$1 extends GlobalProps {
 	 */
 	onCopyError?: (event: Event) => void;
 }
+/** @publicDocs */
 export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
 	/**
 	 * A hint as to the intended content of the field.
@@ -2057,18 +2119,24 @@ export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteFiel
  *
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
+ * @publicDocs
  */
 export type AutocompleteSection = `section-${string}`;
 /**
  * The contact information group the autocomplete data should be sourced from.
+ * @publicDocs
  */
 export type AutocompleteGroup = "shipping" | "billing";
 /**
  * The contact information subgroup the autocomplete data should be sourced from.
+ * @publicDocs
  */
 export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
+/** @publicDocs */
 export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
+/** @publicDocs */
 export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
+/** @publicDocs */
 export type ConsentPolicy = "sms-marketing";
 interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
 	/**
@@ -2078,6 +2146,7 @@ interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
 	 */
 	policy?: ConsentPolicy;
 }
+/** @publicDocs */
 export type PhoneAutocompleteField = ExtractStrict<AnyAutocompleteField, "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`>;
 interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldDecorationProps, "accessory">, AutocompleteProps<PhoneAutocompleteField> {
 	/**
@@ -2271,6 +2340,7 @@ interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePic
 	 */
 	onInvalid?: (event: Event) => void;
 }
+/** @publicDocs */
 export type DateAutocompleteField = ExtractStrict<AnyAutocompleteField, "bday" | "bday-day" | "bday-month" | "bday-year" | "cc-expiry" | "cc-expiry-month" | "cc-expiry-year">;
 interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 	/**
@@ -2357,6 +2427,7 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 }
 interface EmailFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<EmailAutocompleteField> {
 }
+/** @publicDocs */
 export type EmailAutocompleteField = ExtractStrict<AnyAutocompleteField, "email" | `${AutocompleteAddressGroup} email`>;
 interface FormProps$1 extends GlobalProps {
 	/**
@@ -2386,7 +2457,9 @@ interface FormProps$1 extends GlobalProps {
 	 */
 	onReset?: (event: Event) => void;
 }
+/** @publicDocs */
 export type SpacingKeyword = SizeKeyword | "none";
+/** @publicDocs */
 export interface GapProps {
 	/**
 	 * Adjust spacing between elements.
@@ -2414,95 +2487,103 @@ export interface GapProps {
 	 */
 	columnGap?: MaybeResponsive<SpacingKeyword | "">;
 }
+/** @publicDocs */
 export type BaselinePosition = "baseline" | "first baseline" | "last baseline";
+/** @publicDocs */
 export type ContentDistribution = "space-between" | "space-around" | "space-evenly" | "stretch";
+/** @publicDocs */
 export type ContentPosition = "center" | "start" | "end";
+/** @publicDocs */
 export type OverflowPosition = `unsafe ${ContentPosition}` | `safe ${ContentPosition}`;
 /**
  * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+ * @publicDocs
  */
 export type JustifyItemsKeyword = "normal" | "stretch" | BaselinePosition | OverflowPosition | ContentPosition;
 /**
  * Align items sets the align-self value on all direct children as a group.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+ * @publicDocs
  */
 export type AlignItemsKeyword = "normal" | "stretch" | BaselinePosition | OverflowPosition | ContentPosition;
 /**
  * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+ * @publicDocs
  */
 export type JustifyContentKeyword = "normal" | ContentDistribution | OverflowPosition | ContentPosition;
 /**
  *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+ * @publicDocs
  */
 export type AlignContentKeyword = "normal" | BaselinePosition | ContentDistribution | OverflowPosition | ContentPosition;
 interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	/**
 	  Define columns and specify their size.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 	  @default 'none'
 	*/
 	gridTemplateColumns?: MaybeResponsive<string>;
 	/**
 	  Define rows and specify their size.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
 	  @default 'none'
 	*/
 	gridTemplateRows?: MaybeResponsive<string>;
 	/**
 	  Aligns the grid items along the inline (row) axis.
-  
+
 	  This overrides the inline value of `placeItems`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
 	  @default '' - meaning no override
 	*/
 	justifyItems?: MaybeResponsive<JustifyItemsKeyword | "">;
 	/**
 	  Aligns the grid items along the block (column) axis.
-  
+
 	  This overrides the block value of `placeItems`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	  @default '' - meaning no override
 	*/
 	alignItems?: MaybeResponsive<AlignItemsKeyword | "">;
 	/**
 	  A shorthand property for `justify-items` and `align-items`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
 	  @default 'normal normal'
 	*/
 	placeItems?: MaybeResponsive<`${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword>;
 	/**
 	  Aligns the grid along the inline (row) axis.
-  
+
 	  This overrides the inline value of `placeContent`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 	  @default '' - meaning no override
 	*/
 	justifyContent?: MaybeResponsive<JustifyContentKeyword | "">;
 	/**
 	  Aligns the grid along the block (column) axis.
-  
+
 	  This overrides the block value of `placeContent`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 	  @default '' - meaning no override
 	*/
 	alignContent?: MaybeResponsive<AlignContentKeyword | "">;
 	/**
 	  A shorthand property for `justify-content` and `align-content`.
-  
+
 	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
 	  @default 'normal normal'
 	*/
@@ -2526,6 +2607,7 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
 	 */
 	gridRow?: `span ${number}` | "auto";
 }
+/** @publicDocs */
 export interface BaseTypographyProps {
 	/**
 	 * Modify the color to be more or less intense.
@@ -2571,6 +2653,7 @@ export interface BaseTypographyProps {
 	 */
 	dir?: "ltr" | "rtl" | "auto" | "";
 }
+/** @publicDocs */
 export interface BlockTypographyProps {
 	/**
 	 * Truncates the text content to the specified number of lines.
@@ -2647,6 +2730,7 @@ interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor">
 	 */
 	type?: IconType | AnyString;
 }
+/** @publicDocs */
 export interface BaseImageProps {
 	/**
 	 * Alternative text that describes the image for screen readers. This text should convey the meaning or content of the image to users who can't see it.
@@ -2822,6 +2906,7 @@ interface Location$1 {
 }
 /**
  * The geographic boundaries of a visible map area.
+ * @publicDocs
  */
 export interface Bounds {
 	/**
@@ -2835,6 +2920,7 @@ export interface Bounds {
 }
 /**
  * The event data for map view changes.
+ * @publicDocs
  */
 export interface MapViewChangeEvent extends Event {
 	/**
@@ -2848,6 +2934,7 @@ export interface MapViewChangeEvent extends Event {
 }
 /**
  * The event data for map bounds changes.
+ * @publicDocs
  */
 export interface MapBoundsChangeEvent extends Event {
 	/**
@@ -2857,6 +2944,7 @@ export interface MapBoundsChangeEvent extends Event {
 }
 /**
  * The event data for map click events.
+ * @publicDocs
  */
 export interface MapClickEvent extends Event {
 	/**
@@ -2866,6 +2954,7 @@ export interface MapClickEvent extends Event {
 }
 /**
  * The event data for map double-click events.
+ * @publicDocs
  */
 export interface MapDblClickEvent extends Event {
 	/**
@@ -2938,6 +3027,7 @@ interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods
 }
 interface MoneyFieldProps$1 extends GlobalProps, BaseTextFieldProps, NumberConstraintsProps, AutocompleteProps<MoneyAutocompleteField> {
 }
+/** @publicDocs */
 export type MoneyAutocompleteField = ExtractStrict<AnyAutocompleteField, "transaction-amount">;
 interface NumberFieldProps$1 extends GlobalProps, BaseTextFieldProps, AutocompleteProps<NumberAutocompleteField>, NumberConstraintsProps, FieldDecorationProps {
 	/**
@@ -2948,6 +3038,7 @@ interface NumberFieldProps$1 extends GlobalProps, BaseTextFieldProps, Autocomple
 	 */
 	inputMode?: "decimal" | "numeric";
 }
+/** @publicDocs */
 export type NumberAutocompleteField = ExtractStrict<AnyAutocompleteField, "one-time-code" | "cc-number" | "cc-csc">;
 interface OptionProps$1 extends GlobalProps, BaseOptionProps {
 	/**
@@ -2971,7 +3062,8 @@ interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypogr
 	 */
 	type?: ParagraphType;
 }
-export type ParagraphType = 
+/** @publicDocs */
+export type ParagraphType =
 /**
  * Indicate the text is a structural grouping of related content.
  *
@@ -2991,6 +3083,7 @@ export type ParagraphType =
  | "small";
 interface PasswordFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<PasswordAutocompleteField> {
 }
+/** @publicDocs */
 export type PasswordAutocompleteField = ExtractStrict<AnyAutocompleteField, "new-password" | "current-password">;
 interface PaymentIconProps$1 extends GlobalProps {
 	/**
@@ -3004,6 +3097,7 @@ interface PaymentIconProps$1 extends GlobalProps {
 	 */
 	accessibilityLabel?: string;
 }
+/** @publicDocs */
 export type PaymentIconName = "abn" | "acima-leasing" | "acuotaz" | "ada" | "addi" | "adyen" | "aeropay" | "affin-bank" | "affirm" | "aftee" | "afterpay-paynl-version" | "afterpay" | "airtel-money" | "airteltigo-mobile-money" | "aktia" | "akulaku-paylater" | "akulaku" | "alandsbanken" | "alfamart" | "alfamidi" | "alipay-hk" | "alipay-paynl-version" | "alipay" | "alliance-bank" | "alma" | "aman" | "amazon" | "ambank" | "american-express" | "amex" | "ansa-stored-value" | "ansa" | "anyday" | "apecoin" | "aplazo" | "apple-pay" | "aqsat" | "arbitrum" | "arhaus" | "arvato" | "ashley-plcc" | "ask" | "astrapay" | "atm-bersama" | "atobaraidotcom" | "atome" | "atone" | "atrato" | "au-kantan-kessai" | "au-pay" | "authorize-net" | "avalanche" | "axs" | "bancnet" | "banco-azteca" | "bancomat" | "bancontact" | "bangkok-bank" | "bank-islam" | "bank-muamalat" | "bank-rakyat" | "barclays" | "base" | "bbva-cie" | "bc-card" | "bca-klikpay" | "bca" | "bdo" | "belfius" | "benefit" | "best-buy-card" | "biercheque-paynl-version" | "bigc" | "billease" | "biller-paynl-version" | "billie" | "billink-method" | "billink" | "bitcoin-cash" | "bitcoin" | "bizum" | "blik" | "bnbchain" | "bni" | "bnp" | "bogus-app-coin" | "bogus" | "boleto" | "boodil" | "boost" | "bpi" | "braintree" | "bread-pay" | "bread" | "bri-direct-debit" | "bri" | "brimo" | "bsi" | "bsn" | "bss" | "busd" | "careem-pay" | "cartes-bancaires" | "cash-app-pay" | "cash" | "cashew" | "cashinvoice-latin-america" | "catch-payments" | "cebuana" | "cembrapay" | "centi" | "cetelem" | "checkout-finance" | "chinabank" | "cimb-clicks" | "cimb" | "circle-k" | "citadele" | "citi-pay" | "clave-telered" | "clearpay" | "clerq" | "cleverpay" | "clip" | "cliq" | "codensa" | "coinsph" | "collector-bank" | "coop" | "coppel-pay" | "credit-agricole" | "credit-key" | "creditclick-paynl-version" | "credix" | "cuotas" | "d-barai" | "dai" | "daily-yamazaki" | "dan-dan" | "dana" | "danamon-online" | "dankort" | "danske-bank" | "dappmx" | "dash" | "daviplata" | "de-cadeaukaart" | "depay" | "deutsche-bank" | "dinacard" | "diners-club" | "direct-bank-transfer-latin-america" | "directa24" | "directpay" | "discover" | "divido" | "dnb" | "docomo-barai" | "dogecoin" | "dropp" | "duitnow" | "duologi" | "dwolla" | "easywallet" | "ebucks" | "echelon-financing" | "ecpay" | "edenred" | "efecty" | "eft-secure" | "eftpos-au" | "eghl" | "elo" | "elv" | "empty" | "enets" | "eos" | "epayments" | "epospay" | "eps" | "erste" | "escrowcom" | "esr-paymentslip-switzerland" | "ethereum" | "etihad-guest-pay" | "etika" | "ewallet-indonesia" | "ewallet-philippines" | "ewallet-southkorea" | "facebook-pay" | "fairstone-payments" | "fam" | "familymart" | "fantom" | "farmlands" | "fashion-giftcard-paynlversion" | "fashioncheque" | "favepay" | "fawry" | "finloup" | "fintecture" | "fintoc" | "flexiti" | "float-payments" | "flying-blue-plus" | "forbrugsforeningen" | "forsa" | "fortiva" | "fps" | "fpx" | "freecharge" | "freedompay" | "futurepay-mytab" | "gcash" | "generalfinancing" | "generic" | "genoapay" | "gezondheidsbon-paynl-version" | "giftcard" | "giropay" | "givacard" | "glbe-paypal" | "glbe-plus" | "gmo-atokara" | "gmo-bank-transfer" | "gmo-postpay" | "gmo-virtualaccount" | "gnosis" | "google-pay" | "google-wallet" | "gopay" | "grabpay" | "grailpay" | "gusd" | "hana-card" | "handelsbanken" | "happy-pay" | "hello-clever" | "heylight" | "hitrustpay-transfer" | "home-credit" | "hong-leong-bank" | "hong-leong-connect" | "hsbc" | "huis-tuin-cadeau" | "humm" | "hyper" | "hypercard" | "hypercash" | "hyundai-card" | "ibexpay" | "ideal" | "in3-via-ideal" | "in3" | "inbank" | "indomaret" | "ing-homepay" | "interac" | "ivy" | "iwocapay-pay-later" | "jcb" | "jenius" | "jko" | "jousto" | "kakao-pay" | "kakebaraidotcom" | "kasikornbank" | "kasssh" | "katapult" | "kb-card" | "kbc-cbc" | "kcp-credit-card" | "kfast" | "khqr" | "klarna-pay-later" | "klarna-pay-now" | "klarna-slice-it" | "klarna" | "knaken-settle" | "knet" | "koalafi" | "koin" | "krediidipank" | "kredivo" | "krungsri" | "krungthai-bank" | "kueski-pay" | "kunst-en-cultuur-cadeaukaart" | "kuwait-finance-house" | "land-bank" | "laser" | "latitude-creditline-au" | "latitude-gem-au" | "latitude-gem-nz" | "latitude-go-au" | "latitudepay" | "lawson" | "laybuy-heart" | "laybuy" | "lbc" | "lhv" | "line-pay" | "linkaja" | "linkpay" | "litecoin" | "lku" | "lloyds" | "lotte-card" | "lpb" | "luminor" | "lunch-check" | "lydia" | "mach" | "mada" | "maestro" | "mandiri" | "mash" | "master" | "mastercard" | "masterpass" | "maxima" | "maya-bank" | "maya" | "maybank-qrpay" | "maybank" | "maybankm2u" | "mb-way" | "mb" | "mcash" | "medicinos-bankas" | "meeza" | "mercado-credito" | "mercado-pago" | "merpay" | "meta-pay" | "metro-bank" | "military-starcard" | "minicuotas" | "ministop" | "mobicred" | "mobikwik" | "mobilepay" | "mode" | "mokka" | "momopay" | "mondido" | "monero" | "monzo" | "mpesa" | "mtn-mobile-money" | "multisafepay" | "mybank" | "myfatoorah" | "n26" | "naps" | "nationale-bioscoopbon" | "nationale-entertainmentcard" | "natwest" | "naver-pay" | "nelo" | "nequi" | "netbanking" | "neteller" | "nh-card" | "nordea" | "notyd" | "novuna" | "npatobarai" | "npkakebarai" | "oca" | "ocbc-bank" | "octo-clicks" | "octopus" | "offline-bank-transfer-latin-america" | "ola-money" | "omannet" | "omasp" | "oney" | "online-banking" | "online-banktransfer" | "op" | "opay" | "openpay" | "optimism" | "orange-mobile-money" | "overstock-citicobrand" | "overstock-citiplcc" | "ovo" | "oxxo" | "ozow" | "pagoefectivo" | "paid" | "paidy" | "palawa" | "palawan" | "pastpay" | "pay-after-delivery-instalments" | "pay-by-bank-us" | "pay-by-bank" | "pay-easy" | "pay-pay" | "paybylink" | "paycash" | "payco" | "payconiq" | "payd" | "payfast-instant-eft" | "payflex" | "payid" | "payitmonthly" | "payjustnow" | "paymark-online-eftpos" | "paymaya" | "payme" | "paynow-mbank" | "paynow" | "payoo-qr" | "payoo" | "paypal" | "payplan" | "paypo" | "payrexx-bank-transfer" | "payright" | "paysafecard-paynl-version" | "paysafecard" | "paysafecash" | "paysera" | "paysquad" | "paytm" | "payto" | "paytomorrow" | "payu" | "payzapp" | "pei" | "perlasfinance" | "permata" | "pf-pay" | "pivo" | "pix" | "podium-cadeaukaart" | "pointspay" | "poli" | "polygon" | "poppankki" | "postfinance-card" | "postfinance-efinance" | "postpay" | "powered-by-ansa-stored-value" | "powered-by-ansa" | "powerpay" | "pps" | "prepaysolutions" | "progressive-leasing" | "przelew24" | "przelewy24-paynl-version" | "przelewy24" | "pse" | "public-bank" | "publicbank-pbe" | "qasitli" | "qliro" | "qr-promptpay" | "qris" | "qrph" | "rabbit-line-pay" | "rabobank" | "rakuten-pay" | "rapid-transfer" | "ratepay" | "raty-pekao" | "rcbc" | "rcs" | "reka" | "resolve-pay" | "revolut" | "rhb-bank" | "rhb-now" | "rietumu" | "riverty-paynl-version" | "riverty" | "rupay" | "saastopankki" | "sadad" | "sam" | "samsung-card" | "samsung-pay" | "santander" | "satisfi" | "satispay" | "sbpl" | "scalapay" | "scream-truck-wallet" | "scream-truck" | "seb" | "seicomart" | "sepa-bank-transfer" | "sepa-direct-debit" | "sequra" | "seven-eleven" | "sezzle" | "shib" | "shinhan-card" | "shop-pay" | "shopeepay" | "shopify-pay" | "siam-commercial" | "siauliu-bankas" | "siirto" | "sika-fsa" | "sika-hsa" | "sika" | "simpl" | "simple-pay" | "sinpe-movil" | "sistecredito" | "skeps" | "skrill-digital-wallet" | "slice-fnbo" | "smartpay" | "snap-checkout" | "snapmint" | "societe-generale" | "sofort" | "softbank" | "solana-pay-helio" | "solana-pay" | "solana" | "souhoola" | "spankki" | "sparkasse" | "spei" | "splitit" | "spotii" | "spraypay" | "standard-chartered" | "stc-pay" | "stoov" | "store-credit" | "stripe" | "sunkus" | "super-payments" | "svea-b2b-faktura" | "svea-b2b-invoice" | "svea-checkout" | "svea-credit-account" | "svea-delbetalning" | "svea-faktura" | "svea-invoice" | "svea-lasku" | "svea-ostukonto" | "svea-part-payment" | "svea-yrityslasku" | "sveaeramaksu" | "swedbank" | "swiftpay" | "swish" | "swissbilling" | "sympl" | "synchrony-pay" | "synchrony" | "tabby" | "tabit" | "taly" | "tamara" | "tandympayment" | "tasa-cero" | "tbi-bank" | "tcf" | "tendopay" | "tensile" | "tesco-lotus" | "thanachart-bank" | "timepayment" | "tiptop" | "todopay" | "toss" | "touch-n-go" | "tpay" | "trevipay" | "truelayer" | "truemoney-pay" | "trustly" | "twig-pay" | "twint" | "twoinvoice" | "uae-visa" | "uangme" | "ubp" | "underpay" | "unionpay" | "unipay" | "uob-ez-pay" | "uob-thai" | "uob" | "upi" | "urbo" | "urpay" | "usdc" | "usdp" | "v-pay" | "valu" | "venmo" | "ventipay" | "venus-plcc" | "viabill" | "vipps" | "visa-electron" | "visa" | "volksbank" | "volt" | "vvv-cadeaukaart-paynl-version" | "vvv-giftcard" | "waave-pay-by-bank" | "wallet" | "walley" | "wbtc" | "webshop-giftcard" | "wechat-pay" | "wechat-paynl-version" | "wegetfinancing" | "whish-checkout" | "whish-pay" | "wise" | "wissel" | "world-chain" | "xrp" | "yape" | "yappy" | "ymobile" | "younited-pay" | "zalopay" | "zapper" | "zingala" | "zinia" | "zip" | "zoodpay" | "zulily-credit-card" | "zustaina";
 interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ToggleEventProps, SizingProps {
 	/**
@@ -3152,6 +3246,7 @@ interface QueryContainerProps$1 extends GlobalProps {
 	 */
 	containerName?: string;
 }
+/** @publicDocs */
 export type OverflowKeyword = "auto" | "hidden";
 interface ScrollBoxProps$1 extends GlobalProps, Omit<BaseBoxPropsWithRole, "overflow"> {
 	/**
@@ -3334,7 +3429,8 @@ interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTyp
 	 */
 	type?: TextType;
 }
-export type TextType = 
+/** @publicDocs */
+export type TextType =
 /**
  * Indicate the text is contact information. Typically used for addresses.
  *
@@ -3450,8 +3546,10 @@ interface TooltipProps$1 extends GlobalProps {
 }
 interface UnorderedListProps$1 extends GlobalProps {
 }
+/** @publicDocs */
 export interface URLFieldProps extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<URLAutocompleteField> {
 }
+/** @publicDocs */
 export type URLAutocompleteField = ExtractStrict<AnyAutocompleteField, "url" | "photo" | "impp" | `${AutocompleteAddressGroup} impp`>;
 
 
@@ -3615,6 +3713,9 @@ declare module 'preact' {
 }
 
 declare const tagName$U = "s-button";
+/**
+ * @publicDocs
+ */
 interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -3705,6 +3806,9 @@ declare module 'preact' {
 }
 
 declare const tagName$Q = "s-choice-list";
+/**
+ * @publicDocs
+ */
 interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
 interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
@@ -3758,6 +3862,9 @@ declare module 'preact' {
 }
 
 declare const tagName$O = "s-clickable-chip";
+/**
+ * @publicDocs
+ */
 interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {

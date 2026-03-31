@@ -1,5 +1,7 @@
 import {BaseElementPropsWithChildren, IdProps} from './shared';
-
+/**
+ * @publicDocs
+ */
 export interface PageProps extends IdProps {
   /**
    * The main page heading
@@ -12,6 +14,9 @@ export interface PageProps extends IdProps {
   subheading?: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PageElementSlots {
   /**
    * The breadcrumb actions for the page. Accepts a single Button element with restricted properties (see below).
@@ -27,6 +32,9 @@ export interface PageElementSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PageElement extends HTMLElement, PageProps {}
 
 declare global {

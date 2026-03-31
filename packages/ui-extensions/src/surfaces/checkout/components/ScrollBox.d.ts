@@ -18,17 +18,21 @@ import type {ScrollBoxProps$1,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword
  * - `large-100`: Extra thick border for maximum prominence.
  * - `large-200`: The thickest available border.
  * - `none`: No border.
+ * @publicDocs
  */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 /**
  * The subset of border color values available for this component.
  *
  * - `base`: The standard border color for most contexts.
+ * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -37,12 +41,17 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-scroll-box";
+/**
+ * Provides a scrollable container for long content that exceeds the available space. Use to display lists, order summaries, or other lengthy content while maintaining a constrained layout.
+ * @publicDocs
+ */
 export interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<ScrollBoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -50,8 +59,10 @@ export interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibi
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ScrollBoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
 }
+/** @publicDocs */
 export interface ScrollBoxElement extends ScrollBoxElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface ScrollBoxProps extends ScrollBoxElementProps {
 }
 declare global {

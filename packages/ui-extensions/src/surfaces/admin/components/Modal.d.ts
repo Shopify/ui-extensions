@@ -14,9 +14,15 @@ import type {
   InteractionProps,
 } from './shared.d.ts';
 
+/**
+ * @publicDocs
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * @publicDocs
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
@@ -37,7 +43,13 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
+/**
+ * @publicDocs
+ */
 export interface ModalProps
   extends Pick<
     RequiredAlignedModalProps,
@@ -62,6 +74,9 @@ declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
+/**
+ * @publicDocs
+ */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
@@ -104,11 +119,17 @@ declare const overlayHidden: unique symbol;
  */
 declare const overlayActivator: unique symbol;
 declare const overlayHideFrameId: unique symbol;
+/**
+ * @publicDocs
+ */
 export type PolyfillCommandEventInit = EventInit & {
   source: HTMLElement | null | undefined;
   command: PreactOverlayControlProps['command'];
   rootActivator?: HTMLElement | null;
 };
+/**
+ * @publicDocs
+ */
 export type PolyfillCommandEvent = Event & {
   source: PolyfillCommandEventInit['source'];
   command: PolyfillCommandEventInit['command'];
@@ -220,6 +241,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-modal';
+/**
+ * @publicDocs
+ */
 export interface ModalJSXProps
   extends Partial<ModalProps>,
     Pick<ModalProps$1, 'id' | 'children'> {
@@ -246,4 +270,7 @@ export interface ModalJSXProps
 }
 
 export {Modal};
+/**
+ * @publicDocs
+ */
 export type {ModalJSXProps};

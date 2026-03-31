@@ -5,6 +5,7 @@ import {useApi} from './api';
 
 /**
  * Returns the `I18nTranslate` interface used to translate strings.
+ * @publicDocs
  */
 export function useTranslate<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

@@ -12,6 +12,7 @@ import type {PopoverProps$1,SizeUnitsOrAuto, SizeUnitsOrNone, SizeUnits} from '.
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     /**
@@ -38,18 +40,26 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-popover";
+/**
+ * The popover component displays contextual content in an overlay triggered by a button using the [`commandFor`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/button#commandfor) attribute. Use for secondary actions, settings, or information that doesn't require a full modal.
+ *
+ * For interactions that need more space or user focus, such as confirmations or complex forms, use [modal](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/overlays/modal) instead.
+ * @publicDocs
+ */
 export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
     /**
      * The block size of the popover (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
@@ -90,9 +100,14 @@ export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
 }
 /**
  * The event callbacks for monitoring popover visibility changes.
+ * @publicDocs
  */
 export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface PopoverElementEvents {
     /**
      * A callback fired immediately after the popover is hidden.
@@ -105,6 +120,7 @@ export interface PopoverElementEvents {
 }
 /**
  * The HTML element interface for the `s-popover` custom element.
+ * @publicDocs
  */
 export interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: PopoverProps['onHide'];
@@ -112,6 +128,7 @@ export interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>,
 }
 /**
  * The properties for the popover component when it's used in JSX.
+ * @publicDocs
  */
 export interface PopoverProps extends PopoverElementProps, PopoverEvents {
 }

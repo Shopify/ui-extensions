@@ -78,6 +78,7 @@ export type PrivateComponent = 'Chat';
 
 export type ThankYouComponent = 'Announcement';
 
+/** @publicDocs */
 export type AnyComponent =
   | (typeof SUPPORTED_COMPONENTS)[number]
   | PrivateComponent;

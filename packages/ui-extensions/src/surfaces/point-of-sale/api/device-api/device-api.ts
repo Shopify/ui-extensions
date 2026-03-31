@@ -1,3 +1,8 @@
+/**
+ * The `DeviceApi` object provides access to device information and capabilities. Access these properties through `shopify.device` to retrieve device details and check device characteristics.
+ *
+ * @publicDocs
+ */
 export interface DeviceApiContent {
   /**
    * The name of the device as configured by the merchant or system. Use for displaying device information in interfaces, logging, or support contexts where device identification is helpful.
@@ -18,9 +23,7 @@ export interface DeviceApiContent {
   isTablet(): Promise<boolean>;
 }
 
-/**
- * The `DeviceApi` object provides access to device information and capabilities. Access these properties and methods through `shopify.device` to retrieve device details and check device characteristics.
- */
+/** @publicDocs */
 export interface DeviceApi {
   device: DeviceApiContent;
 }

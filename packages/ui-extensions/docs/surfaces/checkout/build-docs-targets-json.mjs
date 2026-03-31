@@ -33,13 +33,28 @@ function findGeneratedDocsPath() {
   return docsPath || generatedDir; // Fallback to generated root if not found
 }
 
+// Accept an API version argument (e.g. 2026-04-rc) to output targets.json into
+// a versioned directory matching the customer-account pattern.
+// Falls back to the directory containing generated_docs_data.json if not provided.
+const apiVersion = process.argv[2];
+
+function resolveOutputPath() {
+  if (apiVersion) {
+    return path.join(
+      __dirname,
+      'generated',
+      'checkout_ui_extensions',
+      apiVersion,
+      'targets.json',
+    );
+  }
+  return path.join(findGeneratedDocsPath(), 'targets.json');
+}
+
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(
-    findGeneratedDocsPath(),
-    'targets.json',
-  ),
+  outputPath: resolveOutputPath(),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
@@ -332,6 +347,42 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'BuyerIdentityApi',
+    'BuyerJourneyApi',
+    'CartInstructionsApi',
+    'CheckoutSettingsApi',
+    'CheckoutTokenApi',
+    'CostApi',
+    'CustomerPrivacyApi',
+    'DeliveryApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'LocalizedFieldsApi',
+    'PaymentsApi',
+    'QueryApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+  ],
+  CheckoutApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'CartLinesApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+  ],
+  // OrderConfirmationApi is the top-level API object for purchase.thank-you targets.
+  // It decomposes to 'OrderApi' to match the customer-account surface naming pattern.
+  OrderConfirmationApi: ['OrderApi'],
+};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -363,16 +414,23 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        // Replace composite with its documented constituents
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        // Add the API itself
+        apisSet.add(apiName);
 
-      // Get nested APIs from this API (recursively)
-      const nestedApis = getNestedApis(apiName);
-      for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        // Get nested APIs from this API (recursively)
+        const nestedApis = getNestedApis(apiName);
+        for (const nestedApi of nestedApis) {
+          apisSet.add(nestedApi);
+          // Recursively get nested APIs of nested APIs
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => apisSet.add(api));
+        }
       }
     }
   }

@@ -18,20 +18,24 @@ import type {ImageProps$1,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword,May
  * - `large-100`: Extra thick border for maximum prominence.
  * - `large-200`: The thickest available border.
  * - `none`: No border.
+ * @publicDocs
  */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 /**
  * The subset of border color values available for the image component.
  *
  * - `base`: The standard border color for most contexts.
+ * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 /**
  * A shorthand string for specifying border properties on the image component. Supports size alone, size with color, or size with color and style — following the pattern `'size'`, `'size color'`, or `'size color style'`.
+ * @publicDocs
  */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -49,6 +53,12 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-image";
+/**
+ * The image component embeds images within the interface with control over presentation and loading behavior. Use image to visually illustrate concepts, showcase products, display user content, or support tasks and interactions with visual context.
+ *
+ * Images support responsive sizing, alt text for accessibility, aspect ratio control, and loading states for progressive enhancement. For small preview images in lists or tables, use [thumbnail](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/thumbnail). For profile images, use [avatar](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/media-and-visuals/avatar).
+ * @publicDocs
+ */
 export interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     /**
      * A shorthand for setting the border around the image. Accepts a size keyword alone (for example, `'base'`), a size and color (for example, `'base base'`), or a size, color, and style (for example, `'base base solid'`). Use `'none'` to remove the border.
@@ -65,11 +75,13 @@ export interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole
 }
 /**
  * The HTML element interface for the `s-image` custom element.
+ * @publicDocs
  */
 export interface ImageElement extends ImageElementProps, Omit<HTMLElement, 'id'> {
 }
 /**
  * The properties for the image component when it's used in JSX.
+ * @publicDocs
  */
 export interface ImageProps extends ImageElementProps {
 }

@@ -13,6 +13,9 @@ import type {
   RenderImpl,
 } from './shared.d.ts';
 
+/**
+ * @publicDocs
+ */
 export interface PageProps
   extends Required<Pick<PageProps$1, 'inlineSize' | 'heading'>> {
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
@@ -71,6 +74,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-page';
+/**
+ * @publicDocs
+ */
 export interface PageJSXProps
   extends Partial<PageProps>,
     Pick<PageProps$1, 'id' | 'children'> {
@@ -106,4 +112,7 @@ export interface PageJSXProps
 }
 
 export {Page};
+/**
+ * @publicDocs
+ */
 export type {PageJSXProps};

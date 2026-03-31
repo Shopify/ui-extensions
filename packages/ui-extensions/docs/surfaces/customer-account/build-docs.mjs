@@ -29,9 +29,9 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
@@ -66,9 +66,7 @@ const copyCheckoutTypesToTemp = async () => {
 
 const cleanupTempFiles = async (tempFiles) => {
   await Promise.all(
-    tempFiles
-      .filter((file) => existsSync(file))
-      .map((file) => fs.rm(file)),
+    tempFiles.filter((file) => existsSync(file)).map((file) => fs.rm(file)),
   );
 };
 
@@ -146,18 +144,59 @@ const generateExtensionsDocs = async () => {
   ]);
 
   // Merge the two generated_docs_data.json files
+  const generatedDocsDataV2File = 'generated_docs_data_v2.json';
   const [refData, compData] = await Promise.all([
     fs
-      .readFile(path.join(tempRefOutputDir, generatedDocsDataFile), 'utf8')
+      .readFile(path.join(tempRefOutputDir, generatedDocsDataV2File), 'utf8')
       .then(JSON.parse),
     fs
-      .readFile(path.join(tempCompOutputDir, generatedDocsDataFile), 'utf8')
+      .readFile(path.join(tempCompOutputDir, generatedDocsDataV2File), 'utf8')
       .then(JSON.parse),
   ]);
-  const mergedData = [...refData, ...compData].filter(Boolean);
+  // Both refData and compData are objects, not arrays. Merge their values into an array, then convert to object keyed by type name (like admin).
+  // Flatten entries: if entry is an object with a single key, use its value
+  function flattenDocsArray(arr) {
+    return arr.flatMap((entry) => {
+      if (
+        entry &&
+        typeof entry === 'object' &&
+        !Array.isArray(entry) &&
+        Object.keys(entry).length === 1
+      ) {
+        const inner = entry[Object.keys(entry)[0]];
+        if (inner && typeof inner === 'object') {
+          return [inner];
+        }
+      }
+      return [entry];
+    });
+  }
+  const mergedArray = flattenDocsArray([
+    ...Object.values(refData),
+    ...Object.values(compData),
+  ]).filter(Boolean);
+
+  // Convert array to object keyed by type name
+  const arrayToV2 = (entries) => {
+    const v2 = {};
+    for (const entry of entries) {
+      const name = entry.name;
+      const filePath = entry.filePath;
+      if (!name || !filePath) continue;
+      if (!v2[name]) v2[name] = {};
+      v2[name][filePath] = entry;
+    }
+    return v2;
+  };
+  const mergedDataV2 = arrayToV2(mergedArray);
   await fs.writeFile(
-    path.join(outputDir, generatedDocsDataFile),
-    JSON.stringify(mergedData, null, 2),
+    path.join(outputDir, generatedDocsDataV2File),
+    JSON.stringify(mergedDataV2, null, 2),
+  );
+  // Also write to generated_docs_data.json for backward compatibility (keep as array for legacy consumers)
+  await fs.writeFile(
+    path.join(outputDir, 'generated_docs_data.json'),
+    JSON.stringify(mergedArray, null, 2),
   );
 
   // Clean up temp directories
@@ -195,7 +234,7 @@ const generateExtensionsDocs = async () => {
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/customer-account-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
@@ -237,8 +276,8 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await fs.rm(tempComponentDefs);

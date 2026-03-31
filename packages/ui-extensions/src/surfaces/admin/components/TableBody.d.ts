@@ -9,15 +9,18 @@ import type {ComponentChildren, TableBodyProps$1} from './shared.d.ts';
 
 /**
  * The properties you can set on a table body component.
+ * @publicDocs
  */
 export interface TableBodyProps extends TableBodyProps$1 {}
 
 /**
  * A string that contains CSS styles to apply to the component.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a Preact custom element with a shadow root.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -31,6 +34,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -52,6 +56,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for customizing how a synthetic click is performed.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -104,6 +109,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -121,6 +127,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
@@ -156,6 +163,7 @@ declare module 'preact' {
 declare const tagName = 's-table-body';
 /**
  * The JSX properties you can set on a table body component.
+ * @publicDocs
  */
 export interface TableBodyJSXProps
   extends Partial<TableBodyProps>,
@@ -167,4 +175,7 @@ export interface TableBodyJSXProps
 }
 
 export {TableBody};
+/**
+ * @publicDocs
+ */
 export type {TableBodyJSXProps};

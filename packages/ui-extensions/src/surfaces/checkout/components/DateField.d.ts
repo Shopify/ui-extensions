@@ -12,6 +12,7 @@ import type {DateFieldProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,18 +21,26 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-date-field";
+/**
+ * The date field component captures date input with a consistent interface for date selection and proper validation. Use it to collect date information in forms, scheduling interfaces, or data entry workflows.
+ *
+ * The component supports manual text entry. For visual calendar-based selection, consider using [date picker](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-picker).
+ * @publicDocs
+ */
 export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
     /**
      * @deprecated Use `label` instead.
@@ -39,8 +48,13 @@ export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DateFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -67,6 +81,7 @@ export interface DateFieldElementEvents {
      */
     viewChange?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'oninvalid' | 'prefix'> {
     onblur: DateFieldEvents['onBlur'];
     onchange: DateFieldEvents['onChange'];
@@ -75,6 +90,7 @@ export interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldE
     oninvalid: DateFieldEvents['onInvalid'];
     onviewchange: DateFieldEvents['onViewChange'];
 }
+/** @publicDocs */
 export interface DateFieldProps extends DateFieldElementProps, DateFieldEvents {
 }
 declare global {

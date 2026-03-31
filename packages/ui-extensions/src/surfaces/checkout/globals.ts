@@ -1,5 +1,6 @@
 import type {ExtensionTargets} from './extension-targets';
 
+/** @publicDocs */
 export interface ShopifyGlobal {
   extend<ExtensionTarget extends keyof ExtensionTargets>(
     target: ExtensionTarget,

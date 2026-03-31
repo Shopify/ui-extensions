@@ -12,6 +12,7 @@ import type {TimeProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,16 +21,23 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-time";
+/**
+ * Represents a specific point or duration in time. Use to display dates, times, or durations clearly and consistently. May include a machine-readable `datetime` attribute for improved accessibility and functionality.
+ * @publicDocs
+ */
 export interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
+/** @publicDocs */
 export interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface TimeProps extends TimeElementProps {
 }
 declare global {

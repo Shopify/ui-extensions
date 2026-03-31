@@ -1,4 +1,7 @@
 /**
+ * @publicDocs
+ */
+/**
  * @fileoverview This file is used to generate the documentation for the customer-account surface. For component types, see the components folder.
  */
 import {
@@ -26,8 +29,29 @@ import {
   SectionElementSlots,
 } from './components/Section';
 
+export type AvatarElementPropsDocs = AvatarElementProps;
+/**
+ * @publicDocs
+ */
+export type AvatarElementEventsDocs = AvatarEvents;
+
+export type AvatarElementPropsDocs = AvatarElementProps;
+/**
+ * @publicDocs
+ */
+export type AvatarElementEventsDocs = AvatarEvents;
+
+/**
+ * @publicDocs
+ */
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
+/**
+ * @publicDocs
+ */
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
+/**
+ * @publicDocs
+ */
 export type CustomerAccountActionElementSlotsDocs =
   CustomerAccountActionElementSlots;
 
@@ -50,7 +74,13 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type ImageGroupPropsDocs = ImageGroupProps;
+/**
+ * @publicDocs
+ */
 export type ImageGroupElementDocs = ImageGroupElement;
 
 declare global {
@@ -71,8 +101,17 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type PagePropsDocs = PageProps;
+/**
+ * @publicDocs
+ */
 export type PageElementDocs = PageElement;
+/**
+ * @publicDocs
+ */
 export type PageElementSlotsDocs = PageElementSlots;
 
 declare global {
@@ -94,9 +133,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type AvatarElementPropsDocs = AvatarElementProps;
+/**
+ * @publicDocs
+ */
 export type AvatarPropsDocs = AvatarProps;
+/**
+ * @publicDocs
+ */
 export type AvatarElementDocs = AvatarElement;
+/**
+ * Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
@@ -115,7 +167,13 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type MenuPropsDocs = MenuProps;
+/**
+ * @publicDocs
+ */
 export type MenuElementDocs = MenuElement;
 
 declare global {
@@ -136,8 +194,17 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type ButtonGroupPropsDocs = ButtonGroupProps;
+/**
+ * @publicDocs
+ */
 export type ButtonGroupElementDocs = ButtonGroupElement;
+/**
+ * @publicDocs
+ */
 export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
 
 declare global {
@@ -159,8 +226,17 @@ declare module 'preact' {
   }
 }
 
+/**
+ * @publicDocs
+ */
 export type SectionPropsDocs = SectionProps;
+/**
+ * @publicDocs
+ */
 export type SectionElementDocs = SectionElement;
+/**
+ * @publicDocs
+ */
 export type SectionElementSlotsDocs = SectionElementSlots;
 
 declare global {

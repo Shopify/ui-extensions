@@ -13,10 +13,12 @@
 /**
  * Represents any valid children that can be rendered within a component, including elements, strings, numbers, or arrays of these types.
  * This is an alias for Preact's `ComponentChildren` type.
+ * @publicDocs
  */
 export type ComponentChildren = preact.ComponentChildren;
 /**
  * Represents string-only children for components that specifically require text content.
+ * @publicDocs
  */
 export type StringChildren = string;
 export interface GlobalProps {
@@ -32,6 +34,11 @@ export interface ActionProps {
    */
   heading?: string;
 }
+
+/**
+ * The action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ActionSlots {
   /**
    * The primary action button or link, representing the main or most important action available in this context.
@@ -154,6 +161,7 @@ export interface ToggleEventProps {
  *
  * - `open`: The element is visible or expanded.
  * - `closed`: The element is hidden or collapsed.
+ * @publicDocs
  */
 export type ToggleState = 'open' | 'closed';
 interface ToggleEvent$1 extends Event {
@@ -200,6 +208,7 @@ export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
  *
  *
  * @default 'base'
+ * @publicDocs
  */
 export type SizeKeyword =
   | 'small-500'
@@ -222,6 +231,7 @@ export type SizeKeyword =
  * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
  * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
  *
+ * @publicDocs
  */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
 interface AvatarProps$1 extends GlobalProps {
@@ -271,6 +281,7 @@ interface AvatarProps$1 extends GlobalProps {
  * - `transparent`: No background, allowing the underlying surface to show through.
  * - `ColorKeyword`: Applies color intensity levels (subdued, base, strong) to create spatial emphasis and containment.
  *
+ * @publicDocs
  */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
 export interface BackgroundProps {
@@ -301,6 +312,7 @@ export interface BackgroundProps {
  * - `custom`: Custom color treatment defined by your theme or implementation.
  *
  * @default 'auto'
+ * @publicDocs
  */
 export type ToneKeyword =
   | 'auto'
@@ -875,6 +887,7 @@ declare const privateIconArray: readonly [
 /**
  * Represents the available icon names that can be used in icon components.
  * This is derived from the complete list of supported icons in the design system.
+ * @publicDocs
  */
 export type IconType = (typeof privateIconArray)[number];
 /**
@@ -882,6 +895,7 @@ export type IconType = (typeof privateIconArray)[number];
  * to be assignable to the first. This provides compile-time validation that you're only extracting
  * types that actually exist within the union, catching potential errors earlier in development.
  *
+ * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
 /**
@@ -892,6 +906,7 @@ export type ExtractStrict<T, U extends T> = Extract<T, U>;
  * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
  * - `${T} ${T} ${T}`: Three values for block-start (top), inline axis (left/right), and block-end (bottom).
  * - `${T} ${T} ${T} ${T}`: Four values for block-start (top), inline-end (right), block-end (bottom), and inline-start (left).
+ * @publicDocs
  */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
@@ -904,6 +919,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
  *
  * - `T`: Single value that applies to both dimensions.
  * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
+ * @publicDocs
  */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
 /**
@@ -912,6 +928,7 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  *
  * - `T`: Base value that applies in all conditions.
  * - `@container${string}`: Container query string for conditional responsive styling based on container size.
+ * @publicDocs
  */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
@@ -919,12 +936,14 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * By intersecting `string` with an empty object type, this prevents TypeScript from widening literal types,
  * preserving IDE suggestions for known values while maintaining flexibility for custom strings.
  *
+ * @publicDocs
  */
 export type AnyString = string & {};
 /**
  * A utility type representing an optional space character for use in string literal type composition.
  * Allows flexible formatting of compound values where spacing is a matter of preference rather than semantic difference.
  *
+ * @publicDocs
  */
 export type optionalSpace = '' | ' ';
 interface BadgeProps$1 extends GlobalProps {
@@ -1101,6 +1120,7 @@ export interface AccessibilityRoleProps {
  * - `generic`: Creates a semantically neutral container element with no inherent meaning.
  * - `presentation`: Removes semantic meaning from an element while preserving its visual appearance.
  * - `none`: Synonym for `presentation`, removes semantic meaning while keeping visual styling.
+ * @publicDocs
  */
 export type AccessibilityRole =
   /**
@@ -1252,6 +1272,7 @@ export interface LabelAccessibilityVisibilityProps {
  *
  * - `SizeKeyword`: Standard padding sizes from the size scale for consistent spacing.
  * - `none`: No padding.
+ * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | 'none';
 export interface PaddingProps {
@@ -1338,6 +1359,7 @@ export interface PaddingProps {
  * - `${number}px`: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
  * - `${number}%`: Relative size as a percentage of the parent container (such as `50%`, `100%`).
  * - `0`: Zero size, equivalent to no dimension.
+ * @publicDocs
  */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 /**
@@ -1345,6 +1367,7 @@ export type SizeUnits = `${number}px` | `${number}%` | `0`;
  *
  * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
  * - `auto`: Automatically sizes based on content and layout constraints.
+ * @publicDocs
  */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
 /**
@@ -1352,6 +1375,7 @@ export type SizeUnitsOrAuto = SizeUnits | 'auto';
  *
  * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
  * - `none`: No size constraint, allowing unlimited growth.
+ * @publicDocs
  */
 export type SizeUnitsOrNone = SizeUnits | 'none';
 export interface SizingProps {
@@ -1432,6 +1456,7 @@ export interface SizingProps {
  * - `dashed`: A series of short dashes.
  * - `dotted`: A series of dots.
  * - `auto`: Automatically determined based on context.
+ * @publicDocs
  */
 export type BorderStyleKeyword =
   | 'none'
@@ -1444,14 +1469,17 @@ export type BorderStyleKeyword =
  *
  * - `SizeKeyword`: Standard border widths from the size scale for consistent thickness.
  * - `none`: No border width (removes the border).
+ * @publicDocs
  */
 export type BorderSizeKeyword = SizeKeyword | 'none';
 /**
  * Defines the radius of rounded corners, using the standard size scale, `max` for fully rounded, or `none` for sharp corners.
+ * @publicDocs
  */
 export type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
+ * @publicDocs
  */
 export type BorderShorthand =
   | BorderSizeKeyword
@@ -2300,14 +2328,17 @@ export interface AutocompleteProps<
  *
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
+ * @publicDocs
  */
 export type AutocompleteSection = `section-${string}`;
 /**
  * The contact information group the autocomplete data should be sourced from.
+ * @publicDocs
  */
 export type AutocompleteGroup = 'shipping' | 'billing';
 /**
  * The contact information subgroup the autocomplete data should be sourced from.
+ * @publicDocs
  */
 export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
 /**
@@ -2315,6 +2346,7 @@ export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
  * These values help browsers provide appropriate autofill suggestions for form fields.
  *
  * Learn more about [autocomplete values](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
+ * @publicDocs
  */
 export type AnyAutocompleteField =
   | 'additional-name'
@@ -2416,6 +2448,7 @@ export type AnyAutocompleteField =
  * - `cc-additional-name` - Middle name on credit card
  * - `cc-family-name` - Last name on credit card
  * - `cc-type` - Credit card type (Visa, Mastercard)
+ * @publicDocs
  */
 export type TextAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2644,6 +2677,7 @@ interface DateFieldProps$1
  * - `cc-expiry` - Complete credit card expiration date
  * - `cc-expiry-month` - Month component of a credit card expiration date (1-12)
  * - `cc-expiry-year` - Year component of a credit card expiration date (2025)
+ * @publicDocs
  */
 export type DateAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2721,6 +2755,7 @@ interface EmailFieldProps$1
  * - `mobile email` - Mobile device email address
  * - `fax email` - Fax machine email address
  * - `pager email` - Pager device email address
+ * @publicDocs
  */
 export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2802,6 +2837,7 @@ export interface FunctionSettingsError extends Error {
 }
 /**
  * Defines the spacing size between elements, using the standard size scale or `none` for no spacing.
+ * @publicDocs
  */
 export type SpacingKeyword = SizeKeyword | 'none';
 export interface GapProps {
@@ -2836,6 +2872,7 @@ export interface GapProps {
  * - `baseline`: Aligns to the baseline of the parent.
  * - `first baseline`: Aligns to the first baseline of the parent.
  * - `last baseline`: Aligns to the last baseline of the parent.
+ * @publicDocs
  */
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
 /**
@@ -2844,6 +2881,7 @@ export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
  * - `space-around`: Distributes items evenly with equal space around each item.
  * - `space-evenly`: Distributes items evenly with equal space between them.
  * - `stretch`: Stretches items to fill the container.
+ * @publicDocs
  */
 export type ContentDistribution =
   | 'space-between'
@@ -2855,11 +2893,13 @@ export type ContentDistribution =
  * - `center`: Centers the content.
  * - `start`: Aligns content to the start.
  * - `end`: Aligns content to the end.
+ * @publicDocs
  */
 export type ContentPosition = 'center' | 'start' | 'end';
 /**
  * Represents content positioning with overflow behavior control.
  * Use `safe` to prevent content from becoming inaccessible when it overflows, or `unsafe` to allow overflow regardless of accessibility.
+ * @publicDocs
  */
 export type OverflowPosition =
   | `unsafe ${ContentPosition}`
@@ -2868,6 +2908,7 @@ export type OverflowPosition =
  * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
  *
  * Learn more about the [justify-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+ * @publicDocs
  */
 export type JustifyItemsKeyword =
   | 'normal'
@@ -2879,6 +2920,7 @@ export type JustifyItemsKeyword =
  * Align items sets the align-self value on all direct children as a group.
  *
  * Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+ * @publicDocs
  */
 export type AlignItemsKeyword =
   | 'normal'
@@ -2890,6 +2932,7 @@ export type AlignItemsKeyword =
  * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
  *
  * Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+ * @publicDocs
  */
 export type JustifyContentKeyword =
   | 'normal'
@@ -2900,6 +2943,7 @@ export type JustifyContentKeyword =
  * Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
  *
  * Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+ * @publicDocs
  */
 export type AlignContentKeyword =
   | 'normal'
@@ -3365,6 +3409,7 @@ interface MoneyFieldProps$1
 /**
  * Represents autocomplete values that are valid for money/currency input fields.
  * This is a subset of `AnyAutocompleteField` containing only fields suitable for monetary inputs.
+ * @publicDocs
  */
 export type MoneyAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3404,6 +3449,7 @@ interface NumberFieldProps$1
  * - `one-time-code` - One-time codes for authentication (OTP, 2FA codes)
  * - `cc-number` - Credit card number
  * - `cc-csc` - Credit card security code (CVV/CVC)
+ * @publicDocs
  */
 export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3486,6 +3532,9 @@ interface ParagraphProps$1
    */
   type?: ParagraphType;
 }
+/**
+ * @publicDocs
+ */
 export type ParagraphType =
   /**
    * A semantic type that indicates the text is a structural grouping of related content.
@@ -3515,6 +3564,7 @@ interface PasswordFieldProps$1
  * Available values:
  * - `current-password` - Existing password for login or authentication
  * - `new-password` - New password when creating an account or changing password
+ * @publicDocs
  */
 export type PasswordAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3730,6 +3780,7 @@ interface TableCellProps$1 extends GlobalProps {
  * - `kicker`: A small label or tag displayed above the primary content.
  * - `inline`: Content displayed inline with the primary content.
  * - `labeled`: Content with an associated label.
+ * @publicDocs
  */
 export type ListSlotType =
   | 'primary'
@@ -3744,6 +3795,7 @@ export type ListSlotType =
  * - `base`: Standard format for text columns
  * - `currency`: Right-aligned format for monetary values
  * - `numeric`: Right-aligned format for numeric values
+ * @publicDocs
  */
 export type HeaderFormat = 'base' | 'currency' | 'numeric';
 interface TableHeaderProps$1 extends GlobalProps {
@@ -3811,6 +3863,7 @@ interface TextProps$1
 /**
  * Defines the semantic type and styling treatment for text content.
  * Each type maps to appropriate HTML elements and applies specific styling for different contexts.
+ * @publicDocs
  */
 export type TextType =
   /**
@@ -3945,6 +3998,7 @@ interface URLFieldProps$1
  * - `mobile impp` - Mobile instant messaging protocol URL
  * - `fax impp` - Fax instant messaging protocol URL
  * - `pager impp` - Pager instant messaging protocol URL
+ * @publicDocs
  */
 export type URLAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3991,6 +4045,7 @@ export interface VNode<P = {}> {
 /**
  * Represents a unique key for identifying elements in lists.
  * Can be a string, number, or any other value.
+ * @publicDocs
  */
 export type Key = string | number | any;
 export interface RefObject<T> {
@@ -4003,15 +4058,18 @@ export interface RefObject<T> {
 /**
  * Represents a callback function that receives a reference to a DOM element or component instance.
  * Called when the element is mounted or unmounted.
+ * @publicDocs
  */
 export type RefCallback<T> = (instance: T | null) => void;
 /**
  * Represents a reference to a DOM element or component instance.
  * Can be either a ref object, callback function, or null.
+ * @publicDocs
  */
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
 /**
  * Represents a single child element that can be rendered, including VNodes, primitives, or null/undefined values.
+ * @publicDocs
  */
 export type ComponentChild =
   | VNode<any>
@@ -4042,6 +4100,7 @@ export interface ErrorInfo {
 }
 /**
  * Represents the props that can be rendered by a component, combining custom props with standard attributes like children and ref.
+ * @publicDocs
  */
 export type RenderableProps<P, RefType = any> = P &
   Readonly<
@@ -4058,6 +4117,7 @@ export type RenderableProps<P, RefType = any> = P &
   >;
 /**
  * Represents any valid component type, either a class component or a function component.
+ * @publicDocs
  */
 export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
 export interface FunctionComponent<P = {}> {
@@ -4751,11 +4811,13 @@ export interface AvatarProps
 
 /**
  * Represents CSS styles as a string, typically used for inline styles or style injection.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * Represents the implementation details for rendering components within a shadow DOM.
  * Extends `ShadowRootInit` with a render function and optional styles.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChildren;
@@ -4832,6 +4894,7 @@ declare abstract class PreactCustomElement extends BaseClass$4 {
  * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
  *
  * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
@@ -4839,6 +4902,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 /**
  * A toggle event with a strongly-typed `currentTarget` property.
  * Extends the `ToggleEvent` interface with type-safe access to the element that triggered the toggle.
+ * @publicDocs
  */
 export type CallbackToggleEvent<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -4856,6 +4920,7 @@ export type CallbackToggleEvent<
  * const handleClick: CallbackEventListener<'button'> = (event) => {
  *   console.log('Button clicked:', event.currentTarget);
  * };
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -4865,6 +4930,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
 /**
  * A function that handles error events from UI components.
  * This type represents an event listener callback that receives both the event and an error object.
+ * @publicDocs
  */
 export type CallbackErrorEventListener<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -4885,6 +4951,7 @@ export interface CallbackExtendableEvent<
 /**
  * A function that handles extendable events from UI components.
  * This type represents an event listener callback that can use `waitUntil` to extend the event lifetime.
+ * @publicDocs
  */
 export type CallbackExtendableEventListener<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -4945,6 +5012,10 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the avatar component.
+ * @publicDocs
+ */
 declare class Avatar extends PreactCustomElement implements AvatarProps {
   accessor initials: AvatarProps['initials'];
   accessor src: AvatarProps['src'];
@@ -5024,6 +5095,10 @@ export interface BadgeProps
   >;
 }
 
+/**
+ * Configure the following properties on the badge component.
+ * @publicDocs
+ */
 declare class Badge extends PreactCustomElement implements BadgeProps {
   accessor color: BadgeProps['color'];
   accessor icon: BadgeProps['icon'];
@@ -5056,6 +5131,7 @@ export interface BadgeJSXProps
 
 /**
  * Represents the banner component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredBannerProps = Required<BannerProps$1>;
 export interface BannerProps
@@ -5069,6 +5145,10 @@ export interface BannerProps
   >;
 }
 
+/**
+ * Configure the following properties on the banner component.
+ * @publicDocs
+ */
 declare class Banner extends PreactCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
   accessor tone: BannerProps['tone'];
@@ -5118,6 +5198,7 @@ export interface BannerJSXProps
 /**
  * Makes a type responsive by allowing it to be either the base value or a container query string.
  * This enables conditional styling based on container dimensions.
+ * @publicDocs
  */
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
@@ -5135,6 +5216,7 @@ export type MakeResponsive<T> = T | `@container${string}`;
  *   margin: string | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
+ * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
   [P in TProperty]: MakeResponsive<TType[P]>;
@@ -5142,6 +5224,7 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 
 /**
  * Represents the box component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
@@ -5155,6 +5238,7 @@ export type RequiredBoxProps = Required<BoxProps$1>;
  * - `large-100`: Large radius for more prominent corner rounding.
  * - `large-200`: Extra large radius for maximum rounding.
  * - `none`: No border radius (sharp corners).
+ * @publicDocs
  */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
@@ -5174,6 +5258,7 @@ export type BoxBorderRadii = Extract<
  * - `none`: No border style (removes the border).
  * - `solid`: Continuous line border.
  * - `dashed`: Border made up of dashes.
+ * @publicDocs
  */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
@@ -5183,6 +5268,7 @@ export type BoxBorderStyles = Extract<
  * Represents box props with responsive capabilities for layout properties.
  *
  * This enables conditional styling based on container queries.
+ * @publicDocs
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
@@ -5451,6 +5537,10 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
   accessor display: BoxProps['display'];
 }
 
+/**
+ * Configure the following properties on the box component.
+ * @publicDocs
+ */
 declare class Box extends BoxElement implements BoxProps {
   constructor();
 }
@@ -5480,6 +5570,7 @@ export interface BoxJSXProps
 /**
  * Represents button props that are specific to button-type elements only.
  * Extracts the subset of `ButtonProps` that includes the `type` property.
+ * @publicDocs
  */
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
@@ -5489,6 +5580,7 @@ export type ButtonOnlyProps = Extract<
 >;
 /**
  * Represents the base button props with all properties marked as required.
+ * @publicDocs
  */
 export type ButtonBaseProps = Required<
   Pick<
@@ -5544,6 +5636,10 @@ declare const Button_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the button component.
+ * @publicDocs
+ */
 declare class Button extends Button_base implements ButtonProps {
   accessor disabled: ButtonProps['disabled'];
   accessor icon: ButtonProps['icon'];
@@ -5595,6 +5691,10 @@ export interface ButtonJSXProps
 export interface ButtonGroupProps
   extends Required<Pick<ButtonGroupProps$1, 'gap' | 'accessibilityLabel'>> {}
 
+/**
+ * Configure the following properties on the button group component.
+ * @publicDocs
+ */
 declare class ButtonGroup
   extends PreactCustomElement
   implements ButtonGroupProps
@@ -5648,6 +5748,7 @@ declare const internals$4: unique symbol;
 /**
  * Represents the essential input props required for Preact-based input elements.
  * Includes properties like `disabled`, `id`, `name`, and `value`.
+ * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps$1, 'disabled' | 'id' | 'name' | 'value'>
@@ -5733,6 +5834,10 @@ export interface CheckboxProps extends PreactCheckboxProps {
   defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
 }
 
+/**
+ * Configure the following properties on the checkbox component.
+ * @publicDocs
+ */
 declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
   get indeterminate(): CheckboxProps['indeterminate'];
   set indeterminate(indeterminate: CheckboxProps['indeterminate']);
@@ -5769,6 +5874,10 @@ export interface CheckboxJSXProps
 export interface ChipProps
   extends Required<Pick<ChipProps$2, 'color' | 'accessibilityLabel'>> {}
 
+/**
+ * Configure the following properties on the chip component.
+ * @publicDocs
+ */
 declare class Chip extends PreactCustomElement implements ChipProps {
   accessor color: ChipProps['color'];
   accessor accessibilityLabel: ChipProps['accessibilityLabel'];
@@ -5814,6 +5923,12 @@ export interface ChoiceProps
     >
   > {}
 
+/**
+ * The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.
+ *
+ * Choice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.
+ * @publicDocs
+ */
 declare class Choice extends PreactCustomElement implements ChoiceProps {
   accessor disabled: ChoiceProps['disabled'];
   get selected(): boolean;
@@ -5886,6 +6001,10 @@ declare class BaseClass$3 extends PreactCustomElement {
   /** @private */
   [internals$3]: ElementInternals;
 }
+/**
+ * Configure the following properties on the choice list component.
+ * @publicDocs
+ */
 declare class ChoiceList extends BaseClass$3 implements ChoiceListProps {
   accessor disabled: ChoiceListProps['disabled'];
   accessor name: ChoiceListProps['name'];
@@ -5940,6 +6059,7 @@ export interface ChoiceListJSXProps
 
 /**
  * Represents the base clickable props with all properties marked as required.
+ * @publicDocs
  */
 export type ClickableBaseProps = Required<
   Pick<
@@ -5965,6 +6085,10 @@ declare const Clickable_base: (abstract new (
   renderImpl: RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
   Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the clickable component.
+ * @publicDocs
+ */
 declare class Clickable extends Clickable_base implements ClickableProps {
   accessor disabled: ClickableProps['disabled'];
   accessor loading: ClickableProps['loading'];
@@ -6030,6 +6154,10 @@ declare const ClickableChip_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the clickable chip component.
+ * @publicDocs
+ */
 declare class ClickableChip
   extends ClickableChip_base
   implements ClickableChipProps
@@ -6085,6 +6213,7 @@ export interface ClickableChipJSXProps
 /**
  * Represents the props for Preact-based form field components with autocomplete support.
  * The generic type parameter allows specifying the valid autocomplete values for the field.
+ * @publicDocs
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
@@ -6168,6 +6297,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 /**
  * Represents the props for color input field components.
  * Extends `PreactFieldProps` with autocomplete support for color-related fields.
+ * @publicDocs
  */
 export type ColorFieldProps = Omit<
   PreactFieldProps<Required<ColorFieldProps$1>['autocomplete']>,
@@ -6175,6 +6305,10 @@ export type ColorFieldProps = Omit<
 > &
   Required<Pick<ColorFieldProps$1, 'alpha' | 'value' | 'defaultValue'>>;
 
+/**
+ * Configure the following properties on the color field component.
+ * @publicDocs
+ */
 declare class ColorField
   extends PreactFieldElement<ColorFieldProps['autocomplete']>
   implements ColorFieldProps
@@ -6224,6 +6358,10 @@ declare class BaseClass$2 extends PreactCustomElement {
   /** @private */
   [internals$2]: ElementInternals;
 }
+/**
+ * Configure the following properties on the color picker component.
+ * @publicDocs
+ */
 declare class ColorPicker extends BaseClass$2 implements ColorPickerProps {
   accessor alpha: boolean;
   accessor name: string;
@@ -6279,6 +6417,10 @@ export interface DateFieldProps
       >
     > {}
 
+/**
+ * Configure the following properties on the date field component.
+ * @publicDocs
+ */
 declare class DateField
   extends PreactFieldElement<DateFieldProps['autocomplete']>
   implements DateFieldProps
@@ -6369,6 +6511,10 @@ declare class BaseClass$1 extends PreactCustomElement {
   /** @private */
   [internals$1]: ElementInternals;
 }
+/**
+ * Configure the following properties on the date picker component.
+ * @publicDocs
+ */
 declare class DatePicker extends BaseClass$1 implements DatePickerProps {
   accessor defaultView: string;
   set view(view: string);
@@ -6433,6 +6579,10 @@ export interface DividerProps
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
+/**
+ * Configure the following properties on the divider component.
+ * @publicDocs
+ */
 declare class Divider extends PreactCustomElement implements DividerProps {
   accessor direction: DividerProps['direction'];
   accessor color: DividerProps['color'];
@@ -6477,6 +6627,7 @@ export interface DropZoneProps
 /**
  * A utility type that replaces occurrences of one type with another within a union type.
  * Useful for type transformations where you need to swap out specific types.
+ * @publicDocs
  */
 export type ReplaceType<TType, TFrom, TTo> = Exclude<TType, TFrom> | TTo;
 
@@ -6490,6 +6641,10 @@ declare class BaseClass extends PreactCustomElement {
   /** @private */
   [internals]: ElementInternals;
 }
+/**
+ * Configure the following properties on the drop zone component.
+ * @publicDocs
+ */
 declare class DropZone extends BaseClass implements DropZoneProps {
   accessor accept: DropZoneProps['accept'];
   accessor accessibilityLabel: DropZoneProps['accessibilityLabel'];
@@ -6557,12 +6712,17 @@ export interface DropZoneJSXProps
 /**
  * Represents the props for email input field components.
  * Extends `PreactFieldProps` with autocomplete support for email-related fields.
+ * @publicDocs
  */
 export type EmailFieldProps = PreactFieldProps<
   Required<EmailFieldProps$1>['autocomplete']
 > &
   Required<Pick<EmailFieldProps$1, 'maxLength' | 'minLength'>>;
 
+/**
+ * Configure the following properties on the email field component.
+ * @publicDocs
+ */
 declare class EmailField
   extends PreactFieldElement<EmailFieldProps['autocomplete']>
   implements EmailFieldProps
@@ -6598,12 +6758,14 @@ export interface EmailFieldJSXProps
 
 /**
  * Represents the grid component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredAlignedProps = Required<GridProps$1>;
 /**
  * Represents grid props with responsive capabilities for layout properties.
  *
  * This enables conditional styling based on container queries.
+ * @publicDocs
  */
 export type ResponsiveGridProps = MakeResponsivePick<
   RequiredAlignedProps,
@@ -6713,6 +6875,10 @@ export interface GridProps
   gridTemplateRows: ResponsiveGridProps['gridTemplateRows'];
 }
 
+/**
+ * Configure the following properties on the grid component.
+ * @publicDocs
+ */
 declare class Grid extends BoxElement implements GridProps {
   constructor();
   accessor gridTemplateColumns: GridProps['gridTemplateColumns'];
@@ -6752,6 +6918,7 @@ export interface GridJSXProps
 
 /**
  * Represents the grid item component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredGridItemProps = Required<GridItemProps$1>;
 export interface GridItemProps
@@ -6761,6 +6928,12 @@ export interface GridItemProps
   gridRow: RequiredGridItemProps['gridRow'];
 }
 
+/**
+ * The grid item component represents a single cell within a grid layout, allowing you to control how content is positioned and sized within the grid. Use grid item as a child of grid to specify column span, row span, and positioning for individual content areas.
+ *
+ * Grid item supports precise placement control through column and row properties, enabling you to create complex layouts where different items occupy varying amounts of space or appear in specific grid positions.
+ * @publicDocs
+ */
 declare class GridItem extends BoxElement implements GridItemProps {
   accessor gridColumn: GridItemProps['gridColumn'];
   accessor gridRow: GridItemProps['gridRow'];
@@ -6798,6 +6971,10 @@ export interface HeadingProps
     >
   > {}
 
+/**
+ * Configure the following properties on the heading component.
+ * @publicDocs
+ */
 declare class Heading extends PreactCustomElement implements HeadingProps {
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
   accessor lineClamp: HeadingProps['lineClamp'];
@@ -6828,6 +7005,10 @@ export interface HeadingJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the icon component.
+ * @publicDocs
+ */
 declare class Icon extends PreactCustomElement implements IconProps {
   accessor color: IconProps['color'];
   accessor tone: IconProps['tone'];
@@ -6880,6 +7061,10 @@ export interface ImageProps
       >
     > {}
 
+/**
+ * Configure the following properties on the image component.
+ * @publicDocs
+ */
 declare class Image extends PreactCustomElement implements ImageProps {
   accessor src: ImageProps['src'];
   accessor srcSet: ImageProps['srcSet'];
@@ -6941,10 +7126,12 @@ export interface ImageJSXProps
 
 /**
  * Represents the link component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredLinkProps = Required<LinkProps$1>;
 /**
  * Represents the base link props with all core properties marked as required.
+ * @publicDocs
  */
 export type LinkBaseProps = Required<
   Pick<
@@ -6968,6 +7155,10 @@ declare const Link_base: (abstract new (
   args_0: RenderImpl,
 ) => PreactCustomElement & PreactOverlayControlProps) &
   Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+/**
+ * Configure the following properties on the link component.
+ * @publicDocs
+ */
 declare class Link extends Link_base implements LinkProps {
   accessor tone: LinkProps['tone'];
   accessor accessibilityLabel: LinkProps['accessibilityLabel'];
@@ -7006,6 +7197,12 @@ export interface LinkJSXProps
 
 export interface ListItemProps extends ListItemProps$1 {}
 
+/**
+ * The list item component represents a single entry within an ordered list or unordered list. Use list item to structure individual points, steps, or items within a list, with each item automatically receiving appropriate list markers (bullets or numbers) from its parent list.
+ *
+ * List item must be used as a direct child of ordered list or unordered list components. Each list item can contain text, inline formatting, or other components to create rich list content.
+ * @publicDocs
+ */
 declare class ListItem extends PreactCustomElement implements ListItemProps {
   constructor();
 }
@@ -7053,6 +7250,7 @@ declare const overlayHideFrameId: unique symbol;
 /**
  * Represents the initialization object for creating a polyfill command event.
  * Used for overlay control commands in environments that require polyfills.
+ * @publicDocs
  */
 export type PolyfillCommandEventInit = EventInit & {
   source: HTMLElement | null | undefined;
@@ -7061,6 +7259,7 @@ export type PolyfillCommandEventInit = EventInit & {
 /**
  * Represents a polyfill command event for overlay controls.
  * Used in environments where native command events are not available.
+ * @publicDocs
  */
 export type PolyfillCommandEvent = Event & {
   source: PolyfillCommandEventInit['source'];
@@ -7084,6 +7283,10 @@ declare class PreactOverlayElement extends PreactCustomElement {
   [overlayHideFrameId]?: number;
 }
 
+/**
+ * Configure the following properties on the menu component.
+ * @publicDocs
+ */
 declare class Menu extends PreactOverlayElement implements MenuProps {
   accessor accessibilityLabel: string;
   constructor();
@@ -7117,6 +7320,7 @@ export interface MenuJSXProps
 
 /**
  * Represents the modal component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
@@ -7160,6 +7364,7 @@ declare class AddedContext<T> extends EventTarget {
 /**
  * A callback which is provided by a context requester and is called with the value satisfying the request.
  * This callback can be called multiple times by context providers as the requested value is changed.
+ * @publicDocs
  */
 export type ContextCallback<T> = (value: T) => void;
 /**
@@ -7198,6 +7403,10 @@ declare const abortController: unique symbol;
 declare const onChildModalChange: unique symbol;
 declare const childrenRerenderObserver: unique symbol;
 declare const shadowDomRerenderObserver: unique symbol;
+/**
+ * Configure the following properties on the modal component.
+ * @publicDocs
+ */
 declare class Modal extends PreactOverlayElement implements ModalProps {
   accessor accessibilityLabel: ModalProps['accessibilityLabel'];
   accessor heading: ModalProps['heading'];
@@ -7294,6 +7503,7 @@ export interface ModalJSXProps
 
 /**
  * Represents the money field component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 export interface MoneyFieldProps
@@ -7302,6 +7512,10 @@ export interface MoneyFieldProps
   value: Required<MoneyFieldProps$1>['value'];
 }
 
+/**
+ * Configure the following properties on the money field component.
+ * @publicDocs
+ */
 declare class MoneyField
   extends PreactFieldElement<MoneyFieldProps['autocomplete']>
   implements MoneyFieldProps
@@ -7348,6 +7562,10 @@ export interface NumberFieldProps
   value: Required<NumberFieldProps$1>['value'];
 }
 
+/**
+ * Configure the following properties on the number field component.
+ * @publicDocs
+ */
 declare class NumberField
   extends PreactFieldElement<NumberFieldProps['autocomplete']>
   implements NumberFieldProps
@@ -7389,6 +7607,10 @@ export interface OptionProps
     Pick<OptionProps$1, 'disabled' | 'value' | 'selected' | 'defaultSelected'>
   > {}
 
+/**
+ * Represents a single option within a select component. Use only as a child of `s-select` components.
+ * @publicDocs
+ */
 declare class Option extends PreactCustomElement implements OptionProps {
   accessor selected: OptionProps['selected'];
   accessor defaultSelected: OptionProps['defaultSelected'];
@@ -7422,6 +7644,10 @@ export interface OptionJSXProps
 export interface OptionGroupProps
   extends Required<Pick<OptionGroupProps$1, 'disabled' | 'label'>> {}
 
+/**
+ * Represents a group of options within a select component. Use only as a child of `s-select` components.
+ * @publicDocs
+ */
 declare class OptionGroup
   extends PreactCustomElement
   implements OptionGroupProps
@@ -7456,6 +7682,10 @@ export interface OptionGroupJSXProps
 
 export interface OrderedListProps extends OrderedListProps$1 {}
 
+/**
+ * Configure the following properties on the ordered list component.
+ * @publicDocs
+ */
 declare class OrderedList
   extends PreactCustomElement
   implements OrderedListProps
@@ -7491,6 +7721,10 @@ export interface PageProps
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
+/**
+ * Use as the outer wrapper of a page.
+ * @publicDocs
+ */
 declare class Page extends PreactCustomElement implements PageProps {
   accessor inlineSize: PageProps['inlineSize'];
   accessor heading: PageProps['heading'];
@@ -7580,6 +7814,10 @@ export interface ParagraphProps
   color: Extract<ParagraphProps$1['color'], 'base' | 'subdued'>;
 }
 
+/**
+ * Configure the following properties on the paragraph component.
+ * @publicDocs
+ */
 declare class Paragraph extends PreactCustomElement implements ParagraphProps {
   accessor fontVariantNumeric: ParagraphProps['fontVariantNumeric'];
   accessor lineClamp: ParagraphProps['lineClamp'];
@@ -7626,6 +7864,7 @@ export interface ParagraphJSXProps
 /**
  * Represents the props for password input field components.
  * Extends `PreactFieldProps` with autocomplete support for password-related fields.
+ * @publicDocs
  */
 export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
@@ -7649,6 +7888,10 @@ export type PasswordFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * Configure the following properties on the password field component.
+ * @publicDocs
+ */
 declare class PasswordField
   extends PreactFieldElement<PasswordFieldProps['autocomplete']>
   implements PasswordFieldProps
@@ -7708,6 +7951,10 @@ declare class PreactPopoverElement<TTagName extends keyof HTMLElementTagNameMap>
   accessor maxInlineSize: BoxProps['maxInlineSize'];
 }
 
+/**
+ * Configure the following properties on the popover component.
+ * @publicDocs
+ */
 declare class Popover
   extends PreactPopoverElement<typeof tagName$p>
   implements PopoverProps
@@ -7765,6 +8012,10 @@ export interface PopoverJSXProps
 export interface QueryContainerProps
   extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
 
+/**
+ * Configure the following properties on the query container component.
+ * @publicDocs
+ */
 declare class QueryContainer
   extends PreactCustomElement
   implements QueryContainerProps
@@ -7801,6 +8052,7 @@ export interface QueryContainerJSXProps
 /**
  * Represents the props for search input field components.
  * Extends `PreactFieldProps` for search-specific functionality.
+ * @publicDocs
  */
 export type SearchFieldProps = PreactFieldProps<
   /**
@@ -7827,6 +8079,10 @@ export type SearchFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * Configure the following properties on the search field component.
+ * @publicDocs
+ */
 declare class SearchField
   extends PreactFieldElement<SearchFieldProps['autocomplete']>
   implements SearchFieldProps
@@ -7861,6 +8117,7 @@ export interface SearchFieldJSXProps
 
 /**
  * Represents the section component props with all properties marked as required.
+ * @publicDocs
  */
 export type RequiredSectionProps = Required<SectionProps$1>;
 export interface SectionProps
@@ -7873,6 +8130,10 @@ export interface SectionProps
   padding: RequiredSectionProps['padding'];
 }
 
+/**
+ * Configure the following properties on the section component.
+ * @publicDocs
+ */
 declare class Section extends PreactCustomElement implements SectionProps {
   constructor();
   /** @private */
@@ -7928,6 +8189,10 @@ export interface SelectProps
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
+/**
+ * Configure the following properties on the select component.
+ * @publicDocs
+ */
 declare class Select extends PreactInputElement implements SelectProps {
   accessor icon: SelectProps['icon'];
   accessor details: SelectProps['details'];
@@ -8002,6 +8267,10 @@ export interface SpinnerProps
   size: Extract<SpinnerProps$1['size'], 'large' | 'large-100' | 'base'>;
 }
 
+/**
+ * Configure the following properties on the spinner component.
+ * @publicDocs
+ */
 declare class Spinner extends PreactCustomElement implements SpinnerProps {
   accessor accessibilityLabel: string;
   accessor size: SpinnerProps['size'];
@@ -8027,12 +8296,14 @@ export interface SpinnerJSXProps
 
 /**
  * Represents the stack component props with all properties marked as required.
+ * @publicDocs
  */
 export type AlignedStackProps = Required<StackProps$1>;
 /**
  * Represents stack props with responsive capabilities for layout properties.
  *
  * This enables conditional styling based on container queries.
+ * @publicDocs
  */
 export type ResponsiveStackProps = MakeResponsivePick<
   AlignedStackProps,
@@ -8113,6 +8384,10 @@ export interface StackProps
   direction: ResponsiveStackProps['direction'];
 }
 
+/**
+ * Configure the following properties on the stack component.
+ * @publicDocs
+ */
 declare class Stack extends BoxElement implements StackProps {
   constructor();
   accessor direction: StackProps['direction'];
@@ -8150,6 +8425,10 @@ export interface SwitchProps
   extends PreactCheckboxProps,
     Required<Pick<SwitchProps$1, 'labelAccessibilityVisibility'>> {}
 
+/**
+ * Configure the following properties on the switch component.
+ * @publicDocs
+ */
 declare class Switch extends PreactCheckboxElement implements SwitchProps {
   accessor labelAccessibilityVisibility: SwitchProps['labelAccessibilityVisibility'];
   constructor();
@@ -8198,6 +8477,7 @@ export interface TableProps
  * - `base`: Standard format for text columns
  * - `currency`: Right-aligned format for monetary values
  * - `numeric`: Right-aligned format for numeric values
+ * @publicDocs
  */
 export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
@@ -8218,9 +8498,14 @@ declare const tableHeadersSharedDataSymbol: unique symbol;
  * Represents the actual rendered variant of a table component.
  * - `table`: Displays as a traditional table layout.
  * - `list`: Displays as a list layout.
+ * @publicDocs
  */
 export type ActualTableVariant = 'table' | 'list';
 
+/**
+ * Configure the following properties on the table component.
+ * @publicDocs
+ */
 declare class Table extends PreactCustomElement implements TableProps {
   accessor variant: TableProps['variant'];
   accessor loading: TableProps['loading'];
@@ -8273,6 +8558,12 @@ export interface TableJSXProps
 
 export interface TableBodyProps extends TableBodyProps$1 {}
 
+/**
+ * The table body component represents the main content area of a table, containing the data rows. Use table body as a child of table to structure your table data, with each table row within the body representing a single record or entry.
+ *
+ * Table body must contain table row components, which in turn contain table cell components for the actual data values.
+ * @publicDocs
+ */
 declare class TableBody extends PreactCustomElement implements TableBodyProps {
   constructor();
 }
@@ -8305,6 +8596,12 @@ export interface TableCellProps extends TableCellProps$1 {}
 
 declare const headerFormatSymbol: unique symbol;
 
+/**
+ * The table cell component represents a single data cell within a table row. Use table cell as a child of table row to display individual data values, with each cell corresponding to a column in the table.
+ *
+ * Table cell automatically inherits styling and alignment from its parent table structure and supports text content or other inline components.
+ * @publicDocs
+ */
 declare class TableCell extends PreactCustomElement implements TableCellProps {
   constructor();
   /** @private */
@@ -8336,6 +8633,12 @@ export interface TableCellJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * The table header component represents a single column header within a table header row. Use table header as a child of table header row to define column headings and optionally enable column sorting.
+ *
+ * Table header provides semantic meaning for screen readers and can include sorting controls when configured. Each header corresponds to a column in the table body.
+ * @publicDocs
+ */
 declare class TableHeader
   extends PreactCustomElement
   implements TableHeaderProps
@@ -8370,6 +8673,12 @@ export interface TableHeaderJSXProps
 
 export interface TableHeaderRowProps extends TableHeaderRowProps$1 {}
 
+/**
+ * The table header row component represents the header row of a table, containing column headings. Use table header row as the first child of table (before table body) to define the table structure and provide column labels.
+ *
+ * Table header row must contain table header components for each column. These headers provide context for the data columns and can support sorting functionality.
+ * @publicDocs
+ */
 declare class TableHeaderRow
   extends PreactCustomElement
   implements TableHeaderRowProps
@@ -8408,6 +8717,12 @@ export interface TableHeaderRowJSXProps
 export interface TableRowProps
   extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
 
+/**
+ * The table row component represents a single row of data within a table body. Use table row as a child of table body to structure individual records or entries in the table.
+ *
+ * Table row must contain table cell components, with each cell representing a data value for the corresponding column. The number of cells should match the number of headers in the table.
+ * @publicDocs
+ */
 declare class TableRow extends PreactCustomElement implements TableRowProps {
   constructor();
   accessor clickDelegate: string;
@@ -8490,6 +8805,10 @@ export interface TextProps
   >;
 }
 
+/**
+ * Configure the following properties on the text component.
+ * @publicDocs
+ */
 declare class Text extends PreactCustomElement implements TextProps {
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
   accessor color: TextProps['color'];
@@ -8545,12 +8864,17 @@ export interface TextJSXProps
 /**
  * Represents the props for textarea components.
  * Extends `PreactFieldProps` for multi-line text input functionality.
+ * @publicDocs
  */
 export type TextAreaProps = PreactFieldProps<
   Required<TextAreaProps$1>['autocomplete']
 > &
   Required<Pick<TextAreaProps$1, 'maxLength' | 'minLength' | 'rows'>>;
 
+/**
+ * Configure the following properties on the text area component.
+ * @publicDocs
+ */
 declare class TextArea
   extends PreactFieldElement<TextAreaProps['autocomplete']>
   implements TextAreaProps
@@ -8587,6 +8911,7 @@ export interface TextAreaJSXProps
 /**
  * Represents the props for text input field components.
  * Extends `PreactFieldProps` with autocomplete support for text-related fields.
+ * @publicDocs
  */
 export type TextFieldProps = PreactFieldProps<
   /** @default 'on' */
@@ -8599,6 +8924,10 @@ export type TextFieldProps = PreactFieldProps<
     >
   >;
 
+/**
+ * Configure the following properties on the text field component.
+ * @publicDocs
+ */
 declare class TextField
   extends PreactFieldElement<TextFieldProps['autocomplete']>
   implements TextFieldProps
@@ -8658,6 +8987,10 @@ export interface ThumbnailProps
   >;
 }
 
+/**
+ * Configure the following properties on the thumbnail component.
+ * @publicDocs
+ */
 declare class Thumbnail extends PreactCustomElement implements ThumbnailProps {
   accessor src: ThumbnailProps['src'];
   accessor alt: ThumbnailProps['alt'];
@@ -8693,6 +9026,10 @@ export interface ThumbnailJSXProps
 
 export interface TooltipProps extends Required<Pick<TooltipProps$1, 'id'>> {}
 
+/**
+ * Configure the following properties on the tooltip component.
+ * @publicDocs
+ */
 declare class Tooltip extends PreactOverlayElement implements TooltipProps {
   constructor();
 }
@@ -8725,12 +9062,17 @@ export interface TooltipJSXProps
 /**
  * Represents the props for URL input field components.
  * Extends `PreactFieldProps` with autocomplete support for URL-related fields.
+ * @publicDocs
  */
 export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
 > &
   Required<Pick<URLFieldProps$1, 'maxLength' | 'minLength'>>;
 
+/**
+ * Configure the following properties on the URL field component.
+ * @publicDocs
+ */
 declare class URLField
   extends PreactFieldElement<URLFieldProps['autocomplete']>
   implements URLFieldProps
@@ -8766,6 +9108,10 @@ export interface URLFieldJSXProps
 
 export interface UnorderedListProps extends UnorderedListProps$1 {}
 
+/**
+ * Configure the following properties on the unordered list component.
+ * @publicDocs
+ */
 declare class UnorderedList
   extends PreactCustomElement
   implements UnorderedListProps
@@ -8796,6 +9142,10 @@ export interface UnorderedListJSXProps
   children?: ComponentChildren;
 }
 
+/**
+ * Configure the following properties on the admin action component.
+ * @publicDocs
+ */
 export interface AdminActionProps
   extends Pick<AdminActionProps$1, 'heading' | 'loading'> {}
 
@@ -8848,6 +9198,10 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the admin block component.
+ * @publicDocs
+ */
 export interface AdminBlockProps
   extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {}
 
@@ -8885,6 +9239,10 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the admin print action component.
+ * @publicDocs
+ */
 export interface AdminPrintActionProps
   extends Pick<AdminPrintActionProps$1, 'src'> {}
 
@@ -8936,6 +9294,10 @@ export interface FormJSXProps extends Partial<FormProps> {
   onReset?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
 }
 
+/**
+ * Configure the following properties on the form component.
+ * @publicDocs
+ */
 declare class Form extends PreactCustomElement implements FormProps {
   constructor();
 }
@@ -8980,10 +9342,15 @@ export interface FunctionSettingsJSXProps
 /**
  * Represents the event type for function settings errors.
  * Extracted from the parameters of the `onFunctionSettingsError` callback.
+ * @publicDocs
  */
 export type FunctionSettingsErrorEvent = Parameters<
   NonNullable<FunctionSettingsProps$1['onError']>
 >[0];
+/**
+ * Configure the following properties on the function settings component.
+ * @publicDocs
+ */
 declare class FunctionSettings
   extends PreactCustomElement
   implements FunctionSettingsProps
@@ -9069,6 +9436,9 @@ export {
   URLField,
   UnorderedList,
 };
+/**
+ * @publicDocs
+ */
 export type {
   AdminActionJSXProps,
   AdminBlockJSXProps,
@@ -9134,6 +9504,10 @@ export type {
   UnorderedListJSXProps,
 };
 
+/**
+ * The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface AvatarEvents {
   /**
    * A callback fired when the avatar image successfully loads.
@@ -9149,6 +9523,10 @@ export interface AvatarEvents {
   error: OnErrorEventHandler = null;
 }
 
+/**
+ * The badge component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface BadgeSlots {
   /**
    * The text label displayed within the badge component, typically a short status indicator or category label.
@@ -9156,6 +9534,10 @@ export interface BadgeSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The banner component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface BannerEvents {
   /**
    * A callback fired when the banner is dismissed.
@@ -9167,6 +9549,10 @@ export interface BannerEvents {
   afterhide: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The banner component supports slots for additional content placement within the banner. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface BannerSlots {
   /**
    * The main message content displayed within the banner component, providing important information or guidance to users.
@@ -9179,6 +9565,10 @@ export interface BannerSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * The box component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface BoxSlots {
   /**
    * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
@@ -9186,6 +9576,10 @@ export interface BoxSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ButtonEvents {
   /**
    * A callback fired when the button is clicked.
@@ -9207,6 +9601,10 @@ export interface ButtonEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The button component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ButtonSlots {
   /**
    * The label text or elements displayed inside the button component, describing the action that will be performed when clicked.
@@ -9214,6 +9612,10 @@ export interface ButtonSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The button group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ButtonGroupSlots {
   /**
    * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
@@ -9235,6 +9637,10 @@ export interface ButtonGroupSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * The checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface CheckboxEvents {
   /**
    * A callback fired when the checkbox value changes.
@@ -9250,6 +9656,10 @@ export interface CheckboxEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * The chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ChipSlots {
   /**
    * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
@@ -9261,6 +9671,10 @@ export interface ChipSlots {
   graphic?: HTMLElement;
 }
 
+/**
+ * The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ChoiceSlots {
   /**
    * The label text or elements that identify this selectable choice to users.
@@ -9281,6 +9695,10 @@ export interface ChoiceSlots {
   details?: HTMLElement;
 }
 
+/**
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ChoiceListEvents {
   /**
    * A callback fired when the choice list selection changes.
@@ -9296,6 +9714,10 @@ export interface ChoiceListEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The choice list component supports slots for additional content placement within each choice. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ChoiceListSlots {
   /**
    * The choices a user can select from.
@@ -9305,6 +9727,10 @@ export interface ChoiceListSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ClickableEvents {
   /**
    * A callback fired when the component is clicked.
@@ -9326,6 +9752,10 @@ export interface ClickableEvents {
   focus: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The clickable component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ClickableSlots {
   /**
    * The content displayed within the clickable component, which makes any content interactive and clickable without the semantic meaning of a button or link.
@@ -9333,6 +9763,10 @@ export interface ClickableSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ClickableChipEvents {
   /**
    * A callback fired when the chip is clicked.
@@ -9350,6 +9784,10 @@ export interface ClickableChipEvents {
   afterhide: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ClickableChipSlots {
   /**
    * The text label displayed within the chip, which represents an interactive filter, tag, or selectable item.
@@ -9361,6 +9799,10 @@ export interface ClickableChipSlots {
   graphic?: HTMLElement;
 }
 
+/**
+ * The color field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ColorFieldEvents {
   /**
    * A callback fired when the color field value changes.
@@ -9388,6 +9830,10 @@ export interface ColorFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The color picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ColorPickerEvents {
   /**
    * A callback fired when the color picker value changes.
@@ -9403,6 +9849,10 @@ export interface ColorPickerEvents {
   input: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The date field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface DateFieldEvents {
   /**
    * A callback fired when the date field value changes.
@@ -9440,6 +9890,10 @@ export interface DateFieldEvents {
   invalid: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface DatePickerEvents {
   /**
    * A callback fired when the calendar view changes, such as when navigating between months.
@@ -9471,6 +9925,10 @@ export interface DatePickerEvents {
   change: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface DropZoneEvents {
   /**
    * A callback fired when the drop zone value changes.
@@ -9490,6 +9948,10 @@ export interface DropZoneEvents {
   droprejected: CallbackEventListener<typeof tagName> = null;
 }
 
+/**
+ * The drop zone component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface DropZoneSlots {
   /**
    * The content to include inside the drop zone container
@@ -9497,6 +9959,10 @@ export interface DropZoneSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface EmailFieldEvents {
   /**
    * A callback fired when the email field value changes.
@@ -9524,6 +9990,10 @@ export interface EmailFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The grid component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface GridSlots {
   /**
    * The child elements displayed within the grid component, which are arranged in a flexible grid layout with configurable columns, rows, and spacing.
@@ -9531,6 +10001,10 @@ export interface GridSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The grid item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface GridItemSlots {
   /**
    * The content displayed within the grid item component, which represents a single cell in the grid layout and can span multiple columns or rows.
@@ -9538,6 +10012,10 @@ export interface GridItemSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The heading component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface HeadingSlots {
   /**
    * The heading text displayed within the heading component, which provides a title or section header for content.
@@ -9545,6 +10023,10 @@ export interface HeadingSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The image component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ImageEvents {
   /**
    * A callback fired when the image successfully loads.
@@ -9560,6 +10042,10 @@ export interface ImageEvents {
   error: OnErrorEventHandler = null;
 }
 
+/**
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface LinkEvents {
   /**
    * A callback fired when the link is clicked.
@@ -9569,6 +10055,10 @@ export interface LinkEvents {
   click: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The link component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface LinkSlots {
   /**
    * The text or elements displayed within the link component, which navigates users to a different location when activated.
@@ -9576,6 +10066,10 @@ export interface LinkSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The list item component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ListItemSlots {
   /**
    * The content displayed within the list item, which represents a single entry in an ordered or unordered list.
@@ -9583,6 +10077,10 @@ export interface ListItemSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The menu component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface MenuSlots {
   /**
    * The items displayed within the menu. Only accepts button and section components. Use button for individual menu actions and section to group related items.
@@ -9590,6 +10088,10 @@ export interface MenuSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The modal component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ModalEvents {
   /**
    * A callback fired when the modal is hidden.
@@ -9609,6 +10111,10 @@ export interface ModalEvents {
   aftershow: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The modal component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ModalSlots {
   /**
    * The content displayed within the modal component, typically including form fields, information, or interactive elements.
@@ -9628,6 +10134,10 @@ export interface ModalSlots {
   'secondary-actions'?: HTMLElement;
 }
 
+/**
+ * The money field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface MoneyFieldEvents {
   /**
    * A callback fired when the money field value changes.
@@ -9655,6 +10165,10 @@ export interface MoneyFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface NumberFieldEvents {
   /**
    * A callback fired when the number field value changes.
@@ -9682,6 +10196,10 @@ export interface NumberFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The option component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface OptionSlots {
   /**
    * The text or elements displayed as the option label, which identifies the selectable choice to users in a dropdown or selection list.
@@ -9689,6 +10207,10 @@ export interface OptionSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The option group component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface OptionGroupSlots {
   /**
    * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items within this group.
@@ -9696,6 +10218,10 @@ export interface OptionGroupSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The ordered list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface OrderedListSlots {
   /**
    * The list entries displayed within the ordered list, where each item is numbered sequentially. Only accepts list item components as children. Each list item represents a single numbered entry in the sequence.
@@ -9703,6 +10229,10 @@ export interface OrderedListSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The page component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface PageSlots {
   /**
    * The main page content displayed within the page component, which serves as the primary container for the page's information and interface elements.
@@ -9735,6 +10265,10 @@ export interface PageSlots {
   'breadcrumb-actions'?: HTMLElement;
 }
 
+/**
+ * The paragraph component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface ParagraphSlots {
   /**
    * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
@@ -9742,6 +10276,10 @@ export interface ParagraphSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The password field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface PasswordFieldEvents {
   /**
    * A callback fired when the password field value changes.
@@ -9769,6 +10307,10 @@ export interface PasswordFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The popover component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface PopoverEvents {
   /**
    * A callback fired when the popover is shown.
@@ -9796,6 +10338,10 @@ export interface PopoverEvents {
   aftertoggle: CallbackEventListener<TTagName> | null;
 }
 
+/**
+ * The popover component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface PopoverSlots {
   /**
    * The content displayed within the popover component, which appears in an overlay positioned relative to its trigger element.
@@ -9803,6 +10349,10 @@ export interface PopoverSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The query container component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface QueryContainerSlots {
   /**
    * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
@@ -9810,6 +10360,10 @@ export interface QueryContainerSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The search field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface SearchFieldEvents {
   /**
    * A callback fired when the search field value changes.
@@ -9837,6 +10391,10 @@ export interface SearchFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The section component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface SectionSlots {
   /**
    * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
@@ -9844,6 +10402,10 @@ export interface SectionSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The select component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface SelectEvents {
   /**
    * A callback fired when the select value changes.
@@ -9859,6 +10421,10 @@ export interface SelectEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * The select component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface SelectSlots {
   /**
    * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
@@ -9866,6 +10432,10 @@ export interface SelectSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The stack component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface StackSlots {
   /**
    * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
@@ -9873,6 +10443,10 @@ export interface StackSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface SwitchEvents {
   /**
    * A callback fired when the switch value changes.
@@ -9888,6 +10462,10 @@ export interface SwitchEvents {
   input: CallbackEventListener<'input'>;
 }
 
+/**
+ * The table component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface TableEvents {
   /**
    * A callback fired when the user navigates to the previous page.
@@ -9899,6 +10477,10 @@ export interface TableEvents {
   nextpage: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The table component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TableSlots {
   /**
    * The table structure defining headers and data rows.
@@ -9914,6 +10496,10 @@ export interface TableSlots {
   filters?: HTMLElement;
 }
 
+/**
+ * The table body component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TableBodySlots {
   /**
    * The data rows displayed in the table body.
@@ -9923,6 +10509,10 @@ export interface TableBodySlots {
   children?: HTMLElement;
 }
 
+/**
+ * The table cell component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TableCellSlots {
   /**
    * The data value displayed in this cell.
@@ -9932,6 +10522,10 @@ export interface TableCellSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The table header component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TableHeaderSlots {
   /**
    * The column heading text.
@@ -9941,6 +10535,10 @@ export interface TableHeaderSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The table header row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TableHeaderRowSlots {
   /**
    * The column headers displayed in the table header row.
@@ -9950,6 +10548,10 @@ export interface TableHeaderRowSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The table row component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TableRowSlots {
   /**
    * The data cells displayed in this table row.
@@ -9959,6 +10561,10 @@ export interface TableRowSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The text component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TextSlots {
   /**
    * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
@@ -9966,6 +10572,10 @@ export interface TextSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface TextAreaEvents {
   /**
    * A callback fired when the text area value changes.
@@ -9993,6 +10603,10 @@ export interface TextAreaEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface TextFieldEvents {
   /**
    * A callback fired when the text field value changes.
@@ -10020,6 +10634,10 @@ export interface TextFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TextFieldSlots {
   /**
    * Additional interactive content displayed within the text field.
@@ -10029,6 +10647,10 @@ export interface TextFieldSlots {
   accessory?: HTMLElement;
 }
 
+/**
+ * The thumbnail component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface ThumbnailEvents {
   /**
    * A callback fired when the thumbnail image successfully loads.
@@ -10044,6 +10666,10 @@ export interface ThumbnailEvents {
   error: OnErrorEventHandler = null;
 }
 
+/**
+ * The tooltip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface TooltipSlots {
   /**
    * The informational text or elements displayed within the tooltip overlay, providing helpful context or explanations when users interact with the associated element.
@@ -10053,6 +10679,10 @@ export interface TooltipSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The URL field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface URLFieldEvents {
   /**
    * A callback fired when the URL field value changes.
@@ -10080,6 +10710,10 @@ export interface URLFieldEvents {
   focus: CallbackEventListener<'input'>;
 }
 
+/**
+ * The unordered list component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface UnorderedListSlots {
   /**
    * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
@@ -10087,6 +10721,10 @@ export interface UnorderedListSlots {
   children?: HTMLElement;
 }
 
+/**
+ * The admin action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export interface AdminActionSlots {
   /**
    * The main action button or link displayed in the admin action modal.
@@ -10100,6 +10738,10 @@ export interface AdminActionSlots {
   'secondary-actions': HTMLElement;
 }
 
+/**
+ * The form component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface FormEvents {
   /**
    * A callback that is run when the form is submitted.
@@ -10111,6 +10753,10 @@ export interface FormEvents {
   reset: CallbackEventListener<typeof tagName> | null = null;
 }
 
+/**
+ * The function settings component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export interface FunctionSettingsEvents {
   /**
    * An optional callback function that will be run by the admin when the user

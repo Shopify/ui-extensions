@@ -12,6 +12,7 @@ import type {ProductThumbnailProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,10 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-product-thumbnail";
+/**
+ * Use ProductThumbnail to display a product thumbnail
+ * @publicDocs
+ */
 export interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     /**
      * The size of the product thumbnail image.
@@ -43,11 +48,13 @@ export interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps
 }
 /**
  * The HTML element interface for the `s-product-thumbnail` custom element.
+ * @publicDocs
  */
 export interface ProductThumbnailElement extends ProductThumbnailElementProps, Omit<HTMLElement, 'id'> {
 }
 /**
  * The properties for the product thumbnail component when it's used in JSX.
+ * @publicDocs
  */
 export interface ProductThumbnailProps extends ProductThumbnailElementProps {
 }

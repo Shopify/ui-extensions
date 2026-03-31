@@ -17,9 +17,15 @@ import type {
   InteractionProps,
 } from './shared.d.ts';
 
+/**
+ * @publicDocs
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * @publicDocs
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
@@ -27,6 +33,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -44,12 +51,16 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 }
 /**
  * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
 
+/**
+ * @publicDocs
+ */
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
  * Makes a property's value potentially responsive.
@@ -66,12 +77,19 @@ export type MakeResponsive<T> = T | `@container${string}`;
  *   margin: string | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
+ * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
   [P in TProperty]: MakeResponsive<TType[P]>;
 };
 
+/**
+ * @publicDocs
+ */
 export type RequiredBoxProps = Required<BoxProps$1>;
+/**
+ * @publicDocs
+ */
 export type BoxBorderRadii = Extract<
   RequiredBoxProps['borderRadius'],
   | 'none'
@@ -83,10 +101,16 @@ export type BoxBorderRadii = Extract<
   | 'large-100'
   | 'large-200'
 >;
+/**
+ * @publicDocs
+ */
 export type BoxBorderStyles = Extract<
   RequiredBoxProps['borderStyle'],
   'none' | 'solid' | 'dashed' | 'auto'
 >;
+/**
+ * @publicDocs
+ */
 export type ResponsiveBoxProps = MakeResponsivePick<
   RequiredBoxProps,
   | 'padding'
@@ -98,6 +122,9 @@ export type ResponsiveBoxProps = MakeResponsivePick<
   | 'paddingInlineEnd'
   | 'display'
 >;
+/**
+ * @publicDocs
+ */
 export interface BoxProps
   extends Pick<
     RequiredBoxProps,
@@ -318,6 +345,9 @@ export interface BoxProps
   maxInlineSize: SizeUnitsOrNone;
 }
 
+/**
+ * @publicDocs
+ */
 export type ClickableBaseProps = Required<
   Pick<
     ClickableProps$1,
@@ -336,22 +366,35 @@ export type ClickableBaseProps = Required<
 >;
 /**
  * The properties for the clickable component. These properties define a low-level interactive container element that responds to user clicks while inheriting all box styling capabilities. The component serves as a foundation for building custom interactive components.
+ * @publicDocs
  */
 export interface ClickableProps
   extends Required<BoxProps>,
     ClickableBaseProps {}
 
+/**
+ * @publicDocs
+ */
 export type Styles = string;
+/**
+ * @publicDocs
+ */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   ShadowRoot: (element: any) => ComponentChildren;
   styles?: Styles;
 };
+/**
+ * @publicDocs
+ */
 export interface ActivationEventEsque {
   shiftKey: boolean;
   metaKey: boolean;
   ctrlKey: boolean;
   button: number;
 }
+/**
+ * @publicDocs
+ */
 export interface ClickOptions {
   /**
    * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
@@ -401,6 +444,9 @@ declare abstract class PreactCustomElement extends BaseClass {
   click({sourceEvent}?: ClickOptions): void;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
@@ -488,6 +534,7 @@ declare module 'preact' {
 declare const tagName = 's-clickable';
 /**
  * The JSX properties for the clickable component. These properties define how a clickable container is rendered in Preact or JSX.
+ * @publicDocs
  */
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
@@ -567,4 +614,7 @@ export interface ClickableJSXProps
 }
 
 export {Clickable};
+/**
+ * @publicDocs
+ */
 export type {ClickableJSXProps};

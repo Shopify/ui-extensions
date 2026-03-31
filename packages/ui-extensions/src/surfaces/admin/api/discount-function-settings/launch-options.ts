@@ -33,6 +33,8 @@ type DiscountMethod = 'automatic' | 'code';
 
 /**
  * The `data` object exposed to discount function settings extensions in the `admin.discount-details.function-settings.render` target. Use this to access the current discount configuration and populate your settings interface with existing values.
+ *
+ * @publicDocs
  */
 export interface DiscountFunctionSettingsData {
   /** The discount's unique global identifier (GID) in the [GraphQL Admin API](/docs/api/admin-graphql) format (for example, `gid://shopify/DiscountAutomaticApp/123`). Use this ID to associate settings with the correct discount or query discount data. */

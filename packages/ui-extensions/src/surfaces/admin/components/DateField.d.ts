@@ -15,6 +15,7 @@ import type {
 
 /**
  * An event object with a strongly-typed currentTarget property that references the specific HTML element type.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -24,6 +25,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener function or null that receives a typed callback event.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -35,6 +37,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -53,10 +56,12 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * A string containing CSS styles to be applied to the component.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a custom element with a shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -70,6 +75,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An object containing information about keyboard and mouse button states during an activation event.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -91,6 +97,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for programmatically triggering a click event on an element.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -144,6 +151,7 @@ declare abstract class PreactCustomElement extends BaseClass {
 declare const internals: unique symbol;
 /**
  * The required props for input elements that all form controls must implement.
+ * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
@@ -192,6 +200,7 @@ declare class PreactInputElement
 
 /**
  * The common props shared by all form field components in the admin UI.
+ * @publicDocs
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
   PreactInputProps &
@@ -309,6 +318,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The properties for the date field component. These properties configure an input field that allows merchants to select dates using an integrated calendar picker with optional text input, date constraints, and day-of-week restrictions.
+ * @publicDocs
  */
 export interface DateFieldProps
   extends Omit<
@@ -390,6 +400,7 @@ declare module 'preact' {
 declare const tagName = 's-date-field';
 /**
  * The JSX props for the date field component. These properties extend `DateFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including specialized callbacks for view changes and invalid date attempts.
+ * @publicDocs
  */
 export interface DateFieldJSXProps
   extends Partial<Omit<DateFieldProps, 'value' | 'defaultValue'>>,
@@ -421,4 +432,7 @@ export interface DateFieldJSXProps
 }
 
 export {DateField};
+/**
+ * @publicDocs
+ */
 export type {DateFieldJSXProps};

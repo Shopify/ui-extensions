@@ -13,6 +13,9 @@ import type {
   RenderImpl,
 } from './shared.d.ts';
 
+/**
+ * @publicDocs
+ */
 export interface ChipProps
   extends Required<Pick<ChipProps$1, 'color' | 'accessibilityLabel'>> {}
 
@@ -55,6 +58,9 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-chip';
+/**
+ * @publicDocs
+ */
 export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$1, 'id' | 'children'> {
@@ -69,4 +75,7 @@ export interface ChipJSXProps
 }
 
 export {Chip};
+/**
+ * @publicDocs
+ */
 export type {ChipJSXProps};

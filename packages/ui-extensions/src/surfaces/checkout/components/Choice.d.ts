@@ -12,6 +12,7 @@ import type {ChoiceProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,14 +21,25 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-choice";
+/**
+ * The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.
+ *
+ * Choice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.
+ * @publicDocs
+ */
 export interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface ChoiceElementSlots {
     /**
      * Additional text to provide context or guidance for the input.
@@ -49,8 +61,10 @@ export interface ChoiceElementSlots {
      */
     selectedContent?: HTMLElement;
 }
+/** @publicDocs */
 export interface ChoiceElement extends ChoiceElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 export interface ChoiceProps extends ChoiceElementProps {
 }
 declare global {

@@ -44,7 +44,7 @@ const data: ReferenceEntityTemplateSchema = {
       title: 'Best practices',
       sectionContent: `
 - **Use for inline search and filtering:** Choose search field for filtering within specific sections or lists, not for global navigation or complex multi-step searches.
-- **Follow placeholder pattern:** Use "Search {items}" format like "Search products" or "Search customers" to clarify scope.
+- **Follow placeholder pattern:** Use \`"Search {items}"\` format like \`"Search products"\` or \`"Search customers"\` to clarify scope.
 - **Choose the right event:** Use \`input\` for real-time filtering as users type. Use \`change\` for expensive operations that should wait until typing completes.
 - **Handle empty values:** When the field is cleared, reset filters or show all items appropriately.
 `,
