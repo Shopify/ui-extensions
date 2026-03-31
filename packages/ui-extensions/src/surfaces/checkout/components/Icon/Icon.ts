@@ -4,7 +4,7 @@ import type {Appearance, IdProps, Size} from '../shared';
 
 /**
  * The name of the icon to display. Each value maps to a specific
- * pictogram from the checkout icon set.
+ * pictogram from the icon set.
  */
 export type IconSource =
   | 'arrowLeft'
