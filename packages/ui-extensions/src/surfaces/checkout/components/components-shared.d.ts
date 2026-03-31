@@ -46,19 +46,19 @@ export interface ActionSlots {
 }
 export interface BaseOverlayProps {
 	/**
-	 * Callback fired after the overlay is shown.
+	 * A callback fired immediately after the overlay is shown.
 	 */
 	onShow?: (event: Event) => void;
 	/**
-	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+	 * A callback fired when the overlay is shown, after any show animations have completed.
 	 */
 	onAfterShow?: (event: Event) => void;
 	/**
-	 * Callback fired after the overlay is hidden.
+	 * A callback fired immediately after the overlay is hidden.
 	 */
 	onHide?: (event: Event) => void;
 	/**
-	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+	 * A callback fired when the overlay is hidden, after any hide animations have completed.
 	 */
 	onAfterHide?: (event: Event) => void;
 }
@@ -72,19 +72,19 @@ export interface BaseOverlayProps {
  */
 export interface BaseOverlayMethods {
 	/**
-	 * Method to show an overlay.
+	 * A method to programmatically show the overlay.
 	 *
 	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
 	 */
 	showOverlay: () => void;
 	/**
-	 * Method to hide an overlay.
+	 * A method to programmatically hide the overlay and run any associated hide animations.
 	 *
 	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
 	 */
 	hideOverlay: () => void;
 	/**
-	 * Method to toggle the visiblity of an overlay.
+	 * A method to programmatically toggle the visibility of the overlay.
 	 *
 	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
 	 */
@@ -106,28 +106,25 @@ export interface FocusEventProps {
 }
 export interface ToggleEventProps {
 	/**
-	 * Callback fired when the element state changes **after** any animations have finished.
+	 * A callback fired when the element state changes, after any toggle animations have finished.
 	 *
 	 * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
 	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+	 * Learn more about [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
-	 * Callback straight after the element state changes.
+	 * A callback fired immediately when the element state changes, before any animations.
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
 	 * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+	 * Learn more about the [toggle event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
@@ -1143,8 +1140,8 @@ export interface PaddingProps {
 /**
  * Represents size values in pixels, percentages, or zero.
  *
- * - `${number}px`: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
- * - `${number}%`: Relative size as a percentage of the parent container (such as `50%`, `100%`).
+ * - `` `${number}px` ``: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
+ * - `` `${number}%` ``: Relative size as a percentage of the parent container (such as `50%`, `100%`).
  * - `0`: Zero size, equivalent to no dimension.
  */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
@@ -2918,40 +2915,32 @@ interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingPro
 }
 interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ActionSlots {
 	/**
-	 * A label that describes the purpose of the modal. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 *
-	 * This overrides the `heading` prop for screen readers.
+	 * A label that describes the purpose of the modal, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the modal.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * A title that describes the content of the Modal.
-	 *
+	 * A title that describes the content of the modal.
 	 */
 	heading?: string;
 	/**
-	 * Adjust the padding around the Modal content.
+	 * Adjust the padding around the modal content.
 	 *
-	 * `base`: applies padding that is appropriate for the element.
-	 *
-	 * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-	 * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
-	 * to bring back the desired padding for the rest of the content.
+	 * - `base`: Applies padding that is appropriate for the element.
+	 * - `none`: Removes all padding from the element. This can be useful when elements inside the modal need to span to the edge of the modal. For example, a full-width image. In this case, rely on box with a padding of `base` to bring back the desired padding for the rest of the content.
 	 *
 	 * @default 'base'
 	 */
 	padding?: "base" | "none";
 	/**
-	 * Adjust the size of the Modal.
+	 * Adjust the size of the modal.
 	 *
-	 * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+	 * `max`: Expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword | "max";
 	/**
-	 * The content of the Modal.
+	 * The content of the modal.
 	 */
 	children?: ComponentChildren;
 }
@@ -3032,7 +3021,7 @@ interface PaymentIconProps$1 extends GlobalProps {
 export type PaymentIconName = "abn" | "acima-leasing" | "acuotaz" | "ada" | "addi" | "adyen" | "aeropay" | "affin-bank" | "affirm" | "aftee" | "afterpay-paynl-version" | "afterpay" | "airtel-money" | "airteltigo-mobile-money" | "aktia" | "akulaku-paylater" | "akulaku" | "alandsbanken" | "alfamart" | "alfamidi" | "alipay-hk" | "alipay-paynl-version" | "alipay" | "alliance-bank" | "alma" | "aman" | "amazon" | "ambank" | "american-express" | "amex" | "ansa-stored-value" | "ansa" | "anyday" | "apecoin" | "aplazo" | "apple-pay" | "aqsat" | "arbitrum" | "arhaus" | "arvato" | "ashley-plcc" | "ask" | "astrapay" | "atm-bersama" | "atobaraidotcom" | "atome" | "atone" | "atrato" | "au-kantan-kessai" | "au-pay" | "authorize-net" | "avalanche" | "axs" | "bancnet" | "banco-azteca" | "bancomat" | "bancontact" | "bangkok-bank" | "bank-islam" | "bank-muamalat" | "bank-rakyat" | "barclays" | "base" | "bbva-cie" | "bc-card" | "bca-klikpay" | "bca" | "bdo" | "belfius" | "benefit" | "best-buy-card" | "biercheque-paynl-version" | "bigc" | "billease" | "biller-paynl-version" | "billie" | "billink-method" | "billink" | "bitcoin-cash" | "bitcoin" | "bizum" | "blik" | "bnbchain" | "bni" | "bnp" | "bogus-app-coin" | "bogus" | "boleto" | "boodil" | "boost" | "bpi" | "braintree" | "bread-pay" | "bread" | "bri-direct-debit" | "bri" | "brimo" | "bsi" | "bsn" | "bss" | "busd" | "careem-pay" | "cartes-bancaires" | "cash-app-pay" | "cash" | "cashew" | "cashinvoice-latin-america" | "catch-payments" | "cebuana" | "cembrapay" | "centi" | "cetelem" | "checkout-finance" | "chinabank" | "cimb-clicks" | "cimb" | "circle-k" | "citadele" | "citi-pay" | "clave-telered" | "clearpay" | "clerq" | "cleverpay" | "clip" | "cliq" | "codensa" | "coinsph" | "collector-bank" | "coop" | "coppel-pay" | "credit-agricole" | "credit-key" | "creditclick-paynl-version" | "credix" | "cuotas" | "d-barai" | "dai" | "daily-yamazaki" | "dan-dan" | "dana" | "danamon-online" | "dankort" | "danske-bank" | "dappmx" | "dash" | "daviplata" | "de-cadeaukaart" | "depay" | "deutsche-bank" | "dinacard" | "diners-club" | "direct-bank-transfer-latin-america" | "directa24" | "directpay" | "discover" | "divido" | "dnb" | "docomo-barai" | "dogecoin" | "dropp" | "duitnow" | "duologi" | "dwolla" | "easywallet" | "ebucks" | "echelon-financing" | "ecpay" | "edenred" | "efecty" | "eft-secure" | "eftpos-au" | "eghl" | "elo" | "elv" | "empty" | "enets" | "eos" | "epayments" | "epospay" | "eps" | "erste" | "escrowcom" | "esr-paymentslip-switzerland" | "ethereum" | "etihad-guest-pay" | "etika" | "ewallet-indonesia" | "ewallet-philippines" | "ewallet-southkorea" | "facebook-pay" | "fairstone-payments" | "fam" | "familymart" | "fantom" | "farmlands" | "fashion-giftcard-paynlversion" | "fashioncheque" | "favepay" | "fawry" | "finloup" | "fintecture" | "fintoc" | "flexiti" | "float-payments" | "flying-blue-plus" | "forbrugsforeningen" | "forsa" | "fortiva" | "fps" | "fpx" | "freecharge" | "freedompay" | "futurepay-mytab" | "gcash" | "generalfinancing" | "generic" | "genoapay" | "gezondheidsbon-paynl-version" | "giftcard" | "giropay" | "givacard" | "glbe-paypal" | "glbe-plus" | "gmo-atokara" | "gmo-bank-transfer" | "gmo-postpay" | "gmo-virtualaccount" | "gnosis" | "google-pay" | "google-wallet" | "gopay" | "grabpay" | "grailpay" | "gusd" | "hana-card" | "handelsbanken" | "happy-pay" | "hello-clever" | "heylight" | "hitrustpay-transfer" | "home-credit" | "hong-leong-bank" | "hong-leong-connect" | "hsbc" | "huis-tuin-cadeau" | "humm" | "hyper" | "hypercard" | "hypercash" | "hyundai-card" | "ibexpay" | "ideal" | "in3-via-ideal" | "in3" | "inbank" | "indomaret" | "ing-homepay" | "interac" | "ivy" | "iwocapay-pay-later" | "jcb" | "jenius" | "jko" | "jousto" | "kakao-pay" | "kakebaraidotcom" | "kasikornbank" | "kasssh" | "katapult" | "kb-card" | "kbc-cbc" | "kcp-credit-card" | "kfast" | "khqr" | "klarna-pay-later" | "klarna-pay-now" | "klarna-slice-it" | "klarna" | "knaken-settle" | "knet" | "koalafi" | "koin" | "krediidipank" | "kredivo" | "krungsri" | "krungthai-bank" | "kueski-pay" | "kunst-en-cultuur-cadeaukaart" | "kuwait-finance-house" | "land-bank" | "laser" | "latitude-creditline-au" | "latitude-gem-au" | "latitude-gem-nz" | "latitude-go-au" | "latitudepay" | "lawson" | "laybuy-heart" | "laybuy" | "lbc" | "lhv" | "line-pay" | "linkaja" | "linkpay" | "litecoin" | "lku" | "lloyds" | "lotte-card" | "lpb" | "luminor" | "lunch-check" | "lydia" | "mach" | "mada" | "maestro" | "mandiri" | "mash" | "master" | "mastercard" | "masterpass" | "maxima" | "maya-bank" | "maya" | "maybank-qrpay" | "maybank" | "maybankm2u" | "mb-way" | "mb" | "mcash" | "medicinos-bankas" | "meeza" | "mercado-credito" | "mercado-pago" | "merpay" | "meta-pay" | "metro-bank" | "military-starcard" | "minicuotas" | "ministop" | "mobicred" | "mobikwik" | "mobilepay" | "mode" | "mokka" | "momopay" | "mondido" | "monero" | "monzo" | "mpesa" | "mtn-mobile-money" | "multisafepay" | "mybank" | "myfatoorah" | "n26" | "naps" | "nationale-bioscoopbon" | "nationale-entertainmentcard" | "natwest" | "naver-pay" | "nelo" | "nequi" | "netbanking" | "neteller" | "nh-card" | "nordea" | "notyd" | "novuna" | "npatobarai" | "npkakebarai" | "oca" | "ocbc-bank" | "octo-clicks" | "octopus" | "offline-bank-transfer-latin-america" | "ola-money" | "omannet" | "omasp" | "oney" | "online-banking" | "online-banktransfer" | "op" | "opay" | "openpay" | "optimism" | "orange-mobile-money" | "overstock-citicobrand" | "overstock-citiplcc" | "ovo" | "oxxo" | "ozow" | "pagoefectivo" | "paid" | "paidy" | "palawa" | "palawan" | "pastpay" | "pay-after-delivery-instalments" | "pay-by-bank-us" | "pay-by-bank" | "pay-easy" | "pay-pay" | "paybylink" | "paycash" | "payco" | "payconiq" | "payd" | "payfast-instant-eft" | "payflex" | "payid" | "payitmonthly" | "payjustnow" | "paymark-online-eftpos" | "paymaya" | "payme" | "paynow-mbank" | "paynow" | "payoo-qr" | "payoo" | "paypal" | "payplan" | "paypo" | "payrexx-bank-transfer" | "payright" | "paysafecard-paynl-version" | "paysafecard" | "paysafecash" | "paysera" | "paysquad" | "paytm" | "payto" | "paytomorrow" | "payu" | "payzapp" | "pei" | "perlasfinance" | "permata" | "pf-pay" | "pivo" | "pix" | "podium-cadeaukaart" | "pointspay" | "poli" | "polygon" | "poppankki" | "postfinance-card" | "postfinance-efinance" | "postpay" | "powered-by-ansa-stored-value" | "powered-by-ansa" | "powerpay" | "pps" | "prepaysolutions" | "progressive-leasing" | "przelew24" | "przelewy24-paynl-version" | "przelewy24" | "pse" | "public-bank" | "publicbank-pbe" | "qasitli" | "qliro" | "qr-promptpay" | "qris" | "qrph" | "rabbit-line-pay" | "rabobank" | "rakuten-pay" | "rapid-transfer" | "ratepay" | "raty-pekao" | "rcbc" | "rcs" | "reka" | "resolve-pay" | "revolut" | "rhb-bank" | "rhb-now" | "rietumu" | "riverty-paynl-version" | "riverty" | "rupay" | "saastopankki" | "sadad" | "sam" | "samsung-card" | "samsung-pay" | "santander" | "satisfi" | "satispay" | "sbpl" | "scalapay" | "scream-truck-wallet" | "scream-truck" | "seb" | "seicomart" | "sepa-bank-transfer" | "sepa-direct-debit" | "sequra" | "seven-eleven" | "sezzle" | "shib" | "shinhan-card" | "shop-pay" | "shopeepay" | "shopify-pay" | "siam-commercial" | "siauliu-bankas" | "siirto" | "sika-fsa" | "sika-hsa" | "sika" | "simpl" | "simple-pay" | "sinpe-movil" | "sistecredito" | "skeps" | "skrill-digital-wallet" | "slice-fnbo" | "smartpay" | "snap-checkout" | "snapmint" | "societe-generale" | "sofort" | "softbank" | "solana-pay-helio" | "solana-pay" | "solana" | "souhoola" | "spankki" | "sparkasse" | "spei" | "splitit" | "spotii" | "spraypay" | "standard-chartered" | "stc-pay" | "stoov" | "store-credit" | "stripe" | "sunkus" | "super-payments" | "svea-b2b-faktura" | "svea-b2b-invoice" | "svea-checkout" | "svea-credit-account" | "svea-delbetalning" | "svea-faktura" | "svea-invoice" | "svea-lasku" | "svea-ostukonto" | "svea-part-payment" | "svea-yrityslasku" | "sveaeramaksu" | "swedbank" | "swiftpay" | "swish" | "swissbilling" | "sympl" | "synchrony-pay" | "synchrony" | "tabby" | "tabit" | "taly" | "tamara" | "tandympayment" | "tasa-cero" | "tbi-bank" | "tcf" | "tendopay" | "tensile" | "tesco-lotus" | "thanachart-bank" | "timepayment" | "tiptop" | "todopay" | "toss" | "touch-n-go" | "tpay" | "trevipay" | "truelayer" | "truemoney-pay" | "trustly" | "twig-pay" | "twint" | "twoinvoice" | "uae-visa" | "uangme" | "ubp" | "underpay" | "unionpay" | "unipay" | "uob-ez-pay" | "uob-thai" | "uob" | "upi" | "urbo" | "urpay" | "usdc" | "usdp" | "v-pay" | "valu" | "venmo" | "ventipay" | "venus-plcc" | "viabill" | "vipps" | "visa-electron" | "visa" | "volksbank" | "volt" | "vvv-cadeaukaart-paynl-version" | "vvv-giftcard" | "waave-pay-by-bank" | "wallet" | "walley" | "wbtc" | "webshop-giftcard" | "wechat-pay" | "wechat-paynl-version" | "wegetfinancing" | "whish-checkout" | "whish-pay" | "wise" | "wissel" | "world-chain" | "xrp" | "yape" | "yappy" | "ymobile" | "younited-pay" | "zalopay" | "zapper" | "zingala" | "zinia" | "zip" | "zoodpay" | "zulily-credit-card" | "zustaina";
 interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ToggleEventProps, SizingProps {
 	/**
-	 * The content of the popover.
+	 * The content displayed within the popover, which appears in an overlay positioned relative to its trigger element.
 	 */
 	children?: ComponentChildren;
 }
@@ -3238,28 +3227,15 @@ interface SelectProps$1 extends GlobalProps, AutocompleteProps<AnyAutocompleteFi
 }
 interface SheetProps$1 extends BaseOverlayProps, BaseOverlayMethods, ToggleEventProps, GlobalProps, ActionSlots {
 	/**
-	 * A label that describes the purpose of the sheet. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 *
-	 * This overrides the `heading` prop for screen readers.
+	 * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The content of the Sheet.
+	 * The content of the sheet.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Indicates whether the Sheet should be open by default.
-	 * This property is necessary in some cases, but its usage is generally discouraged due to potential negative impacts on user experience.
-	 *
-	 * Developers should:
-	 * - Only set this property to true when there are vitally important behaviors of the application that depend on the user interacting with the sheet.
-	 * - Make every effort to conditionally hide the sheet based on the state of checkout. An explicit example is custom privacy consent, where the sheet should only be displayed when consent is necessary and has not yet been explicitly given by the user.
-	 *
-	 * This property is useful for when the Sheet needs to be rendered on the page load and not triggered by a user action.
-	 * The property should only take effect when the `Sheet` is rendered for the first time.
-	 * To toggle the Sheet after it has been rendered, use the `ui.showOverlay()` method instead.
+	 * Whether the sheet should be open when it first renders. Use sparingly — only when the user must interact with the sheet before proceeding (for example, a privacy consent prompt). Only takes effect on the initial render.
 	 *
 	 * @default false
 	 */
@@ -3271,12 +3247,8 @@ interface SheetProps$1 extends BaseOverlayProps, BaseOverlayMethods, ToggleEvent
 	/**
 	 * Adjust the padding of all edges.
 	 *
-	 * `base`: applies padding that is appropriate for the element. Note that it may result in no padding if Shopify
-	 * believes this is the right design decision in a particular context.
-	 *
-	 * `none`: removes all padding from the element. This can be useful when elements inside the Sheet need to span
-	 * to the edge of the Sheet. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
-	 * to bring back the desired padding for the rest of the content.
+	 * - `base`: Applies padding that is appropriate for the element. Note that it may result in no padding if Shopify believes this is the right design decision in a particular context.
+	 * - `none`: Removes all padding from the element. This can be useful when elements inside the sheet need to span to the edge of the sheet. For example, a full-width image. In this case, rely on box with a padding of `base` to bring back the desired padding for the rest of the content.
 	 *
 	 * @default 'base'
 	 */
@@ -3489,7 +3461,7 @@ interface TimeProps$1 extends GlobalProps {
 }
 interface TooltipProps$1 extends GlobalProps {
 	/**
-	 * The content of the Tooltip.
+	 * The text or elements displayed inside the tooltip popup.
 	 */
 	children?: ComponentChildren;
 }
