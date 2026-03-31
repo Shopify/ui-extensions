@@ -24,7 +24,7 @@ export {
 };
 
 /**
- * A key-value storage object for the extension. Data is scoped to your app and shared across all of your extension targets. The storage backend uses `localStorage`, so data persistence isn't guaranteed across sessions.
+ * Key-value storage that persists across customer sessions. Data is scoped to your app and shared across all extension targets.
  */
 export interface Storage {
   /**
@@ -43,19 +43,20 @@ export interface Storage {
   delete(key: string): Promise<void>;
 }
 
+/**
+ * Represents the buyer's language as a [BCP-47 standard](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
+ */
 export interface Language {
   /**
-   * The [BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag. May include a region subtag following a dash.
+   * The [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag. May include a dash followed by an [ISO 3166-1 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) region subtag.
    *
    * @example 'en' for English, or 'en-US' for English as used in the United States.
-   * @see https://en.wikipedia.org/wiki/IETF_language_tag
-   * @see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
    */
   isoCode: string;
 }
 
 /**
- * The signature for the `i18n.translate()` function, which returns translated content matching a key in a locale file.
+ * The signature for the `i18n.translate()` function. Returns translated content matching a key in a locale file, with support for pluralization and interpolation.
  */
 export interface I18nTranslate {
   /**
@@ -71,6 +72,9 @@ export interface I18nTranslate {
     : (string | ReplacementType)[];
 }
 
+/**
+ * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Supports both the buyer's locale and the extension's fallback locale.
+ */
 export interface I18n {
   /**
    * Returns a localized number string.
@@ -102,11 +106,8 @@ export interface I18n {
    * Returns a localized date string.
    *
    * This function behaves like the standard [`Intl.DateTimeFormat()`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) and uses
-   * the buyer's locale by default. Formatting options can be passed in as
+   * the buyer's locale by default. Formatting [options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options) can be passed in as
    * options.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
@@ -128,7 +129,7 @@ export interface I18n {
 }
 
 /**
- * Metadata about the running extension, including its API version, capabilities, and target.
+ * Metadata about the extension, including its target, version, and editor context. For configuration details, see [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration).
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -140,13 +141,13 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration) file.
+   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration) file.
    *
-   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+   * * [`api_access`](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration): the extension can access the Storefront API.
    *
-   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
+   * * [`network_access`](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration): the extension can make external network calls.
    *
-   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+   * * [`block_progress`](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
@@ -176,9 +177,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * injected. This will be one of the targets you have included in your
    * extension’s configuration file.
    *
+   * For available targets, see the [extension targets overview](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}/extension-targets-overview). For configuration details, see [extension targets](https://shopify.dev/docs/apps/app-extensions/configuration#targets).
+   *
    * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
-   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    */
   target: Target;
 
@@ -192,6 +193,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   version?: string;
 }
 
+/**
+ * Information about the editor where the extension is being rendered.
+ */
 export interface Editor {
   /**
    * Indicates whether the extension is rendering in the checkout editor.
@@ -360,6 +364,9 @@ export interface CompanyLocation {
   id: string;
 }
 
+/**
+ * Triggers platform-level UI interactions from your extension, such as displaying toast notifications. Use the UI API to show success or error messages in response to customer actions.
+ */
 export interface Ui {
   /**
    * An overlay is a contextual element on top of the main interface that provides additional information or functionality.
@@ -380,7 +387,7 @@ export interface Ui {
    *
    * - Use noun + past tense verb format. For example, \`Changes saved\`.
    *
-   * For errors, or information that needs to persist on the page, use a [banner](/docs/api/checkout-ui-extensions/unstable/components/feedback/banner) component.
+   * For errors, or information that needs to persist on the page, use a [banner](/docs/api/customer-account-ui-extensions/{API_VERSION}/components/feedback/banner) component.
    */
   toast: {
     show(content: string): void;
@@ -401,19 +408,22 @@ export interface Ui {
   forceDataRefresh(content: string): Promise<void>;
 }
 
+/**
+ * Provides access to session tokens for verifying requests from your extension to your app's backend. Session tokens are signed [JSON Web Tokens (JWTs)](https://jwt.io/) that contain information about the current session. For more details, see the [Session Token API](/docs/api/customer-account-ui-extensions/{API_VERSION}/apis/session-token).
+ */
 export interface SessionToken {
   /**
-   * Requests a session token that hasn't expired. You should call this method every
-   * time you need to make a request to your backend in order to get a valid token.
-   * This method will return cached tokens when possible, so you don’t need to worry
-   * about storing these tokens yourself.
+   * Requests a session token that hasn't expired. Call this method every time you need to make a request to your backend to get a valid token. Returns cached tokens when possible, so you don't need to store tokens yourself.
    */
   get(): Promise<string>;
 }
 
+/**
+ * Methods for interacting with [web pixels](/docs/apps/build/marketing-analytics/pixels), including publishing analytics events and capturing visitor identity data.
+ */
 export interface Analytics {
   /**
-   * Publishes analytics events to [Web Pixels](/docs/apps/build/marketing). Events are forwarded to all subscribed pixels.
+   * Publishes analytics events to [web pixels](/docs/apps/build/marketing-analytics/pixels). Events are forwarded to all subscribed pixels.
    */
   publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
