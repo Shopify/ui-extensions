@@ -162,7 +162,17 @@ interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
 	 */
 	dismiss: () => void;
 }
+/**
+ * The design system's size scale, used to control the dimensions of components like avatars, icons, and thumbnails. Values range from `"small-500"` (smallest) through `"base"` (standard) to `"large-500"` (largest). Not all components support every size — check the component's `size` property type for its available options.
+ */
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
+/**
+ * Defines the color intensity or emphasis level for text and UI elements.
+ *
+ * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+ * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+ * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
+ */
 export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 export interface BackgroundProps {
@@ -738,8 +748,28 @@ export type IconType = (typeof privateIconArray)[number];
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
+/**
+ * Represents CSS shorthand properties that accept one to four values, following the [CSS shorthand syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box). Supports specifying values for all four sides: top, right, bottom, and left.
+ *
+ * - `T`: Single value that applies to all four sides.
+ * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
+ * - `${T} ${T} ${T}`: Three values for block-start (top), inline axis (left/right), and block-end (bottom).
+ * - `${T} ${T} ${T} ${T}`: Four values for block-start (top), inline-end (right), block-end (bottom), and inline-start (left).
+ */
 export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`;
+/**
+ * Represents CSS shorthand properties that accept one or two values. Supports specifying the same value for both dimensions or different values.
+ *
+ * - `T`: Single value that applies to both dimensions.
+ * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
+ */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/**
+ * Makes a property responsive by allowing it to be set conditionally based on container query conditions. The value can be either a base value or a container query string.
+ *
+ * - `T`: Base value that applies in all conditions.
+ * - `@container${string}`: Container query string for conditional responsive styling based on container size.
+ */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -1029,137 +1059,176 @@ export interface LabelAccessibilityVisibilityProps {
 	 */
 	labelAccessibilityVisibility?: ExtractStrict<AccessibilityVisibilityProps["accessibilityVisibility"], "visible" | "exclusive">;
 }
+/**
+ * Defines the padding size for elements, using the standard size scale or `none` for no padding.
+ *
+ * - `SizeKeyword`: Standard padding sizes from the size scale for consistent spacing.
+ * - `none`: No padding.
+ */
 export type PaddingKeyword = SizeKeyword | "none";
 export interface PaddingProps {
 	/**
-	 * Adjust the padding of all edges.
+	 * The padding applied to all edges of the component.
 	 *
-	 * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-	 * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+	 * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:
+	 * - 1 value applies to all sides
+	 * - 2 values apply to block (top/bottom) and inline (left/right)
+	 * - 3 values apply to block-start (top), inline (left/right), and block-end (bottom)
+	 * - 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)
 	 *
-	 * - 4 values: `block-start inline-end block-end inline-start`
-	 * - 3 values: `block-start inline block-end`
-	 * - 2 values: `block inline`
+	 * **Examples:** `base`, `large none`, `base large-100 base small`
 	 *
-	 * For example:
-	 * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
-	 * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
-	 * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
-	 * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-	 *
-	 * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
+	 * Use `auto` to inherit padding from the nearest container with removed padding.
 	 *
 	 * @default 'none'
 	 */
 	padding?: MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>;
 	/**
-	 * Adjust the block-padding.
+	 * The block-direction padding (top and bottom in horizontal writing modes).
 	 *
-	 * - `large none` means block-start padding is `large`, block-end padding is `none`.
+	 * Accepts a single value for both sides or two space-separated values for block-start and block-end.
 	 *
-	 * This overrides the block value of `padding`.
+	 * **Example:** `large none` applies `large` to the top and `none` to the bottom.
+	 *
+	 * Overrides the block value from `padding`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	paddingBlock?: MaybeResponsive<MaybeTwoValuesShorthandProperty<PaddingKeyword> | "">;
 	/**
-	 * Adjust the block-start padding.
+	 * The block-start padding (top in horizontal writing modes).
 	 *
-	 * This overrides the block-start value of `paddingBlock`.
+	 * Overrides the block-start value from `paddingBlock`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	paddingBlockStart?: MaybeResponsive<PaddingKeyword | "">;
 	/**
-	 * Adjust the block-end padding.
+	 * The block-end padding (bottom in horizontal writing modes).
 	 *
-	 * This overrides the block-end value of `paddingBlock`.
+	 * Overrides the block-end value from `paddingBlock`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	paddingBlockEnd?: MaybeResponsive<PaddingKeyword | "">;
 	/**
-	 * Adjust the inline padding.
+	 * The inline-direction padding (left and right in horizontal writing modes).
 	 *
-	 * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+	 * Accepts a single value for both sides or two space-separated values for inline-start and inline-end.
 	 *
-	 * This overrides the inline value of `padding`.
+	 * **Example:** `large none` applies `large` to the left and `none` to the right.
+	 *
+	 * Overrides the inline value from `padding`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	paddingInline?: MaybeResponsive<MaybeTwoValuesShorthandProperty<PaddingKeyword> | "">;
 	/**
-	 * Adjust the inline-start padding.
+	 * The inline-start padding (left in LTR writing modes, right in RTL).
 	 *
-	 * This overrides the inline-start value of `paddingInline`.
+	 * Overrides the inline-start value from `paddingInline`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	paddingInlineStart?: MaybeResponsive<PaddingKeyword | "">;
 	/**
-	 * Adjust the inline-end padding.
+	 * The inline-end padding (right in LTR writing modes, left in RTL).
 	 *
-	 * This overrides the inline-end value of `paddingInline`.
+	 * Overrides the inline-end value from `paddingInline`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	paddingInlineEnd?: MaybeResponsive<PaddingKeyword | "">;
 }
+/**
+ * Represents size values in pixels, percentages, or zero.
+ *
+ * - `${number}px`: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
+ * - `${number}%`: Relative size as a percentage of the parent container (such as `50%`, `100%`).
+ * - `0`: Zero size, equivalent to no dimension.
+ */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
+/**
+ * Represents size values that can also be set to `auto` for automatic sizing.
+ *
+ * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+ * - `auto`: Automatically sizes based on content and layout constraints. Learn more about the [auto value](https://developer.mozilla.org/en-US/docs/Web/CSS/width#auto).
+ */
 export type SizeUnitsOrAuto = SizeUnits | "auto";
+/**
+ * Represents size values that can also be set to `none` to remove the size constraint.
+ *
+ * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+ * - `none`: No size constraint, allowing unlimited growth. Learn more about the [none value](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width#none).
+ */
 export type SizeUnitsOrNone = SizeUnits | "none";
 export interface SizingProps {
 	/**
-	 * Adjust the block size.
+	 * The block size of the element (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+	 * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+	 * - `auto`: Automatically sizes based on content and layout constraints.
 	 *
 	 * @default 'auto'
 	 */
 	blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
 	/**
-	 * Adjust the minimum block size.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+	 * The minimum block size of the element (minimum height in horizontal writing modes). Learn more about the [min-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
 	 *
 	 * @default '0'
 	 */
 	minBlockSize?: MaybeResponsive<SizeUnits>;
 	/**
-	 * Adjust the maximum block size.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+	 * The maximum block size of the element (maximum height in horizontal writing modes). Learn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
 	 *
 	 * @default 'none'
 	 */
 	maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
 	/**
-	 * Adjust the inline size.
+	 * The inline size of the element (width in horizontal writing modes). Learn more about the [inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+	 * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+	 * - `auto`: Automatically sizes based on content and layout constraints.
 	 *
 	 * @default 'auto'
 	 */
 	inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
 	/**
-	 * Adjust the minimum inline size.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+	 * The minimum inline size of the element (minimum width in horizontal writing modes). Learn more about the [min-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
 	 *
 	 * @default '0'
 	 */
 	minInlineSize?: MaybeResponsive<SizeUnits>;
 	/**
-	 * Adjust the maximum inline size.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+	 * The maximum inline size of the element (maximum width in horizontal writing modes). Learn more about the [max-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
 	 *
 	 * @default 'none'
 	 */
 	maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
+/**
+ * The visual style of a border. Learn more about [border-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
+ *
+ * - `"none"`: No border is rendered.
+ * - `"solid"`: A single continuous line.
+ * - `"dashed"`: A series of short dashes.
+ * - `"dotted"`: A series of round dots.
+ * - `"auto"`: The border style is determined automatically based on the surface's design system.
+ */
 export type BorderStyleKeyword = "none" | "solid" | "dashed" | "dotted" | "auto";
+/**
+ * Defines the width of borders, using the standard size scale or `none` for no border.
+ *
+ * - `SizeKeyword`: Standard border widths from the size scale for consistent thickness.
+ * - `none`: No border width (removes the border).
+ */
 export type BorderSizeKeyword = SizeKeyword | "none";
+/**
+ * The corner radius of a border, using the design system's `SizeKeyword` scale with additional options:
+ *
+ * - `"max"`: The maximum possible radius, creating a pill or circular shape.
+ * - `"none"`: No rounding — corners are sharp (0 radius).
+ */
 export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
@@ -1167,15 +1236,12 @@ export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 export type BorderShorthand = BorderSizeKeyword | `${BorderSizeKeyword} ${ColorKeyword}` | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
 export interface BorderProps {
 	/**
-	 * Set the border via the shorthand property.
+	 * Applies a border using shorthand syntax to specify width, color, and style in a single property.
 	 *
-	 * This can be a size, optionally followed by a color, optionally followed by a style.
+	 * Accepts a size value, optionally followed by a color, optionally followed by a style.
+	 * Omitted values use defaults: color defaults to `base`, style defaults to `auto`.
 	 *
-	 * If the color is not specified, it will be `base`.
-	 *
-	 * If the style is not specified, it will be `auto`.
-	 *
-	 * Values can be overridden by `borderWidth`, `borderStyle`, and `borderColor`.
+	 * Individual properties (`borderWidth`, `borderStyle`, `borderColor`) can override values set here.
 	 *
 	 * @example
 	 * // The following are equivalent:
@@ -1186,64 +1252,54 @@ export interface BorderProps {
 	 */
 	border?: BorderShorthand;
 	/**
-	 * Set the width of the border.
+	 * Controls the thickness of the border on all sides. When set, this overrides the width value specified in the `border` property.
 	 *
-	 * If set, it takes precedence over the `border` property's width.
-	 *
-	 * Like CSS, up to 4 values can be specified.
-	 *
-	 * If one value is specified, it applies to all sides.
-	 *
-	 * If two values are specified, they apply to the block sides and inline sides respectively.
-	 *
-	 * If three values are specified, they apply to the block-start, both inline sides, and block-end respectively.
-	 *
-	 * If four values are specified, they apply to the block-start, block-end, inline-start, and inline-end sides respectively.
+	 * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different widths per side:
+	 * - One value: applies to all sides
+	 * - Two values: applies to block sides (top/bottom) and inline sides (left/right) respectively
+	 * - Three values: applies to block-start (top), inline sides (left/right), and block-end (bottom) respectively
+	 * - Four values: applies to block-start (top), inline-end (right), block-end (bottom), and inline-start (left) respectively
 	 *
 	 * @default '' - meaning no override
 	 */
 	borderWidth?: MaybeAllValuesShorthandProperty<BorderSizeKeyword> | "";
 	/**
-	 * Set the style of the border.
+	 * Controls the visual style of the border on all sides, such as solid, dashed, or dotted.
 	 *
-	 * If set, it takes precedence over the `border` property's style.
+	 * When set, this overrides the style value specified in the `border` property.
 	 *
-	 * Like CSS, up to 4 values can be specified.
-	 *
-	 * If one value is specified, it applies to all sides.
-	 *
-	 * If two values are specified, they apply to the block sides and inline sides respectively.
-	 *
-	 * If three values are specified, they apply to the block-start, both inline sides, and block-end respectively.
-	 *
-	 * If four values are specified, they apply to the block-start, block-end, inline-start, and inline-end sides respectively.
+	 * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different styles per side:
+	 * - One value: applies to all sides
+	 * - Two values: applies to block sides (top/bottom) and inline sides (left/right) respectively
+	 * - Three values: applies to block-start (top), inline sides (left/right), and block-end (bottom) respectively
+	 * - Four values: applies to block-start (top), inline-end (right), block-end (bottom), and inline-start (left) respectively
 	 *
 	 * @default '' - meaning no override
 	 */
 	borderStyle?: MaybeAllValuesShorthandProperty<BorderStyleKeyword> | "";
 	/**
-	 * Set the color of the border.
+	 * Controls the color of the border using the design system's color scale.
 	 *
-	 * If set, it takes precedence over the `border` property's color.
+	 * When set, this overrides the color value specified in the `border` property.
+	 * Choose from `subdued`, `base`, or `strong` to match the visual emphasis needed.
 	 *
 	 * @default '' - meaning no override
 	 */
 	borderColor?: ColorKeyword | "";
 	/**
-	 * Set the radius of the border.
+	 * Controls the roundedness of the element's corners using the design system's radius scale.
 	 *
-	 * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-	 * supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+	 * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:
+	 * - One value: applies to all corners
+	 * - Two values: applies to start corners (top-left & bottom-right) and end corners (top-right & bottom-left) respectively
+	 * - Three values: applies to start-start (top-left), end corners (top-right & bottom-left), and end-end (bottom-right) respectively
+	 * - Four values: applies to start-start (top-left), start-end (top-right), end-end (bottom-right), and end-start (bottom-left) respectively
 	 *
-	 * - 4 values: `start-start start-end end-end end-start`
-	 * - 3 values: `start-start (start-end & end-start) start-end`
-	 * - 2 values: `(start-start & end-end) (start-end & end-start)`
-	 *
-	 * For example:
-	 * - `small-100` means start-start, start-end, end-end and end-start border radii are `small-100`.
-	 * - `small-100 none` means start-start and end-end border radii are `small-100`, start-end and end-start border radii are `none`.
-	 * - `small-100 none large-100` means start-start border radius is `small-100`, start-end border radius is `none`, end-end border radius is `large-100` and end-start border radius is `none`.
-	 * - `small-100 none large-100 small-100` means start-start border radius is `small-100`, start-end border radius is `none`, end-end border radius is `large-100` and end-start border radius is `small-100`.
+	 * Examples:
+	 * - `small-100`: All corners have `small-100` radius
+	 * - `small-100 none`: Top-left and bottom-right are `small-100`, top-right and bottom-left are `none`
+	 * - `small-100 none large-100`: Top-left is `small-100`, top-right and bottom-left are `none`, bottom-right is `large-100`
+	 * - `small-100 none large-100 base`: Each corner has its specified radius value
 	 *
 	 * @defaultValue 'none'
 	 */
@@ -1253,10 +1309,8 @@ export interface OverflowProps {
 	/**
 	 * Sets the overflow behavior of the element.
 	 *
-	 * - `hidden`: clips the content when it is larger than the element’s container.
-	 * The element will not be scrollable and the users will not be able
-	 * to access the clipped content by dragging or using a scroll wheel on a mouse.
-	 * - `visible`: the content that extends beyond the element’s container is visible.
+	 * - `visible`: The content that extends beyond the element’s container is visible.
+	 * - `hidden`: Clips the content when it is larger than the element’s container. The element will not be scrollable and users will not be able to access the clipped content by dragging or using a scroll wheel on a mouse.
 	 *
 	 * @default 'visible'
 	 */
@@ -2530,94 +2584,110 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, Bloc
 	 */
 	accessibilityRole?: "heading" | ExtractStrict<AccessibilityRole, "presentation" | "none">;
 }
+/**
+ * The shared properties for the icon component. An icon displays a graphical symbol with configurable appearance, color, and semantic meaning.
+ */
 interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor"> {
 	/**
-	 * Sets the tone of the icon, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the icon.
+	 *
+	 * - `'info'`: Informational content or helpful tips.
+	 * - `'auto'`: Automatically determined based on context.
+	 * - `'neutral'`: General information without specific intent.
+	 * - `'success'`: Positive outcomes or successful states.
+	 * - `'warning'`: Important warnings about potential issues.
+	 * - `'critical'`: Urgent problems or destructive actions.
+	 * - `'custom'`: Inherits a custom color from its parent element's CSS.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Modify the color to be more or less intense.
+	 * The color intensity of the icon. Use `'subdued'` for less intense, or `'base'` for standard coloring.
 	 *
 	 * @default 'base'
 	 */
 	color?: ColorKeyword;
 	/**
-	 * Adjusts the size of the icon.
+	 * The size of the icon.
+	 *
+	 * - `'base'`: Default size that works well for most use cases.
+	 * - `'small'`: Small icon for inline use within text or compact UI elements.
+	 * - `'small-200'`: Extra small icon for the most compact contexts.
+	 * - `'small-100'`: Small icon suitable for tight or dense layouts.
+	 * - `'large'`: Large icon for emphasis or prominent display.
+	 * - `'large-100'`: Extra large icon for maximum visual impact.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
+	/**
+	 * The icon to display. Can be any icon name from the icon library or a custom string identifier.
+	 */
 	type?: IconType | AnyString;
 }
+/**
+ * The shared base properties for image-based components. These properties are common to all components that display images, including the image and product thumbnail components. Properties include `alt` for accessibility text, `src` for the image URL, `sizes` for responsive sizing hints, and `srcSet` for multiple image sources.
+ */
 export interface BaseImageProps {
 	/**
-	 * An alternative text description that describe the image for the reader to
-	 * understand what it is about. It is extremely useful for both users using
-	 * assistive technology and sighted users. A well written description
-	 * provides people with visual impairments the ability to participate in
-	 * consuming non-text content. When a screen readers encounters an `s-image`,
-	 * the description is read and announced aloud. If an image fails to load,
-	 * potentially due to a poor connection, the `alt` is displayed on
-	 * screen instead. This has the benefit of letting a sighted buyer know an
-	 * image was meant to load here, but as an alternative, they’re still able to
-	 * consume the text content. Read
-	 * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
-	 * to learn more.
+	 * Alternative text that describes the image for accessibility.
 	 *
-	 * @default `''`
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
+	 * Provides a text description of the image for users with assistive technology
+	 * and serves as a fallback when the image fails to load. A well-written description
+	 * enables people with visual impairments to understand non-text content.
+	 *
+	 * When a screen reader encounters an image, it reads this description aloud.
+	 * When an image fails to load, this text displays on screen, helping all users
+	 * understand what content was intended.
+	 *
+	 * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4)
+	 * and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
+	 *
+	 * @default ''
 	 */
 	alt?: string;
 	/**
-	 * A set of media conditions and their corresponding sizes.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+	 * A set of media conditions and their corresponding sizes. Learn more about the [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
 	 */
 	sizes?: string;
 	/**
 	 * The image source (either a remote URL or a local file resource).
 	 *
-	 * When the image is loading or no `src` is provided, a placeholder will be rendered.
-	 *
-	 * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-	 * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+	 * When the image is loading or no `src` is provided, a placeholder is rendered.
+	 * Learn more about the [src attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
 	 */
 	src?: string;
 	/**
-	 * A set of image sources and their width or pixel density descriptors.
-	 *
-	 * This overrides the `src` property.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+	 * A set of image sources and their width or pixel density descriptors. Learn more about the [srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset). This overrides the `src` property.
 	 */
 	srcSet?: string;
 }
+/**
+ * The shared properties for the image component. An image displays pictures with configurable sizing, loading behavior, and borders.
+ */
 interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
+	 * Sets the semantic meaning of the image content. When set,
 	 * the role will be used by assistive technologies to help users
 	 * navigate the page.
 	 *
-	 * @default 'img'
+	 * - `'img'`: Identifies the element as an image that conveys meaningful information to users.
+	 * - `'none'`: Completely hides the element and its content from assistive technologies.
+	 * - `'presentation'`: Removes semantic meaning, making the image purely decorative and ignored by screen readers.
 	 *
-	 * @implementation The `img` role doesn't need to be applied if
-	 * the host applies it for you; for example, an HTML host rendering
-	 * an `<img>` element should not apply the `img` role.
+	 * @default 'img'
 	 */
 	accessibilityRole?: "img" | ExtractStrict<AccessibilityRole, "presentation" | "none">;
 	/**
-	 * The displayed inline width of the image.
+	 * The inline width (horizontal size) of the image.
 	 *
-	 * - `fill`: the image will takes up 100% of the available inline size.
-	 * - `auto`: the image will be displayed at its natural size.
+	 * - `'fill'`: The image takes up 100% of the available inline space.
+	 * - `'auto'`: The image is displayed at its natural size.
+	 *
+	 * Learn more about the [width attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
 	 *
 	 * @default 'fill'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
 	 */
 	inlineSize?: "fill" | "auto";
 	/**
@@ -2628,42 +2698,36 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 	 * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
 	 * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
 	 *
-	 * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
-	 * If the value is set as `0.5`, the getter returns `0.5 / 1`.
+	 * Learn more about the [aspect-ratio property](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).
 	 *
 	 * @default '1/1'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 	 */
 	aspectRatio?: `${number}${optionalSpace}/${optionalSpace}${number}` | `${number}`;
 	/**
-	 * Determines how the content of the image is resized to fit its container.
-	 * The image is positioned in the center of the container.
+	 * How the image should be resized to fit its container. The image is positioned in the center of the container. Learn more about the [object-fit property](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+	 *
+	 * - `'contain'`: Fits the entire image within the container, preserving aspect ratio. May leave empty space.
+	 * - `'cover'`: Fills the container while preserving aspect ratio, cropping the image if needed.
 	 *
 	 * @default 'contain'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
 	 */
 	objectFit?: "contain" | "cover";
 	/**
 	 * Determines the loading behavior of the image:
-	 * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
-	 * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+	 * - `'eager'`: Immediately loads the image, irrespective of its position within the visible viewport.
+	 * - `'lazy'`: Delays loading the image until it approaches a specified distance from the viewport.
+	 *
+	 * Learn more about the [loading attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading).
 	 *
 	 * @default 'eager'
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
 	 */
 	loading?: "eager" | "lazy";
 	/**
-	 * Invoked when load completes successfully.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 * A callback fired when the image loads successfully. Learn more about the [load event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
 	 */
 	onLoad?: (event: Event) => void;
 	/**
-	 * Invoked on load error.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 * A callback fired when the image fails to load. Learn more about the [error event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
 	 */
 	onError?: (event: Event) => void;
 }
@@ -2700,127 +2764,155 @@ interface ListItemProps$1 extends GlobalProps {
 }
 interface MapProps$1 extends GlobalProps, SizingProps {
 	/**
-	 * A valid API key for the map service provider.
-	 *
-	 * The map service provider may require an API key. Without an API key the map could be hidden or render in a limited developer mode.
+	 * A valid API key for the map service provider. This key is required to load and render the map tiles. Obtain a key from a supported provider such as [Google Maps Platform](https://developers.google.com/maps/documentation/javascript/get-api-key).
 	 */
 	apiKey?: string;
 	/**
-	 * Map center’s latitude in degrees.
+	 * The latitude of the map's center point, in degrees. Valid values range from -90 (South Pole) to 90 (North Pole).
 	 *
 	 * @default 0
 	 */
 	latitude?: number;
 	/**
-	 * Map center’s longitude in degrees.
+	 * The longitude of the map's center point, in degrees. Valid values range from -180 (west) to 180 (east).
 	 *
 	 * @default 0
 	 */
 	longitude?: number;
 	/**
-	 * A label that describes the purpose or contents of the map.
-	 *
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
+	 * A label that describes the purpose or contents of the map for accessibility. When set, it will be announced to users using assistive technologies such as screen readers, providing context about what the map displays.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The initial Map zoom level.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
-	 * Larger zoom values correspond to a higher resolution.
+	 * The initial zoom level of the map. Valid values are numbers from 0 (fully zoomed out, world view) to 18 (fully zoomed in, street level).
 	 *
 	 * @default 4
 	 */
 	zoom?: number;
 	/**
-	 * The maximum zoom level which will be displayed on the map.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
+	 * The maximum zoom level the user can reach on the map. Valid values are numbers from 0 (world view) to 18 (street level). Use this to prevent users from zooming in beyond a useful level of detail.
 	 *
 	 * @default 18
 	 */
 	maxZoom?: number;
 	/**
-	 * The minimum zoom level which will be displayed on the map.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
+	 * The minimum zoom level the user can reach on the map. Valid values are numbers from 0 (world view) to 18 (street level). Use this to prevent users from zooming out beyond a useful level of context.
 	 *
 	 * @default 0
 	 */
 	minZoom?: number;
 	/**
-	 * Callback when the viewport bounds have changed or the map is resized.
+	 * A callback fired when the visible map boundaries change, such as after a pan or zoom completes.
 	 */
 	onBoundsChange?: (event: MapBoundsChangeEvent) => void;
 	/**
-	 * Callback when the map view changes.
+	 * A callback fired when the map view changes, such as when the user pans or zooms. Provides the new center location and zoom level.
 	 */
 	onViewChange?: (event: MapViewChangeEvent) => void;
 	/**
-	 * Callback when the user clicks on the map.
+	 * A callback fired when the user clicks on the map. Provides the geographic location of the click.
 	 */
 	onClick?: (event: MapClickEvent) => void;
 	/**
-	 * Callback when the user double-clicks on the map.
+	 * A callback fired when the user double-clicks on the map. Provides the geographic location of the double-click.
 	 */
 	onDblClick?: (event: MapDblClickEvent) => void;
 }
+/**
+ * A geographic coordinate pair representing a location on the map, defined by latitude and longitude values.
+ */
 interface Location$1 {
+	/**
+	 * The latitude of the location in degrees. Valid values range from -90 (South Pole) to 90 (North Pole).
+	 */
 	latitude?: number;
+	/**
+	 * The longitude of the location in degrees. Valid values range from -180 (west) to 180 (east).
+	 */
 	longitude?: number;
 }
+/**
+ * The geographic boundaries of a visible map area, defined by its north-east and south-west corners. Used by `MapBoundsChangeEvent` to report the currently visible map region.
+ */
 export interface Bounds {
+	/**
+	 * The north-east corner of the bounded area, representing the top-right of the visible map region.
+	 */
 	northEast?: Location$1;
+	/**
+	 * The south-west corner of the bounded area, representing the bottom-left of the visible map region.
+	 */
 	southWest?: Location$1;
 }
+/**
+ * The event data provided when the map view changes, such as after the user pans or zooms. Contains the new center location and zoom level.
+ */
 export interface MapViewChangeEvent extends Event {
+	/**
+	 * The geographic location of the new map center after the view change.
+	 */
 	location?: Location$1;
+	/**
+	 * The current zoom level of the map after the view change, as a number from 0 (world view) to 18 (street level).
+	 */
 	zoom?: number;
 }
+/**
+ * The event data provided when the visible map boundaries change, such as after a pan or zoom completes. Contains the new geographic bounds of the visible area.
+ */
 export interface MapBoundsChangeEvent extends Event {
+	/**
+	 * The geographic boundaries of the currently visible map area, defined by its north-east and south-west corners.
+	 */
 	bounds?: Bounds;
 }
+/**
+ * The event data provided when the user clicks on the map. Contains the geographic location of the click.
+ */
 export interface MapClickEvent extends Event {
+	/**
+	 * The geographic location on the map where the click occurred, as a latitude/longitude coordinate pair.
+	 */
 	location?: Location$1;
 }
+/**
+ * The event data provided when the user double-clicks on the map. Contains the geographic location of the double-click.
+ */
 export interface MapDblClickEvent extends Event {
+	/**
+	 * The geographic location on the map where the double-click occurred, as a latitude/longitude coordinate pair.
+	 */
 	location?: Location$1;
 }
 interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingProps, "blockSize" | "inlineSize"> {
 	/**
-	 * Marker’s location latitude in degrees.
+	 * The latitude of the marker’s position in degrees. Valid values range from -90 (South Pole) to 90 (North Pole).
 	 *
 	 * @default 0
 	 */
 	latitude?: number;
 	/**
-	 * Marker’s longitude latitude in degrees.
+	 * The longitude of the marker’s position in degrees. Valid values range from -180 (west) to 180 (east).
 	 *
 	 * @default 0
 	 */
 	longitude?: number;
 	/**
-	 * A label that describes the purpose of the marker. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
+	 * A label that describes the purpose or location of the marker for accessibility. When set, it will be announced to users using assistive technologies such as screen readers, providing context about what the marker represents.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Allows grouping the marker in clusters when zoomed out.
+	 * Whether the marker can be grouped into clusters when the map is zoomed out. Clustering helps reduce visual clutter when many markers are close together at low zoom levels.
 	 *
 	 * @default false
 	 */
 	clusterable?: boolean;
 	/**
-	 * The graphic to use as the marker.
-	 *
-	 * If unset, it will default to the provider’s default marker.
+	 * A custom graphic element to use as the marker. If not provided, the map provider’s default marker pin is displayed.
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * Callback when a marker is clicked.
-	 *
-	 * It does not trigger a click event on the map itself.
+	 * A callback fired when the user clicks on the marker. This event does not propagate to the parent map — only the marker receives the click.
 	 */
 	onClick?: (event: Event) => void;
 }
@@ -2919,22 +3011,24 @@ export type ParagraphType =
 interface PasswordFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<PasswordAutocompleteField> {
 }
 export type PasswordAutocompleteField = ExtractStrict<AnyAutocompleteField, "new-password" | "current-password">;
+/**
+ * The shared properties for the payment icon component. A payment icon displays a recognizable icon for a payment method, such as Visa, Mastercard, or PayPal.
+ */
 interface PaymentIconProps$1 extends GlobalProps {
 	/**
-	 * The icon type of the payment method
+	 * The payment method to display. Specify a payment method name from the available set (for example, `'visa'`, `'mastercard'`, or `'paypal'`), or use an empty string to show no icon.
 	 *
 	 * @default ''
 	 */
 	type?: PaymentIconName | AnyString;
 	/**
-	 * A label that describes the purpose or contents of the icon.
-	 *
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
-	 * This should only be used if the icon requires an alternative internationalised label
-	 * or if it is otherwise inappropriate to make use of the default label included with the icon.
+	 * A label that describes the payment icon for accessibility. When set, it will be announced to users using assistive technologies such as screen readers, providing context about which payment method the icon represents.
 	 */
 	accessibilityLabel?: string;
 }
+/**
+ * The recognized payment method identifiers used by the `PaymentIcon` component. Each value maps to a branded icon for a specific payment provider, card network, digital wallet, or buy-now-pay-later service. Pass one of these names as the `type` property of `PaymentIcon` to display the corresponding icon — for example, `"visa"`, `"apple-pay"`, or `"afterpay"`.
+ */
 export type PaymentIconName = "abn" | "acima-leasing" | "acuotaz" | "ada" | "addi" | "adyen" | "aeropay" | "affin-bank" | "affirm" | "aftee" | "afterpay-paynl-version" | "afterpay" | "airtel-money" | "airteltigo-mobile-money" | "aktia" | "akulaku-paylater" | "akulaku" | "alandsbanken" | "alfamart" | "alfamidi" | "alipay-hk" | "alipay-paynl-version" | "alipay" | "alliance-bank" | "alma" | "aman" | "amazon" | "ambank" | "american-express" | "amex" | "ansa-stored-value" | "ansa" | "anyday" | "apecoin" | "aplazo" | "apple-pay" | "aqsat" | "arbitrum" | "arhaus" | "arvato" | "ashley-plcc" | "ask" | "astrapay" | "atm-bersama" | "atobaraidotcom" | "atome" | "atone" | "atrato" | "au-kantan-kessai" | "au-pay" | "authorize-net" | "avalanche" | "axs" | "bancnet" | "banco-azteca" | "bancomat" | "bancontact" | "bangkok-bank" | "bank-islam" | "bank-muamalat" | "bank-rakyat" | "barclays" | "base" | "bbva-cie" | "bc-card" | "bca-klikpay" | "bca" | "bdo" | "belfius" | "benefit" | "best-buy-card" | "biercheque-paynl-version" | "bigc" | "billease" | "biller-paynl-version" | "billie" | "billink-method" | "billink" | "bitcoin-cash" | "bitcoin" | "bizum" | "blik" | "bnbchain" | "bni" | "bnp" | "bogus-app-coin" | "bogus" | "boleto" | "boodil" | "boost" | "bpi" | "braintree" | "bread-pay" | "bread" | "bri-direct-debit" | "bri" | "brimo" | "bsi" | "bsn" | "bss" | "busd" | "careem-pay" | "cartes-bancaires" | "cash-app-pay" | "cash" | "cashew" | "cashinvoice-latin-america" | "catch-payments" | "cebuana" | "cembrapay" | "centi" | "cetelem" | "checkout-finance" | "chinabank" | "cimb-clicks" | "cimb" | "circle-k" | "citadele" | "citi-pay" | "clave-telered" | "clearpay" | "clerq" | "cleverpay" | "clip" | "cliq" | "codensa" | "coinsph" | "collector-bank" | "coop" | "coppel-pay" | "credit-agricole" | "credit-key" | "creditclick-paynl-version" | "credix" | "cuotas" | "d-barai" | "dai" | "daily-yamazaki" | "dan-dan" | "dana" | "danamon-online" | "dankort" | "danske-bank" | "dappmx" | "dash" | "daviplata" | "de-cadeaukaart" | "depay" | "deutsche-bank" | "dinacard" | "diners-club" | "direct-bank-transfer-latin-america" | "directa24" | "directpay" | "discover" | "divido" | "dnb" | "docomo-barai" | "dogecoin" | "dropp" | "duitnow" | "duologi" | "dwolla" | "easywallet" | "ebucks" | "echelon-financing" | "ecpay" | "edenred" | "efecty" | "eft-secure" | "eftpos-au" | "eghl" | "elo" | "elv" | "empty" | "enets" | "eos" | "epayments" | "epospay" | "eps" | "erste" | "escrowcom" | "esr-paymentslip-switzerland" | "ethereum" | "etihad-guest-pay" | "etika" | "ewallet-indonesia" | "ewallet-philippines" | "ewallet-southkorea" | "facebook-pay" | "fairstone-payments" | "fam" | "familymart" | "fantom" | "farmlands" | "fashion-giftcard-paynlversion" | "fashioncheque" | "favepay" | "fawry" | "finloup" | "fintecture" | "fintoc" | "flexiti" | "float-payments" | "flying-blue-plus" | "forbrugsforeningen" | "forsa" | "fortiva" | "fps" | "fpx" | "freecharge" | "freedompay" | "futurepay-mytab" | "gcash" | "generalfinancing" | "generic" | "genoapay" | "gezondheidsbon-paynl-version" | "giftcard" | "giropay" | "givacard" | "glbe-paypal" | "glbe-plus" | "gmo-atokara" | "gmo-bank-transfer" | "gmo-postpay" | "gmo-virtualaccount" | "gnosis" | "google-pay" | "google-wallet" | "gopay" | "grabpay" | "grailpay" | "gusd" | "hana-card" | "handelsbanken" | "happy-pay" | "hello-clever" | "heylight" | "hitrustpay-transfer" | "home-credit" | "hong-leong-bank" | "hong-leong-connect" | "hsbc" | "huis-tuin-cadeau" | "humm" | "hyper" | "hypercard" | "hypercash" | "hyundai-card" | "ibexpay" | "ideal" | "in3-via-ideal" | "in3" | "inbank" | "indomaret" | "ing-homepay" | "interac" | "ivy" | "iwocapay-pay-later" | "jcb" | "jenius" | "jko" | "jousto" | "kakao-pay" | "kakebaraidotcom" | "kasikornbank" | "kasssh" | "katapult" | "kb-card" | "kbc-cbc" | "kcp-credit-card" | "kfast" | "khqr" | "klarna-pay-later" | "klarna-pay-now" | "klarna-slice-it" | "klarna" | "knaken-settle" | "knet" | "koalafi" | "koin" | "krediidipank" | "kredivo" | "krungsri" | "krungthai-bank" | "kueski-pay" | "kunst-en-cultuur-cadeaukaart" | "kuwait-finance-house" | "land-bank" | "laser" | "latitude-creditline-au" | "latitude-gem-au" | "latitude-gem-nz" | "latitude-go-au" | "latitudepay" | "lawson" | "laybuy-heart" | "laybuy" | "lbc" | "lhv" | "line-pay" | "linkaja" | "linkpay" | "litecoin" | "lku" | "lloyds" | "lotte-card" | "lpb" | "luminor" | "lunch-check" | "lydia" | "mach" | "mada" | "maestro" | "mandiri" | "mash" | "master" | "mastercard" | "masterpass" | "maxima" | "maya-bank" | "maya" | "maybank-qrpay" | "maybank" | "maybankm2u" | "mb-way" | "mb" | "mcash" | "medicinos-bankas" | "meeza" | "mercado-credito" | "mercado-pago" | "merpay" | "meta-pay" | "metro-bank" | "military-starcard" | "minicuotas" | "ministop" | "mobicred" | "mobikwik" | "mobilepay" | "mode" | "mokka" | "momopay" | "mondido" | "monero" | "monzo" | "mpesa" | "mtn-mobile-money" | "multisafepay" | "mybank" | "myfatoorah" | "n26" | "naps" | "nationale-bioscoopbon" | "nationale-entertainmentcard" | "natwest" | "naver-pay" | "nelo" | "nequi" | "netbanking" | "neteller" | "nh-card" | "nordea" | "notyd" | "novuna" | "npatobarai" | "npkakebarai" | "oca" | "ocbc-bank" | "octo-clicks" | "octopus" | "offline-bank-transfer-latin-america" | "ola-money" | "omannet" | "omasp" | "oney" | "online-banking" | "online-banktransfer" | "op" | "opay" | "openpay" | "optimism" | "orange-mobile-money" | "overstock-citicobrand" | "overstock-citiplcc" | "ovo" | "oxxo" | "ozow" | "pagoefectivo" | "paid" | "paidy" | "palawa" | "palawan" | "pastpay" | "pay-after-delivery-instalments" | "pay-by-bank-us" | "pay-by-bank" | "pay-easy" | "pay-pay" | "paybylink" | "paycash" | "payco" | "payconiq" | "payd" | "payfast-instant-eft" | "payflex" | "payid" | "payitmonthly" | "payjustnow" | "paymark-online-eftpos" | "paymaya" | "payme" | "paynow-mbank" | "paynow" | "payoo-qr" | "payoo" | "paypal" | "payplan" | "paypo" | "payrexx-bank-transfer" | "payright" | "paysafecard-paynl-version" | "paysafecard" | "paysafecash" | "paysera" | "paysquad" | "paytm" | "payto" | "paytomorrow" | "payu" | "payzapp" | "pei" | "perlasfinance" | "permata" | "pf-pay" | "pivo" | "pix" | "podium-cadeaukaart" | "pointspay" | "poli" | "polygon" | "poppankki" | "postfinance-card" | "postfinance-efinance" | "postpay" | "powered-by-ansa-stored-value" | "powered-by-ansa" | "powerpay" | "pps" | "prepaysolutions" | "progressive-leasing" | "przelew24" | "przelewy24-paynl-version" | "przelewy24" | "pse" | "public-bank" | "publicbank-pbe" | "qasitli" | "qliro" | "qr-promptpay" | "qris" | "qrph" | "rabbit-line-pay" | "rabobank" | "rakuten-pay" | "rapid-transfer" | "ratepay" | "raty-pekao" | "rcbc" | "rcs" | "reka" | "resolve-pay" | "revolut" | "rhb-bank" | "rhb-now" | "rietumu" | "riverty-paynl-version" | "riverty" | "rupay" | "saastopankki" | "sadad" | "sam" | "samsung-card" | "samsung-pay" | "santander" | "satisfi" | "satispay" | "sbpl" | "scalapay" | "scream-truck-wallet" | "scream-truck" | "seb" | "seicomart" | "sepa-bank-transfer" | "sepa-direct-debit" | "sequra" | "seven-eleven" | "sezzle" | "shib" | "shinhan-card" | "shop-pay" | "shopeepay" | "shopify-pay" | "siam-commercial" | "siauliu-bankas" | "siirto" | "sika-fsa" | "sika-hsa" | "sika" | "simpl" | "simple-pay" | "sinpe-movil" | "sistecredito" | "skeps" | "skrill-digital-wallet" | "slice-fnbo" | "smartpay" | "snap-checkout" | "snapmint" | "societe-generale" | "sofort" | "softbank" | "solana-pay-helio" | "solana-pay" | "solana" | "souhoola" | "spankki" | "sparkasse" | "spei" | "splitit" | "spotii" | "spraypay" | "standard-chartered" | "stc-pay" | "stoov" | "store-credit" | "stripe" | "sunkus" | "super-payments" | "svea-b2b-faktura" | "svea-b2b-invoice" | "svea-checkout" | "svea-credit-account" | "svea-delbetalning" | "svea-faktura" | "svea-invoice" | "svea-lasku" | "svea-ostukonto" | "svea-part-payment" | "svea-yrityslasku" | "sveaeramaksu" | "swedbank" | "swiftpay" | "swish" | "swissbilling" | "sympl" | "synchrony-pay" | "synchrony" | "tabby" | "tabit" | "taly" | "tamara" | "tandympayment" | "tasa-cero" | "tbi-bank" | "tcf" | "tendopay" | "tensile" | "tesco-lotus" | "thanachart-bank" | "timepayment" | "tiptop" | "todopay" | "toss" | "touch-n-go" | "tpay" | "trevipay" | "truelayer" | "truemoney-pay" | "trustly" | "twig-pay" | "twint" | "twoinvoice" | "uae-visa" | "uangme" | "ubp" | "underpay" | "unionpay" | "unipay" | "uob-ez-pay" | "uob-thai" | "uob" | "upi" | "urbo" | "urpay" | "usdc" | "usdp" | "v-pay" | "valu" | "venmo" | "ventipay" | "venus-plcc" | "viabill" | "vipps" | "visa-electron" | "visa" | "volksbank" | "volt" | "vvv-cadeaukaart-paynl-version" | "vvv-giftcard" | "waave-pay-by-bank" | "wallet" | "walley" | "wbtc" | "webshop-giftcard" | "wechat-pay" | "wechat-paynl-version" | "wegetfinancing" | "whish-checkout" | "whish-pay" | "wise" | "wissel" | "world-chain" | "xrp" | "yape" | "yappy" | "ymobile" | "younited-pay" | "zalopay" | "zapper" | "zingala" | "zinia" | "zip" | "zoodpay" | "zulily-credit-card" | "zustaina";
 interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ToggleEventProps, SizingProps {
 	/**
@@ -2958,27 +3052,30 @@ interface PressButtonProps$1 extends GlobalProps, Pick<ButtonProps$1, "accessibi
 	 */
 	defaultPressed?: boolean;
 }
+/**
+ * The shared properties for the product thumbnail component. A product thumbnail displays a small preview image representing a product. Properties include `src` for the image URL, `alt` for accessibility text, `size` for controlling the thumbnail dimensions, and `totalItems` for displaying a quantity badge.
+ */
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
-	 * Decorates the product thumbnail with the quantity of the product.
+	 * The total number of items that the product thumbnail represents. When this value exceeds 1, the component displays a badge showing the count, useful for representing bundled products or quantities.
 	 */
 	totalItems?: number;
 	/**
-	 * Adjusts the size the product thumbnail image.
+	 * The size of the product thumbnail image.
+	 *
+	 * - `'base'`: Default size that works well in most contexts.
+	 * - `'small'`: Small thumbnail, good for secondary contexts or tight layouts.
+	 * - `'small-100'`: Extra small thumbnail for compact displays or dense lists.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
 	/**
-	 * Invoked when load of provided image completes successfully.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 * A callback fired when the product thumbnail image loads successfully. Learn more about the [load event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
 	 */
 	onLoad?: (event: Event) => void;
 	/**
-	 * Invoked on load error of provided image.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 * A callback fired when the product thumbnail image fails to load. Learn more about the [error event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
 	 */
 	onError?: (event: Event) => void;
 }
@@ -3022,48 +3119,44 @@ interface ProgressProps$1 extends GlobalProps {
 	 */
 	max?: number;
 }
+/**
+ * The shared properties for the QR code component. A QR code generates and displays a scannable matrix barcode from a given string. Properties include `content` for the data to encode, `size` for display dimensions, `border` for visual framing, and `logo` for branding.
+ */
 interface QRCodeProps$1 extends GlobalProps {
 	/**
-	 * Set the border of the QR code.
+	 * Whether to display a border around the QR code.
 	 *
-	 * `base`: applies border that is appropriate for the element.
-	 * `none`: removes the border from the element.
+	 * - `'base'`: Applies a standard border to frame the QR code.
+	 * - `'none'`: Removes the border for seamless integration with the surrounding layout.
 	 *
 	 * @default 'base'
 	 */
 	border?: "base" | "none";
 	/**
-	 * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
-	 * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
-	 * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+	 * The content to be encoded in the QR code, such as a URL, email address, or plain text. When scanned, the user's device will process this content — typically by opening a URL in a browser or prompting an action based on the content type.
 	 */
 	content?: string;
 	/**
 	 * The displayed size of the QR code.
 	 *
-	 * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
-	 * `base`: the QR code will be displayed at its default size.
+	 * - `'base'`: The QR code is displayed at its default fixed size.
+	 * - `'fill'`: The QR code takes up 100% of the available inline size, useful for responsive layouts.
 	 *
 	 * @default 'base'
 	 */
 	size?: "base" | "fill";
 	/**
-	 * A label that describes the purpose or contents of the QR code. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide more context about what the QR code may do when scanned.
+	 * A label that describes the purpose or contents of the QR code for accessibility. When set, it will be announced to users using assistive technologies such as screen readers.
 	 *
 	 * @default 'QR code' (translated to the user's locale)
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Invoked when the conversion of `content` to a QR code fails.
-	 * If an error occurs, the QR code and its child elements will not be displayed.
+	 * A callback fired when the conversion of `content` to a QR code fails. This can happen when the content is too long or contains unsupported characters.
 	 */
 	onError?: (event: Event) => void;
 	/**
-	 * URL of an image to be displayed in the center of the QR code.
-	 * This is useful for branding or to indicate to the user what scanning the QR code will do.
-	 * By default, no image is displayed.
+	 * The URL of an image to display in the center of the QR code, typically used for branding. The image should be small enough not to interfere with the QR code's scannability.
 	 */
 	logo?: string;
 }

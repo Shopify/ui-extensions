@@ -1,5 +1,8 @@
 import {BaseElementPropsWithChildren, IdProps, SizeKeyword} from './shared';
 
+/**
+ * An event listener typed to a specific HTML element, with a strongly typed `currentTarget`.
+ */
 export type CallbackEventListener<
   TTagName extends keyof HTMLElementTagNameMap,
   TEvent extends Event = Event,
@@ -9,21 +12,28 @@ export type CallbackEventListener<
     })
   | null;
 
+/**
+ * The properties for the avatar component. An avatar displays a user or entity image with fallback initials when the image isn't available. Properties include `src` for the image URL, `initials` for the fallback text, `alt` for accessibility text, and `size` for controlling the avatar dimensions.
+ */
 export interface AvatarElementProps extends IdProps {
   /**
-   * Initials to display in the avatar.
-   *
-   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly.
+   * The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials, such as "JD" for John Doe.
    */
   initials?: string;
 
   /**
-   * The URL or path to the image.
+   * The URL or path to the avatar image. When provided, the image takes priority over `initials`. If the image fails to load or loads slowly, `initials` will be rendered as a fallback.
    */
   src?: string;
 
   /**
-   * Size of the avatar.
+   * The size of the avatar image.
+   *
+   * - `'small'`: Small avatar, good for secondary contexts or tight layouts.
+   * - `'large'`: Large avatar for emphasis or when the avatar is a focal point.
+   * - `'base'`: Default size that works well in most contexts.
+   * - `'small-200'`: Extra small avatar, suitable for compact displays or lists with many items.
+   * - `'large-200'`: Extra large avatar for prominent display.
    *
    * @default 'base'
    */
@@ -33,28 +43,40 @@ export interface AvatarElementProps extends IdProps {
   >;
 
   /**
-   * An alternative text description that describe the image for the reader
-   * to understand what it is about or identify the user the avatar belongs to.
+   * Alternative text that describes the avatar for accessibility.
+   *
+   * Provides a text description of the avatar for users with assistive technology
+   * and serves as a fallback when the avatar fails to load. A well-written description
+   * enables people with visual impairments to understand non-text content.
+   *
+   * When a screen reader encounters an avatar, it reads this description aloud.
+   * When an avatar fails to load, this text displays on screen, helping all users
+   * understand what content was intended.
+   *
+   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4)
+   * and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
    */
   alt?: string;
 }
 
+/**
+ * The event handlers for the avatar component.
+ */
 export interface AvatarElementEvents {
   /**
-   * Invoked when load of provided image completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   * A callback that's fired when the avatar image has loaded successfully.
    */
   onLoad?(event: Event): void;
 
   /**
-   * Invoked on load error of provided image.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   * A callback that's fired when the avatar image fails to load.
    */
   onError?(event: Event): void;
 }
 
+/**
+ * The HTML element interface for the `s-avatar` custom element.
+ */
 export interface AvatarElement
   extends AvatarElementProps,
     Omit<HTMLElement, 'id'> {
@@ -62,18 +84,24 @@ export interface AvatarElement
   onerror: AvatarElementEvents['onError'];
 }
 
+/**
+ * The event listeners for the `s-avatar` custom element.
+ */
 export interface AvatarEvents {
   /**
-   * Callback when the image loads successfully.
+   * A callback that's fired when the avatar image has loaded successfully.
    */
   load?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 
   /**
-   * Callback when the image fails to load.
+   * A callback that's fired when the avatar image fails to load.
    */
   error?: ((event: CallbackEventListener<typeof tagName>) => void) | null;
 }
 
+/**
+ * The properties for the avatar component when it's used in JSX.
+ */
 export type AvatarProps = AvatarElementProps & AvatarElementEvents;
 
 declare global {
