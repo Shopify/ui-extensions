@@ -14,22 +14,23 @@ export type ApiVersion =
   | 'unstable'
   | '2025-07'
   | '2025-10'
-  | '2026-01';
+  | '2026-01'
+  | '2026-04';
 
 /**
  * The capabilities an extension has access to.
  *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+ * * `api_access`: The extension can access the Storefront API.
  *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
+ * * `network_access`: The extension can make external network calls.
  *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+ * * `block_progress`: The extension can block a buyer's progress and the merchant has allowed this blocking behavior.
  *
- * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+ * * `collect_buyer_consent.sms_marketing`: The extension can collect buyer consent for SMS marketing.
  *
- * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
+ * * `collect_buyer_consent.customer_privacy`: The extension can register buyer consent decisions that will be honored on Shopify-managed services.
  *
- * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
+ * * `iframe.sources`: The extension can embed an external URL in an iframe.
  */
 
 export type Capability =
@@ -849,9 +850,12 @@ export type CountryCode =
   | 'ZW'
   | 'ZZ';
 
+/**
+ * A buyer's country, identified by its ISO country code.
+ */
 export interface Country {
   /**
-   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
    *
    * @example 'CA' for Canada, 'US' for United States.
    */
@@ -902,7 +906,7 @@ export type LocalizedFieldKey =
   | 'TAX_EMAIL_IT';
 
 /**
- * Union of supported storefront API versions
+ * The supported Storefront API versions. Pass one of these values to `query()` to target a specific API version when querying the Storefront GraphQL API.
  */
 export type StorefrontApiVersion =
   | '2022-04'
@@ -921,9 +925,12 @@ export type StorefrontApiVersion =
   | '2025-07'
   | '2025-10';
 
+/**
+ * A buyer's country, identified by its ISO country code.
+ */
 export interface Country {
   /**
-   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
    *
    * @example 'CA' for Canada, 'US' for United States.
    */
@@ -931,12 +938,24 @@ export interface Country {
 }
 
 /**
- * GraphQL error returned by the Shopify Storefront APIs.
+ * An error returned by the Storefront GraphQL API. Contains a human-readable `message` and an `extensions` object with the request ID and error code for debugging.
  */
 export interface GraphQLError {
+  /**
+   * A human-readable description of the error.
+   */
   message: string;
+  /**
+   * Additional error metadata including the request ID and error code.
+   */
   extensions: {
+    /**
+     * The unique identifier for the API request, useful for debugging with Shopify support.
+     */
     requestId: string;
+    /**
+     * A machine-readable error code identifying the type of error.
+     */
     code: string;
   };
 }
@@ -946,11 +965,46 @@ export interface GraphQLError {
  */
 export interface ReadonlySignalLike<T> {
   /**
-   * The current value of the locale string in IETF format. For example, `"en-US"`, `"fr-CA"`, or `"de-DE"`. This property provides immediate access to the current locale without requiring subscription setup. Use for one-time locale checks or initial internationalization setup.
+   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.
    */
   readonly value: T;
   /**
-   * Subscribes to locale changes and calls the provided function whenever the locale updates. Returns an unsubscribe function to clean up the subscription. Use to automatically update your extension content when merchants change their language settings during POS sessions.
+   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.
    */
   subscribe(fn: (value: T) => void): () => void;
 }
+
+/**
+ * A result type that indicates the success or failure of an operation.
+ */
+type Result<T> =
+  | {success: true; value: T}
+  | {success: false; errors: ValidationError[]};
+
+/**
+ * A validation error object that is returned when an operation fails.
+ */
+interface ValidationError {
+  type: 'error';
+  /**
+   * A message describing the error.
+   */
+  message: string;
+  /**
+   * A code identifier for the error.
+   */
+  code: string;
+  /**
+   * Field-level validation issues
+   */
+  issues?: {
+    message: string;
+    path: string[];
+  }[];
+}
+
+/**
+ * A function that updates a signal and returns a result indicating success or failure.
+ * The function is typically used along with a `ReadonlySignalLike` object.
+ */
+export type UpdateSignalFunction<T> = (value: T) => Result<T>;

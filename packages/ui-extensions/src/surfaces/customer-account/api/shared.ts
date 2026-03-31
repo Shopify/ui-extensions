@@ -26,14 +26,7 @@ export {
 };
 
 /**
- * A key-value storage object for extension targets.
- *
- * Stored data is only available to this specific app
- * but can be shared across multiple extension targets.
- *
- * The storage backend is implemented with `localStorage` and
- * should persist for ... days
- * However, data persistence isn't guaranteed.
+ * Key-value storage that persists across customer sessions for this extension target. Stored data is scoped to your app and can be shared across multiple extension targets. Data persistence isn't guaranteed.
  */
 export interface Storage {
   /**
@@ -59,6 +52,9 @@ export interface Storage {
   delete(key: string): Promise<void>;
 }
 
+/**
+ * The buyer's language, represented as a [BCP-47 standard](https://en.wikipedia.org/wiki/IETF_language_tag) language tag.
+ */
 export interface Language {
   /**
    * The [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag that identifies the language. This is a standardized code that may include a base language and an optional region subtag separated by a dash. For example, `'en'` represents English and `'en-US'` represents English as used in the United States. The region subtag follows the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard.
@@ -69,11 +65,11 @@ export interface Language {
 }
 
 /**
- * This defines the i18n.translate() signature.
+ * Translates a key from your extension's locale files into a localized string.
  */
 export interface I18nTranslate {
   /**
-   * This returns a translated string matching a key in a locale file.
+   * Translates a key from your extension's locale files into a localized string. Returns a single string when all replacements are primitives, or an array of elements when replacements include UI components.
    *
    * @example translate("banner.title")
    */
@@ -85,6 +81,9 @@ export interface I18nTranslate {
     : (string | ReplacementType)[];
 }
 
+/**
+ * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Use this alongside `localization` to build fully localized extensions.
+ */
 export interface I18n {
   /**
    * Returns a localized number.
@@ -113,14 +112,7 @@ export interface I18n {
   ) => string;
 
   /**
-   * Returns a localized date value.
-   *
-   * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
-   * the buyer's locale by default. Formatting options can be passed in as
-   * options.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
+   * Returns a localized date value. This function behaves like the standard [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) and uses the buyer's locale by default.
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */
@@ -142,7 +134,7 @@ export interface I18n {
 }
 
 /**
- * Meta information about an extension target.
+ * Metadata about the running extension, including its target, API version, capabilities, and editor context.
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -156,9 +148,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * The allowed capabilities of the extension, defined
    * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration) file.
    *
-   * * [`api_access`](/docs/api/customer-account-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+   * * [`api_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access): the extension can access the Storefront API.
    *
-   * * [`network_access`](/docs/api/customer-account-ui-extensions/configuration#network-access): the extension can make external network calls.
+   * * [`network_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#network-access): the extension can make external network calls.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
@@ -173,8 +165,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * Whether your extension is currently rendered to the screen.
    *
    * Shopify might render your extension before it's visible in the UI,
-   * typically to pre-render extensions that will appear on a later step of the
-   * checkout.
+   * typically to pre-render extensions that will appear on a later page.
    *
    * Your extension might also continue to run after the buyer has navigated away
    * from where it was rendered. The extension continues running so that
@@ -190,11 +181,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The identifier that specifies where in Shopify’s UI your code is being
    * injected. This will be one of the targets you have included in your
-   * extension’s configuration file.
+   * extension’s configuration file. For available targets, see the [extension targets overview](/docs/api/customer-account-ui-extensions/{API_VERSION}/extension-targets-overview). For configuration details, see [targets](/docs/apps/app-extensions/configuration#targets).
    *
    * @example 'customer-account.order-status.block.render'
-   * @see /docs/api/customer-account-ui-extensions/extension-targets-overview
-   * @see /docs/apps/app-extensions/configuration#targets
    */
   target: Target;
 
@@ -208,6 +197,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   version?: string;
 }
 
+/**
+ * Information about the editor where the extension is being rendered.
+ */
 export interface Editor {
   /**
    * Indicates whether the extension is rendering in the checkout editor.
@@ -381,34 +373,40 @@ export interface CompanyLocation {
   id: string;
 }
 
+/**
+ * Authenticates requests between your extension and your app backend by providing signed JWTs.
+ */
 export interface SessionToken {
   /**
    * Requests a session token that hasn't expired. You should call this method every
-   * time you need to make a request to your backend in order to get a valid token.
+   * time you need to make a request to your backend to get a valid token.
    * This method will return cached tokens when possible, so you don’t need to worry
    * about storing these tokens yourself.
    */
   get(): Promise<string>;
 }
 
+/**
+ * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels).
+ */
 export interface Analytics {
   /**
-   * Publish method to emit analytics events to [Web Pixels](/docs/apps/marketing).
+   * Emits analytics events to [web pixels](/docs/apps/build/marketing-analytics/pixels).
    */
   publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
   /**
-   * A method for capturing details about a visitor on the online store.
+   * Submits visitor contact information for marketing attribution and analytics.
    */
   visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
 }
 /**
- * Represents a visitor result.
+ * The result of a `visitor()` call, indicating whether the visitor information was accepted or rejected.
  */
 export type VisitorResult = VisitorSuccess | VisitorError;
 
 /**
- * Represents a successful visitor result.
+ * Returned when visitor information was validated and submitted successfully.
  */
 export interface VisitorSuccess {
   /**
@@ -418,7 +416,7 @@ export interface VisitorSuccess {
 }
 
 /**
- * Represents an unsuccessful visitor result.
+ * Returned when visitor information is invalid and wasn't submitted.
  */
 export interface VisitorError {
   /**
@@ -605,9 +603,25 @@ export interface TrackingConsentChangeResultError {
   message: string;
 }
 
+/**
+ * The result returned after a toast is displayed, providing a method to dismiss it.
+ *
+ * @hidden
+ */
 export interface ToastApiResult {
+  /**
+   * Dismisses the toast message from the screen.
+   *
+   * @hidden
+   */
   hide: () => void;
 }
+/**
+ * Displays brief, non-blocking messages at the bottom of the page to confirm actions or report errors.
+ */
 export interface ToastApi {
+  /**
+   * Displays a toast message with the specified content. Returns a promise that resolves with a `ToastApiResult` containing a method to dismiss the toast.
+   */
   show: (content: string) => Promise<ToastApiResult>;
 }
