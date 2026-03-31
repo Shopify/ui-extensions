@@ -12,6 +12,7 @@ import type {ProgressProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,9 +21,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-progress";
+/**
+ * Displays an indicator showing the completion status of a task. Use to visually communicate progress in either determinate (known percentage) or indeterminate (unknown duration) states.
+ * @publicDocs
+ */
 export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
+/** @publicDocs */
 export interface ProgressElement extends ProgressProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

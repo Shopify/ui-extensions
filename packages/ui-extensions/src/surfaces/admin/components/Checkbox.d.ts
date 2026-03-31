@@ -255,6 +255,8 @@ declare class PreactCheckboxElement
 
 /**
  * Properties for rendering a checkbox that supports checked, unchecked, and indeterminate states for complex selection scenarios.
+ *
+ * @publicDocs
  */
 export interface CheckboxProps extends PreactCheckboxProps {
   /**

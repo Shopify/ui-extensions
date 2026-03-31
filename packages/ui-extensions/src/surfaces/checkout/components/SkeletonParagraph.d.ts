@@ -12,6 +12,7 @@ import type {SkeletonParagraphProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,8 +21,13 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-skeleton-paragraph";
+/**
+ * Displays a placeholder representation of text content while it loads. Use to improve perceived performance by showing users where text will appear.
+ * @publicDocs
+ */
 export interface SkeletonParagraphProps extends SkeletonParagraphProps$1 {
 }
+/** @publicDocs */
 export interface SkeletonParagraphElement extends SkeletonParagraphProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

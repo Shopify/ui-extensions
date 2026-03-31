@@ -29,13 +29,14 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
+const generatedDocsDataFileV1 = 'generated_docs_data.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -66,9 +67,7 @@ const copyCheckoutTypesToTemp = async () => {
 
 const cleanupTempFiles = async (tempFiles) => {
   await Promise.all(
-    tempFiles
-      .filter((file) => existsSync(file))
-      .map((file) => fs.rm(file)),
+    tempFiles.filter((file) => existsSync(file)).map((file) => fs.rm(file)),
   );
 };
 
@@ -146,19 +145,30 @@ const generateExtensionsDocs = async () => {
   ]);
 
   // Merge the two generated_docs_data.json files
-  const [refData, compData] = await Promise.all([
+  const [refDataV2, compDataV2, refDataV1, compDataV1] = await Promise.all([
     fs
       .readFile(path.join(tempRefOutputDir, generatedDocsDataFile), 'utf8')
       .then(JSON.parse),
     fs
       .readFile(path.join(tempCompOutputDir, generatedDocsDataFile), 'utf8')
       .then(JSON.parse),
+    fs
+      .readFile(path.join(tempRefOutputDir, generatedDocsDataFileV1), 'utf8')
+      .then(JSON.parse),
+    fs
+      .readFile(path.join(tempCompOutputDir, generatedDocsDataFileV1), 'utf8')
+      .then(JSON.parse),
   ]);
-  const mergedData = [...refData, ...compData].filter(Boolean);
-  await fs.writeFile(
-    path.join(outputDir, generatedDocsDataFile),
-    JSON.stringify(mergedData, null, 2),
-  );
+  await Promise.all([
+    fs.writeFile(
+      path.join(outputDir, generatedDocsDataFile),
+      JSON.stringify({...refDataV2, ...compDataV2}, null, 2),
+    ),
+    fs.writeFile(
+      path.join(outputDir, generatedDocsDataFileV1),
+      JSON.stringify([...refDataV1, ...compDataV1], null, 2),
+    ),
+  ]);
 
   // Clean up temp directories
   await Promise.all([
@@ -173,7 +183,10 @@ const generateExtensionsDocs = async () => {
     path.join(rootPath, 'src/docs/shared'),
   ]);
 
-  const generatedFiles = [path.join(outputDir, generatedDocsDataFile)];
+  const generatedFiles = [
+    path.join(outputDir, generatedDocsDataFile),
+    path.join(outputDir, generatedDocsDataFileV1),
+  ];
   if (generatedStaticPagesFile) {
     generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
   }
@@ -187,7 +200,10 @@ const generateExtensionsDocs = async () => {
 
   // Replace 'unstable' with the exact API version in relative doc links
   await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
+    filePaths: [
+      path.join(outputDir, generatedDocsDataFile),
+      path.join(outputDir, generatedDocsDataFileV1),
+    ],
     searchValue: '/docs/api//unstable/',
     replaceValue: `/docs/api/customer-account-ui-extensions/${EXTENSIONS_API_VERSION}`,
   });
@@ -195,7 +211,7 @@ const generateExtensionsDocs = async () => {
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/customer-account-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
@@ -223,10 +239,16 @@ try {
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
     console.warn(
@@ -237,8 +259,8 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await fs.rm(tempComponentDefs);

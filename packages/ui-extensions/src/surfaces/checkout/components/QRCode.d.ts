@@ -12,6 +12,7 @@ import type {QRCodeProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,25 +30,36 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * A callback event typed to a specific HTML element, with a strongly typed `currentTarget`.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * An event listener typed to a specific HTML element, with a strongly typed `currentTarget`.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-qr-code";
+/**
+ * Displays a scannable QR code representing data such as URLs or text. Use to let users quickly access information by scanning with a smartphone or other device.
+ * @publicDocs
+ */
 export interface QRCodeElementProps extends QRCodeProps$1 {
 }
 /**
  * The event handlers for the QR code component.
+ * @publicDocs
  */
 export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface QRCodeElementEvents {
     /**
      * A callback that's fired when the conversion of `content` to a QR code fails.
@@ -56,12 +68,14 @@ export interface QRCodeElementEvents {
 }
 /**
  * The HTML element interface for the `s-qr-code` custom element.
+ * @publicDocs
  */
 export interface QRCodelement extends QRCodeElementProps, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
 }
 /**
  * The properties for the QR code component when it's used in JSX.
+ * @publicDocs
  */
 export interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }

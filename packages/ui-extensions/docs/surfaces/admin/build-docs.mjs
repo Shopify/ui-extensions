@@ -23,15 +23,14 @@ const srcRelativePath = 'src/surfaces/admin';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
+const worldExists = existsSync(worldPath);
 
-const shopifyDevExists = existsSync(shopifyDevPath);
-
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -120,8 +119,8 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
-/* 
-Using JSX Builder to self-host Preact and Sucrase. 
+/*
+Using JSX Builder to self-host Preact and Sucrase.
 https://github.com/shopify-playground/jsx-builder
 */
 const jsxWrapper = (
@@ -250,8 +249,61 @@ const templates = {
   }),
 };
 
+// Generator outputs v2 format: { [name]: { [filePath]: entry } }. Convert to array for processing.
+const v2ToArray = (v2) =>
+  Object.values(v2).flatMap((byFilePath) => Object.values(byFilePath));
+
+const arrayToV2 = (entries) => {
+  const v2 = {};
+  for (const entry of entries) {
+    const name = entry.name;
+    const filePath = entry.filePath;
+    if (!name || !filePath) continue;
+    if (!v2[name]) v2[name] = {};
+    v2[name][filePath] = entry;
+  }
+  return v2;
+};
+
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+  const outputDir = path.dirname(filePath);
+
+  // Generator outputs v2 (object); convert to array for transform steps
+  if (!Array.isArray(jsonData)) {
+    jsonData = v2ToArray(jsonData);
+  }
+
+  // Merge reference-entity doc pages (e.g. component descriptions) from collect-doc-pages output
+  if (isExtensions) {
+    const docPagesPath = path.join(outputDir, 'doc-pages.json');
+    if (existsSync(docPagesPath)) {
+      const docPages = JSON.parse(
+        (await fs.readFile(docPagesPath, 'utf8')).toString(),
+      );
+      const names = new Set(jsonData.map((e) => e.name));
+      for (const entry of Array.isArray(docPages) ? docPages : []) {
+        if (!entry.name) continue;
+        const {
+          name: _n,
+          members: _m,
+          filePath: _f,
+          syntaxKind: _s,
+          value: _v,
+          ...docFields
+        } = entry;
+        const existingEntries = jsonData.filter((e) => e.name === entry.name);
+        if (existingEntries.length > 0) {
+          existingEntries.forEach((existing) =>
+            Object.assign(existing, docFields),
+          );
+        } else {
+          jsonData.push(entry);
+          names.add(entry.name);
+        }
+      }
+    }
+  }
 
   const iconEntry = jsonData.find(
     (entry) => entry.name === 'Icon' && entry.subSections,
@@ -410,29 +462,41 @@ const transformJson = async (filePath, isExtensions) => {
     }
   });
 
-  // Merge the App Bridge docs with the Shopify Dev docs
-  if (!isExtensions && shopifyDevExists) {
-    const shopifyDevDocs = path.join(
-      shopifyDevDBPath,
-      'app_home/generated_docs_data.json',
+  // Merge the App Bridge docs with the world repo docs
+  if (!isExtensions && worldExists) {
+    const worldDocs = path.join(
+      worldDBPath,
+      'app_home/generated_docs_data_v2.json',
     );
-    const shopifyDevDocsContent = await fs.readFile(shopifyDevDocs, 'utf8');
-    const shopifyDevDocsDocsParsed = JSON.parse(
-      shopifyDevDocsContent.toString(),
-    );
+    const worldDocsContent = await fs.readFile(worldDocs, 'utf8');
+    const worldDocsParsed = JSON.parse(worldDocsContent.toString());
+    const worldDocsArray = Array.isArray(worldDocsParsed)
+      ? worldDocsParsed
+      : v2ToArray(worldDocsParsed);
 
-    const filteredDocs = shopifyDevDocsDocsParsed.filter(
+    const filteredDocs = worldDocsArray.filter(
       (entry) =>
         entry.category !== 'Web components' &&
         entry.category !== 'Polaris web components' &&
         entry.category !== 'Patterns',
     );
 
-    // Combine arrays with shopify dev docs first, followed by new data
+    // Combine arrays with world docs first, followed by new data
     jsonData = [...filteredDocs, ...jsonData];
   }
 
-  await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+  if (isExtensions) {
+    await fs.writeFile(filePath, JSON.stringify(arrayToV2(jsonData), null, 2));
+    const arrayPath = path.join(outputDir, 'generated_docs_data.json');
+    await fs.writeFile(arrayPath, JSON.stringify(jsonData, null, 2));
+    await replaceFileContent({
+      filePaths: arrayPath,
+      searchValue: 'https://shopify.dev',
+      replaceValue: '',
+    });
+  } else {
+    await fs.writeFile(filePath, JSON.stringify(arrayToV2(jsonData), null, 2));
+  }
 };
 
 const generateExtensionsDocs = async () => {
@@ -464,12 +528,22 @@ const generateExtensionsDocs = async () => {
     transformJson: (filePath) => transformJson(filePath, true),
   });
 
-  // Replace 'unstable' with the exact API version in relative doc links
-  await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
-    searchValue: '/docs/api/admin-extensions/unstable/',
-    replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
-  });
+  // Replace 'unstable' with the exact API version in relative doc links (v2 and array)
+  const extensionsOutputDir = path.join(
+    rootPath,
+    `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`,
+  );
+  const replacePaths = [
+    path.join(extensionsOutputDir, 'generated_docs_data_v2.json'),
+    path.join(extensionsOutputDir, 'generated_docs_data.json'),
+  ].filter((filePath) => existsSync(filePath));
+  if (replacePaths.length > 0) {
+    await replaceFileContent({
+      filePaths: replacePaths,
+      searchValue: '/docs/api/admin-extensions/unstable/',
+      replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
+    });
+  }
 };
 
 const generateAppBridgeDocs = async () => {
@@ -502,30 +576,39 @@ try {
   });
   await generateExtensionsDocs();
   await generateAppBridgeDocs();
-  
+
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
     const {execSync} = await import('child_process');
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
-    console.warn('Warning: Failed to generate targets.json:', targetsError.message);
+    console.warn(
+      'Warning: Failed to generate targets.json:',
+      targetsError.message,
+    );
   }
-  
+
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin',
     ),
     {recursive: true},

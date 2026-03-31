@@ -41,6 +41,11 @@ export interface ScannerData {
   current: ReadonlySignalLike<ScannerSubscriptionResult>;
 }
 
+/**
+ * The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.
+ *
+ * @publicDocs
+ */
 export interface ScannerApiContent {
   /**
    * Access current scan data and subscribe to new scan events. Use to receive real-time scan results.

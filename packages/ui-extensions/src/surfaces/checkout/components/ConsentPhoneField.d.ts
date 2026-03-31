@@ -12,6 +12,7 @@ import type {PhoneFieldProps$1, ConsentPhoneFieldProps$1} from './components-sha
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,24 +21,28 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName$1 = "s-phone-field";
+/** @publicDocs */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -45,14 +50,17 @@ export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocom
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 export interface PhoneFieldElement extends PhoneFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 export interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldEvents {
 }
 declare global {
@@ -69,6 +77,10 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
+/**
+ * Display a phone field for customers to sign up for text message marketing, noting that the phone field value will be automatically saved during checkout.
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -76,8 +88,13 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -104,12 +121,17 @@ export interface ConsentPhoneFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps, Omit<ConsentPhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
     onblur: ConsentPhoneFieldEvents['onBlur'];
     onchange: ConsentPhoneFieldEvents['onChange'];
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.
@@ -117,6 +139,7 @@ export interface ConsentPhoneFieldElementSlots {
      */
     accessory?: HTMLElement;
 }
+/** @publicDocs */
 export interface ConsentPhoneFieldProps extends ConsentPhoneFieldElementProps, ConsentPhoneFieldEvents {
 }
 declare global {

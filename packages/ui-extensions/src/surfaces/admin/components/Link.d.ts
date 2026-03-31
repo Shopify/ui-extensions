@@ -62,6 +62,8 @@ export type LinkBaseProps = Required<
 >;
 /**
  * The properties for the link component. These properties define a clickable link that navigates users to different pages or sections with customizable visual styles and semantic meaning.
+ *
+ * @publicDocs
  */
 export interface LinkProps extends LinkBaseProps {
   /**

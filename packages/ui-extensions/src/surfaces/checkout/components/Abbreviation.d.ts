@@ -12,6 +12,7 @@ import type {AbbreviationProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,14 +21,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-abbreviation";
+/**
+ * Displays abbreviated text or acronyms, revealing their full meaning or additional context through a tooltip on hover or focus. Use to clarify shortened terms, initialisms, or technical language without interrupting the reading flow.
+ * @publicDocs
+ */
 export interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
+/** @publicDocs */
 export interface AbbreviationElement extends AbbreviationProps, Omit<HTMLElement, 'id' | 'title'> {
 }
 declare global {

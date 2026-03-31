@@ -70,6 +70,8 @@ export type CallbackExtendableEventListener<
 
 /**
  * The properties for the function settings component. These properties configure the form's identifier for configuring Shopify Function settings in the admin interface.
+ *
+ * @publicDocs
  */
 export interface FunctionSettingsProps
   extends Pick<FunctionSettingsProps$1, 'id'> {}

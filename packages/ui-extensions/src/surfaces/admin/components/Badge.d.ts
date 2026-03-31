@@ -61,6 +61,8 @@ export interface IconProps
 
 /**
  * The properties for the badge component. Badges display status information through compact visual indicators with customizable tones, sizes, and optional icons.
+ *
+ * @publicDocs
  */
 export interface BadgeProps
   extends Pick<BadgeProps$1, 'color' | 'icon' | 'size' | 'tone'> {

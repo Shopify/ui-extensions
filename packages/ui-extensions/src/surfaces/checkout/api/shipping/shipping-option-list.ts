@@ -6,6 +6,7 @@ import type {
   Money,
 } from '../standard/standard';
 
+/** @publicDocs */
 export interface ShippingOptionListApi {
   /**
    * The delivery group list that this extension is attached to. Use this to access all delivery groups and their options. The value is `undefined` when there aren't any delivery groups for the given type.

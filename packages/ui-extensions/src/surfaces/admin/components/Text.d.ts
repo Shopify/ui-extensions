@@ -10,6 +10,8 @@ import type {ComponentChildren, TextProps$1} from './shared.d.ts';
 
 /**
  * The properties for the text component. These properties define inline or small blocks of text content with various visual styles and semantic meanings.
+ *
+ * @publicDocs
  */
 export interface TextProps
   extends Required<

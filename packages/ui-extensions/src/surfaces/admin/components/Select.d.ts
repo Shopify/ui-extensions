@@ -221,6 +221,8 @@ export interface IconProps
 
 /**
  * Properties for rendering a select dropdown that lets users choose one option from a list with optional icon and label customization.
+ *
+ * @publicDocs
  */
 export interface SelectProps
   extends Omit<PreactInputProps, 'value'>,

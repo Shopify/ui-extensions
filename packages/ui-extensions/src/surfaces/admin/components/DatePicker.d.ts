@@ -10,6 +10,8 @@ import type {DatePickerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * The properties for the date picker component. These properties configure a standalone calendar interface for selecting single dates or date ranges, with support for date constraints, day-of-week restrictions, and month/year navigation.
+ *
+ * @publicDocs
  */
 export interface DatePickerProps
   extends Required<

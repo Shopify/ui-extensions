@@ -397,6 +397,43 @@ function getNestedApis(apiName) {
   }
 }
 
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'AuthenticatedAccountApi',
+    'CustomerAccountApi',
+    'CustomerPrivacyApi',
+    'ExtensionApi',
+    'IntentsApi',
+    'LocalizationApi',
+    'NavigationApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'StorageApi',
+    'StorefrontApi',
+    'ToastApi',
+    'VersionApi',
+  ],
+  OrderStatusApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'AuthenticationStateApi',
+    'BuyerIdentityApi',
+    'CartLinesApi',
+    'CheckoutSettingsApi',
+    'CostApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+    'OrderApi',
+    'OrderStatusLocalizationApi',
+    'RequireLoginApi',
+    'ShopApi',
+  ],
+};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -428,16 +465,23 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        // Replace composite with its documented constituents
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        // Add the API itself
+        apisSet.add(apiName);
 
-      // Get nested APIs from this API (recursively)
-      const nestedApis = getNestedApis(apiName);
-      for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        // Get nested APIs from this API (recursively)
+        const nestedApis = getNestedApis(apiName);
+        for (const nestedApi of nestedApis) {
+          apisSet.add(nestedApi);
+          // Recursively get nested APIs of nested APIs
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => apisSet.add(api));
+        }
       }
     }
   }

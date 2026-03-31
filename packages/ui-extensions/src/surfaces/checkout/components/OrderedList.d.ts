@@ -12,6 +12,7 @@ import type {OrderedListProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,14 +21,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-ordered-list";
+/**
+ * The ordered list component displays a numbered list of related items in a specific sequence. Use ordered list to present step-by-step instructions, ranked items, procedures, or any content where order and sequence matter to understanding.
+ *
+ * Ordered lists automatically number items and support nested lists for hierarchical content organization. For items where order doesn't matter, use [unordered list](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/unordered-list).
+ * @publicDocs
+ */
 export interface OrderedListProps extends OrderedListProps$1 {
 }
+/** @publicDocs */
 export interface OrderedListElement extends OrderedListProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

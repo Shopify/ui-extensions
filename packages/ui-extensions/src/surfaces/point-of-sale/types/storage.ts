@@ -8,7 +8,9 @@ export class StorageError extends Error {
   }
 }
 /**
- * Defines the storage interface for persisting extension data across sessions.
+ * The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.
+ *
+ * @publicDocs
  */
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,

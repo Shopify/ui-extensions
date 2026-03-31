@@ -3,6 +3,7 @@ import type {
   AutocompleteAddress,
 } from './shared';
 
+/** @publicDocs */
 export interface AddressAutocompleteFormatSuggestionApi {
   /**
    * The autocomplete suggestion that the buyer selected during checkout.

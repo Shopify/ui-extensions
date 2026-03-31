@@ -48,6 +48,8 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 /**
  * Properties for rendering a list of choices that lets users select one or more options using radio buttons or checkboxes.
+ *
+ * @publicDocs
  */
 export interface ChoiceListProps
   extends Required<

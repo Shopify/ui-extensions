@@ -12,6 +12,7 @@ import type {SheetProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     /**
@@ -38,18 +40,21 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-sheet";
+/** @publicDocs */
 export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
      * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
@@ -58,9 +63,14 @@ export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'h
 }
 /**
  * The event callbacks for monitoring sheet visibility changes.
+ * @publicDocs
  */
 export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface SheetElementEvents {
     /**
      * A callback fired when the sheet is hidden, after any hide animations have completed.
@@ -79,6 +89,10 @@ export interface SheetElementEvents {
      */
     show?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * @publicDocs
+ */
 export interface SheetElementSlots {
     /**
      * The main action button displayed in the sheet footer, representing the primary action users should take. Only accepts a single button component.
@@ -89,10 +103,15 @@ export interface SheetElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
+/**
+ * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
+ * @publicDocs
+ */
 export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
 /**
  * The HTML element interface for the `s-sheet` custom element.
+ * @publicDocs
  */
 export interface SheetElement extends SheetElementProps, SheetElementMethods, Omit<HTMLElement, 'id'> {
     afterhide: SheetEvents['onAfterHide'];
@@ -104,6 +123,7 @@ export interface SheetElement extends SheetElementProps, SheetElementMethods, Om
 }
 /**
  * The properties for the sheet component when it's used in JSX.
+ * @publicDocs
  */
 export interface SheetProps extends SheetElementProps, SheetEvents {
 }

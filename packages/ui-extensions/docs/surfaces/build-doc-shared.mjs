@@ -68,5 +68,9 @@ export const copyGeneratedToShopifyDev = async ({
     process.exit();
   }
 
+  console.log(
+    `Copying docs from ${generatedDocsPath} to ${shopifyDevDBPath}...`,
+  );
   await fs.cp(generatedDocsPath, shopifyDevDBPath, {recursive: true});
+  console.log('✅ Copied docs to shopify-dev.');
 };

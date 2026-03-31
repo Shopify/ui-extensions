@@ -58,15 +58,7 @@ copy_generated_docs_to_shopify_dev() {
   fi
 }
 
-# Try relative path first (for CI/Github Actions)
-SHOPIFY_DEV_PATH="../../../shopify-dev"
-
-if [ -d $SHOPIFY_DEV_PATH ]; then
-  copy_generated_docs_to_shopify_dev
-else
-  # Try local dev environment path
-  SHOPIFY_DEV_PATH="$HOME/src/github.com/Shopify/shopify-dev"
-  copy_generated_docs_to_shopify_dev
-fi
+SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
+copy_generated_docs_to_shopify_dev
 
 echo "✓ Fast docs build complete"

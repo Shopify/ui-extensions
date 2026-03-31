@@ -51,6 +51,8 @@ export type CallbackExtendableEventListener<
 
 /**
  * The properties for the form component. These properties configure the form's identifier for targeting and referencing within the admin extension.
+ *
+ * @publicDocs
  */
 export interface FormProps extends Pick<FormProps$1, 'id'> {}
 

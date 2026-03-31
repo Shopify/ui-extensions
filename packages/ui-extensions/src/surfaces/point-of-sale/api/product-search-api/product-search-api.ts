@@ -36,6 +36,11 @@ export interface ProductSearchParams extends PaginationParams {
   sortType?: ProductSortType;
 }
 
+/**
+ * The `ProductSearchApi` object provides properties for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.
+ *
+ * @publicDocs
+ */
 export interface ProductSearchApiContent {
   /**
    * Searches for products on the POS device using text queries and sorting options. Returns paginated results with up to 50 products per page. When a query string is provided, results are sorted by relevance. Use for implementing custom search interfaces, product discovery features, or filtered product listings.
@@ -101,7 +106,7 @@ export interface ProductSearchApiContent {
 }
 
 /**
- * The `ProductSearchApi` object provides methods for searching and retrieving product information. Access these methods through `shopify.productSearch` to search products and fetch detailed product data.
+ * The `ProductSearchApi` object provides properties for searching and retrieving product information. Access these properties through `shopify.productSearch` to search products and fetch detailed product data.
  */
 export interface ProductSearchApi {
   productSearch: ProductSearchApiContent;

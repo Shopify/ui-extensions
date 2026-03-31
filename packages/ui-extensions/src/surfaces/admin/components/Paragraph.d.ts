@@ -10,6 +10,8 @@ import type {ComponentChildren, ParagraphProps$1} from './shared.d.ts';
 
 /**
  * The properties for the paragraph component. These properties define blocks of text content with consistent spacing and styling for readable body copy.
+ *
+ * @publicDocs
  */
 export interface ParagraphProps
   extends Required<

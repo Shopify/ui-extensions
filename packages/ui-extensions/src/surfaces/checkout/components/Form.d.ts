@@ -12,6 +12,7 @@ import type {FormProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,41 +21,57 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-form";
+/**
+ * The form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use form to group related input fields and handle form submission through JavaScript event handlers.
+ *
+ * Unlike HTML forms, form doesn't automatically submit data using HTTP—you must register a `submit` event to process form data programmatically. For Shopify Functions configuration forms, use [function settings](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/function-settings).
+ * @publicDocs
+ */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
+/** @publicDocs */
 export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     /**
      * A callback that is run when the form is submitted.
      */
     onSubmit?: () => void;
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface FormElementEvents {
     /**
      * A callback that is run when the form is submitted.
      */
     submit?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface FormElement extends FormElementProps, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
+/** @publicDocs */
 export interface FormProps extends FormElementProps, FormEvents {
 }
 declare global {

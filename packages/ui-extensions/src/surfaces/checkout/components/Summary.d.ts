@@ -11,8 +11,13 @@
 import type {SummaryProps$1} from './components-shared.d.ts';
 
 declare const tagName = "s-summary";
+/**
+ * Provides a clickable label for collapsible Details content. Use to create clear, accessible disclosure controls that show or hide additional information.
+ * @publicDocs
+ */
 export interface SummaryProps extends Pick<SummaryProps$1, 'id'> {
 }
+/** @publicDocs */
 export interface SummaryElement extends SummaryProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

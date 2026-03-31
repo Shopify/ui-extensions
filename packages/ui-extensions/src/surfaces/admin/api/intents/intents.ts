@@ -1,5 +1,6 @@
 /**
  * The response returned when a merchant closes or cancels the workflow without completing it. Check for this response to handle cancellation gracefully in your extension.
+ * @publicDocs
  */
 export interface ClosedIntentResponse {
   /** Indicates the workflow was closed without completion. When `'closed'`, the merchant exited the workflow before finishing. */
@@ -8,6 +9,7 @@ export interface ClosedIntentResponse {
 
 /**
  * The response returned when a merchant successfully completes the workflow. Use this to access the created or updated resource data.
+ * @publicDocs
  */
 export interface SuccessIntentResponse {
   /** Indicates successful completion. When `'ok'`, the merchant completed the workflow and the resource was created or updated. */
@@ -18,6 +20,7 @@ export interface SuccessIntentResponse {
 
 /**
  * The response returned when the workflow fails due to validation errors or other issues. Use this to display error messages and help merchants fix problems.
+ * @publicDocs
  */
 export interface ErrorIntentResponse {
   /** Indicates the workflow failed. When `'error'`, the workflow encountered validation errors or other issues that prevented completion. */
@@ -37,6 +40,7 @@ export interface ErrorIntentResponse {
 
 /**
  * The result of an intent workflow. Check the `code` property to determine the outcome: `'ok'` for success, `'error'` for failure, or `'closed'` if the merchant cancelled.
+ * @publicDocs
  */
 export type IntentResponse =
   | SuccessIntentResponse
@@ -45,6 +49,7 @@ export type IntentResponse =
 
 /**
  * A handle for tracking an in-progress intent workflow.
+ * @publicDocs
  */
 export interface IntentActivity {
   /**
@@ -127,6 +132,7 @@ export interface IntentQuery extends IntentQueryOptions {
  * });
  * const response = await activity.complete;
  * ```
+ * @publicDocs
  */
 export interface IntentInvokeApi {
   (query: IntentQuery): Promise<IntentActivity>;

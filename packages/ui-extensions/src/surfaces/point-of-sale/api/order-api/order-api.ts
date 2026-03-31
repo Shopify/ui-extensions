@@ -1,12 +1,14 @@
 /**
- * The `OrderApi` object provides access to order data in order-specific extension contexts. Access this property through `shopify.order` to retrieve information about the order currently being viewed or interacted with in the POS interface.
+ * The `OrderApi` object provides access to order data. Access these properties through `shopify.order` to interact with the current order context.
  */
 export interface OrderApi {
   order: OrderApiContent;
 }
 
 /**
- * The `OrderApi` object provides access to order data. Access this property through `shopify.order` to interact with the current order context.
+ * The `OrderApi` object provides access to order data. Access these properties through `shopify.order` to interact with the current order context.
+ *
+ * @publicDocs
  */
 export interface OrderApiContent {
   /**

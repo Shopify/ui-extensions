@@ -640,6 +640,7 @@ export type ShippingAddressChangeResult =
 /**
  * Methods for modifying the checkout, including cart lines, discount codes, gift cards, metafields, notes, attributes, and the shipping address. Each method returns a promise that resolves with a result indicating success or failure.
  */
+/** @publicDocs */
 export interface CheckoutApi {
   /**
    * Updates or removes an attribute on the cart and checkout. On success, the

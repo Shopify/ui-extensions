@@ -309,6 +309,8 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 
 /**
  * The properties for the date field component. These properties configure an input field that allows merchants to select dates using an integrated calendar picker with optional text input, date constraints, and day-of-week restrictions.
+ *
+ * @publicDocs
  */
 export interface DateFieldProps
   extends Omit<

@@ -18,17 +18,21 @@ import type {StackProps$1,MaybeAllValuesShorthandProperty, MaybeResponsive,Borde
  * - `large-100`: Extra thick border for maximum prominence.
  * - `large-200`: The thickest available border.
  * - `none`: No border.
+ * @publicDocs
  */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 /**
  * The subset of border color values available for this component.
  *
  * - `base`: The standard border color for most contexts.
+ * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -37,12 +41,19 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-stack";
+/**
+ * The stack component organizes elements horizontally or vertically along the block or inline axis. Use stack to structure layouts, group related components, control spacing between elements, or create flexible arrangements that adapt to content.
+ *
+ * Stacks support gap spacing, alignment, wrapping, and distribution properties to create consistent, responsive layouts without custom CSS. For complex multi-column layouts with precise grid positioning, use [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).
+ * @publicDocs
+ */
 export interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;
@@ -53,6 +64,7 @@ export interface StackProps extends Pick<StackProps$1, 'accessibilityLabel' | 'a
     alignItems?: MaybeResponsive<Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>>;
     justifyContent?: MaybeResponsive<Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>>;
 }
+/** @publicDocs */
 export interface StackElement extends StackProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

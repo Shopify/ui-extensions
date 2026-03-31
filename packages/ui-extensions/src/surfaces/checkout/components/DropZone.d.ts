@@ -12,6 +12,7 @@ import type {DropZoneProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,22 +21,35 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-drop-zone";
+/**
+ * The drop zone component lets users upload files through drag-and-drop or by clicking to browse. Use for file uploads such as images, documents, or CSV imports.
+ *
+ * The component provides visual feedback during drag operations and supports file type validation through the `accept` property. Rejected files trigger the `droprejected` event for custom error handling.
+ * @publicDocs
+ */
 export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
+/** @publicDocs */
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface DropZoneElementEvents {
     /**
      * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
@@ -50,11 +64,13 @@ export interface DropZoneElementEvents {
      */
     change?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
     onchange: DropZoneEvents['onChange'];
 }
+/** @publicDocs */
 export interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }
 declare global {

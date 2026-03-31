@@ -1,6 +1,7 @@
 import type {SubscribableSignalLike} from '../../shared';
 import type {CartLine} from '../standard/standard';
 
+/** @publicDocs */
 export interface CartLineItemApi {
   /**
    * The cart line that this extension is attached to. Use this to read the

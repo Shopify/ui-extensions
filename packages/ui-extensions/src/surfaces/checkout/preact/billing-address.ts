@@ -7,6 +7,7 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `billingAddress` applied to the checkout.
+ * @publicDocs
  */
 export function useBillingAddress<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

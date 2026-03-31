@@ -12,6 +12,7 @@ import type {DividerProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,14 +21,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-divider";
+/**
+ * The divider component creates clear visual separation between elements in the interface. Use divider to separate distinct content groups in forms, settings panels, lists, or page sections, helping users scan and understand content organization.
+ *
+ * Dividers support both horizontal and vertical orientations, along with different visual strengths for varying levels of emphasis. For more structured content grouping with headings, use [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section).
+ * @publicDocs
+ */
 export interface DividerProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
+/** @publicDocs */
 export interface DividerElement extends DividerProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

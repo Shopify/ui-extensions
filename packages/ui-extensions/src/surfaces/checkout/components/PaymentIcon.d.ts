@@ -12,6 +12,7 @@ import type {PaymentIconProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,8 +30,13 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-payment-icon";
+/**
+ * Displays icons representing payment methods. Use to visually communicate available or saved payment options clearly
+ * @publicDocs
+ */
 export interface PaymentIconProps extends PaymentIconProps$1 {
 }
+/** @publicDocs */
 export interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

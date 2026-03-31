@@ -12,6 +12,7 @@ import type {HeadingProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,14 +21,22 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-heading";
+/**
+ * The heading component renders hierarchical titles to communicate the structure and organization of page content. Use heading to create section titles and content headers that help users understand information hierarchy and navigate content.
+ *
+ * Heading levels adjust automatically based on nesting within parent [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring meaningful and accessible page outlines without manual level management.
+ * @publicDocs
+ */
 export interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
+/** @publicDocs */
 export interface HeadingElement extends HeadingProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

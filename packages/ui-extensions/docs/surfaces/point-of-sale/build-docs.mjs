@@ -29,13 +29,13 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -46,7 +46,9 @@ const tsconfig = 'tsconfig.docs.json';
 const transformJson = async (filePath) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
 
-  jsonData = jsonData.filter(Boolean);
+  if (Array.isArray(jsonData)) {
+    jsonData = jsonData.filter(Boolean);
+  }
   await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
 };
 
@@ -143,7 +145,7 @@ const generateExtensionsDocs = async () => {
   await fs.cp(
     path.join(docsPath, 'screenshots'),
     path.join(
-      shopifyDevPath,
+      worldPath,
       'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions',
       EXTENSIONS_API_VERSION,
     ),
@@ -186,8 +188,8 @@ try {
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath,
-    shopifyDevDBPath,
+    shopifyDevPath: worldPath,
+    shopifyDevDBPath: worldDBPath,
   });
 
   await cleanup();

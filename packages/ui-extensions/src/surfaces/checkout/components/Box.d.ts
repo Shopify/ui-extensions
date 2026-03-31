@@ -18,17 +18,21 @@ import type {BoxProps$1,MaybeAllValuesShorthandProperty,BorderSizeKeyword, Borde
  * - `large-100`: Extra thick border for maximum prominence.
  * - `large-200`: The thickest available border.
  * - `none`: No border.
+ * @publicDocs
  */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
 /**
  * The subset of border color values available for this component.
  *
  * - `base`: The standard border color for most contexts.
+ * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -37,18 +41,26 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-box";
+/**
+ * The box component provides a generic, flexible container for custom designs and layouts. Use box to apply styling like backgrounds, padding, borders, or border radius when existing components don't meet your needs, or to nest and group other components.
+ *
+ * Box contents maintain their natural size, making it especially useful within layout components that would otherwise stretch their children. For structured layouts, use [stack](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/stack) or [grid](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/grid).
+ * @publicDocs
+ */
 export interface BoxProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 export interface BoxElement extends BoxProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

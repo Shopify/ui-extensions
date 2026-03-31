@@ -12,6 +12,7 @@ import type {MapProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     /**
@@ -38,27 +40,35 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 /**
  * A callback event typed to a specific HTML element, with a strongly typed `currentTarget`.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * An event listener typed to a specific HTML element, with a strongly typed `currentTarget`.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-map";
+/**
+ * Use Map to display a map on a page. This component is useful for displaying a map of a location, such as a store or a customer’s address.
+ * @publicDocs
+ */
 export interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
 /**
  * The event handlers for the map component.
+ * @publicDocs
  */
 export interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
 }
 /**
  * A geographic coordinate pair representing a location on the map, defined by latitude and longitude values.
+ * @publicDocs
  */
 export interface MapLocation {
     /**
@@ -72,6 +82,7 @@ export interface MapLocation {
 }
 /**
  * The event data provided when a map interaction occurs at a specific geographic location, such as a click or double-click.
+ * @publicDocs
  */
 export interface MapLocationEvent {
     /**
@@ -81,6 +92,7 @@ export interface MapLocationEvent {
 }
 /**
  * The event data provided when the visible map boundaries change, such as after a pan or zoom completes. Contains the new geographic bounds of the visible area.
+ * @publicDocs
  */
 export interface MapBoundsEvent {
     /**
@@ -99,6 +111,7 @@ export interface MapBoundsEvent {
 }
 /**
  * The event data provided when the map view changes, such as after the user pans or zooms. Contains the new center location and zoom level.
+ * @publicDocs
  */
 export interface MapViewChangeEvent extends MapLocationEvent {
     /**
@@ -106,6 +119,10 @@ export interface MapViewChangeEvent extends MapLocationEvent {
      */
     zoom?: number;
 }
+/**
+ * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * @publicDocs
+ */
 export interface MapElementEvents {
     /**
      * A callback fired when the visible map boundaries change, such as after a pan or zoom completes.
@@ -126,6 +143,7 @@ export interface MapElementEvents {
 }
 /**
  * The HTML element interface for the `s-map` custom element.
+ * @publicDocs
  */
 export interface MapElement extends MapElementProps, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
@@ -135,6 +153,7 @@ export interface MapElement extends MapElementProps, Omit<HTMLElement, 'id' | 'o
 }
 /**
  * The properties for the map component when it's used in JSX.
+ * @publicDocs
  */
 export interface MapProps extends MapElementProps, MapEvents {
 }
