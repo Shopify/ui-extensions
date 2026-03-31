@@ -12,6 +12,7 @@ import type {TextProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,6 +21,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -37,6 +39,7 @@ export interface TextProps extends Pick<TextProps$1, 'accessibilityVisibility' |
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
 }
+/** @publicDocs */
 export interface TextElement extends TextProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
 declare global {

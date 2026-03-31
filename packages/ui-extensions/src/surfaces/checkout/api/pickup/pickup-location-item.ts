@@ -1,6 +1,7 @@
 import type {SubscribableSignalLike} from '../../shared';
 import type {PickupLocationOption} from '../standard/standard';
 
+/** @publicDocs */
 export interface PickupLocationItemApi {
   /**
    * The pickup location that this extension is attached to. Use this to read the location's name, address, and other details.

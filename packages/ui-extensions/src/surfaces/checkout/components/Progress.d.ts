@@ -12,6 +12,7 @@ import type {ProgressProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -27,6 +28,7 @@ declare const tagName = "s-progress";
 export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
+/** @publicDocs */
 export interface ProgressElement extends ProgressProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

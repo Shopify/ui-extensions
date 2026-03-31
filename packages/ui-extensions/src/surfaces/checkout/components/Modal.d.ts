@@ -12,6 +12,7 @@ import type {ModalProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -29,6 +30,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     /**
@@ -38,12 +40,14 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
@@ -85,6 +89,7 @@ export interface ModalElementSlots {
 }
 /**
  * The event callbacks for monitoring modal visibility changes.
+ * @publicDocs
  */
 export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
@@ -118,6 +123,7 @@ export interface ModalElementEvents {
 }
 /**
  * The HTML element interface for the `s-modal` custom element.
+ * @publicDocs
  */
 export interface ModalElement extends ModalElementProps, ModalElementMethods, Omit<HTMLElement, 'id'> {
     onafterhide: ModalEvents['onAfterHide'];
@@ -127,6 +133,7 @@ export interface ModalElement extends ModalElementProps, ModalElementMethods, Om
 }
 /**
  * The properties for the modal component when it's used in JSX.
+ * @publicDocs
  */
 export interface ModalProps extends ModalElementProps, ModalEvents {
 }

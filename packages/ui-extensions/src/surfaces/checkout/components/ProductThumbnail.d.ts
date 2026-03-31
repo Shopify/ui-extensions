@@ -12,6 +12,7 @@ import type {ProductThumbnailProps$1} from './components-shared.d.ts';
 
 /**
  * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
@@ -45,6 +46,7 @@ export interface ProductThumbnailProps extends Pick<ProductThumbnailProps$1, 'al
      */
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
+/** @publicDocs */
 export interface ProductThumbnailElement extends ProductThumbnailProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

@@ -1,5 +1,6 @@
 import type {SubscribableSignalLike} from '../../shared';
 
+/** @publicDocs */
 export interface PickupLocationListApi {
   /**
    * Whether the location search form is currently visible to the buyer.

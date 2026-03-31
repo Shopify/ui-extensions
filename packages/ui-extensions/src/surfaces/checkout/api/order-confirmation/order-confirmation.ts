@@ -24,6 +24,7 @@ export interface OrderConfirmation {
   isFirstOrder: boolean;
 }
 
+/** @publicDocs */
 export interface OrderConfirmationApi {
   /**
    * The order details available after the buyer completes checkout, including the order ID, order number, and whether it's the buyer's first purchase.

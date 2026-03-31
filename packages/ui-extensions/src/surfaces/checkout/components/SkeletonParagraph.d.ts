@@ -12,6 +12,7 @@ import type {SkeletonParagraphProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -26,6 +27,7 @@ declare const tagName = "s-skeleton-paragraph";
  */
 export interface SkeletonParagraphProps extends SkeletonParagraphProps$1 {
 }
+/** @publicDocs */
 export interface SkeletonParagraphElement extends SkeletonParagraphProps, Omit<HTMLElement, 'id'> {
 }
 declare global {

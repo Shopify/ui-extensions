@@ -12,6 +12,7 @@ import type {DropZoneProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,12 +21,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
@@ -40,6 +43,7 @@ declare const tagName = "s-drop-zone";
  */
 export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
+/** @publicDocs */
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
 /**
@@ -60,11 +64,13 @@ export interface DropZoneElementEvents {
      */
     change?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
     onchange: DropZoneEvents['onChange'];
 }
+/** @publicDocs */
 export interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }
 declare global {

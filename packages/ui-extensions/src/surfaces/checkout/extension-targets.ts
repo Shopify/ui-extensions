@@ -33,6 +33,7 @@ import type {
  * The input arguments and the output type are different
  * for each extension target.
  */
+/** @publicDocs */
 export interface RenderExtensionTargets {
   /**
    * A static extension target that is rendered immediately before any actions within each step.
@@ -673,6 +674,7 @@ export interface RenderExtensionTargets {
   >;
 }
 
+/** @publicDocs */
 export interface RunnableExtensionTargets {
   /**
    * An extension target that provides address autocomplete suggestions. These suggestions are shown to buyers as they
@@ -709,10 +711,12 @@ export interface RunnableExtensionTargets {
  * This is a special interface that is referenced by name "ExtensionTargets", in the `buildTargetDts.ts` script in ui-extensions.
  * It is used to to generate the `shopify.d.ts` file, to provide type safety when coding UI extensions.
  */
+/** @publicDocs */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
     RunnableExtensionTargets {}
 
+/** @publicDocs */
 export type ExtensionTarget = keyof ExtensionTargets;
 
 export type AvailableExtensionDefinitions<Api> =
@@ -723,6 +727,7 @@ export type AvailableExtensionDefinitions<Api> =
  * For a given extension target, returns the value that is expected to be
  * returned by that extension target’s callback type.
  */
+/** @publicDocs */
 export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
   ExtensionTargets[Target]['output'];
 
@@ -730,6 +735,7 @@ export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
  * For a given extension target, returns the type of the API that the
  * extension will receive at runtime.
  */
+/** @publicDocs */
 export type ApiForExtension<Target extends ExtensionTarget> =
   ExtractedApiFromExtensionDefinition<ExtensionTargets[Target]>;
 
@@ -742,11 +748,13 @@ type ExtractedApiFromExtensionDefinition<T> =
  * and an additional `api` argument, and using those arguments to render
  * UI.
  */
+/** @publicDocs */
 export type RenderExtensionTarget = keyof RenderExtensionTargets;
 
 /**
  * A mapping of each “render extension” name to its callback type.
  */
+/** @publicDocs */
 export type RenderExtensions = {
   [Target in RenderExtensionTarget]: RenderExtensionTargets[Target];
 };
@@ -774,6 +782,7 @@ type ExtractedApiFromRenderExtension<T> = T extends RenderExtension<
  *
  * @deprecated  Use `ApiForExtension` instead.
  */
+/** @publicDocs */
 export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[Target]>;
 
@@ -781,12 +790,15 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
  * For a given rendering extension target, returns the UI components that the
  * extension target supports.
  */
+/** @publicDocs */
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
 > = ExtractedAllowedComponentsFromRenderExtension<RenderExtensions[Target]>;
 
+/** @publicDocs */
 export type RunnableExtensionTarget = keyof RunnableExtensionTargets;
 
+/** @publicDocs */
 export type RunnableExtensions = {
   [Target in RunnableExtensionTarget]: RunnableExtensionTargets[Target];
 };

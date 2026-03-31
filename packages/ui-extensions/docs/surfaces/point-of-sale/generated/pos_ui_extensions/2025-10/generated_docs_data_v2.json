@@ -2372,17 +2372,17 @@
           "syntaxKind": "MethodSignature",
           "name": "subscribe",
           "value": "(fn: (value: T) => void) => () => void",
-          "description": "Subscribes to locale changes and calls the provided function whenever the locale updates. Returns an unsubscribe function to clean up the subscription. Use to automatically update your extension content when merchants change their language settings during POS sessions."
+          "description": "Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value."
         },
         {
           "filePath": "src/shared.ts",
           "syntaxKind": "PropertySignature",
           "name": "value",
           "value": "T",
-          "description": "The current value of the locale string in IETF format. For example, `\"en-US\"`, `\"fr-CA\"`, or `\"de-DE\"`. This property provides immediate access to the current locale without requiring subscription setup. Use for one-time locale checks or initial internationalization setup."
+          "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
         }
       ],
-      "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the locale string in IETF format. For example, `\"en-US\"`, `\"fr-CA\"`, or `\"de-DE\"`. This property provides immediate access to the current locale without requiring subscription setup. Use for one-time locale checks or initial internationalization setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to locale changes and calls the provided function whenever the locale updates. Returns an unsubscribe function to clean up the subscription. Use to automatically update your extension content when merchants change their language settings during POS sessions.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
+      "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
     }
   },
   "LineItemDiscountType": {

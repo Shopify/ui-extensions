@@ -12,6 +12,7 @@ import type {TextAreaProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,12 +21,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
@@ -45,6 +48,7 @@ export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'labe
      */
     placeholder?: string;
 }
+/** @publicDocs */
 export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
@@ -77,12 +81,14 @@ export interface TextAreaElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface TextAreaElement extends TextAreaElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: TextAreaEvents['onBlur'];
     onchange: TextAreaEvents['onChange'];
     onfocus: TextAreaEvents['onFocus'];
     oninput: TextAreaEvents['onInput'];
 }
+/** @publicDocs */
 export interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
 }
 declare global {

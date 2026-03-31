@@ -12,6 +12,7 @@ import type {DatePickerProps$1} from './components-shared.d.ts';
 
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -20,12 +21,14 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
@@ -40,6 +43,7 @@ declare const tagName = "s-date-picker";
  */
 export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
 }
+/** @publicDocs */
 export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
 /**
@@ -68,6 +72,7 @@ export interface DatePickerElementEvents {
      */
     viewChange?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: DatePickerEvents['onBlur'];
     onchange: DatePickerEvents['onChange'];
@@ -75,6 +80,7 @@ export interface DatePickerElement extends DatePickerElementProps, Omit<DatePick
     oninput: DatePickerEvents['onInput'];
     onviewchange: DatePickerEvents['onViewChange'];
 }
+/** @publicDocs */
 export interface DatePickerProps extends DatePickerElementProps, DatePickerEvents {
 }
 declare global {
