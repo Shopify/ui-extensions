@@ -24,14 +24,24 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-form";
+/**
+ * The element props interface for the Form component.
+ * @publicDocs
+ */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
 export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
@@ -40,6 +50,10 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
      */
     onSubmit?: () => void;
 }
+/**
+ * The events interface for the Form component.
+ * @publicDocs
+ */
 export interface FormElementEvents {
     /**
      * A callback that is run when the form is submitted.

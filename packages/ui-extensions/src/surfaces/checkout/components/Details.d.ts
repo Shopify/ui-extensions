@@ -24,9 +24,15 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
@@ -37,10 +43,18 @@ export interface ToggleArgumentsEvent {
 }
 
 declare const tagName = "s-details";
+/**
+ * The element props interface for the Details component.
+ * @publicDocs
+ */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
+/**
+ * The events interface for the Details component.
+ * @publicDocs
+ */
 export interface DetailsElementEvents {
     /**
      * Callback straight after the element state changes.

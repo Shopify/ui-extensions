@@ -10,6 +10,7 @@ import type {ColorPickerProps$1, ComponentChildren} from './shared.d.ts';
 
 /**
  * An event object with a strongly-typed `currentTarget` property that references the specific HTML element type.
+ * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   /**
@@ -19,6 +20,7 @@ export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
 };
 /**
  * An event listener function or null that receives a typed callback event.
+ * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
@@ -30,6 +32,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | null;
 /**
  * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
@@ -48,6 +51,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
 
 /**
  * Properties for rendering a color picker that provides a visual interface for selecting colors with optional transparency control.
+ * @publicDocs
  */
 export interface ColorPickerProps
   extends Required<
@@ -56,10 +60,12 @@ export interface ColorPickerProps
 
 /**
  * A string containing CSS styles to be applied to the component.
+ * @publicDocs
  */
 export type Styles = string;
 /**
  * The implementation details for rendering a custom element with a shadow DOM.
+ * @publicDocs
  */
 export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
@@ -73,6 +79,7 @@ export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
 };
 /**
  * An object containing information about keyboard and mouse button states during an activation event.
+ * @publicDocs
  */
 export interface ActivationEventEsque {
   /**
@@ -94,6 +101,7 @@ export interface ActivationEventEsque {
 }
 /**
  * The options for programmatically triggering a click event on an element.
+ * @publicDocs
  */
 export interface ClickOptions {
   /**
@@ -211,6 +219,7 @@ declare module 'preact' {
 declare const tagName = 's-color-picker';
 /**
  * The JSX props interface for the color picker component when used in React/Preact.
+ * @publicDocs
  */
 export interface ColorPickerJSXProps
   extends Partial<ColorPickerProps>,

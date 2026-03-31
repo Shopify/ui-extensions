@@ -12,6 +12,10 @@ export interface ConnectivityState {
   internetConnected: ConnectivityStateSeverity;
 }
 
+/**
+ * Provides access to the current connectivity state for the POS device.
+ * @publicDocs
+ */
 export interface ConnectivityApiContent {
   /**
    * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.

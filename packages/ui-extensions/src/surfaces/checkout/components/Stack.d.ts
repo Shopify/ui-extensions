@@ -10,7 +10,21 @@
 /// <reference lib="DOM" />
 import type {StackProps$1,MaybeAllValuesShorthandProperty, MaybeResponsive,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword} from './components-shared.d.ts';
 
+/**
+ * The subset of border size values available for this component.
+ *
+ * - `base`: Standard border width.
+ * - `large`: Thick border for strong emphasis.
+ * - `large-100`: Extra thick border for maximum prominence.
+ * - `large-200`: The thickest available border.
+ * - `none`: No border.
+ */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/**
+ * The subset of border color values available for this component.
+ *
+ * - `base`: The standard border color for most contexts.
+ */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
@@ -29,6 +43,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-stack";
+/**
+ * The element props interface for the Stack component.
+ * @publicDocs
+ */
 export interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;

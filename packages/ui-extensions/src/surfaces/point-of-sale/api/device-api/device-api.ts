@@ -1,3 +1,7 @@
+/**
+ * The `DeviceApi` object provides device details and capabilities.
+ * @publicDocs
+ */
 export interface DeviceApiContent {
   /**
    * The name of the device as configured by the merchant or system. Use for displaying device information in interfaces, logging, or support contexts where device identification is helpful.

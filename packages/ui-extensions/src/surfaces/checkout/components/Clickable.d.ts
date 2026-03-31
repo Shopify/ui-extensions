@@ -10,7 +10,21 @@
 /// <reference lib="DOM" />
 import type {ClickableProps$1,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword,MaybeAllValuesShorthandProperty} from './components-shared.d.ts';
 
+/**
+ * The subset of border size values available for this component.
+ *
+ * - `base`: Standard border width.
+ * - `large`: Thick border for strong emphasis.
+ * - `large-100`: Extra thick border for maximum prominence.
+ * - `large-200`: The thickest available border.
+ * - `none`: No border.
+ */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/**
+ * The subset of border color values available for this component.
+ *
+ * - `base`: The standard border color for most contexts.
+ */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
@@ -27,14 +41,24 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable";
+/**
+ * The element props interface for the Clickable component.
+ * @publicDocs
+ */
 export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -45,6 +69,10 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
 }
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
+/**
+ * The events interface for the Clickable component.
+ * @publicDocs
+ */
 export interface ClickableElementEvents {
     /**
      * Callback when the element loses focus.

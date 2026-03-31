@@ -5,6 +5,10 @@ export interface CustomerApi {
   customer: CustomerApiContent;
 }
 
+/**
+ * The `CustomerApi` object provides customer information for the active context.
+ * @publicDocs
+ */
 export interface CustomerApiContent {
   /**
    * The unique identifier for the customer. Use for customer lookups, applying customer-specific pricing, enabling personalized features, and integrating with external systems.

@@ -24,18 +24,32 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-url-field";
+/**
+ * The element props interface for the UrlField component.
+ * @publicDocs
+ */
 export interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * The events interface for the UrlField component.
+ * @publicDocs
+ */
 export interface URLFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -62,6 +76,10 @@ export interface URLFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * The slots interface for the UrlField component.
+ * @publicDocs
+ */
 export interface URLFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

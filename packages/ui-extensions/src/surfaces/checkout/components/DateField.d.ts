@@ -18,14 +18,24 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-date-field";
+/**
+ * The element props interface for the DateField component.
+ * @publicDocs
+ */
 export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
     /**
      * @deprecated Use `label` instead.
@@ -35,6 +45,10 @@ export interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 
 }
 export interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
+/**
+ * The events interface for the DateField component.
+ * @publicDocs
+ */
 export interface DateFieldElementEvents {
     /**
      * Callback when the element loses focus.

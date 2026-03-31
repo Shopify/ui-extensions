@@ -13,6 +13,7 @@ type Subscriber<T> = Parameters<SubscribableSignalLike<T>['subscribe']>[0];
  * > As of version 2025-10, you no longer need this hook. When you access `.value`
  * > (instead of `.current`) on subscribable properties, Preact will automatically
  * > re-render as `.value` changes.
+ * @publicDocs
  */
 export function useSubscription<Value>(
   subscription: SubscribableSignalLike<Value>,

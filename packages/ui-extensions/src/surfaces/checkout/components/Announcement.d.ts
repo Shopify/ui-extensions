@@ -24,9 +24,15 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
@@ -39,6 +45,10 @@ export interface ToggleArgumentsEvent {
 declare const tagName = "s-announcement";
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
+/**
+ * The events interface for the Announcement component.
+ * @publicDocs
+ */
 export interface AnnouncementElementEvents {
     /**
      * Callback fired when the element state changes **after** any animations have finished.
@@ -81,6 +91,10 @@ export interface AnnouncementProps extends AnnouncementEvents {
 export interface AnnouncementMethods {
     dismiss: () => void;
 }
+/**
+ * The methods interface for the Announcement component.
+ * @publicDocs
+ */
 export interface AnnouncementElementMethods {
     dismiss: AnnouncementMethods['dismiss'];
 }

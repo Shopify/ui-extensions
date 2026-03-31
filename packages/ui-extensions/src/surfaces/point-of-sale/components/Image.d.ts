@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {ImageProps, Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -30,6 +32,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -38,9 +41,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-image';
+/** @publicDocs */
 export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
   /**
    * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.

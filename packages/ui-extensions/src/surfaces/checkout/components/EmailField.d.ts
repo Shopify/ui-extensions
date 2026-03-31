@@ -24,14 +24,24 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-email-field";
+/**
+ * The element props interface for the EmailField component.
+ * @publicDocs
+ */
 export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -41,6 +51,10 @@ export interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocom
 }
 export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * The events interface for the EmailField component.
+ * @publicDocs
+ */
 export interface EmailFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -67,6 +81,10 @@ export interface EmailFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * The slots interface for the EmailField component.
+ * @publicDocs
+ */
 export interface EmailFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

@@ -18,9 +18,15 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
@@ -50,11 +56,19 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-checkbox";
+/**
+ * The element props interface for the ConsentCheckbox component.
+ * @publicDocs
+ */
 export interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
+/**
+ * The events interface for the ConsentCheckbox component.
+ * @publicDocs
+ */
 export interface ConsentCheckboxElementEvents {
     /**
      * A callback that is run whenever the control is changed.

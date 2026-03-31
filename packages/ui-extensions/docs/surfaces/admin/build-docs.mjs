@@ -13,6 +13,10 @@ import {
 import {extractIconList} from './build-doc-extract-icons.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2] || 'unstable';
+/** Folder name for admin_extensions when copying to shopify-dev. Defaults to EXTENSIONS_API_VERSION; for 2026-04 we use 2026-04-rc so docs land in the rc folder. */
+const SHOPIFY_DEV_EXTENSIONS_FOLDER =
+  process.argv[3] ??
+  (EXTENSIONS_API_VERSION === '2026-04' ? '2026-04-rc' : null);
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,15 +28,27 @@ const srcRelativePath = 'src/surfaces/admin';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
-const shopifyDevDBPath = path.join(
-  shopifyDevPath,
+const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
+const worldDBPath = path.join(
+  worldPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
+const worldExists = existsSync(worldPath);
+
+const shopifyDevPath = worldExists
+  ? worldPath
+  : path.join(rootPath, '../../../shopify-dev');
+const shopifyDevDBPath = worldExists
+  ? worldDBPath
+  : path.join(
+      shopifyDevPath,
+      'areas/platforms/shopify-dev/db/data/docs/templated_apis',
+    );
 
 const shopifyDevExists = existsSync(shopifyDevPath);
 
 const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataV2File = 'generated_docs_data_v2.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
@@ -120,8 +136,8 @@ const htmlWrapper = (htmlString, layoutStyles = '', customStyles = '') => {
   )}</body></html>`;
 };
 
-/* 
-Using JSX Builder to self-host Preact and Sucrase. 
+/*
+Using JSX Builder to self-host Preact and Sucrase.
 https://github.com/shopify-playground/jsx-builder
 */
 const jsxWrapper = (
@@ -252,6 +268,12 @@ const templates = {
 
 const transformJson = async (filePath, isExtensions) => {
   let jsonData = JSON.parse((await fs.readFile(filePath, 'utf8')).toString());
+
+  // V2 format is an object keyed by symbol name; transforms only apply to legacy array format
+  if (!Array.isArray(jsonData)) {
+    await fs.writeFile(filePath, JSON.stringify(jsonData, null, 2));
+    return;
+  }
 
   const iconEntry = jsonData.find(
     (entry) => entry.name === 'Icon' && entry.subSections,
@@ -447,11 +469,16 @@ const generateExtensionsDocs = async () => {
       "You can add a calver version argument (e.g. 'yarn docs:admin 2023-07') to generate the docs for a stable version.",
     );
   }
+  if (SHOPIFY_DEV_EXTENSIONS_FOLDER) {
+    console.log(
+      `Shopify-dev admin_extensions folder will be: ${SHOPIFY_DEV_EXTENSIONS_FOLDER}`,
+    );
+  }
 
   const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigExtensions} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
   ];
 
@@ -460,12 +487,14 @@ const generateExtensionsDocs = async () => {
     outputDir,
     rootPath,
     generatedDocsDataFile,
+    generatedDocsDataV2File,
     transformJson: (filePath) => transformJson(filePath, true),
   });
 
   // Replace 'unstable' with the exact API version in relative doc links
+  const generatedDocsPathForVersion = path.join(rootPath, outputDir);
   await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
+    filePaths: path.join(generatedDocsPathForVersion, generatedDocsDataFile),
     searchValue: '/docs/api/admin-extensions/unstable/',
     replaceValue: `/docs/api/admin-extensions/${EXTENSIONS_API_VERSION}`,
   });
@@ -483,7 +512,7 @@ const generateAppBridgeDocs = async () => {
 
   const outputDir = `${docsGeneratedRelativePath}/app_home`;
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS`,
+    `yarn tsc --project ${docsRelativePath}/${tsconfigAppBridge} --moduleResolution node  --target esNext  --module CommonJS --skipLibCheck`,
     `yarn generate-docs --input ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
   ];
 
@@ -492,6 +521,7 @@ const generateAppBridgeDocs = async () => {
     outputDir,
     rootPath,
     generatedDocsDataFile,
+    generatedDocsDataV2File,
     transformJson: (filePath) => transformJson(filePath, false),
   });
 };
@@ -521,9 +551,14 @@ try {
     'app_home',
   );
   const targetsJsonPath = path.join(adminExtensionsOutput, 'targets.json');
+  const generatedDocsDataV2Path = path.join(
+    adminExtensionsOutput,
+    generatedDocsDataV2File,
+  );
   console.log('\nGenerated docs at:');
   console.log('  Admin extensions:', adminExtensionsOutput);
   console.log('  targets.json:', targetsJsonPath);
+  console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
   console.log('  App Home:', appHomeOutput);
 
   await copyGeneratedToShopifyDev({
@@ -531,6 +566,32 @@ try {
     shopifyDevPath,
     shopifyDevDBPath,
   });
+
+  if (
+    SHOPIFY_DEV_EXTENSIONS_FOLDER &&
+    SHOPIFY_DEV_EXTENSIONS_FOLDER !== EXTENSIONS_API_VERSION &&
+    shopifyDevExists
+  ) {
+    const adminExtSource = path.join(
+      shopifyDevDBPath,
+      'admin_extensions',
+      EXTENSIONS_API_VERSION,
+    );
+    const adminExtDest = path.join(
+      shopifyDevDBPath,
+      'admin_extensions',
+      SHOPIFY_DEV_EXTENSIONS_FOLDER,
+    );
+    if (existsSync(adminExtSource)) {
+      if (existsSync(adminExtDest)) {
+        await fs.rm(adminExtDest, {recursive: true});
+      }
+      await fs.rename(adminExtSource, adminExtDest);
+      console.log(
+        `  Renamed admin_extensions/${EXTENSIONS_API_VERSION} → admin_extensions/${SHOPIFY_DEV_EXTENSIONS_FOLDER} in shopify-dev`,
+      );
+    }
+  }
 
   await fs.cp(
     path.join(docsPath, 'screenshots'),

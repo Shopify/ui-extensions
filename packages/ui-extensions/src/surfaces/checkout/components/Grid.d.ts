@@ -14,7 +14,21 @@ export type ReducedAlignContentKeyword = Extract<AlignContentKeyword, 'normal' |
 export type ReducedAlignItemsKeyword = Extract<AlignItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
 export type ReducedJustifyContentKeyword = Extract<JustifyContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
 export type ReducedJustifyItemsKeyword = Extract<JustifyItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
+/**
+ * The subset of border size values available for this component.
+ *
+ * - `base`: Standard border width.
+ * - `large`: Thick border for strong emphasis.
+ * - `large-100`: Extra thick border for maximum prominence.
+ * - `large-200`: The thickest available border.
+ * - `none`: No border.
+ */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/**
+ * The subset of border color values available for this component.
+ *
+ * - `base`: The standard border color for most contexts.
+ */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
@@ -33,6 +47,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-grid";
+/**
+ * The element props interface for the Grid component.
+ * @publicDocs
+ */
 export interface GridElementProps extends Pick<GridProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'display' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows' | 'id' | 'inlineSize' | 'justifyContent' | 'justifyItems' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'placeContent' | 'placeItems' | 'rowGap'> {
     alignContent?: MaybeResponsive<ReducedAlignContentKeyword | ''>;
     alignItems?: MaybeResponsive<ReducedAlignItemsKeyword | ''>;

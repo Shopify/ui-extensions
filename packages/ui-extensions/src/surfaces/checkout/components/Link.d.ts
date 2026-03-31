@@ -24,20 +24,34 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-link";
+/**
+ * The element props interface for the Link component.
+ * @publicDocs
+ */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
+/**
+ * The events interface for the Link component.
+ * @publicDocs
+ */
 export interface LinkElementEvents {
     /**
      * Callback when the link is activated.

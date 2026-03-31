@@ -50,6 +50,7 @@ export interface RedeemableAddChange {
   identifier: string;
 }
 
+/** @publicDocs */
 export interface RedeemableApi {
   /**
    * Applies a redeemable change to add a redeemable payment method.

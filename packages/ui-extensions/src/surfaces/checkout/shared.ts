@@ -11,6 +11,7 @@ export const SUPPORTED_COMPONENTS = [
   'Banner',
   'Box',
   'Button',
+  'Chat',
   'Checkbox',
   'Chip',
   'Choice',
@@ -69,18 +70,10 @@ export const SUPPORTED_COMPONENTS = [
   'UrlField',
 ] as const;
 
-/**
- * Note: Chat is not supported in the 2025-10 release candidate, but it is tied to a target, and we don't want to remove the target documentation.
- * Once Chat is supported, you can remove this note.
- * @private
- */
-export type PrivateComponent = 'Chat';
-
 export type ThankYouComponent = 'Announcement';
 
-export type AnyComponent =
-  | (typeof SUPPORTED_COMPONENTS)[number]
-  | PrivateComponent;
+/** @publicDocs */
+export type AnyComponent = (typeof SUPPORTED_COMPONENTS)[number];
 
 /**
  * The list of supported components.
@@ -99,8 +92,8 @@ export type AnyCheckoutComponentExcept<Except extends AnyCheckoutComponent> =
  */
 export interface SubscribableSignalLike<T> extends ReadonlySignalLike<T> {
   /**
-   * The current value of the signal. This property provides synchronous access to the
-   * latest value without subscribing to changes.
+   * The current value of the signal. Equivalent to `.value`, accessing this property
+   * subscribes to changes when used in a reactive context.
    *
    * @deprecated Use `.value` instead.
    */

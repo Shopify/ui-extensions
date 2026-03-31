@@ -3,25 +3,31 @@ import type {SubscribableSignalLike} from '../../shared';
 export interface OrderConfirmation {
   order: {
     /**
-     * The globally-uniqueID of the OrderConfirmation. This will be the ID of the Order once successfully created.
+     * A globally unique identifier for the order. This becomes the
+     * [`Order`](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order) object ID in the
+     * GraphQL Admin API after the order is created.
+     *
+     * @example 'gid://shopify/Order/123'
      */
     id: string;
   };
   /**
-   * A randomly generated alpha-numeric identifier for the order.
-   * For orders created in 2024 and onwards, the number will always be present. For orders created before that date, the number might not be present.
+   * A randomly generated alpha-numeric identifier for the order, distinct
+   * from `order.id`. The value is `undefined` for orders that were created
+   * before this field was introduced. All recent orders have a number.
    */
   number?: string;
 
   /**
-   * Whether this is the customer's first order.
+   * Whether this is the customer's first completed order with this shop. `true` means the buyer hasn't placed an order here before. Use this to show first-purchase messaging or trigger welcome offers.
    */
   isFirstOrder: boolean;
 }
 
+/** @publicDocs */
 export interface OrderConfirmationApi {
   /**
-   * Order information that's available post-checkout.
+   * The order details available after the buyer completes checkout, including the order ID, order number, and whether it's the buyer's first purchase.
    */
   orderConfirmation: SubscribableSignalLike<OrderConfirmation>;
 }

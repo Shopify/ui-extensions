@@ -15,9 +15,11 @@ import type {
   ComponentChild,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   key?: Key;
@@ -26,16 +28,20 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
   children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T &
   BaseElementPropsWithChildren<T & HTMLElement>;
+/** @publicDocs */
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = 's-empty-state';
+/** @publicDocs */
 export interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
   /**
    * The subheading of the empty state.
@@ -54,6 +60,7 @@ export interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
    */
   graphic?: ComponentChild;
 }
+/** @publicDocs */
 export type ElementProps = Omit<
   EmptyStateJSXProps,
   'primaryAction' | 'secondaryActions' | 'graphic'

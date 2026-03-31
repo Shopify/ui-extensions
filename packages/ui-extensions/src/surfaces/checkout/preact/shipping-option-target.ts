@@ -12,6 +12,7 @@ import {useSubscription} from './subscription';
  * extension targets:
  * - `purchase.checkout.shipping-option-item.render-after`
  * - `purchase.checkout.shipping-option-item.details.render`
+ * @publicDocs
  */
 export function useShippingOptionTarget(): {
   shippingOptionTarget: ShippingOption;

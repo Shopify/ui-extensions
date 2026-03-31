@@ -24,18 +24,32 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-password-field";
+/**
+ * The element props interface for the PasswordField component.
+ * @publicDocs
+ */
 export interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * The events interface for the PasswordField component.
+ * @publicDocs
+ */
 export interface PasswordFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -62,6 +76,10 @@ export interface PasswordFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * The slots interface for the PasswordField component.
+ * @publicDocs
+ */
 export interface PasswordFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {TabProps,StringChildren,Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: Key;
@@ -21,14 +23,18 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
+/** @publicDocs */
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
 declare const tagName = "s-tab";
+/** @publicDocs */
 export interface TabJSXProps extends Pick<TabProps, 'controls' | 'disabled'> {
     children?: StringChildren;
 }

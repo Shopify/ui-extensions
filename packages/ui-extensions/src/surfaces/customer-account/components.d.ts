@@ -26,8 +26,22 @@ import {
   SectionElementSlots,
 } from './components/Section';
 
+/**
+ * A modal to complete an order action flow. Use this component to populate the `customer-account.order.action.render` extension target.
+ * @publicDocs
+ */
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
+
+/**
+ * The custom element interface for the CustomerAccountAction component.
+ * @publicDocs
+ */
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
+
+/**
+ * The slot interface for the CustomerAccountAction component.
+ * @publicDocs
+ */
 export type CustomerAccountActionElementSlotsDocs =
   CustomerAccountActionElementSlots;
 
@@ -50,7 +64,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Display up to 4 images in a grid or stacked layout. For example, images of products in a wishlist or subscription.
+ * @publicDocs
+ */
 export type ImageGroupPropsDocs = ImageGroupProps;
+
+/**
+ * The custom element interface for the ImageGroup component.
+ * @publicDocs
+ */
 export type ImageGroupElementDocs = ImageGroupElement;
 
 declare global {
@@ -71,8 +94,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The outer wrapper of the page—including the page title, subtitle, and page-level actions—displayed in a familiar and consistent style.
+ * @publicDocs
+ */
 export type PagePropsDocs = PageProps;
+
+/**
+ * The custom element interface for the Page component.
+ * @publicDocs
+ */
 export type PageElementDocs = PageElement;
+
+/**
+ * The slot interface for the Page component.
+ * @publicDocs
+ */
 export type PageElementSlotsDocs = PageElementSlots;
 
 declare global {
@@ -94,9 +131,28 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The element props interface for the Avatar component.
+ * @publicDocs
+ */
 export type AvatarElementPropsDocs = AvatarElementProps;
+
+/**
+ * Avatar is used to show a thumbnail representation of an individual or business in the interface.
+ * @publicDocs
+ */
 export type AvatarPropsDocs = AvatarProps;
+
+/**
+ * The custom element interface for the Avatar component.
+ * @publicDocs
+ */
 export type AvatarElementDocs = AvatarElement;
+
+/**
+ * The events interface for the Avatar component.
+ * @publicDocs
+ */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
@@ -115,7 +171,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Use a menu to display a list of actions in a popover. Actions can open a modal, trigger an event, or link to an external page.
+ * @publicDocs
+ */
 export type MenuPropsDocs = MenuProps;
+
+/**
+ * The custom element interface for the Menu component.
+ * @publicDocs
+ */
 export type MenuElementDocs = MenuElement;
 
 declare global {
@@ -136,8 +201,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Display multiple buttons in a layout that is contextual based on the screen width or parent component.
+ * @publicDocs
+ */
 export type ButtonGroupPropsDocs = ButtonGroupProps;
+
+/**
+ * The custom element interface for the ButtonGroup component.
+ * @publicDocs
+ */
 export type ButtonGroupElementDocs = ButtonGroupElement;
+
+/**
+ * The slot interface for the ButtonGroup component.
+ * @publicDocs
+ */
 export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
 
 declare global {
@@ -159,8 +238,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Groups related content into clearly-defined thematic areas with consistent styling and structure.
+ * @publicDocs
+ */
 export type SectionPropsDocs = SectionProps;
+
+/**
+ * The custom element interface for the Section component.
+ * @publicDocs
+ */
 export type SectionElementDocs = SectionElement;
+
+/**
+ * The slot interface for the Section component.
+ * @publicDocs
+ */
 export type SectionElementSlotsDocs = SectionElementSlots;
 
 declare global {

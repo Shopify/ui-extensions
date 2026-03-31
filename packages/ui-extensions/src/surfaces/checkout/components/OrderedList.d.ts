@@ -26,6 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-ordered-list";
+/**
+ * The element props interface for the OrderedList component.
+ * @publicDocs
+ */
 export interface OrderedListElementProps extends OrderedListProps$1 {
 }
 export interface OrderedListElement extends OrderedListElementProps, Omit<HTMLElement, 'id'> {

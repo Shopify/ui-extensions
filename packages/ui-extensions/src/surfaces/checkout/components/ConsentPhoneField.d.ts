@@ -24,9 +24,15 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
@@ -63,6 +69,10 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
+/**
+ * The element props interface for the ConsentPhoneField component.
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -72,6 +82,10 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
 }
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * The events interface for the ConsentPhoneField component.
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementEvents {
     /**
      * Callback when the element loses focus.
@@ -104,6 +118,10 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
+/**
+ * The slots interface for the ConsentPhoneField component.
+ * @publicDocs
+ */
 export interface ConsentPhoneFieldElementSlots {
     /**
      * Additional content to be displayed in the field.

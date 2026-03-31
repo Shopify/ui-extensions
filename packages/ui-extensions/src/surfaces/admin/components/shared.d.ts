@@ -7,21 +7,34 @@
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
+ * @publicDocs
  */
 export type ComponentChildren = preact.ComponentChildren;
+/**
+ * @publicDocs
+ */
 export type StringChildren = string;
+/**
+ * @publicDocs
+ */
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
    */
   id?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface ActionProps {
   /**
    * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
    */
   heading?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface ActionSlots {
   /**
    * The primary action element, typically a button or link component representing the main call-to-action.
@@ -59,6 +72,9 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    */
   src?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseOverlayProps {
   /**
    * A callback fired immediately after the overlay is shown.
@@ -84,6 +100,7 @@ export interface BaseOverlayProps {
  * - Components implementing this interface must provide all methods
  * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
  * - Consumers expect these methods to be consistently available on all instances
+ * @publicDocs
  */
 export interface BaseOverlayMethods {
   /**
@@ -105,6 +122,9 @@ export interface BaseOverlayMethods {
    */
   toggleOverlay: () => void;
 }
+/**
+ * @publicDocs
+ */
 export interface FocusEventProps {
   /**
    * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
@@ -115,6 +135,9 @@ export interface FocusEventProps {
    */
   onFocus?: (event: FocusEvent) => void;
 }
+/**
+ * @publicDocs
+ */
 export interface ToggleEventProps {
   /**
    * A callback fired when the element state changes, after any toggle animations have finished.
@@ -139,11 +162,17 @@ export interface ToggleEventProps {
    */
   onToggle?: (event: ToggleEvent$1) => void;
 }
+/**
+ * @publicDocs
+ */
 export type ToggleState = 'open' | 'closed';
 interface ToggleEvent$1 extends Event {
   readonly newState: ToggleState;
   readonly oldState: ToggleState;
 }
+/**
+ * @publicDocs
+ */
 export interface ExtendableEvent extends Event {
   /**
    * A method that accepts a promise signaling the duration and eventual success or failure of actions relating to the event.
@@ -155,12 +184,21 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
+/**
+ * @publicDocs
+ */
 export interface AggregateError<T extends Error> extends Error {
   errors: T[];
 }
+/**
+ * @publicDocs
+ */
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   error: AggregateError<T>;
 }
+/**
+ * @publicDocs
+ */
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -182,6 +220,7 @@ export type SizeKeyword =
  * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
  * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
  *
+ * @publicDocs
  */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
 interface AvatarProps$1 extends GlobalProps {
@@ -229,8 +268,12 @@ interface AvatarProps$1 extends GlobalProps {
  * - `transparent`: No background, allowing the underlying surface to show through.
  * - `ColorKeyword`: Applies color intensity levels (subdued, base, strong) to create spatial emphasis and containment.
  *
+ * @publicDocs
  */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
+/**
+ * @publicDocs
+ */
 export interface BackgroundProps {
   /**
    * The background color of the element. Use `transparent` for no background, or choose from `subdued`, `base`, or `strong` to apply varying levels of color intensity based on the component's `tone`.
@@ -251,6 +294,7 @@ export interface BackgroundProps {
  * In some cases, like for Banner, the tone might also affect the semantic and accessibility treatment of the component.
  *
  * @default 'auto'
+ * @publicDocs
  */
 export type ToneKeyword =
   | 'auto'
@@ -822,9 +866,13 @@ declare const privateIconArray: readonly [
   'x-circle',
   'x-circle-filled',
 ];
+/**
+ * @publicDocs
+ */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
+ * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
 /**
@@ -835,6 +883,7 @@ export type ExtractStrict<T, U extends T> = Extract<T, U>;
  * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
  * - `${T} ${T} ${T}`: Three values for block-start (top), inline axis (left/right), and block-end (bottom).
  * - `${T} ${T} ${T} ${T}`: Four values for block-start (top), inline-end (right), block-end (bottom), and inline-start (left).
+ * @publicDocs
  */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
@@ -847,6 +896,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
  *
  * - `T`: Single value that applies to both dimensions.
  * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
+ * @publicDocs
  */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
 /**
@@ -855,6 +905,7 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  *
  * - `T`: Base value that applies in all conditions.
  * - `@container${string}`: Container query string for conditional responsive styling based on container size.
+ * @publicDocs
  */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
@@ -864,6 +915,7 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * //   ^? string
  * type PropName = 'foo' | 'bar' | (string & {})
  * //   ^? 'foo' | 'bar' | (string & {})
+ * @publicDocs
  */
 export type AnyString = string & {};
 /**
@@ -871,6 +923,7 @@ export type AnyString = string & {};
  * to have a space or not in the string literal types.
  *
  * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ * @publicDocs
  */
 export type optionalSpace = '' | ' ';
 interface BadgeProps$1 extends GlobalProps {
@@ -993,6 +1046,9 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   hidden?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface DisplayProps {
   /**
    * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
@@ -1006,6 +1062,9 @@ export interface DisplayProps {
    */
   display?: MaybeResponsive<'auto' | 'none'>;
 }
+/**
+ * @publicDocs
+ */
 export interface AccessibilityRoleProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -1048,6 +1107,7 @@ export interface AccessibilityRoleProps {
  * - `generic`: Creates a semantically neutral container element with no inherent meaning.
  * - `presentation`: Removes semantic meaning from an element while preserving its visual appearance.
  * - `none`: Synonym for `presentation`, removes semantic meaning while keeping visual styling.
+ * @publicDocs
  */
 export type AccessibilityRole =
   /**
@@ -1164,6 +1224,9 @@ export type AccessibilityRole =
    * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
    */
   | 'none';
+/**
+ * @publicDocs
+ */
 export interface AccessibilityVisibilityProps {
   /**
    * Controls the visibility of the element for both visual and assistive technology users.
@@ -1176,6 +1239,9 @@ export interface AccessibilityVisibilityProps {
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
 }
+/**
+ * @publicDocs
+ */
 export interface LabelAccessibilityVisibilityProps {
   /**
    * Controls whether the label is visible to all users or only to screen readers.
@@ -1198,8 +1264,12 @@ export interface LabelAccessibilityVisibilityProps {
  *
  * - `SizeKeyword`: Standard padding sizes from the size scale for consistent spacing.
  * - `none`: No padding.
+ * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | 'none';
+/**
+ * @publicDocs
+ */
 export interface PaddingProps {
   /**
    * The padding applied to all edges of the component.
@@ -1284,6 +1354,7 @@ export interface PaddingProps {
  * - `${number}px`: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
  * - `${number}%`: Relative size as a percentage of the parent container (such as `50%`, `100%`).
  * - `0`: Zero size, equivalent to no dimension.
+ * @publicDocs
  */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
 /**
@@ -1291,6 +1362,7 @@ export type SizeUnits = `${number}px` | `${number}%` | `0`;
  *
  * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
  * - `auto`: Automatically sizes based on content and layout constraints.
+ * @publicDocs
  */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
 /**
@@ -1298,8 +1370,12 @@ export type SizeUnitsOrAuto = SizeUnits | 'auto';
  *
  * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
  * - `none`: No size constraint, allowing unlimited growth.
+ * @publicDocs
  */
 export type SizeUnitsOrNone = SizeUnits | 'none';
+/**
+ * @publicDocs
+ */
 export interface SizingProps {
   /**
    * The block size of the element (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
@@ -1344,6 +1420,9 @@ export interface SizingProps {
    */
   maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
+/**
+ * @publicDocs
+ */
 export type BorderStyleKeyword =
   | 'none'
   | 'solid'
@@ -1355,16 +1434,24 @@ export type BorderStyleKeyword =
  *
  * - `SizeKeyword`: Standard border widths from the size scale for consistent thickness.
  * - `none`: No border width (removes the border).
+ * @publicDocs
  */
 export type BorderSizeKeyword = SizeKeyword | 'none';
+/**
+ * @publicDocs
+ */
 export type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
+ * @publicDocs
  */
 export type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
   | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
+/**
+ * @publicDocs
+ */
 export interface BorderProps {
   /**
    * Applies a border using shorthand syntax to specify width, color, and style in a single property.
@@ -1443,6 +1530,9 @@ export interface BorderProps {
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
+/**
+ * @publicDocs
+ */
 export interface OverflowProps {
   /**
    * Sets the overflow behavior of the element.
@@ -1456,6 +1546,9 @@ export interface OverflowProps {
    */
   overflow?: 'hidden' | 'visible';
 }
+/**
+ * @publicDocs
+ */
 export interface BaseBoxProps
   extends AccessibilityVisibilityProps,
     BackgroundProps,
@@ -1473,10 +1566,16 @@ export interface BaseBoxProps
    */
   accessibilityLabel?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
 interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
+/**
+ * @publicDocs
+ */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavioral type of the button component, which determines what action it performs when activated.
@@ -1507,6 +1606,9 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   loading?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
@@ -1539,6 +1641,9 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: (event: Event) => void;
 }
+/**
+ * @publicDocs
+ */
 export interface InteractionProps {
   /**
    * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
@@ -1563,6 +1668,9 @@ export interface InteractionProps {
    */
   interestFor?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseClickableProps
   extends ButtonBehaviorProps,
     LinkBehaviorProps {}
@@ -1632,6 +1740,9 @@ interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
    */
   accessibilityLabel?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseInputProps {
   /**
    * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
@@ -1644,6 +1755,9 @@ export interface BaseInputProps {
    */
   disabled?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface InputProps extends BaseInputProps {
   /**
    * A callback fired when the user has finished editing the field, such as when they blur the field or press Enter. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
@@ -1664,6 +1778,9 @@ export interface InputProps extends BaseInputProps {
    */
   defaultValue?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface MultipleInputProps extends BaseInputProps {
   /**
    * A callback fired when the user has selected one or more options. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
@@ -1680,6 +1797,9 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   values?: string[];
 }
+/**
+ * @publicDocs
+ */
 export interface FileInputProps extends BaseInputProps {
   /**
    * A callback fired when the user has finished selecting one or more files.
@@ -1707,12 +1827,18 @@ export interface FileInputProps extends BaseInputProps {
    */
   files?: ReadonlyArray<File>;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldErrorProps {
   /**
    * An error message to display to the user. When set, the field will be styled with error indicators to communicate problems that need to be resolved immediately.
    */
   error?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BasicFieldProps
   extends FieldErrorProps,
     LabelAccessibilityVisibilityProps {
@@ -1727,12 +1853,18 @@ export interface BasicFieldProps
    */
   label?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldDetailsProps {
   /**
    * Additional helpful text displayed alongside the field to provide context, guidance, or instructions to the user. This content is accessible to both visual and screen reader users.
    */
   details?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldProps
   extends BasicFieldProps,
     InputProps,
@@ -1743,6 +1875,9 @@ export interface FieldProps
    */
   placeholder?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseTextFieldProps extends FieldProps {
   /**
    * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
@@ -1751,6 +1886,9 @@ export interface BaseTextFieldProps extends FieldProps {
    */
   readOnly?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface FieldDecorationProps {
   /**
    * A non-editable text value displayed immediately after the editable portion of the field. This is useful for displaying an implied part of the value, such as `@shopify.com` or `%`.
@@ -1781,6 +1919,9 @@ export interface FieldDecorationProps {
    */
   accessory?: ComponentChildren;
 }
+/**
+ * @publicDocs
+ */
 export interface NumberConstraintsProps {
   /**
    * The highest decimal or integer value accepted for the field. When used with `step`, the value rounds down to the maximum number.
@@ -1819,6 +1960,9 @@ export interface NumberConstraintsProps {
    */
   controls?: 'auto' | 'stepper' | 'none';
 }
+/**
+ * @publicDocs
+ */
 export interface MinMaxLengthProps {
   /**
    * The maximum number of characters allowed in the field.
@@ -1833,6 +1977,9 @@ export interface MinMaxLengthProps {
    */
   minLength?: number;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseSelectableProps {
   /**
    * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
@@ -1849,6 +1996,9 @@ export interface BaseSelectableProps {
    */
   value?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
    * Whether the option is currently selected.
@@ -1865,6 +2015,9 @@ export interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseCheckableProps
   extends BaseSelectableProps,
     InteractionProps {
@@ -1933,6 +2086,9 @@ interface CheckboxProps$1
    */
   required?: boolean;
 }
+/**
+ * @publicDocs
+ */
 export interface ChipProps$1 extends GlobalProps {
   /**
    * The text content displayed within the chip.
@@ -2124,6 +2280,9 @@ interface ColorPickerProps$1
    */
   defaultValue?: string;
 }
+/**
+ * @publicDocs
+ */
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {
@@ -2160,16 +2319,22 @@ export interface AutocompleteProps<
  *
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
+ * @publicDocs
  */
 export type AutocompleteSection = `section-${string}`;
 /**
  * The contact information group the autocomplete data should be sourced from.
+ * @publicDocs
  */
 export type AutocompleteGroup = 'shipping' | 'billing';
 /**
  * The contact information subgroup the autocomplete data should be sourced from.
+ * @publicDocs
  */
 export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
+/**
+ * @publicDocs
+ */
 export type AnyAutocompleteField =
   | 'additional-name'
   | 'address-level1'
@@ -2270,6 +2435,7 @@ export type AnyAutocompleteField =
  * - `cc-additional-name` - Middle name on credit card
  * - `cc-family-name` - Last name on credit card
  * - `cc-type` - Credit card type (Visa, Mastercard)
+ * @publicDocs
  */
 export type TextAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2498,6 +2664,7 @@ interface DateFieldProps$1
  * - `cc-expiry` - Complete credit card expiration date
  * - `cc-expiry-month` - Month component of a credit card expiration date (1-12)
  * - `cc-expiry-year` - Year component of a credit card expiration date (2025)
+ * @publicDocs
  */
 export type DateAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2575,6 +2742,7 @@ interface EmailFieldProps$1
  * - `mobile email` - Mobile device email address
  * - `fax email` - Fax machine email address
  * - `pager email` - Pager device email address
+ * @publicDocs
  */
 export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -2631,6 +2799,9 @@ interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
    */
   onError?: (event: AggregateErrorEvent<FunctionSettingsError>) => void;
 }
+/**
+ * @publicDocs
+ */
 export interface FunctionSettingsError extends Error {
   /**
    * A unique identifier describing the “class” of error. These will match
@@ -2640,7 +2811,13 @@ export interface FunctionSettingsError extends Error {
   code: string;
   name: 'FunctionSettingsError';
 }
+/**
+ * @publicDocs
+ */
 export type SpacingKeyword = SizeKeyword | 'none';
+/**
+ * @publicDocs
+ */
 export interface GapProps {
   /**
    * The spacing between child elements.
@@ -2668,18 +2845,31 @@ export interface GapProps {
    */
   columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
+/**
+ * @publicDocs
+ */
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
+/**
+ * @publicDocs
+ */
 export type ContentDistribution =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
   | 'stretch';
+/**
+ * @publicDocs
+ */
 export type ContentPosition = 'center' | 'start' | 'end';
+/**
+ * @publicDocs
+ */
 export type OverflowPosition =
   | `unsafe ${ContentPosition}`
   | `safe ${ContentPosition}`;
 /**
  * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis. Learn more about the [justify-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+ * @publicDocs
  */
 export type JustifyItemsKeyword =
   | 'normal'
@@ -2689,6 +2879,7 @@ export type JustifyItemsKeyword =
   | ContentPosition;
 /**
  * Align items sets the align-self value on all direct children as a group. Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+ * @publicDocs
  */
 export type AlignItemsKeyword =
   | 'normal'
@@ -2698,6 +2889,7 @@ export type AlignItemsKeyword =
   | ContentPosition;
 /**
  * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container. Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+ * @publicDocs
  */
 export type JustifyContentKeyword =
   | 'normal'
@@ -2706,6 +2898,7 @@ export type JustifyContentKeyword =
   | ContentPosition;
 /**
  *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis. Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+ * @publicDocs
  */
 export type AlignContentKeyword =
   | 'normal'
@@ -2789,6 +2982,9 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
    */
   gridRow?: `span ${number}` | 'auto';
 }
+/**
+ * @publicDocs
+ */
 export interface BaseTypographyProps {
   /**
    * The color intensity of the text. Use `subdued` for less intense, `base` for standard, or `strong` for more intense coloring.
@@ -2842,6 +3038,9 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
+/**
+ * @publicDocs
+ */
 export interface BlockTypographyProps {
   /**
    * Truncates the text content to the specified number of lines. Learn more about the [-webkit-line-clamp property](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp).
@@ -2913,6 +3112,9 @@ interface IconProps$1
    */
   type?: IconType | AnyString;
 }
+/**
+ * @publicDocs
+ */
 export interface BaseImageProps {
   /**
    * Alternative text that describes the image for accessibility.
@@ -3111,6 +3313,9 @@ interface MoneyFieldProps$1
     BaseTextFieldProps,
     NumberConstraintsProps,
     AutocompleteProps<MoneyAutocompleteField> {}
+/**
+ * @publicDocs
+ */
 export type MoneyAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'transaction-amount'
@@ -3145,6 +3350,7 @@ interface NumberFieldProps$1
  * - `one-time-code` - One-time codes for authentication (OTP, 2FA codes)
  * - `cc-number` - Credit card number
  * - `cc-csc` - Credit card security code (CVV/CVC)
+ * @publicDocs
  */
 export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3227,6 +3433,9 @@ interface ParagraphProps$1
    */
   type?: ParagraphType;
 }
+/**
+ * @publicDocs
+ */
 export type ParagraphType =
   /**
    * Indicates the text is a structural grouping of related content. In an HTML host, the text will be rendered in a `<p>` element. Learn more about the [p element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p).
@@ -3250,6 +3459,7 @@ interface PasswordFieldProps$1
  * Available values:
  * - `current-password` - Existing password for login or authentication
  * - `new-password` - New password when creating an account or changing password
+ * @publicDocs
  */
 export type PasswordAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3381,6 +3591,9 @@ interface SwitchProps$1
     BasicFieldProps,
     FieldDetailsProps,
     FieldErrorProps {}
+/**
+ * @publicDocs
+ */
 export interface PaginationProps {
   /**
    * Whether to use pagination controls.
@@ -3465,6 +3678,7 @@ interface TableCellProps$1 extends GlobalProps {
  * - `kicker` - Small label displayed above primary content with less visual prominence. Only one column can have this designation.
  * - `inline` - Content displayed inline with primary content.
  * - `labeled` - Each column displays as a heading-content pair.
+ * @publicDocs
  */
 export type ListSlotType =
   | 'primary'
@@ -3479,6 +3693,7 @@ export type ListSlotType =
  * - `base`: Standard format for text columns
  * - `currency`: Right-aligned format for monetary values
  * - `numeric`: Right-aligned format for numeric values
+ * @publicDocs
  */
 export type HeaderFormat = 'base' | 'currency' | 'numeric';
 interface TableHeaderProps$1 extends GlobalProps {
@@ -3547,6 +3762,9 @@ interface TextProps$1
    */
   type?: TextType;
 }
+/**
+ * @publicDocs
+ */
 export type TextType =
   /**
    * Indicate the text is contact information. Typically used for addresses.
@@ -3678,6 +3896,7 @@ interface URLFieldProps$1
  * - `mobile impp` - Mobile instant messaging protocol URL
  * - `fax impp` - Fax instant messaging protocol URL
  * - `pager impp` - Pager instant messaging protocol URL
+ * @publicDocs
  */
 export type URLAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
@@ -3686,6 +3905,9 @@ export type URLAutocompleteField = ExtractStrict<
 //
 // Preact Virtual DOM
 // -----------------------------------
+/**
+ * @publicDocs
+ */
 export interface VNode<P = {}> {
   type: ComponentType<P> | string;
   props: P & {
@@ -3712,12 +3934,27 @@ export interface VNode<P = {}> {
 //
 // Preact Component interface
 // -----------------------------------
+/**
+ * @publicDocs
+ */
 export type Key = string | number | any;
+/**
+ * @publicDocs
+ */
 export interface RefObject<T> {
   current: T | null;
 }
+/**
+ * @publicDocs
+ */
 export type RefCallback<T> = (instance: T | null) => void;
+/**
+ * @publicDocs
+ */
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
+/**
+ * @publicDocs
+ */
 export type ComponentChild =
   | VNode<any>
   | object
@@ -3728,13 +3965,22 @@ export type ComponentChild =
   | null
   | undefined;
 type ComponentChildren$1 = ComponentChild[] | ComponentChild;
+/**
+ * @publicDocs
+ */
 export interface Attributes {
   key?: Key | undefined;
   jsx?: boolean | undefined;
 }
+/**
+ * @publicDocs
+ */
 export interface ErrorInfo {
   componentStack?: string;
 }
+/**
+ * @publicDocs
+ */
 export type RenderableProps<P, RefType = any> = P &
   Readonly<
     Attributes & {
@@ -3742,12 +3988,21 @@ export type RenderableProps<P, RefType = any> = P &
       ref?: Ref<RefType>;
     }
   >;
+/**
+ * @publicDocs
+ */
 export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
+/**
+ * @publicDocs
+ */
 export interface FunctionComponent<P = {}> {
   (props: RenderableProps<P>, context?: any): ComponentChildren$1;
   displayName?: string;
   defaultProps?: Partial<P> | undefined;
 }
+/**
+ * @publicDocs
+ */
 export interface ComponentClass<P = {}, S = {}> {
   new (props: P, context?: any): Component<P, S>;
   displayName?: string;
@@ -3759,6 +4014,9 @@ export interface ComponentClass<P = {}, S = {}> {
   ): Partial<S> | null;
   getDerivedStateFromError?(error: any): Partial<S> | null;
 }
+/**
+ * @publicDocs
+ */
 export interface Component<P = {}, S = {}> {
   componentWillMount?(): void;
   componentDidMount?(): void;
@@ -3827,15 +4085,24 @@ declare abstract class Component<P, S> {
 //
 // Context
 // -----------------------------------
+/**
+ * @publicDocs
+ */
 export interface Consumer<T>
   extends FunctionComponent<{
     children: (value: T) => ComponentChildren$1;
   }> {}
+/**
+ * @publicDocs
+ */
 export interface Provider<T>
   extends FunctionComponent<{
     value: T;
     children?: ComponentChildren$1;
   }> {}
+/**
+ * @publicDocs
+ */
 export interface Context<T> extends Provider<T> {
   Consumer: Consumer<T>;
   Provider: Provider<T>;

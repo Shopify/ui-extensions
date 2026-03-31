@@ -18,14 +18,24 @@ export interface BaseElementProps<TClass = HTMLElement> {
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-text-area";
+/**
+ * The element props interface for the TextArea component.
+ * @publicDocs
+ */
 export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
     /**
      * @deprecated Use `label` instead.
@@ -35,6 +45,10 @@ export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'labe
 }
 export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/**
+ * The events interface for the TextArea component.
+ * @publicDocs
+ */
 export interface TextAreaElementEvents {
     /**
      * Callback when the element loses focus.

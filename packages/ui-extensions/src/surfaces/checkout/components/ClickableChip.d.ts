@@ -24,18 +24,32 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable-chip";
+/**
+ * The element props interface for the ClickableChip component.
+ * @publicDocs
+ */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
+/**
+ * The events interface for the ClickableChip component.
+ * @publicDocs
+ */
 export interface ClickableChipElementEvents {
     /**
      * Event handler when the chip has fully hidden.
@@ -52,6 +66,10 @@ export interface ClickableChipElementEvents {
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
+/**
+ * The slots interface for the ClickableChip component.
+ * @publicDocs
+ */
 export interface ClickableChipElementSlots {
     /**
      * The graphic to display inside of the chip.

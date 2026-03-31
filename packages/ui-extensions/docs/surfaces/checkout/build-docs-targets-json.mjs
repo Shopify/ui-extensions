@@ -35,10 +35,28 @@ function findGeneratedDocsPath() {
   return docsPath || generatedDir; // Fallback to generated root if not found
 }
 
+// Accept an API version argument (e.g. 2026-04-rc) to output targets.json into
+// a versioned directory matching the customer-account pattern.
+// Falls back to the directory containing generated_docs_data.json if not provided.
+const apiVersion = process.argv[2];
+
+function resolveOutputPath() {
+  if (apiVersion) {
+    return path.join(
+      __dirname,
+      'generated',
+      'checkout_ui_extensions',
+      apiVersion,
+      'targets.json',
+    );
+  }
+  return path.join(findGeneratedDocsPath(), 'targets.json');
+}
+
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(findGeneratedDocsPath(), 'targets.json'),
+  outputPath: resolveOutputPath(),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
@@ -331,6 +349,10 @@ function getNestedApis(apiName) {
   }
 }
 
+// No composite API decomposition — StandardApi, CheckoutApi, and OrderConfirmationApi
+// are plain interfaces and are rendered as-is in the targets.json.
+const COMPOSITE_API_DECOMPOSITION = {};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -362,16 +384,23 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      // Add the API itself
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        // Replace composite with its documented constituent APIs
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        // Add the API itself
+        apisSet.add(apiName);
 
-      // Get nested APIs from this API (recursively)
-      const nestedApis = getNestedApis(apiName);
-      for (const nestedApi of nestedApis) {
-        apisSet.add(nestedApi);
-        // Recursively get nested APIs of nested APIs
-        const deepNestedApis = getNestedApis(nestedApi);
-        deepNestedApis.forEach((api) => apisSet.add(api));
+        // Get nested APIs from this API (recursively)
+        const nestedApis = getNestedApis(apiName);
+        for (const nestedApi of nestedApis) {
+          apisSet.add(nestedApi);
+          // Recursively get nested APIs of nested APIs
+          const deepNestedApis = getNestedApis(nestedApi);
+          deepNestedApis.forEach((api) => apisSet.add(api));
+        }
       }
     }
   }
@@ -496,6 +525,16 @@ try {
 
   // Create the combined JSON with reverse mappings
   const combinedJson = createCombinedMapping(targetsJson);
+
+  // These components have doc pages but are not exported from the TypeScript source,
+  // so the script cannot discover them automatically. Add them manually with all targets.
+  const allTargetNames = Object.keys(targetsJson).sort();
+  const UNDISCOVERABLE_COMPONENTS = ['StyleHelper'];
+  for (const component of UNDISCOVERABLE_COMPONENTS) {
+    if (!combinedJson[component]) {
+      combinedJson[component] = {targets: allTargetNames};
+    }
+  }
 
   // Write to output file
   const outputDir = path.dirname(config.outputPath);

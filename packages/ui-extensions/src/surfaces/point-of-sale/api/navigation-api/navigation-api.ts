@@ -36,6 +36,10 @@ export interface NavigationCurrentEntryChangeEvent {
   from: NavigationHistoryEntry;
 }
 
+/**
+ * The `Navigation` object provides navigation controls for extension modals.
+ * @publicDocs
+ */
 export interface Navigation {
   /**
    * Navigates to a specific URL, updating any provided state in the history entries list. Returns a promise that resolves when navigation is complete. Use for programmatic navigation between screens, implementing custom navigation controls, or deep-linking to specific modal states.
@@ -71,6 +75,7 @@ export interface Navigation {
 
 /**
  * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
+ * @publicDocs
  */
 export interface Window {
   /**
@@ -81,6 +86,7 @@ export interface Window {
 
 /**
  * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
+ * @publicDocs
  */
 export interface Window {
   /**
