@@ -8,10 +8,6 @@
 /// <reference lib="DOM" />
 import type {IconProps$1, IconType, ComponentChildren} from './shared.d.ts';
 
-/**
- * The properties for the icon component. An icon displays a graphical symbol with configurable appearance, color, and semantic meaning.
- * @publicDocs
- */
 export interface IconProps
   extends Pick<
     IconProps$1,
