@@ -99,8 +99,8 @@ export type AnyCheckoutComponentExcept<Except extends AnyCheckoutComponent> =
  */
 export interface SubscribableSignalLike<T> extends ReadonlySignalLike<T> {
   /**
-   * The current value of the signal. This property provides synchronous access to the
-   * latest value without subscribing to changes.
+   * The current value of the signal. Equivalent to `.value`, accessing this property
+   * subscribes to changes when used in a reactive context.
    *
    * @deprecated Use `.value` instead.
    */

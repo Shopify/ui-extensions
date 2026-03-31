@@ -10,7 +10,21 @@
 /// <reference lib="DOM" />
 import type {BoxProps$1,MaybeAllValuesShorthandProperty,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword} from './components-shared.d.ts';
 
+/**
+ * The subset of border size values available for this component.
+ *
+ * - `base`: Standard border width.
+ * - `large`: Thick border for strong emphasis.
+ * - `large-100`: Extra thick border for maximum prominence.
+ * - `large-200`: The thickest available border.
+ * - `none`: No border.
+ */
 export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/**
+ * The subset of border color values available for this component.
+ *
+ * - `base`: The standard border color for most contexts.
+ */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
