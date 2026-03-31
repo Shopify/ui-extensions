@@ -328,7 +328,7 @@ export interface SizingProps {
    *
    * - `number`: The size in pixels.
    * - `` `${number}%` ``: The size as a percentage of the parent container's block size.
-   * - `fill`: Takes all the available space.
+   * - `'fill'`: Takes all the available space.
    *
    * Learn more about the [max-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size) property.
    */
@@ -342,7 +342,7 @@ export interface SizingProps {
    *
    * - `number`: The size in pixels.
    * - `` `${number}%` ``: The size as a percentage of the parent container's inline size.
-   * - `fill`: Takes all the available space.
+   * - `'fill'`: Takes all the available space.
    *
    * Learn more about the [max-inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size) property.
    */
@@ -356,7 +356,7 @@ export interface SizingProps {
    *
    * - `number`: The size in pixels.
    * - `` `${number}%` ``: The size as a percentage of the parent container's inline size.
-   * - `fill`: Takes all the available space.
+   * - `'fill'`: Takes all the available space.
    *
    * Learn more about the [min-inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size) property.
    */
@@ -370,7 +370,7 @@ export interface SizingProps {
    *
    * - `number`: The size in pixels.
    * - `` `${number}%` ``: The size as a percentage of the parent container's block size.
-   * - `fill`: Takes all the available space.
+   * - `'fill'`: Takes all the available space.
    *
    * Learn more about the [min-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size) property.
    */
@@ -602,8 +602,30 @@ export type Spacing =
   | 'loose'
   | 'extraLoose';
 
+/**
+ * Controls how content is aligned along the cross axis.
+ *
+ * - `'start'`: Aligns content to the start of the container.
+ * - `'center'`: Centers content within the container.
+ * - `'end'`: Aligns content to the end of the container.
+ */
 export type Alignment = 'start' | 'center' | 'end';
+/**
+ * Controls how content is aligned along the inline axis (horizontal in standard writing modes).
+ *
+ * - `'start'`: Aligns content to the inline start of the container.
+ * - `'center'`: Centers content along the inline axis.
+ * - `'end'`: Aligns content to the inline end of the container.
+ */
 export type InlineAlignment = 'start' | 'center' | 'end';
+/**
+ * Controls how content is aligned along the block axis (vertical in standard writing modes).
+ *
+ * - `'start'`: Aligns content to the block start of the container.
+ * - `'center'`: Centers content along the block axis.
+ * - `'end'`: Aligns content to the block end of the container.
+ * - `'baseline'`: Aligns content so their text baselines line up.
+ */
 export type BlockAlignment = Alignment | 'baseline';
 
 /**
