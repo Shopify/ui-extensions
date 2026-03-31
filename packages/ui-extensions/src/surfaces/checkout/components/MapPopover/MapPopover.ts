@@ -4,11 +4,13 @@ import type {IdProps} from '../shared';
 
 export interface MapPopoverProps extends IdProps {
   /**
-   * Callback to run when the Popover is closed.
+   * A callback that fires when the popover is closed. Use this to
+   * clean up state or update the UI when the user dismisses the popover.
    */
   onClose?(): void;
   /**
-   * Callback to run when the Popover is opened.
+   * A callback that fires when the popover is opened. Use this to
+   * load additional data or update the UI when the popover becomes visible.
    */
   onOpen?(): void;
 }

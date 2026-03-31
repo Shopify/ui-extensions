@@ -4,41 +4,49 @@ import type {IdProps} from '../shared';
 
 export interface AvatarProps extends IdProps {
   /**
-   * Initials to display in the avatar.
+   * The initials to display in the avatar. Used as a text fallback when no
+   * image is available or while the image is loading.
    */
   initials?: string;
 
   /**
-   * The URL or path to the image.
-   *
-   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly.
+   * The URL or path to the avatar image. Supports remote URLs and local
+   * file resources. Initials are rendered as a fallback if `src` is not
+   * provided, fails to load, or does not load quickly.
    */
   src?: string;
 
   /**
-   * Invoked when load of provided image completes successfully.
+   * A callback that fires when the avatar image finishes loading
+   * successfully. Use this to trigger UI updates that depend on the
+   * image being ready (for example, removing a loading skeleton).
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
   onLoad?(): void;
 
   /**
-   * Invoked on load error of provided image.
+   * A callback that fires when the avatar image fails to load (for
+   * example, due to a broken URL or network error). Use this to show
+   * a fallback or error state.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
   onError?(): void;
 
   /**
-   * Size of the avatar.
+   * The size of the avatar.
    *
-   * @default 'base'
+   * @defaultValue 'base'
    */
   size?: Extract<Size, 'base' | 'large' | 'extraLarge' | 'fill'>;
 
   /**
-   * An alternative text description that describe the image for the reader
-   * to understand what it is about or identify the user the avatar belongs to.
+   * The alternative text that describes the avatar for assistive technologies.
+   * Screen readers announce this text when they encounter the avatar, and
+   * it displays as a fallback if the image fails to load.
+   *
+   * Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204).
    */
   alt?: string;
 }

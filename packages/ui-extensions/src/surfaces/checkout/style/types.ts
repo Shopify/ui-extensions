@@ -1,3 +1,8 @@
+/**
+ * The device pixel ratio used to serve resolution-appropriate images.
+ * A value of `1` targets standard displays, while higher values such as
+ * `2` or `3` target high-density (Retina) displays.
+ */
 type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 
 export interface InteractiveConditions {
@@ -5,16 +10,34 @@ export interface InteractiveConditions {
   focus: true;
 }
 
+/**
+ * A condition that targets devices based on their pixel density.
+ */
 export interface ResolutionCondition {
+  /**
+   * The minimum device pixel ratio the condition must match.
+   */
   resolution: Resolution;
 }
 
 type ViewportInlineSize = 'extraSmall' | 'small' | 'medium' | 'large';
 
+/**
+ * A condition that targets layouts based on the inline size (width in
+ * horizontal writing modes) of the viewport.
+ */
 export interface ViewportSizeCondition<T = ViewportInlineSize> {
+  /**
+   * The minimum viewport inline size that the condition must match.
+   */
   viewportInlineSize: {min: T};
 }
 
+/**
+ * A utility type that requires at least one property from the given type
+ * to be present. Used to ensure that conditional style objects always
+ * specify at least one condition.
+ */
 export type AtLeastOne<T, U = {[K in keyof T]: Pick<T, K>}> = Partial<T> &
   U[keyof U];
 
@@ -77,6 +100,10 @@ export interface StylesConditionalStyle<
   conditionals: StylesConditionalValue<T, AcceptedConditions>[];
 }
 
+/**
+ * A single conditional branch that pairs a set of conditions with the
+ * value to apply when those conditions are met.
+ */
 export interface ConditionalValue<
   T,
   AcceptedConditions extends BaseConditions = Conditions,
@@ -92,6 +119,11 @@ export interface ConditionalValue<
   value: T;
 }
 
+/**
+ * A conditional style definition that maps one or more conditions to
+ * different values. The `default` value is used as a fallback when none
+ * of the conditions in `conditionals` are satisfied.
+ */
 export interface ConditionalStyle<
   T,
   AcceptedConditions extends BaseConditions = Conditions,
@@ -110,8 +142,6 @@ export interface ConditionalStyle<
 /**
  * A type that represents a value that can be a conditional style.
  * We highly recommend using the `Style` helper which simplifies the creation of conditional styles.
- *
- * To learn more check out the [conditional styles](/api/checkout-ui-extensions/components/utilities/stylehelper) documentation.
  */
 export type MaybeConditionalStyle<
   T,
@@ -121,8 +151,6 @@ export type MaybeConditionalStyle<
 /**
  * A type that represents a value that can be a conditional style. The conditions are based on the viewport size.
  * We highly recommend using the `Style` helper which simplifies the creation of conditional styles.
- *
- * To learn more check out the [conditional styles](/api/checkout-ui-extensions/components/utilities/stylehelper) documentation.
  */
 export type MaybeResponsiveConditionalStyle<T> =
   | T
