@@ -1,3 +1,5 @@
+import type {ReadonlySignalLike} from '../../../shared';
+
 /**
  * @publicDocs
  */
@@ -20,16 +22,17 @@ export interface Storage<
   /**
    * Reactive access to storage values as Subscribables.
    *
-   * Each key is exposed as a `Subscribable<T | undefined>`, enabling reactive
-   * updates across targets of the same extension. One target can subscribe to
-   * a key and react when another target updates it via `set()` or `delete()`.
+   * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling
+   * reactive updates across targets of the same extension. One target can
+   * subscribe to a key and react when another target updates it via `set()`
+   * or `delete()`.
    *
    * Only available on API version `2026-04` and later.
    *
    * @example
    * ```typescript
    * // Subscribe to changes from another target:
-   * const unsubscribe = shopify.storage.keys.syncStatus.subscribe((value) => {
+   * const unsubscribe = api.storage.keys.syncStatus.subscribe((value) => {
    *   console.log('syncStatus changed:', value);
    * });
    * ```
@@ -98,29 +101,19 @@ export interface Storage<
 }
 
 /**
- * Represents a readonly value managed by the host that an extension can
- * subscribe to for reactive updates.
- */
-export interface Subscribable<Value = unknown> {
-  /** Synchronous access to the current value. */
-  readonly value: Value;
-  /** Registers a callback that fires when the value changes. Returns an unsubscribe function. */
-  subscribe: (callback: (value: Value) => void) => () => void;
-}
-
-/**
  * Provides reactive, subscribable access to individual storage keys.
  *
- * Each property is a `Subscribable` that reflects the current value of the
- * corresponding storage key. Values are `undefined` when the key does not exist.
+ * Each property is a `ReadonlySignalLike` that reflects the current value of
+ * the corresponding storage key. Values are `undefined` when the key does not
+ * exist.
  *
- * Mutations are performed through the existing `Storage` methods (`set`, `delete`,
- * `clear`, etc.) — `StorageKeys` is read-only and reactive.
+ * Mutations are performed through the existing `Storage` methods (`set`,
+ * `delete`, `clear`, etc.) — `StorageKeys` is read-only and reactive.
  */
 export type StorageKeys<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
 > = {
-  readonly [K in keyof BaseStorageTypes]: Subscribable<
+  readonly [K in keyof BaseStorageTypes]: ReadonlySignalLike<
     BaseStorageTypes[K] | undefined
   >;
 };
