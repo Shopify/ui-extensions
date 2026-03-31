@@ -3,6 +3,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {IconSource} from '../Icon/Icon';
 import type {IdProps} from '../shared';
 
+/**
+ * A Tag is used to help label, organize or categorize objects. It is commonly used in Checkout to display the discounts applied to a cart.
+ * @publicDocs
+ */
 export interface TagProps extends IdProps {
   children?: string;
   /**

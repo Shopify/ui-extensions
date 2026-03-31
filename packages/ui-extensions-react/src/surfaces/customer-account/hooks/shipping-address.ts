@@ -10,6 +10,7 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `shippingAddress` applied to the checkout.
+ * @publicDocs
  */
 export function useShippingAddress<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

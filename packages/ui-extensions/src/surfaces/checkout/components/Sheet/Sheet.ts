@@ -3,6 +3,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
+/**
+ * The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be rendered. 
+
+The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.
+ * @publicDocs
+ */
 export interface SheetProps extends IdProps {
   /**
    * A label that describes the purpose of the sheet, announced by screen readers. If not set, it will use the value of `heading`.

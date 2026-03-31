@@ -4,6 +4,12 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {Rows} from '../shared';
 import type {GridProps} from '../Grid/Grid';
 
+/**
+ * BlockLayout is used to lay out content over multiple rows.
+
+By default, all rows fill the available block space, sharing it equally.
+ * @publicDocs
+ */
 export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
   /**
    * Sizes for each row of the layout.

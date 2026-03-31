@@ -5,6 +5,7 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the setting values defined by the merchant for the extension.
+ * @publicDocs
  */
 export function useSettings<
   Settings extends ExtensionSettings,

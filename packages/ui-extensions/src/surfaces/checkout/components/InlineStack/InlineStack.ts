@@ -14,6 +14,10 @@ import type {
   ViewLikeAccessibilityRole,
 } from '../shared';
 
+/**
+ * InlineStack is used to lay out a horizontal row of elements. Elements always wrap.
+ * @publicDocs
+ */
 export interface InlineStackProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

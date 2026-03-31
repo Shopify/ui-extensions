@@ -1,7 +1,9 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/point-of-sale
 SRC_PATH=src/surfaces/point-of-sale
-SHOPIFY_DEV_PATH="../../../shopify-dev"
+# Generated output (including generated_docs_data_v2.json) is intended for the shopify-dev repo.
+# Override with SHOPIFY_DEV_PATH in CI or when shopify-dev is not a sibling of ui-extensions.
+SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -47,10 +49,16 @@ fi
 
 # Make sure https://shopify.dev URLs are relative so they work in Spin.
 # See https://github.com/Shopify/generate-docs/issues/181
-run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
-sed_exit=$?
-if [ $sed_exit -ne 0 ]; then
-  fail_and_exit $sed_exit
+DOCS_JSON="./$DOCS_PATH/generated/generated_docs_data_v2.json"
+if [ ! -f "$DOCS_JSON" ]; then
+  DOCS_JSON="./$DOCS_PATH/generated/generated_docs_data.json"
+fi
+if [ -f "$DOCS_JSON" ]; then
+  run_sed 's/https:\/\/shopify.dev//gi' "$DOCS_JSON"
+  sed_exit=$?
+  if [ $sed_exit -ne 0 ]; then
+    fail_and_exit $sed_exit
+  fi
 fi
 
 
@@ -62,19 +70,27 @@ if [ $targets_exit -ne 0 ]; then
   echo "Warning: Failed to generate targets.json"
 fi
 
-if [ -d $SHOPIFY_DEV_PATH ]; then
-  mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION
-  # Replace 'unstable' with the exact API version in relative doc links
-  run_sed \
-    "s/\/docs\/api\/pos-ui-extensions\/unstable/\/docs\/api\/pos-ui-extensions\/$API_VERSION/gi" \
-    $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION/generated_docs_data.json
-  sed_exit=$?
-  if [ $sed_exit -ne 0 ]; then
-    fail_and_exit $sed_exit
+if [ -d "$SHOPIFY_DEV_PATH" ]; then
+  DEST_DIR="$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/pos_ui_extensions/$API_VERSION"
+  mkdir -p "$DEST_DIR"
+  cp ./$DOCS_PATH/generated/* "$DEST_DIR"
+  # Replace 'unstable' with the exact API version in relative doc links (v2 or v1, whichever was generated)
+  DEST_DOCS_JSON="$DEST_DIR/generated_docs_data_v2.json"
+  if [ ! -f "$DEST_DOCS_JSON" ]; then
+    DEST_DOCS_JSON="$DEST_DIR/generated_docs_data.json"
   fi
-  rsync -a --delete ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions/$API_VERSION
+  if [ -f "$DEST_DOCS_JSON" ]; then
+    run_sed \
+      "s/\/docs\/api\/pos-ui-extensions\/unstable/\/docs\/api\/pos-ui-extensions\/$API_VERSION/gi" \
+      "$DEST_DOCS_JSON"
+    sed_exit=$?
+    if [ $sed_exit -ne 0 ]; then
+      fail_and_exit $sed_exit
+    fi
+  fi
+  rsync -a --delete ./$DOCS_PATH/screenshots/ "$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions/$API_VERSION"
 
+  echo "Uploaded generated docs (including generated_docs_data_v2.json) to shopify-dev at $DEST_DIR"
   if [ -n "$SPIN_SHOPIFY_DEV_SERVICE_FQDN" ]; then
     echo "Docs: https://$SPIN_SHOPIFY_DEV_SERVICE_FQDN/docs/api/pos-ui-extensions"
   else
@@ -82,4 +98,5 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
   fi
 else
   echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+  echo "To upload generated_docs_data_v2.json to shopify-dev, clone the shopify-dev repo next to ui-extensions or set SHOPIFY_DEV_PATH."
 fi

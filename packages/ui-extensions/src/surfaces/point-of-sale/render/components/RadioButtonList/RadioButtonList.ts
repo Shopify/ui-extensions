@@ -1,5 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * Configure the following properties on the RadioButtonList component.
+ *
+ * @publicDocs
+ */
 export interface RadioButtonListProps {
   /**
    * An array of string values representing the radio button options available for selection.

@@ -19,8 +19,10 @@ export type Spacing =
   | 16;
 
 /**
- * Deprecated vertical spacing values using named size keywords.
+ * The spacing values for controlling vertical space between elements.
+ *
  * @deprecated Use `SizeKeyword` from `./sizes` instead for consistent spacing across the design system.
+ * @publicDocs
  */
 export type VerticalSpacing =
   | 'HalfPoint'
@@ -31,8 +33,10 @@ export type VerticalSpacing =
   | 'ExtraLarge';
 
 /**
- * Deprecated horizontal spacing values using named size keywords.
+ * The spacing values for controlling horizontal space between elements.
+ *
  * @deprecated Use `SizeKeyword` from `./sizes` instead for consistent spacing across the design system.
+ * @publicDocs
  */
 export type HorizontalSpacing =
   | 'HalfPoint'

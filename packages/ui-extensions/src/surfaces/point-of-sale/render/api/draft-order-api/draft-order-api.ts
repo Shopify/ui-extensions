@@ -5,6 +5,11 @@ export interface DraftOrderApi {
   draftOrder: DraftOrderApiContent;
 }
 
+/**
+ * The `DraftOrderApi` object provides access to draft order data. Access these properties through `api.draftOrder` to interact with the current draft order context.
+ *
+ * @publicDocs
+ */
 export interface DraftOrderApiContent {
   /**
    * The unique identifier for the draft order. Use for draft order lookups, implementing order-specific functionality, and integrating with external systems.

@@ -1,5 +1,9 @@
 export {};
 
+/**
+ * The App Bridge script for checkout provides APIs that enable a secure communication channel between the Shopify checkout and the embedded application within the Chat iframe.
+ * @publicDocs
+ */
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 interface AppBridge {

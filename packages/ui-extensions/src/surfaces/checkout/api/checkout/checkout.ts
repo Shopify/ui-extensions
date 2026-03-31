@@ -527,6 +527,7 @@ export type ShippingAddressChangeResult =
   | ShippingAddressChangeResultSuccess
   | ShippingAddressChangeResultError;
 
+/** @publicDocs */
 export interface CheckoutApi {
   /**
    * Performs an update on an attribute attached to the cart and checkout. If

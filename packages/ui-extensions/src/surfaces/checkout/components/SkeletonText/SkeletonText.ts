@@ -2,6 +2,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, TextSize, Size} from '../shared';
 
+/**
+ * SkeletonText is used to provide a low fidelity representation of text content before it appears on the page. 
+
+Optionally you can use any text content inside `SkeletonText` to be used as a base for the rendered skeleton
+ * @publicDocs
+ */
 export interface SkeletonTextProps extends IdProps {
   /**
    * @private

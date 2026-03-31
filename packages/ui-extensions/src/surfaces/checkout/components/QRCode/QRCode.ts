@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, BorderStyle} from '../shared';
 
+/**
+ * Used to quickly access scannable data.
+ * @publicDocs
+ */
 export interface QRCodeProps extends IdProps {
   /**
    * The data to encode in the QR code. Accepts any string, such as a URL,

@@ -26,6 +26,11 @@ export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
  */
 export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
+/**
+ * The `CartApi` object provides access to cart management and subscribable cart state. Access these properties through `api.cart` to build cart-aware extensions that respond to real-time cart updates.
+ *
+ * @publicDocs
+ */
 export interface CartApiContent {
   /**
    * Subscribes to real-time cart state changes. Provides initial cart value and triggers callbacks on updates. Supports only one active subscription—use `makeStatefulSubscribable` for multiple subscribers.

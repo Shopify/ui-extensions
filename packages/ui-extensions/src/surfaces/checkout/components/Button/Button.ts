@@ -10,6 +10,10 @@ import type {
   InteractionProps,
 } from '../shared';
 
+/**
+ * Buttons are used for actions, such as “Add”, “Continue”, “Pay now”, or “Save”.
+ * @publicDocs
+ */
 export interface ButtonProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps,

@@ -1,3 +1,8 @@
+/**
+ * The `DeviceApi` object provides access to device information and capabilities. Access these properties through `api.device` to retrieve device details and check device characteristics.
+ *
+ * @publicDocs
+ */
 export interface DeviceApiContent {
   /**
    * The name of the device as configured by the merchant or system. Use for displaying device information in interfaces, logging, or support contexts where device identification is helpful.

@@ -11,6 +11,7 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the proposed `paymentAttributes` applied to the checkout.
+ * @publicDocs
  */
 export function usePaymentMethodAttributes():
   | PaymentMethodAttribute[]
@@ -33,6 +34,7 @@ export function usePaymentMethodAttributes():
  * Returns the values for the specified `paymentAttributes` applied to the checkout.
  *
  * @param keys - An array of attribute keys.
+ * @publicDocs
  */
 export function usePaymentMethodAttributeValues(
   keys: string[],
@@ -51,6 +53,7 @@ export function usePaymentMethodAttributeValues(
 
 /**
  * Returns a function to set payment method attributes.
+ * @publicDocs
  */
 export function useApplyPaymentMethodAttributesChange(): (
   change: PaymentMethodAttributesChange,

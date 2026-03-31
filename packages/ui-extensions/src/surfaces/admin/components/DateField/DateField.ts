@@ -7,6 +7,8 @@ import type {TextFieldProps} from '../TextField/TextField';
  * picker for date selection. Text input props (like `label`, `value`, `onChange`,
  * and `error`) come from `TextFieldProps`, while calendar navigation props (like
  * `yearMonth`, `disabled`, and `onYearMonthChange`) come from `DatePickerProps`.
+ *
+ * @publicDocs
  */
 export interface DateFieldProps
   extends Pick<

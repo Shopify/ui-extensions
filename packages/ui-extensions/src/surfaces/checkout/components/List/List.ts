@@ -5,6 +5,10 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
 export type Marker = 'none' | 'bullet' | 'number';
 
+/**
+ * Lists display a set of related content. Each list item usually begins with a bullet or a number.
+ * @publicDocs
+ */
 export interface ListProps extends IdProps {
   /**
    * Adjust spacing between list items

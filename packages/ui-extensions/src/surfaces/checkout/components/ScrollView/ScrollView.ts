@@ -31,6 +31,10 @@ export interface ScrollViewEvent {
   };
 }
 
+/**
+ * ScrollView is a container for long form content, such as order summary line items, that allows for scrolling so customers can expose more content as they view.
+ * @publicDocs
+ */
 export interface ScrollViewProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

@@ -8,6 +8,10 @@ import type {
   TextSize,
 } from '../shared';
 
+/**
+ * Text block is used to render a block of text that occupies the full width available, like a paragraph.
+ * @publicDocs
+ */
 export interface TextBlockProps extends IdProps {
   /**
    * Size of the text

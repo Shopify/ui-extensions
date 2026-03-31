@@ -8,6 +8,7 @@ import {useApi} from './api';
 
 /**
  * Returns authentication state of Order status page.
+ * @publicDocs
  */
 export function useAuthenticationState<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

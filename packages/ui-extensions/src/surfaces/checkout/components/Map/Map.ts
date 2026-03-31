@@ -58,6 +58,7 @@ export interface MapBounds {
   southWest: MapLocation;
 }
 
+/** @publicDocs */
 export interface MapProps
   extends Pick<
     SizingProps,

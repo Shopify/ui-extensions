@@ -28,6 +28,10 @@ export type YearMonth = {year: number; month: number} | YearMonthString;
 export type SelectedDate = DateString | DateString[] | DateRange;
 export type DisabledDate = DateString | DateRange | DayString;
 
+/**
+ * The DatePicker component is a calendar picker UI that allows users to select a single date or a date range
+ * @publicDocs
+ */
 export interface DatePickerProps<T extends SelectedDate> {
   /**
    * [Controlled](https://reactjs.org/docs/forms.html#controlled-components) year and month to display.

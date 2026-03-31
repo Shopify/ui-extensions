@@ -18,6 +18,10 @@ import type {
   IdProps,
 } from '../shared';
 
+/**
+ * Pressable is a generic interactive component. It shares the same styling properties as View but also adds pressable behavior, meaning that you can execute some logic in response to user interaction. Use this component for creating interactive elements without the default styling that comes with `Button` and `Link`.
+ * @publicDocs
+ */
 export interface PressableProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
+import os from 'os';
 import {promisify} from 'util';
 
 import {
@@ -30,13 +31,14 @@ const srcPath = path.join(rootPath, srcRelativePath);
 const checkoutSrcPath = path.join(rootPath, checkoutSrcRelativePath);
 const checkoutComponentsDir = path.join(checkoutSrcPath, 'components');
 const generatedDocsPath = path.join(docsPath, 'generated');
-const shopifyDevPath = path.join(rootPath, '../../../shopify-dev');
+const shopifyDevPath = path.join(os.homedir(), 'world/trees/root/src');
 const shopifyDevDBPath = path.join(
   shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
+const generatedDocsDataFile = 'generated_docs_data_v2.json';
+const generatedDocsDataFileV1 = 'generated_docs_data.json';
 const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
@@ -143,19 +145,30 @@ const generateExtensionsDocs = async () => {
   ]);
 
   // Merge the two generated_docs_data.json files
-  const [refData, compData] = await Promise.all([
+  const [refDataV2, compDataV2, refDataV1, compDataV1] = await Promise.all([
     fs
       .readFile(path.join(tempRefOutputDir, generatedDocsDataFile), 'utf8')
       .then(JSON.parse),
     fs
       .readFile(path.join(tempCompOutputDir, generatedDocsDataFile), 'utf8')
       .then(JSON.parse),
+    fs
+      .readFile(path.join(tempRefOutputDir, generatedDocsDataFileV1), 'utf8')
+      .then(JSON.parse),
+    fs
+      .readFile(path.join(tempCompOutputDir, generatedDocsDataFileV1), 'utf8')
+      .then(JSON.parse),
   ]);
-  const mergedData = [...refData, ...compData].filter(Boolean);
-  await fs.writeFile(
-    path.join(outputDir, generatedDocsDataFile),
-    JSON.stringify(mergedData, null, 2),
-  );
+  await Promise.all([
+    fs.writeFile(
+      path.join(outputDir, generatedDocsDataFile),
+      JSON.stringify({...refDataV2, ...compDataV2}, null, 2),
+    ),
+    fs.writeFile(
+      path.join(outputDir, generatedDocsDataFileV1),
+      JSON.stringify([...refDataV1, ...compDataV1], null, 2),
+    ),
+  ]);
 
   // Clean up temp directories
   await Promise.all([
@@ -170,7 +183,10 @@ const generateExtensionsDocs = async () => {
     path.join(rootPath, 'src/docs/shared'),
   ]);
 
-  const generatedFiles = [path.join(outputDir, generatedDocsDataFile)];
+  const generatedFiles = [
+    path.join(outputDir, generatedDocsDataFile),
+    path.join(outputDir, generatedDocsDataFileV1),
+  ];
   if (generatedStaticPagesFile) {
     generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
   }
@@ -184,7 +200,10 @@ const generateExtensionsDocs = async () => {
 
   // Replace 'unstable' with the exact API version in relative doc links
   await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataFile),
+    filePaths: [
+      path.join(outputDir, generatedDocsDataFile),
+      path.join(outputDir, generatedDocsDataFileV1),
+    ],
     searchValue: '/docs/api//unstable/',
     replaceValue: `/docs/api/customer-account-ui-extensions/${EXTENSIONS_API_VERSION}`,
   });

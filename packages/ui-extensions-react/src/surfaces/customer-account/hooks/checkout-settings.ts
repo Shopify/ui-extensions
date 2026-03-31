@@ -9,6 +9,7 @@ import {ExtensionHasNoFieldError} from '../errors';
 
 /**
  * Returns the `checkoutSettings` applied to the checkout.
+ * @publicDocs
  */
 export function useCheckoutSettings<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

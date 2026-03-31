@@ -19,6 +19,7 @@ export interface OrderConfirmation {
   isFirstOrder: boolean;
 }
 
+/** @publicDocs */
 export interface OrderConfirmationApi {
   /**
    * Order information that's available post-checkout.

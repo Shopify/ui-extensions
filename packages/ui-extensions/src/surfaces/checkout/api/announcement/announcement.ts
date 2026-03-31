@@ -1,6 +1,7 @@
 /**
  * The API for interacting with the announcement bar.
  */
+/** @publicDocs */
 export interface AnnouncementApi {
   announcement: Announcement;
 }

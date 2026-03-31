@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current language of the checkout, and automatically re-renders
  * your component if the language changes.
+ * @publicDocs
  */
 export function useLanguage<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

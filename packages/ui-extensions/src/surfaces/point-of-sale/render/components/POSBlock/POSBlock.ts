@@ -1,5 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * Configure the following properties on the POSBlock component.
+ *
+ * @publicDocs
+ */
 export interface POSBlockProps {
   /**
    * An optional action button configuration to be displayed on the POSBlock.

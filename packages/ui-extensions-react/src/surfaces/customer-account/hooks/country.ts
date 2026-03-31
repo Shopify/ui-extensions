@@ -11,6 +11,7 @@ import {ExtensionHasNoFieldError} from '../errors';
  * Returns the country associated with either the current order on the order status page
  * or the selected country in the customer account interface,
  * and automatically re-renders your component if the country changes.
+ * @publicDocs
  */
 export function useLocalizationCountry<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

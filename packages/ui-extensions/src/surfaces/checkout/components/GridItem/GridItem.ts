@@ -11,6 +11,12 @@ import type {
   ViewLikeAccessibilityRole,
 } from '../shared';
 
+/**
+ * GridItem can be used as children of Grid.
+
+It offers a way to span the element across a number of columns and rows.
+ * @publicDocs
+ */
 export interface GridItemProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

@@ -11,6 +11,8 @@ type CustomerStandardMetafieldDependency = 'facts.birth_date';
  * Props for the CustomerSegmentTemplate component, which defines a
  * reusable segment template that merchants can apply in the customer
  * segment editor.
+ *
+ * @publicDocs
  */
 export interface CustomerSegmentTemplateProps {
   /**

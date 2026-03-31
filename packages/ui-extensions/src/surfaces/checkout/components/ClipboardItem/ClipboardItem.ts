@@ -2,6 +2,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
+/**
+ * Enables clipboard functionality when its `id` is referenced by the `activateTarget` property of a `Button`, `Pressable`, or `Link` component. When activated, it copies the text to the clipboard and displays a `Tooltip` confirmation. 
+
+ `ClipboardItem` is a non-rendering component.
+ * @publicDocs
+ */
 export interface ClipboardItemProps extends IdProps {
   /**
    * Plain text to be written to the clipboard.

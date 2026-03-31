@@ -1,5 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * Configure the following properties on the SearchBar component.
+ *
+ * @publicDocs
+ */
 export interface SearchBarProps {
   /**
    * The initial text value displayed in the search bar when first rendered. This differs from placeholder text which appears when the field is empty.

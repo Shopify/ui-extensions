@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {OverlayActivatorProps} from '../shared';
 
+/**
+ * MapMarker represents a specific location or point of interest on a map.
+ * @publicDocs
+ */
 export interface MapMarkerProps extends OverlayActivatorProps {
   /**
    * The latitude of the marker, in degrees. Valid values range from

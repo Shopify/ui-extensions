@@ -1,5 +1,11 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * `ToggleButtonGroup` allows you to make a single choice out of the number of options provided. This is similar to the [ChoiceList](/docs/api/checkout-ui-extensions/components/forms/choicelist) component, but without controls such as checkbox or radio button.
+
+You can utilize our layout components to arrange `ToggleButtonGroup`.
+ * @publicDocs
+ */
 export interface ToggleButtonGroupProps<T extends string> {
   /**
    * An id of the selected button.

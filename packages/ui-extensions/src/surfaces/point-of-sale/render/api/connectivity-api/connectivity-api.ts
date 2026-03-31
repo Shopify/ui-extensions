@@ -12,6 +12,11 @@ export interface ConnectivityState {
   internetConnected: ConnectivityStateSeverity;
 }
 
+/**
+ * The `ConnectivityApi` object provides properties for monitoring network connectivity. Access these properties through `api.connectivity` to check connection status and subscribe to connectivity changes.
+ *
+ * @publicDocs
+ */
 export interface ConnectivityApiContent {
   /**
    * Creates a subscription to changes in connectivity. Provides an initial value and a callback to subscribe to value changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.

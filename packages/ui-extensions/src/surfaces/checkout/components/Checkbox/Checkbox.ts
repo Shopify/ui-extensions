@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {DisclosureActivatorProps} from '../shared';
 
+/**
+ * Use checkboxes to give customers a single binary option, such as signing up for marketing, or agreeing to terms and conditions.
+ * @publicDocs
+ */
 export interface CheckboxProps extends DisclosureActivatorProps {
   /**
    * A unique identifier for the field. When no `id` is set,

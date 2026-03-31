@@ -20,6 +20,11 @@ import {
  */
 type DeprecatedStackDirection = 'vertical' | 'horizontal';
 
+/**
+ * Configure the following properties on the Stack component.
+ *
+ * @publicDocs
+ */
 export interface StackProps extends PaddingProps, SizingProps, GapProps {
   /**
    * The direction in which children are placed within the Stack component. Use `'block'` for vertical arrangement along the block axis without wrapping, or `'inline'` for horizontal arrangement along the inline axis with automatic wrapping.

@@ -276,6 +276,41 @@ function splitByTopLevelComma(str) {
   return parts;
 }
 
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'BuyerIdentityApi',
+    'BuyerJourneyApi',
+    'CartInstructionsApi',
+    'CheckoutSettingsApi',
+    'CheckoutTokenApi',
+    'CostApi',
+    'CustomerPrivacyApi',
+    'DeliveryApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'LocalizedFieldsApi',
+    'PaymentsApi',
+    'StorefrontApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'UiApi',
+  ],
+  CheckoutApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'CartLinesApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+  ],
+  OrderConfirmationApi: ['OrderApi'],
+};
+
 function parseApis(apiString) {
   const apisSet = new Set();
 
@@ -307,7 +342,13 @@ function parseApis(apiString) {
     }
 
     if (apiName) {
-      apisSet.add(apiName);
+      if (COMPOSITE_API_DECOMPOSITION[apiName]) {
+        for (const constituent of COMPOSITE_API_DECOMPOSITION[apiName]) {
+          apisSet.add(constituent);
+        }
+      } else {
+        apisSet.add(apiName);
+      }
     }
   }
 
@@ -420,10 +461,20 @@ try {
   // Create the extended JSON with reverse mappings
   const extendedJson = createReverseMapping(targetsJson);
 
+  // These components have doc pages but are not exported from the TypeScript source,
+  // so the script cannot discover them automatically. Add them manually with all targets.
+  const allTargetNames = Object.keys(targetsJson).sort();
+  const UNDISCOVERABLE_COMPONENTS = ['StyleHelper'];
+  for (const component of UNDISCOVERABLE_COMPONENTS) {
+    if (!extendedJson[component]) {
+      extendedJson[component] = {targets: allTargetNames};
+    }
+  }
+
   // Write to output file
   const outputPath = path.join(
     __dirname,
-    'generated/targets.json',
+    `generated/checkout_ui_extensions/${API_VERSION}/targets.json`,
   );
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {

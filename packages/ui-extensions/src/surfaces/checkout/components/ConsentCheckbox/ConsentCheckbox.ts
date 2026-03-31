@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {CheckboxProps} from '../Checkbox/Checkbox';
 
+/**
+ * Use buyer consent checkboxes for collecting the buyer's approval for a given policy.
+ * @publicDocs
+ */
 export interface ConsentCheckboxProps extends Omit<CheckboxProps, 'value'> {
   /**
    * The policy for which buyer consent is being collected for.

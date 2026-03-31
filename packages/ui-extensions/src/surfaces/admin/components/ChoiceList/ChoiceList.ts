@@ -24,6 +24,8 @@ export interface ChoiceProps
  * Props for the ChoiceList component, which renders a group of selectable
  * choices as either radio buttons (single selection) or checkboxes
  * (multiple selection).
+ *
+ * @publicDocs
  */
 export interface ChoiceListProps
   extends Pick<

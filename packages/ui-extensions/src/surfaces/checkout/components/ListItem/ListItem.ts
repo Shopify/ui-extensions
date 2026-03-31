@@ -2,6 +2,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
+/**
+ * List items are used as children of the `List` component.
+
+They usually begins with a bullet or a number.
+ * @publicDocs
+ */
 export interface ListItemProps extends IdProps {}
 
 /**

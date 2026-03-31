@@ -5,6 +5,9 @@ import {
 
 import {useApi} from './api';
 
+/**
+ * @publicDocs
+ */
 export function useNavigation<
   Target extends RenderCustomerAccountExtensionTarget = RenderCustomerAccountExtensionTarget,
 >(): ApiForExtension<Target>['navigation'] {

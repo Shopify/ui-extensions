@@ -10,6 +10,7 @@ import {ExtensionHasNoFieldError} from '../errors';
 /**
  * Returns the time zone of the checkout, and automatically re-renders
  * your component if the time zone changes.
+ * @publicDocs
  */
 export function useTimezone<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

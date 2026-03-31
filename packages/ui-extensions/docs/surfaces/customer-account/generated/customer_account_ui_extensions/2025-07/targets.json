@@ -66,8 +66,36 @@
       "View"
     ],
     "apis": [
-      "OrderStatusApi",
-      "StandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.cart-line-item.render-after": {
@@ -137,9 +165,37 @@
       "View"
     ],
     "apis": [
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
       "CartLineItemApi",
-      "OrderStatusApi",
-      "StandardApi"
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.cart-line-list.render-after": {
@@ -209,8 +265,36 @@
       "View"
     ],
     "apis": [
-      "OrderStatusApi",
-      "StandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.return-details.render-after": {
@@ -280,9 +364,37 @@
       "View"
     ],
     "apis": [
-      "OrderStatusApi",
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
       "ReturnApi",
-      "StandardApi"
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.fulfillment-details.render-after": {
@@ -352,9 +464,37 @@
       "View"
     ],
     "apis": [
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
       "FulfillmentApi",
-      "OrderStatusApi",
-      "StandardApi"
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.unfulfilled-items.render-after": {
@@ -424,8 +564,36 @@
       "View"
     ],
     "apis": [
-      "OrderStatusApi",
-      "StandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.payment-details.render-after": {
@@ -495,8 +663,36 @@
       "View"
     ],
     "apis": [
-      "OrderStatusApi",
-      "StandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.customer-information.render-after": {
@@ -566,8 +762,36 @@
       "View"
     ],
     "apis": [
-      "OrderStatusApi",
-      "StandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-status.announcement.render": {
@@ -637,9 +861,37 @@
       "View"
     ],
     "apis": [
+      "AddressesApi",
+      "AnalyticsApi",
       "AnnouncementApi",
-      "OrderStatusApi",
-      "StandardApi"
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order.page.render": {
@@ -709,9 +961,37 @@
       "View"
     ],
     "apis": [
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "AuthenticatedAccountApi",
+      "AuthenticationStateApi",
+      "BuyerIdentityApi",
+      "CartLinesApi",
+      "CheckoutSettingsApi",
+      "CostApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "DiscountsApi",
+      "ExtensionApi",
       "FullPageApi",
-      "OrderStatusApi",
-      "StandardApi"
+      "GiftCardsApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "NavigationApi",
+      "NoteApi",
+      "OrderApi",
+      "OrderStatusLocalizationApi",
+      "RequireLoginApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.page.render": {
@@ -781,8 +1061,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
       "FullPageApi",
-      "StandardApi"
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "CustomerAccount::KitchenSink": {
@@ -852,7 +1146,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-index.block.render": {
@@ -922,7 +1230,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order-index.announcement.render": {
@@ -992,8 +1314,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
       "AnnouncementApi",
-      "StandardApi"
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.block.render": {
@@ -1063,7 +1399,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.announcement.render": {
@@ -1133,8 +1483,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
       "AnnouncementApi",
-      "StandardApi"
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.addresses.render-after": {
@@ -1204,7 +1568,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.footer.render-after": {
@@ -1274,7 +1652,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.payment.render-after": {
@@ -1344,7 +1736,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.company-details.render-after": {
@@ -1414,7 +1820,21 @@
       "View"
     ],
     "apis": [
-      "StandardApi"
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.company-location-addresses.render-after": {
@@ -1484,8 +1904,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
       "CompanyLocationApi",
-      "StandardApi"
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.company-location-payment.render-after": {
@@ -1555,8 +1989,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
       "CompanyLocationApi",
-      "StandardApi"
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.profile.company-location-staff.render-after": {
@@ -1626,8 +2074,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
       "CompanyLocationApi",
-      "StandardApi"
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order.action.menu-item.render": {
@@ -1697,8 +2159,22 @@
       "View"
     ],
     "apis": [
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
       "OrderApi",
-      "StandardApi"
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
   "customer-account.order.action.render": {
@@ -1769,11 +2245,25 @@
     ],
     "apis": [
       "ActionExtensionApi",
+      "AnalyticsApi",
+      "AuthenticatedAccountApi",
+      "CustomerAccountApi",
+      "CustomerPrivacyApi",
+      "ExtensionApi",
+      "IntentsApi",
+      "LocalizationApi",
+      "NavigationApi",
       "OrderApi",
-      "StandardApi"
+      "SessionTokenApi",
+      "SettingsApi",
+      "StorageApi",
+      "StorefrontApi",
+      "ToastApi",
+      "UiApi",
+      "VersionApi"
     ]
   },
-  "OrderStatusApi": {
+  "AddressesApi": {
     "targets": [
       "customer-account.order-status.announcement.render",
       "customer-account.order-status.block.render",
@@ -1787,7 +2277,611 @@
       "customer-account.order.page.render"
     ]
   },
-  "StandardApi": {
+  "AnalyticsApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "AttributesApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "AuthenticatedAccountApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "AuthenticationStateApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "BuyerIdentityApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "CartLinesApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "CheckoutSettingsApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "CostApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "CustomerAccountApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "CustomerPrivacyApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "DiscountsApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "ExtensionApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "GiftCardsApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "IntentsApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "LocalizationApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "MetafieldsApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "NavigationApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "NoteApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "OrderApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render"
+    ]
+  },
+  "OrderStatusLocalizationApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "RequireLoginApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "SessionTokenApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "SettingsApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "ShopApi": {
+    "targets": [
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.page.render"
+    ]
+  },
+  "StorageApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "StorefrontApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "ToastApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "UiApi": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "VersionApi": {
     "targets": [
       "CustomerAccount::KitchenSink",
       "customer-account.footer.render-after",
@@ -1849,12 +2943,6 @@
       "customer-account.profile.company-location-addresses.render-after",
       "customer-account.profile.company-location-payment.render-after",
       "customer-account.profile.company-location-staff.render-after"
-    ]
-  },
-  "OrderApi": {
-    "targets": [
-      "customer-account.order.action.menu-item.render",
-      "customer-account.order.action.render"
     ]
   },
   "ActionExtensionApi": {
@@ -3661,6 +4749,122 @@
     ]
   },
   "View": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "Chat": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "ConsentCheckbox": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "ConsentPhoneField": {
+    "targets": [
+      "CustomerAccount::KitchenSink",
+      "customer-account.footer.render-after",
+      "customer-account.order-index.announcement.render",
+      "customer-account.order-index.block.render",
+      "customer-account.order-status.announcement.render",
+      "customer-account.order-status.block.render",
+      "customer-account.order-status.cart-line-item.render-after",
+      "customer-account.order-status.cart-line-list.render-after",
+      "customer-account.order-status.customer-information.render-after",
+      "customer-account.order-status.fulfillment-details.render-after",
+      "customer-account.order-status.payment-details.render-after",
+      "customer-account.order-status.return-details.render-after",
+      "customer-account.order-status.unfulfilled-items.render-after",
+      "customer-account.order.action.menu-item.render",
+      "customer-account.order.action.render",
+      "customer-account.order.page.render",
+      "customer-account.page.render",
+      "customer-account.profile.addresses.render-after",
+      "customer-account.profile.announcement.render",
+      "customer-account.profile.block.render",
+      "customer-account.profile.company-details.render-after",
+      "customer-account.profile.company-location-addresses.render-after",
+      "customer-account.profile.company-location-payment.render-after",
+      "customer-account.profile.company-location-staff.render-after",
+      "customer-account.profile.payment.render-after"
+    ]
+  },
+  "StyleHelper": {
     "targets": [
       "CustomerAccount::KitchenSink",
       "customer-account.footer.render-after",

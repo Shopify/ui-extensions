@@ -11,6 +11,7 @@ import {ExtensionHasNoFieldError} from '../errors';
  * Returns a `Money` value representing the minimum a buyer can expect to pay at the current
  * step of checkout. This value excludes amounts yet to be negotiated. For example,
  * the information step might not have delivery costs calculated.
+ * @publicDocs
  */
 export function useTotalAmount<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

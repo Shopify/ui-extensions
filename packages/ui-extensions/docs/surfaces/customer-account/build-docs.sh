@@ -1,7 +1,7 @@
 API_VERSION=$1
 DOCS_PATH=docs/surfaces/customer-account
 SRC_PATH=src/surfaces/customer-account
-SHOPIFY_DEV_PATH="../../../shopify-dev"
+SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
 
 fail_and_exit() {
   echo "** Failed to generate docs"

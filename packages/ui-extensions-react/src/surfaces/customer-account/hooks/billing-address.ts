@@ -10,6 +10,7 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns 'billingAddress' specified in the order.
+ * @publicDocs
  */
 export function useBillingAddress<
   Target extends RenderOrderStatusExtensionTarget = RenderOrderStatusExtensionTarget,

@@ -15,6 +15,10 @@ import type {
   IdProps,
 } from '../shared';
 
+/**
+ * Image is used for large format, responsive images.
+ * @publicDocs
+ */
 export interface ImageProps extends BorderProps, CornerProps, IdProps {
   /**
    * The URL of the image to display. Supports remote URLs and local file

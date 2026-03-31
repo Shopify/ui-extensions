@@ -2,6 +2,10 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {RemoteFragment} from '@remote-ui/core';
 import {LinkProps} from '../shared-checkout-components';
 
+/**
+ * Display a resource item with an action.
+ * @publicDocs
+ */
 export interface ResourceItemProps
   extends Pick<LinkProps, 'accessibilityLabel' | 'to' | 'onPress'> {
   /**

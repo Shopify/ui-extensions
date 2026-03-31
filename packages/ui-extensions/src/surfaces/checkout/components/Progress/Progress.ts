@@ -4,6 +4,10 @@ import type {IdProps} from '../shared';
 
 type Tone = 'auto' | 'critical';
 
+/**
+ * Use to visually represent the completion of a task or process.
+ * @publicDocs
+ */
 export interface ProgressProps extends IdProps {
   /**
    * Specify how much of the task that has been completed.

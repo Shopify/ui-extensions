@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the currency of the checkout, and automatically re-renders
  * your component if the currency changes.
+ * @publicDocs
  */
 export function useCurrency<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

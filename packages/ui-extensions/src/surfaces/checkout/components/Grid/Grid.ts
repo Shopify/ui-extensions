@@ -16,6 +16,10 @@ import type {
   ViewLikeAccessibilityRole,
 } from '../shared';
 
+/**
+ * Grid is used to lay out content in a matrix of rows and columns.
+ * @publicDocs
+ */
 export interface GridProps
   extends Pick<BackgroundProps, 'background'>,
     IdProps,

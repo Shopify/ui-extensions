@@ -7,6 +7,10 @@ import type {
   InteractionProps,
 } from '../shared';
 
+/**
+ * Link makes text interactive so customers can perform an action, such as navigating to another location.
+ * @publicDocs
+ */
 export interface LinkProps
   extends OverlayActivatorProps,
     DisclosureActivatorProps,

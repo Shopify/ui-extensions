@@ -5,6 +5,7 @@ import {createRemoteComponent} from '@remote-ui/core';
  * recognizable brand icon (such as Visa, Mastercard, or PayPal).
  * Entries are listed in alphabetical order.
  */
+/** @publicDocs */
 export type PaymentMethod =
   | '7-eleven'
   | 'acima-leasing'
@@ -451,6 +452,10 @@ export type PaymentMethod =
   | 'zip'
   | 'zoodpay';
 
+/**
+ * Payment icons can be used for displaying payment-related information or features such as a user’s saved or available payment methods.
+ * @publicDocs
+ */
 export interface PaymentIconProps {
   /**
    * The name of the payment method whose icon should be displayed.

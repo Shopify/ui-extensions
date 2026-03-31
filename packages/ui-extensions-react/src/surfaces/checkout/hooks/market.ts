@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the market of the checkout, and automatically re-renders
  * your component if it changes.
+ * @publicDocs
  */
 export function useLocalizationMarket<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

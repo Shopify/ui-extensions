@@ -5,6 +5,8 @@ import {GlobalProps, Tone} from '../shared';
  * Props for the Banner component, which displays a prominent message to
  * the merchant. Banners communicate important information, status updates,
  * warnings, or errors, with optional primary and secondary actions.
+ *
+ * @publicDocs
  */
 export interface BannerProps extends GlobalProps {
   /**

@@ -1,6 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 import type {RemoteFragment} from '@remote-ui/core';
 
+/**
+ * Render a custom action for a customer account.
+ * @publicDocs
+ */
 export interface CustomerAccountActionProps {
   /**
    * Sets the title of the Action container.

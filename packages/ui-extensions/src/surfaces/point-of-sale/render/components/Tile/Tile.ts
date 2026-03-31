@@ -1,5 +1,10 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/**
+ * Configure the following properties on the Tile component.
+ *
+ * @publicDocs
+ */
 export interface TileProps {
   /**
    * The text displayed as the main label of the tile.

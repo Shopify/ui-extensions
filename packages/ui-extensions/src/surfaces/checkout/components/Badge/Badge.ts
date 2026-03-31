@@ -5,6 +5,10 @@ import type {IconSource} from '../Icon/Icon';
 
 type Tone = 'default' | 'critical' | 'subdued';
 
+/**
+ * Use badges to highlight contextual information, like a label or a status, about an object. An object can be anything that has a status or label attributed to it, like an order or subscription.
+ * @publicDocs
+ */
 export interface BadgeProps extends VisibilityProps {
   /**
    * The tone of the badge being rendered. Indicates its level of importance,

@@ -37,6 +37,11 @@ export interface PinPadActionType {
   onPress: () => Promise<number[]>;
 }
 
+/**
+ * Configure the following properties on the PinPad component.
+ *
+ * @publicDocs
+ */
 export interface PinPadProps {
   /**
    * A boolean that determines whether the entered PIN should be masked with dots or asterisks to protect privacy and security.

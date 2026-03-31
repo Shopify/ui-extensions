@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current customer privacy settings and metadata and
  * re-renders your component if the customer privacy settings change.
+ * @publicDocs
  */
 export function useCustomerPrivacy<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

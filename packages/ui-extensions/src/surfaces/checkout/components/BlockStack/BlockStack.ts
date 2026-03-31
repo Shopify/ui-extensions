@@ -13,6 +13,10 @@ import type {
 } from '../shared';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
+/**
+ * BlockStack is used to vertically stack elements.
+ * @publicDocs
+ */
 export interface BlockStackProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

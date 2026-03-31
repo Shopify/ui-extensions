@@ -13,7 +13,8 @@
           "ActionApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
             "name": "ActionApiContent",
-            "description": "",
+            "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `api.action` to launch full-screen modal experiences.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
@@ -101,7 +102,8 @@
           "CartApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/cart-api/cart-api.ts",
             "name": "CartApiContent",
-            "description": "",
+            "description": "The `CartApi` object provides access to cart management and subscribable cart state. Access these properties through `api.cart` to build cart-aware extensions that respond to real-time cart updates.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/cart-api/cart-api.ts",
@@ -398,6 +400,7 @@
             "syntaxKind": "EnumDeclaration",
             "name": "CountryCode",
             "value": "export enum CountryCode {\n  AF = 'AF',\n  AX = 'AX',\n  AL = 'AL',\n  DZ = 'DZ',\n  AD = 'AD',\n  AO = 'AO',\n  AI = 'AI',\n  AG = 'AG',\n  AR = 'AR',\n  AM = 'AM',\n  AW = 'AW',\n  AC = 'AC',\n  AU = 'AU',\n  AT = 'AT',\n  AZ = 'AZ',\n  BS = 'BS',\n  BH = 'BH',\n  BD = 'BD',\n  BB = 'BB',\n  BY = 'BY',\n  BE = 'BE',\n  BZ = 'BZ',\n  BJ = 'BJ',\n  BM = 'BM',\n  BT = 'BT',\n  BO = 'BO',\n  BA = 'BA',\n  BW = 'BW',\n  BV = 'BV',\n  BR = 'BR',\n  IO = 'IO',\n  BN = 'BN',\n  BG = 'BG',\n  BF = 'BF',\n  BI = 'BI',\n  KH = 'KH',\n  CA = 'CA',\n  CV = 'CV',\n  BQ = 'BQ',\n  KY = 'KY',\n  CF = 'CF',\n  TD = 'TD',\n  CL = 'CL',\n  CN = 'CN',\n  CX = 'CX',\n  CC = 'CC',\n  CO = 'CO',\n  KM = 'KM',\n  CG = 'CG',\n  CD = 'CD',\n  CK = 'CK',\n  CR = 'CR',\n  HR = 'HR',\n  CU = 'CU',\n  CW = 'CW',\n  CY = 'CY',\n  CZ = 'CZ',\n  CI = 'CI',\n  DK = 'DK',\n  DJ = 'DJ',\n  DM = 'DM',\n  DO = 'DO',\n  EC = 'EC',\n  EG = 'EG',\n  SV = 'SV',\n  GQ = 'GQ',\n  ER = 'ER',\n  EE = 'EE',\n  SZ = 'SZ',\n  ET = 'ET',\n  FK = 'FK',\n  FO = 'FO',\n  FJ = 'FJ',\n  FI = 'FI',\n  FR = 'FR',\n  GF = 'GF',\n  PF = 'PF',\n  TF = 'TF',\n  GA = 'GA',\n  GM = 'GM',\n  GE = 'GE',\n  DE = 'DE',\n  GH = 'GH',\n  GI = 'GI',\n  GR = 'GR',\n  GL = 'GL',\n  GD = 'GD',\n  GP = 'GP',\n  GT = 'GT',\n  GG = 'GG',\n  GN = 'GN',\n  GW = 'GW',\n  GY = 'GY',\n  HT = 'HT',\n  HM = 'HM',\n  VA = 'VA',\n  HN = 'HN',\n  HK = 'HK',\n  HU = 'HU',\n  IS = 'IS',\n  IN = 'IN',\n  ID = 'ID',\n  IR = 'IR',\n  IQ = 'IQ',\n  IE = 'IE',\n  IM = 'IM',\n  IL = 'IL',\n  IT = 'IT',\n  JM = 'JM',\n  JP = 'JP',\n  JE = 'JE',\n  JO = 'JO',\n  KZ = 'KZ',\n  KE = 'KE',\n  KI = 'KI',\n  KP = 'KP',\n  XK = 'XK',\n  KW = 'KW',\n  KG = 'KG',\n  LA = 'LA',\n  LV = 'LV',\n  LB = 'LB',\n  LS = 'LS',\n  LR = 'LR',\n  LY = 'LY',\n  LI = 'LI',\n  LT = 'LT',\n  LU = 'LU',\n  MO = 'MO',\n  MG = 'MG',\n  MW = 'MW',\n  MY = 'MY',\n  MV = 'MV',\n  ML = 'ML',\n  MT = 'MT',\n  MQ = 'MQ',\n  MR = 'MR',\n  MU = 'MU',\n  YT = 'YT',\n  MX = 'MX',\n  MD = 'MD',\n  MC = 'MC',\n  MN = 'MN',\n  ME = 'ME',\n  MS = 'MS',\n  MA = 'MA',\n  MZ = 'MZ',\n  MM = 'MM',\n  NA = 'NA',\n  NR = 'NR',\n  NP = 'NP',\n  NL = 'NL',\n  AN = 'AN',\n  NC = 'NC',\n  NZ = 'NZ',\n  NI = 'NI',\n  NE = 'NE',\n  NG = 'NG',\n  NU = 'NU',\n  NF = 'NF',\n  MK = 'MK',\n  NO = 'NO',\n  OM = 'OM',\n  PK = 'PK',\n  PS = 'PS',\n  PA = 'PA',\n  PG = 'PG',\n  PY = 'PY',\n  PE = 'PE',\n  PH = 'PH',\n  PN = 'PN',\n  PL = 'PL',\n  PT = 'PT',\n  QA = 'QA',\n  CM = 'CM',\n  RE = 'RE',\n  RO = 'RO',\n  RU = 'RU',\n  RW = 'RW',\n  BL = 'BL',\n  SH = 'SH',\n  KN = 'KN',\n  LC = 'LC',\n  MF = 'MF',\n  PM = 'PM',\n  WS = 'WS',\n  SM = 'SM',\n  ST = 'ST',\n  SA = 'SA',\n  SN = 'SN',\n  RS = 'RS',\n  SC = 'SC',\n  SL = 'SL',\n  SG = 'SG',\n  SX = 'SX',\n  SK = 'SK',\n  SI = 'SI',\n  SB = 'SB',\n  SO = 'SO',\n  ZA = 'ZA',\n  GS = 'GS',\n  KR = 'KR',\n  SS = 'SS',\n  ES = 'ES',\n  LK = 'LK',\n  VC = 'VC',\n  SD = 'SD',\n  SR = 'SR',\n  SJ = 'SJ',\n  SE = 'SE',\n  CH = 'CH',\n  SY = 'SY',\n  TW = 'TW',\n  TJ = 'TJ',\n  TZ = 'TZ',\n  TH = 'TH',\n  TL = 'TL',\n  TG = 'TG',\n  TK = 'TK',\n  TO = 'TO',\n  TT = 'TT',\n  TA = 'TA',\n  TN = 'TN',\n  TR = 'TR',\n  TM = 'TM',\n  TC = 'TC',\n  TV = 'TV',\n  UG = 'UG',\n  UA = 'UA',\n  AE = 'AE',\n  GB = 'GB',\n  US = 'US',\n  UM = 'UM',\n  UY = 'UY',\n  UZ = 'UZ',\n  VU = 'VU',\n  VE = 'VE',\n  VN = 'VN',\n  VG = 'VG',\n  WF = 'WF',\n  EH = 'EH',\n  YE = 'YE',\n  ZM = 'ZM',\n  ZW = 'ZW',\n  ZZ = 'ZZ',\n}",
+            "description": "The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes representing all countries and territories. These standard codes are used for addresses, shipping destinations, tax jurisdictions, and regional settings.",
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
@@ -2783,6 +2786,7 @@
             "filePath": "src/surfaces/point-of-sale/render/api/cart-line-item-api/cart-line-item-api.ts",
             "name": "CartLineItemApi",
             "description": "The `CartLineItemApi` object provides access to the current line item. Access this property through `api.cartLineItem` to interact with the current line item context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/cart-line-item-api/cart-line-item-api.ts",
@@ -3263,7 +3267,8 @@
           "ConnectivityApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityApiContent",
-            "description": "",
+            "description": "The `ConnectivityApi` object provides properties for monitoring network connectivity. Access these properties through `api.connectivity` to check connection status and subscribe to connectivity changes.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/connectivity-api/connectivity-api.ts",
@@ -3355,7 +3360,8 @@
           "CustomerApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/customer-api/customer-api.ts",
             "name": "CustomerApiContent",
-            "description": "",
+            "description": "The `CustomerApi` object provides access to customer data. Access these properties through `api.customer` to interact with the current customer context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/customer-api/customer-api.ts",
@@ -3425,7 +3431,8 @@
           "DeviceApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/device-api/device-api.ts",
             "name": "DeviceApiContent",
-            "description": "",
+            "description": "The `DeviceApi` object provides access to device information and capabilities. Access these properties through `api.device` to retrieve device details and check device characteristics.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/device-api/device-api.ts",
@@ -3552,7 +3559,8 @@
           "DraftOrderApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/draft-order-api/draft-order-api.ts",
             "name": "DraftOrderApiContent",
-            "description": "",
+            "description": "The `DraftOrderApi` object provides access to draft order data. Access these properties through `api.draftOrder` to interact with the current draft order context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/draft-order-api/draft-order-api.ts",
@@ -3637,7 +3645,8 @@
           "LocaleApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/locale-api/locale-api.ts",
             "name": "LocaleApiContent",
-            "description": "",
+            "description": "The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `api.locale` to retrieve and monitor locale data.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/locale-api/locale-api.ts",
@@ -3707,7 +3716,8 @@
           "NavigationApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/navigation-api/navigation-api.ts",
             "name": "NavigationApiContent",
-            "description": "",
+            "description": "The global `navigation` object provides web-standard navigation functionality. Access these properties directly through the global `navigation` object to manage navigation within modal interfaces.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/navigation-api/navigation-api.ts",
@@ -3810,6 +3820,7 @@
             "filePath": "src/surfaces/point-of-sale/render/api/order-api/order-api.ts",
             "name": "OrderApiContent",
             "description": "The `OrderApi` object provides access to order data. Access this property through `shopify.order` to interact with the current order context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/order-api/order-api.ts",
@@ -3912,7 +3923,8 @@
           "PrintApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/print-api/print-api.ts",
             "name": "PrintApiContent",
-            "description": "Access the print API for printing functionality",
+            "description": "The `PrintApi` object provides properties for triggering document printing. Access these properties through `api.print` to initiate print operations with various document types.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/print-api/print-api.ts",
@@ -4008,7 +4020,8 @@
           "ProductApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/product-api/product-api.ts",
             "name": "ProductApiContent",
-            "description": "",
+            "description": "The `ProductApi` object provides access to product data. Access these properties through `api.product` to interact with the current product context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/product-api/product-api.ts",
@@ -4085,7 +4098,8 @@
           "ProductSearchApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/product-search-api/product-search-api.ts",
             "name": "ProductSearchApiContent",
-            "description": "",
+            "description": "The `ProductSearchApi` object provides properties for searching and fetching product data. Access these properties through `api.productSearch` to perform product searches and lookups.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/product-search-api/product-search-api.ts",
@@ -4821,7 +4835,8 @@
           "ScannerApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/scanner-api/scanner-api.ts",
             "name": "ScannerApiContent",
-            "description": "",
+            "description": "The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `api.scanner` to monitor scan events and available scanner sources.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/scanner-api/scanner-api.ts",
@@ -4983,7 +4998,8 @@
           "SessionApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/session-api/session-api.ts",
             "name": "SessionApiContent",
-            "description": "",
+            "description": "The `SessionApi` object provides access to current session information and authentication. Access these properties through `api.session` to retrieve shop data and generate secure tokens. These properties enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/session-api/session-api.ts",
@@ -5128,7 +5144,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -5295,7 +5312,8 @@
           "ToastApiContent": {
             "filePath": "src/surfaces/point-of-sale/render/api/toast-api/toast-api.ts",
             "name": "ToastApiContent",
-            "description": "",
+            "description": "The `ToastApi` object provides properties for displaying temporary notification messages. Access these properties through `api.toast` to show user feedback and status updates.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/api/toast-api/toast-api.ts",
@@ -5381,7 +5399,8 @@
           "BadgeProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Badge/Badge.ts",
             "name": "BadgeProps",
-            "description": "",
+            "description": "Configure the following properties on the Badge component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Badge/Badge.ts",
@@ -5478,7 +5497,8 @@
           "BannerProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Banner/Banner.ts",
             "name": "BannerProps",
-            "description": "",
+            "description": "Configure the following properties on the Banner component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Banner/Banner.ts",
@@ -5593,7 +5613,8 @@
           "BoxProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Box/Box.ts",
             "name": "BoxProps",
-            "description": "",
+            "description": "Configure the following properties on the Box component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Box/Box.ts",
@@ -5805,7 +5826,8 @@
           "ButtonProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Button/Button.ts",
             "name": "ButtonProps",
-            "description": "",
+            "description": "Configure the following properties on the Button component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Button/Button.ts",
@@ -5912,7 +5934,8 @@
           "CameraScannerProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/CameraScanner/CameraScanner.ts",
             "name": "CameraScannerProps",
-            "description": "",
+            "description": "Configure the following properties on the CameraScanner component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/CameraScanner/CameraScanner.ts",
@@ -6016,7 +6039,8 @@
           "DateFieldProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/DateField/DateField.ts",
             "name": "DateFieldProps",
-            "description": "",
+            "description": "Configure the following properties on the DateField component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/DateField/DateField.ts",
@@ -6177,7 +6201,8 @@
           "DatePickerProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/DatePicker/DatePicker.ts",
             "name": "DatePickerProps",
-            "description": "",
+            "description": "Configure the following properties on the DatePicker component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/DatePicker/DatePicker.ts",
@@ -6270,7 +6295,8 @@
           "DialogProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Dialog/Dialog.ts",
             "name": "DialogProps",
-            "description": "",
+            "description": "Configure the following properties on the Dialog component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Dialog/Dialog.ts",
@@ -6405,7 +6431,8 @@
           "EmailFieldProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/EmailField/EmailField.ts",
             "name": "EmailFieldProps",
-            "description": "",
+            "description": "Configure the following properties on the EmailField component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/EmailField/EmailField.ts",
@@ -6598,7 +6625,8 @@
           "IconProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Icon/Icon.ts",
             "name": "IconProps",
-            "description": "",
+            "description": "Configure the following properties on the Icon component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Icon/Icon.ts",
@@ -6718,7 +6746,8 @@
           "ImageProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Image/Image.ts",
             "name": "ImageProps",
-            "description": "",
+            "description": "Configure the following properties on the Image component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Image/Image.ts",
@@ -6809,7 +6838,8 @@
           "ListProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/List/List.ts",
             "name": "ListProps",
-            "description": "",
+            "description": "Configure the following properties on the List component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/List/List.ts",
@@ -6942,7 +6972,8 @@
           "BadgeProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Badge/Badge.ts",
             "name": "BadgeProps",
-            "description": "",
+            "description": "Configure the following properties on the Badge component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Badge/Badge.ts",
@@ -7133,7 +7164,8 @@
           "NavigatorProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Navigator/Navigator.ts",
             "name": "NavigatorProps",
-            "description": "",
+            "description": "Configure the following properties on the Navigator component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Navigator/Navigator.ts",
@@ -7242,7 +7274,8 @@
           "NumberFieldProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/NumberField/NumberField.ts",
             "name": "NumberFieldProps",
-            "description": "",
+            "description": "Configure the following properties on the NumberField component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/NumberField/NumberField.ts",
@@ -7460,7 +7493,8 @@
           "POSBlockProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/POSBlock/POSBlock.ts",
             "name": "POSBlockProps",
-            "description": "",
+            "description": "Configure the following properties on the POSBlock component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/POSBlock/POSBlock.ts",
@@ -7528,7 +7562,8 @@
           "POSBlockRowProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/POSBlock/POSBlockRow.ts",
             "name": "POSBlockRowProps",
-            "description": "",
+            "description": "Configure the following properties on the POSBlockRow component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/POSBlock/POSBlockRow.ts",
@@ -7638,7 +7673,8 @@
           "PinPadProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/PinPad/PinPad.ts",
             "name": "PinPadProps",
-            "description": "",
+            "description": "Configure the following properties on the PinPad component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/PinPad/PinPad.ts",
@@ -7784,7 +7820,8 @@
           "PrintPreviewProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/PrintPreview/PrintPreview.ts",
             "name": "PrintPreviewProps",
-            "description": "",
+            "description": "Configure the following properties on the PrintPreview component. This component must be a direct child of the Screen component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/PrintPreview/PrintPreview.ts",
@@ -7852,7 +7889,8 @@
           "QRCodeProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/QRCode/QRCode.ts",
             "name": "QRCodeProps",
-            "description": "",
+            "description": "Configure the following properties on the QRCode component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/QRCode/QRCode.ts",
@@ -7917,7 +7955,8 @@
           "RadioButtonListProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/RadioButtonList/RadioButtonList.ts",
             "name": "RadioButtonListProps",
-            "description": "",
+            "description": "Configure the following properties on the RadioButtonList component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/RadioButtonList/RadioButtonList.ts",
@@ -8007,7 +8046,8 @@
           "ScreenProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Screen/Screen.ts",
             "name": "ScreenProps",
-            "description": "",
+            "description": "Configure the following properties on the Screen component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Screen/Screen.ts",
@@ -8268,7 +8308,8 @@
           "SearchBarProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/SearchBar/SearchBar.ts",
             "name": "SearchBarProps",
-            "description": "",
+            "description": "Configure the following properties on the SearchBar component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/SearchBar/SearchBar.ts",
@@ -8383,7 +8424,8 @@
           "SectionProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Section/Section.ts",
             "name": "SectionProps",
-            "description": "",
+            "description": "Configure the following properties on the Section component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Section/Section.ts",
@@ -8481,7 +8523,8 @@
           "SectionHeaderProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/SectionHeader/SectionHeader.ts",
             "name": "SectionHeaderProps",
-            "description": "",
+            "description": "Configure the following properties on the SectionHeader component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/SectionHeader/SectionHeader.ts",
@@ -8564,7 +8607,8 @@
           "SegmentedControlProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/SegmentedControl/SegmentedControl.ts",
             "name": "SegmentedControlProps",
-            "description": "",
+            "description": "Configure the following properties on the SegmentedControl component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/SegmentedControl/SegmentedControl.ts",
@@ -8674,7 +8718,8 @@
           "SelectableProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Selectable/Selectable.ts",
             "name": "SelectableProps",
-            "description": "",
+            "description": "Configure the following properties on the Selectable component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Selectable/Selectable.ts",
@@ -8751,7 +8796,8 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "VerticalSpacing",
             "value": "'HalfPoint' | 'ExtraSmall' | 'Small' | 'Medium' | 'Large' | 'ExtraLarge'",
-            "description": "Deprecated vertical spacing values using named size keywords."
+            "description": "The spacing values for controlling vertical space between elements.",
+            "isPublicDocs": true
           }
         }
       },
@@ -8765,7 +8811,8 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "HorizontalSpacing",
             "value": "'HalfPoint' | 'ExtraSmall' | 'Small' | 'Medium' | 'Large' | 'ExtraLarge' | 'ExtraExtraLarge'",
-            "description": "Deprecated horizontal spacing values using named size keywords."
+            "description": "The spacing values for controlling horizontal space between elements.",
+            "isPublicDocs": true
           }
         }
       }
@@ -8822,7 +8869,8 @@
           "StackProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Stack/Stack.ts",
             "name": "StackProps",
-            "description": "",
+            "description": "Configure the following properties on the Stack component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Stack/Stack.ts",
@@ -9138,14 +9186,16 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "HorizontalSpacing",
             "value": "'HalfPoint' | 'ExtraSmall' | 'Small' | 'Medium' | 'Large' | 'ExtraLarge' | 'ExtraExtraLarge'",
-            "description": "Deprecated horizontal spacing values using named size keywords."
+            "description": "The spacing values for controlling horizontal space between elements.",
+            "isPublicDocs": true
           },
           "VerticalSpacing": {
             "filePath": "src/surfaces/point-of-sale/render/components/shared/deprecated-types.ts",
             "syntaxKind": "TypeAliasDeclaration",
             "name": "VerticalSpacing",
             "value": "'HalfPoint' | 'ExtraSmall' | 'Small' | 'Medium' | 'Large' | 'ExtraLarge'",
-            "description": "Deprecated vertical spacing values using named size keywords."
+            "description": "The spacing values for controlling vertical space between elements.",
+            "isPublicDocs": true
           },
           "Spacing": {
             "filePath": "src/surfaces/point-of-sale/render/components/shared/deprecated-types.ts",
@@ -9366,7 +9416,8 @@
           "StepperProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Stepper/Stepper.ts",
             "name": "StepperProps",
-            "description": "",
+            "description": "Configure the following properties on the Stepper component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Stepper/Stepper.ts",
@@ -9474,7 +9525,8 @@
           "TextProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Text/Text.ts",
             "name": "TextProps",
-            "description": "",
+            "description": "Configure the following properties on the Text component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Text/Text.ts",
@@ -9564,7 +9616,8 @@
           "TextAreaProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/TextArea/TextArea.ts",
             "name": "TextAreaProps",
-            "description": "",
+            "description": "Configure the following properties on the TextArea component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/TextArea/TextArea.ts",
@@ -9765,7 +9818,8 @@
           "NewTextFieldProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/TextField/TextField.ts",
             "name": "NewTextFieldProps",
-            "description": "",
+            "description": "Configure the following properties on the TextField component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/TextField/TextField.ts",
@@ -9958,7 +10012,8 @@
           "TileProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/Tile/Tile.ts",
             "name": "TileProps",
-            "description": "",
+            "description": "Configure the following properties on the Tile component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/Tile/Tile.ts",
@@ -10065,7 +10120,8 @@
           "TimeFieldProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/TimeField/TimeField.ts",
             "name": "TimeFieldProps",
-            "description": "",
+            "description": "Configure the following properties on the TimeField component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/TimeField/TimeField.ts",
@@ -10235,7 +10291,8 @@
           "TimePickerProps": {
             "filePath": "src/surfaces/point-of-sale/render/components/TimePicker/TimePicker.ts",
             "name": "TimePickerProps",
-            "description": "",
+            "description": "Configure the following properties on the TimePicker component.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/render/components/TimePicker/TimePicker.ts",
@@ -10395,6 +10452,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
             "name": "CartUpdateEventData",
             "description": "The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
@@ -11068,7 +11126,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -11148,6 +11207,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
             "name": "CashTrackingSessionCompleteData",
             "description": "The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
@@ -11313,7 +11373,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -11393,6 +11454,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
             "name": "CashTrackingSessionStartData",
             "description": "The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
@@ -11558,7 +11620,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -12196,6 +12259,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
             "name": "TransactionCompleteWithReprintData",
             "description": "The data object provided to receipt targets containing transaction details and reprint information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
@@ -12361,7 +12425,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -13300,6 +13365,14 @@
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
                 "syntaxKind": "PropertySignature",
+                "name": "exchangeId",
+                "value": "number",
+                "description": "The exchange ID if the return is part of an exchange transaction.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
                 "name": "executedAt",
                 "value": "string",
                 "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
@@ -13316,7 +13389,23 @@
                 "syntaxKind": "PropertySignature",
                 "name": "lineItems",
                 "value": "OrderLineItem[]",
-                "description": "An array of line items included in the sale transaction."
+                "description": "An array of line items included in the transaction."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsAdded",
+                "value": "LineItem[]",
+                "description": "An array of line items added to the customer in the exchange.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsRemoved",
+                "value": "LineItem[]",
+                "description": "An array of line items removed from the customer in the exchange.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -13332,6 +13421,22 @@
                 "name": "paymentMethods",
                 "value": "Payment[]",
                 "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "refundId",
+                "value": "number",
+                "description": "The refund ID if a refund was issued for the return.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "returnId",
+                "value": "number",
+                "description": "The return ID for the completed return transaction.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -13368,10 +13473,10 @@
                 "syntaxKind": "PropertySignature",
                 "name": "transactionType",
                 "value": "'Reprint'",
-                "description": "The transaction type identifier, always 'Sale' for sale transactions."
+                "description": "The transaction type identifier, always 'Reprint' for reprint transactions."
               }
             ],
-            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: OrderLineItem[];\n}"
+            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Reprint' for reprint transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the transaction.\n   */\n  lineItems: OrderLineItem[];\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded?: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved?: LineItem[];\n}"
           },
           "OrderLineItem": {
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -13603,6 +13708,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
             "name": "TransactionCompleteWithReprintData",
             "description": "The data object provided to receipt targets containing transaction details and reprint information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
@@ -13768,7 +13874,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",
@@ -14707,6 +14814,14 @@
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
                 "syntaxKind": "PropertySignature",
+                "name": "exchangeId",
+                "value": "number",
+                "description": "The exchange ID if the return is part of an exchange transaction.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
                 "name": "executedAt",
                 "value": "string",
                 "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
@@ -14723,7 +14838,23 @@
                 "syntaxKind": "PropertySignature",
                 "name": "lineItems",
                 "value": "OrderLineItem[]",
-                "description": "An array of line items included in the sale transaction."
+                "description": "An array of line items included in the transaction."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsAdded",
+                "value": "LineItem[]",
+                "description": "An array of line items added to the customer in the exchange.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "lineItemsRemoved",
+                "value": "LineItem[]",
+                "description": "An array of line items removed from the customer in the exchange.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -14739,6 +14870,22 @@
                 "name": "paymentMethods",
                 "value": "Payment[]",
                 "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "refundId",
+                "value": "number",
+                "description": "The refund ID if a refund was issued for the return.",
+                "isOptional": true
+              },
+              {
+                "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "returnId",
+                "value": "number",
+                "description": "The return ID for the completed return transaction.",
+                "isOptional": true
               },
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -14775,10 +14922,10 @@
                 "syntaxKind": "PropertySignature",
                 "name": "transactionType",
                 "value": "'Reprint'",
-                "description": "The transaction type identifier, always 'Sale' for sale transactions."
+                "description": "The transaction type identifier, always 'Reprint' for reprint transactions."
               }
             ],
-            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: OrderLineItem[];\n}"
+            "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Reprint' for reprint transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the transaction.\n   */\n  lineItems: OrderLineItem[];\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded?: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved?: LineItem[];\n}"
           },
           "OrderLineItem": {
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -15073,6 +15220,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
             "name": "TransactionCompleteData",
             "description": "The data object provided to receipt targets containing transaction details.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
@@ -15238,7 +15386,8 @@
           "Storage": {
             "filePath": "src/surfaces/point-of-sale/types/storage.ts",
             "name": "Storage",
-            "description": "Defines the storage interface for persisting extension data across sessions.",
+            "description": "The `StorageApi` object provides access to persistent local storage for your POS UI extension. Access these properties through `api.storage` to store, retrieve, and manage data that persists across sessions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/storage.ts",

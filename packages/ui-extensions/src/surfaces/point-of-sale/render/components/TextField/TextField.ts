@@ -59,6 +59,11 @@ export type EmbeddedElementProps =
   | SuccessProps
   | PasswordProps;
 
+/**
+ * Configure the following properties on the TextField component.
+ *
+ * @publicDocs
+ */
 export interface NewTextFieldProps extends InputProps {}
 
 export const TextField = createRemoteComponent<'TextField', NewTextFieldProps>(
