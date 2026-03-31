@@ -26,14 +26,9 @@ export {
 };
 
 /**
- * A key-value storage object for extension targets.
+ * Persists key-value data across customer sessions for a specific extension target. Use storage to save preferences, dismiss states, or cached data that should survive page reloads without requiring a backend call.
  *
- * Stored data is only available to this specific app
- * but can be shared across multiple extension targets.
- *
- * The storage backend is implemented with `localStorage` and
- * should persist for ... days
- * However, data persistence isn't guaranteed.
+ * Stored data is only available to this specific app but can be shared across multiple extension targets. The storage backend is implemented with `localStorage` and data persistence isn't guaranteed.
  */
 export interface Storage {
   /**
@@ -59,6 +54,9 @@ export interface Storage {
   delete(key: string): Promise<void>;
 }
 
+/**
+ * A language identifier following the [BCP-47 standard](https://en.wikipedia.org/wiki/IETF_language_tag).
+ */
 export interface Language {
   /**
    * The [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag that identifies the language. This is a standardized code that may include a base language and an optional region subtag separated by a dash. For example, `'en'` represents English and `'en-US'` represents English as used in the United States. The region subtag follows the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard.
@@ -69,7 +67,7 @@ export interface Language {
 }
 
 /**
- * This defines the i18n.translate() signature.
+ * Translates a key from your extension's locale files into a localized string. Supports interpolation with placeholder replacements and pluralization via a `count` option.
  */
 export interface I18nTranslate {
   /**
@@ -85,6 +83,9 @@ export interface I18nTranslate {
     : (string | ReplacementType)[];
 }
 
+/**
+ * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Use the I18n API alongside the Localization API to build fully localized extensions.
+ */
 export interface I18n {
   /**
    * Returns a localized number.
@@ -113,13 +114,9 @@ export interface I18n {
   ) => string;
 
   /**
-   * Returns a localized date value.
+   * Returns a localized date value. Behaves like the standard `Intl.DateTimeFormat()` and uses the buyer's locale by default.
    *
-   * This function behaves like the standard `Intl.DateTimeFormatOptions()` and uses
-   * the buyer's locale by default. Formatting options can be passed in as
-   * options.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat0
+   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
    * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
@@ -142,7 +139,7 @@ export interface I18n {
 }
 
 /**
- * Meta information about an extension target.
+ * Metadata about the running extension, including its API version, target, capabilities, and editor context. Use this to read configuration details or conditionally render content based on where the extension is running.
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -154,11 +151,11 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The allowed capabilities of the extension, defined
-   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration) file.
+   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration) file.
    *
-   * * [`api_access`](/docs/api/customer-account-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+   * * [`api_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access): the extension can access the Storefront API.
    *
-   * * [`network_access`](/docs/api/customer-account-ui-extensions/configuration#network-access): the extension can make external network calls.
+   * * [`network_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#network-access): the extension can make external network calls.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
@@ -173,12 +170,11 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * Whether your extension is currently rendered to the screen.
    *
    * Shopify might render your extension before it's visible in the UI,
-   * typically to pre-render extensions that will appear on a later step of the
-   * checkout.
+   * typically to pre-render extensions that will appear on a later page.
    *
    * Your extension might also continue to run after the buyer has navigated away
    * from where it was rendered. The extension continues running so that
-   * your extension is immediately available to render if the buyer navigates back.
+   * it's immediately available if the buyer navigates back.
    */
   rendered: SubscribableSignalLike<boolean>;
 
@@ -189,12 +185,10 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The identifier that specifies where in Shopify’s UI your code is being
-   * injected. This will be one of the targets you have included in your
-   * extension’s configuration file.
+   * injected. This will be one of the [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#targets) you have included in your
+   * extension’s configuration file. For more information, refer to the [extension targets overview](/docs/api/customer-account-ui-extensions/{API_VERSION}/extension-targets-overview).
    *
    * @example 'customer-account.order-status.block.render'
-   * @see /docs/api/customer-account-ui-extensions/extension-targets-overview
-   * @see /docs/apps/app-extensions/configuration#targets
    */
   target: Target;
 
@@ -208,6 +202,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   version?: string;
 }
 
+/**
+ * Information about the editor environment when an extension is rendered inside the editor. The value is `undefined` when the extension is not rendering in an editor.
+ */
 export interface Editor {
   /**
    * Indicates whether the extension is rendering in the checkout editor.
@@ -381,34 +378,39 @@ export interface CompanyLocation {
   id: string;
 }
 
+/**
+ * Authenticates requests between your extension and your app backend. Use session tokens to verify the identity of the customer and the shop context when making server-side API calls. The token includes claims such as the customer ID, shop domain, and expiration time.
+ */
 export interface SessionToken {
   /**
-   * Requests a session token that hasn't expired. You should call this method every
-   * time you need to make a request to your backend in order to get a valid token.
-   * This method will return cached tokens when possible, so you don’t need to worry
-   * about storing these tokens yourself.
+   * Requests a session token that hasn't expired. Call this method every
+   * time you make a request to your backend to get a valid token.
+   * Cached tokens are returned when possible, so you don’t need to store them yourself.
    */
   get(): Promise<string>;
 }
 
+/**
+ * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use the Analytics API to emit analytics events from your extension, such as tracking product views, button clicks, or conversion funnels.
+ */
 export interface Analytics {
   /**
-   * Publish method to emit analytics events to [Web Pixels](/docs/apps/marketing).
+   * Emit an analytics event to web pixels. The event name and data are forwarded to all registered pixels on the page.
    */
   publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
   /**
-   * A method for capturing details about a visitor on the online store.
+   * Submits visitor contact information (email or phone) to the shop backend. This data is sent to Shopify and is not propagated to web pixels on the page.
    */
   visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
 }
 /**
- * Represents a visitor result.
+ * The result returned by `Analytics.visitor()`. Check the `type` property to determine whether the submission succeeded or failed.
  */
 export type VisitorResult = VisitorSuccess | VisitorError;
 
 /**
- * Represents a successful visitor result.
+ * Returned when visitor information was validated and submitted successfully.
  */
 export interface VisitorSuccess {
   /**
@@ -418,7 +420,7 @@ export interface VisitorSuccess {
 }
 
 /**
- * Represents an unsuccessful visitor result.
+ * Returned when visitor information is invalid and wasn't submitted. Contains a `message` with details about what went wrong.
  */
 export interface VisitorError {
   /**
@@ -605,10 +607,23 @@ export interface TrackingConsentChangeResultError {
   message: string;
 }
 
+/**
+ * A handle returned by `ToastApi.show()`. Call `hide()` to dismiss the toast notification programmatically.
+ */
 export interface ToastApiResult {
+  /**
+   * Dismisses the toast notification.
+   */
   hide: () => void;
 }
+
+/**
+ * Displays brief, non-blocking notification messages to the customer. Use the Toast API to confirm successful actions, report errors, or surface contextual feedback without interrupting the customer workflow.
+ */
 export interface ToastApi {
+  /**
+   * Show a toast notification with the given message. Returns a handle with a `hide()` method to dismiss the toast programmatically.
+   */
   show: (content: string) => Promise<ToastApiResult>;
 }
 
@@ -618,7 +633,6 @@ export interface ToastApi {
  * When invoking via URL syntax, `action` and `type` are parsed from the
  * string. This companion type captures the remaining optional fields that can
  * be provided alongside the URL.
- * @publicDocs
  */
 export interface IntentQueryOptions {
   /**
@@ -626,12 +640,7 @@ export interface IntentQueryOptions {
    */
   value?: string;
   /**
-   * Optional input payload passed to the intent.
-   *
-   * Used to seed forms or supply parameters. The accepted shape is
-   * intent-specific. For example:
-   * - Replacing a payment method on a subscription contract requires
-   *   { field: 'paymentMethod' }
+   * Optional input payload passed to the intent. Used to seed forms or supply parameters. The accepted shape is intent-specific. For example, replacing a payment method on a subscription contract requires `{ field: 'paymentMethod' }`.
    */
   data?: Record<string, unknown>;
 }
@@ -642,7 +651,6 @@ export interface IntentQueryOptions {
  * Common actions include:
  * - `'create'`: Initiate creation of a new resource.
  * - `'open'`: Modify an existing resource.
- * @publicDocs
  */
 export type IntentAction = 'create' | 'open' | string;
 
@@ -651,7 +659,6 @@ export type IntentAction = 'create' | 'open' | string;
  *
  * Use this object form when programmatically composing an intent at runtime.
  * It pairs an action (verb) with a resource type and optional inputs.
- * @publicDocs
  */
 export interface IntentQuery extends IntentQueryOptions {
   /**
@@ -674,6 +681,9 @@ export interface IntentQuery extends IntentQueryOptions {
  * - `data` contains the output payload
  */
 export interface SuccessIntentResponse {
+  /**
+   * Always `'ok'` for a successful response.
+   */
   code: 'ok';
   /**
    * Validated output payload produced by the workflow.
@@ -693,8 +703,17 @@ export interface SuccessIntentResponse {
  *
  */
 export interface ErrorIntentResponse {
+  /**
+   * Set to `'error'` when present. This property is optional.
+   */
   code?: 'error';
+  /**
+   * A human-readable summary of the failure.
+   */
   message?: string;
+  /**
+   * Structured details for validation or field-specific problems, following the Standard Schema convention.
+   */
   issues?: {
     /**
      * The path to the field with the issue.
@@ -714,6 +733,9 @@ export interface ErrorIntentResponse {
  * abandoned by the user.
  */
 export interface ClosedIntentResponse {
+  /**
+   * Always `'closed'` when the user dismissed the workflow without completing it.
+   */
   code: 'closed';
 }
 
@@ -722,7 +744,6 @@ export interface ClosedIntentResponse {
  *
  * Discriminated union representing all possible completion outcomes for an
  * invoked intent.
- * @publicDocs
  */
 export type IntentResponse =
   | SuccessIntentResponse
@@ -731,7 +752,6 @@ export type IntentResponse =
 
 /**
  * Activity handle for tracking intent workflow progress.
- * @publicDocs
  */
 export interface IntentActivity {
   /**
@@ -741,17 +761,14 @@ export interface IntentActivity {
 }
 
 /**
- * Entry point for Shopify intents.
+ * Invokes built-in Shopify workflows for managing customer account resources. Use the Intents API to trigger native Shopify modals and flows, such as replacing a payment method on a subscription contract, without building the UI yourself.
  *
  * Intents pair an `action` (verb) with a resource `type` and optional `value`
  * and `data` to request a workflow.
- * @publicDocs
  */
 export interface Intents {
   /**
-   * Invoke an intent using the object or URL syntax.
-   *
-   * Object format: `{action, type, value?, data?}`
+   * Triggers a built-in Shopify workflow by passing a structured intent object. Specify an `action` (such as `'open'`), a resource `type`, and an optional `value` identifying the resource. Returns a promise that resolves to an `IntentActivity` you can use to track completion.
    *
    * @param query - Structured intent description, including `action` and `type`.
    * @returns A promise for an {@link IntentActivity} that completes with an
@@ -771,9 +788,9 @@ export interface Intents {
    */
   invoke(query: IntentQuery): Promise<IntentActivity>;
   /**
-   * URL format: `action:type[,value][?params]`
+   * Triggers a built-in Shopify workflow using a URL string in the format `action:type[,value][?params]`. Use this overload when composing intents from dynamic strings rather than structured objects.
    *
-   * @param intentURL - Intent in URL form
+   * @param intentURL - Intent in URL form, such as `'open:shopify/SubscriptionContract,gid://shopify/SubscriptionContract/123'`.
    * @param options - Optional supplemental inputs such as `value` or `data`.
    * @returns A promise for an {@link IntentActivity} that completes with an
    *          {@link IntentResponse}.
