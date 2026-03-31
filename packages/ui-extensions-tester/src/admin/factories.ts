@@ -193,6 +193,11 @@ function createDiscountFunctionSettingsMock<T extends ExtensionTarget>(
       discountClasses: createReadonlySignalLike([]),
       updateDiscountClasses: () => createResult('updateDiscountClasses'),
       discountMethod: createReadonlySignalLike('automatic' as const),
+      purchaseType: createReadonlySignalLike('one_time_purchase' as const),
+      updatePurchaseType: () => createResult('updatePurchaseType'),
+      recurringCycleLimit: createReadonlySignalLike(null),
+      updateRecurringCycleLimit: () =>
+        createResult('updateRecurringCycleLimit'),
     },
   };
 }

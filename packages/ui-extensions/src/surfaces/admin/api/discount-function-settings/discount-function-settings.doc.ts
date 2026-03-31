@@ -35,6 +35,12 @@ const data: ReferenceEntityTemplateSchema = {
         'The `data` object exposed to the extension containing the discount function settings. Provides access to the discount identifier and associated [metafields](/docs/apps/build/metafields) that store function configuration values. Use this data to populate your settings UI and understand the current function configuration in the `admin.discount-details.function-settings.render` target.',
       type: 'DiscountFunctionSettingsData',
     },
+    {
+      title: 'discounts',
+      description:
+        'The reactive API for managing discount function configuration, including discount classes, discount method, purchase type, and recurring cycle limit.',
+      type: 'DiscountsApi',
+    },
   ],
   examples: {
     description: 'Configure discount function settings',
