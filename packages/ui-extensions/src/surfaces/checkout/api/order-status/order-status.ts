@@ -30,6 +30,7 @@ export interface Order {
   confirmationNumber?: string;
 }
 
+/** @publicDocs */
 export interface OrderStatusApi {
   /**
    * Order information that's available post-checkout.

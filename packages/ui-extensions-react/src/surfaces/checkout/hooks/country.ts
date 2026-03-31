@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the country of the checkout, and automatically re-renders
  * your component if the country changes.
+ * @publicDocs
  */
 export function useLocalizationCountry<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

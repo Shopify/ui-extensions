@@ -13,6 +13,7 @@ import {useSubscription} from './subscription';
 
 /**
  * Returns the `buyerJourney` details on buyer progression in checkout.
+ * @publicDocs
  */
 export function useBuyerJourney<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -26,6 +27,7 @@ export function useBuyerJourney<
  * Returns true if the buyer completed submitting their order.
  *
  * For example, when viewing the **Order status** page after submitting payment, the buyer will have completed their order.
+ * @publicDocs
  */
 export function useBuyerJourneyCompleted<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -45,6 +47,7 @@ export function useBuyerJourneyCompleted<
  *
  * `useBuyerJourneyIntercept()` should be called at the top level of the extension,
  * not within an embedded or child component, to avoid errors should the child component get destroyed.
+ * @publicDocs
  */
 export function useBuyerJourneyIntercept<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -67,6 +70,7 @@ export function useBuyerJourneyIntercept<
 
 /**
  * Returns all possible steps a buyer can take to complete the checkout. These steps may vary depending on the type of checkout or the shop's configuration.
+ * @publicDocs
  */
 export function useBuyerJourneySteps<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -82,6 +86,7 @@ export function useBuyerJourneySteps<
 
 /**
  * Returns the buyer journey step that the buyer is currently on.
+ * @publicDocs
  */
 export function useBuyerJourneyActiveStep<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

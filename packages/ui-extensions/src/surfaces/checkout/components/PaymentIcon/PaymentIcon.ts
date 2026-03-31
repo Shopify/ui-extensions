@@ -5,6 +5,7 @@ import {createRemoteComponent} from '@remote-ui/core';
  * recognizable brand icon (such as Visa, Mastercard, or PayPal).
  * Entries are listed in alphabetical order.
  */
+/** @publicDocs */
 export type PaymentMethod =
   | '7-eleven'
   | 'acima-leasing'

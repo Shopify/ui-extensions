@@ -4653,580 +4653,8 @@
       "filePath": "src/surfaces/admin/extension-targets.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AllComponents",
-      "value": "AnyComponentBuilder<\n  Omit<\n    Components,\n    | 'CustomerSegmentTemplate'\n    | 'InternalCustomerSegmentTemplate'\n    | 'InternalLocationList'\n  >\n>",
+      "value": "any",
       "description": "The set of UI components available for all admin UI extension targets. This includes all standard Polaris components except for specialized components used in specific contexts. Use this type to define which components can be rendered in your extension."
-    }
-  },
-  "AnyComponentBuilder": {
-    "src/shared.ts": {
-      "filePath": "src/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "AnyComponentBuilder",
-      "value": "AnyComponentBuilder<ComponentTypes>",
-      "description": ""
-    }
-  },
-  "ComponentTypes": {
-    "src/surfaces/admin/shared.ts": {
-      "filePath": "src/surfaces/admin/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ComponentTypes",
-      "value": "typeof import('./components')",
-      "description": ""
-    }
-  },
-  "Components": {
-    "src/surfaces/admin/shared.ts": {
-      "filePath": "src/surfaces/admin/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Components",
-      "value": "ComponentsBuilder<ComponentTypes>",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "AdminAction",
-          "value": "\"AdminAction\" & { readonly type?: \"AdminAction\"; readonly props?: AdminActionProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "AdminBlock",
-          "value": "\"AdminBlock\" & { readonly type?: \"AdminBlock\"; readonly props?: AdminBlockProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "AdminPrintAction",
-          "value": "\"AdminPrintAction\" & { readonly type?: \"AdminPrintAction\"; readonly props?: AdminPrintActionProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Badge",
-          "value": "\"Badge\" & { readonly type?: \"Badge\"; readonly props?: BadgeProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Banner",
-          "value": "\"Banner\" & { readonly type?: \"Banner\"; readonly props?: BannerProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "BlockStack",
-          "value": "\"BlockStack\" & { readonly type?: \"BlockStack\"; readonly props?: BlockStackProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Box",
-          "value": "\"Box\" & { readonly type?: \"Box\"; readonly props?: BoxProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Button",
-          "value": "\"Button\" & { readonly type?: \"Button\"; readonly props?: ButtonProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Checkbox",
-          "value": "\"Checkbox\" & { readonly type?: \"Checkbox\"; readonly props?: CheckboxProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "ChoiceList",
-          "value": "\"ChoiceList\" & { readonly type?: \"ChoiceList\"; readonly props?: ChoiceListProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "ColorPicker",
-          "value": "\"ColorPicker\" & { readonly type?: \"ColorPicker\"; readonly props?: ColorPickerProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "CustomerSegmentTemplate",
-          "value": "\"CustomerSegmentTemplate\" & { readonly type?: \"CustomerSegmentTemplate\"; readonly props?: CustomerSegmentTemplateProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "DateField",
-          "value": "\"DateField\" & { readonly type?: \"DateField\"; readonly props?: DateFieldProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "DatePicker",
-          "value": "\"DatePicker\" & { readonly type?: \"DatePicker\"; readonly props?: DatePickerProps<Selected>; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Divider",
-          "value": "\"Divider\" & { readonly type?: \"Divider\"; readonly props?: DividerProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "EmailField",
-          "value": "\"EmailField\" & { readonly type?: \"EmailField\"; readonly props?: EmailFieldProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Form",
-          "value": "\"Form\" & { readonly type?: \"Form\"; readonly props?: FormProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "FunctionSettings",
-          "value": "\"FunctionSettings\" & { readonly type?: \"FunctionSettings\"; readonly props?: FunctionSettingsProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Heading",
-          "value": "\"Heading\" & { readonly type?: \"Heading\"; readonly props?: HeadingProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "HeadingGroup",
-          "value": "\"HeadingGroup\" & { readonly type?: \"HeadingGroup\"; readonly props?: HeadingGroupProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Icon",
-          "value": "\"Icon\" & { readonly type?: \"Icon\"; readonly props?: IconProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Image",
-          "value": "\"Image\" & { readonly type?: \"Image\"; readonly props?: ImageProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "InlineStack",
-          "value": "\"InlineStack\" & { readonly type?: \"InlineStack\"; readonly props?: InlineStackProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "InternalCustomerSegmentTemplate",
-          "value": "\"InternalCustomerSegmentTemplate\" & { readonly type?: \"InternalCustomerSegmentTemplate\"; readonly props?: InternalCustomerSegmentTemplateProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "InternalLocationList",
-          "value": "\"InternalLocationList\" & { readonly type?: \"InternalLocationList\"; readonly props?: InternalLocationListProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Link",
-          "value": "\"Link\" & { readonly type?: \"Link\"; readonly props?: LinkProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "MoneyField",
-          "value": "\"MoneyField\" & { readonly type?: \"MoneyField\"; readonly props?: MoneyFieldProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "NumberField",
-          "value": "\"NumberField\" & { readonly type?: \"NumberField\"; readonly props?: NumberFieldProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Paragraph",
-          "value": "\"Paragraph\" & { readonly type?: \"Paragraph\"; readonly props?: ParagraphProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "PasswordField",
-          "value": "\"PasswordField\" & { readonly type?: \"PasswordField\"; readonly props?: PasswordFieldProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Pressable",
-          "value": "\"Pressable\" & { readonly type?: \"Pressable\"; readonly props?: PressableProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "ProgressIndicator",
-          "value": "\"ProgressIndicator\" & { readonly type?: \"ProgressIndicator\"; readonly props?: ProgressIndicatorProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Section",
-          "value": "\"Section\" & { readonly type?: \"Section\"; readonly props?: SectionProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Select",
-          "value": "\"Select\" & { readonly type?: \"Select\"; readonly props?: SelectProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "Text",
-          "value": "\"Text\" & { readonly type?: \"Text\"; readonly props?: TextProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "TextArea",
-          "value": "\"TextArea\" & { readonly type?: \"TextArea\"; readonly props?: TextAreaProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "TextField",
-          "value": "\"TextField\" & { readonly type?: \"TextField\"; readonly props?: TextFieldProps; readonly children?: true; }",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/shared.ts",
-          "syntaxKind": "ExportSpecifier",
-          "name": "URLField",
-          "value": "\"URLField\" & { readonly type?: \"URLField\"; readonly props?: URLFieldProps; readonly children?: true; }",
-          "description": ""
-        }
-      ]
-    }
-  },
-  "Badge": {
-    "src/surfaces/admin/api/picker/picker.ts": {
-      "filePath": "src/surfaces/admin/api/picker/picker.ts",
-      "name": "Badge",
-      "description": "A badge displayed next to an item in the picker to show status or progress. Use badges to highlight important item attributes or states that affect selection decisions.",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/api/picker/picker.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "content",
-          "value": "string",
-          "description": "The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\")."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/picker/picker.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "progress",
-          "value": "Progress",
-          "description": "The progress indicator for the badge. Use this to show completion status for items that have progress states.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/api/picker/picker.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tone",
-          "value": "Tone",
-          "description": "The visual tone indicating status or importance. Choose a tone that matches the badge's meaning.",
-          "isOptional": true
-        }
-      ],
-      "value": "interface Badge {\n  /** The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\"). */\n  content: string;\n  /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */\n  tone?: Tone;\n  /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */\n  progress?: Progress;\n}"
-    }
-  },
-  "Progress": {
-    "src/surfaces/admin/api/picker/picker.ts": {
-      "filePath": "src/surfaces/admin/api/picker/picker.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Progress",
-      "value": "'incomplete' | 'partiallyComplete' | 'complete'",
-      "description": "The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished."
-    }
-  },
-  "Selected": {
-    "src/surfaces/admin/components/DatePicker/DatePicker.ts": {
-      "filePath": "src/surfaces/admin/components/DatePicker/DatePicker.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "Selected",
-      "value": "DateString | DateString[] | Range",
-      "description": "The value type for date picker selections. Pass a single `DateString` for single-date mode, an array of `DateString` values for multi-date mode, or a `Range` object for range mode."
-    }
-  },
-  "Image": {
-    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
-      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
-      "name": "Image",
-      "description": "An image associated with a product or variant. Contains the image ID, alt text for accessibility, and the source URL.",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "altText",
-          "value": "string",
-          "description": "Alternative text describing the image for accessibility and SEO. Displayed when the image can't load.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "The image's unique identifier. Use this to reference the image in GraphQL operations."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "originalSrc",
-          "value": "string",
-          "description": "The original source URL of the image file. Use this URL to display the image."
-        }
-      ],
-      "value": "interface Image {\n  /** The image's unique identifier. Use this to reference the image in GraphQL operations. */\n  id: string;\n  /** Alternative text describing the image for accessibility and SEO. Displayed when the image can't load. */\n  altText?: string;\n  /** The original source URL of the image file. Use this URL to display the image. */\n  originalSrc: string;\n}"
-    }
-  },
-  "InternalCustomerSegmentTemplateProps": {
-    "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts": {
-      "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-      "name": "InternalCustomerSegmentTemplateProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "category",
-          "value": "CustomerSegmentTemplateCategory",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "createdOn",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "dependencies",
-          "value": "{ standardMetafields?: \"facts.birth_date\"[]; customMetafields?: string[]; }",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "description",
-          "value": "string | string[]",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "icon",
-          "value": "CustomerSegmentTemplateIcon",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "query",
-          "value": "string",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "queryToInsert",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "title",
-          "value": "string",
-          "description": ""
-        }
-      ],
-      "value": "export interface InternalCustomerSegmentTemplateProps {\n  /* Localized title of the template. */\n  title: string;\n  /* Localized description(s) of the template. */\n  description: string | string[];\n  /* Icon identifier for the template. */\n  icon: CustomerSegmentTemplateIcon;\n  /* Code snippet to render in the template with syntax highlighting. */\n  query: string;\n  /* Code snippet to insert in the segment editor. If missing, `query` will be used. */\n  queryToInsert?: string;\n  /* List of customer standard metafields or custom metafields used in the template's query. */\n  dependencies?: {\n    standardMetafields?: CustomerStandardMetafieldDependency[];\n    customMetafields?: string[];\n  };\n  /* ISO 8601-encoded date and time string. A \"New\" badge will be rendered for recently introduced templates. */\n  createdOn?: string;\n  /* The category in which the template will be visible. The template will show in its respective category and aggregate sections. */\n  category: CustomerSegmentTemplateCategory;\n}"
-    }
-  },
-  "CustomerSegmentTemplateCategory": {
-    "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts": {
-      "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CustomerSegmentTemplateCategory",
-      "value": "'firstTimeBuyers' | 'highValueCustomers' | 'reEngageCustomers' | 'abandonedCheckout' | 'purchaseBehaviour' | 'location'",
-      "description": ""
-    }
-  },
-  "CustomerSegmentTemplateIcon": {
-    "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts": {
-      "filePath": "src/surfaces/admin/components/InternalCustomerSegmentTemplate/InternalCustomerSegmentTemplate.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CustomerSegmentTemplateIcon",
-      "value": "'categoriesMajor' | 'firstVisitMajor' | 'heartMajor' | 'marketingMajor' | 'checkoutMajor' | 'ordersMajor' | 'locationMajor' | 'emailNewsletterMajor' | 'firstOrderMajor' | 'billingStatementDollarMajor' | 'diamondAlertMajor' | 'abandonedCartMajor' | 'calendarMajor' | 'productsMajor' | 'globeMajor' | 'flagMajor' | 'uploadMajor' | 'buyButtonMajor' | 'followUpEmailMajor' | 'confettiMajor' | 'walletMajor' | 'viewMajor' | 'personAddMajor' | 'languageMajor' | 'appsMajor' | 'categories' | 'eye-first' | 'heart' | 'target' | 'cart' | 'order' | 'location' | 'email-newsletter' | 'order-first' | 'receipt-dollar' | 'alert-diamond' | 'cart-abandoned' | 'calendar' | 'product' | 'globe' | 'flag' | 'upload' | 'button-press' | 'email-follow-up' | 'confetti' | 'wallet' | 'view' | 'person-add' | 'language' | 'apps'",
-      "description": ""
-    }
-  },
-  "InternalLocationListProps": {
-    "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts": {
-      "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-      "name": "InternalLocationListProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locationGroups",
-          "value": "LocationGroup[]",
-          "description": "An array of location groups."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "onCreateGroup",
-          "value": "(id: string) => void",
-          "description": "Callback when a new group is created. It receives the id of the new group as a parameter."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "onDeleteGroup",
-          "value": "(id: string) => void",
-          "description": "Callback when a location group is deleted. It receives the id of the group as a parameter."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "onMoveGroup",
-          "value": "(oldIndex: number, newIndex: number) => void",
-          "description": "Callback when a location group is moved. It receives the old index and the new index as parameters."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "onMoveTag",
-          "value": "(tagId: number, oldGroupIndex: number, newGroupIndex: number) => void",
-          "description": "Callback when a tag is moved from one group to another. It receives the id of the tag, the old group index, and the new group index as parameters."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "onRenameGroup",
-          "value": "(id: string, name: string) => void",
-          "description": "Callback when a location group is renamed. It receives the id of the group and the new name as parameters."
-        }
-      ],
-      "value": "export interface InternalLocationListProps {\n  /**\n   * An array of location groups.\n   */\n  locationGroups: LocationGroup[];\n\n  /**\n   * Callback when a location group is moved.\n   * It receives the old index and the new index as parameters.\n   */\n  onMoveGroup: (oldIndex: number, newIndex: number) => void;\n\n  /**\n   * Callback when a location group is renamed.\n   * It receives the id of the group and the new name as parameters.\n   */\n  onRenameGroup: (id: string, name: string) => void;\n\n  /**\n   * Callback when a location group is deleted.\n   * It receives the id of the group as a parameter.\n   */\n  onDeleteGroup: (id: string) => void;\n\n  /**\n   * Callback when a tag is moved from one group to another.\n   * It receives the id of the tag, the old group index, and the new group index as parameters.\n   */\n  onMoveTag: (\n    tagId: number,\n    oldGroupIndex: number,\n    newGroupIndex: number,\n  ) => void;\n\n  /**\n   * Callback when a new group is created.\n   * It receives the id of the new group as a parameter.\n   */\n  onCreateGroup: (id: string) => void;\n}"
-    }
-  },
-  "LocationGroup": {
-    "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts": {
-      "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-      "name": "LocationGroup",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the location group."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "label",
-          "value": "string",
-          "description": "The label for the location group."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locations",
-          "value": "Location[]",
-          "description": "An array of locations within the group."
-        }
-      ],
-      "value": "export interface LocationGroup {\n  /**\n   * An array of locations within the group.\n   */\n  locations: Location[];\n\n  /**\n   * The label for the location group.\n   */\n  label: string;\n\n  /**\n   * A unique identifier for the location group.\n   */\n  id: string;\n}"
-    }
-  },
-  "Location": {
-    "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts": {
-      "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-      "name": "Location",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the location."
-        },
-        {
-          "filePath": "src/surfaces/admin/components/InternalLocationList/InternalLocationList.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": "The name of the location."
-        }
-      ],
-      "value": "export interface Location {\n  /**\n   * A unique identifier for the location.\n   */\n  id: string;\n\n  /**\n   * The name of the location.\n   */\n  name: string;\n}"
     }
   },
   "RunnableExtension": {
@@ -5637,6 +5065,48 @@
       "value": "interface Item {\n  /**\n   * The unique identifier for this item. This ID is returned in the selection array when the merchant selects this item. Use an ID that helps you identify the item in your system (for example, template IDs, review IDs, or custom option keys).\n   */\n  id: string;\n  /**\n   * The primary text displayed in the first column. This is typically the item's name or title and is the most prominent text in the row.\n   */\n  heading: string;\n  /**\n   * Additional data displayed in subsequent columns after the heading. Each value appears in its own column, and the order must match the `headers` array. For example, if headers are `[\"Price\", \"Status\"]`, then data would be `[19.99, \"Active\"]`.\n   */\n  data?: DataPoint[];\n  /**\n   * Whether the item can be selected. When `true`, the item is disabled and can't be selected. Disabled items appear grayed out and merchants can't choose them. Use this for items that are unavailable or don't meet selection criteria.\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * Whether the item is preselected when the picker opens. When `true`, the item appears selected by default. Merchants can still deselect preselected items. Use this to show current selections or suggest default choices.\n   */\n  selected?: boolean;\n  /**\n   * Status or context badges displayed next to the heading in the first column. Use badges to highlight item state, completion status, or other important attributes (for example, \"Draft\", \"Published\", \"Incomplete\").\n   */\n  badges?: Badge[];\n  /**\n   * A small preview image or icon displayed at the start of the row. Thumbnails help merchants visually identify items at a glance. Provide a URL to the image file.\n   */\n  thumbnail?: {url: string};\n}"
     }
   },
+  "Badge": {
+    "src/surfaces/admin/api/picker/picker.ts": {
+      "filePath": "src/surfaces/admin/api/picker/picker.ts",
+      "name": "Badge",
+      "description": "A badge displayed next to an item in the picker to show status or progress. Use badges to highlight important item attributes or states that affect selection decisions.",
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/picker/picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "content",
+          "value": "string",
+          "description": "The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\")."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/picker/picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "progress",
+          "value": "Progress",
+          "description": "The progress indicator for the badge. Use this to show completion status for items that have progress states.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/picker/picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "Tone",
+          "description": "The visual tone indicating status or importance. Choose a tone that matches the badge's meaning.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Badge {\n  /** The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\"). */\n  content: string;\n  /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */\n  tone?: Tone;\n  /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */\n  progress?: Progress;\n}"
+    }
+  },
+  "Progress": {
+    "src/surfaces/admin/api/picker/picker.ts": {
+      "filePath": "src/surfaces/admin/api/picker/picker.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Progress",
+      "value": "'incomplete' | 'partiallyComplete' | 'complete'",
+      "description": "The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished."
+    }
+  },
   "DataPoint": {
     "src/surfaces/admin/api/picker/picker.ts": {
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
@@ -5909,7 +5379,7 @@
       "filePath": "src/surfaces/admin/extension-targets.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "CustomerSegmentTemplateComponent",
-      "value": "AnyComponentBuilder<\n  Pick<\n    Components,\n    'CustomerSegmentTemplate' | 'InternalCustomerSegmentTemplate'\n  >\n>",
+      "value": "any",
       "description": "The specialized set of components available for customer segment template extensions. This includes only the CustomerSegmentTemplate component used for defining segment query templates in the customer segmentation editor."
     }
   },
@@ -6946,7 +6416,7 @@
       "filePath": "src/surfaces/admin/extension-targets.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "OrderRoutingComponents",
-      "value": "\"InternalLocationList\" & { readonly type?: \"InternalLocationList\"; readonly props?: InternalLocationListProps; readonly children?: true; }",
+      "value": "any",
       "description": "The specialized set of components available for order routing rule extensions. This includes components for displaying and configuring fulfillment location lists in order routing settings."
     }
   },

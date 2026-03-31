@@ -491,6 +491,7 @@ export interface BuyerJourneyStep {
   disabled: boolean;
 }
 
+/** @publicDocs */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.

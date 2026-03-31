@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current delivery groups for the checkout, and automatically re-renders
  * your component when delivery address or delivery option selection changes.
+ * @publicDocs
  */
 export function useDeliveryGroups<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

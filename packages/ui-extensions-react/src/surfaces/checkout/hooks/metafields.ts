@@ -20,6 +20,7 @@ interface MetafieldsFilters {
  * Returns the current array of `metafields` applied to the checkout.
  * You can optionally filter the list.
  * @arg {MetafieldsFilters} - filter the list of returned metafields
+ * @publicDocs
  */
 export function useMetafields<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -50,6 +51,7 @@ export function useMetafields<
 
 /**
  * Returns a function to mutate the `metafields` property of the checkout.
+ * @publicDocs
  */
 export function useApplyMetafieldsChange<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
