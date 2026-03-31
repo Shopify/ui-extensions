@@ -56,11 +56,13 @@ export interface IntentActivity {
 
 /**
  * The type of operation to perform: creating a new resource or editing an existing one.
+ * @publicDocs
  */
 export type IntentAction = 'create' | 'edit';
 
 /**
  * The types of Shopify resources that support intent-based creation and editing workflows.
+ * @publicDocs
  */
 export type IntentType =
   | 'shopify/Article'
