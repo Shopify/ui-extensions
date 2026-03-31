@@ -33,7 +33,7 @@ export interface EventExtensionTargets {
    * Fires when a transaction completes successfully.
    *
    * @deprecated Deprecated as of `2026-04`. Use `pos.app.ready.data` target with
-   * `shopify.addEventListener('transaction_complete', callback)` instead.
+   * `window.addEventListener('transaction_complete', callback)` instead.
    * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
    * @private
    */
@@ -44,7 +44,7 @@ export interface EventExtensionTargets {
    * Fires when a cash tracking session starts.
    *
    * @deprecated Deprecated as of `2026-04`. Use `pos.app.ready.data` target with
-   * `shopify.addEventListener('cash_tracking_session_start', callback)` instead.
+   * `window.addEventListener('cash_tracking_session_start', callback)` instead.
    * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
    * @private
    */
@@ -55,7 +55,7 @@ export interface EventExtensionTargets {
    * Fires when a cash tracking session completes.
    *
    * @deprecated Deprecated as of `2026-04`. Use `pos.app.ready.data` target with
-   * `shopify.addEventListener('cash_tracking_session_complete', callback)` instead.
+   * `window.addEventListener('cash_tracking_session_complete', callback)` instead.
    * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
    * @private
    */
@@ -65,9 +65,8 @@ export interface EventExtensionTargets {
   /**
    * Fires when the cart is updated.
    *
-   * @deprecated Deprecated as of `2026-04`. Use `shopify.cart.current.subscribe()` instead,
-   * available on any render target. For background observation, use `pos.app.ready.data`
-   * target with `shopify.addEventListener('cart_update', callback)`.
+   * @deprecated Deprecated as of `2026-04`. Use `api.cart.current.subscribe()` on any
+   * target instead. For background observation, use `pos.app.ready.data` target.
    * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
    * @private
    */
