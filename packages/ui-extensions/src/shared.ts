@@ -14,22 +14,23 @@ export type ApiVersion =
   | 'unstable'
   | '2025-07'
   | '2025-10'
-  | '2026-01';
+  | '2026-01'
+  | '2026-04';
 
 /**
  * The capabilities an extension has access to.
  *
- * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#api-access): the extension can access the Storefront API.
+ * * `api_access`: The extension can access the Storefront API.
  *
- * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access): the extension can make external network calls.
+ * * `network_access`: The extension can make external network calls.
  *
- * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#block-progress): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+ * * `block_progress`: The extension can block a buyer's progress and the merchant has allowed this blocking behavior.
  *
- * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can collect buyer consent for SMS marketing.
+ * * `collect_buyer_consent.sms_marketing`: The extension can collect buyer consent for SMS marketing.
  *
- * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#collect-buyer-consent): the extension can register buyer consent decisions that will be honored on Shopify-managed services.
+ * * `collect_buyer_consent.customer_privacy`: The extension can register buyer consent decisions that will be honored on Shopify-managed services.
  *
- * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#iframe): the extension can embed an external URL in an iframe.
+ * * `iframe.sources`: The extension can embed an external URL in an iframe.
  */
 
 export type Capability =
@@ -849,9 +850,12 @@ export type CountryCode =
   | 'ZW'
   | 'ZZ';
 
+/**
+ * A buyer's country, identified by its ISO country code.
+ */
 export interface Country {
   /**
-   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
    *
    * @example 'CA' for Canada, 'US' for United States.
    */
@@ -902,7 +906,7 @@ export type LocalizedFieldKey =
   | 'TAX_EMAIL_IT';
 
 /**
- * Union of supported storefront API versions
+ * The supported Storefront API versions. Pass one of these values to `query()` to target a specific API version when querying the Storefront GraphQL API.
  */
 export type StorefrontApiVersion =
   | '2022-04'
@@ -921,9 +925,12 @@ export type StorefrontApiVersion =
   | '2025-07'
   | '2025-10';
 
+/**
+ * A buyer's country, identified by its ISO country code.
+ */
 export interface Country {
   /**
-   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. This is the internationally recognized standard for representing countries and territories.
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
    *
    * @example 'CA' for Canada, 'US' for United States.
    */
@@ -931,12 +938,24 @@ export interface Country {
 }
 
 /**
- * GraphQL error returned by the Shopify Storefront APIs.
+ * An error returned by the Storefront GraphQL API. Contains a human-readable `message` and an `extensions` object with the request ID and error code for debugging.
  */
 export interface GraphQLError {
+  /**
+   * A human-readable description of the error.
+   */
   message: string;
+  /**
+   * Additional error metadata including the request ID and error code.
+   */
   extensions: {
+    /**
+     * The unique identifier for the API request, useful for debugging with Shopify support.
+     */
     requestId: string;
+    /**
+     * A machine-readable error code identifying the type of error.
+     */
     code: string;
   };
 }
