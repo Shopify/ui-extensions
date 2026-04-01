@@ -32,9 +32,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when a transaction completes successfully.
    *
-   * @deprecated Deprecated as of `2026-04`. Use `pos.app.ready.data` target with
+   * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
    * `window.addEventListener('transaction_complete', callback)` instead.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
+   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.transaction-complete.event.observe': (
@@ -43,9 +43,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when a cash tracking session starts.
    *
-   * @deprecated Deprecated as of `2026-04`. Use `pos.app.ready.data` target with
+   * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
    * `window.addEventListener('cash_tracking_session_start', callback)` instead.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
+   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.cash-tracking-session-start.event.observe': (
@@ -54,9 +54,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when a cash tracking session completes.
    *
-   * @deprecated Deprecated as of `2026-04`. Use `pos.app.ready.data` target with
+   * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
    * `window.addEventListener('cash_tracking_session_complete', callback)` instead.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
+   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.cash-tracking-session-complete.event.observe': (
@@ -65,9 +65,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when the cart is updated.
    *
-   * @deprecated Deprecated as of `2026-04`. Use `api.cart.current.subscribe()` on any
+   * @deprecated Deprecated as of `2025-10`. Use `api.cart.current.subscribe()` on any
    * target instead. For background observation, use `pos.app.ready.data` target.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/unstable/targets/pos-app-ready-data
+   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.cart-update.event.observe': (
