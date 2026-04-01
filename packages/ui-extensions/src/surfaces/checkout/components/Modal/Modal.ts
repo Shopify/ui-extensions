@@ -39,11 +39,11 @@ export interface ModalProps {
    */
   size?: 'small' | 'auto' | 'large' | 'max';
   /**
-   * The primary action to perform, provided as a Button component. Only one button can be rendered.
+   * The primary action to perform, provided as a button component. Only one button can be rendered.
    */
   primaryAction?: RemoteFragment;
   /**
-   * The secondary actions to perform, provided as Button components. Only one button can be rendered.
+   * The secondary actions to perform, provided as button components. Only one button can be rendered.
    */
   secondaryActions?: RemoteFragment;
 }

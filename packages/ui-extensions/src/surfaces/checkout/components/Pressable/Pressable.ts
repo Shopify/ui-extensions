@@ -44,15 +44,13 @@ export interface PressableProps
    *
    * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   * Learn more about the [display property](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
    *
    * @defaultValue 'auto'
    */
   display?: MaybeResponsiveConditionalStyle<Display>;
   /**
-   * A label that describes the purpose or contents of the element. When set,
-   * it will be announced to buyers using assistive technologies and will
-   * provide them with more context.
+   * A label that describes the purpose or content of the element for users of assistive technologies such as screen readers. When set, it provides additional context beyond the visible content.
    */
   accessibilityLabel?: string;
 
@@ -68,52 +66,52 @@ export interface PressableProps
   accessibilityRole?: ButtonAccessibilityRole;
 
   /**
-   * Disables the button, disallowing any interaction
+   * Whether the element is disabled, preventing it from being activated or receiving focus.
    */
   disabled?: boolean;
 
   /**
-   * Disables the button while loading. Unlike `Button`, no indicator is rendered while loading.
+   * Whether the element is in a loading state. Unlike `Button`, no loading indicator is rendered.
    */
   loading?: boolean;
 
   /**
-   * Callback that is run when the button or link is pressed.
+   * A callback fired when the element is activated by the user.
    */
   onPress?: () => void;
 
   /**
-   * Callback that is run when the button or link focus is removed.
+   * A callback fired when the element loses focus.
    */
   onBlur?: () => void;
 
   /**
-   * Callback that is run when the button or link is focused.
+   * A callback fired when the element receives focus.
    */
   onFocus?: () => void;
 
   /**
-   * Callback that is run when a pointing device button is pressed while the pointer is inside the button or link.
+   * A callback fired when a pointing device button is pressed while the pointer is inside the element.
    */
   onPointerDown?: () => void;
 
   /**
-   * Callback that is run when the pointing device is over (enters) the button or link.
+   * A callback fired when the pointing device enters the element.
    */
   onPointerEnter?: () => void;
 
   /**
-   *  Callback that is run when the pointing device has left the button or link.
+   * A callback fired when the pointing device leaves the element.
    */
   onPointerLeave?: () => void;
 
   /**
-   * Callback that is run when a pointing device button is released while the pointer is inside the element button or link.
+   * A callback fired when a pointing device button is released while the pointer is inside the element.
    */
   onPointerUp?: () => void;
 
   /**
-   * Destination URL to link to. If this value is set, If this value is set, the component will render an `<a>` tag.
+   * The URL to navigate to when the element is activated. When set, the component renders as an anchor element.
    */
   to?: string;
 
