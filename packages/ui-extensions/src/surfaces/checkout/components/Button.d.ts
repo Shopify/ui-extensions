@@ -43,7 +43,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-button";
 /**
- * Properties for the Button component element.
+ * Properties for the button component element.
  * @publicDocs
  */
 export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
@@ -56,12 +56,12 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
 /**
- * Events for the Button component element.
+ * Events for the button component element.
  * @publicDocs
  */
 export interface ButtonElementEvents {
     /**
-     * Callback when the button is activated.
+     * A callback fired when the clickable element is activated.
      * This will be called before the action indicated by `type`.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event

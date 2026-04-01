@@ -4,25 +4,25 @@
 
 // Button
 /**
- * Properties for the Button component element.
+ * Properties for the button component element.
  * @publicDocs
  */
 export type ButtonElementProps =
   import('../../checkout/components/Button').ButtonElementProps;
 /**
- * Events for the Button component element.
+ * Events for the button component element.
  * @publicDocs
  */
 export type ButtonElementEvents =
   import('../../checkout/components/Button').ButtonElementEvents;
 /**
- * Slots for the Button component element.
+ * Slots for the button component element.
  * @publicDocs
  */
 export type ButtonElementSlots =
   import('../../checkout/components/Button').ButtonElementSlots;
 /**
- * Methods for the Button component element.
+ * Methods for the button component element.
  * @publicDocs
  */
 export type ButtonElementMethods =

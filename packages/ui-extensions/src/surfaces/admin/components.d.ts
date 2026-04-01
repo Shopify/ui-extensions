@@ -1669,7 +1669,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface InteractionProps {
   /**
-   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: string;
   /**
