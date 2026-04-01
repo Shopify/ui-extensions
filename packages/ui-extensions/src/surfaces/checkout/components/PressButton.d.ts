@@ -57,7 +57,7 @@ export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 
  */
 export interface PressButtonElementEvents {
     /**
-     * Callback when the button is activated.
+     * A callback fired when the clickable element is activated.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
      */

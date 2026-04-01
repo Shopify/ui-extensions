@@ -63,7 +63,7 @@ export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
  */
 export interface ButtonElementEvents {
     /**
-     * Callback when the button is activated.
+     * A callback fired when the clickable element is activated.
      * This will be called before the action indicated by `type`.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
