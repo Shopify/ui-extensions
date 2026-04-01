@@ -58,10 +58,6 @@ export interface AdminMutationResults {
     | Awaited<ReturnType<ValidationApplyMetafieldChange>>
     | Awaited<ReturnType<DiscountApplyMetafieldChange>>;
   updateDiscountClasses: ReturnType<DiscountsApi['updateDiscountClasses']>;
-  updatePurchaseType: ReturnType<DiscountsApi['updatePurchaseType']>;
-  updateRecurringCycleLimit: ReturnType<
-    DiscountsApi['updateRecurringCycleLimit']
-  >;
 }
 
 const adminMutationDefaults: {
@@ -69,11 +65,6 @@ const adminMutationDefaults: {
 } = {
   applyMetafieldChange: () => ({type: 'success'}),
   updateDiscountClasses: () => ({success: true as const, value: []}),
-  updatePurchaseType: () => ({
-    success: true as const,
-    value: 'one_time_purchase' as const,
-  }),
-  updateRecurringCycleLimit: () => ({success: true as const, value: null}),
 };
 
 /**
