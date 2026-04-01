@@ -33,7 +33,7 @@ export interface EventExtensionTargets {
    * Fires when a transaction completes successfully.
    *
    * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
-   * `window.addEventListener('transaction_complete', callback)` instead.
+   * `window.addEventListener('transactioncomplete', callback)` instead.
    * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
@@ -44,7 +44,7 @@ export interface EventExtensionTargets {
    * Fires when a cash tracking session starts.
    *
    * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
-   * `window.addEventListener('cash_tracking_session_start', callback)` instead.
+   * `window.addEventListener('cashtrackingsessionstart', callback)` instead.
    * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
@@ -55,7 +55,7 @@ export interface EventExtensionTargets {
    * Fires when a cash tracking session completes.
    *
    * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
-   * `window.addEventListener('cash_tracking_session_complete', callback)` instead.
+   * `window.addEventListener('cashtrackingsessioncomplete', callback)` instead.
    * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
