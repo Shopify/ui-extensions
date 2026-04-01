@@ -65,8 +65,8 @@ export interface EventExtensionTargets {
   /**
    * Fires when the cart is updated.
    *
-   * @deprecated Deprecated as of `2025-10`. Use `api.cart.current.subscribe()` on any
-   * target instead. For background observation, use `pos.app.ready.data` target.
+   * @deprecated Deprecated as of `2025-10`. Use `api.cart.current.subscribe()` on the
+   * `pos.app.ready.data` target.
    * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
