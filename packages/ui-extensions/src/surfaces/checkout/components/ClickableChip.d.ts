@@ -39,7 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-clickable-chip";
 /**
- * The element props interface for the ClickableChip component.
+ * Configure the following properties on the clickable chip component.
  * @publicDocs
  */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {

@@ -56,7 +56,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-clickable";
 /**
- * The element props interface for the Clickable component.
+ * Configure the following properties on the clickable component.
  * @publicDocs
  */
 export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
@@ -81,7 +81,7 @@ export interface ClickableElementEvents {
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the button is activated.
+     * A callback fired when the clickable element is activated.
      * This will be called before the action indicated by `type`.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event

@@ -33,7 +33,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-clipboard-item";
 /**
- * The element props interface for the ClipboardItem component.
+ * Configure the following properties on the clipboard item component.
  * @publicDocs
  */
 export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
