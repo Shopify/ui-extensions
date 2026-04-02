@@ -54,10 +54,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-popover";
-/**
- * Popovers are used to display content in an overlay that can be triggered by a button.
- * @publicDocs
- */
+/** @publicDocs */
 export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
     /**
      * The block size of the popover (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
@@ -102,10 +99,7 @@ export interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
  */
 export interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
-/**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
- * @publicDocs
- */
+/** @publicDocs */
 export interface PopoverElementEvents {
     /**
      * A callback fired immediately after the popover is hidden.

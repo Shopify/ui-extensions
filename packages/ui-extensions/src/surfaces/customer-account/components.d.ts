@@ -55,10 +55,7 @@ declare module 'preact' {
     }
   }
 }
-
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export type ImageGroupPropsDocs = ImageGroupProps;
 export type ImageGroupElementDocs = ImageGroupElement;
 
@@ -108,17 +105,11 @@ declare module 'preact' {
     }
   }
 }
-
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export type AvatarElementPropsDocs = AvatarElementProps;
 export type AvatarPropsDocs = AvatarProps;
 export type AvatarElementDocs = AvatarElement;
-/**
- * Learn more about [registering events](/docs/api/app-home/using-polaris-components#event-handling).
- * @publicDocs
- */
+/** @publicDocs */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {

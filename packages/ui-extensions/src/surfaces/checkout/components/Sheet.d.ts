@@ -67,10 +67,7 @@ export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'h
  */
 export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
-/**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementEvents {
     /**
      * A callback fired when the sheet is hidden, after any hide animations have completed.
@@ -89,10 +86,7 @@ export interface SheetElementEvents {
      */
     show?: CallbackEventListener<typeof tagName>;
 }
-/**
- * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementSlots {
     /**
      * The main action button displayed in the sheet footer, representing the primary action users should take. Only accepts a single button component.
@@ -103,10 +97,7 @@ export interface SheetElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-/**
- * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
 /**
