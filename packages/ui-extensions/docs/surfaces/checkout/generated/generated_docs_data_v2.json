@@ -6122,7 +6122,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateTarget",
           "value": "string",
-          "description": "ID of a component that should respond to activations (e.g. clicks) on this pressable.\n\nSee `activateAction` for how to control the behavior of the target.",
+          "description": "The ID of the component to control when this component is activated. Pair with the `activateAction` property to specify what action to perform on the target component.",
           "isOptional": true
         },
         {
@@ -6130,7 +6130,7 @@
           "syntaxKind": "PropertySignature",
           "name": "appearance",
           "value": "'critical' | 'monochrome'",
-          "description": "Specify the color treatment of the Button.",
+          "description": "The semantic meaning and color treatment of the button, such as 'critical' for destructive actions or 'monochrome' for a neutral appearance.",
           "isOptional": true
         },
         {
@@ -6138,7 +6138,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Disables the button, disallowing any interaction.",
+          "description": "Whether the button is disabled, preventing it from being activated or receiving focus.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -6164,7 +6164,7 @@
           "syntaxKind": "PropertySignature",
           "name": "kind",
           "value": "'primary' | 'secondary' | 'plain'",
-          "description": "The type of button that will be rendered. The visual presentation of the button type is controlled by merchants through the Branding API.\n\n\n`primary`: button used for main actions. For example: \"Continue to next step\".\n\n`secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n\n`plain`: renders a button that visually looks like a link.",
+          "description": "The visual style variant of the button, which controls its prominence and emphasis. The visual presentation is controlled through the Branding API.\n\n- `'primary'`: High-emphasis style for main actions, such as \"Continue to next step.\"\n- `'secondary'`: Medium-emphasis style for secondary actions that don't block user progress, such as \"Download Shop app.\"\n- `'plain'`: Renders the button with a link-like appearance.",
           "isOptional": true,
           "defaultValue": "'primary'"
         },
@@ -6173,7 +6173,7 @@
           "syntaxKind": "PropertySignature",
           "name": "loading",
           "value": "boolean",
-          "description": "Replaces content with a loading indicator.",
+          "description": "Whether the button is in a loading state, which replaces the button content with a loading indicator while a background action is being performed. This also disables the button.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -6190,7 +6190,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -6206,7 +6206,7 @@
           "syntaxKind": "PropertySignature",
           "name": "submit",
           "value": "boolean",
-          "description": "Allows the button to submit a form.",
+          "description": "Whether the button submits the nearest containing form when activated.",
           "isOptional": true,
           "deprecationMessage": "use `accessibilityRole=\"submit\"` instead"
         },
@@ -6215,7 +6215,7 @@
           "syntaxKind": "PropertySignature",
           "name": "to",
           "value": "string",
-          "description": "Destination URL to link to.",
+          "description": "The URL to navigate to when the button is activated. The `onPress` callback fires first, then navigation occurs.",
           "isOptional": true
         },
         {
@@ -6975,7 +6975,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onCopy",
           "value": "() => void",
-          "description": "Callback run when the copy to clipboard succeeds.",
+          "description": "A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.",
           "isOptional": true
         },
         {
@@ -6983,7 +6983,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onCopyError",
           "value": "() => void",
-          "description": "Callback run when the copy to clipboard fails.",
+          "description": "A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.",
           "isOptional": true
         },
         {
@@ -8493,7 +8493,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateTarget",
           "value": "string",
-          "description": "ID of a component that should respond to activations (e.g. clicks) on this pressable.\n\nSee `activateAction` for how to control the behavior of the target.",
+          "description": "The ID of the component to control when this component is activated. Pair with the `activateAction` property to specify what action to perform on the target component.",
           "isOptional": true
         },
         {
@@ -8509,7 +8509,7 @@
           "syntaxKind": "PropertySignature",
           "name": "external",
           "value": "boolean",
-          "description": "Open the link in a new window or tab. If the link points to a domain other than your Storefront, it will always open in a new tab.",
+          "description": "Whether to open the link in a new window or tab. Links to domains other than your storefront always open in a new tab regardless of this setting.",
           "isOptional": true
         },
         {
@@ -8533,7 +8533,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback when pressed. If `to` is set, it will execute the callback and then navigate to the location specified by `to`.",
+          "description": "A callback fired when the link is activated. If `to` is set, the callback fires first, then navigation occurs.",
           "isOptional": true
         },
         {
@@ -8549,7 +8549,7 @@
           "syntaxKind": "PropertySignature",
           "name": "to",
           "value": "string",
-          "description": "Destination to navigate to. You must provide either this property, `onPress`, or both.",
+          "description": "The URL to navigate to when the link is activated. You must provide either this property, `onPress`, or both.",
           "isOptional": true
         },
         {
@@ -9213,7 +9213,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateTarget",
           "value": "string",
-          "description": "ID of a component that should respond to activations (e.g. clicks) on this pressable.\n\nSee `activateAction` for how to control the behavior of the target.",
+          "description": "The ID of the component to control when this component is activated. Pair with the `activateAction` property to specify what action to perform on the target component.",
           "isOptional": true
         },
         {
@@ -9271,7 +9271,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Disables the button, disallowing any interaction",
+          "description": "Whether the element is disabled, preventing it from being activated or receiving focus",
           "isOptional": true
         },
         {
@@ -9304,7 +9304,7 @@
           "syntaxKind": "PropertySignature",
           "name": "loading",
           "value": "boolean",
-          "description": "Disables the button while loading. Unlike `Button`, no indicator is rendered while loading.",
+          "description": "Whether the element is in a loading state. Unlike `Button`, no loading indicator is rendered.",
           "isOptional": true
         },
         {
@@ -9344,7 +9344,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onBlur",
           "value": "() => void",
-          "description": "Callback that is run when the button or link focus is removed.",
+          "description": "A callback fired when the element loses focus.",
           "isOptional": true
         },
         {
@@ -9352,7 +9352,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onFocus",
           "value": "() => void",
-          "description": "Callback that is run when the button or link is focused.",
+          "description": "A callback fired when the element receives focus.",
           "isOptional": true
         },
         {
@@ -9360,7 +9360,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onPointerDown",
           "value": "() => void",
-          "description": "Callback that is run when a pointing device button is pressed while the pointer is inside the button or link.",
+          "description": "A callback fired when a pointing device button is pressed while the pointer is inside the element.",
           "isOptional": true
         },
         {
@@ -9368,7 +9368,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onPointerEnter",
           "value": "() => void",
-          "description": "Callback that is run when the pointing device is over (enters) the button or link.",
+          "description": "A callback fired when the pointing device enters the element.",
           "isOptional": true
         },
         {
@@ -9376,7 +9376,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onPointerLeave",
           "value": "() => void",
-          "description": "Callback that is run when the pointing device has left the button or link.",
+          "description": "A callback fired when the pointing device leaves the element.",
           "isOptional": true
         },
         {
@@ -9384,7 +9384,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onPointerUp",
           "value": "() => void",
-          "description": "Callback that is run when a pointing device button is released while the pointer is inside the element button or link.",
+          "description": "A callback fired when a pointing device button is released while the pointer is inside the element.",
           "isOptional": true
         },
         {
@@ -9392,7 +9392,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button or link is pressed.",
+          "description": "A callback fired when the element is activated by the user.",
           "isOptional": true
         },
         {
@@ -9433,7 +9433,7 @@
           "syntaxKind": "PropertySignature",
           "name": "to",
           "value": "string",
-          "description": "Destination URL to link to. If this value is set, If this value is set, the component will render an `<a>` tag.",
+          "description": "The URL to navigate to when the element is activated. When set, the component renders as an anchor element.",
           "isOptional": true
         },
         {
@@ -10820,7 +10820,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Disables the button, disallowing any interaction.",
+          "description": "Whether the button is disabled, preventing it from being activated or receiving focus.",
           "isOptional": true
         },
         {

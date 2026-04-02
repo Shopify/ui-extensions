@@ -927,7 +927,7 @@ export interface InteractionProps {
    */
   activateTarget?: string;
   /**
-   * Sets the action the `activateTarget` should take when this pressable is activated.
+   * Sets the action the `activateTarget` should take when this component is activated.
    *
    * Supported actions by component:
    *

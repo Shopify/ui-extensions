@@ -20,16 +20,11 @@ export interface ButtonProps
     InteractionProps,
     IdProps {
   /**
-   * The type of button that will be rendered. The visual presentation of the button type
-   * is controlled by merchants through the Branding API.
+   * The visual style variant of the button, which controls its prominence and emphasis. The visual presentation is controlled through the Branding API.
    *
-   *
-   * `primary`: button used for main actions. For example: "Continue to next step".
-   *
-   * `secondary`: button used for secondary actions not blocking user progress. For example: "Download Shop app".
-   *
-   * `plain`: renders a button that visually looks like a link.
-   *
+   * - `'primary'`: High-emphasis style for main actions, such as "Continue to next step."
+   * - `'secondary'`: Medium-emphasis style for secondary actions that don't block user progress, such as "Download Shop app."
+   * - `'plain'`: Renders the button with a link-like appearance.
    *
    * @defaultValue 'primary'
    */
@@ -71,9 +66,8 @@ export interface ButtonProps
   /**
    * The role of the button that will be rendered.
    *
-   * `button`: renders a regular button.
-   *
-   * `submit`: renders a button that submits a form.
+   * - `'button'`: Renders a regular button.
+   * - `'submit'`: Renders a button that submits a form.
    *
    * @defaultValue 'button'
    */

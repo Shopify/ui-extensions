@@ -57,9 +57,8 @@ export interface PressableProps
   /**
    * The role of the button that will be rendered.
    *
-   * `button`: renders a regular button.
-   *
-   * `submit`: renders a button that submits a form.
+   * - `'button'`: Renders a regular button.
+   * - `'submit'`: Renders a button that submits a form.
    *
    * @defaultValue 'button'
    */

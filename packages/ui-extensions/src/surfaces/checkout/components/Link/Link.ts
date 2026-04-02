@@ -28,7 +28,7 @@ export interface LinkProps
    */
   id?: string;
   /**
-   * The language of the link's text content. Use this when the link text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ('subtag' label).
+   * The language of the link's text content. Use this when the link text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label).
    */
   language?: string;
   /**

@@ -1086,7 +1086,7 @@
           "syntaxKind": "PropertySignature",
           "name": "accessibilityRole",
           "value": "ButtonAccessibilityRole",
-          "description": "The role of the button that will be rendered.\n\n`button`: renders a regular button.\n\n`submit`: renders a button that submits a form.",
+          "description": "The role of the button that will be rendered.\n\n- `'button'`: Renders a regular button.\n\n- `'submit'`: Renders a button that submits a form.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -1095,7 +1095,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateAction",
           "value": "'auto' | 'copy'",
-          "description": "Sets the action the `activateTarget` should take when this pressable is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
+          "description": "Sets the action the `activateTarget` should take when this component is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
           "isOptional": true,
           "defaultValue": "'auto' - a default action for the target component."
         },
@@ -1146,7 +1146,7 @@
           "syntaxKind": "PropertySignature",
           "name": "kind",
           "value": "'primary' | 'secondary' | 'plain'",
-          "description": "The type of button that will be rendered. The visual presentation of the button type is controlled by merchants through the Branding API.\n\n\n`primary`: button used for main actions. For example: \"Continue to next step\".\n\n`secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n\n`plain`: renders a button that visually looks like a link.",
+          "description": "The type of button that will be rendered. The visual presentation of the button type is controlled through the Branding API.\n\n\n`primary`: button used for main actions. For example: \"Continue to next step\".\n\n`secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n\n`plain`: renders a button that visually looks like a link.",
           "isOptional": true,
           "defaultValue": "'primary'"
         },
@@ -1172,7 +1172,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -1209,7 +1209,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface ButtonProps\n  extends OverlayActivatorProps,\n    DisclosureActivatorProps,\n    InteractionProps,\n    IdProps {\n  /**\n   * The type of button that will be rendered. The visual presentation of the button type\n   * is controlled by merchants through the Branding API.\n   *\n   *\n   * `primary`: button used for main actions. For example: \"Continue to next step\".\n   *\n   * `secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n   *\n   * `plain`: renders a button that visually looks like a link.\n   *\n   *\n   * @defaultValue 'primary'\n   */\n  kind?: 'primary' | 'secondary' | 'plain';\n  /**\n   * Specify the color treatment of the Button.\n   */\n  appearance?: Extract<Appearance, 'monochrome' | 'critical'>;\n  /**\n   * Allows the button to submit a form.\n   * @deprecated use `accessibilityRole=\"submit\"` instead\n   */\n  submit?: boolean;\n  /**\n   * Destination URL to link to.\n   */\n  to?: string;\n  /**\n   * Specifies the inline alignment of the content.\n   *\n   * @defaultValue 'center'\n   */\n  inlineAlignment?: InlineAlignment;\n  /**\n   * Replaces content with a loading indicator.\n   *\n   * @defaultValue false\n   */\n  loading?: boolean;\n  /**\n   * Accessible label for the loading indicator when user prefers reduced motion. This value is\n   * only used if `loading` is true.\n   */\n  loadingLabel?: string;\n  /**\n   * A label used for buyers using assistive technologies. When set, any\n   * `children` supplied to this component will not be announced to screen reader users.\n   */\n  accessibilityLabel?: string;\n  /**\n   * The role of the button that will be rendered.\n   *\n   * `button`: renders a regular button.\n   *\n   * `submit`: renders a button that submits a form.\n   *\n   * @defaultValue 'button'\n   */\n  accessibilityRole?: ButtonAccessibilityRole;\n  /**\n   * Disables the button, disallowing any interaction.\n   *\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * Callback that is run when the button is pressed.\n   */\n  onPress?(): void;\n}"
+      "value": "export interface ButtonProps\n  extends OverlayActivatorProps,\n    DisclosureActivatorProps,\n    InteractionProps,\n    IdProps {\n  /**\n   * The type of button that will be rendered. The visual presentation of the button type\n   * is controlled through the Branding API.\n   *\n   *\n   * `primary`: button used for main actions. For example: \"Continue to next step\".\n   *\n   * `secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n   *\n   * `plain`: renders a button that visually looks like a link.\n   *\n   *\n   * @defaultValue 'primary'\n   */\n  kind?: 'primary' | 'secondary' | 'plain';\n  /**\n   * Specify the color treatment of the Button.\n   */\n  appearance?: Extract<Appearance, 'monochrome' | 'critical'>;\n  /**\n   * Allows the button to submit a form.\n   * @deprecated use `accessibilityRole=\"submit\"` instead\n   */\n  submit?: boolean;\n  /**\n   * Destination URL to link to.\n   */\n  to?: string;\n  /**\n   * Specifies the inline alignment of the content.\n   *\n   * @defaultValue 'center'\n   */\n  inlineAlignment?: InlineAlignment;\n  /**\n   * Replaces content with a loading indicator.\n   *\n   * @defaultValue false\n   */\n  loading?: boolean;\n  /**\n   * Accessible label for the loading indicator when user prefers reduced motion. This value is\n   * only used if `loading` is true.\n   */\n  loadingLabel?: string;\n  /**\n   * A label used for buyers using assistive technologies. When set, any\n   * `children` supplied to this component will not be announced to screen reader users.\n   */\n  accessibilityLabel?: string;\n  /**\n   * The role of the button that will be rendered.\n   *\n   * - `'button'`: Renders a regular button.\n   *\n   * - `'submit'`: Renders a button that submits a form.\n   *\n   * @defaultValue 'button'\n   */\n  accessibilityRole?: ButtonAccessibilityRole;\n  /**\n   * Disables the button, disallowing any interaction.\n   *\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * A callback fired when the button is activated by the user.\n   */\n  onPress?(): void;\n}"
     }
   },
   "ButtonAccessibilityRole": {
@@ -1957,7 +1957,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onCopy",
           "value": "() => void",
-          "description": "Callback run when the copy to clipboard succeeds.",
+          "description": "A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.",
           "isOptional": true
         },
         {
@@ -1965,7 +1965,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onCopyError",
           "value": "() => void",
-          "description": "Callback run when the copy to clipboard fails.",
+          "description": "A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.",
           "isOptional": true
         },
         {
@@ -1978,7 +1978,7 @@
           "defaultValue": "''"
         }
       ],
-      "value": "export interface ClipboardItemProps extends IdProps {\n  /**\n   * Plain text to be written to the clipboard.\n   *\n   * @default ''\n   */\n  text?: string;\n\n  /**\n   * Callback run when the copy to clipboard succeeds.\n   */\n  onCopy?: () => void;\n\n  /**\n   * Callback run when the copy to clipboard fails.\n   */\n  onCopyError?: () => void;\n}"
+      "value": "export interface ClipboardItemProps extends IdProps {\n  /**\n   * Plain text to be written to the clipboard.\n   *\n   * @default ''\n   */\n  text?: string;\n\n  /**\n   * A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.\n   */\n  onCopy?: () => void;\n\n  /**\n   * A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.\n   */\n  onCopyError?: () => void;\n}"
     }
   },
   "DatePickerProps": {
@@ -3466,7 +3466,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateAction",
           "value": "'auto' | 'copy'",
-          "description": "Sets the action the `activateTarget` should take when this pressable is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
+          "description": "Sets the action the `activateTarget` should take when this component is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
           "isOptional": true,
           "defaultValue": "'auto' - a default action for the target component."
         },
@@ -4177,7 +4177,7 @@
           "syntaxKind": "PropertySignature",
           "name": "accessibilityRole",
           "value": "ButtonAccessibilityRole",
-          "description": "The role of the button that will be rendered.\n\n`button`: renders a regular button.\n\n`submit`: renders a button that submits a form.",
+          "description": "The role of the button that will be rendered.\n\n- `'button'`: Renders a regular button.\n\n- `'submit'`: Renders a button that submits a form.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -4186,7 +4186,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateAction",
           "value": "'auto' | 'copy'",
-          "description": "Sets the action the `activateTarget` should take when this pressable is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
+          "description": "Sets the action the `activateTarget` should take when this component is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
           "isOptional": true,
           "defaultValue": "'auto' - a default action for the target component."
         },
@@ -4427,7 +4427,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface PressableProps\n  extends Pick<BackgroundProps, 'background'>,\n    BorderProps,\n    CornerProps,\n    IdProps,\n    InteractionProps,\n    SizingProps,\n    SpacingProps,\n    OverlayActivatorProps,\n    DisclosureActivatorProps {\n  /**\n   * Changes the display of the component.\n   *\n   *\n   * `inline` the component starts on the same line as preceding inline content and allows subsequent content to continue on the same line.\n   *\n   * `block` the component starts on its own new line and fills its parent.\n   *\n   * `auto` resets the component to its initial value. The actual value depends on the component and context.\n   *\n   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display\n   *\n   * @defaultValue 'auto'\n   */\n  display?: MaybeResponsiveConditionalStyle<Display>;\n  /**\n   * A label that describes the purpose or contents of the element. When set,\n   * it will be announced to buyers using assistive technologies and will\n   * provide them with more context.\n   */\n  accessibilityLabel?: string;\n\n  /**\n   * The role of the button that will be rendered.\n   *\n   * `button`: renders a regular button.\n   *\n   * `submit`: renders a button that submits a form.\n   *\n   * @defaultValue 'button'\n   */\n  accessibilityRole?: ButtonAccessibilityRole;\n\n  /**\n   * Disables the button, disallowing any interaction\n   */\n  disabled?: boolean;\n\n  /**\n   * Disables the button while loading. Unlike `Button`, no indicator is rendered while loading.\n   */\n  loading?: boolean;\n\n  /**\n   * Callback that is run when the button or link is pressed.\n   */\n  onPress?: () => void;\n\n  /**\n   * Callback that is run when the button or link focus is removed.\n   */\n  onBlur?: () => void;\n\n  /**\n   * Callback that is run when the button or link is focused.\n   */\n  onFocus?: () => void;\n\n  /**\n   * Callback that is run when a pointing device button is pressed while the pointer is inside the button or link.\n   */\n  onPointerDown?: () => void;\n\n  /**\n   * Callback that is run when the pointing device is over (enters) the button or link.\n   */\n  onPointerEnter?: () => void;\n\n  /**\n   *  Callback that is run when the pointing device has left the button or link.\n   */\n  onPointerLeave?: () => void;\n\n  /**\n   * Callback that is run when a pointing device button is released while the pointer is inside the element button or link.\n   */\n  onPointerUp?: () => void;\n\n  /**\n   * Destination URL to link to. If this value is set, If this value is set, the component will render an `<a>` tag.\n   */\n  to?: string;\n\n  /**\n   * Position children along the cross axis\n   */\n  blockAlignment?: MaybeResponsiveConditionalStyle<\n    Extract<BlockAlignment, 'start' | 'center' | 'end'>\n  >;\n\n  /**\n   * Position children along the main axis\n   */\n  inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;\n\n  /**\n   * Sets the opacity of the View. The opacity will be applied to the background as well as all\n   * the children of the View. Use carefully as this could decrease the contrast ratio between\n   * the background and foreground elements, resulting in unreadable and inaccessible text.\n   */\n  opacity?: Opacity;\n\n  /**\n   * Sets the overflow behavior of the element.\n   *\n   * `hidden`: clips the content when it is larger than the element’s container.\n   * The element will not be scrollable and the users will not be able\n   * to access the clipped content by dragging or using a scroll wheel.\n   *\n   * `visible`: the content that extends beyond the element’s container is visible.\n   *\n   * @default 'visible'\n   */\n  overflow?: 'hidden' | 'visible';\n}"
+      "value": "export interface PressableProps\n  extends Pick<BackgroundProps, 'background'>,\n    BorderProps,\n    CornerProps,\n    IdProps,\n    InteractionProps,\n    SizingProps,\n    SpacingProps,\n    OverlayActivatorProps,\n    DisclosureActivatorProps {\n  /**\n   * Changes the display of the component.\n   *\n   *\n   * `inline` the component starts on the same line as preceding inline content and allows subsequent content to continue on the same line.\n   *\n   * `block` the component starts on its own new line and fills its parent.\n   *\n   * `auto` resets the component to its initial value. The actual value depends on the component and context.\n   *\n   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display\n   *\n   * @defaultValue 'auto'\n   */\n  display?: MaybeResponsiveConditionalStyle<Display>;\n  /**\n   * A label that describes the purpose or contents of the element. When set,\n   * it will be announced to buyers using assistive technologies and will\n   * provide them with more context.\n   */\n  accessibilityLabel?: string;\n\n  /**\n   * The role of the button that will be rendered.\n   *\n   * - `'button'`: Renders a regular button.\n   *\n   * - `'submit'`: Renders a button that submits a form.\n   *\n   * @defaultValue 'button'\n   */\n  accessibilityRole?: ButtonAccessibilityRole;\n\n  /**\n   * Disables the button, disallowing any interaction\n   */\n  disabled?: boolean;\n\n  /**\n   * Disables the button while loading. Unlike `Button`, no indicator is rendered while loading.\n   */\n  loading?: boolean;\n\n  /**\n   * Callback that is run when the button or link is pressed.\n   */\n  onPress?: () => void;\n\n  /**\n   * Callback that is run when the button or link focus is removed.\n   */\n  onBlur?: () => void;\n\n  /**\n   * Callback that is run when the button or link is focused.\n   */\n  onFocus?: () => void;\n\n  /**\n   * Callback that is run when a pointing device button is pressed while the pointer is inside the button or link.\n   */\n  onPointerDown?: () => void;\n\n  /**\n   * Callback that is run when the pointing device is over (enters) the button or link.\n   */\n  onPointerEnter?: () => void;\n\n  /**\n   *  Callback that is run when the pointing device has left the button or link.\n   */\n  onPointerLeave?: () => void;\n\n  /**\n   * Callback that is run when a pointing device button is released while the pointer is inside the element button or link.\n   */\n  onPointerUp?: () => void;\n\n  /**\n   * Destination URL to link to. If this value is set, If this value is set, the component will render an `<a>` tag.\n   */\n  to?: string;\n\n  /**\n   * Position children along the cross axis\n   */\n  blockAlignment?: MaybeResponsiveConditionalStyle<\n    Extract<BlockAlignment, 'start' | 'center' | 'end'>\n  >;\n\n  /**\n   * Position children along the main axis\n   */\n  inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;\n\n  /**\n   * Sets the opacity of the View. The opacity will be applied to the background as well as all\n   * the children of the View. Use carefully as this could decrease the contrast ratio between\n   * the background and foreground elements, resulting in unreadable and inaccessible text.\n   */\n  opacity?: Opacity;\n\n  /**\n   * Sets the overflow behavior of the element.\n   *\n   * `hidden`: clips the content when it is larger than the element’s container.\n   * The element will not be scrollable and the users will not be able\n   * to access the clipped content by dragging or using a scroll wheel.\n   *\n   * `visible`: the content that extends beyond the element’s container is visible.\n   *\n   * @default 'visible'\n   */\n  overflow?: 'hidden' | 'visible';\n}"
     }
   },
   "Display": {
@@ -10204,7 +10204,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -10246,7 +10246,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -10290,7 +10290,7 @@
           "syntaxKind": "PropertySignature",
           "name": "kind",
           "value": "'primary' | 'secondary' | 'plain'",
-          "description": "The type of button that will be rendered. The visual presentation of the button type is controlled by merchants through the Branding API.\n\n\n`primary`: button used for main actions. For example: \"Continue to next step\".\n\n`secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n\n`plain`: renders a button that visually looks like a link.",
+          "description": "The type of button that will be rendered. The visual presentation of the button type is controlled through the Branding API.\n\n\n`primary`: button used for main actions. For example: \"Continue to next step\".\n\n`secondary`: button used for secondary actions not blocking user progress. For example: \"Download Shop app\".\n\n`plain`: renders a button that visually looks like a link.",
           "isOptional": true,
           "defaultValue": "'primary'"
         },
@@ -10316,7 +10316,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -10359,7 +10359,7 @@
           "syntaxKind": "PropertySignature",
           "name": "accessibilityRole",
           "value": "ButtonAccessibilityRole",
-          "description": "The role of the button that will be rendered.\n\n`button`: renders a regular button.\n\n`submit`: renders a button that submits a form.",
+          "description": "The role of the button that will be rendered.\n\n- `'button'`: Renders a regular button.\n\n- `'submit'`: Renders a button that submits a form.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -10368,7 +10368,7 @@
           "syntaxKind": "PropertySignature",
           "name": "activateAction",
           "value": "'auto' | 'copy'",
-          "description": "Sets the action the `activateTarget` should take when this pressable is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
+          "description": "Sets the action the `activateTarget` should take when this component is activated.\n\nSupported actions by component:\n\n| Component     | Supported Actions | Default ('auto')  |\n|---------------|-------------------|-------------------|\n| [`ClipboardItem`](/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |",
           "isOptional": true,
           "defaultValue": "'auto' - a default action for the target component."
         },
@@ -10427,7 +10427,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -10521,7 +10521,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         },
         {
@@ -10555,7 +10555,7 @@
           "syntaxKind": "PropertySignature",
           "name": "accessibilityRole",
           "value": "ButtonAccessibilityRole",
-          "description": "The role of the button that will be rendered.\n\n`button`: renders a regular button.\n\n`submit`: renders a button that submits a form.",
+          "description": "The role of the button that will be rendered.\n\n- `'button'`: Renders a regular button.\n\n- `'submit'`: Renders a button that submits a form.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -10590,7 +10590,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         }
       ],
@@ -10643,7 +10643,7 @@
           "syntaxKind": "MethodSignature",
           "name": "onPress",
           "value": "() => void",
-          "description": "Callback that is run when the button is pressed.",
+          "description": "A callback fired when the button is activated by the user.",
           "isOptional": true
         }
       ],
