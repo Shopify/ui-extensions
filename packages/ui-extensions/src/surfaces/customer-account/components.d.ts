@@ -28,13 +28,13 @@ import {
   SectionElement,
   SectionElementSlots,
 } from './components/Section';
-
+/** @publicDocs */
 export type AvatarElementPropsDocs = AvatarElementProps;
 /**
  * @publicDocs
  */
 export type AvatarElementEventsDocs = AvatarEvents;
-
+/** @publicDocs */
 export type AvatarElementPropsDocs = AvatarElementProps;
 /**
  * @publicDocs
@@ -73,7 +73,7 @@ declare module 'preact' {
     }
   }
 }
-
+/** @publicDocs */
 export type ImageGroupPropsDocs = ImageGroupProps;
 /**
  * @publicDocs
@@ -129,7 +129,7 @@ declare module 'preact' {
     }
   }
 }
-
+/** @publicDocs */
 export type AvatarElementPropsDocs = AvatarElementProps;
 /**
  * @publicDocs
@@ -139,7 +139,7 @@ export type AvatarPropsDocs = AvatarProps;
  * @publicDocs
  */
 export type AvatarElementDocs = AvatarElement;
-
+/** @publicDocs */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
