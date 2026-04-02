@@ -82,7 +82,7 @@ interface ButtonProps {
    */
   loading?: boolean;
   /**
-   * Specifies where to display the linked URL
+   * Specifies where to display the linked URL.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
    *
    * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
@@ -448,7 +448,7 @@ export interface Docs_Page_Button_BreadcrumbAction
 }
 
 /**
- * The Menu component exclusively accepts Button elements with restricted props as its children. The `tone` prop will always be set to monochrome by default.
+ * The menu component exclusively accepts button elements with restricted props as its children. The `tone` prop will always be set to monochrome by default.
  * @publicDocs
  */
 export interface Docs_Menu_Button_Action
