@@ -7593,7 +7593,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "CustomerAccountActionElementDocs",
       "value": "CustomerAccountActionElement",
-      "description": "The custom element interface for the CustomerAccountAction component.",
+      "description": "The custom element interface for the customer account action component.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9887,7 +9887,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "CustomerAccountActionElementSlotsDocs",
       "value": "CustomerAccountActionElementSlots",
-      "description": "The slot interface for the CustomerAccountAction component.",
+      "description": "The customer account action component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -9895,7 +9895,7 @@
           "syntaxKind": "PropertySignature",
           "name": "primary-action",
           "value": "HTMLElement",
-          "description": "The primary action for the modal. Accepts a single [Button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the main confirmation action, such as \"Submit\" or \"Confirm.\"",
+          "description": "The primary action for the modal. Accepts a single [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the main confirmation action, such as \"Submit\" or \"Confirm.\"",
           "isOptional": true
         },
         {
@@ -9903,7 +9903,7 @@
           "syntaxKind": "PropertySignature",
           "name": "secondary-actions",
           "value": "HTMLElement",
-          "description": "The secondary actions for the modal. Accepts multiple [Button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for dismissive actions like \"Cancel\" or alternative actions.",
+          "description": "The secondary actions for the modal. Accepts multiple [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for dismissive actions like \"Cancel\" or alternative actions.",
           "isOptional": true
         }
       ]
@@ -9943,7 +9943,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ImageGroupElementDocs",
       "value": "ImageGroupElement",
-      "description": "The custom element interface for the ImageGroup component.",
+      "description": "The custom element interface for the image group component.",
       "isPublicDocs": true,
       "members": [
         {
@@ -14577,7 +14577,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "PageElementSlotsDocs",
       "value": "PageElementSlots",
-      "description": "The slot interface for the page component.",
+      "description": "The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -14613,7 +14613,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AvatarElementPropsDocs",
       "value": "AvatarElementProps",
-      "description": "The element props interface for the Avatar component.",
+      "description": "The element props interface for the avatar component.",
       "isPublicDocs": true,
       "members": [
         {
@@ -14676,7 +14676,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AvatarElementDocs",
       "value": "AvatarElement",
-      "description": "The custom element interface for the Avatar component.",
+      "description": "The custom element interface for the avatar component.",
       "isPublicDocs": true,
       "members": [
         {
@@ -16997,7 +16997,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AvatarEventsDocs",
       "value": "AvatarEvents",
-      "description": "The events interface for the Avatar component.",
+      "description": "The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -19395,7 +19395,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ButtonGroupElementDocs",
       "value": "ButtonGroupElement",
-      "description": "The custom element interface for the buttonGroup component.",
+      "description": "The custom element interface for the button group component.",
       "isPublicDocs": true,
       "members": [
         {
@@ -21691,7 +21691,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ButtonGroupElementSlotsDocs",
       "value": "ButtonGroupElementSlots",
-      "description": "The slot interface for the buttonGroup component.",
+      "description": "The button group component supports slots for additional content placement within the group. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -21699,7 +21699,7 @@
           "syntaxKind": "PropertySignature",
           "name": "primary-action",
           "value": "HTMLElement",
-          "description": "The primary action for the group. Accepts a single [Button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the most important action in the group, such as \"Save\" or \"Submit.\"",
+          "description": "The primary action for the group. Accepts a single [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the most important action in the group, such as \"Save\" or \"Submit.\"",
           "isOptional": true
         },
         {
@@ -21707,7 +21707,7 @@
           "syntaxKind": "PropertySignature",
           "name": "secondary-actions",
           "value": "HTMLElement",
-          "description": "The secondary actions for the group. Accepts multiple [Button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for supplementary actions like \"Cancel\", \"Delete\", or other alternatives.",
+          "description": "The secondary actions for the group. Accepts multiple [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for supplementary actions like \"Cancel\", \"Delete\", or other alternatives.",
           "isOptional": true
         }
       ]
@@ -24059,7 +24059,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "SectionElementSlotsDocs",
       "value": "SectionElementSlots",
-      "description": "The slot interface for the section component.",
+      "description": "The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -24067,7 +24067,7 @@
           "syntaxKind": "PropertySignature",
           "name": "primary-action",
           "value": "HTMLElement",
-          "description": "The primary action for the section. Accepts a single [Button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the main action related to the section's content, such as \"Edit\" or \"Manage.\"",
+          "description": "The primary action for the section. Accepts a single [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the main action related to the section's content, such as \"Edit\" or \"Manage.\"",
           "isOptional": true
         },
         {
@@ -24075,7 +24075,7 @@
           "syntaxKind": "PropertySignature",
           "name": "secondary-actions",
           "value": "HTMLElement",
-          "description": "The secondary actions for the section. Accepts multiple [Button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for supplementary actions like \"Remove\" or \"View details.\"",
+          "description": "The secondary actions for the section. Accepts multiple [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for supplementary actions like \"Remove\" or \"View details.\"",
           "isOptional": true
         }
       ]
@@ -25184,7 +25184,7 @@
     "src/surfaces/customer-account/api/docs.ts": {
       "filePath": "src/surfaces/customer-account/api/docs.ts",
       "name": "Docs_Menu_Button_Action",
-      "description": "The Menu component exclusively accepts Button elements with restricted props as its children.",
+      "description": "The menu component exclusively accepts button elements with restricted props as its children.",
       "isPublicDocs": true,
       "members": [
         {
@@ -25259,7 +25259,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_self' | '_blank'",
-          "description": "Specifies where to display the linked URL",
+          "description": "Specifies where to display the linked URL.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -25545,7 +25545,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_self' | '_blank'",
-          "description": "Specifies where to display the linked URL",
+          "description": "Specifies where to display the linked URL.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -25577,7 +25577,7 @@
           "defaultValue": "'auto' - the variant is automatically determined by the Button's context"
         }
       ],
-      "value": "interface ButtonProps {\n  /**\n   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n   *\n   * Use this when using only an icon or the button text is not enough context\n   * for users using assistive technologies.\n   */\n  accessibilityLabel?: string;\n  /**\n   * ID of a component that should respond to activations (e.g. clicks) on this component.\n   *\n   * See `command` for how to control the behavior of the target.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor\n   */\n  commandFor?: string;\n  /**\n   * Sets the action the `commandFor` should take when this clickable is activated.\n   *\n   * See the documentation of particular components for the actions they support.\n   *\n   * - `--auto`: a default action for the target component.\n   * - `--show`: shows the target component.\n   * - `--hide`: hides the target component.\n   * - `--toggle`: toggles the target component.\n   * - `--copy`: copies the target ClipboardItem.\n   *\n   * @default '--auto'\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';\n  /**\n   * Disables the button, disallowing any interaction.\n   *\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * The URL to link to.\n   *\n   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.\n   */\n  href?: string;\n  /**\n   * A unique identifier for the element.\n   */\n  id?: string;\n  /**\n   * Replaces content with a loading indicator.\n   *\n   * @defaultValue false\n   */\n  loading?: boolean;\n  /**\n   * Specifies where to display the linked URL\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target\n   *\n   * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.\n   * It's expected that the behavior of `auto` is as `_self` except in specific cases.\n   * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).\n   *\n   * @default 'auto'\n   */\n  target?: 'auto' | '_self' | '_blank';\n  /**\n   * Sets the tone of the Button, based on the intention of the information being conveyed.\n   *\n   * @default 'auto'\n   */\n  tone?: 'auto' | 'neutral' | 'critical';\n  /**\n   * The behavior of the button.\n   *\n   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.\n   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.\n   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).\n   *\n   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.\n   *\n   * @default 'button'\n   */\n  type?: 'button' | 'submit';\n  /**\n   * Changes the visual appearance of the Button.\n   *\n   * @default 'auto' - the variant is automatically determined by the Button's context\n   */\n  variant?: 'auto' | 'primary' | 'secondary';\n\n  /**\n   * Callback when the button is activated.\n   * This will be called before the action indicated by `type`.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n   */\n  click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;\n}"
+      "value": "interface ButtonProps {\n  /**\n   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n   *\n   * Use this when using only an icon or the button text is not enough context\n   * for users using assistive technologies.\n   */\n  accessibilityLabel?: string;\n  /**\n   * ID of a component that should respond to activations (e.g. clicks) on this component.\n   *\n   * See `command` for how to control the behavior of the target.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor\n   */\n  commandFor?: string;\n  /**\n   * Sets the action the `commandFor` should take when this clickable is activated.\n   *\n   * See the documentation of particular components for the actions they support.\n   *\n   * - `--auto`: a default action for the target component.\n   * - `--show`: shows the target component.\n   * - `--hide`: hides the target component.\n   * - `--toggle`: toggles the target component.\n   * - `--copy`: copies the target ClipboardItem.\n   *\n   * @default '--auto'\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';\n  /**\n   * Disables the button, disallowing any interaction.\n   *\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * The URL to link to.\n   *\n   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.\n   */\n  href?: string;\n  /**\n   * A unique identifier for the element.\n   */\n  id?: string;\n  /**\n   * Replaces content with a loading indicator.\n   *\n   * @defaultValue false\n   */\n  loading?: boolean;\n  /**\n   * Specifies where to display the linked URL.\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target\n   *\n   * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.\n   * It's expected that the behavior of `auto` is as `_self` except in specific cases.\n   * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).\n   *\n   * @default 'auto'\n   */\n  target?: 'auto' | '_self' | '_blank';\n  /**\n   * Sets the tone of the Button, based on the intention of the information being conveyed.\n   *\n   * @default 'auto'\n   */\n  tone?: 'auto' | 'neutral' | 'critical';\n  /**\n   * The behavior of the button.\n   *\n   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.\n   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.\n   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).\n   *\n   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.\n   *\n   * @default 'button'\n   */\n  type?: 'button' | 'submit';\n  /**\n   * Changes the visual appearance of the Button.\n   *\n   * @default 'auto' - the variant is automatically determined by the Button's context\n   */\n  variant?: 'auto' | 'primary' | 'secondary';\n\n  /**\n   * Callback when the button is activated.\n   * This will be called before the action indicated by `type`.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n   */\n  click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;\n}"
     }
   },
   "SharedReferenceEntityTemplateSchema": {
@@ -35507,7 +35507,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -35788,7 +35788,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -36515,7 +36515,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -38519,7 +38519,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -38528,7 +38528,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -38561,7 +38561,7 @@
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
           "value": "'auto' | 'fill' | 'fit-content'",
-          "description": "The inline width of the button component.\n\n- `'auto'`: the size depends on the surface and context.\n- `'fill'`: the button takes up 100% of the available inline size.\n- `'fit-content'`: the button takes up the minimum inline size required to fit its content.",
+          "description": "The inline width of the button component.\n\n- `'auto'`: The size depends on the surface and context.\n- `'fill'`: The button takes up 100% of the available inline size.\n- `'fit-content'`: The button takes up the minimum inline size required to fit its content.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -38587,7 +38587,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -38596,7 +38596,7 @@
           "syntaxKind": "PropertySignature",
           "name": "tone",
           "value": "'auto' | 'neutral' | 'critical'",
-          "description": "The semantic meaning and color treatment of the button.",
+          "description": "The semantic meaning and color treatment of the button.\n\n- `'auto'`: Automatically determined based on context.\n- `'neutral'`: General information without specific intent.\n- `'critical'`: Urgent problems or destructive actions.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -38605,7 +38605,7 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'submit' | 'button'",
-          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: submits the nearest containing form.\n- `'button'`: performs no default action, relying on the `onClick` handler for behavior.\n- `'reset'`: resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
+          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n- `'reset'`: Resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -38614,9 +38614,9 @@
           "syntaxKind": "PropertySignature",
           "name": "variant",
           "value": "'auto' | 'primary' | 'secondary'",
-          "description": "The visual style variant of the button component, which controls its prominence and emphasis.",
+          "description": "The visual style variant of the button component, which controls its prominence and emphasis.\n\n- `'auto'`: Automatically determined by the button's context.\n- `'primary'`: High-emphasis style for the main action.\n- `'secondary'`: Medium-emphasis style for supporting actions.\n- `'tertiary'`: Low-emphasis style for less prominent actions.",
           "isOptional": true,
-          "defaultValue": "'auto' - the variant is automatically determined by the button's context"
+          "defaultValue": "'auto'"
         }
       ],
       "value": "export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {\n    target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;\n    tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;\n    type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;\n    variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;\n}"
@@ -38644,7 +38644,7 @@
     "src/surfaces/checkout/components/Button.ts": {
       "filePath": "src/surfaces/checkout/components/Button.ts",
       "name": "ButtonElementEvents",
-      "description": "The events interface for the Button component.",
+      "description": "The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -38652,11 +38652,11 @@
           "syntaxKind": "PropertySignature",
           "name": "click",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the button is activated. This will be called before the action indicated by `type`.",
+          "description": "A callback fired when the button is clicked. This will be called before the action indicated by `type`.\n\nLearn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface ButtonElementEvents {\n    /**\n     * Callback when the button is activated.\n     * This will be called before the action indicated by `type`.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n     */\n    click?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface ButtonElementEvents {\n    /**\n     * A callback fired when the button is clicked. This will be called before the action indicated by `type`.\n     *\n     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).\n     */\n    click?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "ButtonElement": {
@@ -39266,7 +39266,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -39275,7 +39275,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -39638,7 +39638,7 @@
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
           "value": "'auto' | 'fill' | 'fit-content'",
-          "description": "The inline width of the button component.\n\n- `'auto'`: the size depends on the surface and context.\n- `'fill'`: the button takes up 100% of the available inline size.\n- `'fit-content'`: the button takes up the minimum inline size required to fit its content.",
+          "description": "The inline width of the button component.\n\n- `'auto'`: The size depends on the surface and context.\n- `'fill'`: The button takes up 100% of the available inline size.\n- `'fit-content'`: The button takes up the minimum inline size required to fit its content.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -40957,7 +40957,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -41001,7 +41001,7 @@
           "syntaxKind": "PropertySignature",
           "name": "tone",
           "value": "'auto' | 'neutral' | 'critical'",
-          "description": "The semantic meaning and color treatment of the button.",
+          "description": "The semantic meaning and color treatment of the button.\n\n- `'auto'`: Automatically determined based on context.\n- `'neutral'`: General information without specific intent.\n- `'critical'`: Urgent problems or destructive actions.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -41017,7 +41017,7 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'submit' | 'button'",
-          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: submits the nearest containing form.\n- `'button'`: performs no default action, relying on the `onClick` handler for behavior.\n- `'reset'`: resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
+          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n- `'reset'`: Resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -41026,9 +41026,9 @@
           "syntaxKind": "PropertySignature",
           "name": "variant",
           "value": "'auto' | 'primary' | 'secondary'",
-          "description": "The visual style variant of the button component, which controls its prominence and emphasis.",
+          "description": "The visual style variant of the button component, which controls its prominence and emphasis.\n\n- `'auto'`: Automatically determined by the button's context.\n- `'primary'`: High-emphasis style for the main action.\n- `'secondary'`: Medium-emphasis style for supporting actions.\n- `'tertiary'`: Low-emphasis style for less prominent actions.",
           "isOptional": true,
-          "defaultValue": "'auto' - the variant is automatically determined by the button's context"
+          "defaultValue": "'auto'"
         },
         {
           "filePath": "src/surfaces/checkout/components/Button.ts",
@@ -41113,7 +41113,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -41122,7 +41122,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -41849,7 +41849,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -41858,7 +41858,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -43640,7 +43640,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -43649,7 +43649,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -51212,7 +51212,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -51278,7 +51278,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -51287,7 +51287,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -51295,7 +51295,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Disables the clickable, meaning it cannot be clicked or receive focus.\n\nIn this state, onClick will not fire. If the click event originates from a child element, the event will immediately stop propagating from this element.\n\nHowever, items within the clickable can still receive focus and be interacted with.\n\nThis has no impact on the visual state by default, but developers are encouraged to style the clickable accordingly.",
+          "description": "Disables the clickable, meaning it cannot be clicked or receive focus.\n\nIn this state, the `click` event will not fire. If the click event originates from a child element, the event will immediately stop propagating from this element.\n\nHowever, items within the clickable can still receive focus and be interacted with.\n\nThis has no impact on the visual state by default, but developers are encouraged to style the clickable accordingly.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -51346,7 +51346,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -51472,7 +51472,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -51481,7 +51481,7 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'submit' | 'button'",
-          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: submits the nearest containing form.\n- `'button'`: performs no default action, relying on the `onClick` handler for behavior.\n- `'reset'`: resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
+          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n- `'reset'`: Resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
           "isOptional": true,
           "defaultValue": "'button'"
         }
@@ -51517,7 +51517,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -51569,7 +51569,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -51578,7 +51578,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -51586,7 +51586,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Disables the clickable, meaning it cannot be clicked or receive focus.\n\nIn this state, onClick will not fire. If the click event originates from a child element, the event will immediately stop propagating from this element.\n\nHowever, items within the clickable can still receive focus and be interacted with.\n\nThis has no impact on the visual state by default, but developers are encouraged to style the clickable accordingly.",
+          "description": "Disables the clickable, meaning it cannot be clicked or receive focus.\n\nIn this state, the `click` event will not fire. If the click event originates from a child element, the event will immediately stop propagating from this element.\n\nHowever, items within the clickable can still receive focus and be interacted with.\n\nThis has no impact on the visual state by default, but developers are encouraged to style the clickable accordingly.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -51637,7 +51637,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -51787,7 +51787,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -51796,7 +51796,7 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'submit' | 'button'",
-          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: submits the nearest containing form.\n- `'button'`: performs no default action, relying on the `onClick` handler for behavior.\n- `'reset'`: resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
+          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n- `'reset'`: Resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
           "isOptional": true,
           "defaultValue": "'button'"
         }
@@ -51842,7 +51842,7 @@
     "src/surfaces/checkout/components/Clickable.ts": {
       "filePath": "src/surfaces/checkout/components/Clickable.ts",
       "name": "ClickableElementEvents",
-      "description": "The events interface for the Clickable component.",
+      "description": "The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -51850,7 +51850,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the element loses focus.",
+          "description": "A callback fired when the component loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -51858,7 +51858,7 @@
           "syntaxKind": "PropertySignature",
           "name": "click",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the clickable element is activated. This will be called before the action indicated by `type`.",
+          "description": "A callback fired when the component is clicked. This will be called before the action indicated by `type`.\n\nLearn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).",
           "isOptional": true
         },
         {
@@ -51866,11 +51866,11 @@
           "syntaxKind": "PropertySignature",
           "name": "focus",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the element receives focus.",
+          "description": "A callback fired when the component receives focus.\n\nLearn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface ClickableElementEvents {\n    /**\n     * Callback when the element loses focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the clickable element is activated.\n     * This will be called before the action indicated by `type`.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the element receives focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface ClickableElementEvents {\n    /**\n     * A callback fired when the component loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the component is clicked. This will be called before the action indicated by `type`.\n     *\n     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the component receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "ClickableElement": {
@@ -52370,7 +52370,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -52541,7 +52541,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -52550,7 +52550,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -52614,7 +52614,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Disables the clickable, meaning it cannot be clicked or receive focus.\n\nIn this state, onClick will not fire. If the click event originates from a child element, the event will immediately stop propagating from this element.\n\nHowever, items within the clickable can still receive focus and be interacted with.\n\nThis has no impact on the visual state by default, but developers are encouraged to style the clickable accordingly.",
+          "description": "Disables the clickable, meaning it cannot be clicked or receive focus.\n\nIn this state, the `click` event will not fire. If the click event originates from a child element, the event will immediately stop propagating from this element.\n\nHowever, items within the clickable can still receive focus and be interacted with.\n\nThis has no impact on the visual state by default, but developers are encouraged to style the clickable accordingly.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -53023,7 +53023,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -54351,7 +54351,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -54402,7 +54402,7 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'submit' | 'button'",
-          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: submits the nearest containing form.\n- `'button'`: performs no default action, relying on the `onClick` handler for behavior.\n- `'reset'`: resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
+          "description": "The behavioral type of the button component, which determines what action it performs when activated.\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n- `'reset'`: Resets all fields in the nearest containing form to their default values.\n\nThis property is ignored if `href` or `commandFor`/`command` is set.",
           "isOptional": true,
           "defaultValue": "'button'"
         },
@@ -54463,7 +54463,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to link to.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.",
+          "description": "The URL to link to. When set, the chip navigates to the specified location after the `click` event fires.",
           "isOptional": true
         },
         {
@@ -54525,7 +54525,7 @@
     "src/surfaces/checkout/components/ClickableChip.ts": {
       "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
       "name": "ClickableChipElementEvents",
-      "description": "The events interface for the ClickableChip component.",
+      "description": "The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -54533,7 +54533,7 @@
           "syntaxKind": "PropertySignature",
           "name": "afterhide",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Event handler when the chip has fully hidden.\n\nThe `hidden` property will be `true` when this event fires.",
+          "description": "A callback fired after the chip is hidden. The `hidden` property will be `true` when this event fires.",
           "isOptional": true
         },
         {
@@ -54541,7 +54541,7 @@
           "syntaxKind": "PropertySignature",
           "name": "click",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Event handler when the chip is clicked.",
+          "description": "A callback fired when the chip is clicked.\n\nLearn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).",
           "isOptional": true
         },
         {
@@ -54549,18 +54549,18 @@
           "syntaxKind": "PropertySignature",
           "name": "remove",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Event handler when the chip is removed.",
+          "description": "A callback fired when the chip is removed.",
           "isOptional": true
         }
       ],
-      "value": "export interface ClickableChipElementEvents {\n    /**\n     * Event handler when the chip has fully hidden.\n     *\n     * The `hidden` property will be `true` when this event fires.\n     */\n    afterhide?: CallbackEventListener<typeof tagName>;\n    /**\n     * Event handler when the chip is clicked.\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * Event handler when the chip is removed.\n     */\n    remove?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface ClickableChipElementEvents {\n    /**\n     * A callback fired after the chip is hidden. The `hidden` property will be `true` when this event fires.\n     */\n    afterhide?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the chip is clicked.\n     *\n     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the chip is removed.\n     */\n    remove?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "ClickableChipElementSlots": {
     "src/surfaces/checkout/components/ClickableChip.ts": {
       "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
       "name": "ClickableChipElementSlots",
-      "description": "The slots interface for the ClickableChip component.",
+      "description": "The clickable chip component supports slots for additional content placement. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).",
       "isPublicDocs": true,
       "members": [
         {
@@ -55516,7 +55516,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to link to.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.",
+          "description": "The URL to link to. When set, the chip navigates to the specified location after the `click` event fires.",
           "isOptional": true
         },
         {
@@ -56948,7 +56948,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to link to.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.",
+          "description": "The URL to link to. When set, the chip navigates to the specified location after the `click` event fires.",
           "isOptional": true
         },
         {
@@ -57054,7 +57054,7 @@
     "src/surfaces/checkout/components/ClipboardItem.ts": {
       "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
       "name": "ClipboardItemElementEvents",
-      "description": "The events interface for the ClipboardItem component.",
+      "description": "The clipboard item component provides event callbacks for handling copy interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -57062,7 +57062,7 @@
           "syntaxKind": "PropertySignature",
           "name": "copy",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback run when the copy to clipboard succeeds.",
+          "description": "A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.",
           "isOptional": true
         },
         {
@@ -57070,11 +57070,11 @@
           "syntaxKind": "PropertySignature",
           "name": "copyerror",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback run when the copy to clipboard fails.",
+          "description": "A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.",
           "isOptional": true
         }
       ],
-      "value": "export interface ClipboardItemElementEvents {\n    /**\n     * Callback run when the copy to clipboard succeeds.\n     */\n    copy?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback run when the copy to clipboard fails.\n     */\n    copyerror?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface ClipboardItemElementEvents {\n    /**\n     * A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.\n     */\n    copy?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.\n     */\n    copyerror?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "ClipboardItemElement": {
@@ -59451,7 +59451,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -59460,7 +59460,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -60195,7 +60195,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -60204,7 +60204,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -61985,7 +61985,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -61994,7 +61994,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -84024,7 +84024,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -84366,7 +84366,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -85167,7 +85167,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -87274,7 +87274,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -87537,7 +87537,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -88254,7 +88254,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -97708,7 +97708,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -97717,7 +97717,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -97757,7 +97757,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -97766,7 +97766,7 @@
           "syntaxKind": "PropertySignature",
           "name": "tone",
           "value": "'auto' | 'neutral'",
-          "description": "The semantic meaning and color treatment of the link.",
+          "description": "The semantic meaning and color treatment of the link.\n\n- `'auto'`: Automatically determined based on context.\n- `'neutral'`: Removes the default link color, inheriting the surrounding text style.",
           "isOptional": true,
           "defaultValue": "'auto'"
         }
@@ -97796,7 +97796,7 @@
     "src/surfaces/checkout/components/Link.ts": {
       "filePath": "src/surfaces/checkout/components/Link.ts",
       "name": "LinkElementEvents",
-      "description": "The events interface for the Link component.",
+      "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -97804,11 +97804,11 @@
           "syntaxKind": "PropertySignature",
           "name": "click",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the link is activated. This will be called before navigating to the location specified by `href`.",
+          "description": "A callback fired when the link is clicked, before navigating to the location specified by `href`.\n\nLearn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface LinkElementEvents {\n    /**\n     * Callback when the link is activated.\n     * This will be called before navigating to the location specified by `href`.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n     */\n    click?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface LinkElementEvents {\n    /**\n     * A callback fired when the link is clicked, before navigating to the location specified by `href`.\n     *\n     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).\n     */\n    click?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "LinkElement": {
@@ -98418,7 +98418,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -98427,7 +98427,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -100083,7 +100083,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -100127,7 +100127,7 @@
           "syntaxKind": "PropertySignature",
           "name": "tone",
           "value": "'auto' | 'neutral'",
-          "description": "The semantic meaning and color treatment of the link.",
+          "description": "The semantic meaning and color treatment of the link.\n\n- `'auto'`: Automatically determined based on context.\n- `'neutral'`: Removes the default link color, inheriting the surrounding text style.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -100176,7 +100176,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -100185,7 +100185,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -100233,7 +100233,7 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "'auto' | '_blank'",
-          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: opens the URL in a new tab or window.",
+          "description": "Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).\n\n- `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.\n- `'_blank'`: Opens the URL in a new tab or window.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -100242,7 +100242,7 @@
           "syntaxKind": "PropertySignature",
           "name": "tone",
           "value": "'auto' | 'neutral'",
-          "description": "The semantic meaning and color treatment of the link.",
+          "description": "The semantic meaning and color treatment of the link.\n\n- `'auto'`: Automatically determined based on context.\n- `'neutral'`: Removes the default link color, inheriting the surrounding text style.",
           "isOptional": true,
           "defaultValue": "'auto'"
         }
@@ -119469,7 +119469,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -120545,7 +120545,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -121876,7 +121876,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -129756,7 +129756,7 @@
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
           "value": "'auto' | 'fill' | 'fit-content'",
-          "description": "The inline width of the button component.\n\n- `'auto'`: the size depends on the surface and context.\n- `'fill'`: the button takes up 100% of the available inline size.\n- `'fit-content'`: the button takes up the minimum inline size required to fit its content.",
+          "description": "The inline width of the button component.\n\n- `'auto'`: The size depends on the surface and context.\n- `'fill'`: The button takes up 100% of the available inline size.\n- `'fit-content'`: The button takes up the minimum inline size required to fit its content.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -129765,7 +129765,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ('subtag' label).",
+          "description": "The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label).",
           "isOptional": true
         },
         {
@@ -129828,7 +129828,7 @@
     "src/surfaces/checkout/components/PressButton.ts": {
       "filePath": "src/surfaces/checkout/components/PressButton.ts",
       "name": "PressButtonElementEvents",
-      "description": "The events interface for the PressButton component.",
+      "description": "The press button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -129836,7 +129836,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the button has lost focus.",
+          "description": "A callback fired when the button loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -129844,7 +129844,7 @@
           "syntaxKind": "PropertySignature",
           "name": "click",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the button is activated.",
+          "description": "A callback fired when the button is clicked.\n\nLearn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).",
           "isOptional": true
         },
         {
@@ -129852,11 +129852,11 @@
           "syntaxKind": "PropertySignature",
           "name": "focus",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the button has received focus.",
+          "description": "A callback fired when the button receives focus.\n\nLearn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface PressButtonElementEvents {\n    /**\n     * Callback when the button is activated.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the button has lost focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the button has received focus.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface PressButtonElementEvents {\n    /**\n     * A callback fired when the button is clicked.\n     *\n     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).\n     */\n    click?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the button loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the button receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "PressButtonElement": {
@@ -130815,7 +130815,7 @@
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
           "value": "'auto' | 'fill' | 'fit-content'",
-          "description": "The inline width of the button component.\n\n- `'auto'`: the size depends on the surface and context.\n- `'fill'`: the button takes up 100% of the available inline size.\n- `'fit-content'`: the button takes up the minimum inline size required to fit its content.",
+          "description": "The inline width of the button component.\n\n- `'auto'`: The size depends on the surface and context.\n- `'fill'`: The button takes up 100% of the available inline size.\n- `'fit-content'`: The button takes up the minimum inline size required to fit its content.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -130908,7 +130908,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ('subtag' label).",
+          "description": "The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label).",
           "isOptional": true
         },
         {
@@ -132237,7 +132237,7 @@
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
           "value": "'auto' | 'fill' | 'fit-content'",
-          "description": "The inline width of the button component.\n\n- `'auto'`: the size depends on the surface and context.\n- `'fill'`: the button takes up 100% of the available inline size.\n- `'fit-content'`: the button takes up the minimum inline size required to fit its content.",
+          "description": "The inline width of the button component.\n\n- `'auto'`: The size depends on the surface and context.\n- `'fill'`: The button takes up 100% of the available inline size.\n- `'fit-content'`: The button takes up the minimum inline size required to fit its content.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
@@ -132246,7 +132246,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ('subtag' label).",
+          "description": "The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label).",
           "isOptional": true
         },
         {
@@ -142070,7 +142070,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -142315,7 +142315,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -143023,7 +143023,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -157385,7 +157385,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -157675,7 +157675,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -158420,7 +158420,7 @@
           "syntaxKind": "PropertySignature",
           "name": "background",
           "value": "'base' | 'subdued' | 'transparent'",
-          "description": "Adjust the background of the element.",
+          "description": "Adjust the background of the element.\n\n- `'transparent'`: No visible background.\n- `'subdued'`: A subtle, low-emphasis background.\n- `'base'`: The standard background color.\n- `'strong'`: A high-emphasis background for prominence.",
           "isOptional": true,
           "defaultValue": "'transparent'"
         },
@@ -162801,7 +162801,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -162810,7 +162810,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -163520,7 +163520,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -163529,7 +163529,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -165294,7 +165294,7 @@
           "syntaxKind": "PropertySignature",
           "name": "command",
           "value": "'--auto' | '--show' | '--hide' | '--toggle'",
-          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: performs the default action appropriate for the target component.\n- `'--show'`: displays the target component if it's currently hidden.\n- `'--hide'`: conceals the target component from view.\n- `'--toggle'`: alternates the target component between visible and hidden states.\n- `'--copy'`: copies the target clipboard item.\n\nThe supported actions vary by target component type.",
+          "description": "Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:\n\n- `'--auto'`: Performs the default action appropriate for the target component.\n- `'--show'`: Displays the target component if it's currently hidden.\n- `'--hide'`: Conceals the target component from view.\n- `'--toggle'`: Alternates the target component between visible and hidden states.\n- `'--copy'`: Copies the target clipboard item.\n\nThe supported actions vary by target component type.",
           "isOptional": true,
           "defaultValue": "'--auto'"
         },
@@ -165303,7 +165303,7 @@
           "syntaxKind": "PropertySignature",
           "name": "commandFor",
           "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
           "isOptional": true
         },
         {
@@ -165424,7 +165424,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -166500,7 +166500,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -167840,7 +167840,7 @@
           "syntaxKind": "PropertySignature",
           "name": "lang",
           "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
+          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
           "isOptional": true,
           "defaultValue": "''"
         },

@@ -47,27 +47,27 @@ export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'a
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
 /**
- * The events interface for the ClickableChip component.
+ * The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClickableChipElementEvents {
     /**
-     * Event handler when the chip has fully hidden.
-     *
-     * The `hidden` property will be `true` when this event fires.
+     * A callback fired after the chip is hidden. The `hidden` property will be `true` when this event fires.
      */
     afterhide?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the chip is clicked.
+     * A callback fired when the chip is clicked.
+     *
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the chip is removed.
+     * A callback fired when the chip is removed.
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
 /**
- * The slots interface for the ClickableChip component.
+ * The clickable chip component supports slots for additional content placement. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ClickableChipElementSlots {

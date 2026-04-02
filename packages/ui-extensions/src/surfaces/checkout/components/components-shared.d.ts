@@ -191,6 +191,11 @@ export interface BackgroundProps {
 	 * - `transparent`: No background color (the default).
 	 * - `strong`: An emphasized background for prominent sections.
 	 *
+	 * - `'transparent'`: No visible background.
+	 * - `'subdued'`: A subtle, low-emphasis background.
+	 * - `'base'`: The standard background color.
+	 * - `'strong'`: A high-emphasis background for prominence.
+	 *
 	 * @default 'transparent'
 	 */
 	background?: BackgroundColorKeyword;
@@ -1350,9 +1355,9 @@ interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * The behavioral type of the button component, which determines what action it performs when activated.
-	 * - `'submit'`: submits the nearest containing form.
-	 * - `'button'`: performs no default action, relying on the `onClick` handler for behavior.
-	 * - `'reset'`: resets all fields in the nearest containing form to their default values.
+	 * - `'submit'`: Submits the nearest containing form.
+	 * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.
+	 * - `'reset'`: Resets all fields in the nearest containing form to their default values.
 	 *
 	 * This property is ignored if `href` or `commandFor`/`command` is set.
 	 *
@@ -1384,8 +1389,8 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
 	 * Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).
 	 *
-	 * - `'auto'`: opens the URL in the current frame or a new tab, depending on the context.
-	 * - `'_blank'`: opens the URL in a new tab or window.
+	 * - `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.
+	 * - `'_blank'`: Opens the URL in a new tab or window.
 	 *
 	 * @implementation Surfaces can set specific rules on how they handle each URL.
 	 * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
@@ -1411,11 +1416,11 @@ export interface InteractionProps {
 	/**
 	 * Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:
 	 *
-	 * - `'--auto'`: performs the default action appropriate for the target component.
-	 * - `'--show'`: displays the target component if it's currently hidden.
-	 * - `'--hide'`: conceals the target component from view.
-	 * - `'--toggle'`: alternates the target component between visible and hidden states.
-	 * - `'--copy'`: copies the target clipboard item.
+	 * - `'--auto'`: Performs the default action appropriate for the target component.
+	 * - `'--show'`: Displays the target component if it's currently hidden.
+	 * - `'--hide'`: Conceals the target component from view.
+	 * - `'--toggle'`: Alternates the target component between visible and hidden states.
+	 * - `'--copy'`: Copies the target clipboard item.
 	 *
 	 * The supported actions vary by target component type.
 	 *
@@ -1447,9 +1452,9 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	/**
 	 * The inline width of the button component.
 	 *
-	 * - `'auto'`: the size depends on the surface and context.
-	 * - `'fill'`: the button takes up 100% of the available inline size.
-	 * - `'fit-content'`: the button takes up the minimum inline size required to fit its content.
+	 * - `'auto'`: The size depends on the surface and context.
+	 * - `'fill'`: The button takes up 100% of the available inline size.
+	 * - `'fit-content'`: The button takes up the minimum inline size required to fit its content.
 	 *
 	 * @default 'auto'
 	 */
@@ -1457,17 +1462,26 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	/**
 	 * The visual style variant of the button component, which controls its prominence and emphasis.
 	 *
-	 * @default 'auto' - the variant is automatically determined by the button's context
+	 * - `'auto'`: Automatically determined by the button's context.
+	 * - `'primary'`: High-emphasis style for the main action.
+	 * - `'secondary'`: Medium-emphasis style for supporting actions.
+	 * - `'tertiary'`: Low-emphasis style for less prominent actions.
+	 *
+	 * @default 'auto'
 	 */
 	variant?: "auto" | "primary" | "secondary" | "tertiary";
 	/**
 	 * The semantic meaning and color treatment of the button.
 	 *
+	 * - `'auto'`: Automatically determined based on context.
+	 * - `'neutral'`: General information without specific intent.
+	 * - `'critical'`: Urgent problems or destructive actions.
+	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ('subtag' label).
+	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label).
 	 */
 	lang?: string;
 }
@@ -1911,7 +1925,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Disables the clickable, meaning it cannot be clicked or receive focus.
 	 *
-	 * In this state, onClick will not fire.
+	 * In this state, the `click` event will not fire.
 	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
 	 *
 	 * However, items within the clickable can still receive focus and be interacted with.
@@ -1923,7 +1937,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
 	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
 	 *
 	 * @default ''
 	 */
@@ -1935,9 +1949,7 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * The URL to link to.
-	 *
-	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+	 * The URL to link to. When set, the chip navigates to the specified location after the `click` event fires.
 	 */
 	href?: string;
 	/**
@@ -2498,7 +2510,7 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
 	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
 	 *
 	 * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
 	 *
@@ -2707,6 +2719,9 @@ interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
 	children?: ComponentChildren;
 	/**
 	 * The semantic meaning and color treatment of the link.
+	 *
+	 * - `'auto'`: Automatically determined based on context.
+	 * - `'neutral'`: Removes the default link color, inheriting the surrounding text style.
 	 *
 	 * @default 'auto'
 	 */
