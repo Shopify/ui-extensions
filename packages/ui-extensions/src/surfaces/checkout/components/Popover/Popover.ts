@@ -16,12 +16,6 @@ export type PopoverPosition =
   | 'blockStart'
   | 'blockEnd';
 
-/**
- * Popovers are similar to tooltips. They are small overlays that open on demand after a user interaction. The difference is that the popover can contain more content, without cluttering the page. They must be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).
-
-The library automatically applies the WAI-ARIA Popover Widget pattern to both the activator and the popover content.
- * @publicDocs
- */
 export interface PopoverProps
   extends IdProps,
     Pick<SizingProps, 'maxInlineSize' | 'minInlineSize'>,
@@ -46,11 +40,6 @@ export interface PopoverProps
   onClose?: () => void;
 }
 
-/**
- * Popovers are similar to tooltips. They are small overlays that open on demand after a user interaction. The difference is that the popover can contain more content, without cluttering the page. They must be specified inside the `overlay` prop of an activator component (`Button`, `Link`, or `Pressable`).
- *
- * The library automatically applies the WAI-ARIA Popover Widget pattern to both the activator and the popover content.
- */
 export const Popover = createRemoteComponent<'Popover', PopoverProps>(
   'Popover',
 );

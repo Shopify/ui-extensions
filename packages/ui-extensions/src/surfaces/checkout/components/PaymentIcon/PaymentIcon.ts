@@ -452,10 +452,6 @@ export type PaymentMethod =
   | 'zip'
   | 'zoodpay';
 
-/**
- * Payment icons can be used for displaying payment-related information or features such as a user’s saved or available payment methods.
- * @publicDocs
- */
 export interface PaymentIconProps {
   /**
    * The name of the payment method whose icon should be displayed.

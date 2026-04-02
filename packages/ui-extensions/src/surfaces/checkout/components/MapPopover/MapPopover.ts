@@ -2,10 +2,6 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
-/**
- * MapPopover provides additional information or context about a specific location or point of interest on a map.
- * @publicDocs
- */
 export interface MapPopoverProps extends IdProps {
   /**
    * A callback that fires when the popover is closed. Use this to
