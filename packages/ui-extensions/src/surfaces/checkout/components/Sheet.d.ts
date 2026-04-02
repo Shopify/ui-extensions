@@ -54,12 +54,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-sheet";
-/**
- * The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/latest/configuration#collect-buyer-consent) to be rendered.
- *
- * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
      * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
@@ -72,10 +67,7 @@ export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'h
  */
 export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
-/**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementEvents {
     /**
      * A callback fired when the sheet is hidden, after any hide animations have completed.
@@ -94,10 +86,7 @@ export interface SheetElementEvents {
      */
     show?: CallbackEventListener<typeof tagName>;
 }
-/**
- * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementSlots {
     /**
      * The main action button displayed in the sheet footer, representing the primary action users should take. Only accepts a single button component.
@@ -108,10 +97,7 @@ export interface SheetElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-/**
- * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
 /**
