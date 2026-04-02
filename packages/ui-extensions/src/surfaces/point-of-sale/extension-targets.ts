@@ -32,9 +32,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when a transaction completes successfully.
    *
-   * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
+   * @deprecated Deprecated as of `2025-10`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
    * `window.addEventListener('transactioncomplete', callback)` instead.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.transaction-complete.event.observe': (
@@ -43,9 +43,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when a cash tracking session starts.
    *
-   * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
+   * @deprecated Deprecated as of `2025-10`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
    * `window.addEventListener('cashtrackingsessionstart', callback)` instead.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.cash-tracking-session-start.event.observe': (
@@ -54,9 +54,9 @@ export interface EventExtensionTargets {
   /**
    * Fires when a cash tracking session completes.
    *
-   * @deprecated Deprecated as of `2025-10`. Use `pos.app.ready.data` target with
+   * @deprecated Deprecated as of `2025-10`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
    * `window.addEventListener('cashtrackingsessioncomplete', callback)` instead.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
    * @private
    */
   'pos.cash-tracking-session-complete.event.observe': (
@@ -66,8 +66,7 @@ export interface EventExtensionTargets {
    * Fires when the cart is updated.
    *
    * @deprecated Deprecated as of `2025-10`. Use `api.cart.current.subscribe()` on the
-   * `pos.app.ready.data` target.
-   * See https://shopify.dev/docs/api/pos-ui-extensions/latest/targets/pos-app-ready-data
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data).
    * @private
    */
   'pos.cart-update.event.observe': (
