@@ -40,7 +40,7 @@ export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
 declare const tagName = "s-icon";
 /** @publicDocs */
-export interface IconElementProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
+export interface IconProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
     /**
      * The semantic meaning and color treatment of the icon.
      *

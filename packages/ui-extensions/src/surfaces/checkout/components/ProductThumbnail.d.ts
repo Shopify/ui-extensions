@@ -31,7 +31,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 
 declare const tagName = "s-product-thumbnail";
 /** @publicDocs */
-export interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
+export interface ProductThumbnailProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     /**
      * The size of the product thumbnail image.
      *

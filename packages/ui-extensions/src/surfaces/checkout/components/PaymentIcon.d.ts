@@ -31,7 +31,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 
 declare const tagName = "s-payment-icon";
 /** @publicDocs */
-export interface PaymentIconElementProps extends PaymentIconProps$1 {
+export interface PaymentIconProps extends PaymentIconProps$1 {
 }
 /** @publicDocs */
 export interface PaymentIconElement extends PaymentIconProps, Omit<HTMLElement, 'id'> {
