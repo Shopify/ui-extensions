@@ -63,7 +63,7 @@ declare module 'preact' {
     }
   }
 }
-
+/** @publicDocs */
 export type ImageGroupPropsDocs = ImageGroupProps;
 
 /**
@@ -126,7 +126,7 @@ declare module 'preact' {
     }
   }
 }
-
+/** @publicDocs */
 export type AvatarElementPropsDocs = AvatarElementProps;
 
 /**
@@ -141,6 +141,7 @@ export type AvatarPropsDocs = AvatarProps;
  */
 export type AvatarElementDocs = AvatarElement;
 
+/** @publicDocs */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {

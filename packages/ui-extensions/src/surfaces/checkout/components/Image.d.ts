@@ -49,7 +49,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-image";
-
+/** @publicDocs */
 export interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     /**
      * A shorthand for setting the border around the image. Accepts a size keyword alone (for example, `'base'`), a size and color (for example, `'base base'`), or a size, color, and style (for example, `'base base solid'`). Use `'none'` to remove the border.
