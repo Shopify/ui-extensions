@@ -30,10 +30,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-payment-icon";
-/**
- * Displays icons representing payment methods. Use to visually communicate available or saved payment options clearly
- * @publicDocs
- */
+
+
 export interface PaymentIconElementProps extends PaymentIconProps$1 {
 }
 /**
