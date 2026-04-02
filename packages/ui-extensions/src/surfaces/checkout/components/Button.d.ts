@@ -56,15 +56,14 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
 /**
- * Events for the button component element.
+ * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ButtonElementEvents {
     /**
-     * A callback fired when the clickable element is activated.
-     * This will be called before the action indicated by `type`.
+     * A callback fired when the button is clicked. This will be called before the action indicated by `type`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
 }
