@@ -2,6 +2,8 @@
 
 Surface-specific helpers for testing admin UI extensions. Import from `@shopify/ui-extensions-tester/admin`.
 
+These helpers also support app-level admin targets such as `admin.app.intent.render`.
+
 ```ts
 import {
   createStorage,
@@ -20,6 +22,10 @@ extension.shopify.storage = createStorage({
   'my-setting': 'saved-value',
 });
 ```
+
+## 🧭 App intent mocks
+
+The `admin.app.intent.render` target mock includes `shopify.intents.response.ok()`, `.error()`, and `.closed()`.
 
 ## 🔒 Mocking mutation return values
 
