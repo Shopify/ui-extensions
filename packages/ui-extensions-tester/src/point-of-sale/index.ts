@@ -1,6 +1,7 @@
 import type {
   LineItem,
   Storage,
+  StorageKeys,
   CartApiContent,
 } from '@shopify/ui-extensions/point-of-sale';
 
@@ -38,7 +39,23 @@ export function createStorage<
   const store = new Map<string, unknown>(
     initialValues ? Object.entries(initialValues) : [],
   );
+  const createSubscribable = (key: string) => ({
+    get value() {
+      return store.get(key) as never;
+    },
+    subscribe(_fn: (value: unknown) => void) {
+      return () => {};
+    },
+  });
+
+  const latestProxy = new Proxy({} as StorageKeys<T>, {
+    get(_target, prop) {
+      return createSubscribable(prop as string);
+    },
+  });
+
   const storage: Storage<T> = {
+    latest: latestProxy,
     set: async (key, value) => {
       store.set(key as string, value);
     },

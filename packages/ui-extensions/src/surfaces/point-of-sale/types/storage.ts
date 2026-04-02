@@ -22,22 +22,27 @@ export interface Storage<
   /**
    * Reactive access to storage values as Subscribables.
    *
-   * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling
-   * reactive updates across targets of the same extension. One target can
-   * subscribe to a key and react when another target updates it via `set()`
-   * or `delete()`.
+   * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling cross-target
+   * reactivity. One extension target can subscribe to a key and react when
+   * another target updates it via `set()` or `update()`.
    *
-   * Only available on API version `2026-04` and later.
+   * The `value` property provides synchronous access to the current stored value.
+   * The `subscribe()` method registers a callback that fires whenever the value
+   * changes, including changes made by other extension targets within the same app.
    *
-   * @example
+   * @example Cross-target reactivity
    * ```typescript
-   * // Subscribe to changes from another target:
-   * const unsubscribe = api.storage.keys.syncStatus.subscribe((value) => {
-   *   console.log('syncStatus changed:', value);
+   * // In one extension target:
+   * await shopify.storage.set('syncStatus', 'complete');
+   *
+   * // In another target:
+   * const status = shopify.storage.latest.syncStatus.value; // 'complete'
+   * const unsubscribe = shopify.storage.latest.syncStatus.subscribe((value) => {
+   *   // Reacts when another target updates this key
    * });
    * ```
    */
-  keys?: StorageKeys<BaseStorageTypes>;
+  latest: StorageKeys<BaseStorageTypes>;
 
   /**
    * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
@@ -103,9 +108,8 @@ export interface Storage<
 /**
  * Provides reactive, subscribable access to individual storage keys.
  *
- * Each property is a `ReadonlySignalLike` that reflects the current value of
- * the corresponding storage key. Values are `undefined` when the key does not
- * exist.
+ * Each property is a `ReadonlySignalLike` that reflects the current value of the
+ * corresponding storage key. Values are `undefined` when the key does not exist.
  *
  * Mutations are performed through the existing `Storage` methods (`set`,
  * `delete`, `clear`, etc.) — `StorageKeys` is read-only and reactive.
