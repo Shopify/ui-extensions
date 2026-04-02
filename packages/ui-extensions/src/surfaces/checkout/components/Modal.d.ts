@@ -54,10 +54,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-modal";
-/**
- * Displays content in an overlay. Use to create a distraction-free experience such as a confirmation dialog or a settings panel.
- * @publicDocs
- */
+
 export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     /**
      * The size of the modal.
@@ -73,10 +70,7 @@ export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabe
      */
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
-/**
- * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
- * @publicDocs
- */
+
 export interface ModalElementSlots {
     /**
      * The main action button displayed in the modal footer, representing the primary action users should take. Only accepts a single button component.
@@ -93,16 +87,10 @@ export interface ModalElementSlots {
  */
 export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
-/**
- * Learn more about [component methods](/docs/api/checkout-ui-extensions/latest/using-polaris-components#methods).
- * @publicDocs
- */
+
 export interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
-/**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
- * @publicDocs
- */
+
 export interface ModalElementEvents {
     /**
      * A callback fired when the modal is hidden, after any hide animations have completed.

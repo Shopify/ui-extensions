@@ -30,11 +30,9 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-product-thumbnail";
-/**
- * Use ProductThumbnail to display a product thumbnail
- * @publicDocs
- */
-export interface ProductThumbnailProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
+
+
+export interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     /**
      * The size of the product thumbnail image.
      *

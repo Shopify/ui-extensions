@@ -40,7 +40,8 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-tooltip";
-/** @publicDocs */
+
+
 export interface TooltipElementProps extends Pick<TooltipProps$1, 'id'> {
 }
 /**
