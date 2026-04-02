@@ -138,8 +138,4 @@ export interface MapProps
   onZoomChange?: (zoom: MapZoom) => void;
 }
 
-/**
- * Use the Map component to provide visual representation of geographic data such as verifying address, package or pickup locations.
- * Please note that the merchant or partner has to provide an API key and a set of allowed domains where the map would render.
- */
 export const Map = createRemoteComponent<'Map', MapProps>('Map');

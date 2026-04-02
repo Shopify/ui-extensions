@@ -3,12 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
-/**
- * The Sheet component displays essential information for customers at the bottom of the screen, appearing above other elements. Use it sparingly to avoid distracting customers during checkout. This component requires access to [Customer Privacy API](/docs/api/checkout-ui-extensions/unstable/configuration#collect-buyer-consent) to be rendered. 
-
-The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.
- * @publicDocs
- */
+/** @publicDocs */
 export interface SheetProps extends IdProps {
   /**
    * A label that describes the purpose of the sheet, announced by screen readers. If not set, it will use the value of `heading`.
@@ -46,9 +41,4 @@ export interface SheetProps extends IdProps {
   secondaryAction?: RemoteFragment;
 }
 
-/**
- * A sheet is designed to be used on top of other elements in a user interface and is typically bound to the bottom of a page. It can contain and display various types of content such as forms or informational messages. Unlike a modal, which interrupts user flow, a sheet offers a less intrusive, fluid experience.
- *
- * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the sheet content.
- */
 export const Sheet = createRemoteComponent<'Sheet', SheetProps>('Sheet');

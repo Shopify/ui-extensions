@@ -6,10 +6,7 @@ import type {
 } from '../../style/types';
 import type {Size} from '../shared';
 
-/**
- * Product thumbnail is a representation of a product image. It provides a visual preview of the item, so buyers can quickly identify products.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ProductThumbnailProps {
   /**
    * The alternative text that describes the product thumbnail for assistive

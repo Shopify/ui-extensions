@@ -1,12 +1,7 @@
 import type {RemoteFragment} from '@remote-ui/core';
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Modals are a special type of overlay that shift focus towards a specific action/set of information before the main flow can proceed. They must be specified inside the `overlay` prop of an activator component (`Button`, `Link` or `Pressable`).
-
-The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the modal content.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ModalProps {
   /**
    * A unique identifier for the modal. When no `id` is set, a globally unique value will be used instead.
@@ -53,9 +48,4 @@ export interface ModalProps {
   secondaryActions?: RemoteFragment;
 }
 
-/**
- * Modals are a special type of overlay that shift focus towards a specific action or set of information before the main flow can proceed. They must be specified inside the `overlay` prop of an activator component (`Button`, `Link`, or `Pressable`).
- *
- * The library automatically applies the [WAI-ARIA Dialog pattern](https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/) to both the activator and the modal content.
- */
 export const Modal = createRemoteComponent<'Modal', ModalProps>('Modal');

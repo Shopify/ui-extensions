@@ -1,9 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Display a group of images.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ImageGroupProps {
   /**
    * The layout arrangement for the images within the group.
