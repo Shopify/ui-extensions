@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import {Size} from '../../../checkout';
 import type {IdProps} from '../shared';
 
+/** @publicDocs */
 export interface AvatarProps extends IdProps {
   /**
    * The initials to display in the avatar. Used as a text fallback when no

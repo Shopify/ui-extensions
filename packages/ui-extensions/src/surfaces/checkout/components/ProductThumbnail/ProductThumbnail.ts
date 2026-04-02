@@ -6,6 +6,7 @@ import type {
 } from '../../style/types';
 import type {Size} from '../shared';
 
+/** @publicDocs */
 export interface ProductThumbnailProps {
   /**
    * The alternative text that describes the product thumbnail for assistive

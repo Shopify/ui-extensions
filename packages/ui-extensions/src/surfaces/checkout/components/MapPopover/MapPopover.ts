@@ -2,6 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
+/** @publicDocs */
 export interface MapPopoverProps extends IdProps {
   /**
    * A callback that fires when the popover is closed. Use this to

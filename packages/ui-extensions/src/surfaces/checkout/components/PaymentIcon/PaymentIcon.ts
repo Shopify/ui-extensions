@@ -452,6 +452,7 @@ export type PaymentMethod =
   | 'zip'
   | 'zoodpay';
 
+/** @publicDocs */
 export interface PaymentIconProps {
   /**
    * The name of the payment method whose icon should be displayed.

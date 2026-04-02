@@ -15,6 +15,7 @@ import type {
   IdProps,
 } from '../shared';
 
+/** @publicDocs */
 export interface ImageProps extends BorderProps, CornerProps, IdProps {
   /**
    * The URL of the image to display. Supports remote URLs and local file

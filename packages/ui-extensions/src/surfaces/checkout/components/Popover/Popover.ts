@@ -16,6 +16,7 @@ export type PopoverPosition =
   | 'blockStart'
   | 'blockEnd';
 
+/** @publicDocs */
 export interface PopoverProps
   extends IdProps,
     Pick<SizingProps, 'maxInlineSize' | 'minInlineSize'>,

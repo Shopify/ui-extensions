@@ -3,6 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
+/** @publicDocs */
 export interface SheetProps extends IdProps {
   /**
    * A label that describes the purpose of the sheet, announced by screen readers. If not set, it will use the value of `heading`.

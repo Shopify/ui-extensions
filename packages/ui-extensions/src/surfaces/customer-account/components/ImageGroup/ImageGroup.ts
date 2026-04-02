@@ -1,5 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface ImageGroupProps {
   /**
    * The layout arrangement for the images within the group.

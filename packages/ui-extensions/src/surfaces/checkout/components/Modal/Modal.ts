@@ -1,6 +1,7 @@
 import type {RemoteFragment} from '@remote-ui/core';
 import {createRemoteComponent} from '@remote-ui/core';
 
+/** @publicDocs */
 export interface ModalProps {
   /**
    * A unique identifier for the modal. When no `id` is set, a globally unique value will be used instead.
