@@ -50,10 +50,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-sheet";
-/**
- * The element props interface for the Sheet component.
- * @publicDocs
- */
+
 export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
      * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
@@ -65,10 +62,7 @@ export interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'h
  */
 export interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
-/**
- * The events interface for the Sheet component.
- * @publicDocs
- */
+
 export interface SheetElementEvents {
     /**
      * A callback fired when the sheet is hidden, after any hide animations have completed.
@@ -87,10 +81,7 @@ export interface SheetElementEvents {
      */
     show?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The slots interface for the Sheet component.
- * @publicDocs
- */
+
 export interface SheetElementSlots {
     /**
      * The main action button displayed in the sheet footer, representing the primary action users should take. Only accepts a single button component.
@@ -101,10 +92,7 @@ export interface SheetElementSlots {
      */
     'secondary-actions'?: HTMLElement;
 }
-/**
- * The methods interface for the Sheet component.
- * @publicDocs
- */
+
 export interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
 /**

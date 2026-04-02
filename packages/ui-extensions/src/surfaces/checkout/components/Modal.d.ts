@@ -50,10 +50,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-modal";
-/**
- * The element props interface for the Modal component.
- * @publicDocs
- */
+
 export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
     /**
      * The size of the modal.
@@ -69,10 +66,7 @@ export interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabe
      */
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
-/**
- * The slots interface for the Modal component.
- * @publicDocs
- */
+
 export interface ModalElementSlots {
     /**
      * The main action button displayed in the modal footer, representing the primary action users should take. Only accepts a single button component.
@@ -88,16 +82,10 @@ export interface ModalElementSlots {
  */
 export interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
-/**
- * The methods interface for the Modal component.
- * @publicDocs
- */
+
 export interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
-/**
- * The events interface for the Modal component.
- * @publicDocs
- */
+
 export interface ModalElementEvents {
     /**
      * A callback fired when the modal is hidden, after any hide animations have completed.

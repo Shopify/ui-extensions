@@ -41,10 +41,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-qr-code";
-/**
- * The element props interface for the QRCode component.
- * @publicDocs
- */
+
 export interface QRCodeElementProps extends QRCodeProps$1 {
 }
 /**
@@ -52,10 +49,7 @@ export interface QRCodeElementProps extends QRCodeProps$1 {
  */
 export interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
-/**
- * The events interface for the QRCode component.
- * @publicDocs
- */
+
 export interface QRCodeElementEvents {
     /**
      * A callback that's fired when the conversion of `content` to a QR code fails.

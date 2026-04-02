@@ -64,10 +64,6 @@ declare module 'preact' {
   }
 }
 
-/**
- * Display up to 4 images in a grid or stacked layout. For example, images of products in a wishlist or subscription.
- * @publicDocs
- */
 export type ImageGroupPropsDocs = ImageGroupProps;
 
 /**
@@ -131,10 +127,6 @@ declare module 'preact' {
   }
 }
 
-/**
- * The element props interface for the Avatar component.
- * @publicDocs
- */
 export type AvatarElementPropsDocs = AvatarElementProps;
 
 /**
@@ -149,10 +141,6 @@ export type AvatarPropsDocs = AvatarProps;
  */
 export type AvatarElementDocs = AvatarElement;
 
-/**
- * The events interface for the Avatar component.
- * @publicDocs
- */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {

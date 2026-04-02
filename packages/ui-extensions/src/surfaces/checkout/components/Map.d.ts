@@ -50,10 +50,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-map";
-/**
- * The element props interface for the Map component.
- * @publicDocs
- */
+
 export interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
 /**
@@ -110,10 +107,7 @@ export interface MapViewChangeEvent extends MapLocationEvent {
      */
     zoom?: number;
 }
-/**
- * The events interface for the Map component.
- * @publicDocs
- */
+
 export interface MapElementEvents {
     /**
      * A callback fired when the visible map boundaries change, such as after a pan or zoom completes.
