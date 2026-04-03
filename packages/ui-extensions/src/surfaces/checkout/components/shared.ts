@@ -809,22 +809,25 @@ export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
   };
 }[number];
 
+/**
+ * The available visibility states for an element.
+ *
+ * - `hidden`: Visually hides the element while keeping it accessible to assistive technologies like screen readers. Hidden elements don't occupy any visual space.
+ */
 export type Visibility = 'hidden';
+/**
+ * The available accessibility visibility states for an element.
+ *
+ * - `hidden`: Hides the element from assistive technologies like screen readers while keeping it visually visible.
+ */
 export type AccessibilityVisibility = 'hidden';
 export interface VisibilityProps {
   /**
-   * Changes the visibility of the element.
-   *
-   * `hidden` visually hides the component while keeping it accessible
-   * to assistive technology, such as screen readers.
-   * Hidden elements don't take any visual space contrary to CSS visibility: hidden;
+   * Controls the visual visibility of the element.
    */
   visibility?: Visibility;
   /**
-   * Changes the visibility of the element to assistive technologies.
-   *
-   * `hidden` hides the component from assistive technology (for example,
-   * a screen reader) but remains visually visible.
+   * Controls the visibility of the element to assistive technologies.
    */
   accessibilityVisibility?: AccessibilityVisibility;
 }
@@ -853,7 +856,7 @@ export type TextSize =
 
 export interface IdProps {
   /**
-   * A unique identifier for the component.
+   * A unique identifier for the component. Use this to target the component in scripts or stylesheets, or to distinguish it from other instances of the same component.
    */
   id?: string;
 }
