@@ -34,12 +34,7 @@ export interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 
 /** @publicDocs */
 export interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {
 }
-/**
- * The query container component establishes a container query context for responsive design. Use query container to define an element as a containment context, enabling child components or styles to adapt based on the container's size rather than viewport width.
- *
- * Query containers support modern responsive patterns where components respond to their container dimensions, creating more flexible and reusable layouts.
- * @publicDocs
- */
+/** @publicDocs */
 export interface QueryContainerProps extends QueryContainerElementProps {
 }
 declare global {
