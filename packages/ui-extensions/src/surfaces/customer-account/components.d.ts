@@ -91,7 +91,6 @@ declare module 'preact' {
 }
 
 /**
- * The outer wrapper of the page—including the page title, subtitle, and page-level actions—displayed in a familiar and consistent style.
  * @publicDocs
  */
 export type PagePropsDocs = PageProps;
@@ -103,7 +102,6 @@ export type PagePropsDocs = PageProps;
 export type PageElementDocs = PageElement;
 
 /**
- * The slot interface for the Page component.
  * @publicDocs
  */
 export type PageElementSlotsDocs = PageElementSlots;
@@ -228,7 +226,6 @@ declare module 'preact' {
 }
 
 /**
- * Groups related content into clearly-defined thematic areas with consistent styling and structure.
  * @publicDocs
  */
 export type SectionPropsDocs = SectionProps;
@@ -240,7 +237,6 @@ export type SectionPropsDocs = SectionProps;
 export type SectionElementDocs = SectionElement;
 
 /**
- * The slot interface for the Section component.
  * @publicDocs
  */
 export type SectionElementSlotsDocs = SectionElementSlots;
