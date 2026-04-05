@@ -4,14 +4,11 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {IdProps, Spacing} from '../shared';
 
 /**
- * BlockSpacer is used to create empty block space, typically when variable spacing is needed between multiple elements.
-
-Note that you should favor BlockStack when spacing between all elements is the same.
  * @publicDocs
  */
 export interface BlockSpacerProps extends IdProps {
   /**
-   * Adjust size of the spacer
+   * The size of the spacer.
    *
    * @defaultValue 'base'
    **/
@@ -19,10 +16,9 @@ export interface BlockSpacerProps extends IdProps {
 }
 
 /**
- * BlockSpacer is used to create empty block space, typically when variable spacing
- * is needed between multiple elements.
- *
- * Note that you should favor BlockStack when spacing between all elements is the same.
+ * BlockSpacer creates empty block-axis space, typically when variable spacing
+ * is needed between elements. Use BlockStack instead when spacing between all
+ * elements is the same.
  */
 export const BlockSpacer = createRemoteComponent<
   'BlockSpacer',

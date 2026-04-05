@@ -1,14 +1,14 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Group related content and functionality together in a familiar and consistent style.
  * @publicDocs
  */
 export interface CardProps {
   /**
-   * Adjust the padding of all edges.
+   * Whether to apply default padding to all edges of the card.
    *
-   * `true` applies a default padding that is appropriate for the component.
+   * - `true`: Applies context-appropriate padding.
+   * - `false` (or omitted): No padding is applied.
    */
   padding?: boolean;
 }
