@@ -200,7 +200,6 @@ export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 export interface Docs_FullPageApi extends FullPageApi {}
 
 /**
- * Supported props for Buttons used inside Page `primary-action` slot.
  * @publicDocs
  */
 export interface Docs_Page_Button_PrimaryAction
@@ -213,16 +212,56 @@ export interface Docs_Page_Button_PrimaryAction
     | 'loadingLabel'
     | 'disabled'
     | 'accessibilityLabel'
-  > {}
+  > {
+  /**
+   * A callback fired when the button is pressed.
+   */
+  onPress?: ButtonProps['onPress'];
+  /**
+   * An overlay component rendered when the user interacts with the button, such as a modal or popover.
+   */
+  overlay?: ButtonProps['overlay'];
+  /**
+   * A destination URL that the button navigates to. When set, the button behaves as a link.
+   */
+  to?: ButtonProps['to'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @defaultValue false
+   */
+  loading?: ButtonProps['loading'];
+  /**
+   * An accessible label for the loading indicator, announced when the user prefers reduced motion. Only used when `loading` is `true`.
+   */
+  loadingLabel?: ButtonProps['loadingLabel'];
+  /**
+   * Whether the button is disabled. A disabled button is non-interactive and visually de-emphasized.
+   *
+   * @defaultValue false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * A label announced by assistive technologies that describes the button's purpose. When set, the button's visible `children` are not announced to screen readers.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+}
 
 /**
- * Supported props for Button used inside Page `secondary-actions` slot.
  * @publicDocs
  */
 export interface Docs_Page_Button_SecondaryAction
   extends Pick<ButtonProps, 'onPress' | 'to'> {
   /**
-   * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
+   * A callback fired when the button is pressed.
+   */
+  onPress?: ButtonProps['onPress'];
+  /**
+   * A destination URL that the button navigates to. When set, the button behaves as a link.
+   */
+  to?: ButtonProps['to'];
+  /**
+   * A label announced by assistive technologies that describes the button's purpose. Required because `children` passed to this component are discarded.
    */
   accessibilityLabel: ButtonProps['accessibilityLabel'];
 }

@@ -10,29 +10,31 @@ import type {
 } from '../shared';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
+/**
+ * The event object passed to `onScroll` and `onScrolledToEdge` callbacks on a ScrollView.
+ */
 export interface ScrollViewEvent {
   /**
-   * The current scroll position, in pixels.
+   * The current scroll position in pixels, broken out by axis.
    */
   position: {
-    /** The current scroll horizontal position, in pixels.*/
+    /** The current horizontal (inline-axis) scroll position in pixels. */
     inline: number;
-    /** The current scroll vertical position, in pixels.*/
+    /** The current vertical (block-axis) scroll position in pixels. */
     block: number;
   };
   /**
-   * A flag to indicate if the scroll is at the start or end of an axis.
+   * Whether the scroll position has reached the start or end of each axis, or `null` if neither edge has been reached.
    */
   scrolledTo: {
-    /** A flag to indicate if the scroll is at the start or end of cross axis. */
+    /** Whether the inline-axis scroll is at the `'start'`, `'end'`, or neither (`null`). */
     inline: 'start' | 'end' | null;
-    /** A flag to indicate if the scroll is at the start or end of main axis. */
+    /** Whether the block-axis scroll is at the `'start'`, `'end'`, or neither (`null`). */
     block: 'start' | 'end' | null;
   };
 }
 
 /**
- * ScrollView is a container for long form content, such as order summary line items, that allows for scrolling so customers can expose more content as they view.
  * @publicDocs
  */
 export interface ScrollViewProps
@@ -43,74 +45,42 @@ export interface ScrollViewProps
     SizingProps,
     SpacingProps {
   /**
-   * A label that describes the purpose or contents of the element. When set,
-   * it will be announced to buyers using assistive technologies and will
-   * provide them with more context.
+   * A label announced by assistive technologies that describes the purpose or contents of the element. Only set this when the element's visible content doesn't provide enough context on its own.
    */
   accessibilityLabel?: string;
   /**
-   * Provides a hint to the user that the area is scrollable.
+   * A visual hint indicating that the area is scrollable.
    *
-   * `pill`: renders a pill with a message at the end of the the scrollable area. It disappear as soon as the user starts scrolling.
-   *
-   * `innerShadow`: renders an inner visual hint to indicate that the content is scrollable.
+   * - `innerShadow`: An inner shadow indicating that content continues beyond the visible area.
+   * - `{type: 'pill', content: string}`: A pill-shaped message displayed at the end of the scrollable area that disappears when the user starts scrolling.
    */
   hint?: 'innerShadow' | {type: 'pill'; content: string};
   /**
-   * The direction on which the content is scrollable.
+   * The axis along which the content is scrollable.
    *
-   * `block`:
-   * Indicates that the content is scrollable on the main axis.
-   *
-   * `inline`:
-   * Indicates that the content is scrollable on the cross axis.
+   * - `block`: Content scrolls along the main (block) axis.
+   * - `inline`: Content scrolls along the cross (inline) axis.
    *
    * @defaultValue block
    */
   direction?: 'block' | 'inline';
   /**
-   * Scroll to a specific position or to an element when the component is first rendered.
-   *
-   * This property allows you to set an initial scroll position or scroll to a specific element
-   * when the `ScrollView` component mounts. Note that this action will only be performed once,
-   * during the initial render of the component.
-   *
-   * @example
-   * // Scroll to 100 pixels from the top on initial render
-   * <ScrollView scrollTo={100} />
-   *
-   * // Scroll to a specific element on initial render
-   * const elementRef = useRef(null);
-   * <ScrollView scrollTo={elementRef.current} />
-   *
-   * @note
-   * This property will only take effect on the first render. Subsequent updates to this property
-   * will not trigger additional scroll actions.
+   * The initial scroll target when the component first renders. Accepts a pixel offset (`number`) to scroll to a specific position, or an `HTMLElement` to scroll that element into view. This only takes effect on the first render; subsequent updates to this prop are ignored.
    */
   scrollTo?: number | HTMLElement;
   /**
-   * Callback function that is called when the scroll position changes.
-   * Allows to listen to events inside the component
-   * returning the position of the scroll.
-   *
-   * Note:
-   * On touch devices, the onScroll event is fired only when the user finishes scrolling
-   * which differs from non touch devices, where the onScroll event is fired when the user scrolls
+   * A callback fired when the scroll position changes. On touch devices, this fires only when the user finishes scrolling, unlike non-touch devices where it fires continuously during scrolling.
    */
   onScroll?: (args: ScrollViewEvent) => void;
   /**
-   * Callback function that is called when the scroll position reaches one of the edges.
+   * A callback fired when the scroll position reaches one of the container's edges.
    */
   onScrolledToEdge?: (args: ScrollViewEvent) => void;
   /**
-   * Changes the display of the component.
+   * The display mode of the component. Learn more about [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
    *
-   *
-   * `auto` the component's initial value. The actual value depends on the component and context.
-   *
-   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   * - `auto`: The initial value; the actual behavior depends on the component and context.
+   * - `none`: Hides the component and removes it from the accessibility tree.
    *
    * @defaultValue 'auto'
    */
@@ -118,8 +88,8 @@ export interface ScrollViewProps
 }
 
 /**
- * ScrollView is a container for long form content, such as order summary line items,
- * that allows for scrolling so customers can expose more content as they view.
+ * A scrollable container for long-form content, such as order summary line items,
+ * that lets customers reveal more content by scrolling.
  */
 export const ScrollView = createRemoteComponent<'ScrollView', ScrollViewProps>(
   'ScrollView',

@@ -11,9 +11,6 @@ import type {
 import type {GridProps} from '../Grid/Grid';
 
 /**
- * InlineLayout is used to lay out content over multiple columns.
-
-By default, all columns are of equal size and fill the available inline space. Content does not wrap on new rows when not enough columns have been explicitly set, instead they are added as new column and fill the remaining inline space.
  * @publicDocs
  */
 export interface InlineLayoutProps
@@ -23,26 +20,15 @@ export interface InlineLayoutProps
     SizingProps,
     SpacingProps {
   /**
-   * Sizes for each column of the layout.
+   * The sizes for each column of the layout.
    *
+   * - `auto`: The intrinsic size of the element.
+   * - `fill`: Fills the remaining available space. When multiple elements use `fill`, the space is shared equally.
+   * - `` `${number}%` ``: A percentage of the container's inline size.
+   * - `` `${number}fr` ``: A fractional unit of the available space.
+   * - `number`: A fixed size in pixels.
    *
-   * `auto`: intrinsic size of the element.
-   *
-   * `fill`: fills the remaining available space. When multiple elements are set to `fill`, the remaining space is shared equally.
-   *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `` `${number}fr` ``: size in fractions.
-   *
-   * `number`: size in pixels.
-   *
-   *
-   * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
-   *
-   * - When the size of an element is not explicitly set, it will fill the remaining space available.
-   *
-   * - When only one size is set and outside of an array, all elements of the layout will take that size.
-   *
+   * When the sum of defined sizes exceeds the available space, elements shrink to avoid overflow. Elements without an explicit size fill the remaining space. A single value outside an array applies to all columns.
    *
    * @defaultValue 'fill'
    */
@@ -50,11 +36,9 @@ export interface InlineLayoutProps
 }
 
 /**
- * InlineLayout is used to lay out content over multiple columns.
- *
- * By default, all columns are of equal size and fill the available inline space.
- * Content does not wrap on new rows when not enough columns have been explicitly set,
- * instead they are added as new column and fill the remaining inline space.
+ * InlineLayout arranges content over multiple columns. By default, all
+ * columns are equal-sized and fill the available inline space. Content
+ * does not wrap to new rows; extra children are added as new columns.
  */
 export const InlineLayout = createRemoteComponent<
   'InlineLayout',

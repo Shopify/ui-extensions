@@ -5,8 +5,17 @@
  */
 type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 
+/**
+ * Conditions that target interactive states of a component.
+ */
 export interface InteractiveConditions {
+  /**
+   * Applies when the user is hovering over the component with a pointer device.
+   */
   hover: true;
+  /**
+   * Applies when the component has keyboard or programmatic focus.
+   */
   focus: true;
 }
 
@@ -20,6 +29,14 @@ export interface ResolutionCondition {
   resolution: Resolution;
 }
 
+/**
+ * A keyword that maps to a viewport inline-size breakpoint from the design system.
+ *
+ * - `extraSmall`: A very narrow viewport, typically small phones.
+ * - `small`: A narrow viewport, such as a large phone or small tablet.
+ * - `medium`: A medium viewport, such as a tablet in landscape.
+ * - `large`: A wide viewport, such as a desktop display.
+ */
 type ViewportInlineSize = 'extraSmall' | 'small' | 'medium' | 'large';
 
 /**
@@ -49,20 +66,45 @@ export type BaseConditions = AtLeastOne<
   DefaultConditions & ResolutionCondition
 >;
 
-// This interface is only used to provide documentation for the Style helper.
-// It is not used in the implementation.
+/**
+ * The full set of conditions available for conditional styling. At least one
+ * condition must be specified.
+ */
 export interface StylesBaseConditions {
+  /**
+   * A minimum viewport inline-size breakpoint that must be met.
+   */
   viewportInlineSize?: {min: ViewportInlineSize};
+  /**
+   * Applies when the user is hovering over the component with a pointer device.
+   */
   hover?: true;
+  /**
+   * Applies when the component has keyboard or programmatic focus.
+   */
   focus?: true;
+  /**
+   * A minimum device pixel ratio that must be met. Higher values target high-density (Retina) displays.
+   */
   resolution?: 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 }
 
-// This interface is only used to provide documentation for the Style helper.
-// It is not used in the implementation.
+/**
+ * The set of conditions available for viewport-responsive and interactive styling.
+ * At least one condition must be specified.
+ */
 export interface StylesConditions {
+  /**
+   * A minimum viewport inline-size breakpoint that must be met.
+   */
   viewportInlineSize?: {min: ViewportInlineSize};
+  /**
+   * Applies when the user is hovering over the component with a pointer device.
+   */
   hover?: true;
+  /**
+   * Applies when the component has keyboard or programmatic focus.
+   */
   focus?: true;
 }
 

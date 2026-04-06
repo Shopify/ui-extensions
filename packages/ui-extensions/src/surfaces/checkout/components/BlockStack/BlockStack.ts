@@ -14,7 +14,6 @@ import type {
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
 /**
- * BlockStack is used to vertically stack elements.
  * @publicDocs
  */
 export interface BlockStackProps
@@ -25,63 +24,43 @@ export interface BlockStackProps
     SizingProps,
     SpacingProps {
   /**
-   * Position children along the main axis
+   * The alignment of children along the inline (main) axis.
    */
   inlineAlignment?: MaybeResponsiveConditionalStyle<InlineAlignment>;
   /**
-   * Adjust spacing between children
+   * The spacing between child elements.
    *
    * @defaultValue 'base'
    */
   spacing?: MaybeResponsiveConditionalStyle<Spacing>;
   /**
-   * Sets the semantic meaning of the component’s content. When set,
-   * the role will be used by assistive technologies to help buyers
-   * navigate the page.
-   *
-   *
-   * For example:
-   *
-   * - In an HTML host a `['listItem', 'separator']` tuple will render: `<li role='separator'>`
-   *
-   * - In an HTML host a `listItem` string will render: `<li>`
+   * The semantic meaning of the component's content. When set, assistive technologies use this role to help users navigate the page. Accepts a single role or a tuple of two roles (for example, `['listItem', 'separator']`).
    */
   accessibilityRole?: ViewLikeAccessibilityRole;
   /**
-   * A label that describes the purpose or contents of the element. When set,
-   * it will be announced to buyers using assistive technologies and will
-   * provide them with more context.
+   * A label announced by assistive technologies that describes the purpose or contents of the element. Only set this when the element's visible content doesn't provide enough context on its own.
    */
   accessibilityLabel?: string;
   /**
-   * Sets the overflow behavior of the element.
+   * The overflow behavior of the element.
    *
-   * `hidden`: clips the content when it is larger than the element’s container.
-   * The element will not be scrollable and the users will not be able
-   * to access the clipped content by dragging or using a scroll wheel.
-   *
-   * `visible`: the content that extends beyond the element’s container is visible.
+   * - `visible`: Content that extends beyond the container is visible.
+   * - `hidden`: Content that extends beyond the container is clipped and not scrollable.
    *
    * @default 'visible'
    */
   overflow?: 'hidden' | 'visible';
   /**
-   * Changes the display of the component.
+   * The display mode of the component. Learn more about [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
    *
-   * `auto` the component's initial value. The actual value depends on the component and context.
-   *
-   * `none` hides the component and removes it from the accessibility tree, making it invisible to screen readers.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+   * - `auto`: The initial value; the actual behavior depends on the component and context.
+   * - `none`: Hides the component and removes it from the accessibility tree.
    *
    * @defaultValue 'auto'
    */
   display?: MaybeResponsiveConditionalStyle<'auto' | 'none'>;
 }
 
-/**
- * BlockStack is used to vertically stack elements.
- */
 export const BlockStack = createRemoteComponent<'BlockStack', BlockStackProps>(
   'BlockStack',
 );

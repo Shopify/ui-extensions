@@ -131,8 +131,26 @@ export type AutocompleteField =
   | 'pager email'
   | 'pager instant-message';
 
+/**
+ * A keyword that maps to a viewport-width breakpoint from the design system.
+ * Use breakpoints to apply responsive styles that adapt to the customer's screen size.
+ *
+ * - `base`: The default (smallest) breakpoint; applies to all viewport widths.
+ * - `extraSmall`: A very narrow viewport, typically small phones.
+ * - `small`: A narrow viewport, such as a large phone or small tablet.
+ * - `medium`: A medium viewport, such as a tablet in landscape.
+ * - `large`: A wide viewport, such as a desktop display.
+ */
 export type Breakpoint = 'base' | 'extraSmall' | 'small' | 'medium' | 'large';
 
+/**
+ * The display mode for a component. Learn more about [`display`](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
+ *
+ * - `auto`: The initial value; the actual behavior depends on the component and context.
+ * - `block`: The component starts on its own new line and fills its parent.
+ * - `inline`: The component flows inline with preceding and subsequent content.
+ * - `none`: Hides the component and removes it from the accessibility tree.
+ */
 export type Display = 'none' | 'auto' | 'inline' | 'block';
 
 /**
@@ -154,8 +172,14 @@ export type ShorthandProperty<T> = [T, T] | [T, T, T, T];
  */
 export type MaybeShorthandProperty<T> = T | ShorthandProperty<T>;
 
-/** @deprecated These values are deprecated and will eventually be removed.
- * Use CornerRadius instead
+/**
+ * @deprecated Use `CornerRadius` instead.
+ *
+ * - `base`: The default corner radius.
+ * - `tight`: A subtle corner radius. Use `small` on `CornerRadius` instead.
+ * - `loose`: A pronounced corner radius. Use `large` on `CornerRadius` instead.
+ * - `fullyRounded`: Fully rounds the corners into a pill or circle shape.
+ * - `none`: No corner rounding; sharp square corners.
  */
 export type BorderRadius = 'base' | 'tight' | 'loose' | 'fullyRounded' | 'none';
 /**
@@ -209,29 +233,22 @@ export interface BackgroundProps {
   /**
    * The background color of the element, set using a design-system keyword.
    *
-   * - `transparent`: No background; the parent's background shows through.
-   * - `base`: The standard surface background color.
-   * - `subdued`: A muted background for de-emphasized or secondary content.
-   *
    * @defaultValue 'transparent'
    */
   background?: MaybeConditionalStyle<Background>;
 
   /**
-   * Sets one or multiple responsive background images using URLs.
+   * One or more responsive background image URLs.
    */
   backgroundImage?: MaybeConditionalStyle<string>;
 
   /**
-   * Controls how the background image scales within its container.
-   *
-   * - `contain`: Scales the image to fit without cropping or stretching.
-   * - `cover`: Scales the image to fill the container; the image may be cropped.
+   * How the background image scales within its container.
    */
   backgroundFit?: BackgroundFit;
 
   /**
-   * Sets the initial position of the background image within its container.
+   * The initial position of the background image within its container.
    *
    * @defaultValue 'center'
    */
@@ -240,75 +257,64 @@ export interface BackgroundProps {
   /**
    * Controls how the background image is repeated within its container.
    *
-   * - `repeat`: The image is tiled to fill the container.
-   * - `noRepeat`: The image is displayed once without repetition.
-   *
    * @defaultValue 'noRepeat'
    */
   backgroundRepeat?: BackgroundRepeat;
 }
 
+/**
+ * Props for controlling the border appearance of a layout element. Both
+ * properties accept a single value for all edges or a shorthand tuple
+ * for per-edge control.
+ */
 export interface BorderProps {
   /**
-   * The border style of the element.
+   * The border style of the element. Accepts a single value for all four edges, or a shorthand tuple for per-edge control:
    *
-   * To shorten the code, it is possible to specify all the border style properties in one property.
-   *
-   * For example:
-   *
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border styles are `base`
-   *
-   * - `['base', 'none']` means blockStart and blockEnd border styles are `base`, inlineStart and inlineEnd border styles are `none`
-   *
-   * - `['base', 'none', 'dotted', 'base']` means blockStart border style is `base`, inlineEnd border style is `none`, blockEnd border style is `dotted` and  blockStart border style is `base`
+   * - `'base'`: Applies `base` to all edges.
+   * - `['base', 'none']`: Block edges get `base`, inline edges get `none`.
+   * - `['base', 'none', 'dotted', 'base']`: Values apply to block-start, inline-end, block-end, and inline-start respectively.
    */
   border?: MaybeResponsiveConditionalStyle<MaybeShorthandProperty<BorderStyle>>;
 
   /**
-   * The border width of the element.
+   * The border width of the element. Accepts a single value for all four edges, or a shorthand tuple for per-edge control:
    *
-   * To shorten the code, it is possible to specify all the border width properties in one property.
-   *
-   * For example:
-   *
-   * - `base` means blockStart, inlineEnd, blockEnd and inlineStart border widths are `base`
-   *
-   * - `['base', 'medium']` means blockStart and blockEnd border widths are `base`, inlineStart and inlineEnd border widths are `medium`
-   *
-   * - `['base', 'medium', 'medium', 'base']` means blockStart border width is `base`, inlineEnd border width is `medium`, blockEnd border width is `medium` and  blockStart border width is `base`
+   * - `'base'`: Applies `base` to all edges.
+   * - `['base', 'medium']`: Block edges get `base`, inline edges get `medium`.
+   * - `['base', 'medium', 'medium', 'base']`: Values apply to block-start, inline-end, block-end, and inline-start respectively.
    */
   borderWidth?: MaybeResponsiveConditionalStyle<
     MaybeShorthandProperty<BorderWidth>
   >;
 }
 
+/**
+ * Props for controlling the corner radius of a layout element. Both properties
+ * accept a single value for all corners or a shorthand tuple for per-corner control.
+ */
 export interface CornerProps {
   /**
-   * @deprecated Use `cornerRadius` instead.
+   * The corner radius of the element. Accepts a single value for all four corners, or a shorthand tuple for per-corner control:
    *
-   * The corner radius of the element. Accepts a single value for
-   * all corners or a shorthand tuple for per-corner control.
+   * - `'base'`: All four corners get `base` radius.
+   * - `['base', 'none']`: StartStart/EndEnd get `base`, StartEnd/EndStart get `none`.
+   * - `['base', 'none', 'small', 'base']`: Values apply to StartStart, StartEnd, EndEnd, and EndStart respectively.
+   *
+   * @deprecated Use `cornerRadius` instead.
    */
   borderRadius?: MaybeResponsiveConditionalStyle<
     MaybeShorthandProperty<CornerRadius>
   >;
 
   /**
-   * The corner radius of the element.
+   * The corner radius of the element. Accepts a single value for all four corners, or a shorthand tuple for per-corner control using logical (writing-mode-aware) corners:
    *
-   * Provide a single value to apply the same corner radius to all four corners, two values to apply different corner radii to opposing corners, or four values to apply different corner radii to each individual corner.
+   * - `'base'`: All four corners get `base` radius.
+   * - `['base', 'none']`: StartStart/EndEnd get `base`, StartEnd/EndStart get `none`. In left-to-right mode, StartStart and EndEnd are the top-left and bottom-right corners.
+   * - `['base', 'none', 'small', 'base']`: Values apply to StartStart, StartEnd, EndEnd, and EndStart respectively.
    *
-   * For example:
-   *
-   * - `base` means all 4 corner radii are `base`
-   *
-   * - `['base', 'none']` means the StartStart and EndEnd corner radii are `base`, StartEnd and EndStart corner radii are `none`.
-   *    When the context’s language direction is left to right, StartStart and EndEnd corners are the top left and bottom right corners
-   *    while StartEnd and EndStart corners are the top right and bottom left corners.
-   *
-   * - `['base', 'none', 'small', 'base']` means StartStart corner radius is `base`, StartEnd corner radius is `none`, EndEnd corner radius is `small` and  EndStart corner radius is `base`
-   *
-   * A `borderRadius` alias is available for this property. When both are specified, `cornerRadius` takes precedence.
+   * A `borderRadius` alias is available. When both are set, `cornerRadius` takes precedence.
    */
   cornerRadius?: MaybeResponsiveConditionalStyle<
     MaybeShorthandProperty<CornerRadius>
@@ -417,65 +423,92 @@ export interface SpacingProps {
  * - `presentation`: Strips semantic meaning but leaves visual styling intact.
  */
 export type AccessibilityRole =
-  /** Used to indicate the primary content. */
+  /** The primary content of the page. */
   | 'main'
-  /** Used to indicate the component is a header. */
+  /** A page or section header. */
   | 'header'
-  /** Used to display information such as copyright information, navigation links, and privacy statements. */
+  /** Information such as copyright, navigation links, and privacy statements. */
   | 'footer'
-  /** Used to indicate a generic section. */
+  /** A generic section that should have a heading or accessible label. */
   | 'section'
-  /** Used to designate a supporting section that relates to the main content. */
+  /** Supporting content related to the main content. */
   | 'complementary'
-  /** Used to identify major groups of links used for navigating. */
+  /** A major group of navigation links. */
   | 'navigation'
-  /** Used to identify a list of ordered items. */
+  /** A list of ordered items. */
   | 'orderedList'
-  /** Used to identify an item inside a list of items. */
+  /** An item inside a list. */
   | 'listItem'
-  /** Used to identify a list of unordered items. */
+  /** A list of unordered items. */
   | 'unorderedList'
-  /** Used to indicates the component acts as a divider that separates and distinguishes sections of content. */
+  /** A divider that separates sections of content. */
   | 'separator'
-  /** Used to define a live region containing advisory information for the user that is not important enough to be an alert. */
+  /** A live region with advisory information that is not urgent. */
   | 'status'
-  /** Used for important, and usually time-sensitive, information. */
+  /** Important, usually time-sensitive information. */
   | 'alert'
-  /** Used to indicate that an image is decorative and should be hidden from assistive technologies. */
+  /** Marks the element as purely decorative; assistive technologies skip it. */
   | 'decorative'
-  /** Used to strip the semantic meaning of an element, but leave the visual styling intact. */
+  /** Strips semantic meaning while keeping visual styling. */
   | 'presentation';
 
+/**
+ * The subset of accessibility roles available to layout components.
+ * Excludes `decorative` and `presentation`, which are only available
+ * on the full `AccessibilityRole` type.
+ *
+ * - `main`: The primary content of the page.
+ * - `header`: A page or section header.
+ * - `footer`: A section for copyright information, navigation links, and privacy statements.
+ * - `section`: A generic section; should have a heading or accessible label.
+ * - `complementary`: A supporting section related to the main content.
+ * - `navigation`: A major group of navigation links.
+ * - `orderedList`: A list of ordered items.
+ * - `listItem`: An item inside a list.
+ * - `unorderedList`: A list of unordered items.
+ * - `separator`: A divider separating sections of content.
+ * - `status`: A live region with advisory information that isn't urgent enough to be an alert.
+ * - `alert`: Important, usually time-sensitive information.
+ */
 export type NonPresentationalAccessibilityRole =
-  /** Used to indicate the primary content. */
+  /** The primary content of the page. */
   | 'main'
-  /** Used to indicate the component is a header. */
+  /** A page or section header. */
   | 'header'
-  /** Used to display information such as copyright information, navigation links, and privacy statements. */
+  /** Information such as copyright, navigation links, and privacy statements. */
   | 'footer'
-  /** Used to indicate a generic section. */
+  /** A generic section that should have a heading or accessible label. */
   | 'section'
-  /** Used to designate a supporting section that relates to the main content. */
+  /** Supporting content related to the main content. */
   | 'complementary'
-  /** Used to identify major groups of links used for navigating. */
+  /** A major group of navigation links. */
   | 'navigation'
-  /** Used to identify a list of ordered items. */
+  /** A list of ordered items. */
   | 'orderedList'
-  /** Used to identify an item inside a list of items. */
+  /** An item inside a list. */
   | 'listItem'
-  /** Used to identify a list of unordered items. */
+  /** A list of unordered items. */
   | 'unorderedList'
-  /** Used to indicates the component acts as a divider that separates and distinguishes sections of content. */
+  /** A divider that separates sections of content. */
   | 'separator'
-  /** Used to define a live region containing advisory information for the user that is not important enough to be an alert. */
+  /** A live region with advisory information that is not urgent. */
   | 'status'
-  /** Used for important, and usually time-sensitive, information. */
+  /** Important, usually time-sensitive information. */
   | 'alert';
 
+/**
+ * The accessibility role accepted by view-like layout components. Accepts a single `NonPresentationalAccessibilityRole`, or a tuple of two roles to combine semantic meaning (for example, `['listItem', 'separator']` renders as `<li role='separator'>`).
+ */
 export type ViewLikeAccessibilityRole =
   | NonPresentationalAccessibilityRole
   | [NonPresentationalAccessibilityRole, NonPresentationalAccessibilityRole];
 
+/**
+ * The accessibility role for button-like components.
+ *
+ * - `button`: A generic button that triggers an action.
+ * - `submit`: A button that submits a form.
+ */
 export type ButtonAccessibilityRole = 'button' | 'submit';
 
 export type TextAccessibilityRole =
@@ -650,7 +683,7 @@ export type Background = 'transparent' | 'base' | 'subdued';
 export type BackgroundFit = 'cover' | 'contain';
 
 /**
- * Sets the initial position of the background image within its container.
+ * The initial position of the background image within its container.
  *
  * - `top`: Positions the image at the top edge.
  * - `bottom`: Positions the image at the bottom edge.
@@ -712,6 +745,12 @@ export type Appearance =
   /** Takes the color of its parent.*/
   | 'monochrome';
 
+/**
+ * The axis along which content is arranged, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+ *
+ * - `inline`: The horizontal axis (in horizontal writing modes).
+ * - `block`: The vertical axis (in horizontal writing modes).
+ */
 export type Direction = 'inline' | 'block';
 
 /**
@@ -726,16 +765,20 @@ export type Direction = 'inline' | 'block';
  * Learn more about the [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit) property.
  */
 export type Fit =
-  /**
-   * Image maintains its aspect ratio while fitting within the frame.
-   */
+  /** Image fills the entire frame, maintaining its aspect ratio. The image may be cropped if it is larger than the frame. */
   | 'cover'
-  /**
-   * Image maintains its aspect ratio while filling the frame.
-   * If the image is larger than the frame, then it will be cropped.
-   */
+  /** Image fits within the frame, maintaining its aspect ratio. Empty space may appear if the aspect ratios differ. */
   | 'contain';
 
+/**
+ * The size of a column or row in a grid-based layout.
+ *
+ * - `'auto'`: The intrinsic size of the content.
+ * - `'fill'`: Fills the remaining available space. When multiple items use `fill`, the space is shared equally.
+ * - `number`: A fixed size in pixels.
+ * - `` `${number}fr` ``: A fractional unit of the available space.
+ * - `` `${number}%` ``: A percentage of the container's size.
+ */
 export type GridItemSize =
   | 'auto'
   | 'fill'
@@ -743,7 +786,13 @@ export type GridItemSize =
   | `${number}fr`
   | `${number}%`;
 
+/**
+ * The column sizing configuration for a grid-based layout. Accepts a single `GridItemSize` applied to all columns, or an array with one size per column.
+ */
 export type Columns = GridItemSize[] | GridItemSize;
+/**
+ * The row sizing configuration for a grid-based layout. Accepts a single `GridItemSize` applied to all rows, or an array with one size per row.
+ */
 export type Rows = GridItemSize[] | GridItemSize;
 
 /**
@@ -810,24 +859,28 @@ export type MultiPick<Base, AcceptedCombinations extends (keyof Base)[]> = {
 }[number];
 
 /**
- * The available visibility states for an element.
+ * Controls the visual visibility of an element.
  *
- * - `hidden`: Visually hides the element while keeping it accessible to assistive technologies like screen readers. Hidden elements don't occupy any visual space.
+ * - `hidden`: Visually hides the element while keeping it accessible to assistive technologies. The element does not occupy visual space.
  */
 export type Visibility = 'hidden';
 /**
- * The available accessibility visibility states for an element.
+ * Controls the visibility of an element to assistive technologies.
  *
- * - `hidden`: Hides the element from assistive technologies like screen readers while keeping it visually visible.
+ * - `hidden`: Hides the element from assistive technologies while keeping it visually visible.
  */
 export type AccessibilityVisibility = 'hidden';
+/**
+ * Props for controlling the visibility of a layout element, both visually
+ * and to assistive technologies.
+ */
 export interface VisibilityProps {
   /**
-   * Controls the visual visibility of the element.
+   * The visual visibility of the element.
    */
   visibility?: Visibility;
   /**
-   * Controls the visibility of the element to assistive technologies.
+   * The visibility of the element to assistive technologies.
    */
   accessibilityVisibility?: AccessibilityVisibility;
 }
@@ -848,8 +901,15 @@ export interface DisclosureActivatorProps {
 
 export type DisclosureOpen = boolean | string | string[];
 
+/**
+ * A percentage-based opacity value from 10 (nearly transparent) to 90 (nearly opaque). Use carefully as reduced opacity can decrease contrast ratios, making text difficult to read.
+ */
 export type Opacity = 10 | 20 | 30 | 40 | 50 | 60 | 70 | 80 | 90;
 
+/**
+ * A keyword that maps to a predefined text size from the design system.
+ * Includes all standard `Size` values plus `medium`, which sits between `base` and `large`.
+ */
 export type TextSize =
   | Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'extraLarge'>
   | 'medium';

@@ -5,33 +5,19 @@ import type {Rows} from '../shared';
 import type {GridProps} from '../Grid/Grid';
 
 /**
- * BlockLayout is used to lay out content over multiple rows.
-
-By default, all rows fill the available block space, sharing it equally.
  * @publicDocs
  */
 export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
   /**
-   * Sizes for each row of the layout.
+   * The sizes for each row of the layout.
    *
+   * - `auto`: The intrinsic size of the element.
+   * - `fill`: Fills the remaining available space. When multiple elements use `fill`, the space is shared equally.
+   * - `` `${number}%` ``: A percentage of the container's block size.
+   * - `` `${number}fr` ``: A fractional unit of the available space.
+   * - `number`: A fixed size in pixels.
    *
-   * `auto`: intrinsic size of the element.
-   *
-   * `fill`: fills the remaining available space. When multiple elements are set to `fill`, the remaining space is shared equally.
-   *
-   * `` `${number}%` ``: size in percentages.
-   *
-   * `` `${number}fr` ``: size in fractions.
-   *
-   * `number`: size in pixels.
-   *
-   *
-   * - When the sum of the defined sizes is larger than the available space, elements will shrink to avoid overflow.
-   *
-   * - When the size of an element is not explicitly set, it will fill the remaining space available.
-   *
-   * - When only one size is set and outside of an array, all elements of the layout will take that size.
-   *
+   * When the sum of defined sizes exceeds the available space, elements shrink to avoid overflow. Elements without an explicit size fill the remaining space. A single value outside an array applies to all rows.
    *
    * @defaultValue 'fill'
    */
@@ -39,9 +25,8 @@ export interface BlockLayoutProps extends Omit<GridProps, 'columns' | 'rows'> {
 }
 
 /**
- * BlockLayout is used to lay out content over multiple rows.
- *
- * By default, all rows fill the available block space, sharing it equally.
+ * BlockLayout arranges content over multiple rows. By default, all rows
+ * fill the available block space, sharing it equally.
  */
 export const BlockLayout = createRemoteComponent<
   'BlockLayout',
