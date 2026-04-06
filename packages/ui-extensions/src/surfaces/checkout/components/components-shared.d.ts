@@ -14,7 +14,7 @@ export type ComponentChildren = any;
 export type StringChildren = string;
 export interface GlobalProps {
 	/**
-	 * A unique identifier for the element.
+	 * A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.
 	 */
 	id?: string;
 }
@@ -92,11 +92,15 @@ export interface BaseOverlayMethods {
 }
 export interface FocusEventProps {
 	/**
-	 * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+	 * A callback fired when the element loses focus.
+	 *
+	 * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
 	 */
 	onBlur?: (event: FocusEvent) => void;
 	/**
-	 * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+	 * A callback fired when the element receives focus.
+	 *
+	 * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
 	 */
 	onFocus?: (event: FocusEvent) => void;
 }
@@ -1072,10 +1076,10 @@ export interface AccessibilityVisibilityProps {
 }
 export interface LabelAccessibilityVisibilityProps {
 	/**
-	 * Changes the visibility of the component's label.
+	 * Controls whether the label is visible to all users or only to screen readers.
 	 *
-	 * - `visible`: the label is visible to all users.
-	 * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+	 * - `visible`: The label is shown to everyone.
+	 * - `exclusive`: The label is visually hidden but still announced by screen readers.
 	 *
 	 * @default 'visible'
 	 */
@@ -1487,7 +1491,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 export interface BaseInputProps {
 	/**
-	 * An identifier for the field that is unique within the nearest containing form.
+	 * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
@@ -1499,15 +1503,15 @@ export interface BaseInputProps {
 }
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+	 * A callback fired when the user has **finished editing** a field, such as when they blur the field or press Enter.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the field.
+	 * A callback fired when the user makes any changes in the field, such as typing a character.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1515,7 +1519,7 @@ export interface InputProps extends BaseInputProps {
 	 */
 	value?: string;
 	/**
-	 * The default value for the field.
+	 * The initial value of the field when it first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts typing, their input replaces this value.
 	 *
 	 * @implementation `defaultValue` reflects to the `value` attribute.
 	 */
@@ -1523,15 +1527,15 @@ export interface InputProps extends BaseInputProps {
 }
 export interface MultipleInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user has selected one or more options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user selects or deselects options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1543,11 +1547,11 @@ export interface MultipleInputProps extends BaseInputProps {
 }
 export interface FileInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished selecting** a file or files.
+	 * A callback fired when the user has finished selecting one or more files.
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the file selection.
+	 * A callback fired when the user makes any changes to the file selection.
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1572,8 +1576,7 @@ export interface FileInputProps extends BaseInputProps {
 }
 export interface FieldErrorProps {
 	/**
-	 * Indicate an error to the user. The field will be given a specific stylistic treatment
-	 * to communicate problems that have to be resolved immediately.
+	 * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators and the message is announced to screen readers.
 	 */
 	error?: string;
 }
@@ -1588,7 +1591,7 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 */
 	required?: boolean;
 	/**
-	 * Content to use as the field label.
+	 * The text displayed as the field label, which identifies the purpose of the field to users. This label is associated with the field for accessibility and helps users understand what information to provide.
 	 */
 	label?: string;
 }
@@ -1604,13 +1607,13 @@ export interface FieldDetailsProps {
 }
 export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps, FieldDetailsProps {
 	/**
-	 * A short hint that describes the expected value of the field.
+	 * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value.
 	 */
 	placeholder?: string;
 }
 export interface BaseTextFieldProps extends FieldProps {
 	/**
-	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+	 * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
 	 *
 	 * @default false
 	 */
@@ -1746,7 +1749,7 @@ export interface BaseOptionProps extends BaseSelectableProps {
 }
 export interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
 	/**
-	 * Visual content to use as the control label.
+	 * The text displayed as the control label, which identifies the purpose of the control to users. This label is associated with the control for accessibility.
 	 */
 	label?: string;
 	/**

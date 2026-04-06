@@ -33,7 +33,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-switch";
 /**
- * The element props interface for the Switch component.
+ * Configure the following properties on the switch component.
  * @publicDocs
  */
 export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
@@ -42,14 +42,15 @@ export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLa
 export interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
 /**
- * The events interface for the Switch component.
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
  * @publicDocs
  */
 export interface SwitchElementEvents {
     /**
-     * A callback that is run whenever the control is changed.
+     * A callback fired when the switch value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }

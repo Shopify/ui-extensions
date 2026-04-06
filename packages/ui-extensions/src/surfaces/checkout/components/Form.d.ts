@@ -39,7 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-form";
 /**
- * The element props interface for the Form component.
+ * Configure the following properties on the form component.
  * @publicDocs
  */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
@@ -51,12 +51,13 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
 }
 /**
- * The events interface for the Form component.
+ * The form component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
  * @publicDocs
  */
 export interface FormElementEvents {
     /**
-     * A callback that is run when the form is submitted.
+     * A callback fired when the form is submitted.
      */
     submit?: CallbackEventListener<typeof tagName>;
 }
