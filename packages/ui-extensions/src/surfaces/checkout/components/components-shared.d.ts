@@ -201,7 +201,12 @@ export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 /** @publicDocs */
 export interface BackgroundProps {
 	/**
-	 * Adjust the background of the element.
+	 * The background color of the element.
+	 *
+	 * - `base`: The standard background color for general content areas.
+	 * - `subdued`: A muted background for secondary or supporting content.
+	 * - `transparent`: No background color (the default).
+	 * - `strong`: An emphasized background for prominent sections.
 	 *
 	 * @default 'transparent'
 	 */
@@ -934,18 +939,33 @@ export interface DisplayProps {
 /** @publicDocs */
 export interface AccessibilityRoleProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
-	 * the role will be used by assistive technologies to help users
-	 * navigate the page.
-	 *
-	 * @implementation Although, in HTML hosts, this property changes the element used,
-	 * changing this property must not impact the visual styling of inside or outside of the box.
+	 * The semantic meaning of the component's content. When set, assistive technologies use this role to help users navigate the page.
 	 *
 	 * @default 'generic'
 	 */
 	accessibilityRole?: AccessibilityRole;
 }
-/** @publicDocs */
+/**
+ * The semantic role of a component, used by assistive technologies to convey the element's purpose to users. Each role maps to a specific HTML element or ARIA role.
+ *
+ * - `main`: The primary content of the page.
+ * - `header`: A page or section header.
+ * - `footer`: Information such as copyright, navigation links, and privacy statements.
+ * - `section`: A generic section that should have a heading or `accessibilityLabel`.
+ * - `aside`: Supporting content related to the main content.
+ * - `navigation`: A major group of navigation links.
+ * - `ordered-list`: A list of ordered items.
+ * - `list-item`: An item inside a list.
+ * - `list-item-separator`: A divider between list items.
+ * - `unordered-list`: A list of unordered items.
+ * - `separator`: A divider that separates sections of content.
+ * - `status`: A live region with advisory information that is not urgent.
+ * - `alert`: Important, usually time-sensitive information.
+ * - `generic`: A nameless container with no semantic meaning (renders a `<div>`).
+ * - `presentation`: Strips semantic meaning while keeping visual styling. Synonym for `none`.
+ * - `none`: Strips semantic meaning while keeping visual styling. Synonym for `presentation`.
+ * @publicDocs
+ */
 export type AccessibilityRole = 
 /**
  * Used to indicate the primary content.
@@ -1267,7 +1287,7 @@ export type BorderSizeKeyword = SizeKeyword | "none";
  */
 export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 /**
- * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
+ * A shorthand string for specifying border properties. Accepts a size alone (`'base'`), size with color (`'base strong'`), or size with color and style (`'base strong dashed'`). Omitted values use their defaults.
  * @publicDocs
  */
 export type BorderShorthand = BorderSizeKeyword | `${BorderSizeKeyword} ${ColorKeyword}` | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
@@ -1346,10 +1366,10 @@ export interface BorderProps {
 /** @publicDocs */
 export interface OverflowProps {
 	/**
-	 * Sets the overflow behavior of the element.
+	 * The overflow behavior of the element.
 	 *
-	 * - `visible`: The content that extends beyond the element’s container is visible.
-	 * - `hidden`: Clips the content when it is larger than the element’s container. The element will not be scrollable and users will not be able to access the clipped content by dragging or using a scroll wheel on a mouse.
+	 * - `visible`: Content that extends beyond the container is visible.
+	 * - `hidden`: Content that extends beyond the container is clipped and not scrollable.
 	 *
 	 * @default 'visible'
 	 */
@@ -1358,14 +1378,11 @@ export interface OverflowProps {
 /** @publicDocs */
 export interface BaseBoxProps extends AccessibilityVisibilityProps, BackgroundProps, DisplayProps, SizingProps, PaddingProps, BorderProps, OverflowProps {
 	/**
-	 * The content of the Box.
+	 * The child elements to render inside the container.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * A label that describes the purpose or contents of the element.
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
-	 *
-	 * Only use this when the element's content is not enough context for users using assistive technologies.
+	 * A label announced by assistive technologies that describes the purpose or contents of the element. Only set this when the element's visible content doesn't provide enough context on its own.
 	 */
 	accessibilityLabel?: string;
 }
@@ -2361,13 +2378,20 @@ interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 }
 interface DividerProps$1 extends GlobalProps {
 	/**
-	 * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 * The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 *
+	 * - `inline`: A horizontal divider that separates content stacked vertically.
+	 * - `block`: A vertical divider that separates content arranged horizontally.
 	 *
 	 * @default 'inline'
 	 */
 	direction?: "inline" | "block";
 	/**
-	 * Modify the color to be more or less intense.
+	 * The visual emphasis of the divider's color.
+	 *
+	 * - `subdued`: A lighter divider for subtle separation.
+	 * - `base`: The standard divider color for most contexts.
+	 * - `strong`: A darker divider for stronger visual separation.
 	 *
 	 * @default 'base'
 	 */
@@ -2436,31 +2460,33 @@ interface FormProps$1 extends GlobalProps {
 	 */
 	onReset?: (event: Event) => void;
 }
-/** @publicDocs */
+/**
+ * The amount of space between child elements.
+ *
+ * - `none`: No spacing.
+ * - `small-500`: The smallest spacing.
+ * - `small-400` / `small-300` / `small-200` / `small-100` / `small`: Progressively larger small spacings.
+ * - `base`: The standard spacing for most use cases.
+ * - `large` / `large-100` / `large-200` / `large-300` / `large-400` / `large-500`: Progressively larger spacings.
+ * @publicDocs
+ */
 export type SpacingKeyword = SizeKeyword | "none";
 /** @publicDocs */
 export interface GapProps {
 	/**
-	 * Adjust spacing between elements.
-	 *
-	 * A single value applies to both axes.
-	 * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+	 * The spacing between child elements. A single value applies to both the inline and block axes. A pair of space-separated values (for example, `large-100 large-500`) sets the inline and block axes independently.
 	 *
 	 * @default 'none'
 	 */
 	gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
 	/**
-	 * Adjust spacing between elements in the block axis.
-	 *
-	 * This overrides the row value of `gap`.
+	 * The spacing between child elements along the block axis (vertical in horizontal writing modes). Overrides the block-axis value set by `gap`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	rowGap?: MaybeResponsive<SpacingKeyword | "">;
 	/**
-	 * Adjust spacing between elements in the inline axis.
-	 *
-	 * This overrides the column value of `gap`.
+	 * The spacing between child elements along the inline axis (horizontal in horizontal writing modes). Overrides the inline-axis value set by `gap`.
 	 *
 	 * @default '' - meaning no override
 	 */
@@ -2475,112 +2501,84 @@ export type ContentPosition = "center" | "start" | "end";
 /** @publicDocs */
 export type OverflowPosition = `unsafe ${ContentPosition}` | `safe ${ContentPosition}`;
 /**
- * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+ * Controls the default inline-axis alignment for all items within a container. Learn more about [`justify-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
  * @publicDocs
  */
 export type JustifyItemsKeyword = "normal" | "stretch" | BaselinePosition | OverflowPosition | ContentPosition;
 /**
- * Align items sets the align-self value on all direct children as a group.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+ * Controls how all direct children are aligned along the cross axis. Learn more about [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
  * @publicDocs
  */
 export type AlignItemsKeyword = "normal" | "stretch" | BaselinePosition | OverflowPosition | ContentPosition;
 /**
- * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+ * Controls how space is distributed between and around content items along the main axis of a flex container or the inline axis of a grid container. Learn more about [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
  * @publicDocs
  */
 export type JustifyContentKeyword = "normal" | ContentDistribution | OverflowPosition | ContentPosition;
 /**
- *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+ * Controls the distribution of space between and around content items along the cross axis of a flex container or the block axis of a grid container. Learn more about [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
  * @publicDocs
  */
 export type AlignContentKeyword = "normal" | BaselinePosition | ContentDistribution | OverflowPosition | ContentPosition;
 interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	/**
-	  Define columns and specify their size.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
-	  @default 'none'
-	*/
+	 * Defines the number and size of columns in the grid. Accepts any valid CSS [`grid-template-columns`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns) value, such as `"1fr 2fr"` or `"repeat(3, 1fr)"`.
+	 *
+	 * @default 'none'
+	 */
 	gridTemplateColumns?: MaybeResponsive<string>;
 	/**
-	  Define rows and specify their size.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
-	  @default 'none'
-	*/
+	 * Defines the number and size of rows in the grid. Accepts any valid CSS [`grid-template-rows`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows) value, such as `"auto 1fr"` or `"repeat(2, 100px)"`.
+	 *
+	 * @default 'none'
+	 */
 	gridTemplateRows?: MaybeResponsive<string>;
 	/**
-	  Aligns the grid items along the inline (row) axis.
-  
-	  This overrides the inline value of `placeItems`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
-	  @default '' - meaning no override
-	*/
+	 * Aligns grid items along the inline (row) axis. Overrides the inline value of `placeItems`. Learn more about [`justify-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+	 *
+	 * @default '' - meaning no override
+	 */
 	justifyItems?: MaybeResponsive<JustifyItemsKeyword | "">;
 	/**
-	  Aligns the grid items along the block (column) axis.
-  
-	  This overrides the block value of `placeItems`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
-	  @default '' - meaning no override
-	*/
+	 * Aligns grid items along the block (column) axis. Overrides the block value of `placeItems`. Learn more about [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+	 *
+	 * @default '' - meaning no override
+	 */
 	alignItems?: MaybeResponsive<AlignItemsKeyword | "">;
 	/**
-	  A shorthand property for `justify-items` and `align-items`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
-	  @default 'normal normal'
-	*/
+	 * A shorthand for `justifyItems` and `alignItems` that sets both alignment axes at once. Learn more about [`place-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/place-items).
+	 *
+	 * @default 'normal normal'
+	 */
 	placeItems?: MaybeResponsive<`${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword>;
 	/**
-	  Aligns the grid along the inline (row) axis.
-  
-	  This overrides the inline value of `placeContent`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
-	  @default '' - meaning no override
-	*/
+	 * Controls how the grid's columns are distributed along the inline (row) axis when there is extra space. Overrides the inline value of `placeContent`. Learn more about [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+	 *
+	 * @default '' - meaning no override
+	 */
 	justifyContent?: MaybeResponsive<JustifyContentKeyword | "">;
 	/**
-	  Aligns the grid along the block (column) axis.
-  
-	  This overrides the block value of `placeContent`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
-	  @default '' - meaning no override
-	*/
+	 * Controls how the grid's rows are distributed along the block (column) axis when there is extra space. Overrides the block value of `placeContent`. Learn more about [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+	 *
+	 * @default '' - meaning no override
+	 */
 	alignContent?: MaybeResponsive<AlignContentKeyword | "">;
 	/**
-	  A shorthand property for `justify-content` and `align-content`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
-	  @default 'normal normal'
-	*/
+	 * A shorthand for `justifyContent` and `alignContent` that sets both distribution axes at once. Learn more about [`place-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/place-content).
+	 *
+	 * @default 'normal normal'
+	 */
 	placeContent?: MaybeResponsive<`${AlignContentKeyword} ${JustifyContentKeyword}` | AlignContentKeyword>;
 }
 interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
 	/**
-	 * Number of columns the item will span across
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
+	 * The number of columns this item spans within the grid. Set to `auto` to let the grid determine placement automatically, or use `span {number}` to span a specific number of columns. Learn more about [`grid-column`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column).
 	 *
 	 * @default 'auto'
 	 */
 	gridColumn?: `span ${number}` | "auto";
 	/**
-	 * Number of rows the item will span across
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
+	 * The number of rows this item spans within the grid. Set to `auto` to let the grid determine placement automatically, or use `span {number}` to span a specific number of rows. Learn more about [`grid-row`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row).
 	 *
 	 * @default 'auto'
 	 */
@@ -3234,68 +3232,55 @@ interface QRCodeProps$1 extends GlobalProps {
 }
 interface QueryContainerProps$1 extends GlobalProps {
 	/**
-	 * The content of the container.
+	 * The child elements to render inside the query container.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * The name of the container, which can be used in your container queries to target this container specifically.
-	 *
-	 * We place the container name of `s-default` on every container. Because of this, it is not required to add a `containerName` identifier in your queries. For example, a `@container (inline-size <= 300px) none, auto` query is equivalent to `@container s-default (inline-size <= 300px) none, auto`.
-	 *
-	 * Any value set in `containerName` will be set alongside alongside `s-default`. For example, `containerName="my-container-name"` will result in a value of `s-default my-container-name` set on the `container-name` CSS property of the rendered HTML.
+	 * A custom name for the container, used in [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/container-name) to target this container specifically. The value is added alongside the default name `s-default`.
 	 *
 	 * @default ''
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
-	 *
-	 * @implementation You must always have a CSS `container-name` of `s-default` for this component.
 	 */
 	containerName?: string;
 }
-/** @publicDocs */
+/**
+ * The overflow behavior for a scrollable container axis.
+ *
+ * - `auto`: Content that exceeds the container is clipped and becomes scrollable.
+ * - `hidden`: Content that exceeds the container is clipped and not scrollable.
+ * @publicDocs
+ */
 export type OverflowKeyword = "auto" | "hidden";
 interface ScrollBoxProps$1 extends GlobalProps, Omit<BaseBoxPropsWithRole, "overflow"> {
 	/**
-	 * Sets the overflow behavior of the element.
+	 * The overflow behavior of the scroll box, controlling whether content that exceeds the container is scrollable or clipped. Learn more about [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow).
 	 *
-	 * - `hidden`: clips the content when it is larger than the element’s container and the element will not be scrollable in that axis.
-	 * - `auto`: clips the content when it is larger than the element’s container and make it scrollable in that axis.
+	 * - `hidden`: Content is clipped and the element is not scrollable in that axis.
+	 * - `auto`: Content is clipped and becomes scrollable in that axis.
 	 *
-	 * 1-to-2-value syntax is supported but note that, contrary to the CSS, it uses flow-relative values and the order is:
-	 *
-	 * - 2 values: `block inline`
+	 * Supports 1-to-2-value syntax using flow-relative axes. Two values are ordered as `block inline` (for example, `hidden auto` clips vertically and scrolls horizontally).
 	 *
 	 * @default 'auto'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
 	 */
 	overflow?: OverflowKeyword | `${OverflowKeyword} ${OverflowKeyword}`;
 }
 interface SectionProps$1 extends GlobalProps, ActionSlots {
 	/**
-	 * The content of the Section.
+	 * The child elements to render inside the section, typically the main content area below the heading.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * A label used to describe the section that will be announced by assistive technologies.
-	 *
-	 * When no `heading` property is provided or included as a children of the Section, you **must** provide an
-	 * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
-	 * the right context to users.
+	 * A label announced by assistive technologies that describes the purpose of the section. When no `heading` property is provided, you **must** set `accessibilityLabel` so screen readers can identify the section.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * A title that describes the content of the section.
+	 * The heading text displayed at the top of the section to summarize its content.
 	 */
 	heading?: string;
 	/**
-	 * Adjust the padding of all edges.
+	 * The padding applied to all edges of the section.
 	 *
-	 * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
-	 * this is the right design decision in a particular context.
-	 * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
-	 * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
-	 * to bring back the desired padding for the rest of the content.
+	 * - `base`: Applies context-appropriate padding. In some contexts this may result in no visible padding.
+	 * - `none`: Removes all padding, allowing child elements to span the full width of the section. Use a Box with `base` padding to restore spacing for individual content areas.
 	 *
 	 * @default 'base'
 	 */
@@ -3366,35 +3351,33 @@ interface SpinnerProps$1 extends GlobalProps {
 }
 interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	/**
-	 * The content of the Stack.
+	 * The child elements to render inside the stack.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 * The axis along which child elements are arranged, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 *
+	 * - `block`: Children are stacked vertically (in horizontal writing modes). Content does not wrap.
+	 * - `inline`: Children are arranged horizontally (in horizontal writing modes). Content wraps when it overflows.
 	 *
 	 * @default 'block'
-	 *
-	 * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
 	 */
 	direction?: MaybeResponsive<"block" | "inline">;
 	/**
-	 * Aligns the Stack along the main axis.
+	 * Controls how child elements are distributed along the main axis. Learn more about [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 	 * @default 'normal'
 	 */
 	justifyContent?: MaybeResponsive<JustifyContentKeyword>;
 	/**
-	 * Aligns the Stack's children along the cross axis.
+	 * Controls how child elements are aligned along the cross axis. Learn more about [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 * @default 'normal'
 	 */
 	alignItems?: MaybeResponsive<AlignItemsKeyword>;
 	/**
-	 * Aligns the Stack along the cross axis.
+	 * Controls how lines of content are distributed along the cross axis when there is extra space. Learn more about [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 	 * @default 'normal'
 	 */
 	alignContent?: MaybeResponsive<AlignContentKeyword>;

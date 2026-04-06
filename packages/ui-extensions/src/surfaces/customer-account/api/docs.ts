@@ -317,7 +317,6 @@ export interface Docs_Standard_QueryApi
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 /**
- * Supported props for Buttons used inside Page `primary-action` slot.<br><br>`children` only support text.
  * @publicDocs
  */
 export interface Docs_Page_Button_PrimaryAction
@@ -330,10 +329,50 @@ export interface Docs_Page_Button_PrimaryAction
     | 'href'
     | 'command'
     | 'commandFor'
-  > {}
+  > {
+  /**
+   * A label that describes the button's purpose to assistive technologies. Use this when the button text alone doesn't provide enough context.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the button is activated, before the action indicated by `type`.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The action the `commandFor` target should take when this button is activated.
+   *
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   */
+  command?: ButtonProps['command'];
+  /**
+   * The `id` of a component that should respond to activations on this button. See `command` for how to control the behavior of the target.
+   */
+  commandFor?: ButtonProps['commandFor'];
+  /**
+   * Whether the button is disabled and non-interactive.
+   *
+   * @default false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * The URL to navigate to when the button is activated. If a `commandFor` is set, the `command` is executed instead of the navigation.
+   */
+  href?: ButtonProps['href'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @default false
+   */
+  loading?: ButtonProps['loading'];
+}
 
 /**
- * Supported props for Button used inside Page `secondary-actions` slot.<br><br>`children` only support text.
  * @publicDocs
  */
 export interface Docs_Page_Button_SecondaryAction
@@ -346,18 +385,66 @@ export interface Docs_Page_Button_SecondaryAction
     | 'href'
     | 'command'
     | 'commandFor'
-  > {}
+  > {
+  /**
+   * A label that describes the button's purpose to assistive technologies. Use this when the button text alone doesn't provide enough context.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the button is activated, before the action indicated by `type`.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The action the `commandFor` target should take when this button is activated.
+   *
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   */
+  command?: ButtonProps['command'];
+  /**
+   * The `id` of a component that should respond to activations on this button. See `command` for how to control the behavior of the target.
+   */
+  commandFor?: ButtonProps['commandFor'];
+  /**
+   * Whether the button is disabled and non-interactive.
+   *
+   * @default false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * The URL to navigate to when the button is activated. If a `commandFor` is set, the `command` is executed instead of the navigation.
+   */
+  href?: ButtonProps['href'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @default false
+   */
+  loading?: ButtonProps['loading'];
+}
 
 /**
- * Supported props for Button used inside Page `breadcrumb-actions` slot.<br><br>`children` are not supported.<br>Use `accessibilityLabel` instead.
  * @publicDocs
  */
 export interface Docs_Page_Button_BreadcrumbAction
   extends Pick<ButtonProps, 'click' | 'href'> {
   /**
-   * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
+   * A label that describes the breadcrumb's destination to assistive technologies. Required because `children` passed to this button are discarded.
    */
   accessibilityLabel: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the breadcrumb is activated.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The URL to navigate to when the breadcrumb is activated.
+   */
+  href?: ButtonProps['href'];
 }
 
 /**
