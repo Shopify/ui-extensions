@@ -2,27 +2,27 @@ import {BaseElementPropsWithChildren, IdProps} from './shared';
 
 export interface PageProps extends IdProps {
   /**
-   * The main page heading
+   * The main heading displayed at the top of the page.
    */
   heading?: string;
 
   /**
-   * The text to be used as subheading.
+   * A secondary heading displayed below the main heading for additional context.
    */
   subheading?: string;
 }
 
 export interface PageElementSlots {
   /**
-   * The breadcrumb actions for the page. Accepts a single Button element with restricted properties (see below).
+   * A navigation link that lets the customer return to the previous page. Accepts a single [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) component. Learn more about [breadcrumb actions](#breadcrumb-actions).
    */
   'breadcrumb-actions'?: HTMLElement;
   /**
-   * The primary action for the page. Accepts a single Button element with restricted properties (see below).
+   * The main call-to-action for the page. Accepts a single [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) component. Learn more about [primary actions](#primary-actions).
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions for the page. Accepts multiple Button elements with restricted properties (see below).
+   * Additional actions for the page. Accepts one or more [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) components. Learn more about [secondary actions](#secondary-actions).
    */
   'secondary-actions'?: HTMLElement;
 }

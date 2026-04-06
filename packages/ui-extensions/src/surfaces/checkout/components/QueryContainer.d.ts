@@ -26,10 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-query-container";
-/**
- * The element props interface for the QueryContainer component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 'containerName' | 'id'> {
 }
 export interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {
