@@ -4,11 +4,7 @@ import {BaseElementPropsWithChildren, IdProps} from './shared';
  */
 export interface SectionProps extends IdProps {
   /**
-   * A label used to describe the section that will be announced by assistive technologies.
-   *
-   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
-   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
-   * the right context to users.
+   * A label announced by assistive technologies that describes the purpose or contents of the element. Only set this when the element's visible content doesn't provide enough context on its own.
    */
   accessibilityLabel?: string;
 
@@ -23,11 +19,11 @@ export interface SectionProps extends IdProps {
  */
 export interface SectionElementSlots {
   /**
-   * The primary action for the section. Accepts a single [Button](/docs/api/checkout-ui-extensions/web-components/actions/button) element.
+   * The main call-to-action for the section. Accepts a single [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) component.
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions for the section. Accepts multiple [Button](/docs/api/checkout-ui-extensions/web-components/actions/button) elements.
+   * Additional actions for the section. Accepts one or more [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) components.
    */
   'secondary-actions'?: HTMLElement;
 }
