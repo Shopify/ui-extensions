@@ -2,43 +2,40 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
-type Tone = 'auto' | 'critical';
-
 /**
- * Use to visually represent the completion of a task or process.
  * @publicDocs
  */
 export interface ProgressProps extends IdProps {
   /**
-   * Specify how much of the task that has been completed.
-   * It must be a valid floating point number between 0 and max, or between 0 and 1 if max is omitted.
-   * When undefined, the progress bar is indeterminate;
-   * this indicates that an activity is ongoing with no indication of how long it is expected to take.
+   * How much of the task has been completed. Must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value
+   * Learn more about the [value attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value).
    */
   value?: number;
 
   /**
-   * Define the maximum limit of the progress element.
-   * It must have a value greater than 0 and be a valid floating point number.
+   * The total amount of work the task requires. Must be a value greater than 0 and a valid floating point number.
+   *
+   * Learn more about the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max).
    *
    * @defaultValue 1
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max
    */
   max?: number;
 
   /**
-   * Set the color of the progress bar.
+   * The semantic meaning and color treatment of the progress indicator.
+   *
+   * - `auto`: Automatically determined based on context.
+   * - `critical`: Indicates an urgent or error state requiring immediate attention.
    *
    * @defaultValue 'auto'
    */
-  tone?: Tone;
+  tone?: 'auto' | 'critical';
 
   /**
-   * A label to use for the Progress that will be used for buyers using assistive technologies like screen readers.
-   * It will also be used to replace the animated loading indicator when buyers prefer reduced motion.
-   *
+   * A label that describes the purpose or contents of the element. When set, it will be announced
+   * to users using assistive technologies and will provide them with more context. When set, any
+   * children or `label` supplied won't be announced to screen readers.
    */
   accessibilityLabel?: string;
 }

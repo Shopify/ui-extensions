@@ -3,39 +3,33 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {IdProps, Status} from '../shared';
 
 /**
- * Use banners to communicate important messages to customers in a prominent way.
  * @publicDocs
  */
 export interface BannerProps extends IdProps {
   /**
-   * Banners have an optional title. Use a title to grab the buyer’s attention
-   * with a short, concise message. Banners with no title should have child elements
-   * to convey the banner’s purpose to the buyer.
+   * The title text displayed at the top of the banner to summarize the message or alert.
    */
   title?: string;
   /**
-   * Sets the status of the banner.
+   * The semantic meaning and color treatment of the banner.
    *
    * @defaultValue 'info'
    */
   status?: Status;
   /**
-   * Makes the content collapsible. A collapsible banner will conceal child
-   * elements initially, but allow the user to expand the banner to see them.
+   * Whether the banner content can be collapsed and expanded by the user.
+   * A collapsible banner conceals child elements initially, allowing the user to expand the banner to reveal them.
    *
    * @defaultValue false
    */
   collapsible?: boolean;
   /**
-   * Callback when banner is dismissed. This component is
-   * [controlled](https://reactjs.org/docs/forms.html#controlled-components),
+   * A callback that fires when the banner is dismissed by the user.
+   * This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
    * so you must manage the visibility of the banner in state by using
-   * the onDismiss callback.
+   * the `onDismiss` callback.
    */
   onDismiss?(): void;
 }
 
-/**
- * Use banners to communicate important messages to customers in a prominent way.
- */
 export const Banner = createRemoteComponent<'Banner', BannerProps>('Banner');

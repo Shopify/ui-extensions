@@ -20,8 +20,8 @@ interface BadgeBaseProps extends AccessibilityLabelProps {
   /**
    * The size of the badge.
    *
-   * - `small-100`: A smaller badge, useful for compact layouts.
    * - `base`: The standard badge size.
+   * - `small-100`: A smaller badge, useful for compact layouts.
    *
    * @defaultValue 'base'
    */

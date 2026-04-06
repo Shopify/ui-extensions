@@ -3,29 +3,36 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Appearance, IdProps, Size} from '../shared';
 
 /**
- * Spinner is used to notify buyers that their action is being processed. The Spinner is usually used when sending or receiving data from a server.
  * @publicDocs
  */
 export interface SpinnerProps extends IdProps {
   /**
-   * Adjusts the size of the icon.
+   * The size of the spinner icon.
+   *
+   * - `extraSmall`: The smallest size for tight spaces or inline indicators.
+   * - `small`: A compact size for secondary loading states.
+   * - `base`: The default size, suitable for most use cases.
+   * - `large`: A larger size for more prominent loading states.
+   * - `fill`: Expands to fill the available space.
    *
    * @defaultValue 'base'
    */
   size?: Extract<Size, 'extraSmall' | 'small' | 'base' | 'large' | 'fill'>;
 
   /**
-   * Sets the appearance (color) of the icon.
+   * The visual appearance of the spinner icon.
+   *
+   * - `accent`: Uses the accent color to convey emphasis and draw attention.
+   * - `monochrome`: Inherits the color of its parent element.
    *
    * @defaultValue 'accent'
    */
   appearance?: Extract<Appearance, 'accent' | 'monochrome'>;
 
   /**
-   * A label to use for the Spinner that will be used for buyers using
-   * assistive technologies like screen readers. If will also be used to replace
-   * the animated loading indicator when buyers prefers reduced motion. If not included,
-   * it will use the loading indicator for all buyers.
+   * A label that describes the purpose or contents of the element. When set, it will be announced
+   * to users using assistive technologies and will provide them with more context. When set, any
+   * children or `label` supplied won't be announced to screen readers.
    */
   accessibilityLabel?: string;
 }
