@@ -114,7 +114,7 @@ export interface FocusEventProps {
 /** @publicDocs */
 export interface ToggleEventProps {
 	/**
-	 * A callback fired when the element state changes, after any toggle animations have finished.
+	 * A callback that fires when the element state changes, after any toggle animations have finished.
 	 *
 	 * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
@@ -125,7 +125,7 @@ export interface ToggleEventProps {
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
-	 * A callback fired immediately when the element state changes, before any animations.
+	 * A callback that fires immediately when the element state changes, before any animations.
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
@@ -136,10 +136,24 @@ export interface ToggleEventProps {
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
-/** @publicDocs */
+/**
+ * The visibility state of a toggleable element.
+ *
+ * - `open`: The element is visible and showing its content.
+ * - `closed`: The element is hidden and its content is not visible.
+ */
 export type ToggleState = "open" | "closed";
+/**
+ * The event data provided to toggle-related callbacks. Contains the previous and next visibility states of the element.
+ */
 interface ToggleEvent$1 extends Event {
+	/**
+	 * The visibility state of the element after the toggle occurred.
+	 */
 	readonly newState: ToggleState;
+	/**
+	 * The visibility state of the element before the toggle occurred.
+	 */
 	readonly oldState: ToggleState;
 }
 /** @publicDocs */
@@ -160,8 +174,7 @@ interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Callback fired when the announcement is dismissed by the user
-	 * (either via the built-in dismiss button or programmatically).
+	 * A callback that fires when the announcement is dismissed by the user clicking the close button or by calling the `dismiss()` method programmatically.
 	 */
 	onDismiss?: (event: Event) => void;
 	/**
@@ -817,29 +830,32 @@ interface BadgeProps$1 extends GlobalProps {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets the tone of the Badge, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the badge.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Modify the color to be more or less intense.
+	 * Controls the visual weight and emphasis of the badge.
 	 *
 	 * @default 'base'
 	 */
 	color?: ColorKeyword;
 	/**
-	 * The type of icon to be displayed in the badge.
+	 * An icon displayed inside the badge to provide additional visual context or reinforce the badge's meaning. Set to an empty string to display no icon.
 	 *
 	 * @default ''
 	 */
 	icon?: IconType | AnyString;
 	/**
-	 * The position of the icon in relation to the text.
+	 * The position of the icon relative to the badge text.
+	 *
+	 * - `start`: Places the icon before the text.
+	 * - `end`: Places the icon after the text.
 	 */
 	iconPosition?: "start" | "end";
 	/**
-	 * Adjusts the size.
+	 * The size of the badge.
 	 *
 	 * @default 'base'
 	 */
@@ -847,42 +863,34 @@ interface BadgeProps$1 extends GlobalProps {
 }
 interface BannerProps$1 extends GlobalProps, ActionSlots {
 	/**
-	 * The title of the banner.
+	 * The heading text displayed at the top of the banner to summarize the message or alert.
 	 *
 	 * @default ''
 	 */
 	heading?: string;
 	/**
-	 * The content of the Banner.
+	 * The main content displayed within the banner component, typically descriptive text or other elements providing details about the message or alert.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets the tone of the Banner, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the component. The banner is a live region and the type of status is dictated by the tone selected.
 	 *
-	 * The banner is a live region and the type of status will be dictated by the Tone selected.
-	 *
-	 * - `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.
-	 * - `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
-	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
-	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role
+	 * The `critical` tone creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately. The `neutral`, `info`, `success`, `warning`, and `caution` tones create an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Makes the content collapsible.
-	 * A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.
+	 * Whether the banner content can be collapsed and expanded by the user. A collapsible banner conceals child elements initially, allowing the user to expand the banner to reveal them.
 	 *
 	 * @default false
 	 */
 	collapsible?: boolean;
 	/**
-	 * Determines whether the close button of the banner is present.
+	 * Whether the banner displays a close button that allows users to dismiss it.
 	 *
 	 * When the close button is pressed, the `dismiss` event will fire,
-	 * then `hidden` will be true,
+	 * then `hidden` will be set to `true`,
 	 * any animation will complete,
 	 * and the `afterhide` event will fire.
 	 *
@@ -890,31 +898,26 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
 	 */
 	dismissible?: boolean;
 	/**
-	 * Event handler when the banner is dismissed by the user.
+	 * A callback that fires when the banner is dismissed by the user clicking the close button.
 	 *
-	 * This does not fire when setting `hidden` manually.
+	 * This doesn't fire when setting `hidden` manually.
 	 *
-	 * The `hidden` property will be `false` when this event fires.
+	 * The `hidden` property is `false` when this event fires.
 	 */
 	onDismiss?: (event: Event) => void;
 	/**
-	 * Event handler when the banner has fully hidden.
+	 * A callback that fires when the banner has fully hidden, including after any hide animations have completed.
 	 *
-	 * The `hidden` property will be `true` when this event fires.
-	 *
-	 * @implementation If implementations animate the hiding of the banner,
-	 * this event must fire after the banner has fully hidden.
-	 * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+	 * The `hidden` property is `true` when this event fires.
 	 */
 	onAfterHide?: (event: Event) => void;
 	/**
-	 * Determines whether the banner is hidden.
+	 * Controls whether the banner is visible or hidden.
 	 *
-	 * If this property is being set on each framework render (as in 'controlled' usage),
-	 * and the banner is `dismissible`,
-	 * ensure you update app state for this property when the `dismiss` event fires.
+	 * When using a controlled component pattern and the banner is `dismissible`,
+	 * update this property to `true` when the `dismiss` event fires.
 	 *
-	 * If the banner is not `dismissible`, it can still be hidden by setting this property.
+	 * You can hide the banner programmatically by setting this to `true` even if it's not `dismissible`.
 	 *
 	 * @default false
 	 */
@@ -3162,41 +3165,27 @@ interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 }
 interface ProgressProps$1 extends GlobalProps {
 	/**
-	 * A label that describes the purpose of the progress. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 *
-	 * Use it to provide context of what is progressing.
+	 * A label announced by assistive technologies that describes what is progressing. Use this to provide context about the ongoing task, such as "Loading order details" or "Uploading file".
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Sets the tone of the progress, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the progress indicator.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Specifies how much of the task has been completed.
+	 * How much of the task has been completed. Must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
 	 *
-	 * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
-	 * If there is no value attribute, the progress bar is indeterminate;
-	 * this indicates that an activity is ongoing with no indication of how long it is expected to take.
-	 *
-	 * @implementation Surfaces should apply styling to cover that indeterminate state.
-	 * @implementation In a HTML host, you can customize the progress animation via the :indeterminate pseudo-class.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#progress_bar
+	 * Learn more about the [value attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value).
 	 */
 	value?: number;
 	/**
-	 * This attribute describes how much work the task indicated by the progress element requires.
+	 * The total amount of work the task requires. Must be a value greater than 0 and a valid floating point number.
 	 *
-	 * The `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.
+	 * Learn more about the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max).
 	 *
 	 * @default 1
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max
 	 */
 	max?: number;
 }
@@ -3350,17 +3339,13 @@ interface SkeletonParagraphProps$1 extends GlobalProps {
 }
 interface SpinnerProps$1 extends GlobalProps {
 	/**
-	 * Adjusts the size of the spinner icon.
+	 * The size of the spinner icon.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
 	/**
-	 * A label that describes the purpose of the progress. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context. Providing an `accessibilityLabel` is
-	 * recommended if there is no accompanying text describing that something
-	 * is loading.
+	 * A label that describes the purpose of the spinner for assistive technologies like screen readers. Provide an `accessibilityLabel` when there is no visible text that conveys a loading state.
 	 */
 	accessibilityLabel?: string;
 }
