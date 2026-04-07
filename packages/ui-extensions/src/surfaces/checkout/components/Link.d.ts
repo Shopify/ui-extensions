@@ -39,7 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-link";
 /**
- * The element props interface for the Link component.
+ * Configure the following properties on the link component.
  * @publicDocs
  */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
@@ -49,15 +49,14 @@ export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel'
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
 /**
- * The events interface for the Link component.
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface LinkElementEvents {
     /**
-     * Callback when the link is activated.
-     * This will be called before navigating to the location specified by `href`.
+     * A callback fired when the link is clicked, before navigating to the location specified by `href`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
 }

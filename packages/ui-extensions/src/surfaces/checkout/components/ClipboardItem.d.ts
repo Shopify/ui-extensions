@@ -33,7 +33,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-clipboard-item";
 /**
- * The element props interface for the ClipboardItem component.
+ * Configure the following properties on the clipboard item component.
  * @publicDocs
  */
 export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
@@ -41,16 +41,16 @@ export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'i
 export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
 /**
- * The events interface for the ClipboardItem component.
+ * The clipboard item component provides event callbacks for handling copy interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClipboardItemElementEvents {
     /**
-     * Callback run when the copy to clipboard succeeds.
+     * A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.
      */
     copy?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback run when the copy to clipboard fails.
+     * A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.
      */
     copyerror?: CallbackEventListener<typeof tagName>;
 }
