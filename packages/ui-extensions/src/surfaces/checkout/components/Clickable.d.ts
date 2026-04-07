@@ -28,7 +28,10 @@ export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base
  * @publicDocs
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
-/** @publicDocs */
+/**
+ * A shorthand type for specifying border properties. Accepts a border size, or a combination of size and color, or size, color, and style.
+ * @publicDocs
+ */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -80,27 +83,26 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ClickableElementEvents {
     /**
-     * Callback when the element loses focus.
+     * A callback fired when the component loses focus.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the button is activated.
-     * This will be called before the action indicated by `type`.
+     * A callback fired when the component is clicked. This will be called before the action indicated by `type`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the element receives focus.
+     * A callback fired when the component receives focus.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
 }
