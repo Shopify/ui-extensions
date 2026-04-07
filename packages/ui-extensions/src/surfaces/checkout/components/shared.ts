@@ -887,14 +887,14 @@ export interface VisibilityProps {
 
 export interface OverlayActivatorProps {
   /**
-   * An overlay component to render when the user interacts with the component.
+   * An overlay component to render when the user interacts with the component, such as a popover, modal, or tooltip.
    */
   overlay?: RemoteFragment;
 }
 
 export interface DisclosureActivatorProps {
   /**
-   * The component's identifier whose visibility will be toggled when this component is actioned.
+   * The ID of the component whose visibility will be toggled when this component is activated. Use this to show or hide related content like a disclosure panel.
    */
   toggles?: string;
 }
@@ -923,14 +923,11 @@ export interface IdProps {
 
 export interface InteractionProps {
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this pressable.
-   *
-   * See `activateAction` for how to control the behavior of the target.
-   *
+   * The ID of the component to control when this component is activated. Pair with the `activateAction` property to specify what action to perform on the target component.
    */
   activateTarget?: string;
   /**
-   * Sets the action the `activateTarget` should take when this pressable is activated.
+   * Sets the action the `activateTarget` should take when this component is activated.
    *
    * Supported actions by component:
    *

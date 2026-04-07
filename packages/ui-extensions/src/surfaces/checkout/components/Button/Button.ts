@@ -20,31 +20,26 @@ export interface ButtonProps
     InteractionProps,
     IdProps {
   /**
-   * The type of button that will be rendered. The visual presentation of the button type
-   * is controlled by merchants through the Branding API.
+   * The visual style variant of the button, which controls its prominence and emphasis. The visual presentation is controlled through the Branding API.
    *
-   *
-   * `primary`: button used for main actions. For example: "Continue to next step".
-   *
-   * `secondary`: button used for secondary actions not blocking user progress. For example: "Download Shop app".
-   *
-   * `plain`: renders a button that visually looks like a link.
-   *
+   * - `'primary'`: High-emphasis style for main actions, such as "Continue to next step."
+   * - `'secondary'`: Medium-emphasis style for secondary actions that don't block user progress, such as "Download Shop app."
+   * - `'plain'`: Renders the button with a link-like appearance.
    *
    * @defaultValue 'primary'
    */
   kind?: 'primary' | 'secondary' | 'plain';
   /**
-   * Specify the color treatment of the Button.
+   * The semantic meaning and color treatment of the button, such as `'critical'` for destructive actions or `'monochrome'` for a neutral appearance.
    */
   appearance?: Extract<Appearance, 'monochrome' | 'critical'>;
   /**
-   * Allows the button to submit a form.
-   * @deprecated use `accessibilityRole="submit"` instead
+   * Whether the button submits the nearest containing form when activated.
+   * @deprecated Use `accessibilityRole="submit"` instead.
    */
   submit?: boolean;
   /**
-   * Destination URL to link to.
+   * The URL to navigate to when the button is activated. The `onPress` callback fires first, then navigation occurs.
    */
   to?: string;
   /**
@@ -54,7 +49,7 @@ export interface ButtonProps
    */
   inlineAlignment?: InlineAlignment;
   /**
-   * Replaces content with a loading indicator.
+   * Whether the button is in a loading state, which replaces the button content with a loading indicator while a background action is being performed. This also disables the button.
    *
    * @defaultValue false
    */
@@ -65,28 +60,26 @@ export interface ButtonProps
    */
   loadingLabel?: string;
   /**
-   * A label used for buyers using assistive technologies. When set, any
-   * `children` supplied to this component will not be announced to screen reader users.
+   * A label that describes the purpose or content of the button for users of assistive technologies such as screen readers. When set, any `children` supplied to this component won't be announced to screen reader users.
    */
   accessibilityLabel?: string;
   /**
    * The role of the button that will be rendered.
    *
-   * `button`: renders a regular button.
-   *
-   * `submit`: renders a button that submits a form.
+   * - `'button'`: Renders a regular button.
+   * - `'submit'`: Renders a button that submits a form.
    *
    * @defaultValue 'button'
    */
   accessibilityRole?: ButtonAccessibilityRole;
   /**
-   * Disables the button, disallowing any interaction.
+   * Whether the button is disabled, preventing it from being activated or receiving focus.
    *
    * @defaultValue false
    */
   disabled?: boolean;
   /**
-   * Callback that is run when the button is pressed.
+   * A callback fired when the button is activated by the user.
    */
   onPress?(): void;
 }

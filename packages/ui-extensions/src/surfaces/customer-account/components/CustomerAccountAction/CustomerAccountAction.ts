@@ -7,15 +7,15 @@ import type {RemoteFragment} from '@remote-ui/core';
  */
 export interface CustomerAccountActionProps {
   /**
-   * Sets the title of the Action container.
+   * The main title displayed at the top of the action modal, rendered in the header alongside the close button. Use a short, descriptive phrase that tells the customer what the action does, such as "Request a return" or "Edit shipping address."
    */
   title: string;
   /**
-   * Sets the Primary action button of the container. This component must be a button component.
+   * The primary action for the modal. Accepts a single button component. Use this for the main confirmation action, such as "Submit" or "Confirm."
    */
   primaryAction?: RemoteFragment;
   /**
-   * Sets the Secondary action button of the container. This component must be a button component.
+   * The secondary action for the modal. Accepts a single button component. Use this for dismissive actions like "Cancel" or alternative actions.
    */
   secondaryAction?: RemoteFragment;
 }

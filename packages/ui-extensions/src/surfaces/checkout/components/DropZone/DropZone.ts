@@ -40,7 +40,7 @@ export interface DropZoneProps extends IdProps {
   /**
    * A string representing the types of files that are accepted by the dropzone.
    * This string is a comma-separated list of unique file type specifiers which can be one of the following:
-   * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
+   * - A file extension starting with a period (".") character (such as .jpg, .pdf, .doc)
    * - A valid MIME type string with no extensions
    *
    * If left empty, the dropzone will accept all files.

@@ -31,12 +31,12 @@ export interface SheetProps extends IdProps {
   onHide?(): void;
 
   /**
-   * The primary action to perform, provided as a Button component. Up to two buttons can be rendered.
+   * The primary action to perform, provided as a button component. Up to two buttons can be rendered.
    */
   primaryAction?: RemoteFragment;
 
   /**
-   * The secondary action to perform, provided as a Button component. Only one button can be rendered.
+   * The secondary action to perform, provided as a button component. Only one button can be rendered.
    */
   secondaryAction?: RemoteFragment;
 }

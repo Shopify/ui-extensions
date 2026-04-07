@@ -10,19 +10,19 @@ import type {IdProps} from '../shared';
  */
 export interface ClipboardItemProps extends IdProps {
   /**
-   * Plain text to be written to the clipboard.
+   * The plain text content to copy to the clipboard when this component is activated. For example, a discount code, order number, or tracking URL.
    *
    * @default ''
    */
   text?: string;
 
   /**
-   * Callback run when the copy to clipboard succeeds.
+   * A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.
    */
   onCopy?: () => void;
 
   /**
-   * Callback run when the copy to clipboard fails.
+   * A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.
    */
   onCopyError?: () => void;
 }
