@@ -101,15 +101,11 @@ export interface BaseOverlayMethods {
 /** @publicDocs */
 export interface FocusEventProps {
 	/**
-	 * Callback when the element loses focus.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+	 * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
 	 */
 	onBlur?: (event: FocusEvent) => void;
 	/**
-	 * Callback when the element receives focus.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+	 * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
 	 */
 	onFocus?: (event: FocusEvent) => void;
 }
@@ -1361,7 +1357,7 @@ interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {
 /** @publicDocs */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The behavior of the Button.
+	 * The behavioral type of the button component, which determines what action it performs when activated.
 	 *
 	 * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
 	 * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
@@ -1373,22 +1369,19 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	type?: "submit" | "button" | "reset";
 	/**
-	 * Callback when the Button is activated.
-	 * This will be called before the action indicated by `type`.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+	 * A callback fired when the button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * Disables the Button meaning it cannot be clicked or receive focus.
+	 * Whether the button is disabled, preventing it from being clicked or receiving focus.
 	 *
 	 * @default false
 	 */
 	disabled?: boolean;
 	/**
-	 * Replaces content with a loading indicator while a background action is being performed.
+	 * Whether the button is in a loading state, which replaces the button content with a loading indicator while a background action is being performed.
 	 *
-	 * This also disables the Button.
+	 * This also disables the button.
 	 *
 	 * @default false
 	 */
@@ -1397,7 +1390,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 /** @publicDocs */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The URL to link to.
+	 * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.
 	 *
 	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
 	 * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
@@ -1424,17 +1417,14 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	download?: string;
 	/**
-	 * Callback when the link is activated.
-	 * This will be called before navigating to the location specified by `href`.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+	 * A callback fired when the link is activated, before navigating to the location specified by `href`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
 	 */
 	onClick?: (event: Event) => void;
 }
 /** @publicDocs */
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (e.g. clicks) on this component.
+	 * ID of a component that should respond to activations (such as clicks) on this component.
 	 *
 	 * See `command` for how to control the behavior of the target.
 	 *
@@ -1458,7 +1448,7 @@ export interface InteractionProps {
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
-	 * ID of a component that should respond to interest (e.g. hover and focus) on this component.
+	 * The ID of the component to show when users hover over or focus on this component. Pair with a target component that supports interest-based interactions. Learn more about the [interestFor attribute](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code).
 	 */
 	interestFor?: string;
 }
@@ -1467,47 +1457,43 @@ export interface BaseClickableProps extends ButtonBehaviorProps, LinkBehaviorPro
 }
 interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	/**
-	 * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
-	 *
-	 * Use this when using only an icon or the Button text is not enough context
-	 * for users using assistive technologies.
+	 * A label that describes the purpose or content of the button for users of assistive technologies such as screen readers. Use this when the visible content alone doesn't provide enough context.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The content of the Button.
+	 * The content displayed within the button component.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * The type of icon to be displayed in the Button.
+	 * An icon displayed inside the button, typically positioned before the button text.
 	 *
 	 * @default ''
 	 */
 	icon?: IconType | AnyString;
 	/**
-	 * The displayed inline width of the Button.
+	 * The inline width of the button component.
 	 *
 	 * - `auto`: the size of the button depends on the surface and context.
-	 * - `fill`: the button will takes up 100% of the available inline size.
+	 * - `fill`: the button takes up 100% of the available inline size.
 	 * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
 	 *
 	 * @default 'auto'
 	 */
 	inlineSize?: "auto" | "fill" | "fit-content";
 	/**
-	 * Changes the visual appearance of the Button.
+	 * The visual style variant of the button component, which controls its prominence and emphasis.
 	 *
-	 * @default 'auto' - the variant is automatically determined by the Button's context
+	 * @default 'auto' - the variant is automatically determined by the button's context
 	 */
 	variant?: "auto" | "primary" | "secondary" | "tertiary";
 	/**
-	 * Sets the tone of the Button based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the button.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
 	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 */
 	lang?: string;
@@ -1528,7 +1514,7 @@ export interface BaseInputProps {
 /** @publicDocs */
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+	 * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
 	 */
@@ -1870,7 +1856,7 @@ export interface ChipProps$1 {
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
+	 * A label that describes the purpose or contents of the chip. It will be read to users using assistive technologies such as screen readers.
 	 */
 	accessibilityLabel?: string;
 	/**
@@ -1978,8 +1964,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	 */
 	disabled?: BaseClickableProps["disabled"];
 	/**
-	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
 	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 *
 	 * @default ''
@@ -1992,7 +1977,7 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * The URL to link to.
+	 * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.
 	 *
 	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
 	 */
@@ -2361,7 +2346,7 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 	/**
 	 * A string representing the types of files that are accepted by the drop zone.
 	 * This string is a comma-separated list of unique file type specifiers which can be one of the following:
-	 * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
+	 * - A file extension starting with a period (".") character (such as .jpg, .pdf, .doc)
 	 * - A valid MIME type string with no extensions
 	 *
 	 * If omitted, all file types are accepted.
@@ -2593,8 +2578,7 @@ export interface BaseTypographyProps {
 	 */
 	fontVariantNumeric?: "auto" | "normal" | "tabular-nums";
 	/**
-	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
 	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 *
 	 * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
@@ -2605,8 +2589,8 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicates the directionality of the element’s text.
 	 *
-	 * - `ltr`: languages written from left to right (e.g. English)
-	 * - `rtl`: languages written from right to left (e.g. Arabic)
+	 * - `ltr`: languages written from left to right (such as English)
+	 * - `rtl`: languages written from right to left (such as Arabic)
 	 * - `auto`: the user agent determines the direction based on the content
 	 * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
 	 *
@@ -2769,25 +2753,24 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
 	/**
-	 * The content of the Link.
+	 * The content of the link.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets the tone of the Link, based on the intention of the information being conveyed.
+	 * Sets the tone of the link, based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
+	 * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.
 	 *
 	 * Use this when using only an icon or the content of the link is not enough context
 	 * for users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
 	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 */
 	lang?: string;
@@ -3230,19 +3213,19 @@ interface ScrollBoxProps$1 extends GlobalProps, Omit<BaseBoxPropsWithRole, "over
 }
 interface SectionProps$1 extends GlobalProps, ActionSlots {
 	/**
-	 * The content of the Section.
+	 * The content of the section.
 	 */
 	children?: ComponentChildren;
 	/**
 	 * A label used to describe the section that will be announced by assistive technologies.
 	 *
-	 * When no `heading` property is provided or included as a children of the Section, you **must** provide an
-	 * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+	 * When no `heading` property is provided or included as a child of the section, you **must** provide an
+	 * `accessibilityLabel` to describe the section. This is important as it allows assistive technologies to provide
 	 * the right context to users.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * A title that describes the content of the section.
+	 * A title displayed at the top of the section. When provided, it serves as both a visible heading and the accessible name for the section. If omitted, you must provide an `accessibilityLabel` instead.
 	 */
 	heading?: string;
 	/**
@@ -3250,8 +3233,8 @@ interface SectionProps$1 extends GlobalProps, ActionSlots {
 	 *
 	 * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
 	 * this is the right design decision in a particular context.
-	 * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
-	 * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+	 * - `none`: removes all padding from the element. This can be useful when elements inside the section need to span
+	 * to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
 	 * to bring back the desired padding for the rest of the content.
 	 *
 	 * @default 'base'

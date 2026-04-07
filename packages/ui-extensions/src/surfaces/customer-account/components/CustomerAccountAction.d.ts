@@ -4,7 +4,7 @@ import {BaseElementPropsWithChildren, IdProps} from './shared';
  */
 export interface CustomerAccountActionProps extends IdProps {
   /**
-   * Sets the heading of the action container.
+   * The main title displayed at the top of the action modal, rendered in the header alongside the close button. Use a short, descriptive phrase that tells the customer what the action does, such as "Request a return" or "Edit shipping address."
    */
   heading: string;
 }
@@ -14,11 +14,11 @@ export interface CustomerAccountActionProps extends IdProps {
  */
 export interface CustomerAccountActionElementSlots {
   /**
-   * The primary action for the page. Accepts a single Button element with restricted properties (see below).
+   * The primary action for the modal. Accepts a single [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) element. Use this for the main confirmation action, such as "Submit" or "Confirm."
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions for the page. Accepts multiple Button elements with restricted properties (see below).
+   * The secondary actions for the modal. Accepts multiple [button](/docs/api/customer-account-ui-extensions/{API_VERSION}/web-components/actions/button) elements. Use this for dismissive actions like "Cancel" or alternative actions.
    */
   'secondary-actions'?: HTMLElement;
 }

@@ -97,19 +97,19 @@ export interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onCh
  */
 export interface TextFieldElementEvents {
     /**
-     * Callback when the element loses focus.
+     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the element receives focus.
+     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
      */

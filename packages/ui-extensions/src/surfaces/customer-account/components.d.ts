@@ -28,13 +28,11 @@ import {
   SectionElement,
   SectionElementSlots,
 } from './components/Section';
-/** @publicDocs */
-export type AvatarElementPropsDocs = AvatarElementProps;
+
 /**
+ * The element props interface for the avatar component.
  * @publicDocs
  */
-export type AvatarElementEventsDocs = AvatarEvents;
-/** @publicDocs */
 export type AvatarElementPropsDocs = AvatarElementProps;
 /**
  * @publicDocs
@@ -46,10 +44,12 @@ export type AvatarElementEventsDocs = AvatarEvents;
  */
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
 /**
+ * The custom element interface for the customer account action component.
  * @publicDocs
  */
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
 /**
+ * The customer account action component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type CustomerAccountActionElementSlotsDocs =
@@ -73,9 +73,13 @@ declare module 'preact' {
     }
   }
 }
-/** @publicDocs */
+
+/**
+ * @publicDocs
+ */
 export type ImageGroupPropsDocs = ImageGroupProps;
 /**
+ * The custom element interface for the image group component.
  * @publicDocs
  */
 export type ImageGroupElementDocs = ImageGroupElement;
@@ -107,6 +111,7 @@ export type PagePropsDocs = PageProps;
  */
 export type PageElementDocs = PageElement;
 /**
+ * The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type PageElementSlotsDocs = PageElementSlots;
@@ -129,17 +134,20 @@ declare module 'preact' {
     }
   }
 }
-/** @publicDocs */
-export type AvatarElementPropsDocs = AvatarElementProps;
+
 /**
  * @publicDocs
  */
 export type AvatarPropsDocs = AvatarProps;
 /**
+ * The custom element interface for the avatar component.
  * @publicDocs
  */
 export type AvatarElementDocs = AvatarElement;
-/** @publicDocs */
+/**
+ * The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
@@ -190,10 +198,12 @@ declare module 'preact' {
  */
 export type ButtonGroupPropsDocs = ButtonGroupProps;
 /**
+ * The custom element interface for the button group component.
  * @publicDocs
  */
 export type ButtonGroupElementDocs = ButtonGroupElement;
 /**
+ * The button group component supports slots for additional content placement within the group. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
@@ -226,6 +236,7 @@ export type SectionPropsDocs = SectionProps;
  */
 export type SectionElementDocs = SectionElement;
 /**
+ * The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type SectionElementSlotsDocs = SectionElementSlots;
