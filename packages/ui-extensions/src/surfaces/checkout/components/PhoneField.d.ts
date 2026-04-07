@@ -43,7 +43,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-phone-field";
 /**
- * Use PhoneField to allow users to enter phone numbers.
+ * Configure the following properties on the phone field component.
  * @publicDocs
  */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
@@ -57,11 +57,12 @@ export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocom
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The phone field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface PhoneFieldElementEvents {
     /**
+<<<<<<< HEAD
      * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      *
      * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
@@ -75,25 +76,41 @@ export interface PhoneFieldElementEvents {
     change?: CallbackEventListener<typeof tagName>;
     /**
      * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+=======
+     * A callback fired when the phone field value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
-    focus?: CallbackEventListener<typeof tagName>;
+    change?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the phone field.
+>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
+    /**
+     * A callback fired when the phone field loses focus.
+     *
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+     */
+    blur?: CallbackEventListener<typeof tagName>;
+    /**
+     * A callback fired when the phone field receives focus.
+     *
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+     */
+    focus?: CallbackEventListener<typeof tagName>;
 }
 /**
- * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * The phone field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface PhoneFieldElementSlots {
     /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
+     * Additional interactive content displayed within the field.
+     *
+     * Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
      */
     accessory?: HTMLElement;
 }
