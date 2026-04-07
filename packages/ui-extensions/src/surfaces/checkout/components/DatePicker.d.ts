@@ -36,9 +36,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-date-picker";
 /**
- * The date picker component allows merchants to select dates using a calendar interface. Use it when merchants benefit from seeing dates in context of the full month, such as selecting dates relative to today or needing weekday context.
- *
- * The component supports single dates, multiple dates, and date ranges. For text date entry, use [date field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/date-field).
+ * Configure the following properties on the date picker component.
  * @publicDocs
  */
 export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
@@ -47,11 +45,12 @@ export interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' 
 export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The date picker component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DatePickerElementEvents {
     /**
+<<<<<<< HEAD
      * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
@@ -61,14 +60,33 @@ export interface DatePickerElementEvents {
     change?: CallbackEventListener<typeof tagName>;
     /**
      * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+=======
+     * A callback fired when the date picker loses focus.
+     *
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+     */
+    blur?: CallbackEventListener<typeof tagName>;
+    /**
+     * A callback fired when the date picker value changes.
+     *
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+     */
+    change?: CallbackEventListener<typeof tagName>;
+    /**
+     * A callback fired when the date picker receives focus.
+     *
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the date picker.
+     *
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the view changes.
+     * A callback fired when the calendar view changes, such as when navigating between months.
      */
     viewChange?: CallbackEventListener<typeof tagName>;
 }

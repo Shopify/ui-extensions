@@ -17,7 +17,7 @@ export type StringChildren = string;
 /** @publicDocs */
 export interface GlobalProps {
 	/**
-	 * A unique identifier for the element.
+	 * A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.
 	 */
 	id?: string;
 }
@@ -99,18 +99,22 @@ export interface BaseOverlayMethods {
 /** @publicDocs */
 export interface FocusEventProps {
 	/**
-	 * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+	 * A callback fired when the element loses focus.
+	 *
+	 * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
 	 */
 	onBlur?: (event: FocusEvent) => void;
 	/**
-	 * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+	 * A callback fired when the element receives focus.
+	 *
+	 * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
 	 */
 	onFocus?: (event: FocusEvent) => void;
 }
 /** @publicDocs */
 export interface ToggleEventProps {
 	/**
-	 * A callback fired when the element state changes, after any toggle animations have finished.
+	 * A callback that fires when the element state changes, after any toggle animations have finished.
 	 *
 	 * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
@@ -121,7 +125,7 @@ export interface ToggleEventProps {
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
-	 * A callback fired immediately when the element state changes, before any animations.
+	 * A callback that fires immediately when the element state changes, before any animations.
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
@@ -132,10 +136,24 @@ export interface ToggleEventProps {
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
-/** @publicDocs */
+/**
+ * The visibility state of a toggleable element.
+ *
+ * - `open`: The element is visible and showing its content.
+ * - `closed`: The element is hidden and its content is not visible.
+ */
 export type ToggleState = "open" | "closed";
+/**
+ * The event data provided to toggle-related callbacks. Contains the previous and next visibility states of the element.
+ */
 interface ToggleEvent$1 extends Event {
+	/**
+	 * The visibility state of the element after the toggle occurred.
+	 */
 	readonly newState: ToggleState;
+	/**
+	 * The visibility state of the element before the toggle occurred.
+	 */
 	readonly oldState: ToggleState;
 }
 /** @publicDocs */
@@ -156,8 +174,7 @@ interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Callback fired when the announcement is dismissed by the user
-	 * (either via the built-in dismiss button or programmatically).
+	 * A callback that fires when the announcement is dismissed by the user clicking the close button or by calling the `dismiss()` method programmatically.
 	 */
 	onDismiss?: (event: Event) => void;
 	/**
@@ -184,12 +201,12 @@ export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 /** @publicDocs */
 export interface BackgroundProps {
 	/**
-	 * Adjust the background of the element.
+	 * The background color of the element.
 	 *
-	 * - `'transparent'`: No visible background.
-	 * - `'subdued'`: A subtle, low-emphasis background.
-	 * - `'base'`: The standard background color.
-	 * - `'strong'`: A high-emphasis background for prominence.
+	 * - `base`: The standard background color for general content areas.
+	 * - `subdued`: A muted background for secondary or supporting content.
+	 * - `transparent`: No background color (the default).
+	 * - `strong`: An emphasized background for prominent sections.
 	 *
 	 * @default 'transparent'
 	 */
@@ -813,29 +830,32 @@ interface BadgeProps$1 extends GlobalProps {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets the tone of the Badge, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the badge.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Modify the color to be more or less intense.
+	 * Controls the visual weight and emphasis of the badge.
 	 *
 	 * @default 'base'
 	 */
 	color?: ColorKeyword;
 	/**
-	 * The type of icon to be displayed in the badge.
+	 * An icon displayed inside the badge to provide additional visual context or reinforce the badge's meaning. Set to an empty string to display no icon.
 	 *
 	 * @default ''
 	 */
 	icon?: IconType | AnyString;
 	/**
-	 * The position of the icon in relation to the text.
+	 * The position of the icon relative to the badge text.
+	 *
+	 * - `start`: Places the icon before the text.
+	 * - `end`: Places the icon after the text.
 	 */
 	iconPosition?: "start" | "end";
 	/**
-	 * Adjusts the size.
+	 * The size of the badge.
 	 *
 	 * @default 'base'
 	 */
@@ -843,42 +863,34 @@ interface BadgeProps$1 extends GlobalProps {
 }
 interface BannerProps$1 extends GlobalProps, ActionSlots {
 	/**
-	 * The title of the banner.
+	 * The heading text displayed at the top of the banner to summarize the message or alert.
 	 *
 	 * @default ''
 	 */
 	heading?: string;
 	/**
-	 * The content of the Banner.
+	 * The main content displayed within the banner component, typically descriptive text or other elements providing details about the message or alert.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets the tone of the Banner, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the component. The banner is a live region and the type of status is dictated by the tone selected.
 	 *
-	 * The banner is a live region and the type of status will be dictated by the Tone selected.
-	 *
-	 * - `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.
-	 * - `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
-	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
-	 * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role
+	 * The `critical` tone creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately. The `neutral`, `info`, `success`, `warning`, and `caution` tones create an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Makes the content collapsible.
-	 * A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.
+	 * Whether the banner content can be collapsed and expanded by the user. A collapsible banner conceals child elements initially, allowing the user to expand the banner to reveal them.
 	 *
 	 * @default false
 	 */
 	collapsible?: boolean;
 	/**
-	 * Determines whether the close button of the banner is present.
+	 * Whether the banner displays a close button that allows users to dismiss it.
 	 *
 	 * When the close button is pressed, the `dismiss` event will fire,
-	 * then `hidden` will be true,
+	 * then `hidden` will be set to `true`,
 	 * any animation will complete,
 	 * and the `afterhide` event will fire.
 	 *
@@ -886,31 +898,26 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
 	 */
 	dismissible?: boolean;
 	/**
-	 * Event handler when the banner is dismissed by the user.
+	 * A callback that fires when the banner is dismissed by the user clicking the close button.
 	 *
-	 * This does not fire when setting `hidden` manually.
+	 * This doesn't fire when setting `hidden` manually.
 	 *
-	 * The `hidden` property will be `false` when this event fires.
+	 * The `hidden` property is `false` when this event fires.
 	 */
 	onDismiss?: (event: Event) => void;
 	/**
-	 * Event handler when the banner has fully hidden.
+	 * A callback that fires when the banner has fully hidden, including after any hide animations have completed.
 	 *
-	 * The `hidden` property will be `true` when this event fires.
-	 *
-	 * @implementation If implementations animate the hiding of the banner,
-	 * this event must fire after the banner has fully hidden.
-	 * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+	 * The `hidden` property is `true` when this event fires.
 	 */
 	onAfterHide?: (event: Event) => void;
 	/**
-	 * Determines whether the banner is hidden.
+	 * Controls whether the banner is visible or hidden.
 	 *
-	 * If this property is being set on each framework render (as in 'controlled' usage),
-	 * and the banner is `dismissible`,
-	 * ensure you update app state for this property when the `dismiss` event fires.
+	 * When using a controlled component pattern and the banner is `dismissible`,
+	 * update this property to `true` when the `dismiss` event fires.
 	 *
-	 * If the banner is not `dismissible`, it can still be hidden by setting this property.
+	 * You can hide the banner programmatically by setting this to `true` even if it's not `dismissible`.
 	 *
 	 * @default false
 	 */
@@ -932,18 +939,33 @@ export interface DisplayProps {
 /** @publicDocs */
 export interface AccessibilityRoleProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
-	 * the role will be used by assistive technologies to help users
-	 * navigate the page.
-	 *
-	 * @implementation Although, in HTML hosts, this property changes the element used,
-	 * changing this property must not impact the visual styling of inside or outside of the box.
+	 * The semantic meaning of the component's content. When set, assistive technologies use this role to help users navigate the page.
 	 *
 	 * @default 'generic'
 	 */
 	accessibilityRole?: AccessibilityRole;
 }
-/** @publicDocs */
+/**
+ * The semantic role of a component, used by assistive technologies to convey the element's purpose to users. Each role maps to a specific HTML element or ARIA role.
+ *
+ * - `main`: The primary content of the page.
+ * - `header`: A page or section header.
+ * - `footer`: Information such as copyright, navigation links, and privacy statements.
+ * - `section`: A generic section that should have a heading or `accessibilityLabel`.
+ * - `aside`: Supporting content related to the main content.
+ * - `navigation`: A major group of navigation links.
+ * - `ordered-list`: A list of ordered items.
+ * - `list-item`: An item inside a list.
+ * - `list-item-separator`: A divider between list items.
+ * - `unordered-list`: A list of unordered items.
+ * - `separator`: A divider that separates sections of content.
+ * - `status`: A live region with advisory information that is not urgent.
+ * - `alert`: Important, usually time-sensitive information.
+ * - `generic`: A nameless container with no semantic meaning (renders a `<div>`).
+ * - `presentation`: Strips semantic meaning while keeping visual styling. Synonym for `none`.
+ * - `none`: Strips semantic meaning while keeping visual styling. Synonym for `presentation`.
+ * @publicDocs
+ */
 export type AccessibilityRole = 
 /**
  * Used to indicate the primary content.
@@ -1075,10 +1097,10 @@ export interface AccessibilityVisibilityProps {
 /** @publicDocs */
 export interface LabelAccessibilityVisibilityProps {
 	/**
-	 * Changes the visibility of the component's label.
+	 * Controls whether the label is visible to all users or only to screen readers.
 	 *
-	 * - `visible`: the label is visible to all users.
-	 * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+	 * - `visible`: The label is shown to everyone.
+	 * - `exclusive`: The label is visually hidden but still announced by screen readers.
 	 *
 	 * @default 'visible'
 	 */
@@ -1265,7 +1287,7 @@ export type BorderSizeKeyword = SizeKeyword | "none";
  */
 export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 /**
- * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
+ * A shorthand string for specifying border properties. Accepts a size alone (`'base'`), size with color (`'base strong'`), or size with color and style (`'base strong dashed'`). Omitted values use their defaults.
  * @publicDocs
  */
 export type BorderShorthand = BorderSizeKeyword | `${BorderSizeKeyword} ${ColorKeyword}` | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
@@ -1344,10 +1366,10 @@ export interface BorderProps {
 /** @publicDocs */
 export interface OverflowProps {
 	/**
-	 * Sets the overflow behavior of the element.
+	 * The overflow behavior of the element.
 	 *
-	 * - `visible`: The content that extends beyond the element’s container is visible.
-	 * - `hidden`: Clips the content when it is larger than the element’s container. The element will not be scrollable and users will not be able to access the clipped content by dragging or using a scroll wheel on a mouse.
+	 * - `visible`: Content that extends beyond the container is visible.
+	 * - `hidden`: Content that extends beyond the container is clipped and not scrollable.
 	 *
 	 * @default 'visible'
 	 */
@@ -1356,14 +1378,11 @@ export interface OverflowProps {
 /** @publicDocs */
 export interface BaseBoxProps extends AccessibilityVisibilityProps, BackgroundProps, DisplayProps, SizingProps, PaddingProps, BorderProps, OverflowProps {
 	/**
-	 * The content of the Box.
+	 * The child elements to render inside the container.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * A label that describes the purpose or contents of the element.
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
-	 *
-	 * Only use this when the element's content is not enough context for users using assistive technologies.
+	 * A label announced by assistive technologies that describes the purpose or contents of the element. Only set this when the element's visible content doesn't provide enough context on its own.
 	 */
 	accessibilityLabel?: string;
 }
@@ -1375,11 +1394,11 @@ interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {
 /** @publicDocs */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The behavioral type of the button component, which determines what action it performs when activated.
+	 * The behavior of the Button.
 	 *
-	 * - `submit`: Submits the closest form.
-	 * - `button`: Performs no default action when activated.
-	 * - `reset`: Resets the closest form (returning fields to their default values).
+	 * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
+	 * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
+	 * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
 	 *
 	 * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
 	 *
@@ -1387,19 +1406,22 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	type?: "submit" | "button" | "reset";
 	/**
-	 * A callback fired when the button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+	 * Callback when the Button is activated.
+	 * This will be called before the action indicated by `type`.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * Whether the button is disabled, preventing it from being clicked or receiving focus.
+	 * Disables the Button meaning it cannot be clicked or receive focus.
 	 *
 	 * @default false
 	 */
 	disabled?: boolean;
 	/**
-	 * Whether the button is in a loading state, which replaces the button content with a loading indicator while a background action is being performed.
+	 * Replaces content with a loading indicator while a background action is being performed.
 	 *
-	 * This also disables the button.
+	 * This also disables the Button.
 	 *
 	 * @default false
 	 */
@@ -1408,7 +1430,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 /** @publicDocs */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.
+	 * The URL to link to.
 	 *
 	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
 	 * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
@@ -1419,8 +1441,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
 	 *
-	 * - `auto`: Opens the URL using a target automatically determined based on the origin of the URL.
-	 * - `_blank`: Opens the URL in a new browsing context.
+	 * 'auto': The target is automatically determined based on the origin of the URL.
 	 *
 	 * @implementation Surfaces can set specific rules on how they handle each URL.
 	 * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
@@ -1436,14 +1457,17 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	download?: string;
 	/**
-	 * A callback fired when the link is activated, before navigating to the location specified by `href`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+	 * Callback when the link is activated.
+	 * This will be called before navigating to the location specified by `href`.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
 	 */
 	onClick?: (event: Event) => void;
 }
 /** @publicDocs */
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (such as clicks) on this component.
+	 * ID of a component that should respond to activations (e.g. clicks) on this component.
 	 *
 	 * See `command` for how to control the behavior of the target.
 	 *
@@ -1455,11 +1479,11 @@ export interface InteractionProps {
 	 *
 	 * See the documentation of particular components for the actions they support.
 	 *
-	 * - `--auto`: Performs the default action for the target component.
-	 * - `--show`: Displays the target component.
-	 * - `--hide`: Conceals the target component.
-	 * - `--toggle`: Alternates the target component.
-	 * - `--copy`: Copies the target ClipboardItem.
+	 * - `--auto`: a default action for the target component.
+	 * - `--show`: shows the target component.
+	 * - `--hide`: hides the target component.
+	 * - `--toggle`: toggles the target component.
+	 * - `--copy`: copies the target ClipboardItem.
 	 *
 	 * @default '--auto'
 	 *
@@ -1467,7 +1491,7 @@ export interface InteractionProps {
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
-	 * The ID of the component to show when users hover over or focus on this component. Pair with a target component that supports interest-based interactions. Learn more about the [interestFor attribute](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code).
+	 * ID of a component that should respond to interest (e.g. hover and focus) on this component.
 	 */
 	interestFor?: string;
 }
@@ -1476,60 +1500,55 @@ export interface BaseClickableProps extends ButtonBehaviorProps, LinkBehaviorPro
 }
 interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	/**
-	 * A label that describes the purpose or content of the button for users of assistive technologies such as screen readers. Use this when the visible content alone doesn't provide enough context.
+	 * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
+	 *
+	 * Use this when using only an icon or the Button text is not enough context
+	 * for users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The content displayed within the button component.
+	 * The content of the Button.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * An icon displayed inside the button, typically positioned before the button text.
+	 * The type of icon to be displayed in the Button.
 	 *
 	 * @default ''
 	 */
 	icon?: IconType | AnyString;
 	/**
-	 * The inline width of the button component.
+	 * The displayed inline width of the Button.
 	 *
-	 * - `auto`: The size depends on the surface and context.
-	 * - `fill`: The button takes up 100% of the available inline size.
-	 * - `fit-content`: The button takes up the minimum inline-size required to fit its content.
+	 * - `auto`: the size of the button depends on the surface and context.
+	 * - `fill`: the button will takes up 100% of the available inline size.
+	 * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
 	 *
 	 * @default 'auto'
 	 */
 	inlineSize?: "auto" | "fill" | "fit-content";
 	/**
-	 * The visual style variant of the button component, which controls its prominence and emphasis.
+	 * Changes the visual appearance of the Button.
 	 *
-	 * - `'auto'`: Automatically determined by the button's context.
-	 * - `'primary'`: High-emphasis style for the main action.
-	 * - `'secondary'`: Medium-emphasis style for supporting actions.
-	 * - `'tertiary'`: Low-emphasis style for less prominent actions.
-	 *
-	 * @default 'auto'
+	 * @default 'auto' - the variant is automatically determined by the Button's context
 	 */
 	variant?: "auto" | "primary" | "secondary" | "tertiary";
 	/**
-	 * The semantic meaning and color treatment of the button.
-	 *
-	 * - `'auto'`: Automatically determined based on context.
-	 * - `'neutral'`: General information without specific intent.
-	 * - `'critical'`: Urgent problems or destructive actions.
+	 * Sets the tone of the Button based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 */
 	lang?: string;
 }
 /** @publicDocs */
 export interface BaseInputProps {
 	/**
-	 * An identifier for the field that is unique within the nearest containing form.
+	 * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
@@ -1542,15 +1561,15 @@ export interface BaseInputProps {
 /** @publicDocs */
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+	 * A callback fired when the user has **finished editing** a field, such as when they blur the field or press Enter.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the field.
+	 * A callback fired when the user makes any changes in the field, such as typing a character.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1558,7 +1577,7 @@ export interface InputProps extends BaseInputProps {
 	 */
 	value?: string;
 	/**
-	 * The default value for the field.
+	 * The initial value of the field when it first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts typing, their input replaces this value.
 	 *
 	 * @implementation `defaultValue` reflects to the `value` attribute.
 	 */
@@ -1567,15 +1586,15 @@ export interface InputProps extends BaseInputProps {
 /** @publicDocs */
 export interface MultipleInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user has selected one or more options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user selects or deselects options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1588,11 +1607,11 @@ export interface MultipleInputProps extends BaseInputProps {
 /** @publicDocs */
 export interface FileInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished selecting** a file or files.
+	 * A callback fired when the user has finished selecting one or more files.
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the file selection.
+	 * A callback fired when the user makes any changes to the file selection.
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1618,8 +1637,7 @@ export interface FileInputProps extends BaseInputProps {
 /** @publicDocs */
 export interface FieldErrorProps {
 	/**
-	 * Indicate an error to the user. The field will be given a specific stylistic treatment
-	 * to communicate problems that have to be resolved immediately.
+	 * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators and the message is announced to screen readers.
 	 */
 	error?: string;
 }
@@ -1635,7 +1653,7 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 */
 	required?: boolean;
 	/**
-	 * Content to use as the field label.
+	 * The text displayed as the field label, which identifies the purpose of the field to users. This label is associated with the field for accessibility and helps users understand what information to provide.
 	 */
 	label?: string;
 }
@@ -1653,14 +1671,14 @@ export interface FieldDetailsProps {
 /** @publicDocs */
 export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps, FieldDetailsProps {
 	/**
-	 * A short hint that describes the expected value of the field.
+	 * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value.
 	 */
 	placeholder?: string;
 }
 /** @publicDocs */
 export interface BaseTextFieldProps extends FieldProps {
 	/**
-	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+	 * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
 	 *
 	 * @default false
 	 */
@@ -1701,8 +1719,7 @@ export interface FieldDecorationProps {
 	 */
 	icon?: IconType | AnyString;
 	/**
-	 * Additional content to be displayed in the field.
-	 * Commonly used to display an icon that activates a tooltip providing more information.
+	 * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
 	 */
 	accessory?: ComponentChildren;
 }
@@ -1802,7 +1819,7 @@ export interface BaseOptionProps extends BaseSelectableProps {
 /** @publicDocs */
 export interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
 	/**
-	 * Visual content to use as the control label.
+	 * The text displayed as the control label, which identifies the purpose of the control to users. This label is associated with the control for accessibility.
 	 */
 	label?: string;
 	/**
@@ -1884,7 +1901,7 @@ export interface ChipProps$1 {
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * A label that describes the purpose or contents of the chip. It will be read to users using assistive technologies such as screen readers.
+	 * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
 	 */
 	accessibilityLabel?: string;
 	/**
@@ -1982,7 +1999,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Disables the clickable, meaning it cannot be clicked or receive focus.
 	 *
-	 * In this state, the `click` event will not fire.
+	 * In this state, onClick will not fire.
 	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
 	 *
 	 * However, items within the clickable can still receive focus and be interacted with.
@@ -1992,8 +2009,9 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	 */
 	disabled?: BaseClickableProps["disabled"];
 	/**
-	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 *
 	 * @default ''
 	 */
@@ -2005,7 +2023,9 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * The URL to link to. When set, the chip navigates to the specified location after the `click` event fires.
+	 * The URL to link to.
+	 *
+	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
 	 */
 	href?: string;
 	/**
@@ -2356,13 +2376,20 @@ interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 }
 interface DividerProps$1 extends GlobalProps {
 	/**
-	 * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 * The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 *
+	 * - `inline`: A horizontal divider that separates content stacked vertically.
+	 * - `block`: A vertical divider that separates content arranged horizontally.
 	 *
 	 * @default 'inline'
 	 */
 	direction?: "inline" | "block";
 	/**
-	 * Modify the color to be more or less intense.
+	 * The visual emphasis of the divider's color.
+	 *
+	 * - `subdued`: A lighter divider for subtle separation.
+	 * - `base`: The standard divider color for most contexts.
+	 * - `strong`: A darker divider for stronger visual separation.
 	 *
 	 * @default 'base'
 	 */
@@ -2372,7 +2399,7 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 	/**
 	 * A string representing the types of files that are accepted by the drop zone.
 	 * This string is a comma-separated list of unique file type specifiers which can be one of the following:
-	 * - A file extension starting with a period (".") character (such as .jpg, .pdf, .doc)
+	 * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
 	 * - A valid MIME type string with no extensions
 	 *
 	 * If omitted, all file types are accepted.
@@ -2431,31 +2458,33 @@ interface FormProps$1 extends GlobalProps {
 	 */
 	onReset?: (event: Event) => void;
 }
-/** @publicDocs */
+/**
+ * The amount of space between child elements.
+ *
+ * - `none`: No spacing.
+ * - `small-500`: The smallest spacing.
+ * - `small-400` / `small-300` / `small-200` / `small-100` / `small`: Progressively larger small spacings.
+ * - `base`: The standard spacing for most use cases.
+ * - `large` / `large-100` / `large-200` / `large-300` / `large-400` / `large-500`: Progressively larger spacings.
+ * @publicDocs
+ */
 export type SpacingKeyword = SizeKeyword | "none";
 /** @publicDocs */
 export interface GapProps {
 	/**
-	 * Adjust spacing between elements.
-	 *
-	 * A single value applies to both axes.
-	 * A pair of values (eg `large-100 large-500`) can be used to set the inline and block axes respectively.
+	 * The spacing between child elements. A single value applies to both the inline and block axes. A pair of space-separated values (for example, `large-100 large-500`) sets the inline and block axes independently.
 	 *
 	 * @default 'none'
 	 */
 	gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
 	/**
-	 * Adjust spacing between elements in the block axis.
-	 *
-	 * This overrides the row value of `gap`.
+	 * The spacing between child elements along the block axis (vertical in horizontal writing modes). Overrides the block-axis value set by `gap`.
 	 *
 	 * @default '' - meaning no override
 	 */
 	rowGap?: MaybeResponsive<SpacingKeyword | "">;
 	/**
-	 * Adjust spacing between elements in the inline axis.
-	 *
-	 * This overrides the column value of `gap`.
+	 * The spacing between child elements along the inline axis (horizontal in horizontal writing modes). Overrides the inline-axis value set by `gap`.
 	 *
 	 * @default '' - meaning no override
 	 */
@@ -2470,112 +2499,84 @@ export type ContentPosition = "center" | "start" | "end";
 /** @publicDocs */
 export type OverflowPosition = `unsafe ${ContentPosition}` | `safe ${ContentPosition}`;
 /**
- * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
+ * Controls the default inline-axis alignment for all items within a container. Learn more about [`justify-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
  * @publicDocs
  */
 export type JustifyItemsKeyword = "normal" | "stretch" | BaselinePosition | OverflowPosition | ContentPosition;
 /**
- * Align items sets the align-self value on all direct children as a group.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
+ * Controls how all direct children are aligned along the cross axis. Learn more about [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
  * @publicDocs
  */
 export type AlignItemsKeyword = "normal" | "stretch" | BaselinePosition | OverflowPosition | ContentPosition;
 /**
- * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
+ * Controls how space is distributed between and around content items along the main axis of a flex container or the inline axis of a grid container. Learn more about [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
  * @publicDocs
  */
 export type JustifyContentKeyword = "normal" | ContentDistribution | OverflowPosition | ContentPosition;
 /**
- *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
- *
- * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
+ * Controls the distribution of space between and around content items along the cross axis of a flex container or the block axis of a grid container. Learn more about [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
  * @publicDocs
  */
 export type AlignContentKeyword = "normal" | BaselinePosition | ContentDistribution | OverflowPosition | ContentPosition;
 interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	/**
-	  Define columns and specify their size.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
-	  @default 'none'
-	*/
+	 * Defines the number and size of columns in the grid. Accepts any valid CSS [`grid-template-columns`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns) value, such as `"1fr 2fr"` or `"repeat(3, 1fr)"`.
+	 *
+	 * @default 'none'
+	 */
 	gridTemplateColumns?: MaybeResponsive<string>;
 	/**
-	  Define rows and specify their size.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
-	  @default 'none'
-	*/
+	 * Defines the number and size of rows in the grid. Accepts any valid CSS [`grid-template-rows`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows) value, such as `"auto 1fr"` or `"repeat(2, 100px)"`.
+	 *
+	 * @default 'none'
+	 */
 	gridTemplateRows?: MaybeResponsive<string>;
 	/**
-	  Aligns the grid items along the inline (row) axis.
-  
-	  This overrides the inline value of `placeItems`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
-	  @default '' - meaning no override
-	*/
+	 * Aligns grid items along the inline (row) axis. Overrides the inline value of `placeItems`. Learn more about [`justify-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+	 *
+	 * @default '' - meaning no override
+	 */
 	justifyItems?: MaybeResponsive<JustifyItemsKeyword | "">;
 	/**
-	  Aligns the grid items along the block (column) axis.
-  
-	  This overrides the block value of `placeItems`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
-	  @default '' - meaning no override
-	*/
+	 * Aligns grid items along the block (column) axis. Overrides the block value of `placeItems`. Learn more about [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+	 *
+	 * @default '' - meaning no override
+	 */
 	alignItems?: MaybeResponsive<AlignItemsKeyword | "">;
 	/**
-	  A shorthand property for `justify-items` and `align-items`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
-	  @default 'normal normal'
-	*/
+	 * A shorthand for `justifyItems` and `alignItems` that sets both alignment axes at once. Learn more about [`place-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/place-items).
+	 *
+	 * @default 'normal normal'
+	 */
 	placeItems?: MaybeResponsive<`${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword>;
 	/**
-	  Aligns the grid along the inline (row) axis.
-  
-	  This overrides the inline value of `placeContent`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
-	  @default '' - meaning no override
-	*/
+	 * Controls how the grid's columns are distributed along the inline (row) axis when there is extra space. Overrides the inline value of `placeContent`. Learn more about [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+	 *
+	 * @default '' - meaning no override
+	 */
 	justifyContent?: MaybeResponsive<JustifyContentKeyword | "">;
 	/**
-	  Aligns the grid along the block (column) axis.
-  
-	  This overrides the block value of `placeContent`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
-	  @default '' - meaning no override
-	*/
+	 * Controls how the grid's rows are distributed along the block (column) axis when there is extra space. Overrides the block value of `placeContent`. Learn more about [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+	 *
+	 * @default '' - meaning no override
+	 */
 	alignContent?: MaybeResponsive<AlignContentKeyword | "">;
 	/**
-	  A shorthand property for `justify-content` and `align-content`.
-  
-	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
-	  @default 'normal normal'
-	*/
+	 * A shorthand for `justifyContent` and `alignContent` that sets both distribution axes at once. Learn more about [`place-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/place-content).
+	 *
+	 * @default 'normal normal'
+	 */
 	placeContent?: MaybeResponsive<`${AlignContentKeyword} ${JustifyContentKeyword}` | AlignContentKeyword>;
 }
 interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
 	/**
-	 * Number of columns the item will span across
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
+	 * The number of columns this item spans within the grid. Set to `auto` to let the grid determine placement automatically, or use `span {number}` to span a specific number of columns. Learn more about [`grid-column`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column).
 	 *
 	 * @default 'auto'
 	 */
 	gridColumn?: `span ${number}` | "auto";
 	/**
-	 * Number of rows the item will span across
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
+	 * The number of rows this item spans within the grid. Set to `auto` to let the grid determine placement automatically, or use `span {number}` to span a specific number of rows. Learn more about [`grid-row`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row).
 	 *
 	 * @default 'auto'
 	 */
@@ -2604,8 +2605,9 @@ export interface BaseTypographyProps {
 	 */
 	fontVariantNumeric?: "auto" | "normal" | "tabular-nums";
 	/**
-	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 *
 	 * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
 	 *
@@ -2615,8 +2617,8 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicates the directionality of the element’s text.
 	 *
-	 * - `ltr`: languages written from left to right (such as English)
-	 * - `rtl`: languages written from right to left (such as Arabic)
+	 * - `ltr`: languages written from left to right (e.g. English)
+	 * - `rtl`: languages written from right to left (e.g. Arabic)
 	 * - `auto`: the user agent determines the direction based on the content
 	 * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
 	 *
@@ -2811,28 +2813,26 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
 	/**
-	 * The content of the link.
+	 * The content of the Link.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets the tone of the link, based on the intention of the information being conveyed.
-	 *
-	 * - `'auto'`: Automatically determined based on context.
-	 * - `'neutral'`: Removes the default link color, inheriting the surrounding text style.
+	 * Sets the tone of the Link, based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.
+	 * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
 	 *
 	 * Use this when using only an icon or the content of the link is not enough context
 	 * for users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 */
 	lang?: string;
 }
@@ -3163,41 +3163,27 @@ interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 }
 interface ProgressProps$1 extends GlobalProps {
 	/**
-	 * A label that describes the purpose of the progress. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 *
-	 * Use it to provide context of what is progressing.
+	 * A label announced by assistive technologies that describes what is progressing. Use this to provide context about the ongoing task, such as "Loading order details" or "Uploading file".
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Sets the tone of the progress, based on the intention of the information being conveyed.
+	 * The semantic meaning and color treatment of the progress indicator.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Specifies how much of the task has been completed.
+	 * How much of the task has been completed. Must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
 	 *
-	 * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
-	 * If there is no value attribute, the progress bar is indeterminate;
-	 * this indicates that an activity is ongoing with no indication of how long it is expected to take.
-	 *
-	 * @implementation Surfaces should apply styling to cover that indeterminate state.
-	 * @implementation In a HTML host, you can customize the progress animation via the :indeterminate pseudo-class.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#progress_bar
+	 * Learn more about the [value attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value).
 	 */
 	value?: number;
 	/**
-	 * This attribute describes how much work the task indicated by the progress element requires.
+	 * The total amount of work the task requires. Must be a value greater than 0 and a valid floating point number.
 	 *
-	 * The `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.
+	 * Learn more about the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max).
 	 *
 	 * @default 1
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max
 	 */
 	max?: number;
 }
@@ -3244,68 +3230,55 @@ interface QRCodeProps$1 extends GlobalProps {
 }
 interface QueryContainerProps$1 extends GlobalProps {
 	/**
-	 * The content of the container.
+	 * The child elements to render inside the query container.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * The name of the container, which can be used in your container queries to target this container specifically.
-	 *
-	 * We place the container name of `s-default` on every container. Because of this, it is not required to add a `containerName` identifier in your queries. For example, a `@container (inline-size <= 300px) none, auto` query is equivalent to `@container s-default (inline-size <= 300px) none, auto`.
-	 *
-	 * Any value set in `containerName` will be set alongside alongside `s-default`. For example, `containerName="my-container-name"` will result in a value of `s-default my-container-name` set on the `container-name` CSS property of the rendered HTML.
+	 * A custom name for the container, used in [container queries](https://developer.mozilla.org/en-US/docs/Web/CSS/container-name) to target this container specifically. The value is added alongside the default name `s-default`.
 	 *
 	 * @default ''
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
-	 *
-	 * @implementation You must always have a CSS `container-name` of `s-default` for this component.
 	 */
 	containerName?: string;
 }
-/** @publicDocs */
+/**
+ * The overflow behavior for a scrollable container axis.
+ *
+ * - `auto`: Content that exceeds the container is clipped and becomes scrollable.
+ * - `hidden`: Content that exceeds the container is clipped and not scrollable.
+ * @publicDocs
+ */
 export type OverflowKeyword = "auto" | "hidden";
 interface ScrollBoxProps$1 extends GlobalProps, Omit<BaseBoxPropsWithRole, "overflow"> {
 	/**
-	 * Sets the overflow behavior of the element.
+	 * The overflow behavior of the scroll box, controlling whether content that exceeds the container is scrollable or clipped. Learn more about [`overflow`](https://developer.mozilla.org/en-US/docs/Web/CSS/overflow).
 	 *
-	 * - `hidden`: clips the content when it is larger than the element’s container and the element will not be scrollable in that axis.
-	 * - `auto`: clips the content when it is larger than the element’s container and make it scrollable in that axis.
+	 * - `hidden`: Content is clipped and the element is not scrollable in that axis.
+	 * - `auto`: Content is clipped and becomes scrollable in that axis.
 	 *
-	 * 1-to-2-value syntax is supported but note that, contrary to the CSS, it uses flow-relative values and the order is:
-	 *
-	 * - 2 values: `block inline`
+	 * Supports 1-to-2-value syntax using flow-relative axes. Two values are ordered as `block inline` (for example, `hidden auto` clips vertically and scrolls horizontally).
 	 *
 	 * @default 'auto'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/overflow
 	 */
 	overflow?: OverflowKeyword | `${OverflowKeyword} ${OverflowKeyword}`;
 }
 interface SectionProps$1 extends GlobalProps, ActionSlots {
 	/**
-	 * The content of the section.
+	 * The child elements to render inside the section, typically the main content area below the heading.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * A label used to describe the section that will be announced by assistive technologies.
-	 *
-	 * When no `heading` property is provided or included as a child of the section, you **must** provide an
-	 * `accessibilityLabel` to describe the section. This is important as it allows assistive technologies to provide
-	 * the right context to users.
+	 * A label announced by assistive technologies that describes the purpose of the section. When no `heading` property is provided, you **must** set `accessibilityLabel` so screen readers can identify the section.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * A title displayed at the top of the section. When provided, it serves as both a visible heading and the accessible name for the section. If omitted, you must provide an `accessibilityLabel` instead.
+	 * The heading text displayed at the top of the section to summarize its content.
 	 */
 	heading?: string;
 	/**
-	 * Adjust the padding of all edges.
+	 * The padding applied to all edges of the section.
 	 *
-	 * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
-	 * this is the right design decision in a particular context.
-	 * - `none`: removes all padding from the element. This can be useful when elements inside the section need to span
-	 * to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
-	 * to bring back the desired padding for the rest of the content.
+	 * - `base`: Applies context-appropriate padding. In some contexts this may result in no visible padding.
+	 * - `none`: Removes all padding, allowing child elements to span the full width of the section. Use a Box with `base` padding to restore spacing for individual content areas.
 	 *
 	 * @default 'base'
 	 */
@@ -3364,51 +3337,45 @@ interface SkeletonParagraphProps$1 extends GlobalProps {
 }
 interface SpinnerProps$1 extends GlobalProps {
 	/**
-	 * Adjusts the size of the spinner icon.
+	 * The size of the spinner icon.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
 	/**
-	 * A label that describes the purpose of the progress. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context. Providing an `accessibilityLabel` is
-	 * recommended if there is no accompanying text describing that something
-	 * is loading.
+	 * A label that describes the purpose of the spinner for assistive technologies like screen readers. Provide an `accessibilityLabel` when there is no visible text that conveys a loading state.
 	 */
 	accessibilityLabel?: string;
 }
 interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 	/**
-	 * The content of the Stack.
+	 * The child elements to render inside the stack.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 * The axis along which child elements are arranged, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 *
+	 * - `block`: Children are stacked vertically (in horizontal writing modes). Content does not wrap.
+	 * - `inline`: Children are arranged horizontally (in horizontal writing modes). Content wraps when it overflows.
 	 *
 	 * @default 'block'
-	 *
-	 * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
 	 */
 	direction?: MaybeResponsive<"block" | "inline">;
 	/**
-	 * Aligns the Stack along the main axis.
+	 * Controls how child elements are distributed along the main axis. Learn more about [`justify-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 	 * @default 'normal'
 	 */
 	justifyContent?: MaybeResponsive<JustifyContentKeyword>;
 	/**
-	 * Aligns the Stack's children along the cross axis.
+	 * Controls how child elements are aligned along the cross axis. Learn more about [`align-items`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	 * @default 'normal'
 	 */
 	alignItems?: MaybeResponsive<AlignItemsKeyword>;
 	/**
-	 * Aligns the Stack along the cross axis.
+	 * Controls how lines of content are distributed along the cross axis when there is extra space. Learn more about [`align-content`](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 	 * @default 'normal'
 	 */
 	alignContent?: MaybeResponsive<AlignContentKeyword>;
