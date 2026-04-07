@@ -3,12 +3,12 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {IdProps} from '../shared';
 
 /**
- * DropZone allows file uploads through drag-and-drop functionality into a designated area on a page, or by activating a button. At present, DropZone does not offer image upload preview capabilities. The use of object URLs directly in an image component is not possible due to the extension and host operating on separate domains. Any element focused within the Dropzone component, including child elements such as the 'Add file' button, will initiate the file selector when the Enter or Spacebar key is pressed.
+ * The drop zone component allows file uploads through drag-and-drop functionality into a designated area on a page, or by activating a button. At present, DropZone does not offer image upload preview capabilities. The use of object URLs directly in an image component is not possible due to the extension and host operating on separate domains. Any element focused within the drop zone component, including child elements such as the 'Add file' button, will initiate the file selector when the Enter or Spacebar key is pressed.
  * @publicDocs
  */
 export interface DropZoneProps extends IdProps {
   /**
-   * Whether the field can be modified.
+   * Whether the drop zone is disabled, preventing any user interaction.
    */
   disabled?: boolean;
 
@@ -21,13 +21,12 @@ export interface DropZoneProps extends IdProps {
   required?: boolean;
 
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
+   * An error message displayed below the field to indicate validation problems. When set, the drop zone is styled with error indicators.
    */
   error?: string;
 
   /**
-   * Content to use as the field label.
+   * The text displayed as the field label, which identifies the purpose of the drop zone to users.
    */
   label?: string;
 
@@ -51,7 +50,7 @@ export interface DropZoneProps extends IdProps {
 
   /**
    * A label that describes the purpose or contents of the item. When set,
-   * it will be announced to buyers using assistive technologies and will
+   * it will be announced to users of assistive technologies and will
    * provide them with more context.
    */
   accessibilityLabel?: string;
@@ -64,13 +63,13 @@ export interface DropZoneProps extends IdProps {
   multiple?: boolean;
 
   /**
-   * Callback when files are dropped or selected.
+   * A callback fired when files are dropped or selected.
    * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event
    */
   onInput?(files: File[]): void;
 
   /**
-   * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
+   * A callback fired when rejected files are dropped. Files are rejected based on the `accept` prop.
    */
   onDropRejected?(files: File[]): void;
 }

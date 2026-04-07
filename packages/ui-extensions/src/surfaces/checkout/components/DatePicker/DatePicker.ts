@@ -29,7 +29,7 @@ export type SelectedDate = DateString | DateString[] | DateRange;
 export type DisabledDate = DateString | DateRange | DayString;
 
 /**
- * The DatePicker component is a calendar picker UI that allows users to select a single date or a date range
+ * The date picker component is a calendar picker UI that allows users to select a single date or a date range.
  * @publicDocs
  */
 export interface DatePickerProps<T extends SelectedDate> {
@@ -51,7 +51,7 @@ export interface DatePickerProps<T extends SelectedDate> {
    */
   disabled?: DisabledDate[] | boolean;
   /**
-   * Whether the date picker is read-only.
+   * Whether the date picker is read-only and can't be edited. Read-only date pickers remain focusable and their state is announced by screen readers where applicable.
    */
   readOnly?: boolean;
   /**
@@ -60,7 +60,7 @@ export interface DatePickerProps<T extends SelectedDate> {
    */
   selected: T;
   /**
-   * A callback that is run whenever a date is selected or unselected. This callback
+   * A callback fired when the selected date or dates change. This callback
    * is called with a string, an array of strings or a range object representing the selected dates.
    * This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
    * so you must store these values in state and reflect it back in the
@@ -68,7 +68,7 @@ export interface DatePickerProps<T extends SelectedDate> {
    */
   onChange?(selected: T): void;
   /**
-   * A callback that is run whenever the month is changed. This callback
+   * A callback fired when the displayed year and month change. This callback
    * is called with an object indicating the year/month the UI should change to.
    * When year/month navigation is controlled you must store these values in state and
    * reflect it back in the `yearMonth` prop.
@@ -77,7 +77,7 @@ export interface DatePickerProps<T extends SelectedDate> {
 }
 
 /**
- * The DatePicker component is a calendar picker UI that allows users to select a single date or a date range.
+ * The date picker component is a calendar picker UI that allows users to select a single date or a date range..
  */
 export const DatePicker = createRemoteComponent<
   'DatePicker',

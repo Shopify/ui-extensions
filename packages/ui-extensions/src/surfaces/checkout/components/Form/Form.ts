@@ -8,12 +8,11 @@ Unlike an HTML `form` element, this component does not support configuring the d
  */
 export interface FormProps {
   /**
-   * Whether the form is able to be submitted. When set to `true`, this will
-   * disable the implicit submit behavior of the form.
+   * Whether the form is disabled, preventing submission and the implicit submit behavior from inputs. When set to `true`, pressing Enter in a field will not submit the form.
    */
   disabled?: boolean;
   /**
-   * A callback that is run when the form is submitted.
+   * A callback fired when the form is submitted.
    */
   onSubmit(): void;
   /**

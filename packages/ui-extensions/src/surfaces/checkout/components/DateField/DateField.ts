@@ -26,8 +26,8 @@ export interface DateFieldProps
       'yearMonth' | 'defaultYearMonth' | 'disabled' | 'onYearMonthChange'
     > {
   /**
-   * Callback when the field has an invalid date.
-   * This callback will be called, if the date typed is invalid or disabled.
+   * A callback fired when the date field contains an invalid or disabled date after the user finishes editing.
+   * This callback is invoked when the date typed is invalid or disabled.
    *
    * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
    * - 2021-02-31: February doesn’t have 31 days
@@ -39,15 +39,15 @@ export interface DateFieldProps
    *
    * Note that this will be called only when the user **finishes editing** the date,
    * after the `onChange` callback.
-   * The field is **not** validated on every change to the input. Once the buyer has signalled that
+   * The field is **not** validated on every change to the input. Once the user has signalled that
    * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
    */
   onInvalid?(): void;
 }
 
 /**
- * The DateField component is used to collect date information from buyers.
- * It also provides the ability to display a DatePicker UI, which allows users to select dates with ease.
+ * The date field component is used to collect date information from users.
+ * It also provides the ability to display a date picker UI, which allows users to select dates with ease.
  */
 export const DateField = createRemoteComponent<'DateField', DateFieldProps>(
   'DateField',

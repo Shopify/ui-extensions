@@ -27,8 +27,8 @@ export interface TextFieldProps<T extends string | number | undefined> {
    */
   name?: string;
   /**
-   * Content to use as the field label. This value is also used as the placeholder
-   * when the field is empty.
+   * The text displayed as the field label, which identifies the purpose of the field to users.
+   * This value is also used as the placeholder when the field is empty.
    */
   label: string;
   /**
@@ -84,8 +84,7 @@ export interface TextFieldProps<T extends string | number | undefined> {
    */
   required?: boolean;
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
+   * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators.
    */
   error?: string;
   /**
@@ -108,11 +107,11 @@ export interface TextFieldProps<T extends string | number | undefined> {
    */
   autocomplete?: Autocomplete | boolean;
   /**
-   * Whether the field can be modified.
+   * Whether the field is disabled, preventing any user interaction.
    */
   disabled?: boolean;
   /**
-   * Whether the field is read-only.
+   * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
    */
   readonly?: boolean;
   /**
@@ -120,19 +119,19 @@ export interface TextFieldProps<T extends string | number | undefined> {
    */
   maxLength?: number;
   /**
-   * Callback when input is focused.
+   * A callback fired when the text field receives focus.
    */
   onFocus?(): void;
   /**
-   * Callback when focus is removed.
+   * A callback fired when the text field loses focus.
    */
   onBlur?(): void;
   /**
-   * Callback when the buyer has **finished editing** a field. Unlike `onChange`
+   * A callback fired when the user has **finished editing** the field, such as when they blur the field. Unlike `onChange`
    * callbacks you may be familiar with from Polaris or other React component libraries,
    * this callback is **not** run on every change to the input. Text fields are
-   * “partially controlled” components, which means that while the buyer edits the
-   * field, its state is controlled by the component. Once the buyer has signalled that
+   * “partially controlled” components, which means that while the user edits the
+   * field, its state is controlled by the component. Once the user has signalled that
    * they have finished editing the field (typically, by blurring the field), `onChange`
    * is called if the input actually changed from the most recent `value` property. At
    * that point, you are expected to store this “committed value” in state, and reflect
@@ -144,7 +143,7 @@ export interface TextFieldProps<T extends string | number | undefined> {
    * is to have the component be the source of truth for the input `value`, and update
    * the `value` on every user input. The delay in responding to events from a UI
    * extension is only a few milliseconds, but attempting to strictly store state with
-   * this delay can cause issues if a user types quickly, or if the buyer is using a
+   * this delay can cause issues if a user types quickly, or if the user is using a
    * lower-powered device. Having the UI thread take ownership for “in progress” input,
    * and only synchronizing when the user is finished with a field, avoids this risk.
    *
@@ -158,10 +157,10 @@ export interface TextFieldProps<T extends string | number | undefined> {
    */
   onChange?(value: T): void;
   /**
-   * Callback when the user makes any changes in the field. As noted in the documentation
+   * A callback fired when the user makes any changes in the field, such as typing a character. As noted in the documentation
    * for `onChange`, you must not use this to update `state` — use the `onChange`
    * callback for that purpose. Use the `onInput` prop when you need to do something
-   * as soon as the buyer makes a change, like clearing validation errors that apply to
+   * as soon as the user makes a change, like clearing validation errors that apply to
    * the field as soon as the user begins making the necessary adjustments.
    *
    * This callback is called with the current value of the field.

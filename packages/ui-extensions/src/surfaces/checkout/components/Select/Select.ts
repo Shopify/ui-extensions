@@ -3,7 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {Autocomplete} from '../shared';
 
 /**
- * Selects let buyers choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+ * Selects let users choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
  * @publicDocs
  */
 export interface SelectOptionProps {
@@ -13,17 +13,17 @@ export interface SelectOptionProps {
    */
   value: string;
   /**
-   * The buyer-facing label for this option.
+   * The user-facing label for this option.
    */
   label: string;
   /**
-   * Whether this option can be selected or not.
+   * Whether the option is disabled, preventing selection.
    */
   disabled?: boolean;
 }
 
 /**
- * Selects let buyers choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
+ * Selects let users choose one option from an options menu. Consider select when you have 4 or more options, to avoid cluttering the interface.
  * @publicDocs
  */
 export interface SelectProps {
@@ -33,7 +33,7 @@ export interface SelectProps {
    */
   id?: string;
   /**
-   * Content to use as the field label.
+   * The text displayed as the field label, which identifies the purpose of the field to users.
    */
   label: string;
   /**
@@ -49,11 +49,11 @@ export interface SelectProps {
    */
   value?: string;
   /**
-   * The options a buyer can select from.
+   * The options a user can select from.
    */
   options: SelectOptionProps[];
   /**
-   * A short hint that describes the expected value of the field when no value is set.
+   * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value.
    */
   placeholder?: string;
   /**
@@ -64,16 +64,15 @@ export interface SelectProps {
    */
   required?: boolean;
   /**
-   * Whether the select can be changed.
+   * Whether the select is disabled, preventing any user interaction.
    */
   disabled?: boolean;
   /**
-   * Whether the field is read only.
+   * Whether the select is read-only and can't be edited. Read-only selects remain focusable and their content is announced by screen readers.
    */
   readonly?: boolean;
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
+   * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators.
    */
   error?: string;
   /**
@@ -93,15 +92,15 @@ export interface SelectProps {
    */
   autocomplete?: Autocomplete | boolean;
   /**
-   * Callback when focus is removed.
+   * A callback fired when the select loses focus.
    */
   onBlur?(): void;
   /**
-   * Callback when input is focused.
+   * A callback fired when the select receives focus.
    */
   onFocus?(): void;
   /**
-   * A callback that is run whenever the selected option changes. This callback
+   * A callback fired when the select value changes. This callback
    * is called with the string `value` of the selected `option`. This component
    * is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
    * so you must store this value in state and reflect it back in the `value`
@@ -111,7 +110,7 @@ export interface SelectProps {
 }
 
 /**
- * Selects let buyers choose one option from an options menu. Consider select
+ * Selects let users choose one option from an options menu. Consider select
  * when you have 4 or more options, to avoid cluttering the interface.
  */
 export const Select = createRemoteComponent<'Select', SelectProps>('Select');
