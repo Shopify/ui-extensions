@@ -22,6 +22,7 @@ export interface ShippingOptionListApi {
 
 /**
  * A collection of delivery groups that share the same group type.
+ * @publicDocs
  */
 export interface DeliveryGroupList {
   /**
@@ -39,6 +40,7 @@ export interface DeliveryGroupList {
 
 /**
  * A named group of delivery options that the buyer can select as a unit.
+ * @publicDocs
  */
 export interface DeliverySelectionGroup {
   /**

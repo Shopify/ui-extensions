@@ -21,6 +21,7 @@ export interface ShippingOptionItemApi {
 
 /**
  * The render mode of a shipping option.
+ * @publicDocs
  */
 export interface ShippingOptionItemRenderMode {
   /**

@@ -5,8 +5,9 @@ import type {Data} from '../shared';
 /**
  * A product configuration.
  * @deprecated
+ * @publicDocs
  */
-interface Product {
+export interface Product {
   /** The product's unique global identifier (GID). */
   id: string;
   /** The product's display name shown to merchants and customers. */
@@ -41,6 +42,7 @@ interface Product {
 /**
  * A component product that is part of a bundle. Represents an individual product included in a bundle configuration.
  * @deprecated
+ * @publicDocs
  */
 export interface ProductComponent {
   /** The component product's unique global identifier (GID). */
@@ -65,6 +67,7 @@ export interface ProductComponent {
 
 /**
  * The `ProductDetailsConfigurationApi` object provides methods for configuring product bundles and relationships. Access the following properties on the `ProductDetailsConfigurationApi` object to build product configuration interfaces.
+ * @publicDocs
  */
 export interface ProductDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,

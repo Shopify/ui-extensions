@@ -2,6 +2,7 @@
 
 /**
  * The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes representing all countries and territories. These standard codes are used for addresses, shipping destinations, tax jurisdictions, and regional settings.
+ * @publicDocs
  */
 export enum CountryCode {
   AF = 'AF',

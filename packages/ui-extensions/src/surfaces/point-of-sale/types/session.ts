@@ -2,6 +2,7 @@ import type {CurrencyCode} from '../../../shared';
 
 /**
  * Defines information about the current POS session.
+ * @publicDocs
  */
 export interface Session {
   /**

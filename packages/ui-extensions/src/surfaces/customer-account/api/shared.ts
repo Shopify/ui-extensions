@@ -29,6 +29,7 @@ export {
  * Persists key-value data across customer sessions for a specific extension target. Use storage to save preferences, dismiss states, or cached data that should survive page reloads without requiring a backend call.
  *
  * Stored data is only available to this specific app but can be shared across multiple extension targets. The storage backend is implemented with `localStorage` and data persistence isn't guaranteed.
+ * @publicDocs
  */
 export interface Storage {
   /**
@@ -56,6 +57,7 @@ export interface Storage {
 
 /**
  * A language identifier following the [BCP-47 standard](https://en.wikipedia.org/wiki/IETF_language_tag).
+ * @publicDocs
  */
 export interface Language {
   /**
@@ -68,6 +70,7 @@ export interface Language {
 
 /**
  * Translates a key from your extension's locale files into a localized string. Supports interpolation with placeholder replacements and pluralization via a `count` option.
+ * @publicDocs
  */
 export interface I18nTranslate {
   /**
@@ -85,6 +88,7 @@ export interface I18nTranslate {
 
 /**
  * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Use the I18n API alongside the Localization API to build fully localized extensions.
+ * @publicDocs
  */
 export interface I18n {
   /**
@@ -140,6 +144,7 @@ export interface I18n {
 
 /**
  * Metadata about the running extension, including its API version, target, capabilities, and editor context. Use this to read configuration details or conditionally render content based on where the extension is running.
+ * @publicDocs
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -204,6 +209,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
 /**
  * Information about the editor environment when an extension is rendered inside the editor. The value is `undefined` when the extension is not rendering in an editor.
+ * @publicDocs
  */
 export interface Editor {
   /**
@@ -216,6 +222,7 @@ export type ValueOrPromise<T> = T extends PromiseLike<any> ? T : T | Promise<T>;
 
 /**
  * A selling plan represents a recurring or deferred purchasing option for a product, such as a [subscription](/docs/apps/build/purchase-options/subscriptions), pre-order, or try-before-you-buy arrangement. Selling plans are configured by the merchant and define how and when the buyer is charged.
+ * @publicDocs
  */
 export interface SellingPlan {
   /**
@@ -226,6 +233,9 @@ export interface SellingPlan {
   id: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface Attribute {
   /**
    * The identifier for the attribute. Use this to distinguish between different custom attributes on a line item or order.
@@ -245,6 +255,7 @@ export interface Attribute {
 /**
  * A mailing address associated with the order, such as a shipping or billing address.
  *
+ * @publicDocs
  */
 export interface MailingAddress {
   /**
@@ -327,6 +338,9 @@ export interface MailingAddress {
   phone?: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface AuthenticatedAccount {
   /**
    * The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer.
@@ -342,6 +356,7 @@ export interface AuthenticatedAccount {
  * The authenticated customer's account, identified by a globally-unique ID.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ * @publicDocs
  */
 export interface Customer {
   /**
@@ -352,6 +367,9 @@ export interface Customer {
   id: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface PurchasingCompany {
   /**
    * The company that the authenticated B2B customer is associated with.
@@ -364,6 +382,9 @@ export interface PurchasingCompany {
   location?: CompanyLocation;
 }
 
+/**
+ * @publicDocs
+ */
 export interface Company {
   /**
    * A globally-unique identifier for the company in the format `gid://shopify/Company/<id>`.
@@ -371,6 +392,9 @@ export interface Company {
   id: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface CompanyLocation {
   /**
    * A globally-unique identifier for the company location in the format `gid://shopify/CompanyLocation/<id>`.
@@ -380,6 +404,7 @@ export interface CompanyLocation {
 
 /**
  * Authenticates requests between your extension and your app backend. Use session tokens to verify the identity of the customer and the shop context when making server-side API calls. The token includes claims such as the customer ID, shop domain, and expiration time.
+ * @publicDocs
  */
 export interface SessionToken {
   /**
@@ -392,6 +417,7 @@ export interface SessionToken {
 
 /**
  * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use the Analytics API to emit analytics events from your extension, such as tracking product views, button clicks, or conversion funnels.
+ * @publicDocs
  */
 export interface Analytics {
   /**
@@ -406,11 +432,13 @@ export interface Analytics {
 }
 /**
  * The result returned by `Analytics.visitor()`. Check the `type` property to determine whether the submission succeeded or failed.
+ * @publicDocs
  */
 export type VisitorResult = VisitorSuccess | VisitorError;
 
 /**
  * Returned when visitor information was validated and submitted successfully.
+ * @publicDocs
  */
 export interface VisitorSuccess {
   /**
@@ -421,6 +449,7 @@ export interface VisitorSuccess {
 
 /**
  * Returned when visitor information is invalid and wasn't submitted. Contains a `message` with details about what went wrong.
+ * @publicDocs
  */
 export interface VisitorError {
   /**
@@ -437,6 +466,9 @@ export interface VisitorError {
   message: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface AllowedProcessing {
   /**
    * Whether analytics data can be collected about how the buyer interacts with the shop, based on their consent, merchant configuration, and location.
@@ -456,6 +488,9 @@ export interface AllowedProcessing {
   saleOfData: boolean;
 }
 
+/**
+ * @publicDocs
+ */
 export interface VisitorConsent {
   /**
    * Whether the visitor has consented to analytics tracking. `true` means consent was granted, `false` means denied, and `undefined` means no decision has been made.
@@ -475,6 +510,9 @@ export interface VisitorConsent {
   saleOfData?: boolean;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TrackingConsentMetafield {
   /**
    * The identifier for the tracking consent metafield, such as `'analyticsType'` or `'marketingType'`.
@@ -486,6 +524,9 @@ export interface TrackingConsentMetafield {
   value: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface TrackingConsentMetafieldChange {
   /**
    * The identifier for the tracking consent metafield to update.
@@ -499,6 +540,7 @@ export interface TrackingConsentMetafieldChange {
 
 /**
  * The consent change payload passed to `applyTrackingConsentChange`. Includes the visitor's updated consent decisions for analytics, marketing, preferences, and data sale, along with any custom tracking consent metafields.
+ * @publicDocs
  */
 export interface VisitorConsentChange extends VisitorConsent {
   /**
@@ -517,11 +559,15 @@ export interface VisitorConsentChange extends VisitorConsent {
 
 /**
  * A function that applies updated tracking consent preferences for the buyer. Accepts a `VisitorConsentChange` object containing the buyer's consent decisions and returns a promise that resolves with a `TrackingConsentChangeResult` indicating whether the update succeeded or failed.
+ * @publicDocs
  */
 export type ApplyTrackingConsentChangeType = (
   visitorConsent: VisitorConsentChange,
 ) => Promise<TrackingConsentChangeResult>;
 
+/**
+ * @publicDocs
+ */
 export interface CustomerPrivacyRegion {
   /**
    * The buyer's country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. The value is `undefined` if geolocation failed.
@@ -541,6 +587,9 @@ export interface CustomerPrivacyRegion {
   provinceCode?: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface CustomerPrivacy {
   /**
    * Flags indicating whether each type of data processing is permitted, based on the visitor's consent, the merchant's privacy configuration, and the visitor's geographic location.
@@ -577,6 +626,7 @@ export interface CustomerPrivacy {
 
 /**
  * The result returned by `applyTrackingConsentChange`. Either a `TrackingConsentChangeResultSuccess` if the consent preferences were saved, or a `TrackingConsentChangeResultError` if the update failed.
+ * @publicDocs
  */
 export type TrackingConsentChangeResult =
   | TrackingConsentChangeResultSuccess
@@ -584,6 +634,7 @@ export type TrackingConsentChangeResult =
 
 /**
  * Returned when the tracking consent update succeeds. Check the `type` property to confirm the result before proceeding.
+ * @publicDocs
  */
 export interface TrackingConsentChangeResultSuccess {
   /**
@@ -594,6 +645,7 @@ export interface TrackingConsentChangeResultSuccess {
 
 /**
  * Returned when the tracking consent update fails. Contains an error `message` with details about what went wrong.
+ * @publicDocs
  */
 export interface TrackingConsentChangeResultError {
   /**
@@ -609,6 +661,7 @@ export interface TrackingConsentChangeResultError {
 
 /**
  * A handle returned by `ToastApi.show()`. Call `hide()` to dismiss the toast notification programmatically.
+ * @publicDocs
  */
 export interface ToastApiResult {
   /**
@@ -619,6 +672,7 @@ export interface ToastApiResult {
 
 /**
  * Displays brief, non-blocking notification messages to the customer. Use the Toast API to confirm successful actions, report errors, or surface contextual feedback without interrupting the customer workflow.
+ * @publicDocs
  */
 export interface ToastApi {
   /**
@@ -633,6 +687,7 @@ export interface ToastApi {
  * When invoking via URL syntax, `action` and `type` are parsed from the
  * string. This companion type captures the remaining optional fields that can
  * be provided alongside the URL.
+ * @publicDocs
  */
 export interface IntentQueryOptions {
   /**
@@ -651,6 +706,7 @@ export interface IntentQueryOptions {
  * Common actions include:
  * - `'create'`: Initiate creation of a new resource.
  * - `'open'`: Modify an existing resource.
+ * @publicDocs
  */
 export type IntentAction = 'create' | 'open' | string;
 
@@ -659,6 +715,7 @@ export type IntentAction = 'create' | 'open' | string;
  *
  * Use this object form when programmatically composing an intent at runtime.
  * It pairs an action (verb) with a resource type and optional inputs.
+ * @publicDocs
  */
 export interface IntentQuery extends IntentQueryOptions {
   /**
@@ -679,6 +736,7 @@ export interface IntentQuery extends IntentQueryOptions {
  *
  * - `code` is always `'ok'`
  * - `data` contains the output payload
+ * @publicDocs
  */
 export interface SuccessIntentResponse {
   /**
@@ -701,6 +759,7 @@ export interface SuccessIntentResponse {
  * - `issues` optionally provides structured details for validation or
  *   field-specific problems following the Standard Schema convention
  *
+ * @publicDocs
  */
 export interface ErrorIntentResponse {
   /**
@@ -731,6 +790,7 @@ export interface ErrorIntentResponse {
  *
  * Distinct from `error`: no failure occurred, the activity was simply
  * abandoned by the user.
+ * @publicDocs
  */
 export interface ClosedIntentResponse {
   /**
@@ -744,6 +804,7 @@ export interface ClosedIntentResponse {
  *
  * Discriminated union representing all possible completion outcomes for an
  * invoked intent.
+ * @publicDocs
  */
 export type IntentResponse =
   | SuccessIntentResponse
@@ -752,6 +813,7 @@ export type IntentResponse =
 
 /**
  * Activity handle for tracking intent workflow progress.
+ * @publicDocs
  */
 export interface IntentActivity {
   /**
@@ -765,6 +827,7 @@ export interface IntentActivity {
  *
  * Intents pair an `action` (verb) with a resource `type` and optional `value`
  * and `data` to request a workflow.
+ * @publicDocs
  */
 export interface Intents {
   /**

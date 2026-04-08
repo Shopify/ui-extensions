@@ -1,5 +1,6 @@
 /**
  * Defines information about the POS device where the extension is running.
+ * @publicDocs
  */
 export interface Device {
   /**

@@ -7,6 +7,7 @@ import type {TransactionType} from './transaction-type';
 
 /**
  * Base interface for completed transaction data shared across all transaction types.
+ * @publicDocs
  */
 export interface BaseTransactionComplete {
   /**

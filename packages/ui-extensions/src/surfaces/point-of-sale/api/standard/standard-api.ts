@@ -10,6 +10,9 @@ import {StorageApi} from '../storage-api/storage-api';
 import {PinPadApi} from '../pin-pad-api';
 import type {I18n} from '../../../../api';
 
+/**
+ * @publicDocs
+ */
 export type StandardApi<T> = {[key: string]: any} & {
   extensionPoint: T;
   i18n: I18n;

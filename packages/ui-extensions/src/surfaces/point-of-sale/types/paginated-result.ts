@@ -1,5 +1,6 @@
 /**
  * Represents the result of a paginated query. Contains the data items, pagination cursors for navigating pages, and information about whether more results exist.
+ * @publicDocs
  */
 export interface PaginatedResult<T> {
   /**

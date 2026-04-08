@@ -24,6 +24,7 @@ export interface DeviceApiContent {
 
 /**
  * The `DeviceApi` object provides access to device information and capabilities. Access these properties and methods through `shopify.device` to retrieve device details and check device characteristics.
+ * @publicDocs
  */
 export interface DeviceApi {
   device: DeviceApiContent;

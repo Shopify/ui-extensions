@@ -5,8 +5,9 @@ import type {Data} from '../shared';
 /**
  * A product variant configuration.
  * @deprecated
+ * @publicDocs
  */
-interface ProductVariant {
+export interface ProductVariant {
   /** The variant's unique global identifier (GID). */
   id: string;
   /** The Stock Keeping Unit (SKU) identifier for inventory tracking. */
@@ -39,6 +40,7 @@ interface ProductVariant {
 /**
  * A component variant that is part of a product bundle. Represents an individual product variant included in a bundle configuration.
  * @deprecated
+ * @publicDocs
  */
 export interface ProductVariantComponent {
   /** The component variant's unique global identifier (GID). */
@@ -66,6 +68,7 @@ export interface ProductVariantComponent {
 
 /**
  * The `ProductVariantDetailsConfigurationApi` object provides methods for configuring product variant bundles and relationships. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to build variant configuration interfaces.
+ * @publicDocs
  */
 export interface ProductVariantDetailsConfigurationApi<
   ExtensionTarget extends AnyExtensionTarget,

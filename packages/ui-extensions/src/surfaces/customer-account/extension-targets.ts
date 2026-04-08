@@ -18,6 +18,7 @@ import {
  * and is expected to return a value in a specific shape.
  * The input arguments and the output type are different
  * for each extension target.
+ * @publicDocs
  */
 export interface ExtensionTargets
   extends OrderStatusExtensionTargets,
@@ -190,6 +191,7 @@ export type CustomerAccountExtensionTarget =
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
+ * @publicDocs
  */
 export type RenderExtensionTarget = {
   [Target in keyof ExtensionTargets]: ExtensionTargets[Target] extends RenderExtension<
@@ -205,6 +207,7 @@ export type RenderExtensionTarget = {
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
+ * @publicDocs
  */
 export type RenderOrderStatusExtensionTarget = {
   [Target in keyof OrderStatusExtensionTargets]: OrderStatusExtensionTargets[Target] extends RenderExtension<
@@ -220,6 +223,7 @@ export type RenderOrderStatusExtensionTarget = {
  * accepting a [`@remote-ui/core` `RemoteRoot`](https://github.com/Shopify/remote-dom/tree/remote-ui/packages/core)
  * and an additional `api` argument, and using those arguments to render
  * UI.
+ * @publicDocs
  */
 export type RenderCustomerAccountExtensionTarget = {
   [Target in keyof CustomerAccountExtensionTargets]: CustomerAccountExtensionTargets[Target] extends RenderExtension<
@@ -232,6 +236,7 @@ export type RenderCustomerAccountExtensionTarget = {
 
 /**
  * A mapping of each “render extension” name to its callback type.
+ * @publicDocs
  */
 export type RenderExtensions = {
   [Target in RenderExtensionTarget]: ExtensionTargets[Target];
@@ -252,6 +257,7 @@ type ExtractedAllowedComponentsFromRenderExtension<T> =
  * extension will receive at runtime. This API type is the second argument to
  * the callback for that extension target. The first callback for all of the rendering
  * extension targets each receive a `RemoteRoot` object.
+ * @publicDocs
  */
 export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
   ExtractedApiFromRenderExtension<RenderExtensions[Target]>;
@@ -259,6 +265,7 @@ export type ApiForRenderExtension<Target extends keyof RenderExtensions> =
 /**
  * For a given rendering extension target, returns the UI components that the
  * extension target supports.
+ * @publicDocs
  */
 export type AllowedComponentsForRenderExtension<
   Target extends keyof RenderExtensions,
@@ -271,6 +278,7 @@ export interface ActionExtensionApi {
 /**
  * For a given extension target, returns the type of the API that the
  * extension will receive at runtime.
+ * @publicDocs
  */
 export type ApiForExtension<Target extends keyof ExtensionTargets> =
   ExtractedApiFromExtension<ExtensionTargets[Target]>;
