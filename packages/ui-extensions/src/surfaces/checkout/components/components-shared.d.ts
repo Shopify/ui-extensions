@@ -195,11 +195,6 @@ export interface BackgroundProps {
 	 * - `transparent`: No background color (the default).
 	 * - `strong`: An emphasized background for prominent sections.
 	 *
-	 * - `'transparent'`: No visible background.
-	 * - `'subdued'`: A subtle, low-emphasis background.
-	 * - `'base'`: The standard background color.
-	 * - `'strong'`: A high-emphasis background for prominence.
-	 *
 	 * @default 'transparent'
 	 */
 	background?: BackgroundColorKeyword;
@@ -1358,28 +1353,34 @@ interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {
 }
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The behavioral type of the button component, which determines what action it performs when activated.
-	 * - `'submit'`: Submits the nearest containing form.
-	 * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.
-	 * - `'reset'`: Resets all fields in the nearest containing form to their default values.
+	 * The behavior of the Button.
 	 *
-	 * This property is ignored if `href` or `commandFor`/`command` is set.
+	 * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
+	 * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
+	 * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+	 *
+	 * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
 	 *
 	 * @default 'button'
 	 */
 	type?: "submit" | "button" | "reset";
 	/**
-	 * A callback fired when the button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+	 * Callback when the Button is activated.
+	 * This will be called before the action indicated by `type`.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * Whether the button is disabled, preventing it from being clicked or receiving focus.
+	 * Disables the Button meaning it cannot be clicked or receive focus.
 	 *
 	 * @default false
 	 */
 	disabled?: boolean;
 	/**
-	 * Whether the button is in a loading state, which replaces the button content with a loading indicator while a background action is being performed. This also disables the button.
+	 * Replaces content with a loading indicator while a background action is being performed.
+	 *
+	 * This also disables the Button.
 	 *
 	 * @default false
 	 */
@@ -1387,14 +1388,18 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
+	 * The URL to link to.
+	 *
+	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+	 * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
 	 */
 	href?: string;
 	/**
-	 * Specifies where to display the linked URL. Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).
+	 * Specifies where to display the linked URL.
 	 *
-	 * - `'auto'`: Opens the URL in the current frame or a new tab, depending on the context.
-	 * - `'_blank'`: Opens the URL in a new tab or window.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
+	 *
+	 * 'auto': The target is automatically determined based on the origin of the URL.
 	 *
 	 * @implementation Surfaces can set specific rules on how they handle each URL.
 	 * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
@@ -1404,17 +1409,24 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	 */
 	target?: "auto" | "_blank" | "_self" | "_parent" | "_top" | AnyString;
 	/**
-	 * A filename that causes the browser to treat the linked URL as a download. Download is only supported for same-origin URLs, or `blob:` and `data:` schemes. Learn more about the [download attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download).
+	 * Causes the browser to treat the linked URL as a download with the string being the file name.
+	 * Download only works for same-origin URLs or the `blob:` and `data:` schemes.
+	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
 	 */
 	download?: string;
 	/**
-	 * A callback fired when the link is activated, before navigating to the location specified by `href`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+	 * Callback when the link is activated.
+	 * This will be called before navigating to the location specified by `href`.
+	 *
+	 * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
 	 */
 	onClick?: (event: Event) => void;
 }
 export interface InteractionProps {
 	/**
-	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component.
+	 *
+	 * Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
 	 */
 	commandFor?: string;
 	/**
@@ -1432,7 +1444,7 @@ export interface InteractionProps {
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
-	 * The ID of the component to show when users hover over or focus on this component. Pair with a target component that supports interest-based interactions. Learn more about the [interestFor attribute](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code).
+	 * The ID of the component to show when users hover over or focus on this component. Pair with a target component that supports interest-based interactions.
 	 */
 	interestFor?: string;
 }
@@ -1440,52 +1452,48 @@ export interface BaseClickableProps extends ButtonBehaviorProps, LinkBehaviorPro
 }
 interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 	/**
-	 * A label that describes the purpose or content of the button for users of assistive technologies such as screen readers. Use this when the visible content alone doesn't provide enough context.
+	 * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
+	 *
+	 * Use this when using only an icon or the Button text is not enough context
+	 * for users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The content displayed within the button component.
+	 * The content of the Button.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * An icon displayed inside the button, typically positioned before the button text.
+	 * The type of icon to be displayed in the Button.
 	 *
 	 * @default ''
 	 */
 	icon?: IconType | AnyString;
 	/**
-	 * The inline width of the button component.
+	 * The displayed inline width of the Button.
 	 *
-	 * - `'auto'`: The size depends on the surface and context.
-	 * - `'fill'`: The button takes up 100% of the available inline size.
-	 * - `'fit-content'`: The button takes up the minimum inline size required to fit its content.
+	 * - `auto`: the size of the button depends on the surface and context.
+	 * - `fill`: the button will takes up 100% of the available inline size.
+	 * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
 	 *
 	 * @default 'auto'
 	 */
 	inlineSize?: "auto" | "fill" | "fit-content";
 	/**
-	 * The visual style variant of the button component, which controls its prominence and emphasis.
+	 * Changes the visual appearance of the Button.
 	 *
-	 * - `'auto'`: Automatically determined by the button's context.
-	 * - `'primary'`: High-emphasis style for the main action.
-	 * - `'secondary'`: Medium-emphasis style for supporting actions.
-	 * - `'tertiary'`: Low-emphasis style for less prominent actions.
-	 *
-	 * @default 'auto'
+	 * @default 'auto' - the variant is automatically determined by the Button's context
 	 */
 	variant?: "auto" | "primary" | "secondary" | "tertiary";
 	/**
-	 * The semantic meaning and color treatment of the button.
-	 *
-	 * - `'auto'`: Automatically determined based on context.
-	 * - `'neutral'`: General information without specific intent.
-	 * - `'critical'`: Urgent problems or destructive actions.
+	 * Sets the tone of the Button based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, so assistive technologies can invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label).
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 */
 	lang?: string;
 }
@@ -1767,8 +1775,7 @@ export interface BaseCheckableProps extends BaseSelectableProps, InteractionProp
 	 */
 	defaultChecked?: boolean;
 	/**
-	 * An identifier for the control that is unique within the nearest
-	 * containing `Form` component.
+	 * The name attribute for the control, used to identify its value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
@@ -1830,7 +1837,7 @@ export interface ChipProps$1 {
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * A label that describes the purpose or contents of the chip. It will be read to users using assistive technologies such as screen readers.
+	 * A label that describes the purpose or contents of the Chip. It will be read to users using assistive technologies such as screen readers.
 	 */
 	accessibilityLabel?: string;
 	/**
@@ -1865,13 +1872,13 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	 */
 	details?: ComponentChildren;
 	/**
-	 * Set to `true` to associate a choice with the error passed to `ChoiceList`
+	 * Whether this choice is associated with the error state of the parent choice list. When `true`, the choice is visually marked as having an error.
 	 *
 	 * @default false
 	 */
 	error?: boolean;
 	/**
-	 * Secondary content for a choice.
+	 * Additional text or elements displayed below the choice label, providing extra context or detail to help users make a selection.
 	 */
 	secondaryContent?: ComponentChildren;
 	/**
@@ -1928,7 +1935,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Disables the clickable, meaning it cannot be clicked or receive focus.
 	 *
-	 * In this state, the `click` event will not fire.
+	 * In this state, onClick will not fire.
 	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
 	 *
 	 * However, items within the clickable can still receive focus and be interacted with.
@@ -1940,7 +1947,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
 	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 *
 	 * @default ''
 	 */
@@ -1952,7 +1959,9 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	onClick?: (event: Event) => void;
 	/**
-	 * The URL to link to. When set, the chip navigates to the specified location after the `click` event fires.
+	 * The URL to link to.
+	 *
+	 * - If set, it will navigate to the location specified by `href` after executing the `click` event.
 	 */
 	href?: string;
 	/**
@@ -2317,7 +2326,7 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 	/**
 	 * A string representing the types of files that are accepted by the drop zone.
 	 * This string is a comma-separated list of unique file type specifiers which can be one of the following:
-	 * - A file extension starting with a period (".") character (such as .jpg, .pdf, .doc)
+	 * - A file extension starting with a period (".") character (e.g. .jpg, .pdf, .doc)
 	 * - A valid MIME type string with no extensions
 	 *
 	 * If omitted, all file types are accepted.
@@ -2513,7 +2522,7 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
 	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (`Subtag` label)
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 *
 	 * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
 	 *
@@ -2523,8 +2532,8 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicates the directionality of the element’s text.
 	 *
-	 * - `ltr`: languages written from left to right (such as English)
-	 * - `rtl`: languages written from right to left (such as Arabic)
+	 * - `ltr`: languages written from left to right (e.g. English)
+	 * - `rtl`: languages written from right to left (e.g. Arabic)
 	 * - `auto`: the user agent determines the direction based on the content
 	 * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
 	 *
@@ -2717,24 +2726,26 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
 	/**
-	 * The text or elements displayed as the link's content.
+	 * The content of the Link.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * The semantic meaning and color treatment of the link.
-	 *
-	 * - `'auto'`: Automatically determined based on context.
-	 * - `'neutral'`: Removes the default link color, inheriting the surrounding text style.
+	 * Sets the tone of the Link, based on the intention of the information being conveyed.
 	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * A label that describes the purpose or content of the link for users of assistive technologies such as screen readers.
+	 * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
+	 *
+	 * Use this when using only an icon or the content of the link is not enough context
+	 * for users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The language of the link's text content. Use this when the link text is in a different language than the rest of the page.
+	 * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+	 * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+	 * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
 	 */
 	lang?: string;
 }
