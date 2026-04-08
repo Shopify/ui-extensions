@@ -1716,7 +1716,7 @@ export interface MinMaxLengthProps {
 	 */
 	maxLength?: number;
 	/**
-	 * Specifies the min number of characters allowed.
+	 * Specifies the minimum number of characters allowed.
 	 *
 	 * @default 0
 	 */
@@ -2042,6 +2042,9 @@ export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteFiel
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
  */
+/**
+ * A named section that scopes the autocomplete data. Use to group related fields, such as separate billing and shipping addresses on the same form.
+ */
 export type AutocompleteSection = `section-${string}`;
 /**
  * The contact information group the autocomplete data should be sourced from.
@@ -2053,12 +2056,15 @@ export type AutocompleteGroup = "shipping" | "billing";
 export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
 export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
 export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
+/**
+ * The type of consent policy being collected.
+ *
+ * - `'sms-marketing'`: Represents the policy for SMS marketing consent.
+ */
 export type ConsentPolicy = "sms-marketing";
 interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
 	/**
-	 * The policy for which user consent is being collected for.
-	 *
-	 * `sms-marketing`: Represents the policy for SMS marketing consent.
+	 * The policy for which user consent is being collected.
 	 */
 	policy?: ConsentPolicy;
 }
@@ -2075,9 +2081,7 @@ interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldD
 }
 interface ConsentPhoneFieldProps$1 extends GlobalProps, PhoneFieldProps$1 {
 	/**
-	 * The policy for which user consent is being collected for.
-	 *
-	 * `sms-marketing`: Represents the policy for SMS marketing consent.
+	 * The policy for which user consent is being collected.
 	 */
 	policy?: ConsentPolicy;
 }
