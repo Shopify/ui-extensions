@@ -1503,7 +1503,7 @@ export interface BaseInputProps {
 	 */
 	name?: string;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1729,7 +1729,7 @@ export interface BaseSelectableProps {
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Disables the control, disallowing any interaction.
+	 * Whether the control is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1741,13 +1741,13 @@ export interface BaseSelectableProps {
 }
 export interface BaseOptionProps extends BaseSelectableProps {
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently selected.
 	 *
 	 * @default false
 	 */
 	selected?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is selected by default.
 	 *
 	 * @implementation `defaultSelected` reflects to the `selected` attribute.
 	 *
@@ -1761,13 +1761,13 @@ export interface BaseCheckableProps extends BaseSelectableProps, InteractionProp
 	 */
 	label?: string;
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently checked.
 	 *
 	 * @default false
 	 */
 	checked?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is checked by default.
 	 *
 	 * @implementation `defaultChecked` reflects to the `checked` attribute.
 	 *
@@ -1902,7 +1902,7 @@ interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" |
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * `disabled` on any child choices is ignored when this is true.
 	 *
@@ -2021,24 +2021,17 @@ interface ClipboardItemProps$1 extends GlobalProps {
 }
 export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
 	/**
-	 * A hint as to the intended content of the field.
+	 * A hint about the intended content of the field for browser autofill.
 	 *
-	 * When set to `on` (the default), this property indicates that the field should support
-	 * autofill, but you do not have any more semantic information on the intended
-	 * contents.
+	 * When set to `on` (the default), this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.
 	 *
-	 * When set to `off`, you are indicating that this field contains sensitive
-	 * information, or contents that are never saved, like one-time codes.
+	 * When set to `off`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes.
 	 *
-	 * Alternatively, you can provide value which describes the
-	 * specific data you would like to be entered into this field during autofill.
+	 * Alternatively, you can provide a value which describes the specific data you would like to be entered into this field during autofill.
 	 *
-	 * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+	 * Learn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.
 	 *
-	 * @default 'tel' for PhoneField
-	 * @default 'email' for EmailField
-	 * @default 'url' for URLField
-	 * @default 'on' for everything else
+	 * @default 'on'
 	 */
 	autocomplete?: AutocompleteField | `${AutocompleteSection} ${AutocompleteField}` | `${AutocompleteGroup} ${AutocompleteField}` | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}` | "on" | "off";
 }
