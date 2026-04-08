@@ -4,6 +4,7 @@ import {CartLineItemApi} from './cart-line/cart-line-item';
 
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -14,6 +15,7 @@ export type CallbackEvent<
 
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -318,6 +320,9 @@ export interface Docs_Standard_ToastApi
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
 
+/**
+ * @publicDocs
+ */
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 /**

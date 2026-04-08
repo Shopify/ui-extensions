@@ -52,6 +52,7 @@ interface Target {
   selectedCountryCode?: CountryCode;
 }
 
+/** @publicDocs */
 export interface AddressAutocompleteSuggestOutput {
   /**
    * An array of address autocomplete suggestions to show to the buyer.

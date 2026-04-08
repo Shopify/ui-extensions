@@ -2,8 +2,9 @@ import {SupportedDefinitionType} from '../shared';
 
 /**
  * A metafield update or creation operation. Use this to set or modify metafield values that store validation function configuration data.
+ * @publicDocs
  */
-interface MetafieldUpdateChange {
+export interface MetafieldUpdateChange {
   /** Identifies this as an update operation. Always set to `'updateMetafield'` for updates. */
   type: 'updateMetafield';
   /** The unique key identifying the metafield within its namespace. Use descriptive keys that indicate the setting's purpose (for example, `'min_quantity'` or `'shipping_restriction'`). */
@@ -18,8 +19,9 @@ interface MetafieldUpdateChange {
 
 /**
  * A metafield removal operation. Use this to delete metafields that are no longer needed for your validation configuration.
+ * @publicDocs
  */
-interface MetafieldRemoveChange {
+export interface MetafieldRemoveChange {
   /** Identifies this as a removal operation. Always set to `'removeMetafield'` for deletions. */
   type: 'removeMetafield';
   /** The unique key of the metafield to remove. Must match the key used when the metafield was created. */
@@ -30,13 +32,15 @@ interface MetafieldRemoveChange {
 
 /**
  * A metafield change operation that can either update or remove a metafield. Pass this to `applyMetafieldChange` to modify validation settings stored in metafields.
+ * @publicDocs
  */
-type MetafieldChange = MetafieldUpdateChange | MetafieldRemoveChange;
+export type MetafieldChange = MetafieldUpdateChange | MetafieldRemoveChange;
 
 /**
  * A failed metafield change operation result. Use the error message to understand what went wrong and fix the issue, such as validation errors, permission problems, or invalid metafield types.
+ * @publicDocs
  */
-interface MetafieldChangeResultError {
+export interface MetafieldChangeResultError {
   /** Indicates the operation failed. Check this value to determine if you need to handle an error. */
   type: 'error';
   /** A human-readable error message explaining why the operation failed. Use this to debug issues or display feedback to merchants. */
@@ -45,21 +49,24 @@ interface MetafieldChangeResultError {
 
 /**
  * A successful metafield change operation result. The metafield was updated or removed as requested and the changes are now saved.
+ * @publicDocs
  */
-interface MetafieldChangeSuccess {
+export interface MetafieldChangeSuccess {
   /** Indicates the operation succeeded. When this value is `'success'`, the metafield change was applied successfully. */
   type: 'success';
 }
 
 /**
  * The result returned after attempting to change a metafield. Check the `type` property to determine if the operation succeeded (`'success'`) or failed (`'error'`), then handle the result appropriately in your extension.
+ * @publicDocs
  */
-type MetafieldChangeResult =
+export type MetafieldChangeResult =
   | MetafieldChangeSuccess
   | MetafieldChangeResultError;
 
 /**
  * A function that applies metafield changes to validation settings. Call this function with an update or removal operation, then await the Promise to receive a result indicating success or failure. Use the result to provide feedback or handle errors in your settings interface.
+ * @publicDocs
  */
 export type ApplyMetafieldChange = (
   change: MetafieldChange,

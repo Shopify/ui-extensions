@@ -1,9 +1,11 @@
 import type {SubscribableSignalLike} from '../../shared';
 
+/** @publicDocs */
 export type PaymentMethodAttributesResult =
   | PaymentMethodAttributesResultSuccess
   | PaymentMethodAttributesResultError;
 
+/** @publicDocs */
 export interface PaymentMethodAttributesResultSuccess {
   /**
    * Indicates that the payment method attributes were set successfully.
@@ -11,6 +13,7 @@ export interface PaymentMethodAttributesResultSuccess {
   type: 'success';
 }
 
+/** @publicDocs */
 export interface PaymentMethodAttributesResultError {
   /**
    * Indicates that the payment method attributes were not set successfully.
@@ -27,14 +30,17 @@ export interface PaymentMethodAttributesResultError {
 
 /**
  * A key-value pair that represents an attribute of a payment method.
+ * @publicDocs
  */
 export interface PaymentMethodAttribute {
   key: string;
   value: string | number | boolean;
 }
 
+/** @publicDocs */
 export type PaymentMethodAttributesChange = PaymentMethodAttributesUpdateChange;
 
+/** @publicDocs */
 export interface PaymentMethodAttributesUpdateChange {
   /**
    * The type of the `PaymentMethodAttributesChange` API.

@@ -28,6 +28,9 @@ import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
 import type {TransactionCompleteWithReprintData} from './event/data';
 
+/**
+ * @publicDocs
+ */
 export interface EventExtensionTargets {
   'pos.transaction-complete.event.observe': (
     data: TransactionCompleteData,
@@ -43,6 +46,9 @@ export interface EventExtensionTargets {
   ) => Promise<BaseOutput>;
 }
 
+/**
+ * @publicDocs
+ */
 export interface RenderExtensionTargets {
   /**
    * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.
@@ -360,10 +366,22 @@ export interface RenderExtensionTargets {
   >;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
     EventExtensionTargets {}
 
+/**
+ * @publicDocs
+ */
 export type RenderExtensionTarget = keyof RenderExtensionTargets;
+/**
+ * @publicDocs
+ */
 export type EventExtensionTarget = keyof EventExtensionTargets;
+/**
+ * @publicDocs
+ */
 export type ExtensionTarget = keyof ExtensionTargets;

@@ -1,5 +1,6 @@
 /**
  * Specifies configuration options for capturing photos using the device camera.
+ * @publicDocs
  */
 export interface CameraMediaOptions {
   /**
@@ -29,6 +30,7 @@ export interface CameraMediaOptions {
 
 /**
  * Represents the captured image and associated metadata returned by `shopify.camera.takePhoto()`.
+ * @publicDocs
  */
 export interface CameraMediaResponse {
   /** The image data as base64 string. */
@@ -64,6 +66,7 @@ export interface CameraApiContent {
 /**
  * The `CameraApi` object provides access to device camera functionality for capturing photos.
  * Access these properties through `shopify.camera`.
+ * @publicDocs
  */
 export interface CameraApi {
   camera: CameraApiContent;

@@ -4,6 +4,7 @@ import {DiscountAllocation} from './discount-allocation';
 
 /**
  * Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.
+ * @publicDocs
  */
 export interface Cart {
   /**
@@ -50,6 +51,7 @@ export interface Cart {
 
 /**
  * Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.
+ * @publicDocs
  */
 export interface CartUpdateInput {
   /**
@@ -80,6 +82,7 @@ export interface CartUpdateInput {
 
 /**
  * Represents basic customer identification information. Contains the customer ID for linking to detailed customer data and enabling customer-specific features.
+ * @publicDocs
  */
 export interface Customer {
   /**
@@ -90,6 +93,7 @@ export interface Customer {
 
 /**
  * Represents an individual item in the shopping cart. Contains product information, pricing, quantity, discounts, and customization details for a single cart entry.
+ * @publicDocs
  */
 export interface LineItem {
   /**
@@ -172,6 +176,7 @@ export interface LineItem {
 
 /**
  * Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.
+ * @publicDocs
  */
 export interface LineItemComponent {
   /**
@@ -206,6 +211,7 @@ export interface LineItemComponent {
 
 /**
  * Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.
+ * @publicDocs
  */
 export interface SellingPlan {
   /**
@@ -232,6 +238,7 @@ export interface SellingPlan {
 
 /**
  * Represents a discount applied to a cart or transaction, including amount and description.
+ * @publicDocs
  */
 export interface Discount {
   /**
@@ -254,6 +261,7 @@ export interface Discount {
 
 /**
  * Specifies the parameters for adding custom properties to line items. Properties are key-value pairs used for storing metadata, tracking information, or integration data.
+ * @publicDocs
  */
 export interface SetLineItemPropertiesInput {
   /**
@@ -268,6 +276,7 @@ export interface SetLineItemPropertiesInput {
 
 /**
  * Specifies the parameters for applying discounts to individual line items. Includes the discount type, value, and reason for audit and reporting purposes.
+ * @publicDocs
  */
 export interface SetLineItemDiscountInput {
   /**
@@ -282,6 +291,7 @@ export interface SetLineItemDiscountInput {
 
 /**
  * Represents a discount applied to an individual line item in the cart.
+ * @publicDocs
  */
 export interface LineItemDiscount {
   /**
@@ -300,6 +310,7 @@ export interface LineItemDiscount {
 
 /**
  * Represents a custom sale item that is not associated with a product in the catalog. Includes pricing, taxation, and descriptive information for manually created line items.
+ * @publicDocs
  */
 export interface CustomSale {
   /**
@@ -322,6 +333,7 @@ export interface CustomSale {
 
 /**
  * Represents physical address information for customer shipping and billing. Contains standard address fields including street, city, region, postal code, and country data.
+ * @publicDocs
  */
 export interface Address {
   /**
@@ -380,6 +392,7 @@ export interface Address {
 
 /**
  * Specifies the parameters for assigning selling plans to line items. Used to add subscription or purchase option configurations to products.
+ * @publicDocs
  */
 export interface SetLineItemSellingPlanInput {
   /**

@@ -30,6 +30,7 @@ export type {ApiVersion, Capability} from '../../../../shared';
  * The storage backend is implemented with `localStorage` and
  * should persist across the buyer's checkout session.
  * However, data persistence isn't guaranteed.
+ * @publicDocs
  */
 export interface Storage {
   /**
@@ -57,6 +58,7 @@ export interface Storage {
 
 /**
  * The meta information about an extension target.
+ * @publicDocs
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -130,6 +132,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   version?: string;
 }
 
+/** @publicDocs */
 export interface Editor {
   /**
    * Indicates whether the extension is rendering in the [checkout editor](https://shopify.dev/docs/apps/checkout). Always `'checkout'`.
@@ -139,6 +142,7 @@ export interface Editor {
 
 /**
  * Metadata associated with the checkout. See the [metafields documentation](https://shopify.dev/docs/apps/build/custom-data/metafields) for more information on how metafields work.
+ * @publicDocs
  */
 export interface Metafield {
   /**
@@ -174,6 +178,7 @@ export interface Metafield {
 
 /**
  * Represents a custom [metafield](https://shopify.dev/docs/apps/build/custom-data/metafields) attached to a resource such as a product, variant, customer, or shop.
+ * @publicDocs
  */
 export interface AppMetafield {
   /**
@@ -214,6 +219,7 @@ export interface AppMetafield {
  * Represents a custom metadata attached to the cart. Unlike `AppMetafield`, cart metafield values are always strings and don't include a `valueType` discriminator.
  *
  * Cart [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields) are set by extensions using `applyMetafieldChange()` and can be copied to order metafields at order creation time.
+ * @publicDocs
  */
 export interface CartMetafield {
   /**
@@ -239,6 +245,7 @@ export interface CartMetafield {
 
 /**
  * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and globally-unique ID, so you can trace where the data comes from.
+ * @publicDocs
  */
 export interface AppMetafieldEntryTarget {
   /**
@@ -275,6 +282,7 @@ export interface AppMetafieldEntryTarget {
 
 /**
  * An entry that pairs a Shopify resource with one of its [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields). Each entry contains a `target` identifying which resource the metafield belongs to and a `metafield` object with the actual data.
+ * @publicDocs
  */
 export interface AppMetafieldEntry {
   /**
@@ -290,13 +298,16 @@ export interface AppMetafieldEntry {
   metafield: AppMetafield;
 }
 
+/** @publicDocs */
 export type Version = string;
+/** @publicDocs */
 export type CheckoutToken = string;
 
 /**
  * This returns a translated string matching a key in a locale file.
  *
  * @example translate("banner.title")
+ * @publicDocs
  */
 export interface I18nTranslate {
   <ReplacementType = string>(
@@ -307,6 +318,7 @@ export interface I18nTranslate {
     : (string | ReplacementType)[];
 }
 
+/** @publicDocs */
 export interface I18n {
   /**
    * Returns a localized number.
@@ -360,6 +372,7 @@ export interface I18n {
   translate: I18nTranslate;
 }
 
+/** @publicDocs */
 export interface Language {
   /**
    * The [BCP-47](https://en.wikipedia.org/wiki/IETF_language_tag) language tag that identifies the language. This is a standardized code that might include a base language and an optional region subtag separated by a dash. For example, `'en'` represents English and `'en-US'` represents English as used in the United States. The region subtag follows the [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) standard.
@@ -367,6 +380,7 @@ export interface Language {
   isoCode: string;
 }
 
+/** @publicDocs */
 export interface Currency {
   /**
    * The three-letter currency code in [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) format, such as `'USD'`, `'EUR'`, or `'CAD'`.
@@ -376,6 +390,7 @@ export interface Currency {
 
 /**
  * A [Shopify Market](https://shopify.dev/docs/apps/build/markets) that represents a group of one or more regions for international selling.
+ * @publicDocs
  */
 export interface Market {
   /**
@@ -389,6 +404,7 @@ export interface Market {
   handle: string;
 }
 
+/** @publicDocs */
 export interface Localization {
   /**
    * The currency that the buyer sees for money amounts in the checkout. Use this value to format prices and totals in the buyer's expected currency.
@@ -425,6 +441,7 @@ export interface Localization {
   market: SubscribableSignalLike<Market | undefined>;
 }
 
+/** @publicDocs */
 export interface LocalizedField {
   /**
    * The identifier for the localized field, indicating the type of information
@@ -448,6 +465,7 @@ export interface LocalizedField {
 
 /**
  * Provides details on the buyer's progression through the checkout.
+ * @publicDocs
  */
 export interface BuyerJourney {
   /**
@@ -513,6 +531,7 @@ interface BuyerJourneyStepReference {
   handle: BuyerJourneyStepHandle;
 }
 
+/** @publicDocs */
 export interface BuyerJourneyStep {
   /**
    * The handle that uniquely identifies the buyer journey step, such as `'information'`, `'shipping'`, or `'payment'`.
@@ -786,6 +805,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   localizedFields?: SubscribableSignalLike<LocalizedField[]>;
 }
 
+/** @publicDocs */
 export interface SessionToken {
   /**
    * Requests a session token that hasn't expired. You should call this method every
@@ -800,6 +820,7 @@ export interface SessionToken {
  * Information about the buyer who is completing the checkout.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data). The `customer` and `purchasingCompany` properties require level 1 access. The `email` and `phone` properties require level 2 access.
+ * @publicDocs
  */
 export interface BuyerIdentity {
   /**
@@ -834,6 +855,7 @@ export interface BuyerIdentity {
 
 /**
  * The company and location that the [B2B](https://shopify.dev/docs/apps/build/b2b) customer is purchasing on behalf of. This is present only when the buyer is logged in as a business customer.
+ * @publicDocs
  */
 export interface PurchasingCompany {
   /**
@@ -850,6 +872,7 @@ export interface PurchasingCompany {
   location: CompanyLocation;
 }
 
+/** @publicDocs */
 export interface Company {
   /**
    * A globally-unique identifier for the company in the format `gid://shopify/Company/<id>`.
@@ -873,6 +896,7 @@ export interface Company {
   externalId?: string;
 }
 
+/** @publicDocs */
 export interface CompanyLocation {
   /**
    * A globally-unique identifier for the company location in the format `gid://shopify/CompanyLocation/<id>`.
@@ -896,6 +920,7 @@ export interface CompanyLocation {
   externalId?: string;
 }
 
+/** @publicDocs */
 export interface AppliedGiftCard {
   /**
    * The last four characters of the applied gift card's code. The full code isn't exposed for security reasons. Use this value to display which card is applied.
@@ -913,6 +938,7 @@ export interface AppliedGiftCard {
   balance: Money;
 }
 
+/** @publicDocs */
 export interface Shop {
   /**
    * A globally-unique identifier for the shop in the format `gid://shopify/Shop/<id>`.
@@ -937,6 +963,7 @@ export interface Shop {
   myshopifyDomain: string;
 }
 
+/** @publicDocs */
 export interface CartCost {
   /**
    * The sum of all line item prices at the current step of checkout, before shipping and taxes are applied. Use this value to display the base cost of the items the buyer purchased.
@@ -959,6 +986,7 @@ export interface CartCost {
   totalAmount: SubscribableSignalLike<Money>;
 }
 
+/** @publicDocs */
 export interface CartLine {
   /**
    * A unique identifier for the cart line in the format `gid://shopify/CartLine/<id>`. This ID isn't stable and can change after any cart operation, so avoid persisting it. Always look up the current ID before calling `applyCartLinesChange()`, because you'll need it to create a `CartLineChange` object.
@@ -1005,6 +1033,7 @@ export interface CartLine {
   parentRelationship: CartLineParentRelationship | null;
 }
 
+/** @publicDocs */
 export interface CartLineParentRelationship {
   /**
    * The parent cart line that a cart line is associated with.
@@ -1025,6 +1054,7 @@ type CartLineComponentType = CartBundleLineComponent;
 
 /**
  * An individual component within a bundled cart line. Each `CartLine` that represents a bundle has a `lineComponents` array containing these components.
+ * @publicDocs
  */
 export interface CartBundleLineComponent {
   /**
@@ -1062,6 +1092,7 @@ export interface CartBundleLineComponent {
   attributes: Attribute[];
 }
 
+/** @publicDocs */
 export interface CartLineCost {
   /**
    * The total price the buyer pays for this line item after all line-level discounts have been applied, but before order-level discounts, taxes, and shipping.
@@ -1069,6 +1100,7 @@ export interface CartLineCost {
   totalAmount: Money;
 }
 
+/** @publicDocs */
 export interface Money {
   /**
    * The decimal amount of the price. For example, `29.99` represents twenty-nine dollars and ninety-nine cents.
@@ -1082,8 +1114,10 @@ export interface Money {
   currencyCode: CurrencyCode;
 }
 
+/** @publicDocs */
 export type Merchandise = ProductVariant;
 
+/** @publicDocs */
 export interface BaseMerchandise {
   /**
    * A globally unique identifier for the merchandise.
@@ -1093,6 +1127,7 @@ export interface BaseMerchandise {
   id: string;
 }
 
+/** @publicDocs */
 export interface ProductVariant extends BaseMerchandise {
   /**
    * Identifies the merchandise as a product variant. This is currently the only merchandise type in checkout.
@@ -1147,6 +1182,7 @@ export interface ProductVariant extends BaseMerchandise {
   sku?: string;
 }
 
+/** @publicDocs */
 export interface Product {
   /**
    * A globally-unique identifier for the product in the format `gid://shopify/Product/<id>`.
@@ -1166,6 +1202,7 @@ export interface Product {
   productType: string;
 }
 
+/** @publicDocs */
 export interface ImageDetails {
   /**
    * The fully-qualified URL of the image. Use this to render the product or variant image in your extension.
@@ -1178,6 +1215,7 @@ export interface ImageDetails {
   altText?: string;
 }
 
+/** @publicDocs */
 export interface SelectedOption {
   /**
    * The name of the product option, such as "Color" or "Size".
@@ -1196,6 +1234,7 @@ export interface SelectedOption {
 
 /**
  * A payment option presented to the buyer.
+ * @publicDocs
  */
 export interface PaymentOption {
   /**
@@ -1236,9 +1275,11 @@ export interface PaymentOption {
 
 /**
  * A payment option that the buyer has actively selected. This is the same shape as `PaymentOption` and appears in `selectedPaymentOptions`.
+ * @publicDocs
  */
 export type SelectedPaymentOption = PaymentOption;
 
+/** @publicDocs */
 export interface CartDiscountCode {
   /**
    * The discount code string entered by the buyer during checkout or applied programmatically, such as `"SAVE10"` or `"FREESHIP"`. Use this to display which discount codes were applied.
@@ -1251,12 +1292,14 @@ export interface CartDiscountCode {
  * - `CartCodeDiscountAllocation` (`type: 'code'`): Triggered by a discount code the buyer entered.
  * - `CartAutomaticDiscountAllocation` (`type: 'automatic'`): Applied automatically based on merchant-configured rules.
  * - `CartCustomDiscountAllocation` (`type: 'custom'`): Applied by a [Shopify Function](https://shopify.dev/docs/api/functions/latest/discount).
+ * @publicDocs
  */
 export type CartDiscountAllocation =
   | CartCodeDiscountAllocation
   | CartAutomaticDiscountAllocation
   | CartCustomDiscountAllocation;
 
+/** @publicDocs */
 export interface CartDiscountAllocationBase {
   /**
    * The monetary value that was deducted from the line item or order total by this discount allocation.
@@ -1264,6 +1307,7 @@ export interface CartDiscountAllocationBase {
   discountedAmount: Money;
 }
 
+/** @publicDocs */
 export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
   /**
    * The discount code string that the buyer entered during checkout, such as `"SAVE10"` or `"FREESHIP"`.
@@ -1276,6 +1320,7 @@ export interface CartCodeDiscountAllocation extends CartDiscountAllocationBase {
   type: 'code';
 }
 
+/** @publicDocs */
 export interface CartAutomaticDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
@@ -1289,6 +1334,7 @@ export interface CartAutomaticDiscountAllocation
   type: 'automatic';
 }
 
+/** @publicDocs */
 export interface CartCustomDiscountAllocation
   extends CartDiscountAllocationBase {
   /**
@@ -1320,6 +1366,7 @@ interface InterceptorResultBlock {
   behavior: 'block';
 }
 
+/** @publicDocs */
 export type InterceptorRequest =
   | InterceptorRequestAllow
   | InterceptorRequestBlock;
@@ -1366,6 +1413,7 @@ interface InterceptorRequestBlock {
   perform?(result: InterceptorResult): void | Promise<void>;
 }
 
+/** @publicDocs */
 export interface InterceptorProps {
   /**
    * Whether the interceptor can block the buyer's progress through checkout. When `true`, the merchant has granted your extension the `block_progress` capability. When `false`, you can still validate but can't prevent the buyer from continuing.
@@ -1379,6 +1427,7 @@ export interface InterceptorProps {
  * `{behavior: 'block', reason: 'your reason here', errors?: ValidationError[]}`.
  * If you do, then you're expected to also update some part of your UI to reflect the reason why navigation
  * was blocked, either by targeting checkout UI fields, passing errors to the page level, or rendering the errors in your extension.
+ * @publicDocs
  */
 export type Interceptor = (
   interceptorProps: InterceptorProps,
@@ -1388,6 +1437,7 @@ export type Interceptor = (
  * Information about a customer who has previously purchased from this shop.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+ * @publicDocs
  */
 export interface Customer {
   /**
@@ -1474,6 +1524,7 @@ export interface Customer {
 
 /**
  * Settings describing the behavior of the buyer's checkout.
+ * @publicDocs
  */
 export interface CheckoutSettings {
   /**
@@ -1495,6 +1546,7 @@ export interface CheckoutSettings {
 
 /**
  * Settings describing the behavior of the shipping address.
+ * @publicDocs
  */
 export interface ShippingAddressSettings {
   /**
@@ -1505,6 +1557,7 @@ export interface ShippingAddressSettings {
 
 /**
  * A payment terms template configured by the merchant, defining when payment is due for B2B orders. Common examples include "Net 30" (due in 30 days) or "Due on receipt".
+ * @publicDocs
  */
 export interface PaymentTermsTemplate {
   /**
@@ -1529,6 +1582,7 @@ export interface PaymentTermsTemplate {
 
 /**
  * A store credit account owned by the customer. Store credit is a form of payment that merchants can issue to customers for returns, refunds, or promotional purposes.
+ * @publicDocs
  */
 export interface StoreCreditAccount {
   /**
@@ -1545,12 +1599,14 @@ export interface StoreCreditAccount {
 
 /**
  * The merchant-defined setting values for the extension.
+ * @publicDocs
  */
 export type ExtensionSettings = Record<
   string,
   string | number | boolean | undefined
 >;
 
+/** @publicDocs */
 export interface Analytics {
   /**
    * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
@@ -1564,11 +1620,13 @@ export interface Analytics {
 }
 /**
  * Represents a visitor result.
+ * @publicDocs
  */
 export type VisitorResult = VisitorSuccess | VisitorError;
 
 /**
  * Represents a successful visitor result.
+ * @publicDocs
  */
 export interface VisitorSuccess {
   /**
@@ -1579,6 +1637,7 @@ export interface VisitorSuccess {
 
 /**
  * Represents an unsuccessful visitor result.
+ * @publicDocs
  */
 export interface VisitorError {
   /**
@@ -1596,6 +1655,7 @@ export interface VisitorError {
 
 /**
  * A group of cart lines that share the same set of delivery options. For example, physical items might form one delivery group while digital items form another.
+ * @publicDocs
  */
 export interface DeliveryGroup {
   /**
@@ -1635,11 +1695,13 @@ export interface DeliveryGroup {
  *
  * - `'oneTimePurchase'`: Items bought as a single, non-recurring purchase.
  * - `'subscription'`: Items bought through a [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) that results in recurring deliveries.
+ * @publicDocs
  */
 export type DeliveryGroupType = 'oneTimePurchase' | 'subscription';
 
 /**
  * A reference to a cart line within a delivery group, identified by the cart line's ID.
+ * @publicDocs
  */
 export interface CartLineReference {
   /**
@@ -1650,6 +1712,7 @@ export interface CartLineReference {
 
 /**
  * A reference to the delivery option selected by the buyer for a delivery group.
+ * @publicDocs
  */
 export interface DeliveryOptionReference {
   /**
@@ -1664,6 +1727,7 @@ export interface DeliveryOptionReference {
  * - `ShippingOption` (`type: 'shipping' | 'local'`): Items shipped by a carrier or delivered locally by the merchant.
  * - `PickupPointOption` (`type: 'pickupPoint'`): Items shipped to a third-party collection point for the buyer to pick up.
  * - `PickupLocationOption` (`type: 'pickup'`): Items picked up directly from a merchant's store or warehouse.
+ * @publicDocs
  */
 export type DeliveryOption =
   | ShippingOption
@@ -1672,6 +1736,7 @@ export type DeliveryOption =
 
 /**
  * Represents a base interface for a single delivery option.
+ * @publicDocs
  */
 export interface DeliveryOptionBase {
   /**
@@ -1704,6 +1769,7 @@ export interface DeliveryOptionBase {
 
 /**
  * Represents a delivery option that's a shipping option.
+ * @publicDocs
  */
 export interface ShippingOption extends DeliveryOptionBase {
   /**
@@ -1732,6 +1798,7 @@ export interface ShippingOption extends DeliveryOptionBase {
   deliveryEstimate: DeliveryEstimate;
 }
 
+/** @publicDocs */
 export interface DeliveryEstimate {
   /**
    * The estimated time in transit for the delivery, expressed as a range
@@ -1742,6 +1809,7 @@ export interface DeliveryEstimate {
   timeInTransit?: NumberRange;
 }
 
+/** @publicDocs */
 export interface ShippingOptionCarrier {
   /**
    * The display name of the shipping carrier, such as "Canada Post" or "UPS". The value is `undefined` if the carrier name isn't available.
@@ -1749,6 +1817,7 @@ export interface ShippingOptionCarrier {
   name?: string;
 }
 
+/** @publicDocs */
 export interface PickupPointOption extends DeliveryOptionBase {
   /**
    * Identifies this as a pickup point option, where items are shipped to a third-party collection point for the buyer to pick up.
@@ -1776,6 +1845,7 @@ export interface PickupPointOption extends DeliveryOptionBase {
   location: PickupPointLocation;
 }
 
+/** @publicDocs */
 export interface PickupLocationOption extends DeliveryOptionBase {
   /**
    * Identifies this as a pickup location option, where the buyer picks up items directly from a merchant's store or warehouse.
@@ -1832,6 +1902,7 @@ interface PickupPointCarrier {
   name?: string;
 }
 
+/** @publicDocs */
 export interface NumberRange {
   /**
    * The lower bound of the range. Undefined if only an upper bound is
@@ -1848,6 +1919,7 @@ export interface NumberRange {
 
 /**
  * Represents a DeliveryGroup with expanded reference fields and full details.
+ * @publicDocs
  */
 export interface DeliveryGroupDetails extends DeliveryGroup {
   /**
@@ -1861,6 +1933,7 @@ export interface DeliveryGroupDetails extends DeliveryGroup {
   targetedCartLines: CartLine[];
 }
 
+/** @publicDocs */
 export interface AllowedProcessing {
   /**
    * Whether analytics data can be collected based on the visitor's consent,
@@ -1888,6 +1961,7 @@ export interface AllowedProcessing {
   saleOfData: boolean;
 }
 
+/** @publicDocs */
 export interface VisitorConsent {
   /**
    * The visitor's consent for analytics tracking. `true` means the visitor
@@ -1915,6 +1989,7 @@ export interface VisitorConsent {
   saleOfData?: boolean;
 }
 
+/** @publicDocs */
 export interface TrackingConsentMetafield {
   /**
    * The identifier for the tracking consent metafield, such as `'analyticsType'` or `'marketingType'`.
@@ -1926,6 +2001,7 @@ export interface TrackingConsentMetafield {
   value: string;
 }
 
+/** @publicDocs */
 export interface TrackingConsentMetafieldChange {
   /**
    * The identifier for the tracking consent metafield to update.
@@ -1937,6 +2013,7 @@ export interface TrackingConsentMetafieldChange {
   value: string | null;
 }
 
+/** @publicDocs */
 export interface VisitorConsentChange extends VisitorConsent {
   /**
    * Tracking consent metafield data to be saved.
@@ -1952,10 +2029,12 @@ export interface VisitorConsentChange extends VisitorConsent {
   type: 'changeVisitorConsent';
 }
 
+/** @publicDocs */
 export type ApplyTrackingConsentChangeType = (
   visitorConsent: VisitorConsentChange,
 ) => Promise<TrackingConsentChangeResult>;
 
+/** @publicDocs */
 export interface CustomerPrivacyRegion {
   /**
    * The buyer's country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format. The value is `undefined` if geolocation failed.
@@ -1975,6 +2054,7 @@ export interface CustomerPrivacyRegion {
   provinceCode?: string;
 }
 
+/** @publicDocs */
 export interface CustomerPrivacy {
   /**
    * Flags indicating whether each type of data processing is permitted, based on the visitor's consent, the merchant's privacy configuration, and the visitor's geographic location.
@@ -2010,12 +2090,14 @@ export interface CustomerPrivacy {
   region?: CustomerPrivacyRegion;
 }
 
+/** @publicDocs */
 export type TrackingConsentChangeResult =
   | TrackingConsentChangeResultSuccess
   | TrackingConsentChangeResultError;
 
 /**
  * The returned result of a successful tracking consent preference update.
+ * @publicDocs
  */
 export interface TrackingConsentChangeResultSuccess {
   /**
@@ -2027,6 +2109,7 @@ export interface TrackingConsentChangeResultSuccess {
 /**
  * The returned result of an unsuccessful tracking consent preference update
  * with a message detailing the type of error that occurred.
+ * @publicDocs
  */
 export interface TrackingConsentChangeResultError {
   /**
@@ -2041,6 +2124,7 @@ export interface TrackingConsentChangeResultError {
   message: string;
 }
 
+/** @publicDocs */
 export interface CartInstructions {
   /**
    * Whether the extension can update custom attributes using `applyAttributeChange()`.
@@ -2073,6 +2157,7 @@ export interface CartInstructions {
   notes: NotesCartInstructions;
 }
 
+/** @publicDocs */
 export interface AttributesCartInstructions {
   /**
    * Whether attributes can be updated using `applyAttributeChange()`. When
@@ -2083,6 +2168,7 @@ export interface AttributesCartInstructions {
   canUpdateAttributes: boolean;
 }
 
+/** @publicDocs */
 export interface DeliveryCartInstructions {
   /**
    * Whether the shipping address can be modified using
@@ -2093,6 +2179,7 @@ export interface DeliveryCartInstructions {
   canSelectCustomAddress: boolean;
 }
 
+/** @publicDocs */
 export interface DiscountsCartInstructions {
   /**
    * Whether discount codes can be updated using `applyDiscountCodeChange()`.
@@ -2103,6 +2190,7 @@ export interface DiscountsCartInstructions {
   canUpdateDiscountCodes: boolean;
 }
 
+/** @publicDocs */
 export interface CartLinesCartInstructions {
   /**
    * Whether new cart lines can be added using `applyCartLinesChange()`. When
@@ -2127,6 +2215,7 @@ export interface CartLinesCartInstructions {
   canUpdateCartLine: boolean;
 }
 
+/** @publicDocs */
 export interface MetafieldsCartInstructions {
   /**
    * Whether the extension can add or update cart metafields using
@@ -2141,6 +2230,7 @@ export interface MetafieldsCartInstructions {
   canDeleteCartMetafield: boolean;
 }
 
+/** @publicDocs */
 export interface NotesCartInstructions {
   /**
    * Whether the order note can be updated using `applyNoteChange()`. When

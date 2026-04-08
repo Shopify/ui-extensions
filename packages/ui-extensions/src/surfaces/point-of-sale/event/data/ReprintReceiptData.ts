@@ -4,6 +4,7 @@ import {OrderLineItem} from '../../types/order';
 
 /**
  * Defines the data structure for receipt reprint requests.
+ * @publicDocs
  */
 export interface ReprintReceiptData extends BaseTransactionComplete {
   /**

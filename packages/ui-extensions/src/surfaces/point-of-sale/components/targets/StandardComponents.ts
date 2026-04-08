@@ -1,3 +1,6 @@
+/**
+ * @publicDocs
+ */
 export type StandardComponents =
   | 'Badge'
   | 'Banner'

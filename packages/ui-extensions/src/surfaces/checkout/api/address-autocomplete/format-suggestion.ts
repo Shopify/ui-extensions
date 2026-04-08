@@ -17,6 +17,7 @@ interface Target {
   selectedSuggestion: AddressAutocompleteSuggestion;
 }
 
+/** @publicDocs */
 export interface AddressAutocompleteFormatSuggestionOutput {
   /**
    * The formatted address that will be used to populate the native address fields.

@@ -1,33 +1,43 @@
-type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
+/** @publicDocs */
+export type Resolution = 1 | 1.3 | 1.5 | 2 | 2.6 | 3 | 3.5 | 4;
 
+/** @publicDocs */
 export interface InteractiveConditions {
   hover: true;
   focus: true;
 }
 
+/** @publicDocs */
 export interface ResolutionCondition {
   resolution: Resolution;
 }
 
-type ViewportInlineSize = 'extraSmall' | 'small' | 'medium' | 'large';
+/** @publicDocs */
+export type ViewportInlineSize = 'extraSmall' | 'small' | 'medium' | 'large';
 
+/** @publicDocs */
 export interface ViewportSizeCondition<T = ViewportInlineSize> {
   viewportInlineSize: {min: T};
 }
 
+/** @publicDocs */
 export type AtLeastOne<T, U = {[K in keyof T]: Pick<T, K>}> = Partial<T> &
   U[keyof U];
 
-type DefaultConditions = InteractiveConditions & ViewportSizeCondition;
+/** @publicDocs */
+export type DefaultConditions = InteractiveConditions & ViewportSizeCondition;
 
+/** @publicDocs */
 export type Conditions = AtLeastOne<DefaultConditions>;
 
+/** @publicDocs */
 export type BaseConditions = AtLeastOne<
   DefaultConditions & ResolutionCondition
 >;
 
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
+/** @publicDocs */
 export interface StylesBaseConditions {
   viewportInlineSize?: {min: ViewportInlineSize};
   hover?: true;
@@ -37,6 +47,7 @@ export interface StylesBaseConditions {
 
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
+/** @publicDocs */
 export interface StylesConditions {
   viewportInlineSize?: {min: ViewportInlineSize};
   hover?: true;
@@ -45,6 +56,7 @@ export interface StylesConditions {
 
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
+/** @publicDocs */
 export interface StylesConditionalValue<
   T,
   AcceptedConditions extends StylesBaseConditions = StylesBaseConditions,
@@ -62,6 +74,7 @@ export interface StylesConditionalValue<
 
 // This interface is only used to provide documentation for the Style helper.
 // It is not used in the implementation.
+/** @publicDocs */
 export interface StylesConditionalStyle<
   T,
   AcceptedConditions extends StylesBaseConditions = StylesBaseConditions,
@@ -77,6 +90,7 @@ export interface StylesConditionalStyle<
   conditionals: StylesConditionalValue<T, AcceptedConditions>[];
 }
 
+/** @publicDocs */
 export interface ConditionalValue<
   T,
   AcceptedConditions extends BaseConditions = Conditions,
@@ -92,6 +106,7 @@ export interface ConditionalValue<
   value: T;
 }
 
+/** @publicDocs */
 export interface ConditionalStyle<
   T,
   AcceptedConditions extends BaseConditions = Conditions,
@@ -110,6 +125,7 @@ export interface ConditionalStyle<
 /**
  * A type that represents a value that can be a conditional style.
  * We highly recommend using the `Style` helper which simplifies the creation of conditional styles.
+ * @publicDocs
  */
 export type MaybeConditionalStyle<
   T,
@@ -119,6 +135,7 @@ export type MaybeConditionalStyle<
 /**
  * A type that represents a value that can be a conditional style. The conditions are based on the viewport size.
  * We highly recommend using the `Style` helper which simplifies the creation of conditional styles.
+ * @publicDocs
  */
 export type MaybeResponsiveConditionalStyle<T> =
   | T

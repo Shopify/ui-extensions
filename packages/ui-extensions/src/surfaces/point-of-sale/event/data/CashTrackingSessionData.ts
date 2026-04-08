@@ -3,6 +3,7 @@ import {BaseApi} from './BaseApi';
 
 /**
  * The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.
+ * @publicDocs
  */
 export interface CashTrackingSessionStartData extends BaseData, BaseApi {
   /**
@@ -22,6 +23,7 @@ export interface CashTrackingSessionStartData extends BaseData, BaseApi {
 
 /**
  * The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.
+ * @publicDocs
  */
 export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {
   /**

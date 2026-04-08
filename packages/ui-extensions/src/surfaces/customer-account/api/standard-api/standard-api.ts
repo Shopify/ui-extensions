@@ -20,12 +20,14 @@ import type {ExtensionTarget} from '../../extension-targets';
 
 /**
  * The merchant-defined setting values for the extension.
+ * @publicDocs
  */
 export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 /**
  * The following APIs are provided to all extension targets.
+ * @publicDocs
  */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -121,10 +123,16 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
 
+/**
+ * @publicDocs
+ */
 export interface CompanyLocationApi {
   locationId: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface FulfillmentApi {
   /**
    * Id of a single fulfillment.
@@ -132,6 +140,9 @@ export interface FulfillmentApi {
   fulfillmentId: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ReturnApi {
   /**
    * Id of a single return.
@@ -139,12 +150,16 @@ export interface ReturnApi {
   returnId: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OrderApi {
   orderId: string;
 }
 
 /**
  * The buyer's language, country, and locale context in customer accounts. Properties on this interface are subscribable and update automatically when the buyer changes their country.
+ * @publicDocs
  */
 export interface Localization {
   /**
@@ -167,11 +182,13 @@ export interface Localization {
 
 /**
  * An enumerated value representing the type of navigation.
+ * @publicDocs
  */
 export type NavigationTypeString = 'push' | 'replace' | 'traverse';
 
 /**
  * Options passed to `Navigation.navigate()` to control history behavior and attach state to the navigation entry.
+ * @publicDocs
  */
 export interface NavigationNavigateOptions {
   /**
@@ -186,6 +203,7 @@ export interface NavigationNavigateOptions {
 
 /**
  * A single entry in the navigation history stack. Each entry has a unique key, a URL, and optional developer-defined state.
+ * @publicDocs
  */
 export interface NavigationHistoryEntry {
   /**
@@ -204,6 +222,7 @@ export interface NavigationHistoryEntry {
 
 /**
  * Options for `Navigation.updateCurrentEntry()`. Use this to update the state of the current history entry without triggering a navigation.
+ * @publicDocs
  */
 export interface NavigationUpdateCurrentEntryOptions {
   /**
@@ -214,6 +233,7 @@ export interface NavigationUpdateCurrentEntryOptions {
 
 /**
  * The event object passed to `currententrychange` listeners when the current navigation entry changes.
+ * @publicDocs
  */
 export interface NavigationCurrentEntryChangeEvent {
   /**
@@ -228,6 +248,7 @@ export interface NavigationCurrentEntryChangeEvent {
 
 /**
  * Navigates between pages in customer accounts, including other extensions and host pages. Full-page extensions also get access to the current navigation entry and history state.
+ * @publicDocs
  */
 export interface Navigation {
   /**
@@ -260,6 +281,7 @@ export interface Navigation {
 
 /**
  * A callable function that navigates to a URL within customer accounts. Accepts a destination URL and optional navigation options.
+ * @publicDocs
  */
 export interface NavigateFunction {
   /**
@@ -271,5 +293,6 @@ export interface NavigateFunction {
 
 /**
  * The API version string your extension is running against, such as `'2026-04-rc'` or `'unstable'`.
+ * @publicDocs
  */
 export type Version = string;

@@ -2,8 +2,9 @@ import type {SupportedDefinitionType} from './metafields';
 
 /**
  * A [metafield](/docs/apps/build/metafields) associated with an order routing rule. Use metafields to persist settings that control how your order routing function behaves, such as location preferences, routing criteria, or custom fulfillment rules.
+ * @publicDocs
  */
-interface Metafield {
+export interface Metafield {
   /** The unique global identifier (GID) for this metafield. Present for existing metafields, absent for new ones. Use this ID to reference the metafield in GraphQL operations. */
   id?: string | null;
   /** The unique key identifying this metafield within its namespace. This key determines how you access the metafield value (for example, `'preferred_location'` or `'routing_priority'`). */
@@ -18,8 +19,9 @@ interface Metafield {
 
 /**
  * An order routing rule configuration that determines how orders are routed to fulfillment locations. Use this to access the rule's current settings and populate your configuration interface.
+ * @publicDocs
  */
-interface OrderRoutingRule {
+export interface OrderRoutingRule {
   /** The display label for the order routing rule shown to merchants in the admin. Use this to identify the rule in lists and settings pages. */
   label: string;
   /** A description explaining the rule's purpose and how it routes orders. Use this to help merchants understand what the rule does. */
@@ -34,6 +36,7 @@ interface OrderRoutingRule {
 
 /**
  * The `data` object exposed to order routing rule extensions in the `admin.settings.order-routing-rule.render` target. Use this to access the current rule configuration and build your settings interface.
+ * @publicDocs
  */
 export interface Data {
   /** The order routing rule being configured by the merchant. Use this to access the rule's properties and populate your settings UI with existing configuration values. */

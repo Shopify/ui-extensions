@@ -1,5 +1,6 @@
 /**
  * Represents the result of a bulk resource lookup operation. Contains successfully found resources and identifiers for resources that were not found.
+ * @publicDocs
  */
 export interface MultipleResourceResult<T> {
   /**

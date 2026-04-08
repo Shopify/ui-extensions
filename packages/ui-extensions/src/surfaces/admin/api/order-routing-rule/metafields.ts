@@ -45,8 +45,9 @@ const supportedDefinitionTypes = [
 
 /**
  * A metafield update or creation operation. Use this to set or modify metafield values that store order routing rule configuration data.
+ * @publicDocs
  */
-interface MetafieldUpdateChange {
+export interface MetafieldUpdateChange {
   /** Identifies this as an update operation. Always set to `'updateMetafield'` for updates. */
   type: 'updateMetafield';
   /** The unique key identifying the metafield within its namespace. Use descriptive keys that indicate the setting's purpose (for example, `'preferred_location'` or `'routing_priority'`). */
@@ -61,8 +62,9 @@ interface MetafieldUpdateChange {
 
 /**
  * A metafield removal operation. Use this to delete metafields that are no longer needed for your order routing rule configuration.
+ * @publicDocs
  */
-interface MetafieldRemoveChange {
+export interface MetafieldRemoveChange {
   /** Identifies this as a removal operation. Always set to `'removeMetafield'` for deletions. */
   type: 'removeMetafield';
   /** The unique key of the metafield to remove. Must match the key used when the metafield was created. */
@@ -73,8 +75,9 @@ interface MetafieldRemoveChange {
 
 /**
  * One or more metafield change operations to apply to order routing rule settings. Can be a single change or an array of changes for batch operations. Use arrays to apply multiple changes at once.
+ * @publicDocs
  */
-type MetafieldsChange =
+export type MetafieldsChange =
   | MetafieldUpdateChange
   | MetafieldRemoveChange
   | MetafieldUpdateChange[]
@@ -82,10 +85,12 @@ type MetafieldsChange =
 
 /**
  * The supported [metafield definition types](/docs/apps/build/metafields/list-of-data-types) for storing order routing rule configuration data. Use these types to specify how metafield values should be formatted, validated, and displayed. Types prefixed with `list.` store arrays of values, while other types store single values.
+ * @publicDocs
  */
 export type SupportedDefinitionType = (typeof supportedDefinitionTypes)[number];
 
 /**
  * A function that applies metafield changes to order routing rule settings. Call this function with one or more change operations to update or remove metafields in batch. Use batch operations to apply multiple configuration changes efficiently.
+ * @publicDocs
  */
 export type ApplyMetafieldsChange = (changes: MetafieldsChange[]) => void;

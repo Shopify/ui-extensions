@@ -2,6 +2,7 @@ import type {ConnectivityState, Device, Session} from '../../../point-of-sale';
 
 /**
  * Base data object provided to all extension targets containing device information, session context, and connectivity state. This data is available at extension initialization and provides essential context about the runtime environment.
+ * @publicDocs
  */
 export interface BaseData {
   /**

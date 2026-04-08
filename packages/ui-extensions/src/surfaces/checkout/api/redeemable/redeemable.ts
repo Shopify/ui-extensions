@@ -1,7 +1,9 @@
+/** @publicDocs */
 export type RedeemableChangeResult =
   | RedeemableChangeResultSuccess
   | RedeemableChangeResultError;
 
+/** @publicDocs */
 export interface RedeemableChangeResultSuccess {
   /**
    * Indicates that the redeemable change was applied successfully.
@@ -9,6 +11,7 @@ export interface RedeemableChangeResultSuccess {
   type: 'success';
 }
 
+/** @publicDocs */
 export interface RedeemableChangeResultError {
   /**
    * Indicates that the redeemable change was not applied successfully.
@@ -25,14 +28,17 @@ export interface RedeemableChangeResultError {
 
 /**
  * A key-value pair that represents an attribute of a redeemable payment method.
+ * @publicDocs
  */
 export interface RedeemableAttribute {
   key: string;
   value: string;
 }
 
+/** @publicDocs */
 export type RedeemableChange = RedeemableAddChange;
 
+/** @publicDocs */
 export interface RedeemableAddChange {
   /**
    * The type of the `RedeemableChange` API.
