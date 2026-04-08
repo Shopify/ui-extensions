@@ -1470,31 +1470,27 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 /** @publicDocs */
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (e.g. clicks) on this component.
+	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component.
 	 *
-	 * See `command` for how to control the behavior of the target.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+	 * Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
 	 */
 	commandFor?: string;
 	/**
-	 * Sets the action the `commandFor` should take when this clickable is activated.
+	 * Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:
 	 *
-	 * See the documentation of particular components for the actions they support.
+	 * - `'--auto'`: Performs the default action appropriate for the target component.
+	 * - `'--show'`: Displays the target component if it's currently hidden.
+	 * - `'--hide'`: Conceals the target component from view.
+	 * - `'--toggle'`: Alternates the target component between visible and hidden states.
+	 * - `'--copy'`: Copies the target clipboard item.
 	 *
-	 * - `--auto`: a default action for the target component.
-	 * - `--show`: shows the target component.
-	 * - `--hide`: hides the target component.
-	 * - `--toggle`: toggles the target component.
-	 * - `--copy`: copies the target ClipboardItem.
+	 * The supported actions vary by target component type.
 	 *
 	 * @default '--auto'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
-	 * ID of a component that should respond to interest (e.g. hover and focus) on this component.
+	 * The ID of the component to show when users hover over or focus on this component. Pair with a target component that supports interest-based interactions.
 	 */
 	interestFor?: string;
 }
@@ -1789,7 +1785,7 @@ export interface BaseSelectableProps {
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Disables the control, disallowing any interaction.
+	 * Whether the control is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1802,13 +1798,13 @@ export interface BaseSelectableProps {
 /** @publicDocs */
 export interface BaseOptionProps extends BaseSelectableProps {
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently selected.
 	 *
 	 * @default false
 	 */
 	selected?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is selected by default.
 	 *
 	 * @implementation `defaultSelected` reflects to the `selected` attribute.
 	 *
@@ -1823,13 +1819,13 @@ export interface BaseCheckableProps extends BaseSelectableProps, InteractionProp
 	 */
 	label?: string;
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently checked.
 	 *
 	 * @default false
 	 */
 	checked?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is checked by default.
 	 *
 	 * @implementation `defaultChecked` reflects to the `checked` attribute.
 	 *
@@ -1837,8 +1833,7 @@ export interface BaseCheckableProps extends BaseSelectableProps, InteractionProp
 	 */
 	defaultChecked?: boolean;
 	/**
-	 * An identifier for the control that is unique within the nearest
-	 * containing `Form` component.
+	 * The name attribute for the control, used to identify its value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
@@ -1936,13 +1931,13 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	 */
 	details?: ComponentChildren;
 	/**
-	 * Set to `true` to associate a choice with the error passed to `ChoiceList`
+	 * Whether this choice is associated with the error state of the parent choice list. When `true`, the choice is visually marked as having an error.
 	 *
 	 * @default false
 	 */
 	error?: boolean;
 	/**
-	 * Secondary content for a choice.
+	 * Additional text or elements displayed below the choice label, providing extra context or detail to help users make a selection.
 	 */
 	secondaryContent?: ComponentChildren;
 	/**
@@ -1966,7 +1961,7 @@ interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" |
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * `disabled` on any child choices is ignored when this is true.
 	 *
@@ -2086,24 +2081,17 @@ interface ClipboardItemProps$1 extends GlobalProps {
 /** @publicDocs */
 export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
 	/**
-	 * A hint as to the intended content of the field.
+	 * A hint about the intended content of the field for browser autofill.
 	 *
-	 * When set to `on` (the default), this property indicates that the field should support
-	 * autofill, but you do not have any more semantic information on the intended
-	 * contents.
+	 * When set to `on` (the default), this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.
 	 *
-	 * When set to `off`, you are indicating that this field contains sensitive
-	 * information, or contents that are never saved, like one-time codes.
+	 * When set to `off`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes.
 	 *
-	 * Alternatively, you can provide value which describes the
-	 * specific data you would like to be entered into this field during autofill.
+	 * Alternatively, you can provide a value which describes the specific data you would like to be entered into this field during autofill.
 	 *
-	 * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+	 * Learn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.
 	 *
-	 * @default 'tel' for PhoneField
-	 * @default 'email' for EmailField
-	 * @default 'url' for URLField
-	 * @default 'on' for everything else
+	 * @default 'on'
 	 */
 	autocomplete?: AutocompleteField | `${AutocompleteSection} ${AutocompleteField}` | `${AutocompleteGroup} ${AutocompleteField}` | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}` | "on" | "off";
 }
