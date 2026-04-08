@@ -6459,7 +6459,7 @@
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "connectivity",
-                "value": "ConnectivityState",
+                "value": "ConnectivityApiContent",
                 "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
               },
               {
@@ -7915,6 +7915,43 @@
               }
             ],
             "value": "export interface LineItemRefund {\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails.\n   */\n  createdAt: string;\n  /**\n   * The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time.\n   */\n  quantity: number;\n}"
+          },
+          "ConnectivityApiContent": {
+            "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+            "name": "ConnectivityApiContent",
+            "description": "Provides access to the current connectivity state for the POS device.",
+            "members": [
+              {
+                "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "current",
+                "value": "ReadonlySignalLike<ConnectivityState>",
+                "description": "Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling."
+              }
+            ],
+            "value": "export interface ConnectivityApiContent {\n  /**\n   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.\n   */\n  current: ReadonlySignalLike<ConnectivityState>;\n}"
+          },
+          "ReadonlySignalLike": {
+            "filePath": "src/shared.ts",
+            "name": "ReadonlySignalLike",
+            "description": "Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.",
+            "members": [
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "MethodSignature",
+                "name": "subscribe",
+                "value": "(fn: (value: T) => void) => () => void",
+                "description": "Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value."
+              },
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "value",
+                "value": "T",
+                "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
+              }
+            ],
+            "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
           }
         }
       }
@@ -7957,7 +7994,7 @@
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "connectivity",
-                "value": "ConnectivityState",
+                "value": "ConnectivityApiContent",
                 "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
               },
               {
@@ -9413,6 +9450,43 @@
               }
             ],
             "value": "export interface LineItemRefund {\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails.\n   */\n  createdAt: string;\n  /**\n   * The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time.\n   */\n  quantity: number;\n}"
+          },
+          "ConnectivityApiContent": {
+            "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+            "name": "ConnectivityApiContent",
+            "description": "Provides access to the current connectivity state for the POS device.",
+            "members": [
+              {
+                "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "current",
+                "value": "ReadonlySignalLike<ConnectivityState>",
+                "description": "Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling."
+              }
+            ],
+            "value": "export interface ConnectivityApiContent {\n  /**\n   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.\n   */\n  current: ReadonlySignalLike<ConnectivityState>;\n}"
+          },
+          "ReadonlySignalLike": {
+            "filePath": "src/shared.ts",
+            "name": "ReadonlySignalLike",
+            "description": "Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.",
+            "members": [
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "MethodSignature",
+                "name": "subscribe",
+                "value": "(fn: (value: T) => void) => () => void",
+                "description": "Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value."
+              },
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "value",
+                "value": "T",
+                "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
+              }
+            ],
+            "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
           }
         }
       }
