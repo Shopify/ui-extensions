@@ -1,4 +1,8 @@
-import type {ConnectivityState, Device, Session} from '../../../point-of-sale';
+import type {
+  ConnectivityApiContent,
+  Device,
+  Session,
+} from '../../../point-of-sale';
 
 /**
  * Base data object provided to all extension targets containing device information, session context, and connectivity state. This data is available at extension initialization and provides essential context about the runtime environment.
@@ -7,7 +11,7 @@ export interface BaseData {
   /**
    * The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored.
    */
-  connectivity: ConnectivityState;
+  connectivity: ConnectivityApiContent;
   /**
    * Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations.
    */
