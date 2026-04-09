@@ -1,7 +1,6 @@
 import type {StandardRenderingExtensionApi} from '../standard/standard-rendering';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
-import type {IntentQuery, IntentResponseApi} from './intents';
-
+import type {IntentQueryOptions, IntentResponseApi} from './intents';
 /**
  * The data provided to an intent render extension, containing the intent that triggered the extension.
  * @publicDocs
@@ -10,7 +9,7 @@ export interface IntentRenderData {
   /**
    * The intent that triggered this extension, including the action, resource type, and any additional input data.
    */
-  intent: IntentQuery;
+  intent: IntentQueryOptions;
 }
 
 /**
