@@ -14,7 +14,7 @@ export type ComponentChildren = any;
 export type StringChildren = string;
 export interface GlobalProps {
 	/**
-	 * A unique identifier for the element.
+	 * A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.
 	 */
 	id?: string;
 }
@@ -1072,10 +1072,10 @@ export interface AccessibilityVisibilityProps {
 }
 export interface LabelAccessibilityVisibilityProps {
 	/**
-	 * Changes the visibility of the component's label.
+	 * Controls whether the label is visible to all users or only to screen readers.
 	 *
-	 * - `visible`: the label is visible to all users.
-	 * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+	 * - `visible`: The label is shown to everyone.
+	 * - `exclusive`: The label is visually hidden but still announced by screen readers.
 	 *
 	 * @default 'visible'
 	 */
@@ -1487,11 +1487,11 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 }
 export interface BaseInputProps {
 	/**
-	 * An identifier for the field that is unique within the nearest containing form.
+	 * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1499,15 +1499,15 @@ export interface BaseInputProps {
 }
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+	 * A callback fired when the user has **finished editing** a field, such as when they blur the field or press Enter.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the field.
+	 * A callback fired when the user makes any changes in the field, such as typing a character.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1515,7 +1515,7 @@ export interface InputProps extends BaseInputProps {
 	 */
 	value?: string;
 	/**
-	 * The default value for the field.
+	 * The initial value of the field when it first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts typing, their input replaces this value.
 	 *
 	 * @implementation `defaultValue` reflects to the `value` attribute.
 	 */
@@ -1523,15 +1523,15 @@ export interface InputProps extends BaseInputProps {
 }
 export interface MultipleInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user has selected one or more options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user selects or deselects options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1543,11 +1543,11 @@ export interface MultipleInputProps extends BaseInputProps {
 }
 export interface FileInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished selecting** a file or files.
+	 * A callback fired when the user has finished selecting one or more files.
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the file selection.
+	 * A callback fired when the user makes any changes to the file selection.
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1572,8 +1572,7 @@ export interface FileInputProps extends BaseInputProps {
 }
 export interface FieldErrorProps {
 	/**
-	 * Indicate an error to the user. The field will be given a specific stylistic treatment
-	 * to communicate problems that have to be resolved immediately.
+	 * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators and the message is announced to screen readers.
 	 */
 	error?: string;
 }
@@ -1588,7 +1587,7 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 */
 	required?: boolean;
 	/**
-	 * Content to use as the field label.
+	 * The text displayed as the field label, which identifies the purpose of the field to users. This label is associated with the field for accessibility and helps users understand what information to provide.
 	 */
 	label?: string;
 }
@@ -1604,13 +1603,13 @@ export interface FieldDetailsProps {
 }
 export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps, FieldDetailsProps {
 	/**
-	 * A short hint that describes the expected value of the field.
+	 * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value.
 	 */
 	placeholder?: string;
 }
 export interface BaseTextFieldProps extends FieldProps {
 	/**
-	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+	 * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
 	 *
 	 * @default false
 	 */
@@ -1622,7 +1621,7 @@ export interface FieldDecorationProps {
 	 *
 	 * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
 	 *
-	 * This cannot be edited by the user, and it isn't included in the value of the field.
+	 * This can't be edited by the user, and it isn't included in the value of the field.
 	 *
 	 * It may not be displayed until the user has interacted with the input.
 	 * For example, an inline label may take the place of the suffix until the user focuses the input.
@@ -1635,7 +1634,7 @@ export interface FieldDecorationProps {
 	 *
 	 * This is useful for displaying an implied part of the value, such as "https://" or "+353".
 	 *
-	 * This cannot be edited by the user, and it isn't included in the value of the field.
+	 * This can't be edited by the user, and it isn't included in the value of the field.
 	 *
 	 * It may not be displayed until the user has interacted with the input.
 	 * For example, an inline label may take the place of the prefix until the user focuses the input.
@@ -1660,8 +1659,7 @@ export interface NumberConstraintsProps {
 	 * The highest decimal or integer to be accepted for the field.
 	 * When used with `step` the value will round down to the max number.
 	 *
-	 * Note: a user will still be able to use the keyboard to input a number higher than
-	 * the max. It is up to the developer to add appropriate validation.
+	 * Note: a user can still use the keyboard to input a number higher than the max. It's up to the developer to add appropriate validation.
 	 *
 	 * @default Infinity
 	 */
@@ -1670,8 +1668,7 @@ export interface NumberConstraintsProps {
 	 * The lowest decimal or integer to be accepted for the field.
 	 * When used with `step` the value will round up to the min number.
 	 *
-	 * Note: a user will still be able to use the keyboard to input a number lower than
-	 * the min. It is up to the developer to add appropriate validation.
+	 * Note: a user can still use the keyboard to input a number lower than the min. It's up to the developer to add appropriate validation.
 	 *
 	 * @default -Infinity
 	 */
@@ -1688,10 +1685,9 @@ export interface NumberConstraintsProps {
 	/**
 	 * Sets the type of controls displayed in the field.
 	 *
-	 * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
-	 * Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
-	 * - `none`: no controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
-	 * - `auto`: the presence of the controls depends on the surface and context.
+	 * - `'auto'`: The presence of the controls depends on the surface and context.
+	 * - `'stepper'`: Displays buttons to increase or decrease the value by the stepping interval defined in the `step` property. Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value are enabled.
+	 * - `'none'`: No controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
 	 *
 	 * @default 'auto'
 	 */
@@ -1705,7 +1701,7 @@ export interface MinMaxLengthProps {
 	 */
 	maxLength?: number;
 	/**
-	 * Specifies the min number of characters allowed.
+	 * Specifies the minimum number of characters allowed.
 	 *
 	 * @default 0
 	 */
@@ -1718,7 +1714,7 @@ export interface BaseSelectableProps {
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Disables the control, disallowing any interaction.
+	 * Whether the control is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1730,13 +1726,13 @@ export interface BaseSelectableProps {
 }
 export interface BaseOptionProps extends BaseSelectableProps {
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently selected.
 	 *
 	 * @default false
 	 */
 	selected?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is selected by default.
 	 *
 	 * @implementation `defaultSelected` reflects to the `selected` attribute.
 	 *
@@ -1746,17 +1742,17 @@ export interface BaseOptionProps extends BaseSelectableProps {
 }
 export interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
 	/**
-	 * Visual content to use as the control label.
+	 * The text displayed as the control label, which identifies the purpose of the control to users. This label is associated with the control for accessibility.
 	 */
 	label?: string;
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently checked.
 	 *
 	 * @default false
 	 */
 	checked?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is checked by default.
 	 *
 	 * @implementation `defaultChecked` reflects to the `checked` attribute.
 	 *
@@ -1764,8 +1760,7 @@ export interface BaseCheckableProps extends BaseSelectableProps, InteractionProp
 	 */
 	defaultChecked?: boolean;
 	/**
-	 * An identifier for the control that is unique within the nearest
-	 * containing `Form` component.
+	 * The name attribute for the control, used to identify its value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
@@ -1862,13 +1857,13 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	 */
 	details?: ComponentChildren;
 	/**
-	 * Set to `true` to associate a choice with the error passed to `ChoiceList`
+	 * Whether this choice is associated with the error state of the parent choice list. When `true`, the choice is visually marked as having an error.
 	 *
 	 * @default false
 	 */
 	error?: boolean;
 	/**
-	 * Secondary content for a choice.
+	 * Additional text or elements displayed below the choice label, providing extra context or detail to help users make a selection.
 	 */
 	secondaryContent?: ComponentChildren;
 	/**
@@ -1892,7 +1887,7 @@ interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" |
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * `disabled` on any child choices is ignored when this is true.
 	 *
@@ -2009,7 +2004,7 @@ interface ClipboardItemProps$1 extends GlobalProps {
 }
 export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
 	/**
-	 * A hint as to the intended content of the field.
+	 * A hint about the intended content of the field for browser autofill.
 	 *
 	 * When set to `on` (the default), this property indicates that the field should support
 	 * autofill, but you do not have any more semantic information on the intended
@@ -2021,12 +2016,9 @@ export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteFiel
 	 * Alternatively, you can provide value which describes the
 	 * specific data you would like to be entered into this field during autofill.
 	 *
-	 * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
+	 * Learn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.
 	 *
-	 * @default 'tel' for PhoneField
-	 * @default 'email' for EmailField
-	 * @default 'url' for URLField
-	 * @default 'on' for everything else
+	 * @default 'on'
 	 */
 	autocomplete?: AutocompleteField | `${AutocompleteSection} ${AutocompleteField}` | `${AutocompleteGroup} ${AutocompleteField}` | `${AutocompleteSection} ${AutocompleteGroup} ${AutocompleteField}` | "on" | "off";
 }
@@ -2048,12 +2040,15 @@ export type AutocompleteGroup = "shipping" | "billing";
 export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
 export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
 export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
+/**
+ * The type of consent policy being collected.
+ *
+ * - `'sms-marketing'`: Represents the policy for SMS marketing consent.
+ */
 export type ConsentPolicy = "sms-marketing";
 interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
 	/**
-	 * The policy for which user consent is being collected for.
-	 *
-	 * `sms-marketing`: Represents the policy for SMS marketing consent.
+	 * The policy for which user consent is being collected.
 	 */
 	policy?: ConsentPolicy;
 }
@@ -2070,9 +2065,7 @@ interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldD
 }
 interface ConsentPhoneFieldProps$1 extends GlobalProps, PhoneFieldProps$1 {
 	/**
-	 * The policy for which user consent is being collected for.
-	 *
-	 * `sms-marketing`: Represents the policy for SMS marketing consent.
+	 * The policy for which user consent is being collected.
 	 */
 	policy?: ConsentPolicy;
 }
@@ -2931,9 +2924,13 @@ interface MoneyFieldProps$1 extends GlobalProps, BaseTextFieldProps, NumberConst
 export type MoneyAutocompleteField = ExtractStrict<AnyAutocompleteField, "transaction-amount">;
 interface NumberFieldProps$1 extends GlobalProps, BaseTextFieldProps, AutocompleteProps<NumberAutocompleteField>, NumberConstraintsProps, FieldDecorationProps {
 	/**
-	 * Sets the virtual keyboard.
+	 * Sets the virtual keyboard layout for the field.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
+	 * - `'decimal'`: A numeric keyboard with a decimal point, suitable for decimal numbers.
+	 * - `'numeric'`: A numeric keyboard without a decimal point, suitable for integers.
+	 *
+	 * Learn more about the [inputMode attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+	 *
 	 * @default 'decimal'
 	 */
 	inputMode?: "decimal" | "numeric";
