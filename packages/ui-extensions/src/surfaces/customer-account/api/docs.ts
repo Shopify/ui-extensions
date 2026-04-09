@@ -1,5 +1,5 @@
 import {OrderStatusApi} from './order-status/order-status';
-import {StandardApi} from './standard-api/standard-api';
+import {StandardApi, Navigation} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
 
 /**
@@ -298,6 +298,21 @@ export interface Docs_Standard_ToastApi
  */
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
+
+/**
+ * The base API object provided to all `customer-account` extension targets for invoking built-in Shopify workflows.
+ * @publicDocs
+ */
+export interface Docs_Standard_IntentsApi
+  extends Pick<StandardApi<any>, 'intents'> {}
+
+/**
+ * The base API object provided to `customer-account` extension targets that support in-page navigation and history management.
+ * @publicDocs
+ */
+export interface Docs_Standard_NavigationApi {
+  navigation: Navigation;
+}
 
 /**
  * The base API object provided to this and other `customer-account` extension targets.
