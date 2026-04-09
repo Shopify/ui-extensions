@@ -43,9 +43,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-form";
 /**
- * The form component wraps form controls and enables implicit submission, allowing users to submit from any input by pressing **Enter**. Use form to group related input fields and handle form submission through JavaScript event handlers.
- *
- * Unlike HTML forms, form doesn't automatically submit data using HTTP—you must register a `submit` event to process form data programmatically. For Shopify Functions configuration forms, use [function settings](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/function-settings).
+ * Configure the following properties on the form component.
  * @publicDocs
  */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
@@ -58,12 +56,14 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     onSubmit?: () => void;
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The form component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface FormElementEvents {
     /**
-     * A callback that is run when the form is submitted.
+     * A callback fired when the form is submitted.
+     *
+     * Learn more about the [submit event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/submit_event).
      */
     submit?: CallbackEventListener<typeof tagName>;
 }

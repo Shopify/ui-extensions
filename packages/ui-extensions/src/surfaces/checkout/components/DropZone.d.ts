@@ -36,9 +36,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-drop-zone";
 /**
- * The drop zone component lets users upload files through drag-and-drop or by clicking to browse. Use for file uploads such as images, documents, or CSV imports.
- *
- * The component provides visual feedback during drag operations and supports file type validation through the `accept` property. Rejected files trigger the `droprejected` event for custom error handling.
+ * Configure the following properties on the drop zone component.
  * @publicDocs
  */
 export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
@@ -47,22 +45,26 @@ export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | '
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface DropZoneElementEvents {
     /**
-     * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
+     * A callback fired when the drop zone value changes.
+     *
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
-    droprejected?: CallbackEventListener<typeof tagName>;
+    change?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the drop zone.
+     *
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user has finished selecting a file or files.
+     * A callback fired when a dropped file is rejected due to file type or size restrictions.
      */
-    change?: CallbackEventListener<typeof tagName>;
+    droprejected?: CallbackEventListener<typeof tagName>;
 }
 /** @publicDocs */
 export interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {

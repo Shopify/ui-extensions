@@ -36,9 +36,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-checkbox";
 /**
- * The checkbox component provides a clear way for users to make selections, such as agreeing to terms, enabling settings, or choosing multiple items from a list. Use checkbox to create binary on/off controls or multi-select interfaces where users can select any combination of options.
- *
- * Checkboxes support labels, help text, error states, and an indeterminate state for "select all" functionality when working with grouped selections. For settings that take effect immediately, use [switch](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/switch) instead.
+ * Configure the following properties on the checkbox component.
  * @publicDocs
  */
 export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
@@ -48,14 +46,14 @@ export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibili
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface CheckboxElementEvents {
     /**
-     * A callback that is run whenever the control is changed.
+     * A callback fired when the checkbox value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }
