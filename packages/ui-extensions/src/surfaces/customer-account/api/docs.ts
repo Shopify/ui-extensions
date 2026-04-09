@@ -195,6 +195,13 @@ export interface Docs_Standard_UIApi extends Pick<StandardApi<any>, 'ui'> {}
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
 
+/**
+ * The base API object provided to `customer-account` extension targets that support in-page navigation and history management.
+ * @publicDocs
+ */
+export interface Docs_Standard_NavigationApi
+  extends Pick<StandardApi<any>, 'navigation'> {}
+
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 export interface Docs_FullPageApi extends FullPageApi {}
