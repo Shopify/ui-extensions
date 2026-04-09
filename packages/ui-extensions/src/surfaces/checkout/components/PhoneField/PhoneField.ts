@@ -5,7 +5,7 @@ import type {Autocomplete} from '../shared';
 import type {IconSource} from '../Icon/Icon';
 
 /**
- * A PhoneField is an input field that merchants can type into optimized for phone numbers with a country code base auto-formatting. The country code is required for the initial render of the field but it can be overriden later by the user either by selecting a country in the country selection dropdown or by manually editing the country phone code directly in the text field.
+ * A phone field is an input field that users can type into optimized for phone numbers with a country code base auto-formatting. The country code is required for the initial render of the field but it can be overriden later by the user either by selecting a country in the country selection dropdown or by manually editing the country phone code directly in the text field.
  * @publicDocs
  */
 export interface PhoneFieldProps {
@@ -36,13 +36,12 @@ export interface PhoneFieldProps {
   autocomplete?: Autocomplete | boolean;
 
   /**
-   * Whether the field can be modified.
+   * Whether the phone field is disabled, preventing any user interaction.
    */
   disabled?: boolean;
 
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
+   * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators.
    */
   error?: string;
 
@@ -59,8 +58,8 @@ export interface PhoneFieldProps {
   id?: string;
 
   /**
-   * Content to use as the field label. This value is also used as the placeholder
-   * when the field is empty.
+   * The text displayed as the field label, which identifies the purpose of the field to users.
+   * This value is also used as the placeholder when the field is empty.
    */
   label: string;
 
@@ -76,7 +75,7 @@ export interface PhoneFieldProps {
   name?: string;
 
   /**
-   * Whether the field is read-only.
+   * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
    */
   readonly?: boolean;
 
@@ -95,11 +94,11 @@ export interface PhoneFieldProps {
   value?: string;
 
   /**
-   * Callback when the buyer has **finished editing** a field or pressed the country dropdown.
+   * A callback fired when the user has **finished editing** the field, such as when they blur the field, or after using the country dropdown.
    * Unlike `onChange` callbacks you may be familiar with from Polaris or other React component libraries,
    * this callback is **not** run on every change to the input. Phone fields are
-   * “partially controlled” components, which means that while the buyer edits the
-   * field, its state is controlled by the component. Once the buyer has signalled that
+   * “partially controlled” components, which means that while the user edits the
+   * field, its state is controlled by the component. Once the user has signalled that
    * they have finished editing the field (typically, by blurring the field), `onChange`
    * is called if the input actually changed from the most recent `value` property. At
    * that point, you are expected to store this “committed value” in state, and reflect
@@ -111,7 +110,7 @@ export interface PhoneFieldProps {
    * is to have the component be the source of truth for the input `value`, and update
    * the `value` on every user input. The delay in responding to events from a UI
    * extension is only a few milliseconds, but attempting to strictly store state with
-   * this delay can cause issues if a user types quickly, or if the buyer is using a
+   * this delay can cause issues if a user types quickly, or if the user is using a
    * lower-powered device. Having the UI thread take ownership for “in progress” input,
    * and only synchronizing when the user is finished with a field, avoids this risk.
    *
@@ -125,10 +124,9 @@ export interface PhoneFieldProps {
    */
   onChange?(value: string): void;
   /**
-   * Callback when the user makes any changes in the field including selecting a country
-   * in the dropdown. As noted in the documentation for `onChange`, you must not use
+   * A callback fired when the user makes any changes in the field, such as typing a character or selecting a country in the dropdown. As noted in the documentation for `onChange`, you must not use
    * this to update `state` — use the `onChange` callback for that purpose.
-   * Use the `onInput` prop when you need to do something as soon as the buyer makes a change,
+   * Use the `onInput` prop when you need to do something as soon as the user makes a change,
    * like clearing validation errors that apply to the field as soon as the user begins
    * making the necessary adjustments.
    *
@@ -136,17 +134,17 @@ export interface PhoneFieldProps {
    */
   onInput?(value: string): void;
   /**
-   * Callback when input is focused.
+   * A callback fired when the phone field receives focus.
    */
   onFocus?(): void;
   /**
-   * Callback when focus is removed.
+   * A callback fired when the phone field loses focus.
    */
   onBlur?(): void;
 }
 
 /**
- * A PhoneField is an input field that merchants can type into optimized
+ * A phone field is an input field that users can type into optimized
  * for phone numbers with a country code base auto-formatting.
  * The country code is required for the initial render of the field but
  * it can be overriden later by the user either by selecting a country

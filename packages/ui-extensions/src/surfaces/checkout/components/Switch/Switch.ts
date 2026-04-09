@@ -19,7 +19,7 @@ export interface SwitchProps extends IdProps, DisclosureActivatorProps {
   checked?: boolean;
 
   /**
-   * Visual content to use as the switch label.
+   * The text displayed as the switch label, which identifies the purpose of the switch to users.
    */
   label?: string;
 
@@ -32,17 +32,17 @@ export interface SwitchProps extends IdProps, DisclosureActivatorProps {
   value?: boolean;
 
   /**
-   * Whether the switch can be changed.
+   * Whether the switch is disabled, preventing any user interaction.
    */
   disabled?: boolean;
 
   /**
-   * A label used for buyers using assistive technologies.
+   * A label used for users of assistive technologies.
    */
   accessibilityLabel?: string;
 
   /**
-   * A callback that is run whenever the switch is changed. This callback
+   * A callback fired when the switch value changes. This callback
    * is called with a boolean indicating whether the switch should now be
    * active or inactive. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
    * so you must store this value in state and reflect it back in the

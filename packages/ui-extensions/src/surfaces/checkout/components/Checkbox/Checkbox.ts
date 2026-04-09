@@ -33,24 +33,23 @@ export interface CheckboxProps extends DisclosureActivatorProps {
   checked?: boolean;
 
   /**
-   * Whether the checkbox can be changed.
+   * Whether the checkbox is disabled, preventing any user interaction.
    */
   disabled?: boolean;
 
   /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
+   * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators.
    */
   error?: string;
 
   /**
-   * A label used for buyers using assistive technologies. When set, any
+   * A label used for users of assistive technologies. When set, any
    * `children` supplied to this component will not be announced to screen reader users.
    */
   accessibilityLabel?: string;
 
   /**
-   * A callback that is run whenever the checkbox is changed. This callback
+   * A callback fired when the checkbox value changes. This callback
    * is called with a boolean indicating whether the checkbox should now be
    * active or inactive. This component is [controlled](https://reactjs.org/docs/forms.html#controlled-components),
    * so you must store this value in state and reflect it back in the

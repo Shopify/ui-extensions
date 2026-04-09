@@ -1,7 +1,7 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
 /**
- * Use choice lists to present a list of choices where buyers can make a single selection or multiple selections.
+ * Use choice lists to present a list of choices where users can make a single selection or multiple selections.
  * @publicDocs
  */
 export interface ChoiceListProps<T extends string | string[]> {
@@ -25,7 +25,7 @@ export interface ChoiceListProps<T extends string | string[]> {
    */
   variant?: 'base' | 'group';
   /**
-   * A callback that is run whenever the choice list is changed. This callback
+   * A callback fired when the choice list value changes. This callback
    * is called with a string or array of strings indicating the ids of choices
    * that should now be selected. This component is
    * [controlled](https://reactjs.org/docs/forms.html#controlled-components),
@@ -36,7 +36,7 @@ export interface ChoiceListProps<T extends string | string[]> {
 }
 
 /**
- * Use choice lists to present a list of choices where buyers can make
+ * Use choice lists to present a list of choices where users can make
  * a single selection or multiple selections.
  */
 export const ChoiceList = createRemoteComponent<
