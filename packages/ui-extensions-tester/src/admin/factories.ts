@@ -37,6 +37,7 @@ type IntentActivity = NonNullable<
 type IntentResponse = NonNullable<
   Awaited<NonNullable<IntentActivity['complete']>>
 >;
+type IntentResponseApi = NonNullable<Intents['response']>;
 
 type ProductDetailsConfigData =
   ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>['data'];
@@ -67,6 +68,14 @@ function createConfigApp(): ConfigApp {
   };
 }
 
+function createIntentResponseApi(): IntentResponseApi {
+  return {
+    ok: async () => {},
+    error: async () => {},
+    closed: async () => {},
+  };
+}
+
 function createMockStandardApi<T extends ExtensionTarget>(
   target: T,
 ): StandardApi<T> {
@@ -92,6 +101,19 @@ function createMockStandardRenderingApi<T extends ExtensionTarget>(target: T) {
     picker: (async () => ({
       selected: Promise.resolve(undefined),
     })) as PickerApi,
+  };
+}
+
+function createAppIntentRenderMock<T extends ExtensionTarget>(target: T) {
+  return {
+    ...createMockStandardRenderingApi(target),
+    data: {
+      intent: {data: {}},
+    },
+    intents: {
+      ...createMockStandardApi(target).intents,
+      response: createIntentResponseApi(),
+    },
   };
 }
 
@@ -251,6 +273,9 @@ const adminMockFactories: AdminMockFactory = {
   'admin.customers.segmentation-templates.data':
     createCustomerSegmentTemplateMock,
   'admin.app.tools.data': createMockStandardApi,
+
+  // App render targets
+  'admin.app.intent.render': createAppIntentRenderMock,
 
   // Block targets
   'admin.product-details.block.render': createMockBlockApi,

@@ -28,14 +28,19 @@ export interface ErrorIntentResponse {
   /** A general error message describing what went wrong. Use this to display feedback when specific field errors aren't available. */
   message?: string;
   /** Specific validation issues or field errors. Present when validation fails on particular fields, allowing you to show targeted error messages. */
-  issues?: {
-    /** The path to the field that has an error (for example, `['product', 'title']`). Use this to identify which field caused the validation failure. */
-    path?: string[];
-    /** A description of what's wrong with this field. Display this to help merchants understand how to fix the error. */
-    message?: string;
-    /** A machine-readable error code for this issue. Use this for programmatic error handling or logging. */
-    code?: string;
-  }[];
+  issues?: Issue[];
+}
+
+/**
+ * A structured issue describing a validation or workflow error.
+ */
+export interface Issue {
+  /** The path to the field that has an error (for example, `['product', 'title']`). Use this to identify which field caused the validation failure. */
+  path?: string[];
+  /** A description of what's wrong with this field. Display this to help merchants understand how to fix the error. */
+  message?: string;
+  /** A machine-readable error code for this issue. Use this for programmatic error handling or logging. */
+  code?: string;
 }
 
 /**
@@ -56,6 +61,26 @@ export interface IntentActivity {
    * A Promise that resolves when the workflow completes. Await this to get the outcome and handle success, failure, or cancellation appropriately.
    */
   complete?: Promise<IntentResponse>;
+}
+
+/**
+ * The `IntentResponseApi` object provides methods for resolving the current intent from within an invoked extension. This API is only present when your extension is running inside an intent workflow.
+ */
+export interface IntentResponseApi {
+  /**
+   * Resolves the current intent successfully. Pass output data when your intent defines a response schema.
+   */
+  ok(data?: SuccessIntentResponse['data']): Promise<void>;
+
+  /**
+   * Resolves the current intent with an error. Use `issues` to provide field-specific validation details when available.
+   */
+  error(message: string, issues?: Issue[]): Promise<void>;
+
+  /**
+   * Resolves the current intent as closed without completing the workflow.
+   */
+  closed(): Promise<void>;
 }
 
 /**
@@ -149,6 +174,11 @@ export interface IntentInvokeApi {
  * @publicDocs
  */
 export interface Intents {
+  /**
+   * Resolves the current intent from within an invoked extension. This property is only present when your extension is running inside an intent workflow.
+   */
+  response?: IntentResponseApi;
+
   /**
    * The URL that launched the current intent workflow, if your extension was opened through an intent. Use this to determine how your extension was invoked and access any parameters passed in the URL.
    */
