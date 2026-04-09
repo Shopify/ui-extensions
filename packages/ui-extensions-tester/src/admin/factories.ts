@@ -107,6 +107,9 @@ function createMockStandardRenderingApi<T extends ExtensionTarget>(target: T) {
 function createAppIntentRenderMock<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardRenderingApi(target),
+    data: {
+      intent: {action: 'create' as const, type: 'shopify/Product' as const},
+    },
     intents: {
       ...createMockStandardApi(target).intents,
       response: createIntentResponseApi(),
