@@ -43,7 +43,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-select";
 /**
- * Properties for the Select component element.
+ * Configure the following properties on the select component.
  * @publicDocs
  */
 export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
@@ -52,26 +52,38 @@ export interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' |
 export interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
 /**
- * Events for the Select component element.
+ * The select component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface SelectElementEvents {
     /**
+<<<<<<< HEAD
      * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+=======
+     * A callback fired when the select loses focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+=======
+     * A callback fired when the select value changes.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+=======
+     * A callback fired when the select receives focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
 }

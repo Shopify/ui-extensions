@@ -77,7 +77,7 @@ declare module 'preact' {
 
 declare const tagName = "s-text-field";
 /**
- * Properties for the TextField component element.
+ * Configure the following properties on the text field component.
  * @publicDocs
  */
 export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
@@ -92,43 +92,54 @@ export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocompl
 export interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
- * Events for the TextField component element.
+ * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface TextFieldElementEvents {
     /**
+<<<<<<< HEAD
      * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+=======
+     * A callback fired when the text field loses focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+=======
+     * A callback fired when the text field value changes.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+=======
+     * A callback fired when the text field receives focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the text field.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
 }
 /**
- * Slots for the TextField component element.
+ * The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface TextFieldElementSlots {
     /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
+     * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
      */
     accessory?: HTMLElement;
 }

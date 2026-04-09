@@ -77,9 +77,7 @@ declare module 'preact' {
 
 declare const tagName = "s-number-field";
 /**
- * The number field component captures numeric input with built-in number validation. Use it to collect quantities, prices, or other numeric information.
- *
- * The component supports min/max constraints and step increments for guided numeric entry. For monetary values with currency formatting, use [money field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/money-field).
+ * Configure the following properties on the number field component.
  * @publicDocs
  */
 export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
@@ -94,43 +92,54 @@ export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autoc
 export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface NumberFieldElementEvents {
     /**
+<<<<<<< HEAD
      * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+=======
+     * A callback fired when the number field loses focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+=======
+     * A callback fired when the number field value changes.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+=======
+     * A callback fired when the number field receives focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the number field.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
 }
 /**
- * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * The number field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface NumberFieldElementSlots {
     /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
+     * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
      */
     accessory?: HTMLElement;
 }

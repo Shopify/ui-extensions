@@ -43,9 +43,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-choice-list";
 /**
- * The choice list component presents multiple options for single or multiple selections. Use it when merchants need to choose from a defined set of options, such as filtering results or collecting preferences.
- *
- * The component supports both single selection (radio button behavior) and multiple selection (checkbox behavior) modes. It includes configurable labels, help text, and validation. For compact dropdown selection with four or more options, use [select](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/select).
+ * Configure the following properties on the choice list component.
  * @publicDocs
  */
 export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
@@ -54,14 +52,14 @@ export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disable
 export interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ChoiceListElementEvents {
     /**
-     * A callback that is run whenever the control is changed.
+     * A callback fired when the choice list value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }

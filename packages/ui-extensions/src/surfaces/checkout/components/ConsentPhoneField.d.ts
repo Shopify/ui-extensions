@@ -42,7 +42,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName$1 = "s-phone-field";
-/** @publicDocs */
+/**
+ * Configure the following properties on the phone field component.
+ * @publicDocs
+ */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -78,7 +81,7 @@ declare module 'preact' {
 
 declare const tagName = "s-consent-phone-field";
 /**
- * Display a phone field for customers to sign up for text message marketing, noting that the phone field value will be automatically saved during checkout.
+ * Configure the following properties on the consent phone field component.
  * @publicDocs
  */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
@@ -92,32 +95,44 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
 /**
- * Learn more about [registering events](/docs/api/checkout-ui-extensions/latest/using-polaris-components#event-handling).
+ * The consent phone field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export interface ConsentPhoneFieldElementEvents {
     /**
+<<<<<<< HEAD
      * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+=======
+     * A callback fired when the consent phone field loses focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+=======
+     * A callback fired when the consent phone field value changes.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
+<<<<<<< HEAD
      * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+=======
+     * A callback fired when the consent phone field receives focus.
+>>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the consent phone field.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
 }
@@ -129,13 +144,12 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
 /**
- * Learn more about [component slots](/docs/api/checkout-ui-extensions/latest/using-polaris-components#slots).
+ * The consent phone field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ConsentPhoneFieldElementSlots {
     /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
+     * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
      */
     accessory?: HTMLElement;
 }

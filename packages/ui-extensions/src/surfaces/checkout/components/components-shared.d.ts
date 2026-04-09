@@ -17,7 +17,7 @@ export type StringChildren = string;
 /** @publicDocs */
 export interface GlobalProps {
 	/**
-	 * A unique identifier for the element.
+	 * A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.
 	 */
 	id?: string;
 }
@@ -1075,10 +1075,10 @@ export interface AccessibilityVisibilityProps {
 /** @publicDocs */
 export interface LabelAccessibilityVisibilityProps {
 	/**
-	 * Changes the visibility of the component's label.
+	 * Controls whether the label is visible to all users or only to screen readers.
 	 *
-	 * - `visible`: the label is visible to all users.
-	 * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+	 * - `visible`: The label is shown to everyone.
+	 * - `exclusive`: The label is visually hidden but still announced by screen readers.
 	 *
 	 * @default 'visible'
 	 */
@@ -1529,11 +1529,11 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
 /** @publicDocs */
 export interface BaseInputProps {
 	/**
-	 * An identifier for the field that is unique within the nearest containing form.
+	 * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1542,15 +1542,15 @@ export interface BaseInputProps {
 /** @publicDocs */
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
+	 * A callback fired when the user has **finished editing** a field, such as when they blur the field or press Enter.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the field.
+	 * A callback fired when the user makes any changes in the field, such as typing a character.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1558,7 +1558,7 @@ export interface InputProps extends BaseInputProps {
 	 */
 	value?: string;
 	/**
-	 * The default value for the field.
+	 * The initial value of the field when it first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts typing, their input replaces this value.
 	 *
 	 * @implementation `defaultValue` reflects to the `value` attribute.
 	 */
@@ -1567,15 +1567,15 @@ export interface InputProps extends BaseInputProps {
 /** @publicDocs */
 export interface MultipleInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user has selected one or more options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+	 * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user has selected option(s).
+	 * A callback fired when the user selects or deselects options.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+	 * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1588,11 +1588,11 @@ export interface MultipleInputProps extends BaseInputProps {
 /** @publicDocs */
 export interface FileInputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished selecting** a file or files.
+	 * A callback fired when the user has finished selecting one or more files.
 	 */
 	onChange?: (event: Event) => void;
 	/**
-	 * Callback when the user makes any changes in the file selection.
+	 * A callback fired when the user makes any changes to the file selection.
 	 */
 	onInput?: (event: Event) => void;
 	/**
@@ -1618,8 +1618,7 @@ export interface FileInputProps extends BaseInputProps {
 /** @publicDocs */
 export interface FieldErrorProps {
 	/**
-	 * Indicate an error to the user. The field will be given a specific stylistic treatment
-	 * to communicate problems that have to be resolved immediately.
+	 * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators and the message is announced to screen readers.
 	 */
 	error?: string;
 }
@@ -1635,7 +1634,7 @@ export interface BasicFieldProps extends FieldErrorProps, LabelAccessibilityVisi
 	 */
 	required?: boolean;
 	/**
-	 * Content to use as the field label.
+	 * The text displayed as the field label, which identifies the purpose of the field to users. This label is associated with the field for accessibility and helps users understand what information to provide.
 	 */
 	label?: string;
 }
@@ -1653,14 +1652,14 @@ export interface FieldDetailsProps {
 /** @publicDocs */
 export interface FieldProps extends BasicFieldProps, InputProps, FocusEventProps, FieldDetailsProps {
 	/**
-	 * A short hint that describes the expected value of the field.
+	 * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value.
 	 */
 	placeholder?: string;
 }
 /** @publicDocs */
 export interface BaseTextFieldProps extends FieldProps {
 	/**
-	 * The field cannot be edited by the user. It is focusable will be announced by screen readers.
+	 * Whether the field is read-only and can't be edited. Read-only fields remain focusable and their content is announced by screen readers.
 	 *
 	 * @default false
 	 */
@@ -1673,7 +1672,7 @@ export interface FieldDecorationProps {
 	 *
 	 * This is useful for displaying an implied part of the value, such as "@shopify.com", or "%".
 	 *
-	 * This cannot be edited by the user, and it isn't included in the value of the field.
+	 * This can't be edited by the user, and it isn't included in the value of the field.
 	 *
 	 * It may not be displayed until the user has interacted with the input.
 	 * For example, an inline label may take the place of the suffix until the user focuses the input.
@@ -1686,7 +1685,7 @@ export interface FieldDecorationProps {
 	 *
 	 * This is useful for displaying an implied part of the value, such as "https://" or "+353".
 	 *
-	 * This cannot be edited by the user, and it isn't included in the value of the field.
+	 * This can't be edited by the user, and it isn't included in the value of the field.
 	 *
 	 * It may not be displayed until the user has interacted with the input.
 	 * For example, an inline label may take the place of the prefix until the user focuses the input.
@@ -1758,7 +1757,7 @@ export interface MinMaxLengthProps {
 	 */
 	maxLength?: number;
 	/**
-	 * Specifies the min number of characters allowed.
+	 * Specifies the minimum number of characters allowed.
 	 *
 	 * @default 0
 	 */
@@ -1772,7 +1771,7 @@ export interface BaseSelectableProps {
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Disables the control, disallowing any interaction.
+	 * Whether the control is disabled, preventing any user interaction.
 	 *
 	 * @default false
 	 */
@@ -1785,13 +1784,13 @@ export interface BaseSelectableProps {
 /** @publicDocs */
 export interface BaseOptionProps extends BaseSelectableProps {
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently selected.
 	 *
 	 * @default false
 	 */
 	selected?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is selected by default.
 	 *
 	 * @implementation `defaultSelected` reflects to the `selected` attribute.
 	 *
@@ -1802,17 +1801,17 @@ export interface BaseOptionProps extends BaseSelectableProps {
 /** @publicDocs */
 export interface BaseCheckableProps extends BaseSelectableProps, InteractionProps {
 	/**
-	 * Visual content to use as the control label.
+	 * The text displayed as the control label, which identifies the purpose of the control to users. This label is associated with the control for accessibility.
 	 */
 	label?: string;
 	/**
-	 * Whether the control is active.
+	 * Whether the control is currently checked.
 	 *
 	 * @default false
 	 */
 	checked?: boolean;
 	/**
-	 * Whether the control is active by default.
+	 * Whether the control is checked by default.
 	 *
 	 * @implementation `defaultChecked` reflects to the `checked` attribute.
 	 *
@@ -1820,8 +1819,7 @@ export interface BaseCheckableProps extends BaseSelectableProps, InteractionProp
 	 */
 	defaultChecked?: boolean;
 	/**
-	 * An identifier for the control that is unique within the nearest
-	 * containing `Form` component.
+	 * The name attribute for the control, used to identify its value when the form is submitted. Must be unique within the nearest containing form.
 	 */
 	name?: string;
 	/**
@@ -1919,13 +1917,13 @@ interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
 	 */
 	details?: ComponentChildren;
 	/**
-	 * Set to `true` to associate a choice with the error passed to `ChoiceList`
+	 * Whether this choice is associated with the error state of the parent choice list. When `true`, the choice is visually marked as having an error.
 	 *
 	 * @default false
 	 */
 	error?: boolean;
 	/**
-	 * Secondary content for a choice.
+	 * Additional text or elements displayed below the choice label, providing extra context or detail to help users make a selection.
 	 */
 	secondaryContent?: ComponentChildren;
 	/**
@@ -1949,7 +1947,7 @@ interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" |
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Disables the field, disallowing any interaction.
+	 * Whether the field is disabled, preventing any user interaction.
 	 *
 	 * `disabled` on any child choices is ignored when this is true.
 	 *
@@ -2066,7 +2064,7 @@ interface ClipboardItemProps$1 extends GlobalProps {
 /** @publicDocs */
 export interface AutocompleteProps<AutocompleteField extends AnyAutocompleteField> {
 	/**
-	 * A hint as to the intended content of the field.
+	 * A hint about the intended content of the field for browser autofill.
 	 *
 	 * When set to `on` (the default), this property indicates that the field should support
 	 * autofill, but you do not have any more semantic information on the intended
