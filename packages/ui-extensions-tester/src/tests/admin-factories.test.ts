@@ -50,7 +50,8 @@ describe('createMockAdminTargetApi', () => {
     expect(typeof api.intents.response?.ok).toBe('function');
     expect(typeof api.intents.response?.error).toBe('function');
     expect(typeof api.intents.response?.closed).toBe('function');
-    expect(api).not.toHaveProperty('data');
+    expect(api).toHaveProperty('data');
+    expect(api.data.intent).toEqual({action: 'create', type: 'shopify/Product'});
     expect(api).not.toHaveProperty('close');
   });
 });
