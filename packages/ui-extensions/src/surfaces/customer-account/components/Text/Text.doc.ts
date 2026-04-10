@@ -11,7 +11,7 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'TextProps',
-      description: '',
+      description: 'Configure the following properties on the text component.',
       type: 'TextProps',
     },
   ],

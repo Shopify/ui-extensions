@@ -11,7 +11,8 @@ const data: ReferenceEntityTemplateSchema = {
   definitions: [
     {
       title: 'HeadingProps',
-      description: '',
+      description:
+        'Configure the following properties on the heading component.',
       type: 'HeadingProps',
     },
   ],

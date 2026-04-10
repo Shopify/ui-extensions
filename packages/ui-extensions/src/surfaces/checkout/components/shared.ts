@@ -10,7 +10,7 @@ import type {
  * autocomplete. This attribute is modeled off of a limited set of the autocomplete
  * values supported in browsers.
  *
- * @see https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens
+ * Learn more about [autofill detail tokens](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens).
  */
 export interface Autocomplete {
   /**
@@ -511,6 +511,11 @@ export type ViewLikeAccessibilityRole =
  */
 export type ButtonAccessibilityRole = 'button' | 'submit';
 
+/**
+ * The subset of accessibility roles available to the text component.
+ * Each role conveys specific semantic meaning to assistive technologies,
+ * helping users understand the purpose and context of the text content.
+ */
 export type TextAccessibilityRole =
   /**
    * Indicate the text is contact information. Typically used for addresses.
@@ -521,7 +526,7 @@ export type TextAccessibilityRole =
    */
   | 'deletion'
   /**
-   * Indicate the text is marked or highlighted and relevant to the buyer’s current action.
+   * Indicate the text is marked or highlighted and relevant to the user’s current action.
    * Typically used to indicate the characters that matched a search query.
    */
   | 'marking'
@@ -536,9 +541,9 @@ export type TextAccessibilityRole =
   | {type: 'directional-override'; direction: 'ltr' | 'rtl'}
   /**
    * Indicate the text is a date, a time or a duration. Use the `machineReadable` option
-   * to help browsers, tools or software understand the human-readable date. The valid
-   * format for `machineReadable` can be found here:
-   * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#Valid_datetime_Values
+   * to provide a datetime string that browsers, search engines, and assistive technologies can parse for improved semantics and functionality.
+   *
+   * The value must be a [valid datetime string](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time#valid_datetime_values), such as `2024-01-15`, `14:30`, or `2024-01-15T14:30:00`.
    */
   | {type: 'datetime'; machineReadable?: string}
   /**
@@ -796,7 +801,8 @@ export type Columns = GridItemSize[] | GridItemSize;
 export type Rows = GridItemSize[] | GridItemSize;
 
 /**
- * Use to emphasize a word or a group of words.
+ * A keyword that controls typographic emphasis on a text component.
+ * Use emphasis to draw attention to a word or group of words within a passage.
  */
 export type Emphasis =
   /**
@@ -871,16 +877,20 @@ export type Visibility = 'hidden';
  */
 export type AccessibilityVisibility = 'hidden';
 /**
- * Props for controlling the visibility of a layout element, both visually
- * and to assistive technologies.
+ * Controls how the element is exposed to sighted users and to assistive
+ * technologies such as screen readers.
  */
 export interface VisibilityProps {
   /**
-   * The visual visibility of the element.
+   * Controls the visual visibility of the element. Set to `'hidden'` to
+   * visually hide the element while keeping it accessible to assistive
+   * technologies.
    */
   visibility?: Visibility;
   /**
-   * The visibility of the element to assistive technologies.
+   * Controls the visibility of the element to assistive technologies.
+   * Set to `'hidden'` to hide the element from assistive technologies
+   * while keeping it visually visible.
    */
   accessibilityVisibility?: AccessibilityVisibility;
 }

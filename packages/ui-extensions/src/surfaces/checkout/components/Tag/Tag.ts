@@ -4,22 +4,22 @@ import type {IconSource} from '../Icon/Icon';
 import type {IdProps} from '../shared';
 
 /**
- * A Tag is used to help label, organize or categorize objects. It is commonly used in Checkout to display the discounts applied to a cart.
+ * Configure the following properties on the tag component.
  * @publicDocs
  */
 export interface TagProps extends IdProps {
   children?: string;
   /**
-   * Icon source
+   * The source of the icon displayed inside the tag. Pass a valid icon source to render a visual indicator alongside the tag label.
    */
   icon?: IconSource;
   /**
-   * A label used for buyers using assistive technologies. When set, any
+   * A label used for users using assistive technologies. When set, any
    * `children` supplied to this component will not be announced to screen reader users.
    */
   accessibilityLabel?: string;
   /**
-   * Callback when tag is removed
+   * A callback fired when the tag is removed by the user.
    */
   onRemove?(): void;
 }

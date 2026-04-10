@@ -6,26 +6,28 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 export type Marker = 'none' | 'bullet' | 'number';
 
 /**
- * Lists display a set of related content. Each list item usually begins with a bullet or a number.
+ * Configure the following properties on the list component.
  * @publicDocs
  */
 export interface ListProps extends IdProps {
   /**
-   * Adjust spacing between list items
+   * Adjusts the vertical spacing between list items. Use a design system spacing keyword to control the density of the list.
    *
    * @defaultValue 'base'
    */
   spacing?: MaybeResponsiveConditionalStyle<Spacing>;
   /**
-   * Type of marker to display
+   * The type of marker displayed before each list item.
+   *
+   * - `none`: No marker is displayed.
+   * - `bullet`: A bullet point marker for unordered lists.
+   * - `number`: A number marker for ordered lists.
    *
    * @defaultValue 'bullet'
    */
   marker?: Marker;
   /**
-   * A label that describes the purpose or contents of the list. When set,
-   * it will be announced to buyers using assistive technologies and will
-   * provide them with more context.
+   * A label that describes the purpose or contents of the list. When set, it will be announced to users of assistive technologies such as screen readers to provide additional context.
    */
   accessibilityLabel?: string;
 }

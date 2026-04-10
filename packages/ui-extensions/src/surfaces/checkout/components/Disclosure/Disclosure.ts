@@ -4,9 +4,7 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {DisclosureOpen} from '../shared';
 
 /**
- * Disclosure is an optionally controlled component used to put long sections of information under content blocks that users can expand or collapse by pressing an activator. The activator can be specified as children using an action component (`Button`, `Link` or `Pressable`) or a form control (`Checkbox` or `Switch`) component. The content blocks can be specified as children inside a structure component (`View`, `InlineLayout`, `BlockStack`, `Grid`, etc.).
-
-The library automatically applies the [WAI-ARIA Accordion pattern](https://www.w3.org/WAI/ARIA/apg/patterns/accordion/) to both the activator and the toggled content.
+ * Configure the following properties on the disclosure component.
  * @publicDocs
  */
 export interface DisclosureProps {
@@ -27,7 +25,7 @@ export interface DisclosureProps {
    */
   open?: DisclosureOpen;
   /**
-   * Callback fired when the open state of the disclosure changes.
+   * A callback fired when the open state of the disclosure changes.
    */
   onToggle?(open: string[]): void;
   /**
