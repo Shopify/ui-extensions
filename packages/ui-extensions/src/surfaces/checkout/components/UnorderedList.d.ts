@@ -27,7 +27,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-unordered-list";
 /**
- * The element props interface for the UnorderedList component.
+ * Configure the following properties on the unordered list component.
  * @publicDocs
  */
 export interface UnorderedListElementProps extends UnorderedListProps$1 {

@@ -6,11 +6,11 @@ import {createComponentDoc} from '../../../../docs/shared/component-definitions'
 const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
   definitions: {properties: true},
-  bestPractices: `- Use the Time component for all time values to keep formatting consistent.
+  bestPractices: `- Use the time component for all time values to keep formatting consistent.
 - Show times in a clear, readable format.
 - Consider 24-hour format for international audiences.
 - Include timezone information when relevant.
-- Use the Time component for time-related content to maintain clear semantics.`,
+- Use the time component for time-related content to maintain clear semantics.`,
 });
 
 export default data;
