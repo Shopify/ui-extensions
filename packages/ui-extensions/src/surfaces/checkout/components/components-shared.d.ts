@@ -23,17 +23,13 @@ export interface GlobalProps {
 }
 interface AbbreviationProps$1 extends GlobalProps {
 	/**
-	 * The content of the abbreviation or acronym.
+	 * The abbreviated text content displayed within the abbreviation component. Pair with the `title` attribute to provide the full expansion for accessibility.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Defines the full expansion of the abbreviation or acronym.
-	 *
-	 * Helps user agents and users understand the meaning of the abbreviated text.
+	 * Defines the full expansion of the abbreviation or acronym, helping user agents and users understand the meaning of the abbreviated text. Learn more about the [abbreviation element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr).
 	 *
 	 * @default ''
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/abbr
 	 */
 	title?: string;
 }
@@ -117,7 +113,7 @@ export interface ToggleEventProps {
 	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about the [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
@@ -125,10 +121,10 @@ export interface ToggleEventProps {
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
-	 * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+	 * - If the element is transitioning from showing to hidden, then the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about the [toggle event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), and the [`newState`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState) properties.
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
@@ -924,7 +920,8 @@ export interface DisplayProps {
 	 * - `auto`: the component’s initial value. The actual value depends on the component and context.
 	 * - `none`: hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
+	 * Learn more about the [display property](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
+	 *
 	 * @default 'auto'
 	 */
 	display?: MaybeResponsive<"auto" | "none">;
@@ -1062,11 +1059,11 @@ export type AccessibilityRole =
 /** @publicDocs */
 export interface AccessibilityVisibilityProps {
 	/**
-	 * Changes the visibility of the element.
+	 * Controls how the element is exposed to sighted users and to assistive technologies such as screen readers.
 	 *
-	 * - `visible`: the element is visible to all users.
-	 * - `hidden`: the element is removed from the accessibility tree but remains visible.
-	 * - `exclusive`: the element is visually hidden but remains in the accessibility tree.
+	 * - `visible`: The element is visible to all users (both sighted users and screen readers).
+	 * - `hidden`: The element is visually visible but hidden from screen readers. Use this for decorative elements that don’t provide meaningful information.
+	 * - `exclusive`: The element is visually hidden but announced by screen readers. Use this for screen-reader-only content like skip links or additional context.
 	 *
 	 * @default 'visible'
 	 */
@@ -1872,21 +1869,25 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 /** @publicDocs */
 export interface ChipProps$1 {
 	/**
-	 * The content of the chip.
+	 * The text content displayed within the chip.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * The graphic to display inside of the chip.
+	 * The graphic element (typically an icon) displayed inside the chip.
 	 *
 	 * @implementation Only `s-icon` is supported.
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * A label that describes the purpose or contents of the chip. It will be read to users using assistive technologies such as screen readers.
+	 * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn’t clearly convey the component’s purpose.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Modify the color to be more or less intense.
+	 * The color emphasis level that controls visual intensity.
+	 *
+	 * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+	 * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+	 * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
 	 *
 	 * @default 'base'
 	 */
@@ -1999,7 +2000,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 }
 interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	/**
-	 * Callback when the chip is clicked.
+	 * A callback fired when the chip is clicked. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
 	 */
 	onClick?: (event: Event) => void;
 	/**
@@ -2007,13 +2008,13 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	href?: string;
 	/**
-	 * Whether the chip is removable.
+	 * Whether the chip displays a remove button, allowing users to dismiss it. When `true`, clicking the remove button fires the `remove` event.
 	 *
 	 * @default false
 	 */
 	removable?: boolean;
 	/**
-	 * Callback when the chip is removed.
+	 * A callback fired when the chip is removed by the user clicking the remove button.
 	 */
 	onRemove?: (event: Event) => void;
 	/**
@@ -2029,7 +2030,7 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	hidden?: boolean;
 	/**
-	 * Event handler when the chip has fully hidden.
+	 * A callback fired when the chip has fully hidden after a removal animation.
 	 *
 	 * The `hidden` property will be `true` when this event fires.
 	 *
@@ -2039,7 +2040,7 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 */
 	onAfterHide?: (event: Event) => void;
 	/**
-	 * Disables the chip, disallowing any interaction.
+	 * Disables the chip, preventing all user interaction including clicks and removal. Disabled chips are visually dimmed to indicate they are not interactive.
 	 *
 	 * @default false
 	 */
@@ -2316,37 +2317,32 @@ interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePic
 export type DateAutocompleteField = ExtractStrict<AnyAutocompleteField, "bday" | "bday-day" | "bday-month" | "bday-year" | "cc-expiry" | "cc-expiry-month" | "cc-expiry-year">;
 interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 	/**
-	 * The content of the details.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+	 * The content displayed within the collapsible details section. This can include any elements that should be shown or hidden when the details component is toggled. Learn more about the [details element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details).
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Name of the element.
+	 * The `name` attribute for the element. Use this to create multiple named disclosure groups where only one can be open at a time.
 	 *
-	 * This can be used to create multiple named disclosure boxes that where only one can be open at a time.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#multiple_named_disclosure_boxes
+	 * Learn more about [multiple named disclosure boxes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#multiple_named_disclosure_boxes).
 	 */
 	name?: string;
 	/**
-	 * Whether the element is open.
-	 *
-	 * This does not reflect to any attribute.
+	 * Whether the element is currently open. Use this for controlled component patterns where your application manages the open state directly. This does not reflect to any attribute.
 	 *
 	 * @default false
 	 */
 	open?: boolean;
 	/**
-	 * Indicates whether the element should be open by default.
-	 *
-	 * This reflects to the `open` attribute.
+	 * Whether the element should be open when it first renders. This reflects to the `open` attribute and only takes effect on the initial render.
 	 *
 	 * @default false
 	 */
 	defaultOpen?: boolean;
 	/**
-	 * Sets the transition between the two states.
+	 * The transition style used when toggling between open and closed states.
+	 *
+	 * - `none`: Switches states immediately without animation.
+	 * - `auto`: Uses the default animated transition.
 	 *
 	 * @default 'auto'
 	 */
@@ -2582,7 +2578,11 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
 /** @publicDocs */
 export interface BaseTypographyProps {
 	/**
-	 * Modify the color to be more or less intense.
+	 * The color emphasis level that controls visual intensity.
+	 *
+	 * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+	 * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+	 * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
 	 *
 	 * @default 'base'
 	 */
@@ -2594,9 +2594,7 @@ export interface BaseTypographyProps {
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Set the numeric properties of the font.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
+	 * Set the numeric properties of the font. Learn more about the [font-variant-numeric property](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric).
 	 *
 	 * @default 'auto' - inherit from the parent element
 	 */
@@ -2613,12 +2611,12 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicates the directionality of the element’s text.
 	 *
-	 * - `ltr`: languages written from left to right (such as English)
-	 * - `rtl`: languages written from right to left (such as Arabic)
-	 * - `auto`: the user agent determines the direction based on the content
-	 * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
+	 * - `ltr`: The languages written from left to right (such as English).
+	 * - `rtl`: The languages written from right to left (such as Arabic).
+	 * - `auto`: The user agent determines the direction based on the content.
+	 * - `""`: The direction is inherited from parent elements (equivalent to not setting the attribute).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
+	 * Learn more about the [dir attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir).
 	 *
 	 * @default ''
 	 */
@@ -2627,9 +2625,7 @@ export interface BaseTypographyProps {
 /** @publicDocs */
 export interface BlockTypographyProps {
 	/**
-	 * Truncates the text content to the specified number of lines.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
+	 * Truncates the text content to the specified number of lines. Learn more about the [-webkit-line-clamp property](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp).
 	 *
 	 * @default Infinity - no truncation is applied
 	 */
@@ -2637,7 +2633,7 @@ export interface BlockTypographyProps {
 }
 interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, BlockTypographyProps {
 	/**
-	 * The content of the Heading.
+	 * The heading text displayed within the heading component, which provides a title or section header for content.
 	 */
 	children?: ComponentChildren;
 	/**
@@ -2836,7 +2832,7 @@ interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
 }
 interface ListItemProps$1 extends GlobalProps {
 	/**
-	 * The content of the ListItem.
+	 * The content displayed within the list item, which represents a single entry in an ordered or unordered list.
 	 */
 	children?: ComponentChildren;
 }
@@ -3055,11 +3051,11 @@ interface OrderedListProps$1 extends GlobalProps {
 }
 interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypographyProps, AccessibilityVisibilityProps {
 	/**
-	 * The content of the Text.
+	 * The paragraph text content displayed within the paragraph component, which presents a block of related text with appropriate styling.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Provide semantic meaning and default styling to the paragraph.
+	 * The semantic type and styling treatment for the paragraph content.
 	 *
 	 * Other presentation properties on `s-paragraph` override the default styling.
 	 *
@@ -3070,20 +3066,19 @@ interface ParagraphProps$1 extends GlobalProps, BaseTypographyProps, BlockTypogr
 /** @publicDocs */
 export type ParagraphType = 
 /**
- * Indicate the text is a structural grouping of related content.
+ * A semantic type that indicates the text is a structural grouping of related content.
  *
- * In an HTML host, the text will be rendered in an `<p>` element.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
+ * In an HTML host, the text will be rendered in an `<p>` element. Learn more about the [p element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p).
  */
 "paragraph"
 /**
- * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+ * A semantic type that indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+ *
  * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
  *
  * Surfaces should apply a smaller font size than the default size.
  *
- * In an HTML host, the text will be rendered in a `<small>` element.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+ * In an HTML host, the text will be rendered in a `<small>` element. Learn more about the [small element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small).
  */
  | "small";
 interface PasswordFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<PasswordAutocompleteField> {
@@ -3413,12 +3408,10 @@ interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 }
 interface SummaryProps$1 extends GlobalProps {
 	/**
-	 * The content to use as the label.
+	 * The text or elements displayed as the summary label for the collapsible details section.
 	 *
-	 * Interactive content is disallowed. For example, you can use a `<Text>` element for extra formatting but
-	 * elements like buttons and fields are not allowed.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary
+	 * Interactive content is disallowed. For example, you can use an `s-text` element for extra formatting but
+	 * elements like buttons and fields are not allowed. Learn more about the [summary element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/summary).
 	 *
 	 * @implementation Surfaces may apply styling to this element. An icon suggesting the state (open or closed) of the
 	 * details element is recommended.
@@ -3431,13 +3424,13 @@ interface SwitchProps$1 extends GlobalProps, BaseCheckableProps, BasicFieldProps
 }
 interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTypographyProps, DisplayProps, Pick<InteractionProps, "interestFor"> {
 	/**
-	 * The content of the Text.
+	 * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Provide semantic meaning and default styling to the text.
+	 * The semantic type and styling treatment for the text content.
 	 *
-	 * Other presentation properties on Text override the default styling.
+	 * Other presentation properties on `s-text` override the default styling.
 	 *
 	 * @default 'generic'
 	 */
@@ -3446,7 +3439,7 @@ interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTyp
 /** @publicDocs */
 export type TextType = 
 /**
- * Indicate the text is contact information. Typically used for addresses.
+ * A semantic type that indicates the text is contact information. Typically used for addresses.
  *
  * This must have `inline` layout (despite the default being `block` in HTML hosts).
  *
@@ -3456,65 +3449,60 @@ export type TextType =
  *
  * @implementation vertical alignment should be `baseline` (`vertical-align: baseline`)
  *
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
+ * Learn more about the [address element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address).
  */
 "address"
 /**
- * Indicate the text is no longer accurate or no longer relevant. One such use-case is discounted prices.
+ * A semantic type that indicates the text is no longer accurate or no longer relevant. One such use-case is discounted prices.
  *
  * Surfaces should apply styling to this type to suggest its content no longer applies.
  *
- * In an HTML host, the text will be rendered in a `<s>` element.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
+ * In an HTML host, the text will be rendered in a `<s>` element. Learn more about the [s element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s).
  */
  | "redundant"
 /**
- * Indicate the text is marked or highlighted and relevant to the user’s current action.
+ * A semantic type that indicates the text is marked or highlighted and relevant to the user’s current action.
  * One such use-case is to indicate the characters that matched a search query.
  *
  * Surfaces should apply styling to this type to draw attention to the content.
  *
- * In an HTML host, the text will be rendered in a `<mark>` element.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
+ * In an HTML host, the text will be rendered in a `<mark>` element. Learn more about the [mark element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark).
  */
  | "mark"
 /**
- * Indicate emphatic stress. Typically for words that have a stressed emphasis compared to surrounding text.
+ * A semantic type that indicates emphatic stress. Typically for words that have a stressed emphasis compared to surrounding text.
  *
  * Surfaces should apply styling to this type to distinguish it from surrounding text. Italicization is a common choice, but not required.
  *
- * In an HTML host, the text will be rendered in an `<em>` element.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
+ * In an HTML host, the text will be rendered in an `<em>` element. Learn more about the [em element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em).
  */
  | "emphasis"
 /**
- * Indicate an offset from the normal prose of the text. Typically used to indicate
- * a foreign word, fictional character thoughts, or when the text refers to the definition of a word
- * instead of representing its semantic meaning.
+ * A semantic type that indicates an offset from the normal prose of the text.
+ *
+ * Typically used to indicate a foreign word, fictional character thoughts, or when the text refers to the definition of a word instead of representing its semantic meaning.
  *
  * Surfaces should italicize this content by default.
  *
- * In an HTML host, the text will be rendered in a `<i>` tag.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
+ * In an HTML host, the text will be rendered in a `<i>` tag. Learn more about the [i element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i).
  */
  | "offset"
 /**
- * Indicate strong importance, seriousness, or urgency.
+ * A semantic type that indicates strong importance, seriousness, or urgency.
  *
  * Surfaces should render this content bold by default.
  *
- * In an HTML host, the text will be rendered in a `<strong>` tag.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
+ * In an HTML host, the text will be rendered in a `<strong>` tag. Learn more about the [strong element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong).
  */
  | "strong"
 /**
- * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+ * A semantic type that indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+ *
  * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
  *
  * Surfaces should apply a smaller font size than the default size.
  *
- * In an HTML host, the text will be rendered in a `<small>` element.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
+ * In an HTML host, the text will be rendered in a `<small>` element. Learn more about the [small element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small).
  */
  | "small"
 /**
@@ -3522,8 +3510,7 @@ export type TextType =
  *
  * Surfaces must not apply any default styling to this type.
  *
- * In an HTML host, the text will be rendered in a `<span>` tag.
- * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
+ * In an HTML host, the text will be rendered in a `<span>` tag. Learn more about the [span element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span).
  */
  | "generic";
 interface TextAreaProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<TextAutocompleteField> {
@@ -3538,15 +3525,13 @@ interface TextFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLength
 }
 interface TimeProps$1 extends GlobalProps {
 	/**
-	 * The content of the Time.
+	 * The text content displayed within the time component, representing a human-readable date or time value.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Set the time and/or date of the element.
+	 * The machine-readable date and/or time value for the element. Use this to provide a datetime string that browsers, search engines, and assistive technologies can parse for improved semantics and functionality.
 	 *
-	 * It must be a [valid date string](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time#valid_datetime_values).
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/time#valid_datetime_values
+	 * The value must be a [valid datetime string](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/time#valid_datetime_values), such as `2024-01-15`, `14:30`, or `2024-01-15T14:30:00`.
 	 *
 	 * @default ''
 	 */

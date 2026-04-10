@@ -12,7 +12,7 @@ const data: ReferenceEntityTemplateSchema = createComponentDoc({
     definitions: {properties: true},
   },
   bestPractices: `- Use \`s-unordered-list\` when you need to present a list of related items or options.
-- Each item in the list should be wrapped in a \`s-list-item\` component.
+- Each item in the list should be wrapped in an \`s-list-item\` component.
 - Keep list items concise and consistent in length when possible.
 - Use \`s-unordered-list\` for navigation menus, feature lists, or any collection of related items.
 - Consider using \`s-unordered-list\` when you want to present information in a clear, scannable format.`,
