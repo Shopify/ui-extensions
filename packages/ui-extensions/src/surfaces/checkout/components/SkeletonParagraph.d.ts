@@ -22,7 +22,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 
 declare const tagName = "s-skeleton-paragraph";
 /**
- * Displays a placeholder representation of text content while it loads. Use to improve perceived performance by showing users where text will appear.
+ * Configure the following properties on the skeleton paragraph component.
  * @publicDocs
  */
 export interface SkeletonParagraphElementProps extends SkeletonParagraphProps$1 {

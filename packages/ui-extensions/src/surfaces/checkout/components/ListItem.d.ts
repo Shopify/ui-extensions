@@ -29,9 +29,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-list-item";
 /**
- * The list item component represents a single entry within an ordered list or unordered list. Use list item to structure individual points, steps, or items within a list, with each item automatically receiving appropriate list markers (bullets or numbers) from its parent list.
- *
- * List item must be used as a direct child of ordered list or unordered list components. Each list item can contain text, inline formatting, or other components to create rich list content.
+ * Configure the following properties on the list item component.
  * @publicDocs
  */
 export interface ListItemElementProps extends Pick<ListItemProps$1, 'id'> {
