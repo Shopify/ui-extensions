@@ -27,7 +27,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-list-item";
 /**
- * The element props interface for the ListItem component.
+ * Configure the following properties on the list item component.
  * @publicDocs
  */
 export interface ListItemElementProps extends Pick<ListItemProps$1, 'id'> {

@@ -27,12 +27,23 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-paragraph";
 /**
- * The element props interface for the Paragraph component.
+ * Configure the following properties on the paragraph component.
  * @publicDocs
  */
 export interface ParagraphElementProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
+    /**
+     * The semantic type and styling treatment for the paragraph content.
+     *
+     * Other presentation properties on `s-paragraph` override the default styling.
+     *
+     * - `paragraph`: A semantic type that indicates the text is a structural grouping of related content.
+     * - `small`: A semantic type that indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+     *
+     * @default 'paragraph'
+     */
+    type?: Extract<ParagraphProps$1['type'], 'paragraph' | 'small'>;
 }
 export interface ParagraphElement extends ParagraphElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
