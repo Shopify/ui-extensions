@@ -22,21 +22,18 @@ import type {SubscribableSignalLike} from '../../shared';
 export type {ApiVersion, Capability} from '../../../../shared';
 
 /**
- * A key-value storage object for the extension.
- *
- * Stored data is available only to this specific extension
- * and any of its instances.
- *
- * The storage backend is implemented with `localStorage` and
- * should persist across the buyer's checkout session.
- * However, data persistence isn't guaranteed.
+ * Key-value storage for a specific extension. Use storage to save
+ * preferences or cached data that should survive page reloads without
+ * requiring a backend call. Stored data is only available to this
+ * specific extension. The storage backend is implemented with
+ * `localStorage` and data persistence isn't guaranteed.
  */
 export interface Storage {
   /**
    * Read and return a stored value by key.
    *
    * The stored data is deserialized from JSON and returned as
-   * its original primitive.
+   * its original type.
    *
    * Returns `null` if no stored data exists.
    */
@@ -50,13 +47,15 @@ export interface Storage {
   write(key: string, data: any): Promise<void>;
 
   /**
-   * Delete stored data by key.
+   * Deletes a previously stored value by key.
    */
   delete(key: string): Promise<void>;
 }
 
 /**
- * The meta information about an extension target.
+ * Metadata about the running extension, including its API version, target,
+ * capabilities, and editor context. Use this to read configuration details or
+ * conditionally render content based on where the extension is running.
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -130,6 +129,11 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   version?: string;
 }
 
+/**
+ * Information about the editor environment when an extension is rendered
+ * inside the checkout editor. The value is `undefined` when the extension
+ * is not rendering in an editor.
+ */
 export interface Editor {
   /**
    * Indicates whether the extension is rendering in the [checkout editor](https://shopify.dev/docs/apps/checkout). Always `'checkout'`.
@@ -294,9 +298,9 @@ export type Version = string;
 export type CheckoutToken = string;
 
 /**
- * This returns a translated string matching a key in a locale file.
- *
- * @example translate("banner.title")
+ * Translates a key from your extension's locale files into a localized string.
+ * Supports interpolation with placeholder replacements and pluralization
+ * via the special `count` option.
  */
 export interface I18nTranslate {
   <ReplacementType = string>(
@@ -307,6 +311,11 @@ export interface I18nTranslate {
     : (string | ReplacementType)[];
 }
 
+/**
+ * Utilities for translating strings, formatting currencies, numbers,
+ * and dates according to the buyer's locale. Use the I18n API alongside
+ * the Localization API to build fully localized extensions.
+ */
 export interface I18n {
   /**
    * Returns a localized number.
@@ -389,6 +398,10 @@ export interface Market {
   handle: string;
 }
 
+/**
+ * The buyer's language, country, currency, and timezone context. Use this
+ * to adapt your extension to the buyer's region and display localized content.
+ */
 export interface Localization {
   /**
    * The currency that the buyer sees for money amounts in the checkout. Use this value to format prices and totals in the buyer's expected currency.
@@ -396,7 +409,7 @@ export interface Localization {
   currency: SubscribableSignalLike<Currency>;
 
   /**
-   * The buyer's time zone, derived from their browser or account settings. Use this value to format dates and times relative to the buyer's local time.
+   * The buyer's time zone, based on their browser or account settings. Use this value to format dates and times relative to the buyer's local time.
    */
   timezone: SubscribableSignalLike<Timezone>;
 
@@ -540,7 +553,9 @@ export interface BuyerJourneyStep {
 /** @publicDocs */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
-   * The methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   * Tracks custom events and sends visitor information to
+   * [Web Pixels](https://shopify.dev/docs/apps/marketing). Use `publish()` to emit events
+   * and `visitor()` to submit buyer contact details.
    */
   analytics: Analytics;
 
@@ -640,7 +655,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   discountAllocations: SubscribableSignalLike<CartDiscountAllocation[]>;
 
   /**
-   * The meta information about the extension.
+   * Metadata about the running extension, including the current target, API version,
+   * capabilities, and editor context. Use this to conditionally render content
+   * based on where the extension is running.
    */
   extension: Extension<Target>;
 
@@ -658,12 +675,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   extensionPoint: Target;
 
   /**
-   * Utilities for translating content and formatting values according to the current
+   * Utilities for translating strings, formatting currencies, numbers, and dates
+   * according to the buyer's locale. Use alongside
    * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization)
-   * of the checkout.
-   *
-   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#examples)
-   * for more information.
+   * to build fully localized extensions.
    */
   i18n: I18n;
 
@@ -673,8 +688,8 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   lines: SubscribableSignalLike<CartLine[]>;
 
   /**
-   * The details about the location, language, and currency of the customer. For utilities to easily
-   * format and translate content based on these details, you can use the
+   * The buyer's language, country, currency, and timezone context. For
+   * formatting and translation helpers, use the
    * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#standardapi-propertydetail-i18n)
    * object instead.
    */
@@ -760,18 +775,19 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    */
   billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
-  /** The shop where the checkout is taking place. */
+  /**
+   * The store where the checkout is taking place, including the shop name,
+   * storefront URL, `.myshopify.com` subdomain, and a globally-unique ID.
+   */
   shop: Shop;
 
   /**
-   * The key-value storage for the extension.
+   * Key-value storage that persists across page loads within the current checkout
+   * session. Data is shared across all activated extension targets of this
+   * extension.
    *
-   * It uses `localStorage` and should persist across the customer's current checkout session.
-   *
-   * > Caution: Data persistence isn't guaranteed and storage is reset when the customer starts a new checkout.
-   *
-   * Data is shared across all activated extension targets of this extension. In versions 2023-07 and earlier,
-   * each activated extension target had its own storage.
+   * > Caution: Data persistence isn't guaranteed and storage is cleared when the
+   * buyer starts a new checkout.
    */
   storage: Storage;
 
@@ -802,6 +818,12 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   localizedFields?: SubscribableSignalLike<LocalizedField[]>;
 }
 
+/**
+ * Authenticates requests between your extension and your app backend.
+ * Use session tokens to verify the identity of the buyer and the shop
+ * context when making server-side API calls. The token is a signed JWT
+ * that contains claims such as the customer ID, shop domain, and expiration.
+ */
 export interface SessionToken {
   /**
    * Requests a session token that hasn't expired. You should call this method every
@@ -929,6 +951,10 @@ export interface AppliedGiftCard {
   balance: Money;
 }
 
+/**
+ * Metadata about the merchant's store, including its name, storefront
+ * URL, `.myshopify.com` subdomain, and a globally-unique ID.
+ */
 export interface Shop {
   /**
    * A globally-unique identifier for the shop in the format `gid://shopify/Shop/<id>`.
@@ -942,9 +968,6 @@ export interface Shop {
   name: string;
   /**
    * The primary storefront URL for the shop, such as `'https://example.myshopify.com'`. Use this to build links back to the merchant's online store.
-   *
-   * > Caution:
-   * > As of version `2024-04` this value no longer has a trailing slash.
    */
   storefrontUrl?: string;
   /**
@@ -1567,14 +1590,20 @@ export type ExtensionSettings = Record<
   string | number | boolean | undefined
 >;
 
+/**
+ * Tracks custom events and sends visitor information to
+ * [Web Pixels](https://shopify.dev/docs/apps/marketing). Use `publish()` to emit events
+ * and `visitor()` to submit buyer contact details.
+ */
 export interface Analytics {
   /**
-   * Publish method to emit analytics events to [Web Pixels](https://shopify.dev/docs/apps/marketing).
+   * Publishes a custom event to [Web Pixels](https://shopify.dev/docs/apps/marketing).
+   * Returns `true` when the event is successfully dispatched.
    */
   publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
   /**
-   * A method for capturing details about a visitor on the online store.
+   * Submits buyer contact details for attribution and analytics purposes.
    */
   visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
 }
@@ -1599,7 +1628,7 @@ export interface VisitorSuccess {
 export interface VisitorError {
   /**
    * Indicates that the visitor information is invalid and wasn't submitted.
-   * Examples are using the wrong data type or missing a required property.
+   * Common causes include using the wrong data type or omitting a required property.
    */
   type: 'error';
 
