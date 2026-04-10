@@ -108,7 +108,7 @@ function createAppIntentRenderMock<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardRenderingApi(target),
     data: {
-      intent: {data: {}},
+      intent: {},
     },
     intents: {
       ...createMockStandardApi(target).intents,

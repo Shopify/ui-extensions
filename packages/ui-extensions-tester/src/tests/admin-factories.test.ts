@@ -51,9 +51,7 @@ describe('createMockAdminTargetApi', () => {
     expect(typeof api.intents.response?.error).toBe('function');
     expect(typeof api.intents.response?.closed).toBe('function');
     expect(api).toHaveProperty('data');
-    expect(api.data.intent).toStrictEqual({
-      data: {},
-    });
+    expect(api.data.intent).toStrictEqual({});
     expect(api).not.toHaveProperty('close');
   });
 });
