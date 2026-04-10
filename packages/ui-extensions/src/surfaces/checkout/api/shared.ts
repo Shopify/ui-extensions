@@ -1,5 +1,6 @@
 import type {CountryCode} from '../../../shared';
 
+/** @publicDocs */
 export interface ValidationError {
   /**
    * The error message to display to the buyer. Use this to explain what
@@ -22,6 +23,7 @@ export interface ValidationError {
 
 /**
  * A [selling plan](https://shopify.dev/docs/apps/build/purchase-options/subscriptions) represents a recurring or deferred purchasing option for a product, such as a subscription, pre-order, or try-before-you-buy plan. The merchant configures selling plans to define how and when the buyer is charged.
+ * @publicDocs
  */
 export interface SellingPlan {
   /**
@@ -41,6 +43,7 @@ export interface SellingPlan {
   recurringDeliveries: boolean;
 }
 
+/** @publicDocs */
 export interface Attribute {
   /**
    * The identifier for the attribute. Each key must be unique within the
@@ -61,6 +64,7 @@ export interface Attribute {
   value: string;
 }
 
+/** @publicDocs */
 export interface MailingAddress {
   /**
    * The buyer's full name, typically a combination of first and last name.
@@ -182,6 +186,7 @@ export interface MailingAddress {
   phone?: string;
 }
 
+/** @publicDocs */
 export interface ShippingAddress extends MailingAddress {
   /**
    * Controls whether the address is saved to the buyer's account. When

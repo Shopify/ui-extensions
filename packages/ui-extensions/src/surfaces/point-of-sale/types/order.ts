@@ -2,6 +2,7 @@ import {LineItem} from './cart';
 
 /**
  * Represents a refund applied to a line item, including when it was created and the quantity refunded.
+ * @publicDocs
  */
 export interface LineItemRefund {
   /**
@@ -16,6 +17,7 @@ export interface LineItemRefund {
 
 /**
  * Represents a line item from an order, extending the base line item with current quantity and refund information.
+ * @publicDocs
  */
 export interface OrderLineItem extends LineItem {
   /**

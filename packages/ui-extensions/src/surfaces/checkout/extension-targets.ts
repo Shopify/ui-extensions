@@ -710,6 +710,7 @@ export interface RunnableExtensionTargets {
  * A union of all extension targets.
  * This is a special interface that is referenced by name "ExtensionTargets", in the `buildTargetDts.ts` script in ui-extensions.
  * It is used to to generate the `shopify.d.ts` file, to provide type safety when coding UI extensions.
+ * @publicDocs
  */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
@@ -718,6 +719,7 @@ export interface ExtensionTargets
 /** @publicDocs */
 export type ExtensionTarget = keyof ExtensionTargets;
 
+/** @publicDocs */
 export type AvailableExtensionDefinitions<Api> =
   | RenderExtension<Api, any>
   | RunnableExtension<Api, any>;
@@ -725,6 +727,7 @@ export type AvailableExtensionDefinitions<Api> =
 /**
  * For a given extension target, returns the value that is expected to be
  * returned by that extension target’s callback type.
+ * @publicDocs
  */
 export type ReturnTypeForExtension<Target extends keyof ExtensionTargets> =
   ExtensionTargets[Target]['output'];

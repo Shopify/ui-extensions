@@ -1,5 +1,6 @@
 import type {SubscribableSignalLike} from '../../shared';
 
+/** @publicDocs */
 export interface OrderConfirmation {
   order: {
     /**

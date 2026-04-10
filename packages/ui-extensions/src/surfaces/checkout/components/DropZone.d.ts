@@ -33,7 +33,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-drop-zone";
 /**
- * The element props interface for the DropZone component.
+ * Configure the following properties on the drop zone component.
  * @publicDocs
  */
 export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
@@ -41,20 +41,25 @@ export interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | '
 export interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
 /**
- * The events interface for the DropZone component.
+ * The drop zone component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ *
  * @publicDocs
  */
 export interface DropZoneElementEvents {
     /**
-     * Callback when rejected files are dropped. Files are rejected based on the `accept` prop.
+     * A callback fired when files are rejected based on the `accept` prop.
      */
     droprejected?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the drop zone.
+     *
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user has finished selecting a file or files.
+     * A callback fired when the drop zone value changes.
+     *
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }

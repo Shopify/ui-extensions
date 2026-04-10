@@ -14,6 +14,7 @@ import type {
   CashDrawerApi,
   ScannerSource,
   StorageApi,
+  ConnectivityApiContent,
   ConnectivityState,
   Cart,
   Session,
@@ -87,9 +88,15 @@ function createTransaction(): Transaction {
   } as Transaction;
 }
 
+function createConnectivityApiContent(): ConnectivityApiContent {
+  return {
+    current: createReadonlySignalLike(createConnectivityState()),
+  };
+}
+
 function createMockBaseEventData() {
   return {
-    connectivity: createConnectivityState(),
+    connectivity: createConnectivityApiContent(),
     device: {name: 'Mock POS Device', deviceId: 1, isTablet: false},
     locale: 'en-US',
     session: createSessionCurrentSession(),

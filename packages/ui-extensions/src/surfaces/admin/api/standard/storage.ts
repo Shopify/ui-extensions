@@ -1,3 +1,6 @@
+/**
+ * @publicDocs
+ */
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
 > {
@@ -98,6 +101,7 @@ export interface Storage<
 
 /**
  * Error thrown when storage operations exceed the available storage quota. This can occur during `set()` or `setMany()` operations when the total stored data size exceeds the limit allocated to your extension.
+ * @publicDocs
  */
 export interface StorageExceededError extends Error {
   name: 'StorageExceededError';

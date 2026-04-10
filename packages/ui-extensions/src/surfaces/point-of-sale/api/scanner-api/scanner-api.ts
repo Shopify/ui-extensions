@@ -1,10 +1,14 @@
 import type {ReadonlySignalLike} from '../../../../shared';
 
-/** The scanner source the POS device supports. */
+/**
+ * The scanner source the POS device supports.
+ * @publicDocs
+ */
 export type ScannerSource = 'camera' | 'external' | 'embedded';
 
 /**
  * Represents the data from a scanner event. Contains the scanned string data and the hardware source that captured the scan.
+ * @publicDocs
  */
 export interface ScannerSubscriptionResult {
   /**
@@ -23,6 +27,7 @@ export interface ScannerSubscriptionResult {
 
 /**
  * Represents the available scanner hardware sources on the device. Provides reactive access to the list of scanners that can be used for scanning operations.
+ * @publicDocs
  */
 export interface ScannerSources {
   /**
@@ -33,6 +38,7 @@ export interface ScannerSources {
 
 /**
  * Represents the scanner interface for accessing scan events and subscription management. Provides real-time access to scanned data through a reactive signal pattern.
+ * @publicDocs
  */
 export interface ScannerData {
   /**
@@ -66,6 +72,7 @@ export interface ScannerApiContent {
 
 /**
  * The `ScannerApi` object provides access to scanning functionality and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.
+ * @publicDocs
  */
 export interface ScannerApi {
   scanner: ScannerApiContent;

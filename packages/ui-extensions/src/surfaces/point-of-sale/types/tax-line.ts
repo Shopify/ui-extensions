@@ -2,6 +2,7 @@ import type {Money} from './money';
 
 /**
  * Represents a tax line applied to an item or transaction.
+ * @publicDocs
  */
 export interface TaxLine {
   /**

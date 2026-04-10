@@ -6,6 +6,7 @@ import {DiscountFunctionSettingsData, DiscountsApi} from './launch-options';
 
 /**
  * The `DiscountFunctionSettingsApi` object provides methods for configuring discount functions. Access the following properties on the `DiscountFunctionSettingsApi` object to manage function settings and metafields.
+ * @publicDocs
  */
 export interface DiscountFunctionSettingsApi<
   ExtensionTarget extends AnyExtensionTarget,

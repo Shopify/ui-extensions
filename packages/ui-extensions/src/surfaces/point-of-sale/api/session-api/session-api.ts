@@ -27,6 +27,7 @@ export interface SessionApiContent {
 
 /**
  * The `SessionApi` object provides access to current session information and authentication methods. Access these properties and methods through `shopify.session` to retrieve shop data and generate secure tokens. These methods enable secure API calls while maintaining user privacy and [app permissions](https://help.shopify.com/manual/your-account/users/roles/permissions/store-permissions#apps-and-channels-permissions).
+ * @publicDocs
  */
 export interface SessionApi {
   session: SessionApiContent;

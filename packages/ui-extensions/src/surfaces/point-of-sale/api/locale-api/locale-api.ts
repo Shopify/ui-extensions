@@ -13,6 +13,7 @@ export interface LocaleApiContent {
 
 /**
  * The `LocaleApi` object provides access to current locale information and change notifications. Access these properties through `shopify.locale` to retrieve and monitor locale data.
+ * @publicDocs
  */
 export interface LocaleApi {
   locale: LocaleApiContent;

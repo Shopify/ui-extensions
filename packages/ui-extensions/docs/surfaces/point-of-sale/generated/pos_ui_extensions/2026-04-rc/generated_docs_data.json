@@ -14,6 +14,7 @@
             "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
             "name": "ActionApiContent",
             "description": "",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
@@ -108,6 +109,7 @@
             "filePath": "src/surfaces/point-of-sale/api/camera-api/camera-api.ts",
             "name": "CameraMediaOptions",
             "description": "Specifies configuration options for capturing photos using the device camera.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/camera-api/camera-api.ts",
@@ -152,6 +154,7 @@
             "filePath": "src/surfaces/point-of-sale/api/camera-api/camera-api.ts",
             "name": "CameraMediaResponse",
             "description": "Represents the captured image and associated metadata returned by `shopify.camera.takePhoto()`.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/camera-api/camera-api.ts",
@@ -456,6 +459,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Address",
             "description": "Represents physical address information for customer shipping and billing. Contains standard address fields including street, city, region, postal code, and country data.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -570,6 +574,7 @@
             "name": "CountryCode",
             "value": "export enum CountryCode {\n  AF = 'AF',\n  AX = 'AX',\n  AL = 'AL',\n  DZ = 'DZ',\n  AD = 'AD',\n  AO = 'AO',\n  AI = 'AI',\n  AG = 'AG',\n  AR = 'AR',\n  AM = 'AM',\n  AW = 'AW',\n  AC = 'AC',\n  AU = 'AU',\n  AT = 'AT',\n  AZ = 'AZ',\n  BS = 'BS',\n  BH = 'BH',\n  BD = 'BD',\n  BB = 'BB',\n  BY = 'BY',\n  BE = 'BE',\n  BZ = 'BZ',\n  BJ = 'BJ',\n  BM = 'BM',\n  BT = 'BT',\n  BO = 'BO',\n  BA = 'BA',\n  BW = 'BW',\n  BV = 'BV',\n  BR = 'BR',\n  IO = 'IO',\n  BN = 'BN',\n  BG = 'BG',\n  BF = 'BF',\n  BI = 'BI',\n  KH = 'KH',\n  CA = 'CA',\n  CV = 'CV',\n  BQ = 'BQ',\n  KY = 'KY',\n  CF = 'CF',\n  TD = 'TD',\n  CL = 'CL',\n  CN = 'CN',\n  CX = 'CX',\n  CC = 'CC',\n  CO = 'CO',\n  KM = 'KM',\n  CG = 'CG',\n  CD = 'CD',\n  CK = 'CK',\n  CR = 'CR',\n  HR = 'HR',\n  CU = 'CU',\n  CW = 'CW',\n  CY = 'CY',\n  CZ = 'CZ',\n  CI = 'CI',\n  DK = 'DK',\n  DJ = 'DJ',\n  DM = 'DM',\n  DO = 'DO',\n  EC = 'EC',\n  EG = 'EG',\n  SV = 'SV',\n  GQ = 'GQ',\n  ER = 'ER',\n  EE = 'EE',\n  SZ = 'SZ',\n  ET = 'ET',\n  FK = 'FK',\n  FO = 'FO',\n  FJ = 'FJ',\n  FI = 'FI',\n  FR = 'FR',\n  GF = 'GF',\n  PF = 'PF',\n  TF = 'TF',\n  GA = 'GA',\n  GM = 'GM',\n  GE = 'GE',\n  DE = 'DE',\n  GH = 'GH',\n  GI = 'GI',\n  GR = 'GR',\n  GL = 'GL',\n  GD = 'GD',\n  GP = 'GP',\n  GT = 'GT',\n  GG = 'GG',\n  GN = 'GN',\n  GW = 'GW',\n  GY = 'GY',\n  HT = 'HT',\n  HM = 'HM',\n  VA = 'VA',\n  HN = 'HN',\n  HK = 'HK',\n  HU = 'HU',\n  IS = 'IS',\n  IN = 'IN',\n  ID = 'ID',\n  IR = 'IR',\n  IQ = 'IQ',\n  IE = 'IE',\n  IM = 'IM',\n  IL = 'IL',\n  IT = 'IT',\n  JM = 'JM',\n  JP = 'JP',\n  JE = 'JE',\n  JO = 'JO',\n  KZ = 'KZ',\n  KE = 'KE',\n  KI = 'KI',\n  KP = 'KP',\n  XK = 'XK',\n  KW = 'KW',\n  KG = 'KG',\n  LA = 'LA',\n  LV = 'LV',\n  LB = 'LB',\n  LS = 'LS',\n  LR = 'LR',\n  LY = 'LY',\n  LI = 'LI',\n  LT = 'LT',\n  LU = 'LU',\n  MO = 'MO',\n  MG = 'MG',\n  MW = 'MW',\n  MY = 'MY',\n  MV = 'MV',\n  ML = 'ML',\n  MT = 'MT',\n  MQ = 'MQ',\n  MR = 'MR',\n  MU = 'MU',\n  YT = 'YT',\n  MX = 'MX',\n  MD = 'MD',\n  MC = 'MC',\n  MN = 'MN',\n  ME = 'ME',\n  MS = 'MS',\n  MA = 'MA',\n  MZ = 'MZ',\n  MM = 'MM',\n  NA = 'NA',\n  NR = 'NR',\n  NP = 'NP',\n  NL = 'NL',\n  AN = 'AN',\n  NC = 'NC',\n  NZ = 'NZ',\n  NI = 'NI',\n  NE = 'NE',\n  NG = 'NG',\n  NU = 'NU',\n  NF = 'NF',\n  MK = 'MK',\n  NO = 'NO',\n  OM = 'OM',\n  PK = 'PK',\n  PS = 'PS',\n  PA = 'PA',\n  PG = 'PG',\n  PY = 'PY',\n  PE = 'PE',\n  PH = 'PH',\n  PN = 'PN',\n  PL = 'PL',\n  PT = 'PT',\n  QA = 'QA',\n  CM = 'CM',\n  RE = 'RE',\n  RO = 'RO',\n  RU = 'RU',\n  RW = 'RW',\n  BL = 'BL',\n  SH = 'SH',\n  KN = 'KN',\n  LC = 'LC',\n  MF = 'MF',\n  PM = 'PM',\n  WS = 'WS',\n  SM = 'SM',\n  ST = 'ST',\n  SA = 'SA',\n  SN = 'SN',\n  RS = 'RS',\n  SC = 'SC',\n  SL = 'SL',\n  SG = 'SG',\n  SX = 'SX',\n  SK = 'SK',\n  SI = 'SI',\n  SB = 'SB',\n  SO = 'SO',\n  ZA = 'ZA',\n  GS = 'GS',\n  KR = 'KR',\n  SS = 'SS',\n  ES = 'ES',\n  LK = 'LK',\n  VC = 'VC',\n  SD = 'SD',\n  SR = 'SR',\n  SJ = 'SJ',\n  SE = 'SE',\n  CH = 'CH',\n  SY = 'SY',\n  TW = 'TW',\n  TJ = 'TJ',\n  TZ = 'TZ',\n  TH = 'TH',\n  TL = 'TL',\n  TG = 'TG',\n  TK = 'TK',\n  TO = 'TO',\n  TT = 'TT',\n  TA = 'TA',\n  TN = 'TN',\n  TR = 'TR',\n  TM = 'TM',\n  TC = 'TC',\n  TV = 'TV',\n  UG = 'UG',\n  UA = 'UA',\n  AE = 'AE',\n  GB = 'GB',\n  US = 'US',\n  UM = 'UM',\n  UY = 'UY',\n  UZ = 'UZ',\n  VU = 'VU',\n  VE = 'VE',\n  VN = 'VN',\n  VG = 'VG',\n  WF = 'WF',\n  EH = 'EH',\n  YE = 'YE',\n  ZM = 'ZM',\n  ZW = 'ZW',\n  ZZ = 'ZZ',\n}",
             "description": "The two-letter [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) country codes representing all countries and territories. These standard codes are used for addresses, shipping destinations, tax jurisdictions, and regional settings.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/country-code.ts",
@@ -1802,6 +1807,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "CustomSale",
             "description": "Represents a custom sale item that is not associated with a product in the catalog. Includes pricing, taxation, and descriptive information for manually created line items.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -1838,6 +1844,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SetLineItemSellingPlanInput",
             "description": "Specifies the parameters for assigning selling plans to line items. Used to add subscription or purchase option configurations to products.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -1869,12 +1876,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "CartDiscountType",
             "value": "'Percentage' | 'FixedAmount' | 'Code'",
-            "description": "Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption."
+            "description": "Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption.",
+            "isPublicDocs": true
           },
           "SetLineItemPropertiesInput": {
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SetLineItemPropertiesInput",
             "description": "Specifies the parameters for adding custom properties to line items. Properties are key-value pairs used for storing metadata, tracking information, or integration data.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -1897,6 +1906,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "CartUpdateInput",
             "description": "Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -1950,6 +1960,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Discount",
             "description": "Represents a discount applied to a cart or transaction, including amount and description.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -1989,6 +2000,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Customer",
             "description": "Represents basic customer identification information. Contains the customer ID for linking to detailed customer data and enabling customer-specific features.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2004,6 +2016,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItem",
             "description": "Represents an individual item in the shopping cart. Contains product information, pricing, quantity, discounts, and customization details for a single cart entry.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2157,6 +2170,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItemComponent",
             "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2218,6 +2232,7 @@
             "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
             "name": "TaxLine",
             "description": "Represents a tax line applied to an item or transaction.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
@@ -2271,6 +2286,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "Money",
             "description": "Represents a monetary amount with currency information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -2293,6 +2309,7 @@
             "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
             "name": "DiscountAllocation",
             "description": "Represents the allocation of a discount to a specific line item.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
@@ -2308,6 +2325,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "MoneyV2",
             "description": "Represents a monetary amount as a string with explicit currency code.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -2330,6 +2348,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SellingPlan",
             "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2376,6 +2395,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Cart",
             "description": "Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2458,6 +2478,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SetLineItemDiscountInput",
             "description": "Specifies the parameters for applying discounts to individual line items. Includes the discount type, value, and reason for audit and reporting purposes.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2480,6 +2501,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItemDiscount",
             "description": "Represents a discount applied to an individual line item in the cart.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -2532,7 +2554,8 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "LineItemDiscountType",
             "value": "'Percentage' | 'FixedAmount'",
-            "description": "Defines the type of discount applied to individual line items. Specifies whether the discount is percentage-based or a fixed amount reduction."
+            "description": "Defines the type of discount applied to individual line items. Specifies whether the discount is percentage-based or a fixed amount reduction.",
+            "isPublicDocs": true
           }
         }
       }
@@ -2942,6 +2965,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItem",
             "description": "Represents an individual item in the shopping cart. Contains product information, pricing, quantity, discounts, and customization details for a single cart entry.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -3095,6 +3119,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItemComponent",
             "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -3156,6 +3181,7 @@
             "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
             "name": "TaxLine",
             "description": "Represents a tax line applied to an item or transaction.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
@@ -3209,6 +3235,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "Money",
             "description": "Represents a monetary amount with currency information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -3231,6 +3258,7 @@
             "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
             "name": "DiscountAllocation",
             "description": "Represents the allocation of a discount to a specific line item.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
@@ -3246,6 +3274,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "MoneyV2",
             "description": "Represents a monetary amount as a string with explicit currency code.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -3268,6 +3297,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Discount",
             "description": "Represents a discount applied to a cart or transaction, including amount and description.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -3307,6 +3337,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SellingPlan",
             "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -3507,6 +3538,7 @@
             "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityState",
             "description": "Represents the current Internet connectivity status of the device. Indicates whether the device is connected or disconnected from the Internet.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
@@ -3523,7 +3555,8 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "ConnectivityStateSeverity",
             "value": "'Connected' | 'Disconnected'",
-            "description": ""
+            "description": "",
+            "isPublicDocs": true
           }
         }
       }
@@ -3972,6 +4005,7 @@
             "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
             "name": "NavigationCurrentEntryChangeEvent",
             "description": "The event object for the `currententrychange` event, which fires when `Navigation.currentEntry` has changed due to navigation within the extension modal. Use to access information about the previous navigation entry when responding to navigation changes.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
@@ -3987,6 +4021,7 @@
             "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
             "name": "NavigationHistoryEntry",
             "description": "Represents a single entry in the navigation history stack. Contains the URL and unique identifier for tracking navigation state and implementing history-based navigation.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
@@ -4016,6 +4051,7 @@
             "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
             "name": "NavigationNavigateOptions",
             "description": "Specifies configuration options for navigation operations. Allows passing state data that persists across navigation transitions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/navigation-api/navigation-api.ts",
@@ -4242,12 +4278,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "PinValidationResult",
             "value": "{result: 'accept'} | {result: 'reject'; errorMessage?: string}",
-            "description": "Represents the validation outcome for an entered PIN. Indicates whether the PIN should be accepted or rejected, with optional error messaging for rejected PINs."
+            "description": "Represents the validation outcome for an entered PIN. Indicates whether the PIN should be accepted or rejected, with optional error messaging for rejected PINs.",
+            "isPublicDocs": true
           },
           "PinPadOptions": {
             "filePath": "src/surfaces/point-of-sale/types/pin-pad.ts",
             "name": "PinPadOptions",
             "description": "Specifies configuration options for displaying the PIN pad interface. Includes callback functions for PIN entry events, dismissal handling, and customizable labels and messaging.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/pin-pad.ts",
@@ -4333,12 +4371,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "PinLength",
             "value": "4 | 5 | 6 | 7 | 8 | 9 | 10",
-            "description": "The valid PIN length values (4-10 digits). Commonly used to configure minimum and maximum PIN length requirements."
+            "description": "The valid PIN length values (4-10 digits). Commonly used to configure minimum and maximum PIN length requirements.",
+            "isPublicDocs": true
           },
           "PinPadResult": {
             "filePath": "src/surfaces/point-of-sale/types/pin-pad.ts",
             "name": "PinPadResult",
             "description": "Represents the result of a PIN pad interaction, indicating whether PIN entry was completed and providing the entered PIN if available.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/pin-pad.ts",
@@ -4362,6 +4402,7 @@
             "filePath": "src/surfaces/point-of-sale/types/pin-pad.ts",
             "name": "PinPadActionType",
             "description": "Defines a custom action button for the PIN pad interface with a label and click handler.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/pin-pad.ts",
@@ -4670,6 +4711,7 @@
             "filePath": "src/surfaces/point-of-sale/api/product-search-api/product-search-api.ts",
             "name": "PaginationParams",
             "description": "Specifies parameters for cursor-based pagination. Includes the cursor position and the number of results to retrieve per page.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/product-search-api/product-search-api.ts",
@@ -4694,6 +4736,7 @@
             "filePath": "src/surfaces/point-of-sale/types/paginated-result.ts",
             "name": "PaginatedResult",
             "description": "Represents the result of a paginated query. Contains the data items, pagination cursors for navigating pages, and information about whether more results exist.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/paginated-result.ts",
@@ -4724,6 +4767,7 @@
             "filePath": "src/surfaces/point-of-sale/types/product.ts",
             "name": "ProductVariant",
             "description": "Represents a specific variant of a product with its own SKU, price, and inventory. Contains variant-specific attributes including options, availability, and identification data.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/product.ts",
@@ -4882,12 +4926,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "ProductVariantInventoryPolicy",
             "value": "'DENY' | 'CONTINUE'",
-            "description": "The inventory policy determining whether sales can continue when a variant has no inventory available:\n- `'DENY'`: Sales are prevented when inventory reaches zero. Customers can't purchase out-of-stock variants. The \"Add to cart\" action is disabled or shows \"Out of stock\". This is the default and recommended policy for most physical products to prevent overselling.\n- `'CONTINUE'`: Sales are allowed even when inventory is zero or negative. Customers can purchase out-of-stock variants, creating backorders. This enables pre-orders, made-to-order products, or drop-shipped items where inventory tracking is less critical."
+            "description": "The inventory policy determining whether sales can continue when a variant has no inventory available:\n- `'DENY'`: Sales are prevented when inventory reaches zero. Customers can't purchase out-of-stock variants. The \"Add to cart\" action is disabled or shows \"Out of stock\". This is the default and recommended policy for most physical products to prevent overselling.\n- `'CONTINUE'`: Sales are allowed even when inventory is zero or negative. Customers can purchase out-of-stock variants, creating backorders. This enables pre-orders, made-to-order products, or drop-shipped items where inventory tracking is less critical.",
+            "isPublicDocs": true
           },
           "ProductVariantOption": {
             "filePath": "src/surfaces/point-of-sale/types/product.ts",
             "name": "ProductVariantOption",
             "description": "Represents a single option selection for a product variant, showing one chosen value from a product's configuration options. For example, if a product has Size and Color options, a variant might have one option for Size=Large and another for Color=Blue.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/product.ts",
@@ -4910,6 +4956,7 @@
             "filePath": "src/surfaces/point-of-sale/types/product.ts",
             "name": "Product",
             "description": "Represents comprehensive product information including metadata, pricing, variants, and availability. Contains all data needed to display and work with products in the POS interface.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/product.ts",
@@ -5099,6 +5146,7 @@
             "filePath": "src/surfaces/point-of-sale/types/product.ts",
             "name": "ProductOption",
             "description": "Represents a product option definition showing one of the configurable attributes for a product (like Size, Color, Material) along with all the possible values customers can choose from. Products can have up to 3 options.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/product.ts",
@@ -5135,6 +5183,7 @@
             "filePath": "src/surfaces/point-of-sale/types/multiple-resource-result.ts",
             "name": "MultipleResourceResult",
             "description": "Represents the result of a bulk resource lookup operation. Contains successfully found resources and identifiers for resources that were not found.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/multiple-resource-result.ts",
@@ -5157,6 +5206,7 @@
             "filePath": "src/surfaces/point-of-sale/api/product-search-api/product-search-api.ts",
             "name": "ProductSearchParams",
             "description": "Specifies the parameters for searching products. Includes query text, pagination options, and sorting preferences for product search operations.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/product-search-api/product-search-api.ts",
@@ -5198,7 +5248,8 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "ProductSortType",
             "value": "'RECENTLY_ADDED' | 'RECENTLY_ADDED_ASCENDING' | 'ALPHABETICAL_A_TO_Z' | 'ALPHABETICAL_Z_TO_A'",
-            "description": ""
+            "description": "",
+            "isPublicDocs": true
           }
         }
       }
@@ -5356,6 +5407,7 @@
             "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
             "name": "ScannerData",
             "description": "Represents the scanner interface for accessing scan events and subscription management. Provides real-time access to scanned data through a reactive signal pattern.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
@@ -5393,6 +5445,7 @@
             "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
             "name": "ScannerSubscriptionResult",
             "description": "Represents the data from a scanner event. Contains the scanned string data and the hardware source that captured the scan.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
@@ -5418,12 +5471,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "ScannerSource",
             "value": "'camera' | 'external' | 'embedded'",
-            "description": "The scanner source the POS device supports."
+            "description": "The scanner source the POS device supports.",
+            "isPublicDocs": true
           },
           "ScannerSources": {
             "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
             "name": "ScannerSources",
             "description": "Represents the available scanner hardware sources on the device. Provides reactive access to the list of scanners that can be used for scanning operations.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/scanner-api/scanner-api.ts",
@@ -5544,6 +5599,7 @@
             "filePath": "src/surfaces/point-of-sale/types/session.ts",
             "name": "Session",
             "description": "Defines information about the current POS session.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/session.ts",
@@ -6397,12 +6453,13 @@
             "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
             "name": "TransactionCompleteWithReprintData",
             "description": "The data object provided to receipt targets containing transaction details and reprint information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "connectivity",
-                "value": "ConnectivityState",
+                "value": "ConnectivityApiContent",
                 "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
               },
               {
@@ -6447,6 +6504,7 @@
             "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityState",
             "description": "Represents the current Internet connectivity status of the device. Indicates whether the device is connected or disconnected from the Internet.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
@@ -6463,12 +6521,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "ConnectivityStateSeverity",
             "value": "'Connected' | 'Disconnected'",
-            "description": ""
+            "description": "",
+            "isPublicDocs": true
           },
           "Device": {
             "filePath": "src/surfaces/point-of-sale/types/device.ts",
             "name": "Device",
             "description": "Defines information about the POS device where the extension is running.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/device.ts",
@@ -6498,6 +6558,7 @@
             "filePath": "src/surfaces/point-of-sale/types/session.ts",
             "name": "Session",
             "description": "Defines information about the current POS session.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/session.ts",
@@ -6607,6 +6668,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
             "name": "SaleTransactionData",
             "description": "Defines the data structure for completed sale transactions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
@@ -6727,6 +6789,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "Money",
             "description": "Represents a monetary amount with currency information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -6749,6 +6812,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Customer",
             "description": "Represents basic customer identification information. Contains the customer ID for linking to detailed customer data and enabling customer-specific features.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -6764,6 +6828,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Discount",
             "description": "Represents a discount applied to a cart or transaction, including amount and description.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -6803,6 +6868,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItem",
             "description": "Represents an individual item in the shopping cart. Contains product information, pricing, quantity, discounts, and customization details for a single cart entry.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -6956,6 +7022,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItemComponent",
             "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -7017,6 +7084,7 @@
             "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
             "name": "TaxLine",
             "description": "Represents a tax line applied to an item or transaction.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
@@ -7070,6 +7138,7 @@
             "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
             "name": "DiscountAllocation",
             "description": "Represents the allocation of a discount to a specific line item.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
@@ -7085,6 +7154,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "MoneyV2",
             "description": "Represents a monetary amount as a string with explicit currency code.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -7107,6 +7177,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SellingPlan",
             "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -7153,6 +7224,7 @@
             "filePath": "src/surfaces/point-of-sale/types/payment.ts",
             "name": "Payment",
             "description": "Represents a payment applied to a transaction, including the amount, currency, and payment method type.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/payment.ts",
@@ -7183,12 +7255,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "PaymentMethod",
             "value": "'Cash' | 'Custom' | 'CreditCard' | 'CardPresentRefund' | 'StripeCardPresentRefund' | 'GiftCard' | 'StripeCreditCard' | 'ShopPay' | 'StoreCredit' | 'Unknown'",
-            "description": "The available payment method types for POS transactions."
+            "description": "The available payment method types for POS transactions.",
+            "isPublicDocs": true
           },
           "ShippingLine": {
             "filePath": "src/surfaces/point-of-sale/types/shipping-line.ts",
             "name": "ShippingLine",
             "description": "Represents a shipping charge applied to an order, including the price and applicable taxes.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/shipping-line.ts",
@@ -7228,6 +7302,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
             "name": "ReturnTransactionData",
             "description": "Defines the data structure for completed return transactions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
@@ -7364,6 +7439,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
             "name": "ExchangeTransactionData",
             "description": "Defines the data structure for completed exchange transactions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
@@ -7499,6 +7575,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
             "name": "ReprintReceiptData",
             "description": "Defines the data structure for receipt reprint requests.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -7651,6 +7728,7 @@
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
             "name": "OrderLineItem",
             "description": "Represents a line item from an order, extending the base line item with current quantity and refund information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -7819,6 +7897,7 @@
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
             "name": "LineItemRefund",
             "description": "Represents a refund applied to a line item, including when it was created and the quantity refunded.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -7836,6 +7915,43 @@
               }
             ],
             "value": "export interface LineItemRefund {\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails.\n   */\n  createdAt: string;\n  /**\n   * The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time.\n   */\n  quantity: number;\n}"
+          },
+          "ConnectivityApiContent": {
+            "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+            "name": "ConnectivityApiContent",
+            "description": "Provides access to the current connectivity state for the POS device.",
+            "members": [
+              {
+                "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "current",
+                "value": "ReadonlySignalLike<ConnectivityState>",
+                "description": "Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling."
+              }
+            ],
+            "value": "export interface ConnectivityApiContent {\n  /**\n   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.\n   */\n  current: ReadonlySignalLike<ConnectivityState>;\n}"
+          },
+          "ReadonlySignalLike": {
+            "filePath": "src/shared.ts",
+            "name": "ReadonlySignalLike",
+            "description": "Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.",
+            "members": [
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "MethodSignature",
+                "name": "subscribe",
+                "value": "(fn: (value: T) => void) => () => void",
+                "description": "Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value."
+              },
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "value",
+                "value": "T",
+                "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
+              }
+            ],
+            "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
           }
         }
       }
@@ -7872,12 +7988,13 @@
             "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
             "name": "TransactionCompleteWithReprintData",
             "description": "The data object provided to receipt targets containing transaction details and reprint information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
                 "syntaxKind": "PropertySignature",
                 "name": "connectivity",
-                "value": "ConnectivityState",
+                "value": "ConnectivityApiContent",
                 "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
               },
               {
@@ -7922,6 +8039,7 @@
             "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
             "name": "ConnectivityState",
             "description": "Represents the current Internet connectivity status of the device. Indicates whether the device is connected or disconnected from the Internet.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
@@ -7938,12 +8056,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "ConnectivityStateSeverity",
             "value": "'Connected' | 'Disconnected'",
-            "description": ""
+            "description": "",
+            "isPublicDocs": true
           },
           "Device": {
             "filePath": "src/surfaces/point-of-sale/types/device.ts",
             "name": "Device",
             "description": "Defines information about the POS device where the extension is running.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/device.ts",
@@ -7973,6 +8093,7 @@
             "filePath": "src/surfaces/point-of-sale/types/session.ts",
             "name": "Session",
             "description": "Defines information about the current POS session.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/session.ts",
@@ -8082,6 +8203,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
             "name": "SaleTransactionData",
             "description": "Defines the data structure for completed sale transactions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
@@ -8202,6 +8324,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "Money",
             "description": "Represents a monetary amount with currency information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -8224,6 +8347,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Customer",
             "description": "Represents basic customer identification information. Contains the customer ID for linking to detailed customer data and enabling customer-specific features.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -8239,6 +8363,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "Discount",
             "description": "Represents a discount applied to a cart or transaction, including amount and description.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -8278,6 +8403,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItem",
             "description": "Represents an individual item in the shopping cart. Contains product information, pricing, quantity, discounts, and customization details for a single cart entry.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -8431,6 +8557,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "LineItemComponent",
             "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -8492,6 +8619,7 @@
             "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
             "name": "TaxLine",
             "description": "Represents a tax line applied to an item or transaction.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/tax-line.ts",
@@ -8545,6 +8673,7 @@
             "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
             "name": "DiscountAllocation",
             "description": "Represents the allocation of a discount to a specific line item.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/discount-allocation.ts",
@@ -8560,6 +8689,7 @@
             "filePath": "src/surfaces/point-of-sale/types/money.ts",
             "name": "MoneyV2",
             "description": "Represents a monetary amount as a string with explicit currency code.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -8582,6 +8712,7 @@
             "filePath": "src/surfaces/point-of-sale/types/cart.ts",
             "name": "SellingPlan",
             "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -8628,6 +8759,7 @@
             "filePath": "src/surfaces/point-of-sale/types/payment.ts",
             "name": "Payment",
             "description": "Represents a payment applied to a transaction, including the amount, currency, and payment method type.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/payment.ts",
@@ -8658,12 +8790,14 @@
             "syntaxKind": "TypeAliasDeclaration",
             "name": "PaymentMethod",
             "value": "'Cash' | 'Custom' | 'CreditCard' | 'CardPresentRefund' | 'StripeCardPresentRefund' | 'GiftCard' | 'StripeCreditCard' | 'ShopPay' | 'StoreCredit' | 'Unknown'",
-            "description": "The available payment method types for POS transactions."
+            "description": "The available payment method types for POS transactions.",
+            "isPublicDocs": true
           },
           "ShippingLine": {
             "filePath": "src/surfaces/point-of-sale/types/shipping-line.ts",
             "name": "ShippingLine",
             "description": "Represents a shipping charge applied to an order, including the price and applicable taxes.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/shipping-line.ts",
@@ -8703,6 +8837,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
             "name": "ReturnTransactionData",
             "description": "Defines the data structure for completed return transactions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
@@ -8839,6 +8974,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
             "name": "ExchangeTransactionData",
             "description": "Defines the data structure for completed exchange transactions.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
@@ -8974,6 +9110,7 @@
             "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
             "name": "ReprintReceiptData",
             "description": "Defines the data structure for receipt reprint requests.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -9126,6 +9263,7 @@
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
             "name": "OrderLineItem",
             "description": "Represents a line item from an order, extending the base line item with current quantity and refund information.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -9294,6 +9432,7 @@
             "filePath": "src/surfaces/point-of-sale/types/order.ts",
             "name": "LineItemRefund",
             "description": "Represents a refund applied to a line item, including when it was created and the quantity refunded.",
+            "isPublicDocs": true,
             "members": [
               {
                 "filePath": "src/surfaces/point-of-sale/types/order.ts",
@@ -9311,6 +9450,43 @@
               }
             ],
             "value": "export interface LineItemRefund {\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails.\n   */\n  createdAt: string;\n  /**\n   * The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time.\n   */\n  quantity: number;\n}"
+          },
+          "ConnectivityApiContent": {
+            "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+            "name": "ConnectivityApiContent",
+            "description": "Provides access to the current connectivity state for the POS device.",
+            "members": [
+              {
+                "filePath": "src/surfaces/point-of-sale/api/connectivity-api/connectivity-api.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "current",
+                "value": "ReadonlySignalLike<ConnectivityState>",
+                "description": "Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling."
+              }
+            ],
+            "value": "export interface ConnectivityApiContent {\n  /**\n   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.\n   */\n  current: ReadonlySignalLike<ConnectivityState>;\n}"
+          },
+          "ReadonlySignalLike": {
+            "filePath": "src/shared.ts",
+            "name": "ReadonlySignalLike",
+            "description": "Represents a reactive signal interface that provides both immediate value access and subscription-based updates. Enables real-time synchronization with changing data through the observer pattern.",
+            "members": [
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "MethodSignature",
+                "name": "subscribe",
+                "value": "(fn: (value: T) => void) => () => void",
+                "description": "Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value."
+              },
+              {
+                "filePath": "src/shared.ts",
+                "syntaxKind": "PropertySignature",
+                "name": "value",
+                "value": "T",
+                "description": "The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup."
+              }
+            ],
+            "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
           }
         }
       }

@@ -5,8 +5,9 @@ import type {
 
 /**
  * A [metafield](/docs/apps/build/metafields) that stores discount function configuration data. Use metafields to persist settings that control how your discount function behaves, such as discount thresholds, eligibility rules, or custom discount logic parameters.
+ * @publicDocs
  */
-interface Metafield {
+export interface Metafield {
   /** A human-readable description explaining the metafield's purpose and how it affects discount behavior. Use this to document your settings for other developers. */
   description?: string;
   /** The unique global identifier (GID) for this metafield. Use this ID to reference the metafield in GraphQL queries or updates. */
@@ -23,16 +24,19 @@ interface Metafield {
 
 /**
  * The discount class that determines where the discount applies in the purchase flow. Use this to understand what type of discount the merchant is configuring (product-level, order-level, or shipping).
+ * @publicDocs
  */
 export type DiscountClass = 'product' | 'order' | 'shipping';
 
 /**
  * The method used to apply a discount. Use `'automatic'` for discounts that apply automatically at checkout, or `'code'` for discounts that require a code entered by the customer.
+ * @publicDocs
  */
-type DiscountMethod = 'automatic' | 'code';
+export type DiscountMethod = 'automatic' | 'code';
 
 /**
  * The `data` object exposed to discount function settings extensions in the `admin.discount-details.function-settings.render` target. Use this to access the current discount configuration and populate your settings interface with existing values.
+ * @publicDocs
  */
 export interface DiscountFunctionSettingsData {
   /** The discount's unique global identifier (GID) in the [GraphQL Admin API](/docs/api/admin-graphql) format (for example, `gid://shopify/DiscountAutomaticApp/123`). Use this ID to associate settings with the correct discount or query discount data. */
@@ -43,6 +47,7 @@ export interface DiscountFunctionSettingsData {
 
 /**
  * The `DiscountsApi` object provides reactive access to discount configuration. Use the signals to read discount classes and method, and the update function to change which parts of the purchase (products, order, or shipping) the discount affects.
+ * @publicDocs
  */
 export interface DiscountsApi {
   /**

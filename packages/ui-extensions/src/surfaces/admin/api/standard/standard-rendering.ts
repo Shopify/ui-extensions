@@ -3,6 +3,9 @@ import type {ResourcePickerApi} from '../resource-picker/resource-picker';
 import type {StandardApi} from './standard';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 
+/**
+ * @publicDocs
+ */
 export interface StandardRenderingExtensionApi<
   ExtensionTarget extends AnyExtensionTarget,
 > extends StandardApi<ExtensionTarget> {

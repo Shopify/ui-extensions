@@ -26,6 +26,9 @@ export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base
  * - `base`: The standard border color for most contexts.
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/**
+ * A shorthand string for specifying border properties. Accepts a size alone (`'base'`), size with color (`'base base'`), or size with color and style (`'base base dashed'`). Omitted values use their defaults.
+ */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -44,13 +47,44 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-box";
 /**
- * The element props interface for the Box component.
  * @publicDocs
  */
 export interface BoxElementProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
+    /**
+     * The background color of the box.
+     *
+     * - `base`: The standard background color for general content areas.
+     * - `subdued`: A muted background for secondary or supporting content.
+     * - `transparent`: No background color (the default).
+     *
+     * @default 'transparent'
+     */
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
+    /**
+     * A shorthand for setting the border width, color, and style in a single property. Individual border properties (`borderWidth`, `borderStyle`) can override values set here.
+     *
+     * @default 'none'
+     */
     border?: BorderShorthand;
+    /**
+     * The thickness of the border on all sides. Supports 1-to-4-value shorthand syntax for specifying different widths per side. Overrides the width value set by `border`.
+     *
+     * @default '' - meaning no override
+     */
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
+    /**
+     * The roundedness of the box's corners.
+     *
+     * - `none`: Sharp corners with no rounding.
+     * - `small-100` / `small`: Subtle rounding for compact elements.
+     * - `base`: Standard rounding for most use cases.
+     * - `large` / `large-100`: More pronounced rounding for prominent containers.
+     * - `max`: Maximum rounding, creating a pill or circular shape.
+     *
+     * Supports 1-to-4-value shorthand syntax for specifying different radii per corner.
+     *
+     * @default 'none'
+     */
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
 export interface BoxElement extends BoxElementProps, Omit<HTMLElement, 'id'> {

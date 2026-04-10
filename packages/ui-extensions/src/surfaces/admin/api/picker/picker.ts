@@ -1,7 +1,8 @@
 /**
  * A handle returned when opening a picker dialog. Use this to access the merchant's selection after they confirm or cancel the picker.
+ * @publicDocs
  */
-interface Picker {
+export interface Picker {
   /**
    * A Promise that resolves with an array of selected item IDs when the merchant presses the **Select** button, or `undefined` if they cancel. Await this Promise to handle the selection result.
    */
@@ -10,8 +11,9 @@ interface Picker {
 
 /**
  * The configuration for a table column header in the picker. Each header creates a labeled column that displays corresponding data from items.
+ * @publicDocs
  */
-interface Header {
+export interface Header {
   /**
    * The label text displayed at the top of the table column. Use clear, concise labels that describe the data in that column (for example, "Price", "Status", "Last Updated").
    */
@@ -25,8 +27,9 @@ interface Header {
 
 /**
  * The configuration options for the custom picker dialog. Define the picker's appearance, selection behavior, and data structure.
+ * @publicDocs
  */
-interface PickerOptions {
+export interface PickerOptions {
   /**
    * The heading displayed at the top of the picker modal. Use a clear, descriptive title that tells merchants what they're selecting.
    */
@@ -47,22 +50,26 @@ interface PickerOptions {
 
 /**
  * The visual tone for picker badges indicating status or importance. Use different tones to communicate urgency or state: `'info'` for neutral information, `'success'` for positive states, `'warning'` for caution, or `'critical'` for urgent issues.
+ * @publicDocs
  */
 export type Tone = 'info' | 'success' | 'warning' | 'critical';
 
 /**
  * The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished.
+ * @publicDocs
  */
 export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
 
 /**
  * A single data point that can appear in a picker table cell. Can be text, a number, or undefined if the cell should be empty.
+ * @publicDocs
  */
-type DataPoint = string | number | undefined;
+export type DataPoint = string | number | undefined;
 /**
  * A badge displayed next to an item in the picker to show status or progress. Use badges to highlight important item attributes or states that affect selection decisions.
+ * @publicDocs
  */
-interface PickerBadge {
+export interface PickerBadge {
   /** The text content of the badge. Keep this short and descriptive (for example, "Draft", "Active", "Incomplete"). */
   content: string;
   /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */
@@ -73,8 +80,9 @@ interface PickerBadge {
 
 /**
  * An individual item that merchants can select in the picker. Each item appears as a row in the picker table.
+ * @publicDocs
  */
-interface Item {
+export interface Item {
   /**
    * The unique identifier for this item. This ID is returned in the selection array when the merchant selects this item. Use an ID that helps you identify the item in your system (for example, template IDs, review IDs, or custom option keys).
    */
@@ -108,5 +116,6 @@ interface Item {
 
 /**
  * The `picker` function opens a custom selection dialog with your app-specific data. It accepts configuration options to define the picker's heading, items, headers, and selection behavior. It returns a Promise that resolves to a `Picker` object with a `selected` property for accessing the merchant's selection.
+ * @publicDocs
  */
 export type PickerApi = (options: PickerOptions) => Promise<Picker>;

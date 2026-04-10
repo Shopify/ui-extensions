@@ -401,6 +401,8 @@ Imports and executes the extension module's default export, rendering the extens
 
 A mock `shopify` global, typed correctly for the target under test. You can mutate any property.
 
+When testing `admin.app.intent.render`, the mock `shopify.intents` object also includes `response.ok()`, `response.error()`, and `response.closed()`.
+
 #### `extension.fetch`
 
 A mock `fetch()` function installed as `globalThis.fetch` during `setUp()` and removed during `tearDown()`.
