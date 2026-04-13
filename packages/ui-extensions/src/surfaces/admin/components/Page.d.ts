@@ -1,4 +1,4 @@
-/** VERSION: 1.38.0 **/
+/** VERSION: 1.63.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -18,8 +18,7 @@ export interface PageProps
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
-/** Used when an element does not have children. * @publicDocs
- */
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -28,8 +27,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
@@ -77,32 +75,32 @@ export interface PageJSXProps
   extends Partial<PageProps>,
     Pick<PageProps$1, 'id' | 'children'> {
   /**
-   * The content of the Page.
+   * The main content of the page, typically containing the primary information, forms,
+   * or interactive elements that fulfill the page's purpose.
    */
   children?: ComponentChildren;
   /**
-   * The content to display in the aside section of the page.
-   *
-   * This slot is only rendered when `inlineSize` is "base".
+   * Supplementary content displayed in a sidebar alongside the main content. Use for
+   * related information, navigation aids, or contextual actions that support the main content.
+   * This slot is only rendered when `inlineSize` is set to `base`.
    */
   aside?: ComponentChildren;
   /**
-   * The primary action for the page.
-   *
-   * Only accepts a single `Button` component with a `variant` of `primary`.
-   *
+   * The main action button displayed in the page header, representing the primary action
+   * users can take on this page. Only accepts a single button component with a `variant` of `primary`.
+   * Common examples include "Create", "Save", or "Add".
    */
   primaryAction?: ComponentChildren;
   /**
-   * Secondary actions for the page.
-   *
-   * Only accepts `ButtonGroup` and `Button` components with a `variant` of `secondary` or `auto`.
+   * Additional action buttons displayed in the page header, providing alternative or supporting
+   * actions. Only accepts button group and button components with a `variant` of `secondary`
+   * or `auto`. These are visually de-emphasized compared to the primary action.
    */
   secondaryActions?: ComponentChildren;
   /**
-   * Navigations back actions for the page.
-   *
-   * Only accepts `Link` components.
+   * Navigation links that help users understand their location within the app and navigate
+   * back to parent pages. Only accepts link components. Typically displays as a back arrow
+   * or breadcrumb trail in the page header.
    */
   breadcrumbActions?: ComponentChildren;
 }

@@ -1,4 +1,4 @@
-/** VERSION: 1.38.0 **/
+/** VERSION: 1.63.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -14,16 +14,31 @@ import type {
   InteractionProps,
 } from './shared.d.ts';
 
+/**
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`.
+ * Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. * @publicDocs
- */
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -32,14 +47,12 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
-/**  * @publicDocs
- */
+
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
   extends Pick<
@@ -59,13 +72,17 @@ export interface ModalProps
     ModalProps$1['size'],
     'small-100' | 'small' | 'base' | 'large' | 'large-100'
   >;
+  /**
+   * Places the Modal on the block axis on a large screen
+   * @default 'center'
+   */
+  alignSelf: 'center' | 'start';
 }
 
 declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
-/**  * @publicDocs
- */
+
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
@@ -148,11 +165,14 @@ declare const focusedElement: unique symbol;
 declare const rootActivator: unique symbol;
 declare const onEscape: unique symbol;
 declare const nestedModals: unique symbol;
+declare const onKeyUp: unique symbol;
 declare const onBackdropClick: unique symbol;
 declare const abortController: unique symbol;
 declare const onChildModalChange: unique symbol;
 declare const childrenRerenderObserver: unique symbol;
 declare const shadowDomRerenderObserver: unique symbol;
+declare const focusTrapHandler: unique symbol;
+declare const ensureDialogRef: unique symbol;
 declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   extends PreactOverlayElement
   implements
@@ -162,9 +182,26 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   accessor heading: ModalProps['heading'];
   accessor padding: ModalProps['padding'];
   accessor size: ModalProps['size'];
+  accessor alignSelf: ModalProps['alignSelf'];
+  /**
+   * A callback fired when the modal closes.
+   * Use to perform cleanup or trigger side effects when the modal is dismissed.
+   */
   accessor onhide: CallbackEventListener<TTagName> | null;
+  /**
+   * A callback fired when the modal starts to open, before any entrance animation begins.
+   * Use to prepare content or fetch data needed for the modal.
+   */
   accessor onshow: CallbackEventListener<TTagName> | null;
+  /**
+   * A callback fired after the modal has fully closed and any exit animation completes.
+   * Use to reset form state, clear temporary data, or update the page after dismissal.
+   */
   accessor onafterhide: CallbackEventListener<TTagName> | null;
+  /**
+   * A callback fired after the modal has fully opened and any entrance animation completes.
+   * Use to focus an input field or initialize content once the modal is visible.
+   */
   accessor onaftershow: CallbackEventListener<TTagName> | null;
   /** @private */
   [abortController]: AbortController;
@@ -180,12 +217,45 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   [childrenRerenderObserver]: MutationObserver;
   /** @private */
   [shadowDomRerenderObserver]: MutationObserver;
+  /**
+   * Focus trap keydown handler reference, stored for cleanup.
+   *
+   * The focus trap is managed imperatively here in ModalBase rather than
+   * via a Preact useEffect in foundation.tsx. This is because aftershow
+   * (fired after CSS animations complete) and useEffect (fired after
+   * Preact's async effect scheduling) are independent async chains with
+   * no synchronization — the useEffect could run before or after
+   * aftershow, making tests non-deterministic.
+   *
+   * By attaching the focus trap in the same .then() chain as aftershow,
+   * we guarantee it is active before aftershow dispatches.
+   *
+   * Lifecycle (mirrors the old useEffect's isActiveModal dependency):
+   * - Attached: in aftershow chain, right before aftershow dispatches
+   * - Detached: on dismiss(), disconnectedCallback(), or child modal open
+   * - Re-attached: when all child modals close
+   * @private
+   */
+  [focusTrapHandler]: ((event: KeyboardEvent) => void) | null;
   /** @private */
   [onEscape]: (event: KeyboardEvent) => void;
+  /** @private */
+  [onKeyUp]: (event: KeyboardEvent) => void;
   /** @private */
   [onBackdropClick]: (event: MouseEvent) => void;
   /** @private */
   [onChildModalChange]: EventListenerOrEventListenerObject;
+  /**
+   * Ensures `this[dialog]` is set by synchronously querying the shadow DOM
+   * and attaching event listeners if needed.
+   * Works around a Safari timing issue where the MutationObserver callback
+   * (which normally sets `this[dialog]`) may not have fired yet when
+   * `show()` / `dismiss()` run — especially when `heading` or
+   * `accessibilityLabel` adds child custom-elements whose own lifecycle
+   * microtasks can delay the observer.
+   * @private
+   */
+  [ensureDialogRef](): void;
   /** @private */
   get [isOpen](): boolean;
   /** @private */
@@ -197,7 +267,8 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   /** @private */
   [hide](): Promise<void>;
   showOverlay(): void;
-  hideOverlay(): void;
+  hideOverlay({force}?: {force?: boolean}): void;
+
   toggleOverlay(): void;
   /** @private */
   connectedCallback(): void;
@@ -228,24 +299,42 @@ export interface ModalJSXProps
   extends Partial<ModalProps>,
     Pick<ModalProps$1, 'id' | 'children'> {
   /**
-   * The content of the Modal.
+   * The content displayed within the modal, typically including form fields, informational
+   * text, or interactive elements that require focused user attention.
    */
   children?: ComponentChildren;
   /**
-   * The primary action to perform.
-   *
-   * Only a `Button` with a variant of `primary` is allowed.
+   * The main action button displayed in the modal footer, representing the primary action
+   * users should take. Only accepts a button component with a `variant` of `primary`. This action
+   * should align with the modal's main purpose, such as "Save", "Confirm", or "Submit".
    */
   primaryAction?: ComponentChildren;
   /**
-   * The secondary actions to perform.
-   *
-   * Only `Button` elements with a variant of `secondary` or `auto` are allowed.
+   * Additional action buttons displayed in the modal footer, providing alternative or
+   * supporting actions such as "Cancel" or "Learn more". Only accepts button components
+   * with a `variant` of `secondary` or `auto`. These are visually de-emphasized compared
+   * to the primary action to establish clear hierarchy.
    */
   secondaryActions?: ComponentChildren;
+  /**
+   * A callback fired when the modal closes.
+   * Use to perform cleanup or trigger side effects when the modal is dismissed.
+   */
   onHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * A callback fired when the modal starts to open, before any entrance animation begins.
+   * Use to prepare content or fetch data needed for the modal.
+   */
   onShow?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * A callback fired after the modal has fully closed and any exit animation completes.
+   * Use to reset form state, clear temporary data, or update the page after dismissal.
+   */
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * A callback fired after the modal has fully opened and any entrance animation completes.
+   * Use to focus an input field or initialize content once the modal is visible.
+   */
   onAfterShow?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 

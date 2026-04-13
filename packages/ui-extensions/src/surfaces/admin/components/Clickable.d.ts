@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.63.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -15,44 +15,50 @@ import type {
   SizeUnits,
   SizeUnitsOrNone,
   InteractionProps,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as _shopify_admin_web_component_foundations from '@shopify/admin-web-component-foundations';
 
+/**
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`.
+ * Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-/**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
- */
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
-   */
+  /** Assigns a unique key to this element. */
   key?: preact.Key;
-  /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
-   */
+  /** Assigns a ref (generally from `useRef()`) to this element. */
   ref?: preact.Ref<TClass>;
-  /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
-   */
+  /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
-/**  * @publicDocs
- */
+
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
  * Makes a property's value potentially responsive.
@@ -69,7 +75,6 @@ export type MakeResponsive<T> = T | `@container${string}`;
  *   margin: string | `@container${string}`;
  *   padding: number | `@container${string}`;
  * }
- * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
   [P in TProperty]: MakeResponsive<TType[P]>;
@@ -123,7 +128,7 @@ export interface BoxProps
     | 'overflow'
   > {
   /**
-   * The background color of the clickable element.
+   * Adjust the background of the component.
    *
    * @default 'transparent'
    */
@@ -132,16 +137,7 @@ export interface BoxProps
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
   /**
-   * Controls the thickness of the border on all sides. When set, this overrides the width value specified in the `border` property.
-   *
-   * - `small`: Thin border for subtle definition.
-   * - `small-100`: Extra thin border for minimal emphasis.
-   * - `base`: Standard border width.
-   * - `large`: Thick border for strong emphasis.
-   * - `large-100`: Extra thick border for maximum prominence.
-   * - `none`: No border.
-   *
-   * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different widths per side.
+   * Adjust the width of the border.
    *
    * @default '' - meaning no override
    */
@@ -154,10 +150,7 @@ export interface BoxProps
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
   /**
-   * Controls the visual style of the border on all sides (solid, dashed, auto, or none).
-   *
-   * When set, this overrides the style value specified in the `border` property.
-   * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different styles per side.
+   * Adjust the style of the border.
    *
    * @default '' - meaning no override
    */
@@ -165,10 +158,7 @@ export interface BoxProps
     | MaybeAllValuesShorthandProperty<BoxBorderStyles>
     | Extract<RequiredBoxProps['borderStyle'], ''>;
   /**
-   * Controls the color of the border using the design system's color scale.
-   *
-   * When set, this overrides the color value specified in the `border` property.
-   * Choose from `subdued`, `base`, or `strong` to match the visual emphasis needed.
+   * Adjust the color of the border.
    *
    * @default '' - meaning no override
    */
@@ -177,15 +167,13 @@ export interface BoxProps
     'subdued' | 'base' | 'strong' | ''
   >;
   /**
-   * Controls the roundedness of the element's corners using the design system's radius scale.
-   *
-   * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different radii per corner. Use this to create rounded or pill-shaped clickable elements.
+   * Adjust the radius of the border.
    *
    * @default 'none'
    */
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
   /**
-   * The padding applied to all edges of the clickable element.
+   * Adjust the padding of all edges.
    *
    * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
    *
@@ -201,71 +189,71 @@ export interface BoxProps
    *
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
-   * `padding` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `padding` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default 'none'
    */
   padding: ResponsiveBoxProps['padding'];
   /**
-   * The padding applied to the block axis (top and bottom in horizontal writing modes).
+   * Adjust the block-padding.
    *
    * - `large none` means block-start padding is `large`, block-end padding is `none`.
    *
    * This overrides the block value of `padding`.
    *
-   * `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingBlock: ResponsiveBoxProps['paddingBlock'];
   /**
-   * The padding applied to the block-start edge (top in horizontal writing modes).
+   * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    *
-   * `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
   /**
-   * The padding applied to the block-end edge (bottom in horizontal writing modes).
+   * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    *
-   * `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
   /**
-   * The padding applied to the inline axis (left and right in horizontal writing modes).
+   * Adjust the inline padding.
    *
    * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
    *
    * This overrides the inline value of `padding`.
    *
-   * `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInline: ResponsiveBoxProps['paddingInline'];
   /**
-   * The padding applied to the inline-start edge (left in left-to-right languages).
+   * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    *
-   * `paddingInlineStart` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInlineStart` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart: ResponsiveBoxProps['paddingInlineStart'];
   /**
-   * The padding applied to the inline-end edge (right in left-to-right languages).
+   * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    *
-   * `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/app-home/using-polaris-components#responsive-values) string with the supported PaddingKeyword as a query value.
    *
    * @default '' - meaning no override
    */
@@ -280,49 +268,43 @@ export interface BoxProps
    */
   display: ResponsiveBoxProps['display'];
   /**
-   * The vertical size of the component in standard layouts (height in left-to-right or right-to-left writing modes).
-   *
-   * Block size adjusts based on the writing direction: in horizontal layouts, it controls the height;
-   * in vertical layouts, it controls the width. This ensures consistent behavior across different text directions.
-   *
-   * Learn more about [block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   * Adjust the [block size](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
    *
    * @default 'auto'
    */
   blockSize: SizeUnitsOrAuto;
   /**
-   * The [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size) (minimum height in horizontal writing modes) of the clickable element.
+   * Adjust the [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
    *
    * @default '0'
    */
   minBlockSize: SizeUnits;
   /**
-   * The [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size) (maximum height in horizontal writing modes) of the clickable element.
+   * Adjust the [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
    *
    * @default 'none'
    */
   maxBlockSize: SizeUnitsOrNone;
   /**
-   * The [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size) (width in horizontal writing modes) of the clickable element.
+   * Adjust the [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
    *
    * @default 'auto'
    */
   inlineSize: SizeUnitsOrAuto;
   /**
-   * The [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size) (minimum width in horizontal writing modes) of the clickable element.
+   * Adjust the [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
    *
    * @default '0'
    */
   minInlineSize: SizeUnits;
   /**
-   * The [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size) (maximum width in horizontal writing modes) of the clickable element.
+   * Adjust the [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
    *
    * @default 'none'
    */
   maxInlineSize: SizeUnitsOrNone;
 }
-/**  * @publicDocs
- */
+
 export type ClickableBaseProps = Required<
   Pick<
     ClickableProps$1,
@@ -339,88 +321,25 @@ export type ClickableBaseProps = Required<
     | 'type'
   >
 >;
-/**
- * The properties for the clickable component. These properties define a low-level interactive container element that responds to user clicks while inheriting all box styling capabilities. The component serves as a foundation for building custom interactive components.
- * @publicDocs
- */
 export interface ClickableProps
   extends Required<BoxProps>,
     ClickableBaseProps {}
-/**  * @publicDocs
- */
-export type Styles = string;
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  ShadowRoot: (element: any) => ComponentChildren;
-  styles?: Styles;
-};
-export interface ActivationEventEsque {
-  shiftKey: boolean;
-  metaKey: boolean;
-  ctrlKey: boolean;
-  button: number;
-}
-/**  *
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
-/**  * @publicDocs
- */
+
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
-   * The action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. The supported actions vary by target component type.
+   * Sets the action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this clickable is activated.
    *
-   * - `--auto`: Performs the default action appropriate for the target component.
-   * - `--show`: Displays the target component if it's currently hidden.
-   * - `--hide`: Conceals the target component from view.
-   * - `--toggle`: Alternates the target component between visible and hidden states.
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
    *
    * @default '--auto'
    */
@@ -429,16 +348,16 @@ export interface PreactOverlayControlProps
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
   /**
-   * Sets the component the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this component is activated.
+   * Sets the element the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this clickable is activated.
    */
   commandFor: Extract<InteractionProps['commandFor'], string>;
   /**
-   * Sets the component the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this component is activated.
+   * Sets the element the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this clickable is activated.
    */
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
-declare class BoxElement extends PreactCustomElement implements BoxProps {
+declare class BoxElement extends PolarisCustomElement implements BoxProps {
   constructor(renderImpl: RenderImpl);
   accessor accessibilityRole: BoxProps['accessibilityRole'];
   accessor background: BoxProps['background'];
@@ -467,7 +386,7 @@ declare class BoxElement extends PreactCustomElement implements BoxProps {
 }
 
 declare const Clickable_base: (abstract new (
-  renderImpl: RenderImpl,
+  renderImpl: _shopify_admin_web_component_foundations.RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
   Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
 declare class Clickable extends Clickable_base implements ClickableProps {
@@ -497,85 +416,16 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-clickable';
-/**
- * The JSX properties for the clickable component. These properties define how a clickable container is rendered in Preact or JSX.
- * @publicDocs
- */
 export interface ClickableJSXProps
   extends Partial<ClickableProps>,
     Pick<ClickableProps$1, 'id' | 'children'> {
   /**
-   * The content to display inside the component. This can include text, components, or any other UI elements.
+   * The content of the Clickable.
    */
   children?: ComponentChildren;
-  /**
-   * A callback function that's invoked when the component is clicked. It receives the click event as an argument.
-   */
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /**
-   * A callback function that's invoked when the component receives focus. It receives the focus event as an argument.
-   */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /**
-   * A callback function that's invoked when the component loses focus. It receives the blur event as an argument.
-   */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-  /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
-   *
-   * @default ''
-   */
-  accessibilityLabel?: string;
-  /**
-   * Whether the component is disabled, preventing interaction. When disabled, the `click` event won't fire and click events from child elements stop propagating immediately. Interactive child elements can still receive focus and be interacted with. This doesn't apply visual styling by default. You should apply disabled styling as needed.
-   *
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * Whether a loading indicator is displayed and interaction is prevented. Set this to `true` to show that an action triggered by the click is in progress.
-   *
-   * @default false
-   */
-  loading?: boolean;
-  /**
-   * The URL that the component navigates to when clicked. When provided, the component behaves as a link.
-   *
-   * @default ''
-   */
-  href?: string;
-  /**
-   * Where to open the linked document when the component acts as a link (when `href` is provided). Available options:
-   * - `''` - Opens in the same frame (default behavior).
-   * - `'_blank'` - Opens in a new window or tab.
-   * - `'_self'` - Opens in the same frame (explicit version of default).
-   * - `'_parent'` - Opens in the parent frame.
-   * - `'_top'` - Opens in the full body of the window.
-   *
-   * @default ''
-   */
-  target?: string;
-  /**
-   * The filename to save the linked URL as when downloaded. This only works when `href` is provided.
-   *
-   * @default ''
-   */
-  download?: string;
-  /**
-   * The language of the component's content, specified as a BCP 47 language tag (such as `en` or `fr`). This helps assistive technologies pronounce content correctly.
-   *
-   * @default ''
-   */
-  lang?: string;
-  /**
-   * The component's behavior in forms when it's used as a form control. Available options:
-   * - `'button'` - A standard clickable with no default behavior.
-   * - `'submit'` - Submits the form data to the server.
-   * - `'reset'` - Resets all form controls to their initial values.
-   *
-   * @default 'button'
-   */
-  type?: string;
 }
 
 export {Clickable};
