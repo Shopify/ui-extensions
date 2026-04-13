@@ -1,5 +1,37 @@
 # @shopify/ui-extensions
 
+## 2027.0.0
+
+### Major Changes
+
+- [`77d447c`](https://github.com/Shopify/ui-extensions/commit/77d447c7f34151d3af49f6b7c4bc987558eec292) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026-04-rc release
+
+### Minor Changes
+
+- [#4079](https://github.com/Shopify/ui-extensions/pull/4079) [`db7cec2`](https://github.com/Shopify/ui-extensions/commit/db7cec21f1fd428115d4540158f235a714b585de) Thanks [@avocadomayo](https://github.com/avocadomayo)! - Remove checkout metafields in favour of cart metafields
+
+- [#4010](https://github.com/Shopify/ui-extensions/pull/4010) [`b60a9a1`](https://github.com/Shopify/ui-extensions/commit/b60a9a18a1da763fe8c9c01ce4911c4754926cce) Thanks [@avocadomayo](https://github.com/avocadomayo)! - - [Customer accounts] Remove checkout metafields in favour of app metafields
+
+  - [Customer accounts] Update component categories
+
+- [#4178](https://github.com/Shopify/ui-extensions/pull/4178) [`7408712`](https://github.com/Shopify/ui-extensions/commit/7408712b9d85eb4464560bf2078aa2a81a1ff3af) Thanks [@mauriciosierra](https://github.com/mauriciosierra)! - Add optional refundId, returnId, exchangeId, lineItemsAdded, and lineItemsRemoved fields to ReprintReceiptData to support reprinting return and exchange receipts.
+
+- [#3778](https://github.com/Shopify/ui-extensions/pull/3778) [`d1c35f2`](https://github.com/Shopify/ui-extensions/commit/d1c35f25cc86dfa1dcf8934a7b7cf5fa9856846a) Thanks [@merkoyep](https://github.com/merkoyep)! - add deviceId to SessionApi
+
+### Patch Changes
+
+- [#4251](https://github.com/Shopify/ui-extensions/pull/4251) [`a5c2bbf`](https://github.com/Shopify/ui-extensions/commit/a5c2bbf71decdf210d46ad4d6dc814faa6c0912f) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Add admin.app.intent.render target
+
+- [#4148](https://github.com/Shopify/ui-extensions/pull/4148) [`3b9614b`](https://github.com/Shopify/ui-extensions/commit/3b9614b572b7eb84715dc7656364ad38c9a4ead2) Thanks [@lrsterrett](https://github.com/lrsterrett)! - Remove types for `ui` from checkout ui extension api as `ui` wasn't supported since 2025.10.0 For reference, closing a modal can be done declaritively on the modal polaris component, instead of the deprecated `ui.overlay.close`
+
+- [#3970](https://github.com/Shopify/ui-extensions/pull/3970) [`6c3ac55`](https://github.com/Shopify/ui-extensions/commit/6c3ac5559c50553314cdea0993e39fcf853cc3d0) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Api types for discount classes are incorrect with the admin-web
+
+- [#3785](https://github.com/Shopify/ui-extensions/pull/3785) [`acd9002`](https://github.com/Shopify/ui-extensions/commit/acd9002d9d8768732bbbf19eccae268ffde9a07b) Thanks [@billfienberg](https://github.com/billfienberg)! - Admin: Expose picker and resource picker APIs for all rendering extensions
+
+- [#4072](https://github.com/Shopify/ui-extensions/pull/4072) [`12df6f9`](https://github.com/Shopify/ui-extensions/commit/12df6f92b68bca036132b3c54a69e28e15330a65) Thanks [@avocadomayo](https://github.com/avocadomayo)! - [Checkout] Update code examples
+
+- [#4078](https://github.com/Shopify/ui-extensions/pull/4078) [`21566b3`](https://github.com/Shopify/ui-extensions/commit/21566b391651653c8e3d626811d5b787b26f9fe3) Thanks [@jonathanhamel4](https://github.com/jonathanhamel4)! - Adds discount-index.selection-action extension point
+
 ## 2026.4.0-rc.3
 
 ### Minor Changes
