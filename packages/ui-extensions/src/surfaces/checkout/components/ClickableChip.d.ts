@@ -67,14 +67,12 @@ export interface ClickableChipElementEvents {
     remove?: CallbackEventListener<typeof tagName>;
 }
 /**
- * The clickable chip component supports slots for additional content placement. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ClickableChipElementSlots {
     /**
-     * The graphic to display inside of the chip.
-     *
-     * Only `s-icon` element and its `type` attribute are supported.
+     * An optional graphic displayed at the start of the chip, such as an icon to visually reinforce the chip's label. Only the `s-icon` element and its `type` attribute are supported.
      */
     graphic?: HTMLElement;
 }
