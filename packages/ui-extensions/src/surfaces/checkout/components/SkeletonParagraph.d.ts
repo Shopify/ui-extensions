@@ -21,7 +21,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 
 declare const tagName = "s-skeleton-paragraph";
 /**
- * The element props interface for the SkeletonParagraph component.
+ * Configure the following properties on the skeleton paragraph component.
  * @publicDocs
  */
 export interface SkeletonParagraphElementProps extends SkeletonParagraphProps$1 {
