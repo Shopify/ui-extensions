@@ -5,5 +5,5 @@
     "@shopify/ui-extensions": "2026.7.0-rc.0",
     "@shopify/ui-extensions-tester": "2026.7.0-rc.0"
   },
-  "changesets": []
+  "changesets": ["true-tips-fix"]
 }
