@@ -29,9 +29,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-heading";
 /**
- * The heading component renders hierarchical titles to communicate the structure and organization of page content. Use heading to create section titles and content headers that help users understand information hierarchy and navigate content.
- *
- * Heading levels adjust automatically based on nesting within parent [section](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/layout-and-structure/section) components, ensuring meaningful and accessible page outlines without manual level management.
+ * Configure the following properties on the heading component.
  * @publicDocs
  */
 export interface HeadingProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
