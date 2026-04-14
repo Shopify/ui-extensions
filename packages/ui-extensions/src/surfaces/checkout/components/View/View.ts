@@ -177,8 +177,8 @@ export interface ViewProps
   /**
    * The overflow behavior of the element.
    *
-   * - `visible`: Content that extends beyond the container is visible.
    * - `hidden`: Content that extends beyond the container is clipped and not scrollable.
+   * - `visible`: Content that extends beyond the container is visible.
    *
    * @default 'visible'
    */

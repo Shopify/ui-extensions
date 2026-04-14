@@ -7,8 +7,8 @@ import type {IconSource} from '../Icon/Icon';
  * The available tone values for the badge.
  *
  * - `default`: General information without specific intent.
- * - `subdued`: Reduced visual emphasis for less prominent badges.
  * - `critical`: Urgent problems or destructive actions requiring immediate attention.
+ * - `subdued`: Reduced visual emphasis for less prominent badges.
  */
 type Tone = 'default' | 'critical' | 'subdued';
 

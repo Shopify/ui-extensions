@@ -17,9 +17,7 @@ export interface ProductThumbnailProps {
    * with the HTML specification. When both are specified,
    * `accessibilityLabel` takes precedence.
    *
-   * Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204).
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
+   * Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204) and the [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt) attribute.
    */
   alt?: string;
 
@@ -32,10 +30,9 @@ export interface ProductThumbnailProps {
    * HTML specification. When both are specified, `accessibilityLabel`
    * takes precedence.
    *
-   * Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204).
+   * Learn more about [writing effective alternative text](https://ux.shopify.com/considerations-when-writing-alt-text-a9c1985a8204) and the [`alt`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt) attribute.
    *
    * @defaultValue `''`
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
   accessibilityLabel?: string;
 
@@ -45,7 +42,7 @@ export interface ProductThumbnailProps {
    * A `src` property is available as an alias for this for compatibility with the HTML
    * specification. When both are specified, `source` takes precedence.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   * Learn more about the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src) attribute.
    */
   source?: MaybeConditionalStyle<string, ResolutionCondition>;
 
@@ -55,7 +52,7 @@ export interface ProductThumbnailProps {
    * This property is available as an alias for `source` for compatibility with the HTML
    * specification. When both are specified, `source` takes precedence.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   * Learn more about the [`src`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src) attribute.
    */
   src?: MaybeConditionalStyle<string, ResolutionCondition>;
 
@@ -68,8 +65,8 @@ export interface ProductThumbnailProps {
   /**
    * The size of the product thumbnail image.
    *
-   * - `small`: A compact thumbnail for tighter layouts.
    * - `base`: Renders the thumbnail at its standard size.
+   * - `small`: A compact thumbnail for tighter layouts.
    *
    * @defaultValue 'base'
    */

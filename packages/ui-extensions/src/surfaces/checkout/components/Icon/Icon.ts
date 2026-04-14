@@ -102,8 +102,8 @@ export interface IconProps extends IdProps {
    *
    * - `extraSmall`: The smallest available icon size.
    * - `small`: A compact icon size, smaller than the default.
-   * - `large`: A larger icon for increased visual prominence.
    * - `base`: Renders the icon at its standard size.
+   * - `large`: A larger icon for increased visual prominence.
    * - `fill`: Stretches the icon to fill the available space in its
    *   container while preserving its aspect ratio.
    *

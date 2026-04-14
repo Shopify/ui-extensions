@@ -3,9 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {IdProps, TextSize} from '../shared';
 
 /**
- * SkeletonTextBlock is used to provide a low fidelity representation of a block of text before it appears on the page. 
-
-Optionally you can use any text content inside `SkeletonTextBlock` to be used as a base for the rendered skeleton
+ * Configure the following properties on the skeleton text block component.
  * @publicDocs
  */
 export interface SkeletonTextBlockProps extends IdProps {
@@ -15,13 +13,13 @@ export interface SkeletonTextBlockProps extends IdProps {
    */
   emphasis?: 'bold';
   /**
-   * Number of lines to display when no children are passed.
+   * The number of text lines the skeleton renders when no children are provided. Use this to match the expected paragraph length of the content being loaded.
    *
    * @defaultValue 1
    */
   lines?: number;
   /**
-   * Size of the text the skeleton replaces.
+   * A keyword that sets the size of the skeleton to match the text it replaces. The size maps to the design system's type scale, ensuring the placeholder accurately represents the final content dimensions.
    */
   size?: TextSize;
 }

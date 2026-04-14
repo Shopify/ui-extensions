@@ -44,7 +44,7 @@ export interface DropZoneProps extends IdProps {
    *
    * If left empty, the dropzone will accept all files.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept
+   * Learn more about the [`accept`](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/accept) attribute.
    */
   accept?: string;
 
@@ -64,7 +64,8 @@ export interface DropZoneProps extends IdProps {
 
   /**
    * A callback fired when files are dropped or selected.
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event
+   *
+   * Learn more about the [`drop`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/drop_event) event.
    */
   onInput?(files: File[]): void;
 
