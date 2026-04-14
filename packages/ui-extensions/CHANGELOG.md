@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.0-rc.1
+
+### Major Changes
+
+- [`eb74ecc`](https://github.com/Shopify/ui-extensions/commit/eb74eccd35fdf7b6a780320c6eb3830cee7ea24f) Thanks [@lrsterrett](https://github.com/lrsterrett)! - 2026-07-rc release
+
 ## 2026.4.0
 
 ### Major Changes

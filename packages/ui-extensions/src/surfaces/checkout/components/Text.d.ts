@@ -36,7 +36,7 @@ export interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibi
     /**
      * The semantic type and styling treatment for the text content.
      *
-     * Other presentation properties on text override the default styling.
+     * Other presentation properties on `s-text` override the default styling.
      *
      * - `address`: A semantic type that indicates the text is contact information. Typically used for addresses.
      * - `redundant`: A semantic type that indicates the text is no longer accurate or no longer relevant. One such use-case is discounted prices.
@@ -49,7 +49,7 @@ export interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibi
      *
      * @default 'generic'
      */
-    type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
+    type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'strong' | 'small' | 'generic'>;
 }
 export interface TextElement extends TextElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }

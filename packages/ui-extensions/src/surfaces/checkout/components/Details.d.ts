@@ -61,10 +61,10 @@ export interface DetailsElementEvents {
      *
      * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
      *   `newState` property will be set to `open`.
-     * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+     * - If the element is transitioning from showing to hidden, then the `oldState` property will be set to `open` and the
      *   `newState` will be `closed`.
      *
-     * Learn more about the [toggle event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), the [newState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and the [oldState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+     * Learn more about the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), the [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and the [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
      */
     toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
     /**
@@ -75,7 +75,7 @@ export interface DetailsElementEvents {
      * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
      *   `newState` will be `closed`.
      *
-     * Learn more about the [newState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [oldState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+     * Learn more about the [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
      */
     aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }

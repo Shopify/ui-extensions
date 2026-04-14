@@ -107,7 +107,7 @@ export interface ToggleEventProps {
 	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about the [newState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [oldState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about the [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
@@ -115,10 +115,10 @@ export interface ToggleEventProps {
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
-	 * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+	 * - If the element is transitioning from showing to hidden, then the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about the [toggle event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), the [newState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and the [oldState property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), the [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and the [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
@@ -1059,7 +1059,7 @@ export type AccessibilityRole =
  | "none";
 export interface AccessibilityVisibilityProps {
 	/**
-	 * The visibility mode of the element for both visual and assistive technology users.
+	 * Controls how the element is exposed to sighted users and to assistive technologies such as screen readers.
 	 *
 	 * - `visible`: The element is visible to all users (both sighted users and screen readers).
 	 * - `hidden`: The element is visually visible but hidden from screen readers. Use this for decorative elements that don't provide meaningful information.
@@ -1827,8 +1827,9 @@ export interface ChipProps$1 {
 	/**
 	 * The color emphasis level that controls visual intensity.
 	 *
-	 * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
 	 * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+	 * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+	 * - `strong`: Higher-contrast color for text that needs more emphasis than `base`.
 	 *
 	 * @default 'base'
 	 */
@@ -2254,7 +2255,7 @@ interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 	 */
 	children?: ComponentChildren;
 	/**
-	 * The name attribute for the element. Use this to create multiple named disclosure groups where only one can be open at a time.
+	 * The `name` attribute for the element. Use this to create multiple named disclosure groups where only one can be open at a time.
 	 *
 	 * Learn more about [multiple named disclosure boxes](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details#multiple_named_disclosure_boxes).
 	 */
@@ -2482,8 +2483,9 @@ export interface BaseTypographyProps {
 	/**
 	 * The color emphasis level that controls visual intensity.
 	 *
-	 * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
 	 * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+	 * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+	 * - `strong`: Higher-contrast color for text that needs more emphasis than `base`.
 	 *
 	 * @default 'base'
 	 */
@@ -3303,7 +3305,7 @@ interface TextProps$1 extends GlobalProps, AccessibilityVisibilityProps, BaseTyp
 	/**
 	 * The semantic type and styling treatment for the text content.
 	 *
-	 * Other presentation properties on text override the default styling.
+	 * Other presentation properties on `s-text` override the default styling.
 	 *
 	 * @default 'generic'
 	 */
