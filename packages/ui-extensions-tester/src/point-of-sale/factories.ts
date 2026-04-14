@@ -109,6 +109,10 @@ function createMockStandardApi<T extends RenderExtensionTarget>(
 ): StandardApi<T> {
   return {
     extensionPoint: target,
+    extension: {
+      apiVersion: '2026-04',
+      target,
+    },
     i18n: createMockI18n(),
     locale: {current: createReadonlySignalLike('en-US')},
     toast: {show: () => {}},
