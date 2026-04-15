@@ -4,10 +4,7 @@ import type {InlineAlignment, AccessibilityRole} from '../shared';
 
 type Level = 1 | 2 | 3 | 4;
 
-/**
- * Configure the following properties on the heading component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface HeadingProps {
   /**
    * A unique identifier for the component.

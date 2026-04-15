@@ -5,10 +5,7 @@ import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 
 export type Marker = 'none' | 'bullet' | 'number';
 
-/**
- * Configure the following properties on the list component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ListProps extends IdProps {
   /**
    * Adjusts the vertical spacing between list items. Use a design system spacing keyword to control the density of the list.

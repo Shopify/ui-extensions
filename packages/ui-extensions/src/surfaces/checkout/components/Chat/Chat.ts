@@ -2,10 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
-/**
- * Use the Chat component to create real-time chat applications. > Note: The Chat component can only be added to the chat targets of [checkout](/docs/api/checkout-ui-extensions/latest/targets/overlays/purchase-checkout-chat-render) and [Thank you](/docs/api/checkout-ui-extensions/latest/targets/overlays/purchase-thank-you-chat-render) pages.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChatProps extends IdProps {
   /**
    * Adjust the inline size.

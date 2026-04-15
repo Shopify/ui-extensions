@@ -1,9 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Options inside a [ToggleButtonGroup](/docs/api/checkout-ui-extensions/components/forms/togglebuttongroup).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ToggleButtonProps {
   /**
    * A unique identifier for the toggle button.

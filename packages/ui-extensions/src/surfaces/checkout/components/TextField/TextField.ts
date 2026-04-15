@@ -6,10 +6,7 @@ import type {IconSource} from '../Icon/Icon';
 
 type Type = 'text' | 'email' | 'number' | 'telephone';
 
-/**
- * Use a text field to get text input from a customer.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextFieldProps<T extends string | number | undefined> {
   /**
    * A unique identifier for the field. When no `id` is set,

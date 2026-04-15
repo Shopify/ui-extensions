@@ -2,10 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
-/**
- * Configure the following properties on the list item component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ListItemProps extends IdProps {}
 
 /**

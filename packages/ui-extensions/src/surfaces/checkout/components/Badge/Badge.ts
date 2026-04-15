@@ -12,9 +12,7 @@ import type {IconSource} from '../Icon/Icon';
  */
 type Tone = 'default' | 'critical' | 'subdued';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface BadgeProps extends VisibilityProps {
   /**
    * The semantic meaning and color treatment of the badge.

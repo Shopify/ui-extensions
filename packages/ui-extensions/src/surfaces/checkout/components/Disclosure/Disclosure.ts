@@ -3,10 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {MaybeResponsiveConditionalStyle} from '../../style/types';
 import type {DisclosureOpen} from '../shared';
 
-/**
- * Configure the following properties on the disclosure component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface DisclosureProps {
   /**
    * For uncontrolled disclosure components, the default `open` state on the initial render.

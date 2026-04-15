@@ -1,9 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Configure the following properties on the heading group component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface HeadingGroupProps {}
 
 /**
