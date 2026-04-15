@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {IconProps$1, NumberFieldProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -76,10 +73,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-number-field";
-/**
- * Configure the following properties on the number field component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -91,10 +85,7 @@ export interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autoc
 /** @publicDocs */
 export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The number field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface NumberFieldElementEvents {
     /**
 <<<<<<< HEAD
@@ -133,10 +124,7 @@ export interface NumberFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The number field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface NumberFieldElementSlots {
     /**
      * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.

@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {FormProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,10 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-form";
-/**
- * Configure the following properties on the form component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
 /** @publicDocs */
@@ -55,10 +49,7 @@ export interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
      */
     onSubmit?: () => void;
 }
-/**
- * The form component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface FormElementEvents {
     /**
      * A callback fired when the form is submitted.

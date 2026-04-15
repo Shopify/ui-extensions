@@ -33,10 +33,7 @@ export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
  * @publicDocs
  */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -77,10 +74,7 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
 /** @publicDocs */
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
-/**
- * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableElementEvents {
     /**
      * A callback fired when the component loses focus.

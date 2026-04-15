@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {ChoiceListProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,19 +39,13 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-choice-list";
-/**
- * Configure the following properties on the choice list component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
 /** @publicDocs */
 export interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
-/**
- * The choice list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChoiceListElementEvents {
     /**
      * A callback fired when the choice list value changes.

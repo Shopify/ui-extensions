@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {PhoneFieldProps$1, ConsentPhoneFieldProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,10 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName$1 = "s-phone-field";
-/**
- * Configure the following properties on the phone field component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -80,10 +74,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
-/**
- * Configure the following properties on the consent phone field component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -94,10 +85,7 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
 /** @publicDocs */
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The consent phone field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentPhoneFieldElementEvents {
     /**
 <<<<<<< HEAD
@@ -143,10 +131,7 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
-/**
- * The consent phone field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentPhoneFieldElementSlots {
     /**
      * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
