@@ -32,10 +32,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-text-area";
-/**
- * Configure the following properties on the text area component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
     /**
      * @deprecated Use `label` instead.
@@ -45,11 +42,7 @@ export interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'labe
 }
 export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- *
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextAreaElementEvents {
     /**
      * A callback fired when the text area loses focus.

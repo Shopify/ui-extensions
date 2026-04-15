@@ -26,10 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-time";
-/**
- * Configure the following properties on the time component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
 export interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {

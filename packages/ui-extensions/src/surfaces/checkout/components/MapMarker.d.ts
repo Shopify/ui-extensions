@@ -68,10 +68,7 @@ export interface MapMarkerElementEvents {
      */
     click?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The named slots for the map marker component. Slots allow you to insert custom content into specific areas of the marker.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerElementSlots {
     /**
      * A custom graphic element to use as the marker. If not provided, the map provider’s default marker pin is displayed.
