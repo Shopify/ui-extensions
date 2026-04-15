@@ -35,7 +35,7 @@ export function createCartLineItem(overrides?: Partial<LineItem>): LineItem {
  */
 export function createStorage<
   T extends Record<string, unknown> = Record<string, unknown>,
->(initialValues?: T): Required<Storage<T>> {
+>(initialValues?: T): Storage<T> {
   const store = new Map<string, unknown>(
     initialValues ? Object.entries(initialValues) : [],
   );
@@ -54,7 +54,7 @@ export function createStorage<
     },
   });
 
-  const storage: Required<Storage<T>> = {
+  const storage: Storage<T> = {
     current: currentProxy,
     set: async (key, value) => {
       store.set(key as string, value);
