@@ -26,16 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-chip";
-/**
- * Configure the following properties on the chip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
-/**
- * The chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipElementSlots {
     /**
      * The graphic to display inside of the chip.

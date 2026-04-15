@@ -26,10 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-heading";
-/**
- * The element props interface for the Heading component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface HeadingElementProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
 export interface HeadingElement extends HeadingElementProps, Omit<HTMLElement, 'id'> {

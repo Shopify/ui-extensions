@@ -43,18 +43,12 @@ export interface ToggleArgumentsEvent {
 }
 
 declare const tagName = "s-details";
-/**
- * The element props interface for the Details component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
-/**
- * The events interface for the Details component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface DetailsElementEvents {
     /**
      * Callback straight after the element state changes.

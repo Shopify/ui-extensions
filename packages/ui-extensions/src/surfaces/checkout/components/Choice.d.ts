@@ -26,16 +26,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-choice";
-/**
- * Configure the following properties on the choice component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
-/**
- * The choice component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChoiceElementSlots {
     /**
      * Additional text to provide context or guidance for the input.
