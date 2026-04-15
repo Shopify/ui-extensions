@@ -1,7 +1,7 @@
 import type {
   LineItem,
   Storage,
-  StorageKeys,
+  SubscribableStorage,
   CartApiContent,
 } from '@shopify/ui-extensions/point-of-sale';
 
@@ -48,14 +48,14 @@ export function createStorage<
     },
   });
 
-  const latestProxy = new Proxy({} as StorageKeys<T>, {
+  const currentProxy = new Proxy({} as SubscribableStorage<T>, {
     get(_target, prop) {
       return createSubscribable(prop as string);
     },
   });
 
   const storage: Storage<T> = {
-    latest: latestProxy,
+    current: currentProxy,
     set: async (key, value) => {
       store.set(key as string, value);
     },

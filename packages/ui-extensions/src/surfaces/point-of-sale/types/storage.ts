@@ -36,13 +36,13 @@ export interface Storage<
    * await shopify.storage.set('syncStatus', 'complete');
    *
    * // In another target:
-   * const status = shopify.storage.latest.syncStatus.value; // 'complete'
-   * const unsubscribe = shopify.storage.latest.syncStatus.subscribe((value) => {
+   * const status = shopify.storage.current.syncStatus.value; // 'complete'
+   * const unsubscribe = shopify.storage.current.syncStatus.subscribe((value) => {
    *   // Reacts when another target updates this key
    * });
    * ```
    */
-  latest: StorageKeys<BaseStorageTypes>;
+  current?: SubscribableStorage<BaseStorageTypes>;
 
   /**
    * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
@@ -112,9 +112,9 @@ export interface Storage<
  * corresponding storage key. Values are `undefined` when the key does not exist.
  *
  * Mutations are performed through the existing `Storage` methods (`set`,
- * `delete`, `clear`, etc.) — `StorageKeys` is read-only and reactive.
+ * `delete`, `clear`, etc.) — `SubscribableStorage` is read-only and reactive.
  */
-export type StorageKeys<
+export type SubscribableStorage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
 > = {
   readonly [K in keyof BaseStorageTypes]: ReadonlySignalLike<
