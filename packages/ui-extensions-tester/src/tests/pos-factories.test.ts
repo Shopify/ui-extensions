@@ -30,55 +30,55 @@ describe('createStorage', () => {
   });
 
   it('clear removes all entries', async () => {
-    const storage = createStorage({a: 1, b: 2});
+    const storage = createStorage({alpha: 1, beta: 2});
     await storage.clear();
-    expect(await storage.get('a')).toBeUndefined();
-    expect(await storage.get('b')).toBeUndefined();
+    expect(await storage.get('alpha')).toBeUndefined();
+    expect(await storage.get('beta')).toBeUndefined();
   });
 
   it('entries returns all key-value pairs', async () => {
-    const storage = createStorage({x: 10, y: 20});
+    const storage = createStorage({width: 10, height: 20});
     const entries = await storage.entries();
     const arr = [...entries];
-    expect(arr).toContainEqual(['x', 10]);
-    expect(arr).toContainEqual(['y', 20]);
+    expect(arr).toContainEqual(['width', 10]);
+    expect(arr).toContainEqual(['height', 20]);
   });
 
   describe('current', () => {
     it('provides subscribable access to stored values', () => {
       const storage = createStorage({syncStatus: 'pending'});
-      expect(storage.current.syncStatus.value).toBe('pending');
+      expect(storage.current!.syncStatus.value).toBe('pending');
     });
 
     it('reflects updates made via set', async () => {
       const storage = createStorage({syncStatus: 'pending'});
       await storage.set('syncStatus', 'complete');
-      expect(storage.current.syncStatus.value).toBe('complete');
+      expect(storage.current!.syncStatus.value).toBe('complete');
     });
 
     it('returns undefined for keys that do not exist', () => {
       const storage = createStorage<{missing: string}>();
-      expect(storage.current.missing.value).toBeUndefined();
+      expect(storage.current!.missing.value).toBeUndefined();
     });
 
     it('returns undefined after key is deleted', async () => {
       const storage = createStorage({syncStatus: 'pending'});
-      expect(storage.current.syncStatus.value).toBe('pending');
+      expect(storage.current!.syncStatus.value).toBe('pending');
       await storage.delete('syncStatus');
-      expect(storage.current.syncStatus.value).toBeUndefined();
+      expect(storage.current!.syncStatus.value).toBeUndefined();
     });
 
     it('returns undefined after clear', async () => {
-      const storage = createStorage({a: 1, b: 2});
-      expect(storage.current.a.value).toBe(1);
+      const storage = createStorage({alpha: 1, beta: 2});
+      expect(storage.current!.alpha.value).toBe(1);
       await storage.clear();
-      expect(storage.current.a.value).toBeUndefined();
-      expect(storage.current.b.value).toBeUndefined();
+      expect(storage.current!.alpha.value).toBeUndefined();
+      expect(storage.current!.beta.value).toBeUndefined();
     });
 
     it('subscribe returns an unsubscribe function', () => {
       const storage = createStorage({key: 'val'});
-      const unsubscribe = storage.current.key.subscribe(() => {});
+      const unsubscribe = storage.current!.key.subscribe(() => {});
       expect(typeof unsubscribe).toBe('function');
       unsubscribe();
     });
