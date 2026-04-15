@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.64.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -11,30 +11,20 @@ import type {
   IconProps$1,
   BadgeProps$1,
   IconType,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
 
-/**
- * The configuration for icons used within Badge components. Defines the visual appearance, size, and semantic meaning of icons displayed in badges.
- * @publicDocs
- */
 export interface IconProps
-  extends Pick<
-    IconProps$1,
-    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  extends Required<
+    Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size' | 'interestFor'>
   > {
   /**
-   * The type of icon to display inside the badge. Use any valid icon name from the admin icon set, an empty string for no icon, or `'empty'` to reserve space for an icon without displaying one.
+   * The type of icon that will be displayed. You can specify an icon name from the available icon set, or use an empty string to show no icon.
    */
   type: '' | IconType | 'empty';
   /**
-   * Determines the color used for the icon based on semantic meaning. Available options:
-   * - `'auto'` - Lets the system automatically choose the appropriate tone based on context.
-   * - `'neutral'` - Gray styling for general information.
-   * - `'info'` - Blue styling for informational content.
-   * - `'success'` - Green styling for positive states.
-   * - `'caution'` - Yellow styling for situations that need attention.
-   * - `'warning'` - Orange styling for important notices.
-   * - `'critical'` - Red styling for errors and urgent issues.
+   * The color tone of the icon based on its semantic meaning. Choose from `'auto'` to let the icon inherit its context, `'neutral'` for standard icons, `'info'` for informational content, `'success'` for positive actions, `'caution'` or `'warning'` for warnings, or `'critical'` for errors.
    *
    * @default 'auto'
    */
@@ -43,17 +33,13 @@ export interface IconProps
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
   /**
-   * Controls the visual prominence of the icon. Available options:
-   * - `'base'` - Standard color intensity for normal emphasis.
-   * - `'subdued'` - Reduced color intensity for less emphasis.
+   * The color emphasis of the icon. Use `'base'` for the standard color intensity, or `'subdued'` for a lighter, less prominent appearance.
    *
    * @default 'base'
    */
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   /**
-   * Determines the size of the icon. Available options:
-   * - `'small'` - Smaller icon size for compact layouts.
-   * - `'base'` - Standard icon size for most use cases.
+   * The size of the icon. Use `'small'` for compact layouts, or `'base'` for standard sizing.
    *
    * @default 'base'
    */
@@ -107,146 +93,50 @@ export interface BadgeProps
   >;
 }
 
-/**
- * The CSS styles as a string, used for styling web components within their shadow DOM.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation configuration for rendering a Preact component into a shadow root. Defines the render function that returns JSX elements and optional CSS styles to apply to the component's shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The render function that returns Preact/JSX elements to display in the component's shadow root.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The optional CSS styles to inject into the component's shadow DOM.
-   */
-  styles?: Styles;
-};
-/**
- * The properties of an activation event (such as a click or keyboard press) that describe which modifier keys and mouse buttons were involved. This is used to determine intended behavior like opening links in new tabs when Command/Control is pressed.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was pressed during the activation event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on Windows) was pressed during the activation event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was pressed during the activation event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the activation event. `0` for primary button (left click), `1` for auxiliary button (middle click), `2` for secondary button (right click).
-   */
-  button: number;
-}
-/**
- * The options for controlling how a synthetic click behaves. Allows passing modifier key states and button information from an original event to influence link behavior such as opening in new tabs or background tabs.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The activation event (such as a click or keyboard event) whose modifier key state and button information should influence the synthetic click behavior. For example, passing an event with `metaKey: true` will cause links to open in a new tab.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
-/**
- * The base properties for Preact elements without children. Provides key, ref, and slot properties for element identification, DOM access, and slot-based positioning.
- * @publicDocs
- */
+declare abstract class BadgeBase
+  extends PolarisCustomElement
+  implements Pick<BadgeProps, 'color' | 'size'>
+{
+  /**
+   * The visual weight of the badge. Available options: `'base'` for standard weight or `'strong'` for increased emphasis.
+   */
+  accessor color: BadgeProps['color'];
+  /**
+   * The size of the badge. Available options: `'base'` for standard size, `'large'` for larger size, or `'large-100'` for extra large size.
+   */
+  accessor size: BadgeProps['size'];
+  abstract tone: string;
+  abstract icon: string;
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+}
+
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /**
-   * A unique identifier for the element when used in lists. Preact uses keys for efficient rendering and reconciliation when lists change.
-   */
+  /** Assigns a unique key to this element. */
   key?: preact.Key;
-  /**
-   * A reference to the underlying DOM element. Typically created with `useRef()` to access the element directly for imperative operations like focusing or measuring.
-   */
+  /** Assigns a ref (generally from `useRef()`) to this element. */
   ref?: preact.Ref<TClass>;
-  /**
-   * The named slot this element should be placed in when used within a web component. Learn more about [using slots](/docs/api/app-ui/using-web-components#slots).
-   */
+  /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/**
- * The base properties for Preact elements with children. Extends `PreactBaseElementProps` with the ability to render child elements.
- * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: preact.ComponentChildren;
 }
 
 /**
  * The badge custom element class that renders status indicators in the Shopify admin interface. This component displays compact visual indicators with customizable tones, sizes, and optional icons to communicate status information to merchants.
  */
-declare class Badge extends PreactCustomElement implements BadgeProps {
-  /**
-   * The visual weight of the badge. Available options: `'base'` for standard weight or `'strong'` for increased emphasis.
-   */
-  accessor color: BadgeProps['color'];
+declare class Badge extends BadgeBase implements BadgeProps {
   /**
    * The icon to display inside the badge. Accepts any valid icon type from the admin icon set, or an empty string to display no icon.
    */
   accessor icon: BadgeProps['icon'];
-  /**
-   * The size of the badge. Available options: `'base'` for standard size, `'large'` for larger size, or `'large-100'` for extra large size.
-   */
-  accessor size: BadgeProps['size'];
   /**
    * The tone that determines the badge's visual appearance and semantic meaning. Available options: `'auto'`, `'neutral'`, `'info'`, `'success'`, `'caution'`, `'warning'`, or `'critical'`.
    */

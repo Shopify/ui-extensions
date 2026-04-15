@@ -1,4 +1,4 @@
-/** VERSION: 1.38.0 **/
+/** VERSION: 1.64.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -13,16 +13,31 @@ import type {
   RenderImpl,
 } from './shared.d.ts';
 
+/**
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
+ */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
   currentTarget: HTMLElementTagNameMap[T];
 };
+/**
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`.
+ * Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
+ */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. * @publicDocs
- */
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -31,12 +46,12 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
 }
+
 /**  * @publicDocs
  */
 export interface DropZoneProps
@@ -60,8 +75,7 @@ export interface DropZoneProps
 declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
-/**  * @publicDocs
- */
+
 export type ReplaceType<TType, TFrom, TTo> = Exclude<TType, TFrom> | TTo;
 
 declare const setFiles: unique symbol;
@@ -79,8 +93,23 @@ declare abstract class DropZoneBase extends PolarisCustomElement {
   accessor multiple: DropZoneProps['multiple'];
   accessor name: DropZoneProps['name'];
   accessor required: DropZoneProps['required'];
+  /**
+   * A callback fired when the user selects files through the file picker or drops valid
+   * files onto the drop zone. Access the selected files through `event.currentTarget.files`.
+   * Use to process uploads, generate previews, or validate file contents.
+   */
   accessor onchange: CallbackEventListener<typeof tagName>;
+  /**
+   * A callback fired when files are selected or dropped. Similar to `onChange` but may
+   * fire more frequently during drag operations. Use when you need immediate feedback as
+   * files are being dragged over the drop zone.
+   */
   accessor oninput: CallbackEventListener<typeof tagName>;
+  /**
+   * A callback fired when dropped or selected files don't match the `accept` criteria.
+   * Use to display error messages explaining which file types are allowed. Rejected files
+   * are not added to the `files` array.
+   */
   accessor ondroprejected: CallbackEventListener<typeof tagName>;
   get value(): string;
   /** This sets the input value for a file type, which cannot be set programatically, so it can only be reset. */
@@ -128,8 +157,23 @@ export interface DropZoneJSXProps
    * Content to include inside the DropZone container
    */
   children?: ComponentChildren;
+  /**
+   * A callback fired when the user selects files through the file picker or drops valid
+   * files onto the drop zone. Access the selected files through `event.currentTarget.files`.
+   * Use to process uploads, generate previews, or validate file contents.
+   */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * A callback fired when files are selected or dropped. Similar to `onChange` but may
+   * fire more frequently during drag operations. Use when you need immediate feedback as
+   * files are being dragged over the drop zone.
+   */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * A callback fired when dropped or selected files don't match the `accept` criteria.
+   * Use to display error messages explaining which file types are allowed. Rejected files
+   * are not added to the `files` array.
+   */
   onDropRejected?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 

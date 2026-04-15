@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 1.64.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -10,7 +10,10 @@ import type {
   ComponentChildren,
   TableProps$1,
   TableHeaderProps$1,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as _shopify_admin_web_component_foundations from '@shopify/admin-web-component-foundations';
 
 /**
  * The properties you can set on a table component.
@@ -29,10 +32,6 @@ export interface TableProps
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
-/**
- * The format type for a table header, which determines how the cell content is displayed.
- * @publicDocs
- */
 export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
   'base' | 'currency' | 'numeric'
@@ -56,214 +55,49 @@ export interface TableHeaderProps
   format: HeaderFormat;
 }
 
-/**
- * A string that contains CSS styles to apply to the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a Preact custom element with a shadow root.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the component's shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The CSS styles to apply to the component.
-   */
-  styles?: Styles;
-};
-/**
- * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on Windows) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed. A value of `0` means the primary button (usually left), `1` means the middle button, and `2` means the secondary button (usually right).
-   */
-  button: number;
-}
-/**
- * The options for customizing how a synthetic click is performed.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
-}
-
-/**
- * A context object that provides a default value of a specific type.
- * @publicDocs
- */
-export interface Context<T> {
-  /**
-   * The default value for this context.
-   */
-  readonly defaultValue: T;
-}
-/**
- * An extended context class that provides event-based updates when the context value changes.
- */
-declare class AddedContext<T> extends EventTarget {
-  /**
-   * Creates a new context with the given default value.
-   */
-  constructor(defaultValue: T);
-  /**
-   * The current value of the context.
-   */
-  get value(): T;
-  /**
-   * Sets a new value for the context.
-   */
-  set value(value: T);
-}
-
-/**
- * A callback that a context requester provides, which is called with the value that satisfies the request.
- * Context providers can call this callback multiple times as the requested value changes.
- * @publicDocs
- */
-export type ContextCallback<T> = (value: T) => void;
-/**
- * An event that a context requester fires to signal it wants a named context.
- *
- * A provider should inspect the `context` property of the event to see if it has a value that can satisfy the request, and if so, call the `callback` with the requested value.
- */
-declare class ContextRequestEvent<T> extends Event {
-  /**
-   * The context that's being requested.
-   */
-  readonly context: Context<T>;
-  /**
-   * The callback to call with the requested context value.
-   */
-  readonly callback: ContextCallback<T>;
-  /**
-   * Creates a new context request event with the given context and callback.
-   */
-  constructor(context: Context<T>, callback: ContextCallback<T>);
-}
-declare global {
-  interface HTMLElementEventMap {
-    /**
-     * A 'context-request' event can be emitted by any element which desires
-     * a context value to be injected by an external provider.
-     */
-    'context-request': ContextRequestEvent<unknown>;
-  }
-}
-
-/** @private */
 declare const actualTableVariantSymbol: unique symbol;
-/** @private */
 declare const tableHeadersSharedDataSymbol: unique symbol;
-/**
- * The actual display variant of the table, which is either a traditional table or a list.
- * @publicDocs
- */
 export type ActualTableVariant = 'table' | 'list';
+declare const elementInternals: unique symbol;
+
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+}
 
 /**
- * An event that includes a strongly typed `currentTarget` property based on the element tag name.
- * @publicDocs
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that the event listener is attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener function that receives a strongly typed callback event, or `null` if no listener is attached.
- * @publicDocs
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`.
+ * Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
       (event: CallbackEvent<T>): void;
     })
   | null;
-/**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
- */
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
-  /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
-   */
+  /** Assigns a unique key to this element. */
   key?: preact.Key;
-  /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
-   */
+  /** Assigns a ref (generally from `useRef()`) to this element. */
   ref?: preact.Ref<TClass>;
-  /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
-   */
+  /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
@@ -272,7 +106,9 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 /**
  * A component that displays data in a structured table format that automatically adapts to the available space.
  */
-declare class Table extends PreactCustomElement implements TableProps {
+declare class Table extends PolarisCustomElement implements TableProps {
+  /** @private */
+  [elementInternals]: ElementInternals;
   /**
    * The display variant of the table.
    */
@@ -305,9 +141,9 @@ declare class Table extends PreactCustomElement implements TableProps {
    * @private
    * The actual table variant, which is either 'table' or 'list'.
    */
-  [actualTableVariantSymbol]: AddedContext<ActualTableVariant>;
+  [actualTableVariantSymbol]: _shopify_admin_web_component_foundations.AddedContext<ActualTableVariant>;
   /** @private */
-  [tableHeadersSharedDataSymbol]: AddedContext<
+  [tableHeadersSharedDataSymbol]: _shopify_admin_web_component_foundations.AddedContext<
     {
       listSlot: TableHeaderProps['listSlot'];
       textContent: string;
@@ -315,9 +151,6 @@ declare class Table extends PreactCustomElement implements TableProps {
     }[]
   >;
 
-  /**
-   * Creates a new Table instance.
-   */
   constructor();
 }
 declare global {
@@ -334,9 +167,6 @@ declare module 'preact' {
   }
 }
 
-/**
- * The custom element tag name for the table component.
- */
 declare const tagName = 's-table';
 /**
  * The JSX properties you can set on a table component.

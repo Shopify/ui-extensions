@@ -1,4 +1,4 @@
-/** VERSION: 1.38.0 **/
+/** VERSION: 1.64.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -18,8 +18,7 @@ export interface PageProps
   inlineSize: Extract<PageProps$1['inlineSize'], 'base' | 'large' | 'small'>;
 }
 
-/** Used when an element does not have children. * @publicDocs
- */
+/** Used when an element does not have children. */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -28,8 +27,7 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
- */
+/** Used when an element has children. */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
