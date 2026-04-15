@@ -189,6 +189,10 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * The required properties from the `MoneyFieldProps$1` definition. This type ensures all properties from the shared definition are marked as required.
+ * @publicDocs
+ */
 export type RequiredMoneyFieldProps = Required<MoneyFieldProps$1>;
 /**
  * The properties for the money field component. These properties configure a specialized input field for entering monetary amounts with automatic currency formatting, decimal handling, and range validation.

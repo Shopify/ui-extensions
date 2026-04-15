@@ -189,6 +189,10 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * The properties for the password field component. These properties configure a secure input field that collects sensitive password input from merchants with masked characters.
+ * @publicDocs
+ */
 export type PasswordFieldProps = PreactFieldProps<
   Required<PasswordFieldProps$1>['autocomplete']
 > &

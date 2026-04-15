@@ -189,6 +189,10 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * The properties for the URL field component. These properties configure an input field that allows merchants to enter and validate web addresses (URLs) with built-in validation.
+ * @publicDocs
+ */
 export type URLFieldProps = PreactFieldProps<
   Required<URLFieldProps$1>['autocomplete']
 > &

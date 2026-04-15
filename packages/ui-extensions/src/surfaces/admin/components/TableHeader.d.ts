@@ -13,6 +13,10 @@ import type {
   RenderImpl,
 } from './shared.d.ts';
 
+/**
+ * The format type for a table header, which determines how the cell content is displayed.
+ * @publicDocs
+ */
 export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
   'base' | 'currency' | 'numeric'

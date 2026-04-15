@@ -189,6 +189,10 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * The properties for the color field component. These properties configure an input field that allows merchants to select colors using an integrated visual color picker with text input, hex color format, and optional alpha (transparency) channel support.
+ * @publicDocs
+ */
 export type ColorFieldProps = PreactFieldProps<
   Required<ColorFieldProps$1>['autocomplete']
 > &

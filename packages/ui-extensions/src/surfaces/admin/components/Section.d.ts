@@ -12,6 +12,10 @@ import type {
   RenderImpl,
 } from './shared.d.ts';
 
+/**
+ * A version of the section properties with all fields required.
+ * @publicDocs
+ */
 export type RequiredSectionProps = Required<SectionProps$1>;
 /**
  * The properties for the section component. A section groups related content together with an optional heading, providing semantic structure and visual separation.

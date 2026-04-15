@@ -86,12 +86,20 @@ export interface IconProps
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
 
+/**
+ * The button-specific properties extracted from the base button props type, used internally for type safety.
+ * @publicDocs
+ */
 export type ButtonOnlyProps = Extract<
   ButtonProps$1,
   {
     type?: unknown;
   }
 >;
+/**
+ * The base required properties for the button component, including all essential button configuration options. This type ensures all button properties have default values.
+ * @publicDocs
+ */
 export type ButtonBaseProps = Required<
   Pick<
     ButtonOnlyProps,

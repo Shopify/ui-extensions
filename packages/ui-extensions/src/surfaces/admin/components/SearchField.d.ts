@@ -188,6 +188,10 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * Properties for rendering a search field that lets users enter search queries with validation constraints and autofill support.
+ * @publicDocs
+ */
 export type SearchFieldProps = PreactFieldProps<
   /**
    * @default 'on'

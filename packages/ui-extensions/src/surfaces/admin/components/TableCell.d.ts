@@ -40,6 +40,10 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 
 declare const headerFormatSymbol: unique symbol;
 
+/**
+ * The format type for a table header, which determines how the cell content is displayed.
+ * @publicDocs
+ */
 export type HeaderFormat = Extract<
   TableHeaderProps['format'],
   'base' | 'currency' | 'numeric'

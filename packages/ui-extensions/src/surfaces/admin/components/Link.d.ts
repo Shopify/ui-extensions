@@ -53,6 +53,8 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**  * @publicDocs
+ */
 export type RequiredLinkProps = Required<LinkProps$1>;
 export type LinkBaseProps = Required<
   Pick<

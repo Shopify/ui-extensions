@@ -189,6 +189,10 @@ declare class PreactFieldElement<Autocomplete extends string = string>
   constructor(renderImpl: RenderImpl);
 }
 
+/**
+ * The properties for the email field component. These properties configure a specialized text input field for entering email addresses with built-in validation and appropriate keyboard support.
+ * @publicDocs
+ */
 export type EmailFieldProps = PreactFieldProps<
   Required<EmailFieldProps$1>['autocomplete']
 > &

@@ -32,6 +32,10 @@ export interface TableProps
   variant: Extract<TableProps$1['variant'], 'list' | 'auto'>;
 }
 
+/**
+ * The format type for a table header, which determines how the cell content is displayed.
+ * @publicDocs
+ */
 export type HeaderFormat = Extract<
   TableHeaderProps$1['format'],
   'base' | 'currency' | 'numeric'

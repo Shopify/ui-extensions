@@ -53,6 +53,8 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+/**  * @publicDocs
+ */
 export type RequiredAlignedModalProps = Required<ModalProps$1>;
 export interface ModalProps
   extends Pick<
