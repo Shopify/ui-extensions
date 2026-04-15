@@ -20,9 +20,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-spinner";
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface SpinnerElementProps extends SpinnerProps$1 {
     /**
      * A label that describes the purpose of the spinner for assistive technologies like screen readers. Provide an `accessibilityLabel` when there is no visible text that conveys a loading state.

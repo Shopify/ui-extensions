@@ -26,10 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-option";
-/**
- * Configure the following properties on the option component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface OptionElementProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
 export interface OptionElement extends OptionElementProps, Omit<HTMLElement, 'id'> {

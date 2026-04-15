@@ -56,20 +56,13 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-checkbox";
-/**
- * Configure the following properties on the consent checkbox component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
-/**
- * The consent checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- *
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentCheckboxElementEvents {
     /**
      * A callback fired when the consent checkbox value changes.

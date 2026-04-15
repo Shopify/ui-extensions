@@ -38,19 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-url-field";
-/**
- * Configure the following properties on the URL field component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
 export interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The URL field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- *
- * @publicDocs
- */
+/** @publicDocs */
 export interface URLFieldElementEvents {
     /**
      * A callback fired when the URL field loses focus.
@@ -77,11 +70,7 @@ export interface URLFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The URL field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- *
- * @publicDocs
- */
+/** @publicDocs */
 export interface URLFieldElementSlots {
     /**
      * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.

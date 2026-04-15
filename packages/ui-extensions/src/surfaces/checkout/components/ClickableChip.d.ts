@@ -38,18 +38,12 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clickable-chip";
-/**
- * Configure the following properties on the clickable chip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
-/**
- * The clickable chip component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableChipElementEvents {
     /**
      * A callback fired after the chip is hidden. The `hidden` property will be `true` when this event fires.
@@ -66,10 +60,7 @@ export interface ClickableChipElementEvents {
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The clickable chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableChipElementSlots {
     /**
      * An optional graphic displayed at the start of the chip, such as an icon to visually reinforce the chip's label. Only the `s-icon` element and its `type` attribute are supported.
