@@ -47,38 +47,38 @@ describe('createStorage', () => {
   describe('current', () => {
     it('provides subscribable access to stored values', () => {
       const storage = createStorage({syncStatus: 'pending'});
-      expect(storage.current!.syncStatus.value).toBe('pending');
+      expect(storage.current.syncStatus.value).toBe('pending');
     });
 
     it('reflects updates made via set', async () => {
       const storage = createStorage({syncStatus: 'pending'});
       await storage.set('syncStatus', 'complete');
-      expect(storage.current!.syncStatus.value).toBe('complete');
+      expect(storage.current.syncStatus.value).toBe('complete');
     });
 
     it('returns undefined for keys that do not exist', () => {
       const storage = createStorage<{missing: string}>();
-      expect(storage.current!.missing.value).toBeUndefined();
+      expect(storage.current.missing.value).toBeUndefined();
     });
 
     it('returns undefined after key is deleted', async () => {
       const storage = createStorage({syncStatus: 'pending'});
-      expect(storage.current!.syncStatus.value).toBe('pending');
+      expect(storage.current.syncStatus.value).toBe('pending');
       await storage.delete('syncStatus');
-      expect(storage.current!.syncStatus.value).toBeUndefined();
+      expect(storage.current.syncStatus.value).toBeUndefined();
     });
 
     it('returns undefined after clear', async () => {
       const storage = createStorage({alpha: 1, beta: 2});
-      expect(storage.current!.alpha.value).toBe(1);
+      expect(storage.current.alpha.value).toBe(1);
       await storage.clear();
-      expect(storage.current!.alpha.value).toBeUndefined();
-      expect(storage.current!.beta.value).toBeUndefined();
+      expect(storage.current.alpha.value).toBeUndefined();
+      expect(storage.current.beta.value).toBeUndefined();
     });
 
     it('subscribe returns an unsubscribe function', () => {
       const storage = createStorage({key: 'val'});
-      const unsubscribe = storage.current!.key.subscribe(() => {});
+      const unsubscribe = storage.current.key.subscribe(() => {});
       expect(typeof unsubscribe).toBe('function');
       unsubscribe();
     });
