@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {PhoneFieldProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,10 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-phone-field";
-/**
- * Configure the following properties on the phone field component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -56,10 +50,7 @@ export interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocom
 /** @publicDocs */
 export interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The phone field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface PhoneFieldElementEvents {
     /**
 <<<<<<< HEAD
@@ -102,10 +93,7 @@ export interface PhoneFieldElementEvents {
      */
     focus?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The phone field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface PhoneFieldElementSlots {
     /**
      * Additional interactive content displayed within the field.

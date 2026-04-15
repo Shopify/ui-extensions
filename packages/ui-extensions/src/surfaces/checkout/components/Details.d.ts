@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {DetailsProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -49,19 +46,13 @@ export interface ToggleArgumentsEvent {
 }
 
 declare const tagName = "s-details";
-/**
- * Configure the following properties on the details component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
 /** @publicDocs */
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
-/**
- * The details component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface DetailsElementEvents {
     /**
      * A callback fired immediately when the element state changes, before any animations.

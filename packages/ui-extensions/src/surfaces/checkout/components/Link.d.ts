@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {LinkProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,12 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-link";
-/**
- * The link component makes text interactive, allowing users to navigate to other pages or perform specific actions. Use link for navigation, external references, or triggering actions while maintaining standard link semantics and accessibility.
- *
- * Links support standard URLs, custom protocols, navigation within Shopify admin pages, and can open in new windows for external destinations. For prominent actions or form submissions, use [button](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button) instead.
- * @publicDocs
- */
+/** @publicDocs */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
@@ -55,10 +47,7 @@ export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel'
 /** @publicDocs */
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
-/**
- * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface LinkElementEvents {
     /**
      * A callback fired when the link is clicked, before navigating to the location specified by `href`.

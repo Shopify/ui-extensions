@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {MapMarkerProps$1} from './components-shared.d.ts';
 
-/**
- * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -60,10 +57,7 @@ export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibi
      */
     commandFor?: MapMarkerProps$1['commandFor'];
 }
-/**
- * The event handlers for the map marker component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
 /** @publicDocs */
@@ -73,10 +67,7 @@ export interface MapMarkerElementEvents {
      */
     click?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The named slots for the map marker component. Slots allow you to insert custom content into specific areas of the marker.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerElementSlots {
     /**
      * A custom graphic element to use as the marker. If not provided, the map provider’s default marker pin is displayed.
@@ -90,10 +81,7 @@ export interface MapMarkerElementSlots {
 export interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
-/**
- * The properties for the map marker component when it's used in JSX.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {

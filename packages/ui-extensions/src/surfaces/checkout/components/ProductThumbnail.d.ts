@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {ProductThumbnailProps$1} from './components-shared.d.ts';
 
-/**
- * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
      * A unique identifier for this element within its parent. Used by the rendering engine for efficient reconciliation when lists change.

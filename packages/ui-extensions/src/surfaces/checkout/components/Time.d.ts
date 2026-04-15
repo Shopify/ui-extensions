@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {TimeProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -28,10 +25,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-time";
-/**
- * Configure the following properties on the time component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TimeProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
 /** @publicDocs */
