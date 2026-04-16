@@ -2930,6 +2930,68 @@
       "ValidationSettingsApi"
     ]
   },
+  "admin.app.intent.render": {
+    "components": [
+      "Avatar",
+      "Badge",
+      "Banner",
+      "Box",
+      "Button",
+      "ButtonGroup",
+      "Checkbox",
+      "Chip",
+      "Choice",
+      "ChoiceList",
+      "Clickable",
+      "ClickableChip",
+      "ColorField",
+      "ColorPicker",
+      "DateField",
+      "DatePicker",
+      "Divider",
+      "DropZone",
+      "EmailField",
+      "Form",
+      "Grid",
+      "GridItem",
+      "Heading",
+      "Icon",
+      "Image",
+      "Link",
+      "ListItem",
+      "Menu",
+      "MoneyField",
+      "NumberField",
+      "Option",
+      "OptionGroup",
+      "OrderedList",
+      "Paragraph",
+      "PasswordField",
+      "QueryContainer",
+      "SearchField",
+      "Section",
+      "Select",
+      "Spinner",
+      "Stack",
+      "Switch",
+      "Table",
+      "TableBody",
+      "TableCell",
+      "TableHeader",
+      "TableHeaderRow",
+      "TableRow",
+      "Text",
+      "TextArea",
+      "TextField",
+      "Thumbnail",
+      "Tooltip",
+      "URLField",
+      "UnorderedList"
+    ],
+    "apis": [
+      "IntentRenderApi"
+    ]
+  },
   "admin.customers.segmentation-templates.data": {
     "components": [],
     "apis": [
@@ -3193,6 +3255,11 @@
       "admin.settings.validation.render"
     ]
   },
+  "IntentRenderApi": {
+    "targets": [
+      "admin.app.intent.render"
+    ]
+  },
   "CustomerSegmentTemplateApi": {
     "targets": [
       "admin.customers.segmentation-templates.data"
@@ -3257,6 +3324,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3308,6 +3376,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3359,6 +3428,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3410,6 +3480,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3461,6 +3532,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3512,6 +3584,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3563,6 +3636,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3614,6 +3688,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3665,6 +3740,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3716,6 +3792,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3767,6 +3844,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3818,6 +3896,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3869,6 +3948,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3920,6 +4000,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -3971,6 +4052,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4022,6 +4104,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4073,6 +4156,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4124,6 +4208,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4175,6 +4260,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4225,6 +4311,7 @@
   "Form": {
     "targets": [
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.block.render",
       "admin.company-details.block.render",
@@ -4247,6 +4334,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4298,6 +4386,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4349,6 +4438,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4400,6 +4490,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4451,6 +4542,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4502,6 +4594,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4553,6 +4646,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4604,6 +4698,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4655,6 +4750,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4706,6 +4802,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4757,6 +4854,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4808,6 +4906,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4859,6 +4958,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4910,6 +5010,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -4961,6 +5062,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5012,6 +5114,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5063,6 +5166,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5114,6 +5218,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5165,6 +5270,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5216,6 +5322,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5267,6 +5374,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5318,6 +5426,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5369,6 +5478,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5420,6 +5530,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5471,6 +5582,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5522,6 +5634,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5573,6 +5686,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5624,6 +5738,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5675,6 +5790,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5726,6 +5842,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5777,6 +5894,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5828,6 +5946,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5879,6 +5998,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5930,6 +6050,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
@@ -5981,6 +6102,7 @@
     "targets": [
       "admin.abandoned-checkout-details.action.render",
       "admin.abandoned-checkout-details.block.render",
+      "admin.app.intent.render",
       "admin.catalog-details.action.render",
       "admin.catalog-details.block.render",
       "admin.collection-details.action.render",
