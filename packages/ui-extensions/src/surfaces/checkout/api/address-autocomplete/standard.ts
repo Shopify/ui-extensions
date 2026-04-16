@@ -110,7 +110,7 @@ export interface AddressAutocompleteStandardApi<
    *
    * If the previous token expires, this value will reflect a new session token with a new signature and expiry.
    *
-   * Refer to [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/session-token) for more information.
+   * Learn more about [session tokens](/docs/apps/build/authentication-authorization/session-tokens).
    */
   sessionToken: SessionToken;
 
