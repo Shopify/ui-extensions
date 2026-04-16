@@ -235,7 +235,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
 
   /**
    * The [metafields](/docs/apps/build/custom-data/metafields) requested in the
-   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration)
+   * [`shopify.extension.toml`](/docs/apps/build/customer-accounts/metafields#create-the-metafield-definition)
    * file. Metafields are custom data fields that store additional information on Shopify resources
    * such as products, variants, customers, and the shop. These metafields are updated when there's
    * a change in the merchandise items being purchased by the customer.
@@ -308,7 +308,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * The buyer's locale, currency, time zone, country, and market context for the order.
    * Use these values to adapt your extension's content to the buyer's region. For formatted
-   * dates, numbers, and translated strings, use the [Localization API](/docs/api/customer-account-ui-extensions/target-apis/platform-apis/localization-api)
+   * dates, numbers, and translated strings, use the [Localization API](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api)
    * instead.
    */
   localization: OrderStatusLocalization;
@@ -336,8 +336,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * The token that identifies the checkout session used to create the order. Use this value
    * to correlate the order with analytics events or backend API calls. This matches the
-   * `token` field in the [WebPixel checkout payload](/docs/api/pixels/customer-events#checkout)
-   * and the `checkout_token` field in the [Admin REST API Order resource](/docs/api/admin-rest/unstable/resources/order#resource-object).
+   * `token` field in the [WebPixel checkout payload](/docs/api/pixels/customer-events#checkout).
    * The value is `undefined` if the checkout token is unavailable.
    */
   checkoutToken: SubscribableSignalLike<CheckoutToken | undefined>;
@@ -785,7 +784,7 @@ export interface SelectedPaymentOption {
   /**
    * The handle of the payment option the buyer selected, corresponding to a `PaymentOption.handle` value.
    *
-   * See [availablePaymentOptions](/docs/api/checkout-ui-extensions/apis/payments#standardapi-propertydetail-selectedpaymentoptions).
+   * See [availablePaymentOptions](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/order-apis/payments-api).
    */
   handle: string;
 }
@@ -961,7 +960,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language, such as "Net 30" or "Due on receipt". See [localization.language](/docs/api/customer-account-ui-extensions/apis/localization#standardapi-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language, such as "Net 30" or "Due on receipt". See [localization.language](/docs/api/customer-account-ui-extensions/{API_VERSION}/apis/localization#standardapi-propertydetail-localization).
    */
   name: string;
   /**
