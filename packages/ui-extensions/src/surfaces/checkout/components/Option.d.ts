@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {OptionProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -28,10 +25,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-option";
-/**
- * Configure the following properties on the option component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface OptionProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
 /** @publicDocs */

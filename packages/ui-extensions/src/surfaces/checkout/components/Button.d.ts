@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {ButtonProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,12 +39,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-button";
-/**
- * The button component triggers actions or events, such as submitting forms, opening dialogs, or navigating to other pages. Use buttons to let users perform specific tasks or initiate interactions throughout the interface.
- *
- * Buttons support various visual styles, tones, and interaction patterns to communicate intent and hierarchy. They can also function as links, guiding users to internal or external destinations. For navigation-focused interactions within text, use [link](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/link). For grouping multiple related buttons, use [button group](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/button-group).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -57,10 +49,7 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
 /** @publicDocs */
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
-/**
- * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ButtonElementEvents {
     /**
      * A callback fired when the button is clicked. This will be called before the action indicated by `type`.

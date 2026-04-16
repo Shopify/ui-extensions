@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {SpinnerProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -21,9 +18,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-spinner";
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface SpinnerProps extends SpinnerProps$1 {
     /**
      * A label that describes the purpose of the spinner for assistive technologies like screen readers. Provide an `accessibilityLabel` when there is no visible text that conveys a loading state.

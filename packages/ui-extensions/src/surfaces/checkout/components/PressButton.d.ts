@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {PressButtonProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -42,19 +39,13 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-press-button";
-/**
- * Allows users to toggle between active/inactive states. Use to represent a persistent on/off or selected/unselected status.
- * @publicDocs
- */
+/** @publicDocs */
 export interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
 }
 /** @publicDocs */
 export interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
-/**
- * The press button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface PressButtonElementEvents {
     /**
      * A callback fired when the button is clicked.

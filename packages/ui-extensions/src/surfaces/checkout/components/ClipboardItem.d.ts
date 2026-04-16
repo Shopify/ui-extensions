@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {ClipboardItemProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -35,19 +32,13 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clipboard-item";
-/**
- * Enables copying text to the user’s clipboard. Use alongside Button or Link components to let users easily copy content. `<s-clipboard-item>` doesn’t render visually.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
 /** @publicDocs */
 export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
-/**
- * The clipboard item component provides event callbacks for handling copy interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClipboardItemElementEvents {
     /**
      * A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.

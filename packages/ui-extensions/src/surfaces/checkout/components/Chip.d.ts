@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {ChipProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -28,16 +25,10 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-chip";
-/**
- * Configure the following properties on the chip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
-/**
- * The chip component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipElementSlots {
     /**
      * The graphic to display inside of the chip.
@@ -46,12 +37,7 @@ export interface ChipElementSlots {
      */
     graphic?: HTMLElement;
 }
-/**
- * The chip component displays static labels, categories, or attributes that help classify and organize content. Use chip to show product tags, categories, or metadata near the items they describe, helping users identify items with similar properties.
- *
- * Chips support multiple visual variants for different levels of emphasis and can include icons to provide additional visual context. For system-generated status indicators, use [badge](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/badge). For interactive or removable chips, use [clickable chip](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/actions/clickable-chip).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipProps extends ChipElementProps {
 }
 /** @publicDocs */

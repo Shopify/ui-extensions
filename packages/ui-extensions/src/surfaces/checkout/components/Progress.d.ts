@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {ProgressProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -21,9 +18,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 
 declare const tagName = "s-progress";
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     /**
      * A label announced by assistive technologies that describes what is progressing. Use this to provide context about the ongoing task, such as "Loading order details" or "Uploading file".

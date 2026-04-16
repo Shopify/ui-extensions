@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {AbbreviationProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -28,10 +25,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-abbreviation";
-/**
- * Configure the following properties on the abbreviation component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface AbbreviationProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
 /** @publicDocs */
