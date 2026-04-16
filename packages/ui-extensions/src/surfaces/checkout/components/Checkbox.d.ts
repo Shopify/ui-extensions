@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {CheckboxProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -35,20 +32,14 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-checkbox";
-/**
- * Configure the following properties on the checkbox component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 /** @publicDocs */
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
-/**
- * The checkbox component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface CheckboxElementEvents {
     /**
      * A callback fired when the checkbox value changes.

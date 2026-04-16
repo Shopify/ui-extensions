@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {IconProps$1} from './components-shared.d.ts';
 
-/**
- * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
      * A unique identifier for this element within its parent. Used by the rendering engine for efficient reconciliation when lists change.
@@ -79,10 +76,7 @@ export interface IconElementProps extends Pick<IconProps$1, 'id' | 'size' | 'ton
  */
 export interface IconElement extends IconElementProps, Omit<HTMLElement, 'id'> {
 }
-/**
- * The properties for the icon component when it's used in JSX.
- * @publicDocs
- */
+/** @publicDocs */
 export interface IconProps extends IconElementProps {
 }
 declare global {

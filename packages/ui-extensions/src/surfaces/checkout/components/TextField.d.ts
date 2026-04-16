@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {IconProps$1, TextFieldProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -76,10 +73,7 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-text-field";
-/**
- * Configure the following properties on the text field component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -91,10 +85,7 @@ export interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocompl
 /** @publicDocs */
 export interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The text field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextFieldElementEvents {
     /**
 <<<<<<< HEAD
@@ -133,10 +124,7 @@ export interface TextFieldElementEvents {
      */
     input?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The text field component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextFieldElementSlots {
     /**
      * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.

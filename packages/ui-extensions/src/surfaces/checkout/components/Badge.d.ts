@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {BadgeProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -37,9 +34,7 @@ declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangl
 export type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
 declare const tagName = "s-badge";
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface BadgeElementProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     /**
      * The size of the badge.

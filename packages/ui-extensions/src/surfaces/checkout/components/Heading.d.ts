@@ -10,10 +10,7 @@
 /// <reference lib="DOM" />
 import type {HeadingProps$1} from './components-shared.d.ts';
 
-/**
- * Used when an element does not have children.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
@@ -28,10 +25,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-heading";
-/**
- * Configure the following properties on the heading component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface HeadingElementProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
 /** @publicDocs */

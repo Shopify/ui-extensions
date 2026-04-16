@@ -33,10 +33,7 @@ export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
  * @publicDocs
  */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
-/**
- * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BaseElementProps<TClass = HTMLElement> {
     /**
      * A unique identifier for this element within its parent. Used by the rendering engine for efficient reconciliation when lists change.
@@ -74,10 +71,7 @@ export interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole
  */
 export interface ImageElement extends ImageElementProps, Omit<HTMLElement, 'id'> {
 }
-/**
- * The properties for the image component when it's used in JSX.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ImageProps extends ImageElementProps {
 }
 declare global {
