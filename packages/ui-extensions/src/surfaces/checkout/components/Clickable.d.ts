@@ -58,10 +58,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clickable";
-/**
- * Configure the following properties on the clickable component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -72,10 +69,7 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
 }
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
-/**
- * The clickable component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableElementEvents {
     /**
      * A callback fired when the component loses focus.

@@ -38,9 +38,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-banner";
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     /**
      * Whether the banner content can be collapsed and expanded by the user. A collapsible banner conceals child elements initially, allowing the user to expand the banner to reveal them.
@@ -93,9 +91,7 @@ export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 
 }
 export interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface BannerElementEvents {
     /**
      * A callback that fires when the banner has fully hidden, including after any hide animations have completed.
