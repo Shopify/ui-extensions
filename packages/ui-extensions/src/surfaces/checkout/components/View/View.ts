@@ -105,9 +105,7 @@ export interface Translate {
   inline?: number | `${number}%`;
 }
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface ViewProps
   extends Pick<BackgroundProps, 'background'>,
     BorderProps,

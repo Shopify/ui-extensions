@@ -2,10 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, TextSize} from '../shared';
 
-/**
- * Configure the following properties on the skeleton text block component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface SkeletonTextBlockProps extends IdProps {
   /**
    * @private

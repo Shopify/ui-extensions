@@ -2,9 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps} from '../shared';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface ProgressProps extends IdProps {
   /**
    * How much of the task has been completed. Must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.

@@ -8,10 +8,7 @@ import type {
   VisibilityProps,
 } from '../shared';
 
-/**
- * Configure the following properties on the text component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextProps extends VisibilityProps {
   /**
    * A keyword that sets the size of the text. Sizes map to the design system's type scale.

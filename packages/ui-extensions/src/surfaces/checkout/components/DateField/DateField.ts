@@ -3,10 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 import type {DatePickerProps, SelectedDate} from '../DatePicker/DatePicker';
 import type {TextFieldProps} from '../TextField/TextField';
 
-/**
- * Use a date field to get a date input from a customer.
- * @publicDocs
- */
+/** @publicDocs */
 export interface DateFieldProps
   extends Pick<
       TextFieldProps<string>,

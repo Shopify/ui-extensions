@@ -8,10 +8,7 @@ import type {
   TextSize,
 } from '../shared';
 
-/**
- * Configure the following properties on the text block component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface TextBlockProps extends IdProps {
   /**
    * A keyword that sets the size of the text block. Sizes map to the design system's type scale.

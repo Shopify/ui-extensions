@@ -2,10 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, DisclosureActivatorProps} from '../shared';
 
-/**
- * Use a switch to represent an on or off state that takes effect immediately when tapped.
- * @publicDocs
- */
+/** @publicDocs */
 export interface SwitchProps extends IdProps, DisclosureActivatorProps {
   /**
    * An identifier for the field that is unique within the nearest

@@ -2,9 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Alignment, Direction, IdProps, Size} from '../shared';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface DividerProps extends IdProps {
   /**
    * The thickness of the divider line.

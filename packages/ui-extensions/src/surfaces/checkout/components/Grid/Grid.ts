@@ -16,9 +16,7 @@ import type {
   ViewLikeAccessibilityRole,
 } from '../shared';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface GridProps
   extends Pick<BackgroundProps, 'background'>,
     IdProps,

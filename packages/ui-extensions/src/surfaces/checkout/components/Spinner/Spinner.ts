@@ -2,9 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {Appearance, IdProps, Size} from '../shared';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface SpinnerProps extends IdProps {
   /**
    * The size of the spinner icon.

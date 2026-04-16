@@ -2,9 +2,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 
 import type {IdProps, Status} from '../shared';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface BannerProps extends IdProps {
   /**
    * The title text displayed at the top of the banner to summarize the message or alert.

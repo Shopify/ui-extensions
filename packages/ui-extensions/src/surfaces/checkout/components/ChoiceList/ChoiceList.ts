@@ -1,9 +1,6 @@
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Use choice lists to present a list of choices where users can make a single selection or multiple selections.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChoiceListProps<T extends string | string[]> {
   /**
    * A unique identifier for the field in the closest `Form` component.

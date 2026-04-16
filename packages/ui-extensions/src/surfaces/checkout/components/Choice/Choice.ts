@@ -1,12 +1,7 @@
 import type {RemoteFragment} from '@remote-ui/core';
 import {createRemoteComponent} from '@remote-ui/core';
 
-/**
- * Options inside a `ChoiceList`.
-
-The wrapping `ChoiceList` component will dictate if the choice renders as radio buttons or checkboxes.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChoiceProps {
   /**
    * A unique identifier for the choice.

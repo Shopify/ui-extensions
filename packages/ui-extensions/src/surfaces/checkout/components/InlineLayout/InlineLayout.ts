@@ -10,9 +10,7 @@ import type {
 } from '../shared';
 import type {GridProps} from '../Grid/Grid';
 
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface InlineLayoutProps
   extends Omit<GridProps, 'columns' | 'rows'>,
     BorderProps,
