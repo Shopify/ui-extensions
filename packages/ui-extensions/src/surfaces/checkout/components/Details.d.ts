@@ -43,18 +43,12 @@ export interface ToggleArgumentsEvent {
 }
 
 declare const tagName = "s-details";
-/**
- * Configure the following properties on the details component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
 export interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
-/**
- * The details component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface DetailsElementEvents {
     /**
      * A callback fired immediately when the element state changes, before any animations.

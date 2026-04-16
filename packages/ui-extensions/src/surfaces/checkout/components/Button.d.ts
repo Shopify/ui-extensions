@@ -38,10 +38,7 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-button";
-/**
- * Configure the following properties on the button component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
@@ -50,10 +47,7 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
 }
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
-/**
- * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
+/** @publicDocs */
 export interface ButtonElementEvents {
     /**
      * A callback fired when the button is clicked. This will be called before the action indicated by `type`.

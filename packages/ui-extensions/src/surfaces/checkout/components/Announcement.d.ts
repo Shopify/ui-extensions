@@ -60,9 +60,7 @@ export interface ToggleArgumentsEvent {
 declare const tagName = "s-announcement";
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface AnnouncementElementEvents {
     /**
      * A callback that fires when the element state changes, after any toggle animations have finished.
@@ -104,9 +102,7 @@ export interface AnnouncementMethods {
      */
     dismiss: () => void;
 }
-/**
- * @publicDocs
- */
+/** @publicDocs */
 export interface AnnouncementElementMethods {
     /**
      * Programmatically dismisses the announcement. This triggers the `dismiss` event callback.
