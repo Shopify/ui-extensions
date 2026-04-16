@@ -42,7 +42,7 @@ export interface Metafield {
 }
 
 /**
- * Represents a custom metadata field attached to a resource, requested through the [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration) file.
+ * Represents a custom metadata field attached to a resource, requested through the [`shopify.extension.toml`](/docs/apps/build/customer-accounts/metafields#create-the-metafield-definition) file.
  */
 export interface AppMetafield {
   /** The unique identifier for the metafield within its namespace. */
@@ -211,7 +211,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
 
   /**
    * The metafields requested in the
-   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/latest#configuration)
+   * [`shopify.extension.toml`](/docs/apps/build/customer-accounts/metafields#create-the-metafield-definition)
    * file. These metafields are updated when there’s a change in the merchandise items
    * being purchased by the customer.
    *
@@ -273,7 +273,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   lines: StatefulRemoteSubscribable<CartLine[]>;
 
   /**
-   * Details about the buyer's location, language, and currency on the **Order status** page. For utilities to format and translate content based on these details, use the `i18n` object from the [Localization API](/docs/api/customer-account-ui-extensions/target-apis/platform-apis/localization-api) instead.
+   * Details about the buyer's location, language, and currency on the **Order status** page. For utilities to format and translate content based on these details, use the `i18n` object from the [Localization API](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api) instead.
    */
   localization: OrderStatusLocalization;
 
@@ -300,8 +300,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * The token that represents the checkout session used to create this order.
    *
-   * Matches the `token` field in the [WebPixel checkout payload](/docs/api/pixels/customer-events#checkout)
-   * and the `checkout_token` field in the [Admin REST API Order resource](/docs/api/admin-rest/unstable/resources/order#resource-object).
+   * Matches the `token` field in the [WebPixel checkout payload](/docs/api/pixels/customer-events#checkout).
    */
   checkoutToken: StatefulRemoteSubscribable<CheckoutToken | undefined>;
 
@@ -725,7 +724,7 @@ export interface SelectedPaymentOption {
   /**
    * The unique handle referencing `PaymentOption.handle`.
    *
-   * See [availablePaymentOptions](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi#properties-propertydetail-availablepaymentoptions).
+   * See [availablePaymentOptions](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/order-apis/payments-api).
    */
   handle: string;
 }

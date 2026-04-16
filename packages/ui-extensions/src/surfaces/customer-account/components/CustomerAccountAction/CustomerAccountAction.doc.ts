@@ -3,7 +3,7 @@ import type {ReferenceEntityTemplateSchema} from '@shopify/generate-docs';
 const data: ReferenceEntityTemplateSchema = {
   name: 'CustomerAccountAction',
   description:
-    'A modal to complete an order action flow. This component can only be used to populate the [customer-account.order.action.render](/docs/api/customer-account-ui-extensions/unstable/targets/order-action-menu/customer-account-order-action-render) extension target, which renders as a result of the customer clicking the order action button rendered via the [customer-account.order.action.menu-item.render](/docs/api/customer-account-ui-extensions/unstable/targets/order-action-menu/customer-account-order-action-menu-item-render) extension target.',
+    'A modal to complete an order action flow. This component can only be used to populate the [customer-account.order.action.render](/docs/api/customer-account-ui-extensions/{API_VERSION}/targets/order-action-menu/customer-account-order-action-render) extension target, which renders as a result of the customer clicking the order action button rendered via the [customer-account.order.action.menu-item.render](/docs/api/customer-account-ui-extensions/{API_VERSION}/targets/order-action-menu/customer-account-order-action-menu-item-render) extension target.',
   thumbnail: 'customeraccountaction-thumbnail.png',
   requires: '',
   isVisualComponent: true,
