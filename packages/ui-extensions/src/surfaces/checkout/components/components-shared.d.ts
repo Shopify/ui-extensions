@@ -953,7 +953,7 @@ export type AccessibilityRole =
  * Used to indicate the component is a header.
  *
  * In an HTML host `header` will render a `<header>` element.
- * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
+ * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/banner_role) in the MDN web docs.
  */
  | "header"
 /**

@@ -17,7 +17,7 @@ const data: ReferenceEntityTemplateSchema = {
     {
       title: 'Events',
       description:
-        'Learn more about [registering events](/docs/api/customer-account-ui-extensions/using-web-components#handling-events).',
+        'Learn more about [handling events](/docs/api/customer-account-ui-extensions/{API_VERSION}/using-web-components#handling-events).',
       type: 'AvatarEventsDocs',
     },
   ],
