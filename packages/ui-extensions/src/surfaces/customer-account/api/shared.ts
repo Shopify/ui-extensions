@@ -116,8 +116,7 @@ export interface I18n {
   /**
    * Returns a localized date value. Behaves like the standard `Intl.DateTimeFormat()` and uses the buyer's locale by default.
    *
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat
-   * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options
+   * Learn more about [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) and its [formatting options](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat#using_options).
    *
    * @param options.inExtensionLocale - if true, use the extension's locale
    */

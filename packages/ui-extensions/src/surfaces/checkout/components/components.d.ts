@@ -1551,7 +1551,7 @@ export interface MultipleInputProps extends BaseInputProps {
 	 */
 	onInput?: (event: Event) => void;
 	/**
-	 * An array of the `value`s of the selected options.
+	 * An array of `value` attributes for the currently selected options.
 	 *
 	 * This is a convenience prop for setting the `selected` prop on child options.
 	 */
@@ -1954,7 +1954,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Disables the clickable, meaning it cannot be clicked or receive focus.
 	 *
-	 * In this state, onClick will not fire.
+	 * In this state, `click` won’t fire.
 	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
 	 *
 	 * However, items within the clickable can still receive focus and be interacted with.
@@ -2148,9 +2148,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	type?: "single" | "multiple" | "range";
 	/**
-	 * Dates that can be selected.
-	 *
-	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 * Restricts which dates the user can select. Accepts a comma-separated list of dates and date ranges. Whitespace is allowed after commas.
 	 *
 	 * The default `''` allows all dates.
 	 *
@@ -2201,7 +2199,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	disallow?: string;
 	/**
-	 * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
+	 * Restricts which days of the week the user can select. These intersect with the result of `allow` and `disallow`.
 	 *
 	 * A comma-separated list of days. Whitespace is allowed after commas.
 	 *
@@ -3112,7 +3110,7 @@ interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * Specifies how much of the task has been completed.
 	 *
-	 * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
+	 * It must be a valid floating point number between `0` and `max`, or between `0` and `1` if `max` is omitted.
 	 * If there is no value attribute, the progress bar is indeterminate;
 	 * this indicates that an activity is ongoing with no indication of how long it is expected to take.
 	 *
@@ -3126,7 +3124,7 @@ interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * This attribute describes how much work the task indicated by the progress element requires.
 	 *
-	 * The `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.
+	 * The `max` attribute, if present, must have a value greater than `0` and be a valid floating point number.
 	 *
 	 * @default 1
 	 *
@@ -4294,7 +4292,7 @@ declare module 'preact' {
 declare const tagName$v = "s-map-marker";
 interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     /**
-     * Sets the action the `commandFor` target should take when this marker is activated. See the documentation of particular components for the actions they support. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+     * Sets the action the `commandFor` target should take when this component is activated. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
      *
      * - `--auto`: a default action for the target component.
      * - `--show`: shows the target component.
@@ -4305,7 +4303,7 @@ interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLab
      */
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
     /**
-     * The ID of a component that should respond to activations (for example, clicks) on this component. Refer to the `command` property for how to control the behavior of the target. Learn more about the [`commandfor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+     * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
      */
     commandFor?: MapMarkerProps$1['commandFor'];
 }
