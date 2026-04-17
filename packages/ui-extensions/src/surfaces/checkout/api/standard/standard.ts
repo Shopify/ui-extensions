@@ -737,7 +737,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * If the previous token expires, this value reflects a new session token with a new signature and expiry.
    *
-   * Refer to [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/session-token) for more information.
+   * Learn more about [session tokens](/docs/apps/build/authentication-authorization/session-tokens).
    */
   sessionToken: SessionToken;
 
