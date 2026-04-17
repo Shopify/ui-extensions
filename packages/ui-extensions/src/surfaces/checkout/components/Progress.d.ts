@@ -25,7 +25,7 @@ export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel
      */
     accessibilityLabel?: ProgressProps$1['accessibilityLabel'];
     /**
-     * The total amount of work the task requires. Must be a value greater than 0 and a valid floating point number.
+     * The total amount of work the task requires. Must be a value greater than `0` and a valid floating point number.
      *
      * Learn more about the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max).
      *
@@ -42,7 +42,7 @@ export interface ProgressProps extends Pick<ProgressProps$1, 'accessibilityLabel
      */
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
     /**
-     * How much of the task has been completed. Must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
+     * How much of the task has been completed. Must be a valid floating point number between `0` and `max`, or between `0` and `1` if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
      *
      * Learn more about the [value attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value).
      */
