@@ -224,7 +224,7 @@ try {
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')}`, {
+    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
       stdio: 'inherit',
       cwd: rootPath,
     });
