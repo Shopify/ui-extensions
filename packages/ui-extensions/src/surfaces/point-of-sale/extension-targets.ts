@@ -6,7 +6,9 @@ import {
 import {TransactionCompleteData} from './event/data/TransactionCompleteData';
 import {CartUpdateEventData} from './event/data/CartUpdateEventData';
 
-import type {RenderExtension} from '../../extension';
+import type {RenderExtension, RunnableExtension} from '../../extension';
+
+import type {DataTargetApi} from './api/data-target-api/data-target-api';
 
 import type {
   StandardApi,
@@ -44,6 +46,21 @@ export interface EventExtensionTargets {
   'pos.cart-update.event.observe': (
     data: CartUpdateEventData,
   ) => Promise<BaseOutput>;
+}
+
+/**
+ * @publicDocs
+ */
+export interface DataExtensionTargets {
+  /**
+   * A persistent background extension that starts when POS loads and runs for
+   * the session's lifetime. Use this target to observe POS events without
+   * rendering UI.
+   */
+  'pos.app.ready.data': RunnableExtension<
+    DataTargetApi<'pos.app.ready.data'>,
+    undefined
+  >;
 }
 
 /**
@@ -371,7 +388,8 @@ export interface RenderExtensionTargets {
  */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
-    EventExtensionTargets {}
+    EventExtensionTargets,
+    DataExtensionTargets {}
 
 /**
  * @publicDocs
@@ -381,6 +399,10 @@ export type RenderExtensionTarget = keyof RenderExtensionTargets;
  * @publicDocs
  */
 export type EventExtensionTarget = keyof EventExtensionTargets;
+/**
+ * @publicDocs
+ */
+export type DataExtensionTarget = keyof DataExtensionTargets;
 /**
  * @publicDocs
  */
