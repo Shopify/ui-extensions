@@ -246,7 +246,7 @@ You register for targets in your [configuration file](/docs/api/checkout-ui-exte
       anchorLink: 'full-page-extension-target',
       title: 'Full-page extension',
       sectionContent:
-        'Build new pages for customer accounts. Full-page extensions render in the main content area—below the header, and above the footer.',
+        '> Note:\n> Customer accounts are getting layout and design updates. Enable the **Customer account improvements** feature preview to get early access. See the [developer changelog](/changelog/feature-preview-customer-account-improvements) and [where extension targets will render](/docs/apps/build/customer-accounts/feature-preview-customer-account-improvements) in the new layout.\n\nBuild new pages for customer accounts. Full-page extensions render in the main content area—below the header, and above the footer.',
       accordionContent: [
         {
           title: 'Full-page extension',

@@ -7,7 +7,10 @@ import {
 
 const data: ReferenceEntityTemplateSchema = {
   name: 'customer-account.order.page.render',
-  description: `This [full-page extension target](/docs/api/customer-account-ui-extensions/extension-targets-overview#full-page-extension-full-page-extension-(order-specific)) allows you to create a new page in customer accounts, **tied to a specific order**. It renders in the main content area—below the header, and above the footer.
+  description: `> Note:
+> Customer accounts are getting layout and design updates. Enable the **Customer account improvements** feature preview to get early access. See the [developer changelog](/changelog/feature-preview-customer-account-improvements) and [where extension targets will render](/docs/apps/build/customer-accounts/feature-preview-customer-account-improvements) in the new layout.
+
+This [full-page extension target](/docs/api/customer-account-ui-extensions/extension-targets-overview#full-page-extension-full-page-extension-(order-specific)) allows you to create a new page in customer accounts, **tied to a specific order**. It renders in the main content area—below the header, and above the footer.
 
 If the page you're building is not tied to a specific order, use [customer-account.page.render](/docs/api/customer-account-ui-extensions/targets/full-page/customer-account-page-render) instead.
 
