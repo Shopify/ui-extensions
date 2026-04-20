@@ -24,7 +24,7 @@ function findGeneratedDocsPath() {
       if (stat.isDirectory()) {
         const result = findFile(fullPath);
         if (result) return result;
-      } else if (file === 'generated_docs_data.json') {
+      } else if (file === 'generated_docs_data.json' || file === 'generated_docs_data_v2.json') {
         return path.dirname(fullPath);
       }
     }
