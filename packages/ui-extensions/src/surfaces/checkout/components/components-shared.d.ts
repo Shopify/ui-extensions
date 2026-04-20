@@ -1534,7 +1534,7 @@ export interface MultipleInputProps extends BaseInputProps {
 	 */
 	onInput?: (event: Event) => void;
 	/**
-	 * An array of the `value`s of the selected options.
+	 * An array of `value` attributes for the currently selected options.
 	 *
 	 * This is a convenience prop for setting the `selected` prop on child options.
 	 */
@@ -2044,9 +2044,8 @@ export type AutocompleteAddressGroup = "fax" | "home" | "mobile" | "pager";
 export type AnyAutocompleteField = "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "current-password" | "email" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "new-password" | "nickname" | "one-time-code" | "organization-title" | "organization" | "photo" | "postal-code" | "sex" | "street-address" | "transaction-amount" | "transaction-currency" | "url" | "username" | "bday-day" | "bday-month" | "bday-year" | "bday" | "cc-additional-name" | "cc-expiry-month" | "cc-expiry-year" | "cc-expiry" | "cc-family-name" | "cc-given-name" | "cc-name" | "cc-number" | "cc-csc" | "cc-type" | `${AutocompleteAddressGroup} email` | "impp" | `${AutocompleteAddressGroup} impp` | "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`;
 export type TextAutocompleteField = ExtractStrict<AnyAutocompleteField, "additional-name" | "address-level1" | "address-level2" | "address-level3" | "address-level4" | "address-line1" | "address-line2" | "address-line3" | "country-name" | "country" | "family-name" | "given-name" | "honorific-prefix" | "honorific-suffix" | "language" | "name" | "nickname" | "one-time-code" | "organization-title" | "organization" | "postal-code" | "sex" | "street-address" | "transaction-currency" | "username" | "cc-name" | "cc-given-name" | "cc-additional-name" | "cc-family-name" | "cc-type">;
 /**
- * The type of consent policy being collected.
- *
- * - `'sms-marketing'`: Represents the policy for SMS marketing consent.
+ * The policy for which buyer consent is being collected. Used by the [consent checkbox](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/consent-checkbox) and [consent phone field](/docs/api/{API_NAME}/{API_VERSION}/polaris-web-components/forms/consent-phone-field) components to identify the type of marketing permission requested.
+ * @publicDocs
  */
 export type ConsentPolicy = "sms-marketing";
 interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
@@ -2058,11 +2057,9 @@ interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
 export type PhoneAutocompleteField = ExtractStrict<AnyAutocompleteField, "tel" | "tel-area-code" | "tel-country-code" | "tel-extension" | "tel-local-prefix" | "tel-local-suffix" | "tel-local" | "tel-national" | `${AutocompleteAddressGroup} tel` | `${AutocompleteAddressGroup} tel-area-code` | `${AutocompleteAddressGroup} tel-country-code` | `${AutocompleteAddressGroup} tel-extension` | `${AutocompleteAddressGroup} tel-local-prefix` | `${AutocompleteAddressGroup} tel-local-suffix` | `${AutocompleteAddressGroup} tel-local` | `${AutocompleteAddressGroup} tel-national`>;
 interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldDecorationProps, "accessory">, AutocompleteProps<PhoneAutocompleteField> {
 	/**
-	 * The type of number to collect.
+	 * The type of phone number to collect. Specific styling may be applied to each type to provide extra guidance to users. No additional validation is performed based on the type.
 	 *
-	 * Specific style may be applied to each type to provide extra guidance to users. Note that no extra validation is performed based on the type.
-	 *
-	 * @default '' meaning no specific kind of phone number
+	 * @default ''
 	 */
 	type?: "mobile" | "";
 }
@@ -2106,9 +2103,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	type?: "single" | "multiple" | "range";
 	/**
-	 * Dates that can be selected.
-	 *
-	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 * Restricts which dates the user can select. Accepts a comma-separated list of dates and date ranges. Whitespace is allowed after commas.
 	 *
 	 * The default `''` allows all dates.
 	 *
@@ -2159,7 +2154,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	disallow?: string;
 	/**
-	 * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
+	 * Restricts which days of the week the user can select. Only dates that fall on an allowed day AND pass the `allow`/`disallow` filters are selectable. For example, setting `allowedDays` to `'mon, wed, fri'` with `allow` set to `'2024-06'` restricts selection to Mondays, Wednesdays, and Fridays in June 2024.
 	 *
 	 * A comma-separated list of days. Whitespace is allowed after commas.
 	 *
@@ -2239,10 +2234,8 @@ interface DateFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<DatePic
 	 *
 	 * Disallowed dates are considered invalid.
 	 *
-	 * It’s important to note that this callback will be called only when the user **finishes editing** the date,
-	 * and it’s called right after the `onChange` callback.
-	 * The field is **not** validated on every change to the input. Once the buyer has signalled that
-	 * they have finished editing the field (typically, by blurring the field), the field gets validated and the callback is run if the value is invalid.
+	 * This callback fires only when the user finishes editing the date, right after the `change` callback.
+	 * The field isn't validated on every change to the input. Once the user has finished editing the field (typically by blurring it), the field is validated and the callback fires if the value is invalid.
 	 */
 	onInvalid?: (event: Event) => void;
 }
@@ -3073,13 +3066,13 @@ interface ProgressProps$1 extends GlobalProps {
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * How much of the task has been completed. Must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
+	 * How much of the task has been completed. Must be a valid floating point number between `0` and `max`, or between `0` and `1` if `max` is omitted. When no value is set, the progress bar is indeterminate, indicating an ongoing activity with no estimated completion time.
 	 *
 	 * Learn more about the [value attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value).
 	 */
 	value?: number;
 	/**
-	 * The total amount of work the task requires. Must be a value greater than 0 and a valid floating point number.
+	 * The total amount of work the task requires. Must be a value greater than `0` and a valid floating point number.
 	 *
 	 * Learn more about the [max attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max).
 	 *
@@ -3213,7 +3206,7 @@ interface SheetProps$1 extends BaseOverlayProps, BaseOverlayMethods, ToggleEvent
 	/**
 	 * Adjust the padding of all edges.
 	 *
-	 * - `base`: Applies padding that is appropriate for the element. Note that it may result in no padding if Shopify believes this is the right design decision in a particular context.
+	 * - `base`: Applies padding that is appropriate for the element. This might result in no padding if Shopify determines that is the right design decision for a particular context.
 	 * - `none`: Removes all padding from the element. This can be useful when elements inside the sheet need to span to the edge of the sheet. For example, a full-width image. In this case, rely on box with a padding of `base` to bring back the desired padding for the rest of the content.
 	 *
 	 * @default 'base'

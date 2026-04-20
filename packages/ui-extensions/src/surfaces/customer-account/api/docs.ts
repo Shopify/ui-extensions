@@ -37,27 +37,21 @@ interface ButtonProps {
    */
   accessibilityLabel?: string;
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this component.
-   *
-   * See `command` for how to control the behavior of the target.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: string;
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * Sets the action the `commandFor` target should take when this component is activated.
    *
-   * See the documentation of particular components for the actions they support.
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target clipboard item.
    *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   * - `--copy`: copies the target ClipboardItem.
+   * Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    *
    * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
@@ -360,7 +354,7 @@ export interface Docs_Page_Button_PrimaryAction
    */
   command?: ButtonProps['command'];
   /**
-   * The `id` of a component that should respond to activations on this button. See `command` for how to control the behavior of the target.
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: ButtonProps['commandFor'];
   /**
@@ -416,7 +410,7 @@ export interface Docs_Page_Button_SecondaryAction
    */
   command?: ButtonProps['command'];
   /**
-   * The `id` of a component that should respond to activations on this button. See `command` for how to control the behavior of the target.
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: ButtonProps['commandFor'];
   /**
