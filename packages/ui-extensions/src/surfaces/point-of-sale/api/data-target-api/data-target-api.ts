@@ -1,6 +1,7 @@
 import {CartApi} from '../cart-api/cart-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
+import {ExtensionApi} from '../extension-api/extension-api';
 import {LocaleApi} from '../locale-api/locale-api';
 import {ProductSearchApi} from '../product-search-api/product-search-api';
 import {SessionApi} from '../session-api/session-api';
@@ -12,9 +13,13 @@ import type {I18n} from '../../../../api';
  * @publicDocs
  */
 export type DataTargetApi<T> = {
+  /**
+   * @deprecated Use `extension.target` instead.
+   */
   extensionPoint: T;
   i18n: I18n;
-} & SessionApi &
+} & ExtensionApi<T> &
+  SessionApi &
   StorageApi &
   LocaleApi &
   ConnectivityApi &

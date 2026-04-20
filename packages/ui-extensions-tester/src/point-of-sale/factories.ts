@@ -447,6 +447,10 @@ function createDataTargetMock<T extends ExtensionTarget>(
 ): DataTargetApi<T> {
   return {
     extensionPoint: target,
+    extension: {
+      apiVersion: '2026-04',
+      target,
+    },
     i18n: createMockI18n(),
     session: {
       currentSession: createSessionCurrentSession(),
