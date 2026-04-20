@@ -12,6 +12,10 @@ export type {CashDrawerApi} from './api/cash-drawer-api/cash-drawer-api';
 export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
 
 export type {StandardApi} from './api/standard/standard-api';
+export type {
+  ExtensionApi,
+  ExtensionApiContent,
+} from './api/extension-api/extension-api';
 export type {ActionTargetApi} from './api/action-target-api/action-target-api';
 
 export type {
