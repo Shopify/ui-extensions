@@ -260,8 +260,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * extension’s configuration file.
    *
    * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
-   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
+   * Learn more about [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/targets) and [target configuration](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration).
    *
    * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
    */
