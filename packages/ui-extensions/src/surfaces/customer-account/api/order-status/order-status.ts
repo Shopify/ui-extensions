@@ -292,8 +292,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * The identifier that specifies where in Shopify's UI your code is being injected. This will be one of the targets you have included in your extension's configuration file.
    *
    * @example 'customer-account.order-status.block.render'
-   * @see /docs/api/customer-account-ui-extensions/extension-targets-overview
-   * @see /docs/apps/app-extensions/configuration#targets
+   * Learn more about [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/targets) and [target configuration](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration).
    *
    * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
    */
