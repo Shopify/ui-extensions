@@ -29,6 +29,17 @@ declare const tagName = "s-paragraph";
 export interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
+    /**
+     * The semantic type and styling treatment for the paragraph content.
+     *
+     * Other presentation properties on `s-paragraph` override the default styling.
+     *
+     * - `paragraph`: A semantic type that indicates a structural grouping of related content.
+     * - `small`: A semantic type that indicates less important text.
+     *
+     * @default 'paragraph'
+     */
+    type?: Extract<ParagraphProps$1['type'], 'paragraph' | 'small'>;
 }
 /** @publicDocs */
 export interface ParagraphElement extends ParagraphProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
