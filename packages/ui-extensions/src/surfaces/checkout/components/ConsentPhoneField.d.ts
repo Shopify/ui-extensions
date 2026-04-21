@@ -76,6 +76,12 @@ export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldPro
      * @private
      */
     placeholder?: string;
+    /**
+     * The policy for which buyer consent is being collected. Used by the [consent checkbox](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/consent-checkbox) and [consent phone field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/consent-phone-field) components to identify the type of marketing permission requested.
+     *
+     * - `sms-marketing`: Represents the policy for SMS marketing consent.
+     */
+    policy?: ConsentPhoneFieldProps$1['policy'];
 }
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
