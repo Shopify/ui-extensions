@@ -1456,7 +1456,7 @@ export type Interceptor = (
  */
 export interface Customer {
   /**
-   * A globally-unique identifier for the customer in the format `gid://shopify/Customer/<id>`.
+   * An identifier for the customer in the format `gid://shopify/Customer/<id>`. This value is unique per shop.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
