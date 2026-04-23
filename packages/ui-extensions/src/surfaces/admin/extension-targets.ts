@@ -675,6 +675,14 @@ export interface ExtensionTargets {
     IntentRenderApi<'admin.app.intent.render'>,
     FormExtensionComponents
   >;
+
+  /**
+   * Renders an admin extension on the app home page.
+   */
+  'admin.app.home.render': RenderExtension<
+    StandardApi<'admin.app.home.render'>,
+    FormExtensionComponents | 'Modal'
+  >;
 }
 
 /**
