@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.4.1
+
+### Patch Changes
+
+- [#4337](https://github.com/Shopify/ui-extensions/pull/4337) [`de7d13d`](https://github.com/Shopify/ui-extensions/commit/de7d13ddb3f6827eed36df26525c278a49db44c6) Thanks [@vividviolet](https://github.com/vividviolet)! - Add generic helper types for intents
+
 ## 2026.4.0
 
 ### Major Changes
