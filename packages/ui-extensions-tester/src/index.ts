@@ -90,6 +90,21 @@ interface BaseExtensionHarness<T extends AnyExtensionTarget> {
    * ```
    */
   navigation: Navigation;
+
+  /**
+   * Fires a host event at every listener registered via
+   * `shopify.addEventListener(name, listener)`.
+   *
+   * Matches the `shopify.addEventListener` contract: listener return values
+   * are ignored, and thrown errors are caught per-listener so one bad
+   * listener doesn't block the others.
+   *
+   * ```ts
+   * shopify.addEventListener('transactioncomplete', (event) => { ... });
+   * extension.dispatch('transactioncomplete', { transaction: {...} });
+   * ```
+   */
+  dispatch(type: string, event?: unknown): void;
 }
 
 /**
@@ -138,6 +153,7 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
   #previousFetch: typeof globalThis.fetch | undefined;
   #navigationImpl: Navigation = createMockNavigation();
   #previousNavigation: any;
+  #eventListeners = new Map<string, Set<(event: any) => void>>();
 
   constructor(target: T, options?: {configSearchDir?: string}) {
     const configSearchDir =
@@ -174,11 +190,49 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
     this.#previousFetch = (globalThis as any).fetch;
     this.#previousNavigation = (globalThis as any).navigation;
     this.#navigationImpl = createMockNavigation();
+    this.#eventListeners.clear();
     (globalThis as any).shopify = deepWritableProxy(
-      createMockTargetApi(this.#target),
+      Object.assign(createMockTargetApi(this.#target), {
+        addEventListener: this.#addEventListener,
+        removeEventListener: this.#removeEventListener,
+      }),
     );
     (globalThis as any).fetch = this.#fetchImpl;
     (globalThis as any).navigation = this.#navigationImpl;
+  }
+
+  #addEventListener = (
+    type: string,
+    listener: (event: any) => void,
+  ): void => {
+    let set = this.#eventListeners.get(type);
+    if (!set) {
+      set = new Set();
+      this.#eventListeners.set(type, set);
+    }
+    set.add(listener);
+  };
+
+  #removeEventListener = (
+    type: string,
+    listener: (event: any) => void,
+  ): void => {
+    this.#eventListeners.get(type)?.delete(listener);
+  };
+
+  dispatch(type: string, event?: unknown): void {
+    const listeners = this.#eventListeners.get(type);
+    if (!listeners) return;
+    // Snapshot so listeners that register/unregister during dispatch
+    // don't mutate the iteration.
+    for (const listener of [...listeners]) {
+      try {
+        listener(event);
+      } catch {
+        // Fire-and-forget: per the shopify.addEventListener contract,
+        // listener errors must not affect other listeners.
+      }
+    }
   }
 
   get shopify(): Mutable<ApiForTarget<T>> {
@@ -233,6 +287,7 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
       document.body.innerHTML = '';
     }
     delete (globalThis as any).shopify;
+    this.#eventListeners.clear();
     if (this.#previousFetch === undefined) {
       delete (globalThis as any).fetch;
     } else {
