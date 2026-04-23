@@ -69,6 +69,16 @@ export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibi
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ClickableProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
     target?: Extract<ClickableProps$1['target'], 'auto' | '_blank'>;
+    /**
+     * The behavioral type of the clickable component, which determines what action it performs when activated.
+     *
+     * - `submit`: Submits the nearest containing form.
+     * - `button`: Performs no default action, relying on the `click` event handler for behavior.
+     *
+     * This property is ignored if `href` or `commandFor`/`command` is set.
+     *
+     * @default 'button'
+     */
     type?: Extract<ClickableProps$1['type'], 'submit' | 'button'>;
 }
 /** @publicDocs */

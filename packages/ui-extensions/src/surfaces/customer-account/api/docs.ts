@@ -95,9 +95,8 @@ interface ButtonProps {
   /**
    * The behavior of the button.
    *
-   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.
-   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.
-   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+   * - `'submit'`: Submits the nearest containing form.
+   * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.
    *
    * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
    *
