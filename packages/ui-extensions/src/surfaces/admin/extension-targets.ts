@@ -681,7 +681,7 @@ export interface ExtensionTargets {
    */
   'admin.app.home.render': RenderExtension<
     StandardApi<'admin.app.home.render'>,
-    FormExtensionComponents | 'Modal'
+    FormExtensionComponents | 'Modal' | 'Page'
   >;
 }
 
