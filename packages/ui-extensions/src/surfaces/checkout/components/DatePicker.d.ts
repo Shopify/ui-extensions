@@ -41,17 +41,6 @@ export interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'on
 /** @publicDocs */
 export interface DatePickerElementEvents {
     /**
-<<<<<<< HEAD
-     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
-     */
-    blur?: CallbackEventListener<typeof tagName>;
-    /**
-     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
-     */
-    change?: CallbackEventListener<typeof tagName>;
-    /**
-     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
-=======
      * A callback fired when the date picker loses focus.
      *
      * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
@@ -67,7 +56,6 @@ export interface DatePickerElementEvents {
      * A callback fired when the date picker receives focus.
      *
      * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
