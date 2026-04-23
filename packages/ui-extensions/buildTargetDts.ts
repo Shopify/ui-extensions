@@ -73,6 +73,12 @@ function createInitialTargetDefinition({
     surface === 'customer-account' || surface === 'point-of-sale'
       ? `import '../globals';\n`
       : ''
+  }${
+    surface === 'point-of-sale'
+      ? `export {POS_EVENT_NAMES} from '../events';
+export type {ShopifyEventMap, TransactionCompleteEvent, CashTrackingSessionStartEvent, CashTrackingSessionCompleteEvent} from '../events';
+${parts.join('.') === 'pos.app.ready.data' ? `export type {BackgroundShopifyGlobal as ShopifyGlobal} from '../globals';\n` : ''}`
+      : ''
   }
 type Target = ExtensionTargets[${name}];
 export type Api = Target['api'];

@@ -1,8 +1,7 @@
 /**
- * Dispatched when a cash tracking session is opened.
- * @publicDocs
+ * Shared fields for every cash tracking session event.
  */
-export interface CashTrackingSessionStartEvent extends Event {
+interface CashTrackingSessionEvent extends Event {
   /** The numeric identifier for the cash tracking session. */
   readonly id: number;
   /** ISO 8601 timestamp when the session was opened. */
@@ -10,15 +9,19 @@ export interface CashTrackingSessionStartEvent extends Event {
 }
 
 /**
- * Dispatched when a cash tracking session is successfully closed via
- * reconciliation. Abandoned or force-closed sessions do not fire this event.
+ * Dispatched when a cash tracking session is opened.
  * @publicDocs
  */
-export interface CashTrackingSessionCompleteEvent extends Event {
-  /** The numeric identifier for the cash tracking session. */
-  readonly id: number;
-  /** ISO 8601 timestamp when the session was opened (carried forward from session start). */
-  readonly openingTime: string;
+export interface CashTrackingSessionStartEvent
+  extends CashTrackingSessionEvent {}
+
+/**
+ * Dispatched when a cash tracking session is successfully closed via
+ * reconciliation.
+ * @publicDocs
+ */
+export interface CashTrackingSessionCompleteEvent
+  extends CashTrackingSessionEvent {
   /** ISO 8601 timestamp when the session was closed. */
   readonly closingTime: string;
 }

@@ -5,6 +5,18 @@ import type {
 } from './events/cash-tracking-session-events';
 
 /**
+ * Canonical event-name constants for POS host events. Prefer these over string
+ * literals when calling `shopify.addEventListener` / `removeEventListener`.
+ *
+ * @publicDocs
+ */
+export const POS_EVENT_NAMES = {
+  TRANSACTION_COMPLETE: 'transactioncomplete',
+  CASH_TRACKING_SESSION_START: 'cashtrackingsessionstart',
+  CASH_TRACKING_SESSION_COMPLETE: 'cashtrackingsessioncomplete',
+} as const;
+
+/**
  * Maps Shopify POS event names to their corresponding `Event` subclass types.
  *
  * Used as the generic type parameter for `shopify.addEventListener` and
@@ -13,9 +25,9 @@ import type {
  * @publicDocs
  */
 export interface ShopifyEventMap {
-  transactioncomplete: TransactionCompleteEvent;
-  cashtrackingsessionstart: CashTrackingSessionStartEvent;
-  cashtrackingsessioncomplete: CashTrackingSessionCompleteEvent;
+  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;
+  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;
+  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;
 }
 
 export type {

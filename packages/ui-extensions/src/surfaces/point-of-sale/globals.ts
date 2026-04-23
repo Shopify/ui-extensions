@@ -7,7 +7,17 @@ import type {ShopifyEventMap} from './events';
  *
  * @publicDocs
  */
-export interface ShopifyGlobal {
+export interface ShopifyGlobal {}
+
+/**
+ * Background-only extension of `ShopifyGlobal`. Adds host-event listener APIs
+ * that are only valid from the session-lifetime background target
+ * (`pos.app.ready.data`). Non-background targets see the narrower
+ * `ShopifyGlobal` and cannot type-check calls to these methods.
+ *
+ * @publicDocs
+ */
+export interface BackgroundShopifyGlobal extends ShopifyGlobal {
   /**
    * Register a listener for a POS host event. Listeners are fire-and-forget:
    * their return values are ignored, and their errors are caught without
@@ -32,7 +42,9 @@ declare global {
   // @ts-expect-error - Intentionally overriding navigation type for POS context
   const navigation: Navigation;
 
-  // conflicts with build/ts/globals.d.ts
+  // Collides with checkout/globals.ts during this package's own typecheck: both
+  // declare `const shopify` with surface-specific shapes. Consumers import only
+  // one surface, so the collision is internal to this package's build.
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const shopify: ShopifyGlobal;

@@ -65,7 +65,6 @@ interface BaseTransactionCompleteEvent extends Event {
 
 /**
  * Dispatched when a sale transaction completes.
- * Cancelled, voided, or failed sales do not fire this event.
  */
 interface SaleCompleteEvent extends BaseTransactionCompleteEvent {
   readonly transactionType: 'Sale';
@@ -82,7 +81,6 @@ interface SaleCompleteEvent extends BaseTransactionCompleteEvent {
 
 /**
  * Dispatched when a return transaction completes.
- * Cancelled, voided, or failed returns do not fire this event.
  */
 interface ReturnCompleteEvent extends BaseTransactionCompleteEvent {
   readonly transactionType: 'Return';
@@ -108,7 +106,6 @@ interface ReturnCompleteEvent extends BaseTransactionCompleteEvent {
 
 /**
  * Dispatched when an exchange transaction completes.
- * Cancelled, voided, or failed exchanges do not fire this event.
  */
 interface ExchangeCompleteEvent extends BaseTransactionCompleteEvent {
   readonly transactionType: 'Exchange';
@@ -132,11 +129,8 @@ interface ExchangeCompleteEvent extends BaseTransactionCompleteEvent {
 
 /**
  * Dispatched when a sale, return, or exchange transaction completes.
- * Cancelled, voided, or failed transactions do not fire this event.
  *
- * Narrow on `transactionType` ('Sale' | 'Return' | 'Exchange') to access
- * per-type fields. Shared fields (`orderId`, `grandTotal`, `customer`, etc.)
- * are available without narrowing.
+ * Narrow on `transactionType` to access per-type fields.
  *
  * @example
  * ```ts
