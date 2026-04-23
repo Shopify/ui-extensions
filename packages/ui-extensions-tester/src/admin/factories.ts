@@ -272,6 +272,7 @@ const adminMockFactories: AdminMockFactory = {
   'admin.app.tools.data': createMockStandardApi,
 
   // App render targets
+  'admin.app.home.render': createMockStandardRenderingApi,
   'admin.app.intent.render': createAppIntentRenderMock,
 
   // Block targets
