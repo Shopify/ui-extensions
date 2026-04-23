@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.0-rc.2
+
+### Patch Changes
+
+- [#4335](https://github.com/Shopify/ui-extensions/pull/4335) [`bf2184a`](https://github.com/Shopify/ui-extensions/commit/bf2184a8d55a756533c46a60bf022653b7bfc423) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Add generic helper types for intents
+
 ## 2026.7.0-rc.1
 
 ### Major Changes
