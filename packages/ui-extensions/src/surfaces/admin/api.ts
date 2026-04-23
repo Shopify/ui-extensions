@@ -16,3 +16,9 @@ export type {ValidationSettingsApi} from './api/checkout-rules/validation-settin
 export type {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action';
 export type {DiscountFunctionSettingsApi} from './api/discount-function-settings/discount-function-settings';
 export type {IntentRenderApi} from './api/intents/intent-render';
+export type {
+  ShopifyGeneratedIntentResponse,
+  ShopifyGeneratedIntentVariant,
+  WithGeneratedIntents,
+  WithGeneratedTools,
+} from './api/generated/generated';
