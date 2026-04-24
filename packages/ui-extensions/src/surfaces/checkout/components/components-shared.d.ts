@@ -113,7 +113,7 @@ export interface ToggleEventProps {
 	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about the [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about the [`newState`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState`](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState) properties.
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
