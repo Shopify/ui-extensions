@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.4.2
+
+### Patch Changes
+
+- [#4350](https://github.com/Shopify/ui-extensions/pull/4350) [`5471ede`](https://github.com/Shopify/ui-extensions/commit/5471ede8809f6aad82e9a7284e059a9ad75f7f2f) Thanks [@vividviolet](https://github.com/vividviolet)! - Match correctly on optional response
+
 ## 2026.4.1
 
 ### Patch Changes
