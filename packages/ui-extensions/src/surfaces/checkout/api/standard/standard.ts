@@ -623,7 +623,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#properties-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -1450,7 +1450,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language. Refer to [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language. Refer to [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#properties-propertydetail-localization).
    */
   name: string;
   /**

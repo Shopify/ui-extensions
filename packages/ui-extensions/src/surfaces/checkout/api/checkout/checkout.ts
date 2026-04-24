@@ -532,9 +532,9 @@ export interface CheckoutApi {
   /**
    * Performs an update on an attribute attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/attributes#standardapi-propertydetail-attributes) property.
+   * through the [`attributes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/attributes#properties-propertydetail-attributes) property.
    *
-   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `attributes.canUpdateAttributes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#properties-propertydetail-instructions) `attributes.canUpdateAttributes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyAttributeChange(change: AttributeChange): Promise<AttributeChangeResult>;
 
@@ -542,22 +542,22 @@ export interface CheckoutApi {
    * Performs an update on the merchandise line items. It resolves when the new
    * line items have been negotiated and results in an update to the value
    * retrieved through the
-   * [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-lines#standardapi-propertydetail-lines)
+   * [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-lines#properties-propertydetail-lines)
    * property.
    *
-   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `lines.canAddCartLine` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#properties-propertydetail-instructions) `lines.canAddCartLine` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
 
   /**
    * Performs an update on the discount codes.
    * It resolves when the new discount codes have been negotiated and results in an update
-   * to the value retrieved through the [`discountCodes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/discounts#standardapi-propertydetail-discountcodes) property.
+   * to the value retrieved through the [`discountCodes`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/discounts#properties-propertydetail-discountcodes) property.
    *
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves discount codes through a network call.
    *
-   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `discounts.canUpdateDiscountCodes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#properties-propertydetail-instructions) `discounts.canUpdateDiscountCodes` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyDiscountCodeChange(
     change: DiscountCodeChange,
@@ -566,7 +566,7 @@ export interface CheckoutApi {
   /**
    * Performs an update on the gift cards.
    * It resolves when gift card change have been negotiated and results in an update
-   * to the value retrieved through the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/gift-cards#standardapi-propertydetail-appliedgiftcards) property.
+   * to the value retrieved through the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/gift-cards#properties-propertydetail-appliedgiftcards) property.
    *
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/configuration#network-access) if your extension retrieves gift card codes through a network call.
@@ -578,18 +578,18 @@ export interface CheckoutApi {
   /**
    * Performs an update on a piece of metadata attached to the checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/metafields#standardapi-propertydetail-metafields) property.
+   * through the [`metafields`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/metafields#properties-propertydetail-metafields) property.
    *
-   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `metafields.canSetCartMetafields` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#properties-propertydetail-instructions) `metafields.canSetCartMetafields` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
    * Performs an update on the note attached to the cart and checkout. If
    * successful, this mutation results in an update to the value retrieved
-   * through the [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/note#standardapi-propertydetail-note) property.
+   * through the [`note`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/note#properties-propertydetail-note) property.
    *
-   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `notes.canUpdateNote` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#properties-propertydetail-instructions) `notes.canUpdateNote` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    */
   applyNoteChange(change: NoteChange): Promise<NoteChangeResult>;
 
@@ -604,7 +604,7 @@ export interface CheckoutApi {
    * any prompts. If successful, this mutation results in an update to the value
    * retrieved through the `shippingAddress` property.
    *
-   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#standardapi-propertydetail-instructions) `delivery.canSelectCustomAddress` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
+   * > Note: This method will return an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cart-instructions#properties-propertydetail-instructions) `delivery.canSelectCustomAddress` is false, or the buyer is using an accelerated checkout method, such as Apple Pay, Google Pay, or Meta Pay.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
