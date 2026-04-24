@@ -9,19 +9,10 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const API_VERSION = process.argv[2];
-
-if (!API_VERSION) {
-  console.error('Error: API_VERSION is required.');
-  console.error('Usage: node build-docs-targets-json.mjs <API_VERSION>');
-  console.error('Example: node build-docs-targets-json.mjs 2025-10');
-  process.exit(1);
-}
-
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(__dirname, `generated/checkout_ui_extensions/${API_VERSION}/targets.json`),
+  outputPath: path.join(__dirname, 'generated/targets.json'),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
@@ -317,24 +308,30 @@ function getNestedApis(apiName) {
 // APIs that are composites — list their documented constituent APIs instead of themselves
 const COMPOSITE_API_DECOMPOSITION = {
   StandardApi: [
+    'AddressesApi',
     'AnalyticsApi',
+    'AttributesApi',
     'BuyerIdentityApi',
     'BuyerJourneyApi',
     'CartInstructionsApi',
-    'CheckoutSettingsApi',
+    'CartLinesApi',
     'CheckoutTokenApi',
     'CostApi',
     'CustomerPrivacyApi',
     'DeliveryApi',
+    'DiscountsApi',
     'ExtensionApi',
+    'GiftCardsApi',
     'LocalizationApi',
     'LocalizedFieldsApi',
+    'MetafieldsApi',
+    'NoteApi',
     'PaymentsApi',
-    'StorefrontApi',
     'SessionTokenApi',
     'SettingsApi',
     'ShopApi',
     'StorageApi',
+    'StorefrontApi',
   ],
   CheckoutApi: [
     'AddressesApi',
