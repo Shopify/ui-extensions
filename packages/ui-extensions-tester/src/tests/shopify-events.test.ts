@@ -42,7 +42,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     expect(listener).toHaveBeenCalledWith(eventData);
   });
 
-  it('fires every listener registered for the same event', () => {
+  it('fires all listeners registered for the same event', () => {
     const extension = setUpExt();
     const shopify = (globalThis as any).shopify;
     const listenerA = jest.fn();

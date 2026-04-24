@@ -201,10 +201,7 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
     (globalThis as any).navigation = this.#navigationImpl;
   }
 
-  #addEventListener = (
-    type: string,
-    listener: (event: any) => void,
-  ): void => {
+  #addEventListener = (type: string, listener: (event: any) => void): void => {
     let set = this.#eventListeners.get(type);
     if (!set) {
       set = new Set();
