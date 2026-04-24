@@ -89,7 +89,7 @@ export interface AddressAutocompleteStandardApi<
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#properties-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
