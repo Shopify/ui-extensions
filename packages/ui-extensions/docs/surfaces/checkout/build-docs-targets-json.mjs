@@ -11,11 +11,10 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Find the generated_docs_data.json file to determine output location
+// Output targets.json next to generated_docs_data_v2.json (wherever it lives).
 function findGeneratedDocsPath() {
   const generatedDir = path.join(__dirname, 'generated');
 
-  // Look for generated_docs_data.json recursively
   function findFile(dir) {
     const files = fs.readdirSync(dir);
     for (const file of files) {
@@ -24,7 +23,7 @@ function findGeneratedDocsPath() {
       if (stat.isDirectory()) {
         const result = findFile(fullPath);
         if (result) return result;
-      } else if (file === 'generated_docs_data.json') {
+      } else if (file === 'generated_docs_data_v2.json') {
         return path.dirname(fullPath);
       }
     }
@@ -32,31 +31,13 @@ function findGeneratedDocsPath() {
   }
 
   const docsPath = findFile(generatedDir);
-  return docsPath || generatedDir; // Fallback to generated root if not found
-}
-
-// Accept an API version argument (e.g. 2026-04-rc) to output targets.json into
-// a versioned directory matching the customer-account pattern.
-// Falls back to the directory containing generated_docs_data.json if not provided.
-const apiVersion = process.argv[2];
-
-function resolveOutputPath() {
-  if (apiVersion) {
-    return path.join(
-      __dirname,
-      'generated',
-      'checkout_ui_extensions',
-      apiVersion,
-      'targets.json',
-    );
-  }
-  return path.join(findGeneratedDocsPath(), 'targets.json');
+  return docsPath || generatedDir;
 }
 
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: resolveOutputPath(),
+  outputPath: path.join(findGeneratedDocsPath(), 'targets.json'),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
@@ -349,9 +330,44 @@ function getNestedApis(apiName) {
   }
 }
 
-// No composite API decomposition — StandardApi, CheckoutApi, and OrderConfirmationApi
-// are plain interfaces and are rendered as-is in the targets.json.
-const COMPOSITE_API_DECOMPOSITION = {};
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'BuyerIdentityApi',
+    'BuyerJourneyApi',
+    'CartInstructionsApi',
+    'CartLinesApi',
+    'CheckoutTokenApi',
+    'CostApi',
+    'CustomerPrivacyApi',
+    'DeliveryApi',
+    'DiscountsApi',
+    'ExtensionApi',
+    'GiftCardsApi',
+    'LocalizationApi',
+    'LocalizedFieldsApi',
+    'MetafieldsApi',
+    'NoteApi',
+    'PaymentsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
+  CheckoutApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'CartLinesApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+  ],
+};
 
 function parseApis(apiString) {
   const apisSet = new Set();
