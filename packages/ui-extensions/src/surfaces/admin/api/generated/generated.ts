@@ -37,7 +37,7 @@ type MergeGeneratedIntentResponse<BaseIntents, Variants> =
                   callback: (value: GeneratedRequest | null) => void,
                 ) => () => void;
               };
-        } & (Variant extends {response: infer GeneratedResponse}
+        } & (Variant extends {response?: infer GeneratedResponse}
             ? BaseIntents extends {response: infer BaseResponse}
               ? {
                   response: Omit<NonNullable<BaseResponse>, 'ok'> &

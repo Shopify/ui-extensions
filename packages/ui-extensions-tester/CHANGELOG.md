@@ -1,5 +1,14 @@
 # @shopify/ui-extensions-tester
 
+## 2026.7.0-rc.3
+
+### Patch Changes
+
+- [#4349](https://github.com/Shopify/ui-extensions/pull/4349) [`f2b2b10`](https://github.com/Shopify/ui-extensions/commit/f2b2b10e99c4672c38b83cc048c2de93abbb7444) Thanks [@vividviolet](https://github.com/vividviolet)! - Publish package with admin.app.home.render target
+
+- Updated dependencies [[`234aead`](https://github.com/Shopify/ui-extensions/commit/234aead78ce9ac90077a67fbc219897832aafd74), [`ea1b6f4`](https://github.com/Shopify/ui-extensions/commit/ea1b6f4c725cc61efa03f4d859ba82ea3d50c2d1), [`f2b2b10`](https://github.com/Shopify/ui-extensions/commit/f2b2b10e99c4672c38b83cc048c2de93abbb7444)]:
+  - @shopify/ui-extensions@2026.7.0-rc.3
+
 ## 2026.7.0-rc.2
 
 ### Patch Changes
