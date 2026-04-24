@@ -689,7 +689,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The buyer's language, country, currency, and timezone context. For
    * formatting and translation helpers, use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#properties-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
