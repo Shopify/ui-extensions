@@ -690,7 +690,7 @@ export interface ToastApi {
  */
 export interface IntentQueryOptions {
   /**
-   * The resource identifier for edit actions (e.g. `gid://shopify/SubscriptionContract/123`).
+   * The resource identifier for edit actions (such as `gid://shopify/SubscriptionContract/123`).
    */
   value?: string;
   /**
@@ -725,7 +725,7 @@ export interface IntentQuery extends IntentQueryOptions {
    */
   action: IntentAction;
   /**
-   * The resource type (e.g. `shopify/SubscriptionContract`).
+   * The resource type (such as `shopify/SubscriptionContract`).
    */
   type: string;
 }

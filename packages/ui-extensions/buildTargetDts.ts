@@ -77,7 +77,7 @@ function createInitialTargetDefinition({
       : ''
   }${
     surface === 'point-of-sale'
-      ? `export * from '../events';\n${
+      ? `export type * from '../events';\n${
           isDataTarget
             ? `export type {BackgroundShopifyGlobal as ShopifyGlobal} from '../globals';\n`
             : ''
