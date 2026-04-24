@@ -9,6 +9,7 @@ import type {
 import type {
   ExtensionTarget as PosExtensionTarget,
   ExtensionTargets as PointOfSaleExtensionTargets,
+  ShopifyEventMap as PosEventMap,
 } from '@shopify/ui-extensions/point-of-sale';
 import type {
   CustomerAccountExtensionTarget,
@@ -41,6 +42,16 @@ export type ApiForTarget<T extends AnyExtensionTarget> =
     : AllExtensionTargets[T] extends (data: infer D) => unknown
     ? D
     : never;
+
+/**
+ * Maps an extension target to the event map available via
+ * `shopify.addEventListener` on that surface.
+ *
+ * - POS targets: the POS `ShopifyEventMap`.
+ * - Other surfaces: no host events, so the map is empty.
+ */
+export type EventMapForTarget<T extends AnyExtensionTarget> =
+  T extends PosExtensionTarget ? PosEventMap : Record<string, never>;
 
 export function isCheckoutTarget(
   target: string,

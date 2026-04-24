@@ -1,7 +1,11 @@
 import * as fs from 'fs';
 import * as path from 'path';
 
-import type {AnyExtensionTarget, ApiForTarget} from './targets';
+import type {
+  AnyExtensionTarget,
+  ApiForTarget,
+  EventMapForTarget,
+} from './targets';
 import {isCheckoutTarget} from './targets';
 import {createMockTargetApi} from './mocks/target-apis';
 import {createMockNavigation, type Navigation} from './navigation';
@@ -99,12 +103,26 @@ interface BaseExtensionHarness<T extends AnyExtensionTarget> {
    * are ignored, and thrown errors are caught per-listener so one bad
    * listener doesn't block the others.
    *
+   * The `event` argument must be a real `Event` instance, matching what
+   * the host dispatches at runtime. Construct it with `new Event(type)`
+   * and attach payload fields via `Object.assign`:
+   *
    * ```ts
    * shopify.addEventListener('transactioncomplete', (event) => { ... });
-   * extension.dispatch('transactioncomplete', { transaction: {...} });
+   *
+   * const event = Object.assign(new Event('transactioncomplete'), {
+   *   transactionType: 'Sale',
+   *   orderId: 1,
+   *   grandTotal: { amount: 10, currency: 'USD' },
+   *   // ...
+   * });
+   * extension.dispatch('transactioncomplete', event);
    * ```
    */
-  dispatch(type: string, event?: unknown): void;
+  dispatch<K extends keyof EventMapForTarget<T>>(
+    type: K,
+    event: EventMapForTarget<T>[K],
+  ): void;
 }
 
 /**
@@ -217,8 +235,11 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
     this.#eventListeners.get(type)?.delete(listener);
   };
 
-  dispatch(type: string, event?: unknown): void {
-    const listeners = this.#eventListeners.get(type);
+  dispatch<K extends keyof EventMapForTarget<T>>(
+    type: K,
+    event: EventMapForTarget<T>[K],
+  ): void {
+    const listeners = this.#eventListeners.get(type as string);
     if (!listeners) return;
     // Snapshot so listeners that register/unregister during dispatch
     // don't mutate the iteration.

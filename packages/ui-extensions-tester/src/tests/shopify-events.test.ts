@@ -1,13 +1,41 @@
+import type {
+  CashTrackingSessionStartEvent,
+  TransactionCompleteEvent,
+} from '@shopify/ui-extensions/point-of-sale';
+
 import {getExtension} from '../index';
 
 import {createTestSandbox, type TestSandbox} from './helpers';
+
+function makeTransactionCompleteEvent(): TransactionCompleteEvent {
+  return Object.assign(new Event('transactioncomplete'), {
+    transactionType: 'Sale' as const,
+    discounts: [],
+    taxTotal: {amount: 0, currency: 'USD'},
+    subtotal: {amount: 0, currency: 'USD'},
+    grandTotal: {amount: 0, currency: 'USD'},
+    paymentMethods: [],
+    balanceDue: {amount: 0, currency: 'USD'},
+    shippingLines: [],
+    taxLines: [],
+    executedAt: '2024-01-01T00:00:00Z',
+    lineItems: [],
+  });
+}
+
+function makeCashTrackingSessionStartEvent(): CashTrackingSessionStartEvent {
+  return Object.assign(new Event('cashtrackingsessionstart'), {
+    id: 1,
+    openingTime: '2024-01-01T00:00:00Z',
+  });
+}
 
 describe('shopify.addEventListener / extension.dispatch', () => {
   let sandbox: TestSandbox;
 
   beforeEach(() => {
     sandbox = createTestSandbox();
-    sandbox.placeToml();
+    sandbox.placeToml({target: 'pos.app.ready.data'});
   });
 
   afterEach(() => {
@@ -15,7 +43,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
   });
 
   function setUpExt() {
-    const extension = getExtension('purchase.checkout.block.render', {
+    const extension = getExtension('pos.app.ready.data', {
       configSearchDir: sandbox.tempDir,
     });
     extension.setUp();
@@ -35,11 +63,11 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     const listener = jest.fn();
     shopify.addEventListener('transactioncomplete', listener);
 
-    const eventData = {transaction: {id: 1}};
-    extension.dispatch('transactioncomplete', eventData);
+    const event = makeTransactionCompleteEvent();
+    extension.dispatch('transactioncomplete', event);
 
     expect(listener).toHaveBeenCalledTimes(1);
-    expect(listener).toHaveBeenCalledWith(eventData);
+    expect(listener).toHaveBeenCalledWith(event);
   });
 
   it('fires all listeners registered for the same event', () => {
@@ -50,10 +78,11 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     shopify.addEventListener('transactioncomplete', listenerA);
     shopify.addEventListener('transactioncomplete', listenerB);
 
-    extension.dispatch('transactioncomplete', 42);
+    const event = makeTransactionCompleteEvent();
+    extension.dispatch('transactioncomplete', event);
 
-    expect(listenerA).toHaveBeenCalledWith(42);
-    expect(listenerB).toHaveBeenCalledWith(42);
+    expect(listenerA).toHaveBeenCalledWith(event);
+    expect(listenerB).toHaveBeenCalledWith(event);
   });
 
   it('does not fire other events when dispatching one', () => {
@@ -64,7 +93,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     shopify.addEventListener('transactioncomplete', target);
     shopify.addEventListener('cashtrackingsessionstart', other);
 
-    extension.dispatch('transactioncomplete', undefined);
+    extension.dispatch('transactioncomplete', makeTransactionCompleteEvent());
 
     expect(target).toHaveBeenCalledTimes(1);
     expect(other).not.toHaveBeenCalled();
@@ -77,7 +106,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     shopify.addEventListener('transactioncomplete', listener);
     shopify.removeEventListener('transactioncomplete', listener);
 
-    extension.dispatch('transactioncomplete', undefined);
+    extension.dispatch('transactioncomplete', makeTransactionCompleteEvent());
 
     expect(listener).not.toHaveBeenCalled();
   });
@@ -89,7 +118,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     shopify.addEventListener('transactioncomplete', listener);
     shopify.addEventListener('transactioncomplete', listener);
 
-    extension.dispatch('transactioncomplete', undefined);
+    extension.dispatch('transactioncomplete', makeTransactionCompleteEvent());
 
     expect(listener).toHaveBeenCalledTimes(1);
   });
@@ -105,7 +134,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     shopify.addEventListener('transactioncomplete', follower);
 
     expect(() =>
-      extension.dispatch('transactioncomplete', undefined),
+      extension.dispatch('transactioncomplete', makeTransactionCompleteEvent()),
     ).not.toThrow();
     expect(throwing).toHaveBeenCalledTimes(1);
     expect(follower).toHaveBeenCalledTimes(1);
@@ -114,7 +143,10 @@ describe('shopify.addEventListener / extension.dispatch', () => {
   it('is a no-op when dispatching an event with no registered listeners', () => {
     const extension = setUpExt();
     expect(() =>
-      extension.dispatch('cashtrackingsessionstart', {}),
+      extension.dispatch(
+        'cashtrackingsessionstart',
+        makeCashTrackingSessionStartEvent(),
+      ),
     ).not.toThrow();
   });
 
@@ -126,7 +158,7 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     extension.tearDown();
 
     extension.setUp();
-    extension.dispatch('transactioncomplete', undefined);
+    extension.dispatch('transactioncomplete', makeTransactionCompleteEvent());
 
     expect(leaked).not.toHaveBeenCalled();
   });

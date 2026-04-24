@@ -58,10 +58,12 @@ function createInitialTargetDefinition({
   buildPath,
   name,
   surface,
+  isDataTarget,
 }: {
   buildPath: string;
   name: string;
   surface: string;
+  isDataTarget: boolean;
 }) {
   const parts = name.replaceAll("'", '').split('.');
   const fileName = `${parts.join('.')}.d.ts`;
@@ -76,7 +78,7 @@ function createInitialTargetDefinition({
   }${
     surface === 'point-of-sale'
       ? `export * from '../events';\n${
-          parts.join('.') === 'pos.app.ready.data'
+          isDataTarget
             ? `export type {BackgroundShopifyGlobal as ShopifyGlobal} from '../globals';\n`
             : ''
         }`
@@ -141,10 +143,12 @@ function getTargets(sourceFile: SourceFile) {
 // Target definitions
 function extractTargetComponents(
   sourceFile: SourceFile,
-): {name: string; components?: string[]}[] {
+): {name: string; components?: string[]; isDataTarget: boolean}[] {
   const extensionTargetArray = getTargets(sourceFile);
   return extensionTargetArray
     .map((extensionTargets) => {
+      const isDataTarget =
+        extensionTargets.getName() === 'DataExtensionTargets';
       return extensionTargets.getProperties().map((property) => {
         const componentsType = property
           .getType()
@@ -166,6 +170,7 @@ function extractTargetComponents(
         return {
           name: property.getName(),
           components,
+          isDataTarget,
         };
       });
     })
@@ -177,15 +182,20 @@ function createTargetDefinition({
   buildPath,
   project,
   surface,
-  target: {name, components},
+  target: {name, components, isDataTarget},
 }: {
   srcPaths: string[];
   buildPath: string;
   project: Project;
   surface: string;
-  target: {name: string; components?: string[]};
+  target: {name: string; components?: string[]; isDataTarget: boolean};
 }) {
-  const targetPath = createInitialTargetDefinition({name, surface, buildPath});
+  const targetPath = createInitialTargetDefinition({
+    name,
+    surface,
+    buildPath,
+    isDataTarget,
+  });
   const targetFile = project.addSourceFileAtPath(targetPath);
   const names = new Set<string>();
 
