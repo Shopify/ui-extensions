@@ -217,6 +217,10 @@ export interface Docs_OrderStatus_AuthenticationStateApi
 export interface Docs_OrderStatus_CartLinesApi
   extends Pick<OrderStatusApi<any>, 'lines'> {}
 
+/**
+ * The API object provided to `customer-account.order-status.cart-line-item.render-after` extension targets for interacting with individual cart line items.
+ * @publicDocs
+ */
 export interface Docs_CartLineItem_CartLinesApi
   extends Pick<CartLineItemApi, 'target'> {}
 

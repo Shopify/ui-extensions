@@ -1440,17 +1440,11 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 /** @publicDocs */
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (such as clicks) on this component.
-	 *
-	 * See `command` for how to control the behavior of the target.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
 	 */
 	commandFor?: string;
 	/**
-	 * Sets the action the `commandFor` should take when this clickable is activated.
-	 *
-	 * See the documentation of particular components for the actions they support.
+	 * Sets the action the `commandFor` target should take when this component is activated.
 	 *
 	 * - `--auto`: A default action for the target component.
 	 * - `--show`: Shows the target component.
@@ -1458,9 +1452,9 @@ export interface InteractionProps {
 	 * - `--toggle`: Toggles the target component.
 	 * - `--copy`: Copies the target ClipboardItem.
 	 *
-	 * @default '--auto'
+	 * Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+	 * @default '--auto'
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
