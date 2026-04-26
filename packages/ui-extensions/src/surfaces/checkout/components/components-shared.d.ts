@@ -1413,7 +1413,7 @@ export interface InteractionProps {
 	 */
 	commandFor?: string;
 	/**
-	 * Sets the action the [`command`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. Available options:
+	 * Sets the action the `commandFor` target should take when this component is activated. Available options:
 	 *
 	 * - `'--auto'`: Performs the default action appropriate for the target component.
 	 * - `'--show'`: Displays the target component if it's currently hidden.
@@ -1421,7 +1421,7 @@ export interface InteractionProps {
 	 * - `'--toggle'`: Alternates the target component between visible and hidden states.
 	 * - `'--copy'`: Copies the target clipboard item.
 	 *
-	 * The supported actions vary by target component type.
+	 * The supported actions vary by target component type. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
 	 *
 	 * @default '--auto'
 	 */
