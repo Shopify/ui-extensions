@@ -5469,7 +5469,7 @@ interface LinkEvents {
 /**
  * The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.
  *
- * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) instead.
+ * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.
  * @publicDocs
  */
 interface Link {
@@ -6589,7 +6589,7 @@ interface ModalSlots {
  *
  * Modals block interaction with the underlying interface until the merchant resolves the modal content.
  *
- * Modals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/modal#events).
+ * Modals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/modal#events).
  * @publicDocs
  */
 interface Modal {
