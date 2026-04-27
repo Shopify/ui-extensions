@@ -367,6 +367,20 @@ const COMPOSITE_API_DECOMPOSITION = {
     'MetafieldsApi',
     'NoteApi',
   ],
+  AddressAutocompleteStandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'CheckoutTokenApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'MetafieldsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
 };
 
 function parseApis(apiString) {
