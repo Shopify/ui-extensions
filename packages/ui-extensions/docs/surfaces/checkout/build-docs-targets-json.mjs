@@ -387,6 +387,20 @@ const COMPOSITE_API_DECOMPOSITION = {
   // OrderConfirmationApi is the top-level API object for purchase.thank-you targets.
   // It decomposes to 'OrderApi' to match the customer-account surface naming pattern.
   OrderConfirmationApi: ['OrderApi'],
+  AddressAutocompleteStandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'CheckoutTokenApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'MetafieldsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
 };
 
 function parseApis(apiString) {
