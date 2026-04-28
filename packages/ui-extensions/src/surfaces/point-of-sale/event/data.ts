@@ -12,5 +12,9 @@ export type {
 
 export type {CartUpdateEventData} from './data/CartUpdateEventData';
 
+export type {SaleTransactionData} from './data/SaleTransactionData';
+export type {ReturnTransactionData} from './data/ReturnTransactionData';
+export type {ExchangeTransactionData} from './data/ExchangeTransactionData';
+
 export type {Device} from '../types/device';
 export type {Money} from '../types/money';
