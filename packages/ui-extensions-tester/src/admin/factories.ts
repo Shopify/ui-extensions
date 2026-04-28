@@ -7,6 +7,7 @@ import type {
   ProductDetailsConfigurationApi,
   Intents,
   ToastApi,
+  AppApi,
 } from '@shopify/ui-extensions/admin';
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
@@ -112,10 +113,17 @@ function createMockToastApi(): ToastApi {
   };
 }
 
+function createMockAppApi(): AppApi {
+  return {
+    extensions: async () => [],
+  };
+}
+
 function createAppHomeMock<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardRenderingApi(target),
     toast: createMockToastApi(),
+    app: createMockAppApi(),
   };
 }
 
