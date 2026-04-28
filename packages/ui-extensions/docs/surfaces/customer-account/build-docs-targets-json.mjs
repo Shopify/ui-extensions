@@ -438,9 +438,42 @@ function getNestedApis(apiName) {
 // StandardApi and OrderStatusApi are plain interfaces (not type intersections), so the
 // decomposition must be explicit, matching the Docs_Standard_*Api / Docs_OrderStatus_*Api
 // interfaces defined in src/surfaces/customer-account/api/docs.ts.
-// No composite API decomposition — StandardApi and OrderStatusApi are plain interfaces
-// and are rendered as-is in the targets.json.
-const COMPOSITE_API_DECOMPOSITION = {};
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AnalyticsApi',
+    'AuthenticatedAccountApi',
+    'CustomerAccountApi',
+    'CustomerPrivacyApi',
+    'ExtensionApi',
+    'IntentsApi',
+    'LocalizationApi',
+    'NavigationApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'StorageApi',
+    'StorefrontApi',
+    'ToastApi',
+    'VersionApi',
+  ],
+  OrderStatusApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'AuthenticationStateApi',
+    'BuyerIdentityApi',
+    'CartLinesApi',
+    'CheckoutSettingsApi',
+    'CostApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+    'OrderApi',
+    'OrderStatusLocalizationApi',
+    'RequireLoginApi',
+    'ShopApi',
+  ],
+};
 
 function parseApis(apiString) {
   const apisSet = new Set();
