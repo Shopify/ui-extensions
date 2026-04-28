@@ -1,0 +1,165 @@
+name: RC port tracker
+
+on:
+  pull_request:
+    types: [opened, reopened, closed]
+    branches:
+      - 20[0-9][0-9]-[01][1470]
+      - 20[0-9][0-9]-[01][1470]-rc
+
+permissions:
+  pull-requests: write
+  issues: write
+
+jobs:
+  label-stable-pr:
+    name: Label PRs against stable branches
+    if: |
+      (github.event.action == 'opened' || github.event.action == 'reopened') &&
+      !endsWith(github.event.pull_request.base.ref, '-rc') &&
+      !startsWith(github.head_ref, 'changeset-release/')
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const LABEL = 'needs-rc-port';
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+
+            const branches = await github.paginate(github.rest.repos.listBranches, {
+              owner, repo, per_page: 100,
+            });
+            const branchNames = branches.map(b => b.name);
+
+            const stableBranches = branchNames
+              .filter(n => /^\d{4}-(?:01|04|07|10)$/.test(n))
+              .sort();
+            const latestStable = stableBranches[stableBranches.length - 1];
+
+            if (pr.base.ref !== latestStable) return;
+
+            await github.rest.issues.addLabels({
+              owner, repo, issue_number: pr.number, labels: [LABEL],
+            });
+
+            if (context.payload.action !== 'opened') return;
+
+            const rcBranches = branchNames
+              .filter(n => /^\d{4}-(?:01|04|07|10)-rc$/.test(n))
+              .sort();
+            const latestRc = rcBranches[rcBranches.length - 1];
+            const rcLabel = latestRc ? `\`${latestRc}\`` : 'the current RC branch';
+
+            const body = [
+              `This PR targets a stable release branch (\`${pr.base.ref}\`). Once merged, the change typically also needs to be forward-ported to ${rcLabel} so it ships in the next release.`,
+              '',
+              `When you open the forward-port PR, include a line like this in its body so the \`${LABEL}\` label gets removed automatically when that PR merges:`,
+              '',
+              '```',
+              `Forward-port of #${pr.number}`,
+              '```',
+              '',
+              'Accepted formats (comma-separated for multiple):',
+              `- \`#${pr.number}\``,
+              `- \`GH-${pr.number}\``,
+              `- \`${pr.number}\``,
+              `- \`https://github.com/${owner}/${repo}/pull/${pr.number}\``,
+              '',
+              `If a forward-port isn't needed (e.g., the change is stable-only), you can remove the \`${LABEL}\` label manually.`,
+            ].join('\n');
+
+            await github.rest.issues.createComment({
+              owner, repo, issue_number: pr.number, body,
+            });
+
+  process-rc-merge:
+    name: Process forward-port references on RC merge
+    if: |
+      github.event.action == 'closed' &&
+      github.event.pull_request.merged == true &&
+      endsWith(github.event.pull_request.base.ref, '-rc')
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: |
+            const LABEL = 'needs-rc-port';
+            const { owner, repo } = context.repo;
+            const pr = context.payload.pull_request;
+            const body = pr.body || '';
+
+            const refs = new Set();
+            const crossRepo = [];
+
+            const blockRegex = /forward-port\s+of:?\s*(.*?)(?:\n\s*\n|$)/gis;
+            for (const match of body.matchAll(blockRegex)) {
+              const tokens = match[1].split(/[\s,;]+/).filter(Boolean);
+              for (const token of tokens) {
+                if (/^(?:-|\*|and|&)$/i.test(token)) continue;
+
+                const url = token.match(/^https?:\/\/github\.com\/([^/]+)\/([^/]+)\/pull\/(\d+)\/?$/i);
+                if (url) {
+                  const [, urlOwner, urlRepo, num] = url;
+                  if (urlOwner.toLowerCase() === owner.toLowerCase() &&
+                      urlRepo.toLowerCase() === repo.toLowerCase()) {
+                    refs.add(parseInt(num, 10));
+                  } else {
+                    crossRepo.push(token);
+                  }
+                  continue;
+                }
+
+                const num = token.match(/^(?:#|GH-)?(\d+)$/i);
+                if (num) refs.add(parseInt(num[1], 10));
+              }
+            }
+
+            if (crossRepo.length) {
+              await github.rest.issues.createComment({
+                owner, repo, issue_number: pr.number,
+                body: `⚠️ The following forward-port references point to a different repository and were ignored:\n${crossRepo.map(r => `- ${r}`).join('\n')}`,
+              });
+            }
+
+            if (refs.size === 0) return;
+
+            for (const num of refs) {
+              try {
+                const { data: ref } = await github.rest.pulls.get({
+                  owner, repo, pull_number: num,
+                });
+
+                if (/-rc$/.test(ref.base.ref)) {
+                  await github.rest.issues.createComment({
+                    owner, repo, issue_number: pr.number,
+                    body: `⚠️ Skipping #${num}: it targets \`${ref.base.ref}\`, not a stable branch.`,
+                  });
+                  continue;
+                }
+
+                try {
+                  await github.rest.issues.removeLabel({
+                    owner, repo, issue_number: num, name: LABEL,
+                  });
+                } catch (e) {
+                  if (e.status !== 404) throw e;
+                }
+
+                await github.rest.issues.createComment({
+                  owner, repo, issue_number: num,
+                  body: `✓ Forward-ported in #${pr.number}.`,
+                });
+              } catch (e) {
+                if (e.status === 404) {
+                  await github.rest.issues.createComment({
+                    owner, repo, issue_number: pr.number,
+                    body: `⚠️ Forward-port reference #${num} could not be found.`,
+                  });
+                  continue;
+                }
+                throw e;
+              }
+            }
