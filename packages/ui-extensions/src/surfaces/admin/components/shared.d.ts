@@ -72,6 +72,7 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    */
   src?: string;
 }
+interface AppNavProps$1 extends GlobalProps {}
 /**
  * @publicDocs
  */

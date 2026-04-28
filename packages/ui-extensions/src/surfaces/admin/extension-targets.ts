@@ -681,8 +681,8 @@ export interface ExtensionTargets {
    * Renders an admin extension on the app home page.
    */
   'admin.app.home.render': RenderExtension<
-    AppHomeApi<'admin.app.home.render'>,
-    FormExtensionComponents | 'Modal' | 'Page'
+    StandardApi<'admin.app.home.render'>,
+    FormExtensionComponents | 'Modal' | 'Page' | 'AppNav'
   >;
 }
 
