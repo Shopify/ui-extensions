@@ -5,15 +5,6 @@ import {fileURLToPath} from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const API_VERSION = process.argv[2];
-
-if (!API_VERSION) {
-  console.error('Error: API_VERSION is required.');
-  console.error('Usage: node build-docs-targets-json.mjs <API_VERSION>');
-  console.error('Example: node build-docs-targets-json.mjs 2025-10');
-  process.exit(1);
-}
-
 // All checkout components
 let allComponents = [];
 
@@ -279,24 +270,30 @@ function splitByTopLevelComma(str) {
 // APIs that are composites — list their documented constituent APIs instead of themselves
 const COMPOSITE_API_DECOMPOSITION = {
   StandardApi: [
+    'AddressesApi',
     'AnalyticsApi',
+    'AttributesApi',
     'BuyerIdentityApi',
     'BuyerJourneyApi',
     'CartInstructionsApi',
-    'CheckoutSettingsApi',
+    'CartLinesApi',
     'CheckoutTokenApi',
     'CostApi',
     'CustomerPrivacyApi',
     'DeliveryApi',
+    'DiscountsApi',
     'ExtensionApi',
+    'GiftCardsApi',
     'LocalizationApi',
     'LocalizedFieldsApi',
+    'MetafieldsApi',
+    'NoteApi',
     'PaymentsApi',
-    'StorefrontApi',
     'SessionTokenApi',
     'SettingsApi',
     'ShopApi',
     'StorageApi',
+    'StorefrontApi',
     'UiApi',
   ],
   CheckoutApi: [
@@ -309,6 +306,20 @@ const COMPOSITE_API_DECOMPOSITION = {
     'NoteApi',
   ],
   OrderConfirmationApi: ['OrderApi'],
+  AddressAutocompleteStandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'CheckoutTokenApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'MetafieldsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
 };
 
 function parseApis(apiString) {
@@ -472,10 +483,7 @@ try {
   }
 
   // Write to output file
-  const outputPath = path.join(
-    __dirname,
-    `generated/checkout_ui_extensions/${API_VERSION}/targets.json`,
-  );
+  const outputPath = path.join(__dirname, 'generated/targets.json');
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
