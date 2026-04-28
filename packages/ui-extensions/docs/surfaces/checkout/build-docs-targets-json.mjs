@@ -350,24 +350,30 @@ function getNestedApis(apiName) {
 // APIs that are composites — list their documented constituent APIs instead of themselves
 const COMPOSITE_API_DECOMPOSITION = {
   StandardApi: [
+    'AddressesApi',
     'AnalyticsApi',
+    'AttributesApi',
     'BuyerIdentityApi',
     'BuyerJourneyApi',
     'CartInstructionsApi',
-    'CheckoutSettingsApi',
+    'CartLinesApi',
     'CheckoutTokenApi',
     'CostApi',
     'CustomerPrivacyApi',
     'DeliveryApi',
+    'DiscountsApi',
     'ExtensionApi',
+    'GiftCardsApi',
     'LocalizationApi',
     'LocalizedFieldsApi',
+    'MetafieldsApi',
+    'NoteApi',
     'PaymentsApi',
-    'QueryApi',
     'SessionTokenApi',
     'SettingsApi',
     'ShopApi',
     'StorageApi',
+    'StorefrontApi',
   ],
   CheckoutApi: [
     'AddressesApi',
@@ -381,6 +387,20 @@ const COMPOSITE_API_DECOMPOSITION = {
   // OrderConfirmationApi is the top-level API object for purchase.thank-you targets.
   // It decomposes to 'OrderApi' to match the customer-account surface naming pattern.
   OrderConfirmationApi: ['OrderApi'],
+  AddressAutocompleteStandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'CheckoutTokenApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'MetafieldsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
 };
 
 function parseApis(apiString) {
