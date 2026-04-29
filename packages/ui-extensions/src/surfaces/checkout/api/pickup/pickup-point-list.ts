@@ -3,9 +3,9 @@ import type {SubscribableSignalLike} from '../../shared';
 /** @publicDocs */
 export interface PickupPointListApi {
   /**
-   * Whether the location search form is currently visible to the buyer.
-   * Use this to conditionally render UI that depends on the buyer actively
-   * searching for pickup points.
+   * Reflects which view was active when the extension loaded. When the
+   * buyer moves to the next view, the extension restarts with the
+   * current value rather than updating in place.
    */
   isLocationFormVisible: SubscribableSignalLike<boolean>;
 }
