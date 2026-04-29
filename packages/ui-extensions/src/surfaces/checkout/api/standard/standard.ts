@@ -536,6 +536,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * All available payment options.
+   *
+   * The set of payment options can change when the buyer updates their
+   * address or cart, so subscribe to changes rather than reading once
+   * during initialization. Each option exposes `handle` and `type` only.
+   * Provider names, logos, fees, and installment terms aren't available.
    */
   availablePaymentOptions: StatefulRemoteSubscribable<PaymentOption[]>;
 
@@ -661,6 +666,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Payment options selected by the buyer.
+   *
+   * Each option exposes `handle` and `type` only. Provider names, logos,
+   * fees, and installment terms aren't available.
    */
   selectedPaymentOptions: StatefulRemoteSubscribable<SelectedPaymentOption[]>;
 
