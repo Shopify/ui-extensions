@@ -1,3 +1,5 @@
+// blah
+
 /**
  * A monetary value represented as a string (for example, `"19.99"` or `"0.00"`). The format always includes the decimal point and cents, even for whole dollar amounts. Use this type for prices, costs, and other currency values.
  * @publicDocs
