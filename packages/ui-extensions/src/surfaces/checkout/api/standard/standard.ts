@@ -439,11 +439,14 @@ export interface Localization {
   country: SubscribableSignalLike<Country | undefined>;
 
   /**
-   * The [market](https://shopify.dev/docs/apps/build/markets) context of the checkout, carried over from the cart context. Markets group countries and regions with shared pricing, languages, and domains. It updates when the buyer changes the country of their shipping address. The value is `undefined` if the market is unknown.
+   * The [market](https://shopify.dev/docs/apps/build/markets) context of
+   * the checkout, carried over from the cart context. Markets group
+   * countries and regions with shared pricing, languages, and domains. It
+   * updates when the buyer changes the country of their shipping address.
+   * The value is `undefined` if the market is unknown.
    *
-   * > Caution: Deprecated as of version `2025-04`. Merchants now manage which extensions load for each market, so extensions no longer need to check this value.
-   *
-   * @deprecated Deprecated as of version `2025-04`
+   * @deprecated Merchants now manage which extensions load for each
+   * market, so extensions no longer need to check this value.
    */
   market: SubscribableSignalLike<Market | undefined>;
 }
@@ -587,8 +590,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
-   * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs aren't available.
-   *  See the [update guide](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples) for more information.
+   * > Caution: Check instructions before calling select APIs, as some
+   * > may not be available. See the [update guide](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)
+   * > for more information.
    *
    */
   instructions: SubscribableSignalLike<CartInstructions>;
@@ -690,7 +694,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 
