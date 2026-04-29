@@ -61,6 +61,9 @@ export interface NoteChangeResultError {
   /**
    * A message that explains the error. This message is useful for debugging.
    * It isn't localized and shouldn't be displayed to the buyer.
+   *
+   * Render your own localized error text rather than displaying this message
+   * to the buyer.
    */
   message: string;
 }
@@ -176,6 +179,9 @@ export interface CartLineChangeResultError {
   /**
    * A message that explains the error. This message is useful for debugging.
    * It isn't localized and shouldn't be displayed to the buyer.
+   *
+   * Render your own localized error text rather than displaying this message
+   * to the buyer.
    */
   message: string;
 }
@@ -450,6 +456,9 @@ export interface GiftCardChangeResultError {
   /**
    * A message that explains the error. This message is useful for debugging.
    * It isn't localized and shouldn't be displayed to the buyer.
+   *
+   * Render your own localized error text rather than displaying this message
+   * to the buyer.
    */
   message: string;
 }
@@ -541,6 +550,9 @@ export interface MetafieldChangeResultError {
   /**
    * A message that explains the error. This message is useful for debugging.
    * It isn't localized and shouldn't be displayed to the buyer.
+   *
+   * Render your own localized error text rather than displaying this message
+   * to the buyer.
    */
   message: string;
 }
@@ -653,6 +665,9 @@ export interface CheckoutApi {
   /**
    * Adds, removes, or updates line items in the cart. The returned promise resolves when the change has been applied by the server, and the [`lines`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-lines#standardapi-propertydetail-lines) property updates with the new state.
    *
+   * Accepts a single change per call. To make multiple changes, call this
+   * method separately for each one.
+   *
    * > Note: This method returns an error if the [cart instruction](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#standardapi-propertydetail-instructions) `lines.canAddCartLine` is false, or the buyer is using an accelerated checkout method, such as Apple Pay or Google Pay.
    */
   applyCartLinesChange(change: CartLineChange): Promise<CartLineChangeResult>;
@@ -671,6 +686,10 @@ export interface CheckoutApi {
 
   /**
    * Adds or removes a gift card from the checkout. The returned promise resolves when the change has been applied by the server, and the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/gift-cards#standardapi-propertydetail-appliedgiftcards) property updates with the new state.
+   *
+   * Unlike other write operations, gift card changes aren't gated by a cart
+   * instruction flag. The method succeeds in all contexts except accelerated
+   * checkout, where it returns an error result.
    *
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#network-access) if your extension retrieves gift card codes through a network call.

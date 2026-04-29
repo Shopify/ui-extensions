@@ -157,6 +157,8 @@ export interface Market {
 }
 
 /**
+ * Provides raw localization data only. The `i18n` translation and formatting
+ * helpers from the Localization API aren't available on order status targets.
  * @publicDocs
  */
 export interface OrderStatusLocalization {
@@ -245,12 +247,18 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
 
   /**
    * The buyer who placed the order, including their customer account, email, phone number, and B2B purchasing company. Use this to personalize the **Order status** page or identify B2B orders.
+   *
+   * Reflects the customer account at the time the order was placed. Doesn't
+   * update if account details change afterward.
    */
   buyerIdentity?: OrderStatusBuyerIdentity;
 
   /**
    * The checkout settings that were active when the buyer placed the order, such as
    * whether order notes and login are enabled.
+   *
+   * Returns the merchant's checkout configuration at the time of checkout.
+   * Doesn't reflect updates made after the order was placed.
    */
   checkoutSettings: SubscribableSignalLike<CheckoutSettings>;
 
@@ -272,6 +280,9 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * - `CartCodeDiscountAllocation`: A discount the buyer applied by entering a code at checkout.
    * - `CartAutomaticDiscountAllocation`: A discount the merchant configured in Shopify admin to apply automatically.
    * - `CartCustomDiscountAllocation`: A discount created programmatically by a [Shopify Function](/docs/apps/build/functions).
+   *
+   * Returns order-level discounts only. For per-line discount allocations,
+   * read from individual cart lines via the Cart Lines API.
    */
   discountAllocations: SubscribableSignalLike<CartDiscountAllocation[]>;
 
@@ -329,12 +340,18 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * The shipping address that the buyer provided for the order. This is where physical goods
    * are delivered. The value is `undefined` if the order contains only digital products or
    * if a shipping address wasn't required.
+   *
+   * Reflects the state at the time the order was placed. Doesn't update if the
+   * customer changes their account address afterward.
    */
   shippingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
   /**
    * The billing address associated with the buyer's payment method for the order. The value
    * is `undefined` if the order doesn't have a billing address on file.
+   *
+   * Reflects the state at the time the order was placed. Doesn't update if the
+   * customer changes their account address afterward.
    */
   billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
@@ -470,6 +487,9 @@ export interface AppliedGiftCard {
 
   /**
    * The remaining balance of the applied gift card after the order was placed.
+   *
+   * Reflects the remaining amount at the time the order was placed. Doesn't
+   * update if the gift card is used for subsequent purchases.
    */
   balance: Money;
 }
