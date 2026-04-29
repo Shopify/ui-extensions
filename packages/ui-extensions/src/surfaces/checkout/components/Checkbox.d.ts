@@ -11,11 +11,20 @@
 import type {CheckboxProps$1} from './components-shared.d.ts';
 
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+    /**
+     * A unique identifier for this element within its parent. This is used by the rendering engine for efficient reconciliation when lists change.
+     */
     key?: preact.Key;
+    /**
+     * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+     */
     ref?: preact.Ref<TClass>;
+    /**
+     * Assigns the element to a named slot in a parent component that uses slot-based composition patterns.
+     */
     slot?: Lowercase<string>;
 }
 /**
@@ -33,8 +42,14 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 
 declare const tagName = "s-checkbox";
 /** @publicDocs */
-export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
+export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
+    /**
+     * The visual content to use as the control label. Use a string to provide a simple text label displayed to the user.
+     *
+     * If a `label` slot is also provided, the slot content takes precedence. [Learn more about slots](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/checkbox#slots-propertydetail-label).
+     */
+    label?: string;
 }
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
@@ -50,6 +65,16 @@ export interface CheckboxElementEvents {
 export interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
+/** @publicDocs */
+export interface CheckboxElementSlots {
+    /**
+     * The visual content to use as the control label.
+     *
+     * Use an `HTMLElement` as a rich control label composed of elements. Only an `s-text` element is supported with plain text and `s-link` as its only allowed children. Any other elements are stripped while preserving their text content.
+     */
+    label?: HTMLElement;
+}
+/** @publicDocs */
 export interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
@@ -65,4 +90,4 @@ declare module 'preact' {
     }
 }
 
-export type { CheckboxElement, CheckboxElementEvents, CheckboxElementProps, CheckboxEvents, CheckboxProps };
+export type { CheckboxElement, CheckboxElementEvents, CheckboxElementProps, CheckboxElementSlots, CheckboxEvents, CheckboxProps };
