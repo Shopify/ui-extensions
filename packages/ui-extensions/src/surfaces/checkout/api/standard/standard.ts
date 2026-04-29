@@ -511,8 +511,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
-   * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs are not available.
-   *  See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples) for more information.
+   * > Caution: Check instructions before calling select APIs, as some
+   * > may not be available. See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples)
+   * > for more information.
    *
    */
   instructions: StatefulRemoteSubscribable<CartInstructions>;
@@ -601,7 +602,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 
@@ -640,7 +641,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
    *
    * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
+   * > Cart metafields are only available on carts created via the Storefront API.
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
@@ -714,8 +715,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * > Caution: Data persistence isn't guaranteed and storage is reset when the customer starts a new checkout.
    *
-   * Data is shared across all activated extension targets of this extension. In versions 2023-07 and earlier,
-   * each activated extension target had its own storage.
+   * Data is shared across all activated extension targets of this extension.
    */
   storage: Storage;
 
@@ -901,10 +901,7 @@ export interface Shop {
    */
   name: string;
   /**
-   * The primary storefront URL.
-   *
-   * > Caution:
-   * > As of version `2024-04` this value will no longer have a trailing slash.
+   * The primary storefront URL. The URL does not include a trailing slash.
    */
   storefrontUrl?: string;
   /**
