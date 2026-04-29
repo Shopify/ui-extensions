@@ -598,7 +598,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   attributes: SubscribableSignalLike<Attribute[]>;
 
   /**
-   * All payment options available to the buyer for this checkout, such as credit cards, wallets, and local payment methods. The list depends on the shop's payment configuration and the buyer's region.
+   * All payment options available to the buyer for this checkout, such as
+   * credit cards, wallets, and local payment methods. The list depends on
+   * the shop's payment configuration and the buyer's region.
+   *
+   * The set of payment options can change when the buyer updates their
+   * address or cart, so subscribe to changes rather than reading once
+   * during initialization. Each option exposes `handle` and `type` only.
+   * Provider names, logos, fees, and installment terms aren't available.
    */
   availablePaymentOptions: SubscribableSignalLike<PaymentOption[]>;
 
@@ -729,7 +736,13 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * The payment options the buyer has currently selected. This updates as the buyer changes their payment method. The array can contain multiple entries when the buyer splits payment across methods (for example, a gift card and a credit card).
+   * The payment options the buyer has currently selected. This updates as
+   * the buyer changes their payment method. The array can contain multiple
+   * entries when the buyer splits payment across methods (for example, a
+   * gift card and a credit card).
+   *
+   * Each option exposes `handle` and `type` only. Provider names, logos,
+   * fees, and installment terms aren't available.
    */
   selectedPaymentOptions: SubscribableSignalLike<SelectedPaymentOption[]>;
 
