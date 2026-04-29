@@ -72,7 +72,16 @@ interface AdminPrintActionProps$1 extends GlobalProps {
    */
   src?: string;
 }
-interface AppNavProps$1 extends GlobalProps {}
+interface AppNavProps$1 extends GlobalProps {
+  /**
+   * The navigation items to inject into the external host navigation.
+   * One child Link is required and represents the home/root navigation item.
+   *
+   * @implementation This does not render UI
+   * @implementation This item is not rendered as a clickable link but configures the home route.
+   */
+  children?: ComponentChildren;
+}
 /**
  * @publicDocs
  */
