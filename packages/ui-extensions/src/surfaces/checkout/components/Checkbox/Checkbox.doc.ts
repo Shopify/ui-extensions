@@ -5,7 +5,7 @@ import {createComponentDoc} from '../../../../docs/shared/component-definitions'
 
 const data: ReferenceEntityTemplateSchema = createComponentDoc({
   ...sharedContent,
-  definitions: {properties: true, events: true},
+  definitions: {properties: true, events: true, slots: true},
 });
 
 export default data;
