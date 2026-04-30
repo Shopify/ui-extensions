@@ -696,8 +696,7 @@ export interface CheckoutApi {
    * Adds or removes a gift card from the checkout. The returned promise resolves when the change has been applied by the server, and the [`appliedGiftCards`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/gift-cards#properties-propertydetail-appliedgiftcards) property updates with the new state.
    *
    * Unlike other write operations, gift card changes aren't gated by a cart
-   * instruction flag. The method succeeds in all contexts except accelerated
-   * checkout, where it returns an error result.
+   * instruction flag.
    *
    * > Caution:
    * > See [security considerations](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#network-access) if your extension retrieves gift card codes through a network call.
