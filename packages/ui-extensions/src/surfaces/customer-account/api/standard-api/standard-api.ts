@@ -116,7 +116,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Applies updated tracking consent preferences for the buyer, including their decisions for analytics, marketing, and data sale, along with any custom tracking consent [metafields](/docs/apps/build/custom-data/metafields). Returns a promise that resolves with the result of the consent update.
    *
-   * {% include /apps/checkout/privacy-icon.md %} Requires the [`customer_privacy` capability](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#collect-buyer-consent) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
@@ -228,6 +228,7 @@ export interface NavigationCurrentEntryChangeEvent {
 
 /**
  * Navigates between pages in customer accounts, including other extensions and host pages. Full-page extensions also get access to the current navigation entry and history state.
+ * @publicDocs
  */
 export interface Navigation {
   /**
