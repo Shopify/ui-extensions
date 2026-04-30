@@ -436,11 +436,14 @@ export interface Localization {
   country: SubscribableSignalLike<Country | undefined>;
 
   /**
-   * The [market](https://shopify.dev/docs/apps/build/markets) context of the checkout, carried over from the cart context. Markets group countries and regions with shared pricing, languages, and domains. It updates when the buyer changes the country of their shipping address. The value is `undefined` if the market is unknown.
+   * The [market](/docs/apps/build/markets) context of the checkout,
+   * carried over from the cart context. Markets group countries and
+   * regions with shared pricing, languages, and domains. The market
+   * context updates when the buyer changes the country of their
+   * shipping address. The value is `undefined` if the market is unknown.
    *
-   * > Caution: Deprecated as of version `2025-04`. Merchants now manage which extensions load for each market, so extensions no longer need to check this value.
-   *
-   * @deprecated Deprecated as of version `2025-04`
+   * @deprecated Merchants now manage which extensions load for each
+   * market, so extensions no longer need to check this value.
    */
   market: SubscribableSignalLike<Market | undefined>;
 }
@@ -581,8 +584,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
-   * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs aren't available.
-   *  See the [update guide](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples) for more information.
+   * > Caution: Check cart instructions before calling select APIs, as
+   * > some may not be available. See the
+   * > [Cart Instructions API](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)
+   * > for more information.
    *
    */
   instructions: SubscribableSignalLike<CartInstructions>;
@@ -605,14 +610,14 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   attributes: SubscribableSignalLike<Attribute[]>;
 
   /**
-   * All payment options available to the buyer for this checkout, such as credit cards, wallets, and local payment methods. The list depends on the shop's payment configuration and the buyer's region.
+   * All payment options available to the buyer for this checkout, such as
+   * credit cards, wallets, and local payment methods. The list depends on
+   * the shop's payment configuration and the buyer's region.
    *
-   * Reactive. The set of payment options can change when the buyer updates
-   * their address or cart. Subscribe to changes rather than reading once
-   * during initialization.
-   *
-   * Each option exposes `handle` and `type` only. Provider names, logos, fees,
-   * and installment terms aren't available.
+   * The set of payment options can change when the buyer updates their
+   * address or cart, so subscribe to changes rather than reading once
+   * during initialization. Each option exposes `handle` and `type` only.
+   * Provider names, logos, fees, and installment terms aren't available.
    */
   availablePaymentOptions: SubscribableSignalLike<PaymentOption[]>;
 
@@ -689,7 +694,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 
@@ -748,14 +753,13 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * The payment options the buyer has currently selected. This updates as the buyer changes their payment method. The array can contain multiple entries when the buyer splits payment across methods (for example, a gift card and a credit card).
+   * The payment options the buyer has currently selected. This updates as
+   * the buyer changes their payment method. The array can contain multiple
+   * entries when the buyer splits payment across methods (for example, a
+   * gift card and a credit card).
    *
-   * Reactive. The set of payment options can change when the buyer updates
-   * their address or cart. Subscribe to changes rather than reading once
-   * during initialization.
-   *
-   * Each option exposes `handle` and `type` only. Provider names, logos, fees,
-   * and installment terms aren't available.
+   * Each option exposes `handle` and `type` only. Provider names, logos,
+   * fees, and installment terms aren't available.
    */
   selectedPaymentOptions: SubscribableSignalLike<SelectedPaymentOption[]>;
 
@@ -809,8 +813,8 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Key-value storage that persists across page loads within the current checkout
-   * session. Data is shared across all activated extension targets of this
-   * extension.
+   * session. Data is shared across all activated targets associated with
+   * this extension.
    *
    * > Caution: Data persistence isn't guaranteed and storage is cleared when the
    * buyer starts a new checkout.
