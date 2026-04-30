@@ -47,12 +47,18 @@ const tsconfig = 'tsconfig.docs.json';
 
 const maxBuffer = 50 * 1024 * 1024;
 
+const EXCLUDED_CHECKOUT_TYPES = new Set([
+  'components-shared.d.ts',
+  'ConsentCheckbox.d.ts',
+  'ConsentPhoneField.d.ts',
+]);
+
 const copyCheckoutTypesToTemp = async () => {
   const files = await fs.readdir(checkoutComponentsDir);
   return Promise.all(
     files
       .filter(
-        (file) => file.endsWith('.d.ts') && file !== 'components-shared.d.ts',
+        (file) => file.endsWith('.d.ts') && !EXCLUDED_CHECKOUT_TYPES.has(file),
       )
       .map(async (file) => {
         const srcFile = path.join(checkoutComponentsDir, file);
@@ -88,6 +94,29 @@ const cleanupGeneratedJsFiles = async (directories) => {
       );
     }),
   );
+};
+
+// Customer account does not surface ConsentCheckbox / ConsentPhoneField, but
+// they leak in via checkout's bundled component types and the AnyComponent
+// unions in checkout's shared.ts. Strip both top-level entries and string
+// literals from union values.
+const CONSENT_TYPE_NAME = /^Consent(Checkbox|PhoneField)/;
+const stripConsentComponents = (mergedData) => {
+  for (const key of Object.keys(mergedData)) {
+    if (CONSENT_TYPE_NAME.test(key)) {
+      delete mergedData[key];
+      continue;
+    }
+    for (const fp of Object.keys(mergedData[key])) {
+      const td = mergedData[key][fp];
+      if (typeof td.value !== 'string' || !td.value.includes('Consent')) {
+        continue;
+      }
+      td.value = td.value
+        .replace(/\s*\|\s*'(ConsentCheckbox|ConsentPhoneField)'/g, '')
+        .replace(/^'(ConsentCheckbox|ConsentPhoneField)'\s*\|\s*/, '');
+    }
+  }
 };
 
 const generateExtensionsDocs = async () => {
@@ -155,6 +184,7 @@ const generateExtensionsDocs = async () => {
       .then(JSON.parse),
   ]);
   const mergedData = {...refData, ...compData};
+  stripConsentComponents(mergedData);
   const mergedDataJson = JSON.stringify(mergedData, null, 2);
   await fs.writeFile(
     path.join(outputDir, generatedDocsDataV2File),

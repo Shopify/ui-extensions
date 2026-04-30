@@ -62,6 +62,7 @@ export default createPackage((pkg) => {
               resolve(process.cwd(), 'packages/ui-extensions'),
               'customer-account',
               ['src/surfaces/checkout'],
+              ['ConsentCheckbox', 'ConsentPhoneField'],
             );
             completedSurfaces.add('customer-account');
           }

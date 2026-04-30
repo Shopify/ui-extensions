@@ -13,10 +13,12 @@ function copyComponentDefinitions({
   srcPaths,
   buildPath,
   surface,
+  excludedComponents,
 }: {
   srcPaths: string[];
   buildPath: string;
   surface: string;
+  excludedComponents: Set<string>;
 }) {
   const componentsSrcPaths = srcPaths.map((srcPath) =>
     join(srcPath, 'components'),
@@ -41,7 +43,9 @@ function copyComponentDefinitions({
     const components = readdirSync(componentsSrcPath);
     components
       .filter((file) => {
-        return file.endsWith('d.ts');
+        if (!file.endsWith('d.ts')) return false;
+        const componentName = file.replace(/\.d\.ts$/, '');
+        return !excludedComponents.has(componentName);
       })
       .forEach((file) => {
         copyFileSync(
@@ -218,6 +222,7 @@ export function buildTargetsDefinitions(
   directory: string,
   surface: string,
   additionalComponentPaths: string[] = [],
+  excludedComponents: string[] = [],
 ) {
   const project = new Project();
   const buildPath = resolve(directory, 'build');
@@ -227,10 +232,12 @@ export function buildTargetsDefinitions(
     srcPath,
     ...additionalComponentPaths.map((path) => resolve(directory, path)),
   ];
+  const excludedComponentSet = new Set(excludedComponents);
   const success = copyComponentDefinitions({
     srcPaths: componentSrcPaths,
     buildPath,
     surface,
+    excludedComponents: excludedComponentSet,
   });
 
   if (!success) {

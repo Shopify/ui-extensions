@@ -1,7 +1,7 @@
 import {AnyComponent} from '../../checkout';
 
 export type StandardComponents =
-  | AnyComponent
+  | Exclude<AnyComponent, 'ConsentCheckbox' | 'ConsentPhoneField'>
   | 'Avatar'
   | 'ButtonGroup'
   | 'CustomerAccountAction'

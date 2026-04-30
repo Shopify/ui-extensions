@@ -99,13 +99,36 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8');
 
+    // Detect Exclude<X, 'A' | 'B'> usages so the listed literals are removed
+    // from the resolved component list instead of being treated as included.
+    // Strip the Exclude bodies from the content before quoted-string extraction
+    // so the excluded literals don't get re-added as components.
+    const excludePattern = /Exclude<\s*\w+\s*,\s*([\s\S]+?)\s*>/g;
+    const exclusions = new Set();
+    let excludeMatch;
+    while ((excludeMatch = excludePattern.exec(content)) !== null) {
+      const literals = excludeMatch[1].match(/'([^']+)'/g);
+      if (literals) {
+        for (const literal of literals) {
+          exclusions.add(literal.replace(/'/g, ''));
+        }
+      }
+    }
+    const contentWithoutExcludes = content.replace(excludePattern, '');
+
     // Extract all quoted component names from the file (but not from import statements)
     // Remove import lines first
-    const contentWithoutImports = content.replace(/^import.*?;$/gm, '');
+    const contentWithoutImports = contentWithoutExcludes.replace(
+      /^import.*?;$/gm,
+      '',
+    );
     const componentNames = contentWithoutImports.match(/'([^']+)'/g);
     const quotedComponents = componentNames
       ? componentNames.map((name) => name.replace(/'/g, ''))
       : [];
+
+    const filterExclusions = (list) =>
+      list.filter((component) => !exclusions.has(component));
 
     // Check if the type references other types (like StandardComponents or AnyComponent)
     // Look for patterns like: StandardComponents | 'OtherComponent'
@@ -133,12 +156,13 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
           }
         }
 
-        // Remove duplicates
-        return [...new Set(components)];
+        // Remove duplicates and apply Exclude<> filtering
+        return filterExclusions([...new Set(components)]);
       }
     }
 
-    return quotedComponents.length > 0 ? quotedComponents : null;
+    const filtered = filterExclusions(quotedComponents);
+    return filtered.length > 0 ? filtered : null;
   } catch (error) {
     console.error(`Error reading component file ${filePath}:`, error.message);
   }
@@ -678,12 +702,7 @@ try {
   // These components have doc pages but are not exported from the TypeScript source,
   // so the script cannot discover them automatically. Add them manually with all targets.
   const allTargetNames = Object.keys(targetsJson).sort();
-  const UNDISCOVERABLE_COMPONENTS = [
-    'Chat',
-    'ConsentCheckbox',
-    'ConsentPhoneField',
-    'StyleHelper',
-  ];
+  const UNDISCOVERABLE_COMPONENTS = ['Chat', 'StyleHelper'];
   for (const component of UNDISCOVERABLE_COMPONENTS) {
     if (!combinedJson[component]) {
       combinedJson[component] = {targets: allTargetNames};
