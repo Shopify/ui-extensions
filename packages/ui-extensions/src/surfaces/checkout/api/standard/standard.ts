@@ -69,7 +69,7 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The allowed capabilities of the extension, defined in your
-   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
+   * [`shopify.extension.toml`](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
