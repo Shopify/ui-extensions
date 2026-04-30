@@ -113,7 +113,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Applies changes to the buyer's tracking consent preferences and consent metafields.
    *
-   * > Note: Requires the [`customer_privacy` capability](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration#collect-buyer-consent) to be set to `true`.
+   * > Note: Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) to be set to `true`.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
