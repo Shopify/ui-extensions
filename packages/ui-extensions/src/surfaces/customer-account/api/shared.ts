@@ -134,7 +134,8 @@ export interface I18n {
 }
 
 /**
- * Metadata about the running extension, including its target, API version, capabilities, and editor context.
+ * Metadata about the running extension, including its API version, target, capabilities, and editor context. Use this to read configuration details or conditionally render content based on where the extension is running.
+ * @publicDocs
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
@@ -145,12 +146,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   apiVersion: ApiVersion;
 
   /**
-   * The allowed capabilities of the extension, defined
-   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration) file.
-   *
-   * * [`api_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access): the extension can access the Storefront API.
-   *
-   * * [`network_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#network-access): the extension can make external network calls.
+   * The allowed capabilities of the extension, defined in your
+   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration) file.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
