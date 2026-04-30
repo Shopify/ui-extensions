@@ -385,10 +385,10 @@ export interface Localization {
   country: StatefulRemoteSubscribable<Country | undefined>;
 
   /**
-   * The [market](https://shopify.dev/docs/apps/markets) context of the
-   * checkout. This value carries over from the context of the cart, where it
-   * was used to contextualize the storefront experience. It will update if the
-   * buyer changes the country of their shipping address.  If the market is unknown,
+   * The [market](/docs/apps/markets) context of the checkout, carried over
+   * from the cart context. Markets group countries and regions with shared
+   * pricing, languages, and domains. The market context updates when the
+   * buyer changes the country of their shipping address. If the market is unknown,
    * then the value is undefined.
    */
   market: StatefulRemoteSubscribable<Market | undefined>;
@@ -511,8 +511,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
-   * > Caution: As of version `2024-07`, UI extension code must check for instructions before calling select APIs in case those APIs are not available.
-   *  See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples) for more information.
+   * > Caution: Check cart instructions before calling select APIs, as
+   * > some may not be available. See the
+   * > [Cart Instructions API](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples)
+   * > for more information.
    *
    */
   instructions: StatefulRemoteSubscribable<CartInstructions>;
@@ -606,7 +608,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * @see https://shopify.dev/docs/api/checkout-ui-extensions/unstable/extension-targets-overview
    * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 
@@ -645,7 +647,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
    *
    * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API version `2023-04` or later.
+   * > Cart metafields are only available on carts created using the Storefront API.
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
@@ -722,8 +724,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * > Caution: Data persistence isn't guaranteed and storage is reset when the customer starts a new checkout.
    *
-   * Data is shared across all activated extension targets of this extension. In versions 2023-07 and earlier,
-   * each activated extension target had its own storage.
+   * Data is shared across all activated targets associated with this extension.
    */
   storage: Storage;
 
@@ -909,10 +910,9 @@ export interface Shop {
    */
   name: string;
   /**
-   * The primary storefront URL.
+   * The primary storefront URL. The URL doesn't include a trailing slash.
    *
-   * > Caution:
-   * > As of version `2024-04` this value will no longer have a trailing slash.
+   * @example 'https://example.myshopify.com'
    */
   storefrontUrl?: string;
   /**
