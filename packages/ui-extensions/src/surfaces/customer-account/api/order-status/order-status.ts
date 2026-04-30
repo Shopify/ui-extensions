@@ -371,11 +371,16 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
   /**
    * Triggers a login prompt if the customer is viewing a pre-authenticated **Order status** page.
    * Use this to require full authentication before displaying sensitive information in your extension.
+   *
+   * Triggers a login prompt for pre-authenticated buyers. Doesn't guarantee
+   * the buyer completes the login. Handle the dismissal case in your code.
    */
   requireLogin: () => Promise<void>;
 
   /**
    * The buyer's current authentication level on the **Order status** page. Use this to determine whether to display sensitive information or prompt the buyer to log in.
+   *
+   * Read-only. The authentication level can't be changed programmatically.
    */
   authenticationState: SubscribableSignalLike<AuthenticationState>;
 }
