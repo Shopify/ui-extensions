@@ -140,14 +140,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   apiVersion: ApiVersion;
 
   /**
-   * The allowed capabilities of the extension, defined
-   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration) file.
-   *
-   * * [`api_access`](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration): the extension can access the Storefront API.
-   *
-   * * [`network_access`](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration): the extension can make external network calls.
-   *
-   * * [`block_progress`](https://shopify.dev/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration): the extension can block a buyer's progress and the merchant has allowed this blocking behavior.
+   * The allowed capabilities of the extension, defined in your
+   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration) file.
    */
   capabilities: StatefulRemoteSubscribable<Capability[]>;
 
