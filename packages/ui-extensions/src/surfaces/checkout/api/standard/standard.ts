@@ -385,10 +385,10 @@ export interface Localization {
   country: StatefulRemoteSubscribable<Country | undefined>;
 
   /**
-   * The [market](https://shopify.dev/docs/apps/markets) context of the
-   * checkout. This value carries over from the context of the cart, where it
-   * was used to contextualize the storefront experience. It will update if the
-   * buyer changes the country of their shipping address.  If the market is unknown,
+   * The [market](/docs/apps/markets) context of the checkout, carried over
+   * from the cart context. Markets group countries and regions with shared
+   * pricing, languages, and domains. The market context updates when the
+   * buyer changes the country of their shipping address. If the market is unknown,
    * then the value is undefined.
    */
   market: StatefulRemoteSubscribable<Market | undefined>;
@@ -511,8 +511,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
-   * > Caution: Check instructions before calling select APIs, as some
-   * > may not be available. See the [update guide](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples)
+   * > Caution: Check cart instructions before calling select APIs, as
+   * > some may not be available. See the
+   * > [Cart Instructions API](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples)
    * > for more information.
    *
    */
@@ -641,7 +642,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
    *
    * > Tip:
-   * > Cart metafields are only available on carts created via the Storefront API.
+   * > Cart metafields are only available on carts created using the Storefront API.
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 
@@ -715,7 +716,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * > Caution: Data persistence isn't guaranteed and storage is reset when the customer starts a new checkout.
    *
-   * Data is shared across all activated extension targets of this extension.
+   * Data is shared across all activated targets associated with this extension.
    */
   storage: Storage;
 
@@ -901,7 +902,9 @@ export interface Shop {
    */
   name: string;
   /**
-   * The primary storefront URL. The URL does not include a trailing slash.
+   * The primary storefront URL. The URL doesn't include a trailing slash.
+   *
+   * @example 'https://example.myshopify.com'
    */
   storefrontUrl?: string;
   /**
