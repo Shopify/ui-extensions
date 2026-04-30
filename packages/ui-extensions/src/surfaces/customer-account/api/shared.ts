@@ -134,7 +134,8 @@ export interface I18n {
 }
 
 /**
- * Metadata about the running extension, including its target, API version, capabilities, and editor context.
+ * Metadata about the running extension, including its API version, target, capabilities, and editor context. Use this to read configuration details or conditionally render content based on where the extension is running.
+ * @publicDocs
  */
 export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   /**
