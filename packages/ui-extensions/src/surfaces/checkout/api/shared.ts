@@ -56,6 +56,9 @@ export interface Attribute {
    * The value associated with the attribute key. This is a freeform string
    * that can store any information the buyer or app provides.
    *
+   * Attribute values are always strings. To store structured data, serialize
+   * it to JSON and parse it when reading.
+   *
    * @example 'Please use red wrapping paper'
    */
   value: string;

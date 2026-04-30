@@ -35,7 +35,8 @@ export interface Storage {
    * The stored data is deserialized from JSON and returned as
    * its original type.
    *
-   * Returns `null` if no stored data exists.
+   * Returns the stored value for the given key, or `null` when no value
+   * exists. Doesn't throw on a missing key.
    */
   read<T = unknown>(key: string): Promise<T | null>;
 
@@ -123,6 +124,9 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
    * The published version of the running extension target.
    *
    * For unpublished extensions, the value is `undefined`.
+   *
+   * Don't use this property as a stable identifier in development environments.
+   * It becomes available only after the extension is published.
    *
    * @example 3.0.10
    */
@@ -425,6 +429,9 @@ export interface Localization {
 
   /**
    * The country context of the checkout, carried over from the cart. It updates when the buyer changes their shipping address country. Use this value to display region-specific content such as local support information or regional policies. The value is `undefined` if the buyer's country is unknown.
+   *
+   * Derived from the buyer's shipping address. Returns `undefined` until the
+   * buyer enters a shipping address.
    */
   country: SubscribableSignalLike<Country | undefined>;
 
@@ -642,6 +649,8 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * This matches the `data.checkout.token` field in a [checkout-related WebPixel event](https://shopify.dev/docs/api/web-pixels-api/standard-events/checkout_started#properties-propertydetail-data)
    * and the `checkout_token` field in the [REST Admin API `Order` resource](https://shopify.dev/docs/api/admin-rest/unstable/resources/order#resource-object).
+   *
+   * Can be `undefined`. Handle the `undefined` state before using the value.
    */
   checkoutToken: SubscribableSignalLike<CheckoutToken | undefined>;
 
@@ -652,6 +661,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * The delivery groups for this checkout. Each group contains one or more cart lines and the available delivery options (shipping, pickup point, or pickup location) for those items.
+   *
+   * Empty until the buyer enters enough address information for Shopify to
+   * calculate shipping rates.
    */
   deliveryGroups: SubscribableSignalLike<DeliveryGroup[]>;
 
@@ -842,6 +854,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
  * Use session tokens to verify the identity of the buyer and the shop
  * context when making server-side API calls. The token is a signed JWT
  * that contains claims such as the customer ID, shop domain, and expiration.
+ *
+ * The `sub` claim in the decoded token is present only when the buyer is
+ * logged in and the app has permission to read customer accounts. Absent for
+ * anonymous buyers.
  */
 export interface SessionToken {
   /**
@@ -1003,11 +1019,17 @@ export interface CartCost {
 
   /**
    * The total shipping cost after shipping discounts have been applied. The value is `undefined` if shipping hasn't been calculated yet, such as when the buyer is still on the information step.
+   *
+   * `undefined` until the buyer selects a shipping method (typically after the
+   * information step).
    */
   totalShippingAmount: SubscribableSignalLike<Money | undefined>;
 
   /**
    * The total tax the buyer can expect to pay, or the total tax already included in product and shipping prices (for tax-inclusive regions). The value is `undefined` if taxes haven't been calculated yet.
+   *
+   * `undefined` when taxes haven't been calculated or aren't available for the
+   * buyer's region.
    */
   totalTaxAmount: SubscribableSignalLike<Money | undefined>;
 
@@ -1392,6 +1414,11 @@ interface InterceptorRequestAllow {
    * This callback is called when all interceptors finish. We recommend
    * setting errors or reasons for blocking at this stage, so that all the errors in
    * the UI show up at once.
+   *
+   * Runs after all intercept results are collected. Use it for local state
+   * updates such as setting an error flag. By the time it runs, the navigation
+   * decision is final, so blocking logic belongs in the intercept handler
+   * itself, not here.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
   perform?(result: InterceptorResult): void | Promise<void>;
@@ -1419,6 +1446,11 @@ interface InterceptorRequestBlock {
    * This callback is called when all interceptors finish. We recommend
    * setting errors or reasons for blocking at this stage, so that all the errors in
    * the UI show up at once.
+   *
+   * Runs after all intercept results are collected. Use it for local state
+   * updates such as setting an error flag. By the time it runs, the navigation
+   * decision is final, so blocking logic belongs in the intercept handler
+   * itself, not here.
    * @param result InterceptorResult with behavior as either 'allow' or 'block'
    */
   perform?(result: InterceptorResult): void | Promise<void>;
@@ -1618,6 +1650,10 @@ export interface Analytics {
   /**
    * Publishes a custom event to [Web Pixels](https://shopify.dev/docs/apps/marketing).
    * Returns `true` when the event is successfully dispatched.
+   *
+   * The Promise resolves to `true` when the event was dispatched. The boolean
+   * indicates dispatch confirmation only. It doesn't indicate whether any
+   * specific web pixel processed the event.
    */
   publish(name: string, data: Record<string, unknown>): Promise<boolean>;
 
@@ -1930,24 +1966,45 @@ export interface AllowedProcessing {
    * Whether analytics data can be collected based on the visitor's consent,
    * the merchant's privacy configuration, and the visitor's region. Analytics
    * data includes how the shop was used and what interactions occurred.
+   *
+   * Whether analytics data can be collected right now. Combines the buyer's
+   * consent, the merchant's privacy configuration, and the buyer's region into
+   * a single boolean. Check this flag, not `visitorConsent.analytics`, before
+   * calling `shopify.analytics.publish()`.
    */
   analytics: boolean;
   /**
    * Whether marketing data can be collected based on the visitor's consent,
    * the merchant's privacy configuration, and the visitor's region. Marketing
    * data includes attribution and targeted advertising preferences.
+   *
+   * Whether marketing data can be collected right now. Combines the buyer's
+   * consent, the merchant's privacy configuration, and the buyer's region into
+   * a single boolean. Check this flag, not `visitorConsent.marketing`, before
+   * performing marketing-related data collection.
    */
   marketing: boolean;
   /**
    * Whether preference data can be collected based on the visitor's consent,
    * the merchant's privacy configuration, and the visitor's region. Preference
    * data includes language, currency, and sizing choices.
+   *
+   * Whether preference data can be collected right now. Combines the buyer's
+   * consent, the merchant's privacy configuration, and the buyer's region into
+   * a single boolean. Check this flag, not `visitorConsent.preferences`,
+   * before storing or reading buyer preference data.
    */
   preferences: boolean;
   /**
    * Whether data can be shared with third parties based on the visitor's
    * consent, the merchant's privacy configuration, and the visitor's region.
    * This typically applies to behavioral advertising data.
+   *
+   * Whether buyer data can be shared with or sold to third parties right now.
+   * Combines the buyer's consent, the merchant's privacy configuration, and
+   * the buyer's region into a single boolean. Check this flag, not
+   * `visitorConsent.saleOfData`, before sharing or selling buyer data with
+   * third parties.
    */
   saleOfData: boolean;
 }
@@ -1997,6 +2054,9 @@ export interface TrackingConsentMetafieldChange {
   key: string;
   /**
    * The new value to store in the metafield. Set to `null` to delete the metafield.
+   *
+   * Consent metafield values are strings, not booleans. Pass `null` to delete
+   * a tracking consent metafield.
    */
   value: string | null;
 }

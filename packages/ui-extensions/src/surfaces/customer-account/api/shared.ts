@@ -236,6 +236,9 @@ export interface Attribute {
   /**
    * The value associated with the attribute key. This contains the buyer-provided or app-set data for the custom attribute.
    *
+   * Attribute values are always strings. If structured data was stored during
+   * checkout, parse it on read with `JSON.parse()`.
+   *
    * @example 'Happy Birthday!'
    */
   value: string;
@@ -568,6 +571,9 @@ export interface CustomerPrivacy {
    * The visitor's geographic location, used to determine whether more granular consent controls should be displayed based on regional privacy regulations.
    *
    * @example `{countryCode: 'CA', provinceCode: 'ON'}` for a visitor in Ontario, Canada; `{countryCode: 'US', provinceCode: undefined}` for a visitor in the United States if geolocation fails to detect the state; or `undefined` if neither country nor province is detected or geolocation fails.
+   *
+   * Requires level 1 access to protected customer data. `undefined` without
+   * that access. Regional compliance logic can't run without it.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
