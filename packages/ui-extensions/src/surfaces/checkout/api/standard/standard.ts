@@ -66,20 +66,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   apiVersion: ApiVersion;
 
   /**
-   * The allowed capabilities of the extension, defined
-   * in your [shopify.extension.toml](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
-   *
-   * * [`api_access`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#api-access): the extension can access the Storefront API.
-   *
-   * * [`network_access`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#network-access): the extension can make external network calls.
-   *
-   * * [`block_progress`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress): the extension can block a customer's progress and the merchant has allowed this blocking behavior.
-   *
-   * * [`collect_buyer_consent.sms_marketing`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#collect-buyer-consent): the extension can collect customer consent for SMS marketing.
-   *
-   * * [`collect_buyer_consent.customer_privacy`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#collect-buyer-consent): the extension can register customer consent decisions that are honored on Shopify-managed services.
-   *
-   * * [`iframe.sources`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#iframe): the extension can embed an external URL in an iframe.
+   * The allowed capabilities of the extension, defined in your
+   * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
