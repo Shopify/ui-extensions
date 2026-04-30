@@ -15,7 +15,8 @@ export type ApiVersion =
   | '2025-07'
   | '2025-10'
   | '2026-01'
-  | '2026-04';
+  | '2026-04'
+  | '2026-07';
 
 /**
  * The capabilities an extension has access to.
@@ -923,7 +924,10 @@ export type StorefrontApiVersion =
   | '2025-04'
   | 'unstable'
   | '2025-07'
-  | '2025-10';
+  | '2025-10'
+  | '2026-01'
+  | '2026-04'
+  | '2026-07';
 
 /**
  * A buyer's country, identified by its ISO country code.

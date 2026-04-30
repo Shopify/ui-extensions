@@ -6,6 +6,8 @@ import type {
   BlockExtensionApi,
   ProductDetailsConfigurationApi,
   Intents,
+  ToastApi,
+  AppApi,
 } from '@shopify/ui-extensions/admin';
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
@@ -101,6 +103,27 @@ function createMockStandardRenderingApi<T extends ExtensionTarget>(target: T) {
     picker: (async () => ({
       selected: Promise.resolve(undefined),
     })) as PickerApi,
+  };
+}
+
+function createMockToastApi(): ToastApi {
+  return {
+    show: () => {},
+    hide: () => {},
+  };
+}
+
+function createMockAppApi(): AppApi {
+  return {
+    extensions: async () => [],
+  };
+}
+
+function createAppHomeMock<T extends ExtensionTarget>(target: T) {
+  return {
+    ...createMockStandardRenderingApi(target),
+    toast: createMockToastApi(),
+    app: createMockAppApi(),
   };
 }
 
@@ -272,7 +295,7 @@ const adminMockFactories: AdminMockFactory = {
   'admin.app.tools.data': createMockStandardApi,
 
   // App render targets
-  'admin.app.home.render': createMockStandardRenderingApi,
+  'admin.app.home.render': createAppHomeMock,
   'admin.app.intent.render': createAppIntentRenderMock,
 
   // Block targets
