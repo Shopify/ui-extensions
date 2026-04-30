@@ -13,9 +13,7 @@ import {
 } from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2];
-const SHOPIFY_DEV_EXTENSIONS_FOLDER =
-  process.argv[3] ??
-  (EXTENSIONS_API_VERSION === '2026-04' ? '2026-04-rc' : null);
+const SHOPIFY_DEV_EXTENSIONS_FOLDER = process.argv[3] ?? null;
 
 if (!EXTENSIONS_API_VERSION) {
   console.error('Error: API_VERSION is required.');
