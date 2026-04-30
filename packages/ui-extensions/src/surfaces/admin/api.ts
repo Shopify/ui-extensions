@@ -1,5 +1,18 @@
 export type {I18n, I18nTranslate} from '../../api';
 export type {StandardApi, Intents} from './api/standard/standard';
+export type {ToastApi, ToastOptions} from './api/toast/toast';
+export type {
+  AppApi,
+  ExtensionInfo,
+  ExtensionType,
+  ExtensionStatus,
+  UiExtensionActivation,
+  ThemeBlockActivation,
+  ThemeExtensionBlockActivation,
+  ThemeAppBlockTarget,
+  ThemeAppEmbedTarget,
+} from './api/app/app';
+export type {AppHomeApi} from './api/app-home/app-home';
 export type {StandardRenderingExtensionApi} from './api/standard/standard-rendering';
 export type {Navigation} from './api/block/block';
 export type {
