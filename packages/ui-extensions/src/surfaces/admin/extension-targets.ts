@@ -682,7 +682,7 @@ export interface ExtensionTargets {
    */
   'admin.app.home.render': RenderExtension<
     AppHomeApi<'admin.app.home.render'>,
-    FormExtensionComponents | 'Modal' | 'Page'
+    FormExtensionComponents | 'Modal' | 'Page' | 'AppNav'
   >;
 }
 
