@@ -149,12 +149,8 @@ export interface Extension<Target extends ExtensionTarget = ExtensionTarget> {
   apiVersion: ApiVersion;
 
   /**
-   * The allowed capabilities of the extension, defined
-   * in your [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration) file.
-   *
-   * * [`api_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access): the extension can access the Storefront API.
-   *
-   * * [`network_access`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#network-access): the extension can make external network calls.
+   * The allowed capabilities of the extension, defined in your
+   * [`shopify.extension.toml`](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration) file.
    */
   capabilities: SubscribableSignalLike<Capability[]>;
 
