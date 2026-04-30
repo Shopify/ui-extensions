@@ -215,6 +215,10 @@ export interface NavigationCurrentEntryChangeEvent {
   from: NavigationHistoryEntry;
 }
 
+/**
+ * Navigates between pages in customer accounts, including other extensions and host pages. Full-page extensions also get access to the current navigation entry and history state.
+ * @publicDocs
+ */
 export interface Navigation {
   /**
    * Navigates to a specific URL, updating any provided state in the history entries list.
