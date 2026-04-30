@@ -6,6 +6,7 @@
   "workspaces": [
     "./packages/*"
   ],
+  "description": "sfsd",
   "scripts": {
     "build": "loom build",
     "build-consumer": "loom build && ./scripts/build-consumer.sh",
