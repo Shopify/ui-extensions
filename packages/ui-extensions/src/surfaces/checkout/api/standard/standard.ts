@@ -429,11 +429,11 @@ export interface Localization {
   country: SubscribableSignalLike<Country | undefined>;
 
   /**
-   * The [market](https://shopify.dev/docs/apps/build/markets) context of
-   * the checkout, carried over from the cart context. Markets group
-   * countries and regions with shared pricing, languages, and domains. It
-   * updates when the buyer changes the country of their shipping address.
-   * The value is `undefined` if the market is unknown.
+   * The [market](/docs/apps/build/markets) context of the checkout,
+   * carried over from the cart context. Markets group countries and
+   * regions with shared pricing, languages, and domains. The market
+   * context updates when the buyer changes the country of their
+   * shipping address. The value is `undefined` if the market is unknown.
    *
    * @deprecated Merchants now manage which extensions load for each
    * market, so extensions no longer need to check this value.
@@ -577,8 +577,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,
    * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.
    *
-   * > Caution: Check instructions before calling select APIs, as some
-   * > may not be available. See the [update guide](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)
+   * > Caution: Check cart instructions before calling select APIs, as
+   * > some may not be available. See the
+   * > [Cart Instructions API](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)
    * > for more information.
    *
    */
@@ -787,8 +788,8 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Key-value storage that persists across page loads within the current checkout
-   * session. Data is shared across all activated extension targets of this
-   * extension.
+   * session. Data is shared across all activated targets associated with
+   * this extension.
    *
    * > Caution: Data persistence isn't guaranteed and storage is cleared when the
    * buyer starts a new checkout.
