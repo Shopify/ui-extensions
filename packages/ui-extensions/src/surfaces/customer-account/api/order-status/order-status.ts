@@ -262,7 +262,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * @example 'customer-account.order-status.block.render'
    * Learn more about [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/targets) and [target configuration](/docs/api/customer-account-ui-extensions/{API_VERSION}#configuration).
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 

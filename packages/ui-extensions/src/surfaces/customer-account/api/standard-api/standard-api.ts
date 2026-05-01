@@ -34,7 +34,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * @example 'customer-account.order-status.block.render'
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 
