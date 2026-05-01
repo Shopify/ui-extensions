@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.5.0
+
+### Minor Changes
+
+- [#4395](https://github.com/Shopify/ui-extensions/pull/4395) [`f1b3896`](https://github.com/Shopify/ui-extensions/commit/f1b389621bda7a569e564df344f2074f7e9feb2a) Thanks [@justinhenricks](https://github.com/justinhenricks)! - The `label` prop on the checkout and customer-account `s-checkbox` component now accepts a label as a slot in addition to a plain string, label slots can include only plain text and s-links.
+
 ## 2026.4.2
 
 ### Patch Changes
