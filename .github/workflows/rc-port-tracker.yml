@@ -21,7 +21,8 @@ jobs:
         (github.event.action == 'edited' && github.event.changes.base != null)
       ) &&
       !endsWith(github.event.pull_request.base.ref, '-rc') &&
-      !startsWith(github.head_ref, 'changeset-release/')
+      !startsWith(github.head_ref, 'changeset-release/') &&
+      !contains(github.event.pull_request.labels.*.name, 'needs-rc-port')
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -47,8 +48,6 @@ jobs:
             await github.rest.issues.addLabels({
               owner, repo, issue_number: pr.number, labels: [LABEL],
             });
-
-            if (context.payload.action !== 'opened') return;
 
             const rcBranches = branchNames
               .filter(n => /^\d{4}-(?:01|04|07|10)-rc$/.test(n))
