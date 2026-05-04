@@ -823,6 +823,8 @@ interface BadgeProps$1 extends GlobalProps {
 	/**
 	 * The type of icon to be displayed in the badge.
 	 *
+	 * Always positioned relative to the text content. Independent positioning isn't supported.
+	 *
 	 * @default ''
 	 */
 	icon?: IconType | AnyString;
@@ -1441,6 +1443,8 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 export interface InteractionProps {
 	/**
 	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+	 *
+	 * When both `commandFor` and `href` are set, `commandFor` takes precedence. The command runs and the link doesn't navigate.
 	 */
 	commandFor?: string;
 	/**
@@ -1573,6 +1577,8 @@ export interface MultipleInputProps extends BaseInputProps {
 	 * An array of `value` attributes for the currently selected options.
 	 *
 	 * This is a convenience prop for setting the `selected` prop on child options.
+	 *
+	 * Form data captures the selected value strings only. Complex nested content inside choices is for display purposes and isn't included in form submissions.
 	 */
 	values?: string[];
 }
@@ -1856,6 +1862,8 @@ interface CheckboxProps$1 extends GlobalProps, BaseCheckableProps, FieldErrorPro
 	 * If you want to present an error when this field is empty, you can do
 	 * so with the `error` property.
 	 *
+	 * Adds semantic meaning for accessibility. Doesn't trigger automatic validation or display an error. Implement validation logic yourself and use the `error` prop to show results.
+	 *
 	 * @default false
 	 */
 	required?: boolean;
@@ -1958,6 +1966,8 @@ interface ChoiceListProps$1 extends GlobalProps, Pick<BasicFieldProps, "label" |
 	 * - `block`: The choices are displayed on the block axis.
 	 * - `grid`: The choices are displayed in a grid.
 	 *
+	 * The selected content slot is supported only in the default (stacked) variant. `inline` and `grid` ignore it.
+	 *
 	 * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
 	 * discretion of each surface.
 	 *
@@ -2019,6 +2029,8 @@ interface ClickableChipProps$1 extends ChipProps$1, GlobalProps {
 	 * ensure you update app state for this property when the `remove` event fires.
 	 *
 	 * If the chip is not `removable`, it can still be hidden by setting this property.
+	 *
+	 * When using the `removable` variant, keep `hidden` synced with your app state. If `hidden` isn't updated after the chip is removed, the chip can become permanently hidden.
 	 *
 	 * @default false
 	 */
@@ -2113,6 +2125,8 @@ interface ConsentCheckboxProps$1 extends GlobalProps, CheckboxProps$1 {
 	 * The policy for which user consent is being collected for.
 	 *
 	 * `sms-marketing`: Represents the policy for SMS marketing consent.
+	 *
+	 * Only `sms-marketing` is supported. Other consent policy types aren't available through this component.
 	 */
 	policy?: ConsentPolicy;
 }
@@ -2121,6 +2135,8 @@ export type PhoneAutocompleteField = ExtractStrict<AnyAutocompleteField, "tel" |
 interface PhoneFieldProps$1 extends GlobalProps, BaseTextFieldProps, Pick<FieldDecorationProps, "accessory">, AutocompleteProps<PhoneAutocompleteField> {
 	/**
 	 * The type of phone number to collect. Specific styling may be applied to each type to provide extra guidance to users. No additional validation is performed based on the type.
+	 *
+	 * Styling hint for the input keyboard. Doesn't validate the phone number format. Implement validation in your extension and use the `error` prop to show results.
 	 *
 	 * @default ''
 	 */
@@ -2131,6 +2147,8 @@ interface ConsentPhoneFieldProps$1 extends GlobalProps, PhoneFieldProps$1 {
 	 * The policy for which user consent is being collected for.
 	 *
 	 * `sms-marketing`: Represents the policy for SMS marketing consent.
+	 *
+	 * Only `sms-marketing` is supported.
 	 */
 	policy?: ConsentPolicy;
 }
@@ -2184,6 +2202,8 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 *       So `--2024` is equivalent to `--2024-12-31`.
 	 *     - Whitespace is allowed either side of `--`.
 	 *
+	 * Comma-separated list of allowed dates in `YYYY-MM-DD` format.
+	 *
 	 * @default ""
 	 *
 	 * @example
@@ -2210,6 +2230,8 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
 	 *       So `--2024` is equivalent to `--2024-12-31`.
 	 *     - Whitespace is allowed either side of `--`.
+	 *
+	 * Comma-separated list of disallowed dates in `YYYY-MM-DD` format.
 	 *
 	 * @default ""
 	 *
@@ -2274,6 +2296,8 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
 	 * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
 	 * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+	 *
+	 * Single dates use ISO 8601 format (`YYYY-MM-DD`); ranges use `YYYY-MM-DD--YYYY-MM-DD`. Locale-specific formats aren't supported.
 	 *
 	 * @default ""
 	 */
@@ -2385,6 +2409,9 @@ interface DropZoneProps$1 extends GlobalProps, FileInputProps, BasicFieldProps {
 	 */
 	onDropRejected?: (event: Event) => void;
 }
+/**
+ * Doesn't perform automatic format validation. Implement validation logic yourself and use the `error` prop to display results.
+ */
 interface EmailFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLengthProps, AutocompleteProps<EmailAutocompleteField> {
 }
 /** @publicDocs */
