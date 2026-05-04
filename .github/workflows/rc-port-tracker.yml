@@ -2,7 +2,7 @@ name: RC port tracker
 
 on:
   pull_request:
-    types: [opened, reopened, closed]
+    types: [opened, reopened, closed, edited]
     branches:
       - 20[0-9][0-9]-[01][1470]
       - 20[0-9][0-9]-[01][1470]-rc
@@ -15,7 +15,11 @@ jobs:
   label-stable-pr:
     name: Label PRs against stable branches
     if: |
-      (github.event.action == 'opened' || github.event.action == 'reopened') &&
+      (
+        github.event.action == 'opened' ||
+        github.event.action == 'reopened' ||
+        (github.event.action == 'edited' && github.event.changes.base != null)
+      ) &&
       !endsWith(github.event.pull_request.base.ref, '-rc') &&
       !startsWith(github.head_ref, 'changeset-release/')
     runs-on: ubuntu-latest
