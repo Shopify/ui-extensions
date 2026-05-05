@@ -4,6 +4,7 @@ import type {MailingAddress} from '../../../checkout';
  * An address object used to auto-populate the address form fields.
  *
  * All fields are optional
+ * @publicDocs
  */
 export interface AutocompleteAddress
   extends Pick<
@@ -35,6 +36,7 @@ export interface AutocompleteAddress
   longitude?: number;
 }
 
+/** @publicDocs */
 export interface AddressAutocompleteSuggestion {
   /**
    * The address suggestion text presented to the buyer in the list of autocomplete suggestions.
@@ -72,6 +74,7 @@ export interface AddressAutocompleteSuggestion {
   formattedAddress?: AutocompleteAddress;
 }
 
+/** @publicDocs */
 export interface MatchedSubstring {
   /**
    * The start location of the matched substring in the suggestion label text.

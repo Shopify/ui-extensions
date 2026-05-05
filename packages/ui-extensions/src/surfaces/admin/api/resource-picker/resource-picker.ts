@@ -1,12 +1,14 @@
 /**
  * A monetary value represented as a string (for example, `"19.99"` or `"0.00"`). The format always includes the decimal point and cents, even for whole dollar amounts. Use this type for prices, costs, and other currency values.
+ * @publicDocs
  */
-type Money = string;
+export type Money = string;
 
 /**
  * The sort order that determines how products appear in a collection. This controls the default product arrangement that customers see when viewing the collection on the storefront.
+ * @publicDocs
  */
-enum CollectionSortOrder {
+export enum CollectionSortOrder {
   /** Products arranged in the custom order set by the merchant. Use this when merchants have manually organized products for specific merchandising. */
   Manual = 'MANUAL',
   /** Products sorted by sales volume, with best-sellers first. Use this to highlight popular products. */
@@ -29,8 +31,9 @@ enum CollectionSortOrder {
 
 /**
  * The types of fulfillment services that can handle order fulfillment. This determines how products are delivered to customers.
+ * @publicDocs
  */
-enum FulfillmentServiceType {
+export enum FulfillmentServiceType {
   /** Digital gift card fulfillment with automatic delivery. No physical shipping required. */
   GiftCard = 'GIFT_CARD',
   /** Manual fulfillment handled directly by the merchant. The merchant packs and ships orders themselves. */
@@ -41,8 +44,9 @@ enum FulfillmentServiceType {
 
 /**
  * The unit of measurement for product weight. Use this with the weight value to calculate shipping costs or display product specifications.
+ * @publicDocs
  */
-enum WeightUnit {
+export enum WeightUnit {
   /** Weight measured in kilograms (kg). Commonly used in metric system countries. */
   Kilograms = 'KILOGRAMS',
   /** Weight measured in grams (g). Used for lightweight items in metric system. */
@@ -55,8 +59,9 @@ enum WeightUnit {
 
 /**
  * The inventory policy that determines whether customers can purchase a variant when it's out of stock. Use this to control checkout behavior for low or zero inventory items.
+ * @publicDocs
  */
-enum ProductVariantInventoryPolicy {
+export enum ProductVariantInventoryPolicy {
   /** Prevents purchases when inventory reaches zero. Customers can't add out-of-stock variants to their cart. Use this to avoid overselling. */
   Deny = 'DENY',
   /** Allows purchases even when inventory is zero or negative. Customers can continue buying out-of-stock variants. Use this for backorders or made-to-order products. */
@@ -65,8 +70,9 @@ enum ProductVariantInventoryPolicy {
 
 /**
  * The system responsible for tracking inventory levels for a variant. This determines where stock counts are managed and updated.
+ * @publicDocs
  */
-enum ProductVariantInventoryManagement {
+export enum ProductVariantInventoryManagement {
   /** Inventory tracked and managed by Shopify. Stock levels update through Shopify admin or API. Use this for standard inventory management. */
   Shopify = 'SHOPIFY',
   /** Inventory not tracked. The variant is always considered in stock. Use this for services, digital goods, or custom products with unlimited availability. */
@@ -77,8 +83,9 @@ enum ProductVariantInventoryManagement {
 
 /**
  * The publication status indicating a product's availability state. Use this to filter products or determine which products customers can see and purchase.
+ * @publicDocs
  */
-enum ProductStatus {
+export enum ProductStatus {
   /** The product is published and available for sale on active sales channels. Customers can view and purchase this product. */
   Active = 'ACTIVE',
   /** The product is archived and no longer available. Archived products don't appear on storefronts and can't be purchased. Use this for discontinued items. */
@@ -89,8 +96,9 @@ enum ProductStatus {
 
 /**
  * An image associated with a product, variant, or collection. Use image data to display thumbnails, galleries, or product previews in your extension.
+ * @publicDocs
  */
-interface ResourceImage {
+export interface ResourceImage {
   /** The unique identifier for the image file. Use this ID for image-related GraphQL operations. */
   id: string;
   /** Alternative text describing the image for screen readers and accessibility. This text appears when images fail to load. Use descriptive alt text to make your extension accessible. */
@@ -101,24 +109,27 @@ interface ResourceImage {
 
 /**
  * The base resource structure with a unique identifier.
+ * @publicDocs
  */
-interface Resource {
+export interface Resource {
   /** The resource identifier in GraphQL global ID format (for example, `gid://shopify/Product/123`). */
   id: string;
 }
 
 /**
  * A resource structure that can optionally include associated variants. Use this type for specifying preselected items in the resource picker when you need to include variant selections.
+ * @publicDocs
  */
-interface BaseResource extends Resource {
+export interface BaseResource extends Resource {
   /** An array of variant resources to preselect along with the main resource. Only applicable when the main resource is a product that has variants you want to preselect. */
   variants?: Resource[];
 }
 
 /**
  * A single rule that defines product inclusion criteria for an automated collection. Rules filter products based on their attributes to automatically populate a collection.
+ * @publicDocs
  */
-interface CollectionRule {
+export interface CollectionRule {
   /** The product field to evaluate (for example, `'title'`, `'tag'`, `'vendor'`, or `'product_type'`). This determines which product attribute the rule checks. */
   column: string;
   /** The value to compare against. For example, if checking tags, this might be `'summer'` or `'featured'`. The product attribute must match this condition value according to the relation. */
@@ -129,8 +140,9 @@ interface CollectionRule {
 
 /**
  * A set of rules that determine which products are automatically included in a collection. Use this to understand how an automated collection populates itself with products.
+ * @publicDocs
  */
-interface RuleSet {
+export interface RuleSet {
   /** The logical operator for combining multiple rules. When `true`, products are included if they match ANY rule (OR logic). When `false`, products must match ALL rules (AND logic). Use this to understand the collection's filtering strategy. */
   appliedDisjunctively: boolean;
   /** An array of rules that define product inclusion criteria. Each rule checks a different product attribute. Products are added to the collection based on how these rules are combined (see `appliedDisjunctively`). */
@@ -139,8 +151,9 @@ interface RuleSet {
 
 /**
  * A collection resource selected from the resource picker. Collections are groups of products organized by manual curation or automated rules. Use collection data to access product groupings, organizational information, and collection metadata.
+ * @publicDocs
  */
-interface Collection extends Resource {
+export interface Collection extends Resource {
   /** The number of sales channels where this collection can be published. Use this to understand the collection's potential reach across different storefronts. */
   availablePublicationCount: number;
   /** The collection description as plain text without HTML formatting. Use this when you need the description without markup. */
@@ -184,8 +197,9 @@ interface Collection extends Resource {
 
 /**
  * A product variant resource selected from the resource picker. Product variants represent specific combinations of product options (for example, a t-shirt in size Medium and color Blue). Use variant data to access pricing, inventory, and option-specific information.
+ * @publicDocs
  */
-interface ProductVariant extends Resource {
+export interface ProductVariant extends Resource {
   /** Whether the variant is currently available for purchase. When `false`, the variant can't be added to orders even if inventory exists. Use this to check if customers can buy this variant. */
   availableForSale: boolean;
   /** The barcode, UPC, or ISBN number for the variant. Use this to scan products, integrate with inventory systems, or match physical products to Shopify data. */
@@ -245,8 +259,9 @@ interface ProductVariant extends Resource {
 
 /**
  * A product resource selected from the resource picker. Products are the items sold in a Shopify store and can have multiple variants representing different options (like size or color). Use product data to access titles, descriptions, images, pricing, and variant information.
+ * @publicDocs
  */
-interface Product extends Resource {
+export interface Product extends Resource {
   /** The number of sales channels where this product can be published. Use this to understand the product's potential reach across different storefronts. */
   availablePublicationCount: number;
   /** ISO 8601 timestamp when the product was first created in the catalog. Use this to track product age or sort by creation date. */
@@ -323,15 +338,17 @@ type WithSelection<T> = T & {
 
 /**
  * The payload returned when resources are selected from the picker.
+ * @publicDocs
  */
-type SelectPayload<Type extends keyof ResourceTypes> = WithSelection<
+export type SelectPayload<Type extends keyof ResourceTypes> = WithSelection<
   ResourceSelection<Type>[]
 >;
 
 /**
  * Filter options that control which resources appear in the resource picker. Use filters to restrict the available resources based on publication status, resource type, or custom search criteria.
+ * @publicDocs
  */
-interface Filters {
+export interface Filters {
   /**
    * Whether to include products that aren't published on any sales channels. When `false`, only products published to at least one sales channel appear in the picker. Use this to ensure merchants only select products that customers can purchase.
    * @defaultValue true
@@ -360,6 +377,7 @@ interface Filters {
 
 /**
  * The `ResourcePickerOptions` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the `ResourcePickerOptions` object to configure the resource picker's appearance and functionality.
+ * @publicDocs
  */
 export interface ResourcePickerOptions {
   /**
@@ -394,6 +412,7 @@ export interface ResourcePickerOptions {
 
 /**
  * Opens the resource picker modal for selecting products, variants, or collections. Returns the selected resources when the user confirms their selection, or undefined if they cancel.
+ * @publicDocs
  */
 export type ResourcePickerApi = (
   options: ResourcePickerOptions,

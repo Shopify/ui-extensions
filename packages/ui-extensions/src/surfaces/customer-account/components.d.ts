@@ -27,19 +27,19 @@ import {
 } from './components/Section';
 
 /**
- * A modal to complete an order action flow. Use this component to populate the `customer-account.order.action.render` extension target.
+ * Configure the following properties on the customer account action component.
  * @publicDocs
  */
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
 
 /**
- * The custom element interface for the CustomerAccountAction component.
+ * The custom element interface for the customer account action component.
  * @publicDocs
  */
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
 
 /**
- * The slot interface for the CustomerAccountAction component.
+ * The customer account action component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type CustomerAccountActionElementSlotsDocs =
@@ -71,7 +71,7 @@ declare module 'preact' {
 export type ImageGroupPropsDocs = ImageGroupProps;
 
 /**
- * The custom element interface for the ImageGroup component.
+ * The custom element interface for the image group component.
  * @publicDocs
  */
 export type ImageGroupElementDocs = ImageGroupElement;
@@ -101,13 +101,13 @@ declare module 'preact' {
 export type PagePropsDocs = PageProps;
 
 /**
- * The custom element interface for the Page component.
+ * The custom element interface for the page component.
  * @publicDocs
  */
 export type PageElementDocs = PageElement;
 
 /**
- * The slot interface for the Page component.
+ * The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type PageElementSlotsDocs = PageElementSlots;
@@ -132,7 +132,7 @@ declare module 'preact' {
 }
 
 /**
- * The element props interface for the Avatar component.
+ * The element props interface for the avatar component.
  * @publicDocs
  */
 export type AvatarElementPropsDocs = AvatarElementProps;
@@ -144,13 +144,13 @@ export type AvatarElementPropsDocs = AvatarElementProps;
 export type AvatarPropsDocs = AvatarProps;
 
 /**
- * The custom element interface for the Avatar component.
+ * The custom element interface for the avatar component.
  * @publicDocs
  */
 export type AvatarElementDocs = AvatarElement;
 
 /**
- * The events interface for the Avatar component.
+ * The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 export type AvatarEventsDocs = AvatarEvents;
@@ -172,13 +172,13 @@ declare module 'preact' {
 }
 
 /**
- * Use a menu to display a list of actions in a popover. Actions can open a modal, trigger an event, or link to an external page.
+ * Configure the following properties on the menu component.
  * @publicDocs
  */
 export type MenuPropsDocs = MenuProps;
 
 /**
- * The custom element interface for the Menu component.
+ * The custom element interface for the menu component.
  * @publicDocs
  */
 export type MenuElementDocs = MenuElement;
@@ -202,19 +202,19 @@ declare module 'preact' {
 }
 
 /**
- * Display multiple buttons in a layout that is contextual based on the screen width or parent component.
+ * Configure the following properties on the button group component.
  * @publicDocs
  */
 export type ButtonGroupPropsDocs = ButtonGroupProps;
 
 /**
- * The custom element interface for the ButtonGroup component.
+ * The custom element interface for the button group component.
  * @publicDocs
  */
 export type ButtonGroupElementDocs = ButtonGroupElement;
 
 /**
- * The slot interface for the ButtonGroup component.
+ * The button group component supports slots for additional content placement within the group. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
@@ -239,19 +239,19 @@ declare module 'preact' {
 }
 
 /**
- * Groups related content into clearly-defined thematic areas with consistent styling and structure.
+ * Configure the following properties on the section component.
  * @publicDocs
  */
 export type SectionPropsDocs = SectionProps;
 
 /**
- * The custom element interface for the Section component.
+ * The custom element interface for the section component.
  * @publicDocs
  */
 export type SectionElementDocs = SectionElement;
 
 /**
- * The slot interface for the Section component.
+ * The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export type SectionElementSlotsDocs = SectionElementSlots;

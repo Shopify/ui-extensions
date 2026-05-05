@@ -26,6 +26,9 @@ export type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base
  * - `base`: The standard border color for most contexts.
  */
 export type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/**
+ * A shorthand type for specifying border properties. Accepts a border size, or a combination of size and color, or size, color, and style.
+ */
 export type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
  * Used when an element does not have children.
@@ -55,42 +58,45 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clickable";
-/**
- * The element props interface for the Clickable component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ClickableProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
     target?: Extract<ClickableProps$1['target'], 'auto' | '_blank'>;
+    /**
+     * The behavioral type of the clickable component, which determines what action it performs when activated.
+     *
+     * - `submit`: Submits the nearest containing form.
+     * - `button`: Performs no default action, relying on the `click` event handler for behavior.
+     *
+     * This property is ignored if `href` or `commandFor`/`command` is set.
+     *
+     * @default 'button'
+     */
     type?: Extract<ClickableProps$1['type'], 'submit' | 'button'>;
 }
 export interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
-/**
- * The events interface for the Clickable component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableElementEvents {
     /**
-     * Callback when the element loses focus.
+     * A callback fired when the component loses focus.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the button is activated.
-     * This will be called before the action indicated by `type`.
+     * A callback fired when the component is clicked. This will be called before the action indicated by `type`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the element receives focus.
+     * A callback fired when the component receives focus.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
 }

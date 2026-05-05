@@ -32,24 +32,18 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-switch";
-/**
- * The element props interface for the Switch component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
     command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
-/**
- * The events interface for the Switch component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface SwitchElementEvents {
     /**
-     * A callback that is run whenever the control is changed.
+     * A callback fired when the switch value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }

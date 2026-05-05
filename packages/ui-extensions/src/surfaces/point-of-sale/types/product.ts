@@ -1,5 +1,6 @@
 /**
  * Represents comprehensive product information including metadata, pricing, variants, and availability. Contains all data needed to display and work with products in the POS interface.
+ * @publicDocs
  */
 export interface Product {
   /**
@@ -106,6 +107,7 @@ export interface Product {
 
 /**
  * Represents a specific variant of a product with its own SKU, price, and inventory. Contains variant-specific attributes including options, availability, and identification data.
+ * @publicDocs
  */
 export interface ProductVariant {
   /**
@@ -192,6 +194,7 @@ export interface ProductVariant {
 
 /**
  * Represents a single option selection for a product variant, showing one chosen value from a product's configuration options. For example, if a product has Size and Color options, a variant might have one option for Size=Large and another for Color=Blue.
+ * @publicDocs
  */
 export interface ProductVariantOption {
   /**
@@ -208,11 +211,13 @@ export interface ProductVariantOption {
  * The inventory policy determining whether sales can continue when a variant has no inventory available:
  * - `'DENY'`: Sales are prevented when inventory reaches zero. Customers can't purchase out-of-stock variants. The "Add to cart" action is disabled or shows "Out of stock". This is the default and recommended policy for most physical products to prevent overselling.
  * - `'CONTINUE'`: Sales are allowed even when inventory is zero or negative. Customers can purchase out-of-stock variants, creating backorders. This enables pre-orders, made-to-order products, or drop-shipped items where inventory tracking is less critical.
+ * @publicDocs
  */
 export type ProductVariantInventoryPolicy = 'DENY' | 'CONTINUE';
 
 /**
  * Represents a product option definition showing one of the configurable attributes for a product (like Size, Color, Material) along with all the possible values customers can choose from. Products can have up to 3 options.
+ * @publicDocs
  */
 export interface ProductOption {
   /**

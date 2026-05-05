@@ -24,6 +24,7 @@ export interface PinPadApiContent {
 
 /**
  * The `PinPadApi` object provides methods for displaying secure PIN entry interfaces. Access these methods through `shopify.pinPad` to show PIN pad modals and handle PIN validation.
+ * @publicDocs
  */
 export interface PinPadApi {
   pinPad: PinPadApiContent;

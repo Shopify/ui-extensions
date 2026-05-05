@@ -5,11 +5,19 @@ import type {ShippingOption} from '../standard/standard';
 export interface ShippingOptionItemApi {
   /**
    * The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.
+   *
+   * Available only on the corresponding item target. Shipping option item
+   * targets expose shipping option properties; pickup location item targets
+   * expose pickup location properties.
    */
   target: SubscribableSignalLike<ShippingOption>;
 
   /**
    * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.
+   *
+   * Available only on the corresponding item target. Shipping option item
+   * targets expose shipping option properties; pickup location item targets
+   * expose pickup location properties.
    */
   isTargetSelected: SubscribableSignalLike<boolean>;
 
@@ -21,6 +29,7 @@ export interface ShippingOptionItemApi {
 
 /**
  * The render mode of a shipping option.
+ * @publicDocs
  */
 export interface ShippingOptionItemRenderMode {
   /**

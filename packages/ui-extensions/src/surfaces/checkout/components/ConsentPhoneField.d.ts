@@ -69,46 +69,46 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-phone-field";
-/**
- * The element props interface for the ConsentPhoneField component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
      * @private
      */
     placeholder?: string;
+    /**
+     * The policy for which buyer consent is being collected. Used by the [consent checkbox](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/consent-checkbox) and [consent phone field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/consent-phone-field) components to identify the type of marketing permission requested.
+     *
+     * - `sms-marketing`: Represents the policy for SMS marketing consent.
+     */
+    policy?: ConsentPhoneFieldProps$1['policy'];
 }
 export interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
-/**
- * The events interface for the ConsentPhoneField component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentPhoneFieldElementEvents {
     /**
-     * Callback when the element loses focus.
+     * A callback fired when the consent phone field loses focus.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
+     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+     * A callback fired when the consent phone field value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the element receives focus.
+     * A callback fired when the consent phone field receives focus.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
+     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback when the user makes any changes in the field.
+     * A callback fired when the user inputs data into the consent phone field.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
+     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
     input?: CallbackEventListener<typeof tagName>;
 }
@@ -118,14 +118,10 @@ export interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps,
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
-/**
- * The slots interface for the ConsentPhoneField component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentPhoneFieldElementSlots {
     /**
-     * Additional content to be displayed in the field.
-     * Commonly used to display an icon that activates a tooltip providing more information.
+     * Additional interactive content displayed within the field. Accepts button and clickable components with text content only. Other component types or complex layouts are not supported.
      */
     accessory?: HTMLElement;
 }

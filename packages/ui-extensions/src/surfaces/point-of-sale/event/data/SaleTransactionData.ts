@@ -3,6 +3,7 @@ import {LineItem} from '../../types/cart';
 
 /**
  * Defines the data structure for completed sale transactions.
+ * @publicDocs
  */
 export interface SaleTransactionData extends BaseTransactionComplete {
   /**

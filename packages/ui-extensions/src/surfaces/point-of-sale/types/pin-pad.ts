@@ -1,5 +1,6 @@
 /**
  * Represents the result of a PIN pad interaction, indicating whether PIN entry was completed and providing the entered PIN if available.
+ * @publicDocs
  */
 export interface PinPadResult {
   /**
@@ -14,6 +15,7 @@ export interface PinPadResult {
 
 /**
  * Represents the validation outcome for an entered PIN. Indicates whether the PIN should be accepted or rejected, with optional error messaging for rejected PINs.
+ * @publicDocs
  */
 export type PinValidationResult =
   /** The validation result indicating the PIN should be accepted for valid PINs. */
@@ -23,11 +25,13 @@ export type PinValidationResult =
 
 /**
  * The valid PIN length values (4-10 digits). Commonly used to configure minimum and maximum PIN length requirements.
+ * @publicDocs
  */
 export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
 
 /**
  * Defines a custom action button for the PIN pad interface with a label and click handler.
+ * @publicDocs
  */
 export interface PinPadActionType {
   /**
@@ -42,6 +46,7 @@ export interface PinPadActionType {
 
 /**
  * Specifies configuration options for displaying the PIN pad interface. Includes callback functions for PIN entry events, dismissal handling, and customizable labels and messaging.
+ * @publicDocs
  */
 export interface PinPadOptions {
   /**

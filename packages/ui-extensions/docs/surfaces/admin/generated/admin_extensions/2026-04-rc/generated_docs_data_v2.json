@@ -1,4 +1,156 @@
 {
+  "GraphQLError": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "name": "GraphQLError",
+      "description": "An error returned by the Storefront GraphQL API. Contains a human-readable `message` and an `extensions` object with the request ID and error code for debugging.",
+      "members": [
+        {
+          "filePath": "src/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "extensions",
+          "value": "{ requestId: string; code: string; }",
+          "description": "Additional error metadata including the request ID and error code."
+        },
+        {
+          "filePath": "src/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "message",
+          "value": "string",
+          "description": "A human-readable description of the error."
+        }
+      ],
+      "value": "export interface GraphQLError {\n  /**\n   * A human-readable description of the error.\n   */\n  message: string;\n  /**\n   * Additional error metadata including the request ID and error code.\n   */\n  extensions: {\n    /**\n     * The unique identifier for the API request, useful for debugging with Shopify support.\n     */\n    requestId: string;\n    /**\n     * A machine-readable error code identifying the type of error.\n     */\n    code: string;\n  };\n}"
+    }
+  },
+  "Storage": {
+    "src/surfaces/admin/api/standard/storage.ts": {
+      "filePath": "src/surfaces/admin/api/standard/storage.ts",
+      "name": "Storage",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "clear",
+          "value": "() => Promise<void>",
+          "description": "Clears all data from the storage. Use this to reset your extension's storage, such as when implementing a logout flow, clearing cached data, or resetting to defaults. This operation removes all stored key-value pairs."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "delete",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(key: Keys) => Promise<boolean>",
+          "description": "Deletes a specific key from the storage. Use this to remove individual data items that are no longer needed, freeing up storage space and maintaining data hygiene."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "deleteMany",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(keys: Keys[]) => Promise<Record<Keys, boolean>>",
+          "description": "Deletes multiple keys from the storage at once. Use this to efficiently remove several related data items in a single operation, such as clearing expired cache entries or removing a group of related settings."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "entries",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>() => Promise<IterableIterator<[Keys, StorageTypes[Keys]]>>",
+          "description": "Gets all the keys and values in the storage. Use this to iterate over all stored data, useful for debugging, data migration, or displaying all stored settings. The returned iterator provides entries as `[key, value]` tuples."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "get",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(key: Keys) => Promise<StorageTypes[Keys]>",
+          "description": "Gets the value of a key in the storage. Use this to retrieve previously saved data when your extension loads or when you need to access stored values. The value is automatically deserialized from JSON to its original type."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getMany",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(keys: Keys[]) => Promise<StorageTypes[Keys][]>",
+          "description": "Gets the values of multiple keys in the storage at once. Use this to efficiently retrieve related data in a single operation, reducing overhead when loading multiple stored values. The returned array is in the same order as the provided keys, with `undefined` values for keys that don't exist in storage."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "set",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(key: Keys, value: StorageTypes[Keys]) => Promise<void>",
+          "description": "Sets the value of a key in the storage. Use this to save individual data items like user preferences, form state, or cached values. The value is serialized using `JSON.stringify`, so it can be any primitive type, object, or array that JSON supports."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setMany",
+          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes>(entries: Partial<StorageTypes>) => Promise<void>",
+          "description": "Sets multiple key-value pairs in the storage at once. Use this for efficient batch operations when you need to save multiple related values together, such as form data or configuration settings."
+        }
+      ],
+      "value": "export interface Storage<\n  BaseStorageTypes extends Record<string, any> = Record<string, unknown>,\n> {\n  /**\n   * Sets the value of a key in the storage. Use this to save individual data items like user preferences, form state, or cached values. The value is serialized using `JSON.stringify`, so it can be any primitive type, object, or array that JSON supports.\n   *\n   * @param key - The key to set the value for. Use descriptive keys to organize your stored data.\n   * @param value - The value to set for the key. Can be any primitive type supported by `JSON.stringify`.\n   *\n   * @throws {StorageExceededError} Rejects with a `StorageExceededError` if the extension exceeds its allotted storage limit.\n   */\n  set<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n    value: StorageTypes[Keys],\n  ): Promise<void>;\n\n  /**\n   * Sets multiple key-value pairs in the storage at once. Use this for efficient batch operations when you need to save multiple related values together, such as form data or configuration settings.\n   *\n   * @param entries - An object containing key-value pairs to store. Values can be any primitive type supported by `JSON.stringify`.\n   *\n   * @throws {StorageExceededError} Rejects with a `StorageExceededError` if the extension exceeds its allotted storage limit.\n   */\n  setMany<StorageTypes extends BaseStorageTypes = BaseStorageTypes>(\n    entries: Partial<StorageTypes>,\n  ): Promise<void>;\n\n  /**\n   * Gets the value of a key in the storage. Use this to retrieve previously saved data when your extension loads or when you need to access stored values. The value is automatically deserialized from JSON to its original type.\n   *\n   * @param key - The key to get the value for.\n   * @returns The value of the key, or `undefined` if no value exists for the key.\n   */\n  get<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<StorageTypes[Keys] | undefined>;\n\n  /**\n   * Gets the values of multiple keys in the storage at once. Use this to efficiently retrieve related data in a single operation, reducing overhead when loading multiple stored values. The returned array is in the same order as the provided keys, with `undefined` values for keys that don't exist in storage.\n   *\n   * @param keys - An array of keys to get the values for.\n   * @returns An array containing values for the requested keys, in the same order as the input keys.\n   */\n  getMany<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    keys: Keys[],\n  ): Promise<(StorageTypes[Keys] | undefined)[]>;\n\n  /**\n   * Clears all data from the storage. Use this to reset your extension's storage, such as when implementing a logout flow, clearing cached data, or resetting to defaults. This operation removes all stored key-value pairs.\n   */\n  clear(): Promise<void>;\n\n  /**\n   * Deletes a specific key from the storage. Use this to remove individual data items that are no longer needed, freeing up storage space and maintaining data hygiene.\n   *\n   * @param key - The key to delete.\n   * @returns A promise that resolves to `true` if the key existed and was deleted, or `false` if the key did not exist.\n   */\n  delete<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<boolean>;\n\n  /**\n   * Deletes multiple keys from the storage at once. Use this to efficiently remove several related data items in a single operation, such as clearing expired cache entries or removing a group of related settings.\n   *\n   * @param keys - An array of keys to delete.\n   * @returns A promise that resolves to an object mapping each key to a boolean value: `true` if the key existed and was deleted, or `false` if the key did not exist.\n   */\n  deleteMany<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    keys: Keys[],\n  ): Promise<Record<Keys, boolean>>;\n\n  /**\n   * Gets all the keys and values in the storage. Use this to iterate over all stored data, useful for debugging, data migration, or displaying all stored settings. The returned iterator provides entries as `[key, value]` tuples.\n   *\n   * @returns A promise that resolves to an iterator containing all key-value pairs in the storage.\n   */\n  entries<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(): Promise<IterableIterator<[Keys, StorageTypes[Keys]]>>;\n}"
+    }
+  },
+  "StorageExceededError": {
+    "src/surfaces/admin/api/standard/storage.ts": {
+      "filePath": "src/surfaces/admin/api/standard/storage.ts",
+      "name": "StorageExceededError",
+      "description": "Error thrown when storage operations exceed the available storage quota. This can occur during `set()` or `setMany()` operations when the total stored data size exceeds the limit allocated to your extension.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "message",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "'StorageExceededError'",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/storage.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "stack",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface StorageExceededError extends Error {\n  name: 'StorageExceededError';\n}"
+    }
+  },
+  "Data": {
+    "src/surfaces/admin/api/shared.ts": {
+      "filePath": "src/surfaces/admin/api/shared.ts",
+      "name": "Data",
+      "description": "The `Data` object provides access to currently viewed or selected resources in the admin context.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "selected",
+          "value": "{ id: string; }[]",
+          "description": "An array of currently viewed or selected resource identifiers. Use this to access the IDs of items in the current context, such as selected products in an index page or the product being viewed on a details page. The available IDs depend on the extension target and user interactions."
+        }
+      ],
+      "value": "export interface Data {\n  /**\n   * An array of currently viewed or selected resource identifiers. Use this to access the IDs of items in the current context, such as selected products in an index page or the product being viewed on a details page. The available IDs depend on the extension target and user interactions.\n   */\n  selected: {id: string}[];\n}"
+    }
+  },
+  "SupportedDefinitionType": {
+    "src/surfaces/admin/api/shared.ts": {
+      "filePath": "src/surfaces/admin/api/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "SupportedDefinitionType",
+      "value": "'boolean' | 'collection_reference' | 'color' | 'date' | 'date_time' | 'dimension' | 'file_reference' | 'json' | 'metaobject_reference' | 'mixed_reference' | 'money' | 'multi_line_text_field' | 'number_decimal' | 'number_integer' | 'page_reference' | 'product_reference' | 'rating' | 'rich_text_field' | 'single_line_text_field' | 'product_taxonomy_value_reference' | 'url' | 'variant_reference' | 'volume' | 'weight' | 'list.collection_reference' | 'list.color' | 'list.date' | 'list.date_time' | 'list.dimension' | 'list.file_reference' | 'list.metaobject_reference' | 'list.mixed_reference' | 'list.number_decimal' | 'list.number_integer' | 'list.page_reference' | 'list.product_reference' | 'list.rating' | 'list.single_line_text_field' | 'list.url' | 'list.variant_reference' | 'list.volume' | 'list.weight'",
+      "description": "The supported [metafield definition types](/docs/apps/build/metafields/list-of-data-types) for storing extension configuration data. Use these types to specify how metafield values should be formatted, validated, and displayed. Types prefixed with `list.` store arrays of values, while other types store single values. Choose a type that matches your data format (for example, use `'number_integer'` for whole numbers, `'single_line_text_field'` for short text, or `'json'` for complex structured data).",
+      "isPublicDocs": true
+    }
+  },
   "ExtensionTargets": {
     "src/surfaces/admin/extension-targets.ts": {
       "filePath": "src/surfaces/admin/extension-targets.ts",
@@ -593,6 +745,7 @@
       "filePath": "src/surfaces/admin/api/action/action.ts",
       "name": "ActionExtensionApi",
       "description": "The `ActionExtensionApi` object provides methods for action extensions that render in modal overlays. Access the following properties on the `ActionExtensionApi` object to interact with the current context, control the modal, and display picker dialogs.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/action/action.ts",
@@ -673,6 +826,7 @@
       "filePath": "src/surfaces/admin/api/standard/standard.ts",
       "name": "Auth",
       "description": "The `Auth` object provides authentication methods for secure communication with your app backend.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/standard/standard.ts",
@@ -682,24 +836,7 @@
           "description": "Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved."
         }
       ],
-      "value": "interface Auth {\n  /**\n   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved.\n   */\n  idToken: () => Promise<string | null>;\n}"
-    }
-  },
-  "Data": {
-    "src/surfaces/admin/api/shared.ts": {
-      "filePath": "src/surfaces/admin/api/shared.ts",
-      "name": "Data",
-      "description": "The `Data` object provides access to currently viewed or selected resources in the admin context.",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/api/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "selected",
-          "value": "{ id: string; }[]",
-          "description": "An array of currently viewed or selected resource identifiers. Use this to access the IDs of items in the current context, such as selected products in an index page or the product being viewed on a details page. The available IDs depend on the extension target and user interactions."
-        }
-      ],
-      "value": "export interface Data {\n  /**\n   * An array of currently viewed or selected resource identifiers. Use this to access the IDs of items in the current context, such as selected products in an index page or the product being viewed on a details page. The available IDs depend on the extension target and user interactions.\n   */\n  selected: {id: string}[];\n}"
+      "value": "export interface Auth {\n  /**\n   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved.\n   */\n  idToken: () => Promise<string | null>;\n}"
     }
   },
   "ExtensionTarget": {
@@ -763,6 +900,7 @@
       "filePath": "src/surfaces/admin/api/intents/intents.ts",
       "name": "Intents",
       "description": "The `Intents` object provides methods for launching standardized Shopify workflows to create or edit resources. Intents enable your extension to trigger native admin interfaces for products, customers, discounts, and other resources, then receive the results when merchants complete the workflow.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/intents/intents.ts",
@@ -789,6 +927,7 @@
       "filePath": "src/surfaces/admin/api/intents/intents.ts",
       "name": "IntentInvokeApi",
       "description": "The [`invoke` method](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api#invoke-method) in the Intents API launches a Shopify admin workflow for creating or editing resources, such as products, customers, or discounts. It opens a native admin interface, waits for the merchant to complete the workflow, and returns the result including any created or updated resource data.",
+      "isPublicDocs": true,
       "members": [],
       "value": "export interface IntentInvokeApi {\n  (query: IntentQuery): Promise<IntentActivity>;\n  (intentURL: string, options?: IntentQueryOptions): Promise<IntentActivity>;\n}"
     }
@@ -798,6 +937,7 @@
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "name": "PickerApi",
       "description": "The `picker` function opens a custom selection dialog with your app-specific data. It accepts configuration options to define the picker's heading, items, headers, and selection behavior. It returns a Promise that resolves to a `Picker` object with a `selected` property for accessing the merchant's selection.",
+      "isPublicDocs": true,
       "params": [
         {
           "name": "options",
@@ -820,6 +960,7 @@
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "name": "PickerOptions",
       "description": "The configuration options for the custom picker dialog. Define the picker's appearance, selection behavior, and data structure.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/picker/picker.ts",
@@ -852,7 +993,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface PickerOptions {\n  /**\n   * The heading displayed at the top of the picker modal. Use a clear, descriptive title that tells merchants what they're selecting.\n   */\n  heading: string;\n  /**\n   * The selection mode for the picker. Pass `true` to allow unlimited selections, `false` for single-item selection only, or a number to set a maximum selection limit (for example, `3` allows up to three items).\n   */\n  multiple?: boolean | number;\n  /**\n   * The list of items that merchants can select from. Each item appears as a row in the picker table.\n   */\n  items: Item[];\n  /**\n   * The column headers for the picker table. Define headers to label and organize the data columns displayed for each item. The header order determines the column layout.\n   */\n  headers?: Header[];\n}"
+      "value": "export interface PickerOptions {\n  /**\n   * The heading displayed at the top of the picker modal. Use a clear, descriptive title that tells merchants what they're selecting.\n   */\n  heading: string;\n  /**\n   * The selection mode for the picker. Pass `true` to allow unlimited selections, `false` for single-item selection only, or a number to set a maximum selection limit (for example, `3` allows up to three items).\n   */\n  multiple?: boolean | number;\n  /**\n   * The list of items that merchants can select from. Each item appears as a row in the picker table.\n   */\n  items: Item[];\n  /**\n   * The column headers for the picker table. Define headers to label and organize the data columns displayed for each item. The header order determines the column layout.\n   */\n  headers?: Header[];\n}"
     }
   },
   "Header": {
@@ -860,6 +1001,7 @@
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "name": "Header",
       "description": "The configuration for a table column header in the picker. Each header creates a labeled column that displays corresponding data from items.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/picker/picker.ts",
@@ -879,7 +1021,7 @@
           "defaultValue": "'string'"
         }
       ],
-      "value": "interface Header {\n  /**\n   * The label text displayed at the top of the table column. Use clear, concise labels that describe the data in that column (for example, \"Price\", \"Status\", \"Last Updated\").\n   */\n  content?: string;\n  /**\n   * The data type that controls column formatting and text alignment. Use `'number'` for currency, prices, or numeric values (displays right-aligned), or `'string'` for text content (displays left-aligned).\n   * @defaultValue 'string'\n   */\n  type?: 'string' | 'number';\n}"
+      "value": "export interface Header {\n  /**\n   * The label text displayed at the top of the table column. Use clear, concise labels that describe the data in that column (for example, \"Price\", \"Status\", \"Last Updated\").\n   */\n  content?: string;\n  /**\n   * The data type that controls column formatting and text alignment. Use `'number'` for currency, prices, or numeric values (displays right-aligned), or `'string'` for text content (displays left-aligned).\n   * @defaultValue 'string'\n   */\n  type?: 'string' | 'number';\n}"
     }
   },
   "Item": {
@@ -887,6 +1029,7 @@
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "name": "Item",
       "description": "An individual item that merchants can select in the picker. Each item appears as a row in the picker table.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/picker/picker.ts",
@@ -944,7 +1087,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface Item {\n  /**\n   * The unique identifier for this item. This ID is returned in the selection array when the merchant selects this item. Use an ID that helps you identify the item in your system (for example, template IDs, review IDs, or custom option keys).\n   */\n  id: string;\n  /**\n   * The primary text displayed in the first column. This is typically the item's name or title and is the most prominent text in the row.\n   */\n  heading: string;\n  /**\n   * Additional data displayed in subsequent columns after the heading. Each value appears in its own column, and the order must match the `headers` array. For example, if headers are `[\"Price\", \"Status\"]`, then data would be `[19.99, \"Active\"]`.\n   */\n  data?: DataPoint[];\n  /**\n   * Whether the item can be selected. When `true`, the item is disabled and can't be selected. Disabled items appear grayed out and merchants can't choose them. Use this for items that are unavailable or don't meet selection criteria.\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * Whether the item is preselected when the picker opens. When `true`, the item appears selected by default. Merchants can still deselect preselected items. Use this to show current selections or suggest default choices.\n   */\n  selected?: boolean;\n  /**\n   * Status or context badges displayed next to the heading in the first column. Use badges to highlight item state, completion status, or other important attributes (for example, \"Draft\", \"Published\", \"Incomplete\").\n   */\n  badges?: PickerBadge[];\n  /**\n   * A small preview image or icon displayed at the start of the row. Thumbnails help merchants visually identify items at a glance. Provide a URL to the image file.\n   */\n  thumbnail?: {url: string};\n}"
+      "value": "export interface Item {\n  /**\n   * The unique identifier for this item. This ID is returned in the selection array when the merchant selects this item. Use an ID that helps you identify the item in your system (for example, template IDs, review IDs, or custom option keys).\n   */\n  id: string;\n  /**\n   * The primary text displayed in the first column. This is typically the item's name or title and is the most prominent text in the row.\n   */\n  heading: string;\n  /**\n   * Additional data displayed in subsequent columns after the heading. Each value appears in its own column, and the order must match the `headers` array. For example, if headers are `[\"Price\", \"Status\"]`, then data would be `[19.99, \"Active\"]`.\n   */\n  data?: DataPoint[];\n  /**\n   * Whether the item can be selected. When `true`, the item is disabled and can't be selected. Disabled items appear grayed out and merchants can't choose them. Use this for items that are unavailable or don't meet selection criteria.\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * Whether the item is preselected when the picker opens. When `true`, the item appears selected by default. Merchants can still deselect preselected items. Use this to show current selections or suggest default choices.\n   */\n  selected?: boolean;\n  /**\n   * Status or context badges displayed next to the heading in the first column. Use badges to highlight item state, completion status, or other important attributes (for example, \"Draft\", \"Published\", \"Incomplete\").\n   */\n  badges?: PickerBadge[];\n  /**\n   * A small preview image or icon displayed at the start of the row. Thumbnails help merchants visually identify items at a glance. Provide a URL to the image file.\n   */\n  thumbnail?: {url: string};\n}"
     }
   },
   "PickerBadge": {
@@ -952,6 +1095,7 @@
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "name": "PickerBadge",
       "description": "A badge displayed next to an item in the picker to show status or progress. Use badges to highlight important item attributes or states that affect selection decisions.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/picker/picker.ts",
@@ -977,7 +1121,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface PickerBadge {\n  /** The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\"). */\n  content: string;\n  /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */\n  tone?: Tone;\n  /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */\n  progress?: Progress;\n}"
+      "value": "export interface PickerBadge {\n  /** The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\"). */\n  content: string;\n  /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */\n  tone?: Tone;\n  /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */\n  progress?: Progress;\n}"
     }
   },
   "Progress": {
@@ -986,7 +1130,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "Progress",
       "value": "'incomplete' | 'partiallyComplete' | 'complete'",
-      "description": "The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished."
+      "description": "The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished.",
+      "isPublicDocs": true
     }
   },
   "Tone": {
@@ -995,7 +1140,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "Tone",
       "value": "'info' | 'success' | 'warning' | 'critical'",
-      "description": "The visual tone for picker badges indicating status or importance. Use different tones to communicate urgency or state: `'info'` for neutral information, `'success'` for positive states, `'warning'` for caution, or `'critical'` for urgent issues."
+      "description": "The visual tone for picker badges indicating status or importance. Use different tones to communicate urgency or state: `'info'` for neutral information, `'success'` for positive states, `'warning'` for caution, or `'critical'` for urgent issues.",
+      "isPublicDocs": true
     }
   },
   "DataPoint": {
@@ -1004,7 +1150,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "DataPoint",
       "value": "string | number | undefined",
-      "description": "A single data point that can appear in a picker table cell. Can be text, a number, or undefined if the cell should be empty."
+      "description": "A single data point that can appear in a picker table cell. Can be text, a number, or undefined if the cell should be empty.",
+      "isPublicDocs": true
     }
   },
   "Picker": {
@@ -1012,6 +1159,7 @@
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "name": "Picker",
       "description": "A handle returned when opening a picker dialog. Use this to access the merchant's selection after they confirm or cancel the picker.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/picker/picker.ts",
@@ -1021,7 +1169,7 @@
           "description": "A Promise that resolves with an array of selected item IDs when the merchant presses the **Select** button, or `undefined` if they cancel. Await this Promise to handle the selection result."
         }
       ],
-      "value": "interface Picker {\n  /**\n   * A Promise that resolves with an array of selected item IDs when the merchant presses the **Select** button, or `undefined` if they cancel. Await this Promise to handle the selection result.\n   */\n  selected: Promise<string[] | undefined>;\n}"
+      "value": "export interface Picker {\n  /**\n   * A Promise that resolves with an array of selected item IDs when the merchant presses the **Select** button, or `undefined` if they cancel. Await this Promise to handle the selection result.\n   */\n  selected: Promise<string[] | undefined>;\n}"
     }
   },
   "ApiVersion": {
@@ -1038,6 +1186,7 @@
       "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
       "name": "ResourcePickerApi",
       "description": "Opens the resource picker modal for selecting products, variants, or collections. Returns the selected resources when the user confirms their selection, or undefined if they cancel.",
+      "isPublicDocs": true,
       "params": [
         {
           "name": "options",
@@ -1060,6 +1209,7 @@
       "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
       "name": "ResourcePickerOptions",
       "description": "The `ResourcePickerOptions` object defines how the resource picker behaves, including which resource type to display, selection limits, filters, and preselected items. Access the following properties on the `ResourcePickerOptions` object to configure the resource picker's appearance and functionality.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
@@ -1121,6 +1271,7 @@
       "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
       "name": "Filters",
       "description": "Filter options that control which resources appear in the resource picker. Use filters to restrict the available resources based on publication status, resource type, or custom search criteria.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
@@ -1167,7 +1318,7 @@
           "defaultValue": "true"
         }
       ],
-      "value": "interface Filters {\n  /**\n   * Whether to include products that aren't published on any sales channels. When `false`, only products published to at least one sales channel appear in the picker. Use this to ensure merchants only select products that customers can purchase.\n   * @defaultValue true\n   */\n  hidden?: boolean;\n  /**\n   * Whether to show product variants in the picker. When `false`, merchants can only select products, not individual variants. Only applies when `type` is `'product'`. Use this to simplify selection when you only need product-level data.\n   * @defaultValue true\n   */\n  variants?: boolean;\n  /**\n   * Whether to include draft products in the picker. When `false`, draft products are hidden. When `undefined`, draft products appear with a draft badge. Only applies when `type` is `'product'`. Use this to prevent selecting products that aren't ready for use.\n   * @defaultValue true\n   */\n  draft?: boolean | undefined;\n  /**\n   * Whether to include archived products in the picker. When `false`, archived products are hidden. When `undefined`, archived products appear with an archived badge. Only applies when `type` is `'product'`. Use this to prevent selecting discontinued products.\n   * @defaultValue true\n   */\n  archived?: boolean | undefined;\n  /**\n   * A GraphQL search query that filters the available resources without showing the query in the picker's search bar. Merchants won't see or edit this filter. See [search syntax](https://shopify.dev/docs/api/usage/search-syntax) for the query format. Use this to programmatically restrict resources based on attributes like tags, vendor, or product type (for example, `\"tag:featured\"` or `\"vendor:Acme\"`).\n   */\n  query?: string;\n}"
+      "value": "export interface Filters {\n  /**\n   * Whether to include products that aren't published on any sales channels. When `false`, only products published to at least one sales channel appear in the picker. Use this to ensure merchants only select products that customers can purchase.\n   * @defaultValue true\n   */\n  hidden?: boolean;\n  /**\n   * Whether to show product variants in the picker. When `false`, merchants can only select products, not individual variants. Only applies when `type` is `'product'`. Use this to simplify selection when you only need product-level data.\n   * @defaultValue true\n   */\n  variants?: boolean;\n  /**\n   * Whether to include draft products in the picker. When `false`, draft products are hidden. When `undefined`, draft products appear with a draft badge. Only applies when `type` is `'product'`. Use this to prevent selecting products that aren't ready for use.\n   * @defaultValue true\n   */\n  draft?: boolean | undefined;\n  /**\n   * Whether to include archived products in the picker. When `false`, archived products are hidden. When `undefined`, archived products appear with an archived badge. Only applies when `type` is `'product'`. Use this to prevent selecting discontinued products.\n   * @defaultValue true\n   */\n  archived?: boolean | undefined;\n  /**\n   * A GraphQL search query that filters the available resources without showing the query in the picker's search bar. Merchants won't see or edit this filter. See [search syntax](https://shopify.dev/docs/api/usage/search-syntax) for the query format. Use this to programmatically restrict resources based on attributes like tags, vendor, or product type (for example, `\"tag:featured\"` or `\"vendor:Acme\"`).\n   */\n  query?: string;\n}"
     }
   },
   "BaseResource": {
@@ -1175,6 +1326,7 @@
       "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
       "name": "BaseResource",
       "description": "A resource structure that can optionally include associated variants. Use this type for specifying preselected items in the resource picker when you need to include variant selections.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
@@ -1192,7 +1344,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface BaseResource extends Resource {\n  /** An array of variant resources to preselect along with the main resource. Only applicable when the main resource is a product that has variants you want to preselect. */\n  variants?: Resource[];\n}"
+      "value": "export interface BaseResource extends Resource {\n  /** An array of variant resources to preselect along with the main resource. Only applicable when the main resource is a product that has variants you want to preselect. */\n  variants?: Resource[];\n}"
     }
   },
   "Resource": {
@@ -1200,6 +1352,7 @@
       "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
       "name": "Resource",
       "description": "The base resource structure with a unique identifier.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
@@ -1209,7 +1362,7 @@
           "description": "The resource identifier in GraphQL global ID format (for example, `gid://shopify/Product/123`)."
         }
       ],
-      "value": "interface Resource {\n  /** The resource identifier in GraphQL global ID format (for example, `gid://shopify/Product/123`). */\n  id: string;\n}"
+      "value": "export interface Resource {\n  /** The resource identifier in GraphQL global ID format (for example, `gid://shopify/Product/123`). */\n  id: string;\n}"
     }
   },
   "SelectPayload": {
@@ -1218,73 +1371,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "SelectPayload",
       "value": "SelectPayload<Type>",
-      "description": "The payload returned when resources are selected from the picker."
-    }
-  },
-  "Storage": {
-    "src/surfaces/admin/api/standard/storage.ts": {
-      "filePath": "src/surfaces/admin/api/standard/storage.ts",
-      "name": "Storage",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "clear",
-          "value": "() => Promise<void>",
-          "description": "Clears all data from the storage. Use this to reset your extension's storage, such as when implementing a logout flow, clearing cached data, or resetting to defaults. This operation removes all stored key-value pairs."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "delete",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(key: Keys) => Promise<boolean>",
-          "description": "Deletes a specific key from the storage. Use this to remove individual data items that are no longer needed, freeing up storage space and maintaining data hygiene."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "deleteMany",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(keys: Keys[]) => Promise<Record<Keys, boolean>>",
-          "description": "Deletes multiple keys from the storage at once. Use this to efficiently remove several related data items in a single operation, such as clearing expired cache entries or removing a group of related settings."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "entries",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>() => Promise<IterableIterator<[Keys, StorageTypes[Keys]]>>",
-          "description": "Gets all the keys and values in the storage. Use this to iterate over all stored data, useful for debugging, data migration, or displaying all stored settings. The returned iterator provides entries as `[key, value]` tuples."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "get",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(key: Keys) => Promise<StorageTypes[Keys]>",
-          "description": "Gets the value of a key in the storage. Use this to retrieve previously saved data when your extension loads or when you need to access stored values. The value is automatically deserialized from JSON to its original type."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "getMany",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(keys: Keys[]) => Promise<StorageTypes[Keys][]>",
-          "description": "Gets the values of multiple keys in the storage at once. Use this to efficiently retrieve related data in a single operation, reducing overhead when loading multiple stored values. The returned array is in the same order as the provided keys, with `undefined` values for keys that don't exist in storage."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "set",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes, Keys extends keyof StorageTypes = keyof StorageTypes>(key: Keys, value: StorageTypes[Keys]) => Promise<void>",
-          "description": "Sets the value of a key in the storage. Use this to save individual data items like user preferences, form state, or cached values. The value is serialized using `JSON.stringify`, so it can be any primitive type, object, or array that JSON supports."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/storage.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "setMany",
-          "value": "<StorageTypes extends BaseStorageTypes = BaseStorageTypes>(entries: Partial<StorageTypes>) => Promise<void>",
-          "description": "Sets multiple key-value pairs in the storage at once. Use this for efficient batch operations when you need to save multiple related values together, such as form data or configuration settings."
-        }
-      ],
-      "value": "export interface Storage<\n  BaseStorageTypes extends Record<string, any> = Record<string, unknown>,\n> {\n  /**\n   * Sets the value of a key in the storage. Use this to save individual data items like user preferences, form state, or cached values. The value is serialized using `JSON.stringify`, so it can be any primitive type, object, or array that JSON supports.\n   *\n   * @param key - The key to set the value for. Use descriptive keys to organize your stored data.\n   * @param value - The value to set for the key. Can be any primitive type supported by `JSON.stringify`.\n   *\n   * @throws {StorageExceededError} Rejects with a `StorageExceededError` if the extension exceeds its allotted storage limit.\n   */\n  set<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n    value: StorageTypes[Keys],\n  ): Promise<void>;\n\n  /**\n   * Sets multiple key-value pairs in the storage at once. Use this for efficient batch operations when you need to save multiple related values together, such as form data or configuration settings.\n   *\n   * @param entries - An object containing key-value pairs to store. Values can be any primitive type supported by `JSON.stringify`.\n   *\n   * @throws {StorageExceededError} Rejects with a `StorageExceededError` if the extension exceeds its allotted storage limit.\n   */\n  setMany<StorageTypes extends BaseStorageTypes = BaseStorageTypes>(\n    entries: Partial<StorageTypes>,\n  ): Promise<void>;\n\n  /**\n   * Gets the value of a key in the storage. Use this to retrieve previously saved data when your extension loads or when you need to access stored values. The value is automatically deserialized from JSON to its original type.\n   *\n   * @param key - The key to get the value for.\n   * @returns The value of the key, or `undefined` if no value exists for the key.\n   */\n  get<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<StorageTypes[Keys] | undefined>;\n\n  /**\n   * Gets the values of multiple keys in the storage at once. Use this to efficiently retrieve related data in a single operation, reducing overhead when loading multiple stored values. The returned array is in the same order as the provided keys, with `undefined` values for keys that don't exist in storage.\n   *\n   * @param keys - An array of keys to get the values for.\n   * @returns An array containing values for the requested keys, in the same order as the input keys.\n   */\n  getMany<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    keys: Keys[],\n  ): Promise<(StorageTypes[Keys] | undefined)[]>;\n\n  /**\n   * Clears all data from the storage. Use this to reset your extension's storage, such as when implementing a logout flow, clearing cached data, or resetting to defaults. This operation removes all stored key-value pairs.\n   */\n  clear(): Promise<void>;\n\n  /**\n   * Deletes a specific key from the storage. Use this to remove individual data items that are no longer needed, freeing up storage space and maintaining data hygiene.\n   *\n   * @param key - The key to delete.\n   * @returns A promise that resolves to `true` if the key existed and was deleted, or `false` if the key did not exist.\n   */\n  delete<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<boolean>;\n\n  /**\n   * Deletes multiple keys from the storage at once. Use this to efficiently remove several related data items in a single operation, such as clearing expired cache entries or removing a group of related settings.\n   *\n   * @param keys - An array of keys to delete.\n   * @returns A promise that resolves to an object mapping each key to a boolean value: `true` if the key existed and was deleted, or `false` if the key did not exist.\n   */\n  deleteMany<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    keys: Keys[],\n  ): Promise<Record<Keys, boolean>>;\n\n  /**\n   * Gets all the keys and values in the storage. Use this to iterate over all stored data, useful for debugging, data migration, or displaying all stored settings. The returned iterator provides entries as `[key, value]` tuples.\n   *\n   * @returns A promise that resolves to an iterator containing all key-value pairs in the storage.\n   */\n  entries<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(): Promise<IterableIterator<[Keys, StorageTypes[Keys]]>>;\n}"
+      "description": "The payload returned when resources are selected from the picker.",
+      "isPublicDocs": true
     }
   },
   "ActionExtensionComponents": {
@@ -10026,6 +10114,7 @@
       "filePath": "src/surfaces/admin/api/block/block.ts",
       "name": "BlockExtensionApi",
       "description": "The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/block/block.ts",
@@ -10106,6 +10195,7 @@
       "filePath": "src/surfaces/admin/api/block/block.ts",
       "name": "Navigation",
       "description": "The `Navigation` object provides methods for navigating between extensions and admin pages.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/block/block.ts",
@@ -10292,6 +10382,7 @@
       "filePath": "src/surfaces/admin/api/standard/standard.ts",
       "name": "StandardApi",
       "description": "The `StandardApi` object provides core methods available to all extension targets. Access the following properties on the `StandardApi` object to authenticate users, query the [GraphQL Admin API](/docs/api/admin-graphql), translate content, handle intents, and persist data.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/standard/standard.ts",
@@ -10339,35 +10430,12 @@
       "value": "export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {\n  /**\n   * The identifier of the running extension target. Use this to determine which target your extension is rendering in and conditionally adjust functionality or UI based on the extension context.\n   */\n  extension: {\n    target: ExtensionTarget;\n  };\n\n  /**\n   * Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations.\n   */\n  auth: Auth;\n\n  /**\n   * Utilities for translating content according to the current localization of the admin. Use these methods to provide translated strings that match the merchant's language preferences, ensuring your extension is accessible to a global audience.\n   */\n  i18n: I18n;\n\n  /**\n   * Provides information to the receiver of an intent. Use this to access data passed from other extensions or parts of the admin when your extension is launched through intent-based navigation.\n   */\n  intents: Intents;\n\n  /**\n   * Provides methods for persisting data in browser storage that is scoped to your extension. Use this to store user preferences, cache data, maintain state across sessions, or save temporary working data. Storage is persistent across page reloads and isolated per extension.\n   */\n  storage: Storage;\n\n  /**\n   * Executes GraphQL queries against the [GraphQL Admin API](/docs/api/admin-graphql). Use this to fetch shop data, manage resources, or perform mutations. Queries are automatically authenticated with the current user's permissions. Optionally specify GraphQL variables and API version for your query.\n   */\n  query: <Data = unknown, Variables = {[key: string]: unknown}>(\n    query: string,\n    options?: {variables?: Variables; version?: Omit<ApiVersion, '2023-04'>},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n}"
     }
   },
-  "GraphQLError": {
-    "src/surfaces/admin/api/standard/standard.ts": {
-      "filePath": "src/surfaces/admin/api/standard/standard.ts",
-      "name": "GraphQLError",
-      "description": "The GraphQL error returned by the [GraphQL Admin API](/docs/api/admin-graphql).",
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/api/standard/standard.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locations",
-          "value": "{ line: number; column: string; }",
-          "description": "The location in the GraphQL query where the error occurred. Provides the line number and column position to help identify the exact source of the error in your query string."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/standard/standard.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "message",
-          "value": "string",
-          "description": "A human-readable error message describing what went wrong with the GraphQL query. Use this to understand the cause of the error and how to fix your query."
-        }
-      ],
-      "value": "export interface GraphQLError {\n  /**\n   * A human-readable error message describing what went wrong with the GraphQL query. Use this to understand the cause of the error and how to fix your query.\n   */\n  message: string;\n  /**\n   * The location in the GraphQL query where the error occurred. Provides the line number and column position to help identify the exact source of the error in your query string.\n   */\n  locations: {\n    /** The line number in the GraphQL query where the error occurred. */\n    line: number;\n    /** The column position in the GraphQL query where the error occurred. */\n    column: string;\n  };\n}"
-    }
-  },
   "CustomerSegmentTemplateApi": {
     "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts": {
       "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
       "name": "CustomerSegmentTemplateApi",
       "description": "The `CustomerSegmentTemplateApi` object provides methods for creating customer segment templates. Access the following properties on the `CustomerSegmentTemplateApi` object to build templates with translated content.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
@@ -10428,6 +10496,7 @@
       "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
       "name": "CustomerSegmentTemplate",
       "description": "Defines a customer segment template that merchants can use to create targeted customer groups.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
@@ -10481,6 +10550,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/discount-function-settings.ts",
       "name": "DiscountFunctionSettingsApi",
       "description": "The `DiscountFunctionSettingsApi` object provides methods for configuring discount functions. Access the following properties on the `DiscountFunctionSettingsApi` object to manage function settings and metafields.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/discount-function-settings.ts",
@@ -10575,6 +10645,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
       "name": "ApplyMetafieldChange",
       "description": "A function that applies metafield changes to discount function settings. Call this function with an update or removal operation, then await the Promise to receive a result indicating success or failure. Use the result to provide feedback or handle errors in your settings interface.",
+      "isPublicDocs": true,
       "params": [
         {
           "name": "change",
@@ -10598,7 +10669,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "MetafieldChange",
       "value": "MetafieldUpdateChange | MetafieldRemoveChange",
-      "description": "A metafield change operation that can either update or remove a metafield. Pass this to `applyMetafieldChange` to modify discount settings stored in metafields."
+      "description": "A metafield change operation that can either update or remove a metafield. Pass this to `applyMetafieldChange` to modify discount settings stored in metafields.",
+      "isPublicDocs": true
     }
   },
   "MetafieldUpdateChange": {
@@ -10606,6 +10678,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
       "name": "MetafieldUpdateChange",
       "description": "A metafield update or creation operation. Use this to set or modify metafield values that store discount function configuration data.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
@@ -10645,16 +10718,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface MetafieldUpdateChange {\n  /** Identifies this as an update operation. Always set to `'updateMetafield'` for updates. */\n  type: 'updateMetafield';\n  /** The unique key identifying the metafield within its namespace. Use descriptive keys that indicate the setting's purpose (for example, `'min_purchase_amount'` or `'eligible_customer_tags'`). */\n  key: string;\n  /** The namespace that organizes related metafields. When omitted, a default namespace is assigned. Use consistent namespaces to group related settings. */\n  namespace?: string;\n  /** The metafield value to store. Can be a string or number depending on your configuration needs. */\n  value: string | number;\n  /** The [data type](/docs/apps/build/metafields/list-of-data-types) that defines how the value is formatted and validated. When omitted, preserves the existing type for updates or uses a default for new metafields. Choose a type that matches your value format. */\n  valueType?: SupportedDefinitionType;\n}"
-    }
-  },
-  "SupportedDefinitionType": {
-    "src/surfaces/admin/api/shared.ts": {
-      "filePath": "src/surfaces/admin/api/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "SupportedDefinitionType",
-      "value": "'boolean' | 'collection_reference' | 'color' | 'date' | 'date_time' | 'dimension' | 'file_reference' | 'json' | 'metaobject_reference' | 'mixed_reference' | 'money' | 'multi_line_text_field' | 'number_decimal' | 'number_integer' | 'page_reference' | 'product_reference' | 'rating' | 'rich_text_field' | 'single_line_text_field' | 'product_taxonomy_value_reference' | 'url' | 'variant_reference' | 'volume' | 'weight' | 'list.collection_reference' | 'list.color' | 'list.date' | 'list.date_time' | 'list.dimension' | 'list.file_reference' | 'list.metaobject_reference' | 'list.mixed_reference' | 'list.number_decimal' | 'list.number_integer' | 'list.page_reference' | 'list.product_reference' | 'list.rating' | 'list.single_line_text_field' | 'list.url' | 'list.variant_reference' | 'list.volume' | 'list.weight'",
-      "description": "The supported [metafield definition types](/docs/apps/build/metafields/list-of-data-types) for storing extension configuration data. Use these types to specify how metafield values should be formatted, validated, and displayed. Types prefixed with `list.` store arrays of values, while other types store single values. Choose a type that matches your data format (for example, use `'number_integer'` for whole numbers, `'single_line_text_field'` for short text, or `'json'` for complex structured data)."
+      "value": "export interface MetafieldUpdateChange {\n  /** Identifies this as an update operation. Always set to `'updateMetafield'` for updates. */\n  type: 'updateMetafield';\n  /** The unique key identifying the metafield within its namespace. Use descriptive keys that indicate the setting's purpose (for example, `'min_purchase_amount'` or `'eligible_customer_tags'`). */\n  key: string;\n  /** The namespace that organizes related metafields. When omitted, a default namespace is assigned. Use consistent namespaces to group related settings. */\n  namespace?: string;\n  /** The metafield value to store. Can be a string or number depending on your configuration needs. */\n  value: string | number;\n  /** The [data type](/docs/apps/build/metafields/list-of-data-types) that defines how the value is formatted and validated. When omitted, preserves the existing type for updates or uses a default for new metafields. Choose a type that matches your value format. */\n  valueType?: SupportedDefinitionType;\n}"
     }
   },
   "MetafieldRemoveChange": {
@@ -10662,6 +10726,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
       "name": "MetafieldRemoveChange",
       "description": "A metafield removal operation. Use this to delete metafields that are no longer needed for your discount configuration.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
@@ -10685,7 +10750,7 @@
           "description": "Identifies this as a removal operation. Always set to `'removeMetafield'` for deletions."
         }
       ],
-      "value": "interface MetafieldRemoveChange {\n  /** Identifies this as a removal operation. Always set to `'removeMetafield'` for deletions. */\n  type: 'removeMetafield';\n  /** The unique key of the metafield to remove. Must match the key used when the metafield was created. */\n  key: string;\n  /** The namespace containing the metafield to remove. Required to ensure the correct metafield is targeted, as the same key can exist in different namespaces. */\n  namespace: string;\n}"
+      "value": "export interface MetafieldRemoveChange {\n  /** Identifies this as a removal operation. Always set to `'removeMetafield'` for deletions. */\n  type: 'removeMetafield';\n  /** The unique key of the metafield to remove. Must match the key used when the metafield was created. */\n  key: string;\n  /** The namespace containing the metafield to remove. Required to ensure the correct metafield is targeted, as the same key can exist in different namespaces. */\n  namespace: string;\n}"
     }
   },
   "MetafieldChangeResult": {
@@ -10694,7 +10759,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "MetafieldChangeResult",
       "value": "MetafieldChangeSuccess | MetafieldChangeResultError",
-      "description": "The result returned after attempting to change a metafield. Check the `type` property to determine if the operation succeeded (`'success'`) or failed (`'error'`), then handle the result appropriately in your extension."
+      "description": "The result returned after attempting to change a metafield. Check the `type` property to determine if the operation succeeded (`'success'`) or failed (`'error'`), then handle the result appropriately in your extension.",
+      "isPublicDocs": true
     }
   },
   "MetafieldChangeSuccess": {
@@ -10702,6 +10768,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
       "name": "MetafieldChangeSuccess",
       "description": "A successful metafield change operation result. The metafield was updated or removed as requested and the changes are now saved.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
@@ -10711,7 +10778,7 @@
           "description": "Indicates the operation succeeded. When this value is `'success'`, the metafield change was applied successfully."
         }
       ],
-      "value": "interface MetafieldChangeSuccess {\n  /** Indicates the operation succeeded. When this value is `'success'`, the metafield change was applied successfully. */\n  type: 'success';\n}"
+      "value": "export interface MetafieldChangeSuccess {\n  /** Indicates the operation succeeded. When this value is `'success'`, the metafield change was applied successfully. */\n  type: 'success';\n}"
     }
   },
   "MetafieldChangeResultError": {
@@ -10719,6 +10786,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
       "name": "MetafieldChangeResultError",
       "description": "A failed metafield change operation result. Use the error message to understand what went wrong and fix the issue, such as validation errors, permission problems, or invalid metafield types.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/metafields.ts",
@@ -10735,7 +10803,7 @@
           "description": "Indicates the operation failed. Check this value to determine if you need to handle an error."
         }
       ],
-      "value": "interface MetafieldChangeResultError {\n  /** Indicates the operation failed. Check this value to determine if you need to handle an error. */\n  type: 'error';\n  /** A human-readable error message explaining why the operation failed. Use this to debug issues or display feedback to merchants. */\n  message: string;\n}"
+      "value": "export interface MetafieldChangeResultError {\n  /** Indicates the operation failed. Check this value to determine if you need to handle an error. */\n  type: 'error';\n  /** A human-readable error message explaining why the operation failed. Use this to debug issues or display feedback to merchants. */\n  message: string;\n}"
     }
   },
   "DiscountFunctionSettingsData": {
@@ -10743,6 +10811,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
       "name": "DiscountFunctionSettingsData",
       "description": "The `data` object exposed to discount function settings extensions in the `admin.discount-details.function-settings.render` target. Use this to access the current discount configuration and populate your settings interface with existing values.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
@@ -10767,6 +10836,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
       "name": "Metafield",
       "description": "A [metafield](/docs/apps/build/metafields) that stores discount function configuration data. Use metafields to persist settings that control how your discount function behaves, such as discount thresholds, eligibility rules, or custom discount logic parameters.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
@@ -10812,7 +10882,7 @@
           "description": "The metafield value stored as a string. Parse this value according to the metafield type to use it in your settings UI."
         }
       ],
-      "value": "interface Metafield {\n  /** A human-readable description explaining the metafield's purpose and how it affects discount behavior. Use this to document your settings for other developers. */\n  description?: string;\n  /** The unique global identifier (GID) for this metafield. Use this ID to reference the metafield in GraphQL queries or updates. */\n  id: string;\n  /** The namespace that organizes related metafields together. All metafields for a discount should use a consistent namespace to group related settings. */\n  namespace: string;\n  /** The unique key identifying this metafield within its namespace. This key determines how you access the metafield value (for example, `'min_purchase_amount'` or `'eligible_customer_tags'`). */\n  key: string;\n  /** The metafield value stored as a string. Parse this value according to the metafield type to use it in your settings UI. */\n  value: string;\n  /** The metafield [definition type](/docs/apps/build/metafields/list-of-data-types) that specifies the value format and validation rules. Use this to determine how to parse and display the value. */\n  type: string;\n}"
+      "value": "export interface Metafield {\n  /** A human-readable description explaining the metafield's purpose and how it affects discount behavior. Use this to document your settings for other developers. */\n  description?: string;\n  /** The unique global identifier (GID) for this metafield. Use this ID to reference the metafield in GraphQL queries or updates. */\n  id: string;\n  /** The namespace that organizes related metafields together. All metafields for a discount should use a consistent namespace to group related settings. */\n  namespace: string;\n  /** The unique key identifying this metafield within its namespace. This key determines how you access the metafield value (for example, `'min_purchase_amount'` or `'eligible_customer_tags'`). */\n  key: string;\n  /** The metafield value stored as a string. Parse this value according to the metafield type to use it in your settings UI. */\n  value: string;\n  /** The metafield [definition type](/docs/apps/build/metafields/list-of-data-types) that specifies the value format and validation rules. Use this to determine how to parse and display the value. */\n  type: string;\n}"
     }
   },
   "DiscountsApi": {
@@ -10820,6 +10890,7 @@
       "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
       "name": "DiscountsApi",
       "description": "The `DiscountsApi` object provides reactive access to discount configuration. Use the signals to read discount classes and method, and the update function to change which parts of the purchase (products, order, or shipping) the discount affects.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
@@ -10876,7 +10947,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "DiscountClass",
       "value": "'product' | 'order' | 'shipping'",
-      "description": "The discount class that determines where the discount applies in the purchase flow. Use this to understand what type of discount the merchant is configuring (product-level, order-level, or shipping)."
+      "description": "The discount class that determines where the discount applies in the purchase flow. Use this to understand what type of discount the merchant is configuring (product-level, order-level, or shipping).",
+      "isPublicDocs": true
     }
   },
   "DiscountMethod": {
@@ -10885,7 +10957,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "DiscountMethod",
       "value": "'automatic' | 'code'",
-      "description": "The method used to apply a discount. Use `'automatic'` for discounts that apply automatically at checkout, or `'code'` for discounts that require a code entered by the customer."
+      "description": "The method used to apply a discount. Use `'automatic'` for discounts that apply automatically at checkout, or `'code'` for discounts that require a code entered by the customer.",
+      "isPublicDocs": true
     }
   },
   "UpdateSignalFunction": {
@@ -11048,6 +11121,7 @@
       "filePath": "src/surfaces/admin/api/print-action/print-action.ts",
       "name": "PrintActionExtensionApi",
       "description": "The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/print-action/print-action.ts",
@@ -11204,6 +11278,7 @@
       "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
       "name": "ProductDetailsConfigurationApi",
       "description": "The `ProductDetailsConfigurationApi` object provides methods for configuring product bundles and relationships. Access the following properties on the `ProductDetailsConfigurationApi` object to build product configuration interfaces.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
@@ -11284,6 +11359,7 @@
       "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
       "name": "Product",
       "description": "A product configuration.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
@@ -11372,7 +11448,7 @@
           "description": "The total number of variants this product has."
         }
       ],
-      "value": "interface Product {\n  /** The product's unique global identifier (GID). */\n  id: string;\n  /** The product's display name shown to merchants and customers. */\n  title: string;\n  /** The URL-friendly unique identifier used in product URLs (for example, `'blue-t-shirt'`). */\n  handle: string;\n  /** The publication status indicating whether the product is active (published), archived (discontinued), or draft (unpublished). */\n  status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';\n  /** The total number of variants this product has. */\n  totalVariants: number;\n  /** The total available inventory summed across all variants and locations. */\n  totalInventory: number;\n  /** Whether the product has only the default variant with no custom options. When `true`, the product has no size, color, or other option variations. */\n  hasOnlyDefaultVariant: boolean;\n  /** The URL to view this product on the online store. Use this to create \"View in store\" links. */\n  onlineStoreUrl?: string;\n  /** Product options that define how variants differ (for example, Size, Color, Material). Each option has an ID, name, position, and array of possible values. */\n  options: {\n    id: string;\n    name: string;\n    position: number;\n    values: string[];\n  }[];\n  /** The product category or type used for organization (for example, \"T-Shirt\", \"Shoes\"). */\n  productType: string;\n  /** The standardized product category taxonomy. Use this for product classification in search and organization. */\n  productCategory?: string;\n  /** An array of component products that make up this bundle. Each component represents a product included in the bundle configuration. */\n  productComponents: ProductComponent[];\n}"
+      "value": "export interface Product {\n  /** The product's unique global identifier (GID). */\n  id: string;\n  /** The product's display name shown to merchants and customers. */\n  title: string;\n  /** The URL-friendly unique identifier used in product URLs (for example, `'blue-t-shirt'`). */\n  handle: string;\n  /** The publication status indicating whether the product is active (published), archived (discontinued), or draft (unpublished). */\n  status: 'ACTIVE' | 'ARCHIVED' | 'DRAFT';\n  /** The total number of variants this product has. */\n  totalVariants: number;\n  /** The total available inventory summed across all variants and locations. */\n  totalInventory: number;\n  /** Whether the product has only the default variant with no custom options. When `true`, the product has no size, color, or other option variations. */\n  hasOnlyDefaultVariant: boolean;\n  /** The URL to view this product on the online store. Use this to create \"View in store\" links. */\n  onlineStoreUrl?: string;\n  /** Product options that define how variants differ (for example, Size, Color, Material). Each option has an ID, name, position, and array of possible values. */\n  options: {\n    id: string;\n    name: string;\n    position: number;\n    values: string[];\n  }[];\n  /** The product category or type used for organization (for example, \"T-Shirt\", \"Shoes\"). */\n  productType: string;\n  /** The standardized product category taxonomy. Use this for product classification in search and organization. */\n  productCategory?: string;\n  /** An array of component products that make up this bundle. Each component represents a product included in the bundle configuration. */\n  productComponents: ProductComponent[];\n}"
     }
   },
   "ProductComponent": {
@@ -11380,6 +11456,7 @@
       "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
       "name": "ProductComponent",
       "description": "A component product that is part of a bundle. Represents an individual product included in a bundle configuration.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
@@ -11440,6 +11517,7 @@
       "filePath": "src/surfaces/admin/api/purchase-options-card-action.ts",
       "name": "PurchaseOptionsCardConfigurationApi",
       "description": "The `PurchaseOptionsCardConfigurationApi` object provides methods for action extensions that interact with purchase options and selling plans. Access the following properties on the `PurchaseOptionsCardConfigurationApi` object to work with selected products and their associated subscription configurations.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/purchase-options-card-action.ts",
@@ -11520,6 +11598,7 @@
       "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
       "name": "ProductVariantDetailsConfigurationApi",
       "description": "The `ProductVariantDetailsConfigurationApi` object provides methods for configuring product variant bundles and relationships. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to build variant configuration interfaces.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
@@ -11600,6 +11679,7 @@
       "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
       "name": "ProductVariant",
       "description": "A product variant configuration.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
@@ -11686,7 +11766,7 @@
           "description": "The physical weight of the variant as a number."
         }
       ],
-      "value": "interface ProductVariant {\n  /** The variant's unique global identifier (GID). */\n  id: string;\n  /** The Stock Keeping Unit (SKU) identifier for inventory tracking. */\n  sku: string;\n  /** The barcode, UPC, or ISBN number for the variant. */\n  barcode: string;\n  /** The display name showing only the variant's option values (for example, \"Medium / Blue\"). */\n  title: string;\n  /** A human-readable display name that combines the product title with the variant's option values (for example, \"T-Shirt - Medium / Blue\"). */\n  displayName: string;\n  /** The current selling price for this variant. */\n  price: string;\n  /** The original price before any discounts or markdowns. */\n  compareAtPrice: string;\n  /** Whether this variant is subject to taxes. When `true`, applicable taxes are calculated at checkout. */\n  taxable: boolean;\n  /** The harmonized system (HS) tax code for international shipping and customs. */\n  taxCode: string;\n  /** The physical weight of the variant as a number. */\n  weight: number;\n  /** The option values that define this specific variant with name and value pairs (for example, Size: Large, Color: Blue). */\n  selectedOptions: {\n    name: string;\n    value: string;\n  }[];\n  /** An array of component variants that make up this bundle variant. Each component represents a product variant included in the bundle. */\n  productVariantComponents: ProductVariantComponent[];\n}"
+      "value": "export interface ProductVariant {\n  /** The variant's unique global identifier (GID). */\n  id: string;\n  /** The Stock Keeping Unit (SKU) identifier for inventory tracking. */\n  sku: string;\n  /** The barcode, UPC, or ISBN number for the variant. */\n  barcode: string;\n  /** The display name showing only the variant's option values (for example, \"Medium / Blue\"). */\n  title: string;\n  /** A human-readable display name that combines the product title with the variant's option values (for example, \"T-Shirt - Medium / Blue\"). */\n  displayName: string;\n  /** The current selling price for this variant. */\n  price: string;\n  /** The original price before any discounts or markdowns. */\n  compareAtPrice: string;\n  /** Whether this variant is subject to taxes. When `true`, applicable taxes are calculated at checkout. */\n  taxable: boolean;\n  /** The harmonized system (HS) tax code for international shipping and customs. */\n  taxCode: string;\n  /** The physical weight of the variant as a number. */\n  weight: number;\n  /** The option values that define this specific variant with name and value pairs (for example, Size: Large, Color: Blue). */\n  selectedOptions: {\n    name: string;\n    value: string;\n  }[];\n  /** An array of component variants that make up this bundle variant. Each component represents a product variant included in the bundle. */\n  productVariantComponents: ProductVariantComponent[];\n}"
     }
   },
   "ProductVariantComponent": {
@@ -11694,6 +11774,7 @@
       "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
       "name": "ProductVariantComponent",
       "description": "A component variant that is part of a product bundle. Represents an individual product variant included in a bundle configuration.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
@@ -11755,6 +11836,7 @@
       "filePath": "src/surfaces/admin/api/order-routing-rule/order-routing-rule.ts",
       "name": "OrderRoutingRuleApi",
       "description": "The `OrderRoutingRuleApi` object provides methods for configuring order routing rules. Access the following properties on the `OrderRoutingRuleApi` object to manage rule settings and metafields.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/order-routing-rule/order-routing-rule.ts",
@@ -11835,6 +11917,7 @@
       "filePath": "src/surfaces/admin/api/order-routing-rule/metafields.ts",
       "name": "ApplyMetafieldsChange",
       "description": "A function that applies metafield changes to order routing rule settings. Call this function with one or more change operations to update or remove metafields in batch. Use batch operations to apply multiple configuration changes efficiently.",
+      "isPublicDocs": true,
       "params": [
         {
           "name": "changes",
@@ -11858,7 +11941,8 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "MetafieldsChange",
       "value": "MetafieldUpdateChange | MetafieldRemoveChange | MetafieldUpdateChange[] | MetafieldRemoveChange[]",
-      "description": "One or more metafield change operations to apply to order routing rule settings. Can be a single change or an array of changes for batch operations. Use arrays to apply multiple changes at once."
+      "description": "One or more metafield change operations to apply to order routing rule settings. Can be a single change or an array of changes for batch operations. Use arrays to apply multiple changes at once.",
+      "isPublicDocs": true
     }
   },
   "ValidationSettingsApi": {
@@ -11866,6 +11950,7 @@
       "filePath": "src/surfaces/admin/api/checkout-rules/validation-settings.ts",
       "name": "ValidationSettingsApi",
       "description": "The `ValidationSettingsApi` object provides methods for configuring cart and checkout validation functions. Access the following properties on the `ValidationSettingsApi` object to manage validation settings and metafields.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/checkout-rules/validation-settings.ts",
@@ -11946,6 +12031,7 @@
       "filePath": "src/surfaces/admin/api/checkout-rules/launch-options.ts",
       "name": "ValidationData",
       "description": "The `data` object exposed to validation settings extensions in the `admin.settings.validation.render` target. Use this to access the current validation configuration and populate your settings interface with existing values.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/checkout-rules/launch-options.ts",
@@ -11971,6 +12057,7 @@
       "filePath": "src/surfaces/admin/api/checkout-rules/launch-options.ts",
       "name": "ShopifyFunction",
       "description": "A [Shopify Function](/docs/apps/build/functions) that implements cart and checkout validation logic. This identifies which function the settings interface is configuring.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/checkout-rules/launch-options.ts",
@@ -11980,7 +12067,7 @@
           "description": "The [Shopify Function's](/docs/apps/build/functions) unique global identifier (GID). Use this ID to associate settings changes with the correct function."
         }
       ],
-      "value": "interface ShopifyFunction {\n  /** The [Shopify Function's](/docs/apps/build/functions) unique global identifier (GID). Use this ID to associate settings changes with the correct function. */\n  id: string;\n}"
+      "value": "export interface ShopifyFunction {\n  /** The [Shopify Function's](/docs/apps/build/functions) unique global identifier (GID). Use this ID to associate settings changes with the correct function. */\n  id: string;\n}"
     }
   },
   "Validation": {
@@ -11988,6 +12075,7 @@
       "filePath": "src/surfaces/admin/api/checkout-rules/launch-options.ts",
       "name": "Validation",
       "description": "A validation configuration that exists and is active in the shop. Use this object to access the validation's current settings and metafields when merchants edit an existing validation.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/checkout-rules/launch-options.ts",
@@ -12004,17 +12092,26 @@
           "description": "An array of [metafields](/docs/apps/build/metafields) that store the validation's configuration values. Use these metafields to populate your settings UI with the current validation configuration."
         }
       ],
-      "value": "interface Validation {\n  /** The validation's unique global identifier (GID). Use this ID to reference the validation in GraphQL operations or when saving updated settings. */\n  id: string;\n  /** An array of [metafields](/docs/apps/build/metafields) that store the validation's configuration values. Use these metafields to populate your settings UI with the current validation configuration. */\n  metafields: Metafield[];\n}"
+      "value": "export interface Validation {\n  /** The validation's unique global identifier (GID). Use this ID to reference the validation in GraphQL operations or when saving updated settings. */\n  id: string;\n  /** An array of [metafields](/docs/apps/build/metafields) that store the validation's configuration values. Use these metafields to populate your settings UI with the current validation configuration. */\n  metafields: Metafield[];\n}"
     }
   },
-  "IntentResponse": {
+  "ClosedIntentResponse": {
     "src/surfaces/admin/api/intents/intents.ts": {
       "filePath": "src/surfaces/admin/api/intents/intents.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "IntentResponse",
-      "value": "SuccessIntentResponse | ErrorIntentResponse | ClosedIntentResponse",
-      "description": "The result of an intent workflow. Check the `code` property to determine the outcome: `'ok'` for success, `'error'` for failure, or `'closed'` if the merchant cancelled.",
-      "isPublicDocs": true
+      "name": "ClosedIntentResponse",
+      "description": "The response returned when a merchant closes or cancels the workflow without completing it. Check for this response to handle cancellation gracefully in your extension.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "code",
+          "value": "'closed'",
+          "description": "Indicates the workflow was closed without completion. When `'closed'`, the merchant exited the workflow before finishing.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ClosedIntentResponse {\n  /** Indicates the workflow was closed without completion. When `'closed'`, the merchant exited the workflow before finishing. */\n  code?: 'closed';\n}"
     }
   },
   "SuccessIntentResponse": {
@@ -12022,6 +12119,7 @@
       "filePath": "src/surfaces/admin/api/intents/intents.ts",
       "name": "SuccessIntentResponse",
       "description": "The response returned when a merchant successfully completes the workflow. Use this to access the created or updated resource data.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/intents/intents.ts",
@@ -12048,6 +12146,7 @@
       "filePath": "src/surfaces/admin/api/intents/intents.ts",
       "name": "ErrorIntentResponse",
       "description": "The response returned when the workflow fails due to validation errors or other issues. Use this to display error messages and help merchants fix problems.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/intents/intents.ts",
@@ -12077,22 +12176,776 @@
       "value": "export interface ErrorIntentResponse {\n  /** Indicates the workflow failed. When `'error'`, the workflow encountered validation errors or other issues that prevented completion. */\n  code?: 'error';\n  /** A general error message describing what went wrong. Use this to display feedback when specific field errors aren't available. */\n  message?: string;\n  /** Specific validation issues or field errors. Present when validation fails on particular fields, allowing you to show targeted error messages. */\n  issues?: {\n    /** The path to the field that has an error (for example, `['product', 'title']`). Use this to identify which field caused the validation failure. */\n    path?: string[];\n    /** A description of what's wrong with this field. Display this to help merchants understand how to fix the error. */\n    message?: string;\n    /** A machine-readable error code for this issue. Use this for programmatic error handling or logging. */\n    code?: string;\n  }[];\n}"
     }
   },
-  "ClosedIntentResponse": {
+  "IntentResponse": {
     "src/surfaces/admin/api/intents/intents.ts": {
       "filePath": "src/surfaces/admin/api/intents/intents.ts",
-      "name": "ClosedIntentResponse",
-      "description": "The response returned when a merchant closes or cancels the workflow without completing it. Check for this response to handle cancellation gracefully in your extension.",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "IntentResponse",
+      "value": "SuccessIntentResponse | ErrorIntentResponse | ClosedIntentResponse",
+      "description": "The result of an intent workflow. Check the `code` property to determine the outcome: `'ok'` for success, `'error'` for failure, or `'closed'` if the merchant cancelled.",
+      "isPublicDocs": true
+    }
+  },
+  "IntentActivity": {
+    "src/surfaces/admin/api/intents/intents.ts": {
+      "filePath": "src/surfaces/admin/api/intents/intents.ts",
+      "name": "IntentActivity",
+      "description": "A handle for tracking an in-progress intent workflow.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/admin/api/intents/intents.ts",
           "syntaxKind": "PropertySignature",
-          "name": "code",
-          "value": "'closed'",
-          "description": "Indicates the workflow was closed without completion. When `'closed'`, the merchant exited the workflow before finishing.",
+          "name": "complete",
+          "value": "Promise<IntentResponse>",
+          "description": "A Promise that resolves when the workflow completes. Await this to get the outcome and handle success, failure, or cancellation appropriately.",
           "isOptional": true
         }
       ],
-      "value": "export interface ClosedIntentResponse {\n  /** Indicates the workflow was closed without completion. When `'closed'`, the merchant exited the workflow before finishing. */\n  code?: 'closed';\n}"
+      "value": "export interface IntentActivity {\n  /**\n   * A Promise that resolves when the workflow completes. Await this to get the outcome and handle success, failure, or cancellation appropriately.\n   */\n  complete?: Promise<IntentResponse>;\n}"
+    }
+  },
+  "IntentAction": {
+    "src/surfaces/admin/api/intents/intents.ts": {
+      "filePath": "src/surfaces/admin/api/intents/intents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "IntentAction",
+      "value": "'create' | 'edit'",
+      "description": "The type of operation to perform: creating a new resource or editing an existing one.",
+      "isPublicDocs": true
+    }
+  },
+  "IntentType": {
+    "src/surfaces/admin/api/intents/intents.ts": {
+      "filePath": "src/surfaces/admin/api/intents/intents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "IntentType",
+      "value": "'shopify/Article' | 'shopify/Catalog' | 'shopify/Collection' | 'shopify/Customer' | 'shopify/Discount' | 'shopify/Location' | 'shopify/Market' | 'shopify/Menu' | 'shopify/MetafieldDefinition' | 'shopify/Metaobject' | 'shopify/MetaobjectDefinition' | 'shopify/Page' | 'shopify/Product' | 'shopify/ProductVariant'",
+      "description": "The types of Shopify resources that support intent-based creation and editing workflows.",
+      "isPublicDocs": true
+    }
+  },
+  "Collection": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "name": "Collection",
+      "description": "A collection resource selected from the resource picker. Collections are groups of products organized by manual curation or automated rules. Use collection data to access product groupings, organizational information, and collection metadata.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "availablePublicationCount",
+          "value": "number",
+          "description": "The number of sales channels where this collection can be published. Use this to understand the collection's potential reach across different storefronts."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "description",
+          "value": "string",
+          "description": "The collection description as plain text without HTML formatting. Use this when you need the description without markup."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "descriptionHtml",
+          "value": "string",
+          "description": "The collection description formatted as HTML. Use this to display rich text descriptions with formatting and styling in your UI."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "handle",
+          "value": "string",
+          "description": "The URL-friendly unique identifier used in collection URLs (for example, `'summer-collection'` in `/collections/summer-collection`). Use this to generate collection links or match URL paths."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "The collection's unique global identifier (GID). Use this ID for collection-related GraphQL operations."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "image",
+          "value": "ResourceImage | null",
+          "description": "The featured image displayed for the collection. Use this for collection thumbnails, headers, or preview images.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "productsAutomaticallySortedCount",
+          "value": "number",
+          "description": "The count of products automatically added to the collection based on automation rules. Use this to understand how many products match the collection's criteria."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "productsCount",
+          "value": "number",
+          "description": "The total number of products in the collection, including both manually added and automatically included products. Use this to show collection size or for pagination."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "productsManuallySortedCount",
+          "value": "number",
+          "description": "The count of products manually added by the merchant. Use this to understand how much manual curation the collection has."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "publicationCount",
+          "value": "number",
+          "description": "The number of sales channels where the collection is currently published. Use this to check the collection's actual visibility across storefronts."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ruleSet",
+          "value": "RuleSet | null",
+          "description": "The automation rules that determine which products are automatically included. Present only for automated (smart) collections. When `null`, the collection is manually curated. Use this to understand the collection's filtering logic.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "seo",
+          "value": "{ description?: string; title?: string; }",
+          "description": "Search engine optimization metadata for the collection. Use this to understand how the collection appears in search engine results."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sortOrder",
+          "value": "CollectionSortOrder",
+          "description": "The default sort order that determines how products are arranged in the collection. This controls the product sequence customers see on the storefront."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "storefrontId",
+          "value": "string",
+          "description": "The Storefront API identifier for this collection. Use this ID when making Storefront API queries for this collection."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "templateSuffix",
+          "value": "string | null",
+          "description": "The theme template suffix for using custom theme templates (for example, `'featured'` to use `collection.featured.liquid`). When `null`, uses the default collection template.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The collection's display name shown to merchants and customers. Use this as the primary collection identifier in lists and displays."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "updatedAt",
+          "value": "string",
+          "description": "ISO 8601 timestamp when the collection was last updated. Use this to track changes, sync with external systems, or show freshness indicators."
+        }
+      ],
+      "value": "export interface Collection extends Resource {\n  /** The number of sales channels where this collection can be published. Use this to understand the collection's potential reach across different storefronts. */\n  availablePublicationCount: number;\n  /** The collection description as plain text without HTML formatting. Use this when you need the description without markup. */\n  description: string;\n  /** The collection description formatted as HTML. Use this to display rich text descriptions with formatting and styling in your UI. */\n  descriptionHtml: string;\n  /** The URL-friendly unique identifier used in collection URLs (for example, `'summer-collection'` in `/collections/summer-collection`). Use this to generate collection links or match URL paths. */\n  handle: string;\n  /** The collection's unique global identifier (GID). Use this ID for collection-related GraphQL operations. */\n  id: string;\n  /** The featured image displayed for the collection. Use this for collection thumbnails, headers, or preview images. */\n  image?: ResourceImage | null;\n  /** The count of products automatically added to the collection based on automation rules. Use this to understand how many products match the collection's criteria. */\n  productsAutomaticallySortedCount: number;\n  /** The total number of products in the collection, including both manually added and automatically included products. Use this to show collection size or for pagination. */\n  productsCount: number;\n  /** The count of products manually added by the merchant. Use this to understand how much manual curation the collection has. */\n  productsManuallySortedCount: number;\n  /** The number of sales channels where the collection is currently published. Use this to check the collection's actual visibility across storefronts. */\n  publicationCount: number;\n  /** The automation rules that determine which products are automatically included. Present only for automated (smart) collections. When `null`, the collection is manually curated. Use this to understand the collection's filtering logic. */\n  ruleSet?: RuleSet | null;\n  /** Search engine optimization metadata for the collection. Use this to understand how the collection appears in search engine results. */\n  seo: {\n    /** The SEO meta description that appears in search engine result snippets. This summarizes the collection for search engines. */\n    description?: string | null;\n    /** The SEO page title that appears in browser tabs and search results. When `null`, the collection's regular title is used. */\n    title?: string | null;\n  };\n  /** The default sort order that determines how products are arranged in the collection. This controls the product sequence customers see on the storefront. */\n  sortOrder: CollectionSortOrder;\n  /** The Storefront API identifier for this collection. Use this ID when making Storefront API queries for this collection. */\n  storefrontId: string;\n  /** The theme template suffix for using custom theme templates (for example, `'featured'` to use `collection.featured.liquid`). When `null`, uses the default collection template. */\n  templateSuffix?: string | null;\n  /** The collection's display name shown to merchants and customers. Use this as the primary collection identifier in lists and displays. */\n  title: string;\n  /** ISO 8601 timestamp when the collection was last updated. Use this to track changes, sync with external systems, or show freshness indicators. */\n  updatedAt: string;\n}"
+    }
+  },
+  "ResourceImage": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "name": "ResourceImage",
+      "description": "An image associated with a product, variant, or collection. Use image data to display thumbnails, galleries, or product previews in your extension.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "altText",
+          "value": "string",
+          "description": "Alternative text describing the image for screen readers and accessibility. This text appears when images fail to load. Use descriptive alt text to make your extension accessible.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "The unique identifier for the image file. Use this ID for image-related GraphQL operations."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "originalSrc",
+          "value": "string",
+          "description": "The full URL to the original image file. Use this URL to display the image in your extension UI."
+        }
+      ],
+      "value": "export interface ResourceImage {\n  /** The unique identifier for the image file. Use this ID for image-related GraphQL operations. */\n  id: string;\n  /** Alternative text describing the image for screen readers and accessibility. This text appears when images fail to load. Use descriptive alt text to make your extension accessible. */\n  altText?: string;\n  /** The full URL to the original image file. Use this URL to display the image in your extension UI. */\n  originalSrc: string;\n}"
+    }
+  },
+  "RuleSet": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "name": "RuleSet",
+      "description": "A set of rules that determine which products are automatically included in a collection. Use this to understand how an automated collection populates itself with products.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appliedDisjunctively",
+          "value": "boolean",
+          "description": "The logical operator for combining multiple rules. When `true`, products are included if they match ANY rule (OR logic). When `false`, products must match ALL rules (AND logic). Use this to understand the collection's filtering strategy."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rules",
+          "value": "CollectionRule[]",
+          "description": "An array of rules that define product inclusion criteria. Each rule checks a different product attribute. Products are added to the collection based on how these rules are combined (see `appliedDisjunctively`)."
+        }
+      ],
+      "value": "export interface RuleSet {\n  /** The logical operator for combining multiple rules. When `true`, products are included if they match ANY rule (OR logic). When `false`, products must match ALL rules (AND logic). Use this to understand the collection's filtering strategy. */\n  appliedDisjunctively: boolean;\n  /** An array of rules that define product inclusion criteria. Each rule checks a different product attribute. Products are added to the collection based on how these rules are combined (see `appliedDisjunctively`). */\n  rules: CollectionRule[];\n}"
+    }
+  },
+  "CollectionRule": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "name": "CollectionRule",
+      "description": "A single rule that defines product inclusion criteria for an automated collection. Rules filter products based on their attributes to automatically populate a collection.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "column",
+          "value": "string",
+          "description": "The product field to evaluate (for example, `'title'`, `'tag'`, `'vendor'`, or `'product_type'`). This determines which product attribute the rule checks."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "condition",
+          "value": "string",
+          "description": "The value to compare against. For example, if checking tags, this might be `'summer'` or `'featured'`. The product attribute must match this condition value according to the relation."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "relation",
+          "value": "string",
+          "description": "The comparison operator that determines how the field is matched (for example, `'equals'`, `'contains'`, `'starts_with'`, `'ends_with'`, `'not_equals'`). This defines the matching logic between the column and condition."
+        }
+      ],
+      "value": "export interface CollectionRule {\n  /** The product field to evaluate (for example, `'title'`, `'tag'`, `'vendor'`, or `'product_type'`). This determines which product attribute the rule checks. */\n  column: string;\n  /** The value to compare against. For example, if checking tags, this might be `'summer'` or `'featured'`. The product attribute must match this condition value according to the relation. */\n  condition: string;\n  /** The comparison operator that determines how the field is matched (for example, `'equals'`, `'contains'`, `'starts_with'`, `'ends_with'`, `'not_equals'`). This defines the matching logic between the column and condition. */\n  relation: string;\n}"
+    }
+  },
+  "CollectionSortOrder": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "CollectionSortOrder",
+      "value": "export enum CollectionSortOrder {\n  /** Products arranged in the custom order set by the merchant. Use this when merchants have manually organized products for specific merchandising. */\n  Manual = 'MANUAL',\n  /** Products sorted by sales volume, with best-sellers first. Use this to highlight popular products. */\n  BestSelling = 'BEST_SELLING',\n  /** Products sorted alphabetically by title from A to Z. Use this for easy browsing of product names. */\n  AlphaAsc = 'ALPHA_ASC',\n  /** Products sorted alphabetically by title from Z to A. Use this for reverse alphabetical ordering. */\n  AlphaDesc = 'ALPHA_DESC',\n  /** Products sorted by price from highest to lowest. Use this to show premium or expensive items first. */\n  PriceDesc = 'PRICE_DESC',\n  /** Products sorted by price from lowest to highest. Use this to show affordable options first. */\n  PriceAsc = 'PRICE_ASC',\n  /** Products sorted by creation date with newest products first. Use this to highlight recently added items. */\n  CreatedDesc = 'CREATED_DESC',\n  /** Products sorted by creation date with oldest products first. Use this for chronological ordering. */\n  Created = 'CREATED',\n  /** Products sorted by search relevance based on query terms. Use this when the collection is filtered by search. */\n  MostRelevant = 'MOST_RELEVANT',\n}",
+      "description": "The sort order that determines how products appear in a collection. This controls the default product arrangement that customers see when viewing the collection on the storefront.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Manual",
+          "value": "MANUAL",
+          "description": "Products arranged in the custom order set by the merchant. Use this when merchants have manually organized products for specific merchandising."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "BestSelling",
+          "value": "BEST_SELLING",
+          "description": "Products sorted by sales volume, with best-sellers first. Use this to highlight popular products."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "AlphaAsc",
+          "value": "ALPHA_ASC",
+          "description": "Products sorted alphabetically by title from A to Z. Use this for easy browsing of product names."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "AlphaDesc",
+          "value": "ALPHA_DESC",
+          "description": "Products sorted alphabetically by title from Z to A. Use this for reverse alphabetical ordering."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "PriceDesc",
+          "value": "PRICE_DESC",
+          "description": "Products sorted by price from highest to lowest. Use this to show premium or expensive items first."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "PriceAsc",
+          "value": "PRICE_ASC",
+          "description": "Products sorted by price from lowest to highest. Use this to show affordable options first."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "CreatedDesc",
+          "value": "CREATED_DESC",
+          "description": "Products sorted by creation date with newest products first. Use this to highlight recently added items."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Created",
+          "value": "CREATED",
+          "description": "Products sorted by creation date with oldest products first. Use this for chronological ordering."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "MostRelevant",
+          "value": "MOST_RELEVANT",
+          "description": "Products sorted by search relevance based on query terms. Use this when the collection is filtered by search."
+        }
+      ]
+    }
+  },
+  "Page": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "name": "Page",
+      "description": "Use as the outer wrapper of a page.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "inlineSize",
+          "value": "\"small\" | \"base\" | \"large\"",
+          "description": "The inline size of the page\n- `base` corresponds to a set default inline size\n- `large` full width with whitespace",
+          "defaultValue": "'base'"
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "heading",
+          "value": "string",
+          "description": "The main page heading"
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "connectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "disconnectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "setAttribute",
+          "value": "(name: string, value: string) => void",
+          "description": "",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "attributeChangedCallback",
+          "value": "(name: string) => void",
+          "description": "",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "adoptedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "queueRender",
+          "value": "() => void",
+          "description": "A method that queues a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "click",
+          "value": "({ sourceEvent }?: ClickOptions) => void",
+          "description": "A method like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
+          "isPrivate": true
+        }
+      ],
+      "value": "declare class Page extends PreactCustomElement implements PageProps {\n  accessor inlineSize: PageProps['inlineSize'];\n  accessor heading: PageProps['heading'];\n  constructor();\n  /** @private */\n  connectedCallback(): void;\n  /** @private */\n  disconnectedCallback(): void;\n}"
+    }
+  },
+  "IntentQueryOptions": {
+    "src/surfaces/admin/api/intents/intents.ts": {
+      "filePath": "src/surfaces/admin/api/intents/intents.ts",
+      "name": "IntentQueryOptions",
+      "description": "Additional parameters for intent invocation when using the string query format. Use these options to provide resource IDs for editing or pass required context data for resource creation.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "data",
+          "value": "{ [key: string]: unknown; }",
+          "description": "Additional context data required by specific intent types. For example, discount creation requires a discount type, variant creation requires a parent product ID, and [metaobject](/docs/apps/build/custom-data/metaobjects) creation requires a definition type.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The resource identifier for edit operations (for example, `'gid://shopify/Product/123'`). Required when editing existing resources. Omit this for create operations.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface IntentQueryOptions {\n  /**\n   * The resource identifier for edit operations (for example, `'gid://shopify/Product/123'`). Required when editing existing resources. Omit this for create operations.\n   */\n  value?: string;\n  /**\n   * Additional context data required by specific intent types. For example, discount creation requires a discount type, variant creation requires a parent product ID, and [metaobject](/docs/apps/build/custom-data/metaobjects) creation requires a definition type.\n   */\n  data?: {[key: string]: unknown};\n}"
+    }
+  },
+  "IntentQuery": {
+    "src/surfaces/admin/api/intents/intents.ts": {
+      "filePath": "src/surfaces/admin/api/intents/intents.ts",
+      "name": "IntentQuery",
+      "description": "A structured intent specification defining what workflow to launch. Use this format when you prefer object syntax over string query format.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "action",
+          "value": "IntentAction",
+          "description": "The operation to perform: `'create'` for new resources or `'edit'` for existing ones."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "data",
+          "value": "{ [key: string]: unknown; }",
+          "description": "Additional context data required by specific intent types. For example, discount creation requires a discount type, variant creation requires a parent product ID, and [metaobject](/docs/apps/build/custom-data/metaobjects) creation requires a definition type.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "IntentType",
+          "description": "The type of resource to create or edit (for example, `'shopify/Product'`)."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/intents/intents.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The resource identifier for edit operations (for example, `'gid://shopify/Product/123'`). Required when editing existing resources. Omit this for create operations.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface IntentQuery extends IntentQueryOptions {\n  /**\n   * The operation to perform: `'create'` for new resources or `'edit'` for existing ones.\n   */\n  action: IntentAction;\n  /**\n   * The type of resource to create or edit (for example, `'shopify/Product'`).\n   */\n  type: IntentType;\n}"
+    }
+  },
+  "Money": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Money",
+      "value": "string",
+      "description": "A monetary value represented as a string (for example, `\"19.99\"` or `\"0.00\"`). The format always includes the decimal point and cents, even for whole dollar amounts. Use this type for prices, costs, and other currency values.",
+      "isPublicDocs": true
+    }
+  },
+  "FulfillmentServiceType": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "FulfillmentServiceType",
+      "value": "export enum FulfillmentServiceType {\n  /** Digital gift card fulfillment with automatic delivery. No physical shipping required. */\n  GiftCard = 'GIFT_CARD',\n  /** Manual fulfillment handled directly by the merchant. The merchant packs and ships orders themselves. */\n  Manual = 'MANUAL',\n  /** Third-party fulfillment service that handles warehousing and shipping (for example, ShipBob, Amazon FBA, or custom 3PL providers). */\n  ThirdParty = 'THIRD_PARTY',\n}",
+      "description": "The types of fulfillment services that can handle order fulfillment. This determines how products are delivered to customers.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "GiftCard",
+          "value": "GIFT_CARD",
+          "description": "Digital gift card fulfillment with automatic delivery. No physical shipping required."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Manual",
+          "value": "MANUAL",
+          "description": "Manual fulfillment handled directly by the merchant. The merchant packs and ships orders themselves."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "ThirdParty",
+          "value": "THIRD_PARTY",
+          "description": "Third-party fulfillment service that handles warehousing and shipping (for example, ShipBob, Amazon FBA, or custom 3PL providers)."
+        }
+      ]
+    }
+  },
+  "WeightUnit": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "WeightUnit",
+      "value": "export enum WeightUnit {\n  /** Weight measured in kilograms (kg). Commonly used in metric system countries. */\n  Kilograms = 'KILOGRAMS',\n  /** Weight measured in grams (g). Used for lightweight items in metric system. */\n  Grams = 'GRAMS',\n  /** Weight measured in pounds (lb). Commonly used in the United States. */\n  Pounds = 'POUNDS',\n  /** Weight measured in ounces (oz). Used for lightweight items in imperial system. */\n  Ounces = 'OUNCES',\n}",
+      "description": "The unit of measurement for product weight. Use this with the weight value to calculate shipping costs or display product specifications.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Kilograms",
+          "value": "KILOGRAMS",
+          "description": "Weight measured in kilograms (kg). Commonly used in metric system countries."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Grams",
+          "value": "GRAMS",
+          "description": "Weight measured in grams (g). Used for lightweight items in metric system."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Pounds",
+          "value": "POUNDS",
+          "description": "Weight measured in pounds (lb). Commonly used in the United States."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Ounces",
+          "value": "OUNCES",
+          "description": "Weight measured in ounces (oz). Used for lightweight items in imperial system."
+        }
+      ]
+    }
+  },
+  "ProductVariantInventoryPolicy": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "ProductVariantInventoryPolicy",
+      "value": "export enum ProductVariantInventoryPolicy {\n  /** Prevents purchases when inventory reaches zero. Customers can't add out-of-stock variants to their cart. Use this to avoid overselling. */\n  Deny = 'DENY',\n  /** Allows purchases even when inventory is zero or negative. Customers can continue buying out-of-stock variants. Use this for backorders or made-to-order products. */\n  Continue = 'CONTINUE',\n}",
+      "description": "The inventory policy that determines whether customers can purchase a variant when it's out of stock. Use this to control checkout behavior for low or zero inventory items.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Deny",
+          "value": "DENY",
+          "description": "Prevents purchases when inventory reaches zero. Customers can't add out-of-stock variants to their cart. Use this to avoid overselling."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Continue",
+          "value": "CONTINUE",
+          "description": "Allows purchases even when inventory is zero or negative. Customers can continue buying out-of-stock variants. Use this for backorders or made-to-order products."
+        }
+      ]
+    }
+  },
+  "ProductVariantInventoryManagement": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "ProductVariantInventoryManagement",
+      "value": "export enum ProductVariantInventoryManagement {\n  /** Inventory tracked and managed by Shopify. Stock levels update through Shopify admin or API. Use this for standard inventory management. */\n  Shopify = 'SHOPIFY',\n  /** Inventory not tracked. The variant is always considered in stock. Use this for services, digital goods, or custom products with unlimited availability. */\n  NotManaged = 'NOT_MANAGED',\n  /** Inventory tracked by an external fulfillment service. The third-party system manages stock levels. Use this when a 3PL or fulfillment app controls inventory. */\n  FulfillmentService = 'FULFILLMENT_SERVICE',\n}",
+      "description": "The system responsible for tracking inventory levels for a variant. This determines where stock counts are managed and updated.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Shopify",
+          "value": "SHOPIFY",
+          "description": "Inventory tracked and managed by Shopify. Stock levels update through Shopify admin or API. Use this for standard inventory management."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "NotManaged",
+          "value": "NOT_MANAGED",
+          "description": "Inventory not tracked. The variant is always considered in stock. Use this for services, digital goods, or custom products with unlimited availability."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "FulfillmentService",
+          "value": "FULFILLMENT_SERVICE",
+          "description": "Inventory tracked by an external fulfillment service. The third-party system manages stock levels. Use this when a 3PL or fulfillment app controls inventory."
+        }
+      ]
+    }
+  },
+  "ProductStatus": {
+    "src/surfaces/admin/api/resource-picker/resource-picker.ts": {
+      "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+      "syntaxKind": "EnumDeclaration",
+      "name": "ProductStatus",
+      "value": "export enum ProductStatus {\n  /** The product is published and available for sale on active sales channels. Customers can view and purchase this product. */\n  Active = 'ACTIVE',\n  /** The product is archived and no longer available. Archived products don't appear on storefronts and can't be purchased. Use this for discontinued items. */\n  Archived = 'ARCHIVED',\n  /** The product is an unpublished draft not visible to customers. Draft products are still being prepared or reviewed. */\n  Draft = 'DRAFT',\n}",
+      "description": "The publication status indicating a product's availability state. Use this to filter products or determine which products customers can see and purchase.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Active",
+          "value": "ACTIVE",
+          "description": "The product is published and available for sale on active sales channels. Customers can view and purchase this product."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Archived",
+          "value": "ARCHIVED",
+          "description": "The product is archived and no longer available. Archived products don't appear on storefronts and can't be purchased. Use this for discontinued items."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/resource-picker/resource-picker.ts",
+          "name": "Draft",
+          "value": "DRAFT",
+          "description": "The product is an unpublished draft not visible to customers. Draft products are still being prepared or reviewed."
+        }
+      ]
+    }
+  },
+  "StandardRenderingExtensionApi": {
+    "src/surfaces/admin/api/standard/standard-rendering.ts": {
+      "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+      "name": "StandardRenderingExtensionApi",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "auth",
+          "value": "Auth",
+          "description": "Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "extension",
+          "value": "{ target: ExtensionTarget; }",
+          "description": "The identifier of the running extension target. Use this to determine which target your extension is rendering in and conditionally adjust functionality or UI based on the extension context."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "i18n",
+          "value": "I18n",
+          "description": "Utilities for translating content according to the current localization of the admin. Use these methods to provide translated strings that match the merchant's language preferences, ensuring your extension is accessible to a global audience."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "intents",
+          "value": "Intents",
+          "description": "Provides information to the receiver of an intent. Use this to access data passed from other extensions or parts of the admin when your extension is launched through intent-based navigation."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "picker",
+          "value": "PickerApi",
+          "description": "Opens a custom selection dialog with your app-specific data. Use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) to define the picker's heading, items, headers, and selection behavior. Returns a Promise that resolves to a `Picker` object with a `selected` property for accessing the merchant's selection."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "query",
+          "value": "<Data = unknown, Variables = { [key: string]: unknown; }>(query: string, options?: { variables?: Variables; version?: Omit<ApiVersion, \"2023-04\">; }) => Promise<{ data?: Data; errors?: GraphQLError[]; }>",
+          "description": "Executes GraphQL queries against the [GraphQL Admin API](/docs/api/admin-graphql). Use this to fetch shop data, manage resources, or perform mutations. Queries are automatically authenticated with the current user's permissions. Optionally specify GraphQL variables and API version for your query."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "resourcePicker",
+          "value": "ResourcePickerApi",
+          "description": "Opens the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) modal for selecting products, variants, or collections. Returns the selected resources when the user confirms their selection, or undefined if they cancel."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "storage",
+          "value": "Storage",
+          "description": "Provides methods for persisting data in browser storage that is scoped to your extension. Use this to store user preferences, cache data, maintain state across sessions, or save temporary working data. Storage is persistent across page reloads and isolated per extension."
+        }
+      ],
+      "value": "export interface StandardRenderingExtensionApi<\n  ExtensionTarget extends AnyExtensionTarget,\n> extends StandardApi<ExtensionTarget> {\n  /**\n   * Opens the [resource picker](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/resource-picker-api) modal for selecting products, variants, or collections. Returns the selected resources when the user confirms their selection, or undefined if they cancel.\n   */\n  resourcePicker: ResourcePickerApi;\n\n  /**\n   * Opens a custom selection dialog with your app-specific data. Use the [Picker API](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/picker-api) to define the picker's heading, items, headers, and selection behavior. Returns a Promise that resolves to a `Picker` object with a `selected` property for accessing the merchant's selection.\n   */\n  picker: PickerApi;\n}"
+    }
+  },
+  "CustomerStandardMetafieldDependency": {
+    "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts": {
+      "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CustomerStandardMetafieldDependency",
+      "value": "'facts.birth_date'",
+      "description": "Standard customer metafields that can be referenced as template dependencies.",
+      "isPublicDocs": true
+    }
+  },
+  "OrderRoutingRule": {
+    "src/surfaces/admin/api/order-routing-rule/data.ts": {
+      "filePath": "src/surfaces/admin/api/order-routing-rule/data.ts",
+      "name": "OrderRoutingRule",
+      "description": "An order routing rule configuration that determines how orders are routed to fulfillment locations. Use this to access the rule's current settings and populate your configuration interface.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/api/order-routing-rule/data.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "description",
+          "value": "string",
+          "description": "A description explaining the rule's purpose and how it routes orders. Use this to help merchants understand what the rule does."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/order-routing-rule/data.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "The unique global identifier (GID) for the order routing rule. Use this ID to associate configuration changes with the correct rule."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/order-routing-rule/data.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "The display label for the order routing rule shown to merchants in the admin. Use this to identify the rule in lists and settings pages."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/order-routing-rule/data.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "metafields",
+          "value": "Metafield[]",
+          "description": "An array of [metafields](/docs/apps/build/metafields) that store the routing rule's configuration values. Use these metafields to populate your settings UI with the current rule configuration."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/order-routing-rule/data.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "priority",
+          "value": "number",
+          "description": "The priority order for rule evaluation when multiple rules exist. Lower numbers are evaluated first (for example, a rule with priority 1 runs before priority 2). Use this to understand the rule's position in the evaluation sequence.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface OrderRoutingRule {\n  /** The display label for the order routing rule shown to merchants in the admin. Use this to identify the rule in lists and settings pages. */\n  label: string;\n  /** A description explaining the rule's purpose and how it routes orders. Use this to help merchants understand what the rule does. */\n  description: string;\n  /** The unique global identifier (GID) for the order routing rule. Use this ID to associate configuration changes with the correct rule. */\n  id: string;\n  /** The priority order for rule evaluation when multiple rules exist. Lower numbers are evaluated first (for example, a rule with priority 1 runs before priority 2). Use this to understand the rule's position in the evaluation sequence. */\n  priority?: number;\n  /** An array of [metafields](/docs/apps/build/metafields) that store the routing rule's configuration values. Use these metafields to populate your settings UI with the current rule configuration. */\n  metafields: Metafield[];\n}"
     }
   },
   "ComponentChildren": {
@@ -18164,88 +19017,6 @@
           "isOptional": true
         }
       ]
-    }
-  },
-  "Page": {
-    "src/surfaces/admin/components.ts": {
-      "filePath": "src/surfaces/admin/components.ts",
-      "name": "Page",
-      "description": "Use as the outer wrapper of a page.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "inlineSize",
-          "value": "\"small\" | \"base\" | \"large\"",
-          "description": "The inline size of the page\n- `base` corresponds to a set default inline size\n- `large` full width with whitespace",
-          "defaultValue": "'base'"
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "heading",
-          "value": "string",
-          "description": "The main page heading"
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "connectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "disconnectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "setAttribute",
-          "value": "(name: string, value: string) => void",
-          "description": "",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "attributeChangedCallback",
-          "value": "(name: string) => void",
-          "description": "",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "adoptedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "queueRender",
-          "value": "() => void",
-          "description": "A method that queues a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "click",
-          "value": "({ sourceEvent }?: ClickOptions) => void",
-          "description": "A method like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
-          "isPrivate": true
-        }
-      ],
-      "value": "declare class Page extends PreactCustomElement implements PageProps {\n  accessor inlineSize: PageProps['inlineSize'];\n  accessor heading: PageProps['heading'];\n  constructor();\n  /** @private */\n  connectedCallback(): void;\n  /** @private */\n  disconnectedCallback(): void;\n}"
     }
   },
   "PasswordFieldProps": {

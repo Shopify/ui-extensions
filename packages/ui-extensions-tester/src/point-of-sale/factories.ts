@@ -4,6 +4,7 @@ import type {
   RenderExtensionTarget,
   StandardApi,
   ActionTargetApi,
+  DataTargetApi,
   ActionApi,
   CartApi,
   OrderApi,
@@ -14,6 +15,7 @@ import type {
   CashDrawerApi,
   ScannerSource,
   StorageApi,
+  ConnectivityApiContent,
   ConnectivityState,
   Cart,
   Session,
@@ -87,9 +89,15 @@ function createTransaction(): Transaction {
   } as Transaction;
 }
 
+function createConnectivityApiContent(): ConnectivityApiContent {
+  return {
+    current: createReadonlySignalLike(createConnectivityState()),
+  };
+}
+
 function createMockBaseEventData() {
   return {
-    connectivity: createConnectivityState(),
+    connectivity: createConnectivityApiContent(),
     device: {name: 'Mock POS Device', deviceId: 1, isTablet: false},
     locale: 'en-US',
     session: createSessionCurrentSession(),
@@ -102,6 +110,10 @@ function createMockStandardApi<T extends RenderExtensionTarget>(
 ): StandardApi<T> {
   return {
     extensionPoint: target,
+    extension: {
+      apiVersion: '2026-04',
+      target,
+    },
     i18n: createMockI18n(),
     locale: {current: createReadonlySignalLike('en-US')},
     toast: {show: () => {}},
@@ -429,6 +441,55 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
   };
 }
 
+// Data target factories
+function createDataTargetMock<T extends ExtensionTarget>(
+  target: T,
+): DataTargetApi<T> {
+  return {
+    extensionPoint: target,
+    extension: {
+      apiVersion: '2026-04',
+      target,
+    },
+    i18n: createMockI18n(),
+    session: {
+      currentSession: createSessionCurrentSession(),
+      getSessionToken: async () => 'mock-session-token',
+      deviceId: 1,
+    },
+    storage: createStorage(),
+    locale: {current: createReadonlySignalLike('en-US')},
+    connectivity: {
+      current: createReadonlySignalLike(createConnectivityState()),
+    },
+    device: {
+      name: 'Mock POS Device',
+      registerName: 'Register 1',
+      getDeviceId: async () => 'mock-device-id',
+      isTablet: async () => false,
+    },
+    productSearch: {
+      searchProducts: async () => ({items: [], hasNextPage: false}),
+      fetchProductWithId: async () => undefined,
+      fetchProductsWithIds: async () => ({
+        fetchedResources: [],
+        idsForResourcesNotFound: [],
+      }),
+      fetchProductVariantWithId: async () => undefined,
+      fetchProductVariantsWithIds: async () => ({
+        fetchedResources: [],
+        idsForResourcesNotFound: [],
+      }),
+      fetchProductVariantsWithProductId: async () => [],
+      fetchPaginatedProductVariantsWithProductId: async () => ({
+        items: [],
+        hasNextPage: false,
+      }),
+    },
+    ...createMockCartApi(),
+  };
+}
+
 // Event target factories
 function createTransactionCompleteMock<T extends ExtensionTarget>(
   _target: T,
@@ -547,6 +608,9 @@ const posMockFactories: PosMockFactory = {
 
   // Group Q: ActionTargetApi + CashDrawerApi
   'pos.register-details.action.render': createActionTargetCashDrawerMock,
+
+  // Data targets
+  'pos.app.ready.data': createDataTargetMock,
 
   // Event targets
   'pos.transaction-complete.event.observe': createTransactionCompleteMock,

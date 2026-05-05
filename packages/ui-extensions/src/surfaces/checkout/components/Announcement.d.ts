@@ -36,48 +36,56 @@ export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent e
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
+/**
+ * The visibility state of a toggleable element.
+ *
+ * - `open`: The element is visible and showing its content.
+ * - `closed`: The element is hidden and its content is not visible.
+ */
 export type ToggleState = 'open' | 'closed';
+/**
+ * The event data provided to toggle-related callbacks. Contains the previous and next visibility states of the element.
+ */
 export interface ToggleArgumentsEvent {
+    /**
+     * The visibility state of the element before the toggle occurred.
+     */
     oldState?: ToggleState;
+    /**
+     * The visibility state of the element after the toggle occurred.
+     */
     newState?: ToggleState;
 }
 
 declare const tagName = "s-announcement";
 export interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
-/**
- * The events interface for the Announcement component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface AnnouncementElementEvents {
     /**
-     * Callback fired when the element state changes **after** any animations have finished.
+     * A callback that fires when the element state changes, after any toggle animations have finished.
      *
      * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
      *   `newState` property will be set to `open`.
      * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
      *   `newState` will be `closed`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+     * Learn more about [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
      */
     aftertoggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
     /**
-     * Callback fired when the announcement is dismissed by the user
-     * (either via the built-in dismiss button or programmatically).
+     * A callback that fires when the announcement is dismissed by the user clicking the close button or by calling the `dismiss()` method programmatically.
      */
     dismiss?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback straight after the element state changes.
+     * A callback that fires immediately when the element state changes, before any animations.
      *
      * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
      *   `newState` property will be set to `open`.
-     * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+     * - If the element is transitioning from showing to hidden, then the `oldState` property will be set to `open` and the
      *   `newState` will be `closed`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+     * Learn more about the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
      */
     toggle?: CallbackEventListener<typeof tagName, ToggleArgumentsEvent>;
 }
@@ -89,13 +97,16 @@ export interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLEleme
 export interface AnnouncementProps extends AnnouncementEvents {
 }
 export interface AnnouncementMethods {
+    /**
+     * Programmatically dismisses the announcement. This triggers the `dismiss` event callback.
+     */
     dismiss: () => void;
 }
-/**
- * The methods interface for the Announcement component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface AnnouncementElementMethods {
+    /**
+     * Programmatically dismisses the announcement. This triggers the `dismiss` event callback.
+     */
     dismiss: AnnouncementMethods['dismiss'];
 }
 declare global {

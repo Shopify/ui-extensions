@@ -56,24 +56,24 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-consent-checkbox";
-/**
- * The element props interface for the ConsentCheckbox component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
+    /**
+     * The policy for which buyer consent is being collected. Used by the [consent checkbox](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/consent-checkbox) and [consent phone field](/docs/api/{API_NAME}/{API_VERSION}/web-components/forms/consent-phone-field) components to identify the type of marketing permission requested.
+     *
+     * - `sms-marketing`: Represents the policy for SMS marketing consent.
+     */
+    policy?: ConsentCheckboxProps$1['policy'];
 }
 export interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
-/**
- * The events interface for the ConsentCheckbox component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ConsentCheckboxElementEvents {
     /**
-     * A callback that is run whenever the control is changed.
+     * A callback fired when the consent checkbox value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }

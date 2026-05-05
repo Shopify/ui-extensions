@@ -4,6 +4,7 @@ import {CartLineItemApi} from './cart-line/cart-line-item';
 
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -14,6 +15,7 @@ export type CallbackEvent<
 
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
 export type CallbackEventListener<
   TTagName extends keyof HTMLElementTagNameMap,
@@ -35,27 +37,21 @@ interface ButtonProps {
    */
   accessibilityLabel?: string;
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this component.
-   *
-   * See `command` for how to control the behavior of the target.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: string;
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * Sets the action the `commandFor` target should take when this component is activated.
    *
-   * See the documentation of particular components for the actions they support.
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target clipboard item.
    *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   * - `--copy`: copies the target ClipboardItem.
+   * Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    *
    * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
@@ -82,7 +78,7 @@ interface ButtonProps {
    */
   loading?: boolean;
   /**
-   * Specifies where to display the linked URL
+   * Specifies where to display the linked URL.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
    *
    * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
@@ -101,9 +97,8 @@ interface ButtonProps {
   /**
    * The behavior of the button.
    *
-   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.
-   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.
-   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+   * - `'submit'`: Submits the nearest containing form.
+   * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.
    *
    * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
    *
@@ -318,10 +313,12 @@ export interface Docs_Standard_ToastApi
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
 
+/**
+ * @publicDocs
+ */
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
 /**
- * Supported props for Buttons used inside Page `primary-action` slot.
  * @publicDocs
  */
 export interface Docs_Page_Button_PrimaryAction
@@ -334,10 +331,50 @@ export interface Docs_Page_Button_PrimaryAction
     | 'href'
     | 'command'
     | 'commandFor'
-  > {}
+  > {
+  /**
+   * A label that describes the button's purpose to assistive technologies. Use this when the button text alone doesn't provide enough context.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the button is activated, before the action indicated by `type`.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The action the `commandFor` target should take when this button is activated.
+   *
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   */
+  command?: ButtonProps['command'];
+  /**
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   */
+  commandFor?: ButtonProps['commandFor'];
+  /**
+   * Whether the button is disabled and non-interactive.
+   *
+   * @default false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * The URL to navigate to when the button is activated. If a `commandFor` is set, the `command` is executed instead of the navigation.
+   */
+  href?: ButtonProps['href'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @default false
+   */
+  loading?: ButtonProps['loading'];
+}
 
 /**
- * Supported props for Buttons used inside Page `secondary-actions` slot.
  * @publicDocs
  */
 export interface Docs_Page_Button_SecondaryAction
@@ -350,22 +387,70 @@ export interface Docs_Page_Button_SecondaryAction
     | 'href'
     | 'command'
     | 'commandFor'
-  > {}
+  > {
+  /**
+   * A label that describes the button's purpose to assistive technologies. Use this when the button text alone doesn't provide enough context.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the button is activated, before the action indicated by `type`.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The action the `commandFor` target should take when this button is activated.
+   *
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   */
+  command?: ButtonProps['command'];
+  /**
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   */
+  commandFor?: ButtonProps['commandFor'];
+  /**
+   * Whether the button is disabled and non-interactive.
+   *
+   * @default false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * The URL to navigate to when the button is activated. If a `commandFor` is set, the `command` is executed instead of the navigation.
+   */
+  href?: ButtonProps['href'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @default false
+   */
+  loading?: ButtonProps['loading'];
+}
 
 /**
- * Supported props for Buttons used inside Page `breadcrumb-actions` slot.
  * @publicDocs
  */
 export interface Docs_Page_Button_BreadcrumbAction
   extends Pick<ButtonProps, 'click' | 'href'> {
   /**
-   * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
+   * A label that describes the breadcrumb's destination to assistive technologies. Required because `children` passed to this button are discarded.
    */
   accessibilityLabel: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the breadcrumb is activated.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The URL to navigate to when the breadcrumb is activated.
+   */
+  href?: ButtonProps['href'];
 }
 
 /**
- * The Menu component exclusively accepts Button elements with restricted props as its children.
+ * The menu component exclusively accepts button elements with restricted props as its children.
  * @publicDocs
  */
 export interface Docs_Menu_Button_Action

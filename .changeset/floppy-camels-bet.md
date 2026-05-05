@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': patch
 ---
 
-[Checkout] Update code examples
+Add generic helper types for intents

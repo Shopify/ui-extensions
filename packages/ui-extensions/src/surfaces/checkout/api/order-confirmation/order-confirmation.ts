@@ -1,5 +1,6 @@
 import type {SubscribableSignalLike} from '../../shared';
 
+/** @publicDocs */
 export interface OrderConfirmation {
   order: {
     /**
@@ -15,6 +16,8 @@ export interface OrderConfirmation {
    * A randomly generated alpha-numeric identifier for the order, distinct
    * from `order.id`. The value is `undefined` for orders that were created
    * before this field was introduced. All recent orders have a number.
+   *
+   * Optional. Might not be present for orders created before 2024.
    */
   number?: string;
 

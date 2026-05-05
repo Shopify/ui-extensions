@@ -1,5 +1,6 @@
 /**
  * The available payment method types for POS transactions.
+ * @publicDocs
  */
 export type PaymentMethod =
   | 'Cash'
@@ -15,6 +16,7 @@ export type PaymentMethod =
 
 /**
  * Represents a payment applied to a transaction, including the amount, currency, and payment method type.
+ * @publicDocs
  */
 export interface Payment {
   /**

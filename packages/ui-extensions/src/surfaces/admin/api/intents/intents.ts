@@ -1,5 +1,6 @@
 /**
  * The response returned when a merchant closes or cancels the workflow without completing it. Check for this response to handle cancellation gracefully in your extension.
+ * @publicDocs
  */
 export interface ClosedIntentResponse {
   /** Indicates the workflow was closed without completion. When `'closed'`, the merchant exited the workflow before finishing. */
@@ -8,6 +9,7 @@ export interface ClosedIntentResponse {
 
 /**
  * The response returned when a merchant successfully completes the workflow. Use this to access the created or updated resource data.
+ * @publicDocs
  */
 export interface SuccessIntentResponse {
   /** Indicates successful completion. When `'ok'`, the merchant completed the workflow and the resource was created or updated. */
@@ -18,6 +20,7 @@ export interface SuccessIntentResponse {
 
 /**
  * The response returned when the workflow fails due to validation errors or other issues. Use this to display error messages and help merchants fix problems.
+ * @publicDocs
  */
 export interface ErrorIntentResponse {
   /** Indicates the workflow failed. When `'error'`, the workflow encountered validation errors or other issues that prevented completion. */
@@ -25,14 +28,19 @@ export interface ErrorIntentResponse {
   /** A general error message describing what went wrong. Use this to display feedback when specific field errors aren't available. */
   message?: string;
   /** Specific validation issues or field errors. Present when validation fails on particular fields, allowing you to show targeted error messages. */
-  issues?: {
-    /** The path to the field that has an error (for example, `['product', 'title']`). Use this to identify which field caused the validation failure. */
-    path?: string[];
-    /** A description of what's wrong with this field. Display this to help merchants understand how to fix the error. */
-    message?: string;
-    /** A machine-readable error code for this issue. Use this for programmatic error handling or logging. */
-    code?: string;
-  }[];
+  issues?: Issue[];
+}
+
+/**
+ * A structured issue describing a validation or workflow error.
+ */
+export interface Issue {
+  /** The path to the field that has an error (for example, `['product', 'title']`). Use this to identify which field caused the validation failure. */
+  path?: string[];
+  /** A description of what's wrong with this field. Display this to help merchants understand how to fix the error. */
+  message?: string;
+  /** A machine-readable error code for this issue. Use this for programmatic error handling or logging. */
+  code?: string;
 }
 
 /**
@@ -46,6 +54,7 @@ export type IntentResponse =
 
 /**
  * A handle for tracking an in-progress intent workflow.
+ * @publicDocs
  */
 export interface IntentActivity {
   /**
@@ -55,12 +64,34 @@ export interface IntentActivity {
 }
 
 /**
+ * The `IntentResponseApi` object provides methods for resolving the current intent from within an invoked extension. This API is only present when your extension is running inside an intent workflow.
+ */
+export interface IntentResponseApi {
+  /**
+   * Resolves the current intent successfully. Pass output data when your intent defines a response schema.
+   */
+  ok(data?: SuccessIntentResponse['data']): Promise<void>;
+
+  /**
+   * Resolves the current intent with an error. Use `issues` to provide field-specific validation details when available.
+   */
+  error(message: string, issues?: Issue[]): Promise<void>;
+
+  /**
+   * Resolves the current intent as closed without completing the workflow.
+   */
+  closed(): Promise<void>;
+}
+
+/**
  * The type of operation to perform: creating a new resource or editing an existing one.
+ * @publicDocs
  */
 export type IntentAction = 'create' | 'edit';
 
 /**
  * The types of Shopify resources that support intent-based creation and editing workflows.
+ * @publicDocs
  */
 export type IntentType =
   | 'shopify/Article'
@@ -80,6 +111,7 @@ export type IntentType =
 
 /**
  * Additional parameters for intent invocation when using the string query format. Use these options to provide resource IDs for editing or pass required context data for resource creation.
+ * @publicDocs
  */
 export interface IntentQueryOptions {
   /**
@@ -94,6 +126,7 @@ export interface IntentQueryOptions {
 
 /**
  * A structured intent specification defining what workflow to launch. Use this format when you prefer object syntax over string query format.
+ * @publicDocs
  */
 export interface IntentQuery extends IntentQueryOptions {
   /**
@@ -129,6 +162,7 @@ export interface IntentQuery extends IntentQueryOptions {
  * });
  * const response = await activity.complete;
  * ```
+ * @publicDocs
  */
 export interface IntentInvokeApi {
   (query: IntentQuery): Promise<IntentActivity>;
@@ -137,8 +171,14 @@ export interface IntentInvokeApi {
 
 /**
  * The `Intents` object provides methods for launching standardized Shopify workflows to create or edit resources. Intents enable your extension to trigger native admin interfaces for products, customers, discounts, and other resources, then receive the results when merchants complete the workflow.
+ * @publicDocs
  */
 export interface Intents {
+  /**
+   * Resolves the current intent from within an invoked extension. This property is only present when your extension is running inside an intent workflow.
+   */
+  response?: IntentResponseApi;
+
   /**
    * The URL that launched the current intent workflow, if your extension was opened through an intent. Use this to determine how your extension was invoked and access any parameters passed in the URL.
    */

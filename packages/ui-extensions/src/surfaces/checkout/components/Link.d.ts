@@ -38,26 +38,19 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-link";
-/**
- * The element props interface for the Link component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
 export interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
-/**
- * The events interface for the Link component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface LinkElementEvents {
     /**
-     * Callback when the link is activated.
-     * This will be called before navigating to the location specified by `href`.
+     * A callback fired when the link is clicked, before navigating to the location specified by `href`.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
 }

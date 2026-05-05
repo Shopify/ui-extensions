@@ -32,24 +32,18 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-checkbox";
-/**
- * The element props interface for the Checkbox component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
-/**
- * The events interface for the Checkbox component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface CheckboxElementEvents {
     /**
-     * A callback that is run whenever the control is changed.
+     * A callback fired when the checkbox value changes.
      *
-     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
+     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
 }

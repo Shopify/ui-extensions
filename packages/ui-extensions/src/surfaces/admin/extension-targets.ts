@@ -13,6 +13,8 @@ import type {
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
   StandardApi,
+  IntentRenderApi,
+  AppHomeApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -22,6 +24,7 @@ import type {BlockExtensionComponents} from './components/BlockExtensionComponen
 import type {ActionExtensionComponents} from './components/ActionExtensionComponents';
 import type {PrintActionExtensionComponents} from './components/PrintActionExtensionComponents';
 import type {FunctionSettingsComponents} from './components/FunctionSettingsComponents';
+import type {FormExtensionComponents} from './components/FormExtensionComponents';
 
 /**
  * Maps extension target identifiers to their corresponding extension types. Each target represents a specific location or context in the Shopify admin where extensions can render or execute. Use these targets to define where your extension appears and what capabilities it has access to.
@@ -664,6 +667,22 @@ export interface ExtensionTargets {
   'admin.app.tools.data': RunnableExtension<
     StandardApi<'admin.app.tools.data'>,
     undefined
+  >;
+
+  /**
+   * Renders an admin extension for handling app intents.
+   */
+  'admin.app.intent.render': RenderExtension<
+    IntentRenderApi<'admin.app.intent.render'>,
+    FormExtensionComponents
+  >;
+
+  /**
+   * Renders an admin extension on the app home page.
+   */
+  'admin.app.home.render': RenderExtension<
+    AppHomeApi<'admin.app.home.render'>,
+    FormExtensionComponents | 'Modal' | 'Page' | 'AppNav'
   >;
 }
 

@@ -26,10 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-abbreviation";
-/**
- * The element props interface for the Abbreviation component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
 export interface AbbreviationElement extends AbbreviationElementProps, Omit<HTMLElement, 'id' | 'title'> {

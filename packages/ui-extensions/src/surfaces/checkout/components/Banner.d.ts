@@ -38,36 +38,73 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-banner";
-/**
- * The element props interface for the Banner component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
+    /**
+     * Whether the banner content can be collapsed and expanded by the user. A collapsible banner conceals child elements initially, allowing the user to expand the banner to reveal them.
+     *
+     * @default false
+     */
+    collapsible?: BannerProps$1['collapsible'];
+    /**
+     * Whether the banner displays a close button that allows users to dismiss it.
+     *
+     * When the close button is pressed, the `dismiss` event will fire,
+     * then `hidden` will be set to `true`,
+     * any animation will complete,
+     * and the `afterhide` event will fire.
+     *
+     * @default false
+     */
+    dismissible?: BannerProps$1['dismissible'];
+    /**
+     * The heading text displayed at the top of the banner to summarize the message or alert.
+     *
+     * @default ''
+     */
+    heading?: BannerProps$1['heading'];
+    /**
+     * Controls whether the banner is visible or hidden.
+     *
+     * When using a controlled component pattern and the banner is `dismissible`,
+     * update this property to `true` when the `dismiss` event fires.
+     *
+     * You can hide the banner programmatically by setting this to `true` even if it's not `dismissible`.
+     *
+     * @default false
+     */
+    hidden?: BannerProps$1['hidden'];
+    /**
+     * The semantic meaning and color treatment of the component. The banner is a live region and the type of status is dictated by the tone selected.
+     *
+     * - `info`: Informational content or helpful tips.
+     * - `auto`: Automatically determined based on context.
+     * - `success`: Positive outcomes or successful states.
+     * - `warning`: Important warnings about potential issues.
+     * - `critical`: Urgent problems or destructive actions.
+     *
+     * The `critical` tone creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately. The `info`, `success`, and `warning` tones create an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
+     *
+     * @default 'auto'
+     */
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
 export interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
-/**
- * The events interface for the Banner component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface BannerElementEvents {
     /**
-     * Event handler when the banner has fully hidden.
+     * A callback that fires when the banner has fully hidden, including after any hide animations have completed.
      *
-     * The `hidden` property will be `true` when this event fires.
-     *
-     * @implementation If implementations animate the hiding of the banner,
-     * this event must fire after the banner has fully hidden.
-     * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
+     * The `hidden` property is `true` when this event fires.
      */
     afterhide?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the banner is dismissed by the user.
+     * A callback that fires when the banner is dismissed by the user clicking the close button.
      *
-     * This does not fire when setting `hidden` manually.
+     * This doesn't fire when setting `hidden` manually.
      *
-     * The `hidden` property will be `false` when this event fires.
+     * The `hidden` property is `false` when this event fires.
      */
     dismiss?: CallbackEventListener<typeof tagName>;
 }

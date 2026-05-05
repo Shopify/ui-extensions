@@ -38,13 +38,10 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-map-marker";
-/**
- * The element props interface for the MapMarker component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     /**
-     * Sets the action the `commandFor` target should take when this marker is activated. See the documentation of particular components for the actions they support. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+     * Sets the action the `commandFor` target should take when this component is activated. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
      *
      * - `--auto`: a default action for the target component.
      * - `--show`: shows the target component.
@@ -55,7 +52,7 @@ export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibi
      */
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
     /**
-     * The ID of a component that should respond to activations (for example, clicks) on this component. Refer to the `command` property for how to control the behavior of the target. Learn more about the [`commandfor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+     * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
      */
     commandFor?: MapMarkerProps$1['commandFor'];
 }
@@ -64,20 +61,14 @@ export interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibi
  */
 export interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
-/**
- * The events interface for the MapMarker component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerElementEvents {
     /**
      * A callback fired when the user clicks on the marker. This event does not propagate to the parent map — only the marker receives the click.
      */
     click?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The named slots for the map marker component. Slots allow you to insert custom content into specific areas of the marker.
- * @publicDocs
- */
+/** @publicDocs */
 export interface MapMarkerElementSlots {
     /**
      * A custom graphic element to use as the marker. If not provided, the map provider’s default marker pin is displayed.

@@ -1,5 +1,6 @@
 /**
  * The `Data` object provides access to currently viewed or selected resources in the admin context.
+ * @publicDocs
  */
 export interface Data {
   /**
@@ -10,6 +11,7 @@ export interface Data {
 
 /**
  * The supported [metafield definition types](/docs/apps/build/metafields/list-of-data-types) for storing extension configuration data. Use these types to specify how metafield values should be formatted, validated, and displayed. Types prefixed with `list.` store arrays of values, while other types store single values. Choose a type that matches your data format (for example, use `'number_integer'` for whole numbers, `'single_line_text_field'` for short text, or `'json'` for complex structured data).
+ * @publicDocs
  */
 export type SupportedDefinitionType =
   | 'boolean'

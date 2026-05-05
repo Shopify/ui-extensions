@@ -1,5 +1,6 @@
 /**
  * Specifies configuration options for navigation operations. Allows passing state data that persists across navigation transitions.
+ * @publicDocs
  */
 export interface NavigationNavigateOptions {
   /**
@@ -10,6 +11,7 @@ export interface NavigationNavigateOptions {
 
 /**
  * Represents a single entry in the navigation history stack. Contains the URL and unique identifier for tracking navigation state and implementing history-based navigation.
+ * @publicDocs
  */
 export interface NavigationHistoryEntry {
   /**
@@ -28,6 +30,7 @@ export interface NavigationHistoryEntry {
 
 /**
  * The event object for the `currententrychange` event, which fires when `Navigation.currentEntry` has changed due to navigation within the extension modal. Use to access information about the previous navigation entry when responding to navigation changes.
+ * @publicDocs
  */
 export interface NavigationCurrentEntryChangeEvent {
   /**

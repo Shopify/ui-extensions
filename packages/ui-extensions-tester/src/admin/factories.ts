@@ -6,6 +6,8 @@ import type {
   BlockExtensionApi,
   ProductDetailsConfigurationApi,
   Intents,
+  ToastApi,
+  AppApi,
 } from '@shopify/ui-extensions/admin';
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
@@ -37,6 +39,7 @@ type IntentActivity = NonNullable<
 type IntentResponse = NonNullable<
   Awaited<NonNullable<IntentActivity['complete']>>
 >;
+type IntentResponseApi = NonNullable<Intents['response']>;
 
 type ProductDetailsConfigData =
   ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>['data'];
@@ -67,6 +70,14 @@ function createConfigApp(): ConfigApp {
   };
 }
 
+function createIntentResponseApi(): IntentResponseApi {
+  return {
+    ok: async () => {},
+    error: async () => {},
+    closed: async () => {},
+  };
+}
+
 function createMockStandardApi<T extends ExtensionTarget>(
   target: T,
 ): StandardApi<T> {
@@ -92,6 +103,37 @@ function createMockStandardRenderingApi<T extends ExtensionTarget>(target: T) {
     picker: (async () => ({
       selected: Promise.resolve(undefined),
     })) as PickerApi,
+  };
+}
+
+function createMockToastApi(): ToastApi {
+  return {
+    show: () => {},
+    hide: () => {},
+  };
+}
+
+function createMockAppApi(): AppApi {
+  return {
+    extensions: async () => [],
+  };
+}
+
+function createAppHomeMock<T extends ExtensionTarget>(target: T) {
+  return {
+    ...createMockStandardRenderingApi(target),
+    toast: createMockToastApi(),
+    app: createMockAppApi(),
+  };
+}
+
+function createAppIntentRenderMock<T extends ExtensionTarget>(target: T) {
+  return {
+    ...createMockStandardRenderingApi(target),
+    intents: {
+      ...createMockStandardApi(target).intents,
+      response: createIntentResponseApi(),
+    },
   };
 }
 
@@ -251,6 +293,10 @@ const adminMockFactories: AdminMockFactory = {
   'admin.customers.segmentation-templates.data':
     createCustomerSegmentTemplateMock,
   'admin.app.tools.data': createMockStandardApi,
+
+  // App render targets
+  'admin.app.home.render': createAppHomeMock,
+  'admin.app.intent.render': createAppIntentRenderMock,
 
   // Block targets
   'admin.product-details.block.render': createMockBlockApi,

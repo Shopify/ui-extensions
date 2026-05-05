@@ -115,7 +115,7 @@ export interface ToggleEventProps {
 	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
@@ -123,10 +123,10 @@ export interface ToggleEventProps {
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
-	 * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+	 * - If the element is transitioning from showing to hidden, then the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * Learn more about the [toggle event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+	 * Learn more about the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
@@ -909,130 +909,95 @@ export interface DisplayProps {
 }
 export interface AccessibilityRoleProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
-	 * the role will be used by assistive technologies to help users
-	 * navigate the page.
-	 *
-	 * @implementation Although, in HTML hosts, this property changes the element used,
-	 * changing this property must not impact the visual styling of inside or outside of the box.
+	 * The semantic meaning of the component’s content. When set, assistive technologies use this role to help users navigate the page.
 	 *
 	 * @default 'generic'
 	 */
 	accessibilityRole?: AccessibilityRole;
 }
+/**
+ * The semantic role of a component, used by assistive technologies to convey the element’s purpose to users. Each role maps to a specific HTML element or ARIA role.
+ *
+ * - `main`: The primary content of the page.
+ * - `header`: A page or section header.
+ * - `footer`: Information such as copyright, navigation links, and privacy statements.
+ * - `section`: A generic section that should have a heading or `accessibilityLabel`.
+ * - `aside`: Supporting content related to the main content.
+ * - `navigation`: A major group of navigation links.
+ * - `ordered-list`: A list of ordered items.
+ * - `list-item`: An item inside a list.
+ * - `list-item-separator`: A divider between list items.
+ * - `unordered-list`: A list of unordered items.
+ * - `separator`: A divider that separates sections of content.
+ * - `status`: A live region with advisory information that is not urgent.
+ * - `alert`: Important, usually time-sensitive information.
+ * - `generic`: A nameless container with no semantic meaning (renders a `<div>`).
+ * - `presentation`: Strips semantic meaning while keeping visual styling. Synonym for `none`.
+ * - `none`: Strips semantic meaning while keeping visual styling. Synonym for `presentation`.
+ */
 export type AccessibilityRole = 
 /**
- * Used to indicate the primary content.
- *
- * In an HTML host, `main` will render a `<main>` element.
- * Learn more about the [`<main>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
+ * The primary content of the page. Learn more about the [`<main>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main).
  */
 "main"
 /**
- * Used to indicate the component is a header.
- *
- * In an HTML host `header` will render a `<header>` element.
- * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
+ * A page or section header. Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header).
  */
  | "header"
 /**
- * Used to display information such as copyright information, navigation links, and privacy statements.
- *
- * In an HTML host `footer` will render a `<footer>` element.
- * Learn more about the [`<footer>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/contentinfo_role) in the MDN web docs.
+ * Information such as copyright, navigation links, and privacy statements. Learn more about the [`<footer>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer).
  */
  | "footer"
 /**
- * Used to indicate a generic section.
- * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
- *
- * In an HTML host `section` will render a `<section>` element.
- * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
- *
+ * A generic section that should have a heading or `accessibilityLabel`. Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section).
  */
  | "section"
 /**
- * Used to designate a supporting section that relates to the main content.
- *
- * In an HTML host `aside` will render an `<aside>` element.
- * Learn more about the [`<aside>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/complementary_role) in the MDN web docs.
+ * Supporting content related to the main content. Learn more about the [`<aside>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside).
  */
  | "aside"
 /**
- * Used to identify major groups of links used for navigating.
- *
- * In an HTML host `navigation` will render a `<nav>` element.
- * Learn more about the [`<nav>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/navigation_role) in the MDN web docs.
+ * A major group of navigation links. Learn more about the [`<nav>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav).
  */
  | "navigation"
 /**
- * Used to identify a list of ordered items.
- *
- * In an HTML host `ordered-list` will render a `<ol>` element.
- * Learn more about the [`<ol>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) in the MDN web docs.
+ * A list of ordered items. Learn more about the [`<ol>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol).
  */
  | "ordered-list"
 /**
- * Used to identify an item inside a list of items.
- *
- * In an HTML host `list-item` will render a `<li>` element.
- * Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listitem_role) in the MDN web docs.
+ * An item inside a list. Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li).
  */
  | "list-item"
 /**
- * Used to indicates the component acts as a divider that separates and distinguishes sections of content in a list of items.
- *
- * In an HTML host `list-item-separator` will render as `<li role="separator">`.
- * Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li) and the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) in the MDN web docs.
+ * A divider between list items. Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role).
  */
  | "list-item-separator"
 /**
- * Used to identify a list of unordered items.
- *
- * In an HTML host `unordered-list` will render a `<ul>` element.
- * Learn more about the [`<ul>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) in the MDN web docs.
+ * A list of unordered items. Learn more about the [`<ul>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul).
  */
  | "unordered-list"
 /**
- * Used to indicates the component acts as a divider that separates and distinguishes sections of content.
- *
- * In an HTML host `separator` will render as `<div role="separator">`.
- * Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) in the MDN web docs.
+ * A divider that separates sections of content. Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role).
  */
  | "separator"
 /**
- * Used to define a live region containing advisory information for the user that is not important enough to be an alert.
- *
- * In an HTML host `status` will render as `<div role="status">`.
- * Learn more about the [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) in the MDN web docs.
+ * A live region with advisory information that is not urgent. Learn more about the [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role).
  */
  | "status"
 /**
- * Used for important, and usually time-sensitive, information.
- *
- * In an HTML host `alert` will render as `<div role="alert">`.
- * Learn more about the [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) in the MDN web docs.
+ * Important, usually time-sensitive information. Learn more about the [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
  */
  | "alert"
 /**
- * Used to create a nameless container element which has no semantic meaning on its own.
- *
- * In an HTML host `generic'` will render a `<div>` element.
- * Learn more about the [`generic` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/generic_role) in the MDN web docs.
+ * A nameless container with no semantic meaning (renders a `<div>`). Learn more about the [`generic` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/generic_role).
  */
  | "generic"
 /**
- * Used to strip the semantic meaning of an element, but leave the visual styling intact.
- *
- * Synonym for `none`
- * Learn more about the [`presentation` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role) in the MDN web docs.
+ * Strips semantic meaning while keeping visual styling. Synonym for `none`. Learn more about the [`presentation` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role).
  */
  | "presentation"
 /**
- * Used to strip the semantic meaning of an element, but leave the visual styling intact.
- *
- * Synonym for `presentation`
- * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
+ * Strips semantic meaning while keeping visual styling. Synonym for `presentation`. Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role).
  */
  | "none";
 export interface AccessibilityVisibilityProps {
@@ -1326,12 +1291,10 @@ export interface BorderProps {
 }
 export interface OverflowProps {
 	/**
-	 * Sets the overflow behavior of the element.
+	 * The overflow behavior of the element.
 	 *
-	 * - `hidden`: clips the content when it is larger than the element’s container.
-	 * The element will not be scrollable and the users will not be able
-	 * to access the clipped content by dragging or using a scroll wheel on a mouse.
-	 * - `visible`: the content that extends beyond the element’s container is visible.
+	 * - `visible`: Content that extends beyond the container is visible.
+	 * - `hidden`: Content that extends beyond the container is clipped and not scrollable.
 	 *
 	 * @default 'visible'
 	 */
@@ -1427,15 +1390,11 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (e.g. clicks) on this component.
-	 *
-	 * See `command` for how to control the behavior of the target.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
 	 */
 	commandFor?: string;
 	/**
-	 * Sets the action the `commandFor` should take when this clickable is activated.
+	 * Sets the action the `commandFor` target should take when this component is activated. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
 	 *
 	 * See the documentation of particular components for the actions they support.
 	 *
@@ -1446,12 +1405,10 @@ export interface InteractionProps {
 	 * - `--copy`: copies the target ClipboardItem.
 	 *
 	 * @default '--auto'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
-	 * ID of a component that should respond to interest (e.g. hover and focus) on this component.
+	 * The ID of the component to show when users hover over or focus on this component. Use this to connect interactive components to popovers or tooltips that provide additional context or information.
 	 */
 	interestFor?: string;
 }
@@ -1518,7 +1475,7 @@ export interface BaseInputProps {
 }
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+	 * Callback when the user has **finished editing** a field, such as once they have blurred the field.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
 	 */
@@ -1554,7 +1511,7 @@ export interface MultipleInputProps extends BaseInputProps {
 	 */
 	onInput?: (event: Event) => void;
 	/**
-	 * An array of the `value`s of the selected options.
+	 * An array of `value` attributes for the currently selected options.
 	 *
 	 * This is a convenience prop for setting the `selected` prop on child options.
 	 */
@@ -1944,7 +1901,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Disables the clickable, meaning it cannot be clicked or receive focus.
 	 *
-	 * In this state, onClick will not fire.
+	 * In this state, `click` won't fire.
 	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
 	 *
 	 * However, items within the clickable can still receive focus and be interacted with.
@@ -2131,9 +2088,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	type?: "single" | "multiple" | "range";
 	/**
-	 * Dates that can be selected.
-	 *
-	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 * Restricts which dates the user can select. Accepts a comma-separated list of dates and date ranges. Whitespace is allowed after commas.
 	 *
 	 * The default `''` allows all dates.
 	 *
@@ -2184,7 +2139,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	disallow?: string;
 	/**
-	 * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
+	 * Restricts which days of the week the user can select. These intersect with the result of `allow` and `disallow`.
 	 *
 	 * A comma-separated list of days. Whitespace is allowed after commas.
 	 *
@@ -2560,8 +2515,8 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicates the directionality of the element’s text.
 	 *
-	 * - `ltr`: languages written from left to right (e.g. English)
-	 * - `rtl`: languages written from right to left (e.g. Arabic)
+	 * - `ltr`: languages written from left to right (such as English)
+	 * - `rtl`: languages written from right to left (such as Arabic)
 	 * - `auto`: the user agent determines the direction based on the content
 	 * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
 	 *
@@ -3072,7 +3027,7 @@ interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * Specifies how much of the task has been completed.
 	 *
-	 * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
+	 * It must be a valid floating point number between `0` and `max`, or between `0` and `1` if `max` is omitted.
 	 * If there is no value attribute, the progress bar is indeterminate;
 	 * this indicates that an activity is ongoing with no indication of how long it is expected to take.
 	 *
@@ -3086,7 +3041,7 @@ interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * This attribute describes how much work the task indicated by the progress element requires.
 	 *
-	 * The `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.
+	 * The `max` attribute, if present, must have a value greater than `0` and be a valid floating point number.
 	 *
 	 * @default 1
 	 *
@@ -4371,7 +4326,7 @@ declare const tagName$v = "s-map-marker";
 /** @publicDocs */
 interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
     /**
-     * Sets the action the `commandFor` target should take when this marker is activated. See the documentation of particular components for the actions they support. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+     * Sets the action the `commandFor` target should take when this component is activated. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
      *
      * - `--auto`: a default action for the target component.
      * - `--show`: shows the target component.
@@ -4382,7 +4337,7 @@ interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLab
      */
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
     /**
-     * The ID of a component that should respond to activations (for example, clicks) on this component. Refer to the `command` property for how to control the behavior of the target. Learn more about the [`commandfor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+     * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
      */
     commandFor?: MapMarkerProps$1['commandFor'];
 }

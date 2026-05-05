@@ -4,6 +4,7 @@ import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-target
 
 /**
  * The `CustomerSegmentTemplateApi` object provides methods for creating customer segment templates. Access the following properties on the `CustomerSegmentTemplateApi` object to build templates with translated content.
+ * @publicDocs
  */
 export interface CustomerSegmentTemplateApi<
   ExtensionTarget extends AnyExtensionTarget,
@@ -16,11 +17,13 @@ export interface CustomerSegmentTemplateApi<
 
 /**
  * Standard customer metafields that can be referenced as template dependencies.
+ * @publicDocs
  */
 export type CustomerStandardMetafieldDependency = 'facts.birth_date';
 
 /**
  * Defines a customer segment template that merchants can use to create targeted customer groups.
+ * @publicDocs
  */
 export interface CustomerSegmentTemplate {
   /**

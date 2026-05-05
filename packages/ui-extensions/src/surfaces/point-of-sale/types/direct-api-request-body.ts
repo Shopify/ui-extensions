@@ -1,5 +1,6 @@
 /**
  * Represents the structure of a direct API request body for [GraphQL](https://graphql.org/) operations. Contains the query/mutation string and optional variables for parameterized queries.
+ * @publicDocs
  */
 export interface DirectApiRequestBody {
   /**

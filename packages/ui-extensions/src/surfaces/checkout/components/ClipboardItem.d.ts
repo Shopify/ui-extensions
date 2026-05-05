@@ -32,25 +32,19 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clipboard-item";
-/**
- * The element props interface for the ClipboardItem component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
 export interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
-/**
- * The events interface for the ClipboardItem component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClipboardItemElementEvents {
     /**
-     * Callback run when the copy to clipboard succeeds.
+     * A callback fired when the text is successfully copied to the clipboard. Use this to show a confirmation message or update the UI.
      */
     copy?: CallbackEventListener<typeof tagName>;
     /**
-     * Callback run when the copy to clipboard fails.
+     * A callback fired when the copy to clipboard fails. Use this to display an error message or provide a fallback action.
      */
     copyerror?: CallbackEventListener<typeof tagName>;
 }

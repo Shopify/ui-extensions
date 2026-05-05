@@ -26,21 +26,13 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-chip";
-/**
- * The element props interface for the Chip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
-/**
- * The slots interface for the Chip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ChipElementSlots {
     /**
-     * The graphic to display inside of the chip.
-     *
-     * Only `s-icon` element and its `type` attribute are supported.
+     * An optional graphic displayed at the start of the chip, such as an icon to visually reinforce the chip's label. Only the `s-icon` element and its `type` attribute are supported.
      */
     graphic?: HTMLElement;
 }

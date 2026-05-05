@@ -38,43 +38,32 @@ export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, 
 }) | null;
 
 declare const tagName = "s-clickable-chip";
-/**
- * The element props interface for the ClickableChip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
-/**
- * The events interface for the ClickableChip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableChipElementEvents {
     /**
-     * Event handler when the chip has fully hidden.
-     *
-     * The `hidden` property will be `true` when this event fires.
+     * A callback fired after the chip is hidden. The `hidden` property will be `true` when this event fires.
      */
     afterhide?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the chip is clicked.
+     * A callback fired when the chip is clicked.
+     *
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the chip is removed.
+     * A callback fired when the chip is removed.
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
-/**
- * The slots interface for the ClickableChip component.
- * @publicDocs
- */
+/** @publicDocs */
 export interface ClickableChipElementSlots {
     /**
-     * The graphic to display inside of the chip.
-     *
-     * Only `s-icon` element and its `type` attribute are supported.
+     * An optional graphic displayed at the start of the chip, such as an icon to visually reinforce the chip's label. Only the `s-icon` element and its `type` attribute are supported.
      */
     graphic?: HTMLElement;
 }

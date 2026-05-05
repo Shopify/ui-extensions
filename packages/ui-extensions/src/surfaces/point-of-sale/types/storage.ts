@@ -1,3 +1,6 @@
+/**
+ * @publicDocs
+ */
 export class StorageError extends Error {
   public name = 'StorageError';
   constructor(

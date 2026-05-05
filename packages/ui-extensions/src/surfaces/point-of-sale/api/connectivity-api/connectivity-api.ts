@@ -1,9 +1,13 @@
 import type {ReadonlySignalLike} from '../../../../shared';
 
+/**
+ * @publicDocs
+ */
 export type ConnectivityStateSeverity = 'Connected' | 'Disconnected';
 
 /**
  * Represents the current Internet connectivity status of the device. Indicates whether the device is connected or disconnected from the Internet.
+ * @publicDocs
  */
 export interface ConnectivityState {
   /**
@@ -25,6 +29,7 @@ export interface ConnectivityApiContent {
 
 /**
  * The `ConnectivityApi` object provides access to current connectivity information and change notifications. Access these properties through `shopify.connectivity` to monitor network status.
+ * @publicDocs
  */
 export interface ConnectivityApi {
   connectivity: ConnectivityApiContent;

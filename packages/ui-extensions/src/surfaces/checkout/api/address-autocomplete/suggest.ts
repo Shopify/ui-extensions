@@ -52,11 +52,12 @@ interface Target {
   selectedCountryCode?: CountryCode;
 }
 
+/** @publicDocs */
 export interface AddressAutocompleteSuggestOutput {
   /**
    * An array of address autocomplete suggestions to show to the buyer.
-   *
-   * > Note: Only the first five suggestions will be displayed to the buyer.
+   * Checkout displays up to five address suggestions. Return no more
+   * than five. Additional suggestions are ignored.
    */
   suggestions: AddressAutocompleteSuggestion[];
 }
