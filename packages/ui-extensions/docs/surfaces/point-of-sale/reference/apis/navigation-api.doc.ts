@@ -46,6 +46,7 @@ const data: ReferenceEntityTemplateSchema = {
       sectionContent: `
 - The Navigation API is only available in action (modal) targets and can't be used in action (menu item), block, or tile targets that don't support multi-screen navigation.
 - Navigation state is limited to serializable data and can't contain functions, complex objects, or circular references.
+- Starting in version 2025-10, each screen runs in its own isolated sandbox. State held in module-level variables, closures, or singleton instances isn't shared between screens — use the \`state\` option in \`navigation.navigate()\` (read back via \`navigation.currentEntry.getState()\`) or the [Storage API](https://shopify.dev/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/storage-api) (\`shopify.storage\`) to pass data between them.
 `,
     },
   ],
