@@ -4,7 +4,9 @@ import {BaseApi} from './BaseApi';
 
 /**
  * The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.
- * @publicDocs
+ * @deprecated Deprecated as of `2025-10`. Use `api.cart.current.subscribe()` on the
+ * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data).
+ * @private
  */
 export interface CartUpdateEventData extends BaseData, BaseApi {
   /**
