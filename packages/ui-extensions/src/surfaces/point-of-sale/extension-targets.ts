@@ -39,7 +39,7 @@ export interface EventExtensionTargets {
    *
    * @deprecated Deprecated as of `2025-10`. Use the
    * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
-   * `window.addEventListener('transactioncomplete', callback)` instead.
+   * `shopify.addEventListener('transactioncomplete', callback)` instead.
    * @private
    */
   'pos.transaction-complete.event.observe': (
@@ -50,7 +50,7 @@ export interface EventExtensionTargets {
    *
    * @deprecated Deprecated as of `2025-10`. Use the
    * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
-   * `window.addEventListener('cashtrackingsessionstart', callback)` instead.
+   * `shopify.addEventListener('cashtrackingsessionstart', callback)` instead.
    * @private
    */
   'pos.cash-tracking-session-start.event.observe': (
@@ -61,7 +61,7 @@ export interface EventExtensionTargets {
    *
    * @deprecated Deprecated as of `2025-10`. Use the
    * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
-   * `window.addEventListener('cashtrackingsessioncomplete', callback)` instead.
+   * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
    * @private
    */
   'pos.cash-tracking-session-complete.event.observe': (
