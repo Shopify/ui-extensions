@@ -26,18 +26,18 @@ export interface CashTrackingSessionStartData extends BaseData, BaseApi {
 
 /**
  * The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.
- * @deprecated Deprecated as of `2025-10`. Use the
- * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
- * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
- * @private
- */
-export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {
  * @deprecated Deprecated as of `2025-10`. Use `CashTrackingSessionCompleteEvent` on the
  * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
  * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
  * @private
  */
 export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {
+  /**
+   * The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing.
+   */
+  cashTrackingSessionComplete: {
+    /**
+     * The unique numeric identifier for this cash tracking session. This ID matches the ID from when the session was opened and can be used to correlate session start and end events, retrieve session-specific data, or link all transactions that occurred during this session.
      */
     id: number;
     /**
@@ -50,3 +50,6 @@ export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {
     closingTime: string;
   };
 }
+
+
+
