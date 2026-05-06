@@ -40,6 +40,15 @@ describe('createMockAdminTargetApi', () => {
     expect(api).not.toHaveProperty('resourcePicker');
   });
 
+  it('creates an app home api with loading controls', () => {
+    const api = createMockAdminTargetApi('admin.app.home.render');
+
+    expect(api.extension.target).toBe('admin.app.home.render');
+    expect(typeof api.toast.show).toBe('function');
+    expect(typeof api.app.extensions).toBe('function');
+    expect(typeof api.loading).toBe('function');
+  });
+
   it('creates a standard rendering api for app intent targets', () => {
     const api = createMockAdminTargetApi('admin.app.intent.render');
 
