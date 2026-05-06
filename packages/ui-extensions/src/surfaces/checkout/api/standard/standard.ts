@@ -730,7 +730,6 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The method used to query the Storefront GraphQL API with a prefetched token.
    *
-   * Refer to [Storefront API access examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/storefront-api) for more information.
    */
   query: <Data = unknown, Variables = Record<string, unknown>>(
     query: string,
