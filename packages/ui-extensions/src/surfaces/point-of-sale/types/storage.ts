@@ -24,7 +24,7 @@ export interface Storage<
    *
    * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling cross-target
    * reactivity. One extension target can subscribe to a key and react when
-   * another target updates it via `set()` or `update()`.
+   * another target updates it via `set()` or `delete()`.
    *
    * The `value` property provides synchronous access to the current stored value.
    * The `subscribe()` method registers a callback that fires whenever the value
