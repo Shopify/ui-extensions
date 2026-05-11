@@ -35,6 +35,11 @@ export type DiscountClass = 'product' | 'order' | 'shipping';
 export type DiscountMethod = 'automatic' | 'code';
 
 /**
+ * The purchase type that determines which purchases the discount applies to. Use `'one_time_purchase'` for one-time purchases only, `'subscription'` for subscription purchases only, or `'both'` for both.
+ */
+export type PurchaseType = 'one_time_purchase' | 'subscription' | 'both';
+
+/**
  * The `data` object exposed to discount function settings extensions in the `admin.discount-details.function-settings.render` target. Use this to access the current discount configuration and populate your settings interface with existing values.
  * @publicDocs
  */
@@ -62,4 +67,20 @@ export interface DiscountsApi {
    * A signal that contains the discount method (`'automatic'` or `'code'`). Read this to determine whether the discount applies automatically at checkout or requires a customer-entered code.
    */
   discountMethod: ReadonlySignalLike<DiscountMethod>;
+  /**
+   * A signal that contains the purchase type. Read this to determine whether the discount applies to one-time purchases, subscriptions, or both.
+   */
+  purchaseType: ReadonlySignalLike<PurchaseType>;
+  /**
+   * A function that updates the purchase type to change which types of purchases the discount applies to. Call this with a `PurchaseType` value (`'one_time_purchase'`, `'subscription'`, or `'both'`).
+   */
+  updatePurchaseType: UpdateSignalFunction<PurchaseType>;
+  /**
+   * A signal that contains the recurring cycle limit for subscription purchases. A positive integer limits how many billing cycles the discount applies for. Both `0` and `null` mean unlimited (no limit). `null` is the default when no value has been explicitly set.
+   */
+  recurringCycleLimit: ReadonlySignalLike<number | null>;
+  /**
+   * A function that updates the recurring cycle limit for subscription purchases. Pass a positive integer to limit the number of billing cycles, `0` or `null` to remove the limit.
+   */
+  updateRecurringCycleLimit: UpdateSignalFunction<number | null>;
 }
