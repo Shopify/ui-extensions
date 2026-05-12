@@ -8,7 +8,7 @@ type ComponentChildren = any;
  *
  * @publicDocs
  */
-export interface AppNav {
+export interface AppNavAttributes {
   /**
    * A unique identifier for the element.
    */

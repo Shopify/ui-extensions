@@ -15,7 +15,7 @@ const data: AdminReferenceEntityTemplateSchema = {
       title: 'Properties',
       description:
         'Configure the following properties on the app nav component.',
-      type: 'AppNav',
+      type: 'AppNavAttributes',
     },
   ],
   related: [
