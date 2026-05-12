@@ -555,11 +555,27 @@ try {
     adminExtensionsOutput,
     generatedDocsDataV2File,
   );
+
+  const appHomeUiExtensionsOutput = path.join(
+    rootPath,
+    docsGeneratedRelativePath,
+    'app_home_ui_extensions',
+    EXTENSIONS_API_VERSION,
+  );
+  if (existsSync(generatedDocsDataV2Path)) {
+    await fs.mkdir(appHomeUiExtensionsOutput, {recursive: true});
+    await fs.copyFile(
+      generatedDocsDataV2Path,
+      path.join(appHomeUiExtensionsOutput, generatedDocsDataV2File),
+    );
+  }
+
   console.log('\nGenerated docs at:');
   console.log('  Admin extensions:', adminExtensionsOutput);
   console.log('  targets.json:', targetsJsonPath);
   console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
   console.log('  App Home:', appHomeOutput);
+  console.log('  App Home UI extensions:', appHomeUiExtensionsOutput);
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
@@ -572,24 +588,26 @@ try {
     SHOPIFY_DEV_EXTENSIONS_FOLDER !== EXTENSIONS_API_VERSION &&
     shopifyDevExists
   ) {
-    const adminExtSource = path.join(
-      shopifyDevDBPath,
-      'admin_extensions',
-      EXTENSIONS_API_VERSION,
-    );
-    const adminExtDest = path.join(
-      shopifyDevDBPath,
-      'admin_extensions',
-      SHOPIFY_DEV_EXTENSIONS_FOLDER,
-    );
-    if (existsSync(adminExtSource)) {
-      if (existsSync(adminExtDest)) {
-        await fs.rm(adminExtDest, {recursive: true});
-      }
-      await fs.rename(adminExtSource, adminExtDest);
-      console.log(
-        `  Renamed admin_extensions/${EXTENSIONS_API_VERSION} → admin_extensions/${SHOPIFY_DEV_EXTENSIONS_FOLDER} in shopify-dev`,
+    for (const folder of ['admin_extensions', 'app_home_ui_extensions']) {
+      const source = path.join(
+        shopifyDevDBPath,
+        folder,
+        EXTENSIONS_API_VERSION,
       );
+      const dest = path.join(
+        shopifyDevDBPath,
+        folder,
+        SHOPIFY_DEV_EXTENSIONS_FOLDER,
+      );
+      if (existsSync(source)) {
+        if (existsSync(dest)) {
+          await fs.rm(dest, {recursive: true});
+        }
+        await fs.rename(source, dest);
+        console.log(
+          `  Renamed ${folder}/${EXTENSIONS_API_VERSION} → ${folder}/${SHOPIFY_DEV_EXTENSIONS_FOLDER} in shopify-dev`,
+        );
+      }
     }
   }
 
