@@ -1,4 +1,4 @@
-import {BaseElementPropsWithChildren, IdProps} from './shared';
+import {BaseElementPropsWithChildren, IdProps, SizeKeyword} from './shared';
 
 export interface PageProps extends IdProps {
   /**
@@ -10,6 +10,15 @@ export interface PageProps extends IdProps {
    * A secondary heading displayed below the main heading for additional context.
    */
   subheading?: string;
+
+  /**
+   * The inline size of the page
+   * - `base` corresponds to a set default inline size
+   * - `large` full width with whitespace
+   *
+   * @default 'base'
+   */
+  inlineSize?: Extract<SizeKeyword, 'base' | 'large'>;
 }
 
 export interface PageElementSlots {
