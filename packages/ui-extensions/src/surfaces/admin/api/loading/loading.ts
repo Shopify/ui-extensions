@@ -13,9 +13,9 @@ export interface LoadingOptions {
 /**
  * Sets the Admin page-level loading indicator for hosted app home extensions.
  *
- * Pass `{ isLoading: true }` to show the indicator and `{ isLoading: false }`,
- * or call without arguments, to hide it.
+ * Call with `true` to start loading. Call with `false`, or without an argument,
+ * to stop loading.
  *
  * @publicDocs
  */
-export type LoadingApi = (options?: LoadingOptions) => void;
+export type LoadingApi = (isLoading?: boolean) => void;

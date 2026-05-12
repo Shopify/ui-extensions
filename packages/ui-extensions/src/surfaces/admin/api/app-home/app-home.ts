@@ -21,7 +21,7 @@ export interface AppHomeApi<ExtensionTarget extends AnyExtensionTarget>
   app: AppApi;
 
   /**
-   * Sets the Admin page-level loading indicator. Call `loading({ isLoading: true })` to show the loading indicator while your app home extension performs an asynchronous task. Call `loading({ isLoading: false })`, or call `loading()` without an argument, to hide it when the task completes.
+   * Sets the Admin page-level loading indicator. Call `loading(true)` to show the loading indicator while your app home extension performs an asynchronous task. Call `loading(false)`, or call `loading()` without an argument, to hide it when the task completes.
    */
   loading: LoadingApi;
 }
