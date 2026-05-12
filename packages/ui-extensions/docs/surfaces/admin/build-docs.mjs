@@ -556,17 +556,17 @@ try {
     generatedDocsDataV2File,
   );
 
-  const appHomeUiExtensionsOutput = path.join(
+  const appHomeUiExtensionOutput = path.join(
     rootPath,
     docsGeneratedRelativePath,
-    'app_home_ui_extensions',
+    'app_home_ui_extension',
     EXTENSIONS_API_VERSION,
   );
   if (existsSync(generatedDocsDataV2Path)) {
-    await fs.mkdir(appHomeUiExtensionsOutput, {recursive: true});
+    await fs.mkdir(appHomeUiExtensionOutput, {recursive: true});
     await fs.copyFile(
       generatedDocsDataV2Path,
-      path.join(appHomeUiExtensionsOutput, generatedDocsDataV2File),
+      path.join(appHomeUiExtensionOutput, generatedDocsDataV2File),
     );
   }
 
@@ -575,7 +575,7 @@ try {
   console.log('  targets.json:', targetsJsonPath);
   console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
   console.log('  App Home:', appHomeOutput);
-  console.log('  App Home UI extensions:', appHomeUiExtensionsOutput);
+  console.log('  App Home UI extensions:', appHomeUiExtensionOutput);
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
@@ -588,7 +588,7 @@ try {
     SHOPIFY_DEV_EXTENSIONS_FOLDER !== EXTENSIONS_API_VERSION &&
     shopifyDevExists
   ) {
-    for (const folder of ['admin_extensions', 'app_home_ui_extensions']) {
+    for (const folder of ['admin_extensions', 'app_home_ui_extension']) {
       const source = path.join(
         shopifyDevDBPath,
         folder,
