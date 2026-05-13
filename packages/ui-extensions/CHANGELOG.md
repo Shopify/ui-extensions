@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.0-rc.5
+
+### Patch Changes
+
+- [#4454](https://github.com/Shopify/ui-extensions/pull/4454) [`be8c9e2`](https://github.com/Shopify/ui-extensions/commit/be8c9e206525a41f2544810a328d901e2cdcbb95) Thanks [@lsit](https://github.com/lsit)! - Add inlineSize to the customer account Page component
+
 ## 2026.7.0-rc.4
 
 ### Patch Changes

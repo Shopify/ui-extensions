@@ -1,5 +1,12 @@
 # @shopify/ui-extensions-tester
 
+## 2026.7.0-rc.5
+
+### Patch Changes
+
+- Updated dependencies [[`be8c9e2`](https://github.com/Shopify/ui-extensions/commit/be8c9e206525a41f2544810a328d901e2cdcbb95)]:
+  - @shopify/ui-extensions@2026.7.0-rc.5
+
 ## 2026.7.0-rc.4
 
 ### Patch Changes
