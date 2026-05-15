@@ -49,6 +49,22 @@ describe('createMockAdminTargetApi', () => {
     expect(typeof api.loading).toBe('function');
   });
 
+  it('exposes a tools registration api on app home', () => {
+    const api = createMockAdminTargetApi('admin.app.home.render');
+
+    expect(typeof api.tools.register).toBe('function');
+    expect(typeof api.tools.unregister).toBe('function');
+    expect(typeof api.tools.clear).toBe('function');
+
+    const unregister = api.tools.register('faq.update', async () => ({
+      ok: true,
+    }));
+    expect(typeof unregister).toBe('function');
+    expect(() => unregister()).not.toThrow();
+    expect(() => api.tools.unregister('faq.update')).not.toThrow();
+    expect(() => api.tools.clear()).not.toThrow();
+  });
+
   it('creates a standard rendering api for app intent targets', () => {
     const api = createMockAdminTargetApi('admin.app.intent.render');
 

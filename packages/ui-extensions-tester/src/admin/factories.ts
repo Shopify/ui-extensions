@@ -9,6 +9,7 @@ import type {
   ToastApi,
   AppApi,
   LoadingApi,
+  Tools,
 } from '@shopify/ui-extensions/admin';
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
@@ -124,12 +125,21 @@ function createMockLoadingApi(): LoadingApi {
   return () => {};
 }
 
+function createMockToolsApi(): Tools {
+  return {
+    register: () => () => {},
+    unregister: () => {},
+    clear: () => {},
+  };
+}
+
 function createAppHomeMock<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardRenderingApi(target),
     toast: createMockToastApi(),
     app: createMockAppApi(),
     loading: createMockLoadingApi(),
+    tools: createMockToolsApi(),
   };
 }
 
