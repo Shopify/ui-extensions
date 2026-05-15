@@ -140,6 +140,13 @@ function createAppHomeMock<T extends ExtensionTarget>(target: T) {
     app: createMockAppApi(),
     loading: createMockLoadingApi(),
     tools: createMockToolsApi(),
+    intents: {
+      ...createMockStandardApi(target).intents,
+      request: {
+        value: null,
+        subscribe: () => () => {},
+      },
+    },
   };
 }
 

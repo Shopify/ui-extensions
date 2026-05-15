@@ -14,7 +14,11 @@ export type {
   ThemeAppBlockTarget,
   ThemeAppEmbedTarget,
 } from './api/app/app';
-export type {AppHomeApi} from './api/app-home/app-home';
+export type {
+  AppHomeApi,
+  AppHomeIntents,
+  AppHomeIntentRequest,
+} from './api/app-home/app-home';
 export type {StandardRenderingExtensionApi} from './api/standard/standard-rendering';
 export type {Navigation} from './api/block/block';
 export type {

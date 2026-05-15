@@ -65,6 +65,17 @@ describe('createMockAdminTargetApi', () => {
     expect(() => api.tools.clear()).not.toThrow();
   });
 
+  it('exposes a signal-like intents.request on app home', () => {
+    const api = createMockAdminTargetApi('admin.app.home.render');
+
+    expect(api.intents.request.value).toBeNull();
+    expect(typeof api.intents.request.subscribe).toBe('function');
+
+    const unsubscribe = api.intents.request.subscribe(() => {});
+    expect(typeof unsubscribe).toBe('function');
+    expect(() => unsubscribe()).not.toThrow();
+  });
+
   it('creates a standard rendering api for app intent targets', () => {
     const api = createMockAdminTargetApi('admin.app.intent.render');
 
