@@ -19,6 +19,15 @@ export interface CartApi {
 }
 
 /**
+ * Read-only view of the cart for background extension targets
+ * (e.g. `pos.app.ready.data`).
+ * @publicDocs
+ */
+export interface ReadonlyCartApi {
+  cart: ReadonlyCartApiContent;
+}
+
+/**
  * Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption.
  * @publicDocs
  */
@@ -31,15 +40,21 @@ export type CartDiscountType = 'Percentage' | 'FixedAmount' | 'Code';
 export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 
 /**
- * The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.
+ * Subscribable cart state without mutation methods.
  * @publicDocs
  */
-export interface CartApiContent {
+export interface ReadonlyCartApiContent {
   /**
    * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.
    */
   current: ReadonlySignalLike<Cart>;
+}
 
+/**
+ * Cart and line item write operations.
+ * @publicDocs
+ */
+export interface MutableCartApiContent {
   /**
    * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.
    *
@@ -249,3 +264,11 @@ export interface CartApiContent {
    */
   removeLineItemSellingPlan(uuid: string): Promise<void>;
 }
+
+/**
+ * The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart.
+ * @publicDocs
+ */
+export interface CartApiContent
+  extends ReadonlyCartApiContent,
+    MutableCartApiContent {}

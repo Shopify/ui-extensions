@@ -3,6 +3,9 @@ export type {
   CartDiscountType,
   CartApiContent,
   LineItemDiscountType,
+  ReadonlyCartApi,
+  ReadonlyCartApiContent,
+  MutableCartApiContent,
 } from './api/cart-api/cart-api';
 
 export type {CartLineItemApi} from './api/cart-line-item-api/cart-line-item-api';
