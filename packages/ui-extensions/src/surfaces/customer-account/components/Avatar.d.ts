@@ -18,6 +18,8 @@ export type CallbackEventListener<
 export interface AvatarElementProps extends IdProps {
   /**
    * The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials, such as "JD" for John Doe.
+   *
+   * Characters beyond the first two might be truncated. Special characters, emojis, and non-Latin scripts might not render as expected.
    */
   initials?: string;
 
