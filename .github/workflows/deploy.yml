@@ -17,6 +17,7 @@ concurrency: ${{ github.workflow }}-${{ github.ref }}
 jobs:
   changesets:
     name: Deploy
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
