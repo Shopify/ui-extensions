@@ -12,9 +12,10 @@ export interface PageProps extends IdProps {
   subheading?: string;
 
   /**
-   * The inline size of the page
-   * - `base` corresponds to a set default inline size
-   * - `large` full width with whitespace
+   * The inline size of the page.
+   *
+   * - `base`: Matches the narrow width used by native pages for simple workflows.
+   * - `large`: Uses the full width available to the main content area in customer accounts. Recommended for content-heavy pages or desktop-first experiences.
    *
    * @default 'base'
    */
