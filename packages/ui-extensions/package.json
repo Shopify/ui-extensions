@@ -4,8 +4,6 @@
   "scripts": {
     "docs:admin": "node ./docs/surfaces/admin/build-docs.mjs",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",
-    "docs:checkout:fast": "bash ./docs/surfaces/checkout/build-docs-fast.sh",
-    "docs:checkout:dev": "bash ./docs/surfaces/checkout/build-docs-watch.sh",
     "docs:point-of-sale": "node ./docs/surfaces/point-of-sale/build-docs.mjs",
     "docs:customer-account": "node ./docs/surfaces/customer-account/build-docs.mjs"
   },
@@ -129,7 +127,7 @@
   ],
   "devDependencies": {
     "@remote-ui/async-subscription": "^2.1.16",
-    "@shopify/generate-docs": "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.1.0.tgz",
+    "@shopify/generate-docs": "1.2.2",
     "@quilted/react-testing": "^0.6.11",
     "typescript": "^4.9.0",
     "@faker-js/faker": "^8.4.1",
