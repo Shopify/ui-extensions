@@ -121,7 +121,6 @@ if [ -d $SHOPIFY_DEV_PATH ]; then
     fail_and_exit $sed_exit
   fi
 
-  rsync -a ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
   echo "Docs: https://shopify-dev.shop.dev/docs/api/checkout-ui-extensions"
 else
   echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."

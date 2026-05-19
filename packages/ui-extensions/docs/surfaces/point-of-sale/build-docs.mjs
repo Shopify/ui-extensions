@@ -123,16 +123,6 @@ const generateExtensionsDocs = async () => {
     replaceValue: `/docs/api/pos-ui-extensions/${EXTENSIONS_API_VERSION}/`,
   });
 
-  await fs.cp(
-    path.join(docsPath, 'screenshots'),
-    path.join(
-      shopifyDevPath,
-      'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions',
-      EXTENSIONS_API_VERSION,
-    ),
-    {recursive: true},
-  );
-
   // Generate targets.json (extension targets + APIs + components mapping)
   const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
   childProcess.execSync(`node ${targetsScriptPath}`, {
