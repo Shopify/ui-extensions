@@ -2056,6 +2056,8 @@ interface ClipboardItemProps$1 extends GlobalProps {
 	/**
 	 * Plain text to be written to the clipboard.
 	 *
+	 * Rich text, HTML, and binary content aren't supported.
+	 *
 	 * @default ''
 	 */
 	text?: string;
@@ -2367,6 +2369,8 @@ interface DetailsProps$1 extends GlobalProps, ToggleEventProps {
 interface DividerProps$1 extends GlobalProps {
 	/**
 	 * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+	 *
+	 * Vertical dividers (`'block'` direction) require a parent with a defined height to render visibly.
 	 *
 	 * @default 'inline'
 	 */
