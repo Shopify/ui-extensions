@@ -197,15 +197,6 @@ try {
     }
   }
 
-  await fs.cp(
-    path.join(docsPath, 'screenshots'),
-    path.join(
-      shopifyDevPath,
-      'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/admin',
-    ),
-    {recursive: true},
-  );
-
   await fs.rm(tempComponentDefs);
 } catch (error) {
   console.error(error);
