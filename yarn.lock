@@ -1918,7 +1918,7 @@
 
 "@shopify/generate-docs@1.2.2":
   version "1.2.2"
-  resolved "https://npm.shopify.io/node/@shopify/generate-docs/-/generate-docs-1.2.2.tgz#208908cadbbfecc4f81614d78b6b6972bb929512"
+  resolved "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.2.2.tgz#208908cadbbfecc4f81614d78b6b6972bb929512"
   integrity sha512-sXB76lHHx0CbRPrP5vABB9HL2ddxoQ6muCIzQDVM+TljUSztKFRUWEh57Gg9YefMlKh6soUMOMo06N6r51sBkA==
   dependencies:
     "@types/react" "^18.0.21"
