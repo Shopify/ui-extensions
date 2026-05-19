@@ -1,7 +1,7 @@
 export type {I18n, I18nTranslate} from '../../api';
 export type {StandardApi, Intents} from './api/standard/standard';
 export type {ToastApi, ToastOptions} from './api/toast/toast';
-export type {LoadingApi} from './api/loading/loading';
+export type {LoadingApi, LoadingOptions} from './api/loading/loading';
 export type {
   AppApi,
   ExtensionInfo,
