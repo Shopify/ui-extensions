@@ -10,14 +10,16 @@
 /// <reference lib="DOM" />
 import type {ParagraphProps$1} from './components-shared.d.ts';
 
-/** @publicDocs */
+/**
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
+ */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
     ref?: preact.Ref<TClass>;
     slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
  * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
@@ -30,16 +32,12 @@ export interface ParagraphProps extends Pick<ParagraphProps$1, 'accessibilityVis
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
     /**
-     * The semantic type and styling treatment for the paragraph content.
+     * Sets the alignment of the text.
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
      *
-     * Other presentation properties on `s-paragraph` override the default styling.
-     *
-     * - `paragraph`: A semantic type that indicates a structural grouping of related content.
-     * - `small`: A semantic type that indicates less important text.
-     *
-     * @default 'paragraph'
+     * @default 'auto'
      */
-    type?: Extract<ParagraphProps$1['type'], 'paragraph' | 'small'>;
+    textAlign?: 'start' | 'end' | 'center' | 'auto';
 }
 /** @publicDocs */
 export interface ParagraphElement extends ParagraphProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
