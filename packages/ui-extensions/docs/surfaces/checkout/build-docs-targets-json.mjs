@@ -11,10 +11,33 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Find the generated_docs_data_v2.json file to determine output location
+function findGeneratedDocsPath() {
+  const generatedDir = path.join(__dirname, 'generated');
+
+  function findFile(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        const result = findFile(fullPath);
+        if (result) return result;
+      } else if (file === 'generated_docs_data_v2.json') {
+        return path.dirname(fullPath);
+      }
+    }
+    return null;
+  }
+
+  const docsPath = findFile(generatedDir);
+  return docsPath || generatedDir; // Fallback to generated root if not found
+}
+
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(__dirname, 'generated', 'targets.json'),
+  outputPath: path.join(findGeneratedDocsPath(), 'targets.json'),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
@@ -307,58 +330,9 @@ function getNestedApis(apiName) {
   }
 }
 
-// APIs that are composites — list their documented constituent APIs instead of themselves
-const COMPOSITE_API_DECOMPOSITION = {
-  StandardApi: [
-    'AddressesApi',
-    'AnalyticsApi',
-    'AttributesApi',
-    'BuyerIdentityApi',
-    'BuyerJourneyApi',
-    'CartInstructionsApi',
-    'CartLinesApi',
-    'CheckoutTokenApi',
-    'CostApi',
-    'CustomerPrivacyApi',
-    'DeliveryApi',
-    'DiscountsApi',
-    'ExtensionApi',
-    'GiftCardsApi',
-    'LocalizationApi',
-    'LocalizedFieldsApi',
-    'MetafieldsApi',
-    'NoteApi',
-    'PaymentsApi',
-    'SessionTokenApi',
-    'SettingsApi',
-    'ShopApi',
-    'StorageApi',
-    'StorefrontApi',
-  ],
-  CheckoutApi: [
-    'AddressesApi',
-    'AttributesApi',
-    'CartLinesApi',
-    'DiscountsApi',
-    'GiftCardsApi',
-    'MetafieldsApi',
-    'NoteApi',
-  ],
-  AddressAutocompleteStandardApi: [
-    'AddressesApi',
-    'AnalyticsApi',
-    'AttributesApi',
-    'CheckoutTokenApi',
-    'ExtensionApi',
-    'LocalizationApi',
-    'MetafieldsApi',
-    'SessionTokenApi',
-    'SettingsApi',
-    'ShopApi',
-    'StorageApi',
-    'StorefrontApi',
-  ],
-};
+// No composite API decomposition — StandardApi, CheckoutApi, and OrderConfirmationApi
+// are plain interfaces and are rendered as-is in the targets.json.
+const COMPOSITE_API_DECOMPOSITION = {};
 
 function parseApis(apiString) {
   const apisSet = new Set();
