@@ -1,9 +1,0 @@
-{
-  "iconPreviewData": {
-    "jsxFile": "./templates/icon-renderer/icon-preview.jsx",
-    "icons": "__AUTO_GENERATED_ICONS__",
-    "bodyContent": "<div id=\"app\"></div>",
-    "customStyles": "padding: 0px; margin: 0px; margin-top: 8px; max-width: 584px; overflow: hidden; background: #FFF, border: 1px solid #ccc; border-radius: 8px;",
-    "hashes": "__AUTO_GENERATED_HASHES__"
-  }
-}
