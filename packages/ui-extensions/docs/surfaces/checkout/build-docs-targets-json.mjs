@@ -9,10 +9,33 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+// Output targets.json next to generated_docs_data_v2.json (wherever it lives).
+function findGeneratedDocsPath() {
+  const generatedDir = path.join(__dirname, 'generated');
+
+  function findFile(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        const result = findFile(fullPath);
+        if (result) return result;
+      } else if (file === 'generated_docs_data_v2.json') {
+        return path.dirname(fullPath);
+      }
+    }
+    return null;
+  }
+
+  const docsPath = findFile(generatedDir);
+  return docsPath || generatedDir;
+}
+
 // Configuration for checkout surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/checkout'),
-  outputPath: path.join(__dirname, 'generated/targets.json'),
+  outputPath: path.join(findGeneratedDocsPath(), 'targets.json'),
   componentTypesPath: null,
   hasComponentTypes: false,
 };
@@ -342,6 +365,8 @@ const COMPOSITE_API_DECOMPOSITION = {
     'MetafieldsApi',
     'NoteApi',
   ],
+  // OrderConfirmationApi is the top-level API object for purchase.thank-you targets.
+  // It decomposes to 'OrderApi' to match the customer-account surface naming pattern.
   OrderConfirmationApi: ['OrderApi'],
   AddressAutocompleteStandardApi: [
     'AddressesApi',
