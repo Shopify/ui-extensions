@@ -23,7 +23,6 @@
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "predeploy:internal": "yarn build",
     "deploy:internal": "changeset version --snapshot internal && changeset publish --tag internal --no-git-tag",
-    "gen-docs:admin": "node ./packages/ui-extensions/docs/surfaces/admin/create-doc-files.js",
     "lint": "loom lint",
     "nuke": "rm -rf node_modules && yarn cache clean && rm -rf .loom && git clean -xdf ./packages; rm -rf ./build",
     "restore-consumer": "./scripts/restore-consumer.sh",
