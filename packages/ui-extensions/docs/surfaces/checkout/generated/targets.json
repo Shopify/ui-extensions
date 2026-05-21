@@ -71,7 +71,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -84,11 +83,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.cart-line-list.render-after": {
@@ -163,7 +162,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -176,11 +174,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.cart-line-item.render-after": {
@@ -256,7 +254,6 @@
       "CartInstructionsApi",
       "CartLineItemApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -269,11 +266,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.contact.render-after": {
@@ -348,7 +345,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -361,11 +357,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.delivery-address.render-before": {
@@ -440,7 +436,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -453,11 +448,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.delivery-address.render-after": {
@@ -532,7 +527,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -545,11 +539,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.block.render": {
@@ -624,7 +618,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -637,11 +630,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.block.render": {
@@ -709,25 +702,31 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.cart-line-item.render-after": {
@@ -795,26 +794,32 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLineItemApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.cart-line-list.render-after": {
@@ -882,25 +887,31 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.customer-information.render-after": {
@@ -968,25 +979,31 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.payment-method-list.render-before": {
@@ -1061,7 +1078,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1074,11 +1090,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.payment-method-list.render-after": {
@@ -1153,7 +1169,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1166,11 +1181,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.reductions.render-before": {
@@ -1245,7 +1260,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1258,11 +1272,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.reductions.render-after": {
@@ -1337,7 +1351,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1350,11 +1363,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-list.render-before": {
@@ -1429,7 +1442,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1442,12 +1454,12 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionListApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-list.render-after": {
@@ -1522,7 +1534,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1535,12 +1546,12 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionListApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-location-list.render-before": {
@@ -1615,7 +1626,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1629,11 +1639,11 @@
       "NoteApi",
       "PaymentsApi",
       "PickupLocationListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-location-list.render-after": {
@@ -1708,7 +1718,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1722,11 +1731,11 @@
       "NoteApi",
       "PaymentsApi",
       "PickupLocationListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-item.render-after": {
@@ -1801,7 +1810,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1814,12 +1822,12 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionItemApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.shipping-option-item.details.render": {
@@ -1894,7 +1902,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -1907,12 +1914,12 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShippingOptionItemApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-point-list.render-before": {
@@ -1987,7 +1994,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -2001,11 +2007,11 @@
       "NoteApi",
       "PaymentsApi",
       "PickupPointListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-point-list.render-after": {
@@ -2080,7 +2086,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -2094,11 +2099,11 @@
       "NoteApi",
       "PaymentsApi",
       "PickupPointListApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.pickup-location-option-item.render-after": {
@@ -2173,7 +2178,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -2187,11 +2191,11 @@
       "NoteApi",
       "PaymentsApi",
       "PickupLocationItemApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.header.render-after": {
@@ -2266,7 +2270,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -2279,11 +2282,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.footer.render-after": {
@@ -2358,7 +2361,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -2371,11 +2373,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.checkout.chat.render": {
@@ -2390,7 +2392,6 @@
       "BuyerJourneyApi",
       "CartInstructionsApi",
       "CartLinesApi",
-      "CheckoutSettingsApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
@@ -2403,11 +2404,11 @@
       "MetafieldsApi",
       "NoteApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.header.render-after": {
@@ -2475,25 +2476,31 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.footer.render-after": {
@@ -2561,25 +2568,31 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.chat.render": {
@@ -2587,25 +2600,31 @@
       "Chat"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.thank-you.announcement.render": {
@@ -2674,43 +2693,73 @@
       "UrlField"
     ],
     "apis": [
+      "AddressesApi",
       "AnalyticsApi",
+      "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
       "CartInstructionsApi",
-      "CheckoutSettingsApi",
+      "CartLinesApi",
       "CheckoutTokenApi",
       "CostApi",
       "CustomerPrivacyApi",
       "DeliveryApi",
+      "DiscountsApi",
       "ExtensionApi",
+      "GiftCardsApi",
       "LocalizationApi",
       "LocalizedFieldsApi",
+      "MetafieldsApi",
+      "NoteApi",
       "OrderApi",
       "PaymentsApi",
-      "QueryApi",
       "SessionTokenApi",
       "SettingsApi",
       "ShopApi",
-      "StorageApi"
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.address-autocomplete.suggest": {
     "components": [],
     "apis": [
-      "AddressAutocompleteStandardApi",
-      "AddressAutocompleteSuggestApi"
+      "AddressAutocompleteSuggestApi",
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "CheckoutTokenApi",
+      "ExtensionApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.address-autocomplete.format-suggestion": {
     "components": [],
     "apis": [
       "AddressAutocompleteFormatSuggestionApi",
-      "AddressAutocompleteStandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "CheckoutTokenApi",
+      "ExtensionApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "AddressesApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -2733,11 +2782,21 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
     ]
   },
   "AnalyticsApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -2773,6 +2832,8 @@
   },
   "AttributesApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -2795,7 +2856,15 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
     ]
   },
   "BuyerIdentityApi": {
@@ -2927,33 +2996,6 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
-    ]
-  },
-  "CheckoutSettingsApi": {
-    "targets": [
-      "purchase.checkout.actions.render-before",
-      "purchase.checkout.block.render",
-      "purchase.checkout.cart-line-item.render-after",
-      "purchase.checkout.cart-line-list.render-after",
-      "purchase.checkout.chat.render",
-      "purchase.checkout.contact.render-after",
-      "purchase.checkout.delivery-address.render-after",
-      "purchase.checkout.delivery-address.render-before",
-      "purchase.checkout.footer.render-after",
-      "purchase.checkout.header.render-after",
-      "purchase.checkout.payment-method-list.render-after",
-      "purchase.checkout.payment-method-list.render-before",
-      "purchase.checkout.pickup-location-list.render-after",
-      "purchase.checkout.pickup-location-list.render-before",
-      "purchase.checkout.pickup-location-option-item.render-after",
-      "purchase.checkout.pickup-point-list.render-after",
-      "purchase.checkout.pickup-point-list.render-before",
-      "purchase.checkout.reductions.render-after",
-      "purchase.checkout.reductions.render-before",
-      "purchase.checkout.shipping-option-item.details.render",
-      "purchase.checkout.shipping-option-item.render-after",
-      "purchase.checkout.shipping-option-list.render-after",
       "purchase.checkout.shipping-option-list.render-before",
       "purchase.thank-you.announcement.render",
       "purchase.thank-you.block.render",
@@ -2967,6 +3009,8 @@
   },
   "CheckoutTokenApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3129,11 +3173,21 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
     ]
   },
   "ExtensionApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3191,11 +3245,21 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
     ]
   },
   "LocalizationApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3266,6 +3330,8 @@
   },
   "MetafieldsApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3288,7 +3354,15 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
     ]
   },
   "NoteApi": {
@@ -3315,7 +3389,15 @@
       "purchase.checkout.shipping-option-item.details.render",
       "purchase.checkout.shipping-option-item.render-after",
       "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before"
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
     ]
   },
   "PaymentsApi": {
@@ -3353,43 +3435,10 @@
       "purchase.thank-you.header.render-after"
     ]
   },
-  "QueryApi": {
-    "targets": [
-      "purchase.checkout.actions.render-before",
-      "purchase.checkout.block.render",
-      "purchase.checkout.cart-line-item.render-after",
-      "purchase.checkout.cart-line-list.render-after",
-      "purchase.checkout.chat.render",
-      "purchase.checkout.contact.render-after",
-      "purchase.checkout.delivery-address.render-after",
-      "purchase.checkout.delivery-address.render-before",
-      "purchase.checkout.footer.render-after",
-      "purchase.checkout.header.render-after",
-      "purchase.checkout.payment-method-list.render-after",
-      "purchase.checkout.payment-method-list.render-before",
-      "purchase.checkout.pickup-location-list.render-after",
-      "purchase.checkout.pickup-location-list.render-before",
-      "purchase.checkout.pickup-location-option-item.render-after",
-      "purchase.checkout.pickup-point-list.render-after",
-      "purchase.checkout.pickup-point-list.render-before",
-      "purchase.checkout.reductions.render-after",
-      "purchase.checkout.reductions.render-before",
-      "purchase.checkout.shipping-option-item.details.render",
-      "purchase.checkout.shipping-option-item.render-after",
-      "purchase.checkout.shipping-option-list.render-after",
-      "purchase.checkout.shipping-option-list.render-before",
-      "purchase.thank-you.announcement.render",
-      "purchase.thank-you.block.render",
-      "purchase.thank-you.cart-line-item.render-after",
-      "purchase.thank-you.cart-line-list.render-after",
-      "purchase.thank-you.chat.render",
-      "purchase.thank-you.customer-information.render-after",
-      "purchase.thank-you.footer.render-after",
-      "purchase.thank-you.header.render-after"
-    ]
-  },
   "SessionTokenApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3425,6 +3474,8 @@
   },
   "SettingsApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3460,6 +3511,8 @@
   },
   "ShopApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3495,6 +3548,45 @@
   },
   "StorageApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
+      "purchase.checkout.actions.render-before",
+      "purchase.checkout.block.render",
+      "purchase.checkout.cart-line-item.render-after",
+      "purchase.checkout.cart-line-list.render-after",
+      "purchase.checkout.chat.render",
+      "purchase.checkout.contact.render-after",
+      "purchase.checkout.delivery-address.render-after",
+      "purchase.checkout.delivery-address.render-before",
+      "purchase.checkout.footer.render-after",
+      "purchase.checkout.header.render-after",
+      "purchase.checkout.payment-method-list.render-after",
+      "purchase.checkout.payment-method-list.render-before",
+      "purchase.checkout.pickup-location-list.render-after",
+      "purchase.checkout.pickup-location-list.render-before",
+      "purchase.checkout.pickup-location-option-item.render-after",
+      "purchase.checkout.pickup-point-list.render-after",
+      "purchase.checkout.pickup-point-list.render-before",
+      "purchase.checkout.reductions.render-after",
+      "purchase.checkout.reductions.render-before",
+      "purchase.checkout.shipping-option-item.details.render",
+      "purchase.checkout.shipping-option-item.render-after",
+      "purchase.checkout.shipping-option-list.render-after",
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
+    ]
+  },
+  "StorefrontApi": {
+    "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3573,12 +3665,6 @@
   "PickupLocationItemApi": {
     "targets": [
       "purchase.checkout.pickup-location-option-item.render-after"
-    ]
-  },
-  "AddressAutocompleteStandardApi": {
-    "targets": [
-      "purchase.address-autocomplete.format-suggestion",
-      "purchase.address-autocomplete.suggest"
     ]
   },
   "AddressAutocompleteSuggestApi": {
