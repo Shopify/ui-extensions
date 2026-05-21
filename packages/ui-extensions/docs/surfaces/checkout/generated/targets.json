@@ -2723,19 +2723,43 @@
   "purchase.address-autocomplete.suggest": {
     "components": [],
     "apis": [
-      "AddressAutocompleteStandardApi",
-      "AddressAutocompleteSuggestApi"
+      "AddressAutocompleteSuggestApi",
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "CheckoutTokenApi",
+      "ExtensionApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "purchase.address-autocomplete.format-suggestion": {
     "components": [],
     "apis": [
       "AddressAutocompleteFormatSuggestionApi",
-      "AddressAutocompleteStandardApi"
+      "AddressesApi",
+      "AnalyticsApi",
+      "AttributesApi",
+      "CheckoutTokenApi",
+      "ExtensionApi",
+      "LocalizationApi",
+      "MetafieldsApi",
+      "SessionTokenApi",
+      "SettingsApi",
+      "ShopApi",
+      "StorageApi",
+      "StorefrontApi"
     ]
   },
   "AddressesApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -2771,6 +2795,8 @@
   },
   "AnalyticsApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -2806,6 +2832,8 @@
   },
   "AttributesApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -2981,6 +3009,8 @@
   },
   "CheckoutTokenApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3156,6 +3186,8 @@
   },
   "ExtensionApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3226,6 +3258,8 @@
   },
   "LocalizationApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3296,6 +3330,8 @@
   },
   "MetafieldsApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3401,6 +3437,8 @@
   },
   "SessionTokenApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3436,6 +3474,8 @@
   },
   "SettingsApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3471,6 +3511,8 @@
   },
   "ShopApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3506,6 +3548,8 @@
   },
   "StorageApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3541,6 +3585,8 @@
   },
   "StorefrontApi": {
     "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
       "purchase.checkout.actions.render-before",
       "purchase.checkout.block.render",
       "purchase.checkout.cart-line-item.render-after",
@@ -3619,12 +3665,6 @@
   "PickupLocationItemApi": {
     "targets": [
       "purchase.checkout.pickup-location-option-item.render-after"
-    ]
-  },
-  "AddressAutocompleteStandardApi": {
-    "targets": [
-      "purchase.address-autocomplete.format-suggestion",
-      "purchase.address-autocomplete.suggest"
     ]
   },
   "AddressAutocompleteSuggestApi": {
