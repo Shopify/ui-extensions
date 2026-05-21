@@ -11,7 +11,7 @@
 import type {ParagraphProps$1} from './components-shared.d.ts';
 
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: preact.Key;
@@ -19,7 +19,8 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
@@ -31,19 +32,17 @@ export interface ParagraphElementProps extends Pick<ParagraphProps$1, 'accessibi
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
     /**
-     * The semantic type and styling treatment for the paragraph content.
+     * Sets the alignment of the text.
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
      *
-     * Other presentation properties on `s-paragraph` override the default styling.
-     *
-     * - `paragraph`: A semantic type that indicates the text is a structural grouping of related content.
-     * - `small`: A semantic type that indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
-     *
-     * @default 'paragraph'
+     * @default 'auto'
      */
-    type?: Extract<ParagraphProps$1['type'], 'paragraph' | 'small'>;
+    textAlign?: 'start' | 'end' | 'center' | 'auto';
 }
+/** @publicDocs */
 export interface ParagraphElement extends ParagraphElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 export interface ParagraphProps extends ParagraphElementProps {
 }
 declare global {
