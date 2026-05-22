@@ -480,7 +480,7 @@ function createReverseMapping(targetsJson) {
   return result;
 }
 
-// Find the generated_docs_data.json file to determine output location
+// Find the generated_docs_data_v2.json file to determine output location
 function findGeneratedDocsPath() {
   const generatedDir = path.join(__dirname, 'generated');
 
@@ -492,7 +492,7 @@ function findGeneratedDocsPath() {
       if (stat.isDirectory()) {
         const result = findFile(fullPath);
         if (result) return result;
-      } else if (file === 'generated_docs_data.json') {
+      } else if (file === 'generated_docs_data_v2.json') {
         return path.dirname(fullPath);
       }
     }

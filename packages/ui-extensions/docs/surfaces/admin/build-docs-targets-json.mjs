@@ -11,11 +11,11 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Find the generated_docs_data.json file to determine output location
+// Find the generated_docs_data_v2.json file to determine output location
 function findGeneratedDocsPath() {
   const generatedDir = path.join(__dirname, 'generated');
 
-  // Look for generated_docs_data.json recursively
+  // Look for generated_docs_data_v2.json recursively
   function findFile(dir) {
     const files = fs.readdirSync(dir);
     for (const file of files) {
@@ -24,7 +24,7 @@ function findGeneratedDocsPath() {
       if (stat.isDirectory()) {
         const result = findFile(fullPath);
         if (result) return result;
-      } else if (file === 'generated_docs_data.json') {
+      } else if (file === 'generated_docs_data_v2.json') {
         return path.dirname(fullPath);
       }
     }
