@@ -1,12 +1,4 @@
 {
-  "DataGeneratedType": {
-    "src/docs/shared/components/Abbreviation.ts": {
-      "filePath": "src/docs/shared/components/Abbreviation.ts",
-      "name": "DataGeneratedType",
-      "description": "",
-      "value": "data: SharedReferenceEntityTemplateSchema = {\n  name: 'Abbreviation',\n  description:\n    'Displays abbreviated text or acronyms, revealing their full meaning or additional context through a tooltip on hover or focus. Use to clarify shortened terms, initialisms, or technical language without interrupting the reading flow.',\n  category: 'Web components',\n  subCategory: 'Typography and content',\n  related: [],\n}"
-    }
-  },
   "ValidationError": {
     "src/shared.ts": {
       "filePath": "src/shared.ts",
@@ -2236,7 +2228,7 @@
     "src/surfaces/checkout/api/checkout/checkout.ts": {
       "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
       "name": "CheckoutApi",
-      "description": "",
+      "description": "Methods for modifying the checkout, including cart lines, discount codes, gift cards, metafields, notes, attributes, and the shipping address. Each method returns a promise that resolves with a result indicating success or failure.",
       "isPublicDocs": true,
       "members": [
         {
@@ -9360,6 +9352,57 @@
       "value": "export interface Order {\n  /**\n   * A globally-unique identifier for the order in the format `gid://shopify/Order/<id>`. Use this to reference the order in the [GraphQL Admin API](/docs/api/admin-graphql).\n   *\n   * @example 'gid://shopify/Order/1'\n   */\n  id: string;\n\n  /**\n   * The merchant-facing order number prefixed with `#`, such as `#1001`. This is the human-readable identifier displayed to both the merchant in Shopify admin and the buyer on the **Order status** page and in email confirmations.\n   *\n   * @example '#1000'\n   */\n  name: string;\n\n  /**\n   * The date and time when the order was cancelled, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. The value is `undefined` if the order hasn't been cancelled. Use this to conditionally display cancellation details to the buyer.\n   */\n  cancelledAt?: string;\n\n  /**\n   * A randomly generated alphanumeric identifier for the order that the buyer can use when contacting the merchant about their purchase. This is always present for orders created in 2024 and onwards. For older orders, this value may be `undefined`.\n   */\n  confirmationNumber?: string;\n\n  /**\n   * The date and time when the order was processed, in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format. An order is processed after the buyer completes checkout and the payment is captured, at which point the order becomes visible in Shopify admin.\n   */\n  processedAt?: string;\n}"
     }
   },
+  "BaseElementPropsWithChildren": {
+    "src/surfaces/customer-account/components/shared.ts": {
+      "filePath": "src/surfaces/customer-account/components/shared.ts",
+      "name": "BaseElementPropsWithChildren",
+      "description": "The base properties for elements that have children, extending `BaseElementProps` with children support.",
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/components/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "preact.ComponentChildren",
+          "description": "The child elements to render within this component.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/components/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "preact.Key",
+          "description": "A unique identifier for this element within its parent. Used by Preact for efficient rendering and reconciliation when lists of elements change by tracking which items have been added, removed, or reordered.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/components/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ref",
+          "value": "preact.Ref<TClass>",
+          "description": "A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic for imperative operations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/components/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "slot",
+          "value": "Lowercase<string>",
+          "description": "Assigns this element to a named slot in a parent component that uses slot-based composition patterns.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface BaseElementPropsWithChildren<TClass = HTMLElement>\n  extends BaseElementProps<TClass> {\n  /**\n   * The child elements to render within this component.\n   */\n  children?: preact.ComponentChildren;\n}"
+    }
+  },
+  "ComponentChildren": {
+    "src/surfaces/checkout/components/components.ts": {
+      "filePath": "src/surfaces/checkout/components/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ComponentChildren",
+      "value": "any",
+      "description": "TODO: Update `any` type here after this is resolved https://github.com/Shopify/ui-api-design/issues/139"
+    }
+  },
   "CustomerAccountActionPropsDocs": {
     "src/surfaces/customer-account/components.ts": {
       "filePath": "src/surfaces/customer-account/components.ts",
@@ -16455,7 +16498,7 @@
           "syntaxKind": "PropertySignature",
           "name": "initials",
           "value": "string",
-          "description": "The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials, such as \"JD\" for John Doe.",
+          "description": "The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials, such as \"JD\" for John Doe.\n\nCharacters beyond the first two might be truncated. Special characters, emojis, and non-Latin scripts might not render as expected.",
           "isOptional": true
         },
         {
@@ -17436,7 +17479,7 @@
           "syntaxKind": "PropertySignature",
           "name": "initials",
           "value": "string",
-          "description": "The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials, such as \"JD\" for John Doe.",
+          "description": "The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials, such as \"JD\" for John Doe.\n\nCharacters beyond the first two might be truncated. Special characters, emojis, and non-Latin scripts might not render as expected.",
           "isOptional": true
         },
         {
@@ -18835,26 +18878,6 @@
           "isOptional": true
         }
       ]
-    }
-  },
-  "CallbackEventListener": {
-    "src/surfaces/customer-account/api/docs.ts": {
-      "filePath": "src/surfaces/customer-account/api/docs.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CallbackEventListener",
-      "value": "(EventListener & {\n      (event: CallbackEvent<TTagName, TEvent>): void;\n    }) | null",
-      "description": "A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.",
-      "isPublicDocs": true
-    }
-  },
-  "CallbackEvent": {
-    "src/surfaces/customer-account/api/docs.ts": {
-      "filePath": "src/surfaces/customer-account/api/docs.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CallbackEvent",
-      "value": "TEvent & {\n  currentTarget: HTMLElementTagNameMap[TTagName];\n}",
-      "description": "An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.",
-      "isPublicDocs": true
     }
   },
   "MenuPropsDocs": {
@@ -25901,6 +25924,139 @@
       ]
     }
   },
+  "CallbackEvent": {
+    "src/surfaces/customer-account/api/docs.ts": {
+      "filePath": "src/surfaces/customer-account/api/docs.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CallbackEvent",
+      "value": "TEvent & {\n  currentTarget: HTMLElementTagNameMap[TTagName];\n}",
+      "description": "An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.",
+      "isPublicDocs": true
+    }
+  },
+  "CallbackEventListener": {
+    "src/surfaces/customer-account/api/docs.ts": {
+      "filePath": "src/surfaces/customer-account/api/docs.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CallbackEventListener",
+      "value": "(EventListener & {\n      (event: CallbackEvent<TTagName, TEvent>): void;\n    }) | null",
+      "description": "A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.",
+      "isPublicDocs": true
+    }
+  },
+  "ButtonProps": {
+    "src/surfaces/customer-account/api/docs.ts": {
+      "filePath": "src/surfaces/customer-account/api/docs.ts",
+      "name": "ButtonProps",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n\nUse this when using only an icon or the button text is not enough context for users using assistive technologies.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "((event: CallbackEventListener<typeof buttonTagName>) => void) | null",
+          "description": "Callback when the button is activated. This will be called before the action indicated by `type`.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "command",
+          "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
+          "description": "Sets the action the `commandFor` target should take when this component is activated.\n\n- `--auto`: A default action for the target component.\n- `--show`: Shows the target component.\n- `--hide`: Hides the target component.\n- `--toggle`: Toggles the target component.\n- `--copy`: Copies the target clipboard item.\n\nLearn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).",
+          "isOptional": true,
+          "defaultValue": "'--auto'"
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "commandFor",
+          "value": "string",
+          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the button, disallowing any interaction.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "href",
+          "value": "string",
+          "description": "The URL to link to.\n\n- If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loading",
+          "value": "boolean",
+          "description": "Replaces content with a loading indicator.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "'auto' | '_self' | '_blank'",
+          "description": "Specifies where to display the linked URL.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "'auto' | 'neutral' | 'critical'",
+          "description": "Sets the tone of the Button, based on the intention of the information being conveyed.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'button' | 'submit'",
+          "description": "The behavior of the button.\n\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n\nThis property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.",
+          "isOptional": true,
+          "defaultValue": "'button'"
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "variant",
+          "value": "'auto' | 'primary' | 'secondary'",
+          "description": "Changes the visual appearance of the Button.",
+          "isOptional": true,
+          "defaultValue": "'auto' - the variant is automatically determined by the Button's context"
+        }
+      ],
+      "value": "interface ButtonProps {\n  /**\n   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n   *\n   * Use this when using only an icon or the button text is not enough context\n   * for users using assistive technologies.\n   */\n  accessibilityLabel?: string;\n  /**\n   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).\n   */\n  commandFor?: string;\n  /**\n   * Sets the action the `commandFor` target should take when this component is activated.\n   *\n   * - `--auto`: A default action for the target component.\n   * - `--show`: Shows the target component.\n   * - `--hide`: Hides the target component.\n   * - `--toggle`: Toggles the target component.\n   * - `--copy`: Copies the target clipboard item.\n   *\n   * Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).\n   *\n   * @default '--auto'\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';\n  /**\n   * Disables the button, disallowing any interaction.\n   *\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * The URL to link to.\n   *\n   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.\n   */\n  href?: string;\n  /**\n   * A unique identifier for the element.\n   */\n  id?: string;\n  /**\n   * Replaces content with a loading indicator.\n   *\n   * @defaultValue false\n   */\n  loading?: boolean;\n  /**\n   * Specifies where to display the linked URL.\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target\n   *\n   * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.\n   * It's expected that the behavior of `auto` is as `_self` except in specific cases.\n   * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).\n   *\n   * @default 'auto'\n   */\n  target?: 'auto' | '_self' | '_blank';\n  /**\n   * Sets the tone of the Button, based on the intention of the information being conveyed.\n   *\n   * @default 'auto'\n   */\n  tone?: 'auto' | 'neutral' | 'critical';\n  /**\n   * The behavior of the button.\n   *\n   * - `'submit'`: Submits the nearest containing form.\n   * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n   *\n   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.\n   *\n   * @default 'button'\n   */\n  type?: 'button' | 'submit';\n  /**\n   * Changes the visual appearance of the Button.\n   *\n   * @default 'auto' - the variant is automatically determined by the Button's context\n   */\n  variant?: 'auto' | 'primary' | 'secondary';\n\n  /**\n   * Callback when the button is activated.\n   * This will be called before the action indicated by `type`.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n   */\n  click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;\n}"
+    }
+  },
   "Docs_OrderStatus_MetafieldsApi": {
     "src/surfaces/customer-account/api/docs.ts": {
       "filePath": "src/surfaces/customer-account/api/docs.ts",
@@ -26979,216 +27135,6 @@
         }
       ],
       "value": "export interface Docs_CustomerAccountAction_SlotButton\n  extends Pick<\n    ButtonProps,\n    | 'click'\n    | 'loading'\n    | 'disabled'\n    | 'accessibilityLabel'\n    | 'href'\n    | 'command'\n    | 'commandFor'\n  > {}"
-    }
-  },
-  "BaseElementPropsWithChildren": {
-    "src/surfaces/customer-account/components/shared.ts": {
-      "filePath": "src/surfaces/customer-account/components/shared.ts",
-      "name": "BaseElementPropsWithChildren",
-      "description": "The base properties for elements that have children, extending `BaseElementProps` with children support.",
-      "members": [
-        {
-          "filePath": "src/surfaces/customer-account/components/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "preact.ComponentChildren",
-          "description": "The child elements to render within this component.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/components/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "key",
-          "value": "preact.Key",
-          "description": "A unique identifier for this element within its parent. Used by Preact for efficient rendering and reconciliation when lists of elements change by tracking which items have been added, removed, or reordered.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/components/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "ref",
-          "value": "preact.Ref<TClass>",
-          "description": "A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic for imperative operations.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/components/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "slot",
-          "value": "Lowercase<string>",
-          "description": "Assigns this element to a named slot in a parent component that uses slot-based composition patterns.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface BaseElementPropsWithChildren<TClass = HTMLElement>\n  extends BaseElementProps<TClass> {\n  /**\n   * The child elements to render within this component.\n   */\n  children?: preact.ComponentChildren;\n}"
-    }
-  },
-  "ComponentChildren": {
-    "src/surfaces/checkout/components/components.ts": {
-      "filePath": "src/surfaces/checkout/components/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ComponentChildren",
-      "value": "any",
-      "description": "TODO: Update `any` type here after this is resolved https://github.com/Shopify/ui-api-design/issues/139"
-    }
-  },
-  "ButtonProps": {
-    "src/surfaces/customer-account/api/docs.ts": {
-      "filePath": "src/surfaces/customer-account/api/docs.ts",
-      "name": "ButtonProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n\nUse this when using only an icon or the button text is not enough context for users using assistive technologies.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "click",
-          "value": "((event: CallbackEventListener<typeof buttonTagName>) => void) | null",
-          "description": "Callback when the button is activated. This will be called before the action indicated by `type`.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "command",
-          "value": "'--auto' | '--show' | '--hide' | '--toggle' | '--copy'",
-          "description": "Sets the action the `commandFor` target should take when this component is activated.\n\n- `--auto`: A default action for the target component.\n- `--show`: Shows the target component.\n- `--hide`: Hides the target component.\n- `--toggle`: Toggles the target component.\n- `--copy`: Copies the target clipboard item.\n\nLearn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).",
-          "isOptional": true,
-          "defaultValue": "'--auto'"
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "commandFor",
-          "value": "string",
-          "description": "The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "disabled",
-          "value": "boolean",
-          "description": "Disables the button, disallowing any interaction.",
-          "isOptional": true,
-          "defaultValue": "false"
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "href",
-          "value": "string",
-          "description": "The URL to link to.\n\n- If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the element.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "loading",
-          "value": "boolean",
-          "description": "Replaces content with a loading indicator.",
-          "isOptional": true,
-          "defaultValue": "false"
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "'auto' | '_self' | '_blank'",
-          "description": "Specifies where to display the linked URL.",
-          "isOptional": true,
-          "defaultValue": "'auto'"
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tone",
-          "value": "'auto' | 'neutral' | 'critical'",
-          "description": "Sets the tone of the Button, based on the intention of the information being conveyed.",
-          "isOptional": true,
-          "defaultValue": "'auto'"
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "'button' | 'submit'",
-          "description": "The behavior of the button.\n\n- `'submit'`: Submits the nearest containing form.\n- `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n\nThis property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.",
-          "isOptional": true,
-          "defaultValue": "'button'"
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "variant",
-          "value": "'auto' | 'primary' | 'secondary'",
-          "description": "Changes the visual appearance of the Button.",
-          "isOptional": true,
-          "defaultValue": "'auto' - the variant is automatically determined by the Button's context"
-        }
-      ],
-      "value": "interface ButtonProps {\n  /**\n   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.\n   *\n   * Use this when using only an icon or the button text is not enough context\n   * for users using assistive technologies.\n   */\n  accessibilityLabel?: string;\n  /**\n   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).\n   */\n  commandFor?: string;\n  /**\n   * Sets the action the `commandFor` target should take when this component is activated.\n   *\n   * - `--auto`: A default action for the target component.\n   * - `--show`: Shows the target component.\n   * - `--hide`: Hides the target component.\n   * - `--toggle`: Toggles the target component.\n   * - `--copy`: Copies the target clipboard item.\n   *\n   * Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).\n   *\n   * @default '--auto'\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';\n  /**\n   * Disables the button, disallowing any interaction.\n   *\n   * @defaultValue false\n   */\n  disabled?: boolean;\n  /**\n   * The URL to link to.\n   *\n   * - If set, it will navigate to the location specified by `href` after executing the `onClick` callback.\n   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.\n   */\n  href?: string;\n  /**\n   * A unique identifier for the element.\n   */\n  id?: string;\n  /**\n   * Replaces content with a loading indicator.\n   *\n   * @defaultValue false\n   */\n  loading?: boolean;\n  /**\n   * Specifies where to display the linked URL.\n   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target\n   *\n   * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.\n   * It's expected that the behavior of `auto` is as `_self` except in specific cases.\n   * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).\n   *\n   * @default 'auto'\n   */\n  target?: 'auto' | '_self' | '_blank';\n  /**\n   * Sets the tone of the Button, based on the intention of the information being conveyed.\n   *\n   * @default 'auto'\n   */\n  tone?: 'auto' | 'neutral' | 'critical';\n  /**\n   * The behavior of the button.\n   *\n   * - `'submit'`: Submits the nearest containing form.\n   * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.\n   *\n   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.\n   *\n   * @default 'button'\n   */\n  type?: 'button' | 'submit';\n  /**\n   * Changes the visual appearance of the Button.\n   *\n   * @default 'auto' - the variant is automatically determined by the Button's context\n   */\n  variant?: 'auto' | 'primary' | 'secondary';\n\n  /**\n   * Callback when the button is activated.\n   * This will be called before the action indicated by `type`.\n   *\n   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event\n   */\n  click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;\n}"
-    }
-  },
-  "SharedReferenceEntityTemplateSchema": {
-    "src/docs/shared/docs-type.ts": {
-      "filePath": "src/docs/shared/docs-type.ts",
-      "name": "SharedReferenceEntityTemplateSchema",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/docs/shared/docs-type.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "category",
-          "value": "string",
-          "description": "The category of the page."
-        },
-        {
-          "filePath": "src/docs/shared/docs-type.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "description",
-          "value": "string",
-          "description": "A description of the reference entity. Can include Markdown."
-        },
-        {
-          "filePath": "src/docs/shared/docs-type.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": "The title of the page."
-        },
-        {
-          "filePath": "src/docs/shared/docs-type.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "related",
-          "value": "LinkType[]",
-          "description": "A section that displays related entities in a grid of cards."
-        },
-        {
-          "filePath": "src/docs/shared/docs-type.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subCategory",
-          "value": "string",
-          "description": "The subcategory of the page.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SharedReferenceEntityTemplateSchema\n  extends Pick<\n    ReferenceEntityTemplateSchema,\n    'name' | 'description' | 'category' | 'subCategory' | 'related'\n  > {}"
     }
   },
   "AbbreviationElementProps": {
@@ -42649,7 +42595,7 @@
           "syntaxKind": "PropertySignature",
           "name": "remoteMethods",
           "value": "Record<string, (...args: unknown[]) => unknown>",
-          "description": "",
+          "description": "Construct a type with a set of properties K of type T",
           "isOptional": true
         }
       ],
@@ -58608,7 +58554,7 @@
           "syntaxKind": "PropertySignature",
           "name": "text",
           "value": "string",
-          "description": "Plain text to be written to the clipboard.",
+          "description": "Plain text to be written to the clipboard.\n\nRich text, HTML, and binary content aren't supported.",
           "isOptional": true,
           "defaultValue": "''"
         }
@@ -60906,7 +60852,7 @@
           "syntaxKind": "PropertySignature",
           "name": "text",
           "value": "string",
-          "description": "Plain text to be written to the clipboard.",
+          "description": "Plain text to be written to the clipboard.\n\nRich text, HTML, and binary content aren't supported.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -61006,7 +60952,7 @@
           "syntaxKind": "PropertySignature",
           "name": "text",
           "value": "string",
-          "description": "Plain text to be written to the clipboard.",
+          "description": "Plain text to be written to the clipboard.\n\nRich text, HTML, and binary content aren't supported.",
           "isOptional": true,
           "defaultValue": "''"
         }
@@ -75331,7 +75277,7 @@
           "syntaxKind": "PropertySignature",
           "name": "direction",
           "value": "'inline' | 'block'",
-          "description": "The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n\n- `inline`: A horizontal divider that separates content stacked vertically.\n- `block`: A vertical divider that separates content arranged horizontally.",
+          "description": "The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n\n- `inline`: A horizontal divider that separates content stacked vertically.\n- `block`: A vertical divider that separates content arranged horizontally. Requires a parent with a defined height to render visibly.",
           "isOptional": true,
           "defaultValue": "'inline'"
         },
@@ -76002,7 +75948,7 @@
           "syntaxKind": "PropertySignature",
           "name": "direction",
           "value": "'inline' | 'block'",
-          "description": "The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n\n- `inline`: A horizontal divider that separates content stacked vertically.\n- `block`: A vertical divider that separates content arranged horizontally.",
+          "description": "The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n\n- `inline`: A horizontal divider that separates content stacked vertically.\n- `block`: A vertical divider that separates content arranged horizontally. Requires a parent with a defined height to render visibly.",
           "isOptional": true,
           "defaultValue": "'inline'"
         },
@@ -77653,7 +77599,7 @@
           "syntaxKind": "PropertySignature",
           "name": "direction",
           "value": "'inline' | 'block'",
-          "description": "The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n\n- `inline`: A horizontal divider that separates content stacked vertically.\n- `block`: A vertical divider that separates content arranged horizontally.",
+          "description": "The orientation of the divider, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n\n- `inline`: A horizontal divider that separates content stacked vertically.\n- `block`: A vertical divider that separates content arranged horizontally. Requires a parent with a defined height to render visibly.",
           "isOptional": true,
           "defaultValue": "'inline'"
         },
@@ -113368,7 +113314,7 @@
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true,
           "defaultValue": "''"
@@ -114568,7 +114514,7 @@
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -116095,7 +116041,7 @@
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -172367,7 +172313,7 @@
           "filePath": "src/surfaces/checkout/components/TextField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true,
           "defaultValue": "''"
@@ -173540,7 +173486,7 @@
           "filePath": "src/surfaces/checkout/components/TextField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -175047,7 +174993,7 @@
           "filePath": "src/surfaces/checkout/components/TextField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cart' | 'cash-dollar' | 'categories' | 'check-circle' | 'check-circle-filled' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'note' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'settings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
