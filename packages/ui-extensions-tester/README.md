@@ -401,7 +401,7 @@ Imports and executes the extension module's default export, rendering the extens
 
 A mock `shopify` global, typed correctly for the target under test. You can mutate any property.
 
-When testing `admin.app.home.render`, the mock `shopify` object also includes `toast`, `app`, and `loading()`.
+When testing `admin.app.home.render`, the mock `shopify` object also includes `toast`, `app`, `loading()`, `tools`, and `intents.request`.
 
 When testing `admin.app.intent.render`, the mock `shopify.intents` object also includes `response.ok()`, `response.error()`, and `response.closed()`.
 

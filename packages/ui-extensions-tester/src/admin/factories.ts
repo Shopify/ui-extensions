@@ -134,6 +134,8 @@ function createMockToolsApi(): Tools {
 }
 
 function createAppHomeMock<T extends ExtensionTarget>(target: T) {
+  const {invoke} = createMockStandardApi(target).intents;
+
   return {
     ...createMockStandardRenderingApi(target),
     toast: createMockToastApi(),
@@ -141,7 +143,7 @@ function createAppHomeMock<T extends ExtensionTarget>(target: T) {
     loading: createMockLoadingApi(),
     tools: createMockToolsApi(),
     intents: {
-      ...createMockStandardApi(target).intents,
+      invoke,
       request: {
         value: null,
         subscribe: () => () => {},

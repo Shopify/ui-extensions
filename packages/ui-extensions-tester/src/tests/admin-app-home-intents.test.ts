@@ -8,18 +8,11 @@ import type {
 } from '@shopify/ui-extensions/admin';
 
 import {createMockAdminTargetApi} from '../admin/factories';
+import {assertType, type Equals} from './type-assertions';
 
 // ---------------------------------------------------------------------------
 // Compile-time assertions
 // ---------------------------------------------------------------------------
-
-type Equals<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B
-  ? 1
-  : 2
-  ? true
-  : false;
-
-function assertType<_T extends true>() {}
 
 type AppHome = AppHomeApi<'admin.app.home.render'>;
 
@@ -29,9 +22,7 @@ type AppHome = AppHomeApi<'admin.app.home.render'>;
 assertType<Equals<AppHome['intents'], AppHomeIntents>>();
 assertType<Equals<AppHome['intents']['request'], AppHomeIntentRequest>>();
 
-// `AppHomeIntents` extends the base `Intents` so `launchUrl` and `invoke`
-// remain reachable.
-assertType<Equals<AppHomeIntents['launchUrl'], Intents['launchUrl']>>();
+// `AppHomeIntents` keeps the standard invocation helper.
 assertType<Equals<AppHomeIntents['invoke'], Intents['invoke']>>();
 
 // `WithGeneratedIntents` narrows `request.value` to the generated payload
@@ -74,11 +65,9 @@ describe('app home intents api', () => {
     expect(() => unsubscribe()).not.toThrow();
   });
 
-  it('exposes the standard `Intents` members alongside `request`', () => {
+  it('exposes the standard `invoke` helper alongside `request`', () => {
     const api = createMockAdminTargetApi('admin.app.home.render');
 
-    // `launchUrl` and `invoke` come from the base `Intents` shape.
-    expect(api.intents.launchUrl).toBeUndefined();
     expect(typeof api.intents.invoke).toBe('function');
   });
 });

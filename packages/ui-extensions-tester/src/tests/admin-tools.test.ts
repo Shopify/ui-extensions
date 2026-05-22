@@ -6,18 +6,11 @@ import type {
 } from '@shopify/ui-extensions/admin';
 
 import {createMockAdminTargetApi} from '../admin/factories';
+import {assertType, type Equals} from './type-assertions';
 
 // ---------------------------------------------------------------------------
 // Compile-time assertions
 // ---------------------------------------------------------------------------
-
-type Equals<A, B> = (<T>() => T extends A ? 1 : 2) extends <T>() => T extends B
-  ? 1
-  : 2
-  ? true
-  : false;
-
-function assertType<_T extends true>() {}
 
 interface UpdateFaqInput {
   id: string;

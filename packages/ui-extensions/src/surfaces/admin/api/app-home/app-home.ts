@@ -5,9 +5,9 @@ import type {AppApi} from '../app/app';
 import type {LoadingApi} from '../loading/loading';
 import type {Tools} from '../tools/tools';
 import type {
+  IntentInvokeApi,
   IntentQueryOptions,
   IntentResponseApi,
-  Intents,
 } from '../intents/intents';
 
 /**
@@ -38,14 +38,13 @@ export interface AppHomeIntentRequest {
 }
 
 /**
- * The intents API available to app home extensions. Extends the standard
- * `Intents` API with a signal-like `request` that streams link intents into
- * the long-running extension. `response` is only present while an intent is
- * active and is bound to the current `request.value`.
+ * The intents API available to app home extensions. It exposes a signal-like
+ * `request` that streams link intents into the long-running extension. Inspect
+ * `request.value` for information about the active intent.
  *
  * @publicDocs
  */
-export interface AppHomeIntents extends Intents {
+export interface AppHomeIntents {
   /**
    * The current link intent delivered to the extension. Subscribe to receive
    * new intents over the lifetime of the extension.
@@ -56,6 +55,10 @@ export interface AppHomeIntents extends Intents {
    * non-null; the runtime swaps in a fresh handle for each new intent.
    */
   response?: IntentResponseApi;
+  /**
+   * Launches an intent workflow for creating or editing Shopify resources.
+   */
+  invoke?: IntentInvokeApi;
 }
 
 /**
