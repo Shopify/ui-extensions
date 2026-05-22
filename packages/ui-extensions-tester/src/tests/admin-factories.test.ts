@@ -49,6 +49,33 @@ describe('createMockAdminTargetApi', () => {
     expect(typeof api.loading).toBe('function');
   });
 
+  it('exposes a tools registration api on app home', () => {
+    const api = createMockAdminTargetApi('admin.app.home.render');
+
+    expect(typeof api.tools.register).toBe('function');
+    expect(typeof api.tools.unregister).toBe('function');
+    expect(typeof api.tools.clear).toBe('function');
+
+    const unregister = api.tools.register('faq.update', async () => ({
+      ok: true,
+    }));
+    expect(typeof unregister).toBe('function');
+    expect(() => unregister()).not.toThrow();
+    expect(() => api.tools.unregister('faq.update')).not.toThrow();
+    expect(() => api.tools.clear()).not.toThrow();
+  });
+
+  it('exposes a signal-like intents.request on app home', () => {
+    const api = createMockAdminTargetApi('admin.app.home.render');
+
+    expect(api.intents.request.value).toBeNull();
+    expect(typeof api.intents.request.subscribe).toBe('function');
+
+    const unsubscribe = api.intents.request.subscribe(() => {});
+    expect(typeof unsubscribe).toBe('function');
+    expect(() => unsubscribe()).not.toThrow();
+  });
+
   it('creates a standard rendering api for app intent targets', () => {
     const api = createMockAdminTargetApi('admin.app.intent.render');
 
