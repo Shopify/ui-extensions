@@ -1,4 +1,5 @@
 /* eslint-disable no-undef, no-console */
+import childProcess from 'child_process';
 import fs from 'fs/promises';
 import {existsSync} from 'fs';
 import path from 'path';
@@ -8,9 +9,13 @@ import {
   generateFiles,
   copyGeneratedToShopifyDev,
   replaceFileContent,
+  resolveShopifyDevPath,
 } from '../build-doc-shared.mjs';
 
 const EXTENSIONS_API_VERSION = process.argv[2];
+const SHOPIFY_DEV_EXTENSIONS_FOLDER =
+  process.argv[3] ??
+  (EXTENSIONS_API_VERSION === '2026-04' ? '2026-04-rc' : null);
 
 if (!EXTENSIONS_API_VERSION) {
   console.error('Error: API_VERSION is required.');
@@ -29,35 +34,22 @@ const srcRelativePath = 'src/surfaces/point-of-sale';
 const docsPath = path.join(rootPath, docsRelativePath);
 const srcPath = path.join(rootPath, srcRelativePath);
 const generatedDocsPath = path.join(docsPath, 'generated');
-const worldPath = path.join(process.env.HOME, 'world/trees/root/src');
-const worldDBPath = path.join(
-  worldPath,
+const shopifyDevPath = await resolveShopifyDevPath(rootPath);
+const shopifyDevDBPath = path.join(
+  shopifyDevPath,
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedStaticPagesFile = 'generated_static_pages.json';
+const generatedDocsDataV2File = 'generated_docs_data_v2.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
 
-const tsconfig = 'tsconfig.docs.json';
-
 const cleanup = async () => {
   try {
-    // Clean up temporary component definitions file
     if (existsSync(tempComponentDefs)) {
       await fs.rm(tempComponentDefs);
     }
-
-    // Clean up any remaining .js files from compilation
-    const srcFiles = await fs.readdir(rootPath, {recursive: true});
-    const builtFiles = srcFiles.filter((file) => file.endsWith('.doc.js'));
-    await Promise.all(
-      builtFiles.map((file) => {
-        const jsFilePath = path.join(rootPath, file);
-        return existsSync(jsFilePath) ? fs.rm(jsFilePath) : Promise.resolve();
-      }),
-    );
   } catch (cleanupError) {
     console.warn(
       'Warning: Failed to clean up temporary files:',
@@ -107,31 +99,38 @@ const generateExtensionsDocs = async () => {
     `Building Point of Sale UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
   );
 
+  if (SHOPIFY_DEV_EXTENSIONS_FOLDER) {
+    console.log(
+      `Shopify-dev pos_ui_extensions folder will be: ${SHOPIFY_DEV_EXTENSIONS_FOLDER}`,
+    );
+  }
+
   const outputDir = `${docsGeneratedRelativePath}/pos_ui_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node  --target esNext  --module CommonJS`,
-    `yarn generate-docs --overridePath ./${docsRelativePath}/typeOverride.json --input ./${docsRelativePath}/reference ./${srcRelativePath} --typesInput ./${srcRelativePath} --output ./${outputDir}`,
-    `yarn tsc ${docsRelativePath}/staticPages/*.doc.ts --moduleResolution node  --target esNext  --module CommonJS`,
-    `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
+    `yarn generate-docs --overridePath ./${docsRelativePath}/typeOverride.json --input ./${srcRelativePath} --output ./${outputDir}`,
   ];
 
   await generateFiles({
     scripts,
     outputDir,
     rootPath,
-    generatedStaticPagesFile,
+    generatedDocsDataV2File,
   });
 
-  await fs.cp(
-    path.join(docsPath, 'screenshots'),
-    path.join(
-      worldPath,
-      'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/pos-ui-extensions',
-      EXTENSIONS_API_VERSION,
-    ),
-    {recursive: true},
-  );
+  // Update API version in relative doc links
+  await replaceFileContent({
+    filePaths: path.join(outputDir, generatedDocsDataV2File),
+    searchValue: '/docs/api/pos-ui-extensions/[^/]*/',
+    replaceValue: `/docs/api/pos-ui-extensions/${EXTENSIONS_API_VERSION}/`,
+  });
+
+  // Generate targets.json (extension targets + APIs + components mapping)
+  const targetsScriptPath = path.join(__dirname, 'build-docs-targets-json.mjs');
+  childProcess.execSync(`node ${targetsScriptPath}`, {
+    stdio: 'inherit',
+    cwd: rootPath,
+  });
 };
 
 try {
@@ -146,27 +145,54 @@ try {
   });
   await generateExtensionsDocs();
 
-  // Generate targets.json
-  console.log('Generating targets.json...');
-  try {
-    const {execSync} = await import('child_process');
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
-    console.log('✅ Generated targets.json');
-  } catch (targetsError) {
-    console.warn(
-      'Warning: Failed to generate targets.json:',
-      targetsError.message,
-    );
-  }
+  const posOutputDir = path.join(
+    rootPath,
+    docsGeneratedRelativePath,
+    'pos_ui_extensions',
+    EXTENSIONS_API_VERSION,
+  );
+  const targetsJsonPath = path.join(posOutputDir, 'targets.json');
+  const generatedDocsDataV2Path = path.join(
+    posOutputDir,
+    generatedDocsDataV2File,
+  );
+  console.log('\nGenerated docs at:');
+  console.log('  POS UI extensions:', posOutputDir);
+  console.log('  targets.json:', targetsJsonPath);
+  console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
 
   await copyGeneratedToShopifyDev({
     generatedDocsPath,
-    shopifyDevPath: worldPath,
-    shopifyDevDBPath: worldDBPath,
+    shopifyDevPath,
+    shopifyDevDBPath,
   });
+
+  if (
+    SHOPIFY_DEV_EXTENSIONS_FOLDER &&
+    SHOPIFY_DEV_EXTENSIONS_FOLDER !== EXTENSIONS_API_VERSION
+  ) {
+    const posSource = path.join(
+      shopifyDevDBPath,
+      'pos_ui_extensions',
+      EXTENSIONS_API_VERSION,
+    );
+    const posDestination = path.join(
+      shopifyDevDBPath,
+      'pos_ui_extensions',
+      SHOPIFY_DEV_EXTENSIONS_FOLDER,
+    );
+
+    if (existsSync(posSource)) {
+      if (existsSync(posDestination)) {
+        await fs.rm(posDestination, {recursive: true});
+      }
+
+      await fs.rename(posSource, posDestination);
+      console.log(
+        `  Renamed pos_ui_extensions/${EXTENSIONS_API_VERSION} → pos_ui_extensions/${SHOPIFY_DEV_EXTENSIONS_FOLDER} in shopify-dev`,
+      );
+    }
+  }
 
   await cleanup();
 } catch (error) {

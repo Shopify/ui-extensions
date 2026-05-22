@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -9,11 +11,11 @@ import {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Find the generated_docs_data.json file to determine output location
+// Find the generated_docs_data_v2.json file to determine output location
 function findGeneratedDocsPath() {
   const generatedDir = path.join(__dirname, 'generated');
-  
-  // Look for generated_docs_data.json recursively
+
+  // Look for generated_docs_data_v2.json recursively
   function findFile(dir) {
     const files = fs.readdirSync(dir);
     for (const file of files) {
@@ -22,13 +24,13 @@ function findGeneratedDocsPath() {
       if (stat.isDirectory()) {
         const result = findFile(fullPath);
         if (result) return result;
-      } else if (file === 'generated_docs_data.json') {
+      } else if (file === 'generated_docs_data_v2.json') {
         return path.dirname(fullPath);
       }
     }
     return null;
   }
-  
+
   const docsPath = findFile(generatedDir);
   return docsPath || generatedDir; // Fallback to generated root if not found
 }
@@ -36,10 +38,7 @@ function findGeneratedDocsPath() {
 // Configuration for admin surface
 const config = {
   basePath: path.join(__dirname, '../../../src/surfaces/admin'),
-  outputPath: path.join(
-    findGeneratedDocsPath(),
-    'targets.json',
-  ),
+  outputPath: path.join(findGeneratedDocsPath(), 'targets.json'),
   componentTypesPath: 'components',
   hasComponentTypes: true,
 };
@@ -77,8 +76,8 @@ function parseCheckoutComponents() {
     if (checkoutComponentsCache.length === 0) {
       // Fallback: try to get just SUPPORTED_COMPONENTS
       const typeDefs = checkoutTypeResolver.getTypeDefinitions();
-      if (Array.isArray(typeDefs['SUPPORTED_COMPONENTS'])) {
-        checkoutComponentsCache = [...typeDefs['SUPPORTED_COMPONENTS']];
+      if (Array.isArray(typeDefs.SUPPORTED_COMPONENTS)) {
+        checkoutComponentsCache = [...typeDefs.SUPPORTED_COMPONENTS];
       } else {
         checkoutComponentsCache = ['[CheckoutComponentsNotFound]'];
       }
@@ -120,23 +119,23 @@ function parseStringUnionType(filePath, componentTypesMap = {}) {
       const typeRefs = typeDef.match(/\b([A-Z]\w+(?:Components?)?)\b/g);
 
       if (typeRefs) {
-        const allComponents = [...quotedComponents];
+        const components = [...quotedComponents];
 
         for (const typeRef of typeRefs) {
           // Check if this is AnyComponent (imported from checkout)
           if (typeRef === 'AnyComponent') {
             // Add all checkout components
             const checkoutComponents = parseCheckoutComponents();
-            allComponents.push(...checkoutComponents);
+            components.push(...checkoutComponents);
           }
           // If this type reference exists in our map, include its components
           else if (componentTypesMap[typeRef]) {
-            allComponents.push(...componentTypesMap[typeRef]);
+            components.push(...componentTypesMap[typeRef]);
           }
         }
 
         // Remove duplicates
-        return [...new Set(allComponents)];
+        return [...new Set(components)];
       }
     }
 
@@ -387,7 +386,7 @@ function parseRunnableTargetsFromInterfaceBody(interfaceBody, targets) {
 
 function getNestedApis(apiName) {
   // Check if we've already parsed this API
-  if (apiDefinitionsCache.hasOwnProperty(apiName)) {
+  if (Object.prototype.hasOwnProperty.call(apiDefinitionsCache, apiName)) {
     return apiDefinitionsCache[apiName];
   }
 
@@ -444,7 +443,7 @@ function getNestedApis(apiName) {
     }
 
     // Find the end position (semicolon at the correct nesting level)
-    let startPos = startMatch.index + startMatch[0].length;
+    const startPos = startMatch.index + startMatch[0].length;
     let endPos = startPos;
     let braceDepth = 0;
     let angleDepth = 0;
@@ -489,15 +488,15 @@ function parseApis(apiString) {
   const apisSet = new Set();
 
   // Remove any comments
-  apiString = apiString
+  const trimmedApiString = apiString
     .replace(/\/\/[^\n]*/g, '')
     .replace(/\/\*[\s\S]*?\*\//g, '');
 
   // Split by & and extract API names
-  const parts = apiString
+  const parts = trimmedApiString
     .split('&')
-    .map((s) => s.trim())
-    .filter((s) => s);
+    .map((part) => part.trim())
+    .filter((part) => part);
 
   for (const part of parts) {
     // Match API names (e.g., StandardApi<'...'> or just ApiName)
@@ -539,10 +538,10 @@ function parseApis(apiString) {
  */
 function parseComponents(componentString, componentTypesMap) {
   // Normalize whitespace
-  componentString = componentString.replace(/\s+/g, ' ').trim();
+  const trimmedComponentString = componentString.replace(/\s+/g, ' ').trim();
 
   // Handle AnyCheckoutComponentExcept<'Component1' | 'Component2'>
-  const checkoutExceptMatch = componentString.match(
+  const checkoutExceptMatch = trimmedComponentString.match(
     /AnyCheckoutComponentExcept<([^>]+)>/,
   );
   if (checkoutExceptMatch) {
@@ -552,27 +551,36 @@ function parseComponents(componentString, componentTypesMap) {
     // Parse the union of excluded components
     const excludedComponents = parseUnionOfStrings(excludedUnion);
     // Filter out the excluded components
-    return allCheckoutComponents.filter((c) => !excludedComponents.includes(c));
+    return allCheckoutComponents.filter(
+      (component) => !excludedComponents.includes(component),
+    );
   }
 
   // Handle Exclude<BaseType, ExcludedComponent>
-  const excludeMatch = componentString.match(/Exclude<(\w+),\s*'([^']+)'>/);
+  const excludeMatch = trimmedComponentString.match(
+    /Exclude<(\w+),\s*'([^']+)'>/,
+  );
   if (excludeMatch) {
     const baseType = excludeMatch[1];
     const excluded = excludeMatch[2];
     const baseComponents = resolveComponentType(baseType, componentTypesMap);
-    return baseComponents.filter((c) => c !== excluded);
+    return baseComponents.filter((component) => component !== excluded);
   }
 
   // Handle AllowedComponents<ComponentType>
-  const allowedMatch = componentString.match(/AllowedComponents<([^>]+)>/);
+  const allowedMatch = trimmedComponentString.match(
+    /AllowedComponents<([^>]+)>/,
+  );
   if (allowedMatch) {
     const innerType = allowedMatch[1].trim();
     return resolveComponentType(innerType, componentTypesMap);
   }
 
   // Check if it's a direct type reference
-  const result = resolveComponentType(componentString, componentTypesMap);
+  const result = resolveComponentType(
+    trimmedComponentString,
+    componentTypesMap,
+  );
   if (result.length > 0) {
     return result;
   }
@@ -607,24 +615,24 @@ function parseUnionOfStrings(unionString) {
  * Resolve a component type name to a list of component names
  */
 function resolveComponentType(typeName, componentTypesMap) {
-  typeName = typeName.trim();
+  const trimmedTypeName = typeName.trim();
 
   // Check if it's in our component types map
-  if (componentTypesMap[typeName]) {
-    return componentTypesMap[typeName];
+  if (componentTypesMap[trimmedTypeName]) {
+    return componentTypesMap[trimmedTypeName];
   }
 
   // Handle special checkout types
   if (
-    typeName === 'AnyCheckoutComponent' ||
-    typeName === 'AnyComponent' ||
-    typeName === 'AnyThankYouComponent'
+    trimmedTypeName === 'AnyCheckoutComponent' ||
+    trimmedTypeName === 'AnyComponent' ||
+    trimmedTypeName === 'AnyThankYouComponent'
   ) {
     return parseCheckoutComponents();
   }
 
   // Check if it's a quoted string literal
-  const quotedMatch = typeName.match(/^'([^']+)'$/);
+  const quotedMatch = trimmedTypeName.match(/^'([^']+)'$/);
   if (quotedMatch) {
     return [quotedMatch[1]];
   }
