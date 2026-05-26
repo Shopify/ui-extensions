@@ -29,6 +29,33 @@ const data: ReferenceEntityTemplateSchema = {
       ],
     },
   },
+  examples: {
+    description: 'Navigation api examples',
+    examples: [
+      {
+        codeblock: {
+          title: 'Listening for navigation current entry events',
+          tabs: [
+            {
+              code: '../examples/apis/navigation-event-listeners.example.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+      {
+        codeblock: {
+          title: 'Navigating to native order index page',
+          tabs: [
+            {
+              code: '../examples/apis/navigating-to-customer-account-page.example.jsx',
+              language: 'jsx',
+            },
+          ],
+        },
+      },
+    ],
+  },
   related: [],
 };
 
