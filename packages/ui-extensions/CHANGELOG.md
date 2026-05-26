@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2025.10.15
+
+### Patch Changes
+
+- [#4418](https://github.com/Shopify/ui-extensions/pull/4418) [`a12d6b5`](https://github.com/Shopify/ui-extensions/commit/a12d6b5b8b6876f35c6cd9f13b3ec289f50675e2) Thanks [@justinhenricks](https://github.com/justinhenricks)! - The `label` prop on the checkout and customer-account `s-checkbox` component now accepts a label as a slot in addition to a plain string, label slots can include only plain text and s-links.
+
+- [#4480](https://github.com/Shopify/ui-extensions/pull/4480) [`c52ffe2`](https://github.com/Shopify/ui-extensions/commit/c52ffe2e6b32d70edde9a3354d47493c1522bcd2) Thanks [@justinhenricks](https://github.com/justinhenricks)! - Add `textAlign` prop to the checkout `Paragraph` component, supporting `'start'`, `'end'`, `'center'`, and `'auto'` values.
+
 ## 2025.10.14
 
 ### Patch Changes
