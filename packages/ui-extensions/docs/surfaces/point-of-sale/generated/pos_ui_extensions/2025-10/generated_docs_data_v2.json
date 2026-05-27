@@ -1,75 +1,4 @@
 {
-  "DataGeneratedType": {
-    "docs/surfaces/point-of-sale/reference/apis/action-api.doc.ts": {
-      "filePath": "docs/surfaces/point-of-sale/reference/apis/action-api.doc.ts",
-      "name": "DataGeneratedType",
-      "description": "Template schema for reference entity documentation pages.",
-      "isPublicDocs": true,
-      "value": "data: ReferenceEntityTemplateSchema = {\n  name: 'Action API',\n  description:\n    'The Action API provides modal presentation functionality for POS UI extensions, allowing you to launch full-screen modal interfaces from menu items, tiles, and block targets. The API enables navigation between different targets within your extension.',\n  isVisualComponent: false,\n  type: 'APIs',\n  definitions: [\n    {\n      title: 'Properties',\n      description:\n        'The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.',\n      type: 'ActionApiContent',\n    },\n  ],\n  category: 'Target APIs',\n  subCategory: 'Standard APIs',\n  related: [],\n  subSections: [\n    {\n      type: 'Generic',\n      anchorLink: 'best-practices',\n      title: 'Best practices',\n      sectionContent:\n        \"- **Use modals for complex workflows:** Reserve modals for operations that genuinely require more screen space, multiple steps, or complex interactions that can't be handled by simple button actions.\\n\" +\n        '- **Provide clear entry points:** Use descriptive button labels and titles that clearly indicate what the modal will contain or what action it will perform, helping users understand what to expect.\\n' +\n        '- **Handle modal dismissal gracefully:** Ensure your modal-based workflows handle user dismissal, saving progress when possible and providing clear feedback about incomplete operations.',\n    },\n    {\n      type: 'Generic',\n      anchorLink: 'limitations',\n      title: 'Limitations',\n      sectionContent: `\nThe \\`presentModal()\\` method must be called from a user interaction (such as a button click or tile tap) and can't be invoked programmatically during extension initialization or from background operations.\n`,\n    },\n  ],\n  examples: {\n    description:\n      'Learn how to present full-screen modals from tiles and menu items using the Action API.',\n    examples: [\n      {\n        codeblock: generateJsxCodeBlockForActionApi(\n          'Open a modal from a post-purchase action',\n          'present-modal',\n        ),\n        description:\n          'Present a full-screen modal from menu item actions in detail screens. This example shows how to use `shopify.action.presentModal()` to launch a modal workflow from post-purchase, order details, or other action menu item contexts. With this pattern, you can implement complex, multi-step operations.',\n      },\n      {\n        codeblock: generateJsxCodeBlockForActionApi(\n          'Open a modal from a smart grid tile',\n          'present-modal-tile',\n        ),\n        description:\n          'Present a full-screen modal from smart grid tiles on the POS home screen. This example demonstrates using `shopify.action.presentModal()` to launch modal workflows from tile interactions. This pattern is well-suited for high-frequency tasks that require additional UI beyond the tile itself.',\n      },\n    ],\n  },\n}"
-    }
-  },
-  "ActionApi": {
-    "src/surfaces/point-of-sale/api/action-api/action-api.ts": {
-      "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
-      "name": "ActionApi",
-      "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.",
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "action",
-          "value": "ActionApiContent",
-          "description": ""
-        }
-      ],
-      "value": "export interface ActionApi {\n  action: ActionApiContent;\n}"
-    }
-  },
-  "ActionApiContent": {
-    "src/surfaces/point-of-sale/api/action-api/action-api.ts": {
-      "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
-      "name": "ActionApiContent",
-      "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "presentModal",
-          "value": "() => void",
-          "description": "Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide."
-        }
-      ],
-      "value": "export interface ActionApiContent {\n  /**\n   * Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide.\n   */\n  presentModal(): void;\n}"
-    }
-  },
-  "Modal": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "name": "Modal",
-      "description": "Configure the following properties on the Modal component.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "heading",
-          "value": "string",
-          "description": "A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.",
-          "isOptional": true
-        }
-      ],
-      "value": "interface Modal {\n  /**\n   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.\n   */\n  id?: string;\n  /**\n   * A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.\n   */\n  heading?: string;\n}"
-    }
-  },
   "CartApiContent": {
     "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
       "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -2410,6 +2339,24 @@
         }
       ],
       "value": "export interface CartLineItemApi {\n  /**\n   * The selected line item in the merchant's current cart. Provides complete line item data including product information, pricing, discounts, properties, and metadata. Use for displaying item details and implementing item-specific functionality.\n   */\n  cartLineItem: LineItem;\n}"
+    }
+  },
+  "ActionApiContent": {
+    "src/surfaces/point-of-sale/api/action-api/action-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
+      "name": "ActionApiContent",
+      "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `shopify.action` to launch full-screen modal experiences.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "presentModal",
+          "value": "() => void",
+          "description": "Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide."
+        }
+      ],
+      "value": "export interface ActionApiContent {\n  /**\n   * Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide.\n   */\n  presentModal(): void;\n}"
     }
   },
   "ConnectivityApiContent": {
@@ -4932,6 +4879,33 @@
         }
       ],
       "value": "interface ModalSlots {\n  /**\n   * The primary action button displayed in the modal. The tone of the button is used to define the tone of the modal. If omitted, the modal will default to an `'info'` tone, and show an OK button, translated according to the user's locale.\n   */\n  'primary-action'?: HTMLElement;\n  /**\n   * The secondary action buttons displayed in the modal. Use this slot to provide alternative actions or cancel options that give users flexibility in how they respond to the modal.\n   */\n  'secondary-actions'?: HTMLElement;\n}"
+    }
+  },
+  "Modal": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Modal",
+      "description": "Configure the following properties on the Modal component.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "heading",
+          "value": "string",
+          "description": "A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Modal {\n  /**\n   * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.\n   */\n  id?: string;\n  /**\n   * A title that describes the content of the section. If omitted and no secondary actions are provided, the section will be rendered without a header.\n   */\n  heading?: string;\n}"
     }
   },
   "NumberFieldEvents": {

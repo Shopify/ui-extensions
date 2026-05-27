@@ -1,11 +1,21 @@
 {
-  "DataGeneratedType": {
-    "docs/surfaces/checkout/reference/apis/address.doc.ts": {
-      "filePath": "docs/surfaces/checkout/reference/apis/address.doc.ts",
-      "name": "DataGeneratedType",
-      "description": "Template schema for reference entity documentation pages.",
-      "isPublicDocs": true,
-      "value": "data: ReferenceEntityTemplateSchema = {\n  name: 'Addresses API',\n  description: 'The API for interacting with addresses.',\n  isVisualComponent: false,\n  requires: REQUIRES_PROTECTED_CUSTOMER_DATA_LEVEL_2,\n  category: 'Target APIs',\n  subCategory: 'Checkout APIs',\n  type: 'API',\n  definitions: [\n    {\n      title: 'StandardApi',\n      description: STANDARD_API_PROPERTIES_DESCRIPTION,\n      type: 'Docs_Standard_AddressApi',\n    },\n    {\n      title: 'CheckoutApi',\n      description: CHECKOUT_API_PROPERTIES_DESCRIPTION,\n      type: 'Docs_Checkout_AddressApi',\n    },\n    {\n      title: 'useBillingAddress',\n      description:\n        'Returns the proposed `billingAddress` applied to the checkout.',\n      type: 'UseBillingAddressGeneratedType',\n    },\n    {\n      title: 'useShippingAddress',\n      description:\n        'Returns the proposed `shippingAddress` applied to the checkout.',\n      type: 'UseShippingAddressGeneratedType',\n    },\n    {\n      title: 'useApplyShippingAddressChange',\n      description:\n        'Returns a function to mutate the `shippingAddress` property of checkout.',\n      type: 'UseApplyShippingAddressChangeGeneratedType',\n    },\n  ],\n  related: getLinksByTag('apis'),\n}"
+  "AnyComponent": {
+    "src/surfaces/checkout/shared.ts": {
+      "filePath": "src/surfaces/checkout/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AnyComponent",
+      "value": "(typeof SUPPORTED_COMPONENTS)[number] | PrivateComponent",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "PrivateComponent": {
+    "src/surfaces/checkout/shared.ts": {
+      "filePath": "src/surfaces/checkout/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "PrivateComponent",
+      "value": "'Chat'",
+      "description": "Note: Chat is not supported in the 2025-10 release candidate, but it is tied to a target, and we don't want to remove the target documentation. Once Chat is supported, you can remove this note."
     }
   },
   "StandardApi": {
@@ -5208,98 +5218,6 @@
       "value": "export interface ShippingAddressChangeFieldError {\n  /**\n   * The `MailingAddress` field that caused the error, such as `'countryCode'` or `'zip'`. The value is `undefined` if the error isn't specific to a single field.\n   */\n  field?: keyof MailingAddress;\n\n  /**\n   * A message that explains the error. This message is useful for debugging.\n   * It isn't localized and shouldn't be displayed to the buyer.\n   */\n  message: string;\n}"
     }
   },
-  "UseBillingAddressGeneratedType": {
-    "src/surfaces/checkout/preact/billing-address.ts": {
-      "filePath": "src/surfaces/checkout/preact/billing-address.ts",
-      "name": "UseBillingAddressGeneratedType",
-      "description": "Returns the proposed `billingAddress` applied to the checkout.",
-      "isPublicDocs": true,
-      "params": [],
-      "returns": {
-        "filePath": "src/surfaces/checkout/preact/billing-address.ts",
-        "description": "",
-        "name": "MailingAddress | undefined",
-        "value": "MailingAddress | undefined"
-      },
-      "value": "export function useBillingAddress<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>(): MailingAddress | undefined {\n  const billingAddress = useApi<Target>().billingAddress;\n\n  if (!billingAddress) {\n    throw new ScopeNotGrantedError(\n      'Using billing address requires having billing address permissions granted to your app.',\n    );\n  }\n\n  return useSubscription(billingAddress);\n}"
-    }
-  },
-  "UseShippingAddressGeneratedType": {
-    "src/surfaces/checkout/preact/shipping-address.ts": {
-      "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
-      "name": "UseShippingAddressGeneratedType",
-      "description": "Returns the proposed `shippingAddress` applied to the checkout.",
-      "isPublicDocs": true,
-      "params": [],
-      "returns": {
-        "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
-        "description": "",
-        "name": "ShippingAddress | undefined",
-        "value": "ShippingAddress | undefined"
-      },
-      "value": "export function useShippingAddress<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>(): ShippingAddress | undefined {\n  const shippingAddress = useApi<Target>().shippingAddress;\n\n  if (!shippingAddress) {\n    throw new ScopeNotGrantedError(\n      'Using shipping address requires having shipping address permissions granted to your app.',\n    );\n  }\n\n  return useSubscription(shippingAddress);\n}"
-    }
-  },
-  "UseApplyShippingAddressChangeGeneratedType": {
-    "src/surfaces/checkout/preact/shipping-address.ts": {
-      "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
-      "name": "UseApplyShippingAddressChangeGeneratedType",
-      "description": "Returns a function to mutate the `shippingAddress` property of checkout.",
-      "isPublicDocs": true,
-      "params": [],
-      "returns": {
-        "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
-        "description": "",
-        "name": "(change: ShippingAddressChange) => Promise<ShippingAddressChangeResult> | undefined",
-        "value": "(change: ShippingAddressChange) => Promise<ShippingAddressChangeResult> | undefined"
-      },
-      "value": "export function useApplyShippingAddressChange<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>():\n  | ((change: ShippingAddressChange) => Promise<ShippingAddressChangeResult>)\n  | undefined {\n  const api = useApi<Target>();\n\n  if ('applyShippingAddressChange' in api) {\n    return api.applyShippingAddressChange;\n  }\n\n  throw new ExtensionHasNoMethodError(\n    'applyShippingAddressChange',\n    api.extension.target,\n  );\n}"
-    }
-  },
-  "ShippingAddressChange": {
-    "src/surfaces/checkout/api/checkout/checkout.ts": {
-      "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ShippingAddressChange",
-      "value": "ShippingAddressUpdateChange",
-      "description": "The input for `applyShippingAddressChange()`. Currently only supports `ShippingAddressUpdateChange` (with `type: 'updateShippingAddress'`).",
-      "members": [
-        {
-          "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "address",
-          "value": "Partial<ShippingAddress>",
-          "description": "Fields to update in the shipping address. You only need to provide values for the fields you want to update. Any fields you don't list keep their current values."
-        },
-        {
-          "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "'updateShippingAddress'",
-          "description": "Identifies this as a shipping address update. This is the only supported change type for `applyShippingAddressChange()`."
-        }
-      ]
-    }
-  },
-  "AnyComponent": {
-    "src/surfaces/checkout/shared.ts": {
-      "filePath": "src/surfaces/checkout/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "AnyComponent",
-      "value": "(typeof SUPPORTED_COMPONENTS)[number] | PrivateComponent",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
-  "PrivateComponent": {
-    "src/surfaces/checkout/shared.ts": {
-      "filePath": "src/surfaces/checkout/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "PrivateComponent",
-      "value": "'Chat'",
-      "description": "Note: Chat is not supported in the 2025-10 release candidate, but it is tied to a target, and we don't want to remove the target documentation. Once Chat is supported, you can remove this note."
-    }
-  },
   "OrderConfirmationApi": {
     "src/surfaces/checkout/api/order-confirmation/order-confirmation.ts": {
       "filePath": "src/surfaces/checkout/api/order-confirmation/order-confirmation.ts",
@@ -8562,7 +8480,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Abbreviation.ts",
@@ -10571,7 +10489,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Abbreviation.ts",
@@ -10976,7 +10894,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Announcement.ts",
@@ -13001,7 +12919,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Announcement.ts",
@@ -13423,7 +13341,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Badge.ts",
@@ -15458,7 +15376,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Badge.ts",
@@ -15872,7 +15790,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Banner.ts",
@@ -17924,7 +17842,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Banner.ts",
@@ -18677,7 +18595,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
@@ -20866,7 +20784,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
@@ -21313,7 +21231,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Button.ts",
@@ -23382,7 +23300,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Button.ts",
@@ -23985,7 +23903,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Checkbox.ts",
@@ -26062,7 +25980,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Checkbox.ts",
@@ -26577,7 +26495,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Chip.ts",
@@ -28586,7 +28504,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Chip.ts",
@@ -28978,7 +28896,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Choice.ts",
@@ -31014,7 +30932,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Choice.ts",
@@ -31434,7 +31352,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
@@ -33494,7 +33412,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ChoiceList.ts",
@@ -34593,7 +34511,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Clickable.ts",
@@ -36833,7 +36751,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Clickable.ts",
@@ -37288,7 +37206,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
@@ -39339,7 +39257,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ClickableChip.ts",
@@ -39785,7 +39703,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
@@ -41801,7 +41719,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ClipboardItem.ts",
@@ -42289,7 +42207,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ConsentCheckbox.ts",
@@ -44374,7 +44292,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ConsentCheckbox.ts",
@@ -44965,7 +44883,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ConsentPhoneField.ts",
@@ -47045,7 +46963,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ConsentPhoneField.ts",
@@ -48385,7 +48303,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/DateField.ts",
@@ -50548,7 +50466,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/DateField.ts",
@@ -51369,7 +51287,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/DatePicker.ts",
@@ -53503,7 +53421,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/DatePicker.ts",
@@ -54110,7 +54028,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Details.ts",
@@ -56118,7 +56036,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Details.ts",
@@ -56486,7 +56404,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Divider.ts",
@@ -58504,7 +58422,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Divider.ts",
@@ -58965,7 +58883,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/DropZone.ts",
@@ -61023,7 +60941,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/DropZone.ts",
@@ -61676,7 +61594,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/EmailField.ts",
@@ -63774,7 +63692,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/EmailField.ts",
@@ -64301,7 +64219,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Form.ts",
@@ -66321,7 +66239,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Form.ts",
@@ -67058,7 +66976,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Grid.ts",
@@ -69346,7 +69264,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Grid.ts",
@@ -69923,7 +69841,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/GridItem.ts",
@@ -72139,7 +72057,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/GridItem.ts",
@@ -72454,7 +72372,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Heading.ts",
@@ -74463,7 +74381,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Heading.ts",
@@ -74786,7 +74704,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Icon.ts",
@@ -76795,7 +76713,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Icon.ts",
@@ -77253,7 +77171,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Image.ts",
@@ -79341,7 +79259,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Image.ts",
@@ -79775,7 +79693,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Link.ts",
@@ -81818,7 +81736,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Link.ts",
@@ -82227,7 +82145,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ListItem.ts",
@@ -84236,7 +84154,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ListItem.ts",
@@ -85392,7 +85310,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Map.ts",
@@ -87513,7 +87431,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Map.ts",
@@ -88112,7 +88030,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/MapMarker.ts",
@@ -90175,7 +90093,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/MapMarker.ts",
@@ -90734,7 +90652,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Modal.ts",
@@ -92795,7 +92713,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Modal.ts",
@@ -93734,7 +93652,7 @@
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'cart' | 'note' | 'settings' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true,
           "defaultValue": "''"
@@ -93997,7 +93915,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
@@ -94936,7 +94854,7 @@
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'cart' | 'note' | 'settings' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -96123,7 +96041,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
@@ -96464,7 +96382,7 @@
           "filePath": "src/surfaces/checkout/components/NumberField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'cart' | 'note' | 'settings' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -96723,7 +96641,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Option.ts",
@@ -98750,7 +98668,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Option.ts",
@@ -99064,7 +98982,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/OrderedList.ts",
@@ -101073,7 +100991,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/OrderedList.ts",
@@ -101452,7 +101370,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Paragraph.ts",
@@ -103474,7 +103392,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Paragraph.ts",
@@ -104006,7 +103924,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/PasswordField.ts",
@@ -106119,7 +106037,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/PasswordField.ts",
@@ -106632,7 +106550,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/PaymentIcon.ts",
@@ -108641,7 +108559,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/PaymentIcon.ts",
@@ -109117,7 +109035,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Popover.ts",
@@ -111194,7 +111112,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Popover.ts",
@@ -111719,7 +111637,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/PressButton.ts",
@@ -113767,7 +113685,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/PressButton.ts",
@@ -114210,7 +114128,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ProductThumbnail.ts",
@@ -116220,7 +116138,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ProductThumbnail.ts",
@@ -116600,7 +116518,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Progress.ts",
@@ -118618,7 +118536,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Progress.ts",
@@ -119030,7 +118948,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/QRCode.ts",
@@ -121072,7 +120990,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/QRCode.ts",
@@ -121457,7 +121375,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/QueryContainer.ts",
@@ -123475,7 +123393,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/QueryContainer.ts",
@@ -124063,7 +123981,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ScrollBox.ts",
@@ -126261,7 +126179,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/ScrollBox.ts",
@@ -126582,7 +126500,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Section.ts",
@@ -128599,7 +128517,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Section.ts",
@@ -129033,7 +128951,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Select.ts",
@@ -131092,7 +131010,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Select.ts",
@@ -131680,7 +131598,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Sheet.ts",
@@ -133755,7 +133673,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Sheet.ts",
@@ -134137,7 +134055,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/SkeletonParagraph.ts",
@@ -136155,7 +136073,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/SkeletonParagraph.ts",
@@ -136477,7 +136395,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Spinner.ts",
@@ -138486,7 +138404,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Spinner.ts",
@@ -139081,7 +138999,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Stack.ts",
@@ -141324,7 +141242,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Stack.ts",
@@ -141630,7 +141548,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Summary.ts",
@@ -143639,7 +143557,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Summary.ts",
@@ -144058,7 +143976,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Switch.ts",
@@ -146127,7 +146045,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Switch.ts",
@@ -146607,7 +146525,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Text.ts",
@@ -148638,7 +148556,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Text.ts",
@@ -149161,7 +149079,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/TextArea.ts",
@@ -151266,7 +151184,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/TextArea.ts",
@@ -151762,7 +151680,7 @@
           "filePath": "src/surfaces/checkout/components/TextField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'cart' | 'note' | 'settings' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true,
           "defaultValue": "''"
@@ -152007,7 +151925,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/TextField.ts",
@@ -152937,7 +152855,7 @@
           "filePath": "src/surfaces/checkout/components/TextField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'cart' | 'note' | 'settings' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -154122,7 +154040,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/TextField.ts",
@@ -154445,7 +154363,7 @@
           "filePath": "src/surfaces/checkout/components/TextField.ts",
           "syntaxKind": "PropertySignature",
           "name": "icon",
-          "value": "'' | 'cart' | 'note' | 'settings' | 'reset' | 'map' | 'menu' | 'search' | 'circle' | 'filter' | 'image' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x'",
+          "value": "IconProps['type']",
           "description": "The type of icon to be displayed in the field.",
           "isOptional": true
         },
@@ -154644,7 +154562,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Time.ts",
@@ -156662,7 +156580,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/Time.ts",
@@ -157016,7 +156934,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/UnorderedList.ts",
@@ -159025,7 +158943,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/UnorderedList.ts",
@@ -159530,7 +159448,7 @@
           "syntaxKind": "MethodSignature",
           "name": "addEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
-          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/UrlField.ts",
@@ -161618,7 +161536,7 @@
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
-          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
         },
         {
           "filePath": "src/surfaces/checkout/components/UrlField.ts",
@@ -162458,7 +162376,7 @@
       "filePath": "src/surfaces/checkout/components/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "IconType",
-      "value": "'product' | 'variant' | 'cart' | 'payment' | 'wallet' | 'code' | 'phone' | 'target' | 'metafields' | 'note' | 'settings' | 'key' | 'paste' | 'play' | 'reset' | 'select' | 'button' | 'link' | 'map' | 'menu' | 'search' | 'table' | 'circle' | 'filter' | 'image' | 'text' | 'view' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x' | 'color' | 'adjust' | 'affiliate' | 'airplane' | 'alert-bubble' | 'alert-diamond' | 'alert-location' | 'alert-octagon' | 'alert-octagon-filled' | 'app-extension' | 'apps' | 'archive' | 'arrow-down-circle' | 'arrow-down-right' | 'arrow-left-circle' | 'arrow-right-circle' | 'arrow-up-circle' | 'arrows-in-horizontal' | 'arrows-out-horizontal' | 'attachment' | 'automation' | 'backspace' | 'bank' | 'barcode' | 'battery-low' | 'bill' | 'blank' | 'blog' | 'bolt' | 'bolt-filled' | 'book' | 'book-open' | 'bug' | 'business-entity' | 'button-press' | 'calculator' | 'calendar-check' | 'calendar-compare' | 'calendar-list' | 'calendar-time' | 'camera-flip' | 'caret-left' | 'caret-right' | 'caret-up' | 'cart-abandoned' | 'cart-discount' | 'cart-down' | 'cart-filled' | 'cart-sale' | 'cart-send' | 'cart-up' | 'cash-euro' | 'cash-pound' | 'cash-rupee' | 'cash-yen' | 'catalog-product' | 'channels' | 'chart-cohort' | 'chart-donut' | 'chart-funnel' | 'chart-histogram-first' | 'chart-histogram-first-last' | 'chart-histogram-flat' | 'chart-histogram-full' | 'chart-histogram-growth' | 'chart-histogram-last' | 'chart-histogram-second-last' | 'chart-horizontal' | 'chart-line' | 'chart-popular' | 'chart-stacked' | 'chart-vertical' | 'chat' | 'chat-new' | 'chat-referral' | 'check-circle-filled' | 'checkbox' | 'chevron-down-circle' | 'chevron-left-circle' | 'chevron-right-circle' | 'chevron-up-circle' | 'circle-dashed' | 'clipboard-check' | 'clipboard-checklist' | 'clock-revert' | 'code-add' | 'collection' | 'collection-featured' | 'collection-list' | 'collection-reference' | 'color-none' | 'compass' | 'complete' | 'compose' | 'confetti' | 'connect' | 'content' | 'contract' | 'corner-pill' | 'corner-round' | 'corner-square' | 'credit-card-cancel' | 'credit-card-percent' | 'credit-card-reader' | 'credit-card-reader-chip' | 'credit-card-reader-tap' | 'credit-card-secure' | 'credit-card-tap-chip' | 'crop' | 'currency-convert' | 'cursor' | 'cursor-banner' | 'cursor-option' | 'data-presentation' | 'data-table' | 'database' | 'database-add' | 'database-connect' | 'desktop' | 'disabled-filled' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'dns-settings' | 'dock-floating' | 'dock-side' | 'domain' | 'domain-landing-page' | 'domain-new' | 'domain-redirect' | 'download' | 'drag-drop' | 'drag-handle' | 'drawer' | 'duplicate' | 'email-follow-up' | 'email-newsletter' | 'enabled' | 'enter' | 'envelope' | 'envelope-soft-pack' | 'eraser' | 'exchange' | 'exit' | 'export' | 'eye-check-mark' | 'eye-dropper' | 'eye-dropper-list' | 'eye-first' | 'eyeglasses' | 'fav' | 'favicon' | 'file' | 'file-list' | 'filter-active' | 'flag' | 'flip-horizontal' | 'flip-vertical' | 'flower' | 'folder' | 'folder-add' | 'folder-down' | 'folder-remove' | 'folder-up' | 'food' | 'foreground' | 'forklift' | 'forms' | 'games' | 'gauge' | 'gift' | 'git-branch' | 'git-commit' | 'git-repository' | 'globe-asia' | 'globe-europe' | 'globe-lines' | 'globe-list' | 'graduation-hat' | 'hashtag' | 'hashtag-decimal' | 'hashtag-list' | 'heart' | 'hide' | 'hide-filled' | 'home' | 'home-filled' | 'icons' | 'identity-card' | 'image-add' | 'image-alt' | 'image-explore' | 'image-magic' | 'image-none' | 'image-with-text-overlay' | 'images' | 'import' | 'in-progress' | 'incentive' | 'incoming' | 'incomplete' | 'inheritance' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'inventory-updated' | 'iq' | 'keyboard' | 'keyboard-filled' | 'keyboard-hide' | 'keypad' | 'label-printer' | 'language' | 'language-translate' | 'layout-block' | 'layout-buy-button' | 'layout-buy-button-horizontal' | 'layout-buy-button-vertical' | 'layout-column-1' | 'layout-columns-2' | 'layout-columns-3' | 'layout-footer' | 'layout-header' | 'layout-logo-block' | 'layout-popup' | 'layout-rows-2' | 'layout-section' | 'layout-sidebar-left' | 'layout-sidebar-right' | 'lightbulb' | 'link-list' | 'list-bulleted-filled' | 'list-numbered' | 'live' | 'live-critical' | 'live-none' | 'location-none' | 'markets' | 'markets-euro' | 'markets-rupee' | 'markets-yen' | 'maximize' | 'measurement-size' | 'measurement-size-list' | 'measurement-volume' | 'measurement-volume-list' | 'measurement-weight' | 'measurement-weight-list' | 'media-receiver' | 'megaphone' | 'mention' | 'menu-filled' | 'merge' | 'metaobject' | 'metaobject-list' | 'metaobject-reference' | 'microphone' | 'minimize' | 'minus-circle' | 'money' | 'money-none' | 'money-split' | 'moon' | 'nature' | 'note-add' | 'notification' | 'order-batches' | 'order-draft' | 'order-filled' | 'order-first' | 'order-fulfilled' | 'order-repeat' | 'order-unfulfilled' | 'orders-status' | 'outdent' | 'outgoing' | 'package' | 'package-cancel' | 'package-fulfilled' | 'package-on-hold' | 'package-reassign' | 'package-returned' | 'page' | 'page-add' | 'page-attachment' | 'page-clock' | 'page-down' | 'page-heart' | 'page-list' | 'page-reference' | 'page-remove' | 'page-report' | 'page-up' | 'pagination-end' | 'pagination-start' | 'paint-brush-flat' | 'paint-brush-round' | 'paper-check' | 'partially-complete' | 'passkey' | 'pause-circle' | 'payment-capture' | 'payout' | 'payout-dollar' | 'payout-euro' | 'payout-pound' | 'payout-rupee' | 'payout-yen' | 'person' | 'person-add' | 'person-exit' | 'person-filled' | 'person-list' | 'person-lock' | 'person-remove' | 'person-segment' | 'personalized-text' | 'phablet' | 'phone-in' | 'phone-out' | 'pin' | 'pin-remove' | 'plan' | 'play-circle' | 'plus-circle' | 'plus-circle-down' | 'plus-circle-filled' | 'plus-circle-up' | 'point-of-sale' | 'point-of-sale-register' | 'price-list' | 'print' | 'product-add' | 'product-cost' | 'product-filled' | 'product-list' | 'product-reference' | 'product-remove' | 'product-return' | 'product-unavailable' | 'profile-filled' | 'receipt' | 'receipt-dollar' | 'receipt-euro' | 'receipt-folded' | 'receipt-paid' | 'receipt-pound' | 'receipt-refund' | 'receipt-rupee' | 'receipt-yen' | 'receivables' | 'redo' | 'referral-code' | 'refresh' | 'remove-background' | 'replace' | 'replay' | 'reward' | 'rocket' | 'rotate-left' | 'rotate-right' | 'sandbox' | 'save' | 'scan-qr-code' | 'search-add' | 'search-list' | 'search-recent' | 'search-resource' | 'send' | 'share' | 'shield-check-mark' | 'shield-none' | 'shield-pending' | 'shield-person' | 'shipping-label' | 'shipping-label-cancel' | 'shopcodes' | 'slideshow' | 'smiley-happy' | 'smiley-joy' | 'smiley-neutral' | 'smiley-sad' | 'social-ad' | 'social-post' | 'sort' | 'sort-ascending' | 'sort-descending' | 'sound' | 'sports' | 'star-circle' | 'star-list' | 'status' | 'status-active' | 'stop-circle' | 'store-import' | 'store-managed' | 'store-online' | 'sun' | 'table-masonry' | 'tablet' | 'tax' | 'team' | 'text-align-center' | 'text-align-left' | 'text-align-right' | 'text-block' | 'text-bold' | 'text-color' | 'text-font' | 'text-font-list' | 'text-grammar' | 'text-in-columns' | 'text-in-rows' | 'text-indent' | 'text-indent-remove' | 'text-italic' | 'text-quote' | 'text-title' | 'text-underline' | 'text-with-image' | 'theme' | 'theme-edit' | 'theme-store' | 'theme-template' | 'three-d-environment' | 'thumbs-down' | 'thumbs-up' | 'tip-jar' | 'toggle-off' | 'toggle-on' | 'transaction' | 'transaction-fee-add' | 'transaction-fee-dollar' | 'transaction-fee-euro' | 'transaction-fee-pound' | 'transaction-fee-rupee' | 'transaction-fee-yen' | 'transfer' | 'transfer-in' | 'transfer-internal' | 'transfer-out' | 'undo' | 'unknown-device' | 'unlock' | 'viewport-narrow' | 'viewport-short' | 'viewport-tall' | 'viewport-wide' | 'wand' | 'watch' | 'wifi' | 'work' | 'work-list' | 'wrench'",
+      "value": "'product' | 'variant' | 'cart' | 'payment' | 'wallet' | 'code' | 'phone' | 'target' | 'metafields' | 'note' | 'settings' | 'paste' | 'play' | 'reset' | 'select' | 'button' | 'link' | 'map' | 'menu' | 'search' | 'table' | 'circle' | 'filter' | 'image' | 'text' | 'view' | 'alert-circle' | 'alert-triangle-filled' | 'alert-triangle' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up-right' | 'arrow-up' | 'bag' | 'bullet' | 'calendar' | 'camera' | 'caret-down' | 'cash-dollar' | 'categories' | 'check-circle' | 'check' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'clipboard' | 'clock' | 'credit-card' | 'delete' | 'delivered' | 'delivery' | 'disabled' | 'discount' | 'edit' | 'email' | 'empty' | 'external' | 'geolocation' | 'gift-card' | 'globe' | 'grid' | 'info-filled' | 'info' | 'list-bulleted' | 'location' | 'lock' | 'menu-horizontal' | 'menu-vertical' | 'minus' | 'mobile' | 'order' | 'organization' | 'plus' | 'profile' | 'question-circle-filled' | 'question-circle' | 'reorder' | 'return' | 'savings' | 'star-filled' | 'star-half' | 'star' | 'store' | 'truck' | 'upload' | 'x-circle-filled' | 'x-circle' | 'x' | 'color' | 'adjust' | 'affiliate' | 'airplane' | 'alert-bubble' | 'alert-diamond' | 'alert-location' | 'alert-octagon' | 'alert-octagon-filled' | 'app-extension' | 'apps' | 'archive' | 'arrow-down-circle' | 'arrow-down-right' | 'arrow-left-circle' | 'arrow-right-circle' | 'arrow-up-circle' | 'arrows-in-horizontal' | 'arrows-out-horizontal' | 'attachment' | 'automation' | 'backspace' | 'bank' | 'barcode' | 'battery-low' | 'bill' | 'blank' | 'blog' | 'bolt' | 'bolt-filled' | 'book' | 'book-open' | 'bug' | 'business-entity' | 'button-press' | 'calculator' | 'calendar-check' | 'calendar-compare' | 'calendar-list' | 'calendar-time' | 'camera-flip' | 'caret-left' | 'caret-right' | 'caret-up' | 'cart-abandoned' | 'cart-discount' | 'cart-down' | 'cart-filled' | 'cart-sale' | 'cart-send' | 'cart-up' | 'cash-euro' | 'cash-pound' | 'cash-rupee' | 'cash-yen' | 'catalog-product' | 'channels' | 'chart-cohort' | 'chart-donut' | 'chart-funnel' | 'chart-histogram-first' | 'chart-histogram-first-last' | 'chart-histogram-flat' | 'chart-histogram-full' | 'chart-histogram-growth' | 'chart-histogram-last' | 'chart-histogram-second-last' | 'chart-horizontal' | 'chart-line' | 'chart-popular' | 'chart-stacked' | 'chart-vertical' | 'chat' | 'chat-new' | 'chat-referral' | 'check-circle-filled' | 'checkbox' | 'chevron-down-circle' | 'chevron-left-circle' | 'chevron-right-circle' | 'chevron-up-circle' | 'circle-dashed' | 'clipboard-check' | 'clipboard-checklist' | 'clock-revert' | 'code-add' | 'collection' | 'collection-featured' | 'collection-list' | 'collection-reference' | 'color-none' | 'compass' | 'complete' | 'compose' | 'confetti' | 'connect' | 'content' | 'contract' | 'corner-pill' | 'corner-round' | 'corner-square' | 'credit-card-cancel' | 'credit-card-percent' | 'credit-card-reader' | 'credit-card-reader-chip' | 'credit-card-reader-tap' | 'credit-card-secure' | 'credit-card-tap-chip' | 'crop' | 'currency-convert' | 'cursor' | 'cursor-banner' | 'cursor-option' | 'data-presentation' | 'data-table' | 'database' | 'database-add' | 'database-connect' | 'desktop' | 'disabled-filled' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'dns-settings' | 'dock-floating' | 'dock-side' | 'domain' | 'domain-landing-page' | 'domain-new' | 'domain-redirect' | 'download' | 'drag-drop' | 'drag-handle' | 'drawer' | 'duplicate' | 'email-follow-up' | 'email-newsletter' | 'enabled' | 'enter' | 'envelope' | 'envelope-soft-pack' | 'eraser' | 'exchange' | 'exit' | 'export' | 'eye-check-mark' | 'eye-dropper' | 'eye-dropper-list' | 'eye-first' | 'eyeglasses' | 'fav' | 'favicon' | 'file' | 'file-list' | 'filter-active' | 'flag' | 'flip-horizontal' | 'flip-vertical' | 'flower' | 'folder' | 'folder-add' | 'folder-down' | 'folder-remove' | 'folder-up' | 'food' | 'foreground' | 'forklift' | 'forms' | 'games' | 'gauge' | 'gift' | 'git-branch' | 'git-commit' | 'git-repository' | 'globe-asia' | 'globe-europe' | 'globe-lines' | 'globe-list' | 'graduation-hat' | 'hashtag' | 'hashtag-decimal' | 'hashtag-list' | 'heart' | 'hide' | 'hide-filled' | 'home' | 'home-filled' | 'icons' | 'identity-card' | 'image-add' | 'image-alt' | 'image-explore' | 'image-magic' | 'image-none' | 'image-with-text-overlay' | 'images' | 'import' | 'in-progress' | 'incentive' | 'incoming' | 'incomplete' | 'inheritance' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'inventory-updated' | 'iq' | 'key' | 'keyboard' | 'keyboard-filled' | 'keyboard-hide' | 'keypad' | 'label-printer' | 'language' | 'language-translate' | 'layout-block' | 'layout-buy-button' | 'layout-buy-button-horizontal' | 'layout-buy-button-vertical' | 'layout-column-1' | 'layout-columns-2' | 'layout-columns-3' | 'layout-footer' | 'layout-header' | 'layout-logo-block' | 'layout-popup' | 'layout-rows-2' | 'layout-section' | 'layout-sidebar-left' | 'layout-sidebar-right' | 'lightbulb' | 'link-list' | 'list-bulleted-filled' | 'list-numbered' | 'live' | 'live-critical' | 'live-none' | 'location-none' | 'markets' | 'markets-euro' | 'markets-rupee' | 'markets-yen' | 'maximize' | 'measurement-size' | 'measurement-size-list' | 'measurement-volume' | 'measurement-volume-list' | 'measurement-weight' | 'measurement-weight-list' | 'media-receiver' | 'megaphone' | 'mention' | 'menu-filled' | 'merge' | 'metaobject' | 'metaobject-list' | 'metaobject-reference' | 'microphone' | 'minimize' | 'minus-circle' | 'money' | 'money-none' | 'money-split' | 'moon' | 'nature' | 'note-add' | 'notification' | 'order-batches' | 'order-draft' | 'order-filled' | 'order-first' | 'order-fulfilled' | 'order-repeat' | 'order-unfulfilled' | 'orders-status' | 'outdent' | 'outgoing' | 'package' | 'package-cancel' | 'package-fulfilled' | 'package-on-hold' | 'package-reassign' | 'package-returned' | 'page' | 'page-add' | 'page-attachment' | 'page-clock' | 'page-down' | 'page-heart' | 'page-list' | 'page-reference' | 'page-remove' | 'page-report' | 'page-up' | 'pagination-end' | 'pagination-start' | 'paint-brush-flat' | 'paint-brush-round' | 'paper-check' | 'partially-complete' | 'passkey' | 'pause-circle' | 'payment-capture' | 'payout' | 'payout-dollar' | 'payout-euro' | 'payout-pound' | 'payout-rupee' | 'payout-yen' | 'person' | 'person-add' | 'person-exit' | 'person-filled' | 'person-list' | 'person-lock' | 'person-remove' | 'person-segment' | 'personalized-text' | 'phablet' | 'phone-in' | 'phone-out' | 'pin' | 'pin-remove' | 'plan' | 'play-circle' | 'plus-circle' | 'plus-circle-down' | 'plus-circle-filled' | 'plus-circle-up' | 'point-of-sale' | 'point-of-sale-register' | 'price-list' | 'print' | 'product-add' | 'product-cost' | 'product-filled' | 'product-list' | 'product-reference' | 'product-remove' | 'product-return' | 'product-unavailable' | 'profile-filled' | 'receipt' | 'receipt-dollar' | 'receipt-euro' | 'receipt-folded' | 'receipt-paid' | 'receipt-pound' | 'receipt-refund' | 'receipt-rupee' | 'receipt-yen' | 'receivables' | 'redo' | 'referral-code' | 'refresh' | 'remove-background' | 'replace' | 'replay' | 'reward' | 'rocket' | 'rotate-left' | 'rotate-right' | 'sandbox' | 'save' | 'scan-qr-code' | 'search-add' | 'search-list' | 'search-recent' | 'search-resource' | 'send' | 'share' | 'shield-check-mark' | 'shield-none' | 'shield-pending' | 'shield-person' | 'shipping-label' | 'shipping-label-cancel' | 'shopcodes' | 'slideshow' | 'smiley-happy' | 'smiley-joy' | 'smiley-neutral' | 'smiley-sad' | 'social-ad' | 'social-post' | 'sort' | 'sort-ascending' | 'sort-descending' | 'sound' | 'sports' | 'star-circle' | 'star-list' | 'status' | 'status-active' | 'stop-circle' | 'store-import' | 'store-managed' | 'store-online' | 'sun' | 'table-masonry' | 'tablet' | 'tax' | 'team' | 'text-align-center' | 'text-align-left' | 'text-align-right' | 'text-block' | 'text-bold' | 'text-color' | 'text-font' | 'text-font-list' | 'text-grammar' | 'text-in-columns' | 'text-in-rows' | 'text-indent' | 'text-indent-remove' | 'text-italic' | 'text-quote' | 'text-title' | 'text-underline' | 'text-with-image' | 'theme' | 'theme-edit' | 'theme-store' | 'theme-template' | 'three-d-environment' | 'thumbs-down' | 'thumbs-up' | 'tip-jar' | 'toggle-off' | 'toggle-on' | 'transaction' | 'transaction-fee-add' | 'transaction-fee-dollar' | 'transaction-fee-euro' | 'transaction-fee-pound' | 'transaction-fee-rupee' | 'transaction-fee-yen' | 'transfer' | 'transfer-in' | 'transfer-internal' | 'transfer-out' | 'undo' | 'unknown-device' | 'unlock' | 'viewport-narrow' | 'viewport-short' | 'viewport-tall' | 'viewport-wide' | 'wand' | 'watch' | 'wifi' | 'work' | 'work-list' | 'wrench'",
       "description": "",
       "isPublicDocs": true
     }
@@ -165234,6 +165152,22 @@
       "value": "export function useApplyAttributeChange<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>(): (change: AttributeChange) => Promise<AttributeChangeResult> {\n  const api = useApi<Target>();\n\n  if ('applyAttributeChange' in api) {\n    return api.applyAttributeChange;\n  }\n\n  throw new ExtensionHasNoMethodError(\n    'applyAttributeChange',\n    api.extension.target,\n  );\n}"
     }
   },
+  "UseBillingAddressGeneratedType": {
+    "src/surfaces/checkout/preact/billing-address.ts": {
+      "filePath": "src/surfaces/checkout/preact/billing-address.ts",
+      "name": "UseBillingAddressGeneratedType",
+      "description": "Returns the proposed `billingAddress` applied to the checkout.",
+      "isPublicDocs": true,
+      "params": [],
+      "returns": {
+        "filePath": "src/surfaces/checkout/preact/billing-address.ts",
+        "description": "",
+        "name": "MailingAddress | undefined",
+        "value": "MailingAddress | undefined"
+      },
+      "value": "export function useBillingAddress<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>(): MailingAddress | undefined {\n  const billingAddress = useApi<Target>().billingAddress;\n\n  if (!billingAddress) {\n    throw new ScopeNotGrantedError(\n      'Using billing address requires having billing address permissions granted to your app.',\n    );\n  }\n\n  return useSubscription(billingAddress);\n}"
+    }
+  },
   "UseCustomerGeneratedType": {
     "src/surfaces/checkout/preact/buyer-identity.ts": {
       "filePath": "src/surfaces/checkout/preact/buyer-identity.ts",
@@ -166346,6 +166280,63 @@
         "value": "Partial<Settings extends ExtensionSettings>"
       },
       "value": "export function useSettings<\n  Settings extends ExtensionSettings,\n>(): Partial<Settings> {\n  const settings = useSubscription(useApi().settings);\n\n  return settings as Settings;\n}"
+    }
+  },
+  "UseShippingAddressGeneratedType": {
+    "src/surfaces/checkout/preact/shipping-address.ts": {
+      "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
+      "name": "UseShippingAddressGeneratedType",
+      "description": "Returns the proposed `shippingAddress` applied to the checkout.",
+      "isPublicDocs": true,
+      "params": [],
+      "returns": {
+        "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
+        "description": "",
+        "name": "ShippingAddress | undefined",
+        "value": "ShippingAddress | undefined"
+      },
+      "value": "export function useShippingAddress<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>(): ShippingAddress | undefined {\n  const shippingAddress = useApi<Target>().shippingAddress;\n\n  if (!shippingAddress) {\n    throw new ScopeNotGrantedError(\n      'Using shipping address requires having shipping address permissions granted to your app.',\n    );\n  }\n\n  return useSubscription(shippingAddress);\n}"
+    }
+  },
+  "UseApplyShippingAddressChangeGeneratedType": {
+    "src/surfaces/checkout/preact/shipping-address.ts": {
+      "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
+      "name": "UseApplyShippingAddressChangeGeneratedType",
+      "description": "Returns a function to mutate the `shippingAddress` property of checkout.",
+      "isPublicDocs": true,
+      "params": [],
+      "returns": {
+        "filePath": "src/surfaces/checkout/preact/shipping-address.ts",
+        "description": "",
+        "name": "(change: ShippingAddressChange) => Promise<ShippingAddressChangeResult> | undefined",
+        "value": "(change: ShippingAddressChange) => Promise<ShippingAddressChangeResult> | undefined"
+      },
+      "value": "export function useApplyShippingAddressChange<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>():\n  | ((change: ShippingAddressChange) => Promise<ShippingAddressChangeResult>)\n  | undefined {\n  const api = useApi<Target>();\n\n  if ('applyShippingAddressChange' in api) {\n    return api.applyShippingAddressChange;\n  }\n\n  throw new ExtensionHasNoMethodError(\n    'applyShippingAddressChange',\n    api.extension.target,\n  );\n}"
+    }
+  },
+  "ShippingAddressChange": {
+    "src/surfaces/checkout/api/checkout/checkout.ts": {
+      "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ShippingAddressChange",
+      "value": "ShippingAddressUpdateChange",
+      "description": "The input for `applyShippingAddressChange()`. Currently only supports `ShippingAddressUpdateChange` (with `type: 'updateShippingAddress'`).",
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "address",
+          "value": "Partial<ShippingAddress>",
+          "description": "Fields to update in the shipping address. You only need to provide values for the fields you want to update. Any fields you don't list keep their current values."
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'updateShippingAddress'",
+          "description": "Identifies this as a shipping address update. This is the only supported change type for `applyShippingAddressChange()`."
+        }
+      ]
     }
   },
   "UseShippingOptionTargetGeneratedType": {
