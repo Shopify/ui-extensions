@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2026.4.3
+
+### Patch Changes
+
+- [#4275](https://github.com/Shopify/ui-extensions/pull/4275) [`e6646bb`](https://github.com/Shopify/ui-extensions/commit/e6646bb88f4bc0f8f213df052f7ba449fc3f567f) Thanks [@owenhuang88](https://github.com/owenhuang88)! - Add purchaseType and recurringCycleLimit subscribable fields to the DiscountsApi for discount function settings extensions.
+
+- [#4395](https://github.com/Shopify/ui-extensions/pull/4395) [`f1b3896`](https://github.com/Shopify/ui-extensions/commit/f1b389621bda7a569e564df344f2074f7e9feb2a) Thanks [@justinhenricks](https://github.com/justinhenricks)! - The `label` prop on the checkout and customer-account `s-checkbox` component now accepts a label as a slot in addition to a plain string, label slots can include only plain text and s-links.
+
+- [#4481](https://github.com/Shopify/ui-extensions/pull/4481) [`bdb667a`](https://github.com/Shopify/ui-extensions/commit/bdb667ad8b71bc2b406c8faaf57f1d49cc5327bd) Thanks [@justinhenricks](https://github.com/justinhenricks)! - Add `textAlign` prop to the checkout `Paragraph` component, supporting `'start'`, `'end'`, `'center'`, and `'auto'` values.
+
 ## 2026.4.2
 
 ### Patch Changes
