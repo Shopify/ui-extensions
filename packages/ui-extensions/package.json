@@ -158,7 +158,6 @@
   "files": [
     "build",
     "src",
-    "!*.doc.ts",
     "index.*",
     "README.md"
   ],
