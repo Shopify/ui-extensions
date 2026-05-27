@@ -1,4 +1,5 @@
-import type {Session} from '../../types/session';
+import type {ReadonlySignalLike} from '../../../../shared';
+import type {Session, StaffMember} from '../../types/session';
 
 /**
  * The `SessionApi` object provides session details and authentication methods.
@@ -9,6 +10,10 @@ export interface SessionApiContent {
    * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.
    */
   currentSession: Session;
+  /**
+   * Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in.
+   */
+  staffMember: ReadonlySignalLike<StaffMember | undefined>;
   /**
    * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.
    */
