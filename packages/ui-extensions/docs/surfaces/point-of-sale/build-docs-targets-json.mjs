@@ -1,5 +1,5 @@
-/* eslint-env node */
 /* eslint-disable no-console */
+/* eslint-env node */
 import fs from 'fs';
 import path from 'path';
 import {fileURLToPath} from 'url';
@@ -7,15 +7,6 @@ import {splitByTopLevelComma} from '../../shared/build-docs-type-resolver.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-
-const EXTENSIONS_API_VERSION = process.argv[2];
-
-if (!EXTENSIONS_API_VERSION) {
-  console.error('Error: API_VERSION is required.');
-  console.error('Usage: node build-docs-targets-json.mjs <API_VERSION>');
-  console.error('Example: node build-docs-targets-json.mjs 2024-01');
-  process.exit(1);
-}
 
 // All POS components will be populated from StandardComponents.ts
 let allComponents = [];
@@ -463,6 +454,29 @@ function createReverseMapping(targetsJson) {
   return result;
 }
 
+// Find the generated_docs_data_v2.json file to determine output location
+function findGeneratedDocsPath() {
+  const generatedDir = path.join(__dirname, 'generated');
+
+  function findFile(dir) {
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+      const fullPath = path.join(dir, file);
+      const stat = fs.statSync(fullPath);
+      if (stat.isDirectory()) {
+        const result = findFile(fullPath);
+        if (result) return result;
+      } else if (file === 'generated_docs_data_v2.json') {
+        return path.dirname(fullPath);
+      }
+    }
+    return null;
+  }
+
+  const docsPath = findFile(generatedDir);
+  return docsPath ?? generatedDir;
+}
+
 // Generate the JSON
 const targetsJson = parseTargetsFile();
 
@@ -470,13 +484,22 @@ const targetsJson = parseTargetsFile();
 const extendedJson = createReverseMapping(targetsJson);
 
 // Write to output file
-const outputPath = path.join(
-  __dirname,
-  `generated/pos_ui_extensions/${EXTENSIONS_API_VERSION}/targets.json`,
-);
+const outputPath = path.join(findGeneratedDocsPath(), 'targets.json');
 const outputDir = path.dirname(outputPath);
 if (!fs.existsSync(outputDir)) {
   fs.mkdirSync(outputDir, {recursive: true});
 }
 fs.writeFileSync(outputPath, JSON.stringify(extendedJson, null, 2));
-console.log('✅ Generated targets.json at:', outputPath);
+
+console.log('✅ Generated extended targets JSON at:', outputPath);
+console.log('\n📋 Parsed component types:');
+console.log(
+  '  SmartGridComponents, ActionComponents, ReceiptComponents, BlockComponents, BasicComponents',
+);
+console.log('\n📋 Sample - First target:');
+const firstTarget = Object.keys(targetsJson)[0];
+console.log(JSON.stringify({[firstTarget]: targetsJson[firstTarget]}, null, 2));
+console.log('\n📋 Sample - API reverse mapping:');
+console.log(JSON.stringify({StandardApi: extendedJson.StandardApi}, null, 2));
+console.log('\n📋 Sample - Component reverse mapping:');
+console.log(JSON.stringify({Tile: extendedJson.Tile}, null, 2));

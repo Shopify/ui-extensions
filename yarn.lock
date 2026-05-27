@@ -1916,9 +1916,10 @@
     pkg-dir "^5.0.0"
     pluralize "^8.0.0"
 
-"@shopify/generate-docs@https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.1.0.tgz":
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.1.0.tgz#a4775ea3930f4f014a0ccf31ddfdc056b4f8c236"
+"@shopify/generate-docs@1.2.2":
+  version "1.2.2"
+  resolved "https://registry.npmjs.org/@shopify/generate-docs/-/generate-docs-1.2.2.tgz#208908cadbbfecc4f81614d78b6b6972bb929512"
+  integrity sha512-sXB76lHHx0CbRPrP5vABB9HL2ddxoQ6muCIzQDVM+TljUSztKFRUWEh57Gg9YefMlKh6soUMOMo06N6r51sBkA==
   dependencies:
     "@types/react" "^18.0.21"
     globby "^11.1.0"

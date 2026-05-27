@@ -2,8 +2,6 @@ API_VERSION=$1
 DOCS_PATH=docs/surfaces/checkout
 SRC_PATH=src/surfaces/checkout
 COMPONENTS_DIR=src/surfaces/checkout/components
-COMPONENTS_DEFINITIONS=src/surfaces/checkout/components/components.d.ts
-COMPONENTS_TEMP_TS=src/surfaces/checkout/components/components.ts
 
 fail_and_exit() {
   echo "** Failed to generate docs"
@@ -35,8 +33,11 @@ else
   echo "Building docs for '$API_VERSION' checkout UI extensions API."
 fi
 
-COMPILE_DOCS="yarn tsc --project $DOCS_PATH/tsconfig.docs.json --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$DOCS_PATH/reference ./$SRC_PATH --typesInput ./$SRC_PATH --output ./$DOCS_PATH/generated"
-COMPILE_STATIC_PAGES="yarn tsc $DOCS_PATH/staticPages/*.doc.ts --types react --moduleResolution node  --target esNext  --module CommonJS && yarn generate-docs --isLandingPage --input ./$DOCS_PATH/staticPages --output ./$DOCS_PATH/generated"
+# Wipe the generated directory so stale files from previous runs don't linger.
+echo "Cleaning ./$DOCS_PATH/generated..."
+rm -rf ./$DOCS_PATH/generated
+
+COMPILE_DOCS="yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$SRC_PATH --output ./$DOCS_PATH/generated"
 
 # Copy all .d.ts files in components directory to .ts files so they can be picked up by the generate-docs tool
 echo "Copying .d.ts files to temporary .ts files..."
@@ -56,24 +57,18 @@ done
 
 if echo "$PWD" | grep -q '\checkout-web'; then
   # We are generating docs from the private package, which does not have other surfaces aside from checkout
-  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORIES
+  eval $COMPILE_DOCS
   build_exit=$?
 else
   # Other surfaces may have duplicate types that cause issues with documentation generation,
   # so we erase their contents and replace them afterwards
   echo "export {}" > src/surfaces/customer-account.ts
   echo "export {}" > src/surfaces/admin.ts
-  eval $COMPILE_DOCS && eval $COMPILE_STATIC_PAGES && eval $COMPILE_CATEGORIES
+  eval $COMPILE_DOCS
   build_exit=$?
   git checkout HEAD -- src/surfaces/customer-account.ts
   git checkout HEAD -- src/surfaces/admin.ts
 fi
-
-# TODO: get generate-docs to stop requiring JS files:
-# https://github.com/Shopify/generate-docs#important-note
-find ./ -name '*.doc*.js' -exec rm -r {} \;
-find ./src/docs/shared -name '*.js' -exec rm -r {} \;
-find ./src/docs/shared/components -name '*.js' -exec rm -r {} \;
 
 # Remove all temporary .ts files that were created from .d.ts files
 echo "Removing temporary .ts files..."
@@ -89,46 +84,58 @@ fi
 
 # Make sure https://shopify.dev URLs are relative.
 # See https://github.com/Shopify/generate-docs/issues/181
-run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data.json
 run_sed 's/https:\/\/shopify.dev//gi' ./$DOCS_PATH/generated/generated_docs_data_v2.json
 sed_exit=$?
 if [ $sed_exit -ne 0 ]; then
   fail_and_exit $sed_exit
 fi
 
-# Generate targets.json
-echo "Generating targets.json..."
-node $DOCS_PATH/build-docs-targets-json.mjs $API_VERSION
+# Generate targets.json (extension targets + APIs + components mapping)
+node ./$DOCS_PATH/build-docs-targets-json.mjs
 targets_exit=$?
 if [ $targets_exit -ne 0 ]; then
-  echo "Warning: Failed to generate targets.json"
+  fail_and_exit $targets_exit
 fi
 
+echo ""
+echo "Generated docs at:"
+echo "  Checkout UI extensions: $PWD/$DOCS_PATH/generated"
+echo "  targets.json: $PWD/$DOCS_PATH/generated/targets.json"
+echo ""
 
 copy_generated_docs_to_shopify_dev() {
 # Copy the generated docs to shopify-dev
 if [ -d $SHOPIFY_DEV_PATH ]; then
-  mkdir -p $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+  SHOPIFY_DEV_DEST=$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
+  mkdir -p $SHOPIFY_DEV_DEST
+  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_DEST
 
   # Replace 'latest' with the exact API version in relative doc links
-  for file in generated_docs_data.json generated_docs_data_v2.json generated_static_pages.json; do
-    run_sed \
-      "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-      "$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION/$file"
-    sed_exit=$?
-    if [ $sed_exit -ne 0 ]; then
-      fail_and_exit $sed_exit
-    fi
-  done
+  run_sed \
+    "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
+    "$SHOPIFY_DEV_DEST/generated_docs_data_v2.json"
+  sed_exit=$?
+  if [ $sed_exit -ne 0 ]; then
+    fail_and_exit $sed_exit
+  fi
 
-  rsync -a ./$DOCS_PATH/screenshots/ $SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/checkout-ui-extensions/$API_VERSION
   echo "Docs: https://shopify-dev.shop.dev/docs/api/checkout-ui-extensions"
 else
   echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
 fi
 }
 
-SHOPIFY_DEV_PATH="$HOME/world/trees/root/src"
-copy_generated_docs_to_shopify_dev
+# Try candidate paths for shopify-dev / world repo in order of preference
+for SHOPIFY_DEV_PATH in \
+  "$HOME/world/trees/root/src" \
+  "../../../shopify-dev" \
+  "$HOME/src/github.com/Shopify/shopify-dev"; do
+  if [ -d "$SHOPIFY_DEV_PATH" ]; then
+    copy_generated_docs_to_shopify_dev
+    break
+  fi
+done
 
+if [ ! -d "$SHOPIFY_DEV_PATH" ]; then
+  echo "Not copying docs to shopify-dev because no repo was found."
+fi
