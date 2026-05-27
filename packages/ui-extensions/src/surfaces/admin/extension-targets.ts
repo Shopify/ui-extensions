@@ -259,6 +259,14 @@ export interface ExtensionTargets {
   >;
 
   /**
+   * An action target that appears in the **More actions** menu on the abandoned checkout index page. Use this to create workflows for cart recovery, bulk customer engagement, or checkout analysis across multiple abandoned carts.
+   */
+  'admin.abandoned-checkout-index.action.render': RenderExtension<
+    ActionExtensionApi<'admin.abandoned-checkout-index.action.render'>,
+    ActionExtensionComponents
+  >;
+
+  /**
    * An action target that appears in the **More actions** menu on the product variant details page. Use this to create workflows for variant management, inventory operations, or data synchronization.
    */
   'admin.product-variant-details.action.render': RenderExtension<
@@ -542,6 +550,14 @@ export interface ExtensionTargets {
    */
   'admin.abandoned-checkout-details.action.should-render': RunnableExtension<
     ShouldRenderApi<'admin.abandoned-checkout-details.action.should-render'>,
+    ShouldRenderOutput
+  >;
+
+  /**
+   * A non-rendering target that controls whether the abandoned checkout index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.
+   */
+  'admin.abandoned-checkout-index.action.should-render': RunnableExtension<
+    ShouldRenderApi<'admin.abandoned-checkout-index.action.should-render'>,
     ShouldRenderOutput
   >;
 

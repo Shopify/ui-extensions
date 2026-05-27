@@ -352,6 +352,7 @@ const adminMockFactories: AdminMockFactory = {
   'admin.collection-details.action.render': createMockActionApi,
   'admin.collection-index.action.render': createMockActionApi,
   'admin.abandoned-checkout-details.action.render': createMockActionApi,
+  'admin.abandoned-checkout-index.action.render': createMockActionApi,
   'admin.product-variant-details.action.render': createMockActionApi,
   'admin.draft-order-details.action.render': createMockActionApi,
   'admin.draft-order-index.action.render': createMockActionApi,
@@ -405,6 +406,7 @@ const adminMockFactories: AdminMockFactory = {
   'admin.collection-index.action.should-render': createShouldRenderMock,
   'admin.abandoned-checkout-details.action.should-render':
     createShouldRenderMock,
+  'admin.abandoned-checkout-index.action.should-render': createShouldRenderMock,
   'admin.product-variant-details.action.should-render': createShouldRenderMock,
   'admin.draft-order-details.action.should-render': createShouldRenderMock,
   'admin.draft-order-index.action.should-render': createShouldRenderMock,
