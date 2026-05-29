@@ -330,9 +330,58 @@ function getNestedApis(apiName) {
   }
 }
 
-// No composite API decomposition — StandardApi, CheckoutApi, and OrderConfirmationApi
-// are plain interfaces and are rendered as-is in the targets.json.
-const COMPOSITE_API_DECOMPOSITION = {};
+// APIs that are composites — list their documented constituent APIs instead of themselves
+const COMPOSITE_API_DECOMPOSITION = {
+  StandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'BuyerIdentityApi',
+    'BuyerJourneyApi',
+    'CartInstructionsApi',
+    'CartLinesApi',
+    'CheckoutTokenApi',
+    'CostApi',
+    'CustomerPrivacyApi',
+    'DeliveryApi',
+    'DiscountsApi',
+    'ExtensionApi',
+    'GiftCardsApi',
+    'LocalizationApi',
+    'LocalizedFieldsApi',
+    'MetafieldsApi',
+    'NoteApi',
+    'PaymentsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
+  CheckoutApi: [
+    'AddressesApi',
+    'AttributesApi',
+    'CartLinesApi',
+    'DiscountsApi',
+    'GiftCardsApi',
+    'MetafieldsApi',
+    'NoteApi',
+  ],
+  AddressAutocompleteStandardApi: [
+    'AddressesApi',
+    'AnalyticsApi',
+    'AttributesApi',
+    'CheckoutTokenApi',
+    'ExtensionApi',
+    'LocalizationApi',
+    'MetafieldsApi',
+    'SessionTokenApi',
+    'SettingsApi',
+    'ShopApi',
+    'StorageApi',
+    'StorefrontApi',
+  ],
+};
 
 function parseApis(apiString) {
   const apisSet = new Set();
