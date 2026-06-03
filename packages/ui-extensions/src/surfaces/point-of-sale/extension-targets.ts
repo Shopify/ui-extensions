@@ -1,9 +1,12 @@
 import {BaseOutput} from './event/output';
 import {
+  // eslint-disable-next-line import/no-deprecated
   CashTrackingSessionStartData,
+  // eslint-disable-next-line import/no-deprecated
   CashTrackingSessionCompleteData,
 } from './event/data/CashTrackingSessionData';
 import {TransactionCompleteData} from './event/data/TransactionCompleteData';
+// eslint-disable-next-line import/no-deprecated
 import {CartUpdateEventData} from './event/data/CartUpdateEventData';
 
 import type {RenderExtension, RunnableExtension} from '../../extension';
@@ -54,6 +57,7 @@ export interface EventExtensionTargets {
    * @private
    */
   'pos.cash-tracking-session-start.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CashTrackingSessionStartData,
   ) => Promise<BaseOutput>;
   /**
@@ -65,6 +69,7 @@ export interface EventExtensionTargets {
    * @private
    */
   'pos.cash-tracking-session-complete.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CashTrackingSessionCompleteData,
   ) => Promise<BaseOutput>;
   /**
@@ -75,6 +80,7 @@ export interface EventExtensionTargets {
    * @private
    */
   'pos.cart-update.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CartUpdateEventData,
   ) => Promise<BaseOutput>;
 }

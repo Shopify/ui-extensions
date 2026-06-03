@@ -50,6 +50,3 @@ export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {
     closingTime: string;
   };
 }
-
-
-
