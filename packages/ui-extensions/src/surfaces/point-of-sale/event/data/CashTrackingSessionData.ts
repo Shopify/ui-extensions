@@ -3,7 +3,7 @@ import {BaseApi} from './BaseApi';
 
 /**
  * The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.
- * @deprecated Deprecated as of `2025-10`. Use `CashTrackingSessionStartEvent` on the
+ * @deprecated Deprecated as of version `2026-07`. Use `CashTrackingSessionStartEvent` on the
  * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
  * `shopify.addEventListener('cashtrackingsessionstart', callback)` instead.
  * @private
@@ -26,7 +26,7 @@ export interface CashTrackingSessionStartData extends BaseData, BaseApi {
 
 /**
  * The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.
- * @deprecated Deprecated as of `2025-10`. Use `CashTrackingSessionCompleteEvent` on the
+ * @deprecated Deprecated as of version `2026-07`. Use `CashTrackingSessionCompleteEvent` on the
  * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
  * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
  * @private

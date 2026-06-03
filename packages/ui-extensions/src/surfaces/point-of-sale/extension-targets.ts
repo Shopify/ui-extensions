@@ -40,7 +40,7 @@ export interface EventExtensionTargets {
   /**
    * Fires when a transaction completes successfully.
    *
-   * @deprecated Deprecated as of `2025-10`. Use the
+   * @deprecated Deprecated as of version `2026-07`. Use the
    * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
    * `shopify.addEventListener('transactioncomplete', callback)` instead.
    * @private
@@ -51,7 +51,7 @@ export interface EventExtensionTargets {
   /**
    * Fires when a cash tracking session starts.
    *
-   * @deprecated Deprecated as of `2025-10`. Use the
+   * @deprecated Deprecated as of version `2026-07`. Use the
    * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
    * `shopify.addEventListener('cashtrackingsessionstart', callback)` instead.
    * @private
@@ -63,7 +63,7 @@ export interface EventExtensionTargets {
   /**
    * Fires when a cash tracking session completes.
    *
-   * @deprecated Deprecated as of `2025-10`. Use the
+   * @deprecated Deprecated as of version `2026-07`. Use the
    * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
    * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
    * @private
@@ -75,8 +75,8 @@ export interface EventExtensionTargets {
   /**
    * Fires when the cart is updated.
    *
-   * @deprecated Deprecated as of `2025-10`. Use `api.cart.current.subscribe()` on the
-   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data).
+   * @deprecated Deprecated as of version `2026-07`. Use `api.cart.current.subscribe()` on the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) instead.
    * @private
    */
   'pos.cart-update.event.observe': (
