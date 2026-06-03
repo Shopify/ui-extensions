@@ -61,6 +61,10 @@ interface BaseTransactionCompleteEvent extends Event {
    * The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.
    */
   readonly tipAmount?: Money;
+  /**
+   * The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.
+   */
+  readonly cashRoundingAdjustment?: Money;
 }
 
 /**

@@ -28,6 +28,7 @@ function copyComponentDefinitions({
   if (!existsSync(buildPath)) {
     mkdirSync(buildPath, {recursive: true});
   }
+  mkdirSync(componentsBuildPath, {recursive: true});
 
   const exists = componentsSrcPaths.every((path) => existsSync(path));
 

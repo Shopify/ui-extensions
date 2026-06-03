@@ -36,14 +36,10 @@ const shopifyDevDBPath = path.join(
   'areas/platforms/shopify-dev/db/data/docs/templated_apis',
 );
 
-const generatedDocsDataFile = 'generated_docs_data.json';
 const generatedDocsDataV2File = 'generated_docs_data_v2.json';
-const generatedStaticPagesFile = 'generated_static_pages.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
-
-const tsconfig = 'tsconfig.docs.json';
 
 const maxBuffer = 50 * 1024 * 1024;
 
@@ -72,24 +68,6 @@ const cleanupTempFiles = async (tempFiles) => {
   );
 };
 
-const cleanupGeneratedJsFiles = async (directories) => {
-  await Promise.all(
-    directories.map(async (dir) => {
-      if (!existsSync(dir)) return;
-      const files = await fs.readdir(dir, {recursive: true});
-      await Promise.all(
-        files
-          .filter((file) => file.endsWith('.js'))
-          .map((file) => {
-            const jsPath = path.join(dir, file);
-            const tsPath = path.join(dir, file.replace(/\.js$/, '.ts'));
-            return existsSync(tsPath) ? fs.rm(jsPath) : Promise.resolve();
-          }),
-      );
-    }),
-  );
-};
-
 const generateExtensionsDocs = async () => {
   console.log(
     `Building Customer Account UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
@@ -102,82 +80,16 @@ const generateExtensionsDocs = async () => {
   }
 
   const outputDir = `${docsGeneratedRelativePath}/customer_account_ui_extensions/${EXTENSIONS_API_VERSION}`;
-  const tempRefOutputDir = `${outputDir}/_temp_ref`;
-  const tempCompOutputDir = `${outputDir}/_temp_comp`;
 
   await fs.mkdir(outputDir, {recursive: true});
-  await fs.mkdir(tempRefOutputDir, {recursive: true});
-  await fs.mkdir(tempCompOutputDir, {recursive: true});
 
-  // Single tsc step — tsconfig.docs.json already covers all .doc.ts files
-  // (reference, staticPages, categories, and component docs)
-  console.log('Compiling TypeScript...');
-  execSync(
-    `yarn tsc --project ${docsRelativePath}/${tsconfig} --moduleResolution node --target esNext --module CommonJS --skipLibCheck`,
-    {stdio: 'pipe'},
-  );
-
-  // Split generate-docs into independent parallel commands.
-  // Internally, generate-docs creates a TypeScript program for every
-  // --typesInput directory × every --input directory. Splitting reference
-  // docs from component docs avoids redundant type parsing:
-  //   - Reference docs (APIs/targets) only need customer-account types
-  //   - Component docs only need checkout component types
-  //     (customer-account types are included automatically as the base path)
-  console.log('Generating docs in parallel...');
   const overridePath = `./${docsRelativePath}/typeOverride.json`;
-  await Promise.all([
-    execAsync(
-      `yarn generate-docs --overridePath ${overridePath} --input ./${docsRelativePath}/reference --typesInput ./${srcRelativePath} --output ./${tempRefOutputDir}`,
-      {maxBuffer},
-    ),
-    execAsync(
-      `yarn generate-docs --overridePath ${overridePath} --input ./${srcRelativePath} --typesInput ./${checkoutComponentsRelativePath} --output ./${tempCompOutputDir}`,
-      {maxBuffer},
-    ),
-    execAsync(
-      `yarn generate-docs --isLandingPage --input ./${docsRelativePath}/staticPages --output ./${outputDir}`,
-      {maxBuffer},
-    ),
-    execAsync(
-      `yarn generate-docs --isCategoryPage --input ./${docsRelativePath}/categories --output ./${outputDir}`,
-      {maxBuffer},
-    ),
-  ]);
-
-  // Merge the two generated_docs_data_v2.json files (v2 dict format)
-  const [refData, compData] = await Promise.all([
-    fs
-      .readFile(path.join(tempRefOutputDir, generatedDocsDataV2File), 'utf8')
-      .then(JSON.parse),
-    fs
-      .readFile(path.join(tempCompOutputDir, generatedDocsDataV2File), 'utf8')
-      .then(JSON.parse),
-  ]);
-  const mergedData = {...refData, ...compData};
-  const mergedDataJson = JSON.stringify(mergedData, null, 2);
-  await fs.writeFile(
-    path.join(outputDir, generatedDocsDataV2File),
-    mergedDataJson,
+  await execAsync(
+    `yarn generate-docs --overridePath ${overridePath} --input ./${srcRelativePath} ./${checkoutComponentsRelativePath} --output ./${outputDir}`,
+    {maxBuffer},
   );
-
-  // Clean up temp directories
-  await Promise.all([
-    fs.rm(tempRefOutputDir, {recursive: true}),
-    fs.rm(tempCompOutputDir, {recursive: true}),
-  ]);
-
-  // Clean up .js files only in directories where tsc output lands
-  await cleanupGeneratedJsFiles([
-    path.join(rootPath, docsRelativePath),
-    path.join(rootPath, srcRelativePath),
-    path.join(rootPath, 'src/docs/shared'),
-  ]);
 
   const generatedFiles = [path.join(outputDir, generatedDocsDataV2File)];
-  if (generatedStaticPagesFile) {
-    generatedFiles.push(path.join(outputDir, generatedStaticPagesFile));
-  }
 
   // Make sure https://shopify.dev URLs are relative so they work in Spin
   await replaceFileContent({
@@ -192,16 +104,6 @@ const generateExtensionsDocs = async () => {
     searchValue: '/docs/api//unstable/',
     replaceValue: `/docs/api/customer-account-ui-extensions/${EXTENSIONS_API_VERSION}`,
   });
-
-  await fs.cp(
-    path.join(docsPath, 'screenshots'),
-    path.join(
-      shopifyDevPath,
-      'areas/platforms/shopify-dev/content/assets/images/templated-apis-screenshots/customer-account-ui-extensions',
-      EXTENSIONS_API_VERSION,
-    ),
-    {recursive: true},
-  );
 };
 
 let checkoutTempFiles = [];

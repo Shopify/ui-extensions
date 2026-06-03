@@ -23,6 +23,10 @@ extension.shopify.storage = createStorage({
 });
 ```
 
+## 🏠 App home mocks
+
+The `admin.app.home.render` target mock includes `shopify.toast`, `shopify.app`, `shopify.loading()`, `shopify.tools`, and `shopify.intents.request`.
+
 ## 🧭 App intent mocks
 
 The `admin.app.intent.render` target mock includes `shopify.intents.response.ok()`, `.error()`, and `.closed()`.

@@ -1,4 +1,4 @@
-import {CartApi} from '../cart-api/cart-api';
+import {ReadonlyCartApi} from '../cart-api/cart-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
 import {ExtensionApi} from '../extension-api/extension-api';
@@ -25,4 +25,4 @@ export type DataTargetApi<T> = {
   ConnectivityApi &
   DeviceApi &
   ProductSearchApi &
-  CartApi;
+  ReadonlyCartApi;

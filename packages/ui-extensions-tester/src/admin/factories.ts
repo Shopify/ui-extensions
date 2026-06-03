@@ -8,6 +8,8 @@ import type {
   Intents,
   ToastApi,
   AppApi,
+  LoadingApi,
+  Tools,
 } from '@shopify/ui-extensions/admin';
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
@@ -119,11 +121,34 @@ function createMockAppApi(): AppApi {
   };
 }
 
+function createMockLoadingApi(): LoadingApi {
+  return () => {};
+}
+
+function createMockToolsApi(): Tools {
+  return {
+    register: () => () => {},
+    unregister: () => {},
+    clear: () => {},
+  };
+}
+
 function createAppHomeMock<T extends ExtensionTarget>(target: T) {
+  const {invoke} = createMockStandardApi(target).intents;
+
   return {
     ...createMockStandardRenderingApi(target),
     toast: createMockToastApi(),
     app: createMockAppApi(),
+    loading: createMockLoadingApi(),
+    tools: createMockToolsApi(),
+    intents: {
+      invoke,
+      request: {
+        value: null,
+        subscribe: () => () => {},
+      },
+    },
   };
 }
 
@@ -327,6 +352,7 @@ const adminMockFactories: AdminMockFactory = {
   'admin.collection-details.action.render': createMockActionApi,
   'admin.collection-index.action.render': createMockActionApi,
   'admin.abandoned-checkout-details.action.render': createMockActionApi,
+  'admin.abandoned-checkout-index.action.render': createMockActionApi,
   'admin.product-variant-details.action.render': createMockActionApi,
   'admin.draft-order-details.action.render': createMockActionApi,
   'admin.draft-order-index.action.render': createMockActionApi,
@@ -380,6 +406,7 @@ const adminMockFactories: AdminMockFactory = {
   'admin.collection-index.action.should-render': createShouldRenderMock,
   'admin.abandoned-checkout-details.action.should-render':
     createShouldRenderMock,
+  'admin.abandoned-checkout-index.action.should-render': createShouldRenderMock,
   'admin.product-variant-details.action.should-render': createShouldRenderMock,
   'admin.draft-order-details.action.should-render': createShouldRenderMock,
   'admin.draft-order-index.action.should-render': createShouldRenderMock,

@@ -1,4 +1,4 @@
-import {BaseElementPropsWithChildren, IdProps} from './shared';
+import {BaseElementPropsWithChildren, IdProps, SizeKeyword} from './shared';
 
 export interface PageProps extends IdProps {
   /**
@@ -10,6 +10,16 @@ export interface PageProps extends IdProps {
    * A secondary heading displayed below the main heading for additional context.
    */
   subheading?: string;
+
+  /**
+   * The inline size of the page.
+   *
+   * - `base`: Matches the narrow width used by native pages for simple workflows.
+   * - `large`: Uses the full width available to the main content area in customer accounts. Recommended for content-heavy pages or desktop-first experiences.
+   *
+   * @default 'base'
+   */
+  inlineSize?: Extract<SizeKeyword, 'base' | 'large'>;
 }
 
 export interface PageElementSlots {

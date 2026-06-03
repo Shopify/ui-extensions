@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.7.0-rc.5
+
+### Patch Changes
+
+- [#4454](https://github.com/Shopify/ui-extensions/pull/4454) [`be8c9e2`](https://github.com/Shopify/ui-extensions/commit/be8c9e206525a41f2544810a328d901e2cdcbb95) Thanks [@lsit](https://github.com/lsit)! - Add inlineSize to the customer account Page component
+
+## 2026.7.0-rc.4
+
+### Patch Changes
+
+- [#4442](https://github.com/Shopify/ui-extensions/pull/4442) [`060e669`](https://github.com/Shopify/ui-extensions/commit/060e669fb5ff34b30f7e8a8fb1b2696e038a4938) Thanks [@justinhenricks](https://github.com/justinhenricks)! - The `label` prop on the checkout and customer-account `s-checkbox` component now accepts a label as a slot in addition to a plain string, label slots can include only plain text and s-links.
+
 ## 2026.7.0-rc.3
 
 ### Patch Changes
