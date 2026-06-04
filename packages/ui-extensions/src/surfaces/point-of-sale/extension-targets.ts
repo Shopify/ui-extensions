@@ -1,9 +1,12 @@
 import {BaseOutput} from './event/output';
 import {
+  // eslint-disable-next-line import/no-deprecated
   CashTrackingSessionStartData,
+  // eslint-disable-next-line import/no-deprecated
   CashTrackingSessionCompleteData,
 } from './event/data/CashTrackingSessionData';
 import {TransactionCompleteData} from './event/data/TransactionCompleteData';
+// eslint-disable-next-line import/no-deprecated
 import {CartUpdateEventData} from './event/data/CartUpdateEventData';
 
 import type {RenderExtension, RunnableExtension} from '../../extension';
@@ -34,16 +37,50 @@ import type {TransactionCompleteWithReprintData} from './event/data';
  * @publicDocs
  */
 export interface EventExtensionTargets {
+  /**
+   * Fires when a transaction completes successfully.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
+   * `shopify.addEventListener('transactioncomplete', callback)` instead.
+   * @private
+   */
   'pos.transaction-complete.event.observe': (
     data: TransactionCompleteData,
   ) => Promise<BaseOutput>;
+  /**
+   * Fires when a cash tracking session starts.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
+   * `shopify.addEventListener('cashtrackingsessionstart', callback)` instead.
+   * @private
+   */
   'pos.cash-tracking-session-start.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CashTrackingSessionStartData,
   ) => Promise<BaseOutput>;
+  /**
+   * Fires when a cash tracking session completes.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
+   * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
+   * @private
+   */
   'pos.cash-tracking-session-complete.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CashTrackingSessionCompleteData,
   ) => Promise<BaseOutput>;
+  /**
+   * Fires when the cart is updated.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use `api.cart.current.subscribe()` on the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) instead.
+   * @private
+   */
   'pos.cart-update.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CartUpdateEventData,
   ) => Promise<BaseOutput>;
 }
