@@ -1645,7 +1645,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "icon",
-          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | ... 541 more ... | \"x-circle-filled\"",
+          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | \"adjust\" | \"affiliate\" | \"airplane\" | \"alert-bubble\" | \"alert-circle\" | \"alert-diamond\" | \"alert-location\" | \"alert-octagon\" | \"alert-octagon-filled\" | \"alert-triangle\" | \"alert-triangle-filled\" | \"app-extension\" | \"apps\" | \"archive\" | \"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-right\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-right\" | \"arrows-in-horizontal\" | \"arrows-out-horizontal\" | \"asterisk\" | \"attachment\" | \"automation\" | \"backspace\" | \"bag\" | \"bank\" | \"barcode\" | \"battery-low\" | \"bill\" | \"blank\" | \"blog\" | \"bolt\" | \"bolt-filled\" | \"book\" | \"book-open\" | \"bug\" | \"bullet\" | \"business-entity\" | \"button\" | \"button-press\" | \"calculator\" | \"calendar\" | \"calendar-check\" | \"calendar-compare\" | \"calendar-list\" | \"calendar-time\" | \"camera\" | \"camera-flip\" | \"caret-down\" | \"caret-left\" | \"caret-right\" | \"caret-up\" | \"cart\" | \"cart-abandoned\" | \"cart-discount\" | \"cart-down\" | \"cart-filled\" | \"cart-sale\" | \"cart-send\" | \"cart-up\" | \"cash-dollar\" | \"cash-euro\" | \"cash-pound\" | \"cash-rupee\" | \"cash-yen\" | \"catalog-product\" | \"categories\" | \"channels\" | \"chart-cohort\" | \"chart-donut\" | \"chart-funnel\" | \"chart-histogram-first\" | \"chart-histogram-first-last\" | \"chart-histogram-flat\" | \"chart-histogram-full\" | \"chart-histogram-growth\" | \"chart-histogram-last\" | \"chart-histogram-second-last\" | \"chart-horizontal\" | \"chart-line\" | \"chart-popular\" | \"chart-stacked\" | \"chart-vertical\" | \"chat\" | \"chat-new\" | \"chat-referral\" | \"check\" | \"check-circle\" | \"check-circle-filled\" | \"checkbox\" | \"chevron-down\" | \"chevron-down-circle\" | \"chevron-left\" | \"chevron-left-circle\" | \"chevron-right\" | \"chevron-right-circle\" | \"chevron-up\" | \"chevron-up-circle\" | \"circle\" | \"circle-dashed\" | \"clipboard\" | \"clipboard-check\" | \"clipboard-checklist\" | \"clock\" | \"clock-list\" | \"clock-revert\" | \"code-add\" | \"collection-featured\" | \"collection-list\" | \"collection-reference\" | \"color-none\" | \"compass\" | \"compose\" | \"confetti\" | \"connect\" | \"content\" | \"contract\" | \"corner-pill\" | \"corner-round\" | \"corner-square\" | \"credit-card\" | \"credit-card-cancel\" | \"credit-card-percent\" | \"credit-card-reader\" | \"credit-card-reader-chip\" | \"credit-card-reader-tap\" | \"credit-card-secure\" | \"credit-card-tap-chip\" | \"crop\" | \"currency-convert\" | \"cursor\" | \"cursor-banner\" | \"cursor-option\" | \"data-presentation\" | \"data-table\" | \"database\" | \"database-add\" | \"database-connect\" | \"delete\" | \"delivered\" | \"delivery\" | \"desktop\" | \"disabled\" | \"disabled-filled\" | \"discount\" | \"discount-add\" | \"discount-automatic\" | \"discount-code\" | \"discount-remove\" | \"dns-settings\" | \"dock-floating\" | \"dock-side\" | \"domain\" | \"domain-landing-page\" | \"domain-new\" | \"domain-redirect\" | \"download\" | \"drag-drop\" | \"drag-handle\" | \"drawer\" | \"duplicate\" | \"email\" | \"email-follow-up\" | \"email-newsletter\" | \"empty\" | \"enabled\" | \"enter\" | \"envelope\" | \"envelope-soft-pack\" | \"eraser\" | \"exchange\" | \"exit\" | \"export\" | \"external\" | \"eye-check-mark\" | \"eye-dropper\" | \"eye-dropper-list\" | \"eye-first\" | \"eyeglasses\" | \"fav\" | \"favicon\" | \"file\" | \"file-list\" | \"filter\" | \"filter-active\" | \"flag\" | \"flip-horizontal\" | \"flip-vertical\" | \"flower\" | \"folder\" | \"folder-add\" | \"folder-down\" | \"folder-remove\" | \"folder-up\" | \"food\" | \"foreground\" | \"forklift\" | \"forms\" | \"games\" | \"gauge\" | \"geolocation\" | \"gift\" | \"gift-card\" | \"git-branch\" | \"git-commit\" | \"git-repository\" | \"globe\" | \"globe-asia\" | \"globe-europe\" | \"globe-lines\" | \"globe-list\" | \"graduation-hat\" | \"grid\" | \"hashtag\" | \"hashtag-decimal\" | \"hashtag-list\" | \"heart\" | \"hide\" | \"hide-filled\" | \"home\" | \"home-filled\" | \"icons\" | \"identity-card\" | \"image\" | \"image-add\" | \"image-alt\" | \"image-explore\" | \"image-magic\" | \"image-none\" | \"image-with-text-overlay\" | \"images\" | \"import\" | \"in-progress\" | \"incentive\" | \"incoming\" | \"info-filled\" | \"inheritance\" | \"inventory\" | \"inventory-edit\" | \"inventory-list\" | \"inventory-transfer\" | \"inventory-updated\" | \"iq\" | \"key\" | \"keyboard\" | \"keyboard-filled\" | \"keyboard-hide\" | \"keypad\" | \"label-printer\" | \"language\" | \"language-translate\" | \"layout-block\" | \"layout-buy-button\" | \"layout-buy-button-horizontal\" | \"layout-buy-button-vertical\" | \"layout-column-1\" | \"layout-columns-2\" | \"layout-columns-3\" | \"layout-footer\" | \"layout-header\" | \"layout-logo-block\" | \"layout-popup\" | \"layout-rows-2\" | \"layout-section\" | \"layout-sidebar-left\" | \"layout-sidebar-right\" | \"lightbulb\" | \"link-list\" | \"list-bulleted\" | \"list-bulleted-filled\" | \"list-numbered\" | \"live\" | \"live-critical\" | \"live-none\" | \"location\" | \"location-none\" | \"lock\" | \"map\" | \"markets\" | \"markets-euro\" | \"markets-rupee\" | \"markets-yen\" | \"maximize\" | \"measurement-size\" | \"measurement-size-list\" | \"measurement-volume\" | \"measurement-volume-list\" | \"measurement-weight\" | \"measurement-weight-list\" | \"media-receiver\" | \"megaphone\" | \"mention\" | \"menu\" | \"menu-filled\" | \"menu-horizontal\" | \"menu-vertical\" | \"merge\" | \"metafields\" | \"metaobject\" | \"metaobject-list\" | \"metaobject-reference\" | \"microphone\" | \"microphone-muted\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"mobile\" | \"money-none\" | \"money-split\" | \"moon\" | \"nature\" | \"note\" | \"note-add\" | \"notification\" | \"number-one\" | \"order-batches\" | \"order-draft\" | \"order-filled\" | \"order-first\" | \"order-fulfilled\" | \"order-repeat\" | \"order-unfulfilled\" | \"orders-status\" | \"organization\" | \"outdent\" | \"outgoing\" | \"package\" | \"package-cancel\" | \"package-fulfilled\" | \"package-on-hold\" | \"package-reassign\" | \"package-returned\" | \"page\" | \"page-add\" | \"page-attachment\" | \"page-clock\" | \"page-down\" | \"page-heart\" | \"page-list\" | \"page-reference\" | \"page-remove\" | \"page-report\" | \"page-up\" | \"pagination-end\" | \"pagination-start\" | \"paint-brush-flat\" | \"paint-brush-round\" | \"paper-check\" | \"partially-complete\" | \"passkey\" | \"paste\" | \"pause-circle\" | \"payment\" | \"payment-capture\" | \"payout\" | \"payout-dollar\" | \"payout-euro\" | \"payout-pound\" | \"payout-rupee\" | \"payout-yen\" | \"person\" | \"person-add\" | \"person-exit\" | \"person-filled\" | \"person-list\" | \"person-lock\" | \"person-remove\" | \"person-segment\" | \"personalized-text\" | \"phablet\" | \"phone\" | \"phone-down\" | \"phone-down-filled\" | \"phone-in\" | \"phone-out\" | \"pin\" | \"pin-remove\" | \"plan\" | \"play\" | \"play-circle\" | \"plus\" | \"plus-circle\" | \"plus-circle-down\" | \"plus-circle-filled\" | \"plus-circle-up\" | \"point-of-sale\" | \"point-of-sale-register\" | \"price-list\" | \"print\" | \"product-add\" | \"product-cost\" | \"product-filled\" | \"product-list\" | \"product-reference\" | \"product-remove\" | \"product-return\" | \"product-unavailable\" | \"profile\" | \"profile-filled\" | \"question-circle\" | \"question-circle-filled\" | \"radio-control\" | \"receipt\" | \"receipt-dollar\" | \"receipt-euro\" | \"receipt-folded\" | \"receipt-paid\" | \"receipt-pound\" | \"receipt-refund\" | \"receipt-rupee\" | \"receipt-yen\" | \"receivables\" | \"redo\" | \"referral-code\" | \"refresh\" | \"remove-background\" | \"reorder\" | \"replay\" | \"reset\" | \"return\" | \"reward\" | \"rocket\" | \"rotate-left\" | \"rotate-right\" | \"sandbox\" | \"save\" | \"savings\" | \"scan-qr-code\" | \"search-add\" | \"search-list\" | \"search-recent\" | \"search-resource\" | \"send\" | \"settings\" | \"share\" | \"shield-check-mark\" | \"shield-none\" | \"shield-pending\" | \"shield-person\" | \"shipping-label\" | \"shipping-label-cancel\" | \"shopcodes\" | \"slideshow\" | \"smiley-happy\" | \"smiley-joy\" | \"smiley-neutral\" | \"smiley-sad\" | \"social-ad\" | \"social-post\" | \"sort\" | \"sort-ascending\" | \"sort-descending\" | \"sound\" | \"sports\" | \"star\" | \"star-circle\" | \"star-filled\" | \"star-half\" | \"star-list\" | \"status\" | \"status-active\" | \"stop-circle\" | \"store\" | \"store-import\" | \"store-managed\" | \"store-online\" | \"sun\" | \"table\" | \"table-masonry\" | \"tablet\" | \"target\" | \"tax\" | \"team\" | \"text\" | \"text-align-center\" | \"text-align-left\" | \"text-align-right\" | \"text-block\" | \"text-bold\" | \"text-color\" | \"text-font\" | \"text-font-list\" | \"text-grammar\" | \"text-in-columns\" | \"text-in-rows\" | \"text-indent\" | \"text-indent-remove\" | \"text-italic\" | \"text-quote\" | \"text-title\" | \"text-underline\" | \"text-with-image\" | \"theme\" | \"theme-edit\" | \"theme-store\" | \"theme-template\" | \"three-d-environment\" | \"thumbs-down\" | \"thumbs-up\" | \"tip-jar\" | \"toggle-off\" | \"toggle-on\" | \"transaction\" | \"transaction-fee-add\" | \"transaction-fee-dollar\" | \"transaction-fee-euro\" | \"transaction-fee-pound\" | \"transaction-fee-rupee\" | \"transaction-fee-yen\" | \"transfer\" | \"transfer-in\" | \"transfer-internal\" | \"transfer-out\" | \"truck\" | \"undo\" | \"unknown-device\" | \"unlock\" | \"upload\" | \"variant-list\" | \"video\" | \"video-list\" | \"view\" | \"viewport-narrow\" | \"viewport-short\" | \"viewport-tall\" | \"viewport-wide\" | \"wallet\" | \"wand\" | \"watch\" | \"wifi\" | \"work\" | \"work-list\" | \"wrench\" | \"x\" | \"x-circle\" | \"x-circle-filled\"",
           "description": "An icon displayed inside the badge to provide additional visual context or reinforce the badge's meaning. Accepts any icon name from the icon library or a custom string identifier."
         },
         {
@@ -2272,7 +2272,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "icon",
-          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | ... 541 more ... | \"x-circle-filled\"",
+          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | \"adjust\" | \"affiliate\" | \"airplane\" | \"alert-bubble\" | \"alert-circle\" | \"alert-diamond\" | \"alert-location\" | \"alert-octagon\" | \"alert-octagon-filled\" | \"alert-triangle\" | \"alert-triangle-filled\" | \"app-extension\" | \"apps\" | \"archive\" | \"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-right\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-right\" | \"arrows-in-horizontal\" | \"arrows-out-horizontal\" | \"asterisk\" | \"attachment\" | \"automation\" | \"backspace\" | \"bag\" | \"bank\" | \"barcode\" | \"battery-low\" | \"bill\" | \"blank\" | \"blog\" | \"bolt\" | \"bolt-filled\" | \"book\" | \"book-open\" | \"bug\" | \"bullet\" | \"business-entity\" | \"button\" | \"button-press\" | \"calculator\" | \"calendar\" | \"calendar-check\" | \"calendar-compare\" | \"calendar-list\" | \"calendar-time\" | \"camera\" | \"camera-flip\" | \"caret-down\" | \"caret-left\" | \"caret-right\" | \"caret-up\" | \"cart\" | \"cart-abandoned\" | \"cart-discount\" | \"cart-down\" | \"cart-filled\" | \"cart-sale\" | \"cart-send\" | \"cart-up\" | \"cash-dollar\" | \"cash-euro\" | \"cash-pound\" | \"cash-rupee\" | \"cash-yen\" | \"catalog-product\" | \"categories\" | \"channels\" | \"chart-cohort\" | \"chart-donut\" | \"chart-funnel\" | \"chart-histogram-first\" | \"chart-histogram-first-last\" | \"chart-histogram-flat\" | \"chart-histogram-full\" | \"chart-histogram-growth\" | \"chart-histogram-last\" | \"chart-histogram-second-last\" | \"chart-horizontal\" | \"chart-line\" | \"chart-popular\" | \"chart-stacked\" | \"chart-vertical\" | \"chat\" | \"chat-new\" | \"chat-referral\" | \"check\" | \"check-circle\" | \"check-circle-filled\" | \"checkbox\" | \"chevron-down\" | \"chevron-down-circle\" | \"chevron-left\" | \"chevron-left-circle\" | \"chevron-right\" | \"chevron-right-circle\" | \"chevron-up\" | \"chevron-up-circle\" | \"circle\" | \"circle-dashed\" | \"clipboard\" | \"clipboard-check\" | \"clipboard-checklist\" | \"clock\" | \"clock-list\" | \"clock-revert\" | \"code-add\" | \"collection-featured\" | \"collection-list\" | \"collection-reference\" | \"color-none\" | \"compass\" | \"compose\" | \"confetti\" | \"connect\" | \"content\" | \"contract\" | \"corner-pill\" | \"corner-round\" | \"corner-square\" | \"credit-card\" | \"credit-card-cancel\" | \"credit-card-percent\" | \"credit-card-reader\" | \"credit-card-reader-chip\" | \"credit-card-reader-tap\" | \"credit-card-secure\" | \"credit-card-tap-chip\" | \"crop\" | \"currency-convert\" | \"cursor\" | \"cursor-banner\" | \"cursor-option\" | \"data-presentation\" | \"data-table\" | \"database\" | \"database-add\" | \"database-connect\" | \"delete\" | \"delivered\" | \"delivery\" | \"desktop\" | \"disabled\" | \"disabled-filled\" | \"discount\" | \"discount-add\" | \"discount-automatic\" | \"discount-code\" | \"discount-remove\" | \"dns-settings\" | \"dock-floating\" | \"dock-side\" | \"domain\" | \"domain-landing-page\" | \"domain-new\" | \"domain-redirect\" | \"download\" | \"drag-drop\" | \"drag-handle\" | \"drawer\" | \"duplicate\" | \"email\" | \"email-follow-up\" | \"email-newsletter\" | \"empty\" | \"enabled\" | \"enter\" | \"envelope\" | \"envelope-soft-pack\" | \"eraser\" | \"exchange\" | \"exit\" | \"export\" | \"external\" | \"eye-check-mark\" | \"eye-dropper\" | \"eye-dropper-list\" | \"eye-first\" | \"eyeglasses\" | \"fav\" | \"favicon\" | \"file\" | \"file-list\" | \"filter\" | \"filter-active\" | \"flag\" | \"flip-horizontal\" | \"flip-vertical\" | \"flower\" | \"folder\" | \"folder-add\" | \"folder-down\" | \"folder-remove\" | \"folder-up\" | \"food\" | \"foreground\" | \"forklift\" | \"forms\" | \"games\" | \"gauge\" | \"geolocation\" | \"gift\" | \"gift-card\" | \"git-branch\" | \"git-commit\" | \"git-repository\" | \"globe\" | \"globe-asia\" | \"globe-europe\" | \"globe-lines\" | \"globe-list\" | \"graduation-hat\" | \"grid\" | \"hashtag\" | \"hashtag-decimal\" | \"hashtag-list\" | \"heart\" | \"hide\" | \"hide-filled\" | \"home\" | \"home-filled\" | \"icons\" | \"identity-card\" | \"image\" | \"image-add\" | \"image-alt\" | \"image-explore\" | \"image-magic\" | \"image-none\" | \"image-with-text-overlay\" | \"images\" | \"import\" | \"in-progress\" | \"incentive\" | \"incoming\" | \"info-filled\" | \"inheritance\" | \"inventory\" | \"inventory-edit\" | \"inventory-list\" | \"inventory-transfer\" | \"inventory-updated\" | \"iq\" | \"key\" | \"keyboard\" | \"keyboard-filled\" | \"keyboard-hide\" | \"keypad\" | \"label-printer\" | \"language\" | \"language-translate\" | \"layout-block\" | \"layout-buy-button\" | \"layout-buy-button-horizontal\" | \"layout-buy-button-vertical\" | \"layout-column-1\" | \"layout-columns-2\" | \"layout-columns-3\" | \"layout-footer\" | \"layout-header\" | \"layout-logo-block\" | \"layout-popup\" | \"layout-rows-2\" | \"layout-section\" | \"layout-sidebar-left\" | \"layout-sidebar-right\" | \"lightbulb\" | \"link-list\" | \"list-bulleted\" | \"list-bulleted-filled\" | \"list-numbered\" | \"live\" | \"live-critical\" | \"live-none\" | \"location\" | \"location-none\" | \"lock\" | \"map\" | \"markets\" | \"markets-euro\" | \"markets-rupee\" | \"markets-yen\" | \"maximize\" | \"measurement-size\" | \"measurement-size-list\" | \"measurement-volume\" | \"measurement-volume-list\" | \"measurement-weight\" | \"measurement-weight-list\" | \"media-receiver\" | \"megaphone\" | \"mention\" | \"menu\" | \"menu-filled\" | \"menu-horizontal\" | \"menu-vertical\" | \"merge\" | \"metafields\" | \"metaobject\" | \"metaobject-list\" | \"metaobject-reference\" | \"microphone\" | \"microphone-muted\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"mobile\" | \"money-none\" | \"money-split\" | \"moon\" | \"nature\" | \"note\" | \"note-add\" | \"notification\" | \"number-one\" | \"order-batches\" | \"order-draft\" | \"order-filled\" | \"order-first\" | \"order-fulfilled\" | \"order-repeat\" | \"order-unfulfilled\" | \"orders-status\" | \"organization\" | \"outdent\" | \"outgoing\" | \"package\" | \"package-cancel\" | \"package-fulfilled\" | \"package-on-hold\" | \"package-reassign\" | \"package-returned\" | \"page\" | \"page-add\" | \"page-attachment\" | \"page-clock\" | \"page-down\" | \"page-heart\" | \"page-list\" | \"page-reference\" | \"page-remove\" | \"page-report\" | \"page-up\" | \"pagination-end\" | \"pagination-start\" | \"paint-brush-flat\" | \"paint-brush-round\" | \"paper-check\" | \"partially-complete\" | \"passkey\" | \"paste\" | \"pause-circle\" | \"payment\" | \"payment-capture\" | \"payout\" | \"payout-dollar\" | \"payout-euro\" | \"payout-pound\" | \"payout-rupee\" | \"payout-yen\" | \"person\" | \"person-add\" | \"person-exit\" | \"person-filled\" | \"person-list\" | \"person-lock\" | \"person-remove\" | \"person-segment\" | \"personalized-text\" | \"phablet\" | \"phone\" | \"phone-down\" | \"phone-down-filled\" | \"phone-in\" | \"phone-out\" | \"pin\" | \"pin-remove\" | \"plan\" | \"play\" | \"play-circle\" | \"plus\" | \"plus-circle\" | \"plus-circle-down\" | \"plus-circle-filled\" | \"plus-circle-up\" | \"point-of-sale\" | \"point-of-sale-register\" | \"price-list\" | \"print\" | \"product-add\" | \"product-cost\" | \"product-filled\" | \"product-list\" | \"product-reference\" | \"product-remove\" | \"product-return\" | \"product-unavailable\" | \"profile\" | \"profile-filled\" | \"question-circle\" | \"question-circle-filled\" | \"radio-control\" | \"receipt\" | \"receipt-dollar\" | \"receipt-euro\" | \"receipt-folded\" | \"receipt-paid\" | \"receipt-pound\" | \"receipt-refund\" | \"receipt-rupee\" | \"receipt-yen\" | \"receivables\" | \"redo\" | \"referral-code\" | \"refresh\" | \"remove-background\" | \"reorder\" | \"replay\" | \"reset\" | \"return\" | \"reward\" | \"rocket\" | \"rotate-left\" | \"rotate-right\" | \"sandbox\" | \"save\" | \"savings\" | \"scan-qr-code\" | \"search-add\" | \"search-list\" | \"search-recent\" | \"search-resource\" | \"send\" | \"settings\" | \"share\" | \"shield-check-mark\" | \"shield-none\" | \"shield-pending\" | \"shield-person\" | \"shipping-label\" | \"shipping-label-cancel\" | \"shopcodes\" | \"slideshow\" | \"smiley-happy\" | \"smiley-joy\" | \"smiley-neutral\" | \"smiley-sad\" | \"social-ad\" | \"social-post\" | \"sort\" | \"sort-ascending\" | \"sort-descending\" | \"sound\" | \"sports\" | \"star\" | \"star-circle\" | \"star-filled\" | \"star-half\" | \"star-list\" | \"status\" | \"status-active\" | \"stop-circle\" | \"store\" | \"store-import\" | \"store-managed\" | \"store-online\" | \"sun\" | \"table\" | \"table-masonry\" | \"tablet\" | \"target\" | \"tax\" | \"team\" | \"text\" | \"text-align-center\" | \"text-align-left\" | \"text-align-right\" | \"text-block\" | \"text-bold\" | \"text-color\" | \"text-font\" | \"text-font-list\" | \"text-grammar\" | \"text-in-columns\" | \"text-in-rows\" | \"text-indent\" | \"text-indent-remove\" | \"text-italic\" | \"text-quote\" | \"text-title\" | \"text-underline\" | \"text-with-image\" | \"theme\" | \"theme-edit\" | \"theme-store\" | \"theme-template\" | \"three-d-environment\" | \"thumbs-down\" | \"thumbs-up\" | \"tip-jar\" | \"toggle-off\" | \"toggle-on\" | \"transaction\" | \"transaction-fee-add\" | \"transaction-fee-dollar\" | \"transaction-fee-euro\" | \"transaction-fee-pound\" | \"transaction-fee-rupee\" | \"transaction-fee-yen\" | \"transfer\" | \"transfer-in\" | \"transfer-internal\" | \"transfer-out\" | \"truck\" | \"undo\" | \"unknown-device\" | \"unlock\" | \"upload\" | \"variant-list\" | \"video\" | \"video-list\" | \"view\" | \"viewport-narrow\" | \"viewport-short\" | \"viewport-tall\" | \"viewport-wide\" | \"wallet\" | \"wand\" | \"watch\" | \"wifi\" | \"work\" | \"work-list\" | \"wrench\" | \"x\" | \"x-circle\" | \"x-circle-filled\"",
           "description": "An icon displayed inside the button, typically positioned before the button text. Use icons to help users quickly identify the button's action or to improve scannability. Accepts any icon name from the icon library or a custom string identifier."
         },
         {
@@ -2624,7 +2624,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -2969,7 +2969,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$3@2317",
+          "name": "__@internals$3@6900",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -3651,7 +3651,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -3754,7 +3754,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$2@2418",
+          "name": "__@internals$2@7001",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4013,7 +4013,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4175,7 +4175,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dirtyStateSymbol@2462",
+          "name": "__@dirtyStateSymbol@7045",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -4183,7 +4183,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$1@2461",
+          "name": "__@internals$1@7044",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4350,7 +4350,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@setFiles@2497",
+          "name": "__@setFiles@7080",
           "value": "(files: File[]) => void",
           "description": "",
           "isPrivate": true
@@ -4358,7 +4358,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@getFileInput@2499",
+          "name": "__@getFileInput@7082",
           "value": "() => HTMLInputElement",
           "description": "",
           "isPrivate": true
@@ -4366,7 +4366,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals@2498",
+          "name": "__@internals@7081",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4525,7 +4525,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "autocomplete",
-          "value": "\"on\" | \"off\" | EmailAutocompleteField | `section-${string} email` | `section-${string} home email` | `section-${string} mobile email` | `section-${string} fax email` | `section-${string} pager email` | \"shipping email\" | \"shipping home email\" | \"shipping mobile email\" | ... 16 more ... | `section-${string} billing p...",
+          "value": "\"on\" | \"off\" | EmailAutocompleteField | `section-${string} email` | `section-${string} home email` | `section-${string} mobile email` | `section-${string} fax email` | `section-${string} pager email` | \"shipping email\" | \"shipping home email\" | \"shipping mobile email\" | \"shipping fax email\" | \"shipping pager email\" | \"billing email\" | \"billing home email\" | \"billing mobile email\" | \"billing fax email\" | \"billing pager email\" | `section-${string} shipping email` | `section-${string} shipping home email` | `section-${string} shipping mobile email` | `section-${string} shipping fax email` | `section-${string} shipping pager email` | `section-${string} billing email` | `section-${string} billing home email` | `section-${string} billing mobile email` | `section-${string} billing fax email` | `section-${string} billing pager email`",
           "description": "Controls browser autofill behavior for the field.\n\nBasic values:\n- `on` - Enables autofill without specifying content type (default)\n- `off` - Disables autofill for sensitive data or one-time codes\n\nSpecific field values describe the expected data type. You can optionally prefix these with:\n- `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)\n- `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes\n- Both section and group (for example, `section-primary shipping email`)\n\nProviding a specific autofill token helps browsers suggest more relevant saved data.\n\nLearn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.",
           "defaultValue": "'on' for everything else"
         },
@@ -4676,7 +4676,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -4786,7 +4786,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "placeItems",
-          "value": "AlignItemsKeyword | \"normal normal\" | \"normal stretch\" | \"normal baseline\" | \"normal first baseline\" | \"normal last baseline\" | \"normal start\" | \"normal end\" | ... 188 more ... | \"safe center safe center\"",
+          "value": "AlignItemsKeyword | \"normal normal\" | \"normal stretch\" | \"normal baseline\" | \"normal first baseline\" | \"normal last baseline\" | \"normal start\" | \"normal end\" | \"normal center\" | \"normal unsafe start\" | \"normal unsafe end\" | \"normal unsafe center\" | \"normal safe start\" | \"normal safe end\" | \"normal safe center\" | \"stretch normal\" | \"stretch stretch\" | \"stretch baseline\" | \"stretch first baseline\" | \"stretch last baseline\" | \"stretch start\" | \"stretch end\" | \"stretch center\" | \"stretch unsafe start\" | \"stretch unsafe end\" | \"stretch unsafe center\" | \"stretch safe start\" | \"stretch safe end\" | \"stretch safe center\" | \"baseline normal\" | \"baseline stretch\" | \"baseline baseline\" | \"baseline first baseline\" | \"baseline last baseline\" | \"baseline start\" | \"baseline end\" | \"baseline center\" | \"baseline unsafe start\" | \"baseline unsafe end\" | \"baseline unsafe center\" | \"baseline safe start\" | \"baseline safe end\" | \"baseline safe center\" | \"first baseline normal\" | \"first baseline stretch\" | \"first baseline baseline\" | \"first baseline first baseline\" | \"first baseline last baseline\" | \"first baseline start\" | \"first baseline end\" | \"first baseline center\" | \"first baseline unsafe start\" | \"first baseline unsafe end\" | \"first baseline unsafe center\" | \"first baseline safe start\" | \"first baseline safe end\" | \"first baseline safe center\" | \"last baseline normal\" | \"last baseline stretch\" | \"last baseline baseline\" | \"last baseline first baseline\" | \"last baseline last baseline\" | \"last baseline start\" | \"last baseline end\" | \"last baseline center\" | \"last baseline unsafe start\" | \"last baseline unsafe end\" | \"last baseline unsafe center\" | \"last baseline safe start\" | \"last baseline safe end\" | \"last baseline safe center\" | \"start normal\" | \"start stretch\" | \"start baseline\" | \"start first baseline\" | \"start last baseline\" | \"start start\" | \"start end\" | \"start center\" | \"start unsafe start\" | \"start unsafe end\" | \"start unsafe center\" | \"start safe start\" | \"start safe end\" | \"start safe center\" | \"end normal\" | \"end stretch\" | \"end baseline\" | \"end first baseline\" | \"end last baseline\" | \"end start\" | \"end end\" | \"end center\" | \"end unsafe start\" | \"end unsafe end\" | \"end unsafe center\" | \"end safe start\" | \"end safe end\" | \"end safe center\" | \"center normal\" | \"center stretch\" | \"center baseline\" | \"center first baseline\" | \"center last baseline\" | \"center start\" | \"center end\" | \"center center\" | \"center unsafe start\" | \"center unsafe end\" | \"center unsafe center\" | \"center safe start\" | \"center safe end\" | \"center safe center\" | \"unsafe start normal\" | \"unsafe start stretch\" | \"unsafe start baseline\" | \"unsafe start first baseline\" | \"unsafe start last baseline\" | \"unsafe start start\" | \"unsafe start end\" | \"unsafe start center\" | \"unsafe start unsafe start\" | \"unsafe start unsafe end\" | \"unsafe start unsafe center\" | \"unsafe start safe start\" | \"unsafe start safe end\" | \"unsafe start safe center\" | \"unsafe end normal\" | \"unsafe end stretch\" | \"unsafe end baseline\" | \"unsafe end first baseline\" | \"unsafe end last baseline\" | \"unsafe end start\" | \"unsafe end end\" | \"unsafe end center\" | \"unsafe end unsafe start\" | \"unsafe end unsafe end\" | \"unsafe end unsafe center\" | \"unsafe end safe start\" | \"unsafe end safe end\" | \"unsafe end safe center\" | \"unsafe center normal\" | \"unsafe center stretch\" | \"unsafe center baseline\" | \"unsafe center first baseline\" | \"unsafe center last baseline\" | \"unsafe center start\" | \"unsafe center end\" | \"unsafe center center\" | \"unsafe center unsafe start\" | \"unsafe center unsafe end\" | \"unsafe center unsafe center\" | \"unsafe center safe start\" | \"unsafe center safe end\" | \"unsafe center safe center\" | \"safe start normal\" | \"safe start stretch\" | \"safe start baseline\" | \"safe start first baseline\" | \"safe start last baseline\" | \"safe start start\" | \"safe start end\" | \"safe start center\" | \"safe start unsafe start\" | \"safe start unsafe end\" | \"safe start unsafe center\" | \"safe start safe start\" | \"safe start safe end\" | \"safe start safe center\" | \"safe end normal\" | \"safe end stretch\" | \"safe end baseline\" | \"safe end first baseline\" | \"safe end last baseline\" | \"safe end start\" | \"safe end end\" | \"safe end center\" | \"safe end unsafe start\" | \"safe end unsafe end\" | \"safe end unsafe center\" | \"safe end safe start\" | \"safe end safe end\" | \"safe end safe center\" | \"safe center normal\" | \"safe center stretch\" | \"safe center baseline\" | \"safe center first baseline\" | \"safe center last baseline\" | \"safe center start\" | \"safe center end\" | \"safe center center\" | \"safe center unsafe start\" | \"safe center unsafe end\" | \"safe center unsafe center\" | \"safe center safe start\" | \"safe center safe end\" | \"safe center safe center\"",
           "description": "A shorthand property for `justify-items` and `align-items`.",
           "defaultValue": "'normal normal'"
         },
@@ -4810,7 +4810,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "placeContent",
-          "value": "\"normal normal\" | \"normal stretch\" | \"normal start\" | \"normal end\" | \"normal center\" | \"normal unsafe start\" | \"normal unsafe end\" | \"normal unsafe center\" | \"normal safe start\" | ... 229 more ... | \"space-evenly space-evenly\"",
+          "value": "\"normal normal\" | \"normal stretch\" | \"normal start\" | \"normal end\" | \"normal center\" | \"normal unsafe start\" | \"normal unsafe end\" | \"normal unsafe center\" | \"normal safe start\" | \"normal safe end\" | \"normal safe center\" | \"stretch normal\" | \"stretch stretch\" | \"stretch start\" | \"stretch end\" | \"stretch center\" | \"stretch unsafe start\" | \"stretch unsafe end\" | \"stretch unsafe center\" | \"stretch safe start\" | \"stretch safe end\" | \"stretch safe center\" | \"baseline normal\" | \"baseline stretch\" | \"baseline start\" | \"baseline end\" | \"baseline center\" | \"baseline unsafe start\" | \"baseline unsafe end\" | \"baseline unsafe center\" | \"baseline safe start\" | \"baseline safe end\" | \"baseline safe center\" | \"first baseline normal\" | \"first baseline stretch\" | \"first baseline start\" | \"first baseline end\" | \"first baseline center\" | \"first baseline unsafe start\" | \"first baseline unsafe end\" | \"first baseline unsafe center\" | \"first baseline safe start\" | \"first baseline safe end\" | \"first baseline safe center\" | \"last baseline normal\" | \"last baseline stretch\" | \"last baseline start\" | \"last baseline end\" | \"last baseline center\" | \"last baseline unsafe start\" | \"last baseline unsafe end\" | \"last baseline unsafe center\" | \"last baseline safe start\" | \"last baseline safe end\" | \"last baseline safe center\" | \"start normal\" | \"start stretch\" | \"start start\" | \"start end\" | \"start center\" | \"start unsafe start\" | \"start unsafe end\" | \"start unsafe center\" | \"start safe start\" | \"start safe end\" | \"start safe center\" | \"end normal\" | \"end stretch\" | \"end start\" | \"end end\" | \"end center\" | \"end unsafe start\" | \"end unsafe end\" | \"end unsafe center\" | \"end safe start\" | \"end safe end\" | \"end safe center\" | \"center normal\" | \"center stretch\" | \"center start\" | \"center end\" | \"center center\" | \"center unsafe start\" | \"center unsafe end\" | \"center unsafe center\" | \"center safe start\" | \"center safe end\" | \"center safe center\" | \"unsafe start normal\" | \"unsafe start stretch\" | \"unsafe start start\" | \"unsafe start end\" | \"unsafe start center\" | \"unsafe start unsafe start\" | \"unsafe start unsafe end\" | \"unsafe start unsafe center\" | \"unsafe start safe start\" | \"unsafe start safe end\" | \"unsafe start safe center\" | \"unsafe end normal\" | \"unsafe end stretch\" | \"unsafe end start\" | \"unsafe end end\" | \"unsafe end center\" | \"unsafe end unsafe start\" | \"unsafe end unsafe end\" | \"unsafe end unsafe center\" | \"unsafe end safe start\" | \"unsafe end safe end\" | \"unsafe end safe center\" | \"unsafe center normal\" | \"unsafe center stretch\" | \"unsafe center start\" | \"unsafe center end\" | \"unsafe center center\" | \"unsafe center unsafe start\" | \"unsafe center unsafe end\" | \"unsafe center unsafe center\" | \"unsafe center safe start\" | \"unsafe center safe end\" | \"unsafe center safe center\" | \"safe start normal\" | \"safe start stretch\" | \"safe start start\" | \"safe start end\" | \"safe start center\" | \"safe start unsafe start\" | \"safe start unsafe end\" | \"safe start unsafe center\" | \"safe start safe start\" | \"safe start safe end\" | \"safe start safe center\" | \"safe end normal\" | \"safe end stretch\" | \"safe end start\" | \"safe end end\" | \"safe end center\" | \"safe end unsafe start\" | \"safe end unsafe end\" | \"safe end unsafe center\" | \"safe end safe start\" | \"safe end safe end\" | \"safe end safe center\" | \"safe center normal\" | \"safe center stretch\" | \"safe center start\" | \"safe center end\" | \"safe center center\" | \"safe center unsafe start\" | \"safe center unsafe end\" | \"safe center unsafe center\" | \"safe center safe start\" | \"safe center safe end\" | \"safe center safe center\" | AlignContentKeyword | \"normal space-between\" | \"normal space-around\" | \"normal space-evenly\" | \"baseline space-between\" | \"baseline space-around\" | \"baseline space-evenly\" | \"first baseline space-between\" | \"first baseline space-around\" | \"first baseline space-evenly\" | \"last baseline space-between\" | \"last baseline space-around\" | \"last baseline space-evenly\" | \"start space-between\" | \"start space-around\" | \"start space-evenly\" | \"end space-between\" | \"end space-around\" | \"end space-evenly\" | \"center space-between\" | \"center space-around\" | \"center space-evenly\" | \"unsafe start space-between\" | \"unsafe start space-around\" | \"unsafe start space-evenly\" | \"unsafe end space-between\" | \"unsafe end space-around\" | \"unsafe end space-evenly\" | \"unsafe center space-between\" | \"unsafe center space-around\" | \"unsafe center space-evenly\" | \"safe start space-between\" | \"safe start space-around\" | \"safe start space-evenly\" | \"safe end space-between\" | \"safe end space-around\" | \"safe end space-evenly\" | \"safe center space-between\" | \"safe center space-around\" | \"safe center space-evenly\" | \"stretch space-between\" | \"stretch space-around\" | \"stretch space-evenly\" | \"space-between normal\" | \"space-between start\" | \"space-between end\" | \"space-between center\" | \"space-between unsafe start\" | \"space-between unsafe end\" | \"space-between unsafe center\" | \"space-between safe start\" | \"space-between safe end\" | \"space-between safe center\" | \"space-between stretch\" | \"space-between space-between\" | \"space-between space-around\" | \"space-between space-evenly\" | \"space-around normal\" | \"space-around start\" | \"space-around end\" | \"space-around center\" | \"space-around unsafe start\" | \"space-around unsafe end\" | \"space-around unsafe center\" | \"space-around safe start\" | \"space-around safe end\" | \"space-around safe center\" | \"space-around stretch\" | \"space-around space-between\" | \"space-around space-around\" | \"space-around space-evenly\" | \"space-evenly normal\" | \"space-evenly start\" | \"space-evenly end\" | \"space-evenly center\" | \"space-evenly unsafe start\" | \"space-evenly unsafe end\" | \"space-evenly unsafe center\" | \"space-evenly safe start\" | \"space-evenly safe end\" | \"space-evenly safe center\" | \"space-evenly stretch\" | \"space-evenly space-between\" | \"space-evenly space-around\" | \"space-evenly space-evenly\"",
           "description": "A shorthand property for `justify-content` and `align-content`.",
           "defaultValue": "'normal normal'"
         },
@@ -5595,7 +5595,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "type",
-          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | ... 541 more ... | \"x-circle-filled\"",
+          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | \"adjust\" | \"affiliate\" | \"airplane\" | \"alert-bubble\" | \"alert-circle\" | \"alert-diamond\" | \"alert-location\" | \"alert-octagon\" | \"alert-octagon-filled\" | \"alert-triangle\" | \"alert-triangle-filled\" | \"app-extension\" | \"apps\" | \"archive\" | \"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-right\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-right\" | \"arrows-in-horizontal\" | \"arrows-out-horizontal\" | \"asterisk\" | \"attachment\" | \"automation\" | \"backspace\" | \"bag\" | \"bank\" | \"barcode\" | \"battery-low\" | \"bill\" | \"blank\" | \"blog\" | \"bolt\" | \"bolt-filled\" | \"book\" | \"book-open\" | \"bug\" | \"bullet\" | \"business-entity\" | \"button\" | \"button-press\" | \"calculator\" | \"calendar\" | \"calendar-check\" | \"calendar-compare\" | \"calendar-list\" | \"calendar-time\" | \"camera\" | \"camera-flip\" | \"caret-down\" | \"caret-left\" | \"caret-right\" | \"caret-up\" | \"cart\" | \"cart-abandoned\" | \"cart-discount\" | \"cart-down\" | \"cart-filled\" | \"cart-sale\" | \"cart-send\" | \"cart-up\" | \"cash-dollar\" | \"cash-euro\" | \"cash-pound\" | \"cash-rupee\" | \"cash-yen\" | \"catalog-product\" | \"categories\" | \"channels\" | \"chart-cohort\" | \"chart-donut\" | \"chart-funnel\" | \"chart-histogram-first\" | \"chart-histogram-first-last\" | \"chart-histogram-flat\" | \"chart-histogram-full\" | \"chart-histogram-growth\" | \"chart-histogram-last\" | \"chart-histogram-second-last\" | \"chart-horizontal\" | \"chart-line\" | \"chart-popular\" | \"chart-stacked\" | \"chart-vertical\" | \"chat\" | \"chat-new\" | \"chat-referral\" | \"check\" | \"check-circle\" | \"check-circle-filled\" | \"checkbox\" | \"chevron-down\" | \"chevron-down-circle\" | \"chevron-left\" | \"chevron-left-circle\" | \"chevron-right\" | \"chevron-right-circle\" | \"chevron-up\" | \"chevron-up-circle\" | \"circle\" | \"circle-dashed\" | \"clipboard\" | \"clipboard-check\" | \"clipboard-checklist\" | \"clock\" | \"clock-list\" | \"clock-revert\" | \"code-add\" | \"collection-featured\" | \"collection-list\" | \"collection-reference\" | \"color-none\" | \"compass\" | \"compose\" | \"confetti\" | \"connect\" | \"content\" | \"contract\" | \"corner-pill\" | \"corner-round\" | \"corner-square\" | \"credit-card\" | \"credit-card-cancel\" | \"credit-card-percent\" | \"credit-card-reader\" | \"credit-card-reader-chip\" | \"credit-card-reader-tap\" | \"credit-card-secure\" | \"credit-card-tap-chip\" | \"crop\" | \"currency-convert\" | \"cursor\" | \"cursor-banner\" | \"cursor-option\" | \"data-presentation\" | \"data-table\" | \"database\" | \"database-add\" | \"database-connect\" | \"delete\" | \"delivered\" | \"delivery\" | \"desktop\" | \"disabled\" | \"disabled-filled\" | \"discount\" | \"discount-add\" | \"discount-automatic\" | \"discount-code\" | \"discount-remove\" | \"dns-settings\" | \"dock-floating\" | \"dock-side\" | \"domain\" | \"domain-landing-page\" | \"domain-new\" | \"domain-redirect\" | \"download\" | \"drag-drop\" | \"drag-handle\" | \"drawer\" | \"duplicate\" | \"email\" | \"email-follow-up\" | \"email-newsletter\" | \"empty\" | \"enabled\" | \"enter\" | \"envelope\" | \"envelope-soft-pack\" | \"eraser\" | \"exchange\" | \"exit\" | \"export\" | \"external\" | \"eye-check-mark\" | \"eye-dropper\" | \"eye-dropper-list\" | \"eye-first\" | \"eyeglasses\" | \"fav\" | \"favicon\" | \"file\" | \"file-list\" | \"filter\" | \"filter-active\" | \"flag\" | \"flip-horizontal\" | \"flip-vertical\" | \"flower\" | \"folder\" | \"folder-add\" | \"folder-down\" | \"folder-remove\" | \"folder-up\" | \"food\" | \"foreground\" | \"forklift\" | \"forms\" | \"games\" | \"gauge\" | \"geolocation\" | \"gift\" | \"gift-card\" | \"git-branch\" | \"git-commit\" | \"git-repository\" | \"globe\" | \"globe-asia\" | \"globe-europe\" | \"globe-lines\" | \"globe-list\" | \"graduation-hat\" | \"grid\" | \"hashtag\" | \"hashtag-decimal\" | \"hashtag-list\" | \"heart\" | \"hide\" | \"hide-filled\" | \"home\" | \"home-filled\" | \"icons\" | \"identity-card\" | \"image\" | \"image-add\" | \"image-alt\" | \"image-explore\" | \"image-magic\" | \"image-none\" | \"image-with-text-overlay\" | \"images\" | \"import\" | \"in-progress\" | \"incentive\" | \"incoming\" | \"info-filled\" | \"inheritance\" | \"inventory\" | \"inventory-edit\" | \"inventory-list\" | \"inventory-transfer\" | \"inventory-updated\" | \"iq\" | \"key\" | \"keyboard\" | \"keyboard-filled\" | \"keyboard-hide\" | \"keypad\" | \"label-printer\" | \"language\" | \"language-translate\" | \"layout-block\" | \"layout-buy-button\" | \"layout-buy-button-horizontal\" | \"layout-buy-button-vertical\" | \"layout-column-1\" | \"layout-columns-2\" | \"layout-columns-3\" | \"layout-footer\" | \"layout-header\" | \"layout-logo-block\" | \"layout-popup\" | \"layout-rows-2\" | \"layout-section\" | \"layout-sidebar-left\" | \"layout-sidebar-right\" | \"lightbulb\" | \"link-list\" | \"list-bulleted\" | \"list-bulleted-filled\" | \"list-numbered\" | \"live\" | \"live-critical\" | \"live-none\" | \"location\" | \"location-none\" | \"lock\" | \"map\" | \"markets\" | \"markets-euro\" | \"markets-rupee\" | \"markets-yen\" | \"maximize\" | \"measurement-size\" | \"measurement-size-list\" | \"measurement-volume\" | \"measurement-volume-list\" | \"measurement-weight\" | \"measurement-weight-list\" | \"media-receiver\" | \"megaphone\" | \"mention\" | \"menu\" | \"menu-filled\" | \"menu-horizontal\" | \"menu-vertical\" | \"merge\" | \"metafields\" | \"metaobject\" | \"metaobject-list\" | \"metaobject-reference\" | \"microphone\" | \"microphone-muted\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"mobile\" | \"money-none\" | \"money-split\" | \"moon\" | \"nature\" | \"note\" | \"note-add\" | \"notification\" | \"number-one\" | \"order-batches\" | \"order-draft\" | \"order-filled\" | \"order-first\" | \"order-fulfilled\" | \"order-repeat\" | \"order-unfulfilled\" | \"orders-status\" | \"organization\" | \"outdent\" | \"outgoing\" | \"package\" | \"package-cancel\" | \"package-fulfilled\" | \"package-on-hold\" | \"package-reassign\" | \"package-returned\" | \"page\" | \"page-add\" | \"page-attachment\" | \"page-clock\" | \"page-down\" | \"page-heart\" | \"page-list\" | \"page-reference\" | \"page-remove\" | \"page-report\" | \"page-up\" | \"pagination-end\" | \"pagination-start\" | \"paint-brush-flat\" | \"paint-brush-round\" | \"paper-check\" | \"partially-complete\" | \"passkey\" | \"paste\" | \"pause-circle\" | \"payment\" | \"payment-capture\" | \"payout\" | \"payout-dollar\" | \"payout-euro\" | \"payout-pound\" | \"payout-rupee\" | \"payout-yen\" | \"person\" | \"person-add\" | \"person-exit\" | \"person-filled\" | \"person-list\" | \"person-lock\" | \"person-remove\" | \"person-segment\" | \"personalized-text\" | \"phablet\" | \"phone\" | \"phone-down\" | \"phone-down-filled\" | \"phone-in\" | \"phone-out\" | \"pin\" | \"pin-remove\" | \"plan\" | \"play\" | \"play-circle\" | \"plus\" | \"plus-circle\" | \"plus-circle-down\" | \"plus-circle-filled\" | \"plus-circle-up\" | \"point-of-sale\" | \"point-of-sale-register\" | \"price-list\" | \"print\" | \"product-add\" | \"product-cost\" | \"product-filled\" | \"product-list\" | \"product-reference\" | \"product-remove\" | \"product-return\" | \"product-unavailable\" | \"profile\" | \"profile-filled\" | \"question-circle\" | \"question-circle-filled\" | \"radio-control\" | \"receipt\" | \"receipt-dollar\" | \"receipt-euro\" | \"receipt-folded\" | \"receipt-paid\" | \"receipt-pound\" | \"receipt-refund\" | \"receipt-rupee\" | \"receipt-yen\" | \"receivables\" | \"redo\" | \"referral-code\" | \"refresh\" | \"remove-background\" | \"reorder\" | \"replay\" | \"reset\" | \"return\" | \"reward\" | \"rocket\" | \"rotate-left\" | \"rotate-right\" | \"sandbox\" | \"save\" | \"savings\" | \"scan-qr-code\" | \"search-add\" | \"search-list\" | \"search-recent\" | \"search-resource\" | \"send\" | \"settings\" | \"share\" | \"shield-check-mark\" | \"shield-none\" | \"shield-pending\" | \"shield-person\" | \"shipping-label\" | \"shipping-label-cancel\" | \"shopcodes\" | \"slideshow\" | \"smiley-happy\" | \"smiley-joy\" | \"smiley-neutral\" | \"smiley-sad\" | \"social-ad\" | \"social-post\" | \"sort\" | \"sort-ascending\" | \"sort-descending\" | \"sound\" | \"sports\" | \"star\" | \"star-circle\" | \"star-filled\" | \"star-half\" | \"star-list\" | \"status\" | \"status-active\" | \"stop-circle\" | \"store\" | \"store-import\" | \"store-managed\" | \"store-online\" | \"sun\" | \"table\" | \"table-masonry\" | \"tablet\" | \"target\" | \"tax\" | \"team\" | \"text\" | \"text-align-center\" | \"text-align-left\" | \"text-align-right\" | \"text-block\" | \"text-bold\" | \"text-color\" | \"text-font\" | \"text-font-list\" | \"text-grammar\" | \"text-in-columns\" | \"text-in-rows\" | \"text-indent\" | \"text-indent-remove\" | \"text-italic\" | \"text-quote\" | \"text-title\" | \"text-underline\" | \"text-with-image\" | \"theme\" | \"theme-edit\" | \"theme-store\" | \"theme-template\" | \"three-d-environment\" | \"thumbs-down\" | \"thumbs-up\" | \"tip-jar\" | \"toggle-off\" | \"toggle-on\" | \"transaction\" | \"transaction-fee-add\" | \"transaction-fee-dollar\" | \"transaction-fee-euro\" | \"transaction-fee-pound\" | \"transaction-fee-rupee\" | \"transaction-fee-yen\" | \"transfer\" | \"transfer-in\" | \"transfer-internal\" | \"transfer-out\" | \"truck\" | \"undo\" | \"unknown-device\" | \"unlock\" | \"upload\" | \"variant-list\" | \"video\" | \"video-list\" | \"view\" | \"viewport-narrow\" | \"viewport-short\" | \"viewport-tall\" | \"viewport-wide\" | \"wallet\" | \"wand\" | \"watch\" | \"wifi\" | \"work\" | \"work-list\" | \"wrench\" | \"x\" | \"x-circle\" | \"x-circle-filled\"",
           "description": "The icon to display from the icon library.\n\nSet to a valid icon name to display that icon. To hide the icon completely, use an empty string `''`. To reserve the icon's space without displaying an icon, use `'empty'`."
         },
         {
@@ -6094,7 +6094,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2633",
+          "name": "__@overlayHidden@7216",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -6102,7 +6102,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2634",
+          "name": "__@overlayActivator@7217",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -6110,7 +6110,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2635",
+          "name": "__@overlayHideFrameId@7218",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -6321,7 +6321,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -6444,7 +6444,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "autocomplete",
-          "value": "\"on\" | \"off\" | NumberAutocompleteField | `section-${string} one-time-code` | `section-${string} cc-number` | `section-${string} cc-csc` | \"shipping one-time-code\" | \"shipping cc-number\" | \"shipping cc-csc\" | \"billing one-time-code\" | ... 7 more ... | `section-${string} billing cc-csc`",
+          "value": "\"on\" | \"off\" | NumberAutocompleteField | `section-${string} one-time-code` | `section-${string} cc-number` | `section-${string} cc-csc` | \"shipping one-time-code\" | \"shipping cc-number\" | \"shipping cc-csc\" | \"billing one-time-code\" | \"billing cc-number\" | \"billing cc-csc\" | `section-${string} shipping one-time-code` | `section-${string} shipping cc-number` | `section-${string} shipping cc-csc` | `section-${string} billing one-time-code` | `section-${string} billing cc-number` | `section-${string} billing cc-csc`",
           "description": "Controls browser autofill behavior for the field.\n\nBasic values:\n- `on` - Enables autofill without specifying content type (default)\n- `off` - Disables autofill for sensitive data or one-time codes\n\nSpecific field values describe the expected data type. You can optionally prefix these with:\n- `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)\n- `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes\n- Both section and group (for example, `section-primary shipping email`)\n\nProviding a specific autofill token helps browsers suggest more relevant saved data.\n\nLearn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.",
           "defaultValue": "'on' for everything else"
         },
@@ -6572,7 +6572,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -7163,7 +7163,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -7339,7 +7339,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "autocomplete",
-          "value": "\"on\" | \"off\" | TextAutocompleteField | `section-${string} one-time-code` | \"shipping one-time-code\" | \"billing one-time-code\" | `section-${string} shipping one-time-code` | `section-${string} billing one-time-code` | `section-${string} language` | `section-${string} organization` | `section-${string} name` | ... 141...",
+          "value": "\"on\" | \"off\" | TextAutocompleteField | `section-${string} one-time-code` | \"shipping one-time-code\" | \"billing one-time-code\" | `section-${string} shipping one-time-code` | `section-${string} billing one-time-code` | `section-${string} language` | `section-${string} organization` | `section-${string} name` | `section-${string} additional-name` | `section-${string} address-level1` | `section-${string} address-level2` | `section-${string} address-level3` | `section-${string} address-level4` | `section-${string} address-line1` | `section-${string} address-line2` | `section-${string} address-line3` | `section-${string} country-name` | `section-${string} country` | `section-${string} family-name` | `section-${string} given-name` | `section-${string} honorific-prefix` | `section-${string} honorific-suffix` | `section-${string} nickname` | `section-${string} organization-title` | `section-${string} postal-code` | `section-${string} sex` | `section-${string} street-address` | `section-${string} transaction-currency` | `section-${string} username` | `section-${string} cc-additional-name` | `section-${string} cc-family-name` | `section-${string} cc-given-name` | `section-${string} cc-name` | `section-${string} cc-type` | \"shipping language\" | \"shipping organization\" | \"shipping name\" | \"shipping additional-name\" | \"shipping address-level1\" | \"shipping address-level2\" | \"shipping address-level3\" | \"shipping address-level4\" | \"shipping address-line1\" | \"shipping address-line2\" | \"shipping address-line3\" | \"shipping country-name\" | \"shipping country\" | \"shipping family-name\" | \"shipping given-name\" | \"shipping honorific-prefix\" | \"shipping honorific-suffix\" | \"shipping nickname\" | \"shipping organization-title\" | \"shipping postal-code\" | \"shipping sex\" | \"shipping street-address\" | \"shipping transaction-currency\" | \"shipping username\" | \"shipping cc-additional-name\" | \"shipping cc-family-name\" | \"shipping cc-given-name\" | \"shipping cc-name\" | \"shipping cc-type\" | \"billing language\" | \"billing organization\" | \"billing name\" | \"billing additional-name\" | \"billing address-level1\" | \"billing address-level2\" | \"billing address-level3\" | \"billing address-level4\" | \"billing address-line1\" | \"billing address-line2\" | \"billing address-line3\" | \"billing country-name\" | \"billing country\" | \"billing family-name\" | \"billing given-name\" | \"billing honorific-prefix\" | \"billing honorific-suffix\" | \"billing nickname\" | \"billing organization-title\" | \"billing postal-code\" | \"billing sex\" | \"billing street-address\" | \"billing transaction-currency\" | \"billing username\" | \"billing cc-additional-name\" | \"billing cc-family-name\" | \"billing cc-given-name\" | \"billing cc-name\" | \"billing cc-type\" | `section-${string} shipping language` | `section-${string} shipping organization` | `section-${string} shipping name` | `section-${string} shipping additional-name` | `section-${string} shipping address-level1` | `section-${string} shipping address-level2` | `section-${string} shipping address-level3` | `section-${string} shipping address-level4` | `section-${string} shipping address-line1` | `section-${string} shipping address-line2` | `section-${string} shipping address-line3` | `section-${string} shipping country-name` | `section-${string} shipping country` | `section-${string} shipping family-name` | `section-${string} shipping given-name` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-suffix` | `section-${string} shipping nickname` | `section-${string} shipping organization-title` | `section-${string} shipping postal-code` | `section-${string} shipping sex` | `section-${string} shipping street-address` | `section-${string} shipping transaction-currency` | `section-${string} shipping username` | `section-${string} shipping cc-additional-name` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-name` | `section-${string} shipping cc-type` | `section-${string} billing language` | `section-${string} billing organization` | `section-${string} billing name` | `section-${string} billing additional-name` | `section-${string} billing address-level1` | `section-${string} billing address-level2` | `section-${string} billing address-level3` | `section-${string} billing address-level4` | `section-${string} billing address-line1` | `section-${string} billing address-line2` | `section-${string} billing address-line3` | `section-${string} billing country-name` | `section-${string} billing country` | `section-${string} billing family-name` | `section-${string} billing given-name` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-suffix` | `section-${string} billing nickname` | `section-${string} billing organization-title` | `section-${string} billing postal-code` | `section-${string} billing sex` | `section-${string} billing street-address` | `section-${string} billing transaction-currency` | `section-${string} billing username` | `section-${string} billing cc-additional-name` | `section-${string} billing cc-family-name` | `section-${string} billing cc-given-name` | `section-${string} billing cc-name` | `section-${string} billing cc-type`",
           "description": "Controls browser autofill behavior for the field.\n\nBasic values:\n- `on` - Enables autofill without specifying content type (default)\n- `off` - Disables autofill for sensitive data or one-time codes\n\nSpecific field values describe the expected data type. You can optionally prefix these with:\n- `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)\n- `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes\n- Both section and group (for example, `section-primary shipping email`)\n\nProviding a specific autofill token helps browsers suggest more relevant saved data.\n\nLearn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.",
           "defaultValue": "'on' for everything else"
         },
@@ -7467,7 +7467,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -7634,7 +7634,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "icon",
-          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | ... 541 more ... | \"x-circle-filled\"",
+          "value": "\"\" | \"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | \"adjust\" | \"affiliate\" | \"airplane\" | \"alert-bubble\" | \"alert-circle\" | \"alert-diamond\" | \"alert-location\" | \"alert-octagon\" | \"alert-octagon-filled\" | \"alert-triangle\" | \"alert-triangle-filled\" | \"app-extension\" | \"apps\" | \"archive\" | \"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-right\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-right\" | \"arrows-in-horizontal\" | \"arrows-out-horizontal\" | \"asterisk\" | \"attachment\" | \"automation\" | \"backspace\" | \"bag\" | \"bank\" | \"barcode\" | \"battery-low\" | \"bill\" | \"blank\" | \"blog\" | \"bolt\" | \"bolt-filled\" | \"book\" | \"book-open\" | \"bug\" | \"bullet\" | \"business-entity\" | \"button\" | \"button-press\" | \"calculator\" | \"calendar\" | \"calendar-check\" | \"calendar-compare\" | \"calendar-list\" | \"calendar-time\" | \"camera\" | \"camera-flip\" | \"caret-down\" | \"caret-left\" | \"caret-right\" | \"caret-up\" | \"cart\" | \"cart-abandoned\" | \"cart-discount\" | \"cart-down\" | \"cart-filled\" | \"cart-sale\" | \"cart-send\" | \"cart-up\" | \"cash-dollar\" | \"cash-euro\" | \"cash-pound\" | \"cash-rupee\" | \"cash-yen\" | \"catalog-product\" | \"categories\" | \"channels\" | \"chart-cohort\" | \"chart-donut\" | \"chart-funnel\" | \"chart-histogram-first\" | \"chart-histogram-first-last\" | \"chart-histogram-flat\" | \"chart-histogram-full\" | \"chart-histogram-growth\" | \"chart-histogram-last\" | \"chart-histogram-second-last\" | \"chart-horizontal\" | \"chart-line\" | \"chart-popular\" | \"chart-stacked\" | \"chart-vertical\" | \"chat\" | \"chat-new\" | \"chat-referral\" | \"check\" | \"check-circle\" | \"check-circle-filled\" | \"checkbox\" | \"chevron-down\" | \"chevron-down-circle\" | \"chevron-left\" | \"chevron-left-circle\" | \"chevron-right\" | \"chevron-right-circle\" | \"chevron-up\" | \"chevron-up-circle\" | \"circle\" | \"circle-dashed\" | \"clipboard\" | \"clipboard-check\" | \"clipboard-checklist\" | \"clock\" | \"clock-list\" | \"clock-revert\" | \"code-add\" | \"collection-featured\" | \"collection-list\" | \"collection-reference\" | \"color-none\" | \"compass\" | \"compose\" | \"confetti\" | \"connect\" | \"content\" | \"contract\" | \"corner-pill\" | \"corner-round\" | \"corner-square\" | \"credit-card\" | \"credit-card-cancel\" | \"credit-card-percent\" | \"credit-card-reader\" | \"credit-card-reader-chip\" | \"credit-card-reader-tap\" | \"credit-card-secure\" | \"credit-card-tap-chip\" | \"crop\" | \"currency-convert\" | \"cursor\" | \"cursor-banner\" | \"cursor-option\" | \"data-presentation\" | \"data-table\" | \"database\" | \"database-add\" | \"database-connect\" | \"delete\" | \"delivered\" | \"delivery\" | \"desktop\" | \"disabled\" | \"disabled-filled\" | \"discount\" | \"discount-add\" | \"discount-automatic\" | \"discount-code\" | \"discount-remove\" | \"dns-settings\" | \"dock-floating\" | \"dock-side\" | \"domain\" | \"domain-landing-page\" | \"domain-new\" | \"domain-redirect\" | \"download\" | \"drag-drop\" | \"drag-handle\" | \"drawer\" | \"duplicate\" | \"email\" | \"email-follow-up\" | \"email-newsletter\" | \"empty\" | \"enabled\" | \"enter\" | \"envelope\" | \"envelope-soft-pack\" | \"eraser\" | \"exchange\" | \"exit\" | \"export\" | \"external\" | \"eye-check-mark\" | \"eye-dropper\" | \"eye-dropper-list\" | \"eye-first\" | \"eyeglasses\" | \"fav\" | \"favicon\" | \"file\" | \"file-list\" | \"filter\" | \"filter-active\" | \"flag\" | \"flip-horizontal\" | \"flip-vertical\" | \"flower\" | \"folder\" | \"folder-add\" | \"folder-down\" | \"folder-remove\" | \"folder-up\" | \"food\" | \"foreground\" | \"forklift\" | \"forms\" | \"games\" | \"gauge\" | \"geolocation\" | \"gift\" | \"gift-card\" | \"git-branch\" | \"git-commit\" | \"git-repository\" | \"globe\" | \"globe-asia\" | \"globe-europe\" | \"globe-lines\" | \"globe-list\" | \"graduation-hat\" | \"grid\" | \"hashtag\" | \"hashtag-decimal\" | \"hashtag-list\" | \"heart\" | \"hide\" | \"hide-filled\" | \"home\" | \"home-filled\" | \"icons\" | \"identity-card\" | \"image\" | \"image-add\" | \"image-alt\" | \"image-explore\" | \"image-magic\" | \"image-none\" | \"image-with-text-overlay\" | \"images\" | \"import\" | \"in-progress\" | \"incentive\" | \"incoming\" | \"info-filled\" | \"inheritance\" | \"inventory\" | \"inventory-edit\" | \"inventory-list\" | \"inventory-transfer\" | \"inventory-updated\" | \"iq\" | \"key\" | \"keyboard\" | \"keyboard-filled\" | \"keyboard-hide\" | \"keypad\" | \"label-printer\" | \"language\" | \"language-translate\" | \"layout-block\" | \"layout-buy-button\" | \"layout-buy-button-horizontal\" | \"layout-buy-button-vertical\" | \"layout-column-1\" | \"layout-columns-2\" | \"layout-columns-3\" | \"layout-footer\" | \"layout-header\" | \"layout-logo-block\" | \"layout-popup\" | \"layout-rows-2\" | \"layout-section\" | \"layout-sidebar-left\" | \"layout-sidebar-right\" | \"lightbulb\" | \"link-list\" | \"list-bulleted\" | \"list-bulleted-filled\" | \"list-numbered\" | \"live\" | \"live-critical\" | \"live-none\" | \"location\" | \"location-none\" | \"lock\" | \"map\" | \"markets\" | \"markets-euro\" | \"markets-rupee\" | \"markets-yen\" | \"maximize\" | \"measurement-size\" | \"measurement-size-list\" | \"measurement-volume\" | \"measurement-volume-list\" | \"measurement-weight\" | \"measurement-weight-list\" | \"media-receiver\" | \"megaphone\" | \"mention\" | \"menu\" | \"menu-filled\" | \"menu-horizontal\" | \"menu-vertical\" | \"merge\" | \"metafields\" | \"metaobject\" | \"metaobject-list\" | \"metaobject-reference\" | \"microphone\" | \"microphone-muted\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"mobile\" | \"money-none\" | \"money-split\" | \"moon\" | \"nature\" | \"note\" | \"note-add\" | \"notification\" | \"number-one\" | \"order-batches\" | \"order-draft\" | \"order-filled\" | \"order-first\" | \"order-fulfilled\" | \"order-repeat\" | \"order-unfulfilled\" | \"orders-status\" | \"organization\" | \"outdent\" | \"outgoing\" | \"package\" | \"package-cancel\" | \"package-fulfilled\" | \"package-on-hold\" | \"package-reassign\" | \"package-returned\" | \"page\" | \"page-add\" | \"page-attachment\" | \"page-clock\" | \"page-down\" | \"page-heart\" | \"page-list\" | \"page-reference\" | \"page-remove\" | \"page-report\" | \"page-up\" | \"pagination-end\" | \"pagination-start\" | \"paint-brush-flat\" | \"paint-brush-round\" | \"paper-check\" | \"partially-complete\" | \"passkey\" | \"paste\" | \"pause-circle\" | \"payment\" | \"payment-capture\" | \"payout\" | \"payout-dollar\" | \"payout-euro\" | \"payout-pound\" | \"payout-rupee\" | \"payout-yen\" | \"person\" | \"person-add\" | \"person-exit\" | \"person-filled\" | \"person-list\" | \"person-lock\" | \"person-remove\" | \"person-segment\" | \"personalized-text\" | \"phablet\" | \"phone\" | \"phone-down\" | \"phone-down-filled\" | \"phone-in\" | \"phone-out\" | \"pin\" | \"pin-remove\" | \"plan\" | \"play\" | \"play-circle\" | \"plus\" | \"plus-circle\" | \"plus-circle-down\" | \"plus-circle-filled\" | \"plus-circle-up\" | \"point-of-sale\" | \"point-of-sale-register\" | \"price-list\" | \"print\" | \"product-add\" | \"product-cost\" | \"product-filled\" | \"product-list\" | \"product-reference\" | \"product-remove\" | \"product-return\" | \"product-unavailable\" | \"profile\" | \"profile-filled\" | \"question-circle\" | \"question-circle-filled\" | \"radio-control\" | \"receipt\" | \"receipt-dollar\" | \"receipt-euro\" | \"receipt-folded\" | \"receipt-paid\" | \"receipt-pound\" | \"receipt-refund\" | \"receipt-rupee\" | \"receipt-yen\" | \"receivables\" | \"redo\" | \"referral-code\" | \"refresh\" | \"remove-background\" | \"reorder\" | \"replay\" | \"reset\" | \"return\" | \"reward\" | \"rocket\" | \"rotate-left\" | \"rotate-right\" | \"sandbox\" | \"save\" | \"savings\" | \"scan-qr-code\" | \"search-add\" | \"search-list\" | \"search-recent\" | \"search-resource\" | \"send\" | \"settings\" | \"share\" | \"shield-check-mark\" | \"shield-none\" | \"shield-pending\" | \"shield-person\" | \"shipping-label\" | \"shipping-label-cancel\" | \"shopcodes\" | \"slideshow\" | \"smiley-happy\" | \"smiley-joy\" | \"smiley-neutral\" | \"smiley-sad\" | \"social-ad\" | \"social-post\" | \"sort\" | \"sort-ascending\" | \"sort-descending\" | \"sound\" | \"sports\" | \"star\" | \"star-circle\" | \"star-filled\" | \"star-half\" | \"star-list\" | \"status\" | \"status-active\" | \"stop-circle\" | \"store\" | \"store-import\" | \"store-managed\" | \"store-online\" | \"sun\" | \"table\" | \"table-masonry\" | \"tablet\" | \"target\" | \"tax\" | \"team\" | \"text\" | \"text-align-center\" | \"text-align-left\" | \"text-align-right\" | \"text-block\" | \"text-bold\" | \"text-color\" | \"text-font\" | \"text-font-list\" | \"text-grammar\" | \"text-in-columns\" | \"text-in-rows\" | \"text-indent\" | \"text-indent-remove\" | \"text-italic\" | \"text-quote\" | \"text-title\" | \"text-underline\" | \"text-with-image\" | \"theme\" | \"theme-edit\" | \"theme-store\" | \"theme-template\" | \"three-d-environment\" | \"thumbs-down\" | \"thumbs-up\" | \"tip-jar\" | \"toggle-off\" | \"toggle-on\" | \"transaction\" | \"transaction-fee-add\" | \"transaction-fee-dollar\" | \"transaction-fee-euro\" | \"transaction-fee-pound\" | \"transaction-fee-rupee\" | \"transaction-fee-yen\" | \"transfer\" | \"transfer-in\" | \"transfer-internal\" | \"transfer-out\" | \"truck\" | \"undo\" | \"unknown-device\" | \"unlock\" | \"upload\" | \"variant-list\" | \"video\" | \"video-list\" | \"view\" | \"viewport-narrow\" | \"viewport-short\" | \"viewport-tall\" | \"viewport-wide\" | \"wallet\" | \"wand\" | \"watch\" | \"wifi\" | \"work\" | \"work-list\" | \"wrench\" | \"x\" | \"x-circle\" | \"x-circle-filled\"",
           "description": "An icon displayed inside the field to provide visual context about the expected input or field purpose. Commonly used for search fields, currency inputs, or to indicate field type. Accepts any icon name from the icon library or a custom string identifier."
         },
         {
@@ -7715,7 +7715,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@usedFirstOptionSymbol@2912",
+          "name": "__@usedFirstOptionSymbol@7495",
           "value": "boolean",
           "description": "A flag used to determine if no value or defaultValue was set, in which case the first non-disabled option was used.\n\nThis is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form.",
           "isPrivate": true
@@ -7723,7 +7723,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@hasInitialValueSymbol@2913",
+          "name": "__@hasInitialValueSymbol@7496",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -7753,7 +7753,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -8317,7 +8317,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -8432,7 +8432,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@actualTableVariantSymbol@2988",
+          "name": "__@actualTableVariantSymbol@7571",
           "value": "AddedContext<ActualTableVariant>",
           "description": "",
           "isPrivate": true
@@ -8440,7 +8440,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@tableHeadersSharedDataSymbol@2989",
+          "name": "__@tableHeadersSharedDataSymbol@7572",
           "value": "AddedContext<{ listSlot: ListSlotType; textContent: string; format: HeaderFormat; }[]>",
           "description": "",
           "isPrivate": true
@@ -8650,7 +8650,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@headerFormatSymbol@3011",
+          "name": "__@headerFormatSymbol@7594",
           "value": "HeaderFormat",
           "description": "",
           "isPrivate": true
@@ -9102,7 +9102,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "autocomplete",
-          "value": "\"on\" | \"off\" | TextAutocompleteField | `section-${string} one-time-code` | \"shipping one-time-code\" | \"billing one-time-code\" | `section-${string} shipping one-time-code` | `section-${string} billing one-time-code` | `section-${string} language` | `section-${string} organization` | `section-${string} name` | ... 141...",
+          "value": "\"on\" | \"off\" | TextAutocompleteField | `section-${string} one-time-code` | \"shipping one-time-code\" | \"billing one-time-code\" | `section-${string} shipping one-time-code` | `section-${string} billing one-time-code` | `section-${string} language` | `section-${string} organization` | `section-${string} name` | `section-${string} additional-name` | `section-${string} address-level1` | `section-${string} address-level2` | `section-${string} address-level3` | `section-${string} address-level4` | `section-${string} address-line1` | `section-${string} address-line2` | `section-${string} address-line3` | `section-${string} country-name` | `section-${string} country` | `section-${string} family-name` | `section-${string} given-name` | `section-${string} honorific-prefix` | `section-${string} honorific-suffix` | `section-${string} nickname` | `section-${string} organization-title` | `section-${string} postal-code` | `section-${string} sex` | `section-${string} street-address` | `section-${string} transaction-currency` | `section-${string} username` | `section-${string} cc-additional-name` | `section-${string} cc-family-name` | `section-${string} cc-given-name` | `section-${string} cc-name` | `section-${string} cc-type` | \"shipping language\" | \"shipping organization\" | \"shipping name\" | \"shipping additional-name\" | \"shipping address-level1\" | \"shipping address-level2\" | \"shipping address-level3\" | \"shipping address-level4\" | \"shipping address-line1\" | \"shipping address-line2\" | \"shipping address-line3\" | \"shipping country-name\" | \"shipping country\" | \"shipping family-name\" | \"shipping given-name\" | \"shipping honorific-prefix\" | \"shipping honorific-suffix\" | \"shipping nickname\" | \"shipping organization-title\" | \"shipping postal-code\" | \"shipping sex\" | \"shipping street-address\" | \"shipping transaction-currency\" | \"shipping username\" | \"shipping cc-additional-name\" | \"shipping cc-family-name\" | \"shipping cc-given-name\" | \"shipping cc-name\" | \"shipping cc-type\" | \"billing language\" | \"billing organization\" | \"billing name\" | \"billing additional-name\" | \"billing address-level1\" | \"billing address-level2\" | \"billing address-level3\" | \"billing address-level4\" | \"billing address-line1\" | \"billing address-line2\" | \"billing address-line3\" | \"billing country-name\" | \"billing country\" | \"billing family-name\" | \"billing given-name\" | \"billing honorific-prefix\" | \"billing honorific-suffix\" | \"billing nickname\" | \"billing organization-title\" | \"billing postal-code\" | \"billing sex\" | \"billing street-address\" | \"billing transaction-currency\" | \"billing username\" | \"billing cc-additional-name\" | \"billing cc-family-name\" | \"billing cc-given-name\" | \"billing cc-name\" | \"billing cc-type\" | `section-${string} shipping language` | `section-${string} shipping organization` | `section-${string} shipping name` | `section-${string} shipping additional-name` | `section-${string} shipping address-level1` | `section-${string} shipping address-level2` | `section-${string} shipping address-level3` | `section-${string} shipping address-level4` | `section-${string} shipping address-line1` | `section-${string} shipping address-line2` | `section-${string} shipping address-line3` | `section-${string} shipping country-name` | `section-${string} shipping country` | `section-${string} shipping family-name` | `section-${string} shipping given-name` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-suffix` | `section-${string} shipping nickname` | `section-${string} shipping organization-title` | `section-${string} shipping postal-code` | `section-${string} shipping sex` | `section-${string} shipping street-address` | `section-${string} shipping transaction-currency` | `section-${string} shipping username` | `section-${string} shipping cc-additional-name` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-name` | `section-${string} shipping cc-type` | `section-${string} billing language` | `section-${string} billing organization` | `section-${string} billing name` | `section-${string} billing additional-name` | `section-${string} billing address-level1` | `section-${string} billing address-level2` | `section-${string} billing address-level3` | `section-${string} billing address-level4` | `section-${string} billing address-line1` | `section-${string} billing address-line2` | `section-${string} billing address-line3` | `section-${string} billing country-name` | `section-${string} billing country` | `section-${string} billing family-name` | `section-${string} billing given-name` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-suffix` | `section-${string} billing nickname` | `section-${string} billing organization-title` | `section-${string} billing postal-code` | `section-${string} billing sex` | `section-${string} billing street-address` | `section-${string} billing transaction-currency` | `section-${string} billing username` | `section-${string} billing cc-additional-name` | `section-${string} billing cc-family-name` | `section-${string} billing cc-given-name` | `section-${string} billing cc-name` | `section-${string} billing cc-type`",
           "description": "Controls browser autofill behavior for the field.\n\nBasic values:\n- `on` - Enables autofill without specifying content type (default)\n- `off` - Disables autofill for sensitive data or one-time codes\n\nSpecific field values describe the expected data type. You can optionally prefix these with:\n- `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)\n- `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes\n- Both section and group (for example, `section-primary shipping email`)\n\nProviding a specific autofill token helps browsers suggest more relevant saved data.\n\nLearn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.",
           "defaultValue": "'on' for everything else"
         },
@@ -9230,7 +9230,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -9298,7 +9298,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "icon",
-          "value": "\"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | ... 542 more ... | AnyString",
+          "value": "\"replace\" | \"search\" | \"split\" | \"link\" | \"edit\" | \"info\" | \"incomplete\" | \"complete\" | \"product\" | \"variant\" | \"collection\" | \"select\" | \"color\" | \"money\" | \"order\" | \"code\" | \"adjust\" | \"affiliate\" | \"airplane\" | \"alert-bubble\" | \"alert-circle\" | \"alert-diamond\" | \"alert-location\" | \"alert-octagon\" | \"alert-octagon-filled\" | \"alert-triangle\" | \"alert-triangle-filled\" | \"app-extension\" | \"apps\" | \"archive\" | \"arrow-down\" | \"arrow-down-circle\" | \"arrow-down-right\" | \"arrow-left\" | \"arrow-left-circle\" | \"arrow-right\" | \"arrow-right-circle\" | \"arrow-up\" | \"arrow-up-circle\" | \"arrow-up-right\" | \"arrows-in-horizontal\" | \"arrows-out-horizontal\" | \"asterisk\" | \"attachment\" | \"automation\" | \"backspace\" | \"bag\" | \"bank\" | \"barcode\" | \"battery-low\" | \"bill\" | \"blank\" | \"blog\" | \"bolt\" | \"bolt-filled\" | \"book\" | \"book-open\" | \"bug\" | \"bullet\" | \"business-entity\" | \"button\" | \"button-press\" | \"calculator\" | \"calendar\" | \"calendar-check\" | \"calendar-compare\" | \"calendar-list\" | \"calendar-time\" | \"camera\" | \"camera-flip\" | \"caret-down\" | \"caret-left\" | \"caret-right\" | \"caret-up\" | \"cart\" | \"cart-abandoned\" | \"cart-discount\" | \"cart-down\" | \"cart-filled\" | \"cart-sale\" | \"cart-send\" | \"cart-up\" | \"cash-dollar\" | \"cash-euro\" | \"cash-pound\" | \"cash-rupee\" | \"cash-yen\" | \"catalog-product\" | \"categories\" | \"channels\" | \"chart-cohort\" | \"chart-donut\" | \"chart-funnel\" | \"chart-histogram-first\" | \"chart-histogram-first-last\" | \"chart-histogram-flat\" | \"chart-histogram-full\" | \"chart-histogram-growth\" | \"chart-histogram-last\" | \"chart-histogram-second-last\" | \"chart-horizontal\" | \"chart-line\" | \"chart-popular\" | \"chart-stacked\" | \"chart-vertical\" | \"chat\" | \"chat-new\" | \"chat-referral\" | \"check\" | \"check-circle\" | \"check-circle-filled\" | \"checkbox\" | \"chevron-down\" | \"chevron-down-circle\" | \"chevron-left\" | \"chevron-left-circle\" | \"chevron-right\" | \"chevron-right-circle\" | \"chevron-up\" | \"chevron-up-circle\" | \"circle\" | \"circle-dashed\" | \"clipboard\" | \"clipboard-check\" | \"clipboard-checklist\" | \"clock\" | \"clock-list\" | \"clock-revert\" | \"code-add\" | \"collection-featured\" | \"collection-list\" | \"collection-reference\" | \"color-none\" | \"compass\" | \"compose\" | \"confetti\" | \"connect\" | \"content\" | \"contract\" | \"corner-pill\" | \"corner-round\" | \"corner-square\" | \"credit-card\" | \"credit-card-cancel\" | \"credit-card-percent\" | \"credit-card-reader\" | \"credit-card-reader-chip\" | \"credit-card-reader-tap\" | \"credit-card-secure\" | \"credit-card-tap-chip\" | \"crop\" | \"currency-convert\" | \"cursor\" | \"cursor-banner\" | \"cursor-option\" | \"data-presentation\" | \"data-table\" | \"database\" | \"database-add\" | \"database-connect\" | \"delete\" | \"delivered\" | \"delivery\" | \"desktop\" | \"disabled\" | \"disabled-filled\" | \"discount\" | \"discount-add\" | \"discount-automatic\" | \"discount-code\" | \"discount-remove\" | \"dns-settings\" | \"dock-floating\" | \"dock-side\" | \"domain\" | \"domain-landing-page\" | \"domain-new\" | \"domain-redirect\" | \"download\" | \"drag-drop\" | \"drag-handle\" | \"drawer\" | \"duplicate\" | \"email\" | \"email-follow-up\" | \"email-newsletter\" | \"empty\" | \"enabled\" | \"enter\" | \"envelope\" | \"envelope-soft-pack\" | \"eraser\" | \"exchange\" | \"exit\" | \"export\" | \"external\" | \"eye-check-mark\" | \"eye-dropper\" | \"eye-dropper-list\" | \"eye-first\" | \"eyeglasses\" | \"fav\" | \"favicon\" | \"file\" | \"file-list\" | \"filter\" | \"filter-active\" | \"flag\" | \"flip-horizontal\" | \"flip-vertical\" | \"flower\" | \"folder\" | \"folder-add\" | \"folder-down\" | \"folder-remove\" | \"folder-up\" | \"food\" | \"foreground\" | \"forklift\" | \"forms\" | \"games\" | \"gauge\" | \"geolocation\" | \"gift\" | \"gift-card\" | \"git-branch\" | \"git-commit\" | \"git-repository\" | \"globe\" | \"globe-asia\" | \"globe-europe\" | \"globe-lines\" | \"globe-list\" | \"graduation-hat\" | \"grid\" | \"hashtag\" | \"hashtag-decimal\" | \"hashtag-list\" | \"heart\" | \"hide\" | \"hide-filled\" | \"home\" | \"home-filled\" | \"icons\" | \"identity-card\" | \"image\" | \"image-add\" | \"image-alt\" | \"image-explore\" | \"image-magic\" | \"image-none\" | \"image-with-text-overlay\" | \"images\" | \"import\" | \"in-progress\" | \"incentive\" | \"incoming\" | \"info-filled\" | \"inheritance\" | \"inventory\" | \"inventory-edit\" | \"inventory-list\" | \"inventory-transfer\" | \"inventory-updated\" | \"iq\" | \"key\" | \"keyboard\" | \"keyboard-filled\" | \"keyboard-hide\" | \"keypad\" | \"label-printer\" | \"language\" | \"language-translate\" | \"layout-block\" | \"layout-buy-button\" | \"layout-buy-button-horizontal\" | \"layout-buy-button-vertical\" | \"layout-column-1\" | \"layout-columns-2\" | \"layout-columns-3\" | \"layout-footer\" | \"layout-header\" | \"layout-logo-block\" | \"layout-popup\" | \"layout-rows-2\" | \"layout-section\" | \"layout-sidebar-left\" | \"layout-sidebar-right\" | \"lightbulb\" | \"link-list\" | \"list-bulleted\" | \"list-bulleted-filled\" | \"list-numbered\" | \"live\" | \"live-critical\" | \"live-none\" | \"location\" | \"location-none\" | \"lock\" | \"map\" | \"markets\" | \"markets-euro\" | \"markets-rupee\" | \"markets-yen\" | \"maximize\" | \"measurement-size\" | \"measurement-size-list\" | \"measurement-volume\" | \"measurement-volume-list\" | \"measurement-weight\" | \"measurement-weight-list\" | \"media-receiver\" | \"megaphone\" | \"mention\" | \"menu\" | \"menu-filled\" | \"menu-horizontal\" | \"menu-vertical\" | \"merge\" | \"metafields\" | \"metaobject\" | \"metaobject-list\" | \"metaobject-reference\" | \"microphone\" | \"microphone-muted\" | \"minimize\" | \"minus\" | \"minus-circle\" | \"mobile\" | \"money-none\" | \"money-split\" | \"moon\" | \"nature\" | \"note\" | \"note-add\" | \"notification\" | \"number-one\" | \"order-batches\" | \"order-draft\" | \"order-filled\" | \"order-first\" | \"order-fulfilled\" | \"order-repeat\" | \"order-unfulfilled\" | \"orders-status\" | \"organization\" | \"outdent\" | \"outgoing\" | \"package\" | \"package-cancel\" | \"package-fulfilled\" | \"package-on-hold\" | \"package-reassign\" | \"package-returned\" | \"page\" | \"page-add\" | \"page-attachment\" | \"page-clock\" | \"page-down\" | \"page-heart\" | \"page-list\" | \"page-reference\" | \"page-remove\" | \"page-report\" | \"page-up\" | \"pagination-end\" | \"pagination-start\" | \"paint-brush-flat\" | \"paint-brush-round\" | \"paper-check\" | \"partially-complete\" | \"passkey\" | \"paste\" | \"pause-circle\" | \"payment\" | \"payment-capture\" | \"payout\" | \"payout-dollar\" | \"payout-euro\" | \"payout-pound\" | \"payout-rupee\" | \"payout-yen\" | \"person\" | \"person-add\" | \"person-exit\" | \"person-filled\" | \"person-list\" | \"person-lock\" | \"person-remove\" | \"person-segment\" | \"personalized-text\" | \"phablet\" | \"phone\" | \"phone-down\" | \"phone-down-filled\" | \"phone-in\" | \"phone-out\" | \"pin\" | \"pin-remove\" | \"plan\" | \"play\" | \"play-circle\" | \"plus\" | \"plus-circle\" | \"plus-circle-down\" | \"plus-circle-filled\" | \"plus-circle-up\" | \"point-of-sale\" | \"point-of-sale-register\" | \"price-list\" | \"print\" | \"product-add\" | \"product-cost\" | \"product-filled\" | \"product-list\" | \"product-reference\" | \"product-remove\" | \"product-return\" | \"product-unavailable\" | \"profile\" | \"profile-filled\" | \"question-circle\" | \"question-circle-filled\" | \"radio-control\" | \"receipt\" | \"receipt-dollar\" | \"receipt-euro\" | \"receipt-folded\" | \"receipt-paid\" | \"receipt-pound\" | \"receipt-refund\" | \"receipt-rupee\" | \"receipt-yen\" | \"receivables\" | \"redo\" | \"referral-code\" | \"refresh\" | \"remove-background\" | \"reorder\" | \"replay\" | \"reset\" | \"return\" | \"reward\" | \"rocket\" | \"rotate-left\" | \"rotate-right\" | \"sandbox\" | \"save\" | \"savings\" | \"scan-qr-code\" | \"search-add\" | \"search-list\" | \"search-recent\" | \"search-resource\" | \"send\" | \"settings\" | \"share\" | \"shield-check-mark\" | \"shield-none\" | \"shield-pending\" | \"shield-person\" | \"shipping-label\" | \"shipping-label-cancel\" | \"shopcodes\" | \"slideshow\" | \"smiley-happy\" | \"smiley-joy\" | \"smiley-neutral\" | \"smiley-sad\" | \"social-ad\" | \"social-post\" | \"sort\" | \"sort-ascending\" | \"sort-descending\" | \"sound\" | \"sports\" | \"star\" | \"star-circle\" | \"star-filled\" | \"star-half\" | \"star-list\" | \"status\" | \"status-active\" | \"stop-circle\" | \"store\" | \"store-import\" | \"store-managed\" | \"store-online\" | \"sun\" | \"table\" | \"table-masonry\" | \"tablet\" | \"target\" | \"tax\" | \"team\" | \"text\" | \"text-align-center\" | \"text-align-left\" | \"text-align-right\" | \"text-block\" | \"text-bold\" | \"text-color\" | \"text-font\" | \"text-font-list\" | \"text-grammar\" | \"text-in-columns\" | \"text-in-rows\" | \"text-indent\" | \"text-indent-remove\" | \"text-italic\" | \"text-quote\" | \"text-title\" | \"text-underline\" | \"text-with-image\" | \"theme\" | \"theme-edit\" | \"theme-store\" | \"theme-template\" | \"three-d-environment\" | \"thumbs-down\" | \"thumbs-up\" | \"tip-jar\" | \"toggle-off\" | \"toggle-on\" | \"transaction\" | \"transaction-fee-add\" | \"transaction-fee-dollar\" | \"transaction-fee-euro\" | \"transaction-fee-pound\" | \"transaction-fee-rupee\" | \"transaction-fee-yen\" | \"transfer\" | \"transfer-in\" | \"transfer-internal\" | \"transfer-out\" | \"truck\" | \"undo\" | \"unknown-device\" | \"unlock\" | \"upload\" | \"variant-list\" | \"video\" | \"video-list\" | \"view\" | \"viewport-narrow\" | \"viewport-short\" | \"viewport-tall\" | \"viewport-wide\" | \"wallet\" | \"wand\" | \"watch\" | \"wifi\" | \"work\" | \"work-list\" | \"wrench\" | \"x\" | \"x-circle\" | \"x-circle-filled\" | AnyString",
           "description": "An icon displayed inside the field to provide visual context about the expected input or field purpose. Commonly used for search fields, currency inputs, or to indicate field type. Accepts any icon name from the icon library or a custom string identifier.",
           "defaultValue": "''"
         },
@@ -9345,7 +9345,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "autocomplete",
-          "value": "\"on\" | \"off\" | TextAutocompleteField | `section-${string} one-time-code` | \"shipping one-time-code\" | \"billing one-time-code\" | `section-${string} shipping one-time-code` | `section-${string} billing one-time-code` | `section-${string} language` | `section-${string} organization` | `section-${string} name` | ... 141...",
+          "value": "\"on\" | \"off\" | TextAutocompleteField | `section-${string} one-time-code` | \"shipping one-time-code\" | \"billing one-time-code\" | `section-${string} shipping one-time-code` | `section-${string} billing one-time-code` | `section-${string} language` | `section-${string} organization` | `section-${string} name` | `section-${string} additional-name` | `section-${string} address-level1` | `section-${string} address-level2` | `section-${string} address-level3` | `section-${string} address-level4` | `section-${string} address-line1` | `section-${string} address-line2` | `section-${string} address-line3` | `section-${string} country-name` | `section-${string} country` | `section-${string} family-name` | `section-${string} given-name` | `section-${string} honorific-prefix` | `section-${string} honorific-suffix` | `section-${string} nickname` | `section-${string} organization-title` | `section-${string} postal-code` | `section-${string} sex` | `section-${string} street-address` | `section-${string} transaction-currency` | `section-${string} username` | `section-${string} cc-additional-name` | `section-${string} cc-family-name` | `section-${string} cc-given-name` | `section-${string} cc-name` | `section-${string} cc-type` | \"shipping language\" | \"shipping organization\" | \"shipping name\" | \"shipping additional-name\" | \"shipping address-level1\" | \"shipping address-level2\" | \"shipping address-level3\" | \"shipping address-level4\" | \"shipping address-line1\" | \"shipping address-line2\" | \"shipping address-line3\" | \"shipping country-name\" | \"shipping country\" | \"shipping family-name\" | \"shipping given-name\" | \"shipping honorific-prefix\" | \"shipping honorific-suffix\" | \"shipping nickname\" | \"shipping organization-title\" | \"shipping postal-code\" | \"shipping sex\" | \"shipping street-address\" | \"shipping transaction-currency\" | \"shipping username\" | \"shipping cc-additional-name\" | \"shipping cc-family-name\" | \"shipping cc-given-name\" | \"shipping cc-name\" | \"shipping cc-type\" | \"billing language\" | \"billing organization\" | \"billing name\" | \"billing additional-name\" | \"billing address-level1\" | \"billing address-level2\" | \"billing address-level3\" | \"billing address-level4\" | \"billing address-line1\" | \"billing address-line2\" | \"billing address-line3\" | \"billing country-name\" | \"billing country\" | \"billing family-name\" | \"billing given-name\" | \"billing honorific-prefix\" | \"billing honorific-suffix\" | \"billing nickname\" | \"billing organization-title\" | \"billing postal-code\" | \"billing sex\" | \"billing street-address\" | \"billing transaction-currency\" | \"billing username\" | \"billing cc-additional-name\" | \"billing cc-family-name\" | \"billing cc-given-name\" | \"billing cc-name\" | \"billing cc-type\" | `section-${string} shipping language` | `section-${string} shipping organization` | `section-${string} shipping name` | `section-${string} shipping additional-name` | `section-${string} shipping address-level1` | `section-${string} shipping address-level2` | `section-${string} shipping address-level3` | `section-${string} shipping address-level4` | `section-${string} shipping address-line1` | `section-${string} shipping address-line2` | `section-${string} shipping address-line3` | `section-${string} shipping country-name` | `section-${string} shipping country` | `section-${string} shipping family-name` | `section-${string} shipping given-name` | `section-${string} shipping honorific-prefix` | `section-${string} shipping honorific-suffix` | `section-${string} shipping nickname` | `section-${string} shipping organization-title` | `section-${string} shipping postal-code` | `section-${string} shipping sex` | `section-${string} shipping street-address` | `section-${string} shipping transaction-currency` | `section-${string} shipping username` | `section-${string} shipping cc-additional-name` | `section-${string} shipping cc-family-name` | `section-${string} shipping cc-given-name` | `section-${string} shipping cc-name` | `section-${string} shipping cc-type` | `section-${string} billing language` | `section-${string} billing organization` | `section-${string} billing name` | `section-${string} billing additional-name` | `section-${string} billing address-level1` | `section-${string} billing address-level2` | `section-${string} billing address-level3` | `section-${string} billing address-level4` | `section-${string} billing address-line1` | `section-${string} billing address-line2` | `section-${string} billing address-line3` | `section-${string} billing country-name` | `section-${string} billing country` | `section-${string} billing family-name` | `section-${string} billing given-name` | `section-${string} billing honorific-prefix` | `section-${string} billing honorific-suffix` | `section-${string} billing nickname` | `section-${string} billing organization-title` | `section-${string} billing postal-code` | `section-${string} billing sex` | `section-${string} billing street-address` | `section-${string} billing transaction-currency` | `section-${string} billing username` | `section-${string} billing cc-additional-name` | `section-${string} billing cc-family-name` | `section-${string} billing cc-given-name` | `section-${string} billing cc-name` | `section-${string} billing cc-type`",
           "description": "Controls browser autofill behavior for the field.\n\nBasic values:\n- `on` - Enables autofill without specifying content type (default)\n- `off` - Disables autofill for sensitive data or one-time codes\n\nSpecific field values describe the expected data type. You can optionally prefix these with:\n- `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)\n- `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes\n- Both section and group (for example, `section-primary shipping email`)\n\nProviding a specific autofill token helps browsers suggest more relevant saved data.\n\nLearn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.",
           "defaultValue": "'on' for everything else"
         },
@@ -9473,7 +9473,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -9630,7 +9630,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2633",
+          "name": "__@overlayHidden@7216",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -9638,7 +9638,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2634",
+          "name": "__@overlayActivator@7217",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -9646,7 +9646,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2635",
+          "name": "__@overlayHideFrameId@7218",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -9789,7 +9789,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "autocomplete",
-          "value": "\"on\" | \"off\" | `section-${string} url` | `section-${string} photo` | `section-${string} impp` | `section-${string} home impp` | `section-${string} mobile impp` | `section-${string} fax impp` | `section-${string} pager impp` | \"shipping url\" | \"shipping photo\" | \"shipping impp\" | \"shipping home impp\" | \"shipping mobi...",
+          "value": "\"on\" | \"off\" | `section-${string} url` | `section-${string} photo` | `section-${string} impp` | `section-${string} home impp` | `section-${string} mobile impp` | `section-${string} fax impp` | `section-${string} pager impp` | \"shipping url\" | \"shipping photo\" | \"shipping impp\" | \"shipping home impp\" | \"shipping mobile impp\" | \"shipping fax impp\" | \"shipping pager impp\" | \"billing url\" | \"billing photo\" | \"billing impp\" | \"billing home impp\" | \"billing mobile impp\" | \"billing fax impp\" | \"billing pager impp\" | `section-${string} shipping url` | `section-${string} shipping photo` | `section-${string} shipping impp` | `section-${string} shipping home impp` | `section-${string} shipping mobile impp` | `section-${string} shipping fax impp` | `section-${string} shipping pager impp` | `section-${string} billing url` | `section-${string} billing photo` | `section-${string} billing impp` | `section-${string} billing home impp` | `section-${string} billing mobile impp` | `section-${string} billing fax impp` | `section-${string} billing pager impp` | URLAutocompleteField",
           "description": "Controls browser autofill behavior for the field.\n\nBasic values:\n- `on` - Enables autofill without specifying content type (default)\n- `off` - Disables autofill for sensitive data or one-time codes\n\nSpecific field values describe the expected data type. You can optionally prefix these with:\n- `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)\n- `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes\n- Both section and group (for example, `section-primary shipping email`)\n\nProviding a specific autofill token helps browsers suggest more relevant saved data.\n\nLearn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.",
           "defaultValue": "'on' for everything else"
         },
@@ -9940,7 +9940,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2264",
+          "name": "__@internals$4@6847",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true
@@ -9995,6 +9995,16 @@
         }
       ],
       "value": "declare class URLField\n  extends PreactFieldElement<URLFieldProps['autocomplete']>\n  implements URLFieldProps\n{\n  accessor autocomplete: URLFieldProps['autocomplete'];\n  accessor maxLength: URLFieldProps['maxLength'];\n  accessor minLength: URLFieldProps['minLength'];\n  /**\n   * The current URL value in the field as a string. When setting this property programmatically, it updates the field's display value. When reading it, you get the user's current input. The field validates this value as a URL format when the user finishes editing.\n   */\n  get value(): string;\n  set value(value: string);\n  constructor();\n}"
+    }
+  },
+  "URLAutocompleteField": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "URLAutocompleteField",
+      "value": "'url' | 'photo' | 'impp' | 'home impp' | 'mobile impp' | 'fax impp' | 'pager impp'",
+      "description": "Represents autocomplete values that are valid for URL input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for URL inputs.\n\nAvailable values:\n- `url` - General URL or web address\n- `photo` - URL to a photo or image\n- `impp` - Instant messaging protocol URL\n- `home impp` - Home instant messaging protocol URL\n- `mobile impp` - Mobile instant messaging protocol URL\n- `fax impp` - Fax instant messaging protocol URL\n- `pager impp` - Pager instant messaging protocol URL",
+      "isPublicDocs": true
     }
   },
   "AdminAction": {
@@ -11073,40 +11083,12 @@
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
           "syntaxKind": "PropertySignature",
-          "name": "purchaseType",
-          "value": "ReadonlySignalLike<PurchaseType>",
-          "description": "A signal that contains the purchase type. Read this to determine whether the discount applies to one-time purchases, subscriptions, or both."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "recurringCycleLimit",
-          "value": "ReadonlySignalLike<number | null>",
-          "description": "A signal that contains the recurring cycle limit for subscription purchases. A positive integer limits how many billing cycles the discount applies for. Both `0` and `null` mean unlimited (no limit). `null` is the default when no value has been explicitly set."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
-          "syntaxKind": "PropertySignature",
           "name": "updateDiscountClasses",
           "value": "UpdateSignalFunction<DiscountClass[]>",
           "description": "A function that updates the discount classes to change where the discount applies. Call this function with an array of `DiscountClass` values to set which parts of the purchase (products, order total, or shipping) the discount affects."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "updatePurchaseType",
-          "value": "UpdateSignalFunction<PurchaseType>",
-          "description": "A function that updates the purchase type to change which types of purchases the discount applies to. Call this with a `PurchaseType` value (`'one_time_purchase'`, `'subscription'`, or `'both'`)."
-        },
-        {
-          "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "updateRecurringCycleLimit",
-          "value": "UpdateSignalFunction<number | null>",
-          "description": "A function that updates the recurring cycle limit for subscription purchases. Pass a positive integer to limit the number of billing cycles, `0` or `null` to remove the limit."
         }
       ],
-      "value": "export interface DiscountsApi {\n  /**\n   * A signal that contains the discount classes (Product, Order, or Shipping). Read this to determine where the discount applies in the purchase flow. A discount can apply to multiple classes simultaneously.\n   */\n  discountClasses: ReadonlySignalLike<DiscountClass[]>;\n  /**\n   * A function that updates the discount classes to change where the discount applies. Call this function with an array of `DiscountClass` values to set which parts of the purchase (products, order total, or shipping) the discount affects.\n   */\n  updateDiscountClasses: UpdateSignalFunction<DiscountClass[]>;\n  /**\n   * A signal that contains the discount method (`'automatic'` or `'code'`). Read this to determine whether the discount applies automatically at checkout or requires a customer-entered code.\n   */\n  discountMethod: ReadonlySignalLike<DiscountMethod>;\n  /**\n   * A signal that contains the purchase type. Read this to determine whether the discount applies to one-time purchases, subscriptions, or both.\n   */\n  purchaseType: ReadonlySignalLike<PurchaseType>;\n  /**\n   * A function that updates the purchase type to change which types of purchases the discount applies to. Call this with a `PurchaseType` value (`'one_time_purchase'`, `'subscription'`, or `'both'`).\n   */\n  updatePurchaseType: UpdateSignalFunction<PurchaseType>;\n  /**\n   * A signal that contains the recurring cycle limit for subscription purchases. A positive integer limits how many billing cycles the discount applies for. Both `0` and `null` mean unlimited (no limit). `null` is the default when no value has been explicitly set.\n   */\n  recurringCycleLimit: ReadonlySignalLike<number | null>;\n  /**\n   * A function that updates the recurring cycle limit for subscription purchases. Pass a positive integer to limit the number of billing cycles, `0` or `null` to remove the limit.\n   */\n  updateRecurringCycleLimit: UpdateSignalFunction<number | null>;\n}"
+      "value": "export interface DiscountsApi {\n  /**\n   * A signal that contains the discount classes (Product, Order, or Shipping). Read this to determine where the discount applies in the purchase flow. A discount can apply to multiple classes simultaneously.\n   */\n  discountClasses: ReadonlySignalLike<DiscountClass[]>;\n  /**\n   * A function that updates the discount classes to change where the discount applies. Call this function with an array of `DiscountClass` values to set which parts of the purchase (products, order total, or shipping) the discount affects.\n   */\n  updateDiscountClasses: UpdateSignalFunction<DiscountClass[]>;\n  /**\n   * A signal that contains the discount method (`'automatic'` or `'code'`). Read this to determine whether the discount applies automatically at checkout or requires a customer-entered code.\n   */\n  discountMethod: ReadonlySignalLike<DiscountMethod>;\n}"
     }
   },
   "ReadonlySignalLike": {
@@ -11151,15 +11133,6 @@
       "value": "'automatic' | 'code'",
       "description": "The method used to apply a discount. Use `'automatic'` for discounts that apply automatically at checkout, or `'code'` for discounts that require a code entered by the customer.",
       "isPublicDocs": true
-    }
-  },
-  "PurchaseType": {
-    "src/surfaces/admin/api/discount-function-settings/launch-options.ts": {
-      "filePath": "src/surfaces/admin/api/discount-function-settings/launch-options.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "PurchaseType",
-      "value": "'one_time_purchase' | 'subscription' | 'both'",
-      "description": "The purchase type that determines which purchases the discount applies to. Use `'one_time_purchase'` for one-time purchases only, `'subscription'` for subscription purchases only, or `'both'` for both."
     }
   },
   "UpdateSignalFunction": {
@@ -15933,16 +15906,6 @@
       "isPublicDocs": true
     }
   },
-  "URLAutocompleteField": {
-    "src/surfaces/admin/components.ts": {
-      "filePath": "src/surfaces/admin/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "URLAutocompleteField",
-      "value": "'url' | 'photo' | 'impp' | 'home impp' | 'mobile impp' | 'fax impp' | 'pager impp'",
-      "description": "Represents autocomplete values that are valid for URL input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for URL inputs.\n\nAvailable values:\n- `url` - General URL or web address\n- `photo` - URL to a photo or image\n- `impp` - Instant messaging protocol URL\n- `home impp` - Home instant messaging protocol URL\n- `mobile impp` - Mobile instant messaging protocol URL\n- `fax impp` - Fax instant messaging protocol URL\n- `pager impp` - Pager instant messaging protocol URL",
-      "isPublicDocs": true
-    }
-  },
   "Key": {
     "src/surfaces/admin/components.ts": {
       "filePath": "src/surfaces/admin/components.ts",
@@ -18855,7 +18818,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@abortController@2693",
+          "name": "__@abortController@7276",
           "value": "AbortController",
           "description": "",
           "isPrivate": true
@@ -18863,7 +18826,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dialog@2687",
+          "name": "__@dialog@7270",
           "value": "HTMLDialogElement",
           "description": "",
           "isPrivate": true
@@ -18871,7 +18834,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@focusedElement@2689",
+          "name": "__@focusedElement@7272",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -18879,7 +18842,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@nestedModals@2691",
+          "name": "__@nestedModals@7274",
           "value": "Map<Modal, boolean>",
           "description": "",
           "isPrivate": true
@@ -18887,7 +18850,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@childrenRerenderObserver@2695",
+          "name": "__@childrenRerenderObserver@7278",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true
@@ -18895,7 +18858,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowDomRerenderObserver@2696",
+          "name": "__@shadowDomRerenderObserver@7279",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true
@@ -18903,7 +18866,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onEscape@2690",
+          "name": "__@onEscape@7273",
           "value": "(event: KeyboardEvent) => void",
           "description": "",
           "isPrivate": true
@@ -18911,7 +18874,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropClick@2692",
+          "name": "__@onBackdropClick@7275",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true
@@ -18919,7 +18882,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onChildModalChange@2694",
+          "name": "__@onChildModalChange@7277",
           "value": "EventListenerOrEventListenerObject",
           "description": "",
           "isPrivate": true
@@ -18927,7 +18890,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@isOpen@2686",
+          "name": "__@isOpen@7269",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -18935,7 +18898,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@dismiss@2688",
+          "name": "__@dismiss@7271",
           "value": "() => void",
           "description": "",
           "isPrivate": true
@@ -18943,7 +18906,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@hasOpenChildModal@2683",
+          "name": "__@hasOpenChildModal@7266",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -18951,7 +18914,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@show@2684",
+          "name": "__@show@7267",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true
@@ -18959,7 +18922,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@hide@2685",
+          "name": "__@hide@7268",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true
@@ -18967,7 +18930,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2633",
+          "name": "__@overlayHidden@7216",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -18975,7 +18938,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2634",
+          "name": "__@overlayActivator@7217",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -18983,7 +18946,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2635",
+          "name": "__@overlayHideFrameId@7218",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -19289,7 +19252,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2633",
+          "name": "__@overlayHidden@7216",
           "value": "boolean",
           "description": "",
           "isPrivate": true
@@ -19297,7 +19260,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2634",
+          "name": "__@overlayActivator@7217",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true
@@ -19305,7 +19268,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2635",
+          "name": "__@overlayHideFrameId@7218",
           "value": "number",
           "description": "",
           "isPrivate": true
@@ -21763,6 +21726,15 @@
         }
       ],
       "value": "export interface FunctionSettingsEvents {\n  /**\n   * An optional callback function that will be run by the admin when the user\n   * commits their changes in the admin-rendered part of the function settings\n   * experience. If `event.waitUntil` is called with a promise, the admin will wait for the\n   * promise to resolve before committing any changes to Shopify’s servers. If\n   * the promise rejects, the admin will abort the changes and display an error,\n   * using the `message` property of the error you reject with.\n   */\n  submit: CallbackExtendableEventListener<typeof tagName> | null = null;\n  /**\n   * An optional callback function that will be run by the admin when\n   * committing the changes to Shopify’s servers fails. The error event you receive includes\n   * an `error` property that is an `AggregateError` object. This object includes\n   * an array of errors that were caused by data your extension provided.\n   * Network errors and user errors that are out of your control will not be reported here.\n   *\n   * In the `onError` callback, you should update your extension’s UI to\n   * highlight the fields that caused the errors, and display the error messages\n   * to the user.\n   */\n  error: CallbackErrorEventListener<\n    typeof tagName,\n    FunctionSettingsErrorEvent['error']['errors'][0]\n  > | null = null;\n  /**\n   * A callback that is run when the function settings form is reset.\n   */\n  reset: CallbackEventListener<typeof tagName> | null = null;\n}"
+    }
+  },
+  "DataGeneratedType": {
+    "src/surfaces/admin/api/purchase-options-card-action.doc.ts": {
+      "filePath": "src/surfaces/admin/api/purchase-options-card-action.doc.ts",
+      "name": "DataGeneratedType",
+      "description": "Template schema for reference entity documentation pages.",
+      "isPublicDocs": true,
+      "value": "data: ReferenceEntityTemplateSchema = {\n  name: 'Purchase Options Card Configuration API',\n  description:\n    'The Purchase Options Card Configuration API provides access to purchase option selection data for products with [subscription](/docs/apps/build/purchase-options/subscriptions) and [selling plan](/docs/apps/build/purchase-options/subscriptions/selling-plans) configurations. Use this API to build action extensions that interact with selected [purchase options](/docs/apps/build/purchase-options) on product and product variant details pages.',\n  isVisualComponent: false,\n  type: 'API',\n  requires:\n    'the [admin action](/docs/api/admin-extensions/{API_VERSION}/web-components/settings-and-templates/admin-action) component.',\n  defaultExample: {\n    description:\n      'Update a subscription by sending product and selling plan IDs to your backend. This example checks for selling plan presence, posts the update request, and shows a success banner before auto-closing the modal.',\n    codeblock: {\n      title: 'Manage a subscription',\n      tabs: [\n        {\n          title: 'jsx',\n          code: './purchase-options-card/examples/manage-subscription.jsx',\n          language: 'jsx',\n        },\n      ],\n    },\n  },\n  definitions: [\n    {\n      title: 'Properties',\n      description:\n        'The `PurchaseOptionsCardConfigurationApi` object provides access to selected purchase option data. Access the following properties on the `PurchaseOptionsCardConfigurationApi` object to interact with currently selected products and selling plans in the `admin.product-purchase-option.action.render` and `admin.product-variant-purchase-option.action.render` targets.',\n      type: 'PurchaseOptionsCardConfigurationApi',\n    },\n  ],\n  examples: {\n    description: 'Work with purchase options and selling plans',\n    examples: [\n      {\n        description:\n          'Show a confirmation dialog before removing a product from a selling plan. This example demonstrates two-step confirmation with cancel option and success feedback after removal.',\n        codeblock: {\n          title: 'Remove from selling plan',\n          tabs: [\n            {\n              title: 'jsx',\n              code: './purchase-options-card/examples/remove-from-plan.jsx',\n              language: 'jsx',\n            },\n          ],\n        },\n      },\n      {\n        description:\n          'Fetch selling plan name and options using the [GraphQL Admin API](/docs/api/admin-graphql) to validate the configuration. This example queries plan details, stores them in state, displays the information, and auto-closes after two seconds.',\n        codeblock: {\n          title: 'Validate selling plan',\n          tabs: [\n            {\n              title: 'jsx',\n              code: './purchase-options-card/examples/validate-selling-plan.jsx',\n              language: 'jsx',\n            },\n          ],\n        },\n      },\n    ],\n  },\n  category: 'Target APIs',\n  subCategory: 'Contextual APIs',\n  related: [],\n  subSections: [\n    {\n      type: 'Generic',\n      anchorLink: 'best-practices',\n      title: 'Best practices',\n      sectionContent:\n        '- **Handle operations based on selling plan selection:** Items in `api.data.selected` have an optional `sellingPlanId` property. When present, perform subscription-specific operations. When absent, treat it as a one-time purchase.',\n    },\n    {\n      type: 'Generic',\n      anchorLink: 'limitations',\n      title: 'Limitations',\n      sectionContent:\n        '- The action only appears when selling plan groups exist on the product or variant. The action is hidden for products without subscription options, even if your extension is installed.\\n' +\n        '- Items in `api.data.selected` have an optional `sellingPlanId` property. When present, the merchant selected a specific selling plan. When absent, they selected the product/variant without a specific plan.\\n' +\n        \"- Your extension can't modify selling plan configurations. The API is read-only for selling plan data. Use GraphQL mutations to update selling plans if needed.\\n\" +\n        '- Selection data only includes IDs. You must query GraphQL for full product, variant, and selling plan details like billing policy and pricing adjustments. Selling plan group data is also unavailable. Your extension only receives individual selling plan IDs but not the parent selling plan group structure.',\n    },\n  ],\n}"
     }
   }
 }
