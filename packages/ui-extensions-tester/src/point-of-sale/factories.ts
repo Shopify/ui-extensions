@@ -19,6 +19,7 @@ import type {
   ConnectivityState,
   Cart,
   Session,
+  StaffMember,
   TransactionCompleteData,
   TransactionCompleteWithReprintData,
   CashTrackingSessionStartData,
@@ -60,6 +61,12 @@ function createSessionCurrentSession(): Session {
     staffMemberId: 1,
     currency: 'USD',
     posVersion: '9.0.0',
+  };
+}
+
+function createStaffMember(): StaffMember {
+  return {
+    id: 1,
   };
 }
 
@@ -119,6 +126,7 @@ function createMockStandardApi<T extends RenderExtensionTarget>(
     toast: {show: () => {}},
     session: {
       currentSession: createSessionCurrentSession(),
+      staffMember: createReadonlySignalLike(createStaffMember()),
       getSessionToken: async () => 'mock-session-token',
       deviceId: 1,
     },
@@ -454,6 +462,7 @@ function createDataTargetMock<T extends ExtensionTarget>(
     i18n: createMockI18n(),
     session: {
       currentSession: createSessionCurrentSession(),
+      staffMember: createReadonlySignalLike(createStaffMember()),
       getSessionToken: async () => 'mock-session-token',
       deviceId: 1,
     },
