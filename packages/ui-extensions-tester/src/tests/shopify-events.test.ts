@@ -57,6 +57,20 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     expect(typeof shopify.removeEventListener).toBe('function');
   });
 
+  it('exposes read-only scanner data on the shopify global', () => {
+    const extension = setUpExt();
+
+    expect(
+      extension.shopify.scanner.scannerData.current.value.data,
+    ).toBeUndefined();
+    expect(
+      extension.shopify.scanner.scannerData.current.value.source,
+    ).toBeUndefined();
+    expect(extension.shopify.scanner.sources.current.value).toHaveLength(0);
+    expect('showCameraScanner' in extension.shopify.scanner).toBe(false);
+    expect('hideCameraScanner' in extension.shopify.scanner).toBe(false);
+  });
+
   it('dispatches a registered listener with the provided event payload', () => {
     const extension = setUpExt();
     const shopify = (globalThis as any).shopify;

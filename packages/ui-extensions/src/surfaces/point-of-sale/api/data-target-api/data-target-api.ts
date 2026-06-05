@@ -4,6 +4,7 @@ import {DeviceApi} from '../device-api/device-api';
 import {ExtensionApi} from '../extension-api/extension-api';
 import {LocaleApi} from '../locale-api/locale-api';
 import {ProductSearchApi} from '../product-search-api/product-search-api';
+import {ReadonlyScannerApi} from '../scanner-api/scanner-api';
 import {SessionApi} from '../session-api/session-api';
 import {StorageApi} from '../storage-api/storage-api';
 import type {I18n} from '../../../../api';
@@ -25,4 +26,5 @@ export type DataTargetApi<T> = {
   ConnectivityApi &
   DeviceApi &
   ProductSearchApi &
-  ReadonlyCartApi;
+  ReadonlyCartApi &
+  ReadonlyScannerApi;

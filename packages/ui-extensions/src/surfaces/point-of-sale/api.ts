@@ -76,6 +76,10 @@ export type {
 export type {
   ScannerSource,
   ScannerSubscriptionResult,
+  ScannerSources,
+  ScannerData,
+  ReadonlyScannerApi,
+  ReadonlyScannerApiContent,
   ScannerApi,
   ScannerApiContent,
 } from './api/scanner-api/scanner-api';

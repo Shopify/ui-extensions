@@ -495,6 +495,17 @@ function createDataTargetMock<T extends ExtensionTarget>(
         hasNextPage: false,
       }),
     },
+    scanner: {
+      scannerData: {
+        current: createReadonlySignalLike({
+          data: undefined,
+          source: undefined,
+        }),
+      },
+      sources: {
+        current: createReadonlySignalLike<ScannerSource[]>([]),
+      },
+    },
     ...createMockCartApi(),
   };
 }

@@ -42,16 +42,16 @@ export interface ScannerSources {
  */
 export interface ScannerData {
   /**
-   * Current available scanner sources with subscription support. The `value` property provides current sources, and `subscribe` listens for changes. Use to monitor which scanners are available.
+   * Current scanner data with subscription support. The `value` property provides current scan data, and `subscribe` listens for changes. Use to receive scanner events.
    */
   current: ReadonlySignalLike<ScannerSubscriptionResult>;
 }
 
 /**
- * The `ScannerApi` object provides scan results and scanner controls.
+ * The readonly scanner API provides scan results and scanner source information.
  * @publicDocs
  */
-export interface ScannerApiContent {
+export interface ReadonlyScannerApiContent {
   /**
    * Access current scan data and subscribe to new scan events. Use to receive real-time scan results.
    */
@@ -60,6 +60,13 @@ export interface ScannerApiContent {
    * Access available scanner sources on the device. Use to check which scanners are available (camera, external, or embedded).
    */
   sources: ScannerSources;
+}
+
+/**
+ * The `ScannerApi` object provides scan results and scanner controls.
+ * @publicDocs
+ */
+export interface ScannerApiContent extends ReadonlyScannerApiContent {
   /**
    * Show the camera scanner.
    */
@@ -68,6 +75,14 @@ export interface ScannerApiContent {
    * Hide the camera scanner.
    */
   hideCameraScanner: () => void;
+}
+
+/**
+ * The readonly scanner API provides access to scanner data and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.
+ * @publicDocs
+ */
+export interface ReadonlyScannerApi {
+  scanner: ReadonlyScannerApiContent;
 }
 
 /**
