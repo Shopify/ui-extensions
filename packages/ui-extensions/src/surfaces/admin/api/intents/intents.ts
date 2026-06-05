@@ -84,10 +84,10 @@ export interface IntentResponseApi {
 }
 
 /**
- * The type of operation to perform: creating a new resource or editing an existing one.
+ * The type of operation to perform: creating a new resource, editing an existing one, or picking existing resources.
  * @publicDocs
  */
-export type IntentAction = 'create' | 'edit';
+export type IntentAction = 'create' | 'edit' | 'pick';
 
 /**
  * The types of Shopify resources that support intent-based creation and editing workflows.
@@ -99,6 +99,7 @@ export type IntentType =
   | 'shopify/Collection'
   | 'shopify/Customer'
   | 'shopify/Discount'
+  | 'shopify/File'
   | 'shopify/Location'
   | 'shopify/Market'
   | 'shopify/Menu'
@@ -140,7 +141,7 @@ export interface IntentQuery extends IntentQueryOptions {
 }
 
 /**
- * The [`invoke` method](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api#invoke-method) in the Intents API launches a Shopify admin workflow for creating or editing resources, such as products, customers, or discounts. It opens a native admin interface, waits for the merchant to complete the workflow, and returns the result including any created or updated resource data.
+ * The [`invoke` method](/docs/api/admin-extensions/{API_VERSION}/target-apis/utility-apis/intents-api#invoke-method) in the Intents API launches a Shopify admin workflow for creating, editing, or picking resources, such as products, customers, or files. It opens a native admin interface, waits for the merchant to complete the workflow, and returns the result including any created, updated, or selected resource data.
  *
  * @param intent - Either a string query (for example, `'create:shopify/Product'`) or structured object describing the intent
  * @param options - Optional parameters when using string query format, such as resource IDs for editing or additional context data
@@ -161,6 +162,13 @@ export interface IntentQuery extends IntentQueryOptions {
  *   data: { type: 'amount-off-product' }
  * });
  * const response = await activity.complete;
+ *
+ * // Pick files from the merchant's media library
+ * const activity = await intents.invoke('pick:shopify/File', {
+ *   data: { mediaTypes: ['MediaImage'], multiSelect: true }
+ * });
+ * const response = await activity.complete;
+ * // response.data.ids contains the selected file GIDs
  * ```
  * @publicDocs
  */
