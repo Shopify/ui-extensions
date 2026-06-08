@@ -163,7 +163,7 @@ export interface IntentQuery extends IntentQueryOptions {
  * });
  * const response = await activity.complete;
  *
- * // Pick files from the merchant's media library
+ * // Pick files from the store
  * const activity = await intents.invoke('pick:shopify/File', {
  *   data: { mediaTypes: ['MediaImage'], multiSelect: true }
  * });
