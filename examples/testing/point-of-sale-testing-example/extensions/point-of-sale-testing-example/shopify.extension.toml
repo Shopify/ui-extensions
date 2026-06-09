@@ -1,0 +1,21 @@
+# Learn more about configuring your POS UI extension:
+# https://shopify.dev/docs/api/pos-ui-extensions
+
+# The version of APIs your extension will receive. Learn more:
+# https://shopify.dev/docs/api/usage/versioning
+api_version = "2026-07"
+
+[[extensions]]
+uid = "80f617f3-cfaf-bcfc-f4bd-8bf4faabbc38dc0e7226"
+type = "ui_extension"
+name = "point-of-sale-testing-example"
+handle = "point-of-sale-testing-example"
+description = "A preact POS UI extension"
+
+[[extensions.targeting]]
+module = "./src/Tile.jsx"
+target = "pos.home.tile.render"
+
+[[extensions.targeting]]
+module = "./src/Modal.jsx"
+target = "pos.home.modal.render"

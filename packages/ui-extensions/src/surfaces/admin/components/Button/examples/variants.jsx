@@ -1,6 +1,0 @@
-<s-stack direction="inline" gap="base">
-  <s-button variant="primary">Primary</s-button>
-  <s-button variant="secondary">Secondary</s-button>
-  <s-button variant="tertiary">Tertiary</s-button>
-  <s-button variant="auto">Auto</s-button>
-</s-stack>

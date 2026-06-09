@@ -1,28 +1,38 @@
-import {BaseElementPropsWithChildren, IdProps} from './shared';
+import {BaseElementPropsWithChildren, IdProps, SizeKeyword} from './shared';
 
 export interface PageProps extends IdProps {
   /**
-   * The main page heading
+   * The main heading displayed at the top of the page.
    */
   heading?: string;
 
   /**
-   * The text to be used as subheading.
+   * A secondary heading displayed below the main heading for additional context.
    */
   subheading?: string;
+
+  /**
+   * The inline size of the page.
+   *
+   * - `base`: Matches the narrow width used by native pages for simple workflows.
+   * - `large`: Uses the full width available to the main content area in customer accounts. Recommended for content-heavy pages or desktop-first experiences.
+   *
+   * @default 'base'
+   */
+  inlineSize?: Extract<SizeKeyword, 'base' | 'large'>;
 }
 
 export interface PageElementSlots {
   /**
-   * The breadcrumb actions for the page. Accepts a single Button element with restricted properties (see below).
+   * A navigation link that lets the customer return to the previous page. Accepts a single [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) component. Learn more about [breadcrumb actions](#breadcrumb-actions).
    */
   'breadcrumb-actions'?: HTMLElement;
   /**
-   * The primary action for the page. Accepts a single Button element with restricted properties (see below).
+   * The main call-to-action for the page. Accepts a single [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) component. Learn more about [primary actions](#primary-actions).
    */
   'primary-action'?: HTMLElement;
   /**
-   * The secondary actions for the page. Accepts multiple Button elements with restricted properties (see below).
+   * Additional actions for the page. Accepts one or more [button](/docs/api/{API_NAME}/{API_VERSION}/web-components/actions/button) components. Learn more about [secondary actions](#secondary-actions).
    */
   'secondary-actions'?: HTMLElement;
 }

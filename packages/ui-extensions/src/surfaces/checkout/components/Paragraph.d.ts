@@ -11,27 +11,50 @@
 import type {ParagraphProps$1} from './components-shared.d.ts';
 
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
+    /**
+     * A unique identifier for this element within its parent. This is used by the rendering engine for efficient reconciliation when lists change.
+     */
     key?: preact.Key;
+    /**
+     * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+     */
     ref?: preact.Ref<TClass>;
+    /**
+     * Assigns the element to a named slot in a parent component that uses slot-based composition patterns.
+     */
     slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    /**
+     * The child elements to render within this component.
+     */
     children?: preact.ComponentChildren;
 }
 
 declare const tagName = "s-paragraph";
+/** @publicDocs */
 export interface ParagraphElementProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
+    /**
+     * Sets the alignment of the text.
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
+     *
+     * @default 'auto'
+     */
+    textAlign?: 'start' | 'end' | 'center' | 'auto';
 }
+/** @publicDocs */
 export interface ParagraphElement extends ParagraphElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 export interface ParagraphProps extends ParagraphElementProps {
 }
 declare global {

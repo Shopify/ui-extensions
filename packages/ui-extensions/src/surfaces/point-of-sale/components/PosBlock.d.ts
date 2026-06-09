@@ -15,9 +15,11 @@ import type {
   ComponentChild,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -35,6 +37,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -43,9 +46,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-pos-block';
+/** @publicDocs */
 export interface PosBlockJSXProps
   extends Pick<POSBlockProps, 'id' | 'heading'> {
   /**
@@ -57,10 +62,11 @@ export interface PosBlockJSXProps
    */
   children?: ComponentChildren;
 }
+/** @publicDocs */
 export type ElementProps = Omit<PosBlockJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps;
+    [tagName]: ElementProps & HTMLElement;
   }
 }
 declare module 'preact' {

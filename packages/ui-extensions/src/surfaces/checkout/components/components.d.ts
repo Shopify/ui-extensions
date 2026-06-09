@@ -48,19 +48,19 @@ export interface ActionSlots {
 }
 export interface BaseOverlayProps {
 	/**
-	 * Callback fired after the overlay is shown.
+	 * A callback fired immediately after the overlay is shown.
 	 */
 	onShow?: (event: Event) => void;
 	/**
-	 * Callback fired when the overlay is shown **after** any animations to show the overlay have finished.
+	 * A callback fired when the overlay is shown, after any show animations have completed.
 	 */
 	onAfterShow?: (event: Event) => void;
 	/**
-	 * Callback fired after the overlay is hidden.
+	 * A callback fired immediately after the overlay is hidden.
 	 */
 	onHide?: (event: Event) => void;
 	/**
-	 * Callback fired when the overlay is hidden **after** any animations to hide the overlay have finished.
+	 * A callback fired when the overlay is hidden, after any hide animations have completed.
 	 */
 	onAfterHide?: (event: Event) => void;
 }
@@ -74,19 +74,19 @@ export interface BaseOverlayProps {
  */
 export interface BaseOverlayMethods {
 	/**
-	 * Method to show an overlay.
+	 * A method to programmatically show the overlay.
 	 *
 	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
 	 */
 	showOverlay: () => void;
 	/**
-	 * Method to hide an overlay.
+	 * A method to programmatically hide the overlay and run any associated hide animations.
 	 *
 	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
 	 */
 	hideOverlay: () => void;
 	/**
-	 * Method to toggle the visiblity of an overlay.
+	 * A method to programmatically toggle the visibility of the overlay.
 	 *
 	 * @implementation This is a method to be called on the element and not a callback and should hence be camelCase
 	 */
@@ -108,28 +108,25 @@ export interface FocusEventProps {
 }
 export interface ToggleEventProps {
 	/**
-	 * Callback fired when the element state changes **after** any animations have finished.
+	 * A callback fired when the element state changes, after any toggle animations have finished.
 	 *
 	 * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
 	 * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+	 * Learn more about [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onAfterToggle?: (event: ToggleEvent$1) => void;
 	/**
-	 * Callback straight after the element state changes.
+	 * A callback fired immediately when the element state changes, before any animations.
 	 *
 	 * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
 	 *   `newState` property will be set to `open`.
-	 * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
+	 * - If the element is transitioning from showing to hidden, then the `oldState` property will be set to `open` and the
 	 *   `newState` will be `closed`.
 	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
+	 * Learn more about the [`toggle` event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [`newState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [`oldState` property](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
 	 */
 	onToggle?: (event: ToggleEvent$1) => void;
 }
@@ -164,7 +161,17 @@ interface AnnouncementProps$1 extends GlobalProps, ToggleEventProps {
 	 */
 	dismiss: () => void;
 }
+/**
+ * The design system's size scale, used to control the dimensions of components like avatars, icons, and thumbnails. Values range from `"small-500"` (smallest) through `"base"` (standard) to `"large-500"` (largest). Not all components support every size — check the component's `size` property type for its available options.
+ */
 export type SizeKeyword = "small-500" | "small-400" | "small-300" | "small-200" | "small-100" | "small" | "base" | "large" | "large-100" | "large-200" | "large-300" | "large-400" | "large-500";
+/**
+ * Defines the color intensity or emphasis level for text and UI elements.
+ *
+ * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+ * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+ * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
+ */
 export type ColorKeyword = "subdued" | "base" | "strong";
 export type BackgroundColorKeyword = "transparent" | ColorKeyword;
 export interface BackgroundProps {
@@ -740,8 +747,28 @@ export type IconType = (typeof privateIconArray)[number];
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
+/**
+ * Represents CSS shorthand properties that accept one to four values, following the [CSS shorthand syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box). Supports specifying values for all four sides: top, right, bottom, and left.
+ *
+ * - `T`: Single value that applies to all four sides.
+ * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
+ * - `${T} ${T} ${T}`: Three values for block-start (top), inline axis (left/right), and block-end (bottom).
+ * - `${T} ${T} ${T} ${T}`: Four values for block-start (top), inline-end (right), block-end (bottom), and inline-start (left).
+ */
 export type MaybeAllValuesShorthandProperty<T extends string> = T | `${T} ${T}` | `${T} ${T} ${T}` | `${T} ${T} ${T} ${T}`;
+/**
+ * Represents CSS shorthand properties that accept one or two values. Supports specifying the same value for both dimensions or different values.
+ *
+ * - `T`: Single value that applies to both dimensions.
+ * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
+ */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
+/**
+ * Makes a property responsive by allowing it to be set conditionally based on container query conditions. The value can be either a base value or a container query string.
+ *
+ * - `T`: Base value that applies in all conditions.
+ * - `@container${string}`: Container query string for conditional responsive styling based on container size.
+ */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -882,130 +909,95 @@ export interface DisplayProps {
 }
 export interface AccessibilityRoleProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
-	 * the role will be used by assistive technologies to help users
-	 * navigate the page.
-	 *
-	 * @implementation Although, in HTML hosts, this property changes the element used,
-	 * changing this property must not impact the visual styling of inside or outside of the box.
+	 * The semantic meaning of the component’s content. When set, assistive technologies use this role to help users navigate the page.
 	 *
 	 * @default 'generic'
 	 */
 	accessibilityRole?: AccessibilityRole;
 }
+/**
+ * The semantic role of a component, used by assistive technologies to convey the element’s purpose to users. Each role maps to a specific HTML element or ARIA role.
+ *
+ * - `main`: The primary content of the page.
+ * - `header`: A page or section header.
+ * - `footer`: Information such as copyright, navigation links, and privacy statements.
+ * - `section`: A generic section that should have a heading or `accessibilityLabel`.
+ * - `aside`: Supporting content related to the main content.
+ * - `navigation`: A major group of navigation links.
+ * - `ordered-list`: A list of ordered items.
+ * - `list-item`: An item inside a list.
+ * - `list-item-separator`: A divider between list items.
+ * - `unordered-list`: A list of unordered items.
+ * - `separator`: A divider that separates sections of content.
+ * - `status`: A live region with advisory information that is not urgent.
+ * - `alert`: Important, usually time-sensitive information.
+ * - `generic`: A nameless container with no semantic meaning (renders a `<div>`).
+ * - `presentation`: Strips semantic meaning while keeping visual styling. Synonym for `none`.
+ * - `none`: Strips semantic meaning while keeping visual styling. Synonym for `presentation`.
+ */
 export type AccessibilityRole = 
 /**
- * Used to indicate the primary content.
- *
- * In an HTML host, `main` will render a `<main>` element.
- * Learn more about the [`<main>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
+ * The primary content of the page. Learn more about the [`<main>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/main).
  */
 "main"
 /**
- * Used to indicate the component is a header.
- *
- * In an HTML host `header` will render a `<header>` element.
- * Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/main_role) in the MDN web docs.
+ * A page or section header. Learn more about the [`<header>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header).
  */
  | "header"
 /**
- * Used to display information such as copyright information, navigation links, and privacy statements.
- *
- * In an HTML host `footer` will render a `<footer>` element.
- * Learn more about the [`<footer>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/contentinfo_role) in the MDN web docs.
+ * Information such as copyright, navigation links, and privacy statements. Learn more about the [`<footer>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/footer).
  */
  | "footer"
 /**
- * Used to indicate a generic section.
- * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
- *
- * In an HTML host `section` will render a `<section>` element.
- * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
- *
+ * A generic section that should have a heading or `accessibilityLabel`. Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section).
  */
  | "section"
 /**
- * Used to designate a supporting section that relates to the main content.
- *
- * In an HTML host `aside` will render an `<aside>` element.
- * Learn more about the [`<aside>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/complementary_role) in the MDN web docs.
+ * Supporting content related to the main content. Learn more about the [`<aside>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/aside).
  */
  | "aside"
 /**
- * Used to identify major groups of links used for navigating.
- *
- * In an HTML host `navigation` will render a `<nav>` element.
- * Learn more about the [`<nav>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/navigation_role) in the MDN web docs.
+ * A major group of navigation links. Learn more about the [`<nav>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/nav).
  */
  | "navigation"
 /**
- * Used to identify a list of ordered items.
- *
- * In an HTML host `ordered-list` will render a `<ol>` element.
- * Learn more about the [`<ol>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) in the MDN web docs.
+ * A list of ordered items. Learn more about the [`<ol>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ol).
  */
  | "ordered-list"
 /**
- * Used to identify an item inside a list of items.
- *
- * In an HTML host `list-item` will render a `<li>` element.
- * Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/listitem_role) in the MDN web docs.
+ * An item inside a list. Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li).
  */
  | "list-item"
 /**
- * Used to indicates the component acts as a divider that separates and distinguishes sections of content in a list of items.
- *
- * In an HTML host `list-item-separator` will render as `<li role="separator">`.
- * Learn more about the [`<li>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/li) and the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) in the MDN web docs.
+ * A divider between list items. Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role).
  */
  | "list-item-separator"
 /**
- * Used to identify a list of unordered items.
- *
- * In an HTML host `unordered-list` will render a `<ul>` element.
- * Learn more about the [`<ul>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/list_role) in the MDN web docs.
+ * A list of unordered items. Learn more about the [`<ul>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/ul).
  */
  | "unordered-list"
 /**
- * Used to indicates the component acts as a divider that separates and distinguishes sections of content.
- *
- * In an HTML host `separator` will render as `<div role="separator">`.
- * Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role) in the MDN web docs.
+ * A divider that separates sections of content. Learn more about the [`separator` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/separator_role).
  */
  | "separator"
 /**
- * Used to define a live region containing advisory information for the user that is not important enough to be an alert.
- *
- * In an HTML host `status` will render as `<div role="status">`.
- * Learn more about the [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) in the MDN web docs.
+ * A live region with advisory information that is not urgent. Learn more about the [`status` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role).
  */
  | "status"
 /**
- * Used for important, and usually time-sensitive, information.
- *
- * In an HTML host `alert` will render as `<div role="alert">`.
- * Learn more about the [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) in the MDN web docs.
+ * Important, usually time-sensitive information. Learn more about the [`alert` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role).
  */
  | "alert"
 /**
- * Used to create a nameless container element which has no semantic meaning on its own.
- *
- * In an HTML host `generic'` will render a `<div>` element.
- * Learn more about the [`generic` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/generic_role) in the MDN web docs.
+ * A nameless container with no semantic meaning (renders a `<div>`). Learn more about the [`generic` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/generic_role).
  */
  | "generic"
 /**
- * Used to strip the semantic meaning of an element, but leave the visual styling intact.
- *
- * Synonym for `none`
- * Learn more about the [`presentation` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role) in the MDN web docs.
+ * Strips semantic meaning while keeping visual styling. Synonym for `none`. Learn more about the [`presentation` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/presentation_role).
  */
  | "presentation"
 /**
- * Used to strip the semantic meaning of an element, but leave the visual styling intact.
- *
- * Synonym for `presentation`
- * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
+ * Strips semantic meaning while keeping visual styling. Synonym for `presentation`. Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role).
  */
  | "none";
 export interface AccessibilityVisibilityProps {
@@ -1031,6 +1023,12 @@ export interface LabelAccessibilityVisibilityProps {
 	 */
 	labelAccessibilityVisibility?: ExtractStrict<AccessibilityVisibilityProps["accessibilityVisibility"], "visible" | "exclusive">;
 }
+/**
+ * Defines the padding size for elements, using the standard size scale or `none` for no padding.
+ *
+ * - `SizeKeyword`: Standard padding sizes from the size scale for consistent spacing.
+ * - `none`: No padding.
+ */
 export type PaddingKeyword = SizeKeyword | "none";
 export interface PaddingProps {
 	/**
@@ -1107,8 +1105,27 @@ export interface PaddingProps {
 	 */
 	paddingInlineEnd?: MaybeResponsive<PaddingKeyword | "">;
 }
+/**
+ * Represents size values in pixels, percentages, or zero.
+ *
+ * - `` `${number}px` ``: Absolute size in pixels for fixed dimensions (such as `100px`, `24px`).
+ * - `` `${number}%` ``: Relative size as a percentage of the parent container (such as `50%`, `100%`).
+ * - `0`: Zero size, equivalent to no dimension.
+ */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
+/**
+ * Represents size values that can also be set to `auto` for automatic sizing.
+ *
+ * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+ * - `auto`: Automatically sizes based on content and layout constraints. Learn more about the [auto value](https://developer.mozilla.org/en-US/docs/Web/CSS/width#auto).
+ */
 export type SizeUnitsOrAuto = SizeUnits | "auto";
+/**
+ * Represents size values that can also be set to `none` to remove the size constraint.
+ *
+ * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
+ * - `none`: No size constraint, allowing unlimited growth. Learn more about the [none value](https://developer.mozilla.org/en-US/docs/Web/CSS/max-width#none).
+ */
 export type SizeUnitsOrNone = SizeUnits | "none";
 export interface SizingProps {
 	/**
@@ -1160,8 +1177,29 @@ export interface SizingProps {
 	 */
 	maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
+/**
+ * The visual style of a border. Learn more about [border-style](https://developer.mozilla.org/en-US/docs/Web/CSS/border-style).
+ *
+ * - `none`: No border is rendered.
+ * - `solid`: A single continuous line.
+ * - `dashed`: A series of short dashes.
+ * - `dotted`: A series of round dots.
+ * - `auto`: The border style is determined automatically based on the surface's design system.
+ */
 export type BorderStyleKeyword = "none" | "solid" | "dashed" | "dotted" | "auto";
+/**
+ * Defines the width of borders, using the standard size scale or `none` for no border.
+ *
+ * - `SizeKeyword`: Standard border widths from the size scale for consistent thickness.
+ * - `none`: No border width (removes the border).
+ */
 export type BorderSizeKeyword = SizeKeyword | "none";
+/**
+ * The corner radius of a border, using the design system's `SizeKeyword` scale with additional options:
+ *
+ * - `max`: The maximum possible radius, creating a pill or circular shape.
+ * - `none`: No rounding — corners are sharp (0 radius).
+ */
 export type BorderRadiusKeyword = SizeKeyword | "max" | "none";
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
@@ -1253,12 +1291,10 @@ export interface BorderProps {
 }
 export interface OverflowProps {
 	/**
-	 * Sets the overflow behavior of the element.
+	 * The overflow behavior of the element.
 	 *
-	 * - `hidden`: clips the content when it is larger than the element’s container.
-	 * The element will not be scrollable and the users will not be able
-	 * to access the clipped content by dragging or using a scroll wheel on a mouse.
-	 * - `visible`: the content that extends beyond the element’s container is visible.
+	 * - `visible`: Content that extends beyond the container is visible.
+	 * - `hidden`: Content that extends beyond the container is clipped and not scrollable.
 	 *
 	 * @default 'visible'
 	 */
@@ -1354,15 +1390,11 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface InteractionProps {
 	/**
-	 * ID of a component that should respond to activations (e.g. clicks) on this component.
-	 *
-	 * See `command` for how to control the behavior of the target.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+	 * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
 	 */
 	commandFor?: string;
 	/**
-	 * Sets the action the `commandFor` should take when this clickable is activated.
+	 * Sets the action the `commandFor` target should take when this component is activated. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
 	 *
 	 * See the documentation of particular components for the actions they support.
 	 *
@@ -1373,12 +1405,10 @@ export interface InteractionProps {
 	 * - `--copy`: copies the target ClipboardItem.
 	 *
 	 * @default '--auto'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
 	 */
 	command?: "--auto" | "--show" | "--hide" | "--toggle" | "--copy";
 	/**
-	 * ID of a component that should respond to interest (e.g. hover and focus) on this component.
+	 * The ID of the component to show when users hover over or focus on this component. Use this to connect interactive components to popovers or tooltips that provide additional context or information.
 	 */
 	interestFor?: string;
 }
@@ -1445,7 +1475,7 @@ export interface BaseInputProps {
 }
 export interface InputProps extends BaseInputProps {
 	/**
-	 * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+	 * Callback when the user has **finished editing** a field, such as once they have blurred the field.
 	 *
 	 * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
 	 */
@@ -1481,7 +1511,7 @@ export interface MultipleInputProps extends BaseInputProps {
 	 */
 	onInput?: (event: Event) => void;
 	/**
-	 * An array of the `value`s of the selected options.
+	 * An array of `value` attributes for the currently selected options.
 	 *
 	 * This is a convenience prop for setting the `selected` prop on child options.
 	 */
@@ -1871,7 +1901,7 @@ interface ClickableProps$1 extends GlobalProps, BaseBoxProps, BaseClickableProps
 	/**
 	 * Disables the clickable, meaning it cannot be clicked or receive focus.
 	 *
-	 * In this state, onClick will not fire.
+	 * In this state, `click` won't fire.
 	 * If the click event originates from a child element, the event will immediately stop propagating from this element.
 	 *
 	 * However, items within the clickable can still receive focus and be interacted with.
@@ -2058,9 +2088,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	type?: "single" | "multiple" | "range";
 	/**
-	 * Dates that can be selected.
-	 *
-	 * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
+	 * Restricts which dates the user can select. Accepts a comma-separated list of dates and date ranges. Whitespace is allowed after commas.
 	 *
 	 * The default `''` allows all dates.
 	 *
@@ -2111,7 +2139,7 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
 	 */
 	disallow?: string;
 	/**
-	 * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
+	 * Restricts which days of the week the user can select. These intersect with the result of `allow` and `disallow`.
 	 *
 	 * A comma-separated list of days. Whitespace is allowed after commas.
 	 *
@@ -2487,8 +2515,8 @@ export interface BaseTypographyProps {
 	/**
 	 * Indicates the directionality of the element’s text.
 	 *
-	 * - `ltr`: languages written from left to right (e.g. English)
-	 * - `rtl`: languages written from right to left (e.g. Arabic)
+	 * - `ltr`: languages written from left to right (such as English)
+	 * - `rtl`: languages written from right to left (such as Arabic)
 	 * - `auto`: the user agent determines the direction based on the content
 	 * - `''`: direction is inherited from parent elements (equivalent to not setting the attribute)
 	 *
@@ -2526,7 +2554,7 @@ interface HeadingProps$1 extends GlobalProps, AccessibilityVisibilityProps, Bloc
 	 *
 	 * @default 'heading'
 	 *
-	 * @implementation The `heading` role doesn't need to be applied if
+	 * @implementation The `heading` role doesn’t need to be applied if
 	 * the host applies it for you; for example, an HTML host rendering
 	 * an `<h2>` element should not apply the `heading` role.
 	 */
@@ -2536,11 +2564,22 @@ interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor">
 	/**
 	 * Sets the tone of the icon, based on the intention of the information being conveyed.
 	 *
+	 * - `'auto'`: Inherits the tone from its parent context.
+	 * - `'neutral'`: Standard, non-semantic color for general-purpose icons.
+	 * - `'info'`: Informational content.
+	 * - `'success'`: Positive outcomes or confirmations.
+	 * - `'warning'`: Cautionary messages or alerts.
+	 * - `'critical'`: Errors, destructive actions, or urgent warnings.
+	 * - `'custom'`: Inherits a custom color from its parent element's CSS.
+	 *
 	 * @default 'auto'
 	 */
 	tone?: ToneKeyword;
 	/**
-	 * Modify the color to be more or less intense.
+	 * The color emphasis of the icon.
+	 *
+	 * - `'base'`: Standard color intensity.
+	 * - `'subdued'`: A lighter, less prominent appearance.
 	 *
 	 * @default 'base'
 	 */
@@ -2548,124 +2587,91 @@ interface IconProps$1 extends GlobalProps, Pick<InteractionProps, "interestFor">
 	/**
 	 * Adjusts the size of the icon.
 	 *
+	 * - `'small-200'`: Extra extra small.
+	 * - `'small-100'`: Extra small.
+	 * - `'small'`: Small.
+	 * - `'base'`: Standard size.
+	 * - `'large'`: Large.
+	 * - `'large-100'`: Extra large.
+	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
+	/**
+	 * The type of icon to display. You can specify an icon name from the available icon set, or use an empty string to show no icon.
+	 */
 	type?: IconType | AnyString;
 }
 export interface BaseImageProps {
 	/**
-	 * An alternative text description that describe the image for the reader to
-	 * understand what it is about. It is extremely useful for both users using
-	 * assistive technology and sighted users. A well written description
-	 * provides people with visual impairments the ability to participate in
-	 * consuming non-text content. When a screen readers encounters an `s-image`,
-	 * the description is read and announced aloud. If an image fails to load,
-	 * potentially due to a poor connection, the `alt` is displayed on
-	 * screen instead. This has the benefit of letting a sighted buyer know an
-	 * image was meant to load here, but as an alternative, they’re still able to
-	 * consume the text content. Read
-	 * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)
-	 * to learn more.
+	 * Alternative text that describes the image for screen readers. This text should convey the meaning or content of the image to users who can't see it.
 	 *
 	 * @default `''`
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
 	 */
 	alt?: string;
 	/**
-	 * A set of media conditions and their corresponding sizes.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+	 * The sizes of the image at different viewport widths. Use this with `srcSet` to tell the browser which image to load (for example, `'(max-width: 320px) 280px, 640px'`).
 	 */
 	sizes?: string;
 	/**
-	 * The image source (either a remote URL or a local file resource).
-	 *
-	 * When the image is loading or no `src` is provided, a placeholder will be rendered.
-	 *
-	 * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-	 * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+	 * The URL of the image to display. You can provide an absolute or relative URL pointing to the image file. When the image is loading or no `src` is provided, a placeholder is rendered in its place.
 	 */
 	src?: string;
 	/**
-	 * A set of image sources and their width or pixel density descriptors.
-	 *
-	 * This overrides the `src` property.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+	 * A set of source images with different sizes for responsive loading. Use this to provide multiple image sizes for different screen resolutions (for example, `'image-320w.jpg 320w, image-640w.jpg 640w'`). This overrides the `src` property when the browser can match a suitable source.
 	 */
 	srcSet?: string;
 }
 interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
 	/**
-	 * Sets the semantic meaning of the component’s content. When set,
-	 * the role will be used by assistive technologies to help users
-	 * navigate the page.
+	 * Sets the semantic meaning of the image content. When set, the role will be used by assistive technologies to help users navigate the page.
+	 *
+	 * - `'img'`: Identifies the element as an image that conveys meaningful information to users.
+	 * - `'none'`: Completely hides the element and its content from assistive technologies.
+	 * - `'presentation'`: Removes semantic meaning, making the image purely decorative and ignored by screen readers.
 	 *
 	 * @default 'img'
-	 *
-	 * @implementation The `img` role doesn't need to be applied if
-	 * the host applies it for you; for example, an HTML host rendering
-	 * an `<img>` element should not apply the `img` role.
 	 */
 	accessibilityRole?: "img" | ExtractStrict<AccessibilityRole, "presentation" | "none">;
 	/**
 	 * The displayed inline width of the image.
 	 *
-	 * - `fill`: the image will takes up 100% of the available inline size.
-	 * - `auto`: the image will be displayed at its natural size.
+	 * - `'fill'`: The image takes up 100% of the available inline size.
+	 * - `'auto'`: The image is displayed at its natural size.
 	 *
 	 * @default 'fill'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
 	 */
 	inlineSize?: "fill" | "auto";
 	/**
-	 * The aspect ratio of the image.
-	 *
-	 * The rendering of the image will depend on the `inlineSize` value:
-	 *
-	 * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
-	 * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
-	 *
-	 * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
-	 * If the value is set as `0.5`, the getter returns `0.5 / 1`.
+	 * The aspect ratio of the image as a width-to-height ratio (for example, `'16/9'` or `'1'`). This helps prevent layout shifts while the image loads.
 	 *
 	 * @default '1/1'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
 	 */
 	aspectRatio?: `${number}${optionalSpace}/${optionalSpace}${number}` | `${number}`;
 	/**
-	 * Determines how the content of the image is resized to fit its container.
-	 * The image is positioned in the center of the container.
+	 * How the image should be resized to fit its container. The image is positioned in the center of the container. Learn more about the [object-fit property](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+	 *
+	 * - `'contain'`: Fits the entire image within the container, preserving aspect ratio. May leave empty space.
+	 * - `'cover'`: Fills the container while preserving aspect ratio, cropping the image if needed.
 	 *
 	 * @default 'contain'
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
 	 */
 	objectFit?: "contain" | "cover";
 	/**
-	 * Determines the loading behavior of the image:
-	 * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
-	 * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+	 * When the image should be loaded.
+	 *
+	 * - `'eager'`: Loads the image immediately.
+	 * - `'lazy'`: Defers loading until the image is near the viewport.
 	 *
 	 * @default 'eager'
-	 * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
 	 */
 	loading?: "eager" | "lazy";
 	/**
-	 * Invoked when load completes successfully.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 * A callback that's fired when the image has loaded successfully.
 	 */
 	onLoad?: (event: Event) => void;
 	/**
-	 * Invoked on load error.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 * A callback that's fired when the image fails to load.
 	 */
 	onError?: (event: Event) => void;
 }
@@ -2703,165 +2709,185 @@ interface ListItemProps$1 extends GlobalProps {
 interface MapProps$1 extends GlobalProps, SizingProps {
 	/**
 	 * A valid API key for the map service provider.
-	 *
-	 * The map service provider may require an API key. Without an API key the map could be hidden or render in a limited developer mode.
 	 */
 	apiKey?: string;
 	/**
-	 * Map center’s latitude in degrees.
+	 * The latitude of the map's center point, in degrees.
 	 *
 	 * @default 0
 	 */
 	latitude?: number;
 	/**
-	 * Map center’s longitude in degrees.
+	 * The longitude of the map's center point, in degrees.
 	 *
 	 * @default 0
 	 */
 	longitude?: number;
 	/**
-	 * A label that describes the purpose or contents of the map.
-	 *
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
+	 * A label that describes the purpose or contents of the map. When set, it will be announced to users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The initial Map zoom level.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
-	 * Larger zoom values correspond to a higher resolution.
+	 * The initial zoom level of the map. Valid values are numbers from 0 to 18.
 	 *
 	 * @default 4
 	 */
 	zoom?: number;
 	/**
-	 * The maximum zoom level which will be displayed on the map.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
+	 * The maximum zoom level the user can reach on the map. Valid values are numbers from 0 to 18.
 	 *
 	 * @default 18
 	 */
 	maxZoom?: number;
 	/**
-	 * The minimum zoom level which will be displayed on the map.
-	 *
-	 * Valid zoom values are numbers from zero up to 18.
+	 * The minimum zoom level the user can reach on the map. Valid values are numbers from 0 to 18.
 	 *
 	 * @default 0
 	 */
 	minZoom?: number;
 	/**
-	 * Callback when the viewport bounds have changed or the map is resized.
+	 * A callback that's fired when the visible map boundaries change.
 	 */
 	onBoundsChange?: (event: MapBoundsChangeEvent) => void;
 	/**
-	 * Callback when the map view changes.
+	 * A callback that's fired when the map view changes, such as when the user pans or zooms.
 	 */
 	onViewChange?: (event: MapViewChangeEvent) => void;
 	/**
-	 * Callback when the user clicks on the map.
+	 * A callback that's fired when the user clicks on the map.
 	 */
 	onClick?: (event: MapClickEvent) => void;
 	/**
-	 * Callback when the user double-clicks on the map.
+	 * A callback that's fired when the user double-clicks on the map.
 	 */
 	onDblClick?: (event: MapDblClickEvent) => void;
 }
+/**
+ * A geographic coordinate pair representing a location on the map.
+ */
 interface Location$1 {
+	/**
+	 * The latitude of the location in degrees.
+	 */
 	latitude?: number;
+	/**
+	 * The longitude of the location in degrees.
+	 */
 	longitude?: number;
 }
+/**
+ * The geographic boundaries of a visible map area.
+ */
 export interface Bounds {
+	/**
+	 * The north-east corner of the bounded area.
+	 */
 	northEast?: Location$1;
+	/**
+	 * The south-west corner of the bounded area.
+	 */
 	southWest?: Location$1;
 }
+/**
+ * The event data for map view changes.
+ */
 export interface MapViewChangeEvent extends Event {
+	/**
+	 * The geographic location of the new map center.
+	 */
 	location?: Location$1;
+	/**
+	 * The current zoom level of the map after the view change.
+	 */
 	zoom?: number;
 }
+/**
+ * The event data for map bounds changes.
+ */
 export interface MapBoundsChangeEvent extends Event {
+	/**
+	 * The geographic boundaries of the visible map area after the change.
+	 */
 	bounds?: Bounds;
 }
+/**
+ * The event data for map click events.
+ */
 export interface MapClickEvent extends Event {
+	/**
+	 * The geographic location of the click.
+	 */
 	location?: Location$1;
 }
+/**
+ * The event data for map double-click events.
+ */
 export interface MapDblClickEvent extends Event {
+	/**
+	 * The geographic location of the double-click.
+	 */
 	location?: Location$1;
 }
 interface MapMarkerProps$1 extends GlobalProps, InteractionProps, Pick<SizingProps, "blockSize" | "inlineSize"> {
 	/**
-	 * Marker’s location latitude in degrees.
+	 * The latitude of the marker location, in degrees.
 	 *
 	 * @default 0
 	 */
 	latitude?: number;
 	/**
-	 * Marker’s longitude latitude in degrees.
+	 * The longitude of the marker location, in degrees.
 	 *
 	 * @default 0
 	 */
 	longitude?: number;
 	/**
-	 * A label that describes the purpose of the marker. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
+	 * A label that describes the purpose of the marker. When set, it will be announced to users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Allows grouping the marker in clusters when zoomed out.
+	 * Whether the marker can be grouped into clusters when zoomed out.
 	 *
 	 * @default false
 	 */
 	clusterable?: boolean;
 	/**
-	 * The graphic to use as the marker.
-	 *
-	 * If unset, it will default to the provider’s default marker.
+	 * The graphic to use as the marker. If unset, the default marker from the map provider is used.
 	 */
 	graphic?: ComponentChildren;
 	/**
-	 * Callback when a marker is clicked.
-	 *
-	 * It does not trigger a click event on the map itself.
+	 * A callback that's fired when the marker is clicked. This does not trigger a click event on the map.
 	 */
 	onClick?: (event: Event) => void;
 }
 interface ModalProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ActionSlots {
 	/**
-	 * A label that describes the purpose of the modal. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 *
-	 * This overrides the `heading` prop for screen readers.
+	 * A label that describes the purpose of the modal, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the modal.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * A title that describes the content of the Modal.
-	 *
+	 * A title that describes the content of the modal.
 	 */
 	heading?: string;
 	/**
-	 * Adjust the padding around the Modal content.
+	 * Adjust the padding around the modal content.
 	 *
-	 * `base`: applies padding that is appropriate for the element.
-	 *
-	 * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
-	 * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
-	 * to bring back the desired padding for the rest of the content.
+	 * - `base`: Applies padding that is appropriate for the element.
+	 * - `none`: Removes all padding from the element. This can be useful when elements inside the modal need to span to the edge of the modal. For example, a full-width image. In this case, rely on box with a padding of `base` to bring back the desired padding for the rest of the content.
 	 *
 	 * @default 'base'
 	 */
 	padding?: "base" | "none";
 	/**
-	 * Adjust the size of the Modal.
+	 * Adjust the size of the modal.
 	 *
-	 * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+	 * `max`: Expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword | "max";
 	/**
-	 * The content of the Modal.
+	 * The content of the modal.
 	 */
 	children?: ComponentChildren;
 }
@@ -2923,24 +2949,20 @@ interface PasswordFieldProps$1 extends GlobalProps, BaseTextFieldProps, MinMaxLe
 export type PasswordAutocompleteField = ExtractStrict<AnyAutocompleteField, "new-password" | "current-password">;
 interface PaymentIconProps$1 extends GlobalProps {
 	/**
-	 * The icon type of the payment method
+	 * The name of the payment method icon to display.
 	 *
 	 * @default ''
 	 */
 	type?: PaymentIconName | AnyString;
 	/**
-	 * A label that describes the purpose or contents of the icon.
-	 *
-	 * When set, it will be announced to users using assistive technologies and will provide them with more context.
-	 * This should only be used if the icon requires an alternative internationalised label
-	 * or if it is otherwise inappropriate to make use of the default label included with the icon.
+	 * A label that describes the purpose or contents of the payment icon. When set, it will be announced to users using assistive technologies.
 	 */
 	accessibilityLabel?: string;
 }
 export type PaymentIconName = "abn" | "acima-leasing" | "acuotaz" | "ada" | "addi" | "adyen" | "aeropay" | "affin-bank" | "affirm" | "aftee" | "afterpay-paynl-version" | "afterpay" | "airtel-money" | "airteltigo-mobile-money" | "aktia" | "akulaku-paylater" | "akulaku" | "alandsbanken" | "alfamart" | "alfamidi" | "alipay-hk" | "alipay-paynl-version" | "alipay" | "alliance-bank" | "alma" | "aman" | "amazon" | "ambank" | "american-express" | "amex" | "ansa-stored-value" | "ansa" | "anyday" | "apecoin" | "aplazo" | "apple-pay" | "aqsat" | "arbitrum" | "arhaus" | "arvato" | "ashley-plcc" | "ask" | "astrapay" | "atm-bersama" | "atobaraidotcom" | "atome" | "atone" | "atrato" | "au-kantan-kessai" | "au-pay" | "authorize-net" | "avalanche" | "axs" | "bancnet" | "banco-azteca" | "bancomat" | "bancontact" | "bangkok-bank" | "bank-islam" | "bank-muamalat" | "bank-rakyat" | "barclays" | "base" | "bbva-cie" | "bc-card" | "bca-klikpay" | "bca" | "bdo" | "belfius" | "benefit" | "best-buy-card" | "biercheque-paynl-version" | "bigc" | "billease" | "biller-paynl-version" | "billie" | "billink-method" | "billink" | "bitcoin-cash" | "bitcoin" | "bizum" | "blik" | "bnbchain" | "bni" | "bnp" | "bogus-app-coin" | "bogus" | "boleto" | "boodil" | "boost" | "bpi" | "braintree" | "bread-pay" | "bread" | "bri-direct-debit" | "bri" | "brimo" | "bsi" | "bsn" | "bss" | "busd" | "careem-pay" | "cartes-bancaires" | "cash-app-pay" | "cash" | "cashew" | "cashinvoice-latin-america" | "catch-payments" | "cebuana" | "cembrapay" | "centi" | "cetelem" | "checkout-finance" | "chinabank" | "cimb-clicks" | "cimb" | "circle-k" | "citadele" | "citi-pay" | "clave-telered" | "clearpay" | "clerq" | "cleverpay" | "clip" | "cliq" | "codensa" | "coinsph" | "collector-bank" | "coop" | "coppel-pay" | "credit-agricole" | "credit-key" | "creditclick-paynl-version" | "credix" | "cuotas" | "d-barai" | "dai" | "daily-yamazaki" | "dan-dan" | "dana" | "danamon-online" | "dankort" | "danske-bank" | "dappmx" | "dash" | "daviplata" | "de-cadeaukaart" | "depay" | "deutsche-bank" | "dinacard" | "diners-club" | "direct-bank-transfer-latin-america" | "directa24" | "directpay" | "discover" | "divido" | "dnb" | "docomo-barai" | "dogecoin" | "dropp" | "duitnow" | "duologi" | "dwolla" | "easywallet" | "ebucks" | "echelon-financing" | "ecpay" | "edenred" | "efecty" | "eft-secure" | "eftpos-au" | "eghl" | "elo" | "elv" | "empty" | "enets" | "eos" | "epayments" | "epospay" | "eps" | "erste" | "escrowcom" | "esr-paymentslip-switzerland" | "ethereum" | "etihad-guest-pay" | "etika" | "ewallet-indonesia" | "ewallet-philippines" | "ewallet-southkorea" | "facebook-pay" | "fairstone-payments" | "fam" | "familymart" | "fantom" | "farmlands" | "fashion-giftcard-paynlversion" | "fashioncheque" | "favepay" | "fawry" | "finloup" | "fintecture" | "fintoc" | "flexiti" | "float-payments" | "flying-blue-plus" | "forbrugsforeningen" | "forsa" | "fortiva" | "fps" | "fpx" | "freecharge" | "freedompay" | "futurepay-mytab" | "gcash" | "generalfinancing" | "generic" | "genoapay" | "gezondheidsbon-paynl-version" | "giftcard" | "giropay" | "givacard" | "glbe-paypal" | "glbe-plus" | "gmo-atokara" | "gmo-bank-transfer" | "gmo-postpay" | "gmo-virtualaccount" | "gnosis" | "google-pay" | "google-wallet" | "gopay" | "grabpay" | "grailpay" | "gusd" | "hana-card" | "handelsbanken" | "happy-pay" | "hello-clever" | "heylight" | "hitrustpay-transfer" | "home-credit" | "hong-leong-bank" | "hong-leong-connect" | "hsbc" | "huis-tuin-cadeau" | "humm" | "hyper" | "hypercard" | "hypercash" | "hyundai-card" | "ibexpay" | "ideal" | "in3-via-ideal" | "in3" | "inbank" | "indomaret" | "ing-homepay" | "interac" | "ivy" | "iwocapay-pay-later" | "jcb" | "jenius" | "jko" | "jousto" | "kakao-pay" | "kakebaraidotcom" | "kasikornbank" | "kasssh" | "katapult" | "kb-card" | "kbc-cbc" | "kcp-credit-card" | "kfast" | "khqr" | "klarna-pay-later" | "klarna-pay-now" | "klarna-slice-it" | "klarna" | "knaken-settle" | "knet" | "koalafi" | "koin" | "krediidipank" | "kredivo" | "krungsri" | "krungthai-bank" | "kueski-pay" | "kunst-en-cultuur-cadeaukaart" | "kuwait-finance-house" | "land-bank" | "laser" | "latitude-creditline-au" | "latitude-gem-au" | "latitude-gem-nz" | "latitude-go-au" | "latitudepay" | "lawson" | "laybuy-heart" | "laybuy" | "lbc" | "lhv" | "line-pay" | "linkaja" | "linkpay" | "litecoin" | "lku" | "lloyds" | "lotte-card" | "lpb" | "luminor" | "lunch-check" | "lydia" | "mach" | "mada" | "maestro" | "mandiri" | "mash" | "master" | "mastercard" | "masterpass" | "maxima" | "maya-bank" | "maya" | "maybank-qrpay" | "maybank" | "maybankm2u" | "mb-way" | "mb" | "mcash" | "medicinos-bankas" | "meeza" | "mercado-credito" | "mercado-pago" | "merpay" | "meta-pay" | "metro-bank" | "military-starcard" | "minicuotas" | "ministop" | "mobicred" | "mobikwik" | "mobilepay" | "mode" | "mokka" | "momopay" | "mondido" | "monero" | "monzo" | "mpesa" | "mtn-mobile-money" | "multisafepay" | "mybank" | "myfatoorah" | "n26" | "naps" | "nationale-bioscoopbon" | "nationale-entertainmentcard" | "natwest" | "naver-pay" | "nelo" | "nequi" | "netbanking" | "neteller" | "nh-card" | "nordea" | "notyd" | "novuna" | "npatobarai" | "npkakebarai" | "oca" | "ocbc-bank" | "octo-clicks" | "octopus" | "offline-bank-transfer-latin-america" | "ola-money" | "omannet" | "omasp" | "oney" | "online-banking" | "online-banktransfer" | "op" | "opay" | "openpay" | "optimism" | "orange-mobile-money" | "overstock-citicobrand" | "overstock-citiplcc" | "ovo" | "oxxo" | "ozow" | "pagoefectivo" | "paid" | "paidy" | "palawa" | "palawan" | "pastpay" | "pay-after-delivery-instalments" | "pay-by-bank-us" | "pay-by-bank" | "pay-easy" | "pay-pay" | "paybylink" | "paycash" | "payco" | "payconiq" | "payd" | "payfast-instant-eft" | "payflex" | "payid" | "payitmonthly" | "payjustnow" | "paymark-online-eftpos" | "paymaya" | "payme" | "paynow-mbank" | "paynow" | "payoo-qr" | "payoo" | "paypal" | "payplan" | "paypo" | "payrexx-bank-transfer" | "payright" | "paysafecard-paynl-version" | "paysafecard" | "paysafecash" | "paysera" | "paysquad" | "paytm" | "payto" | "paytomorrow" | "payu" | "payzapp" | "pei" | "perlasfinance" | "permata" | "pf-pay" | "pivo" | "pix" | "podium-cadeaukaart" | "pointspay" | "poli" | "polygon" | "poppankki" | "postfinance-card" | "postfinance-efinance" | "postpay" | "powered-by-ansa-stored-value" | "powered-by-ansa" | "powerpay" | "pps" | "prepaysolutions" | "progressive-leasing" | "przelew24" | "przelewy24-paynl-version" | "przelewy24" | "pse" | "public-bank" | "publicbank-pbe" | "qasitli" | "qliro" | "qr-promptpay" | "qris" | "qrph" | "rabbit-line-pay" | "rabobank" | "rakuten-pay" | "rapid-transfer" | "ratepay" | "raty-pekao" | "rcbc" | "rcs" | "reka" | "resolve-pay" | "revolut" | "rhb-bank" | "rhb-now" | "rietumu" | "riverty-paynl-version" | "riverty" | "rupay" | "saastopankki" | "sadad" | "sam" | "samsung-card" | "samsung-pay" | "santander" | "satisfi" | "satispay" | "sbpl" | "scalapay" | "scream-truck-wallet" | "scream-truck" | "seb" | "seicomart" | "sepa-bank-transfer" | "sepa-direct-debit" | "sequra" | "seven-eleven" | "sezzle" | "shib" | "shinhan-card" | "shop-pay" | "shopeepay" | "shopify-pay" | "siam-commercial" | "siauliu-bankas" | "siirto" | "sika-fsa" | "sika-hsa" | "sika" | "simpl" | "simple-pay" | "sinpe-movil" | "sistecredito" | "skeps" | "skrill-digital-wallet" | "slice-fnbo" | "smartpay" | "snap-checkout" | "snapmint" | "societe-generale" | "sofort" | "softbank" | "solana-pay-helio" | "solana-pay" | "solana" | "souhoola" | "spankki" | "sparkasse" | "spei" | "splitit" | "spotii" | "spraypay" | "standard-chartered" | "stc-pay" | "stoov" | "store-credit" | "stripe" | "sunkus" | "super-payments" | "svea-b2b-faktura" | "svea-b2b-invoice" | "svea-checkout" | "svea-credit-account" | "svea-delbetalning" | "svea-faktura" | "svea-invoice" | "svea-lasku" | "svea-ostukonto" | "svea-part-payment" | "svea-yrityslasku" | "sveaeramaksu" | "swedbank" | "swiftpay" | "swish" | "swissbilling" | "sympl" | "synchrony-pay" | "synchrony" | "tabby" | "tabit" | "taly" | "tamara" | "tandympayment" | "tasa-cero" | "tbi-bank" | "tcf" | "tendopay" | "tensile" | "tesco-lotus" | "thanachart-bank" | "timepayment" | "tiptop" | "todopay" | "toss" | "touch-n-go" | "tpay" | "trevipay" | "truelayer" | "truemoney-pay" | "trustly" | "twig-pay" | "twint" | "twoinvoice" | "uae-visa" | "uangme" | "ubp" | "underpay" | "unionpay" | "unipay" | "uob-ez-pay" | "uob-thai" | "uob" | "upi" | "urbo" | "urpay" | "usdc" | "usdp" | "v-pay" | "valu" | "venmo" | "ventipay" | "venus-plcc" | "viabill" | "vipps" | "visa-electron" | "visa" | "volksbank" | "volt" | "vvv-cadeaukaart-paynl-version" | "vvv-giftcard" | "waave-pay-by-bank" | "wallet" | "walley" | "wbtc" | "webshop-giftcard" | "wechat-pay" | "wechat-paynl-version" | "wegetfinancing" | "whish-checkout" | "whish-pay" | "wise" | "wissel" | "world-chain" | "xrp" | "yape" | "yappy" | "ymobile" | "younited-pay" | "zalopay" | "zapper" | "zingala" | "zinia" | "zip" | "zoodpay" | "zulily-credit-card" | "zustaina";
 interface PopoverProps$1 extends GlobalProps, BaseOverlayProps, BaseOverlayMethods, ToggleEventProps, SizingProps {
 	/**
-	 * The content of the popover.
+	 * The content displayed within the popover, which appears in an overlay positioned relative to its trigger element.
 	 */
 	children?: ComponentChildren;
 }
@@ -2962,25 +2984,28 @@ interface PressButtonProps$1 extends GlobalProps, Pick<ButtonProps$1, "accessibi
 }
 interface ProductThumbnailProps$1 extends GlobalProps, BaseImageProps {
 	/**
-	 * Decorates the product thumbnail with the quantity of the product.
+	 * The quantity badge displayed on the product thumbnail.
 	 */
 	totalItems?: number;
 	/**
-	 * Adjusts the size the product thumbnail image.
+	 * Adjusts the size of the product thumbnail image.
+	 *
+	 * - `'small-200'`: Extra extra small.
+	 * - `'small-100'`: Extra small.
+	 * - `'small'`: Small.
+	 * - `'base'`: Standard size.
+	 * - `'large'`: Large.
+	 * - `'large-100'`: Extra large.
 	 *
 	 * @default 'base'
 	 */
 	size?: SizeKeyword;
 	/**
-	 * Invoked when load of provided image completes successfully.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+	 * A callback that's fired when the thumbnail image has loaded successfully.
 	 */
 	onLoad?: (event: Event) => void;
 	/**
-	 * Invoked on load error of provided image.
-	 *
-	 * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+	 * A callback that's fired when the thumbnail image fails to load.
 	 */
 	onError?: (event: Event) => void;
 }
@@ -3002,7 +3027,7 @@ interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * Specifies how much of the task has been completed.
 	 *
-	 * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
+	 * It must be a valid floating point number between `0` and `max`, or between `0` and `1` if `max` is omitted.
 	 * If there is no value attribute, the progress bar is indeterminate;
 	 * this indicates that an activity is ongoing with no indication of how long it is expected to take.
 	 *
@@ -3016,7 +3041,7 @@ interface ProgressProps$1 extends GlobalProps {
 	/**
 	 * This attribute describes how much work the task indicated by the progress element requires.
 	 *
-	 * The `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.
+	 * The `max` attribute, if present, must have a value greater than `0` and be a valid floating point number.
 	 *
 	 * @default 1
 	 *
@@ -3026,46 +3051,39 @@ interface ProgressProps$1 extends GlobalProps {
 }
 interface QRCodeProps$1 extends GlobalProps {
 	/**
-	 * Set the border of the QR code.
+	 * The border style of the QR code.
 	 *
-	 * `base`: applies border that is appropriate for the element.
-	 * `none`: removes the border from the element.
+	 * - `'base'`: Applies a standard border.
+	 * - `'none'`: Removes the border.
 	 *
 	 * @default 'base'
 	 */
 	border?: "base" | "none";
 	/**
-	 * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
-	 * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
-	 * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
+	 * The data to encode in the QR code. This can be any string, such as a URL, email address, or plain text. When scanned, specific string formats can trigger device actions like opening a link, preparing an email, or launching an app.
 	 */
 	content?: string;
 	/**
 	 * The displayed size of the QR code.
 	 *
-	 * `fill`: the QR code will takes up 100% of the available inline-size and maintain a 1:1 aspect ratio.
-	 * `base`: the QR code will be displayed at its default size.
+	 * - `'fill'`: The QR code takes up 100% of the available inline size and maintains a 1:1 aspect ratio.
+	 * - `'base'`: The QR code is displayed at its default size.
 	 *
 	 * @default 'base'
 	 */
 	size?: "base" | "fill";
 	/**
-	 * A label that describes the purpose or contents of the QR code. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide more context about what the QR code may do when scanned.
+	 * A label that describes the purpose or contents of the QR code. When set, it will be announced to users using assistive technologies.
 	 *
 	 * @default 'QR code' (translated to the user's locale)
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * Invoked when the conversion of `content` to a QR code fails.
-	 * If an error occurs, the QR code and its child elements will not be displayed.
+	 * A callback that's fired when the conversion of `content` to a QR code fails. If an error occurs, the QR code and its child elements will not be displayed.
 	 */
 	onError?: (event: Event) => void;
 	/**
-	 * URL of an image to be displayed in the center of the QR code.
-	 * This is useful for branding or to indicate to the user what scanning the QR code will do.
-	 * By default, no image is displayed.
+	 * URL of an image to display in the center of the QR code, typically used for branding or to indicate what scanning the code will do.
 	 */
 	logo?: string;
 }
@@ -3147,28 +3165,15 @@ interface SelectProps$1 extends GlobalProps, AutocompleteProps<AnyAutocompleteFi
 }
 interface SheetProps$1 extends BaseOverlayProps, BaseOverlayMethods, ToggleEventProps, GlobalProps, ActionSlots {
 	/**
-	 * A label that describes the purpose of the sheet. When set,
-	 * it will be announced to users using assistive technologies and will
-	 * provide them with more context.
-	 *
-	 * This overrides the `heading` prop for screen readers.
+	 * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
 	 */
 	accessibilityLabel?: string;
 	/**
-	 * The content of the Sheet.
+	 * The content of the sheet.
 	 */
 	children?: ComponentChildren;
 	/**
-	 * Indicates whether the Sheet should be open by default.
-	 * This property is necessary in some cases, but its usage is generally discouraged due to potential negative impacts on user experience.
-	 *
-	 * Developers should:
-	 * - Only set this property to true when there are vitally important behaviors of the application that depend on the user interacting with the sheet.
-	 * - Make every effort to conditionally hide the sheet based on the state of checkout. An explicit example is custom privacy consent, where the sheet should only be displayed when consent is necessary and has not yet been explicitly given by the user.
-	 *
-	 * This property is useful for when the Sheet needs to be rendered on the page load and not triggered by a user action.
-	 * The property should only take effect when the `Sheet` is rendered for the first time.
-	 * To toggle the Sheet after it has been rendered, use the `ui.showOverlay()` method instead.
+	 * Whether the sheet should be open when it first renders. Use sparingly — only when the user must interact with the sheet before proceeding (for example, a privacy consent prompt). Only takes effect on the initial render.
 	 *
 	 * @default false
 	 */
@@ -3180,12 +3185,8 @@ interface SheetProps$1 extends BaseOverlayProps, BaseOverlayMethods, ToggleEvent
 	/**
 	 * Adjust the padding of all edges.
 	 *
-	 * `base`: applies padding that is appropriate for the element. Note that it may result in no padding if Shopify
-	 * believes this is the right design decision in a particular context.
-	 *
-	 * `none`: removes all padding from the element. This can be useful when elements inside the Sheet need to span
-	 * to the edge of the Sheet. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
-	 * to bring back the desired padding for the rest of the content.
+	 * - `base`: Applies padding that is appropriate for the element. Note that it may result in no padding if Shopify believes this is the right design decision in a particular context.
+	 * - `none`: Removes all padding from the element. This can be useful when elements inside the sheet need to span to the edge of the sheet. For example, a full-width image. In this case, rely on box with a padding of `base` to bring back the desired padding for the rest of the content.
 	 *
 	 * @default 'base'
 	 */
@@ -3398,7 +3399,7 @@ interface TimeProps$1 extends GlobalProps {
 }
 interface TooltipProps$1 extends GlobalProps {
 	/**
-	 * The content of the Tooltip.
+	 * The text or elements displayed inside the tooltip popup.
 	 */
 	children?: ComponentChildren;
 }
@@ -3411,44 +3412,68 @@ export type URLAutocompleteField = ExtractStrict<AnyAutocompleteField, "url" | "
 
 
 
+/** @publicDocs */
 type ReducedAlignContentKeyword = Extract<AlignContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedAlignItemsKeyword = Extract<AlignItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedJustifyContentKeyword = Extract<JustifyContentKeyword, 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedJustifyItemsKeyword = Extract<JustifyItemsKeyword, 'normal' | 'stretch' | 'baseline' | 'center' | 'start' | 'end'>;
+/** @publicDocs */
 type ReducedBorderSizeKeyword = Extract<BorderSizeKeyword, 'none' | 'base' | 'large' | 'large-100' | 'large-200'>;
+/** @publicDocs */
 type ReducedColorKeyword = Extract<ColorKeyword, 'base'>;
+/** @publicDocs */
 type BorderShorthand = ReducedBorderSizeKeyword | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword}` | `${ReducedBorderSizeKeyword} ${ReducedColorKeyword} ${BorderStyleKeyword}`;
 /**
- * Used when an element does not have children.
+ * The base properties for elements that don't have children, providing essential attributes like keys and refs for component management.
  */
 interface BaseElementProps<TClass = HTMLElement> {
+    /**
+     * A unique identifier for this element within its parent. Used by the rendering engine for efficient reconciliation when lists change.
+     */
     key?: preact.Key;
+    /**
+     * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+     */
     ref?: preact.Ref<TClass>;
+    /**
+     * Assigns this element to a named slot in a parent component that uses slot-based composition patterns.
+     */
     slot?: Lowercase<string>;
 }
 /**
- * Used when an element has children.
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
  */
 interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    /**
+     * The child elements to render within this component.
+     */
     children?: preact.ComponentChildren;
 }
 /**
- * Used as the single source of truth for checkout icon types.
+ * The complete list of [icon names](https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10) available in checkout and customer account surfaces. These icons are drawn from Shopify's design system and cover common UI patterns like navigation, status indicators, actions, and commerce concepts.
  *
  * @see https://github.com/Shopify/ui-api-design/blob/main/packages/ui-api-design/src/components/Icon/Icon.ts#L10
  */
-declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check-circle-filled", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
+declare const CHECKOUT_AVAILABLE_ICONS: readonly ["alert-circle", "alert-triangle-filled", "alert-triangle", "arrow-down", "arrow-left", "arrow-right", "arrow-up-right", "arrow-up", "bag", "bullet", "calendar", "camera", "caret-down", "cart", "cash-dollar", "categories", "check-circle", "check-circle-filled", "check", "chevron-down", "chevron-left", "chevron-right", "chevron-up", "circle", "clipboard", "clock", "credit-card", "delete", "delivered", "delivery", "disabled", "discount", "edit", "email", "empty", "external", "filter", "geolocation", "gift", "gift-card", "globe", "grid", "image", "info-filled", "info", "list-bulleted", "location", "lock", "map", "menu-horizontal", "menu-vertical", "menu", "minus", "mobile", "note", "order", "organization", "plus", "profile", "question-circle-filled", "question-circle", "reorder", "reset", "return", "savings", "search", "settings", "star-filled", "star-half", "star", "store", "truck", "upload", "x-circle-filled", "x-circle", "x"];
+/** @publicDocs */
 type ReducedIconTypes = (typeof CHECKOUT_AVAILABLE_ICONS)[number];
 
 declare const tagName$Z = "s-abbreviation";
+/** @publicDocs */
 interface AbbreviationElementProps extends Pick<AbbreviationProps$1, 'title' | 'id'> {
 }
+/** @publicDocs */
 interface AbbreviationElement extends AbbreviationElementProps, Omit<HTMLElement, 'id' | 'title'> {
 }
+/** @publicDocs */
 interface AbbreviationProps extends AbbreviationElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$Z]: AbbreviationElement;
     }
 }
 declare module 'preact' {
@@ -3460,15 +3485,19 @@ declare module 'preact' {
 }
 
 declare const tagName$Y = "s-announcement";
+/** @publicDocs */
 interface AnnouncementEvents extends Pick<AnnouncementProps$1, 'onAfterToggle' | 'onDismiss' | 'onToggle'> {
 }
+/** @publicDocs */
 interface AnnouncementElement extends AnnouncementMethods, Omit<HTMLElement, 'id' | 'ontoggle'> {
     onaftertoggle?: AnnouncementEvents['onAfterToggle'];
     ondismiss?: AnnouncementEvents['onDismiss'];
     ontoggle?: AnnouncementEvents['onToggle'];
 }
+/** @publicDocs */
 interface AnnouncementProps extends AnnouncementEvents {
 }
+/** @publicDocs */
 interface AnnouncementMethods {
     dismiss: () => void;
 }
@@ -3486,14 +3515,17 @@ declare module 'preact' {
 }
 
 declare const tagName$X = "s-badge";
+/** @publicDocs */
 interface BadgeElementProps extends Pick<BadgeProps$1, 'color' | 'icon' | 'iconPosition' | 'id' | 'size' | 'tone'> {
     size?: Extract<BadgeProps$1['size'], 'small' | 'small-100' | 'base'>;
     tone?: Extract<BadgeProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     color?: Extract<BadgeProps$1['color'], 'base' | 'subdued'>;
     icon?: '' | ReducedIconTypes;
 }
+/** @publicDocs */
 interface BadgeElement extends BadgeElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface BadgeProps extends BadgeElementProps {
 }
 declare global {
@@ -3510,19 +3542,24 @@ declare module 'preact' {
 }
 
 declare const tagName$W = "s-banner";
+/** @publicDocs */
 interface BannerElementProps extends Pick<BannerProps$1, 'collapsible' | 'dismissible' | 'heading' | 'hidden' | 'id' | 'tone'> {
     tone?: Extract<BannerProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical'>;
 }
+/** @publicDocs */
 interface BannerEvents extends Pick<BannerProps$1, 'onAfterHide' | 'onDismiss'> {
 }
+/** @publicDocs */
 interface BannerElement extends BannerElementProps, Omit<HTMLElement, 'id' | 'title' | 'hidden'> {
     onafterhide: BannerEvents['onAfterHide'];
     ondismiss: BannerEvents['onDismiss'];
 }
+/** @publicDocs */
 interface BannerProps extends BannerElementProps, BannerEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$W]: BannerElement;
     }
 }
 declare module 'preact' {
@@ -3534,18 +3571,22 @@ declare module 'preact' {
 }
 
 declare const tagName$V = "s-box";
+/** @publicDocs */
 interface BoxElementProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 interface BoxElement extends BoxElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface BoxProps extends BoxElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$V]: BoxElement;
     }
 }
 declare module 'preact' {
@@ -3557,21 +3598,26 @@ declare module 'preact' {
 }
 
 declare const tagName$U = "s-button";
+/** @publicDocs */
 interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {
     target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
     variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;
 }
+/** @publicDocs */
 interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {
 }
+/** @publicDocs */
 interface ButtonElement extends ButtonElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: ButtonEvents['onClick'];
 }
+/** @publicDocs */
 interface ButtonProps extends ButtonElementProps, ButtonEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$U]: ButtonElement;
     }
 }
 declare module 'preact' {
@@ -3583,14 +3629,18 @@ declare module 'preact' {
 }
 
 declare const tagName$T = "s-checkbox";
+/** @publicDocs */
 interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'required' | 'value'> {
     command?: Extract<CheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
+/** @publicDocs */
 interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
+/** @publicDocs */
 interface CheckboxProps extends CheckboxElementProps, CheckboxEvents {
 }
 declare global {
@@ -3607,10 +3657,13 @@ declare module 'preact' {
 }
 
 declare const tagName$S = "s-chip";
+/** @publicDocs */
 interface ChipElementProps extends Pick<ChipProps$1, 'accessibilityLabel' | 'id'> {
 }
+/** @publicDocs */
 interface ChipProps extends ChipElementProps {
 }
+/** @publicDocs */
 interface ChipElement extends ChipProps, Omit<HTMLElement, 'id'> {
 }
 declare global {
@@ -3627,10 +3680,13 @@ declare module 'preact' {
 }
 
 declare const tagName$R = "s-choice";
+/** @publicDocs */
 interface ChoiceElementProps extends Pick<ChoiceProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'error' | 'value'> {
 }
+/** @publicDocs */
 interface ChoiceElement extends ChoiceElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ChoiceProps extends ChoiceElementProps {
 }
 declare global {
@@ -3647,13 +3703,17 @@ declare module 'preact' {
 }
 
 declare const tagName$Q = "s-choice-list";
+/** @publicDocs */
 interface ChoiceListElementProps extends Pick<ChoiceListProps$1, 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'multiple' | 'name' | 'values' | 'variant'> {
 }
+/** @publicDocs */
 interface ChoiceListEvents extends Pick<ChoiceListProps$1, 'onChange'> {
 }
+/** @publicDocs */
 interface ChoiceListElement extends ChoiceListElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: ChoiceListEvents['onChange'];
 }
+/** @publicDocs */
 interface ChoiceListProps extends ChoiceListElementProps, ChoiceListEvents {
 }
 declare global {
@@ -3670,6 +3730,7 @@ declare module 'preact' {
 }
 
 declare const tagName$P = "s-clickable";
+/** @publicDocs */
 interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLabel' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'command' | 'commandFor' | 'disabled' | 'display' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'lang' | 'loading' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'target' | 'type'> {
     background?: Extract<ClickableProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -3678,17 +3739,21 @@ interface ClickableElementProps extends Pick<ClickableProps$1, 'accessibilityLab
     target?: Extract<ClickableProps$1['target'], 'auto' | '_blank'>;
     type?: Extract<ClickableProps$1['type'], 'submit' | 'button'>;
 }
+/** @publicDocs */
 interface ClickableEvents extends Pick<ClickableProps$1, 'onBlur' | 'onClick' | 'onFocus'> {
 }
+/** @publicDocs */
 interface ClickableElement extends ClickableElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: ClickableEvents['onBlur'];
     onclick: ClickableEvents['onClick'];
     onfocus: ClickableEvents['onFocus'];
 }
+/** @publicDocs */
 interface ClickableProps extends ClickableElementProps, ClickableEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$P]: ClickableElement;
     }
 }
 declare module 'preact' {
@@ -3700,15 +3765,19 @@ declare module 'preact' {
 }
 
 declare const tagName$O = "s-clickable-chip";
+/** @publicDocs */
 interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
+/** @publicDocs */
 interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
+/** @publicDocs */
 interface ClickableChipElement extends ClickableChipElementProps, Omit<HTMLElement, 'id' | 'hidden' | 'onclick'> {
     onafterhide: ClickableChipEvents['onAfterHide'];
     onclick: ClickableChipEvents['onClick'];
     onremove: ClickableChipEvents['onRemove'];
 }
+/** @publicDocs */
 interface ClickableChipProps extends ClickableChipElementProps, ClickableChipEvents {
 }
 declare global {
@@ -3725,18 +3794,23 @@ declare module 'preact' {
 }
 
 declare const tagName$N = "s-clipboard-item";
+/** @publicDocs */
 interface ClipboardItemElementProps extends Pick<ClipboardItemProps$1, 'id' | 'text'> {
 }
+/** @publicDocs */
 interface ClipboardItemEvents extends Pick<ClipboardItemProps$1, 'onCopy' | 'onCopyError'> {
 }
+/** @publicDocs */
 interface ClipboardItemElement extends ClipboardItemElementProps, Omit<HTMLElement, 'id' | 'oncopy'> {
     oncopy: ClipboardItemEvents['onCopy'];
     oncopyerror: ClipboardItemEvents['onCopyError'];
 }
+/** @publicDocs */
 interface ClipboardItemProps extends ClipboardItemElementProps, ClipboardItemEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$N]: ClipboardItemElement;
     }
 }
 declare module 'preact' {
@@ -3748,14 +3822,18 @@ declare module 'preact' {
 }
 
 declare const tagName$M = "s-consent-checkbox";
+/** @publicDocs */
 interface ConsentCheckboxElementProps extends Pick<ConsentCheckboxProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'policy' | 'value'> {
     command?: Extract<ConsentCheckboxProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface ConsentCheckboxEvents extends Pick<CheckboxEvents, 'onChange'> {
 }
+/** @publicDocs */
 interface ConsentCheckboxElement extends ConsentCheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: ConsentCheckboxEvents['onChange'];
 }
+/** @publicDocs */
 interface ConsentCheckboxProps extends ConsentCheckboxElementProps, ConsentCheckboxEvents {
 }
 declare global {
@@ -3772,6 +3850,7 @@ declare module 'preact' {
 }
 
 declare const tagName$L = "s-phone-field";
+/** @publicDocs */
 interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value' | 'type'> {
     /**
      * @deprecated Use `label` instead.
@@ -3779,14 +3858,17 @@ interface PhoneFieldElementProps extends Pick<PhoneFieldProps$1, 'autocomplete' 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface PhoneFieldEvents extends Pick<PhoneFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface PhoneFieldElement extends PhoneFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PhoneFieldEvents['onBlur'];
     onchange: PhoneFieldEvents['onChange'];
     onfocus: PhoneFieldEvents['onFocus'];
     oninput: PhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface PhoneFieldProps extends PhoneFieldElementProps, PhoneFieldEvents {
 }
 declare global {
@@ -3803,6 +3885,7 @@ declare module 'preact' {
 }
 
 declare const tagName$K = "s-consent-phone-field";
+/** @publicDocs */
 interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'policy' | 'readOnly' | 'required' | 'type' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -3810,14 +3893,17 @@ interface ConsentPhoneFieldElementProps extends Pick<ConsentPhoneFieldProps$1, '
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface ConsentPhoneFieldEvents extends Pick<PhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface ConsentPhoneFieldElement extends ConsentPhoneFieldElementProps, Omit<ConsentPhoneFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
     onblur: ConsentPhoneFieldEvents['onBlur'];
     onchange: ConsentPhoneFieldEvents['onChange'];
     onfocus: ConsentPhoneFieldEvents['onFocus'];
     oninput: ConsentPhoneFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface ConsentPhoneFieldProps extends ConsentPhoneFieldElementProps, ConsentPhoneFieldEvents {
 }
 declare global {
@@ -3834,6 +3920,7 @@ declare module 'preact' {
 }
 
 declare const tagName$J = "s-date-field";
+/** @publicDocs */
 interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowDays' | 'autocomplete' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'error' | 'id' | 'label' | 'name' | 'readOnly' | 'required' | 'value' | 'view'> {
     /**
      * @deprecated Use `label` instead.
@@ -3841,8 +3928,10 @@ interface DateFieldElementProps extends Pick<DateFieldProps$1, 'allow' | 'allowD
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface DateFieldEvents extends Pick<DateFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'> {
 }
+/** @publicDocs */
 interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onInvalid' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'oninvalid' | 'prefix'> {
     onblur: DateFieldEvents['onBlur'];
     onchange: DateFieldEvents['onChange'];
@@ -3851,6 +3940,7 @@ interface DateFieldElement extends DateFieldElementProps, Omit<DateFieldEvents, 
     oninvalid: DateFieldEvents['onInvalid'];
     onviewchange: DateFieldEvents['onViewChange'];
 }
+/** @publicDocs */
 interface DateFieldProps extends DateFieldElementProps, DateFieldEvents {
 }
 declare global {
@@ -3867,10 +3957,13 @@ declare module 'preact' {
 }
 
 declare const tagName$I = "s-date-picker";
+/** @publicDocs */
 interface DatePickerElementProps extends Pick<DatePickerProps$1, 'allow' | 'allowDays' | 'defaultValue' | 'defaultView' | 'disabled' | 'disallow' | 'disallowDays' | 'id' | 'name' | 'type' | 'value' | 'view'> {
 }
+/** @publicDocs */
 interface DatePickerEvents extends Pick<DatePickerProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'> {
 }
+/** @publicDocs */
 interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvents, 'onBlur' | 'onChange' | 'onFocus' | 'onInput' | 'onViewChange'>, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: DatePickerEvents['onBlur'];
     onchange: DatePickerEvents['onChange'];
@@ -3878,6 +3971,7 @@ interface DatePickerElement extends DatePickerElementProps, Omit<DatePickerEvent
     oninput: DatePickerEvents['onInput'];
     onviewchange: DatePickerEvents['onViewChange'];
 }
+/** @publicDocs */
 interface DatePickerProps extends DatePickerElementProps, DatePickerEvents {
 }
 declare global {
@@ -3894,14 +3988,18 @@ declare module 'preact' {
 }
 
 declare const tagName$H = "s-details";
+/** @publicDocs */
 interface DetailsElementProps extends Pick<DetailsProps$1, 'defaultOpen' | 'id' | 'open' | 'toggleTransition'> {
 }
+/** @publicDocs */
 interface DetailsEvents extends Pick<DetailsProps$1, 'onToggle' | 'onAfterToggle'> {
 }
+/** @publicDocs */
 interface DetailsElement extends Omit<HTMLElement, 'ontoggle' | 'id'> {
     ontoggle: DetailsEvents['onToggle'];
     onaftertoggle: DetailsEvents['onAfterToggle'];
 }
+/** @publicDocs */
 interface DetailsProps extends DetailsElementProps, DetailsEvents {
 }
 declare global {
@@ -3918,10 +4016,13 @@ declare module 'preact' {
 }
 
 declare const tagName$G = "s-divider";
+/** @publicDocs */
 interface DividerElementProps extends Pick<DividerProps$1, 'direction' | 'id'> {
 }
+/** @publicDocs */
 interface DividerElement extends DividerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface DividerProps extends DividerElementProps {
 }
 declare global {
@@ -3938,19 +4039,24 @@ declare module 'preact' {
 }
 
 declare const tagName$F = "s-drop-zone";
+/** @publicDocs */
 interface DropZoneElementProps extends Pick<DropZoneProps$1, 'accept' | 'accessibilityLabel' | 'disabled' | 'error' | 'id' | 'label' | 'multiple' | 'name' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface DropZoneEvents extends Pick<DropZoneProps$1, 'onDropRejected' | 'onInput' | 'onChange'> {
 }
+/** @publicDocs */
 interface DropZoneElement extends DropZoneElementProps, Omit<HTMLElement, 'id' | 'oninput' | 'onchange'> {
     ondroprejected: DropZoneEvents['onDropRejected'];
     oninput: DropZoneEvents['onInput'];
     onchange: DropZoneEvents['onChange'];
 }
+/** @publicDocs */
 interface DropZoneProps extends DropZoneElementProps, DropZoneEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$F]: DropZoneElement;
     }
 }
 declare module 'preact' {
@@ -3962,6 +4068,7 @@ declare module 'preact' {
 }
 
 declare const tagName$E = "s-email-field";
+/** @publicDocs */
 interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'maxLength' | 'minLength' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'name' | 'readOnly' | 'required' | 'value'> {
     /**
      * @deprecated Use `label` instead.
@@ -3969,14 +4076,17 @@ interface EmailFieldElementProps extends Pick<EmailFieldProps$1, 'autocomplete' 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface EmailFieldElement extends EmailFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: EmailFieldEvents['onBlur'];
     onchange: EmailFieldEvents['onChange'];
     onfocus: EmailFieldEvents['onFocus'];
     oninput: EmailFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface EmailFieldProps extends EmailFieldElementProps, EmailFieldEvents {
 }
 declare global {
@@ -3993,21 +4103,26 @@ declare module 'preact' {
 }
 
 declare const tagName$D = "s-form";
+/** @publicDocs */
 interface FormElementProps extends Pick<FormProps$1, 'disabled' | 'id'> {
 }
+/** @publicDocs */
 interface FormEvents extends Pick<FormProps$1, 'onSubmit'> {
     /**
      * A callback that is run when the form is submitted.
      */
     onSubmit?: () => void;
 }
+/** @publicDocs */
 interface FormElement extends FormElementProps, Omit<HTMLElement, 'id' | 'onsubmit'> {
     onsubmit: FormEvents['onSubmit'];
 }
+/** @publicDocs */
 interface FormProps extends FormElementProps, FormEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$D]: FormElement;
     }
 }
 declare module 'preact' {
@@ -4019,6 +4134,7 @@ declare module 'preact' {
 }
 
 declare const tagName$C = "s-grid-item";
+/** @publicDocs */
 interface GridItemElementProps extends Pick<GridItemProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'gridColumn' | 'gridRow' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<GridItemProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -4026,8 +4142,10 @@ interface GridItemElementProps extends Pick<GridItemProps$1, 'accessibilityLabel
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<GridItemProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 interface GridItemElement extends GridItemElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface GridItemProps extends GridItemElementProps {
 }
 declare global {
@@ -4044,6 +4162,7 @@ declare module 'preact' {
 }
 
 declare const tagName$B = "s-grid";
+/** @publicDocs */
 interface GridElementProps extends Pick<GridProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'display' | 'gap' | 'gridTemplateColumns' | 'gridTemplateRows' | 'id' | 'inlineSize' | 'justifyContent' | 'justifyItems' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'placeContent' | 'placeItems' | 'rowGap'> {
     alignContent?: MaybeResponsive<ReducedAlignContentKeyword | ''>;
     alignItems?: MaybeResponsive<ReducedAlignItemsKeyword | ''>;
@@ -4057,8 +4176,10 @@ interface GridElementProps extends Pick<GridProps$1, 'accessibilityLabel' | 'acc
     placeContent?: MaybeResponsive<`${ReducedAlignContentKeyword} ${ReducedJustifyContentKeyword}` | ReducedAlignContentKeyword>;
     placeItems?: MaybeResponsive<`${ReducedAlignItemsKeyword} ${ReducedJustifyItemsKeyword}` | ReducedAlignItemsKeyword>;
 }
+/** @publicDocs */
 interface GridElement extends GridElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface GridProps extends GridElementProps {
 }
 declare global {
@@ -4075,14 +4196,18 @@ declare module 'preact' {
 }
 
 declare const tagName$A = "s-heading";
+/** @publicDocs */
 interface HeadingElementProps extends Pick<HeadingProps$1, 'accessibilityRole' | 'id'> {
 }
+/** @publicDocs */
 interface HeadingElement extends HeadingElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface HeadingProps extends HeadingElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$A]: HeadingElement;
     }
 }
 declare module 'preact' {
@@ -4094,17 +4219,21 @@ declare module 'preact' {
 }
 
 declare const tagName$z = "s-icon";
+/** @publicDocs */
 interface IconElementProps extends Pick<IconProps$1, 'id' | 'size' | 'tone' | 'type'> {
     tone?: Extract<IconProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     size?: Extract<IconProps$1['size'], 'small-200' | 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
     type?: '' | ReducedIconTypes;
 }
+/** @publicDocs */
 interface IconElement extends IconElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface IconProps extends IconElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$z]: IconElement;
     }
 }
 declare module 'preact' {
@@ -4116,17 +4245,21 @@ declare module 'preact' {
 }
 
 declare const tagName$y = "s-image";
+/** @publicDocs */
 interface ImageElementProps extends Pick<ImageProps$1, 'accessibilityRole' | 'alt' | 'aspectRatio' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'id' | 'inlineSize' | 'loading' | 'objectFit' | 'sizes' | 'src' | 'srcSet'> {
     border?: BorderShorthand;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ImageProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
 }
+/** @publicDocs */
 interface ImageElement extends ImageElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ImageProps extends ImageElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$y]: ImageElement;
     }
 }
 declare module 'preact' {
@@ -4138,19 +4271,24 @@ declare module 'preact' {
 }
 
 declare const tagName$x = "s-link";
+/** @publicDocs */
 interface LinkElementProps extends Pick<LinkProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'href' | 'id' | 'interestFor' | 'lang' | 'target' | 'tone'> {
     target?: Extract<LinkProps$1['target'], 'auto' | '_blank'>;
     tone?: Extract<LinkProps$1['tone'], 'auto' | 'neutral'>;
 }
+/** @publicDocs */
 interface LinkEvents extends Pick<LinkProps$1, 'onClick'> {
 }
+/** @publicDocs */
 interface LinkElement extends LinkElementProps, Omit<HTMLElement, 'id' | 'lang' | 'onclick'> {
     onclick: LinkEvents['onClick'];
 }
+/** @publicDocs */
 interface LinkProps extends LinkElementProps, LinkEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$x]: LinkElement;
     }
 }
 declare module 'preact' {
@@ -4162,14 +4300,18 @@ declare module 'preact' {
 }
 
 declare const tagName$w = "s-list-item";
+/** @publicDocs */
 interface ListItemElementProps extends Pick<ListItemProps$1, 'id'> {
 }
+/** @publicDocs */
 interface ListItemElement extends ListItemElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ListItemProps extends ListItemElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$w]: ListItemElement;
     }
 }
 declare module 'preact' {
@@ -4181,14 +4323,32 @@ declare module 'preact' {
 }
 
 declare const tagName$v = "s-map-marker";
+/** @publicDocs */
 interface MapMarkerElementProps extends Pick<MapMarkerProps$1, 'accessibilityLabel' | 'blockSize' | 'command' | 'commandFor' | 'clusterable' | 'inlineSize' | 'latitude' | 'longitude'> {
+    /**
+     * Sets the action the `commandFor` target should take when this component is activated. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+     *
+     * - `--auto`: a default action for the target component.
+     * - `--show`: shows the target component.
+     * - `--hide`: hides the target component.
+     * - `--toggle`: toggles the target component.
+     *
+     * @default '--auto'
+     */
     command?: Extract<MapMarkerProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
+    /**
+     * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+     */
+    commandFor?: MapMarkerProps$1['commandFor'];
 }
+/** @publicDocs */
 interface MapMarkerEvents extends Pick<MapMarkerProps$1, 'onClick'> {
 }
+/** @publicDocs */
 interface MapMarkerElement extends MapMarkerElementProps, Omit<HTMLElement, 'id' | 'onclick'> {
     onclick: MapMarkerEvents['onClick'];
 }
+/** @publicDocs */
 interface MapMarkerProps extends MapMarkerElementProps, MapMarkerEvents {
 }
 declare global {
@@ -4205,16 +4365,20 @@ declare module 'preact' {
 }
 
 declare const tagName$u = "s-map";
+/** @publicDocs */
 interface MapElementProps extends Pick<MapProps$1, 'accessibilityLabel' | 'apiKey' | 'blockSize' | 'id' | 'inlineSize' | 'latitude' | 'longitude' | 'maxBlockSize' | 'maxInlineSize' | 'maxZoom' | 'minBlockSize' | 'minInlineSize' | 'minZoom' | 'zoom'> {
 }
+/** @publicDocs */
 interface MapEvents extends Pick<MapProps$1, 'onBoundsChange' | 'onClick' | 'onDblClick' | 'onViewChange'> {
 }
+/** @publicDocs */
 interface MapElement extends MapElementProps, Omit<HTMLElement, 'id' | 'onclick' | 'ondblclick'> {
     onboundschange: MapEvents['onBoundsChange'];
     onclick: MapEvents['onClick'];
     ondblclick: MapEvents['onDblClick'];
     onviewchange: MapEvents['onViewChange'];
 }
+/** @publicDocs */
 interface MapProps extends MapElementProps, MapEvents {
 }
 declare global {
@@ -4231,19 +4395,34 @@ declare module 'preact' {
 }
 
 declare const tagName$t = "s-modal";
+/** @publicDocs */
 interface ModalElementProps extends Pick<ModalProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding' | 'size'> {
+    /**
+     * The size of the modal.
+     *
+     * - `'base'`: The default size, suitable for most use cases.
+     * - `'small'`: A compact modal for simple confirmations or short messages.
+     * - `'small-100'`: The smallest modal size.
+     * - `'large'`: A large modal for complex content or forms.
+     * - `'large-100'`: The largest fixed-size modal, providing maximum room for content.
+     * - `'max'`: Expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+     *
+     * @default 'base'
+     */
     size?: Extract<ModalProps$1['size'], 'small-100' | 'small' | 'base' | 'large-100' | 'large' | 'max'>;
 }
 interface ModalEvents extends Pick<ModalProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
 interface ModalElementMethods extends Pick<ModalProps$1, 'hideOverlay'> {
 }
+/** @publicDocs */
 interface ModalElement extends ModalElementProps, ModalElementMethods, Omit<HTMLElement, 'id'> {
     onafterhide: ModalEvents['onAfterHide'];
     onaftershow: ModalEvents['onAfterShow'];
     onhide: ModalEvents['onHide'];
     onshow: ModalEvents['onShow'];
 }
+/** @publicDocs */
 interface ModalProps extends ModalElementProps, ModalEvents {
 }
 declare global {
@@ -4260,16 +4439,20 @@ declare module 'preact' {
 }
 
 declare const tagName$s = "s-money-field";
+/** @publicDocs */
 interface MoneyFieldElementProps extends Pick<MoneyFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'readOnly' | 'required' | 'step' | 'value'> {
 }
+/** @publicDocs */
 interface MoneyFieldEvents extends Pick<MoneyFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface MoneyFieldElement extends MoneyFieldElementProps {
     onblur: MoneyFieldEvents['onBlur'];
     onchange: MoneyFieldEvents['onChange'];
     onfocus: MoneyFieldEvents['onFocus'];
     oninput: MoneyFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface MoneyFieldProps extends MoneyFieldElementProps, MoneyFieldEvents {
 }
 declare global {
@@ -4286,6 +4469,7 @@ declare module 'preact' {
 }
 
 declare const tagName$r = "s-number-field";
+/** @publicDocs */
 interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete' | 'controls' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'inputMode' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'max' | 'min' | 'name' | 'prefix' | 'readOnly' | 'required' | 'step' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -4294,14 +4478,17 @@ interface NumberFieldElementProps extends Pick<NumberFieldProps$1, 'autocomplete
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface NumberFieldElement extends NumberFieldElementProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: NumberFieldEvents['onBlur'];
     onchange: NumberFieldEvents['onChange'];
     onfocus: NumberFieldEvents['onFocus'];
     oninput: NumberFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface NumberFieldProps extends NumberFieldElementProps, NumberFieldEvents {
 }
 declare global {
@@ -4318,10 +4505,13 @@ declare module 'preact' {
 }
 
 declare const tagName$q = "s-option";
+/** @publicDocs */
 interface OptionElementProps extends Pick<OptionProps$1, 'accessibilityLabel' | 'defaultSelected' | 'disabled' | 'id' | 'selected' | 'value'> {
 }
+/** @publicDocs */
 interface OptionElement extends OptionElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface OptionProps extends OptionElementProps {
 }
 declare global {
@@ -4338,14 +4528,18 @@ declare module 'preact' {
 }
 
 declare const tagName$p = "s-ordered-list";
+/** @publicDocs */
 interface OrderedListElementProps extends OrderedListProps$1 {
 }
+/** @publicDocs */
 interface OrderedListElement extends OrderedListElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface OrderedListProps extends OrderedListElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$p]: OrderedListElement;
     }
 }
 declare module 'preact' {
@@ -4357,16 +4551,20 @@ declare module 'preact' {
 }
 
 declare const tagName$o = "s-paragraph";
+/** @publicDocs */
 interface ParagraphElementProps extends Pick<ParagraphProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<ParagraphProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<ParagraphProps$1['tone'], 'auto' | 'info' | 'success' | 'warning' | 'critical' | 'neutral' | 'custom'>;
 }
+/** @publicDocs */
 interface ParagraphElement extends ParagraphElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 interface ParagraphProps extends ParagraphElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$o]: ParagraphElement;
     }
 }
 declare module 'preact' {
@@ -4378,16 +4576,20 @@ declare module 'preact' {
 }
 
 declare const tagName$n = "s-password-field";
+/** @publicDocs */
 interface PasswordFieldElementProps extends Pick<PasswordFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface PasswordFieldEvents extends Pick<PasswordFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface PasswordFieldElement extends PasswordFieldProps, Omit<HTMLElement, 'id' | 'inputMode' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: PasswordFieldEvents['onBlur'];
     onchange: PasswordFieldEvents['onChange'];
     onfocus: PasswordFieldEvents['onFocus'];
     oninput: PasswordFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface PasswordFieldProps extends PasswordFieldElementProps, PasswordFieldEvents {
 }
 declare global {
@@ -4404,14 +4606,18 @@ declare module 'preact' {
 }
 
 declare const tagName$m = "s-payment-icon";
+/** @publicDocs */
 interface PaymentIconElementProps extends PaymentIconProps$1 {
 }
+/** @publicDocs */
 interface PaymentIconElement extends PaymentIconElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface PaymentIconProps extends PaymentIconElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$m]: PaymentIconElement;
     }
 }
 declare module 'preact' {
@@ -4423,62 +4629,54 @@ declare module 'preact' {
 }
 
 declare const tagName$l = "s-popover";
+/** @publicDocs */
 interface PopoverElementProps extends Pick<PopoverProps$1, 'id'> {
     /**
-     * Adjust the block size.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
+     * The block size of the popover (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
      *
      * @default 'auto'
      */
     blockSize?: SizeUnitsOrAuto;
     /**
-     * Adjust the inline size.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
+     * The inline size of the popover (width in horizontal writing modes). Learn more about the [inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
      *
      * @default 'auto'
      */
     inlineSize?: SizeUnitsOrAuto;
     /**
-     * Adjust the maximum block size.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
+     * The maximum block size of the popover. Constrains the popover's height to prevent it from exceeding this value. Learn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
      *
      * @default 'none'
      */
     maxBlockSize?: SizeUnitsOrNone;
     /**
-     * Adjust the maximum inline size.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
+     * The maximum inline size of the popover. Constrains the popover's width to prevent it from exceeding this value. Learn more about the [max-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
      *
      * @default 'none'
      */
     maxInlineSize?: SizeUnitsOrNone;
     /**
-     * Adjust the minimum block size.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
+     * The minimum block size of the popover. Ensures the popover maintains at least this height. Learn more about the [min-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
      *
      * @default '0'
      */
     minBlockSize?: SizeUnits;
     /**
-     * Adjust the minimum inline size.
-     *
-     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
+     * The minimum inline size of the popover. Ensures the popover maintains at least this width. Learn more about the [min-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
      *
      * @default '0'
      */
     minInlineSize?: SizeUnits;
 }
+/** @publicDocs */
 interface PopoverEvents extends Pick<PopoverProps$1, 'onHide' | 'onShow'> {
 }
+/** @publicDocs */
 interface PopoverElement extends Omit<PopoverProps, 'onHide' | 'onShow'>, Omit<HTMLElement, 'id'> {
     onhide: PopoverProps['onHide'];
     onshow: PopoverProps['onShow'];
 }
+/** @publicDocs */
 interface PopoverProps extends PopoverElementProps, PopoverEvents {
 }
 declare global {
@@ -4495,15 +4693,19 @@ declare module 'preact' {
 }
 
 declare const tagName$k = "s-press-button";
+/** @publicDocs */
 interface PressButtonElementProps extends Pick<PressButtonProps$1, 'accessibilityLabel' | 'id' | 'inlineSize' | 'lang' | 'disabled' | 'loading' | 'pressed' | 'defaultPressed'> {
 }
+/** @publicDocs */
 interface PressButtonEvents extends Pick<PressButtonProps$1, 'onClick' | 'onBlur' | 'onFocus'> {
 }
+/** @publicDocs */
 interface PressButtonElement extends PressButtonElementProps, Omit<HTMLElement, 'children' | 'lang' | 'id' | 'onblur' | 'onclick' | 'onfocus'> {
     onblur: PressButtonEvents['onBlur'];
     onclick: PressButtonEvents['onClick'];
     onfocus: PressButtonEvents['onFocus'];
 }
+/** @publicDocs */
 interface PressButtonProps extends PressButtonElementProps, PressButtonEvents {
 }
 declare global {
@@ -4520,11 +4722,14 @@ declare module 'preact' {
 }
 
 declare const tagName$j = "s-product-thumbnail";
+/** @publicDocs */
 interface ProductThumbnailElementProps extends Pick<ProductThumbnailProps$1, 'alt' | 'size' | 'sizes' | 'src' | 'srcSet' | 'totalItems'> {
     size?: Extract<ProductThumbnailProps$1['size'], 'small-100' | 'small' | 'base'>;
 }
+/** @publicDocs */
 interface ProductThumbnailElement extends ProductThumbnailElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ProductThumbnailProps extends ProductThumbnailElementProps {
 }
 declare global {
@@ -4541,15 +4746,19 @@ declare module 'preact' {
 }
 
 declare const tagName$i = "s-progress";
+/** @publicDocs */
 interface ProgressElementProps extends Pick<ProgressProps$1, 'accessibilityLabel' | 'id' | 'max' | 'tone' | 'value'> {
     tone?: Extract<ProgressProps$1['tone'], 'auto' | 'critical'>;
 }
+/** @publicDocs */
 interface ProgressElement extends ProgressElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ProgressProps extends ProgressElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$i]: ProgressElement;
     }
 }
 declare module 'preact' {
@@ -4561,13 +4770,17 @@ declare module 'preact' {
 }
 
 declare const tagName$h = "s-qr-code";
+/** @publicDocs */
 interface QRCodeElementProps extends QRCodeProps$1 {
 }
+/** @publicDocs */
 interface QRCodeEvents extends Pick<QRCodeProps$1, 'onError'> {
 }
+/** @publicDocs */
 interface QRCodelement extends QRCodeElementProps, Omit<HTMLElement, 'id' | 'onerror'> {
     onerror: QRCodeEvents['onError'];
 }
+/** @publicDocs */
 interface QRCodeProps extends QRCodeElementProps, QRCodeEvents {
 }
 declare global {
@@ -4584,10 +4797,13 @@ declare module 'preact' {
 }
 
 declare const tagName$g = "s-query-container";
+/** @publicDocs */
 interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 'containerName' | 'id'> {
 }
+/** @publicDocs */
 interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface QueryContainerProps extends QueryContainerElementProps {
 }
 declare global {
@@ -4604,6 +4820,7 @@ declare module 'preact' {
 }
 
 declare const tagName$f = "s-scroll-box";
+/** @publicDocs */
 interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderColor' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {
     background?: Extract<ScrollBoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;
     border?: BorderShorthand;
@@ -4611,8 +4828,10 @@ interface ScrollBoxElementProps extends Pick<ScrollBoxProps$1, 'accessibilityLab
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<ScrollBoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
     borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';
 }
+/** @publicDocs */
 interface ScrollBoxElement extends ScrollBoxElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface ScrollBoxProps extends ScrollBoxElementProps {
 }
 declare global {
@@ -4629,10 +4848,13 @@ declare module 'preact' {
 }
 
 declare const tagName$e = "s-section";
+/** @publicDocs */
 interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
 }
+/** @publicDocs */
 interface SectionElement extends SectionElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SectionProps extends SectionElementProps {
 }
 declare global {
@@ -4649,15 +4871,19 @@ declare module 'preact' {
 }
 
 declare const tagName$d = "s-select";
+/** @publicDocs */
 interface SelectElementProps extends Pick<SelectProps$1, 'autocomplete' | 'disabled' | 'error' | 'id' | 'label' | 'name' | 'placeholder' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface SelectEvents extends Pick<SelectProps$1, 'onBlur' | 'onChange' | 'onFocus'> {
 }
+/** @publicDocs */
 interface SelectElement extends SelectElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus'> {
     onblur: SelectEvents['onBlur'];
     onchange: SelectEvents['onChange'];
     onfocus: SelectEvents['onFocus'];
 }
+/** @publicDocs */
 interface SelectProps extends SelectElementProps, SelectEvents {
 }
 declare global {
@@ -4674,20 +4900,19 @@ declare module 'preact' {
 }
 
 declare const tagName$c = "s-sheet";
+/** @publicDocs */
 interface SheetElementProps extends Pick<SheetProps$1, 'defaultOpen' | 'heading' | 'id'> {
     /**
-     * A label that describes the purpose of the modal. When set,
-     * it will be announced to users using assistive technologies and will
-     * provide them with more context.
-     *
-     * This overrides the `heading` prop for screen readers.
+     * A label that describes the purpose of the sheet, announced by assistive technologies. When set, screen readers will use this label instead of the `heading` to describe the sheet.
      */
     accessibilityLabel?: string;
 }
+/** @publicDocs */
 interface SheetEvents extends Pick<SheetProps$1, 'onAfterHide' | 'onAfterShow' | 'onHide' | 'onShow'> {
 }
 interface SheetElementMethods extends Pick<SheetProps$1, 'hideOverlay'> {
 }
+/** @publicDocs */
 interface SheetElement extends SheetElementProps, SheetElementMethods, Omit<HTMLElement, 'id'> {
     afterhide: SheetEvents['onAfterHide'];
     aftershow: SheetEvents['onAfterShow'];
@@ -4696,6 +4921,7 @@ interface SheetElement extends SheetElementProps, SheetElementMethods, Omit<HTML
     onafterhide: SheetEvents['onAfterHide'];
     onaftershow: SheetEvents['onAfterShow'];
 }
+/** @publicDocs */
 interface SheetProps extends SheetElementProps, SheetEvents {
 }
 declare global {
@@ -4712,10 +4938,13 @@ declare module 'preact' {
 }
 
 declare const tagName$b = "s-skeleton-paragraph";
+/** @publicDocs */
 interface SkeletonParagraphElementProps extends SkeletonParagraphProps$1 {
 }
+/** @publicDocs */
 interface SkeletonParagraphElement extends SkeletonParagraphElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SkeletonParagraphProps extends SkeletonParagraphElementProps {
 }
 declare global {
@@ -4732,15 +4961,19 @@ declare module 'preact' {
 }
 
 declare const tagName$a = "s-spinner";
+/** @publicDocs */
 interface SpinnerElementProps extends SpinnerProps$1 {
     size?: Extract<SpinnerProps$1['size'], 'small-100' | 'small' | 'base' | 'large' | 'large-100'>;
 }
+/** @publicDocs */
 interface SpinnerElement extends SpinnerElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SpinnerProps extends SpinnerElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$a]: SpinnerElement;
     }
 }
 declare module 'preact' {
@@ -4752,6 +4985,7 @@ declare module 'preact' {
 }
 
 declare const tagName$9 = "s-stack";
+/** @publicDocs */
 interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'alignContent' | 'alignItems' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'columnGap' | 'direction' | 'display' | 'gap' | 'id' | 'inlineSize' | 'justifyContent' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart' | 'rowGap'> {
     accessibilityRole?: Extract<StackProps$1['accessibilityRole'], 'main' | 'header' | 'footer' | 'section' | 'aside' | 'navigation' | 'ordered-list' | 'list-item' | 'list-item-separator' | 'unordered-list' | 'separator' | 'status' | 'alert' | 'generic' | 'none'>;
     background?: Extract<StackProps$1['background'], 'transparent' | 'subdued' | 'base'>;
@@ -4762,12 +4996,15 @@ interface StackElementProps extends Pick<StackProps$1, 'accessibilityLabel' | 'a
     alignItems?: MaybeResponsive<Extract<StackProps$1['alignItems'], 'normal' | 'stretch' | 'center' | 'start' | 'end'>>;
     justifyContent?: MaybeResponsive<Extract<StackProps$1['justifyContent'], 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | 'center' | 'start' | 'end'>>;
 }
+/** @publicDocs */
 interface StackElement extends StackElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface StackProps extends StackElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$9]: StackElement;
     }
 }
 declare module 'preact' {
@@ -4779,10 +5016,13 @@ declare module 'preact' {
 }
 
 declare const tagName$8 = "s-summary";
+/** @publicDocs */
 interface SummaryElementProps extends Pick<SummaryProps$1, 'id'> {
 }
+/** @publicDocs */
 interface SummaryElement extends SummaryElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface SummaryProps extends SummaryElementProps {
 }
 declare global {
@@ -4803,14 +5043,18 @@ declare module 'preact' {
 }
 
 declare const tagName$7 = "s-switch";
+/** @publicDocs */
 interface SwitchElementProps extends Pick<SwitchProps$1, 'accessibilityLabel' | 'checked' | 'command' | 'commandFor' | 'defaultChecked' | 'disabled' | 'id' | 'label' | 'name' | 'value'> {
     command?: Extract<SwitchProps$1['command'], '--auto' | '--show' | '--hide' | '--toggle'>;
 }
+/** @publicDocs */
 interface SwitchEvents extends Pick<SwitchProps$1, 'onChange'> {
 }
+/** @publicDocs */
 interface SwitchElement extends SwitchElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: SwitchEvents['onChange'];
 }
+/** @publicDocs */
 interface SwitchProps extends SwitchElementProps, SwitchEvents {
 }
 declare global {
@@ -4827,6 +5071,7 @@ declare module 'preact' {
 }
 
 declare const tagName$6 = "s-text-area";
+/** @publicDocs */
 interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'name' | 'required' | 'value' | 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'readOnly' | 'rows' | 'maxLength' | 'minLength' | 'labelAccessibilityVisibility'> {
     /**
      * @deprecated Use `label` instead.
@@ -4834,14 +5079,17 @@ interface TextAreaElementProps extends Pick<TextAreaProps$1, 'id' | 'label' | 'n
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface TextAreaElement extends TextAreaElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput'> {
     onblur: TextAreaEvents['onBlur'];
     onchange: TextAreaEvents['onChange'];
     onfocus: TextAreaEvents['onFocus'];
     oninput: TextAreaEvents['onInput'];
 }
+/** @publicDocs */
 interface TextAreaProps extends TextAreaElementProps, TextAreaEvents {
 }
 declare global {
@@ -4858,6 +5106,7 @@ declare module 'preact' {
 }
 
 declare const tagName$5 = "s-text-field";
+/** @publicDocs */
 interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'icon' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'prefix' | 'readOnly' | 'required' | 'suffix' | 'value'> {
     icon?: IconProps['type'];
     /**
@@ -4866,18 +5115,22 @@ interface TextFieldElementProps extends Pick<TextFieldProps$1, 'autocomplete' | 
      */
     placeholder?: string;
 }
+/** @publicDocs */
 interface TextFieldEvents extends Pick<TextFieldProps$1, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface TextFieldElement extends TextFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: TextFieldEvents['onBlur'];
     onchange: TextFieldEvents['onChange'];
     onfocus: TextFieldEvents['onFocus'];
     oninput: TextFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface TextFieldProps extends TextFieldElementProps, TextFieldEvents {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$5]: TextFieldElement;
     }
 }
 declare module 'preact' {
@@ -4889,17 +5142,21 @@ declare module 'preact' {
 }
 
 declare const tagName$4 = "s-text";
+/** @publicDocs */
 interface TextElementProps extends Pick<TextProps$1, 'accessibilityVisibility' | 'color' | 'dir' | 'display' | 'id' | 'lang' | 'tone' | 'type'> {
     color?: Extract<TextProps$1['color'], 'subdued' | 'base'>;
     tone?: Extract<TextProps$1['tone'], 'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'custom'>;
     type?: Extract<TextProps$1['type'], 'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'small' | 'strong' | 'generic'>;
 }
+/** @publicDocs */
 interface TextElement extends TextElementProps, Omit<HTMLElement, 'id' | 'dir' | 'lang'> {
 }
+/** @publicDocs */
 interface TextProps extends TextElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$4]: TextElement;
     }
 }
 declare module 'preact' {
@@ -4911,14 +5168,18 @@ declare module 'preact' {
 }
 
 declare const tagName$3 = "s-time";
+/** @publicDocs */
 interface TimeElementProps extends Pick<TimeProps$1, 'dateTime' | 'id'> {
 }
+/** @publicDocs */
 interface TimeElement extends TimeElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface TimeProps extends TimeElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$3]: TimeElement;
     }
 }
 declare module 'preact' {
@@ -4930,10 +5191,13 @@ declare module 'preact' {
 }
 
 declare const tagName$2 = "s-tooltip";
+/** @publicDocs */
 interface TooltipElementProps extends Pick<TooltipProps$1, 'id'> {
 }
+/** @publicDocs */
 interface TooltipElement extends TooltipElementProps {
 }
+/** @publicDocs */
 interface TooltipProps extends TooltipElementProps {
 }
 declare global {
@@ -4950,14 +5214,18 @@ declare module 'preact' {
 }
 
 declare const tagName$1 = "s-unordered-list";
+/** @publicDocs */
 interface UnorderedListElementProps extends UnorderedListProps$1 {
 }
+/** @publicDocs */
 interface UnorderedListElement extends UnorderedListElementProps, Omit<HTMLElement, 'id'> {
 }
+/** @publicDocs */
 interface UnorderedListProps extends UnorderedListElementProps {
 }
 declare global {
     interface HTMLElementTagNameMap {
+        [tagName$1]: UnorderedListElement;
     }
 }
 declare module 'preact' {
@@ -4969,16 +5237,20 @@ declare module 'preact' {
 }
 
 declare const tagName = "s-url-field";
+/** @publicDocs */
 interface URLFieldElementProps extends Pick<URLFieldProps, 'autocomplete' | 'defaultValue' | 'disabled' | 'error' | 'id' | 'label' | 'labelAccessibilityVisibility' | 'maxLength' | 'minLength' | 'name' | 'readOnly' | 'required' | 'value'> {
 }
+/** @publicDocs */
 interface UrlFieldEvents extends Pick<URLFieldProps, 'onBlur' | 'onChange' | 'onFocus' | 'onInput'> {
 }
+/** @publicDocs */
 interface UrlFieldElement extends URLFieldElementProps, Omit<HTMLElement, 'id' | 'onblur' | 'onchange' | 'onfocus' | 'oninput' | 'prefix'> {
     onblur: UrlFieldEvents['onBlur'];
     onchange: UrlFieldEvents['onChange'];
     onfocus: UrlFieldEvents['onFocus'];
     oninput: UrlFieldEvents['onInput'];
 }
+/** @publicDocs */
 interface UrlFieldProps extends URLFieldElementProps, UrlFieldEvents {
 }
 declare global {

@@ -1,7 +1,0 @@
-<s-image
-  src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
-  alt="Featured product"
-  aspectRatio="16/9"
-  objectFit="cover"
-  loading="lazy"
- />

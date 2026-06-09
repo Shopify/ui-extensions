@@ -7,3 +7,25 @@ These packages act as the public API Shopify is exposing for UI Extensions in ou
 Though we are not accepting contributions, we’d still love to hear from you! If you have ideas for new components or APIs, please [raise an issue on this repo](https://github.com/Shopify/ui-extensions/issues/new/choose). We will also happily accept pull requests for fixing typos in the documentation. If you do raise an issue or PR on this repo, please read [the code of conduct](./CODE_OF_CONDUCT.md), which all contributors must adhere to.
 
 Shopifolk looking to contribute fixes and new features to our UI extension APIs can follow the [versions and deploys guide](./documentation/versions-and-deploys.md).
+
+## Development
+
+Build all libraries:
+
+```
+yarn build
+```
+
+## Development on ui-extensions-tester
+
+Run all tests:
+
+```
+yarn test -- packages/ui-extensions-tester/
+```
+
+For integration, run all example test suites:
+
+```
+yarn test:example-suites
+```

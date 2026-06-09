@@ -9,6 +9,7 @@ import {useSubscription} from './subscription';
 /**
  * Returns the current localized fields and
  * re-renders your component if the values change.
+ * @publicDocs
  */
 export function useLocalizedFields<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -37,6 +38,9 @@ export function useLocalizedFields<
 /**
  * Returns the current localized field or undefined for the specified
  * localized field key and re-renders your component if the value changes.
+ *
+ * Returns `undefined` when no field is configured for the buyer's country.
+ * @publicDocs
  */
 export function useLocalizedField<
   Target extends RenderExtensionTarget = RenderExtensionTarget,

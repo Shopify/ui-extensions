@@ -26,6 +26,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 }
 
 declare const tagName = "s-query-container";
+/** @publicDocs */
 export interface QueryContainerElementProps extends Pick<QueryContainerProps$1, 'containerName' | 'id'> {
 }
 export interface QueryContainerElement extends QueryContainerElementProps, Omit<HTMLElement, 'id'> {

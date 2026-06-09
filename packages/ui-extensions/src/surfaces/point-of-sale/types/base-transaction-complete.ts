@@ -7,6 +7,7 @@ import type {TransactionType} from './transaction-type';
 
 /**
  * Base interface for completed transaction data shared across all transaction types.
+ * @publicDocs
  */
 export interface BaseTransactionComplete {
   /**
@@ -61,4 +62,8 @@ export interface BaseTransactionComplete {
    * The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.
    */
   tipAmount?: Money;
+  /**
+   * The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.
+   */
+  cashRoundingAdjustment?: Money;
 }

@@ -1,4 +1,15 @@
-<s-image
-  src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
-  alt="Product image"
-></s-image>
+<s-grid gridTemplateColumns="80px 1fr" gap="base" alignItems="center">
+  <s-image
+    src="https://cdn.shopify.com/static/sample-product/House-Plant1.png"
+    alt="Indoor plant"
+    aspectRatio="1/1"
+    objectFit="cover"
+    borderRadius="base"
+    inlineSize="fill"
+  />
+  <s-stack gap="small">
+    <s-text type="strong">Indoor Plant</s-text>
+    <s-text color="subdued">SKU: PLT-001</s-text>
+    <s-text tone="success">In stock</s-text>
+  </s-stack>
+</s-grid>

@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {TextProps, Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -30,6 +32,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -38,9 +41,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-text';
+/** @publicDocs */
 export interface TextJSXProps extends Pick<TextProps, 'id'> {
   /**
    * The color intensity of the text. Controls how prominent or subtle the text appears within the interface.
@@ -76,13 +81,13 @@ export interface TextJSXProps extends Pick<TextProps, 'id'> {
     'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
   /**
-   * The Text content. Supports nested text elements.
+   * The text content. Supports nested text elements.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: TextJSXProps;
+    [tagName]: TextJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

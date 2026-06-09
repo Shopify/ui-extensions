@@ -2,7 +2,7 @@ import {BaseElementPropsWithChildren, IdProps} from './shared';
 
 export interface MenuProps extends IdProps {
   /**
-   * A label to describe the purpose of the menu that is announced by screen readers.
+   * A label that describes the purpose of the menu for users of assistive technologies such as screen readers. Use this to provide context about the available actions, such as "Order actions" or "Account settings."
    */
   accessibilityLabel?: string;
 }

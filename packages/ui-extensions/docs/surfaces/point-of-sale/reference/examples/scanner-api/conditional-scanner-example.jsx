@@ -12,6 +12,9 @@ const Extension = () => {
   const [hasExternalScanner, setHasExternalScanner] = useState(false);
 
   useEffect(() => {
+    // This example doesn't call showCameraScanner(). Scan data
+    // arrives from external/embedded scanners, or from the camera
+    // if opened elsewhere — scannerData is shared globally.
     const unsubscribeData = shopify.scanner.scannerData.current.subscribe((result) => {
       setScanData(result.data || '');
       setScanSource(result.source || '');

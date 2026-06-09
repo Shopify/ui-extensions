@@ -9,7 +9,6 @@ import type {
   I18n,
   Language,
   Market,
-  Metafield,
   SessionToken,
   Shop,
   Storage,
@@ -24,6 +23,7 @@ import type {
   Timezone,
 } from '../../../../shared';
 
+/** @publicDocs */
 export interface AddressAutocompleteStandardApi<
   Target extends
     | 'purchase.address-autocomplete.suggest'
@@ -88,22 +88,10 @@ export interface AddressAutocompleteStandardApi<
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#properties-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
-
-  /**
-   * The metafields that apply to the current checkout.
-   *
-   * Metafields are stored locally on the client and are applied to the order object after the checkout completes.
-   * They are shared by all extensions running on checkout, and
-   * persist for as long as the customer is working on this checkout.
-   *
-   * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
-   */
-  metafields: Metafield[];
 
   /**
    * The method used to query the Storefront GraphQL API with a prefetched token.
@@ -122,7 +110,7 @@ export interface AddressAutocompleteStandardApi<
    *
    * If the previous token expires, this value will reflect a new session token with a new signature and expiry.
    *
-   * Refer to [session token examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/session-token) for more information.
+   * Learn more about [session tokens](/docs/apps/build/authentication-authorization/session-tokens).
    */
   sessionToken: SessionToken;
 

@@ -2,6 +2,10 @@ import {OrderStatusApi} from './order-status/order-status';
 import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
 
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
+ */
 export type CallbackEvent<
   TTagName extends keyof HTMLElementTagNameMap,
   TEvent extends Event = Event,
@@ -9,6 +13,10 @@ export type CallbackEvent<
   currentTarget: HTMLElementTagNameMap[TTagName];
 };
 
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
+ */
 export type CallbackEventListener<
   TTagName extends keyof HTMLElementTagNameMap,
   TEvent extends Event = Event,
@@ -29,27 +37,21 @@ interface ButtonProps {
    */
   accessibilityLabel?: string;
   /**
-   * ID of a component that should respond to activations (e.g. clicks) on this component.
-   *
-   * See `command` for how to control the behavior of the target.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
    */
   commandFor?: string;
   /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
+   * Sets the action the `commandFor` target should take when this component is activated.
    *
-   * See the documentation of particular components for the actions they support.
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target clipboard item.
    *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   * - `--copy`: copies the target ClipboardItem.
+   * Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    *
    * @default '--auto'
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
@@ -76,11 +78,11 @@ interface ButtonProps {
    */
   loading?: boolean;
   /**
-   * Specifies where to display the linked URL
+   * Specifies where to display the linked URL.
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
    *
    * 'auto' - The target is automatically determined based on the origin of the URL. Surfaces can set specific rules on how they handle each URL.
-   * It’s expected that the behavior of `auto` is as `_self` except in specific cases.
+   * It's expected that the behavior of `auto` is as `_self` except in specific cases.
    * For example, a surface could decide to open cross-origin URLs in a new window (as `_blank`).
    *
    * @default 'auto'
@@ -95,9 +97,8 @@ interface ButtonProps {
   /**
    * The behavior of the button.
    *
-   * - `'submit'` - Used to indicate the component acts as a submit button, meaning it submits the closest form.
-   * - `'button'` - Used to indicate the component acts as a button, meaning it has no default action.
-   * - `'reset'` - Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+   * - `'submit'`: Submits the nearest containing form.
+   * - `'button'`: Performs no default action, relying on the `click` event handler for behavior.
    *
    * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
    *
@@ -120,92 +121,206 @@ interface ButtonProps {
   click?: ((event: CallbackEventListener<typeof buttonTagName>) => void) | null;
 }
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with metafields.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_MetafieldsApi
-  extends Pick<OrderStatusApi<any>, 'appMetafields' | 'metafields'> {}
+  extends Pick<OrderStatusApi<any>, 'appMetafields'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with attributes.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_AttributesApi
   extends Pick<OrderStatusApi<any>, 'attributes'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with buyer identity.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_BuyerIdentityApi
   extends Pick<OrderStatusApi<any>, 'buyerIdentity'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with checkout settings.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_CheckoutSettingsApi
   extends Pick<OrderStatusApi<any>, 'checkoutSettings'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with order cost.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_CostApi
   extends Pick<OrderStatusApi<any>, 'cost'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with localization.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_LocalizationApi
   extends Pick<OrderStatusApi<any>, 'localization'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with discounts.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_DiscountsApi
   extends Pick<OrderStatusApi<any>, 'discountAllocations' | 'discountCodes'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with gift cards.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_GiftCardsApi
   extends Pick<OrderStatusApi<any>, 'appliedGiftCards'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with the order note.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_NoteApi
   extends Pick<OrderStatusApi<any>, 'note'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with shipping and billing addresses.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_AddressApi
   extends Pick<OrderStatusApi<any>, 'shippingAddress' | 'billingAddress'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with shop information.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_ShopApi
   extends Pick<OrderStatusApi<any>, 'shop'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for requiring buyer login.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_RequireLoginApi
   extends Pick<OrderStatusApi<any>, 'requireLogin'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with authentication state.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_AuthenticationStateApi
   extends Pick<OrderStatusApi<any>, 'authenticationState'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with cart lines.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_CartLinesApi
   extends Pick<OrderStatusApi<any>, 'lines'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` cart line item extension targets.
+ * @publicDocs
+ */
 export interface Docs_CartLineItem_CartLinesApi
   extends Pick<CartLineItemApi, 'target'> {}
 
+/**
+ * The API object provided to `customer-account.order-status` extension targets for interacting with order details.
+ * @publicDocs
+ */
 export interface Docs_OrderStatus_OrderApi
   extends Pick<OrderStatusApi<any>, 'order'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with extension metadata.
+ * @publicDocs
+ */
 export interface Docs_Standard_ExtensionApi
   extends Pick<StandardApi<any>, 'extension'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with the authenticated account.
+ * @publicDocs
+ */
 export interface Docs_Standard_AuthenticatedAccountApi
   extends Pick<StandardApi<any>, 'authenticatedAccount'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for retrieving the renderer version.
+ * @publicDocs
+ */
 export interface Docs_Standard_VersionApi
   extends Pick<StandardApi<any>, 'version'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with localization.
+ * @publicDocs
+ */
 export interface Docs_Standard_LocalizationApi
   extends Pick<StandardApi<any>, 'localization' | 'i18n'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with session tokens.
+ * @publicDocs
+ */
 export interface Docs_Standard_SessionTokenApi
   extends Pick<StandardApi<any>, 'sessionToken'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with analytics.
+ * @publicDocs
+ */
 export interface Docs_Standard_AnalyticsApi
   extends Pick<StandardApi<any>, 'analytics'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with extension settings.
+ * @publicDocs
+ */
 export interface Docs_Standard_SettingsApi
   extends Pick<StandardApi, 'settings'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with key-value storage.
+ * @publicDocs
+ */
 export interface Docs_Standard_StorageApi
   extends Pick<StandardApi<any>, 'storage'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for interacting with customer privacy and tracking consent.
+ * @publicDocs
+ */
 export interface Docs_Standard_CustomerPrivacyApi
   extends Pick<
     StandardApi<any>,
     'customerPrivacy' | 'applyTrackingConsentChange'
   > {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for displaying toast notifications.
+ * @publicDocs
+ */
 export interface Docs_Standard_ToastApi
   extends Pick<StandardApi<any>, 'toast'> {}
 
+/**
+ * The base API object provided to all `customer-account` extension targets for querying the Storefront API.
+ * @publicDocs
+ */
 export interface Docs_Standard_QueryApi
   extends Pick<StandardApi<any>, 'query'> {}
 
+/**
+ * @publicDocs
+ */
 export interface Docs_StandardApi extends Omit<StandardApi<any>, 'router'> {}
 
+/**
+ * @publicDocs
+ */
 export interface Docs_Page_Button_PrimaryAction
   extends Pick<
     ButtonProps,
@@ -216,7 +331,52 @@ export interface Docs_Page_Button_PrimaryAction
     | 'href'
     | 'command'
     | 'commandFor'
-  > {}
+  > {
+  /**
+   * A label that describes the button's purpose to assistive technologies. Use this when the button text alone doesn't provide enough context.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the button is activated, before the action indicated by `type`.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The action the `commandFor` target should take when this button is activated.
+   *
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   */
+  command?: ButtonProps['command'];
+  /**
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   */
+  commandFor?: ButtonProps['commandFor'];
+  /**
+   * Whether the button is disabled and non-interactive.
+   *
+   * @default false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * The URL to navigate to when the button is activated. If a `commandFor` is set, the `command` is executed instead of the navigation.
+   */
+  href?: ButtonProps['href'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @default false
+   */
+  loading?: ButtonProps['loading'];
+}
+
+/**
+ * @publicDocs
+ */
 export interface Docs_Page_Button_SecondaryAction
   extends Pick<
     ButtonProps,
@@ -227,22 +387,82 @@ export interface Docs_Page_Button_SecondaryAction
     | 'href'
     | 'command'
     | 'commandFor'
-  > {}
+  > {
+  /**
+   * A label that describes the button's purpose to assistive technologies. Use this when the button text alone doesn't provide enough context.
+   */
+  accessibilityLabel?: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the button is activated, before the action indicated by `type`.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The action the `commandFor` target should take when this button is activated.
+   *
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the target component.
+   * - `--copy`: Copies the target ClipboardItem.
+   *
+   * @default '--auto'
+   */
+  command?: ButtonProps['command'];
+  /**
+   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   */
+  commandFor?: ButtonProps['commandFor'];
+  /**
+   * Whether the button is disabled and non-interactive.
+   *
+   * @default false
+   */
+  disabled?: ButtonProps['disabled'];
+  /**
+   * The URL to navigate to when the button is activated. If a `commandFor` is set, the `command` is executed instead of the navigation.
+   */
+  href?: ButtonProps['href'];
+  /**
+   * Whether to replace the button content with a loading indicator.
+   *
+   * @default false
+   */
+  loading?: ButtonProps['loading'];
+}
 
+/**
+ * @publicDocs
+ */
 export interface Docs_Page_Button_BreadcrumbAction
   extends Pick<ButtonProps, 'click' | 'href'> {
   /**
-   * A label used for buyers using assistive technologies. Needed because `children` passed to this component will be discarded.
+   * A label that describes the breadcrumb's destination to assistive technologies. Required because `children` passed to this button are discarded.
    */
   accessibilityLabel: ButtonProps['accessibilityLabel'];
+  /**
+   * A callback that fires when the breadcrumb is activated.
+   */
+  click?: ButtonProps['click'];
+  /**
+   * The URL to navigate to when the breadcrumb is activated.
+   */
+  href?: ButtonProps['href'];
 }
 
+/**
+ * The menu component exclusively accepts button elements with restricted props as its children.
+ * @publicDocs
+ */
 export interface Docs_Menu_Button_Action
   extends Omit<
     ButtonProps,
     'variant' | 'textDecoration' | 'inlineAlignment' | 'inlineSize' | 'size'
   > {}
 
+/**
+ * Supported props for Buttons used in order action menus.
+ * @publicDocs
+ */
 export interface Docs_OrderActionMenu_Button
   extends Pick<
     ButtonProps,
@@ -256,6 +476,10 @@ export interface Docs_OrderActionMenu_Button
   href: ButtonProps['href'];
 }
 
+/**
+ * Supported props for Buttons used inside CustomerAccountAction slots.
+ * @publicDocs
+ */
 export interface Docs_CustomerAccountAction_SlotButton
   extends Pick<
     ButtonProps,

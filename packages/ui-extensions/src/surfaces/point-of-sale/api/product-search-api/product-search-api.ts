@@ -2,6 +2,9 @@ import type {MultipleResourceResult} from '../../types/multiple-resource-result'
 import type {PaginatedResult} from '../../types/paginated-result';
 import type {Product, ProductVariant} from '../../types/product';
 
+/**
+ * @publicDocs
+ */
 export type ProductSortType =
   | 'RECENTLY_ADDED'
   | 'RECENTLY_ADDED_ASCENDING'
@@ -10,6 +13,7 @@ export type ProductSortType =
 
 /**
  * Specifies parameters for cursor-based pagination. Includes the cursor position and the number of results to retrieve per page.
+ * @publicDocs
  */
 export interface PaginationParams {
   /**
@@ -24,6 +28,7 @@ export interface PaginationParams {
 
 /**
  * Specifies the parameters for searching products. Includes query text, pagination options, and sorting preferences for product search operations.
+ * @publicDocs
  */
 export interface ProductSearchParams extends PaginationParams {
   /**
@@ -36,6 +41,10 @@ export interface ProductSearchParams extends PaginationParams {
   sortType?: ProductSortType;
 }
 
+/**
+ * The `ProductSearchApi` object provides product search and lookup methods.
+ * @publicDocs
+ */
 export interface ProductSearchApiContent {
   /**
    * Searches for products on the POS device using text queries and sorting options. Returns paginated results with up to 50 products per page. When a query string is provided, results are sorted by relevance. Use for implementing custom search interfaces, product discovery features, or filtered product listings.
@@ -102,6 +111,7 @@ export interface ProductSearchApiContent {
 
 /**
  * The `ProductSearchApi` object provides methods for searching and retrieving product information. Access these methods through `shopify.productSearch` to search products and fetch detailed product data.
+ * @publicDocs
  */
 export interface ProductSearchApi {
   productSearch: ProductSearchApiContent;

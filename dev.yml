@@ -1,4 +1,6 @@
 name: ui-extensions
+minimum_dependency_age:
+  enforce: false
 
 up:
   - node:

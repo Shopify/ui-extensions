@@ -28,6 +28,7 @@ function copyComponentDefinitions({
   if (!existsSync(buildPath)) {
     mkdirSync(buildPath, {recursive: true});
   }
+  mkdirSync(componentsBuildPath, {recursive: true});
 
   const exists = componentsSrcPaths.every((path) => existsSync(path));
 
@@ -58,10 +59,12 @@ function createInitialTargetDefinition({
   buildPath,
   name,
   surface,
+  isDataTarget,
 }: {
   buildPath: string;
   name: string;
   surface: string;
+  isDataTarget: boolean;
 }) {
   const parts = name.replaceAll("'", '').split('.');
   const fileName = `${parts.join('.')}.d.ts`;
@@ -72,6 +75,14 @@ function createInitialTargetDefinition({
   ${
     surface === 'customer-account' || surface === 'point-of-sale'
       ? `import '../globals';\n`
+      : ''
+  }${
+    surface === 'point-of-sale'
+      ? `export type * from '../events';\n${
+          isDataTarget
+            ? `export type {BackgroundShopifyGlobal as ShopifyGlobal} from '../globals';\n`
+            : ''
+        }`
       : ''
   }
 type Target = ExtensionTargets[${name}];
@@ -133,10 +144,12 @@ function getTargets(sourceFile: SourceFile) {
 // Target definitions
 function extractTargetComponents(
   sourceFile: SourceFile,
-): {name: string; components?: string[]}[] {
+): {name: string; components?: string[]; isDataTarget: boolean}[] {
   const extensionTargetArray = getTargets(sourceFile);
   return extensionTargetArray
     .map((extensionTargets) => {
+      const isDataTarget =
+        extensionTargets.getName() === 'DataExtensionTargets';
       return extensionTargets.getProperties().map((property) => {
         const componentsType = property
           .getType()
@@ -158,6 +171,7 @@ function extractTargetComponents(
         return {
           name: property.getName(),
           components,
+          isDataTarget,
         };
       });
     })
@@ -169,15 +183,20 @@ function createTargetDefinition({
   buildPath,
   project,
   surface,
-  target: {name, components},
+  target: {name, components, isDataTarget},
 }: {
   srcPaths: string[];
   buildPath: string;
   project: Project;
   surface: string;
-  target: {name: string; components?: string[]};
+  target: {name: string; components?: string[]; isDataTarget: boolean};
 }) {
-  const targetPath = createInitialTargetDefinition({name, surface, buildPath});
+  const targetPath = createInitialTargetDefinition({
+    name,
+    surface,
+    buildPath,
+    isDataTarget,
+  });
   const targetFile = project.addSourceFileAtPath(targetPath);
   const names = new Set<string>();
 

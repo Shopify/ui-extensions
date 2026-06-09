@@ -1,5 +1,0 @@
-<s-text-area
-  label="Shipping address"
-  value="1776 Barnes Street, Orlando, FL 32801"
-  rows={3}
- />

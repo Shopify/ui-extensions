@@ -19,9 +19,11 @@ import type {
   Ref,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -39,6 +41,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -47,13 +50,16 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-box';
 /**
  * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
+ * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | 'none';
+/** @publicDocs */
 export interface BoxJSXProps {
   /**
    * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
@@ -157,7 +163,7 @@ export interface BoxJSXProps {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: BoxJSXProps;
+    [tagName]: BoxJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

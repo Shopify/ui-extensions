@@ -14,6 +14,10 @@ on:
       - 20[0-9][0-9]-[01][1470]
       # RC version branches
       - 20[0-9][0-9]-[01][1470]-rc
+  # Snapit trigger - runs when /snapit comment is made on a PR
+  issue_comment:
+    types:
+      - created
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -46,11 +50,13 @@ jobs:
           NPM_TOKEN: ''
           NPM_CONFIG_PROVENANCE: true
         with:
+          post_install_script: yarn changeset:exit-pre-mode
           build_script: yarn build
           comment_command: /snapit
 
   changesets:
     name: Deploy
+    if: ${{ github.event_name == 'push' }}
     runs-on: ubuntu-latest
     permissions:
       contents: read

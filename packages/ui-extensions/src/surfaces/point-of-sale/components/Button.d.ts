@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {ButtonProps, Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -30,6 +32,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -38,9 +41,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 /**
  * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ * @publicDocs
  */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   /**
@@ -74,6 +79,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-button';
+/** @publicDocs */
 export interface ButtonJSXProps
   extends Pick<
     ButtonProps,
@@ -113,7 +119,7 @@ export interface ButtonJSXProps
    * - `primary`: Creates a prominent call-to-action button with high visual emphasis for the most important action on a screen.
    * - `secondary`: Provides a less prominent button appearance for supporting actions and secondary interactions.
    *
-   * @default 'auto' - the variant is automatically determined by the Button's context
+   * @default 'auto' - the variant is automatically determined by the button's context
    */
   variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
   /**
@@ -127,7 +133,7 @@ export interface ButtonJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ButtonJSXProps;
+    [tagName]: ButtonJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

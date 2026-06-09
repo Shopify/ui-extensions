@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {DatePickerProps, Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -30,6 +32,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -38,9 +41,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 /**
  * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ * @publicDocs
  */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   /**
@@ -74,6 +79,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-date-picker';
+/** @publicDocs */
 export interface DatePickerJSXProps
   extends Pick<DatePickerProps, 'id' | 'value'> {
   /**
@@ -95,7 +101,7 @@ export interface DatePickerJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: DatePickerJSXProps;
+    [tagName]: DatePickerJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

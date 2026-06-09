@@ -1,0 +1,11 @@
+{
+  "name": "customer-account-testing-example-ext",
+  "private": true,
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "preact": "^10.10.x",
+    "@preact/signals": "^2.3.x",
+    "@shopify/ui-extensions": "file:../../../../packages/ui-extensions"
+  }
+}

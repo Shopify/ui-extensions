@@ -16,6 +16,7 @@ interface ExtensionError extends Error {
 
 /**
  * Base output structure that extensions can return to communicate errors and warnings back to the POS system. Extensions populate this interface when they encounter issues during execution.
+ * @publicDocs
  */
 export interface BaseOutput {
   /**

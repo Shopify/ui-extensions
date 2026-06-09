@@ -20,7 +20,8 @@ declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
 }
 
-/** Used when an element does not have children. */
+/** Used when an element does not have children. * @publicDocs
+ */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns a unique key to this element. */
   key?: preact.Key;
@@ -29,7 +30,8 @@ export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /** Assigns this element to a parent's slot. */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. */
+/** Used when an element has children. * @publicDocs
+ */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   children?: preact.ComponentChildren;
@@ -59,13 +61,11 @@ export interface ChipJSXProps
   extends Partial<ChipProps>,
     Pick<ChipProps$1, 'id' | 'children'> {
   /**
-   * The content of the Chip.
+   * The content of the chip.
    */
   children?: ComponentChildren;
   /**
-   * The graphic to display in the chip.
-   *
-   * Only accepts `Icon` components.
+   * An optional icon to display at the start of the chip. Accepts only Icon components.
    */
   graphic?: ComponentChildren;
 }

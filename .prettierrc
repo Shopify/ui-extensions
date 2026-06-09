@@ -12,6 +12,14 @@
       "options": {
         "printWidth": 50
       }
+    },
+    {
+      "files": [
+        "packages/ui-extensions-tester/**/README.md"
+      ],
+      "options": {
+        "printWidth": 50
+      }
     }
   ]
 }

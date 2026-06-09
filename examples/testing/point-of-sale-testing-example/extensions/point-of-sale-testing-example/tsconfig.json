@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact",
+    "target": "ES2020",
+    "checkJs": true,
+    "allowJs": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "noEmit": true,
+    "strict": true,
+    "skipLibCheck": true,
+    // Monorepo only: file: deps create symlinks that cause TS to
+    // resolve a different preact instance. Not needed with published packages.
+    "paths": {
+      "preact": ["../../node_modules/preact"],
+      "preact/*": ["../../node_modules/preact/*"]
+    }
+  },
+  "include": ["./src", "./tests", "./shopify.d.ts"]
+}

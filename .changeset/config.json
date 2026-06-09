@@ -6,7 +6,7 @@
   ],
   "commit": false,
   "fixed": [],
-  "linked": [],
+  "linked": [["@shopify/ui-extensions", "@shopify/ui-extensions-tester"]],
   "access": "restricted",
   "baseBranch": "unstable",
   "updateInternalDependencies": "patch",

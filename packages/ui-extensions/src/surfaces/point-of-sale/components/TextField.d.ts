@@ -15,9 +15,11 @@ import type {
   ComponentChild,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -35,6 +37,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -43,9 +46,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 /**
  * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ * @publicDocs
  */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
   /**
@@ -79,6 +84,7 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = 's-text-field';
+/** @publicDocs */
 export interface TextFieldJSXProps
   extends Pick<
     TextFieldProps,
@@ -109,14 +115,15 @@ export interface TextFieldJSXProps
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only `Button` and `Clickable` components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
+   * The additional content to be displayed in the field. Commonly used to display clickable text or action elements. Only button and clickable components with text content only are supported in this slot. Use the `slot="accessory"` attribute to place elements in this area.
    */
   accessory?: ComponentChild;
 }
+/** @publicDocs */
 export type ElementProps = Omit<TextFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps;
+    [tagName]: ElementProps & HTMLElement;
   }
 }
 declare module 'preact' {

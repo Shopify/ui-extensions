@@ -1,0 +1,10 @@
+api_version = "2026-07"
+
+[[extensions]]
+name = "admin-testing-example"
+handle = "admin-testing-example"
+type = "ui_extension"
+
+[[extensions.targeting]]
+module = "./src/SelectionAction.jsx"
+target = "admin.product-index.selection-action.render"

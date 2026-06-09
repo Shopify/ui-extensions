@@ -23,7 +23,6 @@
     "deploy:unstable": "changeset version --snapshot unstable && changeset publish --tag unstable --no-git-tag",
     "predeploy:internal": "yarn build",
     "deploy:internal": "changeset version --snapshot internal && changeset publish --tag internal --no-git-tag",
-    "gen-docs:admin": "node ./packages/ui-extensions/docs/surfaces/admin/create-doc-files.js",
     "lint": "loom lint",
     "nuke": "rm -rf node_modules && yarn cache clean && rm -rf .loom && git clean -xdf ./packages; rm -rf ./build",
     "restore-consumer": "./scripts/restore-consumer.sh",
@@ -31,7 +30,10 @@
     "run:ts": "babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "run:ts:watch": "nodemon --ext .ts,.tsx,.mjs,.json,.graphql node_modules/.bin/babel-node --extensions .ts,.tsx,.mjs,.js,.json",
     "type-check": "loom type-check",
-    "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true"
+    "changeset:exit-pre-mode": "test -f .changeset/pre.json && jq -e '.mode == \"pre\"' .changeset/pre.json > /dev/null && yarn changeset pre exit || true",
+    "test": "loom test --no-watch",
+    "test:watch": "loom test",
+    "test:example-suites": "for dir in examples/testing/*/; do (cd \"$dir\" && npm install && npm run typecheck && npm test) || exit 1; done"
   },
   "devDependencies": {
     "@babel/node": "^7.8.7",

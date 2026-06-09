@@ -42,6 +42,38 @@ jobs:
       - name: Lint
         run: yarn lint
 
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Build packages
+        run: yarn build
+
+      - name: Typecheck ui-extensions-tester (including tests)
+        run: npx tsc --project packages/ui-extensions-tester/tsconfig.typecheck.json
+
+      - name: Test ui-extensions-tester
+        run: npx loom test --no-watch packages/ui-extensions-tester/
+
+      - name: Testing example (checkout)
+        run: npm install && npm run typecheck && npm test
+        working-directory: examples/testing/checkout-basic-testing-example
+
+      - name: Testing example (point-of-sale)
+        run: npm install && npm run typecheck && npm test
+        working-directory: examples/testing/point-of-sale-testing-example
+
+      - name: Testing example (customer-account)
+        run: npm install && npm run typecheck && npm test
+        working-directory: examples/testing/customer-account-testing-example
+
+      - name: Testing example (admin)
+        run: npm install && npm run typecheck && npm test
+        working-directory: examples/testing/admin-testing-example
+
   test-build:
     runs-on: ubuntu-latest
 

@@ -1,3 +1,4 @@
+/** @publicDocs */
 export interface Announcement {
   announcement: {
     close(): void;

@@ -3,6 +3,7 @@ import type {
   AutocompleteAddress,
 } from './shared';
 
+/** @publicDocs */
 export interface AddressAutocompleteFormatSuggestionApi {
   /**
    * The autocomplete suggestion that the buyer selected during checkout.
@@ -16,6 +17,7 @@ interface Target {
   selectedSuggestion: AddressAutocompleteSuggestion;
 }
 
+/** @publicDocs */
 export interface AddressAutocompleteFormatSuggestionOutput {
   /**
    * The formatted address that will be used to populate the native address fields.

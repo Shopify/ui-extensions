@@ -1,7 +1,19 @@
 import type {CurrencyCode} from '../../../shared';
 
 /**
+ * Defines a staff member in POS.
+ * @publicDocs
+ */
+export interface StaffMember {
+  /**
+   * The staff member ID.
+   */
+  id: number;
+}
+
+/**
  * Defines information about the current POS session.
+ * @publicDocs
  */
 export interface Session {
   /**
@@ -25,7 +37,9 @@ export interface Session {
   locationId: number;
 
   /**
-   * The staff ID of the staff member currently pinned into the POS. This may differ from the user ID if the pinned staff member is different from the logged-in user.
+   * The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.
+   *
+   * @deprecated Use `session.staffMember` on the Session API instead.
    */
   staffMemberId?: number;
 

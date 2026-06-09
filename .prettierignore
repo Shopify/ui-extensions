@@ -1,4 +1,7 @@
 node_modules
+.shopify
+**/.shopify
 packages/*/build
 packages/web-pixels-extension/src/schemas/pixel-events.jtd.json
 packages/ui-extensions/src/surfaces/checkout/**/*.d.ts
+packages/ui-extensions/docs/**/generated/**/*.json

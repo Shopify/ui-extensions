@@ -1,1 +1,0 @@
-<s-drop-zone label="Upload not available" disabled />

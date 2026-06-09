@@ -2,18 +2,16 @@
   "mode": "pre",
   "tag": "rc",
   "initialVersions": {
-    "@shopify/ui-extensions": "2026.1.0-rc.0"
+    "@shopify/ui-extensions": "2026.7.0-rc.0",
+    "@shopify/ui-extensions-tester": "2026.7.0-rc.0"
   },
   "changesets": [
-    "brave-falcons-perform",
-    "chilly-ghosts-beam",
-    "eleven-mammals-allow",
-    "funny-moons-share",
-    "hip-shirts-drum",
-    "legal-eggs-roll",
-    "old-geese-smoke",
-    "proud-paths-listen",
-    "slimy-foxes-hide",
-    "vast-planes-flow"
+    "add-app-home-render-target",
+    "brown-flowers-ask",
+    "checkbox-rich-label",
+    "floppy-camels-bet",
+    "mean-ducks-join",
+    "sixty-points-doubt",
+    "true-tips-fix"
   ]
 }

@@ -20,114 +20,90 @@ import type {ExtensionTarget} from '../../extension-targets';
 
 /**
  * The merchant-defined setting values for the extension.
+ * @publicDocs
  */
 export interface ExtensionSettings {
   [key: string]: string | number | boolean | undefined;
 }
 /**
  * The following APIs are provided to all extension targets.
+ * @publicDocs
  */
 export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The identifier that specifies where in Shopify’s UI your code is being
-   * injected. This will be one of the targets you have included in your
-   * extension’s configuration file.
+   * injected. This will be one of the [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#targets) you have included in your
+   * extension’s configuration file. For more information, refer to the [extension targets overview](/docs/api/customer-account-ui-extensions/{API_VERSION}/extension-targets-overview).
    *
    * @example 'customer-account.order-status.block.render'
-   * @see https://shopify.dev/docs/api/customer-account-ui-extensions/extension-targets-overview
-   * @see https://shopify.dev/docs/apps/app-extensions/configuration#targets
    *
-   * @deprecated Deprecated as of version `2023-07`, use `extension.target` instead.
+   * @deprecated Use `extension.target` instead.
    */
   extensionPoint: Target;
 
   /**
-   * Meta information about the extension.
+   * Metadata about the extension, including its target, version, and editor context. Use this to conditionally render content based on where the extension is running.
    */
   extension: Extension;
 
   /**
-   * Information about the authenticated account.
+   * The logged-in customer's account information, including their customer ID and B2B company details. Use this to personalize your extension based on who is viewing the page.
    */
   authenticatedAccount: AuthenticatedAccount;
 
   /**
-   * The renderer version being used for the extension.
+   * The API version your extension is running against. Use this to conditionally enable features or handle breaking changes when your extension supports multiple API versions.
    *
    * @example 'unstable'
    */
   version: Version;
 
   /**
-   * Details about the language of the buyer.
+   * The buyer's language, country, and locale context. Use this to adapt your extension to the buyer's region and display localized content.
    */
   localization: Localization;
 
   /**
-   * Utilities for translating content and formatting values according to the current `localization`
-   * of the user.
+   * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Use this alongside `localization` to build fully localized extensions.
    */
   i18n: I18n;
 
   /**
-   * Key-value storage for the extension target.
+   * Key-value storage that persists across customer sessions for this extension target. Use this to store preferences, dismiss states, or cached data without requiring a backend call.
    */
   storage: Storage;
 
   /**
-   * Provides access to session tokens, which can be used to verify token claims on your app's server.
-   *
-   * See [session token examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/session-token#examples) for more information.
+   * Authenticates requests between your extension and your app backend. Call `get()` to retrieve a signed JWT containing the customer ID, shop domain, and expiration time, then verify it server-side. For more information, refer to the [Session Token API](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/session-token-api).
    */
   sessionToken: SessionToken;
 
   /**
-   * Methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
+   * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use `publish()` to emit events and `visitor()` to submit visitor data.
    *
-   * > Note: Requires to [connect a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.
+   * > Note: Requires [connecting a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.
    */
   analytics: Analytics;
 
   /**
-   * Entry point for Shopify intents.
-   *
-   * Intents pair an `action` (verb) with a resource `type` and optional `value`
-   * and `data` to request a workflow.
+   * Invokes built-in Shopify workflows for managing customer account resources. Use intents to trigger native modals and flows, such as replacing a payment method on a subscription contract, without building the UI yourself.
    */
   intents: Intents;
 
   /**
-   * The settings matching the settings definition written in the
-   * [`shopify.ui.extension.toml`](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration) file.
-   *
-   *  See [settings examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/order-status-api/settings#examples) for more information.
-   *
-   * > Note: When an extension is being installed in the editor, the settings will be empty until
-   * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
+   * Merchant-defined configuration values for your extension, as specified in the [settings definition](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#settings-definition) of your `shopify.extension.toml` file. Settings update in real time as merchants edit them in the extension editor. The value is empty until a merchant sets it.
    */
   settings: SubscribableSignalLike<ExtensionSettings>;
 
   /**
-   * The Toast API displays a non-disruptive message that displays at the bottom
-   * of the interface to provide quick, at-a-glance feedback on the outcome
-   * of an action.
-   *
-   * How to use:
-   *
-   * - Use toasts to confirm successful actions.
-   *
-   * - Aim for two words.
-   *
-   * - Use noun + past tense verb format. For example, \`Changes saved\`.
-   *
-   * For errors, or information that needs to persist on the page, use a [banner](/docs/api/checkout-ui-extensions/polaris-web-components/feedback/banner) component.
+   * Displays brief, non-blocking messages at the bottom of the page to confirm actions or report errors. Use noun + past tense verb format (for example, `Changes saved`). For persistent messages, use a [Banner](/docs/api/customer-account-ui-extensions/{API_VERSION}/ui-components/feedback-and-status-indicators/banner) component instead.
    */
   toast: ToastApi;
 
   /**
-   * Used to query the Storefront GraphQL API with a prefetched token.
+   * Queries the [Storefront GraphQL API](/docs/api/storefront) directly from your extension using a prefetched token. Use this to fetch product data, collection details, or other storefront information without routing requests through your app backend.
    *
-   * See [storefront api access examples](https://shopify.dev/docs/api/customer-account-ui-extensions/apis/storefront-api#examples) for more information.
+   * Requires the [`api_access` capability](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access).
    */
   query: <Data = unknown, Variables = {[key: string]: unknown}>(
     query: string,
@@ -135,24 +111,28 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   ) => Promise<{data?: Data; errors?: GraphQLError[]}>;
 
   /**
-   * Customer privacy consent settings and a flag denoting if consent has previously been collected.
+   * The buyer's current privacy consent settings, including their consent decisions for analytics, marketing, and data sale, whether a consent banner should be displayed, and whether the buyer is in a region that requires specific opt-out controls. Use this to read the buyer's consent state and determine how to display privacy-related UI.
    */
   customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;
 
   /**
-   * Allows setting and updating customer privacy consent settings and tracking consent metafields.
+   * Applies updated tracking consent preferences for the buyer, including their decisions for analytics, marketing, and data sale, along with any custom tracking consent [metafields](/docs/apps/build/custom-data/metafields). Returns a promise that resolves with the result of the consent update.
    *
-   * > Note: Requires the [`customer_privacy` capability](https://shopify.dev/docs/api/customer-account-ui-extensions/configuration#collect-buyer-consent) to be set to `true`.
-   *
-   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+   * {% include /apps/checkout/privacy-icon.md %} Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
    */
   applyTrackingConsentChange: ApplyTrackingConsentChangeType;
 }
 
+/**
+ * @publicDocs
+ */
 export interface CompanyLocationApi {
   locationId: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface FulfillmentApi {
   /**
    * Id of a single fulfillment.
@@ -160,6 +140,9 @@ export interface FulfillmentApi {
   fulfillmentId: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ReturnApi {
   /**
    * Id of a single return.
@@ -167,10 +150,17 @@ export interface ReturnApi {
   returnId: string;
 }
 
+/**
+ * @publicDocs
+ */
 export interface OrderApi {
   orderId: string;
 }
 
+/**
+ * The buyer's language, country, and locale context in customer accounts. Properties on this interface are subscribable and update automatically when the buyer changes their country.
+ * @publicDocs
+ */
 export interface Localization {
   /**
    * The language the buyer sees in the customer account hub.
@@ -178,31 +168,28 @@ export interface Localization {
   language: SubscribableSignalLike<Language>;
 
   /**
-   * This is the buyer's language, as supported by the extension.
-   * If the buyer's actual language is not supported by the extension,
-   * this is the fallback locale used for translations.
+   * The buyer's language, as supported by the extension. If the buyer's actual language isn't supported, this falls back to the closest match or the extension's default locale (the one matching your `.default.json` file).
    *
-   * For example, if the buyer's language is 'fr-CA' but your extension
-   * only supports translations for 'fr', then the `isoCode` for this
-   * language is 'fr'. If your extension does not provide french
-   * translations at all, this value is the default locale for your
-   * extension (that is, the one matching your .default.json file).
+   * For example, if the buyer's language is `'fr-CA'` but your extension only supports `'fr'`, then `isoCode` is `'fr'`. If your extension doesn't provide French translations at all, this returns the default locale.
    */
   extensionLanguage: SubscribableSignalLike<Language>;
 
   /**
-   * The country context of the buyer sees in the customer account.
-   * It will update if the buyer changes the country in the customer account
-   * If the country is unknown, then the value is undefined.
+   * The buyer's country in customer accounts. Updates automatically if the buyer changes their country. The value is `undefined` if the country is unknown.
    */
   country: SubscribableSignalLike<Country | undefined>;
 }
 
 /**
  * An enumerated value representing the type of navigation.
+ * @publicDocs
  */
 export type NavigationTypeString = 'push' | 'replace' | 'traverse';
 
+/**
+ * Options passed to `Navigation.navigate()` to control history behavior and attach state to the navigation entry.
+ * @publicDocs
+ */
 export interface NavigationNavigateOptions {
   /**
    * Developer-defined information to be stored in the associated NavigationHistoryEntry once the navigation is complete, retrievable via getState().
@@ -215,62 +202,87 @@ export interface NavigationNavigateOptions {
 }
 
 /**
- * The NavigationHistoryEntry interface of the Navigation API represents a single navigation history entry.
+ * A single entry in the navigation history stack. Each entry has a unique key, a URL, and optional developer-defined state.
+ * @publicDocs
  */
 export interface NavigationHistoryEntry {
-  /** Returns the key of the history entry. This is a unique, UA-generated value that represents the history entry's slot in the entries list rather than the entry itself. */
+  /**
+   * A unique, platform-generated identifier for this entry's position in the history stack. This value identifies the slot, not the content.
+   */
   key: string;
   /**
-   * Returns the URL of this history entry.
+   * The URL associated with this history entry, or `null` if unavailable.
    */
   url: string | null;
   /**
-   * Returns a clone of the available state associated with this history entry.
+   * Returns a clone of the developer-defined state associated with this history entry.
    */
   getState(): unknown;
 }
 
+/**
+ * Options for `Navigation.updateCurrentEntry()`. Use this to update the state of the current history entry without triggering a navigation.
+ * @publicDocs
+ */
 export interface NavigationUpdateCurrentEntryOptions {
+  /**
+   * Developer-defined state to associate with the current navigation history entry.
+   */
   state: unknown;
 }
 
 /**
- * The NavigationCurrentEntryChangeEvent interface of the Navigation API is the event object for the currententrychange event, which fires when the Navigation.currentEntry has changed.
+ * The event object passed to `currententrychange` listeners when the current navigation entry changes.
+ * @publicDocs
  */
 export interface NavigationCurrentEntryChangeEvent {
   /**
-   * Returns the type of the navigation that resulted in the change.
+   * The type of navigation that caused the change: `'push'`, `'replace'`, or `'traverse'`.
    */
   navigationType?: NavigationTypeString;
   /**
-   * Returns the NavigationHistoryEntry that was navigated from.
+   * The history entry the buyer navigated away from.
    */
   from: NavigationHistoryEntry;
 }
 
+/**
+ * Navigates between pages in customer accounts, including other extensions and host pages. Full-page extensions also get access to the current navigation entry and history state.
+ * @publicDocs
+ */
 export interface Navigation {
   /**
-   * The navigate() method navigates to a specific URL, updating any provided state in the history entries list.
+   * Navigates to a URL, updating any provided state in the history entries list. Supports [custom protocols](/docs/api/customer-account-ui-extensions/{API_VERSION}#custom-protocols) for navigating within customer accounts.
    */
   navigate: NavigateFunction;
   /**
-   * The currentEntry read-only property of the Navigation interface returns a NavigationHistoryEntry object representing the location the user is currently navigated to right now.
+   * The current navigation history entry, representing the page the buyer is viewing. Only available in full-page extensions.
    */
   currentEntry: NavigationHistoryEntry;
   /**
-   * The updateCurrentEntry() method of the Navigation interface updates the state of the currentEntry; used in cases where the state change will be independent of a navigation or reload.
+   * Updates the state of the current history entry without triggering a navigation. Use this when the state change is independent of a page transition, such as saving form progress.
    */
   updateCurrentEntry(options: NavigationUpdateCurrentEntryOptions): void;
+  /**
+   * Registers a listener that fires whenever the current navigation entry changes, such as when the buyer navigates to a different page.
+   */
   addEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
+  /**
+   * Removes a previously registered `currententrychange` listener.
+   */
   removeEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
 }
 
+/**
+ * A callable function that navigates to a URL within customer accounts. Accepts a destination URL and optional navigation options.
+ * @publicDocs
+ */
 export interface NavigateFunction {
   /**
    * Navigates to a specific URL, updating any provided state in the history entries list.
@@ -279,4 +291,8 @@ export interface NavigateFunction {
   (url: string, options?: NavigationNavigateOptions): void;
 }
 
+/**
+ * The API version string your extension is running against, such as `'2026-04-rc'` or `'unstable'`.
+ * @publicDocs
+ */
 export type Version = string;

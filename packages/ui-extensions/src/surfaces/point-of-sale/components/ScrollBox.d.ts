@@ -20,9 +20,11 @@ import type {
   Ref,
 } from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -40,6 +42,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -48,13 +51,16 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 /**
  * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
+ * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | 'none';
 declare const tagName = 's-scroll-box';
+/** @publicDocs */
 export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   /**
    * The block size of the scrollable container. Auto automatically sizes based on the container's content and available space.
@@ -154,7 +160,7 @@ export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ScrollBoxJSXProps;
+    [tagName]: ScrollBoxJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

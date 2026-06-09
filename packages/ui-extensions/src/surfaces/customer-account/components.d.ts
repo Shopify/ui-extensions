@@ -26,8 +26,22 @@ import {
   SectionElementSlots,
 } from './components/Section';
 
+/**
+ * Configure the following properties on the customer account action component.
+ * @publicDocs
+ */
 export type CustomerAccountActionPropsDocs = CustomerAccountActionProps;
+
+/**
+ * The custom element interface for the customer account action component.
+ * @publicDocs
+ */
 export type CustomerAccountActionElementDocs = CustomerAccountActionElement;
+
+/**
+ * The customer account action component supports slots for additional content placement within the modal. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export type CustomerAccountActionElementSlotsDocs =
   CustomerAccountActionElementSlots;
 
@@ -50,7 +64,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Display up to 4 images in a grid or stacked layout. For example, images of products in a wishlist or subscription.
+ * @publicDocs
+ */
 export type ImageGroupPropsDocs = ImageGroupProps;
+
+/**
+ * The custom element interface for the image group component.
+ * @publicDocs
+ */
 export type ImageGroupElementDocs = ImageGroupElement;
 
 declare global {
@@ -71,8 +94,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The outer wrapper of the page—including the page title, subtitle, and page-level actions—displayed in a familiar and consistent style.
+ * @publicDocs
+ */
 export type PagePropsDocs = PageProps;
+
+/**
+ * The custom element interface for the page component.
+ * @publicDocs
+ */
 export type PageElementDocs = PageElement;
+
+/**
+ * The page component supports slots for additional content placement within the page. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export type PageElementSlotsDocs = PageElementSlots;
 
 declare global {
@@ -94,9 +131,28 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The element props interface for the avatar component.
+ * @publicDocs
+ */
 export type AvatarElementPropsDocs = AvatarElementProps;
+
+/**
+ * Avatar is used to show a thumbnail representation of an individual or business in the interface.
+ * @publicDocs
+ */
 export type AvatarPropsDocs = AvatarProps;
+
+/**
+ * The custom element interface for the avatar component.
+ * @publicDocs
+ */
 export type AvatarElementDocs = AvatarElement;
+
+/**
+ * The avatar component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
 export type AvatarEventsDocs = AvatarEvents;
 
 declare global {
@@ -115,7 +171,16 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the menu component.
+ * @publicDocs
+ */
 export type MenuPropsDocs = MenuProps;
+
+/**
+ * The custom element interface for the menu component.
+ * @publicDocs
+ */
 export type MenuElementDocs = MenuElement;
 
 declare global {
@@ -136,8 +201,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the button group component.
+ * @publicDocs
+ */
 export type ButtonGroupPropsDocs = ButtonGroupProps;
+
+/**
+ * The custom element interface for the button group component.
+ * @publicDocs
+ */
 export type ButtonGroupElementDocs = ButtonGroupElement;
+
+/**
+ * The button group component supports slots for additional content placement within the group. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export type ButtonGroupElementSlotsDocs = ButtonGroupElementSlots;
 
 declare global {
@@ -159,8 +238,22 @@ declare module 'preact' {
   }
 }
 
+/**
+ * Configure the following properties on the section component.
+ * @publicDocs
+ */
 export type SectionPropsDocs = SectionProps;
+
+/**
+ * The custom element interface for the section component.
+ * @publicDocs
+ */
 export type SectionElementDocs = SectionElement;
+
+/**
+ * The section component supports slots for additional content placement within the section. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
 export type SectionElementSlotsDocs = SectionElementSlots;
 
 declare global {

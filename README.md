@@ -2,7 +2,7 @@
 
 This repo contains the public definition of Shopify’s UI extension API. App developers can use these libraries for a strongly-typed, optimized development experience that lets them focus on integrating their app’s features deep into Shopify workflows. You can learn more about what is possible with UI extensions in [Shopify’s developer documentation](https://shopify.dev/api/checkout-extensions/checkout).
 
-> **Note:** UI extensions are a [versioned API](https://shopify.dev/api/usage/versioning). This branch contains the APIs for the `2026-01` API version. The following API versions are available as separate branches in this repo: [`2025-07`](https://github.com/Shopify/ui-extensions/tree/2025-07), [`2025-10`](https://github.com/Shopify/ui-extensions/tree/2025-10)
+> **Note:** UI extensions are a [versioned API](https://shopify.dev/api/usage/versioning). This branch contains the APIs for the `2026-04-rc` API version. The following API versions are available as separate branches in this repo: [`2025-07`](https://github.com/Shopify/ui-extensions/tree/2025-07), [`2025-10`](https://github.com/Shopify/ui-extensions/tree/2025-10)
 
 Shopify provides UI extension APIs via the [`@shopify/ui-extensions` package](./packages/ui-extensions/) which lets developers use a small, strongly-typed JavaScript API for creating UI extensions
 

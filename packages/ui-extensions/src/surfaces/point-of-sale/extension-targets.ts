@@ -1,12 +1,17 @@
 import {BaseOutput} from './event/output';
 import {
+  // eslint-disable-next-line import/no-deprecated
   CashTrackingSessionStartData,
+  // eslint-disable-next-line import/no-deprecated
   CashTrackingSessionCompleteData,
 } from './event/data/CashTrackingSessionData';
 import {TransactionCompleteData} from './event/data/TransactionCompleteData';
+// eslint-disable-next-line import/no-deprecated
 import {CartUpdateEventData} from './event/data/CartUpdateEventData';
 
-import type {RenderExtension} from '../../extension';
+import type {RenderExtension, RunnableExtension} from '../../extension';
+
+import type {DataTargetApi} from './api/data-target-api/data-target-api';
 
 import type {
   StandardApi,
@@ -28,21 +33,76 @@ import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
 import type {TransactionCompleteWithReprintData} from './event/data';
 
+/**
+ * @publicDocs
+ */
 export interface EventExtensionTargets {
+  /**
+   * Fires when a transaction completes successfully.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
+   * `shopify.addEventListener('transactioncomplete', callback)` instead.
+   * @private
+   */
   'pos.transaction-complete.event.observe': (
     data: TransactionCompleteData,
   ) => Promise<BaseOutput>;
+  /**
+   * Fires when a cash tracking session starts.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
+   * `shopify.addEventListener('cashtrackingsessionstart', callback)` instead.
+   * @private
+   */
   'pos.cash-tracking-session-start.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CashTrackingSessionStartData,
   ) => Promise<BaseOutput>;
+  /**
+   * Fires when a cash tracking session completes.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with
+   * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.
+   * @private
+   */
   'pos.cash-tracking-session-complete.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CashTrackingSessionCompleteData,
   ) => Promise<BaseOutput>;
+  /**
+   * Fires when the cart is updated.
+   *
+   * @deprecated Deprecated as of version `2026-07`. Use `api.cart.current.subscribe()` on the
+   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) instead.
+   * @private
+   */
   'pos.cart-update.event.observe': (
+    // eslint-disable-next-line import/no-deprecated
     data: CartUpdateEventData,
   ) => Promise<BaseOutput>;
 }
 
+/**
+ * @publicDocs
+ */
+export interface DataExtensionTargets {
+  /**
+   * A persistent background extension that starts when POS loads and runs for
+   * the session's lifetime. Use this target to observe POS events without
+   * rendering UI.
+   */
+  'pos.app.ready.data': RunnableExtension<
+    DataTargetApi<'pos.app.ready.data'>,
+    undefined
+  >;
+}
+
+/**
+ * @publicDocs
+ */
 export interface RenderExtensionTargets {
   /**
    * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.
@@ -360,10 +420,27 @@ export interface RenderExtensionTargets {
   >;
 }
 
+/**
+ * @publicDocs
+ */
 export interface ExtensionTargets
   extends RenderExtensionTargets,
-    EventExtensionTargets {}
+    EventExtensionTargets,
+    DataExtensionTargets {}
 
+/**
+ * @publicDocs
+ */
 export type RenderExtensionTarget = keyof RenderExtensionTargets;
+/**
+ * @publicDocs
+ */
 export type EventExtensionTarget = keyof EventExtensionTargets;
+/**
+ * @publicDocs
+ */
+export type DataExtensionTarget = keyof DataExtensionTargets;
+/**
+ * @publicDocs
+ */
 export type ExtensionTarget = keyof ExtensionTargets;

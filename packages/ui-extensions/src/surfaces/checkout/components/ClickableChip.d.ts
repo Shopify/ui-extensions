@@ -24,39 +24,46 @@ export interface BaseElementProps<TClass = HTMLElement> {
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: preact.ComponentChildren;
 }
+/**
+ * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
+/**
+ * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ */
 export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
     (event: CallbackEvent<TTagName, Event> & TData): void;
 }) | null;
 
 declare const tagName = "s-clickable-chip";
+/** @publicDocs */
 export interface ClickableChipElementProps extends Pick<ClickableChipProps$1, 'accessibilityLabel' | 'disabled' | 'hidden' | 'href' | 'id' | 'removable'> {
 }
 export interface ClickableChipEvents extends Pick<ClickableChipProps$1, 'onAfterHide' | 'onClick' | 'onRemove'> {
 }
+/** @publicDocs */
 export interface ClickableChipElementEvents {
     /**
-     * Event handler when the chip has fully hidden.
-     *
-     * The `hidden` property will be `true` when this event fires.
+     * A callback fired after the chip is hidden. The `hidden` property will be `true` when this event fires.
      */
     afterhide?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the chip is clicked.
+     * A callback fired when the chip is clicked.
+     *
+     * Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
      */
     click?: CallbackEventListener<typeof tagName>;
     /**
-     * Event handler when the chip is removed.
+     * A callback fired when the chip is removed.
      */
     remove?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface ClickableChipElementSlots {
     /**
-     * The graphic to display inside of the chip.
-     *
-     * Only `s-icon` element and its `type` attribute are supported.
+     * An optional graphic displayed at the start of the chip, such as an icon to visually reinforce the chip's label. Only the `s-icon` element and its `type` attribute are supported.
      */
     graphic?: HTMLElement;
 }

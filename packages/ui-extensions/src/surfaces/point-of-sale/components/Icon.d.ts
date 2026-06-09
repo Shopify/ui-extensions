@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {IconProps, Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -30,6 +32,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -38,11 +41,13 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T>;
+/** @publicDocs */
+export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-icon';
 /**
  * Lists all currently supported icon names available for use in the POS interface. Reference this list when selecting icons to ensure compatibility and availability.
+ * @publicDocs
  */
 export type SupportedIconNames = Extract<
   IconProps['type'],
@@ -172,6 +177,7 @@ export type SupportedIconNames = Extract<
   | 'x'
   | 'x-circle'
 >;
+/** @publicDocs */
 export interface IconJSXProps
   extends Pick<IconProps, 'id' | 'tone' | 'color' | 'size'> {
   /**
@@ -183,7 +189,7 @@ export interface IconJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: IconJSXProps;
+    [tagName]: IconJSXProps & HTMLElement;
   }
 }
 declare module 'preact' {

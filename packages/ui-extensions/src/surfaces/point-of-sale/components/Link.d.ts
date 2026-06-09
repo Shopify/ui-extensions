@@ -10,9 +10,11 @@
 /// <reference lib="DOM" />
 import type {LinkProps,Key, Ref} from './components-shared.d.ts';
 
+/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
+ * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
     key?: Key;
@@ -21,12 +23,16 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * Used when an element has children.
+ * @publicDocs
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
     children?: ComponentChildren;
 }
+/** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
+/** @publicDocs */
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
+/** @publicDocs */
 export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
     currentTarget: HTMLElementTagNameMap[T];
     bubbles?: boolean;
@@ -38,13 +44,14 @@ export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
 }
 
 declare const tagName = "s-link";
+/** @publicDocs */
 export interface LinkJSXProps extends Pick<LinkProps, 'id' | 'commandFor' | 'command' | 'accessibilityLabel'> {
     /**
      * Called when the link is activated.
      */
     onClick?: (event: CallbackEvent<typeof tagName>) => void;
     /**
-     * The Link content.
+     * The link content.
      */
     children?: ComponentChildren;
 }

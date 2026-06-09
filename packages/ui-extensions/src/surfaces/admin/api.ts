@@ -1,5 +1,25 @@
 export type {I18n, I18nTranslate} from '../../api';
 export type {StandardApi, Intents} from './api/standard/standard';
+export type {ToastApi, ToastOptions} from './api/toast/toast';
+export type {LoadingApi, LoadingOptions} from './api/loading/loading';
+export type {Tools, ToolHandler} from './api/tools/tools';
+export type {
+  AppApi,
+  ExtensionInfo,
+  ExtensionType,
+  ExtensionStatus,
+  UiExtensionActivation,
+  ThemeBlockActivation,
+  ThemeExtensionBlockActivation,
+  ThemeAppBlockTarget,
+  ThemeAppEmbedTarget,
+} from './api/app/app';
+export type {
+  AppHomeApi,
+  AppHomeIntents,
+  AppHomeIntentRequest,
+} from './api/app-home/app-home';
+export type {StandardRenderingExtensionApi} from './api/standard/standard-rendering';
 export type {Navigation} from './api/block/block';
 export type {
   CustomerSegmentTemplateApi,
@@ -14,3 +34,10 @@ export type {OrderRoutingRuleApi} from './api/order-routing-rule/order-routing-r
 export type {ValidationSettingsApi} from './api/checkout-rules/validation-settings';
 export type {PurchaseOptionsCardConfigurationApi} from './api/purchase-options-card-action';
 export type {DiscountFunctionSettingsApi} from './api/discount-function-settings/discount-function-settings';
+export type {IntentRenderApi} from './api/intents/intent-render';
+export type {
+  ShopifyGeneratedIntentResponse,
+  ShopifyGeneratedIntentVariant,
+  WithGeneratedIntents,
+  WithGeneratedTools,
+} from './api/generated/generated';
