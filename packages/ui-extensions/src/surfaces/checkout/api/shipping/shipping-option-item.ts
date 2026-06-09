@@ -23,17 +23,22 @@ export interface ShippingOptionItemApi {
 
   /**
    * The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.
+   *
+   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.
    */
   renderMode: ShippingOptionItemRenderMode;
 }
 
 /**
  * The render mode of a shipping option.
+ *
  * @publicDocs
  */
 export interface ShippingOptionItemRenderMode {
   /**
    * Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.
+   *
+   * @deprecated Do not rely on render context. Use inline UI instead of opening overlays such as modals.
    */
   overlay: boolean;
 }
