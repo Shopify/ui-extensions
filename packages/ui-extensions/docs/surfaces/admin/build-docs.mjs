@@ -50,6 +50,43 @@ const generatedDocsDataV2File = 'generated_docs_data_v2.json';
 
 const componentDefs = path.join(srcPath, 'components.d.ts');
 const tempComponentDefs = path.join(srcPath, 'components.ts');
+const adminComponentsFilePath = `${srcRelativePath}/components.ts`;
+
+const hasPublicAdminComponentMembers = (declaration) =>
+  declaration?.filePath === adminComponentsFilePath &&
+  declaration.isPublicDocs === true &&
+  Array.isArray(declaration.members);
+
+const isPublicAdminComponentClass = (declaration) =>
+  hasPublicAdminComponentMembers(declaration) &&
+  /^\s*declare\s+class\s+\w+\b/.test(declaration.value || '');
+
+const isPublicAdminComponentEvents = (entryName, declaration) =>
+  hasPublicAdminComponentMembers(declaration) &&
+  /^\s*export\s+interface\s+\w+Events\b/.test(declaration.value || '') &&
+  entryName.endsWith('Events');
+
+const markAdminWebComponentMembersOptional = async (filePaths) => {
+  for (const filePath of filePaths) {
+    const docsData = JSON.parse(await fs.readFile(filePath, 'utf8'));
+
+    for (const [entryName, entry] of Object.entries(docsData)) {
+      const declaration = Object.values(entry)[0];
+      if (
+        !isPublicAdminComponentClass(declaration) &&
+        !isPublicAdminComponentEvents(entryName, declaration)
+      ) {
+        continue;
+      }
+
+      for (const member of declaration.members) {
+        member.isOptional = true;
+      }
+    }
+
+    await fs.writeFile(filePath, `${JSON.stringify(docsData, null, 2)}\n`);
+  }
+};
 
 const generateExtensionsDocs = async () => {
   console.log(
@@ -141,6 +178,15 @@ try {
     adminExtensionsOutput,
     generatedDocsDataV2File,
   );
+  const appHomeGeneratedDocsDataV2Path = path.join(
+    appHomeOutput,
+    generatedDocsDataV2File,
+  );
+
+  await markAdminWebComponentMembersOptional([
+    generatedDocsDataV2Path,
+    appHomeGeneratedDocsDataV2Path,
+  ]);
 
   const appHomeUiExtensionOutput = path.join(
     rootPath,
