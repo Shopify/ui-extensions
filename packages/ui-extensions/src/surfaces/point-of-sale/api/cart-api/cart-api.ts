@@ -180,7 +180,7 @@ export interface MutableCartApiContent {
   removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;
 
   /**
-   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking.
+   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.
    *
    * @param uuid the uuid of the line item that should receive a discount
    * @param type the type of discount applied (example: 'Percentage')
@@ -195,7 +195,7 @@ export interface MutableCartApiContent {
   ): Promise<void>;
 
   /**
-   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking.
+   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.
    *
    * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
    */
