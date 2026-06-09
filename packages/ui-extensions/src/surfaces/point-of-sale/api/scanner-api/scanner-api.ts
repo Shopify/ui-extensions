@@ -63,7 +63,7 @@ export interface ReadonlyScannerApiContent {
 }
 
 /**
- * The `ScannerApi` object provides scan results and scanner controls.
+ * The `ScannerApi` object provides scan data, scanner sources, and camera controls.
  * @publicDocs
  */
 export interface ScannerApiContent extends ReadonlyScannerApiContent {
