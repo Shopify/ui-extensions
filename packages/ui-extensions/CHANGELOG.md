@@ -1,5 +1,29 @@
 # @shopify/ui-extensions
 
+## 2026.7.0-rc.6
+
+### Minor Changes
+
+- [#4489](https://github.com/Shopify/ui-extensions/pull/4489) [`8f27436`](https://github.com/Shopify/ui-extensions/commit/8f274366bdae412475113320e77bf1b6042ee735) Thanks [@akhayoon](https://github.com/akhayoon)! - Add `session.staffMember` for POS UI extensions so extensions can read and subscribe to the currently pinned staff member.
+
+### Patch Changes
+
+- [#4491](https://github.com/Shopify/ui-extensions/pull/4491) [`2399687`](https://github.com/Shopify/ui-extensions/commit/23996878ba8d12aa290a14b0f267d28ead3781f7) Thanks [@jasonblickhan](https://github.com/jasonblickhan)! - Add `admin.abandoned-checkout-index.action.render` and `admin.abandoned-checkout-index.action.should-render` extension targets for the abandoned checkout index page. This mirrors the action targets already available on other resource index pages (orders, customers, products, draft orders, etc.) and unblocks `admin.abandoned-checkout-index.action.link` admin link extensions.
+
+- [#4468](https://github.com/Shopify/ui-extensions/pull/4468) [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Narrow `AppHomeApi.intents` to a new `AppHomeIntents` shape that exposes a signal-like `request` so the runtime can stream link intents into a long-lived `admin.app.home.render` extension. `WithGeneratedIntents` continues to narrow `request.value` to the CLI-generated variants.
+
+- [#4468](https://github.com/Shopify/ui-extensions/pull/4468) [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Expose the `Tools` API on `AppHomeApi` so `admin.app.home.render` extensions can call `shopify.tools.register(...)` even before the CLI generates typed overloads. Adds a matching mock to `@shopify/ui-extensions-tester`.
+
+- [#4476](https://github.com/Shopify/ui-extensions/pull/4476) [`338a696`](https://github.com/Shopify/ui-extensions/commit/338a696739672a058813810771d737d84bee5559) Thanks [@lsit](https://github.com/lsit)! - Update docs for inlineSize prop on customer account Page component
+
+- [#4477](https://github.com/Shopify/ui-extensions/pull/4477) [`d607e02`](https://github.com/Shopify/ui-extensions/commit/d607e026f6652eafa19a1a3c8352a431b9ecc47b) Thanks [@shivinmisra-shopify](https://github.com/shivinmisra-shopify)! - Add optional `cashRoundingAdjustment` money data to POS transaction-complete payload types.
+
+- [#4455](https://github.com/Shopify/ui-extensions/pull/4455) [`fe62c86`](https://github.com/Shopify/ui-extensions/commit/fe62c86217956ebf72c6b8e63b81d226f3a97da4) Thanks [@justinhenricks](https://github.com/justinhenricks)! - Add `textAlign` prop to the checkout `Paragraph` component, supporting `'start'`, `'end'`, `'center'`, and `'auto'` values.
+
+- [#4466](https://github.com/Shopify/ui-extensions/pull/4466) [`cc5f4b3`](https://github.com/Shopify/ui-extensions/commit/cc5f4b3d624bcf12bb0ce4d8dc7d71ee0494ad1e) Thanks [@vctrchu](https://github.com/vctrchu)! - Narrow the `pos.app.ready.data` cart API surface to readonly. The background extension target's `shopify.cart` now only exposes the subscribable `current` signal; cart mutation methods (`addLineItem`, `clearCart`, `applyCartDiscount`, `setCustomer`, etc.) are not typed on this target. Cart mutation remains available to interactive render targets via the unchanged `CartApi`.
+
+  Internally this splits `CartApiContent` into `ReadonlyCartApiContent` + `MutableCartApiContent` (both re-exported), and introduces `ReadonlyCartApi` for use in `DataTargetApi`.
+
 ## 2026.7.0-rc.5
 
 ### Patch Changes

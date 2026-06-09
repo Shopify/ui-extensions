@@ -6,12 +6,20 @@
     "@shopify/ui-extensions-tester": "2026.7.0-rc.0"
   },
   "changesets": [
+    "add-abandoned-checkout-index-action-target",
     "add-app-home-render-target",
+    "admin-app-home-intents-request",
+    "admin-app-home-tools-api",
     "brown-flowers-ask",
+    "calm-sites-warn",
+    "cash-rounding-transaction-complete",
     "checkbox-rich-label",
     "floppy-camels-bet",
     "mean-ducks-join",
+    "paragraph-text-align",
+    "pos-data-target-readonly-cart",
     "sixty-points-doubt",
+    "tiny-staff-signal",
     "true-tips-fix"
   ]
 }
