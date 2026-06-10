@@ -496,12 +496,6 @@ function createDataTargetMock<T extends ExtensionTarget>(
       }),
     },
     scanner: {
-      scannerData: {
-        current: createReadonlySignalLike({
-          data: undefined,
-          source: undefined,
-        }),
-      },
       sources: {
         current: createReadonlySignalLike<ScannerSource[]>([]),
       },

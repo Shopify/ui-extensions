@@ -48,14 +48,10 @@ export interface ScannerData {
 }
 
 /**
- * The readonly scanner API provides scan results and scanner source information.
+ * The readonly scanner API provides scanner source information. Scan events are delivered separately through `shopify.addEventListener('scan', ...)`.
  * @publicDocs
  */
 export interface ReadonlyScannerApiContent {
-  /**
-   * Access current scan data and subscribe to new scan events. Use to receive real-time scan results.
-   */
-  scannerData: ScannerData;
   /**
    * Access available scanner sources on the device. Use to check which scanners are available (camera, external, or embedded).
    */
@@ -68,6 +64,10 @@ export interface ReadonlyScannerApiContent {
  */
 export interface ScannerApiContent extends ReadonlyScannerApiContent {
   /**
+   * Access current scan data and subscribe to new scan events. Use to receive real-time scan results.
+   */
+  scannerData: ScannerData;
+  /**
    * Show the camera scanner.
    */
   showCameraScanner: () => void;
@@ -78,7 +78,7 @@ export interface ScannerApiContent extends ReadonlyScannerApiContent {
 }
 
 /**
- * The readonly scanner API provides access to scanner data and scanner source information. Access these properties through `shopify.scanner` to monitor scan events and available scanner sources.
+ * The readonly scanner API provides access to scanner source information. Access `scanner.sources` through `shopify.scanner` to monitor available scanner sources, and use `shopify.addEventListener('scan', ...)` to receive scan events.
  * @publicDocs
  */
 export interface ReadonlyScannerApi {

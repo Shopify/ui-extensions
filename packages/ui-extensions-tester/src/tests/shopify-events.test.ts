@@ -1,5 +1,6 @@
 import type {
   CashTrackingSessionStartEvent,
+  ScanEvent,
   TransactionCompleteEvent,
 } from '@shopify/ui-extensions/point-of-sale';
 
@@ -30,6 +31,13 @@ function makeCashTrackingSessionStartEvent(): CashTrackingSessionStartEvent {
   });
 }
 
+function makeScanEvent(): ScanEvent {
+  return Object.assign(new Event('scan'), {
+    data: '012345678905',
+    source: 'external' as const,
+  });
+}
+
 describe('shopify.addEventListener / extension.dispatch', () => {
   let sandbox: TestSandbox;
 
@@ -57,18 +65,26 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     expect(typeof shopify.removeEventListener).toBe('function');
   });
 
-  it('exposes read-only scanner data on the shopify global', () => {
+  it('exposes read-only scanner sources on the shopify global', () => {
     const extension = setUpExt();
 
-    expect(
-      extension.shopify.scanner.scannerData.current.value.data,
-    ).toBeUndefined();
-    expect(
-      extension.shopify.scanner.scannerData.current.value.source,
-    ).toBeUndefined();
     expect(extension.shopify.scanner.sources.current.value).toHaveLength(0);
+    expect('scannerData' in extension.shopify.scanner).toBe(false);
     expect('showCameraScanner' in extension.shopify.scanner).toBe(false);
     expect('hideCameraScanner' in extension.shopify.scanner).toBe(false);
+  });
+
+  it('dispatches scan events to registered listeners', () => {
+    const extension = setUpExt();
+    const shopify = (globalThis as any).shopify;
+    const listener = jest.fn();
+    shopify.addEventListener('scan', listener);
+
+    const event = makeScanEvent();
+    extension.dispatch('scan', event);
+
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledWith(event);
   });
 
   it('dispatches a registered listener with the provided event payload', () => {

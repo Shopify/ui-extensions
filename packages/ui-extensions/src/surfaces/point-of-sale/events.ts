@@ -3,6 +3,7 @@ import type {
   CashTrackingSessionStartEvent,
   CashTrackingSessionCompleteEvent,
 } from './events/cash-tracking-session-events';
+import type {ScanEvent} from './events/scan-event';
 
 /**
  * Canonical event-name constants for POS host events. Prefer these over string
@@ -14,6 +15,7 @@ export const POS_EVENT_NAMES = {
   TRANSACTION_COMPLETE: 'transactioncomplete',
   CASH_TRACKING_SESSION_START: 'cashtrackingsessionstart',
   CASH_TRACKING_SESSION_COMPLETE: 'cashtrackingsessioncomplete',
+  SCAN: 'scan',
 } as const;
 
 /**
@@ -28,10 +30,12 @@ export interface ShopifyEventMap {
   [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;
   [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;
   [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;
+  [POS_EVENT_NAMES.SCAN]: ScanEvent;
 }
 
 export type {
   TransactionCompleteEvent,
   CashTrackingSessionStartEvent,
   CashTrackingSessionCompleteEvent,
+  ScanEvent,
 };
