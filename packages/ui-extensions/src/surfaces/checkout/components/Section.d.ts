@@ -28,7 +28,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends Base
 
 declare const tagName = "s-section";
 /** @publicDocs */
-export interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
+export interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding'> {
 }
 /** @publicDocs */
 export interface SectionElement extends SectionElementProps, Omit<HTMLElement, 'id'> {
