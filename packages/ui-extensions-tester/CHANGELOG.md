@@ -1,5 +1,22 @@
 # @shopify/ui-extensions-tester
 
+## 2026.7.0-rc.6
+
+### Minor Changes
+
+- [#4489](https://github.com/Shopify/ui-extensions/pull/4489) [`8f27436`](https://github.com/Shopify/ui-extensions/commit/8f274366bdae412475113320e77bf1b6042ee735) Thanks [@akhayoon](https://github.com/akhayoon)! - Add `session.staffMember` for POS UI extensions so extensions can read and subscribe to the currently pinned staff member.
+
+### Patch Changes
+
+- [#4491](https://github.com/Shopify/ui-extensions/pull/4491) [`2399687`](https://github.com/Shopify/ui-extensions/commit/23996878ba8d12aa290a14b0f267d28ead3781f7) Thanks [@jasonblickhan](https://github.com/jasonblickhan)! - Add `admin.abandoned-checkout-index.action.render` and `admin.abandoned-checkout-index.action.should-render` extension targets for the abandoned checkout index page. This mirrors the action targets already available on other resource index pages (orders, customers, products, draft orders, etc.) and unblocks `admin.abandoned-checkout-index.action.link` admin link extensions.
+
+- [#4468](https://github.com/Shopify/ui-extensions/pull/4468) [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Narrow `AppHomeApi.intents` to a new `AppHomeIntents` shape that exposes a signal-like `request` so the runtime can stream link intents into a long-lived `admin.app.home.render` extension. `WithGeneratedIntents` continues to narrow `request.value` to the CLI-generated variants.
+
+- [#4468](https://github.com/Shopify/ui-extensions/pull/4468) [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Expose the `Tools` API on `AppHomeApi` so `admin.app.home.render` extensions can call `shopify.tools.register(...)` even before the CLI generates typed overloads. Adds a matching mock to `@shopify/ui-extensions-tester`.
+
+- Updated dependencies [[`2399687`](https://github.com/Shopify/ui-extensions/commit/23996878ba8d12aa290a14b0f267d28ead3781f7), [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5), [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5), [`338a696`](https://github.com/Shopify/ui-extensions/commit/338a696739672a058813810771d737d84bee5559), [`d607e02`](https://github.com/Shopify/ui-extensions/commit/d607e026f6652eafa19a1a3c8352a431b9ecc47b), [`fe62c86`](https://github.com/Shopify/ui-extensions/commit/fe62c86217956ebf72c6b8e63b81d226f3a97da4), [`cc5f4b3`](https://github.com/Shopify/ui-extensions/commit/cc5f4b3d624bcf12bb0ce4d8dc7d71ee0494ad1e), [`8f27436`](https://github.com/Shopify/ui-extensions/commit/8f274366bdae412475113320e77bf1b6042ee735)]:
+  - @shopify/ui-extensions@2026.7.0-rc.6
+
 ## 2026.7.0-rc.5
 
 ### Patch Changes
