@@ -443,6 +443,14 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
+          "name": "discountAllocations",
+          "value": "DiscountAllocation[]",
+          "description": "An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
           "name": "price",
           "value": "number",
           "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.",
@@ -494,7 +502,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface LineItemComponent {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title?: string;\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price?: number;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this component.\n   */\n  taxLines: TaxLine[];\n  /**\n   * The unique numeric identifier for the product variant this component represents, if applicable.\n   */\n  variantId?: number;\n  /**\n   * The unique numeric identifier for the product this component represents, if applicable.\n   */\n  productId?: number;\n}"
+      "value": "export interface LineItemComponent {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title?: string;\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price?: number;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this component.\n   */\n  taxLines: TaxLine[];\n  /**\n   * An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.\n   */\n  discountAllocations?: DiscountAllocation[];\n  /**\n   * The unique numeric identifier for the product variant this component represents, if applicable.\n   */\n  variantId?: number;\n  /**\n   * The unique numeric identifier for the product this component represents, if applicable.\n   */\n  productId?: number;\n}"
     }
   },
   "SellingPlan": {
