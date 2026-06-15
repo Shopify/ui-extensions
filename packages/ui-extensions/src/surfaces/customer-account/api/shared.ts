@@ -251,6 +251,51 @@ export interface Attribute {
 }
 
 /**
+ * Structured extended address fields for countries and regions that collect
+ * address components separately from the flat address lines. These fields are
+ * available on order shipping and billing addresses when the order was placed
+ * with structured address data.
+ *
+ * @publicDocs
+ */
+export interface AddressExtendedFields {
+  /**
+   * The street name without the building or street number.
+   *
+   * @example 'Avenida Paulista'
+   */
+  streetName?: string | null;
+
+  /**
+   * The building or street number.
+   *
+   * @example '123'
+   */
+  streetNumber?: string | null;
+
+  /**
+   * Additional address information, such as a block, floor, or unit.
+   *
+   * @example '10th floor'
+   */
+  line2?: string | null;
+
+  /**
+   * The district or neighborhood.
+   *
+   * @example 'Bela Vista'
+   */
+  district?: string | null;
+
+  /**
+   * The subdistrict or smaller locality.
+   *
+   * @example 'Centro'
+   */
+  subdistrict?: string | null;
+}
+
+/**
  * A mailing address associated with the order, such as a shipping or billing address.
  *
  * @publicDocs
@@ -299,6 +344,23 @@ export interface MailingAddress {
    * @example 'Ground floor'
    */
   address2?: string;
+
+  /**
+   * Structured address components for countries and regions that collect them.
+   * The value is `undefined` when structured address data isn't available for
+   * the order address. Individual fields are `null` when Shopify has a
+   * structured address record but a specific component wasn't provided.
+   */
+  extendedFields?: AddressExtendedFields;
+
+  /**
+   * A country-specific address code, such as a short code or postal delivery
+   * code. The value is `null` when the order address doesn't have an address
+   * code.
+   *
+   * @example '01001-000'
+   */
+  addressCode?: string | null;
 
   /**
    * The city, town, or village of the address.

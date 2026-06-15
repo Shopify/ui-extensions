@@ -341,8 +341,10 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * are delivered. The value is `undefined` if the order contains only digital products or
    * if a shipping address wasn't required.
    *
-   * Reflects the state at the time the order was placed. Doesn't update if the
-   * customer changes their account address afterward.
+   * Includes structured address fields, such as `addressCode` and `extendedFields`,
+   * when they're available for the order address. Reflects the state at the time
+   * the order was placed. Doesn't update if the customer changes their account
+   * address afterward.
    */
   shippingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
@@ -350,8 +352,10 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * The billing address associated with the buyer's payment method for the order. The value
    * is `undefined` if the order doesn't have a billing address on file.
    *
-   * Reflects the state at the time the order was placed. Doesn't update if the
-   * customer changes their account address afterward.
+   * Includes structured address fields, such as `addressCode` and `extendedFields`,
+   * when they're available for the order address. Reflects the state at the time
+   * the order was placed. Doesn't update if the customer changes their account
+   * address afterward.
    */
   billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;
 
