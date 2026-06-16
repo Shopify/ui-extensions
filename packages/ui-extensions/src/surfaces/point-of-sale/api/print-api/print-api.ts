@@ -1,5 +1,7 @@
 /**
  * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
+ *
+ * @deprecated Use `shopify.printing` instead. The Printing API supersedes `shopify.print`, adding hardware printer discovery via `getPrinters()` and direct-to-printer printing via the `printer` option on `print()`.
  * @publicDocs
  */
 export interface PrintApiContent {
@@ -20,6 +22,8 @@ export interface PrintApiContent {
 
 /**
  * The `PrintApi` object provides methods for triggering document printing. Access these methods through `shopify.print` to initiate print operations with various document types.
+ *
+ * @deprecated Use `shopify.printing` instead. The Printing API supersedes `shopify.print`, adding hardware printer discovery via `getPrinters()` and direct-to-printer printing via the `printer` option on `print()`.
  * @publicDocs
  */
 export interface PrintApi {

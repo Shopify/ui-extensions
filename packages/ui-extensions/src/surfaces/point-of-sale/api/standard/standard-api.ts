@@ -7,6 +7,7 @@ import {SessionApi} from '../session-api/session-api';
 import {ToastApi} from '../toast-api/toast-api';
 import {ProductSearchApi} from '../product-search-api/product-search-api';
 import {PrintApi} from '../print-api/print-api';
+import {PrintingApi} from '../printing-api/printing-api';
 import {StorageApi} from '../storage-api/storage-api';
 import {PinPadApi} from '../pin-pad-api';
 import type {I18n} from '../../../../api';
@@ -25,6 +26,7 @@ export type StandardApi<T> = {[key: string]: any} & {
   ToastApi &
   SessionApi &
   PrintApi &
+  PrintingApi &
   ProductSearchApi &
   DeviceApi &
   ConnectivityApi &
