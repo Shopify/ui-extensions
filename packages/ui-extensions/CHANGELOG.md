@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.0-rc.7
+
+### Patch Changes
+
+- [#4511](https://github.com/Shopify/ui-extensions/pull/4511) [`f972657`](https://github.com/Shopify/ui-extensions/commit/f972657cc48c1b6a674f55ccb586e56d5be35e80) Thanks [@lsit](https://github.com/lsit)! - Expose the `padding` prop on the checkout and customer account `s-section` components.
+
 ## 2026.7.0-rc.6
 
 ### Minor Changes

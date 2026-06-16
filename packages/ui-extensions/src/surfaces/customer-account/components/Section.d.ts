@@ -10,6 +10,19 @@ export interface SectionProps extends IdProps {
    * A title that describes the content of the section.
    */
   heading?: string;
+
+  /**
+   * Adjust the padding of all edges.
+   *
+   * - `base`: Applies padding that is appropriate for the element. Note that it may result in no padding if
+   * this is the right design decision in a particular context.
+   * - `none`: Removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * to bring back the desired padding for the rest of the content.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
 }
 
 export interface SectionElementSlots {

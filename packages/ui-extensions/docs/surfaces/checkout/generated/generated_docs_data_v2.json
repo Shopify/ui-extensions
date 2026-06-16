@@ -128609,9 +128609,18 @@
           "value": "string",
           "description": "A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.",
           "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Section.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "padding",
+          "value": "'base' | 'none'",
+          "description": "The padding applied to all edges of the section.\n\n- `base`: Applies context-appropriate padding. In some contexts this may result in no visible padding.\n- `none`: Removes all padding, allowing child elements to span the full width of the section. Use a Box with `base` padding to restore spacing for individual content areas.",
+          "isOptional": true,
+          "defaultValue": "'base'"
         }
       ],
-      "value": "export interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {\n}"
+      "value": "export interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding'> {\n}"
     }
   },
   "SectionElement": {
@@ -130542,6 +130551,15 @@
         {
           "filePath": "src/surfaces/checkout/components/Section.ts",
           "syntaxKind": "PropertySignature",
+          "name": "padding",
+          "value": "'base' | 'none'",
+          "description": "The padding applied to all edges of the section.\n\n- `base`: Applies context-appropriate padding. In some contexts this may result in no visible padding.\n- `none`: Removes all padding, allowing child elements to span the full width of the section. Use a Box with `base` padding to restore spacing for individual content areas.",
+          "isOptional": true,
+          "defaultValue": "'base'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Section.ts",
+          "syntaxKind": "PropertySignature",
           "name": "parentElement",
           "value": "HTMLElement | null",
           "description": "The read-only **`parentElement`** property of Node interface returns the DOM node's parent Element, or `null` if the node either has no parent, or its parent isn't a DOM Element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentElement)"
@@ -130947,6 +130965,15 @@
           "value": "string",
           "description": "A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.",
           "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Section.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "padding",
+          "value": "'base' | 'none'",
+          "description": "The padding applied to all edges of the section.\n\n- `base`: Applies context-appropriate padding. In some contexts this may result in no visible padding.\n- `none`: Removes all padding, allowing child elements to span the full width of the section. Use a Box with `base` padding to restore spacing for individual content areas.",
+          "isOptional": true,
+          "defaultValue": "'base'"
         }
       ],
       "value": "export interface SectionProps extends SectionElementProps {\n}"

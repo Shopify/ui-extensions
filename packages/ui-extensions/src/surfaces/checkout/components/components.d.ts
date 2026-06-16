@@ -4849,7 +4849,7 @@ declare module 'preact' {
 
 declare const tagName$e = "s-section";
 /** @publicDocs */
-interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id'> {
+interface SectionElementProps extends Pick<SectionProps$1, 'accessibilityLabel' | 'heading' | 'id' | 'padding'> {
 }
 /** @publicDocs */
 interface SectionElement extends SectionElementProps, Omit<HTMLElement, 'id'> {
