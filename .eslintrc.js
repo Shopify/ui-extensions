@@ -7,7 +7,6 @@ module.exports = {
   ignorePatterns: [
     'build/',
     'examples/',
-    'mdxExamples/',
     'node_modules/',
     'packages/*/build/',
     'packages/*/*.d.ts',
