@@ -44,6 +44,9 @@ export interface PrintingApiContent {
    *
    * The content at the URL is fetched with the extension's session token
    * for authentication. HTML, PDFs, and images are supported content types.
+   * PDFs can only be printed via the system print dialog: selecting a
+   * `printer` with a PDF `src` throws, because hardware (receipt) printers
+   * render HTML and image content only.
    *
    * @param src the source URL of the content to print.
    * @param options optional configuration for the print operation.
@@ -54,6 +57,8 @@ export interface PrintingApiContent {
    *   content is ready and the dialog appears.
    * @throws {Error} when the content cannot be fetched from `src`.
    * @throws {Error} when the specified `printer` is not connected.
+   * @throws {Error} when `src` is a PDF and a `printer` is selected, since
+   *   receipt printers render HTML and image content only.
    */
   print(src: string, options?: PrintOptions): Promise<void>;
 }
