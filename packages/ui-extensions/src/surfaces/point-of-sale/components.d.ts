@@ -5274,6 +5274,7 @@ declare module 'preact' {
 }
 
 declare const tagName$4 = 's-tab-list';
+/** @publicDocs */
 interface TabListJSXProps extends Pick<TabListProps, 'children'> {
   children?: ComponentChildren;
 }
