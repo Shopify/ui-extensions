@@ -18,6 +18,16 @@ export const POS_EVENT_NAMES = {
 } as const;
 
 /**
+ * Canonical workflow-name constants for POS host interceptions. Prefer these
+ * over string literals when calling `shopify.intercept`.
+ *
+ * @publicDocs
+ */
+export const POS_INTERCEPT_NAMES = {
+  BEFORE_CHECKOUT: 'beforecheckout',
+} as const;
+
+/**
  * Maps Shopify POS event names to their corresponding `Event` subclass types.
  *
  * Used as the generic type parameter for `shopify.addEventListener` and
@@ -39,7 +49,7 @@ export interface ShopifyEventMap {
  * @publicDocs
  */
 export interface ShopifyInterceptMap {
-  beforecheckout: BeforeCheckoutEvent;
+  [POS_INTERCEPT_NAMES.BEFORE_CHECKOUT]: BeforeCheckoutEvent;
 }
 
 /**
@@ -48,7 +58,7 @@ export interface ShopifyInterceptMap {
  * @publicDocs
  */
 export interface BeforeCheckoutEvent extends Event {
-  readonly type: 'beforecheckout';
+  readonly type: typeof POS_INTERCEPT_NAMES.BEFORE_CHECKOUT;
   /** The POS cart at the point checkout was requested. */
   readonly cart: Cart;
 }
