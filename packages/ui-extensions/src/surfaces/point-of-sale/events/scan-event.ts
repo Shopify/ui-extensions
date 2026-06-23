@@ -7,7 +7,7 @@ import type {ScannerSource} from '../api/scanner-api/scanner-api';
  * @example
  * ```ts
  * shopify.addEventListener('scan', (event) => {
- *   console.log(event.data, event.source);
+ *   handleScan(event.data, event.source);
  * });
  * ```
  * @publicDocs
