@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.4.0-rc.4
+
+### Patch Changes
+
+- [#4251](https://github.com/Shopify/ui-extensions/pull/4251) [`a5c2bbf`](https://github.com/Shopify/ui-extensions/commit/a5c2bbf71decdf210d46ad4d6dc814faa6c0912f) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Add admin.app.intent.render target
+
 ## 2026.4.0-rc.3
 
 ### Minor Changes
