@@ -543,6 +543,9 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Provides details on the buyer's progression through the checkout.
+   *
+   * Refer to [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/buyer-journey#examples)
+   * examples for more information.
    */
   buyerJourney: BuyerJourney;
 
