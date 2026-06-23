@@ -118,6 +118,8 @@ export type {
 
 export type {TaxLine} from './types/tax-line';
 
+export type {DiscountAllocation} from './types/discount-allocation';
+
 export type {PaymentMethod, Payment} from './types/payment';
 
 export type {MultipleResourceResult} from './types/multiple-resource-result';

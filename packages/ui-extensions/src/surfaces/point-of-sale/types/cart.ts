@@ -200,6 +200,10 @@ export interface LineItemComponent {
    */
   taxLines: TaxLine[];
   /**
+   * An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.
+   */
+  discountAllocations?: DiscountAllocation[];
+  /**
    * The unique numeric identifier for the product variant this component represents, if applicable.
    */
   variantId?: number;
