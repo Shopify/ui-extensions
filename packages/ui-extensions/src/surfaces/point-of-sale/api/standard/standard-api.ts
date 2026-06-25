@@ -6,8 +6,6 @@ import {LocaleApi} from '../locale-api/locale-api';
 import {SessionApi} from '../session-api/session-api';
 import {ToastApi} from '../toast-api/toast-api';
 import {ProductSearchApi} from '../product-search-api/product-search-api';
-// `PrintApi` is deprecated but intentionally retained so `shopify.print`
-// keeps working as an alias of `shopify.printing.print()`.
 // eslint-disable-next-line import/no-deprecated
 import {PrintApi} from '../print-api/print-api';
 import {PrintingApi} from '../printing-api/printing-api';
