@@ -50,6 +50,9 @@ export function useBuyerJourneyCompleted<
  *
  * It is good practice to show a warning in the checkout editor when the merchant has not given permission for your extension
  * to block checkout progress.
+ *
+ * @deprecated Use a cart and checkout validation function instead. The buyer
+ * journey intercept will be removed in a future version of the API.
  * @publicDocs
  */
 export function useBuyerJourneyIntercept<
