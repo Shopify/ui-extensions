@@ -20,11 +20,7 @@ import type {
   Cart,
   Session,
   StaffMember,
-  TransactionCompleteData,
   TransactionCompleteWithReprintData,
-  CashTrackingSessionStartData,
-  CashTrackingSessionCompleteData,
-  CartUpdateEventData,
   Money,
 } from '@shopify/ui-extensions/point-of-sale';
 
@@ -46,7 +42,7 @@ type ApiForPosExtension<T extends ExtensionTarget> =
     ? D
     : never;
 
-type Transaction = TransactionCompleteData['transaction'];
+type Transaction = TransactionCompleteWithReprintData['transaction'];
 
 function createConnectivityState(): ConnectivityState {
   return {internetConnected: 'Connected'};
@@ -503,44 +499,6 @@ function createDataTargetMock<T extends ExtensionTarget>(
   };
 }
 
-// Event target factories
-function createTransactionCompleteMock<T extends ExtensionTarget>(
-  _target: T,
-): TransactionCompleteData {
-  return {...createMockBaseEventData(), transaction: createTransaction()};
-}
-
-function createCashTrackingSessionStartMock<T extends ExtensionTarget>(
-  _target: T,
-): CashTrackingSessionStartData {
-  return {
-    ...createMockBaseEventData(),
-    cashTrackingSessionStart: {
-      id: 1,
-      openingTime: new Date().toISOString(),
-    },
-  };
-}
-
-function createCashTrackingSessionCompleteMock<T extends ExtensionTarget>(
-  _target: T,
-): CashTrackingSessionCompleteData {
-  return {
-    ...createMockBaseEventData(),
-    cashTrackingSessionComplete: {
-      id: 1,
-      openingTime: new Date().toISOString(),
-      closingTime: new Date().toISOString(),
-    },
-  };
-}
-
-function createCartUpdateEventMock<T extends ExtensionTarget>(
-  _target: T,
-): CartUpdateEventData {
-  return {...createMockBaseEventData(), cart: createPosCart()};
-}
-
 // ---------------------------------------------------------------------------
 // Factory map — TypeScript verifies each entry against ApiForPosExtension<K>
 // ---------------------------------------------------------------------------
@@ -624,14 +582,6 @@ const posMockFactories: PosMockFactory = {
 
   // Data targets
   'pos.app.ready.data': createDataTargetMock,
-
-  // Event targets
-  'pos.transaction-complete.event.observe': createTransactionCompleteMock,
-  'pos.cash-tracking-session-start.event.observe':
-    createCashTrackingSessionStartMock,
-  'pos.cash-tracking-session-complete.event.observe':
-    createCashTrackingSessionCompleteMock,
-  'pos.cart-update.event.observe': createCartUpdateEventMock,
 };
 
 // ---------------------------------------------------------------------------
