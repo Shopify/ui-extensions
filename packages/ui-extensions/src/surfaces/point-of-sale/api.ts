@@ -66,6 +66,13 @@ export type {
 export type {PrintApi, PrintApiContent} from './api/print-api/print-api';
 
 export type {
+  PrintingApi,
+  PrintingApiContent,
+  PrintOptions,
+  Printer,
+} from './api/printing-api/printing-api';
+
+export type {
   PaginationParams,
   ProductSortType,
   ProductSearchParams,
