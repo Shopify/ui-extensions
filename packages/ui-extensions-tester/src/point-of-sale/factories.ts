@@ -131,6 +131,10 @@ function createMockStandardApi<T extends RenderExtensionTarget>(
       deviceId: 1,
     },
     print: {print: async () => {}},
+    printing: {
+      getPrinters: async () => [],
+      print: async () => {},
+    },
     productSearch: {
       searchProducts: async () => ({items: [], hasNextPage: false}),
       fetchProductWithId: async () => undefined,
