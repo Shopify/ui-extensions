@@ -183,7 +183,7 @@ export interface BoxProps
    *
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
-   * `padding` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `padding` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default 'none'
    */
@@ -195,7 +195,7 @@ export interface BoxProps
    *
    * This overrides the block value of `padding`.
    *
-   * `paddingBlock` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlock` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -205,7 +205,7 @@ export interface BoxProps
    *
    * This overrides the block-start value of `paddingBlock`.
    *
-   * `paddingBlockStart` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlockStart` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -215,7 +215,7 @@ export interface BoxProps
    *
    * This overrides the block-end value of `paddingBlock`.
    *
-   * `paddingBlockEnd` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlockEnd` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -227,7 +227,7 @@ export interface BoxProps
    *
    * This overrides the inline value of `padding`.
    *
-   * `paddingInline` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInline` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -237,7 +237,7 @@ export interface BoxProps
    *
    * This overrides the inline-start value of `paddingInline`.
    *
-   * `paddingInlineStart` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInlineStart` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -247,7 +247,7 @@ export interface BoxProps
    *
    * This overrides the inline-end value of `paddingInline`.
    *
-   * `paddingInlineEnd` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInlineEnd` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -352,25 +352,25 @@ export interface StackProps
    */
   alignContent: AlignContentKeyword;
   /**
-   * The spacing between children in the stack. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value to apply the same spacing to both axes (for example, `'large-100'`), or a pair of values (for example, `'large-100 large-500'`) to set different spacing for the block and inline axes. This property also accepts [responsive values](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The spacing between children in the stack. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value to apply the same spacing to both axes (for example, `'large-100'`), or a pair of values (for example, `'large-100 large-500'`) to set different spacing for the block and inline axes. This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'none'
    */
   gap: ResponsiveStackProps['gap'];
   /**
-   * The spacing between children in the block axis (vertical in horizontal writing modes). This property overrides the row spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The spacing between children in the block axis (vertical in horizontal writing modes). This property overrides the row spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default '' - meaning no override
    */
   rowGap: ResponsiveStackProps['rowGap'];
   /**
-   * The spacing between children in the inline axis (horizontal in left-to-right languages). This property overrides the column spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The spacing between children in the inline axis (horizontal in left-to-right languages). This property overrides the column spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default '' - meaning no override
    */
   columnGap: ResponsiveStackProps['columnGap'];
   /**
-   * The direction in which the stack's children are laid out. Use `'inline'` to arrange children horizontally (with wrapping enabled), or `'block'` to arrange them vertically (without wrapping). This property also accepts [responsive values](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The direction in which the stack's children are laid out. Use `'inline'` to arrange children horizontally (with wrapping enabled), or `'block'` to arrange them vertically (without wrapping). This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'block'
    *
