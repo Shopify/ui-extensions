@@ -1,4 +1,4 @@
 # Admin generated DTS is owned by Admin UI Foundations.
-/packages/ui-extensions/src/surfaces/admin/components.d.ts @Shopify/admin-ui-foundations-devs
-/packages/ui-extensions/src/surfaces/admin/components/*.d.ts @Shopify/admin-ui-foundations-devs
-/packages/ui-extensions/src/surfaces/admin/components/**/*.d.ts @Shopify/admin-ui-foundations-devs
+/packages/ui-extensions/src/surfaces/admin/components.d.ts @Shopify/polaris-team
+/packages/ui-extensions/src/surfaces/admin/components/*.d.ts @Shopify/polaris-team
+/packages/ui-extensions/src/surfaces/admin/components/**/*.d.ts @Shopify/polaris-team
