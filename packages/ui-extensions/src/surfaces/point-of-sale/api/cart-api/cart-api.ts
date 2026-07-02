@@ -1,5 +1,6 @@
 import type {ReadonlySignalLike} from '../../../../shared';
 import type {
+  AddLineItemOptions,
   Address,
   Cart,
   CartUpdateInput,
@@ -123,12 +124,19 @@ export interface MutableCartApiContent {
   /**
    * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.
    *
+   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call.
+   *
    * @param variantId the product variant's numeric ID to add to the cart
    * @param quantity the number of this variant to add to the cart
+   * @param options optional line-item properties to apply to the new line item in the same operation
    * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal
    * @throws {Error} if POS fails to add the line item
    */
-  addLineItem(variantId: number, quantity: number): Promise<string>;
+  addLineItem(
+    variantId: number,
+    quantity: number,
+    options?: AddLineItemOptions,
+  ): Promise<string>;
 
   /**
    * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.
