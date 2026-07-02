@@ -98,6 +98,7 @@ export type {ToastApiContent, ToastApi} from './api/toast-api/toast-api';
 
 // Type exports
 export type {
+  AddLineItemOptions,
   Cart,
   CartUpdateInput,
   Customer,
