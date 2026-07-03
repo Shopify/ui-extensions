@@ -211,32 +211,6 @@ function parseDataTargetsFile(content) {
   return targets;
 }
 
-/**
- * Parse EventExtensionTargets from extension-targets.ts and return
- * a map of target name -> { components: [], apis: [] } so all extension
- * targets (render + event) appear in the JSON.
- */
-function parseEventTargetsFile(content) {
-  const eventMatch = content.match(
-    /export interface EventExtensionTargets \{([\s\S]+?)\n\}/,
-  );
-  if (!eventMatch) {
-    return {};
-  }
-  const interfaceBody = eventMatch[1];
-  const targetRegex = /'([^']+)':\s*\(/g;
-  const targets = {};
-  let match;
-  while ((match = targetRegex.exec(interfaceBody)) !== null) {
-    const targetName = match[1];
-    targets[targetName] = {
-      components: [],
-      apis: [],
-    };
-  }
-  return targets;
-}
-
 function getNestedApis(apiName) {
   // Check if we've already parsed this API
   if (Object.prototype.hasOwnProperty.call(apiDefinitionsCache, apiName)) {
@@ -538,12 +512,11 @@ function findGeneratedDocsPath() {
   return docsPath ?? generatedDir;
 }
 
-// Generate the JSON (render targets + event targets)
+// Generate the JSON (data targets + render targets)
 const renderTargets = parseTargetsFile();
 const fileContent = fs.readFileSync(TARGETS_FILE_PATH, 'utf-8');
 const dataTargets = parseDataTargetsFile(fileContent);
-const eventTargets = parseEventTargetsFile(fileContent);
-const targetsJson = {...dataTargets, ...renderTargets, ...eventTargets};
+const targetsJson = {...dataTargets, ...renderTargets};
 
 // Create the extended JSON with reverse mappings
 const extendedJson = createReverseMapping(targetsJson);
