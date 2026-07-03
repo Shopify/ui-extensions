@@ -8,7 +8,7 @@ import {getExtension} from '../index';
 import {createTestSandbox, type TestSandbox} from './helpers';
 
 function makeTransactionCompleteEvent(): TransactionCompleteEvent {
-  return Object.assign(new Event('transactioncomplete'), {
+  return {
     transactionType: 'Sale' as const,
     discounts: [],
     taxTotal: {amount: 0, currency: 'USD'},
@@ -20,14 +20,14 @@ function makeTransactionCompleteEvent(): TransactionCompleteEvent {
     taxLines: [],
     executedAt: '2024-01-01T00:00:00Z',
     lineItems: [],
-  });
+  };
 }
 
 function makeCashTrackingSessionStartEvent(): CashTrackingSessionStartEvent {
-  return Object.assign(new Event('cashtrackingsessionstart'), {
+  return {
     id: 1,
     openingTime: '2024-01-01T00:00:00Z',
-  });
+  };
 }
 
 describe('shopify.addEventListener / extension.dispatch', () => {
