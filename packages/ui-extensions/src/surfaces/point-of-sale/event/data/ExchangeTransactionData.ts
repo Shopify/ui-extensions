@@ -2,6 +2,8 @@ import {BaseTransactionComplete} from '../../types/base-transaction-complete';
 import {LineItem} from '../../types/cart';
 
 /**
+ *
+ * @private
  * Defines the data structure for completed exchange transactions.
  */
 export interface ExchangeTransactionData extends BaseTransactionComplete {

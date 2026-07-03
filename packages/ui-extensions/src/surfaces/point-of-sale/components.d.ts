@@ -5507,7 +5507,7 @@ interface PosBlock {
 /**
  * The POS block component renders a QR code when the block is used within a receipt target.
  *
- * @publicDocs
+ * @private
  */
 interface QrCode {
   /**
