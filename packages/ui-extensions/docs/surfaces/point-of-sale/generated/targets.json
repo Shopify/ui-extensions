@@ -806,26 +806,6 @@
       "ToastApi"
     ]
   },
-  "pos.receipt-footer.block.render": {
-    "components": [
-      "POSReceiptBlock",
-      "QRCode",
-      "Text"
-    ],
-    "apis": [
-      "StorageApi"
-    ]
-  },
-  "pos.receipt-header.block.render": {
-    "components": [
-      "POSReceiptBlock",
-      "QRCode",
-      "Text"
-    ],
-    "apis": [
-      "StorageApi"
-    ]
-  },
   "ActionApi": {
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
@@ -1065,8 +1045,6 @@
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
       "pos.purchase.post.block.render",
-      "pos.receipt-footer.block.render",
-      "pos.receipt-header.block.render",
       "pos.return.post.action.menu-item.render",
       "pos.return.post.action.render",
       "pos.return.post.block.render"
@@ -1626,8 +1604,6 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
       "pos.purchase.post.block.render",
-      "pos.receipt-footer.block.render",
-      "pos.receipt-header.block.render",
       "pos.return.post.action.render",
       "pos.return.post.block.render"
     ]
@@ -1689,18 +1665,6 @@
       "pos.purchase.post.block.render",
       "pos.return.post.action.render",
       "pos.return.post.block.render"
-    ]
-  },
-  "POSReceiptBlock": {
-    "targets": [
-      "pos.receipt-footer.block.render",
-      "pos.receipt-header.block.render"
-    ]
-  },
-  "QRCode": {
-    "targets": [
-      "pos.receipt-footer.block.render",
-      "pos.receipt-header.block.render"
     ]
   }
 }
