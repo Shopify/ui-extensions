@@ -1,6 +1,6 @@
 /**
  * The Printing API provides methods for triggering document printing and
- * discovering available hardware printers. Content is fetched from a URL
+ * discovering available receipt printers. Content is fetched from a URL
  * and can be sent to a specific printer or to the system print dialog.
  *
  * Accessed via `shopify.printing`, aligning with the web platform's
@@ -16,17 +16,17 @@
  */
 export interface PrintingApiContent {
   /**
-   * Returns the list of hardware printers currently available to the
+   * Returns the list of receipt printers currently available to the
    * device. Each printer includes its connection status and a reference
    * that can be passed to `print()`.
    *
-   * When no hardware printers are available, returns an empty array.
+   * When no receipt printers are available, returns an empty array.
    * The system print dialog is not included in this list — it is the
    * default behavior when no `printer` option is provided to `print()`.
    *
    * @see {@link https://github.com/WICG/web-printing | WICG Web Printing}
    *   for the emerging web standard this aligns with.
-   * @returns A promise that resolves with the list of available hardware printers.
+   * @returns A promise that resolves with the list of available receipt printers.
    */
   getPrinters(): Promise<Printer[]>;
 
@@ -45,13 +45,13 @@ export interface PrintingApiContent {
    * The content at the URL is fetched with the extension's session token
    * for authentication. HTML, PDFs, and images are supported content types.
    * PDFs can only be printed via the system print dialog: selecting a
-   * `printer` with a PDF `src` throws, because hardware (receipt) printers
-   * render HTML and image content only.
+   * `printer` with a PDF `src` throws, because receipt printers render HTML
+   * and image content only.
    *
    * @param src the source URL of the content to print.
    * @param options optional configuration for the print operation.
    * @returns A promise that resolves when the print job has been
-   *   successfully sent. For hardware printers, this means the rasterized
+   *   successfully sent. For receipt printers, this means the rasterized
    *   content has been dispatched — it does not wait for physical printing
    *   to complete. For the system print dialog, this resolves when the
    *   content is ready and the dialog appears.
@@ -80,7 +80,7 @@ export interface PrintOptions {
 }
 
 /**
- * A hardware printer available to the device, as returned by `shopify.printing.getPrinters()`.
+ * A receipt printer available to the device, as returned by `shopify.printing.getPrinters()`.
  * @publicDocs
  */
 export interface Printer {
@@ -96,7 +96,7 @@ export interface Printer {
 
 /**
  * The `PrintingApi` object provides methods for triggering document printing
- * and discovering available hardware printers. Access these methods through
+ * and discovering available receipt printers. Access these methods through
  * `shopify.printing`.
  * @publicDocs
  */

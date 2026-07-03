@@ -178,6 +178,40 @@ function parseTargetsFile() {
 }
 
 /**
+ * Parse DataExtensionTargets from extension-targets.ts and return
+ * a map of target name -> { components: [], apis } so non-rendering
+ * background targets appear in the JSON.
+ */
+function parseDataTargetsFile(content) {
+  const dataMatch = content.match(
+    /export interface DataExtensionTargets \{([\s\S]+?)\n\}/,
+  );
+  if (!dataMatch) {
+    return {};
+  }
+
+  const interfaceBody = dataMatch[1];
+  const targetRegex = /'([^']+)':\s*RunnableExtension<([\s\S]*?)>;/g;
+  const targets = {};
+  let match;
+  while ((match = targetRegex.exec(interfaceBody)) !== null) {
+    const targetName = match[1];
+    const runnableExtensionContent = match[2]
+      .trim()
+      .replace(/\/\/[^\n]*/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
+    const [apiString] = splitByTopLevelComma(runnableExtensionContent);
+
+    targets[targetName] = {
+      components: [],
+      apis: parseApis(apiString ?? '').sort(),
+    };
+  }
+
+  return targets;
+}
+
+/**
  * Parse EventExtensionTargets from extension-targets.ts and return
  * a map of target name -> { components: [], apis: [] } so all extension
  * targets (render + event) appear in the JSON.
@@ -272,6 +306,7 @@ function getNestedApis(apiName) {
     CartLineItemApi: ['./api/cart-line-item-api/cart-line-item-api'],
     CashDrawerApi: ['./api/cash-drawer-api/cash-drawer-api'],
     PinPadApi: ['./api/pin-pad-api'],
+    DataTargetApi: ['./api/data-target-api/data-target-api'],
   };
 
   const relativePaths = apiFilePaths[apiName];
@@ -366,7 +401,7 @@ function getNestedApis(apiName) {
 }
 
 // APIs that are composites of other documented APIs - we list their constituent APIs, not these wrapper types
-const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi']);
+const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi', 'DataTargetApi']);
 
 function parseApis(apiString) {
   const apisSet = new Set();
@@ -506,8 +541,9 @@ function findGeneratedDocsPath() {
 // Generate the JSON (render targets + event targets)
 const renderTargets = parseTargetsFile();
 const fileContent = fs.readFileSync(TARGETS_FILE_PATH, 'utf-8');
+const dataTargets = parseDataTargetsFile(fileContent);
 const eventTargets = parseEventTargetsFile(fileContent);
-const targetsJson = {...renderTargets, ...eventTargets};
+const targetsJson = {...dataTargets, ...renderTargets, ...eventTargets};
 
 // Create the extended JSON with reverse mappings
 const extendedJson = createReverseMapping(targetsJson);
