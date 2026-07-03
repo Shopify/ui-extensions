@@ -3,7 +3,7 @@ import {LineItem} from '../../types/cart';
 
 /**
  * Defines the data structure for completed exchange transactions.
- * @publicDocs
+ * @private
  */
 export interface ExchangeTransactionData extends BaseTransactionComplete {
   /**

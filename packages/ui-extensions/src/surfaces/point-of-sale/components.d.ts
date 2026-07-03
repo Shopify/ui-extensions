@@ -7172,7 +7172,7 @@ interface PosBlock {
 
 /**
  * Renders a QR code from provided content.
- * @publicDocs
+ * @private
  */
 interface QrCode {
   /** A unique identifier for the element. */
