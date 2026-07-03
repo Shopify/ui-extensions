@@ -2735,7 +2735,7 @@
           "description": "Triggers a print operation for the specified document source.\n\nWhen called without a `printer` option, opens the device's system print dialog (e.g., AirPrint on iOS, Android print service). When a `printer` reference is provided (from `getPrinters()`), sends the content directly to that printer without showing a dialog.\n\nThe `src` parameter accepts either:\n- A relative path that will be appended to your app's [`application_url`](/docs/apps/build/cli-for-apps/app-configuration)\n- A full URL to your app's backend\n\nThe content at the URL is fetched with the extension's session token for authentication. HTML, PDFs, and images are supported content types. PDFs can only be printed via the system print dialog: selecting a `printer` with a PDF `src` throws, because hardware (receipt) printers render HTML and image content only."
         }
       ],
-      "value": "export interface PrintingApiContent {\n  /**\n   * Returns the list of hardware printers currently available to the\n   * device. Each printer includes its connection status and a reference\n   * that can be passed to `print()`.\n   *\n   * When no hardware printers are available, returns an empty array.\n   * The system print dialog is not included in this list — it is the\n   * default behavior when no `printer` option is provided to `print()`.\n   *\n   * @see {@link https://github.com/WICG/web-printing | WICG Web Printing}\n   *   for the emerging web standard this aligns with.\n   * @returns A promise that resolves with the list of available hardware printers.\n   */\n  getPrinters(): Promise<Printer[]>;\n\n  /**\n   * Triggers a print operation for the specified document source.\n   *\n   * When called without a `printer` option, opens the device's system\n   * print dialog (e.g., AirPrint on iOS, Android print service). When\n   * a `printer` reference is provided (from `getPrinters()`), sends\n   * the content directly to that printer without showing a dialog.\n   *\n   * The `src` parameter accepts either:\n   * - A relative path that will be appended to your app's [`application_url`](/docs/apps/build/cli-for-apps/app-configuration)\n   * - A full URL to your app's backend\n   *\n   * The content at the URL is fetched with the extension's session token\n   * for authentication. HTML, PDFs, and images are supported content types.\n   * PDFs can only be printed via the system print dialog: selecting a\n   * `printer` with a PDF `src` throws, because receipt printers render HTML\n   * and image content only.\n   *\n   * @param src the source URL of the content to print.\n   * @param options optional configuration for the print operation.\n   * @returns A promise that resolves when the print job has been\n   *   successfully sent. For hardware printers, this means the rasterized\n   *   content has been dispatched — it does not wait for physical printing\n   *   to complete. For the system print dialog, this resolves when the\n   *   content is ready and the dialog appears.\n   * @throws {Error} when the content cannot be fetched from `src`.\n   * @throws {Error} when the specified `printer` is not connected.\n   * @throws {Error} when `src` is a PDF and a `printer` is selected, since\n   *   receipt printers render HTML and image content only.\n   */\n  print(src: string, options?: PrintOptions): Promise<void>;\n}"
+      "value": "export interface PrintingApiContent {\n  /**\n   * Returns the list of hardware printers currently available to the\n   * device. Each printer includes its connection status and a reference\n   * that can be passed to `print()`.\n   *\n   * When no hardware printers are available, returns an empty array.\n   * The system print dialog is not included in this list — it is the\n   * default behavior when no `printer` option is provided to `print()`.\n   *\n   * @see {@link https://github.com/WICG/web-printing | WICG Web Printing}\n   *   for the emerging web standard this aligns with.\n   * @returns A promise that resolves with the list of available hardware printers.\n   */\n  getPrinters(): Promise<Printer[]>;\n\n  /**\n   * Triggers a print operation for the specified document source.\n   *\n   * When called without a `printer` option, opens the device's system\n   * print dialog (e.g., AirPrint on iOS, Android print service). When\n   * a `printer` reference is provided (from `getPrinters()`), sends\n   * the content directly to that printer without showing a dialog.\n   *\n   * The `src` parameter accepts either:\n   * - A relative path that will be appended to your app's [`application_url`](/docs/apps/build/cli-for-apps/app-configuration)\n   * - A full URL to your app's backend\n   *\n   * The content at the URL is fetched with the extension's session token\n   * for authentication. HTML, PDFs, and images are supported content types.\n   * PDFs can only be printed via the system print dialog: selecting a\n   * `printer` with a PDF `src` throws, because hardware (receipt) printers\n   * render HTML and image content only.\n   *\n   * @param src the source URL of the content to print.\n   * @param options optional configuration for the print operation.\n   * @returns A promise that resolves when the print job has been\n   *   successfully sent. For hardware printers, this means the rasterized\n   *   content has been dispatched — it does not wait for physical printing\n   *   to complete. For the system print dialog, this resolves when the\n   *   content is ready and the dialog appears.\n   * @throws {Error} when the content cannot be fetched from `src`.\n   * @throws {Error} when the specified `printer` is not connected.\n   * @throws {Error} when `src` is a PDF and a `printer` is selected, since\n   *   receipt printers render HTML and image content only.\n   */\n  print(src: string, options?: PrintOptions): Promise<void>;\n}"
     }
   },
   "Printer": {
@@ -3983,7 +3983,7 @@
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
       "name": "ShopifyEventMap",
-      "description": "Maps Shopify POS event names to their corresponding `Event` subclass types.\n\nUsed as the generic type parameter for `shopify.addEventListener` and `shopify.removeEventListener`.",
+      "description": "Maps Shopify POS event names to their corresponding payload types.\n\nUsed as the generic type parameter for `shopify.addEventListener` and `shopify.removeEventListener`.",
       "isPublicDocs": true,
       "members": [
         {
@@ -3991,24 +3991,24 @@
           "syntaxKind": "PropertySignature",
           "name": "cashtrackingsessioncomplete",
           "value": "CashTrackingSessionCompleteEvent",
-          "description": ""
+          "description": "Dispatched when a cash tracking session closes after reconciliation."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashtrackingsessionstart",
           "value": "CashTrackingSessionStartEvent",
-          "description": ""
+          "description": "Dispatched when a cash tracking session opens."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "transactioncomplete",
           "value": "TransactionCompleteEvent",
-          "description": "Dispatched when a sale, return, or exchange transaction completes.\n\nNarrow on `transactionType` to access per-type fields."
+          "description": "Dispatched when a sale, return, or exchange transaction completes. Narrow on `transactionType` to access per-type fields."
         }
       ],
-      "value": "export interface ShopifyEventMap {\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n}"
+      "value": "export interface ShopifyEventMap {\n  /**\n   * Dispatched when a sale, return, or exchange transaction completes.\n   * Narrow on `transactionType` to access per-type fields.\n   */\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  /** Dispatched when a cash tracking session opens. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  /** Dispatched when a cash tracking session closes after reconciliation. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n}"
     }
   },
   "CustomerApi": {
