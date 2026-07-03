@@ -26,7 +26,7 @@ export interface TransactionCompleteData extends BaseData, BaseApi {
 }
 
 /**
- * @publicDocs
+ * @private
  * The data object provided to receipt targets containing transaction details and reprint information.
  */
 export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {
