@@ -3,6 +3,8 @@ import {LineItem} from '../../types/cart';
 import {OrderLineItem} from '../../types/order';
 
 /**
+ *
+ * @private
  * Defines the data structure for receipt reprint requests.
  */
 export interface ReprintReceiptData extends BaseTransactionComplete {
