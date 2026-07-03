@@ -7700,22 +7700,12 @@
       "isPublicDocs": true
     }
   },
-  "ReceiptComponents": {
-    "src/surfaces/point-of-sale/components/targets/ReceiptComponents.ts": {
-      "filePath": "src/surfaces/point-of-sale/components/targets/ReceiptComponents.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ReceiptComponents",
-      "value": "'PosBlock' | 'Text' | 'QrCode'",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
   "StandardComponents": {
     "src/surfaces/point-of-sale/components/targets/StandardComponents.ts": {
       "filePath": "src/surfaces/point-of-sale/components/targets/StandardComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StandardComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'QRCode' | 'QrCode' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
       "description": "",
       "isPublicDocs": true
     }
@@ -7725,7 +7715,7 @@
       "filePath": "src/surfaces/point-of-sale/components/targets/BasicComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "BasicComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'QRCode' | 'QrCode' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
       "description": "",
       "isPublicDocs": true
     }
@@ -7886,762 +7876,6 @@
       "value": "'Sale' | 'Return' | 'Exchange' | 'Reprint'",
       "description": "The types of transactions that can be processed in POS:\n- `'Sale'`: A new sale transaction where a customer purchases products or services. This creates a new order and processes payment. The most common transaction type in POS operations.\n- `'Return'`: A return transaction where a customer returns previously purchased items for a refund. This credits back payment to the customer and returns items to inventory.\n- `'Exchange'`: An exchange transaction where a customer returns items and simultaneously purchases replacement items. This combines return and sale operations in a single transaction, often with a price adjustment.\n- `'Reprint'`: A receipt reprint operation where an existing transaction's receipt is reprinted. No new transaction is created—this only regenerates the receipt document for an existing sale, return, or exchange.",
       "isPublicDocs": true
-    }
-  },
-  "BaseTransactionComplete": {
-    "src/surfaces/point-of-sale/types/base-transaction-complete.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-      "name": "BaseTransactionComplete",
-      "description": "Base interface for completed transaction data shared across all transaction types.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "balanceDue",
-          "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashRoundingAdjustment",
-          "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discounts",
-          "value": "Discount[]",
-          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "executedAt",
-          "value": "string",
-          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "grandTotal",
-          "value": "Money",
-          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "orderId",
-          "value": "number",
-          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "paymentMethods",
-          "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shippingLines",
-          "value": "ShippingLine[]",
-          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subtotal",
-          "value": "Money",
-          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxTotal",
-          "value": "Money",
-          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tipAmount",
-          "value": "Money",
-          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transactionType",
-          "value": "TransactionType",
-          "description": "The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps, `'Reprint'` for receipt reprints). This determines the transaction's business logic, receipt format, and inventory impact."
-        }
-      ],
-      "value": "export interface BaseTransactionComplete {\n  /**\n   * The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps, `'Reprint'` for receipt reprints). This determines the transaction's business logic, receipt format, and inventory impact.\n   */\n  transactionType: TransactionType;\n  /**\n   * The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.\n   */\n  orderId?: number;\n  /**\n   * The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.\n   */\n  customer?: Customer;\n  /**\n   * An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.\n   */\n  discounts?: Discount[];\n  /**\n   * The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify.\n   */\n  taxTotal: Money;\n  /**\n   * The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations.\n   */\n  subtotal: Money;\n  /**\n   * The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts.\n   */\n  grandTotal: Money;\n  /**\n   * An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`.\n   */\n  paymentMethods: Payment[];\n  /**\n   * The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts.\n   */\n  balanceDue: Money;\n  /**\n   * An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).\n   */\n  shippingLines?: ShippingLine[];\n  /**\n   * An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.\n   */\n  taxLines?: TaxLine[];\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems.\n   */\n  executedAt: string;\n  /**\n   * The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.\n   */\n  tipAmount?: Money;\n  /**\n   * The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.\n   */\n  cashRoundingAdjustment?: Money;\n}"
-    }
-  },
-  "ReprintReceiptData": {
-    "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-      "name": "ReprintReceiptData",
-      "description": "Defines the data structure for receipt reprint requests.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "balanceDue",
-          "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashRoundingAdjustment",
-          "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discounts",
-          "value": "Discount[]",
-          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "exchangeId",
-          "value": "number",
-          "description": "The exchange ID if the return is part of an exchange transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "executedAt",
-          "value": "string",
-          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "grandTotal",
-          "value": "Money",
-          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItems",
-          "value": "OrderLineItem[]",
-          "description": "An array of line items included in the transaction."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItemsAdded",
-          "value": "LineItem[]",
-          "description": "An array of line items added to the customer in the exchange.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItemsRemoved",
-          "value": "LineItem[]",
-          "description": "An array of line items removed from the customer in the exchange.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "orderId",
-          "value": "number",
-          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "paymentMethods",
-          "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "refundId",
-          "value": "number",
-          "description": "The refund ID if a refund was issued for the return.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnId",
-          "value": "number",
-          "description": "The return ID for the completed return transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shippingLines",
-          "value": "ShippingLine[]",
-          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subtotal",
-          "value": "Money",
-          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxTotal",
-          "value": "Money",
-          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tipAmount",
-          "value": "Money",
-          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transactionType",
-          "value": "'Reprint'",
-          "description": "The transaction type identifier, always 'Reprint' for reprint transactions."
-        }
-      ],
-      "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Reprint' for reprint transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the transaction.\n   */\n  lineItems: OrderLineItem[];\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded?: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved?: LineItem[];\n}"
-    }
-  },
-  "SaleTransactionData": {
-    "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-      "name": "SaleTransactionData",
-      "description": "Defines the data structure for completed sale transactions.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "balanceDue",
-          "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashRoundingAdjustment",
-          "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discounts",
-          "value": "Discount[]",
-          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "draftCheckoutUuid",
-          "value": "string",
-          "description": "The UUID of the draft checkout if the sale originated from a draft order.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "executedAt",
-          "value": "string",
-          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "grandTotal",
-          "value": "Money",
-          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItems",
-          "value": "LineItem[]",
-          "description": "An array of line items included in the sale transaction."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "orderId",
-          "value": "number",
-          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "paymentMethods",
-          "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shippingLines",
-          "value": "ShippingLine[]",
-          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subtotal",
-          "value": "Money",
-          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxTotal",
-          "value": "Money",
-          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tipAmount",
-          "value": "Money",
-          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transactionType",
-          "value": "'Sale'",
-          "description": "The transaction type identifier, always 'Sale' for sale transactions."
-        }
-      ],
-      "value": "export interface SaleTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Sale';\n  /**\n   * The UUID of the draft checkout if the sale originated from a draft order.\n   */\n  draftCheckoutUuid?: string;\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: LineItem[];\n}"
-    }
-  },
-  "ExchangeTransactionData": {
-    "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-      "name": "ExchangeTransactionData",
-      "description": "Defines the data structure for completed exchange transactions.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "balanceDue",
-          "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashRoundingAdjustment",
-          "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discounts",
-          "value": "Discount[]",
-          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "exchangeId",
-          "value": "number",
-          "description": "The exchange ID if the return is part of an exchange transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "executedAt",
-          "value": "string",
-          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "grandTotal",
-          "value": "Money",
-          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItemsAdded",
-          "value": "LineItem[]",
-          "description": "An array of line items added to the customer in the exchange."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItemsRemoved",
-          "value": "LineItem[]",
-          "description": "An array of line items removed from the customer in the exchange."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "orderId",
-          "value": "number",
-          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "paymentMethods",
-          "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnId",
-          "value": "number",
-          "description": "The return ID for the completed return transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shippingLines",
-          "value": "ShippingLine[]",
-          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subtotal",
-          "value": "Money",
-          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxTotal",
-          "value": "Money",
-          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tipAmount",
-          "value": "Money",
-          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transactionType",
-          "value": "'Exchange'",
-          "description": "The transaction type identifier, always 'Sale' for sale transactions."
-        }
-      ],
-      "value": "export interface ExchangeTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Exchange';\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved: LineItem[];\n}"
-    }
-  },
-  "ReturnTransactionData": {
-    "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-      "name": "ReturnTransactionData",
-      "description": "Defines the data structure for completed return transactions.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "balanceDue",
-          "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashRoundingAdjustment",
-          "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discounts",
-          "value": "Discount[]",
-          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "exchangeId",
-          "value": "number",
-          "description": "The exchange ID if the return is part of an exchange transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "executedAt",
-          "value": "string",
-          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "grandTotal",
-          "value": "Money",
-          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItems",
-          "value": "LineItem[]",
-          "description": "An array of line items included in the sale transaction."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "orderId",
-          "value": "number",
-          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "paymentMethods",
-          "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "refundId",
-          "value": "number",
-          "description": "The refund ID if a refund was issued for the return.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnId",
-          "value": "number",
-          "description": "The return ID for the completed return transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shippingLines",
-          "value": "ShippingLine[]",
-          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subtotal",
-          "value": "Money",
-          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxTotal",
-          "value": "Money",
-          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tipAmount",
-          "value": "Money",
-          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transactionType",
-          "value": "'Return'",
-          "description": "The transaction type identifier, always 'Sale' for sale transactions."
-        }
-      ],
-      "value": "export interface ReturnTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Return';\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: LineItem[];\n}"
-    }
-  },
-  "TransactionCompleteWithReprintData": {
-    "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-      "name": "TransactionCompleteWithReprintData",
-      "description": "The data object provided to receipt targets containing transaction details and reprint information.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage<Record<string, unknown>>",
-          "description": "Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transaction",
-          "value": "| SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData",
-          "description": "The transaction data, which can be one of the following types:\n- `SaleTransactionData`: Defines the data structure for completed sale transactions.\n- `ReturnTransactionData`: Defines the data structure for completed return transactions.\n- `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n- `ReprintReceiptData`: Defines the data structure for receipt reprint requests."
-        }
-      ],
-      "value": "export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {\n  /**\n   * Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions.\n   */\n  storage: BaseApi['storage'];\n  /**\n   * The transaction data, which can be one of the following types:\n   * - `SaleTransactionData`: Defines the data structure for completed sale transactions.\n   * - `ReturnTransactionData`: Defines the data structure for completed return transactions.\n   * - `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n   * - `ReprintReceiptData`: Defines the data structure for receipt reprint requests.\n   */\n  transaction:\n    | SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData;\n}"
     }
   },
   "DataExtensionTargets": {
@@ -8852,14 +8086,16 @@
           "syntaxKind": "PropertySignature",
           "name": "pos.receipt-footer.block.render",
           "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
-          "description": "Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display."
+          "description": "Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.receipt-header.block.render",
           "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
-          "description": "Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display."
+          "description": "Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
@@ -8904,7 +8140,7 @@
           "description": "Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n\nExtensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations."
         }
       ],
-      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n   */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n   */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n}"
+      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n}"
     }
   },
   "RenderExtension": {
@@ -8936,6 +8172,650 @@
         }
       ],
       "value": "export interface RenderExtension<Api, ComponentsSet extends string> {\n  /**\n   * The API object providing access to extension capabilities, data, and methods. The specific API type depends on the extension target and determines what functionality is available to your extension, such as authentication, storage, data access, and GraphQL querying.\n   */\n  api: Api;\n  /**\n   * The set of UI components available for rendering your extension. This defines which Polaris components and custom components can be used to build your extension's interface. The available components vary by extension target.\n   */\n  components: ComponentsSet;\n  /**\n   * The render function output. Your extension's render function should return void or a Promise that resolves to void. Use this to perform any necessary setup, rendering, or async operations when your extension loads.\n   */\n  output: void | Promise<void>;\n}"
+    }
+  },
+  "TransactionCompleteWithReprintData": {
+    "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+      "name": "TransactionCompleteWithReprintData",
+      "description": "The data object provided to receipt targets containing transaction details and reprint information.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "connectivity",
+          "value": "ConnectivityApiContent",
+          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "device",
+          "value": "Device",
+          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locale",
+          "value": "string",
+          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "session",
+          "value": "Session",
+          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "storage",
+          "value": "Storage<Record<string, unknown>>",
+          "description": "Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transaction",
+          "value": "| SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData",
+          "description": "The transaction data, which can be one of the following types:\n- `SaleTransactionData`: Defines the data structure for completed sale transactions.\n- `ReturnTransactionData`: Defines the data structure for completed return transactions.\n- `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n- `ReprintReceiptData`: Defines the data structure for receipt reprint requests."
+        }
+      ],
+      "value": "export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {\n  /**\n   * Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions.\n   */\n  storage: BaseApi['storage'];\n  /**\n   * The transaction data, which can be one of the following types:\n   * - `SaleTransactionData`: Defines the data structure for completed sale transactions.\n   * - `ReturnTransactionData`: Defines the data structure for completed return transactions.\n   * - `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n   * - `ReprintReceiptData`: Defines the data structure for receipt reprint requests.\n   */\n  transaction:\n    | SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData;\n}"
+    }
+  },
+  "SaleTransactionData": {
+    "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+      "name": "SaleTransactionData",
+      "description": "Defines the data structure for completed sale transactions.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "balanceDue",
+          "value": "Money",
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discounts",
+          "value": "Discount[]",
+          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "draftCheckoutUuid",
+          "value": "string",
+          "description": "The UUID of the draft checkout if the sale originated from a draft order.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "executedAt",
+          "value": "string",
+          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "grandTotal",
+          "value": "Money",
+          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "LineItem[]",
+          "description": "An array of line items included in the sale transaction."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "orderId",
+          "value": "number",
+          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentMethods",
+          "value": "Payment[]",
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shippingLines",
+          "value": "ShippingLine[]",
+          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtotal",
+          "value": "Money",
+          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxTotal",
+          "value": "Money",
+          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tipAmount",
+          "value": "Money",
+          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transactionType",
+          "value": "'Sale'",
+          "description": "The transaction type identifier, always 'Sale' for sale transactions."
+        }
+      ],
+      "value": "export interface SaleTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Sale';\n  /**\n   * The UUID of the draft checkout if the sale originated from a draft order.\n   */\n  draftCheckoutUuid?: string;\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: LineItem[];\n}"
+    }
+  },
+  "ReturnTransactionData": {
+    "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+      "name": "ReturnTransactionData",
+      "description": "Defines the data structure for completed return transactions.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "balanceDue",
+          "value": "Money",
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discounts",
+          "value": "Discount[]",
+          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "exchangeId",
+          "value": "number",
+          "description": "The exchange ID if the return is part of an exchange transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "executedAt",
+          "value": "string",
+          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "grandTotal",
+          "value": "Money",
+          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "LineItem[]",
+          "description": "An array of line items included in the sale transaction."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "orderId",
+          "value": "number",
+          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentMethods",
+          "value": "Payment[]",
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "refundId",
+          "value": "number",
+          "description": "The refund ID if a refund was issued for the return.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "returnId",
+          "value": "number",
+          "description": "The return ID for the completed return transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shippingLines",
+          "value": "ShippingLine[]",
+          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtotal",
+          "value": "Money",
+          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxTotal",
+          "value": "Money",
+          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tipAmount",
+          "value": "Money",
+          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transactionType",
+          "value": "'Return'",
+          "description": "The transaction type identifier, always 'Sale' for sale transactions."
+        }
+      ],
+      "value": "export interface ReturnTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Return';\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  lineItems: LineItem[];\n}"
+    }
+  },
+  "ExchangeTransactionData": {
+    "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+      "name": "ExchangeTransactionData",
+      "description": "Defines the data structure for completed exchange transactions.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "balanceDue",
+          "value": "Money",
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discounts",
+          "value": "Discount[]",
+          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "exchangeId",
+          "value": "number",
+          "description": "The exchange ID if the return is part of an exchange transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "executedAt",
+          "value": "string",
+          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "grandTotal",
+          "value": "Money",
+          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemsAdded",
+          "value": "LineItem[]",
+          "description": "An array of line items added to the customer in the exchange."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemsRemoved",
+          "value": "LineItem[]",
+          "description": "An array of line items removed from the customer in the exchange."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "orderId",
+          "value": "number",
+          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentMethods",
+          "value": "Payment[]",
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "returnId",
+          "value": "number",
+          "description": "The return ID for the completed return transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shippingLines",
+          "value": "ShippingLine[]",
+          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtotal",
+          "value": "Money",
+          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxTotal",
+          "value": "Money",
+          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tipAmount",
+          "value": "Money",
+          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transactionType",
+          "value": "'Exchange'",
+          "description": "The transaction type identifier, always 'Sale' for sale transactions."
+        }
+      ],
+      "value": "export interface ExchangeTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Exchange';\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved: LineItem[];\n}"
+    }
+  },
+  "ReprintReceiptData": {
+    "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+      "name": "ReprintReceiptData",
+      "description": "Defines the data structure for receipt reprint requests.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "balanceDue",
+          "value": "Money",
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discounts",
+          "value": "Discount[]",
+          "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "exchangeId",
+          "value": "number",
+          "description": "The exchange ID if the return is part of an exchange transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "executedAt",
+          "value": "string",
+          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "grandTotal",
+          "value": "Money",
+          "description": "The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "OrderLineItem[]",
+          "description": "An array of line items included in the transaction."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemsAdded",
+          "value": "LineItem[]",
+          "description": "An array of line items added to the customer in the exchange.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemsRemoved",
+          "value": "LineItem[]",
+          "description": "An array of line items removed from the customer in the exchange.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "orderId",
+          "value": "number",
+          "description": "The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentMethods",
+          "value": "Payment[]",
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "refundId",
+          "value": "number",
+          "description": "The refund ID if a refund was issued for the return.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "returnId",
+          "value": "number",
+          "description": "The return ID for the completed return transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shippingLines",
+          "value": "ShippingLine[]",
+          "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtotal",
+          "value": "Money",
+          "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxTotal",
+          "value": "Money",
+          "description": "The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tipAmount",
+          "value": "Money",
+          "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transactionType",
+          "value": "'Reprint'",
+          "description": "The transaction type identifier, always 'Reprint' for reprint transactions."
+        }
+      ],
+      "value": "export interface ReprintReceiptData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Reprint' for reprint transactions.\n   */\n  transactionType: 'Reprint';\n  /**\n   * An array of line items included in the transaction.\n   */\n  lineItems: OrderLineItem[];\n  /**\n   * The refund ID if a refund was issued for the return.\n   */\n  refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded?: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved?: LineItem[];\n}"
+    }
+  },
+  "ReceiptComponents": {
+    "src/surfaces/point-of-sale/components/targets/ReceiptComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/ReceiptComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ReceiptComponents",
+      "value": "'PosBlock' | 'Text' | 'QrCode'",
+      "description": ""
     }
   },
   "ExtensionTargets": {
@@ -9111,14 +8991,16 @@
           "syntaxKind": "PropertySignature",
           "name": "pos.receipt-footer.block.render",
           "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
-          "description": "Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display."
+          "description": "Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.receipt-header.block.render",
           "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
-          "description": "Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display."
+          "description": "Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
