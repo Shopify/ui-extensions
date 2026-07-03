@@ -10,11 +10,11 @@
 /// <reference lib="DOM" />
 import type {QRCodeProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
+/** @private */
 export type ComponentChildren = any;
 /**
  * The base props for elements without children, providing key, ref, and slot properties.
- * @publicDocs
+ * @private
  */
 export interface BaseElementProps<TClass = HTMLElement> {
   /**
@@ -32,7 +32,7 @@ export interface BaseElementProps<TClass = HTMLElement> {
 }
 /**
  * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
+ * @private
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
@@ -41,11 +41,11 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
    */
   children?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-qr-code';
-/** @publicDocs */
+/** @private */
 export interface QrCodeJSXProps extends Pick<QRCodeProps, 'id' | 'content'> {}
 declare global {
   interface HTMLElementTagNameMap {

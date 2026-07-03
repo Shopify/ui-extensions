@@ -9,19 +9,19 @@
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
- * @publicDocs
+ * @private
  */
 export type ComponentChildren = any;
-/** @publicDocs */
+/** @private */
 export type StringChildren = string;
-/** @publicDocs */
+/** @private */
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
    */
   id?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface ActionSlots {
   /**
    * The primary action to perform, provided as a button or link type element.
@@ -32,7 +32,7 @@ export interface ActionSlots {
    */
   secondaryActions?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseOverlayProps {
   /**
    * Callback fired after the overlay is shown.
@@ -58,7 +58,7 @@ export interface BaseOverlayProps {
  * - Components implementing this interface must provide all methods
  * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
  * - Consumers expect these methods to be consistently available on all instances
- * @publicDocs
+ * @private
  */
 export interface BaseOverlayMethods {
   /**
@@ -80,7 +80,7 @@ export interface BaseOverlayMethods {
    */
   toggleOverlay: () => void;
 }
-/** @publicDocs */
+/** @private */
 export interface FocusEventProps {
   /**
    * Callback when the element loses focus.
@@ -95,7 +95,7 @@ export interface FocusEventProps {
    */
   onFocus?: (event: FocusEvent) => void;
 }
-/** @publicDocs */
+/** @private */
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -110,11 +110,11 @@ export type SizeKeyword =
   | 'large-300'
   | 'large-400'
   | 'large-500';
-/** @publicDocs */
+/** @private */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
-/** @publicDocs */
+/** @private */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
-/** @publicDocs */
+/** @private */
 export interface BackgroundProps {
   /**
    * Adjust the background of the element.
@@ -132,7 +132,7 @@ export interface BackgroundProps {
  * In some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component.
  *
  * @default 'auto'
- * @publicDocs
+ * @private
  */
 export type ToneKeyword =
   | 'auto'
@@ -705,22 +705,22 @@ declare const privateIconArray: readonly [
   'x-circle',
   'x-circle-filled',
 ];
-/** @publicDocs */
+/** @private */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
- * @publicDocs
+ * @private
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
-/** @publicDocs */
+/** @private */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
   | `${T} ${T}`
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
-/** @publicDocs */
+/** @private */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
-/** @publicDocs */
+/** @private */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -729,7 +729,7 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * //   ^? string
  * type PropName = 'foo' | 'bar' | (string & {})
  * //   ^? 'foo' | 'bar' | (string & {})
- * @publicDocs
+ * @private
  */
 export type AnyString = string & {};
 /**
@@ -737,10 +737,10 @@ export type AnyString = string & {};
  * to have a space or not in the string literal types.
  *
  * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
- * @publicDocs
+ * @private
  */
 export type optionalSpace = '' | ' ';
-/** @publicDocs */
+/** @private */
 export interface BadgeProps extends GlobalProps {
   /**
    * The content of the badge.
@@ -775,7 +775,7 @@ export interface BadgeProps extends GlobalProps {
    */
   size?: SizeKeyword;
 }
-/** @publicDocs */
+/** @private */
 export interface BannerProps extends GlobalProps, ActionSlots {
   /**
    * The title of the banner.
@@ -851,7 +851,7 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   hidden?: boolean;
 }
-/** @publicDocs */
+/** @private */
 export interface DisplayProps {
   /**
    * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
@@ -864,7 +864,7 @@ export interface DisplayProps {
    */
   display?: MaybeResponsive<'auto' | 'none'>;
 }
-/** @publicDocs */
+/** @private */
 export interface AccessibilityRoleProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -878,7 +878,7 @@ export interface AccessibilityRoleProps {
    */
   accessibilityRole?: AccessibilityRole;
 }
-/** @publicDocs */
+/** @private */
 export type AccessibilityRole =
   /**
    * Used to indicate the primary content.
@@ -994,7 +994,7 @@ export type AccessibilityRole =
    * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
    */
   | 'none';
-/** @publicDocs */
+/** @private */
 export interface AccessibilityVisibilityProps {
   /**
    * Changes the visibility of the element.
@@ -1007,7 +1007,7 @@ export interface AccessibilityVisibilityProps {
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
 }
-/** @publicDocs */
+/** @private */
 export interface LabelAccessibilityVisibilityProps {
   /**
    * Changes the visibility of the component's label.
@@ -1022,9 +1022,9 @@ export interface LabelAccessibilityVisibilityProps {
     'visible' | 'exclusive'
   >;
 }
-/** @publicDocs */
+/** @private */
 export type PaddingKeyword = SizeKeyword | 'none';
-/** @publicDocs */
+/** @private */
 export interface PaddingProps {
   /**
    * Adjust the padding of all edges.
@@ -1104,13 +1104,13 @@ export interface PaddingProps {
    */
   paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
-/** @publicDocs */
+/** @private */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
-/** @publicDocs */
+/** @private */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
-/** @publicDocs */
+/** @private */
 export type SizeUnitsOrNone = SizeUnits | 'none';
-/** @publicDocs */
+/** @private */
 export interface SizingProps {
   /**
    * Adjust the block size.
@@ -1161,26 +1161,26 @@ export interface SizingProps {
    */
   maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
-/** @publicDocs */
+/** @private */
 export type BorderStyleKeyword =
   | 'none'
   | 'solid'
   | 'dashed'
   | 'dotted'
   | 'auto';
-/** @publicDocs */
+/** @private */
 export type BorderSizeKeyword = SizeKeyword | 'none';
-/** @publicDocs */
+/** @private */
 export type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
- * @publicDocs
+ * @private
  */
 export type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
   | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
-/** @publicDocs */
+/** @private */
 export interface BorderProps {
   /**
    * Set the border via the shorthand property.
@@ -1265,7 +1265,7 @@ export interface BorderProps {
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
-/** @publicDocs */
+/** @private */
 export interface OverflowProps {
   /**
    * Sets the overflow behavior of the element.
@@ -1279,7 +1279,7 @@ export interface OverflowProps {
    */
   overflow?: 'hidden' | 'visible';
 }
-/** @publicDocs */
+/** @private */
 export interface BaseBoxProps
   extends AccessibilityVisibilityProps,
     BackgroundProps,
@@ -1300,11 +1300,11 @@ export interface BaseBoxProps
    */
   accessibilityLabel?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
-/** @publicDocs */
+/** @private */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The behavior of the button.
@@ -1340,7 +1340,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   loading?: boolean;
 }
-/** @publicDocs */
+/** @private */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The URL to link to.
@@ -1377,7 +1377,7 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export interface InteractionProps {
   /**
    * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
@@ -1402,11 +1402,11 @@ export interface InteractionProps {
    */
   interestFor?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseClickableProps
   extends ButtonBehaviorProps,
     LinkBehaviorProps {}
-/** @publicDocs */
+/** @private */
 export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
    * A label that describes the purpose or contents of the button. It will be read to users using assistive technologies such as screen readers.
@@ -1454,7 +1454,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   lang?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseInputProps {
   /**
    * An identifier for the field that is unique within the nearest containing form.
@@ -1467,7 +1467,7 @@ export interface BaseInputProps {
    */
   disabled?: boolean;
 }
-/** @publicDocs */
+/** @private */
 export interface InputProps extends BaseInputProps {
   /**
    * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
@@ -1492,7 +1492,7 @@ export interface InputProps extends BaseInputProps {
    */
   defaultValue?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface MultipleInputProps extends BaseInputProps {
   /**
    * Callback when the user has selected option(s).
@@ -1513,7 +1513,7 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   values?: string[];
 }
-/** @publicDocs */
+/** @private */
 export interface FieldErrorProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
@@ -1521,7 +1521,7 @@ export interface FieldErrorProps {
    */
   error?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface BasicFieldProps
   extends FieldErrorProps,
     LabelAccessibilityVisibilityProps {
@@ -1539,7 +1539,7 @@ export interface BasicFieldProps
    */
   label?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface FieldDetailsProps {
   /**
    * Additional text to provide context or guidance for the field.
@@ -1550,7 +1550,7 @@ export interface FieldDetailsProps {
    */
   details?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface FieldProps
   extends BasicFieldProps,
     InputProps,
@@ -1561,7 +1561,7 @@ export interface FieldProps
    */
   placeholder?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseTextFieldProps extends FieldProps {
   /**
    * The field cannot be edited by the user. It is focusable will be announced by screen readers.
@@ -1570,7 +1570,7 @@ export interface BaseTextFieldProps extends FieldProps {
    */
   readOnly?: boolean;
 }
-/** @publicDocs */
+/** @private */
 export interface FieldDecorationProps {
   /**
    * A value to be displayed immediately after the editable portion of the field.
@@ -1610,7 +1610,7 @@ export interface FieldDecorationProps {
    */
   accessory?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export interface NumberConstraintsProps {
   /**
    * The highest decimal or integer to be accepted for the field.
@@ -1653,7 +1653,7 @@ export interface NumberConstraintsProps {
    */
   controls?: 'auto' | 'stepper' | 'none';
 }
-/** @publicDocs */
+/** @private */
 export interface MinMaxLengthProps {
   /**
    * Specifies the maximum number of characters allowed.
@@ -1668,7 +1668,7 @@ export interface MinMaxLengthProps {
    */
   minLength?: number;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseSelectableProps {
   /**
    * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
@@ -1686,7 +1686,7 @@ export interface BaseSelectableProps {
    */
   value?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
    * Whether the control is active.
@@ -1703,7 +1703,7 @@ export interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseCheckableProps
   extends BaseSelectableProps,
     InteractionProps {
@@ -1743,7 +1743,7 @@ export interface BaseCheckableProps
    */
   onInput?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export interface ChoiceProps extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
@@ -1783,7 +1783,7 @@ export interface ChoiceProps extends GlobalProps, BaseOptionProps {
    */
   selectedContent?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export interface ChoiceListProps
   extends GlobalProps,
     Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
@@ -1825,7 +1825,7 @@ export interface ChoiceListProps
    */
   variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
 }
-/** @publicDocs */
+/** @private */
 export interface ClickableProps
   extends GlobalProps,
     BaseBoxProps,
@@ -1857,7 +1857,7 @@ export interface ClickableProps
    */
   lang?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {
@@ -1895,20 +1895,20 @@ export interface AutocompleteProps<
  *
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
- * @publicDocs
+ * @private
  */
 export type AutocompleteSection = `section-${string}`;
 /**
  * The contact information group the autocomplete data should be sourced from.
- * @publicDocs
+ * @private
  */
 export type AutocompleteGroup = 'shipping' | 'billing';
 /**
  * The contact information subgroup the autocomplete data should be sourced from.
- * @publicDocs
+ * @private
  */
 export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
-/** @publicDocs */
+/** @private */
 export type AnyAutocompleteField =
   | 'additional-name'
   | 'address-level1'
@@ -1974,7 +1974,7 @@ export type AnyAutocompleteField =
   | `${AutocompleteAddressGroup} tel-local-suffix`
   | `${AutocompleteAddressGroup} tel-local`
   | `${AutocompleteAddressGroup} tel-national`;
-/** @publicDocs */
+/** @private */
 export type TextAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'additional-name'
@@ -2008,7 +2008,7 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-family-name'
   | 'cc-type'
 >;
-/** @publicDocs */
+/** @private */
 export interface DatePickerProps
   extends GlobalProps,
     InputProps,
@@ -2175,7 +2175,7 @@ export interface DatePickerProps
    */
   onChange?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export interface DateFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2219,7 +2219,7 @@ export interface DateFieldProps
    */
   onInvalid?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export type DateAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'bday'
@@ -2230,7 +2230,7 @@ export type DateAutocompleteField = ExtractStrict<
   | 'cc-expiry-month'
   | 'cc-expiry-year'
 >;
-/** @publicDocs */
+/** @private */
 export interface DateSpinnerProps
   extends GlobalProps,
     Pick<
@@ -2269,7 +2269,7 @@ export interface DateSpinnerProps
    */
   onChange?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export interface DividerProps extends GlobalProps {
   /**
    * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
@@ -2284,18 +2284,18 @@ export interface DividerProps extends GlobalProps {
    */
   color?: ColorKeyword;
 }
-/** @publicDocs */
+/** @private */
 export interface EmailFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<EmailAutocompleteField> {}
-/** @publicDocs */
+/** @private */
 export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
-/** @publicDocs */
+/** @private */
 export interface EmbedProps extends GlobalProps, SizingProps {
   /**
    * The content type of the file to display.
@@ -2326,7 +2326,7 @@ export interface EmbedProps extends GlobalProps, SizingProps {
    */
   accessibilityLabel?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface EmptyStateProps extends GlobalProps, ActionSlots {
   /**
    * The heading of the empty state.
@@ -2341,9 +2341,9 @@ export interface EmptyStateProps extends GlobalProps, ActionSlots {
    */
   graphic?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export type SpacingKeyword = SizeKeyword | 'none';
-/** @publicDocs */
+/** @private */
 export interface GapProps {
   /**
    * Adjust spacing between elements.
@@ -2371,17 +2371,17 @@ export interface GapProps {
    */
   columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
-/** @publicDocs */
+/** @private */
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
-/** @publicDocs */
+/** @private */
 export type ContentDistribution =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
   | 'stretch';
-/** @publicDocs */
+/** @private */
 export type ContentPosition = 'center' | 'start' | 'end';
-/** @publicDocs */
+/** @private */
 export type OverflowPosition =
   | `unsafe ${ContentPosition}`
   | `safe ${ContentPosition}`;
@@ -2389,7 +2389,7 @@ export type OverflowPosition =
  * Align items sets the align-self value on all direct children as a group.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
- * @publicDocs
+ * @private
  */
 export type AlignItemsKeyword =
   | 'normal'
@@ -2401,7 +2401,7 @@ export type AlignItemsKeyword =
  * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
- * @publicDocs
+ * @private
  */
 export type JustifyContentKeyword =
   | 'normal'
@@ -2412,7 +2412,7 @@ export type JustifyContentKeyword =
  *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
- * @publicDocs
+ * @private
  */
 export type AlignContentKeyword =
   | 'normal'
@@ -2420,7 +2420,7 @@ export type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
-/** @publicDocs */
+/** @private */
 export interface BaseTypographyProps {
   /**
    * Modify the color to be more or less intense.
@@ -2466,7 +2466,7 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
-/** @publicDocs */
+/** @private */
 export interface BlockTypographyProps {
   /**
    * Truncates the text content to the specified number of lines.
@@ -2477,7 +2477,7 @@ export interface BlockTypographyProps {
    */
   lineClamp?: number;
 }
-/** @publicDocs */
+/** @private */
 export interface HeadingProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
@@ -2507,7 +2507,7 @@ export interface HeadingProps
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
 }
-/** @publicDocs */
+/** @private */
 export interface IconProps
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
@@ -2531,7 +2531,7 @@ export interface IconProps
   size?: SizeKeyword;
   type?: IconType | AnyString;
 }
-/** @publicDocs */
+/** @private */
 export interface BaseImageProps {
   /**
    * An alternative text description that describe the image for the reader to
@@ -2577,7 +2577,7 @@ export interface BaseImageProps {
    */
   srcSet?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -2653,7 +2653,7 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
    */
   onError?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export interface LinkProps extends GlobalProps, LinkBehaviorProps {
   /**
    * The content of the link.
@@ -2679,7 +2679,7 @@ export interface LinkProps extends GlobalProps, LinkBehaviorProps {
    */
   lang?: string;
 }
-/** @publicDocs */
+/** @private */
 export interface ModalProps
   extends GlobalProps,
     BaseOverlayProps,
@@ -2723,7 +2723,7 @@ export interface ModalProps
    */
   children?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export interface NumberFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2753,12 +2753,12 @@ export interface NumberFieldProps
    */
   onInput?: (event: Event) => void;
 }
-/** @publicDocs */
+/** @private */
 export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'one-time-code' | 'cc-number' | 'cc-csc'
 >;
-/** @publicDocs */
+/** @private */
 export interface PageProps extends GlobalProps, ActionSlots {
   /**
    * The content of the page.
@@ -2795,7 +2795,7 @@ export interface PageProps extends GlobalProps, ActionSlots {
    */
   inlineSize?: SizeKeyword;
 }
-/** @publicDocs */
+/** @private */
 export interface POSBlockProps
   extends GlobalProps,
     Pick<ActionSlots, 'secondaryActions'> {
@@ -2814,7 +2814,7 @@ export interface POSBlockProps
    */
   secondaryActions?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export interface QRCodeProps extends GlobalProps {
   /**
    * Set the border of the QR code.
