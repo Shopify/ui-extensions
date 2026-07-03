@@ -66,7 +66,10 @@ export interface RenderExtensionTargets {
    * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.
    *
    * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.
-   */
+  
+ *
+ * @private
+ */
   'pos.return.post.action.menu-item.render': RenderExtension<
     StandardApi<'pos.return.post.action.menu-item.render'> &
       ActionApi &
@@ -77,7 +80,10 @@ export interface RenderExtensionTargets {
    * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.
    *
    * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.
-   */
+  
+ *
+ * @private
+ */
   'pos.return.post.action.render': RenderExtension<
     ActionTargetApi<'pos.return.post.action.render'> & OrderApi,
     BasicComponents
@@ -86,7 +92,10 @@ export interface RenderExtensionTargets {
    * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.
    *
    * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.
-   */
+  
+ *
+ * @private
+ */
   'pos.return.post.block.render': RenderExtension<
     StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,
     BlockExtensionComponents
@@ -95,7 +104,10 @@ export interface RenderExtensionTargets {
    * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.
    *
    * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.
-   */
+  
+ *
+ * @private
+ */
   'pos.exchange.post.action.menu-item.render': RenderExtension<
     StandardApi<'pos.exchange.post.action.menu-item.render'> &
       ActionApi &
@@ -106,7 +118,10 @@ export interface RenderExtensionTargets {
    * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.
    *
    * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.
-   */
+  
+ *
+ * @private
+ */
   'pos.exchange.post.action.render': RenderExtension<
     ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,
     BasicComponents
@@ -115,7 +130,10 @@ export interface RenderExtensionTargets {
    * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.
    *
    * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.
-   */
+  
+ *
+ * @private
+ */
   'pos.exchange.post.block.render': RenderExtension<
     StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,
     BlockExtensionComponents
