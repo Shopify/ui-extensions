@@ -3,7 +3,7 @@ import {createRemoteComponent} from '@remote-ui/core';
 /**
  * Configure the following properties on the QRCode component.
  *
- * @publicDocs
+ * @private
  */
 export interface QRCodeProps {
   /**

@@ -7,7 +7,7 @@ import {BaseApi} from './BaseApi';
 
 /**
  * The data object provided to receipt targets containing transaction details.
- * @publicDocs
+ * @private
  */
 export interface TransactionCompleteData extends BaseData, BaseApi {
   /**
@@ -28,7 +28,7 @@ export interface TransactionCompleteData extends BaseData, BaseApi {
 
 /**
  * The data object provided to receipt targets containing transaction details and reprint information.
- * @publicDocs
+ * @private
  */
 export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {
   /**
