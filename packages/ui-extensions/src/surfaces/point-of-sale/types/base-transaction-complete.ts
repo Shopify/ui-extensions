@@ -6,6 +6,8 @@ import type {TaxLine} from './tax-line';
 import type {TransactionType} from './transaction-type';
 
 /**
+ *
+ * @private
  * Base interface for completed transaction data shared across all transaction types.
  */
 export interface BaseTransactionComplete {

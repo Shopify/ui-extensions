@@ -19,8 +19,6 @@ export type StandardComponents =
   | 'Page'
   | 'POSBlock'
   | 'PosBlock' // Case is important in 2025-10
-  | 'QRCode'
-  | 'QrCode' // Case is important in 2025-10
   | 'Route'
   | 'Router'
   | 'ScrollBox'
