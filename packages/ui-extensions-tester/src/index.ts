@@ -103,20 +103,17 @@ interface BaseExtensionHarness<T extends AnyExtensionTarget> {
    * are ignored, and thrown errors are caught per-listener so one bad
    * listener doesn't block the others.
    *
-   * The `event` argument must be a real `Event` instance, matching what
-   * the host dispatches at runtime. Construct it with `new Event(type)`
-   * and attach payload fields via `Object.assign`:
+   * Pass the same payload shape that the host dispatches at runtime:
    *
    * ```ts
    * shopify.addEventListener('transactioncomplete', (event) => { ... });
    *
-   * const event = Object.assign(new Event('transactioncomplete'), {
+   * extension.dispatch('transactioncomplete', {
    *   transactionType: 'Sale',
    *   orderId: 1,
    *   grandTotal: { amount: 10, currency: 'USD' },
    *   // ...
    * });
-   * extension.dispatch('transactioncomplete', event);
    * ```
    */
   dispatch<K extends keyof EventMapForTarget<T>>(
