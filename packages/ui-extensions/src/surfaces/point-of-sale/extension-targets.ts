@@ -310,6 +310,8 @@ export interface RenderExtensionTargets {
    * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.
    *
    * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.
+   *
+   * @private
    */
   'pos.receipt-footer.block.render': RenderExtension<
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
@@ -319,6 +321,8 @@ export interface RenderExtensionTargets {
    * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.
    *
    * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.
+   *
+   * @private
    */
   'pos.receipt-header.block.render': RenderExtension<
     {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
