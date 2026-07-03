@@ -2814,7 +2814,7 @@ export interface POSBlockProps
    */
   secondaryActions?: ComponentChildren;
 }
-/** @publicDocs */
+/** @private */
 export interface QRCodeProps extends GlobalProps {
   /**
    * Set the border of the QR code.
