@@ -1072,22 +1072,6 @@
       "ToastApi"
     ]
   },
-  "pos.transaction-complete.event.observe": {
-    "components": [],
-    "apis": []
-  },
-  "pos.cash-tracking-session-start.event.observe": {
-    "components": [],
-    "apis": []
-  },
-  "pos.cash-tracking-session-complete.event.observe": {
-    "components": [],
-    "apis": []
-  },
-  "pos.cart-update.event.observe": {
-    "components": [],
-    "apis": []
-  },
   "ActionApi": {
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
