@@ -5,7 +5,3 @@ export const CUSTOM_DATA = (type: string, title?: string) => ({
   // exact type name auto-populates the properties.
   type,
 });
-
-export const TRANSACTION_COMPLETE_DEFINITION = {
-  definitions: [CUSTOM_DATA('TransactionCompleteData')],
-};

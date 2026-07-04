@@ -1,4 +1,48 @@
 {
+  "DataGeneratedType": {
+    "docs/surfaces/point-of-sale/reference/apis/action-api.doc.ts": {
+      "filePath": "docs/surfaces/point-of-sale/reference/apis/action-api.doc.ts",
+      "name": "DataGeneratedType",
+      "description": "Template schema for reference entity documentation pages.",
+      "isPublicDocs": true,
+      "value": "data: ReferenceEntityTemplateSchema = {\n  name: 'Action API',\n  description:\n    'The Action API provides modal presentation functionality for POS UI extensions, allowing you to launch full-screen modal interfaces from menu items, tiles, and block targets. The API enables navigation between different targets within your extension.',\n  isVisualComponent: false,\n  type: 'APIs',\n  definitions: [\n    {\n      title: 'Properties',\n      description:\n        'The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `api.action` to launch full-screen modal experiences.',\n      type: 'ActionApiContent',\n    },\n  ],\n  category: 'Target APIs',\n  subCategory: 'Standard APIs',\n  related: [],\n  examples: {\n    description:\n      'Learn how to present full-screen modals from tiles and menu items using the Action API.',\n    examples: [\n      {\n        codeblock: generateCodeBlockForActionApi(\n          'Open a modal from a post-purchase action',\n          'present-modal',\n        ),\n        description:\n          \"Create an action menu item that appears after a purchase is completed. When pressed, it launches a full-screen modal view using the Action API's `presentModal()` method, allowing you to display custom workflows or additional functionality in the post-purchase flow.\",\n      },\n      {\n        codeblock: generateCodeBlockForActionApi(\n          'Open a modal from a smart grid tile',\n          'present-modal-tile',\n        ),\n        description:\n          \"Create a smart grid tile on the POS home screen that launches a full-screen modal when tapped. This example shows how to use the Action API to present detailed views or workflows from your app's home tile, providing quick access to extended functionality.\",\n      },\n    ],\n  },\n\n  subSections: [\n    {\n      type: 'Generic',\n      anchorLink: 'best-practices',\n      title: 'Best practices',\n      sectionContent: `\\n- **Provide clear entry points:** Use descriptive button labels and titles that clearly indicate what the modal will contain or what action it will perform, helping users understand what to expect.\\n- **Handle modal dismissal gracefully:** Ensure your modal-based workflows handle user dismissal, saving progress when possible and providing clear feedback about incomplete operations.\\n`,\n    },\n    {\n      type: 'Generic',\n      anchorLink: 'limitations',\n      title: 'Limitations',\n      sectionContent: `\\nEach extension can only present one modal at a time. Subsequent calls to \\`presentModal()\\` while a modal is already open may be ignored or replace the current modal.\\n`,\n    },\n  ],\n}"
+    }
+  },
+  "ActionApi": {
+    "src/surfaces/point-of-sale/render/api/action-api/action-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
+      "name": "ActionApi",
+      "description": "The `ActionApi` object provides methods for presenting modal interfaces. Access these methods through `api.action` to launch full-screen modal experiences.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "action",
+          "value": "ActionApiContent",
+          "description": ""
+        }
+      ],
+      "value": "export interface ActionApi {\n  action: ActionApiContent;\n}"
+    }
+  },
+  "ActionApiContent": {
+    "src/surfaces/point-of-sale/render/api/action-api/action-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
+      "name": "ActionApiContent",
+      "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `api.action` to launch full-screen modal experiences.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "presentModal",
+          "value": "() => void",
+          "description": "Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide."
+        }
+      ],
+      "value": "export interface ActionApiContent {\n  /**\n   * Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide.\n   */\n  presentModal(): void;\n}"
+    }
+  },
   "CartApiContent": {
     "src/surfaces/point-of-sale/render/api/cart-api/cart-api.ts": {
       "filePath": "src/surfaces/point-of-sale/render/api/cart-api/cart-api.ts",
@@ -2269,24 +2313,6 @@
         }
       ],
       "value": "export interface CartLineItemApi {\n  /**\n   * The selected line item in the merchant's current cart. Provides complete line item data including product information, pricing, discounts, properties, and metadata. Use for displaying item details and implementing item-specific functionality.\n   */\n  cartLineItem: LineItem;\n}"
-    }
-  },
-  "ActionApiContent": {
-    "src/surfaces/point-of-sale/render/api/action-api/action-api.ts": {
-      "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
-      "name": "ActionApiContent",
-      "description": "The `ActionApi` object provides properties for presenting modal interfaces. Access these properties through `api.action` to launch full-screen modal experiences.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/render/api/action-api/action-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "presentModal",
-          "value": "() => void",
-          "description": "Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide."
-        }
-      ],
-      "value": "export interface ActionApiContent {\n  /**\n   * Presents the corresponding action (modal) target on top of the current view as a full-screen modal. For example, calling this method from `pos.purchase.post.action.menu-item.render` presents `pos.purchase.post.action.render`. Use to launch detailed workflows, complex forms, or multi-step processes that require more screen space than simple components provide.\n   */\n  presentModal(): void;\n}"
     }
   },
   "ConnectivityApiContent": {
@@ -6116,196 +6142,6 @@
         }
       ],
       "value": "export interface SectionHeaderProps {\n  /**\n   * The title text displayed in the section header. Provide clear, descriptive text that accurately represents the content section below.\n   */\n  title: string;\n  /**\n   * An optional action button configuration to be displayed alongside the title. The SectionHeader must have a title for the action to work properly.\n   */\n  action?: {\n    /**\n     * The label text displayed on the action button. Use clear, descriptive labels like \"Edit Settings\" or \"Add Item.\"\n     */\n    label: string;\n    /**\n     * A callback function executed when the action button is pressed. Use this to handle user interactions such as navigation or triggering specific actions.\n     */\n    onPress: () => void;\n    /**\n     * Controls whether the action button can be pressed. When `true`, the button is disabled and users can't interact with it.\n     */\n    disabled?: boolean;\n  };\n  /**\n   * A boolean that controls whether the divider line under the SectionHeader should be hidden.\n   */\n  hideDivider?: boolean;\n}"
-    }
-  },
-  "CashTrackingSessionStartData": {
-    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-      "name": "CashTrackingSessionStartData",
-      "description": "The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashTrackingSessionStart",
-          "value": "{ id: number; openingTime: string; }",
-          "description": "The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityState",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": "Provides access to the persistent local storage methods for storing and retrieving extension data."
-        }
-      ],
-      "value": "export interface CashTrackingSessionStartData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift.\n   */\n  cashTrackingSessionStart: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID matches the ID from when the session was opened and can be used to correlate session start and end events, retrieve session-specific data, or link all transactions that occurred during this session.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the session and can be compared with `closingTime` to calculate the total session duration or shift length.\n     */\n    openingTime: string;\n  };\n}"
-    }
-  },
-  "Device": {
-    "src/surfaces/point-of-sale/types/device.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/device.ts",
-      "name": "Device",
-      "description": "Defines information about the POS device where the extension is running.",
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/device.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "deviceId",
-          "value": "number",
-          "description": "The unique identifier for the POS device."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/device.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTablet",
-          "value": "boolean",
-          "description": "Whether the device is a tablet form factor."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/device.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": "The name of the POS device."
-        }
-      ],
-      "value": "export interface Device {\n  /**\n   * The name of the POS device.\n   */\n  name: string;\n  /**\n   * The unique identifier for the POS device.\n   */\n  deviceId: number;\n  /**\n   * Whether the device is a tablet form factor.\n   */\n  isTablet: boolean;\n}"
-    }
-  },
-  "CashTrackingSessionCompleteData": {
-    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-      "name": "CashTrackingSessionCompleteData",
-      "description": "The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashTrackingSessionComplete",
-          "value": "{ id: number; openingTime: string; closingTime: string; }",
-          "description": "The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityState",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": "Provides access to the persistent local storage methods for storing and retrieving extension data."
-        }
-      ],
-      "value": "export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing.\n   */\n  cashTrackingSessionComplete: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID matches the ID from when the session was opened and can be used to correlate session start and end events, retrieve session-specific data, or link all transactions that occurred during this session.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the session and can be compared with `closingTime` to calculate the total session duration or shift length.\n     */\n    openingTime: string;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was closed and ended (for example, `\"2024-05-15T17:30:00Z\"`). This marks when the staff member completed their shift, closed out the cash drawer, and finalized the session. The time between `openingTime` and `closingTime` represents the active session duration. Commonly used for shift reporting, calculating hours worked, or determining the timeframe for session-specific transactions.\n     */\n    closingTime: string;\n  };\n}"
-    }
-  },
-  "CartUpdateEventData": {
-    "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-      "name": "CartUpdateEventData",
-      "description": "The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cart",
-          "value": "Cart",
-          "description": "The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityState",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": "Provides access to the persistent local storage methods for storing and retrieving extension data."
-        }
-      ],
-      "value": "export interface CartUpdateEventData extends BaseData, BaseApi {\n  /**\n   * The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods.\n   */\n  cart: Cart;\n}"
     }
   }
 }
