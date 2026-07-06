@@ -17,7 +17,7 @@ export const POS_EVENT_NAMES = {
 } as const;
 
 /**
- * Maps Shopify POS event names to their corresponding `Event` subclass types.
+ * Maps Shopify POS event names to their corresponding payload types.
  *
  * Used as the generic type parameter for `shopify.addEventListener` and
  * `shopify.removeEventListener`.
@@ -25,8 +25,14 @@ export const POS_EVENT_NAMES = {
  * @publicDocs
  */
 export interface ShopifyEventMap {
+  /**
+   * Dispatched when a sale, return, or exchange transaction completes.
+   * Narrow on `transactionType` to access per-type fields.
+   */
   [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;
+  /** Dispatched when a cash tracking session opens. */
   [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;
+  /** Dispatched when a cash tracking session closes after reconciliation. */
   [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;
 }
 
