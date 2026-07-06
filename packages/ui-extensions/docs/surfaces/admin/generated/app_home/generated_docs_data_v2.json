@@ -5773,7 +5773,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "padding",
           "value": "MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'none'"
         },
         {
@@ -5781,7 +5781,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlock",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -5789,7 +5789,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -5797,7 +5797,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -5805,7 +5805,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInline",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -5813,7 +5813,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -5821,7 +5821,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -7012,7 +7012,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "padding",
           "value": "MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'none'"
         },
         {
@@ -7020,7 +7020,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlock",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -7028,7 +7028,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -7036,7 +7036,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -7044,7 +7044,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInline",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -7052,7 +7052,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -7060,7 +7060,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8621,7 +8621,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "gridTemplateColumns",
           "value": "string",
-          "description": "The columns in the grid and their sizes.\n\nAccepts:\n- [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported track sizing values as a query value",
+          "description": "The columns in the grid and their sizes.\n\nAccepts:\n- [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value",
           "defaultValue": "'none'"
         },
         {
@@ -8629,7 +8629,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "gridTemplateRows",
           "value": "string",
-          "description": "The rows in the grid and their sizes.\n\nAccepts:\n- [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported track sizing values as a query value",
+          "description": "The rows in the grid and their sizes.\n\nAccepts:\n- [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value",
           "defaultValue": "'none'"
         },
         {
@@ -8685,7 +8685,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "gap",
           "value": "MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>",
-          "description": "Adjusts spacing between elements.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value applied to both axes, such as `large-100`\n- A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
+          "description": "Adjusts spacing between elements.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value applied to both axes, such as `large-100`\n- A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
           "defaultValue": "'none'"
         },
         {
@@ -8693,7 +8693,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "rowGap",
           "value": "MaybeResponsive<\"\" | SpacingKeyword>",
-          "description": "s spacing between elements in the block axis. This overrides the row value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
+          "description": "s spacing between elements in the block axis. This overrides the row value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8701,7 +8701,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "columnGap",
           "value": "MaybeResponsive<\"\" | SpacingKeyword>",
-          "description": "Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
+          "description": "Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8781,7 +8781,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "padding",
           "value": "MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'none'"
         },
         {
@@ -8789,7 +8789,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlock",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8797,7 +8797,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8805,7 +8805,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8813,7 +8813,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInline",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8821,7 +8821,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -8829,7 +8829,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -9157,7 +9157,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "padding",
           "value": "MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'none'"
         },
         {
@@ -9165,7 +9165,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlock",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -9173,7 +9173,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -9181,7 +9181,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -9189,7 +9189,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInline",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -9197,7 +9197,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -9205,7 +9205,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11574,7 +11574,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "direction",
           "value": "MaybeResponsive<\"inline\" | \"block\">",
-          "description": "The direction in which the stack's children are placed within the stack.\n\nAccepts:\n- A single value, either `inline` or `block`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported direction values as a query value",
+          "description": "The direction in which the stack's children are placed within the stack.\n\nAccepts:\n- A single value, either `inline` or `block`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported direction values as a query value",
           "defaultValue": "'block'"
         },
         {
@@ -11606,7 +11606,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "gap",
           "value": "MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>",
-          "description": "Adjusts spacing between elements.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value applied to both axes, such as `large-100`\n- A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
+          "description": "Adjusts spacing between elements.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value applied to both axes, such as `large-100`\n- A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
           "defaultValue": "'none'"
         },
         {
@@ -11614,7 +11614,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "rowGap",
           "value": "MaybeResponsive<\"\" | SpacingKeyword>",
-          "description": "Adjusts spacing between elements in the block axis. This overrides the row value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
+          "description": "Adjusts spacing between elements in the block axis. This overrides the row value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11622,7 +11622,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "columnGap",
           "value": "MaybeResponsive<\"\" | SpacingKeyword>",
-          "description": "Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
+          "description": "Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.\n\nAccepts:\n- A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`\n- A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11702,7 +11702,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "padding",
           "value": "MaybeResponsive<MaybeAllValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The padding applied to all edges of the component.\n\nSupports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:\n- 1 value applies to all sides\n- 2 values apply to block (top/bottom) and inline (left/right)\n- 3 values apply to block-start (top), inline (left/right), and block-end (bottom)\n- 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)\n\n**Examples:** `base`, `large none`, `base large-100 base small`\n\nUse `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'none'"
         },
         {
@@ -11710,7 +11710,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlock",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-direction padding (top and bottom in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for block-start and block-end.\n\n**Example:** `large none` applies `large` to the top and `none` to the bottom.\n\nOverrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11718,7 +11718,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-start padding (top in horizontal writing modes).\n\nOverrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11726,7 +11726,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingBlockEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The block-end padding (bottom in horizontal writing modes).\n\nOverrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11734,7 +11734,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInline",
           "value": "MaybeResponsive<\"\" | MaybeTwoValuesShorthandProperty<PaddingKeyword>>",
-          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-direction padding (left and right in horizontal writing modes).\n\nAccepts a single value for both sides or two space-separated values for inline-start and inline-end.\n\n**Example:** `large none` applies `large` to the left and `none` to the right.\n\nOverrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11742,7 +11742,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineStart",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
@@ -11750,7 +11750,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "paddingInlineEnd",
           "value": "MaybeResponsive<\"\" | PaddingKeyword>",
-          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
+          "description": "The inline-end padding (right in LTR writing modes, left in RTL).\n\nOverrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.",
           "defaultValue": "'' - meaning no override"
         },
         {
