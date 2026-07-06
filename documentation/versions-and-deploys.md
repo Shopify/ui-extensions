@@ -4,19 +4,19 @@ Shopify’s UI extensions are a [versioned API](https://shopify.dev/api/usage/ve
 
 ## RC
 
-Whenever a new stable version is released we also create a release-candidate (RC) branch for the next stable version. For example, `2025-01` is created at the same time as `2025-04-rc` and is used for previewing `2025-04` before it is promoted to stable. RC branches are stricter than `unstable` and we should try to avoid including APIs that are not finalized. These branches publish UI extension packages using a special `{{SEMVER}}-rc.{{VERSION}}` (ex. `2025.10.0-rc.5`) version number, which allows us to release continuously without bumping the semver. Changesets merged into RC branches will trigger a PR to be created for [deploying the package to NPM](#deploying-new-versions-to-npm).
+Whenever a new stable version is released we also create a release-candidate (RC) branch for the next stable version. For example, `2025-01` is created at the same time as `2025-04-rc` and is used for previewing `2025-04` before it is promoted to stable. The latest RC branch is where active development happens (see [Adding code](#adding-code)). To keep RC branches stable, avoid merging APIs that are not yet finalized directly into an RC — do that work on a feature branch first. These branches publish UI extension packages using a special `{{SEMVER}}-rc.{{VERSION}}` (ex. `2025.10.0-rc.5`) version number, which allows us to release continuously without bumping the semver. Changesets merged into RC branches will trigger a PR to be created for [deploying the package to NPM](#deploying-new-versions-to-npm).
 
-## Unstable
+## Unstable (deprecated)
 
-The [`unstable` branch](https://github.com/Shopify/ui-extensions/tree/unstable) is used to build experimental features before they are promoted to an RC. This version is meant to allow third parties to try out experimental extension APIs before they are released for use in production environments. This branch publishes UI extension packages using a special `0.0.0-unstable-{{TIMESTAMP}}` version number, which allows us to release it continuously as changes are made.
+> **Deprecated**: The [`unstable` branch](https://github.com/Shopify/ui-extensions/tree/unstable) is deprecated and frozen at `2025-07`. It still runs on [`remote-ui`](https://github.com/Shopify/remote-ui), which the rest of the repo has since moved away from, so it can't be updated without breaking extensions that still run on it. Don't branch off it or target it with new work — branch off the latest RC branch instead (see [Adding code](#adding-code)).
 
 > **Note**: Shopify also released a set of UI extension packages that had NPM versions, but did not follow a formal API versioning system. These packages, like `@shopify/checkout-ui-extensions` and `@shopify/admin-ui-extensions`, are still available, but are on a [“legacy” branch](https://github.com/Shopify/ui-extensions/tree/main). If you are trying to deploy new versions of those packages, the instructions in this document **do not apply**.
 
 ## Adding code
 
-Most code added to this repo will be added to the `unstable` branch, which captures the latest public APIs Shopify has made available. Code changes should only be added to RC branches when we're confident the API is unlikely to change. Stable version branches should only be getting bugfixes (`patches`) — no new features should be added to them.
+Most code added to this repo will be added to the latest RC branch, which captures the latest public APIs Shopify has made available. New and experimental work happens against the latest RC: until an API is finalized, do that work on a feature branch and only merge it into the RC once you're confident the API is unlikely to change. Stable version branches should only be getting bugfixes (`patches`) — no new features should be added to them.
 
-To start adding code, branch off of the `unstable` branch (or the branch for the version you’re working on). Make your changes as you normally would. Before creating a PR for your work, though, you will need to run a command to generate a [changeset](https://github.com/changesets/changesets):
+To start adding code, branch off of the latest RC branch (or the branch for the version you’re working on) to create a feature branch. Make your changes as you normally would. Before creating a PR for your work, though, you will need to run a command to generate a [changeset](https://github.com/changesets/changesets):
 
 ```bash
 yarn changeset
@@ -37,8 +37,6 @@ Commit your changeset file alongside the rest of the changes you are making —�
 
 When changeset files are detected on any of the stable version or RC branches, a GitHub action will create a new PR that merges all the unpublished changesets together into a single changelog, and increments the version number on updated packages. This PR on stable branches should be reviewed and merged by a member of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards). Once it is merged, the new package versions will automatically be published to NPM, with a tag corresponding to their API version (for example, `yarn add @shopify/ui-extensions@2023-01` will install the latest package version for the `2023-01` API version).
 
-The `unstable` branch does not have the additional step of creating a PR to merge changesets “on-demand”. Instead, _every_ merge into the branches causes a new set of versions to be published to NPM. A GitHub action watches this branch and, when any changes are detected, it will create a [“snapshot release”](https://github.com/changesets/changesets/blob/main/docs/snapshot-releases.md) that publishes the changed packages as they exist at that point in time. Snapshot versions a unique timestamp and are published to NPM with an `unstable` tag. This allows developers to get the latest `unstable` of a package by running an install command referencing the tag, like `yarn add @shopify/ui-extensions@unstable`.
-
 ## Creating new stable versions
 
 > **Note:** only members of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards) should create new stable versions.
@@ -53,5 +51,4 @@ To create a new stable version, you will need to follow these steps:
 1. Update the [`LATEST_STABLE_VERSION`](https://github.com/Shopify/ui-extensions/settings/variables/actions) repository variable to your stable version (i.e. `2025-04`). This ensures means it will be marked with a `latest` npm dist-tag on NPM.
 1. Merge the PR, and let robots release the new versions to NPM and tag it appropriately.
 1. Create a new RC branch for the next stable release off of the current stable release. For example, if you've release `2025-04` you should create a new branch `2025-07-rc` off of `2025-04`.
-1. For any changes from `unstable` that have been incorporated into the new version, delete their changeset files on the `unstable` branch and replace the existing `CHANGELOG.md` files in `unstable` with what was just shipped.
 1. Send a message announcing the release. Let teams know that now is the time to update their section's docs and CLI templates.
