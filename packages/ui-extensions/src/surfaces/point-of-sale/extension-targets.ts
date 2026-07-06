@@ -1,11 +1,3 @@
-import {BaseOutput} from './event/output';
-import {
-  CashTrackingSessionStartData,
-  CashTrackingSessionCompleteData,
-} from './event/data/CashTrackingSessionData';
-import {TransactionCompleteData} from './event/data/TransactionCompleteData';
-import {CartUpdateEventData} from './event/data/CartUpdateEventData';
-
 import type {RenderExtension} from '../../extension';
 
 import type {
@@ -26,21 +18,6 @@ import type {SmartGridComponents} from './components/targets/SmartGridComponents
 import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
 import type {TransactionCompleteWithReprintData} from './event/data';
-
-export interface EventExtensionTargets {
-  'pos.transaction-complete.event.observe': (
-    data: TransactionCompleteData,
-  ) => Promise<BaseOutput>;
-  'pos.cash-tracking-session-start.event.observe': (
-    data: CashTrackingSessionStartData,
-  ) => Promise<BaseOutput>;
-  'pos.cash-tracking-session-complete.event.observe': (
-    data: CashTrackingSessionCompleteData,
-  ) => Promise<BaseOutput>;
-  'pos.cart-update.event.observe': (
-    data: CartUpdateEventData,
-  ) => Promise<BaseOutput>;
-}
 
 export interface RenderExtensionTargets {
   /**
@@ -334,10 +311,7 @@ export interface RenderExtensionTargets {
   >;
 }
 
-export interface ExtensionTargets
-  extends RenderExtensionTargets,
-    EventExtensionTargets {}
+export interface ExtensionTargets extends RenderExtensionTargets {}
 
 export type RenderExtensionTarget = keyof RenderExtensionTargets;
-export type EventExtensionTarget = keyof EventExtensionTargets;
 export type ExtensionTarget = keyof ExtensionTargets;
