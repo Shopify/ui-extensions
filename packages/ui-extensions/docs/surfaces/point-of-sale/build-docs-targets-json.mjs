@@ -281,6 +281,7 @@ function getNestedApis(apiName) {
     CashDrawerApi: ['./api/cash-drawer-api/cash-drawer-api'],
     PinPadApi: ['./api/pin-pad-api'],
     DataTargetApi: ['./api/data-target-api/data-target-api'],
+    BackgroundShopifyGlobal: ['./globals'],
   };
 
   const relativePaths = apiFilePaths[apiName];
@@ -354,8 +355,9 @@ function getNestedApis(apiName) {
     const typeDef = content.substring(startPos, endPos);
 
     // Extract all API names from the type definition
+    // Match both *Api types (e.g. SessionApi) and *Global types (e.g. BackgroundShopifyGlobal)
     const nestedApis = [];
-    const apiMatches = typeDef.matchAll(/(\w+Api)\b/g);
+    const apiMatches = typeDef.matchAll(/(\w+Api|\w+Global)\b/g);
 
     for (const apiMatch of apiMatches) {
       const nestedApiName = apiMatch[1];

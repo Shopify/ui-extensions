@@ -2,6 +2,7 @@
   "pos.app.ready.data": {
     "components": [],
     "apis": [
+      "BackgroundShopifyGlobal",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -901,6 +902,11 @@
       "SessionApi",
       "StorageApi",
       "ToastApi"
+    ]
+  },
+  "BackgroundShopifyGlobal": {
+    "targets": [
+      "pos.app.ready.data"
     ]
   },
   "ConnectivityApi": {

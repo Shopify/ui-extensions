@@ -2,6 +2,7 @@ import {ReadonlyCartApi} from '../cart-api/cart-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
 import {ExtensionApi} from '../extension-api/extension-api';
+import type {BackgroundShopifyGlobal} from '../../globals';
 import {LocaleApi} from '../locale-api/locale-api';
 import {ProductSearchApi} from '../product-search-api/product-search-api';
 import {SessionApi} from '../session-api/session-api';
@@ -25,4 +26,5 @@ export type DataTargetApi<T> = {
   ConnectivityApi &
   DeviceApi &
   ProductSearchApi &
-  ReadonlyCartApi;
+  ReadonlyCartApi &
+  BackgroundShopifyGlobal;
