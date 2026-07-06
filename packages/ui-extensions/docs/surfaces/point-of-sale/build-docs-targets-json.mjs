@@ -178,28 +178,36 @@ function parseTargetsFile() {
 }
 
 /**
- * Parse EventExtensionTargets from extension-targets.ts and return
- * a map of target name -> { components: [], apis: [] } so all extension
- * targets (render + event) appear in the JSON.
+ * Parse DataExtensionTargets from extension-targets.ts and return
+ * a map of target name -> { components: [], apis } so non-rendering
+ * background targets appear in the JSON.
  */
-function parseEventTargetsFile(content) {
-  const eventMatch = content.match(
-    /export interface EventExtensionTargets \{([\s\S]+?)\n\}/,
+function parseDataTargetsFile(content) {
+  const dataMatch = content.match(
+    /export interface DataExtensionTargets \{([\s\S]+?)\n\}/,
   );
-  if (!eventMatch) {
+  if (!dataMatch) {
     return {};
   }
-  const interfaceBody = eventMatch[1];
-  const targetRegex = /'([^']+)':\s*\(/g;
+
+  const interfaceBody = dataMatch[1];
+  const targetRegex = /'([^']+)':\s*RunnableExtension<([\s\S]*?)>;/g;
   const targets = {};
   let match;
   while ((match = targetRegex.exec(interfaceBody)) !== null) {
     const targetName = match[1];
+    const runnableExtensionContent = match[2]
+      .trim()
+      .replace(/\/\/[^\n]*/g, '')
+      .replace(/\/\*[\s\S]*?\*\//g, '');
+    const [apiString] = splitByTopLevelComma(runnableExtensionContent);
+
     targets[targetName] = {
       components: [],
-      apis: [],
+      apis: parseApis(apiString ?? '').sort(),
     };
   }
+
   return targets;
 }
 
@@ -272,6 +280,7 @@ function getNestedApis(apiName) {
     CartLineItemApi: ['./api/cart-line-item-api/cart-line-item-api'],
     CashDrawerApi: ['./api/cash-drawer-api/cash-drawer-api'],
     PinPadApi: ['./api/pin-pad-api'],
+    DataTargetApi: ['./api/data-target-api/data-target-api'],
   };
 
   const relativePaths = apiFilePaths[apiName];
@@ -366,7 +375,7 @@ function getNestedApis(apiName) {
 }
 
 // APIs that are composites of other documented APIs - we list their constituent APIs, not these wrapper types
-const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi']);
+const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi', 'DataTargetApi']);
 
 function parseApis(apiString) {
   const apisSet = new Set();
@@ -503,11 +512,11 @@ function findGeneratedDocsPath() {
   return docsPath ?? generatedDir;
 }
 
-// Generate the JSON (render targets + event targets)
+// Generate the JSON (data targets + render targets)
 const renderTargets = parseTargetsFile();
 const fileContent = fs.readFileSync(TARGETS_FILE_PATH, 'utf-8');
-const eventTargets = parseEventTargetsFile(fileContent);
-const targetsJson = {...renderTargets, ...eventTargets};
+const dataTargets = parseDataTargetsFile(fileContent);
+const targetsJson = {...dataTargets, ...renderTargets};
 
 // Create the extended JSON with reverse mappings
 const extendedJson = createReverseMapping(targetsJson);
