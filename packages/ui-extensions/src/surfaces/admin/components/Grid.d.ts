@@ -181,7 +181,7 @@ export interface BoxProps
    *
    * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
-   * `padding` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `padding` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default 'none'
    */
@@ -193,7 +193,7 @@ export interface BoxProps
    *
    * This overrides the block value of `padding`.
    *
-   * `paddingBlock` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlock` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -203,7 +203,7 @@ export interface BoxProps
    *
    * This overrides the block-start value of `paddingBlock`.
    *
-   * `paddingBlockStart` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlockStart` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -213,7 +213,7 @@ export interface BoxProps
    *
    * This overrides the block-end value of `paddingBlock`.
    *
-   * `paddingBlockEnd` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingBlockEnd` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -225,7 +225,7 @@ export interface BoxProps
    *
    * This overrides the inline value of `padding`.
    *
-   * `paddingInline` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInline` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -235,7 +235,7 @@ export interface BoxProps
    *
    * This overrides the inline-start value of `paddingInline`.
    *
-   * `paddingInlineStart` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInlineStart` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -245,7 +245,7 @@ export interface BoxProps
    *
    * This overrides the inline-end value of `paddingInline`.
    *
-   * `paddingInlineEnd` also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * `paddingInlineEnd` also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -371,31 +371,31 @@ export interface GridProps
     | `${AlignContentKeyword} ${JustifyContentKeyword}`
     | AlignContentKeyword;
   /**
-   * The spacing between grid rows and columns. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value to apply the same spacing to both axes (for example, `'large-100'`), or a pair of values (for example, `'large-100 large-500'`) to set different spacing for rows and columns. This property also accepts [responsive values](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The spacing between grid rows and columns. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value to apply the same spacing to both axes (for example, `'large-100'`), or a pair of values (for example, `'large-100 large-500'`) to set different spacing for rows and columns. This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'none'
    */
   gap: ResponsiveGridProps['gap'];
   /**
-   * The spacing between grid rows. This property overrides the row spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The spacing between grid rows. This property overrides the row spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default '' - meaning no override
    */
   rowGap: ResponsiveGridProps['rowGap'];
   /**
-   * The spacing between grid columns. This property overrides the column spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The spacing between grid columns. This property overrides the column spacing set by the `gap` property. You can provide a single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value (for example, `'large-100'`), or a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default '' - meaning no override
    */
   columnGap: ResponsiveGridProps['columnGap'];
   /**
-   * The number of columns and their sizes. You can use [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (for example, `'1fr auto'` or `'repeat(3, 1fr)'`) to define the grid structure. This property also accepts [responsive values](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The number of columns and their sizes. You can use [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (for example, `'1fr auto'` or `'repeat(3, 1fr)'`) to define the grid structure. This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'none'
    */
   gridTemplateColumns: ResponsiveGridProps['gridTemplateColumns'];
   /**
-   * The number of rows and their sizes. You can use [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (for example, `'1fr auto'` or `'repeat(3, 100px)'`) to define the grid structure. This property also accepts [responsive values](/docs/api/polaris/using-web-components#responsive-values) using container query syntax.
+   * The number of rows and their sizes. You can use [track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes) (for example, `'1fr auto'` or `'repeat(3, 100px)'`) to define the grid structure. This property also accepts [responsive values](/docs/api/polaris/using-polaris-web-components#responsive-values) using container query syntax.
    *
    * @default 'none'
    */
