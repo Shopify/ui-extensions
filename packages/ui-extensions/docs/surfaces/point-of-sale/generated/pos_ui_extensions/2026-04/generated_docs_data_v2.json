@@ -883,7 +883,7 @@
           "syntaxKind": "PropertySignature",
           "name": "cart",
           "value": "CartApiContent",
-          "description": "The `CartApi` object provides access to cart management functionality and real-time cart state monitoring. Access these properties through `shopify.cart` to interact with the current POS cart."
+          "description": ""
         }
       ],
       "value": "export interface CartApi {\n  cart: CartApiContent;\n}"
@@ -1346,7 +1346,7 @@
           "syntaxKind": "PropertySignature",
           "name": "camera",
           "value": "CameraApiContent",
-          "description": "Provides camera capabilities for the POS device."
+          "description": ""
         }
       ],
       "value": "export interface CameraApi {\n  camera: CameraApiContent;\n}"
@@ -1410,7 +1410,7 @@
           "syntaxKind": "PropertySignature",
           "name": "connectivity",
           "value": "ConnectivityApiContent",
-          "description": "Provides access to the current connectivity state for the POS device."
+          "description": ""
         }
       ],
       "value": "export interface ConnectivityApi {\n  connectivity: ConnectivityApiContent;\n}"
@@ -1467,7 +1467,7 @@
           "syntaxKind": "PropertySignature",
           "name": "device",
           "value": "DeviceApiContent",
-          "description": "The `DeviceApi` object provides device details and capabilities."
+          "description": ""
         }
       ],
       "value": "export interface DeviceApi {\n  device: DeviceApiContent;\n}"
@@ -1503,7 +1503,7 @@
           "syntaxKind": "PropertySignature",
           "name": "locale",
           "value": "LocaleApiContent",
-          "description": "The `LocaleApi` object provides the current locale and locale updates."
+          "description": ""
         }
       ],
       "value": "export interface LocaleApi {\n  locale: LocaleApiContent;\n}"
@@ -1598,7 +1598,7 @@
           "syntaxKind": "PropertySignature",
           "name": "deviceId",
           "value": "number",
-          "description": "The numeric ID of the device running this session.\n\nUse this to construct a [GID](/docs/api/pos-ui-extensions/2026-04/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.",
+          "description": "The numeric ID of the device running this session.\n\nUse this to construct a [GID](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.",
           "examples": [
             {
               "title": "Example",
@@ -1620,7 +1620,7 @@
           "description": "Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member."
         }
       ],
-      "value": "export interface SessionApiContent {\n  /**\n   * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.\n   */\n  currentSession: Session;\n  /**\n   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.\n   */\n  getSessionToken: () => Promise<string | undefined>;\n  /**\n   * The numeric ID of the device running this session.\n   *\n   * Use this to construct a [GID](/docs/api/pos-ui-extensions/2026-04/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.\n   *\n   * @example 123456\n   * @see [Global IDs documentation](/docs/api/usage/gids) for more about GID format and structure\n   * @see [device.getDeviceId()](/docs/api/pos-ui-extensions/2026-04/target-apis/platform-apis/device-api) for physical device identifier (UUID format)\n   */\n  deviceId: number;\n}"
+      "value": "export interface SessionApiContent {\n  /**\n   * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.\n   */\n  currentSession: Session;\n  /**\n   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.\n   */\n  getSessionToken: () => Promise<string | undefined>;\n  /**\n   * The numeric ID of the device running this session.\n   *\n   * Use this to construct a [GID](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.\n   *\n   * @example 123456\n   * @see [Global IDs documentation](/docs/api/usage/gids) for more about GID format and structure\n   * @see [device.getDeviceId()](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for physical device identifier (UUID format)\n   */\n  deviceId: number;\n}"
     }
   },
   "SessionApi": {
@@ -1635,7 +1635,7 @@
           "syntaxKind": "PropertySignature",
           "name": "session",
           "value": "SessionApiContent",
-          "description": "The `SessionApi` object provides session details and authentication methods."
+          "description": ""
         }
       ],
       "value": "export interface SessionApi {\n  session: SessionApiContent;\n}"
@@ -1671,7 +1671,7 @@
           "syntaxKind": "PropertySignature",
           "name": "toast",
           "value": "ToastApiContent",
-          "description": "The `ToastApi` object provides methods for showing toast notifications."
+          "description": ""
         }
       ],
       "value": "export interface ToastApi {\n  toast: ToastApiContent;\n}"
@@ -2313,7 +2313,7 @@
           "syntaxKind": "PropertySignature",
           "name": "productSearch",
           "value": "ProductSearchApiContent",
-          "description": "The `ProductSearchApi` object provides product search and lookup methods."
+          "description": ""
         }
       ],
       "value": "export interface ProductSearchApi {\n  productSearch: ProductSearchApiContent;\n}"
@@ -2647,7 +2647,7 @@
           "syntaxKind": "PropertySignature",
           "name": "pinPad",
           "value": "PinPadApiContent",
-          "description": "The `PinPadApi` object provides PIN entry and validation functionality."
+          "description": ""
         }
       ],
       "value": "export interface PinPadApi {\n  pinPad: PinPadApiContent;\n}"
@@ -2834,7 +2834,7 @@
           "syntaxKind": "PropertySignature",
           "name": "scanner",
           "value": "ScannerApiContent",
-          "description": "The `ScannerApi` object provides scan results and scanner controls."
+          "description": ""
         }
       ],
       "value": "export interface ScannerApi {\n  scanner: ScannerApiContent;\n}"
@@ -2862,7 +2862,7 @@
           "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "CustomerApiContent",
-          "description": "The `CustomerApi` object provides customer information for the active context."
+          "description": ""
         }
       ],
       "value": "export interface CustomerApi {\n  customer: CustomerApiContent;\n}"
@@ -2898,7 +2898,7 @@
           "syntaxKind": "PropertySignature",
           "name": "order",
           "value": "OrderApiContent",
-          "description": "The `OrderApi` object provides access to order data. Access this property through `shopify.order` to interact with the current order context."
+          "description": ""
         }
       ],
       "value": "export interface OrderApi {\n  order: OrderApiContent;\n}"
@@ -2949,7 +2949,7 @@
           "syntaxKind": "PropertySignature",
           "name": "product",
           "value": "ProductApiContent",
-          "description": "The `ProductApi` object provides product and variant details for the active context."
+          "description": ""
         }
       ],
       "value": "export interface ProductApi {\n  product: ProductApiContent;\n}"
@@ -2992,7 +2992,7 @@
           "syntaxKind": "PropertySignature",
           "name": "draftOrder",
           "value": "DraftOrderApiContent",
-          "description": "The `DraftOrderApi` object provides draft order details for the active context."
+          "description": ""
         }
       ],
       "value": "export interface DraftOrderApi {\n  draftOrder: DraftOrderApiContent;\n}"
@@ -3653,7 +3653,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "Link",
-      "description": "The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/2026-04/web-components/actions/button) instead.",
+      "description": "The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.\n\nLinks support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.",
       "isPublicDocs": true,
       "members": [
         {
@@ -5612,7 +5612,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "Modal",
-      "description": "The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.\n\nModals block interaction with the underlying interface until the merchant resolves the modal content.\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/2026-04/web-components/feedback-and-status-indicators/modal#events).",
+      "description": "The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.\n\nModals block interaction with the underlying interface until the merchant resolves the modal content.\n\nModals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/modal#events).",
       "isPublicDocs": true,
       "members": [
         {
@@ -6671,6 +6671,56 @@
       "value": "interface Divider {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).\n   * @default 'inline'\n   */\n  direction?: 'inline' | 'block';\n}"
     }
   },
+  "ActionExtensionComponents": {
+    "src/surfaces/point-of-sale/components/targets/ActionExtensionComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/ActionExtensionComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ActionExtensionComponents",
+      "value": "'Button'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "BlockExtensionComponents": {
+    "src/surfaces/point-of-sale/components/targets/BlockExtensionComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/BlockExtensionComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "BlockExtensionComponents",
+      "value": "'Badge' | 'Box' | 'Button' | 'DatePicker' | 'DateSpinner' | 'Dialog' | 'Heading' | 'Icon' | 'Image' | 'Modal' | 'POSBlock' | 'PosBlock' | 'POSBlockRow' | 'PrintPreview' | 'Section' | 'Stack' | 'Text' | 'TimePicker'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "SmartGridComponents": {
+    "src/surfaces/point-of-sale/components/targets/SmartGridComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/SmartGridComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "SmartGridComponents",
+      "value": "'Tile'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "StandardComponents": {
+    "src/surfaces/point-of-sale/components/targets/StandardComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/StandardComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "StandardComponents",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "BasicComponents": {
+    "src/surfaces/point-of-sale/components/targets/BasicComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/BasicComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "BasicComponents",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
   "BaseOutput": {
     "src/surfaces/point-of-sale/event/output/BaseOutput.ts": {
       "filePath": "src/surfaces/point-of-sale/event/output/BaseOutput.ts",
@@ -6729,120 +6779,6 @@
       "value": "interface ExtensionError extends Error {\n  /**\n   * The severity level of this error:\n   * - `'error'`: A critical error that prevents the extension from completing successfully. Errors typically block the user workflow and require resolution before proceeding.\n   * - `'warning'`: A non-critical issue that doesn't prevent extension execution but indicates a problem or unexpected condition. Warnings allow the workflow to continue but should be logged or displayed to users.\n   */\n  level: 'error' | 'warning';\n  /**\n   * The human-readable error message describing what went wrong. This message should be clear and actionable, helping merchants understand the issue and how to resolve it (for example, \"Product not found\", \"Invalid discount code\", \"Insufficient inventory\"). The message may be displayed to users in the POS interface depending on the error severity and context.\n   */\n  message: string;\n}"
     }
   },
-  "BaseApi": {
-    "src/surfaces/point-of-sale/event/data/BaseApi.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/BaseApi.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "BaseApi",
-      "value": "StorageApi",
-      "description": "Base API access provided to extension targets, currently providing access to persistent storage for saving and retrieving extension data across sessions.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseApi.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": ""
-        }
-      ]
-    }
-  },
-  "TransactionType": {
-    "src/surfaces/point-of-sale/types/transaction-type.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/transaction-type.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "TransactionType",
-      "value": "'Sale' | 'Return' | 'Exchange' | 'Reprint'",
-      "description": "The types of transactions that can be processed in POS:\n- `'Sale'`: A new sale transaction where a customer purchases products or services. This creates a new order and processes payment. The most common transaction type in POS operations.\n- `'Return'`: A return transaction where a customer returns previously purchased items for a refund. This credits back payment to the customer and returns items to inventory.\n- `'Exchange'`: An exchange transaction where a customer returns items and simultaneously purchases replacement items. This combines return and sale operations in a single transaction, often with a price adjustment.\n- `'Reprint'`: A receipt reprint operation where an existing transaction's receipt is reprinted. No new transaction is created—this only regenerates the receipt document for an existing sale, return, or exchange.",
-      "isPublicDocs": true
-    }
-  },
-  "CartUpdateEventData": {
-    "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-      "name": "CartUpdateEventData",
-      "description": "The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cart",
-          "value": "Cart",
-          "description": "The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": ""
-        }
-      ],
-      "value": "export interface CartUpdateEventData extends BaseData, BaseApi {\n  /**\n   * The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods.\n   */\n  cart: Cart;\n}"
-    }
-  },
-  "Device": {
-    "src/surfaces/point-of-sale/types/device.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/device.ts",
-      "name": "Device",
-      "description": "Defines information about the POS device where the extension is running.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/device.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "deviceId",
-          "value": "number",
-          "description": "The unique identifier for the POS device."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/device.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTablet",
-          "value": "boolean",
-          "description": "Whether the device is a tablet form factor."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/device.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": "The name of the POS device."
-        }
-      ],
-      "value": "export interface Device {\n  /**\n   * The name of the POS device.\n   */\n  name: string;\n  /**\n   * The unique identifier for the POS device.\n   */\n  deviceId: number;\n  /**\n   * Whether the device is a tablet form factor.\n   */\n  isTablet: boolean;\n}"
-    }
-  },
   "BaseData": {
     "src/surfaces/point-of-sale/event/data/BaseData.ts": {
       "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
@@ -6882,206 +6818,326 @@
       "value": "export interface BaseData {\n  /**\n   * The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored.\n   */\n  connectivity: ConnectivityApiContent;\n  /**\n   * Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations.\n   */\n  device: Device;\n  /**\n   * The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings.\n   */\n  locale: string;\n  /**\n   * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.\n   */\n  session: Session;\n}"
     }
   },
-  "CashTrackingSessionStartData": {
-    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-      "name": "CashTrackingSessionStartData",
-      "description": "The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.",
+  "Device": {
+    "src/surfaces/point-of-sale/types/device.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/device.ts",
+      "name": "Device",
+      "description": "Defines information about the POS device where the extension is running.",
       "isPublicDocs": true,
       "members": [
         {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "filePath": "src/surfaces/point-of-sale/types/device.ts",
           "syntaxKind": "PropertySignature",
-          "name": "cashTrackingSessionStart",
-          "value": "{ id: number; openingTime: string; }",
-          "description": "The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift."
+          "name": "deviceId",
+          "value": "number",
+          "description": "The unique identifier for the POS device."
         },
         {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "filePath": "src/surfaces/point-of-sale/types/device.ts",
           "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
+          "name": "isTablet",
+          "value": "boolean",
+          "description": "Whether the device is a tablet form factor."
         },
         {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "filePath": "src/surfaces/point-of-sale/types/device.ts",
           "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
+          "name": "name",
           "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
+          "description": "The name of the POS device."
+        }
+      ],
+      "value": "export interface Device {\n  /**\n   * The name of the POS device.\n   */\n  name: string;\n  /**\n   * The unique identifier for the POS device.\n   */\n  deviceId: number;\n  /**\n   * Whether the device is a tablet form factor.\n   */\n  isTablet: boolean;\n}"
+    }
+  },
+  "BaseApi": {
+    "src/surfaces/point-of-sale/event/data/BaseApi.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/BaseApi.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "BaseApi",
+      "value": "StorageApi",
+      "description": "Base API access provided to extension targets, currently providing access to persistent storage for saving and retrieving extension data across sessions.",
+      "isPublicDocs": true,
+      "members": [
         {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseApi.ts",
           "syntaxKind": "PropertySignature",
           "name": "storage",
           "value": "Storage",
           "description": ""
         }
-      ],
-      "value": "export interface CashTrackingSessionStartData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift.\n   */\n  cashTrackingSessionStart: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID distinguishes this session from other cash tracking sessions and can be used for session-specific operations, reporting, or linking transactions to sessions. The ID is assigned when the session opens and remains constant until the session closes.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and cash drawer operations began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the staff member's shift or cash handling period. Commonly used for calculating session duration, shift reporting, or determining which transactions belong to which session.\n     */\n    openingTime: string;\n  };\n}"
+      ]
     }
   },
-  "CashTrackingSessionCompleteData": {
-    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-      "name": "CashTrackingSessionCompleteData",
-      "description": "The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashTrackingSessionComplete",
-          "value": "{ id: number; openingTime: string; closingTime: string; }",
-          "description": "The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": ""
-        }
-      ],
-      "value": "export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing.\n   */\n  cashTrackingSessionComplete: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID matches the ID from when the session was opened and can be used to correlate session start and end events, retrieve session-specific data, or link all transactions that occurred during this session.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the session and can be compared with `closingTime` to calculate the total session duration or shift length.\n     */\n    openingTime: string;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was closed and ended (for example, `\"2024-05-15T17:30:00Z\"`). This marks when the staff member completed their shift, closed out the cash drawer, and finalized the session. The time between `openingTime` and `closingTime` represents the active session duration. Commonly used for shift reporting, calculating hours worked, or determining the timeframe for session-specific transactions.\n     */\n    closingTime: string;\n  };\n}"
-    }
-  },
-  "ActionExtensionComponents": {
-    "src/surfaces/point-of-sale/components/targets/ActionExtensionComponents.ts": {
-      "filePath": "src/surfaces/point-of-sale/components/targets/ActionExtensionComponents.ts",
+  "TransactionType": {
+    "src/surfaces/point-of-sale/types/transaction-type.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/transaction-type.ts",
       "syntaxKind": "TypeAliasDeclaration",
-      "name": "ActionExtensionComponents",
-      "value": "'Button'",
-      "description": "",
+      "name": "TransactionType",
+      "value": "'Sale' | 'Return' | 'Exchange' | 'Reprint'",
+      "description": "The types of transactions that can be processed in POS:\n- `'Sale'`: A new sale transaction where a customer purchases products or services. This creates a new order and processes payment. The most common transaction type in POS operations.\n- `'Return'`: A return transaction where a customer returns previously purchased items for a refund. This credits back payment to the customer and returns items to inventory.\n- `'Exchange'`: An exchange transaction where a customer returns items and simultaneously purchases replacement items. This combines return and sale operations in a single transaction, often with a price adjustment.\n- `'Reprint'`: A receipt reprint operation where an existing transaction's receipt is reprinted. No new transaction is created—this only regenerates the receipt document for an existing sale, return, or exchange.",
       "isPublicDocs": true
     }
   },
-  "BlockExtensionComponents": {
-    "src/surfaces/point-of-sale/components/targets/BlockExtensionComponents.ts": {
-      "filePath": "src/surfaces/point-of-sale/components/targets/BlockExtensionComponents.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "BlockExtensionComponents",
-      "value": "'Badge' | 'Box' | 'Button' | 'DatePicker' | 'DateSpinner' | 'Dialog' | 'Heading' | 'Icon' | 'Image' | 'Modal' | 'POSBlock' | 'PosBlock' | 'POSBlockRow' | 'PrintPreview' | 'Section' | 'Stack' | 'Text' | 'TimePicker'",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
-  "SmartGridComponents": {
-    "src/surfaces/point-of-sale/components/targets/SmartGridComponents.ts": {
-      "filePath": "src/surfaces/point-of-sale/components/targets/SmartGridComponents.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "SmartGridComponents",
-      "value": "'Tile'",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
-  "StandardComponents": {
-    "src/surfaces/point-of-sale/components/targets/StandardComponents.ts": {
-      "filePath": "src/surfaces/point-of-sale/components/targets/StandardComponents.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "StandardComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
-  "BasicComponents": {
-    "src/surfaces/point-of-sale/components/targets/BasicComponents.ts": {
-      "filePath": "src/surfaces/point-of-sale/components/targets/BasicComponents.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "BasicComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
-  "EventExtensionTargets": {
+  "RenderExtensionTargets": {
     "src/surfaces/point-of-sale/extension-targets.ts": {
       "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-      "name": "EventExtensionTargets",
+      "name": "RenderExtensionTargets",
       "description": "",
       "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "pos.cart-update.event.observe",
-          "value": "(data: CartUpdateEventData) => Promise<BaseOutput>",
-          "description": ""
+          "name": "pos.cart.line-item-details.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n\nExtensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "pos.cash-tracking-session-complete.event.observe",
-          "value": "(data: CashTrackingSessionCompleteData) => Promise<BaseOutput>",
-          "description": ""
+          "name": "pos.cart.line-item-details.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "pos.cash-tracking-session-start.event.observe",
-          "value": "(data: CashTrackingSessionStartData) => Promise<BaseOutput>",
-          "description": ""
+          "name": "pos.customer-details.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n\nExtensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "pos.transaction-complete.event.observe",
-          "value": "(data: TransactionCompleteData) => Promise<BaseOutput>",
-          "description": ""
+          "name": "pos.customer-details.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.customer-details.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n\nExtensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.draft-order-details.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n\nExtensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.draft-order-details.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.draft-order-details.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n\nExtensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.exchange.post.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n\nExtensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.exchange.post.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.exchange.post.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n\nExtensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.home.modal.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n\nExtensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.home.tile.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >",
+          "description": "Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n\nExtensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.order-details.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n\nExtensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.order-details.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.order-details.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.product-details.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.product-details.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.product-details.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n\nExtensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.purchase.post.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n\nExtensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.purchase.post.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.purchase.post.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n\nExtensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.receipt-footer.block.render",
+          "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
+          "description": "Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.receipt-header.block.render",
+          "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
+          "description": "Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.register-details.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n\nExtensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.register-details.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.register-details.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n\nExtensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.return.post.action.menu-item.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
+          "description": "Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n\nExtensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.return.post.action.render",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >",
+          "description": "Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.return.post.block.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
+          "description": "Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n\nExtensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations."
         }
       ],
-      "value": "export interface EventExtensionTargets {\n  'pos.transaction-complete.event.observe': (\n    data: TransactionCompleteData,\n  ) => Promise<BaseOutput>;\n  'pos.cash-tracking-session-start.event.observe': (\n    data: CashTrackingSessionStartData,\n  ) => Promise<BaseOutput>;\n  'pos.cash-tracking-session-complete.event.observe': (\n    data: CashTrackingSessionCompleteData,\n  ) => Promise<BaseOutput>;\n  'pos.cart-update.event.observe': (\n    data: CartUpdateEventData,\n  ) => Promise<BaseOutput>;\n}"
+      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n  \n *\n * @private\n */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n  \n *\n * @private\n */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n}"
     }
   },
-  "TransactionCompleteData": {
+  "RenderExtension": {
+    "src/extension.ts": {
+      "filePath": "src/extension.ts",
+      "name": "RenderExtension",
+      "description": "Defines the structure of a render extension, which displays UI in the Shopify admin.",
+      "members": [
+        {
+          "filePath": "src/extension.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "api",
+          "value": "Api",
+          "description": "The API object providing access to extension capabilities, data, and methods. The specific API type depends on the extension target and determines what functionality is available to your extension, such as authentication, storage, data access, and GraphQL querying."
+        },
+        {
+          "filePath": "src/extension.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "components",
+          "value": "ComponentsSet",
+          "description": "The set of UI components available for rendering your extension. This defines which Polaris components and custom components can be used to build your extension's interface. The available components vary by extension target."
+        },
+        {
+          "filePath": "src/extension.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "output",
+          "value": "void | Promise<void>",
+          "description": "The render function output. Your extension's render function should return void or a Promise that resolves to void. Use this to perform any necessary setup, rendering, or async operations when your extension loads."
+        }
+      ],
+      "value": "export interface RenderExtension<Api, ComponentsSet extends string> {\n  /**\n   * The API object providing access to extension capabilities, data, and methods. The specific API type depends on the extension target and determines what functionality is available to your extension, such as authentication, storage, data access, and GraphQL querying.\n   */\n  api: Api;\n  /**\n   * The set of UI components available for rendering your extension. This defines which Polaris components and custom components can be used to build your extension's interface. The available components vary by extension target.\n   */\n  components: ComponentsSet;\n  /**\n   * The render function output. Your extension's render function should return void or a Promise that resolves to void. Use this to perform any necessary setup, rendering, or async operations when your extension loads.\n   */\n  output: void | Promise<void>;\n}"
+    }
+  },
+  "TransactionCompleteWithReprintData": {
     "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts": {
       "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-      "name": "TransactionCompleteData",
-      "description": "The data object provided to receipt targets containing transaction details.",
+      "name": "TransactionCompleteWithReprintData",
+      "description": "The data object provided to receipt targets containing transaction details and reprint information.",
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
@@ -7122,11 +7178,11 @@
           "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
           "syntaxKind": "PropertySignature",
           "name": "transaction",
-          "value": "| SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData",
-          "description": "The transaction data, which can be one of the following types:\n- `SaleTransactionData`: Defines the data structure for completed sale transactions.\n- `ReturnTransactionData`: Defines the data structure for completed return transactions.\n- `ExchangeTransactionData`: Defines the data structure for completed exchange transactions."
+          "value": "| SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData",
+          "description": "The transaction data, which can be one of the following types:\n- `SaleTransactionData`: Defines the data structure for completed sale transactions.\n- `ReturnTransactionData`: Defines the data structure for completed return transactions.\n- `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n- `ReprintReceiptData`: Defines the data structure for receipt reprint requests."
         }
       ],
-      "value": "export interface TransactionCompleteData extends BaseData, BaseApi {\n  /**\n   * Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions.\n   */\n  storage: BaseApi['storage'];\n  /**\n   * The transaction data, which can be one of the following types:\n   * - `SaleTransactionData`: Defines the data structure for completed sale transactions.\n   * - `ReturnTransactionData`: Defines the data structure for completed return transactions.\n   * - `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n   */\n  transaction:\n    | SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData;\n}"
+      "value": "export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {\n  /**\n   * Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions.\n   */\n  storage: BaseApi['storage'];\n  /**\n   * The transaction data, which can be one of the following types:\n   * - `SaleTransactionData`: Defines the data structure for completed sale transactions.\n   * - `ReturnTransactionData`: Defines the data structure for completed return transactions.\n   * - `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n   * - `ReprintReceiptData`: Defines the data structure for receipt reprint requests.\n   */\n  transaction:\n    | SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData;\n}"
     }
   },
   "SaleTransactionData": {
@@ -7526,312 +7582,6 @@
       "value": "export interface ExchangeTransactionData extends BaseTransactionComplete {\n  /**\n   * The transaction type identifier, always 'Sale' for sale transactions.\n   */\n  transactionType: 'Exchange';\n  /**\n   * The return ID for the completed return transaction.\n   */\n  returnId?: number;\n  /**\n   * The exchange ID if the return is part of an exchange transaction.\n   */\n  exchangeId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  lineItemsAdded: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  lineItemsRemoved: LineItem[];\n}"
     }
   },
-  "RenderExtensionTargets": {
-    "src/surfaces/point-of-sale/extension-targets.ts": {
-      "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-      "name": "RenderExtensionTargets",
-      "description": "",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.cart.line-item-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n\nExtensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.cart.line-item-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.customer-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n\nExtensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.customer-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.customer-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n\nExtensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.draft-order-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n\nExtensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.draft-order-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.draft-order-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n\nExtensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.exchange.post.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n\nExtensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.exchange.post.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.exchange.post.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n\nExtensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.home.modal.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n\nExtensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.home.tile.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >",
-          "description": "Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n\nExtensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.order-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n\nExtensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.order-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.order-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.product-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.product-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.product-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n\nExtensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.purchase.post.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n\nExtensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.purchase.post.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.purchase.post.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n\nExtensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.receipt-footer.block.render",
-          "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
-          "description": "Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n\nExtensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.receipt-header.block.render",
-          "value": "RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >",
-          "description": "Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n\nExtensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.",
-          "isPrivate": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.register-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n\nExtensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.register-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.register-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n\nExtensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.return.post.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
-          "description": "Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n\nExtensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.return.post.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >",
-          "description": "Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.return.post.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
-          "description": "Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n\nExtensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations."
-        }
-      ],
-      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n  \n *\n * @private\n */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n  \n *\n * @private\n */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n}"
-    }
-  },
-  "RenderExtension": {
-    "src/extension.ts": {
-      "filePath": "src/extension.ts",
-      "name": "RenderExtension",
-      "description": "Defines the structure of a render extension, which displays UI in the Shopify admin.",
-      "members": [
-        {
-          "filePath": "src/extension.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "api",
-          "value": "Api",
-          "description": "The API object providing access to extension capabilities, data, and methods. The specific API type depends on the extension target and determines what functionality is available to your extension, such as authentication, storage, data access, and GraphQL querying."
-        },
-        {
-          "filePath": "src/extension.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "components",
-          "value": "ComponentsSet",
-          "description": "The set of UI components available for rendering your extension. This defines which Polaris components and custom components can be used to build your extension's interface. The available components vary by extension target."
-        },
-        {
-          "filePath": "src/extension.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "output",
-          "value": "void | Promise<void>",
-          "description": "The render function output. Your extension's render function should return void or a Promise that resolves to void. Use this to perform any necessary setup, rendering, or async operations when your extension loads."
-        }
-      ],
-      "value": "export interface RenderExtension<Api, ComponentsSet extends string> {\n  /**\n   * The API object providing access to extension capabilities, data, and methods. The specific API type depends on the extension target and determines what functionality is available to your extension, such as authentication, storage, data access, and GraphQL querying.\n   */\n  api: Api;\n  /**\n   * The set of UI components available for rendering your extension. This defines which Polaris components and custom components can be used to build your extension's interface. The available components vary by extension target.\n   */\n  components: ComponentsSet;\n  /**\n   * The render function output. Your extension's render function should return void or a Promise that resolves to void. Use this to perform any necessary setup, rendering, or async operations when your extension loads.\n   */\n  output: void | Promise<void>;\n}"
-    }
-  },
-  "TransactionCompleteWithReprintData": {
-    "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-      "name": "TransactionCompleteWithReprintData",
-      "description": "The data object provided to receipt targets containing transaction details and reprint information.",
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage<Record<string, unknown>>",
-          "description": "Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "transaction",
-          "value": "| SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData",
-          "description": "The transaction data, which can be one of the following types:\n- `SaleTransactionData`: Defines the data structure for completed sale transactions.\n- `ReturnTransactionData`: Defines the data structure for completed return transactions.\n- `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n- `ReprintReceiptData`: Defines the data structure for receipt reprint requests."
-        }
-      ],
-      "value": "export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {\n  /**\n   * Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions.\n   */\n  storage: BaseApi['storage'];\n  /**\n   * The transaction data, which can be one of the following types:\n   * - `SaleTransactionData`: Defines the data structure for completed sale transactions.\n   * - `ReturnTransactionData`: Defines the data structure for completed return transactions.\n   * - `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n   * - `ReprintReceiptData`: Defines the data structure for receipt reprint requests.\n   */\n  transaction:\n    | SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData;\n}"
-    }
-  },
   "ReprintReceiptData": {
     "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts": {
       "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -8031,13 +7781,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "pos.cart-update.event.observe",
-          "value": "(data: CartUpdateEventData) => Promise<BaseOutput>",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
           "name": "pos.cart.line-item-details.action.menu-item.render",
           "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n\nExtensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
@@ -8048,20 +7791,6 @@
           "name": "pos.cart.line-item-details.action.render",
           "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.cash-tracking-session-complete.event.observe",
-          "value": "(data: CashTrackingSessionCompleteData) => Promise<BaseOutput>",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.cash-tracking-session-start.event.observe",
-          "value": "(data: CashTrackingSessionStartData) => Promise<BaseOutput>",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
@@ -8260,16 +7989,9 @@
           "name": "pos.return.post.block.render",
           "value": "RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n\nExtensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "pos.transaction-complete.event.observe",
-          "value": "(data: TransactionCompleteData) => Promise<BaseOutput>",
-          "description": ""
         }
       ],
-      "value": "export interface ExtensionTargets\n  extends RenderExtensionTargets,\n    EventExtensionTargets {}"
+      "value": "export interface ExtensionTargets extends RenderExtensionTargets {}"
     }
   },
   "RenderExtensionTarget": {
@@ -8278,16 +8000,6 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "RenderExtensionTarget",
       "value": "keyof RenderExtensionTargets",
-      "description": "",
-      "isPublicDocs": true
-    }
-  },
-  "EventExtensionTarget": {
-    "src/surfaces/point-of-sale/extension-targets.ts": {
-      "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "EventExtensionTarget",
-      "value": "keyof EventExtensionTargets",
       "description": "",
       "isPublicDocs": true
     }
