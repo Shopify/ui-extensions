@@ -486,6 +486,9 @@ export interface BuyerJourney {
    * either by passing validation errors to the checkout UI or rendering the errors in your extension.
    *
    * If the merchant hasn't allowed your extension to block checkout progress, show a warning in the [checkout editor](https://shopify.dev/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor).
+   *
+   * @deprecated Use a cart and checkout validation function instead. The buyer
+   * journey intercept will be removed in a future version of the API.
    */
   intercept(interceptor: Interceptor): Promise<() => void>;
 
