@@ -45,7 +45,7 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
 
 declare const tagName = 's-qr-code';
-/** @publicDocs */
+/** @private */
 export interface QrCodeJSXProps extends Pick<QRCodeProps, 'id' | 'content'> {}
 declare global {
   interface HTMLElementTagNameMap {

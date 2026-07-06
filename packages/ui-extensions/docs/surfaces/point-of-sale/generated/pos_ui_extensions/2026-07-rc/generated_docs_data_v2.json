@@ -3407,52 +3407,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
           "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3465,38 +3422,10 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "Customer",
           "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
           "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3516,13 +3445,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "executedAt",
           "value": "string",
           "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems."
@@ -3536,32 +3458,10 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "lineItems",
           "value": "LineItem[]",
           "description": "An array of line items included in the sale transaction."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3580,21 +3480,6 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "shippingLines",
           "value": "ShippingLine[]",
@@ -3603,38 +3488,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3653,13 +3509,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "tipAmount",
           "value": "Money",
           "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
@@ -3671,13 +3520,6 @@
           "name": "transactionType",
           "value": "'Sale'",
           "description": "The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps). Narrow on this field to access transaction-type-specific properties."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "string",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
       "value": "interface SaleCompleteEvent extends BaseTransactionCompleteEvent {\n  readonly transactionType: 'Sale';\n  /**\n   * The UUID of the draft order's checkout. Set when the sale originated from\n   * a draft order; `undefined` otherwise.\n   */\n  readonly draftCheckoutUuid?: string;\n  /**\n   * An array of line items included in the sale transaction.\n   */\n  readonly lineItems: LineItem[];\n}"
@@ -3692,52 +3534,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
           "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3750,27 +3549,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "Customer",
           "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
@@ -3779,23 +3557,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "discounts",
           "value": "Discount[]",
           "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Empty when no discounts were applied. The sum of discount amounts reduces the final transaction total."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3821,32 +3585,10 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "lineItems",
           "value": "LineItem[]",
           "description": "An array of line items included in the return transaction."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3862,13 +3604,6 @@
           "name": "paymentMethods",
           "value": "Payment[]",
           "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3889,14 +3624,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "shippingLines",
           "value": "ShippingLine[]",
           "description": "An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Empty for transactions with no shipping charges (for example, in-store purchases, digital products)."
@@ -3904,38 +3631,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3954,13 +3652,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "tipAmount",
           "value": "Money",
           "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
@@ -3972,13 +3663,6 @@
           "name": "transactionType",
           "value": "'Return'",
           "description": "The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps). Narrow on this field to access transaction-type-specific properties."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "string",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
       "value": "interface ReturnCompleteEvent extends BaseTransactionCompleteEvent {\n  readonly transactionType: 'Return';\n  /**\n   * The refund ID. `undefined` when the return did not issue a refund\n   * (for example, store-credit-only returns).\n   */\n  readonly refundId?: number;\n  /**\n   * The return ID for the completed return transaction.\n   */\n  readonly returnId?: number;\n  /**\n   * The exchange ID when this return is the gift-card side of an exchange;\n   * `undefined` for standalone returns.\n   */\n  readonly exchangeId?: number;\n  /**\n   * An array of line items included in the return transaction.\n   */\n  readonly lineItems: LineItem[];\n}"
@@ -3993,52 +3677,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
           "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -4051,27 +3692,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "Customer",
           "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
@@ -4080,23 +3700,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "discounts",
           "value": "Discount[]",
           "description": "An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Empty when no discounts were applied. The sum of discount amounts reduces the final transaction total."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -4121,21 +3727,6 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "lineItemsAdded",
           "value": "LineItem[]",
@@ -4147,13 +3738,6 @@
           "name": "lineItemsRemoved",
           "value": "LineItem[]",
           "description": "An array of line items removed from the customer in the exchange."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -4172,26 +3756,11 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "returnId",
           "value": "number",
           "description": "The return-side ID. `undefined` when the exchange has no return side.",
           "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -4203,38 +3772,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -4253,13 +3793,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
           "name": "tipAmount",
           "value": "Money",
           "description": "The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.",
@@ -4271,13 +3804,6 @@
           "name": "transactionType",
           "value": "'Exchange'",
           "description": "The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps). Narrow on this field to access transaction-type-specific properties."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "string",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
       "value": "interface ExchangeCompleteEvent extends BaseTransactionCompleteEvent {\n  readonly transactionType: 'Exchange';\n  /**\n   * The exchange ID linking the return and sale sides of the exchange.\n   */\n  readonly exchangeId: number;\n  /**\n   * The return-side ID. `undefined` when the exchange has no return side.\n   */\n  readonly returnId?: number;\n  /**\n   * An array of line items added to the customer in the exchange.\n   */\n  readonly lineItemsAdded: LineItem[];\n  /**\n   * An array of line items removed from the customer in the exchange.\n   */\n  readonly lineItemsRemoved: LineItem[];\n}"
@@ -4293,109 +3819,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
           "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "number",
           "description": "The numeric identifier for the cash tracking session."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
@@ -4403,64 +3829,6 @@
           "name": "openingTime",
           "value": "string",
           "description": "ISO 8601 timestamp when the session was opened."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "string",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
       "value": "export interface CashTrackingSessionStartEvent\n  extends CashTrackingSessionEvent {}"
@@ -4476,87 +3844,9 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
           "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
           "name": "closingTime",
           "value": "string",
           "description": "ISO 8601 timestamp when the session was closed."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
@@ -4567,90 +3857,10 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
           "syntaxKind": "PropertySignature",
           "name": "openingTime",
           "value": "string",
           "description": "ISO 8601 timestamp when the session was opened."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/cash-tracking-session-events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "string",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
       "value": "export interface CashTrackingSessionCompleteEvent\n  extends CashTrackingSessionEvent {\n  /** ISO 8601 timestamp when the session was closed. */\n  readonly closingTime: string;\n}"

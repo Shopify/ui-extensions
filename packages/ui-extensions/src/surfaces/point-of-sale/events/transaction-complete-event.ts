@@ -8,7 +8,7 @@ import type {TaxLine} from '../types/tax-line';
  * Shared fields on every transaction-complete event, available regardless of
  * `transactionType`.
  */
-interface BaseTransactionCompleteEvent extends Event {
+interface BaseTransactionCompleteEvent {
   /**
    * The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps). Narrow on this field to access transaction-type-specific properties.
    */

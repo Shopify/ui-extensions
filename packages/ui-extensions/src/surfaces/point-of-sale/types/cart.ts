@@ -264,6 +264,17 @@ export interface Discount {
 }
 
 /**
+ * Optional configuration for `addLineItem`. Lets a single call create a line item and decorate it with line-item properties, avoiding the extra native call and cart sync of a separate `addLineItemProperties` call.
+ * @publicDocs
+ */
+export interface AddLineItemOptions {
+  /**
+   * Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.
+   */
+  properties?: Record<string, string>;
+}
+
+/**
  * Specifies the parameters for adding custom properties to line items. Properties are key-value pairs used for storing metadata, tracking information, or integration data.
  * @publicDocs
  */
