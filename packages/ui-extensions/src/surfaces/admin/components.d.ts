@@ -5510,7 +5510,7 @@ export interface BoxProps
    *
    * **Examples:** `base`, `large none`, `base large-100 base small`
    *
-   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default 'none'
    */
@@ -5522,7 +5522,7 @@ export interface BoxProps
    *
    * **Example:** `large none` applies `large` to the top and `none` to the bottom.
    *
-   * Overrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5530,7 +5530,7 @@ export interface BoxProps
   /**
    * The block-start padding (top in horizontal writing modes).
    *
-   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5538,7 +5538,7 @@ export interface BoxProps
   /**
    * The block-end padding (bottom in horizontal writing modes).
    *
-   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5550,7 +5550,7 @@ export interface BoxProps
    *
    * **Example:** `large none` applies `large` to the left and `none` to the right.
    *
-   * Overrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5558,7 +5558,7 @@ export interface BoxProps
   /**
    * The inline-start padding (left in LTR writing modes, right in RTL).
    *
-   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -5566,7 +5566,7 @@ export interface BoxProps
   /**
    * The inline-end padding (right in LTR writing modes, left in RTL).
    *
-   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -7052,9 +7052,9 @@ export interface GridProps
    * Adjusts spacing between elements.
    *
    * Accepts:
-   * - A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value applied to both axes, such as `large-100`
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value applied to both axes, such as `large-100`
    * - A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default 'none'
    */
@@ -7063,8 +7063,8 @@ export interface GridProps
    * s spacing between elements in the block axis. This overrides the row value of `gap`.
    *
    * Accepts:
-   * - A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -7073,8 +7073,8 @@ export interface GridProps
    * Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.
    *
    * Accepts:
-   * - A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -7084,7 +7084,7 @@ export interface GridProps
    *
    * Accepts:
    * - [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported track sizing values as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value
    *
    * @default 'none'
    */
@@ -7094,7 +7094,7 @@ export interface GridProps
    *
    * Accepts:
    * - [Track sizing values](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fixed_and_flexible_track_sizes), such as `1fr auto`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported track sizing values as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported track sizing values as a query value
    *
    * @default 'none'
    */
@@ -8686,9 +8686,9 @@ export interface StackProps
    * Adjusts spacing between elements.
    *
    * Accepts:
-   * - A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value applied to both axes, such as `large-100`
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value applied to both axes, such as `large-100`
    * - A pair of values, such as `large-100 large-500`, to set the inline and block axes respectively
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default 'none'
    */
@@ -8697,8 +8697,8 @@ export interface StackProps
    * Adjusts spacing between elements in the block axis. This overrides the row value of `gap`.
    *
    * Accepts:
-   * - A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -8707,8 +8707,8 @@ export interface StackProps
    * Adjusts spacing between elements in the inline axis. This overrides the column value of `gap`.
    *
    * Accepts:
-   * - A single [`SpacingKeyword`](/docs/api/polaris/using-web-components#scale) value, such as `large-100`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported SpacingKeyword as a query value
+   * - A single [`SpacingKeyword`](/docs/api/polaris/using-polaris-web-components#scale) value, such as `large-100`
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported SpacingKeyword as a query value
    *
    * @default '' - meaning no override
    */
@@ -8718,7 +8718,7 @@ export interface StackProps
    *
    * Accepts:
    * - A single value, either `inline` or `block`
-   * - A [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported direction values as a query value
+   * - A [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported direction values as a query value
    *
    * @default 'block'
    *
