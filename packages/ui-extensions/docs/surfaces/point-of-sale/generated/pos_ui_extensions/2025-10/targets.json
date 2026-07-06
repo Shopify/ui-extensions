@@ -65,208 +65,6 @@
       "ToastApi"
     ]
   },
-  "pos.return.post.action.menu-item.render": {
-    "components": [
-      "Button"
-    ],
-    "apis": [
-      "ActionApi",
-      "ConnectivityApi",
-      "DeviceApi",
-      "LocaleApi",
-      "OrderApi",
-      "PinPadApi",
-      "PrintApi",
-      "ProductSearchApi",
-      "SessionApi",
-      "StorageApi",
-      "ToastApi"
-    ]
-  },
-  "pos.return.post.action.render": {
-    "components": [
-      "Badge",
-      "Banner",
-      "Box",
-      "Button",
-      "Choice",
-      "ChoiceList",
-      "Clickable",
-      "DateField",
-      "DatePicker",
-      "DateSpinner",
-      "Divider",
-      "EmailField",
-      "Heading",
-      "Icon",
-      "Image",
-      "Modal",
-      "NumberField",
-      "POSBlock",
-      "Page",
-      "PosBlock",
-      "Route",
-      "Router",
-      "ScrollBox",
-      "SearchField",
-      "Section",
-      "Stack",
-      "Text",
-      "TextArea",
-      "TextField",
-      "TimeField",
-      "TimePicker"
-    ],
-    "apis": [
-      "ConnectivityApi",
-      "DeviceApi",
-      "LocaleApi",
-      "OrderApi",
-      "PinPadApi",
-      "PrintApi",
-      "ProductSearchApi",
-      "ScannerApi",
-      "SessionApi",
-      "StorageApi",
-      "ToastApi"
-    ]
-  },
-  "pos.return.post.block.render": {
-    "components": [
-      "Badge",
-      "Box",
-      "Button",
-      "DatePicker",
-      "DateSpinner",
-      "Dialog",
-      "Heading",
-      "Icon",
-      "Image",
-      "Modal",
-      "POSBlock",
-      "POSBlockRow",
-      "PosBlock",
-      "PrintPreview",
-      "Section",
-      "Stack",
-      "Text",
-      "TimePicker"
-    ],
-    "apis": [
-      "ActionApi",
-      "ConnectivityApi",
-      "DeviceApi",
-      "LocaleApi",
-      "OrderApi",
-      "PinPadApi",
-      "PrintApi",
-      "ProductSearchApi",
-      "SessionApi",
-      "StorageApi",
-      "ToastApi"
-    ]
-  },
-  "pos.exchange.post.action.menu-item.render": {
-    "components": [
-      "Button"
-    ],
-    "apis": [
-      "ActionApi",
-      "ConnectivityApi",
-      "DeviceApi",
-      "LocaleApi",
-      "OrderApi",
-      "PinPadApi",
-      "PrintApi",
-      "ProductSearchApi",
-      "SessionApi",
-      "StorageApi",
-      "ToastApi"
-    ]
-  },
-  "pos.exchange.post.action.render": {
-    "components": [
-      "Badge",
-      "Banner",
-      "Box",
-      "Button",
-      "Choice",
-      "ChoiceList",
-      "Clickable",
-      "DateField",
-      "DatePicker",
-      "DateSpinner",
-      "Divider",
-      "EmailField",
-      "Heading",
-      "Icon",
-      "Image",
-      "Modal",
-      "NumberField",
-      "POSBlock",
-      "Page",
-      "PosBlock",
-      "Route",
-      "Router",
-      "ScrollBox",
-      "SearchField",
-      "Section",
-      "Stack",
-      "Text",
-      "TextArea",
-      "TextField",
-      "TimeField",
-      "TimePicker"
-    ],
-    "apis": [
-      "ConnectivityApi",
-      "DeviceApi",
-      "LocaleApi",
-      "OrderApi",
-      "PinPadApi",
-      "PrintApi",
-      "ProductSearchApi",
-      "ScannerApi",
-      "SessionApi",
-      "StorageApi",
-      "ToastApi"
-    ]
-  },
-  "pos.exchange.post.block.render": {
-    "components": [
-      "Badge",
-      "Box",
-      "Button",
-      "DatePicker",
-      "DateSpinner",
-      "Dialog",
-      "Heading",
-      "Icon",
-      "Image",
-      "Modal",
-      "POSBlock",
-      "POSBlockRow",
-      "PosBlock",
-      "PrintPreview",
-      "Section",
-      "Stack",
-      "Text",
-      "TimePicker"
-    ],
-    "apis": [
-      "ActionApi",
-      "ConnectivityApi",
-      "DeviceApi",
-      "LocaleApi",
-      "OrderApi",
-      "PinPadApi",
-      "PrintApi",
-      "ProductSearchApi",
-      "SessionApi",
-      "StorageApi",
-      "ToastApi"
-    ]
-  },
   "pos.purchase.post.action.menu-item.render": {
     "components": [
       "Button"
@@ -861,17 +659,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.block.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
       "pos.order-details.block.render",
       "pos.product-details.action.menu-item.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "CartApi": {
@@ -904,9 +698,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -917,10 +708,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "DeviceApi": {
@@ -933,9 +721,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -946,10 +731,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "LocaleApi": {
@@ -962,9 +744,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -975,10 +754,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "PinPadApi": {
@@ -991,9 +767,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -1004,10 +777,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "PrintApi": {
@@ -1020,9 +790,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -1033,10 +800,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "ProductSearchApi": {
@@ -1049,9 +813,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -1062,10 +823,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "SessionApi": {
@@ -1078,9 +836,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -1091,10 +846,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "StorageApi": {
@@ -1107,9 +859,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -1120,10 +869,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "ToastApi": {
@@ -1136,9 +882,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.home.tile.render",
       "pos.order-details.action.menu-item.render",
@@ -1149,10 +892,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "ScannerApi": {
@@ -1160,28 +900,20 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "OrderApi": {
     "targets": [
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.order-details.action.menu-item.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "ProductApi": {
@@ -1223,17 +955,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Banner": {
@@ -1241,12 +969,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "Box": {
@@ -1256,17 +982,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Button": {
@@ -1279,9 +1001,6 @@
       "pos.draft-order-details.action.menu-item.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.menu-item.render",
       "pos.order-details.action.render",
@@ -1291,10 +1010,7 @@
       "pos.product-details.block.render",
       "pos.purchase.post.action.menu-item.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Choice": {
@@ -1302,12 +1018,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "ChoiceList": {
@@ -1315,12 +1029,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "Clickable": {
@@ -1328,12 +1040,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "DateField": {
@@ -1341,12 +1051,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "DatePicker": {
@@ -1356,17 +1064,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "DateSpinner": {
@@ -1376,17 +1080,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Divider": {
@@ -1394,12 +1094,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "EmailField": {
@@ -1407,12 +1105,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "Heading": {
@@ -1422,17 +1118,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Icon": {
@@ -1442,17 +1134,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Image": {
@@ -1462,17 +1150,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Modal": {
@@ -1482,17 +1166,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "NumberField": {
@@ -1500,12 +1180,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "POSBlock": {
@@ -1515,17 +1193,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Page": {
@@ -1533,12 +1207,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "PosBlock": {
@@ -1548,17 +1220,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Route": {
@@ -1566,12 +1234,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "Router": {
@@ -1579,12 +1245,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "ScrollBox": {
@@ -1592,12 +1256,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "SearchField": {
@@ -1605,12 +1267,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "Section": {
@@ -1620,17 +1280,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Stack": {
@@ -1640,17 +1296,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Text": {
@@ -1660,17 +1312,13 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "TextArea": {
@@ -1678,12 +1326,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "TextField": {
@@ -1691,12 +1337,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "TimeField": {
@@ -1704,12 +1348,10 @@
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
       "pos.draft-order-details.action.render",
-      "pos.exchange.post.action.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.product-details.action.render",
-      "pos.purchase.post.action.render",
-      "pos.return.post.action.render"
+      "pos.purchase.post.action.render"
     ]
   },
   "TimePicker": {
@@ -1719,50 +1361,40 @@
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
       "pos.home.modal.render",
       "pos.order-details.action.render",
       "pos.order-details.block.render",
       "pos.product-details.action.render",
       "pos.product-details.block.render",
       "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "Dialog": {
     "targets": [
       "pos.customer-details.block.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.block.render",
       "pos.order-details.block.render",
       "pos.product-details.block.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "POSBlockRow": {
     "targets": [
       "pos.customer-details.block.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.block.render",
       "pos.order-details.block.render",
       "pos.product-details.block.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   },
   "PrintPreview": {
     "targets": [
       "pos.customer-details.block.render",
       "pos.draft-order-details.block.render",
-      "pos.exchange.post.block.render",
       "pos.order-details.block.render",
       "pos.product-details.block.render",
-      "pos.purchase.post.block.render",
-      "pos.return.post.block.render"
+      "pos.purchase.post.block.render"
     ]
   }
 }
