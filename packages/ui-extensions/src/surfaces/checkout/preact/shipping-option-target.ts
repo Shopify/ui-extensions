@@ -17,6 +17,9 @@ import {useSubscription} from './subscription';
 export function useShippingOptionTarget(): {
   shippingOptionTarget: ShippingOption;
   isTargetSelected: boolean;
+  /**
+   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.
+   */
   renderMode: ShippingOptionItemRenderMode;
 } {
   const api = useApi<

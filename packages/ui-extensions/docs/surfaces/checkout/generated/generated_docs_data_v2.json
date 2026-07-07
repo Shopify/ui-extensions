@@ -5854,7 +5854,8 @@
           "syntaxKind": "PropertySignature",
           "name": "renderMode",
           "value": "ShippingOptionItemRenderMode",
-          "description": "The render mode of this shipping option, indicating how the extension is displayed in the checkout UI."
+          "description": "The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.",
+          "deprecationMessage": "Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals."
         },
         {
           "filePath": "src/surfaces/checkout/api/shipping/shipping-option-item.ts",
@@ -5864,7 +5865,7 @@
           "description": "The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.\n\nAvailable only on the corresponding item target. Shipping option item targets expose shipping option properties; pickup location item targets expose pickup location properties."
         }
       ],
-      "value": "export interface ShippingOptionItemApi {\n  /**\n   * The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  target: SubscribableSignalLike<ShippingOption>;\n\n  /**\n   * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  isTargetSelected: SubscribableSignalLike<boolean>;\n\n  /**\n   * The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n}"
+      "value": "export interface ShippingOptionItemApi {\n  /**\n   * The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  target: SubscribableSignalLike<ShippingOption>;\n\n  /**\n   * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  isTargetSelected: SubscribableSignalLike<boolean>;\n\n  /**\n   * The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.\n   *\n   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n}"
     }
   },
   "ShippingOptionItemRenderMode": {
@@ -5879,10 +5880,11 @@
           "syntaxKind": "PropertySignature",
           "name": "overlay",
           "value": "boolean",
-          "description": "Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list."
+          "description": "Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.",
+          "deprecationMessage": "Do not rely on render context. Use inline UI instead of opening overlays such as modals."
         }
       ],
-      "value": "export interface ShippingOptionItemRenderMode {\n  /**\n   * Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.\n   */\n  overlay: boolean;\n}"
+      "value": "export interface ShippingOptionItemRenderMode {\n  /**\n   * Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.\n   *\n   * @deprecated Do not rely on render context. Use inline UI instead of opening overlays such as modals.\n   */\n  overlay: boolean;\n}"
     }
   },
   "ShippingOptionListApi": {
@@ -168159,10 +168161,10 @@
       "returns": {
         "filePath": "src/surfaces/checkout/preact/shipping-option-target.ts",
         "description": "",
-        "name": "{\n  shippingOptionTarget: ShippingOption;\n  isTargetSelected: boolean;\n  renderMode: ShippingOptionItemRenderMode;\n}",
-        "value": "{\n  shippingOptionTarget: ShippingOption;\n  isTargetSelected: boolean;\n  renderMode: ShippingOptionItemRenderMode;\n}"
+        "name": "{\n  shippingOptionTarget: ShippingOption;\n  isTargetSelected: boolean;\n  /**\n   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n}",
+        "value": "{\n  shippingOptionTarget: ShippingOption;\n  isTargetSelected: boolean;\n  /**\n   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n}"
       },
-      "value": "export function useShippingOptionTarget(): {\n  shippingOptionTarget: ShippingOption;\n  isTargetSelected: boolean;\n  renderMode: ShippingOptionItemRenderMode;\n} {\n  const api = useApi<\n    | 'purchase.checkout.shipping-option-item.render-after'\n    | 'purchase.checkout.shipping-option-item.details.render'\n  >();\n  if (!api.target || api.isTargetSelected === undefined) {\n    throw new ExtensionHasNoTargetError(\n      'useShippingOptionTarget',\n      api.extension.target,\n    );\n  }\n\n  const shippingOptionTarget = useSubscription(api.target);\n  const isTargetSelected = useSubscription(api.isTargetSelected);\n  const renderMode = api.renderMode;\n\n  const shippingOption = useMemo(() => {\n    return {\n      shippingOptionTarget,\n      isTargetSelected,\n      renderMode,\n    };\n  }, [shippingOptionTarget, isTargetSelected, renderMode]);\n\n  return shippingOption;\n}"
+      "value": "export function useShippingOptionTarget(): {\n  shippingOptionTarget: ShippingOption;\n  isTargetSelected: boolean;\n  /**\n   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n} {\n  const api = useApi<\n    | 'purchase.checkout.shipping-option-item.render-after'\n    | 'purchase.checkout.shipping-option-item.details.render'\n  >();\n  if (!api.target || api.isTargetSelected === undefined) {\n    throw new ExtensionHasNoTargetError(\n      'useShippingOptionTarget',\n      api.extension.target,\n    );\n  }\n\n  const shippingOptionTarget = useSubscription(api.target);\n  const isTargetSelected = useSubscription(api.isTargetSelected);\n  const renderMode = api.renderMode;\n\n  const shippingOption = useMemo(() => {\n    return {\n      shippingOptionTarget,\n      isTargetSelected,\n      renderMode,\n    };\n  }, [shippingOptionTarget, isTargetSelected, renderMode]);\n\n  return shippingOption;\n}"
     }
   },
   "UseShopGeneratedType": {
