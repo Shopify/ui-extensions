@@ -64,6 +64,20 @@ extension.shopify.discounts.updateDiscountClasses =
     .mockReturnValue(
       createResult('updateDiscountClasses'),
     );
+
+extension.shopify.discounts.updatePurchaseType =
+  vi
+    .fn()
+    .mockReturnValue(
+      createResult('updatePurchaseType'),
+    );
+
+extension.shopify.discounts.updateRecurringCycleLimit =
+  vi
+    .fn()
+    .mockReturnValue(
+      createResult('updateRecurringCycleLimit'),
+    );
 ```
 
 ## 📂 Example
@@ -82,7 +96,9 @@ Creates a typed mock result for an admin mutation API.
 
 Supported mutations:
 
-| Mutation                  | Default                      |
-| ------------------------- | ---------------------------- |
-| `'applyMetafieldChange'`  | `{type: 'success'}`          |
-| `'updateDiscountClasses'` | `{success: true, value: []}` |
+| Mutation                      | Default                                       |
+| ----------------------------- | --------------------------------------------- |
+| `'applyMetafieldChange'`      | `{type: 'success'}`                           |
+| `'updateDiscountClasses'`     | `{success: true, value: []}`                  |
+| `'updatePurchaseType'`        | `{success: true, value: 'one_time_purchase'}` |
+| `'updateRecurringCycleLimit'` | `{success: true, value: null}`                |
