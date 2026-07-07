@@ -9257,5 +9257,30 @@
       ],
       "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n}"
     }
+  },
+  "Docs_AppBackgroundEventMethods": {
+    "src/surfaces/point-of-sale/api/docs.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/docs.ts",
+      "name": "Docs_AppBackgroundEventMethods",
+      "description": "Methods available on the `shopify` global for app background extensions.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/docs.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addEventListener",
+          "value": "<K extends keyof ShopifyEventMap>(type: K, listener: (event: ShopifyEventMap[K]) => void) => void",
+          "description": "Register a listener for a POS host event. Listeners are fire-and-forget: their return values are ignored, and their errors are caught without affecting the host or other listeners."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/docs.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeEventListener",
+          "value": "<K extends keyof ShopifyEventMap>(type: K, listener: (event: ShopifyEventMap[K]) => void) => void",
+          "description": "Remove a listener previously registered with `addEventListener`. The `listener` reference must match the one used to register."
+        }
+      ],
+      "value": "export interface Docs_AppBackgroundEventMethods\n  extends Pick<\n    BackgroundShopifyGlobal,\n    'addEventListener' | 'removeEventListener'\n  > {}"
+    }
   }
 }
