@@ -1,5 +1,67 @@
 # @shopify/ui-extensions
 
+## 2026.7.0
+
+### Minor Changes
+
+- [#4570](https://github.com/Shopify/ui-extensions/pull/4570) [`5d1769d`](https://github.com/Shopify/ui-extensions/commit/5d1769da4bba2d7cb7630f21dd0a34d75d993032) Thanks [@andrewmcgov](https://github.com/andrewmcgov)! - Add purchaseType and recurringCycleLimit subscribable fields to the DiscountsApi for discount function settings extensions.
+
+- [#4512](https://github.com/Shopify/ui-extensions/pull/4512) [`b965a97`](https://github.com/Shopify/ui-extensions/commit/b965a97767d71320ea31293b94cc13e39ccd5893) Thanks [@daniszewskik](https://github.com/daniszewskik)! - Added optional `discountAllocations` field to POS bundle `LineItemComponent` so extensions can access the discount amount allocated to each bundle component.
+
+- [#4530](https://github.com/Shopify/ui-extensions/pull/4530) [`19794cd`](https://github.com/Shopify/ui-extensions/commit/19794cd8ab69f661442b71891ece2a5bccd7efa1) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Release the `Chat` component (`s-chat`) to checkout UI extensions.
+
+- [#4531](https://github.com/Shopify/ui-extensions/pull/4531) [`c9f995c`](https://github.com/Shopify/ui-extensions/commit/c9f995c0e40b9166123f7b135c3247bbd8e3c36d) Thanks [@vctrchu](https://github.com/vctrchu)! - Added an optional `options` argument to the POS `cart.addLineItem` method so a single call can create a line item and decorate it with line-item properties (`properties`) in one operation. This avoids the extra native call and cart sync of chaining `addLineItem` → `addLineItemProperties`. Backwards compatible—the third argument is optional. Adds the `AddLineItemOptions` type.
+
+- [#4515](https://github.com/Shopify/ui-extensions/pull/4515) [`9608767`](https://github.com/Shopify/ui-extensions/commit/96087678e4b82d80afd1efb5f9974f3e988024cd) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add the POS `shopify.printing` API. `shopify.printing.getPrinters()` discovers hardware printers currently available to the device, and `shopify.printing.print(src, options?)` prints content fetched from a URL — opening the system print dialog by default, or sending directly to a printer when a `printer` (from `getPrinters()`) is passed via `options`. This supersedes `shopify.print`, which is now deprecated.
+
+- [#4489](https://github.com/Shopify/ui-extensions/pull/4489) [`8f27436`](https://github.com/Shopify/ui-extensions/commit/8f274366bdae412475113320e77bf1b6042ee735) Thanks [@akhayoon](https://github.com/akhayoon)! - Add `session.staffMember` for POS UI extensions so extensions can read and subscribe to the currently pinned staff member.
+
+### Patch Changes
+
+- [#4491](https://github.com/Shopify/ui-extensions/pull/4491) [`2399687`](https://github.com/Shopify/ui-extensions/commit/23996878ba8d12aa290a14b0f267d28ead3781f7) Thanks [@jasonblickhan](https://github.com/jasonblickhan)! - Add `admin.abandoned-checkout-index.action.render` and `admin.abandoned-checkout-index.action.should-render` extension targets for the abandoned checkout index page. This mirrors the action targets already available on other resource index pages (orders, customers, products, draft orders, etc.) and unblocks `admin.abandoned-checkout-index.action.link` admin link extensions.
+
+- [#4334](https://github.com/Shopify/ui-extensions/pull/4334) [`234aead`](https://github.com/Shopify/ui-extensions/commit/234aead78ce9ac90077a67fbc219897832aafd74) Thanks [@henrytao-me](https://github.com/henrytao-me)! - Add admin.app.home.render extension target
+
+- [#4468](https://github.com/Shopify/ui-extensions/pull/4468) [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Narrow `AppHomeApi.intents` to a new `AppHomeIntents` shape that exposes a signal-like `request` so the runtime can stream link intents into a long-lived `admin.app.home.render` extension. `WithGeneratedIntents` continues to narrow `request.value` to the CLI-generated variants.
+
+- [#4468](https://github.com/Shopify/ui-extensions/pull/4468) [`84c8acd`](https://github.com/Shopify/ui-extensions/commit/84c8acd397c77dd9f34f75b93f0b3516e66f08a5) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Expose the `Tools` API on `AppHomeApi` so `admin.app.home.render` extensions can call `shopify.tools.register(...)` even before the CLI generates typed overloads. Adds a matching mock to `@shopify/ui-extensions-tester`.
+
+- [#4499](https://github.com/Shopify/ui-extensions/pull/4499) [`e0e4f00`](https://github.com/Shopify/ui-extensions/commit/e0e4f003cd508ded2eafb0f3194c8ac92092ea51) Thanks [@charlesdobson](https://github.com/charlesdobson)! - Add `pick` action and `shopify/File` resource type to the admin Intents API, enabling extensions to open the file picker via `intents.invoke('pick:shopify/File', …)`.
+
+- [#4454](https://github.com/Shopify/ui-extensions/pull/4454) [`be8c9e2`](https://github.com/Shopify/ui-extensions/commit/be8c9e206525a41f2544810a328d901e2cdcbb95) Thanks [@lsit](https://github.com/lsit)! - Add inlineSize to the customer account Page component
+
+- [#4476](https://github.com/Shopify/ui-extensions/pull/4476) [`338a696`](https://github.com/Shopify/ui-extensions/commit/338a696739672a058813810771d737d84bee5559) Thanks [@lsit](https://github.com/lsit)! - Update docs for inlineSize prop on customer account Page component
+
+- [#4477](https://github.com/Shopify/ui-extensions/pull/4477) [`d607e02`](https://github.com/Shopify/ui-extensions/commit/d607e026f6652eafa19a1a3c8352a431b9ecc47b) Thanks [@shivinmisra-shopify](https://github.com/shivinmisra-shopify)! - Add optional `cashRoundingAdjustment` money data to POS transaction-complete payload types.
+
+- [#4442](https://github.com/Shopify/ui-extensions/pull/4442) [`060e669`](https://github.com/Shopify/ui-extensions/commit/060e669fb5ff34b30f7e8a8fb1b2696e038a4938) Thanks [@justinhenricks](https://github.com/justinhenricks)! - The `label` prop on the checkout and customer-account `s-checkbox` component now accepts a label as a slot in addition to a plain string, label slots can include only plain text and s-links.
+
+- [#4566](https://github.com/Shopify/ui-extensions/pull/4566) [`3785596`](https://github.com/Shopify/ui-extensions/commit/3785596844eb8ba8e56b6c2a9f0459b72e43d480) Thanks [@jamesvidler](https://github.com/jamesvidler)! - Deprecate `useBuyerJourneyIntercept` and the `buyerJourney.intercept` API. Use a cart and checkout validation function instead. The buyer journey intercept will be removed in a future version of the API.
+
+- [#4335](https://github.com/Shopify/ui-extensions/pull/4335) [`bf2184a`](https://github.com/Shopify/ui-extensions/commit/bf2184a8d55a756533c46a60bf022653b7bfc423) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Add generic helper types for intents
+
+- [#4346](https://github.com/Shopify/ui-extensions/pull/4346) [`ea1b6f4`](https://github.com/Shopify/ui-extensions/commit/ea1b6f4c725cc61efa03f4d859ba82ea3d50c2d1) Thanks [@JoviDeCroock](https://github.com/JoviDeCroock)! - Match correctly on optional response
+
+- [#4455](https://github.com/Shopify/ui-extensions/pull/4455) [`fe62c86`](https://github.com/Shopify/ui-extensions/commit/fe62c86217956ebf72c6b8e63b81d226f3a97da4) Thanks [@justinhenricks](https://github.com/justinhenricks)! - Add `textAlign` prop to the checkout `Paragraph` component, supporting `'start'`, `'end'`, `'center'`, and `'auto'` values.
+
+- [#4466](https://github.com/Shopify/ui-extensions/pull/4466) [`cc5f4b3`](https://github.com/Shopify/ui-extensions/commit/cc5f4b3d624bcf12bb0ce4d8dc7d71ee0494ad1e) Thanks [@vctrchu](https://github.com/vctrchu)! - Narrow the `pos.app.ready.data` cart API surface to readonly. The background extension target's `shopify.cart` now only exposes the subscribable `current` signal; cart mutation methods (`addLineItem`, `clearCart`, `applyCartDiscount`, `setCustomer`, etc.) are not typed on this target. Cart mutation remains available to interactive render targets via the unchanged `CartApi`.
+
+  Internally this splits `CartApiContent` into `ReadonlyCartApiContent` + `MutableCartApiContent` (both re-exported), and introduces `ReadonlyCartApi` for use in `DataTargetApi`.
+
+- [#4544](https://github.com/Shopify/ui-extensions/pull/4544) [`7a403f6`](https://github.com/Shopify/ui-extensions/commit/7a403f6ef14e9f7234d5bda2634b7c3b75770e82) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove native `Event` inheritance from POS event payload types.
+
+- [#4535](https://github.com/Shopify/ui-extensions/pull/4535) [`d70009a`](https://github.com/Shopify/ui-extensions/commit/d70009a05130b86c296f59463d74e40e3ca4afe1) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove the deprecated POS `.observe` event extension targets: `pos.transaction-complete.event.observe`, `pos.cash-tracking-session-start.event.observe`, `pos.cash-tracking-session-complete.event.observe`, and `pos.cart-update.event.observe`. These were early-access targets with effectively no production usage.
+
+  Use the `pos.app.ready.data` background target instead: `shopify.addEventListener('transactioncomplete' | 'cashtrackingsessionstart' | 'cashtrackingsessioncomplete', callback)` for the event targets, and `shopify.cart.current.subscribe()` for cart updates.
+
+  This also removes the `EventExtensionTargets`/`EventExtensionTarget` types and the `TransactionCompleteData`, `CashTrackingSessionStartData`, `CashTrackingSessionCompleteData`, and `CartUpdateEventData` payload types. The receipt-target type `TransactionCompleteWithReprintData` is unchanged.
+
+- [#4509](https://github.com/Shopify/ui-extensions/pull/4509) [`7129e7d`](https://github.com/Shopify/ui-extensions/commit/7129e7d73b03c7127cd4a255a668c15f800e2d9b) Thanks [@james-a-c](https://github.com/james-a-c)! - Deprecate renderMode on shipping option item
+
+- [#4349](https://github.com/Shopify/ui-extensions/pull/4349) [`f2b2b10`](https://github.com/Shopify/ui-extensions/commit/f2b2b10e99c4672c38b83cc048c2de93abbb7444) Thanks [@vividviolet](https://github.com/vividviolet)! - Publish package with admin.app.home.render target
+
+- [#4511](https://github.com/Shopify/ui-extensions/pull/4511) [`f972657`](https://github.com/Shopify/ui-extensions/commit/f972657cc48c1b6a674f55ccb586e56d5be35e80) Thanks [@lsit](https://github.com/lsit)! - Expose the `padding` prop on the checkout and customer account `s-section` components.
+
 ## 2026.7.0-rc.7
 
 ### Patch Changes
