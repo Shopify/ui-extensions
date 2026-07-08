@@ -2900,7 +2900,8 @@
           "syntaxKind": "PropertySignature",
           "name": "renderMode",
           "value": "ShippingOptionItemRenderMode",
-          "description": "The render mode of this shipping option, indicating how the extension is displayed in the checkout UI."
+          "description": "The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.",
+          "deprecationMessage": "Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals."
         },
         {
           "filePath": "src/surfaces/checkout/api/shipping/shipping-option-item.ts",
@@ -2910,7 +2911,7 @@
           "description": "The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.\n\nAvailable only on the corresponding item target. Shipping option item targets expose shipping option properties; pickup location item targets expose pickup location properties."
         }
       ],
-      "value": "export interface ShippingOptionItemApi {\n  /**\n   * The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  target: SubscribableSignalLike<ShippingOption>;\n\n  /**\n   * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  isTargetSelected: SubscribableSignalLike<boolean>;\n\n  /**\n   * The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n}"
+      "value": "export interface ShippingOptionItemApi {\n  /**\n   * The shipping option that this extension is attached to. Use this to read the option's cost, carrier, delivery estimate, and other details.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  target: SubscribableSignalLike<ShippingOption>;\n\n  /**\n   * Whether the buyer has selected the target shipping option. When `true`, the target option is the buyer's active choice. When `false`, the buyer has chosen a different shipping option.\n   *\n   * Available only on the corresponding item target. Shipping option item\n   * targets expose shipping option properties; pickup location item targets\n   * expose pickup location properties.\n   */\n  isTargetSelected: SubscribableSignalLike<boolean>;\n\n  /**\n   * The render mode of this shipping option, indicating how the extension is displayed in the checkout UI.\n   *\n   * @deprecated Do not rely on render context. This target can render inside an overlay, so use inline UI instead of opening overlays such as modals.\n   */\n  renderMode: ShippingOptionItemRenderMode;\n}"
     }
   },
   "ShippingOptionItemRenderMode": {
@@ -2925,10 +2926,11 @@
           "syntaxKind": "PropertySignature",
           "name": "overlay",
           "value": "boolean",
-          "description": "Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list."
+          "description": "Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.",
+          "deprecationMessage": "Do not rely on render context. Use inline UI instead of opening overlays such as modals."
         }
       ],
-      "value": "export interface ShippingOptionItemRenderMode {\n  /**\n   * Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.\n   */\n  overlay: boolean;\n}"
+      "value": "export interface ShippingOptionItemRenderMode {\n  /**\n   * Whether the shipping option is rendered in an overlay. When `true`, the extension appears in a modal or sheet on top of the checkout page. When `false`, the extension renders inline within the shipping options list.\n   *\n   * @deprecated Do not rely on render context. Use inline UI instead of opening overlays such as modals.\n   */\n  overlay: boolean;\n}"
     }
   },
   "ShippingOption": {
@@ -4037,7 +4039,7 @@
           "syntaxKind": "PropertySignature",
           "name": "buyerJourney",
           "value": "BuyerJourney",
-          "description": "Provides details on the buyer's progression through the checkout and lets you intercept navigation to validate data before the buyer continues.\n\nRefer to [buyer journey](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/buyer-journey#examples) examples for more information."
+          "description": "Provides details on the buyer's progression through the checkout and lets you intercept navigation to validate data before the buyer continues."
         },
         {
           "filePath": "src/surfaces/checkout/api/standard/standard.ts",
@@ -4228,7 +4230,7 @@
           ]
         }
       ],
-      "value": "export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {\n  /**\n   * Tracks custom events and sends visitor information to\n   * [Web Pixels](/docs/apps/marketing). Use `publish()` to emit events\n   * and `visitor()` to submit buyer contact details.\n   */\n  analytics: Analytics;\n\n  /**\n   * The gift cards that have been applied to the checkout. Each entry includes\n   * the last four characters of the gift card code, the amount used at\n   * checkout, and the card's remaining balance.\n   */\n  appliedGiftCards: SubscribableSignalLike<AppliedGiftCard[]>;\n\n  /**\n   * The cart instructions used to create the checkout and possibly limit extension capabilities.\n   *\n   * These instructions should be checked before performing any actions that might be affected by them.\n   *\n   * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,\n   * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.\n   *\n   * > Caution: Check cart instructions before calling select APIs, as\n   * > some may not be available. See the\n   * > [Cart Instructions API](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)\n   * > for more information.\n   *\n   */\n  instructions: SubscribableSignalLike<CartInstructions>;\n\n  /**\n   * The metafields requested in the\n   * [`shopify.extension.toml`](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration)\n   * file. These metafields are updated when there's a change in the merchandise items\n   * being purchased by the customer.\n   *\n   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` isn't supported. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  appMetafields: SubscribableSignalLike<AppMetafieldEntry[]>;\n\n  /**\n   * The custom key-value attributes attached to the cart or checkout. These are set by the buyer or by an extension using `applyAttributeChange()`. The list is empty if no attributes have been added.\n   */\n  attributes: SubscribableSignalLike<Attribute[]>;\n\n  /**\n   * All payment options available to the buyer for this checkout, such as\n   * credit cards, wallets, and local payment methods. The list depends on\n   * the shop's payment configuration and the buyer's region.\n   *\n   * The set of payment options can change when the buyer updates their\n   * address or cart, so subscribe to changes rather than reading once\n   * during initialization. Each option exposes `handle` and `type` only.\n   * Provider names, logos, fees, and installment terms aren't available.\n   */\n  availablePaymentOptions: SubscribableSignalLike<PaymentOption[]>;\n\n  /**\n   * Information about the buyer that's interacting with the checkout. The property is available only if the extension has access to protected customer data.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  buyerIdentity?: BuyerIdentity;\n\n  /**\n   * Provides details on the buyer's progression through the checkout and lets you intercept navigation to validate data before the buyer continues.\n   *\n   * Refer to [buyer journey](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/buyer-journey#examples)\n   * examples for more information.\n   */\n  buyerJourney: BuyerJourney;\n\n  /**\n   * Settings applied to the buyer's checkout.\n   */\n  checkoutSettings: SubscribableSignalLike<CheckoutSettings>;\n\n  /**\n   * A stable ID that represents the current checkout.\n   *\n   * The value is `undefined` when the checkout hasn't been created on the server yet.\n   *\n   * Use this to correlate checkout sessions across your extension, web pixels, and backend systems.\n   *\n   * This matches the `data.checkout.token` field in a [checkout-related WebPixel event](/docs/api/web-pixels-api/standard-events/checkout_started#properties-propertydetail-data)\n   * and the `checkout_token` field in the [REST Admin API `Order` resource](/docs/api/admin-rest/unstable/resources/order#resource-object).\n   *\n   * Can be `undefined`. Handle the `undefined` state before using the value.\n   */\n  checkoutToken: SubscribableSignalLike<CheckoutToken | undefined>;\n\n  /**\n   * The cost breakdown for the current checkout, including subtotal, shipping, tax, and total amounts. These values update as the buyer progresses through checkout and costs like shipping and tax are calculated.\n   */\n  cost: CartCost;\n\n  /**\n   * The delivery groups for this checkout. Each group contains one or more cart lines and the available delivery options (shipping, pickup point, or pickup location) for those items.\n   *\n   * Empty until the buyer enters enough address information for Shopify to\n   * calculate shipping rates.\n   */\n  deliveryGroups: SubscribableSignalLike<DeliveryGroup[]>;\n\n  /**\n   * The discount codes currently applied to the checkout. The list is empty if no discount codes have been applied. Use `applyDiscountCodeChange()` to add or remove codes.\n   */\n  discountCodes: SubscribableSignalLike<CartDiscountCode[]>;\n\n  /**\n   * The discount allocations applied to the entire cart, including automatic discounts, code-based discounts, and custom discounts from [Shopify Functions](/docs/apps/build/functions). Each allocation indicates how much was discounted and how the discount was triggered.\n   */\n  discountAllocations: SubscribableSignalLike<CartDiscountAllocation[]>;\n\n  /**\n   * Metadata about the running extension, including the current target, API version,\n   * capabilities, and editor context. Use this to conditionally render content\n   * based on where the extension is running.\n   */\n  extension: Extension<Target>;\n\n  /**\n   * The identifier that specifies where in Shopify's UI your code is being\n   * injected. This is one of the targets you've included in your\n   * extension's configuration file.\n   *\n   * @example 'purchase.checkout.block.render'\n   * @see /docs/api/checkout-ui-extensions/{API_VERSION}/extension-targets-overview\n   * @see /docs/apps/app-extensions/configuration#targets\n   *\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: Target;\n\n  /**\n   * Utilities for translating strings, formatting currencies, numbers, and dates\n   * according to the buyer's locale. Use alongside\n   * [`localization`](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization)\n   * to build fully localized extensions.\n   */\n  i18n: I18n;\n\n  /**\n   * The list of line items the buyer intends to purchase. Each entry includes the merchandise, quantity, cost, and any custom attributes. Use `applyCartLinesChange()` to add, remove, or update line items.\n   */\n  lines: SubscribableSignalLike<CartLine[]>;\n\n  /**\n   * The buyer's language, country, currency, and timezone context. For\n   * formatting and translation helpers, use the\n   * [`i18n`](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#properties-propertydetail-i18n)\n   * object instead.\n   */\n  localization: Localization;\n\n  /**\n   * A note left by the customer to the merchant, either in their cart or during checkout.\n   *\n   * The value is `undefined` if the buyer hasn't entered a note. Use this to display or react to order-level instructions such as delivery preferences or gift messages.\n   */\n  note: SubscribableSignalLike<string | undefined>;\n\n  /**\n   * The method used to query the Storefront GraphQL API with a prefetched token.\n   *\n   */\n  query: <Data = unknown, Variables = Record<string, unknown>>(\n    query: string,\n    options?: {variables?: Variables; version?: StorefrontApiVersion},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n\n  /**\n   * The payment options the buyer has currently selected. This updates as\n   * the buyer changes their payment method. The array can contain multiple\n   * entries when the buyer splits payment across methods (for example, a\n   * gift card and a credit card).\n   *\n   * Each option exposes `handle` and `type` only. Provider names, logos,\n   * fees, and installment terms aren't available.\n   */\n  selectedPaymentOptions: SubscribableSignalLike<SelectedPaymentOption[]>;\n\n  /**\n   * The session token providing a set of claims as a signed JSON Web Token (JWT).\n   *\n   * The token has a TTL of five minutes.\n   *\n   * If the previous token expires, this value reflects a new session token with a new signature and expiry.\n   *\n   * Learn more about [session tokens](/docs/apps/build/authentication-authorization/session-tokens).\n   */\n  sessionToken: SessionToken;\n\n  /**\n   * The settings matching the settings definition written in the\n   * [`shopify.extension.toml`](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.\n   *\n   *  Refer to [settings examples](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/settings#examples) for more information.\n   *\n   * > Note: When an extension is being installed in the editor, the settings are empty until\n   * a merchant sets a value. In that case, this object updates in real time as a merchant fills in the settings.\n   */\n  settings: SubscribableSignalLike<ExtensionSettings>;\n\n  /**\n   * The proposed customer shipping address. During the information step, the address\n   * updates when the field is committed (on change) rather than every keystroke.\n   * The property is available only if the extension has access to protected customer\n   * data. When available, the subscribable value is `undefined` if delivery isn't required.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  shippingAddress?: SubscribableSignalLike<ShippingAddress | undefined>;\n\n  /**\n   * The proposed customer billing address. The address updates when the field is\n   * committed (on change) rather than every keystroke. The property is available only\n   * if the extension has access to protected customer data. The subscribable value is\n   * `undefined` if the billing address hasn't been provided yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;\n\n  /**\n   * The store where the checkout is taking place, including the shop name,\n   * storefront URL, `.myshopify.com` subdomain, and a globally-unique ID.\n   */\n  shop: Shop;\n\n  /**\n   * Key-value storage that persists across page loads within the current checkout\n   * session. Data is shared across all activated targets associated with\n   * this extension.\n   *\n   * > Caution: Data persistence isn't guaranteed and storage is cleared when the\n   * buyer starts a new checkout.\n   */\n  storage: Storage;\n\n  /**\n   * The renderer version being used for the extension.\n   *\n   * @example '2025-10'\n   */\n  version: Version;\n\n  /**\n   * Customer privacy consent settings and a flag denoting if consent has previously been collected.\n   */\n  customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;\n\n  /**\n   * Enables setting and updating customer privacy consent settings and tracking consent metafields.\n   *\n   * > Note: Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) to be set to `true`.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  applyTrackingConsentChange: ApplyTrackingConsentChangeType;\n\n  /**\n   * Additional region-specific fields required during checkout, such as tax identification numbers (Brazil's CPF/CNPJ) or customs credentials. The property is available only if the extension has access to protected customer data. The array is empty if the current checkout doesn't require any localized fields.\n   */\n  localizedFields?: SubscribableSignalLike<LocalizedField[]>;\n}"
+      "value": "export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {\n  /**\n   * Tracks custom events and sends visitor information to\n   * [Web Pixels](/docs/apps/marketing). Use `publish()` to emit events\n   * and `visitor()` to submit buyer contact details.\n   */\n  analytics: Analytics;\n\n  /**\n   * The gift cards that have been applied to the checkout. Each entry includes\n   * the last four characters of the gift card code, the amount used at\n   * checkout, and the card's remaining balance.\n   */\n  appliedGiftCards: SubscribableSignalLike<AppliedGiftCard[]>;\n\n  /**\n   * The cart instructions used to create the checkout and possibly limit extension capabilities.\n   *\n   * These instructions should be checked before performing any actions that might be affected by them.\n   *\n   * For example, if you intend to add a discount code via the `applyDiscountCodeChange` method,\n   * check `discounts.canUpdateDiscountCodes` to ensure it's supported in this checkout.\n   *\n   * > Caution: Check cart instructions before calling select APIs, as\n   * > some may not be available. See the\n   * > [Cart Instructions API](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)\n   * > for more information.\n   *\n   */\n  instructions: SubscribableSignalLike<CartInstructions>;\n\n  /**\n   * The metafields requested in the\n   * [`shopify.extension.toml`](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration)\n   * file. These metafields are updated when there's a change in the merchandise items\n   * being purchased by the customer.\n   *\n   * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` isn't supported. See [app owned metafields](/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  appMetafields: SubscribableSignalLike<AppMetafieldEntry[]>;\n\n  /**\n   * The custom key-value attributes attached to the cart or checkout. These are set by the buyer or by an extension using `applyAttributeChange()`. The list is empty if no attributes have been added.\n   */\n  attributes: SubscribableSignalLike<Attribute[]>;\n\n  /**\n   * All payment options available to the buyer for this checkout, such as\n   * credit cards, wallets, and local payment methods. The list depends on\n   * the shop's payment configuration and the buyer's region.\n   *\n   * The set of payment options can change when the buyer updates their\n   * address or cart, so subscribe to changes rather than reading once\n   * during initialization. Each option exposes `handle` and `type` only.\n   * Provider names, logos, fees, and installment terms aren't available.\n   */\n  availablePaymentOptions: SubscribableSignalLike<PaymentOption[]>;\n\n  /**\n   * Information about the buyer that's interacting with the checkout. The property is available only if the extension has access to protected customer data.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  buyerIdentity?: BuyerIdentity;\n\n  /**\n   * Provides details on the buyer's progression through the checkout and lets you intercept navigation to validate data before the buyer continues.\n   */\n  buyerJourney: BuyerJourney;\n\n  /**\n   * Settings applied to the buyer's checkout.\n   */\n  checkoutSettings: SubscribableSignalLike<CheckoutSettings>;\n\n  /**\n   * A stable ID that represents the current checkout.\n   *\n   * The value is `undefined` when the checkout hasn't been created on the server yet.\n   *\n   * Use this to correlate checkout sessions across your extension, web pixels, and backend systems.\n   *\n   * This matches the `data.checkout.token` field in a [checkout-related WebPixel event](/docs/api/web-pixels-api/standard-events/checkout_started#properties-propertydetail-data)\n   * and the `checkout_token` field in the [REST Admin API `Order` resource](/docs/api/admin-rest/unstable/resources/order#resource-object).\n   *\n   * Can be `undefined`. Handle the `undefined` state before using the value.\n   */\n  checkoutToken: SubscribableSignalLike<CheckoutToken | undefined>;\n\n  /**\n   * The cost breakdown for the current checkout, including subtotal, shipping, tax, and total amounts. These values update as the buyer progresses through checkout and costs like shipping and tax are calculated.\n   */\n  cost: CartCost;\n\n  /**\n   * The delivery groups for this checkout. Each group contains one or more cart lines and the available delivery options (shipping, pickup point, or pickup location) for those items.\n   *\n   * Empty until the buyer enters enough address information for Shopify to\n   * calculate shipping rates.\n   */\n  deliveryGroups: SubscribableSignalLike<DeliveryGroup[]>;\n\n  /**\n   * The discount codes currently applied to the checkout. The list is empty if no discount codes have been applied. Use `applyDiscountCodeChange()` to add or remove codes.\n   */\n  discountCodes: SubscribableSignalLike<CartDiscountCode[]>;\n\n  /**\n   * The discount allocations applied to the entire cart, including automatic discounts, code-based discounts, and custom discounts from [Shopify Functions](/docs/apps/build/functions). Each allocation indicates how much was discounted and how the discount was triggered.\n   */\n  discountAllocations: SubscribableSignalLike<CartDiscountAllocation[]>;\n\n  /**\n   * Metadata about the running extension, including the current target, API version,\n   * capabilities, and editor context. Use this to conditionally render content\n   * based on where the extension is running.\n   */\n  extension: Extension<Target>;\n\n  /**\n   * The identifier that specifies where in Shopify's UI your code is being\n   * injected. This is one of the targets you've included in your\n   * extension's configuration file.\n   *\n   * @example 'purchase.checkout.block.render'\n   * @see /docs/api/checkout-ui-extensions/{API_VERSION}/extension-targets-overview\n   * @see /docs/apps/app-extensions/configuration#targets\n   *\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: Target;\n\n  /**\n   * Utilities for translating strings, formatting currencies, numbers, and dates\n   * according to the buyer's locale. Use alongside\n   * [`localization`](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization)\n   * to build fully localized extensions.\n   */\n  i18n: I18n;\n\n  /**\n   * The list of line items the buyer intends to purchase. Each entry includes the merchandise, quantity, cost, and any custom attributes. Use `applyCartLinesChange()` to add, remove, or update line items.\n   */\n  lines: SubscribableSignalLike<CartLine[]>;\n\n  /**\n   * The buyer's language, country, currency, and timezone context. For\n   * formatting and translation helpers, use the\n   * [`i18n`](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#properties-propertydetail-i18n)\n   * object instead.\n   */\n  localization: Localization;\n\n  /**\n   * A note left by the customer to the merchant, either in their cart or during checkout.\n   *\n   * The value is `undefined` if the buyer hasn't entered a note. Use this to display or react to order-level instructions such as delivery preferences or gift messages.\n   */\n  note: SubscribableSignalLike<string | undefined>;\n\n  /**\n   * The method used to query the Storefront GraphQL API with a prefetched token.\n   *\n   */\n  query: <Data = unknown, Variables = Record<string, unknown>>(\n    query: string,\n    options?: {variables?: Variables; version?: StorefrontApiVersion},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n\n  /**\n   * The payment options the buyer has currently selected. This updates as\n   * the buyer changes their payment method. The array can contain multiple\n   * entries when the buyer splits payment across methods (for example, a\n   * gift card and a credit card).\n   *\n   * Each option exposes `handle` and `type` only. Provider names, logos,\n   * fees, and installment terms aren't available.\n   */\n  selectedPaymentOptions: SubscribableSignalLike<SelectedPaymentOption[]>;\n\n  /**\n   * The session token providing a set of claims as a signed JSON Web Token (JWT).\n   *\n   * The token has a TTL of five minutes.\n   *\n   * If the previous token expires, this value reflects a new session token with a new signature and expiry.\n   *\n   * Learn more about [session tokens](/docs/apps/build/authentication-authorization/session-tokens).\n   */\n  sessionToken: SessionToken;\n\n  /**\n   * The settings matching the settings definition written in the\n   * [`shopify.extension.toml`](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.\n   *\n   *  Refer to [settings examples](/docs/api/checkout-ui-extensions/{API_VERSION}/apis/settings#examples) for more information.\n   *\n   * > Note: When an extension is being installed in the editor, the settings are empty until\n   * a merchant sets a value. In that case, this object updates in real time as a merchant fills in the settings.\n   */\n  settings: SubscribableSignalLike<ExtensionSettings>;\n\n  /**\n   * The proposed customer shipping address. During the information step, the address\n   * updates when the field is committed (on change) rather than every keystroke.\n   * The property is available only if the extension has access to protected customer\n   * data. When available, the subscribable value is `undefined` if delivery isn't required.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  shippingAddress?: SubscribableSignalLike<ShippingAddress | undefined>;\n\n  /**\n   * The proposed customer billing address. The address updates when the field is\n   * committed (on change) rather than every keystroke. The property is available only\n   * if the extension has access to protected customer data. The subscribable value is\n   * `undefined` if the billing address hasn't been provided yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  billingAddress?: SubscribableSignalLike<MailingAddress | undefined>;\n\n  /**\n   * The store where the checkout is taking place, including the shop name,\n   * storefront URL, `.myshopify.com` subdomain, and a globally-unique ID.\n   */\n  shop: Shop;\n\n  /**\n   * Key-value storage that persists across page loads within the current checkout\n   * session. Data is shared across all activated targets associated with\n   * this extension.\n   *\n   * > Caution: Data persistence isn't guaranteed and storage is cleared when the\n   * buyer starts a new checkout.\n   */\n  storage: Storage;\n\n  /**\n   * The renderer version being used for the extension.\n   *\n   * @example '2025-10'\n   */\n  version: Version;\n\n  /**\n   * Customer privacy consent settings and a flag denoting if consent has previously been collected.\n   */\n  customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;\n\n  /**\n   * Enables setting and updating customer privacy consent settings and tracking consent metafields.\n   *\n   * > Note: Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) to be set to `true`.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  applyTrackingConsentChange: ApplyTrackingConsentChangeType;\n\n  /**\n   * Additional region-specific fields required during checkout, such as tax identification numbers (Brazil's CPF/CNPJ) or customs credentials. The property is available only if the extension has access to protected customer data. The array is empty if the current checkout doesn't require any localized fields.\n   */\n  localizedFields?: SubscribableSignalLike<LocalizedField[]>;\n}"
     }
   },
   "Analytics": {
@@ -5018,7 +5020,8 @@
           "syntaxKind": "MethodSignature",
           "name": "intercept",
           "value": "(interceptor: Interceptor) => Promise<() => void>",
-          "description": "Installs a function for intercepting and preventing progress on checkout.\n\nThis returns a promise that resolves to a teardown function. Calling the teardown function removes the interceptor.\n\nTo block checkout progress, you must set the [block_progress](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress) capability in your extension's configuration.\n\nIf you do, then you're expected to inform the buyer why navigation was blocked, either by passing validation errors to the checkout UI or rendering the errors in your extension.\n\nIf the merchant hasn't allowed your extension to block checkout progress, show a warning in the [checkout editor](/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor)."
+          "description": "Installs a function for intercepting and preventing progress on checkout.\n\nThis returns a promise that resolves to a teardown function. Calling the teardown function removes the interceptor.\n\nTo block checkout progress, you must set the [block_progress](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress) capability in your extension's configuration.\n\nIf you do, then you're expected to inform the buyer why navigation was blocked, either by passing validation errors to the checkout UI or rendering the errors in your extension.\n\nIf the merchant hasn't allowed your extension to block checkout progress, show a warning in the [checkout editor](/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor).",
+          "deprecationMessage": "Use a cart and checkout validation function instead. The buyer\njourney intercept will be removed in a future version of the API."
         },
         {
           "filePath": "src/surfaces/checkout/api/standard/standard.ts",
@@ -5028,7 +5031,7 @@
           "description": "All possible steps the buyer can take to complete checkout. These steps vary depending on whether the checkout is one-page or three-page, and on the shop's configuration."
         }
       ],
-      "value": "export interface BuyerJourney {\n  /**\n   * Installs a function for intercepting and preventing progress on checkout.\n   *\n   * This returns a promise that resolves to a teardown function. Calling the\n   * teardown function removes the interceptor.\n   *\n   * To block checkout progress, you must set the [block_progress](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress)\n   * capability in your extension's configuration.\n   *\n   * If you do, then you're expected to inform the buyer why navigation was blocked,\n   * either by passing validation errors to the checkout UI or rendering the errors in your extension.\n   *\n   * If the merchant hasn't allowed your extension to block checkout progress, show a warning in the [checkout editor](/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor).\n   */\n  intercept(interceptor: Interceptor): Promise<() => void>;\n\n  /**\n   * Whether the buyer has completed submitting their order. When `true`, the buyer is on the order status page after submitting payment. When `false`, the buyer is still in the checkout flow.\n   */\n  completed: SubscribableSignalLike<boolean>;\n  /**\n   * All possible steps the buyer can take to complete checkout. These steps vary depending on whether the checkout is one-page or three-page, and on the shop's configuration.\n   */\n  steps: SubscribableSignalLike<BuyerJourneyStep[]>;\n  /**\n   * The step of checkout the buyer is currently on. The value is `undefined` if the current step can't be determined.\n   */\n  activeStep: SubscribableSignalLike<BuyerJourneyStepReference | undefined>;\n}"
+      "value": "export interface BuyerJourney {\n  /**\n   * Installs a function for intercepting and preventing progress on checkout.\n   *\n   * This returns a promise that resolves to a teardown function. Calling the\n   * teardown function removes the interceptor.\n   *\n   * To block checkout progress, you must set the [block_progress](/docs/api/checkout-ui-extensions/{API_VERSION}/configuration#block-progress)\n   * capability in your extension's configuration.\n   *\n   * If you do, then you're expected to inform the buyer why navigation was blocked,\n   * either by passing validation errors to the checkout UI or rendering the errors in your extension.\n   *\n   * If the merchant hasn't allowed your extension to block checkout progress, show a warning in the [checkout editor](/docs/apps/build/checkout/test-checkout-ui-extensions#test-the-extension-in-the-checkout-editor).\n   *\n   * @deprecated Use a cart and checkout validation function instead. The buyer\n   * journey intercept will be removed in a future version of the API.\n   */\n  intercept(interceptor: Interceptor): Promise<() => void>;\n\n  /**\n   * Whether the buyer has completed submitting their order. When `true`, the buyer is on the order status page after submitting payment. When `false`, the buyer is still in the checkout flow.\n   */\n  completed: SubscribableSignalLike<boolean>;\n  /**\n   * All possible steps the buyer can take to complete checkout. These steps vary depending on whether the checkout is one-page or three-page, and on the shop's configuration.\n   */\n  steps: SubscribableSignalLike<BuyerJourneyStep[]>;\n  /**\n   * The step of checkout the buyer is currently on. The value is `undefined` if the current step can't be determined.\n   */\n  activeStep: SubscribableSignalLike<BuyerJourneyStepReference | undefined>;\n}"
     }
   },
   "BuyerJourneyStepReference": {
@@ -42585,6 +42588,41 @@
       "value": "export interface ButtonElement extends ButtonElementProps, Omit<HTMLElement, 'id' | 'onclick'> {\n    onclick: ButtonEvents['onClick'];\n}"
     }
   },
+  "ChatElementProps": {
+    "src/surfaces/checkout/components/Chat.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat.ts",
+      "name": "ChatElementProps",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "ChatProps$1",
+          "description": "A label that describes the purpose of the chat, announced by assistive technologies like screen readers.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blockSize",
+          "value": "",
+          "description": "Adjust the block size.\n\nCheckout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n\nLearn more about [block size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "inlineSize",
+          "value": "",
+          "description": "Adjust the inline size.\n\nCheckout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n\nLearn more about [inline size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChatElementProps extends Pick<ChatProps$1, 'accessibilityLabel' | 'blockSize' | 'id' | 'inlineSize'> {\n    /**\n     * A label that describes the purpose of the chat, announced by assistive technologies like screen readers.\n     */\n    accessibilityLabel?: ChatProps$1['accessibilityLabel'];\n    /**\n     * Adjust the block size.\n     *\n     * Checkout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n     *\n     * Learn more about [block size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).\n     */\n    blockSize?: Extract<ChatProps$1['blockSize'], `${number}px` | '0'>;\n    /**\n     * Adjust the inline size.\n     *\n     * Checkout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n     *\n     * Learn more about [inline size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).\n     */\n    inlineSize?: Extract<ChatProps$1['inlineSize'], `${number}px` | '0'>;\n}"
+    }
+  },
   "ChatProps": {
     "src/surfaces/checkout/components/Chat.ts": {
       "filePath": "src/surfaces/checkout/components/Chat.ts",
@@ -42595,9 +42633,17 @@
         {
           "filePath": "src/surfaces/checkout/components/Chat.ts",
           "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "ChatProps$1",
+          "description": "A label that describes the purpose of the chat, announced by assistive technologies like screen readers.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
           "name": "blockSize",
           "value": "",
-          "description": "",
+          "description": "Adjust the block size.\n\nCheckout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n\nLearn more about [block size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).",
           "isOptional": true
         },
         {
@@ -42605,19 +42651,2358 @@
           "syntaxKind": "PropertySignature",
           "name": "inlineSize",
           "value": "",
-          "description": "",
+          "description": "Adjust the inline size.\n\nCheckout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n\nLearn more about [inline size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChatProps extends ChatElementProps, ChatEvents {\n}"
+    }
+  },
+  "ChatElementEvents": {
+    "src/surfaces/checkout/components/Chat.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat.ts",
+      "name": "ChatElementEvents",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ready",
+          "value": "CallbackEventListener<typeof tagName>",
+          "description": "A callback that fires when the embedded page is ready and a message port has been created to communicate with the host page.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ChatElementEvents {\n    /**\n     * A callback that fires when the embedded page is ready and a message port has been created to communicate with the host page.\n     */\n    ready?: CallbackEventListener<typeof tagName>;\n}"
+    }
+  },
+  "ChatElementMethods": {
+    "src/surfaces/checkout/components/Chat.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat.ts",
+      "name": "ChatElementMethods",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "contentWindow",
+          "value": "{\n        postMessage(message: any): void;\n    }",
+          "description": "Returns an object exposing a `postMessage` method used to send messages to the embedded page rendered inside the chat iframe. Pair this with the `ready` event (or `onReady` callback) to know when the message channel is available."
+        }
+      ],
+      "value": "export interface ChatElementMethods {\n    /**\n     * Returns an object exposing a `postMessage` method used to send messages to the embedded page rendered inside the chat iframe. Pair this with the `ready` event (or `onReady` callback) to know when the message channel is available.\n     */\n    readonly contentWindow: {\n        postMessage(message: any): void;\n    };\n}"
+    }
+  },
+  "ChatElement": {
+    "src/surfaces/checkout/components/Chat.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat.ts",
+      "name": "ChatElement",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessibilityLabel",
+          "value": "ChatProps$1",
+          "description": "A label that describes the purpose of the chat, announced by assistive technologies like screen readers.",
           "isOptional": true
         },
         {
           "filePath": "src/surfaces/checkout/components/Chat.ts",
           "syntaxKind": "PropertySignature",
-          "name": "remoteMethods",
-          "value": "Record<string, (...args: unknown[]) => unknown>",
-          "description": "Construct a type with a set of properties K of type T",
+          "name": "accessKey",
+          "value": "string",
+          "description": "The **`HTMLElement.accessKey`** property sets the keystroke which a user can press to jump to a given element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKey)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "accessKeyLabel",
+          "value": "string",
+          "description": "The **`HTMLElement.accessKeyLabel`** read-only property returns a string containing the element's browser-assigned access key (if any); otherwise it returns an empty string.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/accessKeyLabel)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addEventListener",
+          "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | AddEventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void; }",
+          "description": "\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)\n\nThe **`addEventListener()`** method of the EventTarget interface sets up a function that will be called whenever the specified event is delivered to the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/addEventListener)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "after",
+          "value": "(...nodes: (string | Node)[]) => void",
+          "description": "Inserts nodes just after node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/after)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "animate",
+          "value": "(keyframes: Keyframe[] | PropertyIndexedKeyframes, options?: number | KeyframeAnimationOptions) => Animation",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animate)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "append",
+          "value": "(...nodes: (string | Node)[]) => void",
+          "description": "Inserts nodes after the last child of node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/append)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "appendChild",
+          "value": "<T extends Node>(node: T) => T",
+          "description": "The **`appendChild()`** method of the Node interface adds a node to the end of the list of children of a specified parent node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/appendChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaActiveDescendantElement",
+          "value": "Element | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaActiveDescendantElement)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaAtomic",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAtomic)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaAutoComplete",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaAutoComplete)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaBrailleLabel",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleLabel)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaBrailleRoleDescription",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBrailleRoleDescription)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaBusy",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaBusy)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaChecked",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaChecked)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaColCount",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColCount)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaColIndex",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndex)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaColIndexText",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColIndexText)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaColSpan",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaColSpan)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaControlsElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaControlsElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaCurrent",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaCurrent)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaDescribedByElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescribedByElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaDescription",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDescription)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaDetailsElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDetailsElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaDisabled",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaDisabled)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaErrorMessageElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaErrorMessageElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaExpanded",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaExpanded)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaFlowToElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaFlowToElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaHasPopup",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHasPopup)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaHidden",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaHidden)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaInvalid",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaInvalid)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaKeyShortcuts",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaKeyShortcuts)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaLabel",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabel)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaLabelledByElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLabelledByElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaLevel",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLevel)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaLive",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaLive)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaModal",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaModal)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaMultiLine",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiLine)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaMultiSelectable",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaMultiSelectable)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaOrientation",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOrientation)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaOwnsElements",
+          "value": "ReadonlyArray<Element> | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaOwnsElements)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaPlaceholder",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPlaceholder)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaPosInSet",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPosInSet)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaPressed",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaPressed)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaReadOnly",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaReadOnly)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRelevant",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRelevant)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRequired",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRequired)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRoleDescription",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRoleDescription)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRowCount",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowCount)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRowIndex",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndex)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRowIndexText",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowIndexText)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaRowSpan",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaRowSpan)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaSelected",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSelected)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaSetSize",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSetSize)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaSort",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaSort)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaValueMax",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMax)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaValueMin",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueMin)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaValueNow",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueNow)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ariaValueText",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/ariaValueText)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "assignedSlot",
+          "value": "HTMLSlotElement | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/assignedSlot)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "attachInternals",
+          "value": "() => ElementInternals",
+          "description": "The **`HTMLElement.attachInternals()`** method returns an ElementInternals object.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attachInternals)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "attachShadow",
+          "value": "(init: ShadowRootInit) => ShadowRoot",
+          "description": "The **`Element.attachShadow()`** method attaches a shadow DOM tree to the specified element and returns a reference to its ShadowRoot.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attachShadow)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ATTRIBUTE_NODE",
+          "value": "2",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "attributes",
+          "value": "NamedNodeMap",
+          "description": "The **`Element.attributes`** property returns a live collection of all attribute nodes registered to the specified node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/attributes)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "attributeStyleMap",
+          "value": "StylePropertyMap",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/attributeStyleMap)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "autocapitalize",
+          "value": "string",
+          "description": "The **`autocapitalize`** property of the HTMLElement interface represents the element's capitalization behavior for user input.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autocapitalize)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "autocorrect",
+          "value": "boolean",
+          "description": "The **`autocorrect`** property of the HTMLElement interface controls whether or not autocorrection of editable text is enabled for spelling and/or punctuation errors.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autocorrect)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "autofocus",
+          "value": "boolean",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/autofocus)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "baseURI",
+          "value": "string",
+          "description": "The read-only **`baseURI`** property of the Node interface returns the absolute base URL of the document containing the node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/baseURI)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "before",
+          "value": "(...nodes: (string | Node)[]) => void",
+          "description": "Inserts nodes just before node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/before)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "blockSize",
+          "value": "",
+          "description": "Adjust the block size.\n\nCheckout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n\nLearn more about [block size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).",
           "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "blur",
+          "value": "() => void",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/blur)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "CDATA_SECTION_NODE",
+          "value": "4",
+          "description": "node is a CDATASection node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "checkVisibility",
+          "value": "(options?: CheckVisibilityOptions) => boolean",
+          "description": "The **`checkVisibility()`** method of the Element interface checks whether the element is visible.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/checkVisibility)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "childElementCount",
+          "value": "number",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/childElementCount)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "childNodes",
+          "value": "NodeListOf<ChildNode>",
+          "description": "The read-only **`childNodes`** property of the Node interface returns a live the first child node is assigned index `0`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/childNodes)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "HTMLCollection",
+          "description": "Returns the child elements.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/children)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "GetAccessor",
+          "name": "classList",
+          "value": "DOMTokenList",
+          "description": "The **`Element.classList`** is a read-only property that returns a live DOMTokenList collection of the `class` attributes of the element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/classList)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "className",
+          "value": "string",
+          "description": "The **`className`** property of the of the specified element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/className)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "click",
+          "value": "() => void",
+          "description": "The **`HTMLElement.click()`** method simulates a mouse click on an element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/click)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "clientHeight",
+          "value": "number",
+          "description": "The **`clientHeight`** read-only property of the Element interface is zero for elements with no CSS or inline layout boxes; otherwise, it's the inner height of an element in pixels.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientHeight)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "clientLeft",
+          "value": "number",
+          "description": "The **`clientLeft`** read-only property of the Element interface returns the width of the left border of an element in pixels.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientLeft)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "clientTop",
+          "value": "number",
+          "description": "The **`clientTop`** read-only property of the Element interface returns the width of the top border of an element in pixels.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientTop)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "clientWidth",
+          "value": "number",
+          "description": "The **`clientWidth`** read-only property of the Element interface is zero for inline elements and elements with no CSS; otherwise, it's the inner width of an element in pixels.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/clientWidth)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "cloneNode",
+          "value": "(subtree?: boolean) => Node",
+          "description": "The **`cloneNode()`** method of the Node interface returns a duplicate of the node on which this method was called.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/cloneNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "closest",
+          "value": "{ <K extends keyof HTMLElementTagNameMap>(selector: K): HTMLElementTagNameMap[K]; <K extends keyof SVGElementTagNameMap>(selector: K): SVGElementTagNameMap[K]; <K extends keyof MathMLElementTagNameMap>(selector: K): MathMLElementTagNameMap[K]; <E extends Element = Element>(selectors: string): E; }",
+          "description": "The **`closest()`** method of the Element interface traverses the element and its parents (heading toward the document root) until it finds a node that matches the specified CSS selector.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/closest)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "COMMENT_NODE",
+          "value": "8",
+          "description": "node is a Comment node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "compareDocumentPosition",
+          "value": "(other: Node) => number",
+          "description": "The **`compareDocumentPosition()`** method of the Node interface reports the position of its argument node relative to the node on which it is called.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/compareDocumentPosition)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "computedStyleMap",
+          "value": "() => StylePropertyMapReadOnly",
+          "description": "The **`computedStyleMap()`** method of the Element interface returns a StylePropertyMapReadOnly interface which provides a read-only representation of a CSS declaration block that is an alternative to CSSStyleDeclaration.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/computedStyleMap)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "contains",
+          "value": "(other: Node) => boolean",
+          "description": "The **`contains()`** method of the Node interface returns a boolean value indicating whether a node is a descendant of a given node, that is the node itself, one of its direct children (Node.childNodes), one of the children's direct children, and so on.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/contains)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "contentEditable",
+          "value": "string",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/contentEditable)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "contentWindow",
+          "value": "{\n        postMessage(message: any): void;\n    }",
+          "description": "Returns an object exposing a `postMessage` method used to send messages to the embedded page rendered inside the chat iframe. Pair this with the `ready` event (or `onReady` callback) to know when the message channel is available."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currentCSSZoom",
+          "value": "number",
+          "description": "The **`currentCSSZoom`** read-only property of the Element interface provides the 'effective' CSS `zoom` of an element, taking into account the zoom applied to the element and all its parent elements.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/currentCSSZoom)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "dataset",
+          "value": "DOMStringMap",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "dir",
+          "value": "string",
+          "description": "The **`HTMLElement.dir`** property indicates the text writing directionality of the content of the current element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dir)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "dispatchEvent",
+          "value": "(event: Event) => boolean",
+          "description": "The **`dispatchEvent()`** method of the EventTarget sends an Event to the object, (synchronously) invoking the affected event listeners in the appropriate order.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/dispatchEvent)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_FRAGMENT_NODE",
+          "value": "11",
+          "description": "node is a DocumentFragment node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_NODE",
+          "value": "9",
+          "description": "node is a document."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_POSITION_CONTAINED_BY",
+          "value": "16",
+          "description": "Set when other is a descendant of node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_POSITION_CONTAINS",
+          "value": "8",
+          "description": "Set when other is an ancestor of node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_POSITION_DISCONNECTED",
+          "value": "1",
+          "description": "Set when node and other are not in the same tree."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_POSITION_FOLLOWING",
+          "value": "4",
+          "description": "Set when other is following node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_POSITION_IMPLEMENTATION_SPECIFIC",
+          "value": "32",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_POSITION_PRECEDING",
+          "value": "2",
+          "description": "Set when other is preceding node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "DOCUMENT_TYPE_NODE",
+          "value": "10",
+          "description": "node is a doctype."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "draggable",
+          "value": "boolean",
+          "description": "The **`draggable`** property of the HTMLElement interface gets and sets a Boolean primitive indicating if the element is draggable.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/draggable)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ELEMENT_NODE",
+          "value": "1",
+          "description": "node is an element."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "enterKeyHint",
+          "value": "string",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/enterKeyHint)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ENTITY_NODE",
+          "value": "6",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ENTITY_REFERENCE_NODE",
+          "value": "5",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "firstChild",
+          "value": "ChildNode | null",
+          "description": "The read-only **`firstChild`** property of the Node interface returns the node's first child in the tree, or `null` if the node has no children.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/firstChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "firstElementChild",
+          "value": "Element | null",
+          "description": "Returns the first child that is an element, and null otherwise.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/firstElementChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "focus",
+          "value": "(options?: FocusOptions) => void",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/focus)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getAnimations",
+          "value": "(options?: GetAnimationsOptions) => Animation[]",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAnimations)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getAttribute",
+          "value": "(qualifiedName: string) => string",
+          "description": "The **`getAttribute()`** method of the element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttribute)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getAttributeNames",
+          "value": "() => string[]",
+          "description": "The **`getAttributeNames()`** method of the array.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNames)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getAttributeNode",
+          "value": "(qualifiedName: string) => Attr",
+          "description": "Returns the specified attribute of the specified element, as an Attr node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getAttributeNodeNS",
+          "value": "(namespace: string, localName: string) => Attr",
+          "description": "The **`getAttributeNodeNS()`** method of the Element interface returns the namespaced Attr node of an element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNodeNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getAttributeNS",
+          "value": "(namespace: string, localName: string) => string",
+          "description": "The **`getAttributeNS()`** method of the Element interface returns the string value of the attribute with the specified namespace and name.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getAttributeNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getBoundingClientRect",
+          "value": "() => DOMRect",
+          "description": "The **`Element.getBoundingClientRect()`** method returns a position relative to the viewport.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getBoundingClientRect)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getClientRects",
+          "value": "() => DOMRectList",
+          "description": "The **`getClientRects()`** method of the Element interface returns a collection of DOMRect objects that indicate the bounding rectangles for each CSS border box in a client.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getClientRects)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getElementsByClassName",
+          "value": "(classNames: string) => HTMLCollectionOf<Element>",
+          "description": "The Element method **`getElementsByClassName()`** returns a live specified class name or names.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByClassName)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getElementsByTagName",
+          "value": "{ <K extends keyof HTMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementTagNameMap[K]>; <K extends keyof SVGElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<SVGElementTagNameMap[K]>; <K extends keyof MathMLElementTagNameMap>(qualifiedName: K): HTMLCollectionOf<MathMLElementTagNameMap[K]>; <K extends keyof HTMLElementDeprecatedTagNameMap>(qualifiedName: K): HTMLCollectionOf<HTMLElementDeprecatedTagNameMap[K]>; (qualifiedName: string): HTMLCollectionOf<Element>; }",
+          "description": "The **`Element.getElementsByTagName()`** method returns a live All descendants of the specified element are searched, but not the element itself.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagName)",
+          "deprecationMessage": "Deprecated"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getElementsByTagNameNS",
+          "value": "{ (namespaceURI: \"http://www.w3.org/1999/xhtml\", localName: string): HTMLCollectionOf<HTMLElement>; (namespaceURI: \"http://www.w3.org/2000/svg\", localName: string): HTMLCollectionOf<SVGElement>; (namespaceURI: \"http://www.w3.org/1998/Math/MathML\", localName: string): HTMLCollectionOf<MathMLElement>; (namespace: string, localName: string): HTMLCollectionOf<Element>; }",
+          "description": "The **`Element.getElementsByTagNameNS()`** method returns a live HTMLCollection of elements with the given tag name belonging to the given namespace.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getElementsByTagNameNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getHTML",
+          "value": "(options?: GetHTMLOptions) => string",
+          "description": "The **`getHTML()`** method of the Element interface is used to serialize an element's DOM to an HTML string.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/getHTML)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getRootNode",
+          "value": "(options?: GetRootNodeOptions) => Node",
+          "description": "The **`getRootNode()`** method of the Node interface returns the context object's root, which optionally includes the shadow root if it is available.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/getRootNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "hasAttribute",
+          "value": "(qualifiedName: string) => boolean",
+          "description": "The **`Element.hasAttribute()`** method returns a **Boolean** value indicating whether the specified element has the specified attribute or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasAttribute)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "hasAttributeNS",
+          "value": "(namespace: string, localName: string) => boolean",
+          "description": "The **`hasAttributeNS()`** method of the Element interface returns a boolean value indicating whether the current element has the specified attribute with the specified namespace.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasAttributeNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "hasAttributes",
+          "value": "() => boolean",
+          "description": "The **`hasAttributes()`** method of the Element interface returns a boolean value indicating whether the current element has any attributes or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasAttributes)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "hasChildNodes",
+          "value": "() => boolean",
+          "description": "The **`hasChildNodes()`** method of the Node interface returns a boolean value indicating whether the given Node has child nodes or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/hasChildNodes)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "hasPointerCapture",
+          "value": "(pointerId: number) => boolean",
+          "description": "The **`hasPointerCapture()`** method of the pointer capture for the pointer identified by the given pointer ID.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/hasPointerCapture)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "hidden",
+          "value": "boolean",
+          "description": "The HTMLElement property **`hidden`** reflects the value of the element's `hidden` attribute.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/hidden)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "hidePopover",
+          "value": "() => void",
+          "description": "The **`hidePopover()`** method of the HTMLElement interface hides a popover element (i.e., one that has a valid `popover` attribute) by removing it from the top layer and styling it with `display: none`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/hidePopover)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "inert",
+          "value": "boolean",
+          "description": "The HTMLElement property **`inert`** reflects the value of the element's `inert` attribute.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/inert)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "inlineSize",
+          "value": "",
+          "description": "Adjust the inline size.\n\nCheckout imposes [sizing restrictions](/docs/apps/build/checkout/chat#component-states) for the component, therefore the size set may not be the actual size rendered.\n\nLearn more about [inline size on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "innerHTML",
+          "value": "string",
+          "description": "The **`innerHTML`** property of the Element interface gets or sets the HTML or XML markup contained within the element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/innerHTML)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "innerText",
+          "value": "string",
+          "description": "The **`innerText`** property of the HTMLElement interface represents the rendered text content of a node and its descendants.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/innerText)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "inputMode",
+          "value": "string",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/inputMode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "insertAdjacentElement",
+          "value": "(where: InsertPosition, element: Element) => Element",
+          "description": "The **`insertAdjacentElement()`** method of the relative to the element it is invoked upon.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentElement)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "insertAdjacentHTML",
+          "value": "(position: InsertPosition, string: string) => void",
+          "description": "The **`insertAdjacentHTML()`** method of the the resulting nodes into the DOM tree at a specified position.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentHTML)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "insertAdjacentText",
+          "value": "(where: InsertPosition, data: string) => void",
+          "description": "The **`insertAdjacentText()`** method of the Element interface, given a relative position and a string, inserts a new text node at the given position relative to the element it is called from.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/insertAdjacentText)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "insertBefore",
+          "value": "<T extends Node>(node: T, child: Node) => T",
+          "description": "The **`insertBefore()`** method of the Node interface inserts a node before a _reference node_ as a child of a specified _parent node_.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/insertBefore)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isConnected",
+          "value": "boolean",
+          "description": "The read-only **`isConnected`** property of the Node interface returns a boolean indicating whether the node is connected (directly or indirectly) to a Document object.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isConnected)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isContentEditable",
+          "value": "boolean",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/isContentEditable)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "isDefaultNamespace",
+          "value": "(namespace: string) => boolean",
+          "description": "The **`isDefaultNamespace()`** method of the Node interface accepts a namespace URI as an argument.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isDefaultNamespace)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "isEqualNode",
+          "value": "(otherNode: Node) => boolean",
+          "description": "The **`isEqualNode()`** method of the Node interface tests whether two nodes are equal.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isEqualNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "isSameNode",
+          "value": "(otherNode: Node) => boolean",
+          "description": "The **`isSameNode()`** method of the Node interface is a legacy alias the for the `===` strict equality operator.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isSameNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lang",
+          "value": "string",
+          "description": "The **`lang`** property of the HTMLElement interface indicates the base language of an element's attribute values and text content, in the form of a MISSING: RFC(5646, 'BCP 47 language identifier tag')].\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/lang)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lastChild",
+          "value": "ChildNode | null",
+          "description": "The read-only **`lastChild`** property of the Node interface returns the last child of the node, or `null` if there are no child nodes.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lastChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lastElementChild",
+          "value": "Element | null",
+          "description": "Returns the last child that is an element, and null otherwise.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/lastElementChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "localName",
+          "value": "string",
+          "description": "The **`Element.localName`** read-only property returns the local part of the qualified name of an element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/localName)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "lookupNamespaceURI",
+          "value": "(prefix: string) => string",
+          "description": "The **`lookupNamespaceURI()`** method of the Node interface takes a prefix as parameter and returns the namespace URI associated with it on the given node if found (and `null` if not).\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lookupNamespaceURI)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "lookupPrefix",
+          "value": "(namespace: string) => string",
+          "description": "The **`lookupPrefix()`** method of the Node interface returns a string containing the prefix for a given namespace URI, if present, and `null` if not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/lookupPrefix)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "matches",
+          "value": "(selectors: string) => boolean",
+          "description": "The **`matches()`** method of the Element interface tests whether the element would be selected by the specified CSS selector.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "namespaceURI",
+          "value": "string | null",
+          "description": "The **`Element.namespaceURI`** read-only property returns the namespace URI of the element, or `null` if the element is not in a namespace.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/namespaceURI)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "nextElementSibling",
+          "value": "Element | null",
+          "description": "Returns the first following sibling that is an element, and null otherwise.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/nextElementSibling)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "nextSibling",
+          "value": "ChildNode | null",
+          "description": "The read-only **`nextSibling`** property of the Node interface returns the node immediately following the specified one in their parent's Node.childNodes, or returns `null` if the specified node is the last child in the parent element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nextSibling)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "nodeName",
+          "value": "string",
+          "description": "The read-only **`nodeName`** property of Node returns the name of the current node as a string.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeName)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "nodeType",
+          "value": "number",
+          "description": "The read-only **`nodeType`** property of a Node interface is an integer that identifies what the node is.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeType)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "nodeValue",
+          "value": "string | null",
+          "description": "The **`nodeValue`** property of the Node interface returns or sets the value of the current node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/nodeValue)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "nonce",
+          "value": "string",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/nonce)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "normalize",
+          "value": "() => void",
+          "description": "The **`normalize()`** method of the Node interface puts the specified node and all of its sub-tree into a _normalized_ form.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/normalize)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "NOTATION_NODE",
+          "value": "12",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "offsetHeight",
+          "value": "number",
+          "description": "The **`offsetHeight`** read-only property of the HTMLElement interface returns the height of an element, including vertical padding and borders, as an integer.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetHeight)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "offsetLeft",
+          "value": "number",
+          "description": "The **`offsetLeft`** read-only property of the HTMLElement interface returns the number of pixels that the _upper left corner_ of the current element is offset to the left within the HTMLElement.offsetParent node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetLeft)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "offsetParent",
+          "value": "Element | null",
+          "description": "The **`HTMLElement.offsetParent`** read-only property returns a reference to the element which is the closest (nearest in the containment hierarchy) positioned ancestor element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetParent)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "offsetTop",
+          "value": "number",
+          "description": "The **`offsetTop`** read-only property of the HTMLElement interface returns the distance from the outer border of the current element (including its margin) to the top padding edge of the HTMLelement.offsetParent, the _closest positioned_ ancestor element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetTop)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "offsetWidth",
+          "value": "number",
+          "description": "The **`offsetWidth`** read-only property of the HTMLElement interface returns the layout width of an element as an integer.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/offsetWidth)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onabort",
+          "value": "((this: GlobalEventHandlers, ev: UIEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/abort_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onanimationcancel",
+          "value": "((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationcancel_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onanimationend",
+          "value": "((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onanimationiteration",
+          "value": "((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationiteration_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onanimationstart",
+          "value": "((this: GlobalEventHandlers, ev: AnimationEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onauxclick",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/auxclick_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onbeforeinput",
+          "value": "((this: GlobalEventHandlers, ev: InputEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforeinput_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onbeforematch",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/beforematch_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onbeforetoggle",
+          "value": "((this: GlobalEventHandlers, ev: ToggleEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/beforetoggle_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onblur",
+          "value": "((this: GlobalEventHandlers, ev: FocusEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/blur_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncancel",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/cancel_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncanplay",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canplay_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncanplaythrough",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/canplaythrough_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onchange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/change_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onclick",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/click_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onclose",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLDialogElement/close_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncontextlost",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextlost_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncontextmenu",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/contextmenu_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncontextrestored",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLCanvasElement/contextrestored_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncopy",
+          "value": "((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/copy_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncuechange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLTrackElement/cuechange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oncut",
+          "value": "((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/cut_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondblclick",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/dblclick_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondrag",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/drag_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondragend",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondragenter",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragenter_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondragleave",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragleave_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondragover",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragover_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondragstart",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/dragstart_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondrop",
+          "value": "((this: GlobalEventHandlers, ev: DragEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/drop_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ondurationchange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/durationchange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onemptied",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/emptied_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onended",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ended_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onerror",
+          "value": "OnErrorEventHandler",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/error_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onfocus",
+          "value": "((this: GlobalEventHandlers, ev: FocusEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/focus_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onformdata",
+          "value": "((this: GlobalEventHandlers, ev: FormDataEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/formdata_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onfullscreenchange",
+          "value": "((this: Element, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/fullscreenchange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onfullscreenerror",
+          "value": "((this: Element, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/fullscreenerror_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ongotpointercapture",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/gotpointercapture_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oninput",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/input_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "oninvalid",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/invalid_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onkeydown",
+          "value": "((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/keydown_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onkeypress",
+          "value": "((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null",
+          "description": "",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/keypress_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onkeyup",
+          "value": "((this: GlobalEventHandlers, ev: KeyboardEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/keyup_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onload",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/load_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onloadeddata",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loadeddata_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onloadedmetadata",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loadedmetadata_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onloadstart",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/loadstart_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onlostpointercapture",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/lostpointercapture_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmousedown",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mousedown_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmouseenter",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseenter_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmouseleave",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseleave_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmousemove",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mousemove_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmouseout",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseout_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmouseover",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseover_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onmouseup",
+          "value": "((this: GlobalEventHandlers, ev: MouseEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/mouseup_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpaste",
+          "value": "((this: GlobalEventHandlers, ev: ClipboardEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/paste_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpause",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/pause_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onplay",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/play_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onplaying",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/playing_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointercancel",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointercancel_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerdown",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerdown_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerenter",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerenter_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerleave",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerleave_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointermove",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointermove_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerout",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerout_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerover",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerover_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerrawupdate",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "Available only in secure contexts.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerrawupdate_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onpointerup",
+          "value": "((this: GlobalEventHandlers, ev: PointerEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/pointerup_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onprogress",
+          "value": "((this: GlobalEventHandlers, ev: ProgressEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/progress_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onratechange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/ratechange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onready",
+          "value": "ChatProps$1",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onreset",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/reset_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onresize",
+          "value": "((this: GlobalEventHandlers, ev: UIEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLVideoElement/resize_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onscroll",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scroll_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onscrollend",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/scrollend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onsecuritypolicyviolation",
+          "value": "((this: GlobalEventHandlers, ev: SecurityPolicyViolationEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/securitypolicyviolation_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onseeked",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seeked_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onseeking",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/seeking_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onselect",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLInputElement/select_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onselectionchange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/selectionchange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onselectstart",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/selectstart_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onslotchange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLSlotElement/slotchange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onstalled",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/stalled_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onsubmit",
+          "value": "((this: GlobalEventHandlers, ev: SubmitEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLFormElement/submit_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onsuspend",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/suspend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontimeupdate",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/timeupdate_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontoggle",
+          "value": "((this: GlobalEventHandlers, ev: ToggleEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/toggle_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontouchcancel",
+          "value": "((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchcancel_event)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontouchend",
+          "value": "((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchend_event)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontouchmove",
+          "value": "((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchmove_event)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontouchstart",
+          "value": "((this: GlobalEventHandlers, ev: TouchEvent) => any) | null | undefined",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/touchstart_event)",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontransitioncancel",
+          "value": "((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitioncancel_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontransitionend",
+          "value": "((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontransitionrun",
+          "value": "((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionrun_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ontransitionstart",
+          "value": "((this: GlobalEventHandlers, ev: TransitionEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionstart_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onvolumechange",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/volumechange_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onwaiting",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLMediaElement/waiting_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onwebkitanimationend",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "",
+          "deprecationMessage": "This is a legacy alias of `onanimationend`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onwebkitanimationiteration",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "",
+          "deprecationMessage": "This is a legacy alias of `onanimationiteration`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationiteration_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onwebkitanimationstart",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "",
+          "deprecationMessage": "This is a legacy alias of `onanimationstart`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/animationstart_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onwebkittransitionend",
+          "value": "((this: GlobalEventHandlers, ev: Event) => any) | null",
+          "description": "",
+          "deprecationMessage": "This is a legacy alias of `ontransitionend`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/transitionend_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onwheel",
+          "value": "((this: GlobalEventHandlers, ev: WheelEvent) => any) | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/wheel_event)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "outerHTML",
+          "value": "string",
+          "description": "The **`outerHTML`** attribute of the Element DOM interface gets the serialized HTML fragment describing the element including its descendants.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/outerHTML)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "outerText",
+          "value": "string",
+          "description": "The **`outerText`** property of the HTMLElement interface returns the same value as HTMLElement.innerText.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/outerText)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ownerDocument",
+          "value": "Document",
+          "description": "The read-only **`ownerDocument`** property of the Node interface returns the top-level document object of the node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/ownerDocument)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "parentElement",
+          "value": "HTMLElement | null",
+          "description": "The read-only **`parentElement`** property of Node interface returns the DOM node's parent Element, or `null` if the node either has no parent, or its parent isn't a DOM Element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentElement)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "parentNode",
+          "value": "ParentNode | null",
+          "description": "The read-only **`parentNode`** property of the Node interface returns the parent of the specified node in the DOM tree.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/parentNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "GetAccessor",
+          "name": "part",
+          "value": "DOMTokenList",
+          "description": "The **`part`** property of the Element interface represents the part identifier(s) of the element (i.e., set using the `part` attribute), returned as a DOMTokenList.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/part)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "popover",
+          "value": "string | null",
+          "description": "The **`popover`** property of the HTMLElement interface gets and sets an element's popover state via JavaScript (`'auto'`, `'hint'`, or `'manual'`), and can be used for feature detection.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/popover)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "prefix",
+          "value": "string | null",
+          "description": "The **`Element.prefix`** read-only property returns the namespace prefix of the specified element, or `null` if no prefix is specified.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/prefix)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "prepend",
+          "value": "(...nodes: (string | Node)[]) => void",
+          "description": "Inserts nodes before the first child of node, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/prepend)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "previousElementSibling",
+          "value": "Element | null",
+          "description": "Returns the first preceding sibling that is an element, and null otherwise.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/previousElementSibling)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "previousSibling",
+          "value": "ChildNode | null",
+          "description": "The read-only **`previousSibling`** property of the Node interface returns the node immediately preceding the specified one in its parent's or `null` if the specified node is the first in that list.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/previousSibling)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "PROCESSING_INSTRUCTION_NODE",
+          "value": "7",
+          "description": "node is a ProcessingInstruction node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "querySelector",
+          "value": "{ <K extends keyof HTMLElementTagNameMap>(selectors: K): HTMLElementTagNameMap[K]; <K extends keyof SVGElementTagNameMap>(selectors: K): SVGElementTagNameMap[K]; <K extends keyof MathMLElementTagNameMap>(selectors: K): MathMLElementTagNameMap[K]; <K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K): HTMLElementDeprecatedTagNameMap[K]; <E extends Element = Element>(selectors: string): E; }",
+          "description": "Returns the first element that is a descendant of node that matches selectors.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelector)",
+          "deprecationMessage": "Deprecated"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "querySelectorAll",
+          "value": "{ <K extends keyof HTMLElementTagNameMap>(selectors: K): NodeListOf<HTMLElementTagNameMap[K]>; <K extends keyof SVGElementTagNameMap>(selectors: K): NodeListOf<SVGElementTagNameMap[K]>; <K extends keyof MathMLElementTagNameMap>(selectors: K): NodeListOf<MathMLElementTagNameMap[K]>; <K extends keyof HTMLElementDeprecatedTagNameMap>(selectors: K): NodeListOf<HTMLElementDeprecatedTagNameMap[K]>; <E extends Element = Element>(selectors: string): NodeListOf<E>; }",
+          "description": "Returns all element descendants of node that match selectors.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/querySelectorAll)",
+          "deprecationMessage": "Deprecated"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "releasePointerCapture",
+          "value": "(pointerId: number) => void",
+          "description": "The **`releasePointerCapture()`** method of the previously set for a specific (PointerEvent) _pointer_.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/releasePointerCapture)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "remove",
+          "value": "() => void",
+          "description": "Removes node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/remove)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeAttribute",
+          "value": "(qualifiedName: string) => void",
+          "description": "The Element method **`removeAttribute()`** removes the attribute with the specified name from the element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/removeAttribute)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeAttributeNode",
+          "value": "(attr: Attr) => Attr",
+          "description": "The **`removeAttributeNode()`** method of the Element interface removes the specified Attr node from the element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/removeAttributeNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeAttributeNS",
+          "value": "(namespace: string, localName: string) => void",
+          "description": "The **`removeAttributeNS()`** method of the If you are working with HTML and you don't need to specify the requested attribute as being part of a specific namespace, use the Element.removeAttribute() method instead.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/removeAttributeNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeChild",
+          "value": "<T extends Node>(child: T) => T",
+          "description": "The **`removeChild()`** method of the Node interface removes a child node from the DOM and returns the removed node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/removeChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeEventListener",
+          "value": "{ <K extends keyof HTMLElementEventMap>(type: K, listener: (this: HTMLElement, ev: HTMLElementEventMap[K]) => any, options?: boolean | EventListenerOptions): void; (type: string, listener: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void; }",
+          "description": "\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)\n\nThe **`removeEventListener()`** method of the EventTarget interface removes an event listener previously registered with EventTarget.addEventListener() from the target.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/EventTarget/removeEventListener)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "replaceChild",
+          "value": "<T extends Node>(node: Node, child: T) => T",
+          "description": "The **`replaceChild()`** method of the Node interface replaces a child node within the given (parent) node.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/replaceChild)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "replaceChildren",
+          "value": "(...nodes: (string | Node)[]) => void",
+          "description": "Replace all children of node with nodes, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/replaceChildren)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "replaceWith",
+          "value": "(...nodes: (string | Node)[]) => void",
+          "description": "Replaces node with nodes, while replacing strings in nodes with equivalent Text nodes.\n\nThrows a \"HierarchyRequestError\" DOMException if the constraints of the node tree are violated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/CharacterData/replaceWith)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "requestFullscreen",
+          "value": "(options?: FullscreenOptions) => Promise<void>",
+          "description": "The **`Element.requestFullscreen()`** method issues an asynchronous request to make the element be displayed in fullscreen mode.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestFullscreen)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "requestPointerLock",
+          "value": "(options?: PointerLockOptions) => Promise<void>",
+          "description": "The **`requestPointerLock()`** method of the Element interface lets you asynchronously ask for the pointer to be locked on the given element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/requestPointerLock)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "role",
+          "value": "string | null",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/role)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "scroll",
+          "value": "{ (options?: ScrollToOptions): void; (x: number, y: number): void; }",
+          "description": "The **`scroll()`** method of the Element interface scrolls the element to a particular set of coordinates inside a given element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scroll)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "scrollBy",
+          "value": "{ (options?: ScrollToOptions): void; (x: number, y: number): void; }",
+          "description": "The **`scrollBy()`** method of the Element interface scrolls an element by the given amount.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollBy)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "scrollHeight",
+          "value": "number",
+          "description": "The **`scrollHeight`** read-only property of the Element interface is a measurement of the height of an element's content, including content not visible on the screen due to overflow.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollHeight)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "scrollIntoView",
+          "value": "(arg?: boolean | ScrollIntoViewOptions) => void",
+          "description": "The Element interface's **`scrollIntoView()`** method scrolls the element's ancestor containers such that the element on which `scrollIntoView()` is called is visible to the user.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollIntoView)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "scrollLeft",
+          "value": "number",
+          "description": "The **`scrollLeft`** property of the Element interface gets or sets the number of pixels by which an element's content is scrolled from its left edge.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollLeft)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "scrollTo",
+          "value": "{ (options?: ScrollToOptions): void; (x: number, y: number): void; }",
+          "description": "The **`scrollTo()`** method of the Element interface scrolls to a particular set of coordinates inside a given element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTo)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "scrollTop",
+          "value": "number",
+          "description": "The **`scrollTop`** property of the Element interface gets or sets the number of pixels by which an element's content is scrolled from its top edge.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollTop)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "scrollWidth",
+          "value": "number",
+          "description": "The **`scrollWidth`** read-only property of the Element interface is a measurement of the width of an element's content, including content not visible on the screen due to overflow.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/scrollWidth)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttribute",
+          "value": "(qualifiedName: string, value: string) => void",
+          "description": "The **`setAttribute()`** method of the Element interface sets the value of an attribute on the specified element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttribute)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributeNode",
+          "value": "(attr: Attr) => Attr",
+          "description": "The **`setAttributeNode()`** method of the Element interface adds a new Attr node to the specified element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNode)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributeNodeNS",
+          "value": "(attr: Attr) => Attr",
+          "description": "The **`setAttributeNodeNS()`** method of the Element interface adds a new namespaced Attr node to an element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNodeNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributeNS",
+          "value": "(namespace: string, qualifiedName: string, value: string) => void",
+          "description": "`setAttributeNS` adds a new attribute or changes the value of an attribute with the given namespace and name.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setAttributeNS)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setHTMLUnsafe",
+          "value": "(html: string) => void",
+          "description": "The **`setHTMLUnsafe()`** method of the Element interface is used to parse a string of HTML into a DocumentFragment, optionally filtering out unwanted elements and attributes, and those that don't belong in the context, and then using it to replace the element's subtree in the DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setHTMLUnsafe)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setPointerCapture",
+          "value": "(pointerId: number) => void",
+          "description": "The **`setPointerCapture()`** method of the _capture target_ of future pointer events.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/setPointerCapture)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shadowRoot",
+          "value": "ShadowRoot | null",
+          "description": "The `Element.shadowRoot` read-only property represents the shadow root hosted by the element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/shadowRoot)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "showPopover",
+          "value": "() => void",
+          "description": "The **`showPopover()`** method of the HTMLElement interface shows a Popover_API element (i.e., one that has a valid `popover` attribute) by adding it to the top layer.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/showPopover)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "slot",
+          "value": "string",
+          "description": "The **`slot`** property of the Element interface returns the name of the shadow DOM slot the element is inserted in.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/slot)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "spellcheck",
+          "value": "boolean",
+          "description": "The **`spellcheck`** property of the HTMLElement interface represents a boolean value that controls the spell-checking hint.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/spellcheck)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "GetAccessor",
+          "name": "style",
+          "value": "CSSStyleDeclaration",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/style)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tabIndex",
+          "value": "number",
+          "description": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/tabIndex)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tagName",
+          "value": "string",
+          "description": "The **`tagName`** read-only property of the Element interface returns the tag name of the element on which it's called.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/tagName)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "TEXT_NODE",
+          "value": "3",
+          "description": "node is a Text node."
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "GetAccessor",
+          "name": "textContent",
+          "value": "string",
+          "description": "[MDN Reference](https://developer.mozilla.org/en-US/docs/Web/API/Node/textContent)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "toggleAttribute",
+          "value": "(qualifiedName: string, force?: boolean) => boolean",
+          "description": "The **`toggleAttribute()`** method of the present and adding it if it is not present) on the given element.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/toggleAttribute)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "togglePopover",
+          "value": "(options?: boolean) => boolean",
+          "description": "The **`togglePopover()`** method of the HTMLElement interface toggles a Popover_API element (i.e., one that has a valid `popover` attribute) between the hidden and showing states.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/togglePopover)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "translate",
+          "value": "boolean",
+          "description": "The **`translate`** property of the HTMLElement interface indicates whether an element's attribute values and the values of its Text node children are to be translated when the page is localized, or whether to leave them unchanged.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/translate)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "webkitMatchesSelector",
+          "value": "(selectors: string) => boolean",
+          "description": "",
+          "deprecationMessage": "This is a legacy alias of `matches`.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/matches)"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "writingSuggestions",
+          "value": "string",
+          "description": "The **`writingSuggestions`** property of the HTMLElement interface is a string indicating if browser-provided writing suggestions should be enabled under the scope of the element or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/writingSuggestions)"
         }
       ],
-      "value": "export interface ChatProps extends Pick<ChatProps$1, 'accessibilityLabel' | 'blockSize' | 'id' | 'inlineSize' | 'onMessage' | 'onReady'> {\n    blockSize?: Extract<ChatProps$1['blockSize'], `${number}px` | '0'>;\n    inlineSize?: Extract<ChatProps$1['inlineSize'], `${number}px` | '0'>;\n    remoteMethods?: Record<string, (...args: unknown[]) => unknown>;\n}"
+      "value": "export interface ChatElement extends ChatElementProps, ChatElementMethods, Omit<HTMLElement, 'id' | 'title'> {\n    onready: ChatEvents['onReady'];\n}"
     }
   },
   "CheckboxElementProps": {
