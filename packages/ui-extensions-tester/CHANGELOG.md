@@ -1,5 +1,22 @@
 # @shopify/ui-extensions-tester
 
+## 2026.7.0-rc.8
+
+### Patch Changes
+
+- [#4499](https://github.com/Shopify/ui-extensions/pull/4499) [`e0e4f00`](https://github.com/Shopify/ui-extensions/commit/e0e4f003cd508ded2eafb0f3194c8ac92092ea51) Thanks [@charlesdobson](https://github.com/charlesdobson)! - Add `pick` action and `shopify/File` resource type to the admin Intents API, enabling extensions to open the file picker via `intents.invoke('pick:shopify/File', …)`.
+
+- [#4544](https://github.com/Shopify/ui-extensions/pull/4544) [`7a403f6`](https://github.com/Shopify/ui-extensions/commit/7a403f6ef14e9f7234d5bda2634b7c3b75770e82) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove native `Event` inheritance from POS event payload types.
+
+- [#4535](https://github.com/Shopify/ui-extensions/pull/4535) [`d70009a`](https://github.com/Shopify/ui-extensions/commit/d70009a05130b86c296f59463d74e40e3ca4afe1) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove the deprecated POS `.observe` event extension targets: `pos.transaction-complete.event.observe`, `pos.cash-tracking-session-start.event.observe`, `pos.cash-tracking-session-complete.event.observe`, and `pos.cart-update.event.observe`. These were early-access targets with effectively no production usage.
+
+  Use the `pos.app.ready.data` background target instead: `shopify.addEventListener('transactioncomplete' | 'cashtrackingsessionstart' | 'cashtrackingsessioncomplete', callback)` for the event targets, and `shopify.cart.current.subscribe()` for cart updates.
+
+  This also removes the `EventExtensionTargets`/`EventExtensionTarget` types and the `TransactionCompleteData`, `CashTrackingSessionStartData`, `CashTrackingSessionCompleteData`, and `CartUpdateEventData` payload types. The receipt-target type `TransactionCompleteWithReprintData` is unchanged.
+
+- Updated dependencies [[`5d1769d`](https://github.com/Shopify/ui-extensions/commit/5d1769da4bba2d7cb7630f21dd0a34d75d993032), [`e0e4f00`](https://github.com/Shopify/ui-extensions/commit/e0e4f003cd508ded2eafb0f3194c8ac92092ea51), [`b965a97`](https://github.com/Shopify/ui-extensions/commit/b965a97767d71320ea31293b94cc13e39ccd5893), [`19794cd`](https://github.com/Shopify/ui-extensions/commit/19794cd8ab69f661442b71891ece2a5bccd7efa1), [`3785596`](https://github.com/Shopify/ui-extensions/commit/3785596844eb8ba8e56b6c2a9f0459b72e43d480), [`7a403f6`](https://github.com/Shopify/ui-extensions/commit/7a403f6ef14e9f7234d5bda2634b7c3b75770e82), [`9608767`](https://github.com/Shopify/ui-extensions/commit/96087678e4b82d80afd1efb5f9974f3e988024cd), [`d70009a`](https://github.com/Shopify/ui-extensions/commit/d70009a05130b86c296f59463d74e40e3ca4afe1), [`7129e7d`](https://github.com/Shopify/ui-extensions/commit/7129e7d73b03c7127cd4a255a668c15f800e2d9b)]:
+  - @shopify/ui-extensions@2026.7.0-rc.8
+
 ## 2026.7.0-rc.7
 
 ### Patch Changes
