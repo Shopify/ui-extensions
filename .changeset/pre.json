@@ -1,5 +1,5 @@
 {
-  "mode": "pre",
+  "mode": "exit",
   "tag": "rc",
   "initialVersions": {
     "@shopify/ui-extensions": "2026.7.0-rc.0",
