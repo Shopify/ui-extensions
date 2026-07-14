@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.1
+
+### Patch Changes
+
+- [#4577](https://github.com/Shopify/ui-extensions/pull/4577) [`a87a7b3`](https://github.com/Shopify/ui-extensions/commit/a87a7b3943d46ea75e522527d152b3e50ef1bbd5) Thanks [@justinhenricks](https://github.com/justinhenricks)! - Fix the `s-checkbox` JSX type so the documented `label` slot can be provided as slotted children. `Checkbox` now uses `BaseElementPropsWithChildren` (matching `Chip` and other slot-bearing components) instead of the childless `BaseElementProps`, which previously left `CheckboxElementSlots` unusable via JSX.
+
 ## 2026.7.0
 
 ### Minor Changes
