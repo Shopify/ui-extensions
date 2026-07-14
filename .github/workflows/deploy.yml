@@ -68,8 +68,8 @@ jobs:
 
       - uses: ./.github/workflows/actions/prepare
 
-      - name: Update npm to latest
-        run: npm install -g npm@latest
+      - name: Update npm to 11.7
+        run: npm install -g npm@11.7
 
       - id: changesets
         name: Create release Pull Request or publish to NPM
