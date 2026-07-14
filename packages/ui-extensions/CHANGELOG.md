@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2026.4.4
+
+### Patch Changes
+
+- [#4576](https://github.com/Shopify/ui-extensions/pull/4576) [`f0a288d`](https://github.com/Shopify/ui-extensions/commit/f0a288dbce6bcf8eb8911ee03e65b2b61fd3e9aa) Thanks [@justinhenricks](https://github.com/justinhenricks)! - Fix the `s-checkbox` JSX type so the documented `label` slot can be provided as slotted children. `Checkbox` now uses `BaseElementPropsWithChildren` (matching `Chip` and other slot-bearing components) instead of the childless `BaseElementProps`, which previously left `CheckboxElementSlots` unusable via JSX.
+
+- [#4565](https://github.com/Shopify/ui-extensions/pull/4565) [`267fcaa`](https://github.com/Shopify/ui-extensions/commit/267fcaa43b1fe87971c0a21f26f99139d1f47859) Thanks [@vctrchu](https://github.com/vctrchu)! - Remove the deprecated POS observe event extension targets and their exclusive payload types from the 2026-04 API line.
+
 ## 2026.4.3
 
 ### Patch Changes
