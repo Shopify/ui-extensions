@@ -28,17 +28,27 @@ export interface BaseElementProps<TClass = HTMLElement> {
     slot?: Lowercase<string>;
 }
 /**
+ * The base properties for elements that have children, extending `BaseElementProps` with children support.
+ * @publicDocs
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
+    /**
+     * The child elements to render within this component.
+     */
+    children?: preact.ComponentChildren;
+}
+/**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
+ * @publicDocs
  */
 export type CallbackEvent<TTagName extends keyof HTMLElementTagNameMap, TEvent extends Event = Event> = TEvent & {
     currentTarget: HTMLElementTagNameMap[TTagName];
 };
 /**
  * A typed event listener for custom element events. The listener receives a `CallbackEvent` with the correct `currentTarget` type for the associated custom element tag.
+ * @publicDocs
  */
-export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & {
-    (event: CallbackEvent<TTagName, Event> & TData): void;
-}) | null;
+export type CallbackEventListener<TTagName extends keyof HTMLElementTagNameMap, TData = object> = (EventListener & ((event: CallbackEvent<TTagName, Event> & TData) => void)) | null;
 
 declare const tagName = "s-checkbox";
 /** @publicDocs */
@@ -51,6 +61,7 @@ export interface CheckboxElementProps extends Pick<CheckboxProps$1, 'accessibili
      */
     label?: string;
 }
+/** @publicDocs */
 export interface CheckboxEvents extends Pick<CheckboxProps$1, 'onChange'> {
 }
 /** @publicDocs */
@@ -62,6 +73,7 @@ export interface CheckboxElementEvents {
      */
     change?: CallbackEventListener<typeof tagName>;
 }
+/** @publicDocs */
 export interface CheckboxElement extends CheckboxElementProps, Omit<HTMLElement, 'id' | 'onchange'> {
     onchange: CheckboxEvents['onChange'];
 }
@@ -85,7 +97,7 @@ declare global {
 declare module 'preact' {
     namespace createElement.JSX {
         interface IntrinsicElements {
-            [tagName]: CheckboxProps & BaseElementProps<CheckboxElement>;
+            [tagName]: CheckboxProps & BaseElementPropsWithChildren<CheckboxElement>;
         }
     }
 }
