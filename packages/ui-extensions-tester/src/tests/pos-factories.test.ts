@@ -24,9 +24,9 @@ describe('createStorage', () => {
     expect(await storage.get('key1')).toBeUndefined();
   });
 
-  it('delete returns false for non-existent key', async () => {
+  it('delete returns true for non-existent key', async () => {
     const storage = createStorage();
-    expect(await storage.delete('nope')).toBe(false);
+    expect(await storage.delete('nope')).toBe(true);
   });
 
   it('clear removes all entries', async () => {
@@ -86,6 +86,55 @@ describe('createStorage', () => {
       const unsubscribe = storage.current?.key.subscribe(() => {});
       expect(typeof unsubscribe).toBe('function');
       unsubscribe?.();
+    });
+
+    it('subscribe fires when the value is updated via set', async () => {
+      const storage = createStorage({syncStatus: 'pending'});
+      const listener = jest.fn();
+      storage.current?.syncStatus.subscribe(listener);
+      await storage.set('syncStatus', 'complete');
+      expect(listener).toHaveBeenCalledTimes(1);
+      expect(listener).toHaveBeenCalledWith('complete');
+    });
+
+    it('subscribe fires with undefined when the key is deleted', async () => {
+      const storage = createStorage({syncStatus: 'pending'});
+      const listener = jest.fn();
+      storage.current?.syncStatus.subscribe(listener);
+      await storage.delete('syncStatus');
+      expect(listener).toHaveBeenCalledTimes(1);
+      expect(listener).toHaveBeenCalledWith(undefined);
+    });
+
+    it('subscribe fires with undefined for all keys when cleared', async () => {
+      const storage = createStorage({alpha: 1, beta: 2});
+      const alphaListener = jest.fn();
+      const betaListener = jest.fn();
+      storage.current?.alpha.subscribe(alphaListener);
+      storage.current?.beta.subscribe(betaListener);
+      await storage.clear();
+      expect(alphaListener).toHaveBeenCalledWith(undefined);
+      expect(betaListener).toHaveBeenCalledWith(undefined);
+    });
+
+    it('does not fire a listener after it unsubscribes', async () => {
+      const storage = createStorage({syncStatus: 'pending'});
+      const listener = jest.fn();
+      const unsubscribe = storage.current?.syncStatus.subscribe(listener);
+      unsubscribe?.();
+      await storage.set('syncStatus', 'complete');
+      expect(listener).not.toHaveBeenCalled();
+    });
+
+    it('supports multiple subscribers on the same key', async () => {
+      const storage = createStorage({syncStatus: 'pending'});
+      const first = jest.fn();
+      const second = jest.fn();
+      storage.current?.syncStatus.subscribe(first);
+      storage.current?.syncStatus.subscribe(second);
+      await storage.set('syncStatus', 'complete');
+      expect(first).toHaveBeenCalledWith('complete');
+      expect(second).toHaveBeenCalledWith('complete');
     });
   });
 });

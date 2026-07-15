@@ -26,7 +26,9 @@ export interface Storage<
    * reactivity. One extension target can subscribe to a key and react when
    * another target updates it via `set()` or `delete()`.
    *
-   * The `value` property provides synchronous access to the current stored value.
+   * The `value` property provides synchronous, reactive access to the current stored
+   * value. It is not preloaded: storage hydrates asynchronously, so `value` is
+   * `undefined` until the key has been loaded.
    * The `subscribe()` method registers a callback that fires whenever the value
    * changes, including changes made by other extension targets within the same app.
    *
@@ -109,7 +111,8 @@ export interface Storage<
  * Provides reactive, subscribable access to individual storage keys.
  *
  * Each property is a `ReadonlySignalLike` that reflects the current value of the
- * corresponding storage key. Values are `undefined` when the key does not exist.
+ * corresponding storage key. Values are `undefined` when the key does not exist
+ * or is being loaded asynchronously.
  *
  * Mutations are performed through the existing `Storage` methods (`set`,
  * `delete`, `clear`, etc.) — `SubscribableStorage` is read-only and reactive.
