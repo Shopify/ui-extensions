@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2025.4.1
+
+### Patch Changes
+
+- [#3846](https://github.com/Shopify/ui-extensions/pull/3846) [`4385206c5a8c2a5c431419713b5f77ca228b1140`](https://github.com/Shopify/ui-extensions/commit/4385206c5a8c2a5c431419713b5f77ca228b1140) Thanks [@fatbattk](https://github.com/fatbattk)! - update Screen.onReceiveParams description
+
 ## 2025.4.0
 
 ### Minor Changes
