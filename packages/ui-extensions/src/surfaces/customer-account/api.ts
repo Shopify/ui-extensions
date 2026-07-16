@@ -51,6 +51,7 @@ export type {
   GraphQLError,
   SellingPlan,
   StorefrontApiVersion,
+  AddressExtendedFields,
   MailingAddress,
   ApiVersion,
   Capability,

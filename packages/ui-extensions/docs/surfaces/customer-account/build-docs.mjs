@@ -68,6 +68,100 @@ const cleanupTempFiles = async (tempFiles) => {
   );
 };
 
+const customerAccountMailingAddressFields = [
+  {
+    filePath: 'src/surfaces/customer-account/api/shared.ts',
+    syntaxKind: 'PropertySignature',
+    name: 'extendedFields',
+    value: 'AddressExtendedFields',
+    description:
+      'Structured address components for countries and regions that collect them. ' +
+      "The value is `undefined` when structured address data isn't available " +
+      'for the order address. Individual fields are `null` when Shopify has ' +
+      "a structured address record but a specific component wasn't provided.",
+    isOptional: true,
+  },
+  {
+    filePath: 'src/surfaces/customer-account/api/shared.ts',
+    syntaxKind: 'PropertySignature',
+    name: 'addressCode',
+    value: 'string | null',
+    description:
+      'A country-specific address code, such as a short code or postal ' +
+      "delivery code. The value is `null` when the order address doesn't " +
+      'have an address code.',
+    isOptional: true,
+    examples: [
+      {
+        title: 'Example',
+        description: '',
+        tabs: [{code: "'01001-000'", title: 'Example'}],
+      },
+    ],
+  },
+];
+
+const customerAccountMailingAddressValue = `  /**
+   * Structured address components for countries and regions that collect them.
+   * The value is \`undefined\` when structured address data isn't available for
+   * the order address. Individual fields are \`null\` when Shopify has a
+   * structured address record but a specific component wasn't provided.
+   */
+  extendedFields?: AddressExtendedFields;
+
+  /**
+   * A country-specific address code, such as a short code or postal delivery
+   * code. The value is \`null\` when the order address doesn't have an address
+   * code.
+   *
+   * @example '01001-000'
+   */
+  addressCode?: string | null;
+
+`;
+
+const addCustomerAccountMailingAddressDocs = async (generatedDocsV2Path) => {
+  const content = await fs.readFile(generatedDocsV2Path, 'utf8');
+  const generatedDocs = JSON.parse(content);
+  const mailingAddressDocs = generatedDocs.MailingAddress;
+
+  if (!mailingAddressDocs) return;
+
+  const [sourcePath] = Object.keys(mailingAddressDocs);
+  const docs = mailingAddressDocs[sourcePath];
+
+  if (!docs?.members || !docs?.value) return;
+
+  const existingMemberNames = new Set(
+    docs.members.map((member) => member.name),
+  );
+
+  const missingFields = customerAccountMailingAddressFields.filter(
+    (field) => !existingMemberNames.has(field.name),
+  );
+
+  if (missingFields.length > 0) {
+    const address2Index = docs.members.findIndex(
+      (member) => member.name === 'address2',
+    );
+    const insertIndex =
+      address2Index === -1 ? docs.members.length : address2Index + 1;
+    docs.members.splice(insertIndex, 0, ...missingFields);
+  }
+
+  if (!docs.value.includes('extendedFields?: AddressExtendedFields;')) {
+    docs.value = docs.value.replace(
+      '  /**\n   * The city, town, or village of the address.',
+      `${customerAccountMailingAddressValue}  /**\n   * The city, town, or village of the address.`,
+    );
+  }
+
+  await fs.writeFile(
+    generatedDocsV2Path,
+    `${JSON.stringify(generatedDocs, null, 2)}\n`,
+  );
+};
+
 const generateExtensionsDocs = async () => {
   console.log(
     `Building Customer Account UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
@@ -98,12 +192,16 @@ const generateExtensionsDocs = async () => {
     replaceValue: '',
   });
 
+  const generatedDocsV2Path = path.join(outputDir, generatedDocsDataV2File);
+
   // Replace 'unstable' with the exact API version in relative doc links
   await replaceFileContent({
-    filePaths: path.join(outputDir, generatedDocsDataV2File),
+    filePaths: generatedDocsV2Path,
     searchValue: '/docs/api//unstable/',
     replaceValue: `/docs/api/customer-account-ui-extensions/${EXTENSIONS_API_VERSION}`,
   });
+
+  await addCustomerAccountMailingAddressDocs(generatedDocsV2Path);
 };
 
 let checkoutTempFiles = [];
@@ -126,10 +224,16 @@ try {
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
     console.warn(
