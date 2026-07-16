@@ -53,6 +53,15 @@ export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLa
      * @default 'button'
      */
     type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;
+    /**
+     * The visual style variant of the button component, which controls its prominence and emphasis.
+     *
+     * - `'auto'`: Automatically determined by the button's context.
+     * - `'primary'`: High-emphasis style for the main action.
+     * - `'secondary'`: Medium-emphasis style for supporting actions.
+     *
+     * @default 'auto'
+     */
     variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;
 }
 export interface ButtonEvents extends Pick<ButtonProps$1, 'onClick'> {

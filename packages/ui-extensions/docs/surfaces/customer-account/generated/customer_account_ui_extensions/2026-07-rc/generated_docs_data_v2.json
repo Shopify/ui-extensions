@@ -40150,12 +40150,12 @@
           "syntaxKind": "PropertySignature",
           "name": "variant",
           "value": "'auto' | 'primary' | 'secondary'",
-          "description": "The visual style variant of the button component, which controls its prominence and emphasis.\n\n- `'auto'`: Automatically determined by the button's context.\n- `'primary'`: High-emphasis style for the main action.\n- `'secondary'`: Medium-emphasis style for supporting actions.\n- `'tertiary'`: Low-emphasis style for less prominent actions.",
+          "description": "The visual style variant of the button component, which controls its prominence and emphasis.\n\n- `'auto'`: Automatically determined by the button's context.\n- `'primary'`: High-emphasis style for the main action.\n- `'secondary'`: Medium-emphasis style for supporting actions.",
           "isOptional": true,
           "defaultValue": "'auto'"
         }
       ],
-      "value": "export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {\n    target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;\n    tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;\n    /**\n     * The behavioral type of the button component, which determines what action it performs when activated.\n     *\n     * - `submit`: Submits the nearest containing form.\n     * - `button`: Performs no default action, relying on the `click` event handler for behavior.\n     *\n     * This property is ignored if `href` or `commandFor`/`command` is set.\n     *\n     * @default 'button'\n     */\n    type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;\n    variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;\n}"
+      "value": "export interface ButtonElementProps extends Pick<ButtonProps$1, 'accessibilityLabel' | 'command' | 'commandFor' | 'disabled' | 'href' | 'id' | 'inlineSize' | 'interestFor' | 'loading' | 'target' | 'tone' | 'type' | 'variant'> {\n    target?: Extract<ButtonProps$1['target'], 'auto' | '_blank'>;\n    tone?: Extract<ButtonProps$1['tone'], 'auto' | 'neutral' | 'critical'>;\n    /**\n     * The behavioral type of the button component, which determines what action it performs when activated.\n     *\n     * - `submit`: Submits the nearest containing form.\n     * - `button`: Performs no default action, relying on the `click` event handler for behavior.\n     *\n     * This property is ignored if `href` or `commandFor`/`command` is set.\n     *\n     * @default 'button'\n     */\n    type?: Extract<ButtonProps$1['type'], 'submit' | 'button'>;\n    /**\n     * The visual style variant of the button component, which controls its prominence and emphasis.\n     *\n     * - `'auto'`: Automatically determined by the button's context.\n     * - `'primary'`: High-emphasis style for the main action.\n     * - `'secondary'`: Medium-emphasis style for supporting actions.\n     *\n     * @default 'auto'\n     */\n    variant?: Extract<ButtonProps$1['variant'], 'auto' | 'primary' | 'secondary'>;\n}"
     }
   },
   "ButtonEvents": {
@@ -42562,7 +42562,7 @@
           "syntaxKind": "PropertySignature",
           "name": "variant",
           "value": "'auto' | 'primary' | 'secondary'",
-          "description": "The visual style variant of the button component, which controls its prominence and emphasis.\n\n- `'auto'`: Automatically determined by the button's context.\n- `'primary'`: High-emphasis style for the main action.\n- `'secondary'`: Medium-emphasis style for supporting actions.\n- `'tertiary'`: Low-emphasis style for less prominent actions.",
+          "description": "The visual style variant of the button component, which controls its prominence and emphasis.\n\n- `'auto'`: Automatically determined by the button's context.\n- `'primary'`: High-emphasis style for the main action.\n- `'secondary'`: Medium-emphasis style for supporting actions.",
           "isOptional": true,
           "defaultValue": "'auto'"
         },
