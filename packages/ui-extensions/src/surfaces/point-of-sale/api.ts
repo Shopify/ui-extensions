@@ -51,6 +51,12 @@ export type {DeviceApi, DeviceApiContent} from './api/device-api/device-api';
 
 export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 
+export type {
+  CapabilitiesApi,
+  Capability,
+  InterceptCapability,
+} from './api/capabilities-api/capabilities-api';
+
 export type {OrderApiContent, OrderApi} from './api/order-api/order-api';
 
 export type {
