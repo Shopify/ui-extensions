@@ -39,6 +39,18 @@ describe('POS intercept capabilities', () => {
     expect(global.capabilities.value).not.toContain('beforecheckout.error');
   });
 
+  it('accepts only info with an info grant', () => {
+    const global: ShopifyGlobal = {
+      capabilities: createSignal<InterceptCapability[]>([
+        'beforecheckout.info',
+      ]),
+    };
+
+    expect(global.capabilities.value).toStrictEqual(['beforecheckout.info']);
+    expect(global.capabilities.value).not.toContain('beforecheckout.error');
+    expect(global.capabilities.value).not.toContain('beforecheckout.warn');
+  });
+
   it('accepts an empty array when no intercept permissions are granted', () => {
     const global: ShopifyGlobal = {
       capabilities: createSignal<InterceptCapability[]>([]),
