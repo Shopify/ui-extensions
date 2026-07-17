@@ -1184,6 +1184,20 @@
     "components": [],
     "apis": []
   },
+  "pos.app.ready.data": {
+    "components": [],
+    "apis": [
+      "CapabilitiesApi",
+      "ConnectivityApi",
+      "DeviceApi",
+      "ExtensionApi",
+      "LocaleApi",
+      "ProductSearchApi",
+      "ReadonlyCartApi",
+      "SessionApi",
+      "StorageApi"
+    ]
+  },
   "ActionApi": {
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
@@ -1241,6 +1255,7 @@
   },
   "CapabilitiesApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1293,6 +1308,7 @@
   },
   "ConnectivityApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1325,6 +1341,7 @@
   },
   "DeviceApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1357,6 +1374,7 @@
   },
   "ExtensionApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1389,6 +1407,7 @@
   },
   "LocaleApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1485,6 +1504,7 @@
   },
   "ProductSearchApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1517,6 +1537,7 @@
   },
   "SessionApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1549,6 +1570,7 @@
   },
   "StorageApi": {
     "targets": [
+      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1675,6 +1697,11 @@
       "pos.register-details.action.menu-item.render",
       "pos.register-details.action.render",
       "pos.register-details.block.render"
+    ]
+  },
+  "ReadonlyCartApi": {
+    "targets": [
+      "pos.app.ready.data"
     ]
   },
   "Tile": {

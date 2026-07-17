@@ -203,6 +203,36 @@ function parseEventTargetsFile(content) {
   return targets;
 }
 
+/**
+ * Parse DataExtensionTargets from extension-targets.ts and include their APIs
+ * without assigning UI components.
+ */
+function parseDataTargetsFile(content) {
+  const dataMatch = content.match(
+    /export interface DataExtensionTargets \{([\s\S]+?)\n\}/,
+  );
+  if (!dataMatch) {
+    return {};
+  }
+
+  const interfaceBody = dataMatch[1];
+  const targetRegex = /'([^']+)':\s*RunnableExtension<([\s\S]*?)>;/g;
+  const targets = {};
+  let match;
+  while ((match = targetRegex.exec(interfaceBody)) !== null) {
+    const targetName = match[1];
+    const runnableExtensionParts = splitByTopLevelComma(match[2]);
+    const apiString = runnableExtensionParts[0]?.trim();
+
+    targets[targetName] = {
+      components: [],
+      apis: apiString ? parseApis(apiString).sort() : [],
+    };
+  }
+
+  return targets;
+}
+
 function getNestedApis(apiName) {
   // Check if we've already parsed this API
   if (Object.prototype.hasOwnProperty.call(apiDefinitionsCache, apiName)) {
@@ -215,6 +245,7 @@ function getNestedApis(apiName) {
       './api/standard/standard-api',
       './render/api/standard/standard-api',
     ],
+    DataTargetApi: ['./api/data-target-api/data-target-api'],
     SmartGridApi: ['./api/smartgrid-api/smartgrid-api'],
     ActionApi: [
       './api/action-api/action-api',
@@ -366,7 +397,11 @@ function getNestedApis(apiName) {
 }
 
 // APIs that are composites of other documented APIs - we list their constituent APIs, not these wrapper types
-const COMPOSITE_APIS = new Set(['StandardApi', 'ActionTargetApi']);
+const COMPOSITE_APIS = new Set([
+  'StandardApi',
+  'ActionTargetApi',
+  'DataTargetApi',
+]);
 
 function parseApis(apiString) {
   const apisSet = new Set();
@@ -503,11 +538,12 @@ function findGeneratedDocsPath() {
   return docsPath ?? generatedDir;
 }
 
-// Generate the JSON (render targets + event targets)
+// Generate the JSON for every target category.
 const renderTargets = parseTargetsFile();
 const fileContent = fs.readFileSync(TARGETS_FILE_PATH, 'utf-8');
 const eventTargets = parseEventTargetsFile(fileContent);
-const targetsJson = {...renderTargets, ...eventTargets};
+const dataTargets = parseDataTargetsFile(fileContent);
+const targetsJson = {...renderTargets, ...eventTargets, ...dataTargets};
 
 // Create the extended JSON with reverse mappings
 const extendedJson = createReverseMapping(targetsJson);

@@ -497,7 +497,9 @@ function createDataTargetMock<T extends ExtensionTarget>(
         hasNextPage: false,
       }),
     },
-    ...createMockCartApi(),
+    cart: {
+      current: createReadonlySignalLike(createPosCart()),
+    },
   };
 }
 

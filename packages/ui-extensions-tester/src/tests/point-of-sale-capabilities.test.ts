@@ -24,7 +24,7 @@ describe('POS capabilities mocks', () => {
     expect(extension.shopify.capabilities.value).toStrictEqual([]);
   });
 
-  it('provides an empty capabilities signal for data targets', () => {
+  it('provides an empty capabilities signal and read-only cart for data targets', () => {
     sandbox.placeToml({target: 'pos.app.ready.data'});
     const extension = getExtension('pos.app.ready.data', {
       configSearchDir: sandbox.tempDir,
@@ -33,5 +33,28 @@ describe('POS capabilities mocks', () => {
     extension.setUp();
 
     expect(extension.shopify.capabilities.value).toStrictEqual([]);
+    expect(() => Reflect.get(extension.shopify.cart, 'addLineItem')).toThrow(
+      'Property "addLineItem" does not exist',
+    );
+  });
+
+  it('allows tests to configure granted capabilities', () => {
+    sandbox.placeToml({target: 'pos.app.ready.data'});
+    const extension = getExtension('pos.app.ready.data', {
+      configSearchDir: sandbox.tempDir,
+    });
+
+    extension.setUp();
+    extension.shopify.capabilities.value = [
+      'beforecheckout.error',
+      'beforecheckout.warning',
+      'beforecheckout.info',
+    ];
+
+    expect(extension.shopify.capabilities.value).toStrictEqual([
+      'beforecheckout.error',
+      'beforecheckout.warning',
+      'beforecheckout.info',
+    ]);
   });
 });
