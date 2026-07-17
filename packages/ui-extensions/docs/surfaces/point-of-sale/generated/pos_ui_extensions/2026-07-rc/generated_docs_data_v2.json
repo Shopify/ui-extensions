@@ -10178,14 +10178,48 @@
       "value": "export interface Window {\n  /**\n   * Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI.\n   */\n  close(): void;\n}"
     }
   },
+  "InterceptCapability": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "InterceptCapability",
+      "value": "`${Extract<\n  keyof ShopifyInterceptMap,\n  string\n>}.${'error' | 'warn' | 'info'}`",
+      "description": "A merchant-granted permission to return a validation severity for a POS intercept event. Event names come directly from `ShopifyInterceptMap`. The `warn` suffix corresponds to the interceptor result level `WARNING`.",
+      "isPublicDocs": true
+    }
+  },
   "ShopifyGlobal": {
     "src/surfaces/point-of-sale/globals.ts": {
       "filePath": "src/surfaces/point-of-sale/globals.ts",
       "name": "ShopifyGlobal",
       "description": "The `shopify` global provides APIs that are available to all POS extensions without needing to access them through the target's `api` argument.",
       "isPublicDocs": true,
-      "members": [],
-      "value": "export interface ShopifyGlobal {}"
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/globals.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "capabilities",
+          "value": "ReadonlySignalLike<InterceptCapability[]>",
+          "description": "The merchant-granted permissions for validation severities returned by POS interceptors. This signal is available to every POS extension target.\n\nCapability names combine an event from the approved Intercept API with an allowed severity: `${event}.error`, `${event}.warn`, or `${event}.info`. Event names exactly match the names accepted by `shopify.intercept()`; the severity suffixes are proposed by the target-scoped configuration contract.\n\nPermissions are cumulative and every implied permission is included in the array. For example, `beforecheckout.error` is accompanied by `beforecheckout.warn` and `beforecheckout.info`; `beforecheckout.warn` is accompanied by `beforecheckout.info`.\n\nAn extension can return `ERROR`, `WARNING`, or `INFO` only when the matching `error`, `warn`, or `info` capability (respectively) is present. A stronger capability also permits the weaker severities made explicit in the array.\n\nExtensions request events per target in `shopify.extension.toml`. Shopify validates at deploy time that each event is supported by its target. The declaration also tells POS to expect that target to register the matching interceptor, so the host can detect a missing validator. Only the target that registers the interceptor declares the event; companion UI targets can read this signal without redeclaring it. This distinction matters for compliance workflows where a validator failure can have legal implications and must not look like an intentionally absent validator.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "[[extensions.targeting]]\ntarget = \"pos.app.ready.data\"\nmodule = \"./src/Extension.ts\"\n\n[extensions.targeting.capabilities]\nintercepts = [\"beforecheckout\"]",
+                  "title": "Example"
+                },
+                {
+                  "code": "if (shopify.capabilities.value.includes('beforecheckout.error')) {\n  // This interceptor may return ERROR, WARNING, or INFO validations.\n}",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface ShopifyGlobal {\n  /**\n   * The merchant-granted permissions for validation severities returned by POS\n   * interceptors. This signal is available to every POS extension target.\n   *\n   * Capability names combine an event from the approved Intercept API with an\n   * allowed severity: `${event}.error`, `${event}.warn`, or `${event}.info`.\n   * Event names exactly match the names accepted by `shopify.intercept()`; the\n   * severity suffixes are proposed by the target-scoped configuration contract.\n   *\n   * Permissions are cumulative and every implied permission is included in the\n   * array. For example, `beforecheckout.error` is accompanied by\n   * `beforecheckout.warn` and `beforecheckout.info`; `beforecheckout.warn` is\n   * accompanied by `beforecheckout.info`.\n   *\n   * An extension can return `ERROR`, `WARNING`, or `INFO` only when the matching\n   * `error`, `warn`, or `info` capability (respectively) is present. A stronger\n   * capability also permits the weaker severities made explicit in the array.\n   *\n   * Extensions request events per target in `shopify.extension.toml`. Shopify\n   * validates at deploy time that each event is supported by its target. The\n   * declaration also tells POS to expect that target to register the matching\n   * interceptor, so the host can detect a missing validator. Only the target\n   * that registers the interceptor declares the event; companion UI targets can\n   * read this signal without redeclaring it. This distinction matters for\n   * compliance workflows where a validator failure can have legal implications\n   * and must not look like an intentionally absent validator.\n   *\n   * @example\n   * ```toml\n   * [[extensions.targeting]]\n   * target = \"pos.app.ready.data\"\n   * module = \"./src/Extension.ts\"\n   *\n   * [extensions.targeting.capabilities]\n   * intercepts = [\"beforecheckout\"]\n   * ```\n   *\n   * ```ts\n   * if (shopify.capabilities.value.includes('beforecheckout.error')) {\n   *   // This interceptor may return ERROR, WARNING, or INFO validations.\n   * }\n   * ```\n   *\n   * @see https://github.com/Shopify/ui-api-design/blob/be97e2ca7089b05db762a00941400c0e4dd3df94/libraries/javascript/ui-api-design/types/extensions/configuration/capabilities.md\n   * @see https://github.com/Shopify/ui-api-design/pull/1557\n   * @see https://github.com/Shopify/ui-api-design/pull/1563\n   */\n  capabilities: ReadonlySignalLike<InterceptCapability[]>;\n}"
     }
   },
   "BackgroundShopifyGlobal": {
