@@ -168218,5 +168218,100 @@
       },
       "value": "export function useTranslate<\n  Target extends RenderExtensionTarget = RenderExtensionTarget,\n>(): I18nTranslate {\n  const api = useApi<Target>();\n  return api.i18n.translate.bind(api.i18n);\n}"
     }
+  },
+  "AppBridge": {
+    "src/surfaces/checkout/components/Chat/AppBridge.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+      "name": "AppBridge",
+      "description": "The App Bridge script for checkout provides APIs that enable a secure communication channel between the Shopify checkout and the embedded application within the Chat iframe.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "config",
+          "value": "Config",
+          "description": "The static configuration values that will not change during runtime.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "extension",
+          "value": "Extension",
+          "description": "The references and APIs to the UI extension that helped bootstrap the iframe.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "idToken",
+          "value": "() => Promise<string>",
+          "description": "The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C) with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user. See the [ID Token documentation](/docs/apps/build/authentication-authorization/session-tokens) and the [session token API](/docs/api/checkout-ui-extensions/latest/apis/session-token) for more information.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "platform",
+          "value": "'browser' | 'shop-app' | 'pos'",
+          "description": "The platform or application that the app is embedded within.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "surface",
+          "value": "'checkout'",
+          "description": "The Shopify surface that the app is embedded within.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "visitor",
+          "value": "() => Promise<Visitor>",
+          "description": "Information about the current visitor.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface AppBridge {\n  /**\n   * The static configuration values that will not change during runtime.\n   */\n  config?: Config;\n\n  /**\n   * The Shopify surface that the app is embedded within.\n   */\n  surface?: 'checkout';\n\n  /**\n   * The platform or application that the app is embedded within.\n   */\n  platform?: 'browser' | 'shop-app' | 'pos';\n\n  /**\n   * The ID token providing a set of claims as a signed [JSON Web Token (JWT)](https://openid.net/specs/openid-connect-core-1_0.html#IDToken%5C)\n   * with a TTL of 5 minutes. It can be used to ensure that requests came from a Shopify authenticated user.\n   * See the [ID Token documentation](/docs/apps/build/authentication-authorization/session-tokens) and the [session token API](/docs/api/checkout-ui-extensions/latest/apis/session-token) for more information.\n   */\n  idToken?: () => Promise<string>;\n\n  /**\n   * The references and APIs to the UI extension that helped bootstrap the iframe.\n   */\n  extension?: Extension;\n\n  /**\n   * Information about the current visitor.\n   */\n  visitor?: () => Promise<Visitor>;\n}"
+    }
+  },
+  "Config": {
+    "src/surfaces/checkout/components/Chat/AppBridge.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+      "name": "Config",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locale",
+          "value": "string",
+          "description": "The locale of the shop that’s embedding the app.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Config {\n  /**\n   * The locale of the shop that’s embedding the app.\n   */\n  locale?: string;\n}"
+    }
+  },
+  "Visitor": {
+    "src/surfaces/checkout/components/Chat/AppBridge.ts": {
+      "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+      "name": "Visitor",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/components/Chat/AppBridge.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "The unique token of a given user across all surfaces in a shop, present if processing permission is provided.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface Visitor {\n  /**\n   * The unique token of a given user across all surfaces in a shop,\n   * present if processing permission is provided.\n   */\n  id?: string;\n}"
+    }
   }
 }
