@@ -3,8 +3,10 @@ import type {ShopifyInterceptMap} from '../../events';
 
 /**
  * A granted validation severity for a POS intercept event. Event names are
- * derived from `ShopifyInterceptMap`; `warning` corresponds to the `WARNING`
- * validation level.
+ * derived from `ShopifyInterceptMap`.
+ *
+ * Grants are cumulative. An `.error` grant includes `.warning` and `.info`,
+ * and a `.warning` grant includes `.info`.
  *
  * @publicDocs
  */
@@ -14,18 +16,21 @@ export type InterceptCapability = `${Extract<
 >}.${'error' | 'warning' | 'info'}`;
 
 /**
- * Provides the validation severities granted for POS intercept events.
+ * A capability granted to a POS extension.
+ *
+ * @publicDocs
+ */
+export type Capability = InterceptCapability;
+
+/**
+ * Provides the capabilities granted to a POS extension.
  *
  * @publicDocs
  */
 export interface CapabilitiesApi {
   /**
-   * A read-only list of granted intercept capabilities. The signal is available
-   * to every POS target, but only the target that registers an interceptor
-   * declares its event in `shopify.extension.toml`.
-   *
-   * Grants are cumulative. An `.error` grant includes `.warning` and `.info`,
-   * and a `.warning` grant includes `.info`.
+   * The allowed capabilities of the extension, defined in your
+   * [`shopify.extension.toml`](/docs/api/pos-ui-extensions/{API_VERSION}/configuration) file.
    */
-  capabilities: ReadonlySignalLike<InterceptCapability[]>;
+  capabilities: ReadonlySignalLike<Capability[]>;
 }

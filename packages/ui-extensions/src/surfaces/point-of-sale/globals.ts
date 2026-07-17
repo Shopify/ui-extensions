@@ -1,4 +1,3 @@
-import type {CapabilitiesApi} from './api/capabilities-api/capabilities-api';
 import type {Navigation} from './api/navigation-api/navigation-api';
 import type {
   ShopifyEventMap,
@@ -12,7 +11,7 @@ import type {
  *
  * @publicDocs
  */
-export interface ShopifyGlobal extends CapabilitiesApi {}
+export interface ShopifyGlobal {}
 
 /**
  * Background-only extension of `ShopifyGlobal`. Adds host-event listener APIs

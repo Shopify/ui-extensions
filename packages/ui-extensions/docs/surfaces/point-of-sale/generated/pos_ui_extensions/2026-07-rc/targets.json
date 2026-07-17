@@ -6,7 +6,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -67,7 +66,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -89,7 +87,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -150,7 +147,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -189,7 +185,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -210,7 +205,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -271,7 +265,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -310,7 +303,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -331,7 +323,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -392,7 +383,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -431,7 +421,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -452,7 +441,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -514,7 +502,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -554,7 +541,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -576,7 +562,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -638,7 +623,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -678,7 +662,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -700,7 +683,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -762,7 +744,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -802,7 +783,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -824,7 +804,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "CustomerApi",
@@ -886,7 +865,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "CustomerApi",
@@ -926,7 +904,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "ConnectivityApi",
       "CustomerApi",
@@ -948,7 +925,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "CartLineItemApi",
       "ConnectivityApi",
@@ -1011,7 +987,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CartApi",
       "CartLineItemApi",
       "ConnectivityApi",
@@ -1054,7 +1029,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CashDrawerApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -1115,7 +1089,6 @@
     ],
     "apis": [
       "CameraApi",
-      "CapabilitiesApi",
       "CashDrawerApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -1154,7 +1127,6 @@
     "apis": [
       "ActionApi",
       "CameraApi",
-      "CapabilitiesApi",
       "CashDrawerApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -1183,20 +1155,6 @@
   "pos.cart-update.event.observe": {
     "components": [],
     "apis": []
-  },
-  "pos.app.ready.data": {
-    "components": [],
-    "apis": [
-      "CapabilitiesApi",
-      "ConnectivityApi",
-      "DeviceApi",
-      "ExtensionApi",
-      "LocaleApi",
-      "ProductSearchApi",
-      "ReadonlyCartApi",
-      "SessionApi",
-      "StorageApi"
-    ]
   },
   "ActionApi": {
     "targets": [
@@ -1253,39 +1211,6 @@
       "pos.return.post.block.render"
     ]
   },
-  "CapabilitiesApi": {
-    "targets": [
-      "pos.app.ready.data",
-      "pos.cart.line-item-details.action.menu-item.render",
-      "pos.cart.line-item-details.action.render",
-      "pos.customer-details.action.menu-item.render",
-      "pos.customer-details.action.render",
-      "pos.customer-details.block.render",
-      "pos.draft-order-details.action.menu-item.render",
-      "pos.draft-order-details.action.render",
-      "pos.draft-order-details.block.render",
-      "pos.exchange.post.action.menu-item.render",
-      "pos.exchange.post.action.render",
-      "pos.exchange.post.block.render",
-      "pos.home.modal.render",
-      "pos.home.tile.render",
-      "pos.order-details.action.menu-item.render",
-      "pos.order-details.action.render",
-      "pos.order-details.block.render",
-      "pos.product-details.action.menu-item.render",
-      "pos.product-details.action.render",
-      "pos.product-details.block.render",
-      "pos.purchase.post.action.menu-item.render",
-      "pos.purchase.post.action.render",
-      "pos.purchase.post.block.render",
-      "pos.register-details.action.menu-item.render",
-      "pos.register-details.action.render",
-      "pos.register-details.block.render",
-      "pos.return.post.action.menu-item.render",
-      "pos.return.post.action.render",
-      "pos.return.post.block.render"
-    ]
-  },
   "CartApi": {
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
@@ -1308,7 +1233,6 @@
   },
   "ConnectivityApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1341,7 +1265,6 @@
   },
   "DeviceApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1374,7 +1297,6 @@
   },
   "ExtensionApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1407,7 +1329,6 @@
   },
   "LocaleApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1504,7 +1425,6 @@
   },
   "ProductSearchApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1537,7 +1457,6 @@
   },
   "SessionApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1570,7 +1489,6 @@
   },
   "StorageApi": {
     "targets": [
-      "pos.app.ready.data",
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
@@ -1697,11 +1615,6 @@
       "pos.register-details.action.menu-item.render",
       "pos.register-details.action.render",
       "pos.register-details.block.render"
-    ]
-  },
-  "ReadonlyCartApi": {
-    "targets": [
-      "pos.app.ready.data"
     ]
   },
   "Tile": {

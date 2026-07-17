@@ -1,8 +1,7 @@
 import type {ReadonlySignalLike} from '../../../../shared';
 import type {DataTargetApi} from '../data-target-api/data-target-api';
 import type {StandardApi} from '../standard/standard-api';
-import type {ShopifyGlobal} from '../../globals';
-import type {InterceptCapability} from './capabilities-api';
+import type {Capability, InterceptCapability} from './capabilities-api';
 
 function createSignal<T>(value: T): ReadonlySignalLike<T> {
   return {
@@ -14,22 +13,14 @@ function createSignal<T>(value: T): ReadonlySignalLike<T> {
 describe('POS capabilities API', () => {
   it('is included in standard target APIs', () => {
     const capabilities: StandardApi<'pos.home.tile.render'>['capabilities'] =
-      createSignal<InterceptCapability[]>([]);
+      createSignal<Capability[]>([]);
 
     expect(capabilities.value).toStrictEqual([]);
   });
 
   it('is included in data target APIs', () => {
     const capabilities: DataTargetApi<'pos.app.ready.data'>['capabilities'] =
-      createSignal<InterceptCapability[]>([]);
-
-    expect(capabilities.value).toStrictEqual([]);
-  });
-
-  it('is included in the POS global API', () => {
-    const capabilities: ShopifyGlobal['capabilities'] = createSignal<
-      InterceptCapability[]
-    >([]);
+      createSignal<Capability[]>([]);
 
     expect(capabilities.value).toStrictEqual([]);
   });

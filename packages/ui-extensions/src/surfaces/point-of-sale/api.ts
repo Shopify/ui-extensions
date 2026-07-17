@@ -53,6 +53,7 @@ export type {LocaleApi, LocaleApiContent} from './api/locale-api/locale-api';
 
 export type {
   CapabilitiesApi,
+  Capability,
   InterceptCapability,
 } from './api/capabilities-api/capabilities-api';
 
