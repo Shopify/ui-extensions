@@ -1,5 +1,5 @@
 import type {ReadonlySignalLike} from '../../shared';
-import type {InterceptCapability} from './events';
+import type {InterceptCapability} from './api';
 import type {ShopifyGlobal} from './globals';
 
 function createSignal<T>(value: T): ReadonlySignalLike<T> {
@@ -15,7 +15,7 @@ describe('POS intercept capabilities', () => {
   it('accepts all capabilities implied by an error grant', () => {
     const capabilities: InterceptCapability[] = [
       'beforecheckout.error',
-      'beforecheckout.warn',
+      'beforecheckout.warning',
       'beforecheckout.info',
     ];
     const global: ShopifyGlobal = {
@@ -25,9 +25,9 @@ describe('POS intercept capabilities', () => {
     expect(global.capabilities.value).toStrictEqual(capabilities);
   });
 
-  it('accepts info with a warning grant', () => {
+  it('accepts a warning grant and info without error', () => {
     const capabilities: InterceptCapability[] = [
-      'beforecheckout.warn',
+      'beforecheckout.warning',
       'beforecheckout.info',
     ];
 
@@ -48,7 +48,7 @@ describe('POS intercept capabilities', () => {
 
     expect(global.capabilities.value).toStrictEqual(['beforecheckout.info']);
     expect(global.capabilities.value).not.toContain('beforecheckout.error');
-    expect(global.capabilities.value).not.toContain('beforecheckout.warn');
+    expect(global.capabilities.value).not.toContain('beforecheckout.warning');
   });
 
   it('accepts an empty array when no intercept permissions are granted', () => {
@@ -63,8 +63,8 @@ describe('POS intercept capabilities', () => {
     const capabilities: InterceptCapability[] = [
       // @ts-expect-error Event names must come from ShopifyInterceptMap.
       'unsupported.error',
-      // @ts-expect-error Capability suffixes use `warn`, not `warning`.
-      'beforecheckout.warning',
+      // @ts-expect-error Capability suffixes use `warning`, not `warn`.
+      'beforecheckout.warn',
     ];
 
     expect(capabilities).toHaveLength(2);

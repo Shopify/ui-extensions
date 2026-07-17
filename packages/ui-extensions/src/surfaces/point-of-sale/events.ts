@@ -53,18 +53,6 @@ export interface ShopifyInterceptMap {
 }
 
 /**
- * A merchant-granted permission to return a validation severity for a POS
- * intercept event. Event names come directly from `ShopifyInterceptMap`.
- * The `warn` suffix corresponds to the interceptor result level `WARNING`.
- *
- * @publicDocs
- */
-export type InterceptCapability = `${Extract<
-  keyof ShopifyInterceptMap,
-  string
->}.${'error' | 'warn' | 'info'}`;
-
-/**
  * Dispatched when staff attempts to leave the active cart for checkout.
  *
  * @publicDocs

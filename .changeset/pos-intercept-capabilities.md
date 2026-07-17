@@ -2,4 +2,4 @@
 '@shopify/ui-extensions': minor
 ---
 
-Add per-event POS intercept severity permissions to the `shopify.capabilities` signal.
+Add `.error`, `.warning`, and `.info` POS intercept severity values to the existing `shopify.capabilities` signal.

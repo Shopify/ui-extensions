@@ -971,7 +971,7 @@
           "syntaxKind": "MethodSignature",
           "name": "bulkSetLineItemDiscounts",
           "value": "(lineItemDiscounts: SetLineItemDiscountInput[]) => Promise<void>",
-          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking."
+          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -1076,7 +1076,7 @@
           "syntaxKind": "MethodSignature",
           "name": "setLineItemDiscount",
           "value": "(uuid: string, type: LineItemDiscountType, title: string, amount: string) => Promise<void>",
-          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking."
+          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -1251,7 +1251,7 @@
           "syntaxKind": "MethodSignature",
           "name": "bulkSetLineItemDiscounts",
           "value": "(lineItemDiscounts: SetLineItemDiscountInput[]) => Promise<void>",
-          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking."
+          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -1349,7 +1349,7 @@
           "syntaxKind": "MethodSignature",
           "name": "setLineItemDiscount",
           "value": "(uuid: string, type: LineItemDiscountType, title: string, amount: string) => Promise<void>",
-          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking."
+          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -1359,7 +1359,7 @@
           "description": "Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation."
         }
       ],
-      "value": "export interface MutableCartApiContent {\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(variantId: number, quantity: number): Promise<string>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
+      "value": "export interface MutableCartApiContent {\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(variantId: number, quantity: number): Promise<string>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
     }
   },
   "CartLineItemApi": {
@@ -1814,6 +1814,24 @@
       "value": "export interface LocaleApi {\n  locale: LocaleApiContent;\n}"
     }
   },
+  "StaffMember": {
+    "src/surfaces/point-of-sale/types/session.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/session.ts",
+      "name": "StaffMember",
+      "description": "Defines a staff member in POS.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/session.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "number",
+          "description": "The staff member ID."
+        }
+      ],
+      "value": "export interface StaffMember {\n  /**\n   * The staff member ID.\n   */\n  id: number;\n}"
+    }
+  },
   "Session": {
     "src/surfaces/point-of-sale/types/session.ts": {
       "filePath": "src/surfaces/point-of-sale/types/session.ts",
@@ -1861,8 +1879,9 @@
           "syntaxKind": "PropertySignature",
           "name": "staffMemberId",
           "value": "number",
-          "description": "The staff ID of the staff member currently pinned into the POS. This may differ from the user ID if the pinned staff member is different from the logged-in user.",
-          "isOptional": true
+          "description": "The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.",
+          "isOptional": true,
+          "deprecationMessage": "Use `session.staffMember` on the Session API instead."
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/session.ts",
@@ -1872,7 +1891,7 @@
           "description": "The user ID associated with the Shopify account currently authenticated on POS."
         }
       ],
-      "value": "export interface Session {\n  /**\n   * The shop ID associated with the shop currently logged into POS.\n   */\n  shopId: number;\n\n  /**\n   * The user ID associated with the Shopify account currently authenticated on POS.\n   */\n  userId: number;\n\n  /**\n   * The shop domain associated with the shop currently logged into POS.\n   */\n  shopDomain: string;\n\n  /**\n   * The location ID associated with the POS device's current location.\n   */\n  locationId: number;\n\n  /**\n   * The staff ID of the staff member currently pinned into the POS. This may differ from the user ID if the pinned staff member is different from the logged-in user.\n   */\n  staffMemberId?: number;\n\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: CurrencyCode;\n\n  /**\n   * The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running.\n   */\n  posVersion: string;\n}"
+      "value": "export interface Session {\n  /**\n   * The shop ID associated with the shop currently logged into POS.\n   */\n  shopId: number;\n\n  /**\n   * The user ID associated with the Shopify account currently authenticated on POS.\n   */\n  userId: number;\n\n  /**\n   * The shop domain associated with the shop currently logged into POS.\n   */\n  shopDomain: string;\n\n  /**\n   * The location ID associated with the POS device's current location.\n   */\n  locationId: number;\n\n  /**\n   * The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.\n   *\n   * @deprecated Use `session.staffMember` on the Session API instead.\n   */\n  staffMemberId?: number;\n\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: CurrencyCode;\n\n  /**\n   * The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running.\n   */\n  posVersion: string;\n}"
     }
   },
   "CurrencyCode": {
@@ -1923,9 +1942,16 @@
           "name": "getSessionToken",
           "value": "() => Promise<string>",
           "description": "Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/session-api/session-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "staffMember",
+          "value": "ReadonlySignalLike<StaffMember | undefined>",
+          "description": "Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in."
         }
       ],
-      "value": "export interface SessionApiContent {\n  /**\n   * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.\n   */\n  currentSession: Session;\n  /**\n   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.\n   */\n  getSessionToken: () => Promise<string | undefined>;\n  /**\n   * The numeric ID of the device running this session.\n   *\n   * Use this to construct a [GID](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.\n   *\n   * @example 123456\n   * @see [Global IDs documentation](/docs/api/usage/gids) for more about GID format and structure\n   * @see [device.getDeviceId()](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for physical device identifier (UUID format)\n   */\n  deviceId: number;\n}"
+      "value": "export interface SessionApiContent {\n  /**\n   * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.\n   */\n  currentSession: Session;\n  /**\n   * Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in.\n   */\n  staffMember: ReadonlySignalLike<StaffMember | undefined>;\n  /**\n   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.\n   */\n  getSessionToken: () => Promise<string | undefined>;\n  /**\n   * The numeric ID of the device running this session.\n   *\n   * Use this to construct a [GID](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.\n   *\n   * @example 123456\n   * @see [Global IDs documentation](/docs/api/usage/gids) for more about GID format and structure\n   * @see [device.getDeviceId()](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for physical device identifier (UUID format)\n   */\n  deviceId: number;\n}"
     }
   },
   "SessionApi": {
@@ -3423,6 +3449,14 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
           "name": "composed",
           "value": "boolean",
           "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
@@ -3696,6 +3730,14 @@
           "name": "CAPTURING_PHASE",
           "value": "1",
           "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3989,6 +4031,14 @@
           "name": "CAPTURING_PHASE",
           "value": "1",
           "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -4630,6 +4680,357 @@
       "value": "export interface ShopifyEventMap {\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n}"
     }
   },
+  "ShopifyInterceptMap": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ShopifyInterceptMap",
+      "description": "Maps POS interceptable workflow names to their corresponding `Event` types.\n\nUsed as the generic type parameter for `shopify.intercept`.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "beforecheckout",
+          "value": "BeforeCheckoutEvent",
+          "description": "Dispatched when staff attempts to leave the active cart for checkout."
+        }
+      ],
+      "value": "export interface ShopifyInterceptMap {\n  [POS_INTERCEPT_NAMES.BEFORE_CHECKOUT]: BeforeCheckoutEvent;\n}"
+    }
+  },
+  "BeforeCheckoutEvent": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "BeforeCheckoutEvent",
+      "description": "Dispatched when staff attempts to leave the active cart for checkout.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "AT_TARGET",
+          "value": "2",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "bubbles",
+          "value": "boolean",
+          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "BUBBLING_PHASE",
+          "value": "3",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cancelable",
+          "value": "boolean",
+          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cancelBubble",
+          "value": "boolean",
+          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "CAPTURING_PHASE",
+          "value": "1",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cart",
+          "value": "Cart",
+          "description": "The POS cart at the point checkout was requested."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "composed",
+          "value": "boolean",
+          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "composedPath",
+          "value": "() => EventTarget[]",
+          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currentTarget",
+          "value": "EventTarget | null",
+          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultPrevented",
+          "value": "boolean",
+          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "eventPhase",
+          "value": "number",
+          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "initEvent",
+          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
+          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isTrusted",
+          "value": "boolean",
+          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "NONE",
+          "value": "0",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "preventDefault",
+          "value": "() => void",
+          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "returnValue",
+          "value": "boolean",
+          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "srcElement",
+          "value": "EventTarget | null",
+          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "stopImmediatePropagation",
+          "value": "() => void",
+          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "stopPropagation",
+          "value": "() => void",
+          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "EventTarget | null",
+          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "timeStamp",
+          "value": "DOMHighResTimeStamp",
+          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'beforecheckout'",
+          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
+        }
+      ],
+      "value": "export interface BeforeCheckoutEvent extends Event {\n  readonly type: typeof POS_INTERCEPT_NAMES.BEFORE_CHECKOUT;\n  /** The POS cart at the point checkout was requested. */\n  readonly cart: Cart;\n}"
+    }
+  },
+  "ShopifyInterceptor": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ShopifyInterceptor",
+      "description": "",
+      "isPublicDocs": true,
+      "params": [
+        {
+          "name": "event",
+          "description": "",
+          "value": "TEvent",
+          "filePath": "src/surfaces/point-of-sale/events.ts"
+        }
+      ],
+      "returns": {
+        "filePath": "src/surfaces/point-of-sale/events.ts",
+        "description": "",
+        "name": "InterceptResult",
+        "value": "InterceptResult"
+      },
+      "value": "(\n  event: TEvent,\n) => InterceptResult"
+    }
+  },
+  "InterceptResult": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "InterceptResult",
+      "description": "The result an interceptor returns. An empty `operations` list allows the workflow; an `ERROR` validation blocks it.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "operations",
+          "value": "Operation[]",
+          "description": ""
+        }
+      ],
+      "value": "export interface InterceptResult {\n  operations: Operation[];\n}"
+    }
+  },
+  "Operation": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "Operation",
+      "description": "A single host operation produced by an interceptor.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "validationAdd",
+          "value": "ValidationAdd",
+          "description": "Adds a validation to the workflow being intercepted.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Operation {\n  validationAdd?: ValidationAdd;\n}"
+    }
+  },
+  "ValidationAdd": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ValidationAdd",
+      "description": "Adds a validation to the workflow being intercepted.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "handle",
+          "value": "string",
+          "description": "Stable identifier for this validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "level",
+          "value": "ValidationLevel",
+          "description": "`ERROR` blocks the workflow. `WARNING` and `INFO` do not."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "message",
+          "value": "string",
+          "description": "Host-facing message for support, observability, or staff UX."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "metafields",
+          "value": "Metafield[]",
+          "description": "Optional structured data for custom UX or order metadata.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "string",
+          "description": "JSON-path locator for where the validation applies. Defaults to `$.cart`.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ValidationAdd {\n  /** `ERROR` blocks the workflow. `WARNING` and `INFO` do not. */\n  level: ValidationLevel;\n\n  /** Stable identifier for this validation. */\n  handle: string;\n\n  /** Host-facing message for support, observability, or staff UX. */\n  message: string;\n\n  /** JSON-path locator for where the validation applies. Defaults to `$.cart`. */\n  target?: string;\n\n  /** Optional structured data for custom UX or order metadata. */\n  metafields?: Metafield[];\n}"
+    }
+  },
+  "ValidationLevel": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ValidationLevel",
+      "value": "'INFO' | 'WARNING' | 'ERROR'",
+      "description": "",
+      "isPublicDocs": true
+    }
+  },
+  "Metafield": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "Metafield",
+      "description": "Metafield input attached to a validation.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "namespace",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": ""
+        }
+      ],
+      "value": "export interface Metafield {\n  namespace: string;\n  key: string;\n  value: string;\n  type: string;\n}"
+    }
+  },
   "CustomerApi": {
     "src/surfaces/point-of-sale/api/customer-api/customer-api.ts": {
       "filePath": "src/surfaces/point-of-sale/api/customer-api/customer-api.ts",
@@ -4664,6 +5065,46 @@
         }
       ],
       "value": "export interface CustomerApiContent {\n  /**\n   * The unique identifier for the customer. Use for customer lookups, applying customer-specific pricing, enabling personalized features, and integrating with external systems.\n   */\n  id: number;\n}"
+    }
+  },
+  "InterceptCapability": {
+    "src/surfaces/point-of-sale/api/capabilities-api/capabilities-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/capabilities-api/capabilities-api.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "InterceptCapability",
+      "value": "`${Extract<\n  keyof ShopifyInterceptMap,\n  string\n>}.${'error' | 'warning' | 'info'}`",
+      "description": "A granted validation severity for a POS intercept event. Event names are derived from `ShopifyInterceptMap`; `warning` corresponds to the `WARNING` validation level.",
+      "isPublicDocs": true
+    }
+  },
+  "CapabilitiesApi": {
+    "src/surfaces/point-of-sale/api/capabilities-api/capabilities-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/capabilities-api/capabilities-api.ts",
+      "name": "CapabilitiesApi",
+      "description": "Provides the validation severities granted for POS intercept events.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/capabilities-api/capabilities-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "capabilities",
+          "value": "ReadonlySignalLike<InterceptCapability[]>",
+          "description": "A read-only list of granted intercept capabilities. The signal is available to every POS target, but only the target that registers an interceptor declares its event in `shopify.extension.toml`.\n\nGrants are cumulative. An `.error` grant includes `.warning` and `.info`, and a `.warning` grant includes `.info`.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "if (shopify.capabilities.value.includes('beforecheckout.error')) {\n  // This interceptor can return ERROR, WARNING, or INFO validations.\n}",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface CapabilitiesApi {\n  /**\n   * A read-only list of granted intercept capabilities. The signal is available\n   * to every POS target, but only the target that registers an interceptor\n   * declares its event in `shopify.extension.toml`.\n   *\n   * Grants are cumulative. An `.error` grant includes `.warning` and `.info`,\n   * and a `.warning` grant includes `.info`.\n   *\n   * @example\n   * ```ts\n   * if (shopify.capabilities.value.includes('beforecheckout.error')) {\n   *   // This interceptor can return ERROR, WARNING, or INFO validations.\n   * }\n   * ```\n   */\n  capabilities: ReadonlySignalLike<InterceptCapability[]>;\n}"
     }
   },
   "OrderApi": {
@@ -5074,7 +5515,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "IconType",
-      "value": "'camera' | 'external' | 'adjust' | 'affiliate' | 'airplane' | 'alert-bubble' | 'alert-circle' | 'alert-diamond' | 'alert-location' | 'alert-octagon' | 'alert-octagon-filled' | 'alert-triangle' | 'alert-triangle-filled' | 'align-horizontal-centers' | 'app-extension' | 'apps' | 'archive' | 'arrow-down' | 'arrow-down-circle' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-circle' | 'arrow-right' | 'arrow-right-circle' | 'arrow-up' | 'arrow-up-circle' | 'arrow-up-right' | 'arrows-in-horizontal' | 'arrows-out-horizontal' | 'asterisk' | 'attachment' | 'automation' | 'backspace' | 'bag' | 'bank' | 'barcode' | 'battery-low' | 'bill' | 'blank' | 'blog' | 'bolt' | 'bolt-filled' | 'book' | 'book-open' | 'bug' | 'bullet' | 'business-entity' | 'button' | 'button-press' | 'calculator' | 'calendar' | 'calendar-check' | 'calendar-compare' | 'calendar-list' | 'calendar-time' | 'camera-flip' | 'caret-down' | 'caret-left' | 'caret-right' | 'caret-up' | 'cart' | 'cart-abandoned' | 'cart-discount' | 'cart-down' | 'cart-filled' | 'cart-sale' | 'cart-send' | 'cart-up' | 'cash-dollar' | 'cash-euro' | 'cash-pound' | 'cash-rupee' | 'cash-yen' | 'catalog-product' | 'categories' | 'channels' | 'chart-cohort' | 'chart-donut' | 'chart-funnel' | 'chart-histogram-first' | 'chart-histogram-first-last' | 'chart-histogram-flat' | 'chart-histogram-full' | 'chart-histogram-growth' | 'chart-histogram-last' | 'chart-histogram-second-last' | 'chart-horizontal' | 'chart-line' | 'chart-popular' | 'chart-stacked' | 'chart-vertical' | 'chat' | 'chat-new' | 'chat-referral' | 'check' | 'check-circle' | 'check-circle-filled' | 'checkbox' | 'chevron-down' | 'chevron-down-circle' | 'chevron-left' | 'chevron-left-circle' | 'chevron-right' | 'chevron-right-circle' | 'chevron-up' | 'chevron-up-circle' | 'circle' | 'circle-dashed' | 'clipboard' | 'clipboard-check' | 'clipboard-checklist' | 'clock' | 'clock-list' | 'clock-revert' | 'code' | 'code-add' | 'collection' | 'collection-featured' | 'collection-list' | 'collection-reference' | 'color' | 'color-none' | 'compass' | 'complete' | 'compose' | 'confetti' | 'connect' | 'content' | 'contract' | 'corner-pill' | 'corner-round' | 'corner-square' | 'credit-card' | 'credit-card-cancel' | 'credit-card-percent' | 'credit-card-reader' | 'credit-card-reader-chip' | 'credit-card-reader-tap' | 'credit-card-secure' | 'credit-card-tap-chip' | 'crop' | 'currency-convert' | 'cursor' | 'cursor-banner' | 'cursor-option' | 'data-presentation' | 'data-table' | 'database' | 'database-add' | 'database-connect' | 'delete' | 'delivered' | 'delivery' | 'desktop' | 'disabled' | 'disabled-filled' | 'discount' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'dns-settings' | 'dock-floating' | 'dock-side' | 'domain' | 'domain-landing-page' | 'domain-new' | 'domain-redirect' | 'download' | 'drag-drop' | 'drag-handle' | 'drawer' | 'duplicate' | 'edit' | 'email' | 'email-follow-up' | 'email-newsletter' | 'empty' | 'enabled' | 'enter' | 'envelope' | 'envelope-soft-pack' | 'eraser' | 'exchange' | 'exit' | 'export' | 'eye-check-mark' | 'eye-dropper' | 'eye-dropper-list' | 'eye-first' | 'eyeglasses' | 'fav' | 'favicon' | 'file' | 'file-list' | 'filter' | 'filter-active' | 'flag' | 'flip-horizontal' | 'flip-vertical' | 'flower' | 'folder' | 'folder-add' | 'folder-down' | 'folder-remove' | 'folder-up' | 'food' | 'foreground' | 'forklift' | 'forms' | 'games' | 'gauge' | 'geolocation' | 'gift' | 'gift-card' | 'git-branch' | 'git-commit' | 'git-repository' | 'globe' | 'globe-asia' | 'globe-europe' | 'globe-lines' | 'globe-list' | 'graduation-hat' | 'grid' | 'hashtag' | 'hashtag-decimal' | 'hashtag-list' | 'heart' | 'hide' | 'hide-filled' | 'home' | 'home-filled' | 'icons' | 'identity-card' | 'image' | 'image-add' | 'image-alt' | 'image-explore' | 'image-magic' | 'image-none' | 'image-with-text-overlay' | 'images' | 'import' | 'in-progress' | 'incentive' | 'incoming' | 'incomplete' | 'info' | 'info-filled' | 'inheritance' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'inventory-updated' | 'iq' | 'key' | 'keyboard' | 'keyboard-filled' | 'keyboard-hide' | 'keypad' | 'label-printer' | 'language' | 'language-translate' | 'layout-block' | 'layout-buy-button' | 'layout-buy-button-horizontal' | 'layout-buy-button-vertical' | 'layout-column-1' | 'layout-columns-2' | 'layout-columns-3' | 'layout-footer' | 'layout-header' | 'layout-logo-block' | 'layout-popup' | 'layout-rows-2' | 'layout-section' | 'layout-sidebar-left' | 'layout-sidebar-right' | 'lightbulb' | 'link' | 'link-list' | 'list-bulleted' | 'list-bulleted-filled' | 'list-numbered' | 'live' | 'live-critical' | 'live-none' | 'location' | 'location-none' | 'lock' | 'map' | 'markets' | 'markets-euro' | 'markets-rupee' | 'markets-yen' | 'maximize' | 'measurement-size' | 'measurement-size-list' | 'measurement-volume' | 'measurement-volume-list' | 'measurement-weight' | 'measurement-weight-list' | 'media-receiver' | 'megaphone' | 'mention' | 'menu' | 'menu-filled' | 'menu-horizontal' | 'menu-vertical' | 'merge' | 'metafields' | 'metaobject' | 'metaobject-list' | 'metaobject-reference' | 'microphone' | 'microphone-muted' | 'minimize' | 'minus' | 'minus-circle' | 'mobile' | 'money' | 'money-none' | 'money-split' | 'moon' | 'nature' | 'note' | 'note-add' | 'notification' | 'number-one' | 'order' | 'order-batches' | 'order-draft' | 'order-filled' | 'order-first' | 'order-fulfilled' | 'order-repeat' | 'order-unfulfilled' | 'orders-status' | 'organization' | 'outdent' | 'outgoing' | 'package' | 'package-cancel' | 'package-fulfilled' | 'package-on-hold' | 'package-reassign' | 'package-returned' | 'page' | 'page-add' | 'page-attachment' | 'page-clock' | 'page-down' | 'page-heart' | 'page-list' | 'page-reference' | 'page-remove' | 'page-report' | 'page-up' | 'pagination-end' | 'pagination-start' | 'paint-brush-flat' | 'paint-brush-round' | 'paper-check' | 'partially-complete' | 'passkey' | 'paste' | 'pause-circle' | 'payment' | 'payment-capture' | 'payout' | 'payout-dollar' | 'payout-euro' | 'payout-pound' | 'payout-rupee' | 'payout-yen' | 'person' | 'person-add' | 'person-exit' | 'person-filled' | 'person-list' | 'person-lock' | 'person-remove' | 'person-segment' | 'personalized-text' | 'phablet' | 'phone' | 'phone-down' | 'phone-down-filled' | 'phone-in' | 'phone-out' | 'pin' | 'pin-remove' | 'plan' | 'play' | 'play-circle' | 'plus' | 'plus-circle' | 'plus-circle-down' | 'plus-circle-filled' | 'plus-circle-up' | 'point-of-sale' | 'point-of-sale-register' | 'price-list' | 'print' | 'product' | 'product-add' | 'product-cost' | 'product-filled' | 'product-list' | 'product-reference' | 'product-remove' | 'product-return' | 'product-unavailable' | 'profile' | 'profile-filled' | 'question-circle' | 'question-circle-filled' | 'radio-control' | 'receipt' | 'receipt-dollar' | 'receipt-euro' | 'receipt-folded' | 'receipt-paid' | 'receipt-pound' | 'receipt-refund' | 'receipt-rupee' | 'receipt-yen' | 'receivables' | 'redo' | 'referral-code' | 'refresh' | 'remove-background' | 'reorder' | 'replace' | 'replay' | 'reset' | 'return' | 'reward' | 'rocket' | 'rotate-left' | 'rotate-right' | 'sandbox' | 'save' | 'savings' | 'scan-qr-code' | 'search' | 'search-add' | 'search-list' | 'search-recent' | 'search-resource' | 'select' | 'send' | 'settings' | 'share' | 'shield-check-mark' | 'shield-none' | 'shield-pending' | 'shield-person' | 'shipping-label' | 'shipping-label-cancel' | 'shopcodes' | 'slideshow' | 'smiley-happy' | 'smiley-joy' | 'smiley-neutral' | 'smiley-sad' | 'social-ad' | 'social-post' | 'sort' | 'sort-ascending' | 'sort-descending' | 'sound' | 'split' | 'sports' | 'star' | 'star-circle' | 'star-filled' | 'star-half' | 'star-list' | 'status' | 'status-active' | 'stop-circle' | 'store' | 'store-import' | 'store-managed' | 'store-online' | 'sun' | 'table' | 'table-masonry' | 'tablet' | 'target' | 'tax' | 'team' | 'text' | 'text-align-center' | 'text-align-left' | 'text-align-right' | 'text-block' | 'text-bold' | 'text-color' | 'text-font' | 'text-font-list' | 'text-grammar' | 'text-in-columns' | 'text-in-rows' | 'text-indent' | 'text-indent-remove' | 'text-italic' | 'text-quote' | 'text-title' | 'text-underline' | 'text-with-image' | 'theme' | 'theme-edit' | 'theme-store' | 'theme-template' | 'three-d-environment' | 'thumbs-down' | 'thumbs-up' | 'tip-jar' | 'toggle-off' | 'toggle-on' | 'transaction' | 'transaction-fee-add' | 'transaction-fee-dollar' | 'transaction-fee-euro' | 'transaction-fee-pound' | 'transaction-fee-rupee' | 'transaction-fee-yen' | 'transfer' | 'transfer-in' | 'transfer-internal' | 'transfer-out' | 'truck' | 'undo' | 'unknown-device' | 'unlock' | 'upload' | 'variant' | 'variant-list' | 'video' | 'video-list' | 'view' | 'viewport-narrow' | 'viewport-short' | 'viewport-tall' | 'viewport-wide' | 'wallet' | 'wand' | 'watch' | 'wifi' | 'work' | 'work-list' | 'wrench' | 'x' | 'x-circle' | 'x-circle-filled'",
+      "value": "'camera' | 'external' | 'info' | 'adjust' | 'affiliate' | 'airplane' | 'alert-bubble' | 'alert-circle' | 'alert-diamond' | 'alert-location' | 'alert-octagon' | 'alert-octagon-filled' | 'alert-triangle' | 'alert-triangle-filled' | 'align-horizontal-centers' | 'app-extension' | 'apps' | 'archive' | 'arrow-down' | 'arrow-down-circle' | 'arrow-down-right' | 'arrow-left' | 'arrow-left-circle' | 'arrow-right' | 'arrow-right-circle' | 'arrow-up' | 'arrow-up-circle' | 'arrow-up-right' | 'arrows-in-horizontal' | 'arrows-out-horizontal' | 'asterisk' | 'attachment' | 'automation' | 'backspace' | 'bag' | 'bank' | 'barcode' | 'battery-low' | 'bill' | 'blank' | 'blog' | 'bolt' | 'bolt-filled' | 'book' | 'book-open' | 'bug' | 'bullet' | 'business-entity' | 'button' | 'button-press' | 'calculator' | 'calendar' | 'calendar-check' | 'calendar-compare' | 'calendar-list' | 'calendar-time' | 'camera-flip' | 'caret-down' | 'caret-left' | 'caret-right' | 'caret-up' | 'cart' | 'cart-abandoned' | 'cart-discount' | 'cart-down' | 'cart-filled' | 'cart-sale' | 'cart-send' | 'cart-up' | 'cash-dollar' | 'cash-euro' | 'cash-pound' | 'cash-rupee' | 'cash-yen' | 'catalog-product' | 'categories' | 'channels' | 'chart-cohort' | 'chart-donut' | 'chart-funnel' | 'chart-histogram-first' | 'chart-histogram-first-last' | 'chart-histogram-flat' | 'chart-histogram-full' | 'chart-histogram-growth' | 'chart-histogram-last' | 'chart-histogram-second-last' | 'chart-horizontal' | 'chart-line' | 'chart-popular' | 'chart-stacked' | 'chart-vertical' | 'chat' | 'chat-new' | 'chat-referral' | 'check' | 'check-circle' | 'check-circle-filled' | 'checkbox' | 'chevron-down' | 'chevron-down-circle' | 'chevron-left' | 'chevron-left-circle' | 'chevron-right' | 'chevron-right-circle' | 'chevron-up' | 'chevron-up-circle' | 'circle' | 'circle-dashed' | 'clipboard' | 'clipboard-check' | 'clipboard-checklist' | 'clock' | 'clock-list' | 'clock-revert' | 'code' | 'code-add' | 'collection' | 'collection-featured' | 'collection-list' | 'collection-reference' | 'color' | 'color-none' | 'compass' | 'complete' | 'compose' | 'confetti' | 'connect' | 'content' | 'contract' | 'corner-pill' | 'corner-round' | 'corner-square' | 'credit-card' | 'credit-card-cancel' | 'credit-card-percent' | 'credit-card-reader' | 'credit-card-reader-chip' | 'credit-card-reader-tap' | 'credit-card-secure' | 'credit-card-tap-chip' | 'crop' | 'currency-convert' | 'cursor' | 'cursor-banner' | 'cursor-option' | 'data-presentation' | 'data-table' | 'database' | 'database-add' | 'database-connect' | 'delete' | 'delivered' | 'delivery' | 'desktop' | 'disabled' | 'disabled-filled' | 'discount' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'dns-settings' | 'dock-floating' | 'dock-side' | 'domain' | 'domain-landing-page' | 'domain-new' | 'domain-redirect' | 'download' | 'drag-drop' | 'drag-handle' | 'drawer' | 'duplicate' | 'edit' | 'email' | 'email-follow-up' | 'email-newsletter' | 'empty' | 'enabled' | 'enter' | 'envelope' | 'envelope-soft-pack' | 'eraser' | 'exchange' | 'exit' | 'export' | 'eye-check-mark' | 'eye-dropper' | 'eye-dropper-list' | 'eye-first' | 'eyeglasses' | 'fav' | 'favicon' | 'file' | 'file-list' | 'filter' | 'filter-active' | 'flag' | 'flip-horizontal' | 'flip-vertical' | 'flower' | 'folder' | 'folder-add' | 'folder-down' | 'folder-remove' | 'folder-up' | 'food' | 'foreground' | 'forklift' | 'forms' | 'games' | 'gauge' | 'geolocation' | 'gift' | 'gift-card' | 'git-branch' | 'git-commit' | 'git-repository' | 'globe' | 'globe-asia' | 'globe-europe' | 'globe-lines' | 'globe-list' | 'graduation-hat' | 'grid' | 'hashtag' | 'hashtag-decimal' | 'hashtag-list' | 'heart' | 'hide' | 'hide-filled' | 'home' | 'home-filled' | 'icons' | 'identity-card' | 'image' | 'image-add' | 'image-alt' | 'image-explore' | 'image-magic' | 'image-none' | 'image-with-text-overlay' | 'images' | 'import' | 'in-progress' | 'incentive' | 'incoming' | 'incomplete' | 'info-filled' | 'inheritance' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'inventory-updated' | 'iq' | 'key' | 'keyboard' | 'keyboard-filled' | 'keyboard-hide' | 'keypad' | 'label-printer' | 'language' | 'language-translate' | 'layout-block' | 'layout-buy-button' | 'layout-buy-button-horizontal' | 'layout-buy-button-vertical' | 'layout-column-1' | 'layout-columns-2' | 'layout-columns-3' | 'layout-footer' | 'layout-header' | 'layout-logo-block' | 'layout-popup' | 'layout-rows-2' | 'layout-section' | 'layout-sidebar-left' | 'layout-sidebar-right' | 'lightbulb' | 'link' | 'link-list' | 'list-bulleted' | 'list-bulleted-filled' | 'list-numbered' | 'live' | 'live-critical' | 'live-none' | 'location' | 'location-none' | 'lock' | 'map' | 'markets' | 'markets-euro' | 'markets-rupee' | 'markets-yen' | 'maximize' | 'measurement-size' | 'measurement-size-list' | 'measurement-volume' | 'measurement-volume-list' | 'measurement-weight' | 'measurement-weight-list' | 'media-receiver' | 'megaphone' | 'mention' | 'menu' | 'menu-filled' | 'menu-horizontal' | 'menu-vertical' | 'merge' | 'metafields' | 'metaobject' | 'metaobject-list' | 'metaobject-reference' | 'microphone' | 'microphone-muted' | 'minimize' | 'minus' | 'minus-circle' | 'mobile' | 'money' | 'money-none' | 'money-split' | 'moon' | 'nature' | 'note' | 'note-add' | 'notification' | 'number-one' | 'order' | 'order-batches' | 'order-draft' | 'order-filled' | 'order-first' | 'order-fulfilled' | 'order-repeat' | 'order-unfulfilled' | 'orders-status' | 'organization' | 'outdent' | 'outgoing' | 'package' | 'package-cancel' | 'package-fulfilled' | 'package-on-hold' | 'package-reassign' | 'package-returned' | 'page' | 'page-add' | 'page-attachment' | 'page-clock' | 'page-down' | 'page-heart' | 'page-list' | 'page-reference' | 'page-remove' | 'page-report' | 'page-up' | 'pagination-end' | 'pagination-start' | 'paint-brush-flat' | 'paint-brush-round' | 'paper-check' | 'partially-complete' | 'passkey' | 'paste' | 'pause-circle' | 'payment' | 'payment-capture' | 'payout' | 'payout-dollar' | 'payout-euro' | 'payout-pound' | 'payout-rupee' | 'payout-yen' | 'person' | 'person-add' | 'person-exit' | 'person-filled' | 'person-list' | 'person-lock' | 'person-remove' | 'person-segment' | 'personalized-text' | 'phablet' | 'phone' | 'phone-down' | 'phone-down-filled' | 'phone-in' | 'phone-out' | 'pin' | 'pin-remove' | 'plan' | 'play' | 'play-circle' | 'plus' | 'plus-circle' | 'plus-circle-down' | 'plus-circle-filled' | 'plus-circle-up' | 'point-of-sale' | 'point-of-sale-register' | 'price-list' | 'print' | 'product' | 'product-add' | 'product-cost' | 'product-filled' | 'product-list' | 'product-reference' | 'product-remove' | 'product-return' | 'product-unavailable' | 'profile' | 'profile-filled' | 'question-circle' | 'question-circle-filled' | 'radio-control' | 'receipt' | 'receipt-dollar' | 'receipt-euro' | 'receipt-folded' | 'receipt-paid' | 'receipt-pound' | 'receipt-refund' | 'receipt-rupee' | 'receipt-yen' | 'receivables' | 'redo' | 'referral-code' | 'refresh' | 'remove-background' | 'reorder' | 'replace' | 'replay' | 'reset' | 'return' | 'reward' | 'rocket' | 'rotate-left' | 'rotate-right' | 'sandbox' | 'save' | 'savings' | 'scan-qr-code' | 'search' | 'search-add' | 'search-list' | 'search-recent' | 'search-resource' | 'select' | 'send' | 'settings' | 'share' | 'shield-check-mark' | 'shield-none' | 'shield-pending' | 'shield-person' | 'shipping-label' | 'shipping-label-cancel' | 'shopcodes' | 'slideshow' | 'smiley-happy' | 'smiley-joy' | 'smiley-neutral' | 'smiley-sad' | 'social-ad' | 'social-post' | 'sort' | 'sort-ascending' | 'sort-descending' | 'sound' | 'split' | 'sports' | 'star' | 'star-circle' | 'star-filled' | 'star-half' | 'star-list' | 'status' | 'status-active' | 'stop-circle' | 'store' | 'store-import' | 'store-managed' | 'store-online' | 'sun' | 'table' | 'table-masonry' | 'tablet' | 'target' | 'tax' | 'team' | 'text' | 'text-align-center' | 'text-align-left' | 'text-align-right' | 'text-block' | 'text-bold' | 'text-color' | 'text-font' | 'text-font-list' | 'text-grammar' | 'text-in-columns' | 'text-in-rows' | 'text-indent' | 'text-indent-remove' | 'text-italic' | 'text-quote' | 'text-title' | 'text-underline' | 'text-with-image' | 'theme' | 'theme-edit' | 'theme-store' | 'theme-template' | 'three-d-environment' | 'thumbs-down' | 'thumbs-up' | 'tip-jar' | 'toggle-off' | 'toggle-on' | 'transaction' | 'transaction-fee-add' | 'transaction-fee-dollar' | 'transaction-fee-euro' | 'transaction-fee-pound' | 'transaction-fee-rupee' | 'transaction-fee-yen' | 'transfer' | 'transfer-in' | 'transfer-internal' | 'transfer-out' | 'truck' | 'undo' | 'unknown-device' | 'unlock' | 'upload' | 'variant' | 'variant-list' | 'video' | 'video-list' | 'view' | 'viewport-narrow' | 'viewport-short' | 'viewport-tall' | 'viewport-wide' | 'wallet' | 'wand' | 'watch' | 'wifi' | 'work' | 'work-list' | 'wrench' | 'x' | 'x-circle' | 'x-circle-filled'",
       "description": "",
       "isPublicDocs": true
     }
@@ -6605,7 +7046,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "SupportedIconNames",
-      "value": "'external' | 'alert-circle' | 'apps' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up' | 'backspace' | 'barcode' | 'battery-low' | 'bolt-filled' | 'bullet' | 'camera-flip' | 'caret-down' | 'caret-up' | 'cart' | 'cart-down' | 'cart-filled' | 'cart-send' | 'cart-up' | 'chart-line' | 'chart-vertical' | 'check' | 'check-circle-filled' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard-checklist' | 'clock' | 'collection' | 'credit-card' | 'credit-card-reader' | 'delete' | 'delivery' | 'desktop' | 'disabled' | 'disabled-filled' | 'discount' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'drag-handle' | 'drawer' | 'duplicate' | 'edit' | 'email' | 'exchange' | 'flag' | 'gift-card' | 'graduation-hat' | 'grid' | 'hide-filled' | 'home' | 'home-filled' | 'image' | 'images' | 'info' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'keyboard-hide' | 'keypad' | 'link' | 'list-bulleted' | 'list-bulleted-filled' | 'live' | 'live-critical' | 'live-none' | 'location' | 'lock' | 'maximize' | 'menu' | 'menu-filled' | 'menu-horizontal' | 'minimize' | 'minus' | 'mobile' | 'money' | 'money-split' | 'note' | 'order' | 'order-draft' | 'order-filled' | 'package' | 'package-cancel' | 'package-reassign' | 'payment' | 'person' | 'person-add' | 'person-filled' | 'phablet' | 'phone-out' | 'play-circle' | 'plus' | 'point-of-sale' | 'point-of-sale-register' | 'print' | 'product' | 'product-filled' | 'profile' | 'question-circle-filled' | 'receipt' | 'refresh' | 'return' | 'scan-qr-code' | 'search' | 'send' | 'settings' | 'shipping-label-cancel' | 'sort' | 'star-circle' | 'star-filled' | 'store' | 'tablet' | 'transaction-fee-add' | 'unlock' | 'variant' | 'view' | 'wallet' | 'x' | 'x-circle'",
+      "value": "'external' | 'info' | 'alert-circle' | 'apps' | 'arrow-down' | 'arrow-left' | 'arrow-right' | 'arrow-up' | 'backspace' | 'barcode' | 'battery-low' | 'bolt-filled' | 'bullet' | 'camera-flip' | 'caret-down' | 'caret-up' | 'cart' | 'cart-down' | 'cart-filled' | 'cart-send' | 'cart-up' | 'chart-line' | 'chart-vertical' | 'check' | 'check-circle-filled' | 'chevron-down' | 'chevron-left' | 'chevron-right' | 'chevron-up' | 'circle' | 'clipboard-checklist' | 'clock' | 'collection' | 'credit-card' | 'credit-card-reader' | 'delete' | 'delivery' | 'desktop' | 'disabled' | 'disabled-filled' | 'discount' | 'discount-add' | 'discount-automatic' | 'discount-code' | 'discount-remove' | 'drag-handle' | 'drawer' | 'duplicate' | 'edit' | 'email' | 'exchange' | 'flag' | 'gift-card' | 'graduation-hat' | 'grid' | 'hide-filled' | 'home' | 'home-filled' | 'image' | 'images' | 'inventory' | 'inventory-edit' | 'inventory-list' | 'inventory-transfer' | 'keyboard-hide' | 'keypad' | 'link' | 'list-bulleted' | 'list-bulleted-filled' | 'live' | 'live-critical' | 'live-none' | 'location' | 'lock' | 'maximize' | 'menu' | 'menu-filled' | 'menu-horizontal' | 'minimize' | 'minus' | 'mobile' | 'money' | 'money-split' | 'note' | 'order' | 'order-draft' | 'order-filled' | 'package' | 'package-cancel' | 'package-reassign' | 'payment' | 'person' | 'person-add' | 'person-filled' | 'phablet' | 'phone-out' | 'play-circle' | 'plus' | 'point-of-sale' | 'point-of-sale-register' | 'print' | 'product' | 'product-filled' | 'profile' | 'question-circle-filled' | 'receipt' | 'refresh' | 'return' | 'scan-qr-code' | 'search' | 'send' | 'settings' | 'shipping-label-cancel' | 'sort' | 'star-circle' | 'star-filled' | 'store' | 'tablet' | 'transaction-fee-add' | 'unlock' | 'variant' | 'view' | 'wallet' | 'x' | 'x-circle'",
       "description": ""
     }
   },
@@ -8374,6 +8815,14 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
           "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/base-transaction-complete.ts",
+          "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "Customer",
           "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
@@ -8462,7 +8911,7 @@
           "description": "The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps, `'Reprint'` for receipt reprints). This determines the transaction's business logic, receipt format, and inventory impact."
         }
       ],
-      "value": "export interface BaseTransactionComplete {\n  /**\n   * The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps, `'Reprint'` for receipt reprints). This determines the transaction's business logic, receipt format, and inventory impact.\n   */\n  transactionType: TransactionType;\n  /**\n   * The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.\n   */\n  orderId?: number;\n  /**\n   * The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.\n   */\n  customer?: Customer;\n  /**\n   * An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.\n   */\n  discounts?: Discount[];\n  /**\n   * The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify.\n   */\n  taxTotal: Money;\n  /**\n   * The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations.\n   */\n  subtotal: Money;\n  /**\n   * The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts.\n   */\n  grandTotal: Money;\n  /**\n   * An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`.\n   */\n  paymentMethods: Payment[];\n  /**\n   * The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts.\n   */\n  balanceDue: Money;\n  /**\n   * An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).\n   */\n  shippingLines?: ShippingLine[];\n  /**\n   * An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.\n   */\n  taxLines?: TaxLine[];\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems.\n   */\n  executedAt: string;\n  /**\n   * The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.\n   */\n  tipAmount?: Money;\n}"
+      "value": "export interface BaseTransactionComplete {\n  /**\n   * The transaction type identifier indicating which kind of transaction was completed (for example, `'Sale'` for new purchases, `'Return'` for refunds, `'Exchange'` for item swaps, `'Reprint'` for receipt reprints). This determines the transaction's business logic, receipt format, and inventory impact.\n   */\n  transactionType: TransactionType;\n  /**\n   * The unique numeric identifier for the Shopify order created by this transaction. This ID links the POS transaction to the order record in Shopify's system and can be used for order lookups, tracking, and API operations. Returns `undefined` for transactions that don't create orders (for example, reprints) or when order creation is pending.\n   */\n  orderId?: number;\n  /**\n   * The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.\n   */\n  customer?: Customer;\n  /**\n   * An array of all discounts applied to this transaction, including cart-level discounts, automatic discounts, and discount codes. Each discount entry contains the discount amount, type, and description. Returns `undefined` or empty array when no discounts were applied. The sum of discount amounts reduces the final transaction total.\n   */\n  discounts?: Discount[];\n  /**\n   * The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify.\n   */\n  taxTotal: Money;\n  /**\n   * The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations.\n   */\n  subtotal: Money;\n  /**\n   * The final total amount the customer pays for this transaction as a `Money` object. This includes all line items, shipping charges, taxes, and accounts for all discounts. This is the amount that must be tendered through payment methods. Calculated as: subtotal + taxTotal + shipping - discounts.\n   */\n  grandTotal: Money;\n  /**\n   * An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`.\n   */\n  paymentMethods: Payment[];\n  /**\n   * The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts.\n   */\n  balanceDue: Money;\n  /**\n   * An array of shipping charges applied to this transaction. Each shipping line represents a shipping method with its price and associated taxes. Multiple entries can exist when different shipping methods apply to different items or when combining shipping with pickup. Returns `undefined` or empty array for transactions with no shipping charges (for example, in-store purchases, digital products).\n   */\n  shippingLines?: ShippingLine[];\n  /**\n   * An array of individual tax lines showing the detailed tax breakdown by jurisdiction and tax type. Each tax line represents a specific tax (for example, state tax, federal tax, VAT, GST) with its rate and calculated amount. Multiple tax lines can apply to a single transaction based on location, product taxability, and tax rules. Returns `undefined` or empty array for tax-exempt transactions or when detailed tax breakdown isn't available.\n   */\n  taxLines?: TaxLine[];\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the transaction was executed and completed (for example, `\"2024-05-15T14:30:00Z\"`). This marks the exact moment the transaction was finalized, payment was processed, and the order was created. Commonly used for transaction history, chronological sorting, reporting, audit trails, and synchronization with external systems.\n   */\n  executedAt: string;\n  /**\n   * The tip amount added to this transaction as a `Money` object. This represents the gratuity the customer chose to add on top of the grand total, typically for service-based businesses or hospitality transactions. Tipping can be enabled through POS settings and may be added as a percentage or fixed amount. Returns `undefined` when no tip was added or when tipping is not enabled for the transaction.\n   */\n  tipAmount?: Money;\n  /**\n   * The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.\n   */\n  cashRoundingAdjustment?: Money;\n}"
     }
   },
   "ReprintReceiptData": {
@@ -8478,6 +8927,14 @@
           "name": "balanceDue",
           "value": "Money",
           "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
@@ -8637,6 +9094,14 @@
         {
           "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
           "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "Customer",
           "description": "The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.",
@@ -8756,6 +9221,14 @@
           "name": "balanceDue",
           "value": "Money",
           "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
@@ -8894,6 +9367,14 @@
           "name": "balanceDue",
           "value": "Money",
           "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashRoundingAdjustment",
+          "value": "Money",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
@@ -9158,59 +9639,6 @@
       "value": "export interface TransactionCompleteWithReprintData extends BaseData, BaseApi {\n  /**\n   * Provides access to persistent local storage methods for your POS UI extension. Use this to store, retrieve, and manage data that persists across sessions.\n   */\n  storage: BaseApi['storage'];\n  /**\n   * The transaction data, which can be one of the following types:\n   * - `SaleTransactionData`: Defines the data structure for completed sale transactions.\n   * - `ReturnTransactionData`: Defines the data structure for completed return transactions.\n   * - `ExchangeTransactionData`: Defines the data structure for completed exchange transactions.\n   * - `ReprintReceiptData`: Defines the data structure for receipt reprint requests.\n   */\n  transaction:\n    | SaleTransactionData\n    | ReturnTransactionData\n    | ExchangeTransactionData\n    | ReprintReceiptData;\n}"
     }
   },
-  "CartUpdateEventData": {
-    "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-      "name": "CartUpdateEventData",
-      "description": "The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cart",
-          "value": "Cart",
-          "description": "The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": ""
-        }
-      ],
-      "value": "export interface CartUpdateEventData extends BaseData, BaseApi {\n  /**\n   * The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods.\n   */\n  cart: Cart;\n}"
-    }
-  },
   "BaseData": {
     "src/surfaces/point-of-sale/event/data/BaseData.ts": {
       "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
@@ -9248,112 +9676,6 @@
         }
       ],
       "value": "export interface BaseData {\n  /**\n   * The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored.\n   */\n  connectivity: ConnectivityApiContent;\n  /**\n   * Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations.\n   */\n  device: Device;\n  /**\n   * The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings.\n   */\n  locale: string;\n  /**\n   * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.\n   */\n  session: Session;\n}"
-    }
-  },
-  "CashTrackingSessionStartData": {
-    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-      "name": "CashTrackingSessionStartData",
-      "description": "The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashTrackingSessionStart",
-          "value": "{ id: number; openingTime: string; }",
-          "description": "The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": ""
-        }
-      ],
-      "value": "export interface CashTrackingSessionStartData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift.\n   */\n  cashTrackingSessionStart: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID distinguishes this session from other cash tracking sessions and can be used for session-specific operations, reporting, or linking transactions to sessions. The ID is assigned when the session opens and remains constant until the session closes.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and cash drawer operations began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the staff member's shift or cash handling period. Commonly used for calculating session duration, shift reporting, or determining which transactions belong to which session.\n     */\n    openingTime: string;\n  };\n}"
-    }
-  },
-  "CashTrackingSessionCompleteData": {
-    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-      "name": "CashTrackingSessionCompleteData",
-      "description": "The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cashTrackingSessionComplete",
-          "value": "{ id: number; openingTime: string; closingTime: string; }",
-          "description": "The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "connectivity",
-          "value": "ConnectivityApiContent",
-          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "device",
-          "value": "Device",
-          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locale",
-          "value": "string",
-          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "session",
-          "value": "Session",
-          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "storage",
-          "value": "Storage",
-          "description": ""
-        }
-      ],
-      "value": "export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing.\n   */\n  cashTrackingSessionComplete: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID matches the ID from when the session was opened and can be used to correlate session start and end events, retrieve session-specific data, or link all transactions that occurred during this session.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the session and can be compared with `closingTime` to calculate the total session duration or shift length.\n     */\n    openingTime: string;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was closed and ended (for example, `\"2024-05-15T17:30:00Z\"`). This marks when the staff member completed their shift, closed out the cash drawer, and finalized the session. The time between `openingTime` and `closingTime` represents the active session duration. Commonly used for shift reporting, calculating hours worked, or determining the timeframe for session-specific transactions.\n     */\n    closingTime: string;\n  };\n}"
     }
   },
   "ActionExtensionComponents": {
@@ -9428,31 +9750,195 @@
           "syntaxKind": "PropertySignature",
           "name": "pos.cart-update.event.observe",
           "value": "(data: CartUpdateEventData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when the cart is updated.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use `api.cart.current.subscribe()` on the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) instead.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cash-tracking-session-complete.event.observe",
           "value": "(data: CashTrackingSessionCompleteData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when a cash tracking session completes.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n`shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cash-tracking-session-start.event.observe",
           "value": "(data: CashTrackingSessionStartData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when a cash tracking session starts.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n`shopify.addEventListener('cashtrackingsessionstart', callback)` instead.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.transaction-complete.event.observe",
           "value": "(data: TransactionCompleteData) => Promise<BaseOutput>",
+          "description": "Fires when a transaction completes successfully.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n`shopify.addEventListener('transactioncomplete', callback)` instead.",
+          "isPrivate": true
+        }
+      ],
+      "value": "export interface EventExtensionTargets {\n  /**\n   * Fires when a transaction completes successfully.\n   *\n   * @deprecated Deprecated as of version `2026-07`. Use the\n   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n   * `shopify.addEventListener('transactioncomplete', callback)` instead.\n   * @private\n   */\n  'pos.transaction-complete.event.observe': (\n    data: TransactionCompleteData,\n  ) => Promise<BaseOutput>;\n  /**\n   * Fires when a cash tracking session starts.\n   *\n   * @deprecated Deprecated as of version `2026-07`. Use the\n   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n   * `shopify.addEventListener('cashtrackingsessionstart', callback)` instead.\n   * @private\n   */\n  'pos.cash-tracking-session-start.event.observe': (\n    // eslint-disable-next-line import/no-deprecated\n    data: CashTrackingSessionStartData,\n  ) => Promise<BaseOutput>;\n  /**\n   * Fires when a cash tracking session completes.\n   *\n   * @deprecated Deprecated as of version `2026-07`. Use the\n   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n   * `shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.\n   * @private\n   */\n  'pos.cash-tracking-session-complete.event.observe': (\n    // eslint-disable-next-line import/no-deprecated\n    data: CashTrackingSessionCompleteData,\n  ) => Promise<BaseOutput>;\n  /**\n   * Fires when the cart is updated.\n   *\n   * @deprecated Deprecated as of version `2026-07`. Use `api.cart.current.subscribe()` on the\n   * [`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) instead.\n   * @private\n   */\n  'pos.cart-update.event.observe': (\n    // eslint-disable-next-line import/no-deprecated\n    data: CartUpdateEventData,\n  ) => Promise<BaseOutput>;\n}"
+    }
+  },
+  "CartUpdateEventData": {
+    "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+      "name": "CartUpdateEventData",
+      "description": "The data object provided to cart update extension targets. Contains the current cart state along with device, session, and connectivity information. This data is passed to extensions whenever the cart changes, enabling real-time cart monitoring and cart-based business logic.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cart",
+          "value": "Cart",
+          "description": "The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "connectivity",
+          "value": "ConnectivityApiContent",
+          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "device",
+          "value": "Device",
+          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locale",
+          "value": "string",
+          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "session",
+          "value": "Session",
+          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CartUpdateEventData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "storage",
+          "value": "Storage",
           "description": ""
         }
       ],
-      "value": "export interface EventExtensionTargets {\n  'pos.transaction-complete.event.observe': (\n    data: TransactionCompleteData,\n  ) => Promise<BaseOutput>;\n  'pos.cash-tracking-session-start.event.observe': (\n    data: CashTrackingSessionStartData,\n  ) => Promise<BaseOutput>;\n  'pos.cash-tracking-session-complete.event.observe': (\n    data: CashTrackingSessionCompleteData,\n  ) => Promise<BaseOutput>;\n  'pos.cart-update.event.observe': (\n    data: CartUpdateEventData,\n  ) => Promise<BaseOutput>;\n}"
+      "value": "export interface CartUpdateEventData extends BaseData, BaseApi {\n  /**\n   * The complete current `Cart` object containing all cart data including line items with products and quantities, pricing totals (subtotal, tax, grand total), associated customer information, applied discounts, custom properties, and editability state. This represents the cart's state at the moment the extension is triggered, reflecting all recent changes. The cart object is read-only in this context—modifications should be made through the Cart API methods.\n   */\n  cart: Cart;\n}"
+    }
+  },
+  "CashTrackingSessionCompleteData": {
+    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+      "name": "CashTrackingSessionCompleteData",
+      "description": "The data object provided to cash tracking session complete extension targets. Contains information about a completed cash tracking session including when it opened and closed, along with device and session context.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashTrackingSessionComplete",
+          "value": "{ id: number; openingTime: string; closingTime: string; }",
+          "description": "The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "connectivity",
+          "value": "ConnectivityApiContent",
+          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "device",
+          "value": "Device",
+          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locale",
+          "value": "string",
+          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "session",
+          "value": "Session",
+          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "storage",
+          "value": "Storage",
+          "description": ""
+        }
+      ],
+      "value": "export interface CashTrackingSessionCompleteData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session complete data containing the session identifier, opening time, and closing time. This represents the full lifecycle of a cash drawer session from opening to closing.\n   */\n  cashTrackingSessionComplete: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID matches the ID from when the session was opened and can be used to correlate session start and end events, retrieve session-specific data, or link all transactions that occurred during this session.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the session and can be compared with `closingTime` to calculate the total session duration or shift length.\n     */\n    openingTime: string;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was closed and ended (for example, `\"2024-05-15T17:30:00Z\"`). This marks when the staff member completed their shift, closed out the cash drawer, and finalized the session. The time between `openingTime` and `closingTime` represents the active session duration. Commonly used for shift reporting, calculating hours worked, or determining the timeframe for session-specific transactions.\n     */\n    closingTime: string;\n  };\n}"
+    }
+  },
+  "CashTrackingSessionStartData": {
+    "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+      "name": "CashTrackingSessionStartData",
+      "description": "The data object provided to cash tracking session start extension targets. Contains information about a newly opened cash tracking session along with device and session context.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cashTrackingSessionStart",
+          "value": "{ id: number; openingTime: string; }",
+          "description": "The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "connectivity",
+          "value": "ConnectivityApiContent",
+          "description": "The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "device",
+          "value": "Device",
+          "description": "Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locale",
+          "value": "string",
+          "description": "The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "session",
+          "value": "Session",
+          "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/CashTrackingSessionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "storage",
+          "value": "Storage",
+          "description": ""
+        }
+      ],
+      "value": "export interface CashTrackingSessionStartData extends BaseData, BaseApi {\n  /**\n   * The cash tracking session start data containing the session identifier and the time when the session began. Cash tracking sessions represent the period during which a cash drawer is open and being used for transactions, typically corresponding to a staff member's shift.\n   */\n  cashTrackingSessionStart: {\n    /**\n     * The unique numeric identifier for this cash tracking session. This ID distinguishes this session from other cash tracking sessions and can be used for session-specific operations, reporting, or linking transactions to sessions. The ID is assigned when the session opens and remains constant until the session closes.\n     */\n    id: number;\n    /**\n     * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the cash tracking session was opened and cash drawer operations began (for example, `\"2024-05-15T09:00:00Z\"`). This marks the start of the staff member's shift or cash handling period. Commonly used for calculating session duration, shift reporting, or determining which transactions belong to which session.\n     */\n    openingTime: string;\n  };\n}"
     }
   },
   "DataExtensionTargets": {
@@ -9768,7 +10254,9 @@
           "syntaxKind": "PropertySignature",
           "name": "pos.cart-update.event.observe",
           "value": "(data: CartUpdateEventData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when the cart is updated.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use `api.cart.current.subscribe()` on the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) instead.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
@@ -9789,14 +10277,18 @@
           "syntaxKind": "PropertySignature",
           "name": "pos.cash-tracking-session-complete.event.observe",
           "value": "(data: CashTrackingSessionCompleteData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when a cash tracking session completes.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n`shopify.addEventListener('cashtrackingsessioncomplete', callback)` instead.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cash-tracking-session-start.event.observe",
           "value": "(data: CashTrackingSessionStartData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when a cash tracking session starts.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n`shopify.addEventListener('cashtrackingsessionstart', callback)` instead.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
@@ -9999,7 +10491,9 @@
           "syntaxKind": "PropertySignature",
           "name": "pos.transaction-complete.event.observe",
           "value": "(data: TransactionCompleteData) => Promise<BaseOutput>",
-          "description": ""
+          "description": "Fires when a transaction completes successfully.",
+          "deprecationMessage": "Deprecated as of version `2026-07`. Use the\n[`pos.app.ready.data` target](/docs/api/pos-ui-extensions/{API_VERSION}/targets/pos-app-ready-data) with\n`shopify.addEventListener('transactioncomplete', callback)` instead.",
+          "isPrivate": true
         }
       ],
       "value": "export interface ExtensionTargets\n  extends RenderExtensionTargets,\n    EventExtensionTargets,\n    DataExtensionTargets {}"
@@ -10178,16 +10672,6 @@
       "value": "export interface Window {\n  /**\n   * Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI.\n   */\n  close(): void;\n}"
     }
   },
-  "InterceptCapability": {
-    "src/surfaces/point-of-sale/events.ts": {
-      "filePath": "src/surfaces/point-of-sale/events.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "InterceptCapability",
-      "value": "`${Extract<\n  keyof ShopifyInterceptMap,\n  string\n>}.${'error' | 'warn' | 'info'}`",
-      "description": "A merchant-granted permission to return a validation severity for a POS intercept event. Event names come directly from `ShopifyInterceptMap`. The `warn` suffix corresponds to the interceptor result level `WARNING`.",
-      "isPublicDocs": true
-    }
-  },
   "ShopifyGlobal": {
     "src/surfaces/point-of-sale/globals.ts": {
       "filePath": "src/surfaces/point-of-sale/globals.ts",
@@ -10200,18 +10684,14 @@
           "syntaxKind": "PropertySignature",
           "name": "capabilities",
           "value": "ReadonlySignalLike<InterceptCapability[]>",
-          "description": "The merchant-granted permissions for validation severities returned by POS interceptors. This signal is available to every POS extension target.\n\nCapability names combine an event from the approved Intercept API with an allowed severity: `${event}.error`, `${event}.warn`, or `${event}.info`. Event names exactly match the names accepted by `shopify.intercept()`; the severity suffixes are proposed by the target-scoped configuration contract.\n\nPermissions are cumulative and every implied permission is included in the array. For example, `beforecheckout.error` is accompanied by `beforecheckout.warn` and `beforecheckout.info`; `beforecheckout.warn` is accompanied by `beforecheckout.info`.\n\nAn extension can return `ERROR`, `WARNING`, or `INFO` only when the matching `error`, `warn`, or `info` capability (respectively) is present. A stronger capability also permits the weaker severities made explicit in the array.\n\nExtensions request events per target in `shopify.extension.toml`. Shopify validates at deploy time that each event is supported by its target. The declaration also tells POS to expect that target to register the matching interceptor, so the host can detect a missing validator. Only the target that registers the interceptor declares the event; companion UI targets can read this signal without redeclaring it. This distinction matters for compliance workflows where a validator failure can have legal implications and must not look like an intentionally absent validator.",
+          "description": "A read-only list of granted intercept capabilities. The signal is available to every POS target, but only the target that registers an interceptor declares its event in `shopify.extension.toml`.\n\nGrants are cumulative. An `.error` grant includes `.warning` and `.info`, and a `.warning` grant includes `.info`.",
           "examples": [
             {
               "title": "Example",
               "description": "",
               "tabs": [
                 {
-                  "code": "[[extensions.targeting]]\ntarget = \"pos.app.ready.data\"\nmodule = \"./src/Extension.ts\"\n\n[extensions.targeting.capabilities]\nintercepts = [\"beforecheckout\"]",
-                  "title": "Example"
-                },
-                {
-                  "code": "if (shopify.capabilities.value.includes('beforecheckout.error')) {\n  // This interceptor may return ERROR, WARNING, or INFO validations.\n}",
+                  "code": "if (shopify.capabilities.value.includes('beforecheckout.error')) {\n  // This interceptor can return ERROR, WARNING, or INFO validations.\n}",
                   "title": "Example"
                 }
               ]
@@ -10219,7 +10699,7 @@
           ]
         }
       ],
-      "value": "export interface ShopifyGlobal {\n  /**\n   * The merchant-granted permissions for validation severities returned by POS\n   * interceptors. This signal is available to every POS extension target.\n   *\n   * Capability names combine an event from the approved Intercept API with an\n   * allowed severity: `${event}.error`, `${event}.warn`, or `${event}.info`.\n   * Event names exactly match the names accepted by `shopify.intercept()`; the\n   * severity suffixes are proposed by the target-scoped configuration contract.\n   *\n   * Permissions are cumulative and every implied permission is included in the\n   * array. For example, `beforecheckout.error` is accompanied by\n   * `beforecheckout.warn` and `beforecheckout.info`; `beforecheckout.warn` is\n   * accompanied by `beforecheckout.info`.\n   *\n   * An extension can return `ERROR`, `WARNING`, or `INFO` only when the matching\n   * `error`, `warn`, or `info` capability (respectively) is present. A stronger\n   * capability also permits the weaker severities made explicit in the array.\n   *\n   * Extensions request events per target in `shopify.extension.toml`. Shopify\n   * validates at deploy time that each event is supported by its target. The\n   * declaration also tells POS to expect that target to register the matching\n   * interceptor, so the host can detect a missing validator. Only the target\n   * that registers the interceptor declares the event; companion UI targets can\n   * read this signal without redeclaring it. This distinction matters for\n   * compliance workflows where a validator failure can have legal implications\n   * and must not look like an intentionally absent validator.\n   *\n   * @example\n   * ```toml\n   * [[extensions.targeting]]\n   * target = \"pos.app.ready.data\"\n   * module = \"./src/Extension.ts\"\n   *\n   * [extensions.targeting.capabilities]\n   * intercepts = [\"beforecheckout\"]\n   * ```\n   *\n   * ```ts\n   * if (shopify.capabilities.value.includes('beforecheckout.error')) {\n   *   // This interceptor may return ERROR, WARNING, or INFO validations.\n   * }\n   * ```\n   *\n   * @see https://github.com/Shopify/ui-api-design/blob/be97e2ca7089b05db762a00941400c0e4dd3df94/libraries/javascript/ui-api-design/types/extensions/configuration/capabilities.md\n   * @see https://github.com/Shopify/ui-api-design/pull/1557\n   * @see https://github.com/Shopify/ui-api-design/pull/1563\n   */\n  capabilities: ReadonlySignalLike<InterceptCapability[]>;\n}"
+      "value": "export interface ShopifyGlobal extends CapabilitiesApi {}"
     }
   },
   "BackgroundShopifyGlobal": {
@@ -10238,13 +10718,39 @@
         },
         {
           "filePath": "src/surfaces/point-of-sale/globals.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "capabilities",
+          "value": "ReadonlySignalLike<InterceptCapability[]>",
+          "description": "A read-only list of granted intercept capabilities. The signal is available to every POS target, but only the target that registers an interceptor declares its event in `shopify.extension.toml`.\n\nGrants are cumulative. An `.error` grant includes `.warning` and `.info`, and a `.warning` grant includes `.info`.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "if (shopify.capabilities.value.includes('beforecheckout.error')) {\n  // This interceptor can return ERROR, WARNING, or INFO validations.\n}",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/globals.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "intercept",
+          "value": "<K extends keyof ShopifyInterceptMap>(type: K, interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>) => () => void",
+          "description": "Register an interceptor for a POS host workflow that can be blocked. Returns a function that unregisters the interceptor."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/globals.ts",
           "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "<K extends keyof ShopifyEventMap>(type: K, listener: (event: ShopifyEventMap[K]) => void) => void",
           "description": "Remove a listener previously registered with `addEventListener`. The `listener` reference must match the one used to register."
         }
       ],
-      "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n}"
+      "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Register an interceptor for a POS host workflow that can be blocked.\n   * Returns a function that unregisters the interceptor.\n   */\n  intercept<K extends keyof ShopifyInterceptMap>(\n    type: K,\n    interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>,\n  ): () => void;\n}"
     }
   }
 }
