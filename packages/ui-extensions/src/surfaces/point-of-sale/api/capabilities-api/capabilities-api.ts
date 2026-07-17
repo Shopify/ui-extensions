@@ -26,13 +26,6 @@ export interface CapabilitiesApi {
    *
    * Grants are cumulative. An `.error` grant includes `.warning` and `.info`,
    * and a `.warning` grant includes `.info`.
-   *
-   * @example
-   * ```ts
-   * if (shopify.capabilities.value.includes('beforecheckout.error')) {
-   *   // This interceptor can return ERROR, WARNING, or INFO validations.
-   * }
-   * ```
    */
   capabilities: ReadonlySignalLike<InterceptCapability[]>;
 }

@@ -37,6 +37,16 @@ expect(tile.getAttribute('subheading')).toEqual(
 );
 ```
 
+## ✅ Mocking capabilities
+
+POS target mocks include an empty capabilities signal by default. Replace its value with the capabilities needed by your test:
+
+```ts
+extension.shopify.capabilities.value = [
+  'beforecheckout.error',
+];
+```
+
 ## 💾 Mocking storage
 
 POS storage is a typed key-value store:

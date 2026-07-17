@@ -1,4 +1,5 @@
 import {CameraApi} from '../camera-api/camera-api';
+import {CapabilitiesApi} from '../capabilities-api/capabilities-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
 import {ExtensionApi} from '../extension-api/extension-api';
@@ -21,6 +22,7 @@ export type StandardApi<T> = {[key: string]: any} & {
   extensionPoint: T;
   i18n: I18n;
 } & ExtensionApi<T> &
+  CapabilitiesApi &
   LocaleApi &
   ToastApi &
   SessionApi &

@@ -227,6 +227,14 @@ test('it handles an empty order', async () => {
 });
 ```
 
+POS target mocks include an empty `shopify.capabilities` signal. Set its value to test capability-dependent behavior:
+
+```ts
+extension.shopify.capabilities.value = [
+  'beforecheckout.error',
+];
+```
+
 ### 🖱️ Triggering events
 
 To simulate how a user would interact with your UI extension, you can call [`dispatchEvent()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) or use `fireEvent` from `@testing-library/preact`. When an event triggers an async state change (like a Preact re-render), wrap follow-up assertions in `await waitFor()` to wait for the DOM to settle:
