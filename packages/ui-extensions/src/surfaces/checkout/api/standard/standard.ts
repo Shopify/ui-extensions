@@ -247,7 +247,6 @@ export interface AppMetafieldEntryTarget {
    * - `'customer'`: The customer who placed the order.
    * - `'product'`: A product in the merchant's catalog.
    * - `'shop'`: The merchant's shop.
-   * - `'shopUser'`: A staff member or collaborator account on the shop.
    * - `'variant'`: A specific variant of a product.
    * - `'company'`: A [B2B](https://shopify.dev/docs/apps/build/b2b) company associated with the order.
    * - `'companyLocation'`: A location belonging to a [B2B](https://shopify.dev/docs/apps/build/b2b) company.
@@ -259,7 +258,6 @@ export interface AppMetafieldEntryTarget {
     | 'customer'
     | 'product'
     | 'shop'
-    | 'shopUser'
     | 'variant'
     | 'company'
     | 'companyLocation'
