@@ -416,6 +416,24 @@ export interface ExtensionTargets {
     BlockExtensionComponents
   >;
 
+  // Configuration shouldRender targets
+
+  /**
+   * A non-rendering target that controls whether the product details configuration extension renders. Use this to conditionally show or hide your configuration extension based on product properties, user permissions, or external data.
+   */
+  'admin.product-details.configuration.should-render': RunnableExtension<
+    ShouldRenderApi<'admin.product-details.configuration.should-render'>,
+    ShouldRenderOutput
+  >;
+
+  /**
+   * A non-rendering target that controls whether the product variant details configuration extension renders. Use this to conditionally show or hide your configuration extension based on product variant properties, user permissions, or external data.
+   */
+  'admin.product-variant-details.configuration.should-render': RunnableExtension<
+    ShouldRenderApi<'admin.product-variant-details.configuration.should-render'>,
+    ShouldRenderOutput
+  >;
+
   /**
    * A function settings target that renders within order routing settings, allowing merchants to configure order routing rule functions.
    * @private

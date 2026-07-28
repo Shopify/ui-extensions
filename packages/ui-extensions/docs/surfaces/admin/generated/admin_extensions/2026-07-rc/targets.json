@@ -3121,6 +3121,18 @@
       "CustomerSegmentTemplateApi"
     ]
   },
+  "admin.product-details.configuration.should-render": {
+    "components": [],
+    "apis": [
+      "ShouldRenderApi"
+    ]
+  },
+  "admin.product-variant-details.configuration.should-render": {
+    "components": [],
+    "apis": [
+      "ShouldRenderApi"
+    ]
+  },
   "admin.product-details.action.should-render": {
     "components": [],
     "apis": [
@@ -3426,11 +3438,13 @@
       "admin.order-index.selection-action.should-render",
       "admin.order-index.selection-print-action.should-render",
       "admin.product-details.action.should-render",
+      "admin.product-details.configuration.should-render",
       "admin.product-details.print-action.should-render",
       "admin.product-index.action.should-render",
       "admin.product-index.selection-action.should-render",
       "admin.product-index.selection-print-action.should-render",
-      "admin.product-variant-details.action.should-render"
+      "admin.product-variant-details.action.should-render",
+      "admin.product-variant-details.configuration.should-render"
     ]
   },
   "StandardApi": {
