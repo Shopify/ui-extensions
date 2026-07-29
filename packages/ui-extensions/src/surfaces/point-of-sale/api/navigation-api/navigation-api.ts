@@ -40,42 +40,6 @@ export interface NavigationCurrentEntryChangeEvent {
 }
 
 /**
- * Read-only view of the `Navigation` object for extension targets that should
- * not be able to navigate programmatically (e.g. `pos.resolution.action.render`).
- * Exposes `currentEntry` and navigation event listeners but omits `navigate`
- * and `back`.
- *
- * Note: `currentEntry` retains its writable `Signal` type intentionally — the
- * write path is rejected host-side, not at the type level.
- *
- * @publicDocs
- */
-export interface ReadonlyNavigationApi {
-  /**
-   * Returns a `NavigationHistoryEntry` object representing the location the user is currently navigated to. Use to access current URL, navigation state, or implement navigation-aware functionality based on the current location.
-   */
-  currentEntry: NavigationHistoryEntry;
-  /**
-   * Registers an event listener for navigation events. The `currententrychange` event fires when the `currentEntry` property changes, such as when the user navigates to a different screen within the extension modal. Use to track navigation changes, update UI state based on the current location, or implement analytics for navigation patterns.
-   * @param type - The event type to listen for. Currently only `'currententrychange'` is supported.
-   * @param cb - The callback function invoked when the event fires. Receives a `NavigationCurrentEntryChangeEvent` containing the previous entry that was navigated away from.
-   */
-  addEventListener(
-    type: 'currententrychange',
-    cb: (event: NavigationCurrentEntryChangeEvent) => void,
-  ): void;
-  /**
-   * Removes a previously registered event listener. The callback reference must match the one passed to `addEventListener`. Use to clean up event listeners when they are no longer needed, such as when a component unmounts or navigation tracking should be disabled.
-   * @param type - The event type to remove the listener for. Currently only `'currententrychange'` is supported.
-   * @param cb - The callback function to remove. Must be the same function reference that was passed to `addEventListener`.
-   */
-  removeEventListener(
-    type: 'currententrychange',
-    cb: (event: NavigationCurrentEntryChangeEvent) => void,
-  ): void;
-}
-
-/**
  * The `Navigation` object provides navigation controls for extension modals.
  * @publicDocs
  */
@@ -113,14 +77,36 @@ export interface Navigation {
 }
 
 /**
- * The global `window` object provides control over the extension modal lifecycle. Access these properties and methods directly through the global `window` object to manage the modal interface programmatically.
+ * Read-only view of the `Navigation` object, for extension targets that must not
+ * navigate programmatically (e.g. `pos.resolution.action.render`).
+ *
+ * This is a `Pick` of `Navigation` rather than a redeclaration, so it stays in
+ * sync automatically as `Navigation` evolves: any member added to `Navigation`
+ * is excluded here by default, which is the safe direction for a read-only view.
+ *
+ * `navigate` and `back` are omitted. The host rejects navigation writes at
+ * runtime regardless of the type (see Shopify/extensibility#1586); this type
+ * exists so the omission is visible to app developers in autocomplete.
+ *
+ * Note: `currentEntry` intentionally keeps the same type it has on `Navigation`.
+ * The RPC bridge already makes signals read-only guest-side, so no separate
+ * read-only entry type is needed.
+ *
  * @publicDocs
  */
-export interface Window {
-  /**
-   * Closes the extension screen and dismisses the modal interface. Use to programmatically close the modal after completing a workflow, canceling an operation, or when user action is no longer required. This provides the same behavior as the user dismissing the modal through the UI.
-   */
-  close(): void;
+export type ReadonlyNavigation = Pick<
+  Navigation,
+  'currentEntry' | 'addEventListener' | 'removeEventListener'
+>;
+
+/**
+ * Provides read-only navigation for targets that cannot navigate
+ * programmatically. Follows the same shape convention as `CartApi` /
+ * `ReadonlyCartApi`.
+ * @publicDocs
+ */
+export interface ReadonlyNavigationApi {
+  navigation: ReadonlyNavigation;
 }
 
 /**

@@ -259,15 +259,17 @@ function createMockCashDrawerApi(): CashDrawerApi {
 
 function createMockReadonlyNavigationApi(): ReadonlyNavigationApi {
   return {
-    currentEntry: {
-      key: 'mock-key',
-      // The URL is seeded as `/{handle}` by the host. Tests can override
-      // this by constructing their own mock and replacing `currentEntry`.
-      url: '/mock-handle',
-      getState: () => null,
+    navigation: {
+      currentEntry: {
+        key: 'mock-key',
+        // The URL is seeded as `/{handle}` by the host. Tests can override
+        // this by constructing their own mock and replacing `navigation`.
+        url: '/mock-handle',
+        getState: () => null,
+      },
+      addEventListener: () => {},
+      removeEventListener: () => {},
     },
-    addEventListener: () => {},
-    removeEventListener: () => {},
   };
 }
 

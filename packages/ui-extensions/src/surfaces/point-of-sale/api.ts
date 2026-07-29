@@ -21,6 +21,7 @@ export type {
 } from './api/extension-api/extension-api';
 export type {ActionTargetApi} from './api/action-target-api/action-target-api';
 export type {
+  ReadonlyNavigation,
   ReadonlyNavigationApi,
   Navigation,
   NavigationNavigateOptions,
