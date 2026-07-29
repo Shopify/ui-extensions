@@ -5,6 +5,17 @@ import type {
   ShopifyInterceptor,
 } from './events';
 
+// TODO(prototype): The `navigation` global is declared process-wide for all POS
+// targets. For `pos.resolution.action.render` we want read-only navigation
+// (currentEntry only, no navigate/back). This is currently expressed in the
+// per-target API intersection via `ReadonlyNavigationApi`, but the `navigation`
+// *global* still advertises the full `Navigation` type. Per-target global
+// narrowing (following the BackgroundShopifyGlobal precedent + buildTargetDts
+// isDataTarget branch) is deferred — navigation writes are rejected host-side
+// in Shopify/extensibility, not at the type level. A future PR can add a
+// `ResolutionShopifyGlobal` / narrowed navigation global if type-level
+// enforcement is needed.
+
 /**
  * The `shopify` global provides APIs that are available to all POS extensions
  * without needing to access them through the target's `api` argument.

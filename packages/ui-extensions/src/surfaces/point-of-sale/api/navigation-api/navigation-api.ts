@@ -40,6 +40,42 @@ export interface NavigationCurrentEntryChangeEvent {
 }
 
 /**
+ * Read-only view of the `Navigation` object for extension targets that should
+ * not be able to navigate programmatically (e.g. `pos.resolution.action.render`).
+ * Exposes `currentEntry` and navigation event listeners but omits `navigate`
+ * and `back`.
+ *
+ * Note: `currentEntry` retains its writable `Signal` type intentionally — the
+ * write path is rejected host-side, not at the type level.
+ *
+ * @publicDocs
+ */
+export interface ReadonlyNavigationApi {
+  /**
+   * Returns a `NavigationHistoryEntry` object representing the location the user is currently navigated to. Use to access current URL, navigation state, or implement navigation-aware functionality based on the current location.
+   */
+  currentEntry: NavigationHistoryEntry;
+  /**
+   * Registers an event listener for navigation events. The `currententrychange` event fires when the `currentEntry` property changes, such as when the user navigates to a different screen within the extension modal. Use to track navigation changes, update UI state based on the current location, or implement analytics for navigation patterns.
+   * @param type - The event type to listen for. Currently only `'currententrychange'` is supported.
+   * @param cb - The callback function invoked when the event fires. Receives a `NavigationCurrentEntryChangeEvent` containing the previous entry that was navigated away from.
+   */
+  addEventListener(
+    type: 'currententrychange',
+    cb: (event: NavigationCurrentEntryChangeEvent) => void,
+  ): void;
+  /**
+   * Removes a previously registered event listener. The callback reference must match the one passed to `addEventListener`. Use to clean up event listeners when they are no longer needed, such as when a component unmounts or navigation tracking should be disabled.
+   * @param type - The event type to remove the listener for. Currently only `'currententrychange'` is supported.
+   * @param cb - The callback function to remove. Must be the same function reference that was passed to `addEventListener`.
+   */
+  removeEventListener(
+    type: 'currententrychange',
+    cb: (event: NavigationCurrentEntryChangeEvent) => void,
+  ): void;
+}
+
+/**
  * The `Navigation` object provides navigation controls for extension modals.
  * @publicDocs
  */

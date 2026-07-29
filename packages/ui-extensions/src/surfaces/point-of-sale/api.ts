@@ -20,6 +20,17 @@ export type {
   ExtensionApiContent,
 } from './api/extension-api/extension-api';
 export type {ActionTargetApi} from './api/action-target-api/action-target-api';
+export type {
+  ResolutionApi,
+  ResolutionApiContent,
+} from './api/resolution-api/resolution-api';
+export type {
+  ReadonlyNavigationApi,
+  Navigation,
+  NavigationNavigateOptions,
+  NavigationHistoryEntry,
+  NavigationCurrentEntryChangeEvent,
+} from './api/navigation-api/navigation-api';
 export type {DataTargetApi} from './api/data-target-api/data-target-api';
 export type {
   TransactionCompleteEvent,

@@ -25,6 +25,8 @@ import type {
   OrderApi,
   StorageApi,
   CashDrawerApi,
+  ResolutionApi,
+  ReadonlyNavigationApi,
 } from './api';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
@@ -120,6 +122,41 @@ export interface RenderExtensionTargets {
    */
   'pos.home.modal.render': RenderExtension<
     ActionTargetApi<'pos.home.modal.render'> & CartApi,
+    BasicComponents
+  >;
+  /**
+   * Renders a resolution side panel beside the POS cart when a merchant app's
+   * `beforeCheckout` intercept returns a blocking validation. POS launches this
+   * target automatically — it is not triggered by a tile or menu item — and the
+   * extension receives the validation's handle, severity, and message through
+   * the Resolution API.
+   *
+   * The extension uses the Cart API (read + write) to let the merchant resolve
+   * the validation (e.g. remove a restricted item, apply a required discount).
+   * Navigation is read-only: `currentEntry` is available so the extension can
+   * read its URL-seeded handle, but `navigate()` and `back()` are rejected by
+   * the host.
+   *
+   * **Static per-event API table** (API exposure is static per intercept event
+   * name, documented here — there is no runtime capability introspection):
+   *
+   * | Event | Cart | Navigation | Resolution | Standard |
+   * | --- | --- | --- | --- | --- |
+   * | `beforeCheckout` | read + write | read-only | yes | yes |
+   * | `paymentType` *(future, not implemented)* | read-only | read-only | yes | yes |
+   *
+   * For the current `beforeCheckout` event the extension gets: the full
+   * `StandardApi`, a write-capable `CartApi`, read-only navigation
+   * (`currentEntry` only — `navigate`/`back` are rejected host-side), and the
+   * `ResolutionApi` describing the validation to resolve. A future `paymentType`
+   * event would receive read-only cart instead, documented here for forward
+   * compatibility.
+   */
+  'pos.resolution.action.render': RenderExtension<
+    StandardApi<'pos.resolution.action.render'> &
+      CartApi &
+      ReadonlyNavigationApi &
+      ResolutionApi,
     BasicComponents
   >;
   /**

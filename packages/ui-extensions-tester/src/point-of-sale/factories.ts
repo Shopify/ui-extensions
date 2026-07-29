@@ -26,6 +26,8 @@ import type {
   CashTrackingSessionCompleteData,
   CartUpdateEventData,
   Money,
+  ResolutionApi,
+  ReadonlyNavigationApi,
 } from '@shopify/ui-extensions/point-of-sale';
 
 import {createReadonlySignalLike} from '../mocks/signals';
@@ -256,6 +258,29 @@ function createMockCashDrawerApi(): CashDrawerApi {
   return {cashDrawer: {open: async () => {}}};
 }
 
+function createMockResolutionApi(): ResolutionApi {
+  return {
+    resolution: {
+      event: 'beforeCheckout',
+      handle: 'mock-handle',
+      level: 'error',
+      message: 'This cart requires resolution before checkout.',
+    },
+  };
+}
+
+function createMockReadonlyNavigationApi(): ReadonlyNavigationApi {
+  return {
+    currentEntry: {
+      key: 'mock-key',
+      url: '/mock-handle',
+      getState: () => null,
+    },
+    addEventListener: () => {},
+    removeEventListener: () => {},
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Group factory functions — each composes the correct API for a target group
 // ---------------------------------------------------------------------------
@@ -449,6 +474,21 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
   };
 }
 
+// Group R: StandardApi + CartApi + ReadonlyNavigationApi + ResolutionApi
+function createResolutionTargetMock<T extends RenderExtensionTarget>(
+  target: T,
+): StandardApi<T> &
+  CartApi &
+  ReadonlyNavigationApi &
+  ResolutionApi {
+  return {
+    ...createMockStandardApi(target),
+    ...createMockCartApi(),
+    ...createMockReadonlyNavigationApi(),
+    ...createMockResolutionApi(),
+  };
+}
+
 // Data target factories
 function createDataTargetMock<T extends ExtensionTarget>(
   target: T,
@@ -617,6 +657,9 @@ const posMockFactories: PosMockFactory = {
 
   // Group Q: ActionTargetApi + CashDrawerApi
   'pos.register-details.action.render': createActionTargetCashDrawerMock,
+
+  // Group R: StandardApi + CartApi + ReadonlyNavigationApi + ResolutionApi
+  'pos.resolution.action.render': createResolutionTargetMock,
 
   // Data targets
   'pos.app.ready.data': createDataTargetMock,
