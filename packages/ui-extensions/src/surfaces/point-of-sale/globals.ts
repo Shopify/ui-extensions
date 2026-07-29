@@ -5,6 +5,7 @@ import type {
   ShopifyInterceptor,
 } from './events';
 
+/* eslint-disable-next-line no-warning-comments -- deliberate prototype marker; tracks a known gap in this draft */
 // TODO(prototype): The `navigation` global is declared process-wide for all POS
 // targets. For `pos.resolution.action.render` we want read-only navigation
 // (currentEntry only, no navigate/back). This is currently expressed in the

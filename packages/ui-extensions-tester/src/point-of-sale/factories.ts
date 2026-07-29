@@ -469,9 +469,7 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
 // Group R: ActionTargetApi + CartApi + ReadonlyNavigationApi
 function createResolutionTargetMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> &
-  CartApi &
-  ReadonlyNavigationApi {
+): ActionTargetApi<T> & CartApi & ReadonlyNavigationApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
