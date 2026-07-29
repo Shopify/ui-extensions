@@ -162,19 +162,26 @@ export interface RenderExtensionTargets {
    * **Static per-event API table** (API exposure is static per intercept event
    * name, documented here — there is no runtime capability introspection):
    *
-   * | Event | Cart | Navigation | Standard |
-   * | --- | --- | --- | --- |
-   * | `beforeCheckout` | read + write | read-only | yes |
-   * | `paymentType` *(future, not implemented)* | read-only | read-only | yes |
+   * | Event | Cart | Navigation | Standard | Scanner |
+   * | --- | --- | --- | --- | --- |
+   * | `beforeCheckout` | read + write | read-only | yes | yes |
+   * | `paymentType` *(future, not implemented)* | read-only | read-only | yes | yes |
    *
    * For the current `beforeCheckout` event the extension gets: the full
-   * `StandardApi`, a write-capable `CartApi`, and read-only navigation
-   * (`currentEntry` only — `navigate`/`back` throw host-side). A future
-   * `paymentType` event would receive read-only cart instead, documented here
-   * for forward compatibility.
+   * `StandardApi` (including `ScannerApi` — scanning a driver's licence or ID
+   * to clear an age-restriction block is a first-class use of this target), a
+   * write-capable `CartApi`, and read-only navigation (`currentEntry` only —
+   * `navigate`/`back` throw host-side). A future `paymentType` event would
+   * receive read-only cart instead, documented here for forward compatibility.
+   *
+   * **API version requirement.** The handle travels in `navigation.currentEntry`,
+   * which the host only exposes on remote-dom api versions. This target therefore
+   * requires a remote-dom `minimum_api_version`; version enforcement happens in
+   * the shop/world server registration (`pos_ui.rb`), not in this package. Because
+   * the target is brand new, nothing is grandfathered.
    */
   'pos.resolution.action.render': RenderExtension<
-    StandardApi<'pos.resolution.action.render'> &
+    ActionTargetApi<'pos.resolution.action.render'> &
       CartApi &
       ReadonlyNavigationApi,
     BasicComponents

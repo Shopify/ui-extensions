@@ -464,14 +464,14 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
   };
 }
 
-// Group R: StandardApi + CartApi + ReadonlyNavigationApi
+// Group R: ActionTargetApi + CartApi + ReadonlyNavigationApi
 function createResolutionTargetMock<T extends RenderExtensionTarget>(
   target: T,
-): StandardApi<T> &
+): ActionTargetApi<T> &
   CartApi &
   ReadonlyNavigationApi {
   return {
-    ...createMockStandardApi(target),
+    ...createMockActionTargetApi(target),
     ...createMockCartApi(),
     ...createMockReadonlyNavigationApi(),
   };
@@ -646,7 +646,7 @@ const posMockFactories: PosMockFactory = {
   // Group Q: ActionTargetApi + CashDrawerApi
   'pos.register-details.action.render': createActionTargetCashDrawerMock,
 
-  // Group R: StandardApi + CartApi + ReadonlyNavigationApi
+  // Group R: ActionTargetApi + CartApi + ReadonlyNavigationApi
   'pos.resolution.action.render': createResolutionTargetMock,
 
   // Data targets
