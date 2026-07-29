@@ -21,10 +21,6 @@ export type {
 } from './api/extension-api/extension-api';
 export type {ActionTargetApi} from './api/action-target-api/action-target-api';
 export type {
-  ResolutionApi,
-  ResolutionApiContent,
-} from './api/resolution-api/resolution-api';
-export type {
   ReadonlyNavigationApi,
   Navigation,
   NavigationNavigateOptions,

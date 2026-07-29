@@ -25,7 +25,6 @@ import type {
   OrderApi,
   StorageApi,
   CashDrawerApi,
-  ResolutionApi,
   ReadonlyNavigationApi,
 } from './api';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
@@ -127,36 +126,57 @@ export interface RenderExtensionTargets {
   /**
    * Renders a resolution side panel beside the POS cart when a merchant app's
    * `beforeCheckout` intercept returns a blocking validation. POS launches this
-   * target automatically — it is not triggered by a tile or menu item — and the
-   * extension receives the validation's handle, severity, and message through
-   * the Resolution API.
+   * target automatically — it is not triggered by a tile or menu item — and
+   * revalidates the cart when the side panel is closed.
    *
-   * The extension uses the Cart API (read + write) to let the merchant resolve
-   * the validation (e.g. remove a restricted item, apply a required discount).
-   * Navigation is read-only: `currentEntry` is available so the extension can
-   * read its URL-seeded handle, but `navigate()` and `back()` are rejected by
-   * the host.
+   * **Which validation are you resolving?** POS seeds the navigation URL with
+   * `/{handle}`, where `handle` is the one your app supplied on the blocking
+   * validation. Read it from `navigation.currentEntry`:
+   *
+   * ```ts
+   * const handle = navigation.currentEntry.url?.slice(1) ?? '';
+   * ```
+   *
+   * **Getting the validation details.** There is no API that hands you the
+   * violation — this is deliberate, so there is one source of truth for
+   * validation logic. Re-run the same validation function you use in your
+   * `beforeCheckout` interceptor against `shopify.cart.current`, then match on
+   * the handle to find the violation this screen is for:
+   *
+   * ```ts
+   * const violations = myValidations(shopify.cart.current);
+   * const violation = violations.find((v) => v.handle === handle);
+   * ```
+   *
+   * **`cart.current` is live.** The cart is the same live cart every other
+   * target sees — read and write. Mutate it to resolve the problem (remove a
+   * restricted item, apply a required discount, etc.), observe the change
+   * reflected in `cart.current`, then re-run your validation function to
+   * confirm it passes and render your own success UI. POS also revalidates
+   * the live cart when the resolution flow closes.
+   *
+   * **Navigation is read-only.** `currentEntry` and the `currententrychange`
+   * event listener work normally, but `navigate()`, `back()`, `push()`, and
+   * `pop()` throw — the host rejects all navigation writes.
    *
    * **Static per-event API table** (API exposure is static per intercept event
    * name, documented here — there is no runtime capability introspection):
    *
-   * | Event | Cart | Navigation | Resolution | Standard |
-   * | --- | --- | --- | --- | --- |
-   * | `beforeCheckout` | read + write | read-only | yes | yes |
-   * | `paymentType` *(future, not implemented)* | read-only | read-only | yes | yes |
+   * | Event | Cart | Navigation | Standard |
+   * | --- | --- | --- | --- |
+   * | `beforeCheckout` | read + write | read-only | yes |
+   * | `paymentType` *(future, not implemented)* | read-only | read-only | yes |
    *
    * For the current `beforeCheckout` event the extension gets: the full
-   * `StandardApi`, a write-capable `CartApi`, read-only navigation
-   * (`currentEntry` only — `navigate`/`back` are rejected host-side), and the
-   * `ResolutionApi` describing the validation to resolve. A future `paymentType`
-   * event would receive read-only cart instead, documented here for forward
-   * compatibility.
+   * `StandardApi`, a write-capable `CartApi`, and read-only navigation
+   * (`currentEntry` only — `navigate`/`back` throw host-side). A future
+   * `paymentType` event would receive read-only cart instead, documented here
+   * for forward compatibility.
    */
   'pos.resolution.action.render': RenderExtension<
     StandardApi<'pos.resolution.action.render'> &
       CartApi &
-      ReadonlyNavigationApi &
-      ResolutionApi,
+      ReadonlyNavigationApi,
     BasicComponents
   >;
   /**

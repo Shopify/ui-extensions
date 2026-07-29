@@ -26,7 +26,6 @@ import type {
   CashTrackingSessionCompleteData,
   CartUpdateEventData,
   Money,
-  ResolutionApi,
   ReadonlyNavigationApi,
 } from '@shopify/ui-extensions/point-of-sale';
 
@@ -258,21 +257,12 @@ function createMockCashDrawerApi(): CashDrawerApi {
   return {cashDrawer: {open: async () => {}}};
 }
 
-function createMockResolutionApi(): ResolutionApi {
-  return {
-    resolution: {
-      event: 'beforeCheckout',
-      handle: 'mock-handle',
-      level: 'error',
-      message: 'This cart requires resolution before checkout.',
-    },
-  };
-}
-
 function createMockReadonlyNavigationApi(): ReadonlyNavigationApi {
   return {
     currentEntry: {
       key: 'mock-key',
+      // The URL is seeded as `/{handle}` by the host. Tests can override
+      // this by constructing their own mock and replacing `currentEntry`.
       url: '/mock-handle',
       getState: () => null,
     },
@@ -474,18 +464,16 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
   };
 }
 
-// Group R: StandardApi + CartApi + ReadonlyNavigationApi + ResolutionApi
+// Group R: StandardApi + CartApi + ReadonlyNavigationApi
 function createResolutionTargetMock<T extends RenderExtensionTarget>(
   target: T,
 ): StandardApi<T> &
   CartApi &
-  ReadonlyNavigationApi &
-  ResolutionApi {
+  ReadonlyNavigationApi {
   return {
     ...createMockStandardApi(target),
     ...createMockCartApi(),
     ...createMockReadonlyNavigationApi(),
-    ...createMockResolutionApi(),
   };
 }
 
@@ -658,7 +646,7 @@ const posMockFactories: PosMockFactory = {
   // Group Q: ActionTargetApi + CashDrawerApi
   'pos.register-details.action.render': createActionTargetCashDrawerMock,
 
-  // Group R: StandardApi + CartApi + ReadonlyNavigationApi + ResolutionApi
+  // Group R: StandardApi + CartApi + ReadonlyNavigationApi
   'pos.resolution.action.render': createResolutionTargetMock,
 
   // Data targets
