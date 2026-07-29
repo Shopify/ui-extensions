@@ -71,8 +71,9 @@ Once the new stable version has been released, create the RC branch for the next
 1. Enter changeset pre mode by running `yarn changeset pre enter rc`.
 1. Check the `.changeset/pre.json` file the command generated. It should have `"tag": "rc"`, and the `initialVersions` for every package should be the first RC of the new version range (for example, `2025.7.0-rc.0`). Correct it by hand if it isn't.
 1. Update the `version` in `packages/ui-extensions/package.json` and `packages/ui-extensions-tester/package.json` to match (for example, `2025.7.0-rc.0`).
+1. Update the `@shopify/ui-extensions` dependency in `packages/ui-extensions-tester/package.json` to match (for example, `2025.7.0-rc.0`).
 1. Add the new version to the `ApiVersion` and `StorefrontApiVersion` unions in `packages/ui-extensions/src/shared.ts`.
 1. Run `yarn changeset`, select all packages, choose `major`, and use the description `2025-07-rc release`. Without a changeset the GitHub action has nothing to publish.
-1. Push your new branch to GitHub. This will trigger the GitHub action that creates the release PR, the same way it does for stable branches.
+1. Commit your changes and push your new branch to GitHub. This will trigger the GitHub action that creates the release PR, the same way it does for stable branches.
 1. Double-check the changes in the generated PR, push any adjustments to that branch, and merge it to publish the first RC version to NPM.
 1. Update the public documentation on `shopify.dev`.
