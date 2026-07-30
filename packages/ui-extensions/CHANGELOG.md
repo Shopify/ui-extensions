@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.2
+
+### Minor Changes
+
+- [#4600](https://github.com/Shopify/ui-extensions/pull/4600) [`54c52f0`](https://github.com/Shopify/ui-extensions/commit/54c52f0a2731a48e7c1745cad4787c85fd9b04e1) Thanks [@one20](https://github.com/one20)! - Add Product Configuration should-render targets
+
 ## 2026.10.0-rc.1
 
 ### Major Changes
