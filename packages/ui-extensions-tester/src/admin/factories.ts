@@ -418,6 +418,11 @@ const adminMockFactories: AdminMockFactory = {
   'admin.discount-details.action.should-render': createShouldRenderMock,
   'admin.order-fulfilled-card.action.should-render': createShouldRenderMock,
 
+  // Should-render targets (configuration)
+  'admin.product-details.configuration.should-render': createShouldRenderMock,
+  'admin.product-variant-details.configuration.should-render':
+    createShouldRenderMock,
+
   // Should-render targets (bulk action)
   'admin.product-index.selection-action.should-render': createShouldRenderMock,
   'admin.order-index.selection-action.should-render': createShouldRenderMock,
