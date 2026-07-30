@@ -5,5 +5,9 @@
     "@shopify/ui-extensions": "2026.10.0-rc.0",
     "@shopify/ui-extensions-tester": "2026.10.0-rc.0"
   },
-  "changesets": ["hide-tertiary-button-docs", "old-beds-cut"]
+  "changesets": [
+    "hide-tertiary-button-docs",
+    "lovely-chairs-cross",
+    "old-beds-cut"
+  ]
 }
