@@ -108,7 +108,7 @@ export interface ValidationAdd {
   /** Stable identifier for this validation. */
   handle: string;
 
-  /** JSON-path locator for where the validation applies. Defaults to `$.cart`. */
+  /** JSON-path locator for where the validation applies. */
   target?: string;
 }
 
