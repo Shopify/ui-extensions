@@ -94,7 +94,7 @@ export interface Operation {
 }
 
 /** @private */
-export type ValidationLevel = 'INFO' | 'WARNING' | 'ERROR';
+export type ValidationLevel = 'WARNING' | 'ERROR';
 
 /**
  * Adds a validation to the workflow being intercepted.
@@ -102,32 +102,14 @@ export type ValidationLevel = 'INFO' | 'WARNING' | 'ERROR';
  * @private
  */
 export interface ValidationAdd {
-  /** `ERROR` blocks the workflow. `WARNING` and `INFO` do not. */
+  /** `ERROR` blocks the workflow. `WARNING` does not. */
   level: ValidationLevel;
 
   /** Stable identifier for this validation. */
   handle: string;
 
-  /** Host-facing message for support, observability, or staff UX. */
-  message: string;
-
   /** JSON-path locator for where the validation applies. Defaults to `$.cart`. */
   target?: string;
-
-  /** Optional structured data for custom UX or order metadata. */
-  metafields?: Metafield[];
-}
-
-/**
- * Metafield input attached to a validation.
- *
- * @private
- */
-export interface Metafield {
-  namespace: string;
-  key: string;
-  value: string;
-  type: string;
 }
 
 export type {
