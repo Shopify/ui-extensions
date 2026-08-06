@@ -1,5 +1,9 @@
 import type {Navigation} from './api/navigation-api/navigation-api';
-import type {ShopifyEventMap} from './events';
+import type {
+  ShopifyEventMap,
+  ShopifyInterceptMap,
+  ShopifyInterceptor,
+} from './events';
 
 /**
  * The `shopify` global provides APIs that are available to all POS extensions
@@ -36,6 +40,17 @@ export interface BackgroundShopifyGlobal extends ShopifyGlobal {
     type: K,
     listener: (event: ShopifyEventMap[K]) => void,
   ): void;
+
+  /**
+   * Register an interceptor for a POS host workflow that can be blocked.
+   * Returns a function that unregisters the interceptor.
+   *
+   * @private
+   */
+  intercept<K extends keyof ShopifyInterceptMap>(
+    type: K,
+    interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>,
+  ): () => void;
 }
 
 declare global {
