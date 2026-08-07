@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.3
+
+### Minor Changes
+
+- [#4520](https://github.com/Shopify/ui-extensions/pull/4520) [`72e6b9d`](https://github.com/Shopify/ui-extensions/commit/72e6b9d54806606ef60f9634c1efa60e6894e36d) Thanks [@vctrchu](https://github.com/vctrchu)! - Add `shopify.intercept()` types for POS blocking workflows.
+
 ## 2026.10.0-rc.2
 
 ### Minor Changes
