@@ -1,5 +1,16 @@
 # @shopify/ui-extensions-tester
 
+## 2026.10.0-rc.4
+
+### Minor Changes
+
+- [#4235](https://github.com/Shopify/ui-extensions/pull/4235) [`54b934a`](https://github.com/Shopify/ui-extensions/commit/54b934a59bd2709c7976d85d8210d7d8d42d2e56) Thanks [@vctrchu](https://github.com/vctrchu)! - Add Subscribable Storage to the POS Storage interface for reactive cross-target communication.
+
+### Patch Changes
+
+- Updated dependencies [[`54b934a`](https://github.com/Shopify/ui-extensions/commit/54b934a59bd2709c7976d85d8210d7d8d42d2e56)]:
+  - @shopify/ui-extensions@2026.10.0-rc.4
+
 ## 2026.10.0-rc.3
 
 ### Patch Changes

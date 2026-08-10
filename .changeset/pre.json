@@ -6,6 +6,7 @@
     "@shopify/ui-extensions-tester": "2026.10.0-rc.0"
   },
   "changesets": [
+    "empty-peas-hide",
     "hide-tertiary-button-docs",
     "lovely-chairs-cross",
     "old-beds-cut",
