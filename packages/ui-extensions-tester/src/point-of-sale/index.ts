@@ -1,6 +1,7 @@
 import type {
   LineItem,
   Storage,
+  SubscribableStorage,
   CartApiContent,
 } from '@shopify/ui-extensions/point-of-sale';
 
@@ -38,16 +39,59 @@ export function createStorage<
   const store = new Map<string, unknown>(
     initialValues ? Object.entries(initialValues) : [],
   );
+  const listeners = new Map<string, Set<(value: unknown) => void>>();
+
+  const createSubscribable = (key: string) => ({
+    get value() {
+      return store.get(key) as never;
+    },
+    subscribe(_fn: (value: unknown) => void) {
+      if (!listeners.has(key)) {
+        listeners.set(key, new Set());
+      }
+      const keyListeners = listeners.get(key)!;
+      keyListeners.add(_fn);
+      return () => {
+        keyListeners.delete(_fn);
+      };
+    },
+  });
+
+  const notifyListeners = (key: string, value: unknown) => {
+    const keyListeners = listeners.get(key);
+    if (keyListeners) {
+      for (const listener of keyListeners) {
+        listener(value);
+      }
+    }
+  };
+
+  const currentProxy = new Proxy({} as SubscribableStorage<T>, {
+    get(_target, prop) {
+      return createSubscribable(prop as string);
+    },
+    has(_target, prop) {
+      return typeof prop === 'string';
+    },
+  });
+
   const storage: Storage<T> = {
+    current: currentProxy,
     set: async (key, value) => {
       store.set(key as string, value);
+      notifyListeners(key as string, value);
     },
     get: async (key) => store.get(key as string) as never,
     clear: async () => {
       store.clear();
+      for (const key of listeners.keys()) {
+        notifyListeners(key, undefined);
+      }
     },
     delete: async (key) => {
-      return store.delete(key as string);
+      store.delete(key as string);
+      notifyListeners(key as string, undefined);
+      return true;
     },
     entries: async () => [...store.entries()] as never,
   };

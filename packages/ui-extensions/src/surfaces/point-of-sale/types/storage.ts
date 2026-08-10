@@ -1,3 +1,5 @@
+import type {ReadonlySignalLike} from '../../../shared';
+
 /**
  * @publicDocs
  */
@@ -17,6 +19,33 @@ export class StorageError extends Error {
 export interface Storage<
   BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
 > {
+  /**
+   * Reactive access to storage values as Subscribables.
+   *
+   * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling cross-target
+   * reactivity. One extension target can subscribe to a key and react when
+   * another target updates it via `set()` or `delete()`.
+   *
+   * The `value` property provides synchronous, reactive access to the current stored
+   * value. It is not preloaded: storage hydrates asynchronously, so `value` is
+   * `undefined` until the key has been loaded.
+   * The `subscribe()` method registers a callback that fires whenever the value
+   * changes, including changes made by other extension targets within the same app.
+   *
+   * @example Cross-target reactivity
+   * ```typescript
+   * // In one extension target:
+   * await shopify.storage.set('syncStatus', 'complete');
+   *
+   * // In another target:
+   * const status = shopify.storage.current.syncStatus.value; // 'complete'
+   * const unsubscribe = shopify.storage.current.syncStatus.subscribe((value) => {
+   *   // Reacts when another target updates this key
+   * });
+   * ```
+   */
+  current?: SubscribableStorage<BaseStorageTypes>;
+
   /**
    * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
    *
@@ -77,3 +106,21 @@ export interface Storage<
     Keys extends keyof StorageTypes = keyof StorageTypes,
   >(): Promise<[Keys, StorageTypes[Keys]][]>;
 }
+
+/**
+ * Provides reactive, subscribable access to individual storage keys.
+ *
+ * Each property is a `ReadonlySignalLike` that reflects the current value of the
+ * corresponding storage key. Values are `undefined` when the key does not exist
+ * or is being loaded asynchronously.
+ *
+ * Mutations are performed through the existing `Storage` methods (`set`,
+ * `delete`, `clear`, etc.) — `SubscribableStorage` is read-only and reactive.
+ */
+export type SubscribableStorage<
+  BaseStorageTypes extends Record<string, any> = Record<string, unknown>,
+> = {
+  readonly [K in keyof BaseStorageTypes]: ReadonlySignalLike<
+    BaseStorageTypes[K] | undefined
+  >;
+};
