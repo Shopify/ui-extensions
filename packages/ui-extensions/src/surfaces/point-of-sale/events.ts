@@ -4,6 +4,7 @@ import type {
   CashTrackingSessionCompleteEvent,
 } from './events/cash-tracking-session-events';
 import type {Cart} from './types/cart';
+import type {MoneyV2} from './types/money';
 
 /**
  * Canonical event-name constants for POS host events. Prefer these over string
@@ -25,6 +26,7 @@ export const POS_EVENT_NAMES = {
  */
 export const POS_INTERCEPT_NAMES = {
   BEFORE_CHECKOUT: 'beforecheckout',
+  PAYMENT_METHOD_SELECTED: 'paymentmethodselected',
 } as const;
 
 /**
@@ -56,6 +58,7 @@ export interface ShopifyEventMap {
  */
 export interface ShopifyInterceptMap {
   [POS_INTERCEPT_NAMES.BEFORE_CHECKOUT]: BeforeCheckoutEvent;
+  [POS_INTERCEPT_NAMES.PAYMENT_METHOD_SELECTED]: PaymentMethodSelectedEvent;
 }
 
 /**
@@ -67,6 +70,44 @@ export interface BeforeCheckoutEvent extends Event {
   readonly type: typeof POS_INTERCEPT_NAMES.BEFORE_CHECKOUT;
   /** The POS cart at the point checkout was requested. */
   readonly cart: Cart;
+}
+
+/**
+ * The kind of payment method being attempted.
+ *
+ * @private
+ */
+export type InterceptedPaymentMethodType = 'cash';
+
+/**
+ * Identifies the payment method being attempted.
+ *
+ * `type` alone identifies singleton methods (for example `cash`). `identifier`
+ * disambiguates method types a shop can have several of (for example custom
+ * payment methods) as they become interceptable.
+ *
+ * @private
+ */
+export interface InterceptedPaymentMethod {
+  readonly type: InterceptedPaymentMethodType;
+
+  /** Present when `type` alone is ambiguous. Matching is exact on the pair. */
+  readonly identifier?: string;
+}
+
+/**
+ * Dispatched when staff selects a payment method on the payments screen.
+ *
+ * @private
+ */
+export interface PaymentMethodSelectedEvent extends Event {
+  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_METHOD_SELECTED;
+
+  /** The payment method staff selected. */
+  readonly paymentMethod: InterceptedPaymentMethod;
+
+  /** The amount this tender would charge, in presentment currency. */
+  readonly amount: MoneyV2;
 }
 
 /** @private */
