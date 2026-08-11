@@ -406,13 +406,12 @@ function createStandardActionCartLineItemMock<T extends RenderExtensionTarget>(
   };
 }
 
-// Group N: ActionTargetApi + ActionApi + CartApi + CartLineItemApi
-function createActionTargetActionCartLineItemMock<
-  T extends RenderExtensionTarget,
->(target: T): ActionTargetApi<T> & ActionApi & CartApi & CartLineItemApi {
+// Group N: ActionTargetApi + CartApi + CartLineItemApi
+function createActionTargetCartLineItemMock<T extends RenderExtensionTarget>(
+  target: T,
+): ActionTargetApi<T> & CartApi & CartLineItemApi {
   return {
     ...createMockActionTargetApi(target),
-    ...createMockActionApi(),
     ...createMockCartApi(),
     ...createMockCartLineItemApi(),
   };
@@ -564,9 +563,9 @@ const posMockFactories: PosMockFactory = {
   'pos.cart.line-item-details.action.menu-item.render':
     createStandardActionCartLineItemMock,
 
-  // Group N: ActionTargetApi + ActionApi + CartApi + CartLineItemApi
+  // Group N: ActionTargetApi + CartApi + CartLineItemApi
   'pos.cart.line-item-details.action.render':
-    createActionTargetActionCartLineItemMock,
+    createActionTargetCartLineItemMock,
 
   // Group O: Receipt targets
   'pos.receipt-footer.block.render': createReceiptMock,
