@@ -436,12 +436,15 @@ export interface Localization {
   /**
    * The [market](/docs/apps/build/markets) context of the checkout,
    * carried over from the cart context. Markets group countries and
-   * regions with shared pricing, languages, and domains. The market
-   * context updates when the buyer changes the country of their
-   * shipping address. The value is `undefined` if the market is unknown.
+   * regions with shared pricing, languages, and domains. In cases where
+   * multiple markets match, this returns the most narrowly scoped
+   * country region market. The market context updates when the buyer
+   * changes the country of their shipping address. The value is
+   * `undefined` if the market is unknown.
    *
-   * @deprecated Merchants now manage which extensions load for each
-   * market, so extensions no longer need to check this value.
+   * > Caution: This `market` field is deprecated and will be removed in a future version of the API.
+   *
+   * @deprecated This `market` field will be removed in a future version of the API.
    */
   market: SubscribableSignalLike<Market | undefined>;
 }
