@@ -8,7 +8,13 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ImageProps, Key, Ref} from './components-shared.d.ts';
+import type {
+  BorderRadiusKeyword,
+  ImageProps,
+  Key,
+  MaybeAllValuesShorthandProperty,
+  Ref,
+} from './components-shared.d.ts';
 
 /** @publicDocs */
 export type ComponentChildren = any;
@@ -47,6 +53,21 @@ export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTML
 declare const tagName = 's-image';
 /** @publicDocs */
 export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
+  /**
+   * The border radius for the image corners.
+   *
+   * Supports one to four flow-relative values in this order:
+   *
+   * - One value applies to all corners.
+   * - Two values apply to `start-start` and `end-end`, then `inline-end` and `inline-start`.
+   * - Three values apply to `start-start`, both inline corners, and `end-end`.
+   * - Four values apply to `start-start`, `inline-end`, `end-end`, and `inline-start`.
+   *
+   * Use values from `small-500` through `large-500`, `base`, `max`, or `none`.
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
   /**
    * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
    *

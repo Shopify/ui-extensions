@@ -4173,6 +4173,21 @@ declare module 'preact' {
 declare const tagName$q = 's-image';
 interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**
+   * The border radius for the image corners.
+   *
+   * Supports one to four flow-relative values in this order:
+   *
+   * - One value applies to all corners.
+   * - Two values apply to `start-start` and `end-end`, then `inline-end` and `inline-start`.
+   * - Three values apply to `start-start`, both inline corners, and `end-end`.
+   * - Four values apply to `start-start`, `inline-end`, `end-end`, and `inline-start`.
+   *
+   * Use values from `small-500` through `large-500`, `base`, `max`, or `none`.
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
+  /**
    * The displayed inline width of the image.
    *
    * - `fill`: the image will takes up 100% of the available inline size.
@@ -7070,6 +7085,21 @@ interface TimePicker {
  * @publicDocs
  */
 interface Image {
+  /**
+   * The border radius for the image corners.
+   *
+   * Supports one to four flow-relative values in this order:
+   *
+   * - One value applies to all corners.
+   * - Two values apply to `start-start` and `end-end`, then `inline-end` and `inline-start`.
+   * - Three values apply to `start-start`, both inline corners, and `end-end`.
+   * - Four values apply to `start-start`, `inline-end`, `end-end`, and `inline-start`.
+   *
+   * Use values from `small-500` through `large-500`, `base`, `max`, or `none`.
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
   /**
    * The displayed inline width of the image.
    *
