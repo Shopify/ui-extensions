@@ -25,7 +25,7 @@ export const POS_EVENT_NAMES = {
  * @private
  */
 export const POS_INTERCEPT_NAMES = {
-  BEFORE_CHECKOUT: 'beforecheckout',
+  CART_VALIDATIONS: 'cartvalidations',
   PAYMENT_VALIDATIONS: 'paymentvalidations',
 } as const;
 
@@ -57,7 +57,7 @@ export interface ShopifyEventMap {
  * @private
  */
 export interface ShopifyInterceptMap {
-  [POS_INTERCEPT_NAMES.BEFORE_CHECKOUT]: BeforeCheckoutEvent;
+  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationsEvent;
   [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationsEvent;
 }
 
@@ -66,8 +66,8 @@ export interface ShopifyInterceptMap {
  *
  * @private
  */
-export interface BeforeCheckoutEvent extends Event {
-  readonly type: typeof POS_INTERCEPT_NAMES.BEFORE_CHECKOUT;
+export interface CartValidationsEvent extends Event {
+  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
   /** The POS cart at the point checkout was requested. */
   readonly cart: Cart;
 }
