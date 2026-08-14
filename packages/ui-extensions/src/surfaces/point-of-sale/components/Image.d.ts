@@ -72,15 +72,15 @@ export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
    * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
    * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
    *
-   * - 4 values: `start-start inline-end end-end inline-start`
-   * - 3 values: `start-start inline end-end`
-   * - 2 values: `block inline`
+   * - 4 values: `start-start start-end end-end end-start`
+   * - 3 values: `start-start (start-end & end-start) end-end`
+   * - 2 values: `(start-start & end-end) (start-end & end-start)`
    *
    * For example:
    * - `base` means all corners have `base` radius
-   * - `base none` means start-start and end-end corners are `base`, inline-end and inline-start corners are `none`
-   * - `base none large` means start-start is `base`, inline-end and inline-start are `none`, end-end is `large`
-   * - `base none large small` means start-start is `base`, inline-end is `none`, end-end is `large`, inline-start is `small`
+   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
+   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
    *
    * Supports size keywords from the design system scale:
    * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
