@@ -8,7 +8,13 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ImageProps, Key, Ref} from './components-shared.d.ts';
+import type {
+  BorderRadiusKeyword,
+  ImageProps,
+  Key,
+  MaybeAllValuesShorthandProperty,
+  Ref,
+} from './components-shared.d.ts';
 
 /** @publicDocs */
 export type ComponentChildren = any;
@@ -60,6 +66,29 @@ export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
    * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
    */
   src?: ImageProps['src'];
+  /**
+   * Border radius for the image corners.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `start-start inline-end end-end inline-start`
+   * - 3 values: `start-start inline end-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `base` means all corners have `base` radius
+   * - `base none` means start-start and end-end corners are `base`, inline-end and inline-start corners are `none`
+   * - `base none large` means start-start is `base`, inline-end and inline-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, inline-end is `none`, end-end is `large`, inline-start is `small`
+   *
+   * Supports size keywords from the design system scale:
+   * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
+   * - Special values: `max`, `none`
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
 declare global {
   interface HTMLElementTagNameMap {
