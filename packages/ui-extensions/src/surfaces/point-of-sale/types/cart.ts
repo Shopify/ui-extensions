@@ -50,6 +50,11 @@ export interface LineItem {
 }
 
 export interface Discount {
+  /**
+   * The discount value to apply. For `'Percentage'` type, this is the percentage value (for example, `10` for 10% off). For `'FixedAmount'` type, this is the fixed monetary amount to deduct.
+   *
+   * From API version 2026-10, reading a manual discount from the cart returns the same value that was applied, so discounts can be passed back to `bulkCartUpdate` unchanged. This also requires a POS app version with the corresponding fix; on older POS app versions, reads return the calculated monetary total of the discount instead (the behavior of all API versions before 2026-10).
+   */
   amount: number;
   currency?: string;
   discountDescription?: string;
