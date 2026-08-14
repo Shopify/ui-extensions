@@ -3099,7 +3099,7 @@ interface ButtonJSXProps
    * - `'primary'`: High visual emphasis for the most important action
    * - `'secondary'`: Less prominent appearance for supporting actions
    *
-   * @default 'auto' - the variant is automatically determined by context
+   * @default 'auto'
    */
   variant?: Extract<ButtonProps['variant'], 'auto' | 'primary' | 'secondary'>;
   /**
@@ -4838,7 +4838,7 @@ interface Button {
    * - `'primary'`: High visual emphasis for the most important action
    * - `'secondary'`: Less prominent appearance for supporting actions
    *
-   * @default 'auto' - the variant is automatically determined by context
+   * @default 'auto'
    */
   variant?: 'auto' | 'primary' | 'secondary';
   /**
