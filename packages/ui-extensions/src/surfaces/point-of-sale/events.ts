@@ -26,7 +26,7 @@ export const POS_EVENT_NAMES = {
  */
 export const POS_INTERCEPT_NAMES = {
   BEFORE_CHECKOUT: 'beforecheckout',
-  PAYMENT_METHOD_SELECTED: 'paymentmethodselected',
+  PAYMENT_VALIDATIONS: 'paymentvalidations',
 } as const;
 
 /**
@@ -58,7 +58,7 @@ export interface ShopifyEventMap {
  */
 export interface ShopifyInterceptMap {
   [POS_INTERCEPT_NAMES.BEFORE_CHECKOUT]: BeforeCheckoutEvent;
-  [POS_INTERCEPT_NAMES.PAYMENT_METHOD_SELECTED]: PaymentMethodSelectedEvent;
+  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationsEvent;
 }
 
 /**
@@ -100,8 +100,8 @@ export interface InterceptedPaymentMethod {
  *
  * @private
  */
-export interface PaymentMethodSelectedEvent extends Event {
-  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_METHOD_SELECTED;
+export interface PaymentValidationsEvent extends Event {
+  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;
 
   /** The payment method staff selected. */
   readonly paymentMethod: InterceptedPaymentMethod;
