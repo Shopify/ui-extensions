@@ -3100,7 +3100,7 @@ interface ButtonJSXProps
    *
    * @default 'auto' - the variant is automatically determined by context
    */
-  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  variant?: Extract<ButtonProps['variant'], 'auto' | 'primary' | 'secondary'>;
   /**
    * Called when the element is clicked or activated.
    */
@@ -4838,7 +4838,7 @@ interface Button {
    *
    * @default 'auto' - the variant is automatically determined by context
    */
-  variant?: 'primary' | 'secondary';
+  variant?: 'auto' | 'primary' | 'secondary';
   /**
    * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
    */
