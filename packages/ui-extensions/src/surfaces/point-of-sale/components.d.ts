@@ -3733,7 +3733,7 @@ interface ButtonJSXProps
    *
    * @default 'auto' - the variant is automatically determined by the button's context
    */
-  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  variant?: Extract<ButtonProps['variant'], 'auto' | 'primary' | 'secondary'>;
   /**
    * Called when the button is activated.
    */
@@ -5909,7 +5909,7 @@ interface Button {
    * Changes the visual appearance of the button.
    * @default 'auto' - the variant is automatically determined by the button's context
    */
-  variant?: 'primary' | 'secondary';
+  variant?: 'auto' | 'primary' | 'secondary';
   /** A unique identifier for the element. */
   id?: string;
   /**
