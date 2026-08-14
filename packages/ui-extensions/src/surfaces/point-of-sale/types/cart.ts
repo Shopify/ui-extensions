@@ -246,7 +246,9 @@ export interface SellingPlan {
  */
 export interface Discount {
   /**
-   * The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, "10" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price. Commonly used for discount calculations and displaying the discount value to merchants.
+   * The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, "10" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price.
+   *
+   * From API version 2026-10, reading a manual discount from the cart returns the same value that was applied, so discounts can be passed back to `bulkCartUpdate` unchanged. This also requires a POS app version with the corresponding fix; on older POS app versions, reads return the calculated monetary total of the discount instead (the behavior of all API versions before 2026-10).
    */
   amount: number;
   /**
