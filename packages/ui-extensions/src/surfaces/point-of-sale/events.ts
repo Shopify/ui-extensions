@@ -96,7 +96,10 @@ export interface InterceptedPaymentMethod {
 }
 
 /**
- * Dispatched when staff selects a payment method on the payments screen.
+ * Dispatched when a tender is confirmed but not yet committed — after the
+ * amount is entered, before the payment is recorded. One event per tender
+ * attempt; split payments dispatch one event per tender, each carrying its
+ * own amount.
  *
  * @private
  */
