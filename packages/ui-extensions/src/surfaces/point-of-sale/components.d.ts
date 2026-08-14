@@ -3095,6 +3095,7 @@ interface ButtonJSXProps
   >;
   /**
    * The visual appearance and prominence of the button:
+   * - `'auto'`: The variant is automatically determined by context
    * - `'primary'`: High visual emphasis for the most important action
    * - `'secondary'`: Less prominent appearance for supporting actions
    *
@@ -4833,6 +4834,7 @@ interface Button {
   tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
   /**
    * The visual appearance and prominence of the button:
+   * - `'auto'`: The variant is automatically determined by context
    * - `'primary'`: High visual emphasis for the most important action
    * - `'secondary'`: Less prominent appearance for supporting actions
    *
