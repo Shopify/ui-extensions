@@ -246,7 +246,9 @@ export interface SellingPlan {
  */
 export interface Discount {
   /**
-   * The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, "10" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price. Commonly used for discount calculations and displaying the discount value to merchants.
+   * The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, "10" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price.
+   *
+   * Note: in this API version, reading a discount from the cart returns the calculated monetary total of the discount in this field, not the value that was applied. Because writes interpret the field as the applied value, passing a cart discount read from the cart back to `bulkCartUpdate` unchanged will not preserve the discount. From API version 2026-10, reads return the applied value, matching writes.
    */
   amount: number;
   /**
