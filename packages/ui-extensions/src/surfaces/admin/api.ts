@@ -27,6 +27,15 @@ export type {
 } from './api/customer-segment-template/customer-segment-template';
 export type {ActionExtensionApi} from './api/action/action';
 export type {BlockExtensionApi} from './api/block/block';
+export type {
+  MetaobjectFormApi,
+  MetaobjectFormSnapshotField,
+  MetaobjectFormSnapshot,
+  MetaobjectFormSetFieldValueInput,
+  MetaobjectFormSetFieldValueErrorCode,
+  MetaobjectFormSetFieldValueResult,
+  MetaobjectFormSaveHandler,
+} from './api/metaobject-form/metaobject-form';
 export type {PrintActionExtensionApi} from './api/print-action/print-action';
 export type {ProductDetailsConfigurationApi} from './api/product-configuration/product-details-configuration';
 export type {ProductVariantDetailsConfigurationApi} from './api/product-configuration/product-variant-details-configuration';
