@@ -110,12 +110,13 @@ export interface ButtonJSXProps
   >;
   /**
    * Changes the visual appearance of the button.
+   * - `auto`: Automatically determines the button variant based on its context.
    * - `primary`: Creates a prominent call-to-action button with high visual emphasis for the most important action on a screen.
    * - `secondary`: Provides a less prominent button appearance for supporting actions and secondary interactions.
    *
-   * @default 'auto' - the variant is automatically determined by the button's context
+   * @default 'auto'
    */
-  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  variant?: Extract<ButtonProps['variant'], 'auto' | 'primary' | 'secondary'>;
   /**
    * An event that's called when the button is activated.
    */

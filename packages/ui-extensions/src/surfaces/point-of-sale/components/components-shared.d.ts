@@ -1399,7 +1399,7 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
    * Changes the visual appearance of the button.
    *
-   * @default 'auto' - the variant is automatically determined by the button's context
+   * @default 'auto'
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
