@@ -1,6 +1,6 @@
 # @shopify/ui-extensions
 
-## 2027.0.0-rc.5
+## 2026.10.0-rc.5
 
 ### Major Changes
 

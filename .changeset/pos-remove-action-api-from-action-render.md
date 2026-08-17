@@ -1,6 +1,6 @@
 ---
-'@shopify/ui-extensions': major
-'@shopify/ui-extensions-tester': major
+'@shopify/ui-extensions': minor
+'@shopify/ui-extensions-tester': minor
 ---
 
 Remove the POS Action API (`shopify.action.presentModal()`) from action render targets (`*.action.render`).
