@@ -766,7 +766,6 @@
       "TimePicker"
     ],
     "apis": [
-      "ActionApi",
       "CameraApi",
       "CartApi",
       "CartLineItemApi",
@@ -1100,7 +1099,6 @@
   "ActionApi": {
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
-      "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.menu-item.render",
       "pos.customer-details.block.render",
       "pos.draft-order-details.action.menu-item.render",
