@@ -111,8 +111,8 @@ export interface PaymentValidationsEvent extends Event {
 }
 
 /**
- * Targets the whole cart. Validations with this target render at the cart
- * scope (for example the cart banner).
+ * Targets the whole cart. Validations with this target apply at the cart
+ * scope rather than to a specific line item.
  *
  * @private
  */
@@ -149,15 +149,23 @@ export type PaymentValidationTarget = PaymentTarget;
 export type ValidationTarget = CartValidationTarget | PaymentValidationTarget;
 
 /**
+ * Maps POS interceptable workflow names to their valid validation targets.
+ *
+ * @private
+ */
+interface ValidationTargetMap {
+  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;
+  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;
+}
+
+/**
  * The validation targets valid for a given intercepted event.
  *
  * @private
  */
 export type ValidationTargetFor<TEvent extends Event> =
-  TEvent extends CartValidationsEvent
-    ? CartValidationTarget
-    : TEvent extends PaymentValidationsEvent
-    ? PaymentValidationTarget
+  TEvent['type'] extends keyof ValidationTargetMap
+    ? ValidationTargetMap[TEvent['type']]
     : ValidationTarget;
 
 /** @private */
