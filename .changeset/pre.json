@@ -10,6 +10,8 @@
     "hide-tertiary-button-docs",
     "lovely-chairs-cross",
     "old-beds-cut",
-    "pos-intercept-api"
+    "pos-intercept-api",
+    "pos-intercept-payment-validations",
+    "pos-remove-action-api-from-action-render"
   ]
 }

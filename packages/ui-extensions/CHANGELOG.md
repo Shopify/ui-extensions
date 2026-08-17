@@ -1,5 +1,19 @@
 # @shopify/ui-extensions
 
+## 2027.0.0-rc.5
+
+### Major Changes
+
+- [#4612](https://github.com/Shopify/ui-extensions/pull/4612) [`8e59844`](https://github.com/Shopify/ui-extensions/commit/8e59844f885f3df4e409964b5df370e5a58c7f21) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Remove the POS Action API (`shopify.action.presentModal()`) from action render targets (`*.action.render`).
+
+  Action render targets are themselves the modal destination that `presentModal()` opens, so exposing the Action API there had no meaningful destination — calling `shopify.action.presentModal()` from `pos.cart.line-item-details.action.render` (the one action render target that still exposed it) pushed another instance of the same target onto the navigation stack, rendering a duplicate modal on top of the already-open one.
+
+  Action render targets now expose only `ActionTargetApi` plus their contextual APIs, matching every other `*.action.render` target. Extensions that need in-workflow navigation should use the Navigation API (`shopify.navigation`). This is a versioned breaking change: the surface is removed for API versions `2026-10` and later; older API versions keep their published types.
+
+### Minor Changes
+
+- [#4611](https://github.com/Shopify/ui-extensions/pull/4611) [`d8b03c9`](https://github.com/Shopify/ui-extensions/commit/d8b03c99ac71e227d55743a5da657b94575e31b7) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add `paymentvalidations` intercept types for POS payment blocking workflows, and rename the `beforecheckout` intercept to `cartvalidations` so both interceptable workflows follow one naming scheme.
+
 ## 2026.10.0-rc.4
 
 ### Minor Changes
