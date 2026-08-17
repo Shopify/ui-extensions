@@ -76,6 +76,7 @@ function createPosCart(): Cart {
     subtotal: '0.00',
     taxTotal: '0.00',
     grandTotal: '0.00',
+    currency: 'USD',
     cartDiscounts: [],
     lineItems: [],
     properties: {},

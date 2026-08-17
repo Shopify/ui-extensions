@@ -24,6 +24,10 @@ export interface Cart {
    */
   grandTotal: string;
   /**
+   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for this cart.
+   */
+  currency: string;
+  /**
    * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.
    */
   note?: string;
