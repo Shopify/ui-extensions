@@ -3095,12 +3095,13 @@ interface ButtonJSXProps
   >;
   /**
    * The visual appearance and prominence of the button:
+   * - `'auto'`: The variant is automatically determined by context
    * - `'primary'`: High visual emphasis for the most important action
    * - `'secondary'`: Less prominent appearance for supporting actions
    *
-   * @default 'auto' - the variant is automatically determined by context
+   * @default 'auto'
    */
-  variant?: Extract<ButtonProps['variant'], 'primary' | 'secondary'>;
+  variant?: Extract<ButtonProps['variant'], 'auto' | 'primary' | 'secondary'>;
   /**
    * Called when the element is clicked or activated.
    */
@@ -4833,12 +4834,13 @@ interface Button {
   tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
   /**
    * The visual appearance and prominence of the button:
+   * - `'auto'`: The variant is automatically determined by context
    * - `'primary'`: High visual emphasis for the most important action
    * - `'secondary'`: Less prominent appearance for supporting actions
    *
-   * @default 'auto' - the variant is automatically determined by context
+   * @default 'auto'
    */
-  variant?: 'primary' | 'secondary';
+  variant?: 'auto' | 'primary' | 'secondary';
   /**
    * A unique identifier for the element used for targeting with CSS, JavaScript, or accessibility features.
    */
