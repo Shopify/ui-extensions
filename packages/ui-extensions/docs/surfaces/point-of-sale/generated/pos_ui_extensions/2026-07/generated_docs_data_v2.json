@@ -1783,7 +1783,7 @@
       "filePath": "src/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ApiVersion",
-      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07'",
+      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10'",
       "description": "The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice."
     }
   },
@@ -5438,10 +5438,10 @@
           "value": "'auto' | 'primary' | 'secondary'",
           "description": "Changes the visual appearance of the button.",
           "isOptional": true,
-          "defaultValue": "'auto' - the variant is automatically determined by the button's context"
+          "defaultValue": "'auto'"
         }
       ],
-      "value": "interface Button {\n  /**\n   * Sets the action the `commandFor` should take when this clickable is activated.\n   *\n   * See the documentation of particular components for the actions they support.\n   *\n   * - `--auto`: a default action for the target component.\n   * - `--show`: shows the target component.\n   * - `--hide`: hides the target component.\n   * - `--toggle`: toggles the target component.\n   * @default '--auto'\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle';\n  /**\n   * Sets the tone of the button, based on the intention of the information being conveyed.\n   * @default 'auto'\n   */\n  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';\n  /**\n   * Changes the visual appearance of the button.\n   * @default 'auto' - the variant is automatically determined by the button's context\n   */\n  variant?: 'auto' | 'primary' | 'secondary';\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * Disables the button meaning it cannot be clicked or receive focus.\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * ID of a component that should respond to activations (e.g. clicks) on this component.\n   *\n   * See `command` for how to control the behavior of the target.\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor\n   */\n  commandFor?: string;\n  /**\n   * Replaces content with a loading indicator while a background action is being performed.\n   *\n   * This also disables the button.\n   * @default false\n   */\n  loading?: boolean;\n}"
+      "value": "interface Button {\n  /**\n   * Sets the action the `commandFor` should take when this clickable is activated.\n   *\n   * See the documentation of particular components for the actions they support.\n   *\n   * - `--auto`: a default action for the target component.\n   * - `--show`: shows the target component.\n   * - `--hide`: hides the target component.\n   * - `--toggle`: toggles the target component.\n   * @default '--auto'\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command\n   */\n  command?: '--auto' | '--show' | '--hide' | '--toggle';\n  /**\n   * Sets the tone of the button, based on the intention of the information being conveyed.\n   * @default 'auto'\n   */\n  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';\n  /**\n   * Changes the visual appearance of the button.\n   * @default 'auto'\n   */\n  variant?: 'auto' | 'primary' | 'secondary';\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * Disables the button meaning it cannot be clicked or receive focus.\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * ID of a component that should respond to activations (e.g. clicks) on this component.\n   *\n   * See `command` for how to control the behavior of the target.\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor\n   */\n  commandFor?: string;\n  /**\n   * Replaces content with a loading indicator while a background action is being performed.\n   *\n   * This also disables the button.\n   * @default false\n   */\n  loading?: boolean;\n}"
     }
   },
   "Text": {
@@ -9250,12 +9250,310 @@
         {
           "filePath": "src/surfaces/point-of-sale/globals.ts",
           "syntaxKind": "MethodSignature",
+          "name": "intercept",
+          "value": "<K extends keyof ShopifyInterceptMap>(type: K, interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>) => () => void",
+          "description": "Register an interceptor for a POS host workflow that can be blocked. Returns a function that unregisters the interceptor.",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/globals.ts",
+          "syntaxKind": "MethodSignature",
           "name": "removeEventListener",
           "value": "<K extends keyof ShopifyEventMap>(type: K, listener: (event: ShopifyEventMap[K]) => void) => void",
           "description": "Remove a listener previously registered with `addEventListener`. The `listener` reference must match the one used to register."
         }
       ],
-      "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n}"
+      "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Register an interceptor for a POS host workflow that can be blocked.\n   * Returns a function that unregisters the interceptor.\n   *\n   * @private\n   */\n  intercept<K extends keyof ShopifyInterceptMap>(\n    type: K,\n    interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>,\n  ): () => void;\n}"
+    }
+  },
+  "ShopifyInterceptMap": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ShopifyInterceptMap",
+      "description": "Maps POS interceptable workflow names to their corresponding `Event` types.\n\nUsed as the generic type parameter for `shopify.intercept`.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "beforecheckout",
+          "value": "BeforeCheckoutEvent",
+          "description": "Dispatched when staff attempts to leave the active cart for checkout."
+        }
+      ],
+      "value": "export interface ShopifyInterceptMap {\n  [POS_INTERCEPT_NAMES.BEFORE_CHECKOUT]: BeforeCheckoutEvent;\n}"
+    }
+  },
+  "BeforeCheckoutEvent": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "BeforeCheckoutEvent",
+      "description": "Dispatched when staff attempts to leave the active cart for checkout.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "AT_TARGET",
+          "value": "2",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "bubbles",
+          "value": "boolean",
+          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "BUBBLING_PHASE",
+          "value": "3",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cancelable",
+          "value": "boolean",
+          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cancelBubble",
+          "value": "boolean",
+          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "CAPTURING_PHASE",
+          "value": "1",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cart",
+          "value": "Cart",
+          "description": "The POS cart at the point checkout was requested."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "composed",
+          "value": "boolean",
+          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "composedPath",
+          "value": "() => EventTarget[]",
+          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currentTarget",
+          "value": "EventTarget | null",
+          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultPrevented",
+          "value": "boolean",
+          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "eventPhase",
+          "value": "number",
+          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "initEvent",
+          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
+          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isTrusted",
+          "value": "boolean",
+          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "NONE",
+          "value": "0",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "preventDefault",
+          "value": "() => void",
+          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "returnValue",
+          "value": "boolean",
+          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "srcElement",
+          "value": "EventTarget | null",
+          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
+          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "stopImmediatePropagation",
+          "value": "() => void",
+          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "stopPropagation",
+          "value": "() => void",
+          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "EventTarget | null",
+          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "timeStamp",
+          "value": "DOMHighResTimeStamp",
+          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'beforecheckout'",
+          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
+        }
+      ],
+      "value": "export interface BeforeCheckoutEvent extends Event {\n  readonly type: typeof POS_INTERCEPT_NAMES.BEFORE_CHECKOUT;\n  /** The POS cart at the point checkout was requested. */\n  readonly cart: Cart;\n}"
+    }
+  },
+  "ShopifyInterceptor": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ShopifyInterceptor",
+      "description": "",
+      "params": [
+        {
+          "name": "event",
+          "description": "",
+          "value": "TEvent",
+          "filePath": "src/surfaces/point-of-sale/events.ts"
+        }
+      ],
+      "returns": {
+        "filePath": "src/surfaces/point-of-sale/events.ts",
+        "description": "",
+        "name": "InterceptResult",
+        "value": "InterceptResult"
+      },
+      "value": "(\n  event: TEvent,\n) => InterceptResult"
+    }
+  },
+  "InterceptResult": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "InterceptResult",
+      "description": "The result an interceptor returns. An empty `operations` list allows the workflow; an `ERROR` validation blocks it.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "operations",
+          "value": "Operation[]",
+          "description": ""
+        }
+      ],
+      "value": "export interface InterceptResult {\n  operations: Operation[];\n}"
+    }
+  },
+  "Operation": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "Operation",
+      "description": "A single host operation produced by an interceptor.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "validationAdd",
+          "value": "ValidationAdd",
+          "description": "Adds a validation to the workflow being intercepted.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Operation {\n  validationAdd?: ValidationAdd;\n}"
+    }
+  },
+  "ValidationAdd": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ValidationAdd",
+      "description": "Adds a validation to the workflow being intercepted.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "handle",
+          "value": "string",
+          "description": "Stable identifier for this validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "level",
+          "value": "ValidationLevel",
+          "description": "`ERROR` blocks the workflow. `WARNING` does not."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "target",
+          "value": "string",
+          "description": "JSON-path locator for where the validation applies.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface ValidationAdd {\n  /** `ERROR` blocks the workflow. `WARNING` does not. */\n  level: ValidationLevel;\n\n  /** Stable identifier for this validation. */\n  handle: string;\n\n  /** JSON-path locator for where the validation applies. */\n  target?: string;\n}"
+    }
+  },
+  "ValidationLevel": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ValidationLevel",
+      "value": "'WARNING' | 'ERROR'",
+      "description": ""
     }
   },
   "Docs_AppBackgroundEventMethods": {
