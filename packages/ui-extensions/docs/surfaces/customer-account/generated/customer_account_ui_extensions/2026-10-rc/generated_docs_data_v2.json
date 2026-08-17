@@ -5746,7 +5746,7 @@
       "filePath": "src/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ApiVersion",
-      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07'",
+      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10'",
       "description": "The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice."
     }
   },
@@ -6225,7 +6225,7 @@
       "filePath": "src/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StorefrontApiVersion",
-      "value": "'2022-04' | '2022-07' | '2022-10' | '2023-01' | '2023-04' | '2023-07' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07'",
+      "value": "'2022-04' | '2022-07' | '2022-10' | '2023-01' | '2023-04' | '2023-07' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10'",
       "description": "The supported Storefront API versions. Pass one of these values to `query()` to target a specific API version when querying the Storefront GraphQL API."
     }
   },
@@ -45122,6 +45122,7 @@
       "filePath": "src/surfaces/checkout/components/Checkbox.ts",
       "name": "CheckboxEvents",
       "description": "",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/checkout/components/Checkbox.ts",
@@ -45159,6 +45160,7 @@
       "filePath": "src/surfaces/checkout/components/Checkbox.ts",
       "name": "CheckboxElement",
       "description": "",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/checkout/components/Checkbox.ts",

@@ -309,11 +309,10 @@ export interface RenderExtensionTargets {
   /**
    * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.
    *
-   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components.
+   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation.
    */
   'pos.cart.line-item-details.action.render': RenderExtension<
     ActionTargetApi<'pos.cart.line-item-details.action.render'> &
-      ActionApi &
       CartApi &
       CartLineItemApi,
     BasicComponents
