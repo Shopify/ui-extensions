@@ -10,7 +10,7 @@ After every change, you must:
 ## Changesets and versioning
 
 Package versions are **calendar versions**: the `major.minor` of the npm
-version *is* the Shopify API version (`2026.10.x` → API version `2026-10`,
+version _is_ the Shopify API version (`2026.10.x` → API version `2026-10`,
 derived at build time — see `packages/ui-extensions-tester/src/api-version.ts`).
 
 - **Never mark a changeset `major`.** A major bump rolls the calendar year
