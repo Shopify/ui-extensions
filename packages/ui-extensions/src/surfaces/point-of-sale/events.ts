@@ -223,7 +223,7 @@ export interface ValidationAdd<
    * scope (`$.cart` / `$.payment`).
    *
    * Line item uuids are only valid within the event that delivered them:
-   * echo `lineItems[n].uuid` from this event's cart snapshot, don't cache
+   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache
    * uuids across events. Bundle components are not addressable; target their
    * parent line. Unrecognized targets degrade to the root scope — the
    * validation still applies, rendered less specifically.
