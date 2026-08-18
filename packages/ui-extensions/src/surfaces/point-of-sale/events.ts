@@ -139,9 +139,8 @@ export type PaymentTarget = '$.payment';
 export type PaymentValidationTarget = PaymentTarget;
 
 /**
- * Where a validation applies, as an enumerated token following the
- * [Functions validation target model](https://shopify.dev/docs/api/functions/latest/cart-and-checkout-validation#supported-checkout-field-targets).
- * Targets are matched as exact strings, never evaluated as JSON paths.
+ * Where a validation applies, as an enumerated token. Targets are matched
+ * as exact strings, never evaluated as JSON paths.
  *
  * @private
  */
