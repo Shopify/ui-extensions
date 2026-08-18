@@ -18,7 +18,7 @@ derived at build time — see `packages/ui-extensions-tester/src/api-version.ts`
   breaks the tester's version check on every PR, and publishes an RC that is
   semver-higher than the branch's own final release. Breaking changes are
   already gated by API version; declare them `minor` and describe the break in
-  the changeset text (see #4612 → #4636 for the incident this rule comes from).
+  the changeset text.
 - On RC branches (`.changeset/pre.json` present), released changeset files are
   **retained** and keep contributing to version computation until pre-mode
   exits — correcting a bad version requires fixing the changeset file itself,
