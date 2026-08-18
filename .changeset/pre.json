@@ -12,6 +12,9 @@
     "old-beds-cut",
     "pos-intercept-api",
     "pos-intercept-payment-validations",
-    "pos-remove-action-api-from-action-render"
+    "pos-payment-validations-tender-confirm-docs",
+    "pos-remove-action-api-from-action-render",
+    "pos-validation-target-grammar",
+    "tidy-buttons-auto"
   ]
 }
