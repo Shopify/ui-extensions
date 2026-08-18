@@ -24,7 +24,7 @@ export interface Cart {
    */
   grandTotal: string;
   /**
-   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for this cart.
+   * The ISO 4217 currency code for this cart.
    */
   currency: string;
   /**
