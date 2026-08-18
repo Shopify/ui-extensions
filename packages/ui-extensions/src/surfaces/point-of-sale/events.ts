@@ -111,8 +111,7 @@ export interface PaymentValidationsEvent extends Event {
 }
 
 /**
- * Targets the whole cart. Validations with this target apply at the cart
- * scope rather than to a specific line item.
+ * Targets the whole cart rather than a specific line item.
  *
  * @private
  */
@@ -219,14 +218,14 @@ export interface ValidationAdd<
 
   /**
    * Locates the data the validation applies to; the host decides where it
-   * renders, falling back to the event's root scope. Defaults to the root
-   * scope (`$.cart` / `$.payment`).
+   * renders. Omitted or unrecognized targets fall back to the event's root
+   * scope (`$.cart` / `$.payment`) — the validation still applies, rendered
+   * less specifically.
    *
    * Line item uuids are only valid within the event that delivered them:
    * use `lineItems[n].uuid` from this event's cart snapshot, don't cache
-   * uuids across events. Bundle components are not addressable; target their
-   * parent line. Unrecognized targets degrade to the root scope — the
-   * validation still applies, rendered less specifically.
+   * uuids across events. Bundle components are not addressable; target
+   * their parent line.
    */
   target?: TTarget;
 }
