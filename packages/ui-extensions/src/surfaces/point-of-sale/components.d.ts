@@ -4195,6 +4195,25 @@ interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
   src?: ImageProps['src'];
+  /**
+   * Border radius for the image corners.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `start-start start-end end-end end-start`
+   * - 3 values: `start-start (start-end & end-start) end-end`
+   * - 2 values: `(start-start & end-end) (start-end & end-start)`
+   *
+   * For example:
+   * - `base` means all corners have `base` radius
+   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
+   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -7116,6 +7135,25 @@ interface Image {
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
   alt?: string;
+  /**
+   * Border radius for the image corners.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `start-start start-end end-end end-start`
+   * - 3 values: `start-start (start-end & end-start) end-end`
+   * - 2 values: `(start-start & end-end) (start-end & end-start)`
+   *
+   * For example:
+   * - `base` means all corners have `base` radius
+   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
+   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
 
 /**
