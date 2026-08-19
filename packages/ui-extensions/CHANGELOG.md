@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.6
+
+### Minor Changes
+
+- [#4634](https://github.com/Shopify/ui-extensions/pull/4634) [`2ff93b3`](https://github.com/Shopify/ui-extensions/commit/2ff93b334fdd7332bd3cb938ab31b0b20f336236) Thanks [@vctrchu](https://github.com/vctrchu)! - Add types for POS intercept `ValidationAdd.target` values (`$.cart`, `$.cart.lineItems['<uuid>']`, `$.payment`), narrowed per intercepted event.
+
+### Patch Changes
+
+- [#4632](https://github.com/Shopify/ui-extensions/pull/4632) [`3001369`](https://github.com/Shopify/ui-extensions/commit/3001369d03fe3f12d8750ce73ad3e544392e6289) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Document `paymentvalidations` dispatch timing: fires when a tender is confirmed but not yet committed, once per tender attempt (split payments dispatch per tender).
+
+- [#4625](https://github.com/Shopify/ui-extensions/pull/4625) [`bfe153f`](https://github.com/Shopify/ui-extensions/commit/bfe153f855cd64985ebad152c3a5fa5ae0f2fdc0) Thanks [@henryStelle](https://github.com/henryStelle)! - Allow POS `s-button` components to explicitly use the default `auto` variant.
+
 ## 2026.10.0-rc.5
 
 ### Major Changes
