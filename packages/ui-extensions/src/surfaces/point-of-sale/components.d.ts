@@ -4211,10 +4211,6 @@ interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
    * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
    * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
    *
-   * Supports size keywords from the design system scale:
-   * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
-   * - Special values: `max`, `none`
-   *
    * @default 'none'
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
@@ -7154,10 +7150,6 @@ interface Image {
    * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
    * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
    * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
-   *
-   * Supports size keywords from the design system scale:
-   * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
-   * - Special values: `max`, `none`
    *
    * @default 'none'
    */
