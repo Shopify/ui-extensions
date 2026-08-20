@@ -13,6 +13,9 @@ import type {
   DraftOrderApi,
   CartLineItemApi,
   CashDrawerApi,
+  ScannerApi,
+  ReadonlyCartApi,
+  ResolutionApi,
   ScannerSource,
   StorageApi,
   ConnectivityApiContent,
@@ -22,6 +25,8 @@ import type {
   StaffMember,
   TransactionCompleteWithReprintData,
   Money,
+  CartValidationsEvent,
+  PaymentValidationsEvent,
 } from '@shopify/ui-extensions/point-of-sale';
 
 import {createReadonlySignalLike} from '../mocks/signals';
@@ -178,6 +183,12 @@ function createMockActionTargetApi<T extends RenderExtensionTarget>(
   return {
     ...createMockStandardApi(target),
     extensionPoint: target,
+    ...createMockScannerApi(),
+  };
+}
+
+function createMockScannerApi(): ScannerApi {
+  return {
     scanner: {
       scannerData: {
         current: createReadonlySignalLike({
@@ -448,6 +459,52 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
   };
 }
 
+// Group R: StandardApi + ScannerApi + CartApi + ResolutionApi
+function createCartValidationsResolutionMock<T extends RenderExtensionTarget>(
+  target: T,
+): StandardApi<T> & ScannerApi & CartApi & ResolutionApi<CartValidationsEvent> {
+  return {
+    ...createMockStandardApi(target),
+    ...createMockScannerApi(),
+    ...createMockCartApi(),
+    resolution: {
+      event: createReadonlySignalLike(createCartValidationsEvent()),
+    },
+  };
+}
+
+// Group S: StandardApi + ScannerApi + ReadonlyCartApi + ResolutionApi
+function createPaymentValidationsResolutionMock<
+  T extends RenderExtensionTarget,
+>(
+  target: T,
+): StandardApi<T> &
+  ScannerApi &
+  ReadonlyCartApi &
+  ResolutionApi<PaymentValidationsEvent> {
+  return {
+    ...createMockStandardApi(target),
+    ...createMockScannerApi(),
+    cart: {current: createReadonlySignalLike(createPosCart())},
+    resolution: {
+      event: createReadonlySignalLike(createPaymentValidationsEvent()),
+    },
+  };
+}
+
+function createCartValidationsEvent(): CartValidationsEvent {
+  return Object.assign(new Event('cartvalidations'), {
+    cart: createPosCart(),
+  }) as CartValidationsEvent;
+}
+
+function createPaymentValidationsEvent(): PaymentValidationsEvent {
+  return Object.assign(new Event('paymentvalidations'), {
+    paymentMethod: {type: 'cash' as const},
+    amount: {amount: '10.00', currencyCode: 'USD'},
+  }) as PaymentValidationsEvent;
+}
+
 // Data target factories
 function createDataTargetMock<T extends ExtensionTarget>(
   target: T,
@@ -578,6 +635,13 @@ const posMockFactories: PosMockFactory = {
 
   // Group Q: ActionTargetApi + CashDrawerApi
   'pos.register-details.action.render': createActionTargetCashDrawerMock,
+
+  // Group R: StandardApi + ScannerApi + CartApi + ResolutionApi
+  'pos.cart.validations.resolution.render': createCartValidationsResolutionMock,
+
+  // Group S: StandardApi + ScannerApi + ReadonlyCartApi + ResolutionApi
+  'pos.payment.validations.resolution.render':
+    createPaymentValidationsResolutionMock,
 
   // Data targets
   'pos.app.ready.data': createDataTargetMock,

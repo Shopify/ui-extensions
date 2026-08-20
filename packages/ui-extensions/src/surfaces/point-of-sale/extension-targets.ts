@@ -14,12 +14,17 @@ import type {
   OrderApi,
   StorageApi,
   CashDrawerApi,
+  ReadonlyCartApi,
+  ScannerApi,
 } from './api';
+import type {ResolutionApi} from './api/resolution-api/resolution-api';
+import type {CartValidationsEvent, PaymentValidationsEvent} from './events';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
 import type {SmartGridComponents} from './components/targets/SmartGridComponents';
 import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
+import type {ResolutionComponents} from './components/targets/ResolutionComponents';
 import type {TransactionCompleteWithReprintData} from './event/data';
 
 /**
@@ -369,6 +374,53 @@ export interface RenderExtensionTargets {
       ActionApi &
       CashDrawerApi,
     BlockExtensionComponents
+  >;
+  /**
+   * Renders the remediation interface for a `cartvalidations` block inside the
+   * POS-owned resolution flow. POS opens this target when the app's
+   * `cartvalidations` interceptor returned a blocking validation; the app uses
+   * its one step to resolve all of its findings for the event.
+   *
+   * Extensions at this target can mutate the cart through the Cart API and
+   * read the intercepted event through `shopify.resolution`. Staged outcomes
+   * shared with the background interceptor go through the Storage API.
+   *
+   * The resolution surface owns its footer's primary action, which advances
+   * the flow. `<s-button variant="primary">` is coerced to `secondary` on
+   * this target.
+   *
+   * @private
+   */
+  'pos.cart.validations.resolution.render': RenderExtension<
+    StandardApi<'pos.cart.validations.resolution.render'> &
+      ScannerApi &
+      CartApi &
+      ResolutionApi<CartValidationsEvent>,
+    ResolutionComponents
+  >;
+  /**
+   * Renders the remediation interface for a `paymentvalidations` block inside
+   * the POS-owned resolution flow. POS opens this target when the app's
+   * `paymentvalidations` interceptor returned a blocking validation; the app
+   * uses its one step to resolve all of its findings for the event.
+   *
+   * Extensions at this target have read-only cart access — the cart is frozen
+   * during payment — and read the intercepted event through
+   * `shopify.resolution`. Staged outcomes shared with the background
+   * interceptor go through the Storage API.
+   *
+   * The resolution surface owns its footer's primary action, which advances
+   * the flow. `<s-button variant="primary">` is coerced to `secondary` on
+   * this target.
+   *
+   * @private
+   */
+  'pos.payment.validations.resolution.render': RenderExtension<
+    StandardApi<'pos.payment.validations.resolution.render'> &
+      ScannerApi &
+      ReadonlyCartApi &
+      ResolutionApi<PaymentValidationsEvent>,
+    ResolutionComponents
   >;
 }
 
