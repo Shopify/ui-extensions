@@ -378,8 +378,6 @@ export interface RenderExtensionTargets {
   /**
    * Renders the remediation interface when a `cartvalidations` interceptor returns a blocking validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
    *
-   * The resolution surface owns the primary action, so `<s-button variant="primary">` renders as `secondary`.
-   *
    * @private
    */
   'pos.cart.validations.resolution.render': RenderExtension<
@@ -391,8 +389,6 @@ export interface RenderExtensionTargets {
   >;
   /**
    * Renders the remediation interface when a `paymentvalidations` interceptor returns a blocking validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
-   *
-   * The resolution surface owns the primary action, so `<s-button variant="primary">` renders as `secondary`.
    *
    * @private
    */
