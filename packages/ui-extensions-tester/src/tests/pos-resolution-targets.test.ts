@@ -1,6 +1,5 @@
 import {createMockPosTargetApi} from '../point-of-sale/factories';
 
-// Resolution targets expose the intercepted event via `shopify.resolution`.
 // The payment target's cart is read-only: the cart is frozen during payment.
 describe('pos.cart.validations.resolution.render', () => {
   it('exposes the intercepted cartvalidations event via resolution', () => {
