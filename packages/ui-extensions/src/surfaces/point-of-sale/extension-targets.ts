@@ -16,8 +16,8 @@ import type {
   CashDrawerApi,
   ReadonlyCartApi,
   ScannerApi,
+  ResolutionApi,
 } from './api';
-import type {ResolutionApi} from './api/resolution-api/resolution-api';
 import type {CartValidationsEvent, PaymentValidationsEvent} from './events';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
