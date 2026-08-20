@@ -25,8 +25,8 @@ import type {
   StaffMember,
   TransactionCompleteWithReprintData,
   Money,
-  CartValidationsEvent,
-  PaymentValidationsEvent,
+  CartValidationsEventData,
+  PaymentValidationsEventData,
 } from '@shopify/ui-extensions/point-of-sale';
 
 import {createReadonlySignalLike} from '../mocks/signals';
@@ -462,13 +462,16 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
 // Group R: StandardApi + ScannerApi + CartApi + ResolutionApi
 function createCartValidationsResolutionMock<T extends RenderExtensionTarget>(
   target: T,
-): StandardApi<T> & ScannerApi & CartApi & ResolutionApi<CartValidationsEvent> {
+): StandardApi<T> &
+  ScannerApi &
+  CartApi &
+  ResolutionApi<CartValidationsEventData> {
   return {
     ...createMockStandardApi(target),
     ...createMockScannerApi(),
     ...createMockCartApi(),
     resolution: {
-      event: createReadonlySignalLike(createCartValidationsEvent()),
+      event: createReadonlySignalLike({cart: createPosCart()}),
     },
   };
 }
@@ -481,28 +484,18 @@ function createPaymentValidationsResolutionMock<
 ): StandardApi<T> &
   ScannerApi &
   ReadonlyCartApi &
-  ResolutionApi<PaymentValidationsEvent> {
+  ResolutionApi<PaymentValidationsEventData> {
   return {
     ...createMockStandardApi(target),
     ...createMockScannerApi(),
     cart: {current: createReadonlySignalLike(createPosCart())},
     resolution: {
-      event: createReadonlySignalLike(createPaymentValidationsEvent()),
+      event: createReadonlySignalLike({
+        paymentMethod: {type: 'cash' as const},
+        amount: {amount: '10.00', currencyCode: 'USD'},
+      }),
     },
   };
-}
-
-function createCartValidationsEvent(): CartValidationsEvent {
-  return Object.assign(new Event('cartvalidations'), {
-    cart: createPosCart(),
-  }) as CartValidationsEvent;
-}
-
-function createPaymentValidationsEvent(): PaymentValidationsEvent {
-  return Object.assign(new Event('paymentvalidations'), {
-    paymentMethod: {type: 'cash' as const},
-    amount: {amount: '10.00', currencyCode: 'USD'},
-  }) as PaymentValidationsEvent;
 }
 
 // Data target factories

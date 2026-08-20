@@ -18,7 +18,10 @@ import type {
   ScannerApi,
   ResolutionApi,
 } from './api';
-import type {CartValidationsEvent, PaymentValidationsEvent} from './events';
+import type {
+  CartValidationsEventData,
+  PaymentValidationsEventData,
+} from './events';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
 import type {SmartGridComponents} from './components/targets/SmartGridComponents';
@@ -384,7 +387,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.cart.validations.resolution.render'> &
       ScannerApi &
       CartApi &
-      ResolutionApi<CartValidationsEvent>,
+      ResolutionApi<CartValidationsEventData>,
     ResolutionComponents
   >;
   /**
@@ -396,7 +399,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.payment.validations.resolution.render'> &
       ScannerApi &
       ReadonlyCartApi &
-      ResolutionApi<PaymentValidationsEvent>,
+      ResolutionApi<PaymentValidationsEventData>,
     ResolutionComponents
   >;
 }

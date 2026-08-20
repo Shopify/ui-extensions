@@ -2,12 +2,11 @@ import {createMockPosTargetApi} from '../point-of-sale/factories';
 
 // The payment target's cart is read-only: the cart is frozen during payment.
 describe('pos.cart.validations.resolution.render', () => {
-  it('exposes the intercepted cartvalidations event via resolution', () => {
+  it('exposes the intercepted cartvalidations event data via resolution', () => {
     const api = createMockPosTargetApi(
       'pos.cart.validations.resolution.render',
     );
 
-    expect(api.resolution.event.value.type).toBe('cartvalidations');
     expect(api.resolution.event.value.cart).toBeDefined();
   });
 
@@ -31,12 +30,11 @@ describe('pos.cart.validations.resolution.render', () => {
 });
 
 describe('pos.payment.validations.resolution.render', () => {
-  it('exposes the intercepted paymentvalidations event via resolution', () => {
+  it('exposes the intercepted paymentvalidations event data via resolution', () => {
     const api = createMockPosTargetApi(
       'pos.payment.validations.resolution.render',
     );
 
-    expect(api.resolution.event.value.type).toBe('paymentvalidations');
     expect(api.resolution.event.value.paymentMethod.type).toBe('cash');
     expect(api.resolution.event.value.amount.currencyCode).toBeDefined();
   });

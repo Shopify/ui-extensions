@@ -62,14 +62,22 @@ export interface ShopifyInterceptMap {
 }
 
 /**
+ * The data carried by a `cartvalidations` event.
+ *
+ * @private
+ */
+export interface CartValidationsEventData {
+  /** The POS cart at the point checkout was requested. */
+  readonly cart: Cart;
+}
+
+/**
  * Dispatched when staff attempts to leave the active cart for checkout.
  *
  * @private
  */
-export interface CartValidationsEvent extends Event {
+export interface CartValidationsEvent extends Event, CartValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
-  /** The POS cart at the point checkout was requested. */
-  readonly cart: Cart;
 }
 
 /**
@@ -103,9 +111,18 @@ export interface InterceptedPaymentMethod {
  *
  * @private
  */
-export interface PaymentValidationsEvent extends Event {
+export interface PaymentValidationsEvent
+  extends Event,
+    PaymentValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;
+}
 
+/**
+ * The data carried by a `paymentvalidations` event.
+ *
+ * @private
+ */
+export interface PaymentValidationsEventData {
   /** The payment method staff selected. */
   readonly paymentMethod: InterceptedPaymentMethod;
 
