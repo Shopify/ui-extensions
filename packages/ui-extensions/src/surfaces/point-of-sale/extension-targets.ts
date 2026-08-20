@@ -385,9 +385,8 @@ export interface RenderExtensionTargets {
    * read the intercepted event through `shopify.resolution`. Staged outcomes
    * shared with the background interceptor go through the Storage API.
    *
-   * The resolution surface owns its footer's primary action, which advances
-   * the flow. `<s-button variant="primary">` is coerced to `secondary` on
-   * this target.
+   * `<s-button variant="primary">` renders as `secondary` here; the
+   * resolution surface owns the primary action that advances the flow.
    *
    * @private
    */
@@ -409,9 +408,8 @@ export interface RenderExtensionTargets {
    * `shopify.resolution`. Staged outcomes shared with the background
    * interceptor go through the Storage API.
    *
-   * The resolution surface owns its footer's primary action, which advances
-   * the flow. `<s-button variant="primary">` is coerced to `secondary` on
-   * this target.
+   * `<s-button variant="primary">` renders as `secondary` here; the
+   * resolution surface owns the primary action that advances the flow.
    *
    * @private
    */
