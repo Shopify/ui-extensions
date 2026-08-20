@@ -1,9 +1,7 @@
 import {createMockPosTargetApi} from '../point-of-sale/factories';
 
-// Regression guard: resolution targets remediate a blocking validation inside
-// a POS-owned flow step. They expose the intercepted event via
-// `shopify.resolution`, never the Action API, and the payment target's cart
-// is read-only because the cart is frozen during payment.
+// Resolution targets expose the intercepted event via `shopify.resolution`.
+// The payment target's cart is read-only: the cart is frozen during payment.
 describe('pos.cart.validations.resolution.render', () => {
   it('exposes the intercepted cartvalidations event via resolution', () => {
     const api = createMockPosTargetApi(
