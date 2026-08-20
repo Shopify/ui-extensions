@@ -76,7 +76,7 @@ export interface CartValidationsEventData {
  *
  * @private
  */
-export interface CartValidationsEvent extends Event, CartValidationsEventData {
+export interface CartValidationsEvent extends CartValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
 }
 
@@ -111,9 +111,7 @@ export interface InterceptedPaymentMethod {
  *
  * @private
  */
-export interface PaymentValidationsEvent
-  extends Event,
-    PaymentValidationsEventData {
+export interface PaymentValidationsEvent extends PaymentValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;
 }
 
@@ -177,19 +175,14 @@ interface ValidationTargetMap {
 }
 
 /**
- * The validation targets valid for a given intercepted event.
+ * The interceptor callback for a POS interceptable workflow, keyed by the
+ * workflow name so the event and its valid validation targets stay paired.
  *
  * @private
  */
-export type ValidationTargetFor<TEvent extends Event> =
-  TEvent['type'] extends keyof ValidationTargetMap
-    ? ValidationTargetMap[TEvent['type']]
-    : ValidationTarget;
-
-/** @private */
-export type ShopifyInterceptor<TEvent extends Event> = (
-  event: TEvent,
-) => InterceptResult<ValidationTargetFor<TEvent>>;
+export type ShopifyInterceptor<K extends keyof ShopifyInterceptMap> = (
+  event: ShopifyInterceptMap[K],
+) => InterceptResult<ValidationTargetMap[K]>;
 
 /**
  * The result an interceptor returns. An empty `operations` list allows the
