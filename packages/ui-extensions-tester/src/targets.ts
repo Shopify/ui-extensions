@@ -10,6 +10,7 @@ import type {
   ExtensionTarget as PosExtensionTarget,
   ExtensionTargets as PointOfSaleExtensionTargets,
   ShopifyEventMap as PosEventMap,
+  ShopifyInterceptMap as PosInterceptMap,
 } from '@shopify/ui-extensions/point-of-sale';
 import type {
   CustomerAccountExtensionTarget,
@@ -52,6 +53,16 @@ export type ApiForTarget<T extends AnyExtensionTarget> =
  */
 export type EventMapForTarget<T extends AnyExtensionTarget> =
   T extends PosExtensionTarget ? PosEventMap : Record<string, never>;
+
+/**
+ * Maps an extension target to the intercept map available via
+ * `shopify.intercept` on that surface.
+ *
+ * - POS targets: the POS `ShopifyInterceptMap`.
+ * - Other surfaces: no interceptable workflows, so the map is empty.
+ */
+export type InterceptMapForTarget<T extends AnyExtensionTarget> =
+  T extends PosExtensionTarget ? PosInterceptMap : Record<string, never>;
 
 export function isCheckoutTarget(
   target: string,

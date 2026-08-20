@@ -75,6 +75,43 @@ extension.shopify.cart.bulkCartUpdate = vi
   );
 ```
 
+## 🚦 Testing interceptors
+
+Register an interceptor via `shopify.intercept()` in your extension, then use `extension.fireIntercept()` to run it and assert on the returned operations. Build event payloads with the event data factories:
+
+```ts
+import {createCartValidationsEventData} from '@shopify/ui-extensions-tester/point-of-sale';
+
+await extension.render();
+
+const result = extension.fireIntercept(
+  'cartvalidations',
+  createCartValidationsEventData(),
+);
+
+expect(
+  result?.operations[0]?.validationAdd?.level,
+).toBe('ERROR');
+```
+
+Interceptors follow the host contract: one interceptor per event, synchronous only (returning a Promise throws), and `fireIntercept()` returns `undefined` when nothing is registered.
+
+## 🧾 Mocking resolution event data
+
+The same factories provide the `shopify.resolution.event` value on resolution targets:
+
+```ts
+import {createPaymentValidationsEventData} from '@shopify/ui-extensions-tester/point-of-sale';
+
+extension.shopify.resolution.event.value =
+  createPaymentValidationsEventData({
+    amount: {
+      amount: '150.00',
+      currencyCode: 'CAD',
+    },
+  });
+```
+
 ## 📂 Example
 
 See the [point of sale example](../../../../examples/testing/point-of-sale-testing-example) for a fully working extension with a test suite.
@@ -88,6 +125,18 @@ Creates a mock POS `LineItem` with sensible defaults. Pass a partial override to
 ### `createStorage(initialValues?)`
 
 Creates a mock `Storage` instance. Optionally accepts a `Record<string, unknown>` of initial entries.
+
+### `createPosCart(overrides?)`
+
+Creates a mock POS `Cart` with empty, zero-total defaults. Pass a partial override to customize fields.
+
+### `createCartValidationsEventData(overrides?)`
+
+Creates mock `cartvalidations` event data (`{cart}`): the payload for `extension.fireIntercept()` and the `shopify.resolution.event` value on the cart resolution target.
+
+### `createPaymentValidationsEventData(overrides?)`
+
+Creates mock `paymentvalidations` event data (`{paymentMethod, amount}`) with cash defaults: the payload for `extension.fireIntercept()` and the `shopify.resolution.event` value on the payment resolution target.
 
 ### `createResult(mutation, result?)`
 

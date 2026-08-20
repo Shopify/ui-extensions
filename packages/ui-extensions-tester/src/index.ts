@@ -5,7 +5,10 @@ import type {
   AnyExtensionTarget,
   ApiForTarget,
   EventMapForTarget,
+  InterceptMapForTarget,
 } from './targets';
+import type {InterceptResult} from '@shopify/ui-extensions/point-of-sale';
+import {POS_INTERCEPT_NAMES} from '@shopify/ui-extensions/point-of-sale';
 import {isCheckoutTarget} from './targets';
 import {createMockTargetApi} from './mocks/target-apis';
 import {createMockNavigation, type Navigation} from './navigation';
@@ -120,6 +123,30 @@ interface BaseExtensionHarness<T extends AnyExtensionTarget> {
     type: K,
     event: EventMapForTarget<T>[K],
   ): void;
+
+  /**
+   * Runs the interceptor registered via `shopify.intercept(name, interceptor)`
+   * and returns its `InterceptResult`, or `undefined` when no interceptor is
+   * registered for the event.
+   *
+   * Matches the host contract: the event delivered to the interceptor is
+   * `{type, ...data}`, and an interceptor that returns a Promise throws —
+   * interceptors must be synchronous.
+   *
+   * ```ts
+   * shopify.intercept('cartvalidations', (event) => { ... });
+   *
+   * const result = extension.fireIntercept(
+   *   'cartvalidations',
+   *   createCartValidationsEventData(),
+   * );
+   * expect(result?.operations).toEqual([]);
+   * ```
+   */
+  fireIntercept<K extends keyof InterceptMapForTarget<T>>(
+    type: K,
+    data: Omit<InterceptMapForTarget<T>[K], 'type'>,
+  ): InterceptResult | undefined;
 }
 
 /**
@@ -169,6 +196,7 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
   #navigationImpl: Navigation = createMockNavigation();
   #previousNavigation: any;
   #eventListeners = new Map<string, Set<(event: any) => void>>();
+  #interceptors = new Map<string, (event: any) => any>();
 
   constructor(target: T, options?: {configSearchDir?: string}) {
     const configSearchDir =
@@ -206,10 +234,12 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
     this.#previousNavigation = (globalThis as any).navigation;
     this.#navigationImpl = createMockNavigation();
     this.#eventListeners.clear();
+    this.#interceptors.clear();
     (globalThis as any).shopify = deepWritableProxy(
       Object.assign(createMockTargetApi(this.#target), {
         addEventListener: this.#addEventListener,
         removeEventListener: this.#removeEventListener,
+        intercept: this.#intercept,
       }),
     );
     (globalThis as any).fetch = this.#fetchImpl;
@@ -231,6 +261,55 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
   ): void => {
     this.#eventListeners.get(type)?.delete(listener);
   };
+
+  #intercept = (
+    type: string,
+    interceptor: (event: any) => any,
+  ): (() => void) => {
+    if (typeof interceptor !== 'function') {
+      throw new TypeError('Interceptor must be a function');
+    }
+    const supported: ReadonlyArray<string> = Object.values(POS_INTERCEPT_NAMES);
+    if (!supported.includes(type)) {
+      throw new Error(
+        `'${type}' is not a supported intercept event. Supported events: ${supported.join(
+          ', ',
+        )}.`,
+      );
+    }
+    if (this.#interceptors.has(type)) {
+      throw new Error(
+        `An interceptor for '${type}' is already registered; only one interceptor per event type is allowed.`,
+      );
+    }
+    this.#interceptors.set(type, interceptor);
+    return () => {
+      if (this.#interceptors.get(type) === interceptor) {
+        this.#interceptors.delete(type);
+      }
+    };
+  };
+
+  fireIntercept<K extends keyof InterceptMapForTarget<T>>(
+    type: K,
+    data: Omit<InterceptMapForTarget<T>[K], 'type'>,
+  ): InterceptResult | undefined {
+    const interceptor = this.#interceptors.get(type as string);
+    if (!interceptor) return undefined;
+    const result = interceptor({type, ...data});
+    if (
+      result != null &&
+      (typeof result === 'object' || typeof result === 'function') &&
+      typeof (result as {then?: unknown}).then === 'function'
+    ) {
+      throw new Error(
+        `An interceptor for '${String(
+          type,
+        )}' must be synchronous but it returned a Promise.`,
+      );
+    }
+    return result;
+  }
 
   dispatch<K extends keyof EventMapForTarget<T>>(
     type: K,
@@ -303,6 +382,7 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
     }
     delete (globalThis as any).shopify;
     this.#eventListeners.clear();
+    this.#interceptors.clear();
     if (this.#previousFetch === undefined) {
       delete (globalThis as any).fetch;
     } else {
