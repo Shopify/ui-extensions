@@ -376,7 +376,7 @@ export interface RenderExtensionTargets {
     BlockExtensionComponents
   >;
   /**
-   * Renders the remediation interface when a `cartvalidations` interceptor returns a blocking validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
+   * Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
    *
    * @private
    */
@@ -388,7 +388,7 @@ export interface RenderExtensionTargets {
     ResolutionComponents
   >;
   /**
-   * Renders the remediation interface when a `paymentvalidations` interceptor returns a blocking validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
+   * Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
    *
    * @private
    */
