@@ -378,7 +378,7 @@ export interface RenderExtensionTargets {
   /**
    * Renders the remediation interface when a `cartvalidations` interceptor returns a blocking validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
    *
-   * Extensions at this target can mutate the cart through the Cart API, read the intercepted event through `shopify.resolution`, and share staged outcomes with the background interceptor through the Storage API. The resolution surface owns the primary action, so `<s-button variant="primary">` renders as `secondary`.
+   * The resolution surface owns the primary action, so `<s-button variant="primary">` renders as `secondary`.
    *
    * @private
    */
@@ -392,7 +392,7 @@ export interface RenderExtensionTargets {
   /**
    * Renders the remediation interface when a `paymentvalidations` interceptor returns a blocking validation. Use this target to resolve all of the app's findings for the event in a single POS-owned flow step.
    *
-   * Extensions at this target have read-only cart access — the cart is frozen during payment — and can read the intercepted event through `shopify.resolution` and share staged outcomes with the background interceptor through the Storage API. The resolution surface owns the primary action, so `<s-button variant="primary">` renders as `secondary`.
+   * The resolution surface owns the primary action, so `<s-button variant="primary">` renders as `secondary`.
    *
    * @private
    */
