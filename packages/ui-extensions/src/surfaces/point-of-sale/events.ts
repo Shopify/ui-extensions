@@ -96,7 +96,10 @@ export interface InterceptedPaymentMethod {
 }
 
 /**
- * Dispatched when staff selects a payment method on the payments screen.
+ * Dispatched when a tender is confirmed but not yet committed — after the
+ * amount is entered, before the payment is recorded. One event per tender
+ * attempt; split payments dispatch one event per tender, each carrying its
+ * own amount.
  *
  * @private
  */
@@ -110,10 +113,66 @@ export interface PaymentValidationsEvent extends Event {
   readonly amount: MoneyV2;
 }
 
+/**
+ * Targets the whole cart rather than a specific line item.
+ *
+ * @private
+ */
+export type CartTarget = '$.cart';
+
+/**
+ * Targets one cart line item by its `uuid` from this event's `cart` snapshot,
+ * for example `$.cart.lineItems['adfd6b06-4a24-4f5f-9f4b-ea21f4432dd4']`.
+ *
+ * @private
+ */
+export type CartLineItemTarget = `$.cart.lineItems['${string}']`;
+
+/** @private */
+export type CartValidationTarget = CartTarget | CartLineItemTarget;
+
+/**
+ * Targets the payment attempt being intercepted.
+ *
+ * @private
+ */
+export type PaymentTarget = '$.payment';
+
+/** @private */
+export type PaymentValidationTarget = PaymentTarget;
+
+/**
+ * Where a validation applies, as an enumerated token. Targets are matched
+ * as exact strings, never evaluated as JSON paths.
+ *
+ * @private
+ */
+export type ValidationTarget = CartValidationTarget | PaymentValidationTarget;
+
+/**
+ * Maps POS interceptable workflow names to their valid validation targets.
+ *
+ * @private
+ */
+interface ValidationTargetMap {
+  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;
+  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;
+}
+
+/**
+ * The validation targets valid for a given intercepted event.
+ *
+ * @private
+ */
+export type ValidationTargetFor<TEvent extends Event> =
+  TEvent['type'] extends keyof ValidationTargetMap
+    ? ValidationTargetMap[TEvent['type']]
+    : ValidationTarget;
+
 /** @private */
 export type ShopifyInterceptor<TEvent extends Event> = (
   event: TEvent,
-) => InterceptResult;
+) => InterceptResult<ValidationTargetFor<TEvent>>;
 
 /**
  * The result an interceptor returns. An empty `operations` list allows the
@@ -121,8 +180,10 @@ export type ShopifyInterceptor<TEvent extends Event> = (
  *
  * @private
  */
-export interface InterceptResult {
-  operations: Operation[];
+export interface InterceptResult<
+  TTarget extends ValidationTarget = ValidationTarget,
+> {
+  operations: Operation<TTarget>[];
 }
 
 /**
@@ -130,8 +191,10 @@ export interface InterceptResult {
  *
  * @private
  */
-export interface Operation {
-  validationAdd?: ValidationAdd;
+export interface Operation<
+  TTarget extends ValidationTarget = ValidationTarget,
+> {
+  validationAdd?: ValidationAdd<TTarget>;
 }
 
 /** @private */
@@ -142,15 +205,31 @@ export type ValidationLevel = 'WARNING' | 'ERROR';
  *
  * @private
  */
-export interface ValidationAdd {
+export interface ValidationAdd<
+  TTarget extends ValidationTarget = ValidationTarget,
+> {
   /** `ERROR` blocks the workflow. `WARNING` does not. */
   level: ValidationLevel;
 
-  /** Stable identifier for this validation. */
+  /**
+   * Stable identifier for this validation. Handles are namespaced per
+   * extension and may repeat across targets: the same handle on two line
+   * items is two validations.
+   */
   handle: string;
 
-  /** JSON-path locator for where the validation applies. */
-  target?: string;
+  /**
+   * Locates the data the validation applies to; the host decides where it
+   * renders. Omitted or unrecognized targets fall back to the event's root
+   * scope (`$.cart` / `$.payment`) — the validation still applies, rendered
+   * less specifically.
+   *
+   * Line item uuids are only valid within the event that delivered them:
+   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache
+   * uuids across events. Bundle components are not addressable; target
+   * their parent line.
+   */
+  target?: TTarget;
 }
 
 export type {
