@@ -52,6 +52,17 @@ jobs:
       - name: Build packages
         run: yarn build
 
+      # publint checks that every package.json entry point resolves to files
+      # that actually ship in the npm tarball; attw checks that types resolve
+      # under every TypeScript moduleResolution mode (including node10, which
+      # needs typesVersions entries mirroring exports). false-cjs is ignored:
+      # the package's ESM types are declared with .d.ts instead of .d.mts,
+      # which is pre-existing and harmless for bundled extension code.
+      - name: Validate ui-extensions package entry points
+        run: |
+          yarn workspace @shopify/ui-extensions package:publint
+          yarn workspace @shopify/ui-extensions package:attw
+
       - name: Typecheck ui-extensions-tester (including tests)
         run: npx tsc --project packages/ui-extensions-tester/tsconfig.typecheck.json
 
