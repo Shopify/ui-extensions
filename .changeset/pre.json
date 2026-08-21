@@ -6,6 +6,7 @@
     "@shopify/ui-extensions-tester": "2026.10.0-rc.0"
   },
   "changesets": [
+    "document-pos-image-border-radius",
     "empty-peas-hide",
     "hide-tertiary-button-docs",
     "lovely-chairs-cross",
@@ -14,6 +15,8 @@
     "pos-intercept-payment-validations",
     "pos-payment-validations-tender-confirm-docs",
     "pos-remove-action-api-from-action-render",
+    "pos-resolution-targets",
+    "pos-storage-current-required",
     "pos-validation-target-grammar",
     "tidy-buttons-auto"
   ]
