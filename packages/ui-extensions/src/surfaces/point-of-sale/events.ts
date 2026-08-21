@@ -67,13 +67,13 @@ export interface ShopifyInterceptMap {
  * @private
  */
 export interface CartValidationsEventData {
-  /** A snapshot of the POS cart to validate. */
+  /** A snapshot of the POS cart taken when the event was produced. */
   readonly cart: Cart;
 }
 
 /**
- * The event a `cartvalidations` interceptor receives: the cart state to
- * validate.
+ * The event a `cartvalidations` interceptor receives. Carries a snapshot of
+ * the POS cart taken when the event was produced.
  *
  * @private
  */
@@ -105,9 +105,9 @@ export interface InterceptedPaymentMethod {
 }
 
 /**
- * The event a `paymentvalidations` interceptor receives: the tender attempt
- * to validate. One event per tender attempt; split payments produce one
- * event per tender, each carrying its own amount.
+ * The event a `paymentvalidations` interceptor receives. Carries the tender
+ * attempt's payment method and amount; split payments produce one event per
+ * tender, each with its own amount.
  *
  * @private
  */
