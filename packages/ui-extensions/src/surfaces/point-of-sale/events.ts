@@ -67,12 +67,13 @@ export interface ShopifyInterceptMap {
  * @private
  */
 export interface CartValidationsEventData {
-  /** The POS cart at the point checkout was requested. */
+  /** A snapshot of the POS cart to validate. */
   readonly cart: Cart;
 }
 
 /**
- * Dispatched when staff attempts to leave the active cart for checkout.
+ * The event a `cartvalidations` interceptor receives: the cart state to
+ * validate. POS decides when validation runs — don't assume a trigger.
  *
  * @private
  */
