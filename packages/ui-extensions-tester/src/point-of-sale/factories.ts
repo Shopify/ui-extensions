@@ -20,7 +20,6 @@ import type {
   StorageApi,
   ConnectivityApiContent,
   ConnectivityState,
-  Cart,
   Session,
   StaffMember,
   TransactionCompleteWithReprintData,
@@ -31,7 +30,14 @@ import type {
 
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
-import {createCartLineItem, createStorage, createResult} from './index';
+import {
+  createCartLineItem,
+  createStorage,
+  createResult,
+  createPosCart,
+  createCartValidationsEventData,
+  createPaymentValidationsEventData,
+} from './index';
 
 /**
  * Extracts the API type for a given POS extension target directly from the
@@ -68,17 +74,6 @@ function createSessionCurrentSession(): Session {
 function createStaffMember(): StaffMember {
   return {
     id: 1,
-  };
-}
-
-function createPosCart(): Cart {
-  return {
-    subtotal: '0.00',
-    taxTotal: '0.00',
-    grandTotal: '0.00',
-    cartDiscounts: [],
-    lineItems: [],
-    properties: {},
   };
 }
 
@@ -471,7 +466,7 @@ function createCartValidationsResolutionMock<T extends RenderExtensionTarget>(
     ...createMockScannerApi(),
     ...createMockCartApi(),
     resolution: {
-      event: createReadonlySignalLike({cart: createPosCart()}),
+      event: createReadonlySignalLike(createCartValidationsEventData()),
     },
   };
 }
@@ -490,10 +485,7 @@ function createPaymentValidationsResolutionMock<
     ...createMockScannerApi(),
     cart: {current: createReadonlySignalLike(createPosCart())},
     resolution: {
-      event: createReadonlySignalLike({
-        paymentMethod: {type: 'cash' as const},
-        amount: {amount: '10.00', currencyCode: 'USD'},
-      }),
+      event: createReadonlySignalLike(createPaymentValidationsEventData()),
     },
   };
 }

@@ -1,5 +1,8 @@
 import type {
+  Cart,
+  CartValidationsEventData,
   LineItem,
+  PaymentValidationsEventData,
   Storage,
   SubscribableStorage,
   CartApiContent,
@@ -24,6 +27,48 @@ export function createCartLineItem(overrides?: Partial<LineItem>): LineItem {
     vendor: 'Mock Vendor',
     properties: {},
     isGiftCard: false,
+    ...overrides,
+  };
+}
+
+/**
+ * Creates a mock POS `Cart` with empty, zero-total defaults.
+ * Pass a partial override to customize fields.
+ */
+export function createPosCart(overrides?: Partial<Cart>): Cart {
+  return {
+    subtotal: '0.00',
+    taxTotal: '0.00',
+    grandTotal: '0.00',
+    cartDiscounts: [],
+    lineItems: [],
+    properties: {},
+    ...overrides,
+  };
+}
+
+/**
+ * Creates mock `cartvalidations` event data: the payload an interceptor
+ * receives from `extension.fireIntercept()` and the value exposed by
+ * `shopify.resolution.event` on the cart resolution target.
+ */
+export function createCartValidationsEventData(
+  overrides?: Partial<CartValidationsEventData>,
+): CartValidationsEventData {
+  return {cart: createPosCart(), ...overrides};
+}
+
+/**
+ * Creates mock `paymentvalidations` event data: the payload an interceptor
+ * receives from `extension.fireIntercept()` and the value exposed by
+ * `shopify.resolution.event` on the payment resolution target.
+ */
+export function createPaymentValidationsEventData(
+  overrides?: Partial<PaymentValidationsEventData>,
+): PaymentValidationsEventData {
+  return {
+    paymentMethod: {type: 'cash'},
+    amount: {amount: '10.00', currencyCode: 'USD'},
     ...overrides,
   };
 }
