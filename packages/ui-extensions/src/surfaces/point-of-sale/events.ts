@@ -73,7 +73,7 @@ export interface CartValidationsEventData {
 
 /**
  * The event a `cartvalidations` interceptor receives: the cart state to
- * validate. POS decides when validation runs — don't assume a trigger.
+ * validate.
  *
  * @private
  */
