@@ -49,7 +49,7 @@ export interface BackgroundShopifyGlobal extends ShopifyGlobal {
    */
   intercept<K extends keyof ShopifyInterceptMap>(
     type: K,
-    interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>,
+    interceptor: ShopifyInterceptor<K>,
   ): () => void;
 }
 

@@ -14,12 +14,20 @@ import type {
   OrderApi,
   StorageApi,
   CashDrawerApi,
+  ReadonlyCartApi,
+  ScannerApi,
+  ResolutionApi,
 } from './api';
+import type {
+  CartValidationsEventData,
+  PaymentValidationsEventData,
+} from './events';
 import type {ActionExtensionComponents} from './components/targets/ActionExtensionComponents';
 import type {BlockExtensionComponents} from './components/targets/BlockExtensionComponents';
 import type {SmartGridComponents} from './components/targets/SmartGridComponents';
 import type {ReceiptComponents} from './components/targets/ReceiptComponents';
 import type {BasicComponents} from './components/targets/BasicComponents';
+import type {ResolutionComponents} from './components/targets/ResolutionComponents';
 import type {TransactionCompleteWithReprintData} from './event/data';
 
 /**
@@ -369,6 +377,30 @@ export interface RenderExtensionTargets {
       ActionApi &
       CashDrawerApi,
     BlockExtensionComponents
+  >;
+  /**
+   * Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.
+   *
+   * @private
+   */
+  'pos.cart.validations.resolution.render': RenderExtension<
+    StandardApi<'pos.cart.validations.resolution.render'> &
+      ScannerApi &
+      CartApi &
+      ResolutionApi<CartValidationsEventData>,
+    ResolutionComponents
+  >;
+  /**
+   * Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.
+   *
+   * @private
+   */
+  'pos.payment.validations.resolution.render': RenderExtension<
+    StandardApi<'pos.payment.validations.resolution.render'> &
+      ScannerApi &
+      ReadonlyCartApi &
+      ResolutionApi<PaymentValidationsEventData>,
+    ResolutionComponents
   >;
 }
 

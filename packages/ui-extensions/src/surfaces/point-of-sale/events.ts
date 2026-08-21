@@ -62,14 +62,23 @@ export interface ShopifyInterceptMap {
 }
 
 /**
- * Dispatched when staff attempts to leave the active cart for checkout.
+ * The data carried by a `cartvalidations` event.
  *
  * @private
  */
-export interface CartValidationsEvent extends Event {
-  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
-  /** The POS cart at the point checkout was requested. */
+export interface CartValidationsEventData {
+  /** A snapshot of the POS cart taken when the event was produced. */
   readonly cart: Cart;
+}
+
+/**
+ * The event a `cartvalidations` interceptor receives. Carries a snapshot of
+ * the POS cart taken when the event was produced.
+ *
+ * @private
+ */
+export interface CartValidationsEvent extends CartValidationsEventData {
+  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
 }
 
 /**
@@ -96,16 +105,22 @@ export interface InterceptedPaymentMethod {
 }
 
 /**
- * Dispatched when a tender is confirmed but not yet committed — after the
- * amount is entered, before the payment is recorded. One event per tender
- * attempt; split payments dispatch one event per tender, each carrying its
- * own amount.
+ * The event a `paymentvalidations` interceptor receives. Carries the tender
+ * attempt's payment method and amount; split payments produce one event per
+ * tender, each with its own amount.
  *
  * @private
  */
-export interface PaymentValidationsEvent extends Event {
+export interface PaymentValidationsEvent extends PaymentValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;
+}
 
+/**
+ * The data carried by a `paymentvalidations` event.
+ *
+ * @private
+ */
+export interface PaymentValidationsEventData {
   /** The payment method staff selected. */
   readonly paymentMethod: InterceptedPaymentMethod;
 
@@ -160,19 +175,14 @@ interface ValidationTargetMap {
 }
 
 /**
- * The validation targets valid for a given intercepted event.
+ * The interceptor callback for a POS interceptable workflow, keyed by the
+ * workflow name so the event and its valid validation targets stay paired.
  *
  * @private
  */
-export type ValidationTargetFor<TEvent extends Event> =
-  TEvent['type'] extends keyof ValidationTargetMap
-    ? ValidationTargetMap[TEvent['type']]
-    : ValidationTarget;
-
-/** @private */
-export type ShopifyInterceptor<TEvent extends Event> = (
-  event: TEvent,
-) => InterceptResult<ValidationTargetFor<TEvent>>;
+export type ShopifyInterceptor<K extends keyof ShopifyInterceptMap> = (
+  event: ShopifyInterceptMap[K],
+) => InterceptResult<ValidationTargetMap[K]>;
 
 /**
  * The result an interceptor returns. An empty `operations` list allows the
