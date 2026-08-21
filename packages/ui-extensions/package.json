@@ -1,6 +1,6 @@
 {
   "name": "@shopify/ui-extensions",
-  "version": "2026.10.0-rc.6",
+  "version": "2026.10.0-rc.7",
   "scripts": {
     "docs:admin": "node ./docs/surfaces/admin/build-docs.mjs",
     "docs:checkout": "bash ./docs/surfaces/checkout/build-docs.sh",

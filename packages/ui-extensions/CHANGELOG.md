@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.7
+
+### Minor Changes
+
+- [#4641](https://github.com/Shopify/ui-extensions/pull/4641) [`7ef321c`](https://github.com/Shopify/ui-extensions/commit/7ef321ce027bd60f744c1243d978a791fd26bb70) Thanks [@vctrchu](https://github.com/vctrchu)! - Add types for the POS validation resolution targets (`pos.cart.validations.resolution.render`, `pos.payment.validations.resolution.render`) and the target-scoped `shopify.resolution` API. Intercept event types now match their runtime payloads: plain objects carrying `type` and the event's data, no longer extending DOM `Event`.
+
+- [#4642](https://github.com/Shopify/ui-extensions/pull/4642) [`6f11a9d`](https://github.com/Shopify/ui-extensions/commit/6f11a9de30d5b55c48894ef5e57253bd763bd4a6) Thanks [@henryStelle](https://github.com/henryStelle)! - Make the POS `Storage.current` property required. It is always populated by the host, so marking it optional forced consumers to handle a `possibly undefined` case that can never occur.
+
+### Patch Changes
+
+- [#4639](https://github.com/Shopify/ui-extensions/pull/4639) [`5f16688`](https://github.com/Shopify/ui-extensions/commit/5f1668883bf621e0bf8154e4d9eb9a478db6570c) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Document the `borderRadius` prop on the POS `s-image` component.
+
 ## 2026.10.0-rc.6
 
 ### Minor Changes
