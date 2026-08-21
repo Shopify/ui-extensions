@@ -44,7 +44,7 @@ export interface Storage<
    * });
    * ```
    */
-  current?: SubscribableStorage<BaseStorageTypes>;
+  current: SubscribableStorage<BaseStorageTypes>;
 
   /**
    * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
