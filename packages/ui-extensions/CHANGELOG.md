@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.7.2
+
+### Patch Changes
+
+- [#4651](https://github.com/Shopify/ui-extensions/pull/4651) [`a70ded8`](https://github.com/Shopify/ui-extensions/commit/a70ded8f67f2dc514aa7311d5e40ccc16e69d6f9) Thanks [@maael](https://github.com/maael)! - Add types for the limited access `s-login-with-shop` checkout component.
+
+- [#4638](https://github.com/Shopify/ui-extensions/pull/4638) [`6a93b7e`](https://github.com/Shopify/ui-extensions/commit/6a93b7e07d32d46378ead54f659d23e15fcf7d85) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Document the `borderRadius` prop on the POS `s-image` component.
+
+- [#4583](https://github.com/Shopify/ui-extensions/pull/4583) [`ae2cd13`](https://github.com/Shopify/ui-extensions/commit/ae2cd13acee575bef8ed5e6049cdb59da433f427) Thanks [@sylvhama](https://github.com/sylvhama)! - Hide the `tertiary` button variant from the generated `s-button` documentation while preserving the existing public type.
+
+- [#4626](https://github.com/Shopify/ui-extensions/pull/4626) [`44f1e52`](https://github.com/Shopify/ui-extensions/commit/44f1e5222a5abd008b8075f222513555e6fec31f) Thanks [@henryStelle](https://github.com/henryStelle)! - Allow POS `s-button` components to explicitly use the default `auto` variant.
+
 ## 2026.7.1
 
 ### Patch Changes
