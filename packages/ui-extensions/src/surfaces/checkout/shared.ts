@@ -70,10 +70,15 @@ export const SUPPORTED_COMPONENTS = [
   'UrlField',
 ] as const;
 
+/** @private */
+export type PrivateComponent = 'LoginWithShop';
+
 export type ThankYouComponent = 'Announcement';
 
 /** @publicDocs */
-export type AnyComponent = (typeof SUPPORTED_COMPONENTS)[number];
+export type AnyComponent =
+  | (typeof SUPPORTED_COMPONENTS)[number]
+  | PrivateComponent;
 
 /**
  * The list of supported components.
