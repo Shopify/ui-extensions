@@ -1,5 +1,14 @@
 # @shopify/ui-extensions
 
+## 2026.7.3
+
+### Patch Changes
+
+- [#4649](https://github.com/Shopify/ui-extensions/pull/4649) [`fd4a338`](https://github.com/Shopify/ui-extensions/commit/fd4a33825c86fac12fc1cfc2953cda054e4aed4c) Thanks [@henryStelle](https://github.com/henryStelle)! - Fix the preact entry points in package.json:
+
+  - Add a `typesVersions` entry for `@shopify/ui-extensions/preact` so its types resolve under TypeScript's legacy `moduleResolution: "node"` (node10), matching the existing entries for `checkout/preact` and `customer-account/preact`.
+  - Remove the dead `./point-of-sale/preact` entry from `exports`. Its source file was intentionally deleted right after it was introduced, but the `exports` entry was left behind, pointing at files that are never built or published — the import has never resolved in any released version. POS extensions should use the generic `@shopify/ui-extensions/preact` entry point.
+
 ## 2026.7.2
 
 ### Patch Changes
