@@ -201,7 +201,12 @@ export interface OrderStatusLocalization {
   /**
    * The [market](/docs/apps/build/markets) associated with the order, carried
    * over from the cart context. Markets group countries and regions with shared pricing,
-   * languages, and domains. The value is `undefined` if the market is unknown.
+   * languages, and domains. In cases where multiple markets match, this returns the most
+   * narrowly scoped country region market. The value is `undefined` if the market is unknown.
+   *
+   * > Caution: This `market` field is deprecated and will be removed in a future version of the API.
+   *
+   * @deprecated This `market` field will be removed in a future version of the API.
    */
   market: SubscribableSignalLike<Market | undefined>;
 }
