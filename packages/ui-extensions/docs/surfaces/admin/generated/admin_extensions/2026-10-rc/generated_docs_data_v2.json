@@ -574,13 +574,6 @@
         {
           "filePath": "src/surfaces/admin/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "admin.order-index.selection-print-action.should-render",
-          "value": "RunnableExtension<\n    ShouldRenderApi<'admin.order-index.selection-print-action.should-render'>,\n    ShouldRenderOutput\n  >",
-          "description": "A non-rendering target that controls whether the order index selection print action appears in the **Print** menu. Use this to conditionally show or hide your bulk print action based on selection criteria, user permissions, or external data."
-        },
-        {
-          "filePath": "src/surfaces/admin/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
           "name": "admin.product-details.action.render",
           "value": "RenderExtension<\n    ActionExtensionApi<'admin.product-details.action.render'>,\n    ActionExtensionComponents\n  >",
           "description": "An action target that appears in the **More actions** menu on the product details page. Use this to create workflows for processing products, syncing data, or integrating with external systems."
@@ -672,13 +665,6 @@
         {
           "filePath": "src/surfaces/admin/extension-targets.ts",
           "syntaxKind": "PropertySignature",
-          "name": "admin.product-index.selection-print-action.should-render",
-          "value": "RunnableExtension<\n    ShouldRenderApi<'admin.product-index.selection-print-action.should-render'>,\n    ShouldRenderOutput\n  >",
-          "description": "A non-rendering target that controls whether the product index selection print action appears in the **Print** menu. Use this to conditionally show or hide your bulk print action based on selection criteria, user permissions, or external data."
-        },
-        {
-          "filePath": "src/surfaces/admin/extension-targets.ts",
-          "syntaxKind": "PropertySignature",
           "name": "admin.product-purchase-option.action.render",
           "value": "RenderExtension<\n    PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,\n    ActionExtensionComponents\n  >",
           "description": "An action target that appears in the **Purchase Options** card on the product details page when a selling plan group is present. Use this to create workflows for subscription management, selling plan configuration, or purchase option operations."
@@ -748,7 +734,7 @@
           "description": "A function settings target that renders within a validation's add and edit views, allowing merchants to configure validation function settings. Use this to build custom configuration interfaces for validation function parameters and rules."
         }
       ],
-      "value": "export interface ExtensionTargets {\n  /**\n   * A runnable target that provides [customer segment templates](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension) in the [customer segment editor](https://help.shopify.com/manual/customers/customer-segmentation/create-customer-segments). Use this target to provide pre-built segment templates that merchants can use as starting points for creating targeted customer groups based on custom criteria.\n   */\n  'admin.customers.segmentation-templates.data': RunnableExtension<\n    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,\n    {templates: CustomerSegmentTemplate[]}\n  >;\n\n  // Blocks\n  /**\n   * A block target that displays inline content within the product details page. Use this to show product-specific information, tools, or actions directly on the product page.\n   */\n  'admin.product-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.product-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the order details page. Use this to show order-specific information, fulfillment tools, or custom order actions.\n   */\n  'admin.order-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.order-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A function settings target that appears when merchants create or edit a discount powered by your discount function, allowing them to configure function-specific settings. Use this to build custom configuration interfaces for discount function parameters.\n   */\n  'admin.discount-details.function-settings.render': RenderExtension<\n    DiscountFunctionSettingsApi<'admin.discount-details.function-settings.render'>,\n    FunctionSettingsComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the customer details page. Use this to show customer-specific information, loyalty data, or custom customer actions.\n   */\n  'admin.customer-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.customer-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the collection details page. Use this to show collection analytics, bulk product operations, or collection-specific tools.\n   */\n  'admin.collection-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.collection-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the draft order details page. Use this to show custom pricing calculations, special order handling tools, or order-specific information.\n   */\n  'admin.draft-order-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.draft-order-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the abandoned checkout details page. Use this to show cart recovery tools, abandonment analysis, or customer re-engagement options.\n   */\n  'admin.abandoned-checkout-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the catalog details page. Use this to show catalog-specific settings, market information, or synchronization tools.\n   */\n  'admin.catalog-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.catalog-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the company details page. Use this to show B2B customer information, credit limits, or company-specific data.\n   */\n  'admin.company-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.company-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the company location details page. Use this to show location-specific information, shipping preferences, or location management tools.\n   */\n  'admin.company-location-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.company-location-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the gift card details page. Use this to show gift card balance tracking, usage history, or custom gift card metadata.\n   */\n  'admin.gift-card-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.gift-card-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the product variant details page. Use this to show variant-specific data, inventory tools, or variant configuration options.\n   */\n  'admin.product-variant-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.product-variant-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that provides custom reordering functionality on the product details page. Use this to help merchants rearrange product data.\n   */\n  'admin.product-details.reorder.render': RenderExtension<\n    BlockExtensionApi<'admin.product-details.reorder.render'>,\n    BlockExtensionComponents\n  >;\n\n  // Actions\n  /**\n   * An action target that appears in the **More actions** menu on the product details page. Use this to create workflows for processing products, syncing data, or integrating with external systems.\n   */\n  'admin.product-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the catalog details page. Use this to create workflows for catalog management, market synchronization, or data exports.\n   */\n  'admin.catalog-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.catalog-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the company details page. Use this to create workflows for B2B customer management, credit operations, or company data synchronization.\n   */\n  'admin.company-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.company-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the gift card details page. Use this to create workflows for gift card processing, balance adjustments, or custom gift card operations.\n   */\n  'admin.gift-card-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.gift-card-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the order details page. Use this to create workflows for order processing, fulfillment operations, or external system integrations.\n   */\n  'admin.order-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the customer details page. Use this to create workflows for customer data management, loyalty operations, or CRM integrations.\n   */\n  'admin.customer-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears from the **Use segment** button on the customer segment details page. Use this to create workflows for marketing campaigns, email operations, or segment-based actions.\n   */\n  'admin.customer-segment-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-segment-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the product index page. Use this to create workflows for product management, catalog operations, or inventory synchronization.\n   */\n  'admin.product-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the order index page. Use this to create workflows for order management, reporting, or fulfillment operations.\n   */\n  'admin.order-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the customer index page. Use this to create workflows for customer management, marketing operations, or bulk data processing.\n   */\n  'admin.customer-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the discount index page. Use this to create workflows for discount management, promotional operations, or bulk discount updates.\n   */\n  'admin.discount-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.discount-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the collection details page. Use this to create workflows for collection management, product operations, or merchandising tools.\n   */\n  'admin.collection-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.collection-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the collection index page. Use this to create workflows for collection management, bulk operations, or catalog organization.\n   */\n  'admin.collection-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.collection-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the abandoned checkout details page. Use this to create workflows for cart recovery, customer engagement, or checkout analysis.\n   */\n  'admin.abandoned-checkout-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.abandoned-checkout-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the abandoned checkout index page. Use this to create workflows for cart recovery, bulk customer engagement, or checkout analysis across multiple abandoned carts.\n   */\n  'admin.abandoned-checkout-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.abandoned-checkout-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the product variant details page. Use this to create workflows for variant management, inventory operations, or data synchronization.\n   */\n  'admin.product-variant-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-variant-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the draft order details page. Use this to create workflows for draft order processing, custom pricing, or order preparation tools.\n   */\n  'admin.draft-order-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.draft-order-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the draft order index page. Use this to create workflows for draft order management, bulk operations, or order conversion tools.\n   */\n  'admin.draft-order-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.draft-order-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the discount details page. Use this to create workflows for discount management, promotion analysis, or discount synchronization.\n   */\n  'admin.discount-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.discount-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the actions menu inside the order fulfilled card, visible only on orders fulfilled by your app. Use this to create workflows for fulfillment operations, tracking updates, or post-fulfillment actions.\n   */\n  'admin.order-fulfilled-card.action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-fulfilled-card.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  // Bulk Actions\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.\n   */\n  'admin.product-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.\n   */\n  'admin.order-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.\n   */\n  'admin.customer-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the discount index page when multiple discounts are selected. Use this to create workflows for bulk discount operations or batch data updates.\n   */\n  'admin.discount-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.discount-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the draft order index page when multiple draft orders are selected. Use this to create workflows for bulk draft order operations, batch conversions, or mass order processing.\n   */\n  'admin.draft-order-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **Purchase Options** card on the product details page when a selling plan group is present. Use this to create workflows for subscription management, selling plan configuration, or purchase option operations.\n   */\n  'admin.product-purchase-option.action.render': RenderExtension<\n    PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **Purchase Options** card on the product variant details page when a selling plan group is present. Use this to create workflows for variant-specific subscription management, selling plan configuration, or purchase option operations.\n   */\n  'admin.product-variant-purchase-option.action.render': RenderExtension<\n    PurchaseOptionsCardConfigurationApi<'admin.product-variant-purchase-option.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  // Print actions and bulk print actions\n\n  /**\n   * A print action target that appears in the **Print** menu on the order details page. Use this to generate custom documents such as packing slips, shipping labels, or invoices.\n   */\n  'admin.order-details.print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.order-details.print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  /**\n   * A print action target that appears in the **Print** menu on the product details page. Use this to generate custom documents such as product labels, barcode sheets, or specification sheets.\n   */\n  'admin.product-details.print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.product-details.print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  /**\n   * A print action target that appears in the **Print** menu on the order index page when multiple orders are selected. Use this to generate batch documents such as combined packing slips, shipping manifests, or bulk invoices.\n   */\n  'admin.order-index.selection-print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.order-index.selection-print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  /**\n   * A print action target that appears in the **Print** menu on the product index page when multiple products are selected. Use this to generate batch documents such as combined product labels, barcode sheets, or catalog pages.\n   */\n  'admin.product-index.selection-print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.product-index.selection-print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  // Other\n\n  /**\n   * A configuration target that renders product configuration settings for [product bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) and customizable products on the product details page. Use this to define bundle component selections, customization options, or product configuration rules.\n   */\n  'admin.product-details.configuration.render': RenderExtension<\n    ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A configuration target that renders product variant configuration settings for [product bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) and customizable products on the product variant details page. Use this to define variant-specific bundle components, customization options, or configuration rules.\n   */\n  'admin.product-variant-details.configuration.render': RenderExtension<\n    ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,\n    BlockExtensionComponents\n  >;\n\n  // Configuration shouldRender targets\n\n  /**\n   * A non-rendering target that controls whether the product details configuration extension renders. Use this to conditionally show or hide your configuration extension based on product properties, user permissions, or external data.\n   */\n  'admin.product-details.configuration.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-details.configuration.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product variant details configuration extension renders. Use this to conditionally show or hide your configuration extension based on product variant properties, user permissions, or external data.\n   */\n  'admin.product-variant-details.configuration.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-variant-details.configuration.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A function settings target that renders within order routing settings, allowing merchants to configure order routing rule functions.\n   * @private\n   */\n  'admin.settings.internal-order-routing-rule.render': RenderExtension<\n    OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,\n    FunctionSettingsComponents\n  >;\n  /**\n   * A function settings target that renders within order routing settings, allowing merchants to configure order routing rule functions. Use this to build custom configuration interfaces for order routing function parameters.\n   */\n  'admin.settings.order-routing-rule.render': RenderExtension<\n    OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,\n    FunctionSettingsComponents\n  >;\n\n  /**\n   * A function settings target that renders within a validation's add and edit views, allowing merchants to configure validation function settings. Use this to build custom configuration interfaces for validation function parameters and rules.\n   */\n  'admin.settings.validation.render': RenderExtension<\n    ValidationSettingsApi<'admin.settings.validation.render'>,\n    FunctionSettingsComponents\n  >;\n\n  // Admin action shouldRender targets\n  /**\n   * A non-rendering target that controls whether the product details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on product properties, user permissions, or external data.\n   */\n  'admin.product-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the catalog details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on catalog properties, user permissions, or external data.\n   */\n  'admin.catalog-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.catalog-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the company details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on company properties, user permissions, or external data.\n   */\n  'admin.company-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.company-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the gift card details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on gift card properties, user permissions, or external data.\n   */\n  'admin.gift-card-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.gift-card-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on order properties, fulfillment status, or external data.\n   */\n  'admin.order-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on customer properties, user permissions, or external data.\n   */\n  'admin.customer-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer segment details action appears from the **Use segment** button. Use this to conditionally show or hide your action based on segment properties, user permissions, or external data.\n   */\n  'admin.customer-segment-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-segment-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.product-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.order-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.customer-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the discount index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.discount-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.discount-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the collection details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on collection properties, user permissions, or external data.\n   */\n  'admin.collection-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.collection-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the collection index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.collection-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.collection-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the abandoned checkout details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on checkout properties, user permissions, or external data.\n   */\n  'admin.abandoned-checkout-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.abandoned-checkout-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the abandoned checkout index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.abandoned-checkout-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.abandoned-checkout-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product variant details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on variant properties, user permissions, or external data.\n   */\n  'admin.product-variant-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-variant-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the draft order details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on draft order properties, user permissions, or external data.\n   */\n  'admin.draft-order-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.draft-order-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the draft order index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.draft-order-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.draft-order-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the discount details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on discount properties, user permissions, or external data.\n   */\n  'admin.discount-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.discount-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order fulfilled card action appears in the actions menu. Use this to conditionally show or hide your action based on fulfillment properties, user permissions, or external data.\n   */\n  'admin.order-fulfilled-card.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-fulfilled-card.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  // Admin bulk action shouldRender targets\n\n  /**\n   * A non-rendering target that controls whether the product index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.product-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.order-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.customer-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the discount index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.discount-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.discount-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the draft order index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.draft-order-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.draft-order-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  // Admin print action and bulk print action shouldRender targets\n\n  /**\n   * A non-rendering target that controls whether the order details print action appears in the **Print** menu. Use this to conditionally show or hide your print action based on order properties, user permissions, or external data.\n   */\n  'admin.order-details.print-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-details.print-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product details print action appears in the **Print** menu. Use this to conditionally show or hide your print action based on product properties, user permissions, or external data.\n   */\n  'admin.product-details.print-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-details.print-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order index selection print action appears in the **Print** menu. Use this to conditionally show or hide your bulk print action based on selection criteria, user permissions, or external data.\n   */\n  'admin.order-index.selection-print-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-index.selection-print-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product index selection print action appears in the **Print** menu. Use this to conditionally show or hide your bulk print action based on selection criteria, user permissions, or external data.\n   */\n  'admin.product-index.selection-print-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-index.selection-print-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A runnable target that enables your app to expose data to [Sidekick](/docs/apps/build/sidekick/build-app-data). Use this target to register tools that Sidekick can invoke to search your app's data and answer merchant questions.\n   */\n  'admin.app.tools.data': RunnableExtension<\n    StandardApi<'admin.app.tools.data'>,\n    undefined\n  >;\n\n  /**\n   * Renders an admin extension for handling app intents.\n   */\n  'admin.app.intent.render': RenderExtension<\n    IntentRenderApi<'admin.app.intent.render'>,\n    FormExtensionComponents\n  >;\n\n  /**\n   * Renders an admin extension on the app home page.\n   */\n  'admin.app.home.render': RenderExtension<\n    AppHomeApi<'admin.app.home.render'>,\n    FormExtensionComponents | 'Modal' | 'Page' | 'AppNav'\n  >;\n}"
+      "value": "export interface ExtensionTargets {\n  /**\n   * A runnable target that provides [customer segment templates](/docs/apps/build/marketing-analytics/customer-segments/build-a-template-extension) in the [customer segment editor](https://help.shopify.com/manual/customers/customer-segmentation/create-customer-segments). Use this target to provide pre-built segment templates that merchants can use as starting points for creating targeted customer groups based on custom criteria.\n   */\n  'admin.customers.segmentation-templates.data': RunnableExtension<\n    CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,\n    {templates: CustomerSegmentTemplate[]}\n  >;\n\n  // Blocks\n  /**\n   * A block target that displays inline content within the product details page. Use this to show product-specific information, tools, or actions directly on the product page.\n   */\n  'admin.product-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.product-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the order details page. Use this to show order-specific information, fulfillment tools, or custom order actions.\n   */\n  'admin.order-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.order-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A function settings target that appears when merchants create or edit a discount powered by your discount function, allowing them to configure function-specific settings. Use this to build custom configuration interfaces for discount function parameters.\n   */\n  'admin.discount-details.function-settings.render': RenderExtension<\n    DiscountFunctionSettingsApi<'admin.discount-details.function-settings.render'>,\n    FunctionSettingsComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the customer details page. Use this to show customer-specific information, loyalty data, or custom customer actions.\n   */\n  'admin.customer-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.customer-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the collection details page. Use this to show collection analytics, bulk product operations, or collection-specific tools.\n   */\n  'admin.collection-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.collection-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the draft order details page. Use this to show custom pricing calculations, special order handling tools, or order-specific information.\n   */\n  'admin.draft-order-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.draft-order-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the abandoned checkout details page. Use this to show cart recovery tools, abandonment analysis, or customer re-engagement options.\n   */\n  'admin.abandoned-checkout-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.abandoned-checkout-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the catalog details page. Use this to show catalog-specific settings, market information, or synchronization tools.\n   */\n  'admin.catalog-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.catalog-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the company details page. Use this to show B2B customer information, credit limits, or company-specific data.\n   */\n  'admin.company-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.company-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the company location details page. Use this to show location-specific information, shipping preferences, or location management tools.\n   */\n  'admin.company-location-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.company-location-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the gift card details page. Use this to show gift card balance tracking, usage history, or custom gift card metadata.\n   */\n  'admin.gift-card-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.gift-card-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that displays inline content within the product variant details page. Use this to show variant-specific data, inventory tools, or variant configuration options.\n   */\n  'admin.product-variant-details.block.render': RenderExtension<\n    BlockExtensionApi<'admin.product-variant-details.block.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A block target that provides custom reordering functionality on the product details page. Use this to help merchants rearrange product data.\n   */\n  'admin.product-details.reorder.render': RenderExtension<\n    BlockExtensionApi<'admin.product-details.reorder.render'>,\n    BlockExtensionComponents\n  >;\n\n  // Actions\n  /**\n   * An action target that appears in the **More actions** menu on the product details page. Use this to create workflows for processing products, syncing data, or integrating with external systems.\n   */\n  'admin.product-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the catalog details page. Use this to create workflows for catalog management, market synchronization, or data exports.\n   */\n  'admin.catalog-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.catalog-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the company details page. Use this to create workflows for B2B customer management, credit operations, or company data synchronization.\n   */\n  'admin.company-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.company-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the gift card details page. Use this to create workflows for gift card processing, balance adjustments, or custom gift card operations.\n   */\n  'admin.gift-card-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.gift-card-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the order details page. Use this to create workflows for order processing, fulfillment operations, or external system integrations.\n   */\n  'admin.order-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the customer details page. Use this to create workflows for customer data management, loyalty operations, or CRM integrations.\n   */\n  'admin.customer-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears from the **Use segment** button on the customer segment details page. Use this to create workflows for marketing campaigns, email operations, or segment-based actions.\n   */\n  'admin.customer-segment-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-segment-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the product index page. Use this to create workflows for product management, catalog operations, or inventory synchronization.\n   */\n  'admin.product-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the order index page. Use this to create workflows for order management, reporting, or fulfillment operations.\n   */\n  'admin.order-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the customer index page. Use this to create workflows for customer management, marketing operations, or bulk data processing.\n   */\n  'admin.customer-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the discount index page. Use this to create workflows for discount management, promotional operations, or bulk discount updates.\n   */\n  'admin.discount-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.discount-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the collection details page. Use this to create workflows for collection management, product operations, or merchandising tools.\n   */\n  'admin.collection-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.collection-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the collection index page. Use this to create workflows for collection management, bulk operations, or catalog organization.\n   */\n  'admin.collection-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.collection-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the abandoned checkout details page. Use this to create workflows for cart recovery, customer engagement, or checkout analysis.\n   */\n  'admin.abandoned-checkout-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.abandoned-checkout-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the abandoned checkout index page. Use this to create workflows for cart recovery, bulk customer engagement, or checkout analysis across multiple abandoned carts.\n   */\n  'admin.abandoned-checkout-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.abandoned-checkout-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the product variant details page. Use this to create workflows for variant management, inventory operations, or data synchronization.\n   */\n  'admin.product-variant-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-variant-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the draft order details page. Use this to create workflows for draft order processing, custom pricing, or order preparation tools.\n   */\n  'admin.draft-order-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.draft-order-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the draft order index page. Use this to create workflows for draft order management, bulk operations, or order conversion tools.\n   */\n  'admin.draft-order-index.action.render': RenderExtension<\n    ActionExtensionApi<'admin.draft-order-index.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the discount details page. Use this to create workflows for discount management, promotion analysis, or discount synchronization.\n   */\n  'admin.discount-details.action.render': RenderExtension<\n    ActionExtensionApi<'admin.discount-details.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the actions menu inside the order fulfilled card, visible only on orders fulfilled by your app. Use this to create workflows for fulfillment operations, tracking updates, or post-fulfillment actions.\n   */\n  'admin.order-fulfilled-card.action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-fulfilled-card.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  // Bulk Actions\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the product index page when multiple products are selected. Use this to create workflows for bulk product operations, batch updates, or mass data processing.\n   */\n  'admin.product-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.product-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the order index page when multiple orders are selected. Use this to create workflows for bulk order operations, batch fulfillment, or mass order processing.\n   */\n  'admin.order-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.order-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the customer index page when multiple customers are selected. Use this to create workflows for bulk customer operations, mass email campaigns, or batch data updates.\n   */\n  'admin.customer-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.customer-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **More actions** menu on the discount index page when multiple discounts are selected. Use this to create workflows for bulk discount operations or batch data updates.\n   */\n  'admin.discount-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.discount-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * A selection action target that appears in the **More actions** menu on the draft order index page when multiple draft orders are selected. Use this to create workflows for bulk draft order operations, batch conversions, or mass order processing.\n   */\n  'admin.draft-order-index.selection-action.render': RenderExtension<\n    ActionExtensionApi<'admin.draft-order-index.selection-action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **Purchase Options** card on the product details page when a selling plan group is present. Use this to create workflows for subscription management, selling plan configuration, or purchase option operations.\n   */\n  'admin.product-purchase-option.action.render': RenderExtension<\n    PurchaseOptionsCardConfigurationApi<'admin.product-purchase-option.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  /**\n   * An action target that appears in the **Purchase Options** card on the product variant details page when a selling plan group is present. Use this to create workflows for variant-specific subscription management, selling plan configuration, or purchase option operations.\n   */\n  'admin.product-variant-purchase-option.action.render': RenderExtension<\n    PurchaseOptionsCardConfigurationApi<'admin.product-variant-purchase-option.action.render'>,\n    ActionExtensionComponents\n  >;\n\n  // Print actions and bulk print actions\n\n  /**\n   * A print action target that appears in the **Print** menu on the order details page. Use this to generate custom documents such as packing slips, shipping labels, or invoices.\n   */\n  'admin.order-details.print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.order-details.print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  /**\n   * A print action target that appears in the **Print** menu on the product details page. Use this to generate custom documents such as product labels, barcode sheets, or specification sheets.\n   */\n  'admin.product-details.print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.product-details.print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  /**\n   * A print action target that appears in the **Print** menu on the order index page when multiple orders are selected. Use this to generate batch documents such as combined packing slips, shipping manifests, or bulk invoices.\n   */\n  'admin.order-index.selection-print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.order-index.selection-print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  /**\n   * A print action target that appears in the **Print** menu on the product index page when multiple products are selected. Use this to generate batch documents such as combined product labels, barcode sheets, or catalog pages.\n   */\n  'admin.product-index.selection-print-action.render': RenderExtension<\n    PrintActionExtensionApi<'admin.product-index.selection-print-action.render'>,\n    PrintActionExtensionComponents\n  >;\n\n  // Other\n\n  /**\n   * A configuration target that renders product configuration settings for [product bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) and customizable products on the product details page. Use this to define bundle component selections, customization options, or product configuration rules.\n   */\n  'admin.product-details.configuration.render': RenderExtension<\n    ProductDetailsConfigurationApi<'admin.product-details.configuration.render'>,\n    BlockExtensionComponents\n  >;\n\n  /**\n   * A configuration target that renders product variant configuration settings for [product bundles](/docs/apps/build/product-merchandising/bundles/product-configuration-extension/add-merchant-config-ui) and customizable products on the product variant details page. Use this to define variant-specific bundle components, customization options, or configuration rules.\n   */\n  'admin.product-variant-details.configuration.render': RenderExtension<\n    ProductVariantDetailsConfigurationApi<'admin.product-variant-details.configuration.render'>,\n    BlockExtensionComponents\n  >;\n\n  // Configuration shouldRender targets\n\n  /**\n   * A non-rendering target that controls whether the product details configuration extension renders. Use this to conditionally show or hide your configuration extension based on product properties, user permissions, or external data.\n   */\n  'admin.product-details.configuration.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-details.configuration.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product variant details configuration extension renders. Use this to conditionally show or hide your configuration extension based on product variant properties, user permissions, or external data.\n   */\n  'admin.product-variant-details.configuration.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-variant-details.configuration.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A function settings target that renders within order routing settings, allowing merchants to configure order routing rule functions.\n   * @private\n   */\n  'admin.settings.internal-order-routing-rule.render': RenderExtension<\n    OrderRoutingRuleApi<'admin.settings.internal-order-routing-rule.render'>,\n    FunctionSettingsComponents\n  >;\n  /**\n   * A function settings target that renders within order routing settings, allowing merchants to configure order routing rule functions. Use this to build custom configuration interfaces for order routing function parameters.\n   */\n  'admin.settings.order-routing-rule.render': RenderExtension<\n    OrderRoutingRuleApi<'admin.settings.order-routing-rule.render'>,\n    FunctionSettingsComponents\n  >;\n\n  /**\n   * A function settings target that renders within a validation's add and edit views, allowing merchants to configure validation function settings. Use this to build custom configuration interfaces for validation function parameters and rules.\n   */\n  'admin.settings.validation.render': RenderExtension<\n    ValidationSettingsApi<'admin.settings.validation.render'>,\n    FunctionSettingsComponents\n  >;\n\n  // Admin action shouldRender targets\n  /**\n   * A non-rendering target that controls whether the product details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on product properties, user permissions, or external data.\n   */\n  'admin.product-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the catalog details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on catalog properties, user permissions, or external data.\n   */\n  'admin.catalog-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.catalog-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the company details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on company properties, user permissions, or external data.\n   */\n  'admin.company-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.company-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the gift card details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on gift card properties, user permissions, or external data.\n   */\n  'admin.gift-card-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.gift-card-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on order properties, fulfillment status, or external data.\n   */\n  'admin.order-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on customer properties, user permissions, or external data.\n   */\n  'admin.customer-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer segment details action appears from the **Use segment** button. Use this to conditionally show or hide your action based on segment properties, user permissions, or external data.\n   */\n  'admin.customer-segment-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-segment-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.product-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.order-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.customer-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the discount index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.discount-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.discount-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the collection details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on collection properties, user permissions, or external data.\n   */\n  'admin.collection-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.collection-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the collection index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.collection-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.collection-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the abandoned checkout details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on checkout properties, user permissions, or external data.\n   */\n  'admin.abandoned-checkout-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.abandoned-checkout-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the abandoned checkout index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.abandoned-checkout-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.abandoned-checkout-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product variant details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on variant properties, user permissions, or external data.\n   */\n  'admin.product-variant-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-variant-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the draft order details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on draft order properties, user permissions, or external data.\n   */\n  'admin.draft-order-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.draft-order-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the draft order index action appears in the **More actions** menu. Use this to conditionally show or hide your action based on user permissions, store configuration, or external data.\n   */\n  'admin.draft-order-index.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.draft-order-index.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the discount details action appears in the **More actions** menu. Use this to conditionally show or hide your action based on discount properties, user permissions, or external data.\n   */\n  'admin.discount-details.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.discount-details.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order fulfilled card action appears in the actions menu. Use this to conditionally show or hide your action based on fulfillment properties, user permissions, or external data.\n   */\n  'admin.order-fulfilled-card.action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-fulfilled-card.action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  // Admin bulk action shouldRender targets\n\n  /**\n   * A non-rendering target that controls whether the product index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.product-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the order index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.order-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the customer index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.customer-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.customer-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the discount index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.discount-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.discount-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the draft order index selection action appears in the **More actions** menu. Use this to conditionally show or hide your bulk action based on selection criteria, user permissions, or external data.\n   */\n  'admin.draft-order-index.selection-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.draft-order-index.selection-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  // Admin print action shouldRender targets\n\n  /**\n   * A non-rendering target that controls whether the order details print action appears in the **Print** menu. Use this to conditionally show or hide your print action based on order properties, user permissions, or external data.\n   */\n  'admin.order-details.print-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.order-details.print-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A non-rendering target that controls whether the product details print action appears in the **Print** menu. Use this to conditionally show or hide your print action based on product properties, user permissions, or external data.\n   */\n  'admin.product-details.print-action.should-render': RunnableExtension<\n    ShouldRenderApi<'admin.product-details.print-action.should-render'>,\n    ShouldRenderOutput\n  >;\n\n  /**\n   * A runnable target that enables your app to expose data to [Sidekick](/docs/apps/build/sidekick/build-app-data). Use this target to register tools that Sidekick can invoke to search your app's data and answer merchant questions.\n   */\n  'admin.app.tools.data': RunnableExtension<\n    StandardApi<'admin.app.tools.data'>,\n    undefined\n  >;\n\n  /**\n   * Renders an admin extension for handling app intents.\n   */\n  'admin.app.intent.render': RenderExtension<\n    IntentRenderApi<'admin.app.intent.render'>,\n    FormExtensionComponents\n  >;\n\n  /**\n   * Renders an admin extension on the app home page.\n   */\n  'admin.app.home.render': RenderExtension<\n    AppHomeApi<'admin.app.home.render'>,\n    FormExtensionComponents | 'Modal' | 'Page' | 'AppNav'\n  >;\n}"
     }
   },
   "RenderExtension": {
@@ -2766,7 +2752,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -3151,7 +3137,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$3@2416",
+          "name": "__@internals$3@2414",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -3915,7 +3901,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4030,7 +4016,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$2@2517",
+          "name": "__@internals$2@2515",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4321,7 +4307,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4501,7 +4487,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dirtyStateSymbol@2561",
+          "name": "__@dirtyStateSymbol@2559",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -4510,7 +4496,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$1@2560",
+          "name": "__@internals$1@2558",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4697,7 +4683,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@setFiles@2596",
+          "name": "__@setFiles@2594",
           "value": "(files: File[]) => void",
           "description": "",
           "isPrivate": true,
@@ -4706,7 +4692,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@getFileInput@2598",
+          "name": "__@getFileInput@2596",
           "value": "() => HTMLInputElement",
           "description": "",
           "isPrivate": true,
@@ -4715,7 +4701,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals@2597",
+          "name": "__@internals@2595",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -5062,7 +5048,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -6631,7 +6617,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2732",
+          "name": "__@overlayHidden@2730",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -6640,7 +6626,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2733",
+          "name": "__@overlayActivator@2731",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -6649,7 +6635,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2734",
+          "name": "__@overlayHideFrameId@2732",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -6886,7 +6872,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7168,7 +7154,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7826,7 +7812,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -8165,7 +8151,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -8441,7 +8427,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@usedFirstOptionSymbol@3011",
+          "name": "__@usedFirstOptionSymbol@3009",
           "value": "boolean",
           "description": "A flag used to determine if no value or defaultValue was set, in which case the first non-disabled option was used.\n\nThis is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form.",
           "isPrivate": true,
@@ -8450,7 +8436,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@hasInitialValueSymbol@3012",
+          "name": "__@hasInitialValueSymbol@3010",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -8484,7 +8470,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -9114,7 +9100,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -9242,7 +9228,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@actualTableVariantSymbol@3087",
+          "name": "__@actualTableVariantSymbol@3085",
           "value": "AddedContext<ActualTableVariant>",
           "description": "",
           "isPrivate": true,
@@ -9251,7 +9237,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@tableHeadersSharedDataSymbol@3088",
+          "name": "__@tableHeadersSharedDataSymbol@3086",
           "value": "AddedContext<{ listSlot: ListSlotType; textContent: string; format: HeaderFormat; }[]>",
           "description": "",
           "isPrivate": true,
@@ -9476,7 +9462,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@headerFormatSymbol@3110",
+          "name": "__@headerFormatSymbol@3108",
           "value": "HeaderFormat",
           "description": "",
           "isPrivate": true,
@@ -10123,7 +10109,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10396,7 +10382,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10570,7 +10556,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2732",
+          "name": "__@overlayHidden@2730",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -10579,7 +10565,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2733",
+          "name": "__@overlayActivator@2731",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -10588,7 +10574,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2734",
+          "name": "__@overlayHideFrameId@2732",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -10917,7 +10903,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2363",
+          "name": "__@internals$4@2361",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -12063,7 +12049,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@abortController@2792",
+          "name": "__@abortController@2790",
           "value": "AbortController",
           "description": "",
           "isPrivate": true,
@@ -12072,7 +12058,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dialog@2786",
+          "name": "__@dialog@2784",
           "value": "HTMLDialogElement",
           "description": "",
           "isPrivate": true,
@@ -12081,7 +12067,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@focusedElement@2788",
+          "name": "__@focusedElement@2786",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -12090,7 +12076,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@nestedModals@2790",
+          "name": "__@nestedModals@2788",
           "value": "Map<Modal, boolean>",
           "description": "",
           "isPrivate": true,
@@ -12099,7 +12085,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@childrenRerenderObserver@2794",
+          "name": "__@childrenRerenderObserver@2792",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true,
@@ -12108,7 +12094,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowDomRerenderObserver@2795",
+          "name": "__@shadowDomRerenderObserver@2793",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true,
@@ -12117,7 +12103,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onEscape@2789",
+          "name": "__@onEscape@2787",
           "value": "(event: KeyboardEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -12126,7 +12112,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropClick@2791",
+          "name": "__@onBackdropClick@2789",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -12135,7 +12121,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onChildModalChange@2793",
+          "name": "__@onChildModalChange@2791",
           "value": "EventListenerOrEventListenerObject",
           "description": "",
           "isPrivate": true,
@@ -12144,7 +12130,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@isOpen@2785",
+          "name": "__@isOpen@2783",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12153,7 +12139,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@dismiss@2787",
+          "name": "__@dismiss@2785",
           "value": "() => void",
           "description": "",
           "isPrivate": true,
@@ -12162,7 +12148,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@hasOpenChildModal@2782",
+          "name": "__@hasOpenChildModal@2780",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12171,7 +12157,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@show@2783",
+          "name": "__@show@2781",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true,
@@ -12180,7 +12166,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@hide@2784",
+          "name": "__@hide@2782",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true,
@@ -12189,7 +12175,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2732",
+          "name": "__@overlayHidden@2730",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12198,7 +12184,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2733",
+          "name": "__@overlayActivator@2731",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -12207,7 +12193,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2734",
+          "name": "__@overlayHideFrameId@2732",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -20864,7 +20850,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2732",
+          "name": "__@overlayHidden@2730",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -20873,7 +20859,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2733",
+          "name": "__@overlayActivator@2731",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -20882,7 +20868,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2734",
+          "name": "__@overlayHideFrameId@2732",
           "value": "number",
           "description": "",
           "isPrivate": true,

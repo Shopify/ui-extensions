@@ -434,10 +434,6 @@ const adminMockFactories: AdminMockFactory = {
   // Should-render targets (print action)
   'admin.order-details.print-action.should-render': createShouldRenderMock,
   'admin.product-details.print-action.should-render': createShouldRenderMock,
-  'admin.order-index.selection-print-action.should-render':
-    createShouldRenderMock,
-  'admin.product-index.selection-print-action.should-render':
-    createShouldRenderMock,
 };
 
 // ---------------------------------------------------------------------------
