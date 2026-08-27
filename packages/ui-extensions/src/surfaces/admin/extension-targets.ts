@@ -606,7 +606,7 @@ export interface ExtensionTargets {
     ShouldRenderOutput
   >;
 
-  // Admin print action shouldRender targets
+  // Admin print action and bulk print action shouldRender targets
 
   /**
    * A non-rendering target that controls whether the order details print action appears in the **Print** menu. Use this to conditionally show or hide your print action based on order properties, user permissions, or external data.
@@ -621,6 +621,22 @@ export interface ExtensionTargets {
    */
   'admin.product-details.print-action.should-render': RunnableExtension<
     ShouldRenderApi<'admin.product-details.print-action.should-render'>,
+    ShouldRenderOutput
+  >;
+
+  /**
+   * A non-rendering target that controls whether the order index selection print action appears in the **Print** menu. Use this to conditionally show or hide your bulk print action based on selection criteria, user permissions, or external data.
+   */
+  'admin.order-index.selection-print-action.should-render': RunnableExtension<
+    ShouldRenderApi<'admin.order-index.selection-print-action.should-render'>,
+    ShouldRenderOutput
+  >;
+
+  /**
+   * A non-rendering target that controls whether the product index selection print action appears in the **Print** menu. Use this to conditionally show or hide your bulk print action based on selection criteria, user permissions, or external data.
+   */
+  'admin.product-index.selection-print-action.should-render': RunnableExtension<
+    ShouldRenderApi<'admin.product-index.selection-print-action.should-render'>,
     ShouldRenderOutput
   >;
 
