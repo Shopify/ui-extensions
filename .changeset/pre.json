@@ -6,11 +6,15 @@
     "@shopify/ui-extensions-tester": "2026.10.0-rc.0"
   },
   "changesets": [
+    "deprecate-localization-market",
     "document-pos-image-border-radius",
     "empty-peas-hide",
+    "expose-admin-popover",
+    "fix-preact-entry-points",
     "hide-tertiary-button-docs",
     "lovely-chairs-cross",
     "old-beds-cut",
+    "pos-cart-money-v2",
     "pos-intercept-api",
     "pos-intercept-payment-validations",
     "pos-payment-validations-tender-confirm-docs",
@@ -18,6 +22,7 @@
     "pos-resolution-targets",
     "pos-storage-current-required",
     "pos-validation-target-grammar",
+    "print-action-should-render-detail-targets",
     "tidy-buttons-auto"
   ]
 }
