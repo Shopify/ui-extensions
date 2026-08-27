@@ -3295,18 +3295,6 @@
       "ShouldRenderApi"
     ]
   },
-  "admin.order-index.selection-print-action.should-render": {
-    "components": [],
-    "apis": [
-      "ShouldRenderApi"
-    ]
-  },
-  "admin.product-index.selection-print-action.should-render": {
-    "components": [],
-    "apis": [
-      "ShouldRenderApi"
-    ]
-  },
   "admin.app.tools.data": {
     "components": [],
     "apis": [
@@ -3436,13 +3424,11 @@
       "admin.order-fulfilled-card.action.should-render",
       "admin.order-index.action.should-render",
       "admin.order-index.selection-action.should-render",
-      "admin.order-index.selection-print-action.should-render",
       "admin.product-details.action.should-render",
       "admin.product-details.configuration.should-render",
       "admin.product-details.print-action.should-render",
       "admin.product-index.action.should-render",
       "admin.product-index.selection-action.should-render",
-      "admin.product-index.selection-print-action.should-render",
       "admin.product-variant-details.action.should-render",
       "admin.product-variant-details.configuration.should-render"
     ]
