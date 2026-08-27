@@ -1,5 +1,16 @@
 # @shopify/ui-extensions-tester
 
+## 2026.10.0-rc.8
+
+### Patch Changes
+
+- [#4631](https://github.com/Shopify/ui-extensions/pull/4631) [`67fd45b`](https://github.com/Shopify/ui-extensions/commit/67fd45b43b9d33d37498af336ff4ffd7a98e143d) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add `currency` to the POS Cart API so extensions can read the cart presentment currency.
+
+- [#4655](https://github.com/Shopify/ui-extensions/pull/4655) [`3c4ff34`](https://github.com/Shopify/ui-extensions/commit/3c4ff345efb2628661e24cfeebf20620fb2c8d92) Thanks [@melissaluu](https://github.com/melissaluu)! - Remove unsupported bulk print action `shouldRender` targets from Admin UI extension types and generated docs.
+
+- Updated dependencies [[`e4768fe`](https://github.com/Shopify/ui-extensions/commit/e4768fef3efc4139e9a55091ce1c58813b3f8592), [`6ed2ff9`](https://github.com/Shopify/ui-extensions/commit/6ed2ff9dbce77c52a3e8e76baeccf64d525ef2e0), [`acbaf2d`](https://github.com/Shopify/ui-extensions/commit/acbaf2d819151fb0e45c419cd311eacde34641d4), [`67fd45b`](https://github.com/Shopify/ui-extensions/commit/67fd45b43b9d33d37498af336ff4ffd7a98e143d), [`3c4ff34`](https://github.com/Shopify/ui-extensions/commit/3c4ff345efb2628661e24cfeebf20620fb2c8d92)]:
+  - @shopify/ui-extensions@2026.10.0-rc.8
+
 ## 2026.10.0-rc.7
 
 ### Minor Changes
