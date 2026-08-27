@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.4
+
+### Patch Changes
+
+- [#4656](https://github.com/Shopify/ui-extensions/pull/4656) [`c44c777`](https://github.com/Shopify/ui-extensions/commit/c44c777dbfd5e2c39d76653b31ddba3b929f0fbc) Thanks [@melissaluu](https://github.com/melissaluu)! - Remove unsupported bulk print action `shouldRender` targets from Admin UI extension types and generated docs.
+
 ## 2026.7.3
 
 ### Patch Changes
