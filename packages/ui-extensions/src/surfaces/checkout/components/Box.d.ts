@@ -8,7 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {BoxProps$1,MaybeAllValuesShorthandProperty,BorderSizeKeyword, BorderStyleKeyword,ColorKeyword} from './components-shared.d.ts';
+import type {BoxProps$1,MaybeAllValuesShorthandProperty,BorderSizeKeyword, BorderStyleKeyword, SizeUnits,ColorKeyword} from './components-shared.d.ts';
 
 /**
  * The subset of border size values available for this component.
@@ -84,6 +84,61 @@ export interface BoxElementProps extends Pick<BoxProps$1, 'accessibilityLabel' |
      * @default 'none'
      */
     borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;
+    /**
+     * Sets the box's block position by specifying offsets from the box's
+     * default position, following the CSS `inset-block` shorthand:
+     * a block-start offset followed by a block-end offset, where only one
+     * of the two can be a size so each axis is only offset once.
+     *
+     * When `position` is set to `absolute`, offsets are insets from the
+     * nearest positioned ancestor. A percentage value refers to the block
+     * size of that ancestor.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block
+     *
+     * @default 'auto'
+     * @private
+     */
+    insetBlock?: `auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto';
+    /**
+     * Sets the box's inline position by specifying offsets from the box's
+     * default position, following the CSS `inset-inline` shorthand:
+     * an inline-start offset followed by an inline-end offset, where only
+     * one of the two can be a size so each axis is only offset once.
+     *
+     * When `position` is set to `absolute`, offsets are insets from the
+     * nearest positioned ancestor. A percentage value refers to the inline
+     * size of that ancestor.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline
+     *
+     * @default 'auto'
+     * @private
+     */
+    insetInline?: `auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto';
+    /**
+     * Changes how the box is positioned.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/position
+     *
+     * @default 'relative'
+     * @private
+     */
+    position?: 'absolute' | 'relative';
+    /**
+     * Specifies a transformation of the box.
+     *
+     * Only two-dimensional translations are supported. The first value
+     * translates along the inline axis and the second along the block axis;
+     * inline translations are flipped in right-to-left writing modes.
+     * A percentage value refers to the corresponding size of the box itself.
+     *
+     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform
+     *
+     * @default 'none'
+     * @private
+     */
+    transform?: `translate(${SizeUnits})` | `translate(${SizeUnits}, ${SizeUnits})` | `translate(${SizeUnits},${SizeUnits})` | 'none';
 }
 export interface BoxElement extends BoxElementProps, Omit<HTMLElement, 'id'> {
 }
