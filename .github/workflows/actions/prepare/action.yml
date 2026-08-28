@@ -4,6 +4,8 @@ runs:
   steps:
     - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
       name: Setup node.js and yarn
+      env:
+        NODE_AUTH_TOKEN: ''
       with:
         registry-url: 'https://registry.npmjs.org' # Required for OIDC
         cache: yarn
