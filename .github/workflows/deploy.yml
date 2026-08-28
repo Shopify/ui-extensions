@@ -34,7 +34,7 @@ jobs:
     steps:
       # WARNING: DO NOT RUN ANY CUSTOM LOCAL SCRIPT BEFORE RUNNING THE SNAPIT ACTION
       # This action can be executed by 3rd party users and it should not be able to run arbitrary code from a PR.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
@@ -62,7 +62,7 @@ jobs:
       contents: read
       id-token: write # Required for OIDC
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
         with:
           token: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
 
