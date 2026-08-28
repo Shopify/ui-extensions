@@ -30,7 +30,7 @@ jobs:
     timeout-minutes: 2
     if: ${{ !github.event.pull_request.draft && !startsWith(github.head_ref, 'changeset-release/') }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v5
       - uses: mskelton/changelog-reminder-action@7039cd14fb784c0a2b37f6e7a6ade2c9148c2245 # v2.0.0
         with:
           changelogRegex: "\\.changeset"

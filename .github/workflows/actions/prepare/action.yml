@@ -2,7 +2,7 @@ name: Prepare repo
 runs:
   using: 'composite'
   steps:
-    - uses: actions/setup-node@v4
+    - uses: actions/setup-node@v5
       name: Setup node.js and yarn
       with:
         registry-url: 'https://registry.npmjs.org' # Required for OIDC
