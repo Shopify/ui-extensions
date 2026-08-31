@@ -48,6 +48,8 @@ export const SymbolDispose: typeof Symbol.dispose = ((Symbol as any).dispose ??
  * `getExtension`) and {@link DisposableExtensionHarness} (returned
  * by `setUpExtension`).
  */
+type EventDispatchPayload<T> = T extends unknown ? Omit<T, 'type'> : never;
+
 interface BaseExtensionHarness<T extends AnyExtensionTarget> {
   /**
    * Imports and executes the extension module's default export,
@@ -118,7 +120,7 @@ interface BaseExtensionHarness<T extends AnyExtensionTarget> {
    */
   dispatch<K extends keyof EventMapForTarget<T>>(
     type: K,
-    event: EventMapForTarget<T>[K],
+    event: EventDispatchPayload<EventMapForTarget<T>[K]>,
   ): void;
 }
 
@@ -234,15 +236,16 @@ class Extension<T extends AnyExtensionTarget> implements ExtensionHarness<T> {
 
   dispatch<K extends keyof EventMapForTarget<T>>(
     type: K,
-    event: EventMapForTarget<T>[K],
+    event: EventDispatchPayload<EventMapForTarget<T>[K]>,
   ): void {
     const listeners = this.#eventListeners.get(type as string);
     if (!listeners) return;
+    const dispatchedEvent = {...event, type};
     // Snapshot so listeners that register/unregister during dispatch
     // don't mutate the iteration.
     for (const listener of [...listeners]) {
       try {
-        listener(event);
+        listener(dispatchedEvent);
       } catch {
         // Fire-and-forget: per the shopify.addEventListener contract,
         // listener errors must not affect other listeners.

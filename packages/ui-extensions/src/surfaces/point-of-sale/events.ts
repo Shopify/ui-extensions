@@ -3,6 +3,7 @@ import type {
   CashTrackingSessionStartEvent,
   CashTrackingSessionCompleteEvent,
 } from './events/cash-tracking-session-events';
+import type {ScanEvent} from './events/scan-event';
 import type {Cart} from './types/cart';
 import type {MoneyV2} from './types/money';
 
@@ -16,6 +17,7 @@ export const POS_EVENT_NAMES = {
   TRANSACTION_COMPLETE: 'transactioncomplete',
   CASH_TRACKING_SESSION_START: 'cashtrackingsessionstart',
   CASH_TRACKING_SESSION_COMPLETE: 'cashtrackingsessioncomplete',
+  SCAN: 'scan',
 } as const;
 
 /**
@@ -47,6 +49,12 @@ export interface ShopifyEventMap {
   [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;
   /** Dispatched when a cash tracking session closes after reconciliation. */
   [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;
+  /**
+   * Dispatched once for each successful scan captured by a camera, external,
+   * or embedded scanner, after POS has finished handling the scan itself.
+   * Every event carries decoded `data` and its `source`.
+   */
+  [POS_EVENT_NAMES.SCAN]: ScanEvent;
 }
 
 /**
@@ -246,4 +254,5 @@ export type {
   TransactionCompleteEvent,
   CashTrackingSessionStartEvent,
   CashTrackingSessionCompleteEvent,
+  ScanEvent,
 };
