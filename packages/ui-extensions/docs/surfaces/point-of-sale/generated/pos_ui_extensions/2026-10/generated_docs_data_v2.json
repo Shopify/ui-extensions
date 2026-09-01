@@ -4618,7 +4618,7 @@
           "syntaxKind": "PropertySignature",
           "name": "onClick",
           "value": "((event: POSListClickEvent) => void) | null",
-          "description": "Event handler invoked when a row is activated.\n\nWhen provided, every row is interactive. The activated row is identified by `event.rowId`.",
+          "description": "Event handler invoked when a row is activated.\n\nWhen provided, every row is interactive. The activated row is identified by `event.detail.rowId`.",
           "isOptional": true
         },
         {
@@ -4639,7 +4639,7 @@
           "defaultValue": "[]"
         }
       ],
-      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list.\n   *\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * Event handler invoked when a row is activated.\n   *\n   * When provided, every row is interactive. The activated row is identified by `event.rowId`.\n   */\n  onClick?: ((event: POSListClickEvent) => void) | null;\n  /**\n   * Controls whether rows reserve space for images.\n   *\n   * - `auto`: Displays images or placeholders when a row includes an image source.\n   * - `always`: Displays images or placeholders for every row.\n   * - `never`: Displays rows without images or image placeholders.\n   *\n   * @default 'auto'\n   */\n  imageDisplayStrategy?: POSListImageDisplayStrategy;\n  /**\n   * Whether additional rows are being loaded.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /** Callback when more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
+      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list.\n   *\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * Event handler invoked when a row is activated.\n   *\n   * When provided, every row is interactive. The activated row is identified by `event.detail.rowId`.\n   */\n  onClick?: ((event: POSListClickEvent) => void) | null;\n  /**\n   * Controls whether rows reserve space for images.\n   *\n   * - `auto`: Displays images or placeholders when a row includes an image source.\n   * - `always`: Displays images or placeholders for every row.\n   * - `never`: Displays rows without images or image placeholders.\n   *\n   * @default 'auto'\n   */\n  imageDisplayStrategy?: POSListImageDisplayStrategy;\n  /**\n   * Whether additional rows are being loaded.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /** Callback when more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
     }
   },
   "ComponentChild": {
@@ -4955,7 +4955,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListClickEvent",
-      "value": "CallbackEvent<typeof posListTagName> & {\n  /** The unique identifier of the activated row. */\n  rowId: string;\n}",
+      "value": "CallbackEvent<typeof posListTagName> & {\n  /** Details about the activated row. */\n  detail: {\n    /** The unique identifier of the activated row. */\n    rowId: string;\n  };\n}",
       "description": ""
     }
   },
@@ -5245,7 +5245,7 @@
           "syntaxKind": "PropertySignature",
           "name": "click",
           "value": "(event: POSListClickEvent) => void",
-          "description": "Fired when a row is activated.\n\nThe activated row is identified by `event.rowId`.",
+          "description": "Fired when a row is activated.\n\nThe activated row is identified by `event.detail.rowId`.",
           "isOptional": true
         },
         {
@@ -5257,7 +5257,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface POSListEvents {\n  /**\n   * Fired when a row is activated.\n   *\n   * The activated row is identified by `event.rowId`.\n   */\n  click?: (event: POSListClickEvent) => void;\n  /** Fired when more rows should be loaded. */\n  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;\n}"
+      "value": "interface POSListEvents {\n  /**\n   * Fired when a row is activated.\n   *\n   * The activated row is identified by `event.detail.rowId`.\n   */\n  click?: (event: POSListClickEvent) => void;\n  /** Fired when more rows should be loaded. */\n  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;\n}"
     }
   },
   "POSListSlots": {

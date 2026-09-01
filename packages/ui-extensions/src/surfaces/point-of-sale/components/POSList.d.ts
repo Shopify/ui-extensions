@@ -119,8 +119,11 @@ export type POSListRow = {
   end?: POSListRowEnd;
 };
 export type POSListClickEvent = CallbackEvent<typeof tagName> & {
-  /** The unique identifier of the activated row. */
-  rowId: string;
+  /** Details about the activated row. */
+  detail: {
+    /** The unique identifier of the activated row. */
+    rowId: string;
+  };
 };
 /**
  * Displays structured rows with text, badges, images, and optional trailing content.
@@ -139,7 +142,7 @@ export interface POSListJSXProps {
   /**
    * Event handler invoked when a row is activated.
    *
-   * When provided, every row is interactive. The activated row is identified by `event.rowId`.
+   * When provided, every row is interactive. The activated row is identified by `event.detail.rowId`.
    */
   onClick?: ((event: POSListClickEvent) => void) | null;
   /**

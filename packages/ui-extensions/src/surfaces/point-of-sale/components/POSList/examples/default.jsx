@@ -22,7 +22,7 @@
       end: {label: '$18.00', showChevron: true},
     },
   ]}
-  onClick={(event) => console.log('Selected row:', event.rowId)}
+  onClick={(event) => console.log('Selected row:', event.detail.rowId)}
 >
   <s-heading slot="header">Products</s-heading>
 </s-pos-list>;
