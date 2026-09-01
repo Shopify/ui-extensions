@@ -5060,7 +5060,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowEnd",
-      "value": "{\n  /** Supporting text displayed at the end of the row. */\n  label?: string;\n  /** Whether to display a chevron at the end of the row. */\n  showChevron?: boolean;\n  /** A toggle switch displayed at the end of the row. */\n  toggleSwitch?: POSListToggleSwitch;\n}",
+      "value": "{\n  /** Supporting text displayed at the end of the row. */\n  label?: string;\n  /**\n   * Whether to display a chevron at the end of the row.\n   *\n   * @default false\n   */\n  showChevron?: boolean;\n  /** A toggle switch displayed at the end of the row. */\n  toggleSwitch?: POSListToggleSwitch;\n}",
       "description": "",
       "members": [
         {
@@ -5077,7 +5077,8 @@
           "name": "showChevron",
           "value": "boolean",
           "description": "Whether to display a chevron at the end of the row.",
-          "isOptional": true
+          "isOptional": true,
+          "defaultValue": "false"
         },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -5220,7 +5221,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowSubtitle",
-      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /** The semantic color applied to the subtitle. */\n      color?: POSListRowSubtitleColor;\n    }",
+      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /**\n       * The semantic color applied to the subtitle.\n       *\n       * @default 'neutral'\n       */\n      color?: POSListRowSubtitleColor;\n    }",
       "description": ""
     }
   },

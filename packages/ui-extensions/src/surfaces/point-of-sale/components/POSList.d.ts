@@ -59,7 +59,11 @@ export type POSListRowSubtitle =
   | {
       /** The subtitle text. */
       content: string;
-      /** The semantic color applied to the subtitle. */
+      /**
+       * The semantic color applied to the subtitle.
+       *
+       * @default 'neutral'
+       */
       color?: POSListRowSubtitleColor;
     };
 export type POSListBadge = {
@@ -105,7 +109,11 @@ export type POSListRowStart = {
 export type POSListRowEnd = {
   /** Supporting text displayed at the end of the row. */
   label?: string;
-  /** Whether to display a chevron at the end of the row. */
+  /**
+   * Whether to display a chevron at the end of the row.
+   *
+   * @default false
+   */
   showChevron?: boolean;
   /** A toggle switch displayed at the end of the row. */
   toggleSwitch?: POSListToggleSwitch;
