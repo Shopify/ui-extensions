@@ -1864,8 +1864,8 @@ export interface FileInputProps extends BaseInputProps {
 /** @publicDocs */
 export interface FieldErrorProps {
   /**
-   * An error message displayed below the checkbox to indicate validation problems.
-   * When set, the checkbox is styled with error indicators and the message is announced to screen readers.
+   * An error message displayed below the field to indicate validation problems.
+   * When set, the field is styled with error indicators and the message is announced to screen readers.
    */
   error?: string;
 }
@@ -1888,8 +1888,8 @@ export interface BasicFieldProps
 /** @publicDocs */
 export interface FieldDetailsProps {
   /**
-   * Supplementary text displayed below the checkbox to provide additional context, instructions, or help.
-   * Use this to explain what checking the box means or provide guidance to users.
+   * Supplementary text displayed below the field to provide additional context, instructions, or help.
+   * Use this to clarify the expected input or provide guidance to users.
    * This text is announced to screen readers.
    */
   details?: string;
