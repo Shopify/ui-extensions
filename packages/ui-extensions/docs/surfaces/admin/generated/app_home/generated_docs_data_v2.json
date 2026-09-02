@@ -2648,7 +2648,7 @@
           "syntaxKind": "GetAccessor",
           "name": "value",
           "value": "string",
-          "description": "The value used in form data when the checkbox is checked.",
+          "description": "The value used in form data when the control is checked.",
           "isOptional": true
         },
         {
@@ -2689,7 +2689,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "label",
           "value": "string",
-          "description": "The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state.",
+          "description": "The text label displayed next to the control that describes what it does. Clicking the label will also toggle the control state.",
           "isOptional": true
         },
         {
@@ -2914,7 +2914,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "defaultValue": "false",
           "isOptional": true
         },
@@ -2932,7 +2932,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\".",
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\".",
           "isOptional": true
         },
         {
@@ -7244,7 +7244,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\".",
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\".",
           "isOptional": true
         },
         {
@@ -7252,7 +7252,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "defaultValue": "false",
           "isOptional": true
         },
@@ -8996,7 +8996,7 @@
           "syntaxKind": "GetAccessor",
           "name": "value",
           "value": "string",
-          "description": "The value used in form data when the checkbox is checked.",
+          "description": "The value used in form data when the control is checked.",
           "isOptional": true
         },
         {
@@ -9037,7 +9037,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "label",
           "value": "string",
-          "description": "The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state.",
+          "description": "The text label displayed next to the control that describes what it does. Clicking the label will also toggle the control state.",
           "isOptional": true
         },
         {
@@ -17182,7 +17182,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -17191,11 +17191,11 @@
           "syntaxKind": "PropertySignature",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\".",
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\".",
           "isOptional": true
         }
       ],
-      "value": "export interface BaseSelectableProps {\n  /**\n   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.\n   */\n  accessibilityLabel?: string;\n  /**\n   * Whether the checkbox is disabled, preventing user interaction.\n   * Disabled checkboxes appear dimmed and their values aren't submitted with forms.\n   *\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * The value submitted with the form when this checkbox is checked.\n   * If not specified, the default value is \"on\".\n   */\n  value?: string;\n}"
+      "value": "export interface BaseSelectableProps {\n  /**\n   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.\n   */\n  accessibilityLabel?: string;\n  /**\n   * Whether the control is disabled, preventing user interaction.\n   * Disabled controls appear dimmed and their values aren't submitted with forms.\n   *\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * The value submitted with the form when this control is selected.\n   * If not specified, the default value is \"on\".\n   */\n  value?: string;\n}"
     }
   },
   "BaseOptionProps": {
@@ -17227,7 +17227,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -17245,7 +17245,7 @@
           "syntaxKind": "PropertySignature",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\".",
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\".",
           "isOptional": true
         }
       ],
@@ -17307,7 +17307,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -17324,7 +17324,7 @@
           "syntaxKind": "PropertySignature",
           "name": "label",
           "value": "string",
-          "description": "The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state.",
+          "description": "The text label displayed next to the control that describes what it does. Clicking the label will also toggle the control state.",
           "isOptional": true
         },
         {
@@ -17332,7 +17332,7 @@
           "syntaxKind": "PropertySignature",
           "name": "name",
           "value": "string",
-          "description": "The name used to identify this checkbox in form submissions. When the checkbox is checked, its `name` and `value` are included in the form data. Must be unique within the containing form.",
+          "description": "The name used to identify this control in form submissions. When the control is checked, its `name` and `value` are included in the form data. Must be unique within the containing form.",
           "isOptional": true
         },
         {
@@ -17356,11 +17356,11 @@
           "syntaxKind": "PropertySignature",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\".",
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\".",
           "isOptional": true
         }
       ],
-      "value": "export interface BaseCheckableProps\n  extends BaseSelectableProps,\n    InteractionProps {\n  /**\n   * The text label displayed next to the checkbox that describes what the checkbox controls.\n   * Clicking the label will also toggle the checkbox state.\n   */\n  label?: string;\n  /**\n   * Whether the control is currently checked. Use this for controlled components where you manage the checked state.\n   *\n   * @default false\n   */\n  checked?: boolean;\n  /**\n   * The initial checked state for uncontrolled components. Use this when you want the control to start checked\n   * but don't need to control its state afterward.\n   *\n   * @implementation `defaultChecked` reflects to the `checked` attribute.\n   *\n   * @default false\n   */\n  defaultChecked?: boolean;\n  /**\n   * The name used to identify this checkbox in form submissions.\n   * When the checkbox is checked, its `name` and `value` are included in the form data.\n   * Must be unique within the containing form.\n   */\n  name?: string;\n  /**\n   * A callback that is run whenever the control is changed. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n   */\n  onChange?: (event: Event) => void;\n  /**\n   * A callback that is run whenever the control is changed. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).\n   */\n  onInput?: (event: Event) => void;\n}"
+      "value": "export interface BaseCheckableProps\n  extends BaseSelectableProps,\n    InteractionProps {\n  /**\n   * The text label displayed next to the control that describes what it does.\n   * Clicking the label will also toggle the control state.\n   */\n  label?: string;\n  /**\n   * Whether the control is currently checked. Use this for controlled components where you manage the checked state.\n   *\n   * @default false\n   */\n  checked?: boolean;\n  /**\n   * The initial checked state for uncontrolled components. Use this when you want the control to start checked\n   * but don't need to control its state afterward.\n   *\n   * @implementation `defaultChecked` reflects to the `checked` attribute.\n   *\n   * @default false\n   */\n  defaultChecked?: boolean;\n  /**\n   * The name used to identify this control in form submissions.\n   * When the control is checked, its `name` and `value` are included in the form data.\n   * Must be unique within the containing form.\n   */\n  name?: string;\n  /**\n   * A callback that is run whenever the control is changed. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n   */\n  onChange?: (event: Event) => void;\n  /**\n   * A callback that is run whenever the control is changed. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).\n   */\n  onInput?: (event: Event) => void;\n}"
     }
   },
   "ChipProps$1": {
