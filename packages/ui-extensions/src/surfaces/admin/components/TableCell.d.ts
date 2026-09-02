@@ -1,148 +1,120 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
-
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
   ComponentChildren,
   TableCellProps$1,
   TableHeaderProps,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
-/**
- * The properties you can set on a table cell component.
- * @publicDocs
- */
-export interface TableCellProps extends TableCellProps$1 {}
-
-/**
- * A string that contains CSS styles to apply to the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a Preact custom element with a shadow root.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the component's shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The CSS styles to apply to the component.
-   */
-  styles?: Styles;
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
 };
-/**
- * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on Windows) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed. A value of `0` means the primary button (usually left), `1` means the middle button, and `2` means the secondary button (usually right).
-   */
-  button: number;
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
 }
-/**
- * The options for customizing how a synthetic click is performed.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+/**
+ * The table cell component represents a single data cell within a table row. Use table cell as a child of table row to display individual data values, with each cell corresponding to a column in the table.
+ *
+ * Table cell automatically inherits styling and alignment from its parent table structure and supports text content or other inline components.
+ */
+export interface TableCellProps extends TableCellProps$1 {
+  /**
+   * The content displayed within the table cell, which represents a single data point in the table's grid structure.
+   */
+  children?: TableCellProps$1['children'];
+}
+
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
-/** @private */
 declare const headerFormatSymbol: unique symbol;
 
 /**
- * The format type for a table header, which determines how the cell content is displayed.
+ * Represents the format options for table headers that control styling and alignment of column content.
+ *
+ * Available values:
+ * - `base`: Standard format for text columns
+ * - `currency`: Right-aligned format for monetary values
+ * - `numeric`: Right-aligned format for numeric values
  * @publicDocs
  */
 export type HeaderFormat = Extract<
@@ -150,13 +122,17 @@ export type HeaderFormat = Extract<
   'base' | 'currency' | 'numeric'
 >;
 
+declare const elementInternals: unique symbol;
+
 /**
- * A component that represents a single cell in a table row, which displays data in a format that's determined by its column header.
+ * The table cell component represents a single data cell within a table row. Use table cell as a child of table row to display individual data values, with each cell corresponding to a column in the table.
+ *
+ * Table cell automatically inherits styling and alignment from its parent table structure and supports text content or other inline components.
+ * @publicDocs
  */
-declare class TableCell extends PreactCustomElement implements TableCellProps {
-  /**
-   * Creates a new TableCell instance.
-   */
+declare class TableCell extends PolarisCustomElement implements TableCellProps {
+  /** @private */
+  [elementInternals]: ElementInternals;
   constructor();
   /** @private */
   get [headerFormatSymbol](): HeaderFormat;
@@ -177,19 +153,12 @@ declare module 'preact' {
   }
 }
 
-/**
- * The custom element tag name for the table cell component.
- */
 declare const tagName = 's-table-cell';
-/**
- * The JSX properties you can set on a table cell component.
- * @publicDocs
- */
 export interface TableCellJSXProps
   extends Partial<TableCellProps>,
     Pick<TableCellProps$1, 'id' | 'children'> {
   /**
-   * The content to display inside the table cell.
+   * The content displayed within the table cell, which represents a single data point in the table's grid structure.
    */
   children?: ComponentChildren;
 }

@@ -1,151 +1,134 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {AvatarProps$1, ComponentChildren} from './shared.d.ts';
+import type {
+  AvatarProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
 
 /**
- * The properties for the avatar component. An avatar displays a user or entity image with fallback initials when the image isn't available. Properties include `src` for the image URL, `initials` for the fallback text, `alt` for accessibility text, and `size` for controlling the avatar dimensions.
- * @publicDocs
+ * Configure the following properties on the avatar component.
  */
 export interface AvatarProps
   extends Required<Pick<AvatarProps$1, 'initials' | 'src' | 'alt' | 'size'>> {
   /**
-   * The initials to display when no image is provided or if the image fails to load. This typically includes the first letter of a user's first and last name (for example, `'JD'` for John Doe).
-   */
-  initials: AvatarProps$1['initials'];
-  /**
-   * The URL of the avatar image to display. You can provide an absolute or relative URL pointing to the image file.
-   */
-  src: AvatarProps$1['src'];
-  /**
-   * Alternative text that describes the avatar for screen readers. This text should identify who or what the avatar represents.
-   */
-  alt: AvatarProps$1['alt'];
-  /**
-   * The size of the avatar. Choose from `'small-200'`, `'small'`, `'base'`, `'large'`, or `'large-200'` to control the avatar dimensions.
+   * The size of the avatar image.
    *
-   * @default 'base'
+   * - `small-200`: Extra small avatar, suitable for compact displays or lists with many items.
+   * - `small-100`: Alias of `small`.
+   * - `small`: Small avatar, good for secondary contexts or tight layouts.
+   * - `base`: Default size that works well in most contexts.
+   * - `large`: Large avatar for emphasis or when the avatar is a focal point.
+   * - `large-100`: Alias of `large`.
+   * - `large-200`: Extra large avatar for prominent display.
    */
   size: Extract<
     AvatarProps$1['size'],
-    'small-200' | 'small' | 'base' | 'large' | 'large-200'
+    | 'small-200'
+    | 'small-100'
+    | 'small'
+    | 'base'
+    | 'large'
+    | 'large-100'
+    | 'large-200'
   >;
+  /**
+   * Alternative text that describes the avatar for accessibility.
+   *
+   * Provides a text description of the avatar for users with assistive technology
+   * and serves as a fallback when the avatar fails to load. A well-written description
+   * enables people with visual impairments to understand non-text content.
+   *
+   * When a screen reader encounters an avatar, it reads this description aloud.
+   * When an avatar fails to load, this text displays on screen, helping all users
+   * understand what content was intended.
+   *
+   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4)
+   * and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
+   */
+  alt: Required<AvatarProps$1>['alt'];
+  /**
+   * The URL or path to the avatar image. When provided, the image takes priority over `initials`.
+   * If the image fails to load or loads slowly, `initials` will be rendered as a fallback.
+   */
+  src: Required<AvatarProps$1>['src'];
+  /**
+   * The initials to display in the avatar when no image is provided or fails to load.
+   * Typically one or two characters representing a person's first and last name initials, such as "JD" for John Doe.
+   */
+  initials: Required<AvatarProps$1>['initials'];
 }
 
-/**
- * A string containing CSS styles for a custom element.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The optional CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
-};
-/**
- * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta key (Command on Mac, Windows key on Windows) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
-}
-/**
- * The options for triggering a synthetic click event.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * The base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of `HTMLElement` to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-/**
- * An abstract base class for creating custom elements that render with Preact.
- */
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queues a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to `@property` values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in a background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * A callback event that's typed to a specific HTML element.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that currently has the event listener attached.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener for callback events, typed to a specific HTML element.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -154,51 +137,38 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
     })
   | null;
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
 /**
- * An avatar displays a user or entity image with fallback initials when the image isn't available.
+ * Configure the following properties on the avatar component.
+ * @publicDocs
  */
-declare class Avatar extends PreactCustomElement implements AvatarProps {
-  /**
-   * The initials to display when no image is provided or if the image fails to load.
-   */
+declare class Avatar extends PolarisCustomElement implements AvatarProps {
   accessor initials: AvatarProps['initials'];
-  /**
-   * The URL of the avatar image to display.
-   */
   accessor src: AvatarProps['src'];
-  /**
-   * The size of the avatar.
-   */
   accessor size: AvatarProps['size'];
-  /**
-   * Alternative text that describes the avatar for screen readers.
-   */
   accessor alt: AvatarProps['alt'];
-  /**
-   * A callback that's fired when the avatar image has loaded successfully.
-   */
   accessor onload: CallbackEventListener<typeof tagName> | null;
-  /**
-   * A callback that's fired when the avatar image fails to load.
-   */
   accessor onerror: OnErrorEventHandler;
   constructor();
 }
@@ -216,19 +186,15 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-avatar';
-/**
- * The properties for the avatar component when it's used in JSX.
- * @publicDocs
- */
 export interface AvatarJSXProps
   extends Partial<AvatarProps>,
     Pick<AvatarProps$1, 'id'> {
   /**
-   * A callback that's fired when the avatar image has loaded successfully.
+   * A callback fired when the avatar image loads successfully.
    */
   onLoad?: () => void;
   /**
-   * A callback that's fired when the avatar image fails to load.
+   * A callback fired when the avatar image fails to load.
    */
   onError?: () => void;
 }

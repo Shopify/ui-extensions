@@ -1,205 +1,165 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ColorPickerProps$1, ComponentChildren} from './shared.d.ts';
+import type {
+  ColorPickerProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * An event object with a strongly-typed `currentTarget` property that references the specific HTML element type.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The DOM element that the event listener is attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener function or null that receives a typed callback event.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      /**
-       * The callback function that's invoked when the event fires.
-       */
       (event: CallbackEvent<T>): void;
     })
   | null;
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
 /**
- * Properties for rendering a color picker that provides a visual interface for selecting colors with optional transparency control.
- * @publicDocs
+ * Configure the following properties on the color picker component.
  */
 export interface ColorPickerProps
   extends Required<
     Pick<ColorPickerProps$1, 'id' | 'alpha' | 'value' | 'defaultValue' | 'name'>
-  > {}
-
-/**
- * A string containing CSS styles to be applied to the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a custom element with a shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  > {
   /**
-   * A function that renders the component's shadow DOM content.
+   * The currently selected color value. Accepts multiple input formats:
+   *
+   * - Hex: `#RGB`, `#RRGGBB`, `#RRGGBBAA` (3, 6, or 8 digits)
+   * - RGB/RGBA: `rgb(255, 0, 0)` or `rgb(255 0 0)` (comma or space-separated)
+   * - HSL/HSLA: `hsl(0, 100%, 50%)` or `hsl(0 100% 50%)`
+   *
+   * Returns an empty string if the value is invalid. The `change` event always emits values in hex format.
    */
-  ShadowRoot: (element: any) => ComponentChildren;
+  value: Required<ColorPickerProps$1>['value'];
   /**
-   * The CSS styles to apply to the component.
+   * The initial color value when the field first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts interacting, their input replaces it. Changing this property after the field has loaded has no effect. To update the field value at any time, use `value` instead.
    */
-  styles?: Styles;
-};
-/**
- * An object containing information about keyboard and mouse button states during an activation event.
- * @publicDocs
- */
-export interface ActivationEventEsque {
+  defaultValue: Required<ColorPickerProps$1>['defaultValue'];
   /**
-   * Whether the Shift key was pressed during the event.
+   * Whether to enable alpha (transparency) channel selection in the color picker, allowing users to choose semi-transparent colors.
+   *
+   * @default false
    */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta (Command on Mac, Windows key on PC) key was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the event.
-   */
-  button: number;
+  alpha: Required<ColorPickerProps$1>['alpha'];
 }
-/**
- * The options for programmatically triggering a click event on an element.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass$1: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass$1 {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare const internals: unique symbol;
-/**
- * The base class for form-associated components that can participate in form submission.
- */
-declare class BaseClass extends PreactCustomElement {
-  /**
-   * Whether this element can participate in form submission.
-   */
+declare class BaseClass extends PolarisCustomElement {
   static formAssociated: boolean;
   constructor(renderImpl: RenderImpl);
   /** @private */
   [internals]: ElementInternals;
 }
 /**
- * A visual color picker component that allows users to select colors from a color spectrum interface.
+ * Configure the following properties on the color picker component.
+ * @publicDocs
  */
 declare class ColorPicker extends BaseClass implements ColorPickerProps {
-  /**
-   * Whether the color picker includes an alpha (transparency) channel for selecting semi-transparent colors.
-   *
-   * @default false
-   */
   accessor alpha: boolean;
-  /**
-   * The callback that's triggered when the selected color changes and the picker loses focus.
-   */
   accessor onchange: CallbackEventListener<typeof tagName> | null;
-  /**
-   * The callback that's triggered when the selected color changes as the user interacts with the picker.
-   */
   accessor oninput: CallbackEventListener<typeof tagName> | null;
   /**
-   * The name of the picker, used when submitting form data.
+   * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
    */
   accessor name: string;
-  /**
-   * The initial color value when the picker first renders, formatted as a hex color string (e.g., `#FF0000` or `#FF0000FF` with alpha).
-   */
   accessor defaultValue: string;
-  /**
-   * The current color value, formatted as a hex color string (e.g., `#FF0000` or `#FF0000FF` with alpha).
-   */
   get value(): string;
-  /**
-   * The current color value, formatted as a hex color string (e.g., `#FF0000` or `#FF0000FF` with alpha).
-   */
   set value(value: string);
-  /** @private */
+  /**
+   * A callback that fires when the containing form is reset (using the form's `reset()` method or a reset button). When triggered, the component's `value` reverts to its `defaultValue`.
+   */
   formResetCallback(): void;
   constructor();
 }
@@ -217,23 +177,13 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-color-picker';
-/**
- * The JSX props interface for the color picker component when used in React/Preact.
- * @publicDocs
- */
 export interface ColorPickerJSXProps
   extends Partial<ColorPickerProps>,
     Pick<
       ColorPickerProps$1,
       'id' | 'alpha' | 'value' | 'defaultValue' | 'name'
     > {
-  /**
-   * A callback that's triggered when the selected color changes as the user interacts with the picker.
-   */
   onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
-  /**
-   * A callback that's triggered when the selected color changes and the picker loses focus.
-   */
   onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
 }
 

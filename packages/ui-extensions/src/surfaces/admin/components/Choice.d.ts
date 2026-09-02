@@ -1,16 +1,60 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, ChoiceProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  ChoiceProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
 
 /**
- * Properties for rendering a single choice within a choice list that can be selected using a radio button or checkbox.
- * @publicDocs
+ * The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.
+ *
+ * Choice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.
  */
 export interface ChoiceProps
   extends Required<
@@ -24,146 +68,77 @@ export interface ChoiceProps
     >
   > {}
 
-/**
- * CSS styles that will be applied to the component's shadow DOM.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * Configuration for rendering a custom element with Preact and shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * A function that renders the component's content inside the shadow root.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * CSS styles that will be applied to the shadow DOM.
-   */
-  styles?: Styles;
-};
-/**
- * Information about modifier keys and mouse buttons that were active during an interaction.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was held down during the interaction.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was held down during the interaction.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the interaction.
-   */
-  button: number;
-}
-/**
- * Options for influencing how a programmatic click behaves.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
-/** Used when an element does not have children. * @publicDocs
+/**
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
+/**
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
 /**
- * A single choice within a choice list that can be selected with a radio button or checkbox.
+ * The choice component creates individual selectable options within a choice list. Use choice to define each option that merchants can select, supporting both single selection (radio buttons) and multiple selection (checkboxes) modes.
+ *
+ * Choice components support labels, help text, and custom content through slots, providing flexible option presentation within choice lists.
+ * @publicDocs
  */
-declare class Choice extends PreactCustomElement implements ChoiceProps {
+declare class Choice extends PolarisCustomElement implements ChoiceProps {
   /**
-   * Whether the choice is disabled and can't be selected.
+   * Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.
    */
   accessor disabled: ChoiceProps['disabled'];
   /**
-   * Whether the choice is currently selected.
+   * Whether the option is currently selected. Use this for controlled components where you manage the selection state.
    */
   get selected(): boolean;
+  /**
+   * Whether the option is currently selected. Use this for controlled components where you manage the selection state.
+   */
   set selected(selected: ChoiceProps['selected']);
   /**
-   * The value that's submitted with the form when this choice is selected.
+   * The value submitted with the form when this checkbox is checked. If not specified, the default value is "on".
    */
   accessor value: ChoiceProps['value'];
   /**
-   * A label that's only visible to screen readers, used when the visual label isn't descriptive enough.
+   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
    */
   accessor accessibilityLabel: ChoiceProps['accessibilityLabel'];
   /**
-   * Whether the choice should be selected when it's first rendered.
+   * The initial selected state for uncontrolled components. Use this when you want the option to start selected but don't need to control its state afterward.
    */
   accessor defaultSelected: ChoiceProps['defaultSelected'];
   constructor();
@@ -180,34 +155,39 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: Omit<ChoiceJSXProps, 'details'> &
+      [tagName]: Omit<ChoiceJSXProps, 'details' | 'secondaryContent'> &
         PreactBaseElementPropsWithChildren<Choice>;
     }
   }
 }
 
 declare const tagName = 's-choice';
-/**
- * Properties for using the choice component in JSX with React-style props.
- * @publicDocs
- */
 export interface ChoiceJSXProps
   extends Partial<ChoiceProps>,
     Pick<ChoiceProps$1, 'id' | 'children' | 'details'> {
   /**
-   * The content that's used as the choice label, extracted as plain text from any provided markup.
+   * The label that identifies this selectable choice option to users.
    *
-   * The label is produced by extracting and concatenating the text nodes from the provided content; any markup or element structure is ignored.
+   * The label is produced by extracting and
+   * concatenating the text nodes from the provided content;
+   * any markup or element structure is ignored.
    */
   children?: ComponentChildren;
   /**
-   * Additional text that provides context or guidance for the input, displayed alongside the choice label.
+   * Additional text to provide context or guidance for the input.
    *
-   * This text is displayed along with the input and its label to offer more information or instructions to the user.
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
    *
    * @implementation this content should be linked to the input with an `aria-describedby` attribute.
    */
   details?: ComponentChildren;
+  /**
+   * Additional content to display below the choice label.
+   * Can include rich content like TextFields, Buttons, or other interactive components.
+   * Event handlers on React components are preserved.
+   */
+  secondaryContent?: ComponentChildren;
 }
 
 export {Choice};

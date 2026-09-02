@@ -1,29 +1,44 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
   ComponentChildren,
   ClickableChipProps$1,
   InteractionProps,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * A callback event that's typed to a specific HTML element.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that currently has the event listener attached.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener for callback events, typed to a specific HTML element.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -32,38 +47,72 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
     })
   | null;
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   /**
-   * The child elements to render inside this element.
+   * The child elements to be rendered within this component.
    */
   children?: preact.ComponentChildren;
 }
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
 /**
- * The properties for the clickable chip component. These properties define an interactive chip that can be clicked or removed.
- * @publicDocs
+ * Configure the following properties on the clickable chip component.
  */
 export interface ClickableChipProps
   extends Required<
@@ -79,115 +128,48 @@ export interface ClickableChipProps
       | 'commandFor'
       | 'interestFor'
     >
-  > {}
-
-/**
- * A string containing CSS styles for the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  > {
   /**
-   * The function that renders the component's shadow root content.
+   * Whether the chip is hidden from view. When using controlled component pattern with `removable` chips, update this property when the `remove` event fires. For non-removable chips, manually toggle this property to show or hide the chip.
+   *
+   * @default false
    */
-  ShadowRoot: (element: any) => ComponentChildren;
+  hidden: Required<ClickableChipProps$1>['hidden'];
   /**
-   * Optional CSS styles to apply to the shadow root.
+   * Whether the chip is disabled, preventing any user interaction.
+   *
+   * @default false
    */
-  styles?: Styles;
-};
-/**
- * An event-like object that contains activation information for synthetic clicks.
- * @publicDocs
- */
-export interface ActivationEventEsque {
+  disabled: Required<ClickableChipProps$1>['disabled'];
   /**
-   * Whether the shift key was pressed during activation.
+   * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
    */
-  shiftKey: boolean;
+  href: Required<ClickableChipProps$1>['href'];
   /**
-   * Whether the meta key (Command on Mac, Windows key on Windows) was pressed during activation.
+   * Whether the chip displays a remove button for dismissal. When clicked, the `remove` callback fires.
+   *
+   * @default false
    */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during activation.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during activation.
-   */
-  button: number;
+  removable: Required<ClickableChipProps$1>['removable'];
 }
-/**
- * Options for customizing synthetic click behavior.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
-/**
- * Props for controlling overlay components like popovers and dialogs.
- * @publicDocs
- */
 export interface PreactOverlayControlProps
   extends Pick<InteractionProps, 'commandFor' | 'interestFor'> {
   /**
-   * The action the [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated. The supported actions vary by target component type.
+   * The action that [command](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command) should take when this component is activated.
    *
-   * - `--auto`: Performs the default action appropriate for the target component.
-   * - `--show`: Displays the target component if it's currently hidden.
-   * - `--hide`: Conceals the target component from view.
-   * - `--toggle`: Alternates the target component between visible and hidden states.
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the visibility of the target component.
    *
    * @default '--auto'
    */
@@ -196,62 +178,53 @@ export interface PreactOverlayControlProps
     '--show' | '--hide' | '--toggle' | '--auto'
   >;
   /**
-   * Sets the element the [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this component is activated.
+   * The component that [commandFor](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor) should act on when this component is activated.
    */
   commandFor: Extract<InteractionProps['commandFor'], string>;
   /**
-   * Sets the element the [interestFor](https://open-ui.org/components/interest-invokers.explainer/#the-pitch-in-code) should act on when this component is activated.
+   * The ID of the component to show when users hover over or focus on this component. Use this to connect interactive components to popovers or tooltips that provide additional context or information.
    */
   interestFor: Extract<InteractionProps['interestFor'], string>;
 }
 
-declare const ClickableChip_base: (abstract new (
-  args_0: RenderImpl,
-) => PreactCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PreactCustomElement, 'prototype' | 'observedAttributes'>;
+declare const ClickableChipBase_base: (abstract new (
+  renderImpl: Omit<RenderImpl, 'globalShadowCSS'>,
+) => PolarisCustomElement & PreactOverlayControlProps) &
+  Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+declare abstract class ClickableChipBase<
+    TTagName extends keyof HTMLElementTagNameMap,
+  >
+  extends ClickableChipBase_base
+  implements
+    Pick<
+      ClickableChipProps,
+      'accessibilityLabel' | 'removable' | 'hidden' | 'disabled' | 'href'
+    >
+{
+  accessor accessibilityLabel: ClickableChipProps['accessibilityLabel'];
+  accessor removable: ClickableChipProps['removable'];
+  accessor hidden: ClickableChipProps['hidden'];
+  accessor disabled: ClickableChipProps['disabled'];
+  accessor href: ClickableChipProps['href'];
+  accessor onclick: CallbackEventListener<TTagName> | null;
+  accessor onremove: CallbackEventListener<TTagName> | null;
+  accessor onafterhide: CallbackEventListener<TTagName> | null;
+  abstract accessor color: string;
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+}
+
 /**
- * A custom element for displaying interactive chips that can be clicked or removed.
+ * Configure the following properties on the clickable chip component.
+ * @publicDocs
  */
 declare class ClickableChip
-  extends ClickableChip_base
+  extends ClickableChipBase<typeof tagName>
   implements ClickableChipProps
 {
   /**
-   * The color of the chip.
+   * The color emphasis level that controls visual intensity.
    */
   accessor color: ClickableChipProps['color'];
-  /**
-   * A text description of the chip for screen readers.
-   */
-  accessor accessibilityLabel: ClickableChipProps['accessibilityLabel'];
-  /**
-   * Whether the chip can be removed by the user.
-   */
-  accessor removable: ClickableChipProps['removable'];
-  /**
-   * Whether the chip is hidden from view.
-   */
-  accessor hidden: ClickableChipProps['hidden'];
-  /**
-   * Whether the chip is disabled and can't be clicked.
-   */
-  accessor disabled: ClickableChipProps['disabled'];
-  /**
-   * The URL to navigate to when the chip is clicked.
-   */
-  accessor href: ClickableChipProps['href'];
-  /**
-   * A callback that's fired when the chip is clicked.
-   */
-  accessor onclick: CallbackEventListener<typeof tagName> | null;
-  /**
-   * A callback that's fired when the chip is removed.
-   */
-  accessor onremove: CallbackEventListener<typeof tagName> | null;
-  /**
-   * A callback that's fired after the chip finishes hiding.
-   */
-  accessor onafterhide: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
 declare global {
@@ -269,31 +242,27 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-clickable-chip';
-/**
- * The JSX properties for the clickable chip component. These properties define how a clickable chip is rendered in Preact or JSX.
- * @publicDocs
- */
 export interface ClickableChipJSXProps
   extends Partial<ClickableChipProps>,
     Pick<ClickableChipProps$1, 'id' | 'children'> {
   /**
-   * The content of the chip.
+   * The text label displayed within the chip, which represents an interactive filter, tag, or selectable item.
    */
   children?: ComponentChildren;
   /**
-   * An optional icon to display at the start of the chip. Accepts only Icon components.
+   * An optional icon to display at the start of the chip. Accepts only icon components.
    */
   graphic?: ComponentChildren;
   /**
-   * A callback that's fired when the chip is clicked.
+   * A callback fired when the chip is clicked.
    */
   onClick?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's fired when the chip is removed.
+   * A callback fired when the user clicks the remove button on the chip.
    */
   onRemove?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's fired after the chip finishes hiding.
+   * A callback fired when the chip is completely hidden, after any hide animations have completed.
    */
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

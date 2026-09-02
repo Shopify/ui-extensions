@@ -1,20 +1,79 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, TextProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  TextProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
+declare const typographyFontWeights: readonly [
+  'auto',
+  'base',
+  'medium',
+  'semibold',
+  'bold',
+];
+export type TypographyFontWeight = (typeof typographyFontWeights)[number];
+declare const bodyFontSizes: readonly [
+  'auto',
+  'small-200',
+  'small-100',
+  'small',
+  'base',
+  'large',
+  'large-100',
+];
+export type BodyFontSize = (typeof bodyFontSizes)[number];
+
+export type TextFontSize = BodyFontSize;
+export type TextFontWeight = TypographyFontWeight;
 /**
- * The properties for the text component. These properties define inline or small blocks of text content with various visual styles and semantic meanings.
- * @publicDocs
- */
-/**
- * @publicDocs
- * @publicDocs
+ * Configure the following properties on the text component.
  */
 export interface TextProps
   extends Required<
@@ -29,16 +88,11 @@ export interface TextProps
       | 'interestFor'
     >
   > {
-  /**
-   * The color of the text. Available options:
-   * - `'base'` - The default text color.
-   * - `'subdued'` - A lighter text color for secondary information.
-   */
   color: Extract<TextProps$1['color'], 'base' | 'subdued'>;
   /**
    * The semantic type and styling treatment for the text content.
    *
-   * Other presentation properties on Text override the default styling.
+   * Other presentation properties on text override the default styling.
    *
    * - `strong`: Emphasizes the text with strong importance, typically displayed in bold.
    * - `generic`: Standard text with no special semantic meaning or styling.
@@ -49,7 +103,7 @@ export interface TextProps
    */
   type: Extract<
     TextProps$1['type'],
-    'strong' | 'generic' | 'address' | 'redundant'
+    'address' | 'redundant' | 'strong' | 'generic'
   >;
   /**
    * The semantic tone that's applied to the text, which changes its color to convey meaning.
@@ -66,193 +120,108 @@ export interface TextProps
    */
   tone: Extract<
     TextProps$1['tone'],
-    'info' | 'success' | 'warning' | 'critical' | 'auto' | 'neutral' | 'caution'
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'caution' | 'critical'
   >;
   /**
-   * The numeric font variant for the text. Available options:
-   * - `'auto'` - The font variant is automatically determined.
-   * - `'normal'` - Standard numeric rendering.
-   * - `'tabular-nums'` - Monospaced numbers for better alignment in tables.
+   * @deprecated Use `Number` for inline numeric values instead.
    */
   fontVariantNumeric: Extract<
     TextProps$1['fontVariantNumeric'],
     'auto' | 'normal' | 'tabular-nums'
   >;
-}
-
-/**
- * A string containing CSS styles.
- * @publicDocs
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with a shadow DOM.
- * @publicDocs
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
   /**
-   * The function that renders the component's shadow DOM content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * Optional CSS styles to apply to the shadow DOM.
-   */
-  styles?: Styles;
-};
-/**
- * An object that represents the state of modifier keys and mouse button
- * during an activation event like a click.
- * @publicDocs
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta (Command on Mac, Windows key on PC) key was pressed.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
-}
-/**
- * Options for customizing click behavior on an element.
- * @publicDocs
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   * Font size of the text. The named values also apply their matching
+   * line-height and letter-spacing.
    *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
+   * @default 'auto'
    */
-  click({sourceEvent}?: ClickOptions): void;
+  fontSize: TextFontSize;
+  /**
+   * Font weight of the text.
+   *
+   * @default 'auto'
+   */
+  fontWeight: TextFontWeight;
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * @publicDocs
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
-/**
- * A custom element for displaying inline or small blocks of text with various visual styles and semantic meanings. Use Text to render short pieces of content with appropriate styling, emphasis, and color treatment.
- */
-declare class Text extends PreactCustomElement implements TextProps {
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+}
+
+declare abstract class TextBase
+  extends PolarisCustomElement
+  implements
+    Pick<
+      TextProps,
+      | 'fontVariantNumeric'
+      | 'fontSize'
+      | 'fontWeight'
+      | 'color'
+      | 'type'
+      | 'dir'
+      | 'accessibilityVisibility'
+      | 'interestFor'
+    >
+{
+  accessor fontSize: TextProps['fontSize'];
+  accessor fontWeight: TextProps['fontWeight'];
   /**
-   * The numeric font variant for the text.
+   * @deprecated Use `Number` for inline numeric values instead.
    */
   accessor fontVariantNumeric: TextProps['fontVariantNumeric'];
-  /**
-   * The color of the text.
-   */
   accessor color: TextProps['color'];
-  /**
-   * The semantic tone that's applied to the text, which changes its color to convey meaning.
-   *
-   * - `info`: Informational content or helpful tips (blue).
-   * - `success`: Positive outcomes or successful states (green).
-   * - `warning`: Important warnings about potential issues (orange).
-   * - `critical`: Urgent problems or destructive actions (red).
-   * - `auto`: Automatically determined based on context.
-   * - `neutral`: General information without specific intent (gray).
-   * - `caution`: Advisory notices that need attention (yellow).
-   */
-  accessor tone: TextProps['tone'];
-  /**
-   * The semantic type and styling treatment for the text content.
-   *
-   * - `strong`: Emphasizes the text with strong importance, typically displayed in bold.
-   * - `generic`: Standard text with no special semantic meaning or styling.
-   * - `address`: Marks the text as contact information, such as a physical or email address.
-   * - `redundant`: Indicates the text is redundant or duplicated information for screen reader context.
-   */
   accessor type: TextProps['type'];
-  /**
-   * The text direction (left-to-right or right-to-left).
-   */
   accessor dir: TextProps['dir'];
-  /**
-   * The visibility of the element to assistive technologies.
-   */
   accessor accessibilityVisibility: TextProps['accessibilityVisibility'];
-  /**
-   * The ID of an element this text provides contextual information for.
-   */
   accessor interestFor: string;
+  abstract tone: string;
+  constructor(renderImpl: RenderImpl);
+}
+
+/**
+ * Configure the following properties on the text component.
+ * @publicDocs
+ */
+declare class Text extends TextBase implements TextProps {
+  accessor tone: TextProps['tone'];
   constructor();
 }
 declare global {
@@ -269,16 +238,11 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-text';
-/**
- * The JSX properties for the text component. These properties define how text is rendered in Preact or JSX.
- * @publicDocs
- * @publicDocs
- */
 export interface TextJSXProps
   extends Partial<TextProps>,
     Pick<TextProps$1, 'id' | 'children'> {
   /**
-   * The content of the text.
+   * The text content displayed within the text component, which applies semantic meaning and styling appropriate to the specified text type.
    */
   children?: ComponentChildren;
 }

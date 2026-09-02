@@ -1,16 +1,26 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {DividerProps$1, ComponentChildren} from './shared.d.ts';
+import type {
+  DividerProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * The properties for the divider component. A divider creates a visual separator to distinguish different sections of content.
- * @publicDocs
+ * Configure the following properties on the divider component.
  */
 export interface DividerProps
   extends Pick<DividerProps$1, 'direction' | 'color'> {
@@ -34,143 +44,74 @@ export interface DividerProps
   color: Extract<DividerProps$1['color'], 'base' | 'strong'>;
 }
 
-/**
- * A string containing CSS styles for a custom element.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The optional CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
 };
-/**
- * An interface representing the properties of an activation event, such as a click or keypress.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta key (Command on Mac, Windows key on PC) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
 }
-/**
- * The options for triggering a synthetic click event.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * The base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-/**
- * An abstract base class for creating custom elements that render with Preact.
- */
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
 /**
- * A divider is a visual separator that creates a line between different sections of content.
+ * Configure the following properties on the divider component.
+ * @publicDocs
  */
-declare class Divider extends PreactCustomElement implements DividerProps {
-  /**
-   * The orientation of the divider line, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
-   *
-   * - `inline`: Horizontal divider for separating vertically stacked content
-   * - `block`: Vertical divider for separating horizontally arranged content
-   *
-   * @default 'inline'
-   */
+declare class Divider extends PolarisCustomElement implements DividerProps {
   accessor direction: DividerProps['direction'];
-  /**
-   * The visual prominence of the divider line.
-   *
-   * - `base`: Standard divider for most separations (default)
-   * - `strong`: More prominent divider for major section breaks
-   *
-   * @default 'base'
-   */
   accessor color: DividerProps['color'];
   constructor();
 }
@@ -188,10 +129,6 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-divider';
-/**
- * The properties for the divider component when it's used in JSX.
- * @publicDocs
- */
 export interface DividerJSXProps
   extends Partial<DividerProps>,
     Pick<DividerProps$1, 'id'> {}

@@ -1,9 +1,14 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
@@ -13,21 +18,30 @@ import type {
   SizeUnitsOrAuto,
   SizeUnits,
   SizeUnitsOrNone,
-  ComponentChildren,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * A callback event that's typed to a specific HTML element. This type provides access to the element that triggered the event.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that currently has the event listener attached.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener for callback events, typed to a specific HTML element.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -36,26 +50,61 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
     })
   | null;
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
 /**
- * Makes a type value responsive by allowing container query strings.
+ * Makes a type responsive by allowing it to be either the base value or a container query string. This enables conditional styling based on container dimensions.
  * @publicDocs
  */
 export type MakeResponsive<T> = T | `@container${string}`;
@@ -81,12 +130,21 @@ export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
 };
 
 /**
- * The box properties with all fields marked as required.
+ * Represents the box component props with all properties marked as required.
  * @publicDocs
  */
 export type RequiredBoxProps = Required<BoxProps$1>;
 /**
- * The available border radius values for Box components.
+ * Represents the subset of border radius values supported by the component.
+ *
+ * - `small-200`: Extra small radius for subtle rounding.
+ * - `small-100`: Small radius for minimal corner rounding.
+ * - `small`: Standard small radius.
+ * - `base`: Medium radius for moderate corner rounding.
+ * - `large`: Standard large radius for pronounced rounding.
+ * - `large-100`: Large radius for more prominent corner rounding.
+ * - `large-200`: Extra large radius for maximum rounding.
+ * - `none`: No border radius (sharp corners).
  * @publicDocs
  */
 export type BoxBorderRadii = Extract<
@@ -101,7 +159,12 @@ export type BoxBorderRadii = Extract<
   | 'large-200'
 >;
 /**
- * The available border style values for Box components.
+ * Represents the subset of border style values supported by the box component.
+ *
+ * - `auto`: Default border style determined by the system.
+ * - `none`: No border style (removes the border).
+ * - `solid`: Continuous line border.
+ * - `dashed`: Border made up of dashes.
  * @publicDocs
  */
 export type BoxBorderStyles = Extract<
@@ -109,7 +172,9 @@ export type BoxBorderStyles = Extract<
   'none' | 'solid' | 'dashed' | 'auto'
 >;
 /**
- * The box properties that support responsive values through container queries.
+ * Represents box props with responsive capabilities for layout properties.
+ *
+ * This enables conditional styling based on container queries.
  * @publicDocs
  */
 export type ResponsiveBoxProps = MakeResponsivePick<
@@ -144,7 +209,7 @@ export interface BoxProps
     | 'overflow'
   > {
   /**
-   * The background color of the image container.
+   * The background color of the component.
    *
    * @default 'transparent'
    */
@@ -153,16 +218,13 @@ export interface BoxProps
     'transparent' | 'base' | 'subdued' | 'strong'
   >;
   /**
-   * Controls the thickness of the border on all sides. When set, this overrides the width value specified in the `border` property.
+   * A border applied using shorthand syntax to specify width, color, and style in a single property.
    *
-   * - `small`: Thin border for subtle definition.
-   * - `small-100`: Extra thin border for minimal emphasis.
-   * - `base`: Standard border width.
-   * - `large`: Thick border for strong emphasis.
-   * - `large-100`: Extra thick border for maximum prominence.
-   * - `none`: No border.
-   *
-   * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) for specifying different widths per side.
+   * @default 'none'
+   */
+  border: RequiredBoxProps['border'];
+  /**
+   * The thickness of the border on all sides. When set, this overrides the width value specified in the `border` property.
    *
    * @default '' - meaning no override
    */
@@ -175,7 +237,7 @@ export interface BoxProps
       >
     | Extract<RequiredBoxProps['borderWidth'], ''>;
   /**
-   * The visual style of the border (solid, dashed, auto, or none).
+   * The visual style of the border on all sides, such as solid, dashed, or dotted. When set, this overrides the style value specified in the `border` property.
    *
    * @default '' - meaning no override
    */
@@ -183,7 +245,7 @@ export interface BoxProps
     | MaybeAllValuesShorthandProperty<BoxBorderStyles>
     | Extract<RequiredBoxProps['borderStyle'], ''>;
   /**
-   * The color of the border using the design system's color scale.
+   * The color of the border using the design system's color scale. When set, this overrides the color value specified in the `border` property.
    *
    * @default '' - meaning no override
    */
@@ -192,99 +254,85 @@ export interface BoxProps
     'subdued' | 'base' | 'strong' | ''
   >;
   /**
-   * The roundedness of the corners using the design system's radius scale.
+   * The roundedness of the element's corners using the design system's radius scale.
    *
    * @default 'none'
    */
   borderRadius: MaybeAllValuesShorthandProperty<BoxBorderRadii>;
   /**
-   * The padding applied to all edges of the image container.
+   * The padding applied to all edges of the component.
    *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is supported. Note that, contrary to the CSS, it uses flow-relative values and the order is:
+   * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:
+   * - 1 value applies to all sides
+   * - 2 values apply to block (top/bottom) and inline (left/right)
+   * - 3 values apply to block-start (top), inline (left/right), and block-end (bottom)
+   * - 4 values apply to block-start (top), inline-end (right), block-end (bottom), and inline-start (left)
    *
-   * - 4 values: `block-start inline-end block-end inline-start`
-   * - 3 values: `block-start inline block-end`
-   * - 2 values: `block inline`
+   * **Examples:** `base`, `large none`, `base large-100 base small`
    *
-   * For example:
-   * - `large` means block-start, inline-end, block-end and inline-start paddings are `large`.
-   * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
-   * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
-   * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
-   *
-   * `padding` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default 'none'
    */
   padding: ResponsiveBoxProps['padding'];
   /**
-   * The padding applied to the block axis (top and bottom in horizontal writing modes).
+   * The block-direction padding (top and bottom in horizontal writing modes).
    *
-   * - `large none` means block-start padding is `large`, block-end padding is `none`.
+   * Accepts a single value for both sides or two space-separated values for block-start and block-end.
    *
-   * This overrides the block value of `padding`.
+   * **Example:** `large none` applies `large` to the top and `none` to the bottom.
    *
-   * `paddingBlock` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
   paddingBlock: ResponsiveBoxProps['paddingBlock'];
   /**
-   * The padding applied to the block-start edge (top in horizontal writing modes).
+   * The block-start padding (top in horizontal writing modes).
    *
-   * This overrides the block-start value of `paddingBlock`.
-   *
-   * `paddingBlockStart` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
   paddingBlockStart: ResponsiveBoxProps['paddingBlockStart'];
   /**
-   * The padding applied to the block-end edge (bottom in horizontal writing modes).
+   * The block-end padding (bottom in horizontal writing modes).
    *
-   * This overrides the block-end value of `paddingBlock`.
-   *
-   * `paddingBlockEnd` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
   paddingBlockEnd: ResponsiveBoxProps['paddingBlockEnd'];
   /**
-   * The padding applied to the inline axis (left and right in horizontal writing modes).
+   * The inline-direction padding (left and right in horizontal writing modes).
    *
-   * - `large none` means inline-start padding is `large`, inline-end padding is `none`.
+   * Accepts a single value for both sides or two space-separated values for inline-start and inline-end.
    *
-   * This overrides the inline value of `padding`.
+   * **Example:** `large none` applies `large` to the left and `none` to the right.
    *
-   * `paddingInline` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInline: ResponsiveBoxProps['paddingInline'];
   /**
-   * The padding applied to the inline-start edge (left in left-to-right languages).
+   * The inline-start padding (left in LTR writing modes, right in RTL).
    *
-   * This overrides the inline-start value of `paddingInline`.
-   *
-   * `paddingInlineStart` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInlineStart: ResponsiveBoxProps['paddingInlineStart'];
   /**
-   * The padding applied to the inline-end edge (right in left-to-right languages).
+   * The inline-end padding (right in LTR writing modes, left in RTL).
    *
-   * This overrides the inline-end value of `paddingInline`.
-   *
-   * `paddingInlineEnd` also accepts a [responsive value](https://shopify.dev/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
   paddingInlineEnd: ResponsiveBoxProps['paddingInlineEnd'];
   /**
-   * Sets the outer [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * The outer [display](https://developer.mozilla.org/en-US/docs/Web/CSS/display) type of the component. The outer type sets a component's participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
    *
    * - `auto` the component's initial value. The actual value depends on the component and context.
    * - `none` hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
@@ -293,7 +341,7 @@ export interface BoxProps
    */
   display: ResponsiveBoxProps['display'];
   /**
-   * The vertical size of the image in standard layouts (height in left-to-right or right-to-left writing modes).
+   * The vertical size of the element in standard layouts (height in left-to-right or right-to-left writing modes).
    *
    * Block size adjusts based on the writing direction: in horizontal layouts, it controls the height;
    * in vertical layouts, it controls the width. This ensures consistent behavior across different text directions.
@@ -304,31 +352,44 @@ export interface BoxProps
    */
   blockSize: SizeUnitsOrAuto;
   /**
-   * The [minimum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size) (minimum height in horizontal writing modes) of the image.
+   * The minimum height in horizontal writing modes, or minimum width in vertical writing modes.
+   * Prevents the element from shrinking below this size.
+   *
+   * Learn more about [min-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
    *
    * @default '0'
    */
   minBlockSize: SizeUnits;
   /**
-   * The [maximum block size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size) (maximum height in horizontal writing modes) of the image.
+   * The maximum height in horizontal writing modes, or maximum width in vertical writing modes.
+   * Prevents the element from growing beyond this size.
+   *
+   * Learn more about [max-block-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
    *
    * @default 'none'
    */
   maxBlockSize: SizeUnitsOrNone;
   /**
-   * The [inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size) (width in horizontal writing modes) of the image.
+   * The width in horizontal writing modes, or height in vertical writing modes.
+   * Use this for flow-relative sizing that adapts to text direction. Learn more about [inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
    *
    * @default 'auto'
    */
   inlineSize: SizeUnitsOrAuto;
   /**
-   * The [minimum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size) (minimum width in horizontal writing modes) of the image.
+   * The minimum width in horizontal writing modes, or minimum height in vertical writing modes.
+   * Prevents the element from shrinking below this size.
+   *
+   * Learn more about [min-inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
    *
    * @default '0'
    */
   minInlineSize: SizeUnits;
   /**
-   * The [maximum inline size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size) (maximum width in horizontal writing modes) of the image.
+   * The maximum width in horizontal writing modes, or maximum height in vertical writing modes.
+   * Prevents the element from growing beyond this size.
+   *
+   * Learn more about [max-inline-size](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
    *
    * @default 'none'
    */
@@ -336,8 +397,7 @@ export interface BoxProps
 }
 
 /**
- * The properties for the image component. An image displays pictures with configurable sizing, loading behavior, and borders. Properties include `src` for the image URL, `alt` for accessibility text, `aspectRatio` for sizing, `loading` for lazy loading, and border styling options.
- * @publicDocs
+ * Configure the following properties on the image component.
  */
 export interface ImageProps
   extends Required<
@@ -365,227 +425,141 @@ export interface ImageProps
       >
     > {
   /**
-   * The URL of the image to display. You can provide an absolute or relative URL pointing to the image file.
+   * The loading strategy for the image.
+   *
+   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
+   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+   *
+   * Learn more about the [loading attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading).
+   *
+   * @default 'eager'
    */
-  src: ImageProps$1['src'];
+  loading: Required<ImageProps$1>['loading'];
   /**
-   * A set of source images with different sizes for responsive loading. Use this to provide multiple image sizes for different screen resolutions (for example, `'image-320w.jpg 320w, image-640w.jpg 640w'`).
+   * The semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   *
+   * - `none`: Completely hides the element and its content from assistive technologies
+   * - `presentation`: Removes semantic meaning, making the image purely decorative and ignored by screen readers.
+   * - `img`: Identifies the element as an image that conveys meaningful information to users.
+   *
+   * @default 'img'
+   *
+   * @implementation The `img` role doesn't need to be applied if
+   * the host applies it for you; for example, an HTML host rendering
+   * an `<img>` element should not apply the `img` role.
    */
-  srcSet: ImageProps$1['srcSet'];
+  accessibilityRole: Required<ImageProps$1>['accessibilityRole'];
   /**
-   * The sizes of the image at different viewport widths. Use this with `srcSet` to tell the browser which image to load (for example, `'(max-width: 320px) 280px, 640px'`).
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will take up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
+   *
+   * Learn more about the [width attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
+   *
+   * @default 'fill'
    */
-  sizes: ImageProps$1['sizes'];
+  inlineSize: Required<ImageProps$1>['inlineSize'];
   /**
-   * Alternative text that describes the image for screen readers. This text should convey the meaning or content of the image to users who can't see it.
+   * The aspect ratio of the image.
+   *
+   * The rendering of the image will depend on the `inlineSize` value:
+   *
+   * - `inlineSize="fill"`: the aspect ratio will be respected and the image will take the necessary space.
+   * - `inlineSize="auto"`: the image will not render until it has loaded and the aspect ratio will be ignored.
+   *
+   * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
+   * If the value is set as `0.5`, the getter returns `0.5 / 1`.
+   *
+   * Learn more about the [aspect-ratio property](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).
+   *
+   * @default '1/1'
    */
-  alt: ImageProps$1['alt'];
+  aspectRatio: Required<ImageProps$1>['aspectRatio'];
   /**
-   * The aspect ratio of the image as a width-to-height ratio (for example, `'16/9'` or `'1'`). This helps prevent layout shifts while the image loads.
+   * The image resizing behavior to fit within its container.
+   *
+   * - `contain`: Scales the image to fit within the container while maintaining its aspect ratio. The entire image is visible, but might leave empty space.
+   * - `cover`: Scales the image to fill the entire container while maintaining its aspect ratio. The image might be cropped to fit.
+   *
+   * The image is always positioned in the center of the container.
+   *
+   * Learn more about the [object-fit property](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+   *
+   * @default 'contain'
    */
-  aspectRatio: ImageProps$1['aspectRatio'];
-  /**
-   * How the image should be resized to fit its container. Choose `'cover'` to fill the container while maintaining aspect ratio (cropping if needed), or `'contain'` to fit the entire image within the container.
-   */
-  objectFit: ImageProps$1['objectFit'];
-  /**
-   * When the image should be loaded. Use `'lazy'` to defer loading until the image is near the viewport, or `'eager'` to load immediately.
-   */
-  loading: ImageProps$1['loading'];
-  /**
-   * The accessibility role for the image. Set this to provide semantic meaning for screen readers.
-   */
-  accessibilityRole: ImageProps$1['accessibilityRole'];
-  /**
-   * The inline size (width in horizontal writing modes) of the image. You can use size units like `'100px'` or `'50%'`.
-   */
-  inlineSize: ImageProps$1['inlineSize'];
-  /**
-   * Whether to show a border around the image. Set to `true` to display a border, or `false` to hide it.
-   */
-  border: BoxProps['border'];
-  /**
-   * The width of the border around the image. You can use a single value to apply the same width to all sides, or use the 1-to-4-value syntax to control individual sides.
-   */
-  borderWidth: BoxProps['borderWidth'];
-  /**
-   * The style of the border around the image. You can use a single value to apply the same style to all sides, or use the 1-to-4-value syntax to control individual sides.
-   */
-  borderStyle: BoxProps['borderStyle'];
-  /**
-   * The color of the border around the image. Choose from `'subdued'`, `'base'`, or `'strong'` to control the visual emphasis.
-   */
-  borderColor: BoxProps['borderColor'];
-  /**
-   * The radius of the border corners around the image. You can use a single value to apply the same radius to all corners, or use the 1-to-4-value syntax to control individual corners.
-   */
-  borderRadius: BoxProps['borderRadius'];
+  objectFit: Required<ImageProps$1>['objectFit'];
 }
 
-/**
- * A string containing CSS styles for a custom element.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The optional CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
-};
-/**
- * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta key (Command on Mac, Windows key on Windows) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
-}
-/**
- * The options for triggering a synthetic click event.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * The base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of `HTMLElement` to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-/**
- * An abstract base class for creating custom elements that render with Preact.
- */
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queues a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to `@property` values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in a background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * An image displays pictures with configurable sizing, loading behavior, and borders.
+ * Configure the following properties on the image component.
+ * @publicDocs
  */
-declare class Image extends PreactCustomElement implements ImageProps {
+declare class Image extends PolarisCustomElement implements ImageProps {
   /**
-   * The URL of the image to display.
+   * The image source (either a remote URL or a local file resource).
+   *
+   * When the image is loading or no `src` is provided, a placeholder is rendered.
    */
   accessor src: ImageProps['src'];
   /**
-   * A set of source images with different sizes for responsive loading.
+   * A set of image sources and their width or pixel density descriptors. This overrides the `src` property.
+   *
+   * Learn more about the [srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset).
    */
   accessor srcSet: ImageProps['srcSet'];
   /**
-   * The sizes of the image at different viewport widths.
+   * A set of media conditions and their corresponding sizes.
+   *
+   * Learn more about the [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
    */
   accessor sizes: ImageProps['sizes'];
   /**
-   * Alternative text that describes the image for screen readers.
+   * Alternative text that describes the image for accessibility.
+   *
+   * Provides a text description of the image for users with assistive technology and serves as a fallback when the image fails to load. A well-written description enables people with visual impairments to understand non-text content.
+   *
+   * When a screen reader encounters an image, it reads this description aloud. When an image fails to load, this text displays on screen, helping all users understand what content was intended.
+   *
+   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4) and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
    */
   accessor alt: ImageProps['alt'];
-  /**
-   * The aspect ratio of the image as a width-to-height ratio.
-   */
   accessor aspectRatio: ImageProps['aspectRatio'];
-  /**
-   * How the image should be resized to fit its container.
-   */
   accessor objectFit: ImageProps['objectFit'];
-  /**
-   * When the image should be loaded.
-   */
   accessor loading: ImageProps['loading'];
-  /**
-   * The accessibility role for the image.
-   */
   accessor accessibilityRole: ImageProps['accessibilityRole'];
-  /**
-   * The inline size (width in horizontal writing modes) of the image.
-   */
   accessor inlineSize: ImageProps['inlineSize'];
   /**
-   * Whether to show a border around the image.
+   * A border applied around the image using shorthand syntax to specify width, color, and style in a single property.
    */
   accessor border: ImageProps['border'];
   /**
-   * The width of the border around the image.
+   * The thickness of the border around the image. When set, this overrides the width value specified in the `border` property.
    */
   accessor borderWidth: ImageProps['borderWidth'];
   /**
-   * The style of the border around the image.
+   * The visual style of the border around the image, such as solid, dashed, or dotted. When set, this overrides the style value specified in the `border` property.
    */
   accessor borderStyle: ImageProps['borderStyle'];
   /**
-   * The color of the border around the image.
+   * The color of the border around the image using the design system's color scale. When set, this overrides the color value specified in the `border` property.
    */
   accessor borderColor: ImageProps['borderColor'];
   /**
-   * The radius of the border corners around the image.
+   * The roundedness of the image's corners using the design system's radius scale.
    */
   accessor borderRadius: ImageProps['borderRadius'];
-  /**
-   * A callback that's fired when the image has loaded successfully.
-   */
   accessor onload: CallbackEventListener<typeof tagName> | null;
-  /**
-   * A callback that's fired when the image fails to load.
-   */
   accessor onerror: OnErrorEventHandler;
   constructor();
 }
@@ -603,19 +577,15 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-image';
-/**
- * The properties for the image component when it's used in JSX.
- * @publicDocs
- */
 export interface ImageJSXProps
   extends Partial<ImageProps>,
     Pick<ImageProps$1, 'id'> {
   /**
-   * A callback that's fired when the image fails to load.
+   * A callback fired when the image fails to load.
    */
   onError?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's fired when the image has loaded successfully.
+   * A callback fired when the image loads successfully.
    */
   onLoad?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

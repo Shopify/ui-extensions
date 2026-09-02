@@ -1,16 +1,26 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {DatePickerProps$1, ComponentChildren} from './shared.d.ts';
+import type {
+  DatePickerProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * The properties for the date picker component. These properties configure a standalone calendar interface for selecting single dates or date ranges, with support for date constraints, day-of-week restrictions, and month/year navigation.
- * @publicDocs
+ * Configure the following properties on the date picker component.
  */
 export interface DatePickerProps
   extends Required<
@@ -36,231 +46,227 @@ export interface DatePickerProps
    * @default "single"
    */
   type: Extract<DatePickerProps$1['type'], 'single' | 'range'>;
+  /**
+   * The currently selected date(s). An empty string means no date is selected.
+   *
+   * - Single date in `YYYY-MM-DD` format when `type` is set to `"single"`
+   * - Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive) when `type` is set to `"range"`
+   *
+   * @default ""
+   */
+  value: Required<DatePickerProps$1>['value'];
+  /**
+   * The initially selected date(s) when the component first renders. An empty string means no date is initially selected.
+   *
+   * - Single date in `YYYY-MM-DD` format when `type` is set to `"single"`
+   * - Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive) when `type` is set to `"range"`
+   *
+   * @default ""
+   */
+  defaultValue: Required<DatePickerProps$1>['defaultValue'];
+  /**
+   * Specifies which dates can be selected as a comma-separated list. An empty string (default) allows all dates.
+   *
+   * **Formats:**
+   * - `YYYY-MM-DD`: Single date
+   * - `YYYY-MM`: Whole month
+   * - `YYYY`: Whole year
+   * - `start--end`: Date range (inclusive, unbounded if start/end omitted)
+   *
+   * **Examples:**
+   * - `2024-02--2025`: February 2024 through end of 2025
+   * - `2024-05-09, 2024-05-11`: Only May 9th and 11th, 2024
+   *
+   * @default ""
+   */
+  allow: Required<DatePickerProps$1>['allow'];
+  /**
+   * Specifies which days of the week can be selected as a comma-separated list. Further restricts dates from `allow` and `disallow`. An empty string (default) has no effect.
+   *
+   * **Valid days**: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`
+   *
+   * **Example:** `saturday, sunday` (only weekends)
+   *
+   * @default ""
+   */
+  allowDays: Required<DatePickerProps$1>['allowDays'];
+  /**
+   * Specifies which dates can't be selected as a comma-separated list. These dates are excluded from those specified in `allow`. An empty string (default) has no effect.
+   *
+   * **Formats:**
+   * - `YYYY-MM-DD`: Single date
+   * - `YYYY-MM`: Whole month
+   * - `YYYY`: Whole year
+   * - `start--end`: Date range (inclusive, unbounded if start/end omitted)
+   *
+   * **Examples:**
+   * - `--2024-02`: All dates before February 2024
+   * - `2024-05-09, 2024-05-11`: May 9th and 11th, 2024
+   *
+   * @default ""
+   */
+  disallow: Required<DatePickerProps$1>['disallow'];
+  /**
+   * Specifies which days of the week can't be selected as a comma-separated list. Excludes days from `allowDays` and intersects with `allow` and `disallow`. An empty string (default) has no effect.
+   *
+   * **Valid days**: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`
+   *
+   * **Example:** `saturday, sunday` (no weekends)
+   *
+   * @default ""
+   */
+  disallowDays: Required<DatePickerProps$1>['disallowDays'];
+  /**
+   * The currently displayed month in `YYYY-MM` format. When changed, the `viewchange` callback is triggered. Defaults to `defaultView`.
+   */
+  view: Required<DatePickerProps$1>['view'];
+  /**
+   * The default month to display in `YYYY-MM` format. Used until the `view` callback is set by user interaction or programmatically. Defaults to the current month in the user's locale.
+   */
+  defaultView: Required<DatePickerProps$1>['defaultView'];
+  /**
+   * Controls how many months are displayed.
+   *
+   * - `'auto'`: Context-driven. Today this renders a single month, matching `'1'`.
+   * - `'1'`: Renders one month at a time.
+   * - `'2'`: Renders two consecutive months side-by-side.
+   *
+   * @default 'auto'
+   */
+  visibleMonths: 'auto' | '1' | '2';
+}
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
 }
 
 /**
- * An event object with a strongly-typed currentTarget property that references the specific HTML element type.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The DOM element that the event listener is attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener function or null that receives a typed callback event.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
   | (EventListener & {
-      /**
-       * The callback function that's invoked when the event fires.
-       */
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. * @publicDocs
+/**
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
-/**
- * A string containing CSS styles to be applied to the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a custom element with a shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * A function that renders the component's shadow DOM content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The CSS styles to apply to the component.
-   */
-  styles?: Styles;
-};
-/**
- * An object containing information about keyboard and mouse button states during an activation event.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta (Command on Mac, Windows key on PC) key was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the event.
-   */
-  button: number;
-}
-/**
- * The options for programmatically triggering a click event on an element.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass$1: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass$1 {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare const internals: unique symbol;
 declare const dirtyStateSymbol: unique symbol;
-/**
- * The base class for form-associated components that can participate in form submission.
- */
-declare class BaseClass extends PreactCustomElement {
-  /**
-   * Whether this element can participate in form submission.
-   */
+declare abstract class DatePickerBase<
+    TagName extends 's-date-picker' | 's-internal-date-picker',
+  >
+  extends PolarisCustomElement
+  implements DatePickerProps
+{
   static formAssociated: boolean;
   constructor(renderImpl: RenderImpl);
   /** @private */
   [internals]: ElementInternals;
-}
-/**
- * The date picker custom element class that renders a standalone calendar interface in the Shopify admin. This component allows merchants to select single dates or date ranges using an interactive calendar with month/year navigation, date constraints, and day-of-week restrictions.
- */
-declare class DatePicker extends BaseClass implements DatePickerProps {
-  /**
-   * The initial month and year shown when the calendar first renders, formatted as an ISO 8601 date string.
-   */
   accessor defaultView: string;
-  /**
-   * The currently visible month and year in the calendar, formatted as an ISO 8601 date string.
-   */
   set view(view: string);
-  /**
-   * The currently visible month and year in the calendar, formatted as an ISO 8601 date string.
-   */
   get view(): string;
-  /**
-   * The dates that are allowed to be selected, specified as ISO 8601 date strings or date ranges.
-   */
   accessor allow: DatePickerProps['allow'];
-  /**
-   * The dates that aren't allowed to be selected, specified as ISO 8601 date strings or date ranges.
-   */
   accessor disallow: DatePickerProps['disallow'];
-  /**
-   * The days of the week that are allowed to be selected. Available values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
-   */
   accessor allowDays: DatePickerProps['allowDays'];
-  /**
-   * The days of the week that aren't allowed to be selected. Available values: `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`, `sunday`.
-   */
   accessor disallowDays: DatePickerProps['disallowDays'];
-  /**
-   * The type of date selection allowed. Available values: `single`, `range`.
-   */
   accessor type: DatePickerProps['type'];
-  /**
-   * The initial selected date or date range when the picker first renders, formatted as an ISO 8601 date string.
-   */
   accessor defaultValue: DatePickerProps['defaultValue'];
-  /**
-   * The name of the picker, used when submitting form data.
-   */
   accessor name: DatePickerProps['name'];
-  /**
-   * The currently selected date or date range, formatted as an ISO 8601 date string.
-   */
+  accessor visibleMonths: DatePickerProps['visibleMonths'];
   set value(value: string);
-  /**
-   * The currently selected date or date range, formatted as an ISO 8601 date string.
-   */
   get value(): string;
   /** @private */
   [dirtyStateSymbol]: boolean;
   /** @private */
   formResetCallback(): void;
-  /**
-   * The callback that's triggered when the visible month or year in the calendar changes.
-   */
-  accessor onviewchange: CallbackEventListener<typeof tagName> | null;
-  /**
-   * The callback that's triggered when the picker receives focus.
-   */
-  accessor onfocus: CallbackEventListener<typeof tagName> | null;
-  /**
-   * The callback that's triggered when the picker loses focus.
-   */
-  accessor onblur: CallbackEventListener<typeof tagName> | null;
-  /**
-   * The callback that's triggered when the selected date changes as the user interacts with the picker.
-   */
-  accessor oninput: CallbackEventListener<typeof tagName> | null;
-  /**
-   * The callback that's triggered when the selected date changes and the picker loses focus.
-   */
-  accessor onchange: CallbackEventListener<typeof tagName> | null;
+  accessor onviewchange: CallbackEventListener<TagName> | null;
+  accessor onfocus: CallbackEventListener<TagName> | null;
+  accessor onblur: CallbackEventListener<TagName> | null;
+  accessor oninput: CallbackEventListener<TagName> | null;
+  accessor onchange: CallbackEventListener<TagName> | null;
+}
+
+/**
+ * Configure the following properties on the date picker component.
+ * @publicDocs
+ */
+declare class DatePicker
+  extends DatePickerBase<typeof tagName>
+  implements DatePickerProps
+{
   constructor();
 }
 declare global {
@@ -277,31 +283,27 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-date-picker';
-/**
- * The JSX props for the date picker component. These properties extend `DatePickerProps` with JSX-specific event callbacks for React-style event handling when used in Preact, including callbacks for date selection, focus events, and view changes.
- * @publicDocs
- */
 export interface DatePickerJSXProps
   extends Partial<DatePickerProps>,
     Pick<DatePickerProps$1, 'id'> {
   /**
-   * A callback that's triggered when the visible month or year in the calendar changes.
+   * A callback fired when the calendar view changes, such as when navigating between months.
    */
   onViewChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's triggered when the picker receives focus.
+   * A callback fired when the date picker receives focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's triggered when the picker loses focus.
+   * A callback fired when the date picker loses focus.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's triggered when the selected date changes as the user interacts with the picker.
+   * A callback fired when the user makes any changes to the selected date.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's triggered when the selected date changes and the picker loses focus.
+   * A callback fired when the user has finished selecting a date and the value changes.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

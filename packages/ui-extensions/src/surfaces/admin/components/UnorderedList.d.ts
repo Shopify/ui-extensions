@@ -1,150 +1,109 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
-
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, UnorderedListProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  UnorderedListProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
 
 /**
- * The properties for the unordered list component. These properties define a bulleted list of items where the order doesn't matter.
- * @publicDocs
- * @publicDocs
+ * Configure the following properties on the unordered list component.
  */
 export interface UnorderedListProps extends UnorderedListProps$1 {}
 
-/**
- * A string containing CSS styles.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with a shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the component's shadow DOM content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * Optional CSS styles to apply to the shadow DOM.
-   */
-  styles?: Styles;
-};
-/**
- * An object that represents the state of modifier keys and mouse button
- * during an activation event like a click.
- * @publicDocs
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta (Command on Mac, Windows key on PC) key was pressed.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
-}
-/**
- * Options for customizing click behavior on an element.
- * @publicDocs
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
- * @publicDocs
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
- * @publicDocs
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
 /**
- * A custom element for displaying a bulleted list of items where the order doesn't matter. Use unordered list when you have a collection of related items without a specific sequence, such as features, options, or bullet points.
+ * Configure the following properties on the unordered list component.
+ * @publicDocs
  */
 declare class UnorderedList
-  extends PreactCustomElement
+  extends PolarisCustomElement
   implements UnorderedListProps
 {
   constructor();
@@ -164,16 +123,11 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-unordered-list';
-/**
- * The JSX properties for the unordered list component. These properties define how an unordered list is rendered in Preact or JSX.
- * @publicDocs
- * @publicDocs
- */
 export interface UnorderedListJSXProps
   extends Partial<UnorderedListProps>,
     Pick<UnorderedListProps$1, 'id'> {
   /**
-   * The items in the unordered list. Only list item components are accepted.
+   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
    */
   children?: ComponentChildren;
 }

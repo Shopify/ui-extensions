@@ -1,24 +1,81 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-
+/* eslint-disable line-comment-position */
+/* eslint-disable @typescript-eslint/unified-signatures */
+/* eslint-disable no-var */
+/* eslint-disable import/no-deprecated */
+/* eslint-disable import/namespace */
+/* eslint-disable import/no-deprecated */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {IconProps$1, IconType, ComponentChildren} from './shared.d.ts';
+import type {
+  IconProps$1,
+  IconType,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
+/**
+ * Configure the following properties on the icon component.
+ */
 export interface IconProps
-  extends Pick<
-    IconProps$1,
-    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  extends Required<
+    Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size' | 'interestFor'>
   > {
   /**
-   * The type of icon that will be displayed. You can specify an icon name from the available icon set, or use an empty string to show no icon.
+   * The icon to display from the icon library.
+   *
+   * Set to a valid icon name to display that icon. To hide the icon completely,
+   * use an empty string `''`. To reserve the icon's space without displaying an icon,
+   * use `'empty'`.
    */
   type: '' | IconType | 'empty';
   /**
-   * The color tone of the icon based on its semantic meaning. Choose from `'auto'` to let the icon inherit its context, `'neutral'` for standard icons, `'info'` for informational content, `'success'` for positive actions, `'caution'` or `'warning'` for warnings, or `'critical'` for errors.
+   * The semantic meaning and color treatment of the component.
+   *
+   * - `info`: Informational content or helpful tips.
+   * - `success`: Positive outcomes or successful states.
+   * - `warning`: Important warnings about potential issues.
+   * - `critical`: Urgent problems or destructive actions.
+   * - `auto`: Automatically determined based on context.
+   * - `neutral`: General information without specific intent.
+   * - `caution`: Advisory notices that need attention.
    *
    * @default 'auto'
    */
@@ -27,159 +84,73 @@ export interface IconProps
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
   /**
-   * The color emphasis of the icon. Use `'base'` for the standard color intensity, or `'subdued'` for a lighter, less prominent appearance.
+   * The color emphasis level that controls visual intensity.
+   *
+   * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+   * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
    *
    * @default 'base'
    */
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   /**
-   * The size of the icon. Use `'small'` for compact layouts, or `'base'` for standard sizing.
+   * The size of the icon.
    *
-   * @default 'base'
+   * - `small`: Smaller icon suitable for inline use within text or compact UI elements.
+   * - `base`: Default size that works well for standalone icons and standard use cases.
    */
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
 
-/**
- * A string containing CSS styles for the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the component's shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * Optional CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
-};
-/**
- * The properties of an activation event, such as a click or keypress. These properties capture which modifier keys were pressed and which mouse button was used during the event.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during activation.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta key (Command on Mac, Windows key on Windows) was pressed during activation.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during activation.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during activation.
-   */
-  button: number;
-}
-/**
- * The options for customizing synthetic click behavior.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * The base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of `HTMLElement` to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-/**
- * An abstract base class for creating custom elements that render with Preact.
- */
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queues a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to `@property` values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in a background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
+}
+
+declare abstract class IconBase
+  extends PolarisCustomElement
+  implements Pick<IconProps, 'color' | 'size' | 'interestFor'>
+{
+  accessor color: IconProps['color'];
+  accessor size: IconProps['size'];
+  accessor interestFor: IconProps['interestFor'];
+  abstract tone: string;
+  abstract type: string;
+  constructor(renderImpl: RenderImpl);
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
 /**
- * An icon displays a graphical symbol from the icon library.
+ * Configure the following properties on the icon component.
+ * @publicDocs
  */
-declare class Icon extends PreactCustomElement implements IconProps {
-  /**
-   * The color emphasis of the icon.
-   */
-  accessor color: IconProps['color'];
-  /**
-   * The color tone of the icon based on its semantic meaning.
-   */
+declare class Icon extends IconBase implements IconProps {
   accessor tone: IconProps['tone'];
-  /**
-   * The type of icon to display.
-   */
   accessor type: IconProps['type'];
-  /**
-   * The size of the icon.
-   */
-  accessor size: IconProps['size'];
-  /**
-   * The element that this icon should show interest for when activated.
-   */
-  accessor interestFor: string;
   constructor();
 }
 declare global {
@@ -196,10 +167,6 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-icon';
-/**
- * The properties for the icon component when it's used in JSX.
- * @publicDocs
- */
 export interface IconJSXProps
   extends Partial<IconProps>,
     Pick<IconProps$1, 'id'> {}
