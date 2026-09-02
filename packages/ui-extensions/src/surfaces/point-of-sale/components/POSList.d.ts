@@ -123,6 +123,12 @@ export type POSListRow = {
   id: string;
   /** The primary content displayed at the start of the row. */
   start: POSListRowStart;
+  /**
+   * Whether the row responds to activation when the list provides `onClick`.
+   *
+   * @default true
+   */
+  clickable?: boolean;
   /** Optional content displayed at the end of the row. */
   end?: POSListRowEnd;
 };
@@ -150,7 +156,7 @@ export interface POSListJSXProps {
   /**
    * Event handler invoked when a row is activated.
    *
-   * When provided, every row is interactive. The activated row is identified by `event.detail.rowId`.
+   * When provided, every row with `clickable` unset or `true` is interactive. The activated row is identified by `event.detail.rowId`.
    */
   onClick?: ((event: POSListClickEvent) => void) | null;
   /**
