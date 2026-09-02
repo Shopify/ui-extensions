@@ -2427,7 +2427,7 @@
           "syntaxKind": "GetAccessor",
           "name": "value",
           "value": "string",
-          "description": "The value used in form data when the checkbox is checked."
+          "description": "The value used in form data when the control is checked."
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
@@ -2463,7 +2463,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "label",
           "value": "string",
-          "description": "The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state."
+          "description": "The text label displayed next to the control that describes what it does. Clicking the label will also toggle the control state."
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
@@ -2665,7 +2665,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "defaultValue": "false"
         },
         {
@@ -2681,7 +2681,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\"."
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\"."
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
@@ -6549,14 +6549,14 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "value",
           "value": "string",
-          "description": "The value submitted with the form when this checkbox is checked. If not specified, the default value is \"on\"."
+          "description": "The value submitted with the form when this control is selected. If not specified, the default value is \"on\"."
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.",
+          "description": "Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.",
           "defaultValue": "false"
         },
         {
@@ -8120,7 +8120,7 @@
           "syntaxKind": "GetAccessor",
           "name": "value",
           "value": "string",
-          "description": "The value used in form data when the checkbox is checked."
+          "description": "The value used in form data when the control is checked."
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
@@ -8156,7 +8156,7 @@
           "syntaxKind": "PropertyDeclaration",
           "name": "label",
           "value": "string",
-          "description": "The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state."
+          "description": "The text label displayed next to the control that describes what it does. Clicking the label will also toggle the control state."
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
