@@ -128,7 +128,7 @@ export type POSListRow = {
    *
    * When provided, the row is interactive.
    */
-  onClick?: () => void;
+  onClick?: (event: CallbackEvent<typeof tagName>) => void;
   /** Optional content displayed at the end of the row. */
   end?: POSListRowEnd;
 };

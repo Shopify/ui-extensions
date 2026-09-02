@@ -5010,7 +5010,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRow",
-      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Callback invoked when the row is activated.\n   *\n   * When provided, the row is interactive.\n   */\n  onClick?: () => void;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
+      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Callback invoked when the row is activated.\n   *\n   * When provided, the row is interactive.\n   */\n  onClick?: (event: CallbackEvent<typeof posListTagName>) => void;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
       "description": "",
       "members": [
         {
@@ -5032,7 +5032,7 @@
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "onClick",
-          "value": "() => void",
+          "value": "(event: CallbackEvent<\"s-pos-list\">) => void",
           "description": "Callback invoked when the row is activated.\n\nWhen provided, the row is interactive.",
           "isOptional": true
         },
