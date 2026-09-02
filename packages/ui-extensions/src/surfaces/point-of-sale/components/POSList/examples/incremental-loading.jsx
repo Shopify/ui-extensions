@@ -1,5 +1,8 @@
 <s-pos-list
   rows={products}
   loadingMore={loadingMore}
-  onLoadMore={() => loadMoreProducts()}
+  onLoadMore={(event) => {
+    console.log('Load more requested', event);
+    void loadMoreProducts();
+  }}
 />;
