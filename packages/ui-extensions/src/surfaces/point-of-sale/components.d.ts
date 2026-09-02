@@ -5497,20 +5497,13 @@ type POSListRow = {
   /** The primary content displayed at the start of the row. */
   start: POSListRowStart;
   /**
-   * Whether the row responds to activation when the list provides `onClick`.
+   * Callback invoked when the row is activated.
    *
-   * @default true
+   * When provided, the row is interactive.
    */
-  clickable?: boolean;
+  onClick?: () => void;
   /** Optional content displayed at the end of the row. */
   end?: POSListRowEnd;
-};
-type POSListClickEvent = CallbackEvent<typeof posListTagName> & {
-  /** Details about the activated row. */
-  detail: {
-    /** The unique identifier of the activated row. */
-    rowId: string;
-  };
 };
 /**
  * Displays structured rows with text, badges, images, and optional trailing content.
@@ -5526,12 +5519,6 @@ interface POSListJSXProps {
    * @default []
    */
   rows?: POSListRow[];
-  /**
-   * Event handler invoked when a row is activated.
-   *
-   * When provided, every row with `clickable` unset or `true` is interactive. The activated row is identified by `event.detail.rowId`.
-   */
-  onClick?: ((event: POSListClickEvent) => void) | null;
   /**
    * Controls whether rows reserve space for images.
    *
@@ -5615,12 +5602,6 @@ export type {
  * @publicDocs
  */
 interface POSListEvents {
-  /**
-   * Fired when a row is activated.
-   *
-   * The activated row is identified by `event.detail.rowId`.
-   */
-  click?: (event: POSListClickEvent) => void;
   /** Fired when more rows should be loaded. */
   loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;
 }

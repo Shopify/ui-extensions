@@ -4616,14 +4616,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "onClick",
-          "value": "((event: POSListClickEvent) => void) | null",
-          "description": "Event handler invoked when a row is activated.\n\nWhen provided, every row with `clickable` unset or `true` is interactive. The activated row is identified by `event.detail.rowId`.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
           "name": "onLoadMore",
           "value": "((event: CallbackEvent<typeof posListTagName>) => void) | null",
           "description": "Callback when more rows should be loaded.",
@@ -4639,7 +4631,7 @@
           "defaultValue": "[]"
         }
       ],
-      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list.\n   *\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * Event handler invoked when a row is activated.\n   *\n   * When provided, every row with `clickable` unset or `true` is interactive. The activated row is identified by `event.detail.rowId`.\n   */\n  onClick?: ((event: POSListClickEvent) => void) | null;\n  /**\n   * Controls whether rows reserve space for images.\n   *\n   * - `auto`: Displays images or placeholders when a row includes an image source.\n   * - `always`: Displays images or placeholders for every row.\n   * - `never`: Displays rows without images or image placeholders.\n   *\n   * @default 'auto'\n   */\n  imageDisplayStrategy?: POSListImageDisplayStrategy;\n  /**\n   * Whether additional rows are being loaded.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /** Callback when more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
+      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list.\n   *\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * Controls whether rows reserve space for images.\n   *\n   * - `auto`: Displays images or placeholders when a row includes an image source.\n   * - `always`: Displays images or placeholders for every row.\n   * - `never`: Displays rows without images or image placeholders.\n   *\n   * @default 'auto'\n   */\n  imageDisplayStrategy?: POSListImageDisplayStrategy;\n  /**\n   * Whether additional rows are being loaded.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /** Callback when more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
     }
   },
   "ComponentChild": {
@@ -4950,15 +4942,6 @@
       "description": ""
     }
   },
-  "POSListClickEvent": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "POSListClickEvent",
-      "value": "CallbackEvent<typeof posListTagName> & {\n  /** Details about the activated row. */\n  detail: {\n    /** The unique identifier of the activated row. */\n    rowId: string;\n  };\n}",
-      "description": ""
-    }
-  },
   "CallbackEvent": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -5027,18 +5010,9 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRow",
-      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Whether the row responds to activation when the list provides `onClick`.\n   *\n   * @default true\n   */\n  clickable?: boolean;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
+      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Callback invoked when the row is activated.\n   *\n   * When provided, the row is interactive.\n   */\n  onClick?: () => void;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
       "description": "",
       "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "clickable",
-          "value": "boolean",
-          "description": "Whether the row responds to activation when the list provides `onClick`.",
-          "isOptional": true,
-          "defaultValue": "true"
-        },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
@@ -5053,6 +5027,14 @@
           "name": "id",
           "value": "string",
           "description": "A unique identifier for the row."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onClick",
+          "value": "() => void",
+          "description": "Callback invoked when the row is activated.\n\nWhen provided, the row is interactive.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -5253,21 +5235,13 @@
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "click",
-          "value": "(event: POSListClickEvent) => void",
-          "description": "Fired when a row is activated.\n\nThe activated row is identified by `event.detail.rowId`.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
           "name": "loadmore",
           "value": "(event: CallbackEvent<\"s-pos-list\">) => void",
           "description": "Fired when more rows should be loaded.",
           "isOptional": true
         }
       ],
-      "value": "interface POSListEvents {\n  /**\n   * Fired when a row is activated.\n   *\n   * The activated row is identified by `event.detail.rowId`.\n   */\n  click?: (event: POSListClickEvent) => void;\n  /** Fired when more rows should be loaded. */\n  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;\n}"
+      "value": "interface POSListEvents {\n  /** Fired when more rows should be loaded. */\n  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;\n}"
     }
   },
   "POSListSlots": {

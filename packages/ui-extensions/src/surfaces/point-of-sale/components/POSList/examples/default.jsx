@@ -12,6 +12,7 @@
         badges: [{text: 'Sale', tone: 'highlight'}],
       },
       end: {label: '$29.00', showChevron: true},
+      onClick: () => console.log('Selected row: graphic-tee'),
     },
     {
       id: 'canvas-tote',
@@ -20,9 +21,9 @@
         subtitles: ['Natural'],
       },
       end: {label: '$18.00', showChevron: true},
+      onClick: () => console.log('Selected row: canvas-tote'),
     },
   ]}
-  onClick={(event) => console.log('Selected row:', event.detail.rowId)}
 >
   <s-heading slot="header">Products</s-heading>
 </s-pos-list>;
