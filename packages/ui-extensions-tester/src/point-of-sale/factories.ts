@@ -224,6 +224,7 @@ function createMockCartApi(): CartApi {
       removeCustomer: async () => {},
       addCustomSale: async () => '',
       addLineItem: async () => '',
+      updateLineItemQuantity: async () => {},
       removeLineItem: async () => {},
       addCartProperties: async () => {},
       removeCartProperties: async () => {},

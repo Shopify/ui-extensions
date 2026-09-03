@@ -49,9 +49,27 @@ extension.shopify.storage = createStorage({
 });
 ```
 
-## 🔒 Mocking mutation return values
+## 🔒 Mocking cart mutations
 
-Replace mutation functions with `vi.fn()` and use `createResult()` to build typed return values. The first argument is the mutation name; the second is an optional result override.
+The target API mock includes asynchronous stubs for Cart API mutations, including `updateLineItemQuantity`. Replace a stub with a spy when you need to verify a call:
+
+```ts
+const updateLineItemQuantity = vi.spyOn(
+  extension.shopify.cart,
+  'updateLineItemQuantity',
+);
+
+await extension.shopify.cart.updateLineItemQuantity(
+  'line-item-uuid',
+  2,
+);
+
+expect(
+  updateLineItemQuantity,
+).toHaveBeenCalledWith('line-item-uuid', 2);
+```
+
+For mutations that return data, replace the function with `vi.fn()` and use `createResult()` to build typed return values. The first argument is the mutation name; the second is an optional result override.
 
 ```ts
 import {
