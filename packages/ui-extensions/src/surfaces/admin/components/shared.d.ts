@@ -1,25 +1,22 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
 /* eslint-disable @typescript-eslint/member-ordering */
 
 /**
- * TODO: Update `any` type here after this is resolved
- * https://github.com/Shopify/ui-api-design/issues/139
+ * Represents any valid children that can be rendered within a component, including elements, strings, numbers, or arrays of these types. This is an alias for Preact's `ComponentChildren` type.
  * @publicDocs
  */
 export type ComponentChildren = preact.ComponentChildren;
 /**
+ * Represents string-only children for components that specifically require text content.
  * @publicDocs
  */
 export type StringChildren = string;
-/**
- * @publicDocs
- */
 export interface GlobalProps {
   /**
-   * A unique identifier for the element.
+   * A unique identifier for the element. Use this to reference the element in JavaScript, link labels to form controls, or target specific elements for styling or scripting.
    */
   id?: string;
 }
@@ -28,27 +25,28 @@ export interface GlobalProps {
  */
 export interface ActionProps {
   /**
-   * The text to use as the Action modal’s title. If not provided, the name of the extension will be used.
+   * The text to use as the action modal's title. If not provided, the name of the extension will be used.
    */
   heading?: string;
 }
 /**
+ * The action component supports slots for additional content placement within the component. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 export interface ActionSlots {
   /**
-   * The primary action element, typically a button or link component representing the main call-to-action.
+   * The primary action button or link, representing the main or most important action available in this context. Typically displayed with higher visual prominence than secondary actions to establish clear hierarchy.
    */
   primaryAction?: ComponentChildren;
   /**
-   * The secondary action elements, typically button or link components representing alternative or supporting actions.
+   * Additional action buttons or links that provide alternative or supporting actions. Visually de-emphasized compared to the primary action.
    */
   secondaryActions?: ComponentChildren;
 }
 interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
   /**
-   * Whether the action is in a loading state, such as during initial page load or when the action is being opened.
-   * When `true`, the action might be in an inert state that prevents user interaction.
+   * Whether the action is in a loading state, such as initial page load or action opening.
+   * When true, the action could be in an inert state, which prevents user interaction.
    *
    * @default false
    */
@@ -56,21 +54,30 @@ interface AdminActionProps$1 extends GlobalProps, ActionProps, ActionSlots {
 }
 interface AdminBlockProps$1 extends GlobalProps {
   /**
-   * The text displayed as the block's title in the header. If not provided, the extension name will be used.
+   * The text to use as the Block title in the block header. If not provided, the name of the
+   * extension will be used.
    */
   heading?: string;
   /**
-   * The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated.
+   * The summary to display when the app block is collapsed.
+   * Summary longer than 30 characters will be truncated.
    */
   collapsedSummary?: string;
 }
 interface AdminPrintActionProps$1 extends GlobalProps {
   /**
-   * The source URL of the preview and the document to print.
+   * Sets the src URL of the preview and the document to print.
    * If not provided, the preview will show an empty state and the print button will be disabled.
-   * HTML, PDFs, and images are supported.
+   * HTML, PDFs and images are supported.
    */
   src?: string;
+  /**
+   * Programmatically controls the loading state of the component.
+   * When true, displays a loading indicator. The component also shows loading automatically when fetching the preview.
+   *
+   * @default false
+   */
+  loading?: boolean;
 }
 interface AppNavProps$1 extends GlobalProps {
   /**
@@ -104,12 +111,9 @@ export interface BaseOverlayProps {
   onAfterHide?: (event: Event) => void;
 }
 /**
- * Shared interfaces for web component methods.
+ * Shared interface for web component methods that control overlay visibility.
  *
- * Methods are required (not optional) because:
- * - Components implementing this interface must provide all methods
- * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
- * - Consumers expect these methods to be consistently available on all instances
+ * All methods are required (not optional) because components implementing this interface must provide consistent JavaScript APIs. Unlike props/attributes, methods are not rendered in HTML and consumers expect them to be available on all component instances.
  * @publicDocs
  */
 export interface BaseOverlayMethods {
@@ -137,11 +141,15 @@ export interface BaseOverlayMethods {
  */
 export interface FocusEventProps {
   /**
-   * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+   * A callback fired when the component loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event
    */
   onBlur?: (event: FocusEvent) => void;
   /**
-   * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+   * A callback fired when the component receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event
    */
   onFocus?: (event: FocusEvent) => void;
 }
@@ -152,27 +160,34 @@ export interface ToggleEventProps {
   /**
    * A callback fired when the element state changes, after any toggle animations have finished.
    *
-   * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the
-   *   `newState` property will be set to `open`.
-   * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the
-   *   `newState` will be `closed`.
+   * - If the element transitioned from hidden to showing, the `oldState` property will be set to `closed` and the   `newState` property will be set to `open`.
+   * - If the element transitioned from showing to hidden, the `oldState` property will be set to `open` and the   `newState` will be `closed`.
    *
    * Learn more about [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState) and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
    */
   onAfterToggle?: (event: ToggleEvent$1) => void;
   /**
    * A callback fired immediately when the element state changes, before any animations.
    *
-   * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the
-   *   `newState` property will be set to `open`.
-   * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the
-   *   `newState` will be `closed`.
+   * - If the element is transitioning from hidden to showing, the `oldState` property will be set to `closed` and the   `newState` property will be set to `open`.
+   * - If the element is transitioning from showing to hidden, then `oldState` property will be set to `open` and the   `newState` will be `closed`.
    *
    * Learn more about the [toggle event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event), [ToggleEvent.newState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState), and [ToggleEvent.oldState](https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/toggle_event
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/newState
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/ToggleEvent/oldState
    */
   onToggle?: (event: ToggleEvent$1) => void;
 }
 /**
+ * Represents the visibility state of a toggleable element.
+ *
+ * - `open`: The element is visible or expanded.
+ * - `closed`: The element is hidden or collapsed.
  * @publicDocs
  */
 export type ToggleState = 'open' | 'closed';
@@ -185,28 +200,32 @@ interface ToggleEvent$1 extends Event {
  */
 export interface ExtendableEvent extends Event {
   /**
-   * A method that accepts a promise signaling the duration and eventual success or failure of actions relating to the event.
+   * A method that accepts a promise signaling the duration and eventual success or failure of event-related actions.
    *
-   * This might be called multiple times to add promises to the event.
-   *
-   * However, this might only be called synchronously during the dispatch of the event.
-   * As in, you cannot call it after a `setTimeout` or microtask.
+   * Can be called multiple times to add promises to the event, but must be called synchronously during event dispatch. Cannot be called after a `setTimeout` or within a microtask.
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-/**
- * @publicDocs
- */
-export interface AggregateError<T extends Error> extends Error {
+interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
 /**
  * @publicDocs
  */
 export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
-  error: AggregateError<T>;
+  /**
+   * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.
+   */
+  error: AggregateError$1<T>;
 }
 /**
+ * Defines component sizes using a consistent scale from extra small to extra large.
+ *
+ * - `small-500` through `small-100`: Extra small to small sizes, progressively increasing.
+ * - `small`: Standard small size.
+ * - `base`: Default medium size that works well in most contexts.
+ * - `large`: Standard large size.
+ * - `large-100` through `large-500`: Large to extra large sizes, progressively increasing.
  * @publicDocs
  */
 export type SizeKeyword =
@@ -229,46 +248,41 @@ export type SizeKeyword =
  * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
  * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
  * - `strong`: Emphasized color for headings, key labels, and interactive elements that need prominence.
- *
  * @publicDocs
  */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
 interface AvatarProps$1 extends GlobalProps {
   /**
-   * The initials to display in the avatar when no image is provided or fails to load. Typically one or two characters representing a person's first and last name initials (e.g., "JD" for John Doe).
+   * Initials to display in the avatar.
    */
   initials?: string;
   /**
-   * The URL or path to the avatar image. When provided, the image takes priority over `initials`. If the image is not provided, fails to load, or loads slowly, `initials` will be rendered as a fallback.
+   * The URL or path to the image.
+   *
+   * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly
    */
   src?: string;
   /**
-   * A callback fired when the avatar image loads successfully. Learn more about the [load event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
   onLoad?: (event: Event) => void;
   /**
-   * A callback fired when the avatar image fails to load. Learn more about the [error event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
   onError?: (event: Event) => void;
   /**
-   * The size of the avatar. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default medium size that works well in most contexts.
+   * Size of the avatar.
    *
    * @default 'base'
    */
   size?: SizeKeyword;
   /**
-   * Alternative text that describes the avatar for accessibility.
-   *
-   * Provides a text description of the avatar for users with assistive technology
-   * and serves as a fallback when the avatar fails to load. A well-written description
-   * enables people with visual impairments to understand non-text content.
-   *
-   * When a screen reader encounters an avatar, it reads this description aloud.
-   * When an avatar fails to load, this text displays on screen, helping all users
-   * understand what content was intended.
-   *
-   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4)
-   * and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
+   * An alternative text that describes the avatar for the reader
+   * to understand what it is about or identify the user the avatar belongs to.
    */
   alt?: string;
 }
@@ -277,16 +291,12 @@ interface AvatarProps$1 extends GlobalProps {
  *
  * - `transparent`: No background, allowing the underlying surface to show through.
  * - `ColorKeyword`: Applies color intensity levels (subdued, base, strong) to create spatial emphasis and containment.
- *
  * @publicDocs
  */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
-/**
- * @publicDocs
- */
 export interface BackgroundProps {
   /**
-   * The background color of the element. Use `transparent` for no background, or choose from `subdued`, `base`, or `strong` to apply varying levels of color intensity based on the component's `tone`.
+   * The background color of the element. Use `transparent` for no background, `subdued` for a subtle background, `base` for standard background, or `strong` for a prominent background.
    *
    * - `transparent`: No background, allowing the underlying surface to show through.
    * - `ColorKeyword`: Applies color intensity levels (subdued, base, strong) to create spatial emphasis and containment.
@@ -296,12 +306,19 @@ export interface BackgroundProps {
   background?: BackgroundColorKeyword;
 }
 /**
- * Tone is a property for defining the color treatment of a component.
+ * Defines the semantic color treatment of a component to convey specific intent or status.
  *
- * A tone can apply a grouping of colors to a component. For example,
- * critical might have a specific text color and background color.
+ * Tones apply coordinated color schemes (text, background, icons) across the component. Some components, like banner, also use tone to determine accessibility attributes and screen reader announcements.
  *
- * In some cases, like for Banner, the tone might also affect the semantic and accessibility treatment of the component.
+ * - `auto`: Automatically determined based on context.
+ * - `neutral`: General-purpose information without specific sentiment.
+ * - `info`: Informational content that provides helpful details or guidance.
+ * - `success`: Positive outcomes, successful operations, or confirmations.
+ * - `caution`: Warnings about potential issues that require attention but aren't critical.
+ * - `warning`: Similar to caution, indicates something that needs user awareness.
+ * - `critical`: Errors, failures, or urgent issues that require immediate attention.
+ * - `accent`: Highlighted or emphasized content that doesn't fit other semantic tones.
+ * - `custom`: Custom color treatment defined by your theme or implementation.
  *
  * @default 'auto'
  * @publicDocs
@@ -316,578 +333,582 @@ export type ToneKeyword =
   | 'critical'
   | 'accent'
   | 'custom';
-declare const privateIconArray: readonly [
-  'adjust',
-  'affiliate',
-  'airplane',
-  'alert-bubble',
-  'alert-circle',
-  'alert-diamond',
-  'alert-location',
-  'alert-octagon',
-  'alert-octagon-filled',
-  'alert-triangle',
-  'alert-triangle-filled',
-  'app-extension',
-  'apps',
-  'archive',
-  'arrow-down',
-  'arrow-down-circle',
-  'arrow-down-right',
-  'arrow-left',
-  'arrow-left-circle',
-  'arrow-right',
-  'arrow-right-circle',
-  'arrow-up',
-  'arrow-up-circle',
-  'arrow-up-right',
-  'arrows-in-horizontal',
-  'arrows-out-horizontal',
-  'asterisk',
-  'attachment',
-  'automation',
-  'backspace',
-  'bag',
-  'bank',
-  'barcode',
-  'battery-low',
-  'bill',
-  'blank',
-  'blog',
-  'bolt',
-  'bolt-filled',
-  'book',
-  'book-open',
-  'bug',
-  'bullet',
-  'business-entity',
-  'button',
-  'button-press',
-  'calculator',
-  'calendar',
-  'calendar-check',
-  'calendar-compare',
-  'calendar-list',
-  'calendar-time',
-  'camera',
-  'camera-flip',
-  'caret-down',
-  'caret-left',
-  'caret-right',
-  'caret-up',
-  'cart',
-  'cart-abandoned',
-  'cart-discount',
-  'cart-down',
-  'cart-filled',
-  'cart-sale',
-  'cart-send',
-  'cart-up',
-  'cash-dollar',
-  'cash-euro',
-  'cash-pound',
-  'cash-rupee',
-  'cash-yen',
-  'catalog-product',
-  'categories',
-  'channels',
-  'chart-cohort',
-  'chart-donut',
-  'chart-funnel',
-  'chart-histogram-first',
-  'chart-histogram-first-last',
-  'chart-histogram-flat',
-  'chart-histogram-full',
-  'chart-histogram-growth',
-  'chart-histogram-last',
-  'chart-histogram-second-last',
-  'chart-horizontal',
-  'chart-line',
-  'chart-popular',
-  'chart-stacked',
-  'chart-vertical',
-  'chat',
-  'chat-new',
-  'chat-referral',
-  'check',
-  'check-circle',
-  'check-circle-filled',
-  'checkbox',
-  'chevron-down',
-  'chevron-down-circle',
-  'chevron-left',
-  'chevron-left-circle',
-  'chevron-right',
-  'chevron-right-circle',
-  'chevron-up',
-  'chevron-up-circle',
-  'circle',
-  'circle-dashed',
-  'clipboard',
-  'clipboard-check',
-  'clipboard-checklist',
-  'clock',
-  'clock-list',
-  'clock-revert',
-  'code',
-  'code-add',
-  'collection',
-  'collection-featured',
-  'collection-list',
-  'collection-reference',
-  'color',
-  'color-none',
-  'compass',
-  'complete',
-  'compose',
-  'confetti',
-  'connect',
-  'content',
-  'contract',
-  'corner-pill',
-  'corner-round',
-  'corner-square',
-  'credit-card',
-  'credit-card-cancel',
-  'credit-card-percent',
-  'credit-card-reader',
-  'credit-card-reader-chip',
-  'credit-card-reader-tap',
-  'credit-card-secure',
-  'credit-card-tap-chip',
-  'crop',
-  'currency-convert',
-  'cursor',
-  'cursor-banner',
-  'cursor-option',
-  'data-presentation',
-  'data-table',
-  'database',
-  'database-add',
-  'database-connect',
-  'delete',
-  'delivered',
-  'delivery',
-  'desktop',
-  'disabled',
-  'disabled-filled',
-  'discount',
-  'discount-add',
-  'discount-automatic',
-  'discount-code',
-  'discount-remove',
-  'dns-settings',
-  'dock-floating',
-  'dock-side',
-  'domain',
-  'domain-landing-page',
-  'domain-new',
-  'domain-redirect',
-  'download',
-  'drag-drop',
-  'drag-handle',
-  'drawer',
-  'duplicate',
-  'edit',
-  'email',
-  'email-follow-up',
-  'email-newsletter',
-  'empty',
-  'enabled',
-  'enter',
-  'envelope',
-  'envelope-soft-pack',
-  'eraser',
-  'exchange',
-  'exit',
-  'export',
-  'external',
-  'eye-check-mark',
-  'eye-dropper',
-  'eye-dropper-list',
-  'eye-first',
-  'eyeglasses',
-  'fav',
-  'favicon',
-  'file',
-  'file-list',
-  'filter',
-  'filter-active',
-  'flag',
-  'flip-horizontal',
-  'flip-vertical',
-  'flower',
-  'folder',
-  'folder-add',
-  'folder-down',
-  'folder-remove',
-  'folder-up',
-  'food',
-  'foreground',
-  'forklift',
-  'forms',
-  'games',
-  'gauge',
-  'geolocation',
-  'gift',
-  'gift-card',
-  'git-branch',
-  'git-commit',
-  'git-repository',
-  'globe',
-  'globe-asia',
-  'globe-europe',
-  'globe-lines',
-  'globe-list',
-  'graduation-hat',
-  'grid',
-  'hashtag',
-  'hashtag-decimal',
-  'hashtag-list',
-  'heart',
-  'hide',
-  'hide-filled',
-  'home',
-  'home-filled',
-  'icons',
-  'identity-card',
-  'image',
-  'image-add',
-  'image-alt',
-  'image-explore',
-  'image-magic',
-  'image-none',
-  'image-with-text-overlay',
-  'images',
-  'import',
-  'in-progress',
-  'incentive',
-  'incoming',
-  'incomplete',
-  'info',
-  'info-filled',
-  'inheritance',
-  'inventory',
-  'inventory-edit',
-  'inventory-list',
-  'inventory-transfer',
-  'inventory-updated',
-  'iq',
-  'key',
-  'keyboard',
-  'keyboard-filled',
-  'keyboard-hide',
-  'keypad',
-  'label-printer',
-  'language',
-  'language-translate',
-  'layout-block',
-  'layout-buy-button',
-  'layout-buy-button-horizontal',
-  'layout-buy-button-vertical',
-  'layout-column-1',
-  'layout-columns-2',
-  'layout-columns-3',
-  'layout-footer',
-  'layout-header',
-  'layout-logo-block',
-  'layout-popup',
-  'layout-rows-2',
-  'layout-section',
-  'layout-sidebar-left',
-  'layout-sidebar-right',
-  'lightbulb',
-  'link',
-  'link-list',
-  'list-bulleted',
-  'list-bulleted-filled',
-  'list-numbered',
-  'live',
-  'live-critical',
-  'live-none',
-  'location',
-  'location-none',
-  'lock',
-  'map',
-  'markets',
-  'markets-euro',
-  'markets-rupee',
-  'markets-yen',
-  'maximize',
-  'measurement-size',
-  'measurement-size-list',
-  'measurement-volume',
-  'measurement-volume-list',
-  'measurement-weight',
-  'measurement-weight-list',
-  'media-receiver',
-  'megaphone',
-  'mention',
-  'menu',
-  'menu-filled',
-  'menu-horizontal',
-  'menu-vertical',
-  'merge',
-  'metafields',
-  'metaobject',
-  'metaobject-list',
-  'metaobject-reference',
-  'microphone',
-  'microphone-muted',
-  'minimize',
-  'minus',
-  'minus-circle',
-  'mobile',
-  'money',
-  'money-none',
-  'money-split',
-  'moon',
-  'nature',
-  'note',
-  'note-add',
-  'notification',
-  'number-one',
-  'order',
-  'order-batches',
-  'order-draft',
-  'order-filled',
-  'order-first',
-  'order-fulfilled',
-  'order-repeat',
-  'order-unfulfilled',
-  'orders-status',
-  'organization',
-  'outdent',
-  'outgoing',
-  'package',
-  'package-cancel',
-  'package-fulfilled',
-  'package-on-hold',
-  'package-reassign',
-  'package-returned',
-  'page',
-  'page-add',
-  'page-attachment',
-  'page-clock',
-  'page-down',
-  'page-heart',
-  'page-list',
-  'page-reference',
-  'page-remove',
-  'page-report',
-  'page-up',
-  'pagination-end',
-  'pagination-start',
-  'paint-brush-flat',
-  'paint-brush-round',
-  'paper-check',
-  'partially-complete',
-  'passkey',
-  'paste',
-  'pause-circle',
-  'payment',
-  'payment-capture',
-  'payout',
-  'payout-dollar',
-  'payout-euro',
-  'payout-pound',
-  'payout-rupee',
-  'payout-yen',
-  'person',
-  'person-add',
-  'person-exit',
-  'person-filled',
-  'person-list',
-  'person-lock',
-  'person-remove',
-  'person-segment',
-  'personalized-text',
-  'phablet',
-  'phone',
-  'phone-down',
-  'phone-down-filled',
-  'phone-in',
-  'phone-out',
-  'pin',
-  'pin-remove',
-  'plan',
-  'play',
-  'play-circle',
-  'plus',
-  'plus-circle',
-  'plus-circle-down',
-  'plus-circle-filled',
-  'plus-circle-up',
-  'point-of-sale',
-  'point-of-sale-register',
-  'price-list',
-  'print',
-  'product',
-  'product-add',
-  'product-cost',
-  'product-filled',
-  'product-list',
-  'product-reference',
-  'product-remove',
-  'product-return',
-  'product-unavailable',
-  'profile',
-  'profile-filled',
-  'question-circle',
-  'question-circle-filled',
-  'radio-control',
-  'receipt',
-  'receipt-dollar',
-  'receipt-euro',
-  'receipt-folded',
-  'receipt-paid',
-  'receipt-pound',
-  'receipt-refund',
-  'receipt-rupee',
-  'receipt-yen',
-  'receivables',
-  'redo',
-  'referral-code',
-  'refresh',
-  'remove-background',
-  'reorder',
-  'replace',
-  'replay',
-  'reset',
-  'return',
-  'reward',
-  'rocket',
-  'rotate-left',
-  'rotate-right',
-  'sandbox',
-  'save',
-  'savings',
-  'scan-qr-code',
-  'search',
-  'search-add',
-  'search-list',
-  'search-recent',
-  'search-resource',
-  'select',
-  'send',
-  'settings',
-  'share',
-  'shield-check-mark',
-  'shield-none',
-  'shield-pending',
-  'shield-person',
-  'shipping-label',
-  'shipping-label-cancel',
-  'shopcodes',
-  'slideshow',
-  'smiley-happy',
-  'smiley-joy',
-  'smiley-neutral',
-  'smiley-sad',
-  'social-ad',
-  'social-post',
-  'sort',
-  'sort-ascending',
-  'sort-descending',
-  'sound',
-  'split',
-  'sports',
-  'star',
-  'star-circle',
-  'star-filled',
-  'star-half',
-  'star-list',
-  'status',
-  'status-active',
-  'stop-circle',
-  'store',
-  'store-import',
-  'store-managed',
-  'store-online',
-  'sun',
-  'table',
-  'table-masonry',
-  'tablet',
-  'target',
-  'tax',
-  'team',
-  'text',
-  'text-align-center',
-  'text-align-left',
-  'text-align-right',
-  'text-block',
-  'text-bold',
-  'text-color',
-  'text-font',
-  'text-font-list',
-  'text-grammar',
-  'text-in-columns',
-  'text-in-rows',
-  'text-indent',
-  'text-indent-remove',
-  'text-italic',
-  'text-quote',
-  'text-title',
-  'text-underline',
-  'text-with-image',
-  'theme',
-  'theme-edit',
-  'theme-store',
-  'theme-template',
-  'three-d-environment',
-  'thumbs-down',
-  'thumbs-up',
-  'tip-jar',
-  'toggle-off',
-  'toggle-on',
-  'transaction',
-  'transaction-fee-add',
-  'transaction-fee-dollar',
-  'transaction-fee-euro',
-  'transaction-fee-pound',
-  'transaction-fee-rupee',
-  'transaction-fee-yen',
-  'transfer',
-  'transfer-in',
-  'transfer-internal',
-  'transfer-out',
-  'truck',
-  'undo',
-  'unknown-device',
-  'unlock',
-  'upload',
-  'variant',
-  'variant-list',
-  'video',
-  'video-list',
-  'view',
-  'viewport-narrow',
-  'viewport-short',
-  'viewport-tall',
-  'viewport-wide',
-  'wallet',
-  'wand',
-  'watch',
-  'wifi',
-  'work',
-  'work-list',
-  'wrench',
-  'x',
-  'x-circle',
-  'x-circle-filled',
-];
 /**
+ * Represents the available icon names that can be used in icon components. This is derived from the complete list of supported icons in the design system.
  * @publicDocs
  */
-export type IconType = (typeof privateIconArray)[number];
+export type IconType =
+  | 'adjust'
+  | 'affiliate'
+  | 'airplane'
+  | 'alert-bubble'
+  | 'alert-circle'
+  | 'alert-diamond'
+  | 'alert-location'
+  | 'alert-octagon'
+  | 'alert-octagon-filled'
+  | 'alert-triangle'
+  | 'alert-triangle-filled'
+  | 'align-horizontal-centers'
+  | 'app-extension'
+  | 'apps'
+  | 'archive'
+  | 'arrow-down'
+  | 'arrow-down-circle'
+  | 'arrow-down-right'
+  | 'arrow-left'
+  | 'arrow-left-circle'
+  | 'arrow-right'
+  | 'arrow-right-circle'
+  | 'arrow-up'
+  | 'arrow-up-circle'
+  | 'arrow-up-right'
+  | 'arrows-in-horizontal'
+  | 'arrows-out-horizontal'
+  | 'asterisk'
+  | 'attachment'
+  | 'automation'
+  | 'backspace'
+  | 'bag'
+  | 'bank'
+  | 'barcode'
+  | 'battery-low'
+  | 'bill'
+  | 'blank'
+  | 'blog'
+  | 'bolt'
+  | 'bolt-filled'
+  | 'book'
+  | 'book-open'
+  | 'brain'
+  | 'broom'
+  | 'bug'
+  | 'bullet'
+  | 'business-entity'
+  | 'button'
+  | 'button-press'
+  | 'calculator'
+  | 'calendar'
+  | 'calendar-check'
+  | 'calendar-compare'
+  | 'calendar-list'
+  | 'calendar-time'
+  | 'camera'
+  | 'camera-flip'
+  | 'caret-down'
+  | 'caret-left'
+  | 'caret-right'
+  | 'caret-up'
+  | 'cart'
+  | 'cart-abandoned'
+  | 'cart-discount'
+  | 'cart-down'
+  | 'cart-filled'
+  | 'cart-sale'
+  | 'cart-send'
+  | 'cart-up'
+  | 'cash-dollar'
+  | 'cash-euro'
+  | 'cash-pound'
+  | 'cash-rupee'
+  | 'cash-yen'
+  | 'catalog-product'
+  | 'categories'
+  | 'channels'
+  | 'channels-filled'
+  | 'chart-cohort'
+  | 'chart-donut'
+  | 'chart-funnel'
+  | 'chart-histogram-first'
+  | 'chart-histogram-first-last'
+  | 'chart-histogram-flat'
+  | 'chart-histogram-full'
+  | 'chart-histogram-growth'
+  | 'chart-histogram-last'
+  | 'chart-histogram-second-last'
+  | 'chart-horizontal'
+  | 'chart-line'
+  | 'chart-popular'
+  | 'chart-stacked'
+  | 'chart-vertical'
+  | 'chat'
+  | 'chat-new'
+  | 'chat-referral'
+  | 'check'
+  | 'check-circle'
+  | 'check-circle-filled'
+  | 'checkbox'
+  | 'chevron-down'
+  | 'chevron-down-circle'
+  | 'chevron-left'
+  | 'chevron-left-circle'
+  | 'chevron-right'
+  | 'chevron-right-circle'
+  | 'chevron-up'
+  | 'chevron-up-circle'
+  | 'circle'
+  | 'circle-dashed'
+  | 'clipboard'
+  | 'clipboard-check'
+  | 'clipboard-checklist'
+  | 'clock'
+  | 'clock-list'
+  | 'clock-revert'
+  | 'code'
+  | 'code-add'
+  | 'collection'
+  | 'collection-featured'
+  | 'collection-list'
+  | 'collection-reference'
+  | 'color'
+  | 'color-none'
+  | 'compass'
+  | 'complete'
+  | 'compose'
+  | 'confetti'
+  | 'connect'
+  | 'content'
+  | 'contract'
+  | 'corner-pill'
+  | 'corner-round'
+  | 'corner-square'
+  | 'credit-card'
+  | 'credit-card-cancel'
+  | 'credit-card-percent'
+  | 'credit-card-reader'
+  | 'credit-card-reader-chip'
+  | 'credit-card-reader-tap'
+  | 'credit-card-secure'
+  | 'credit-card-tap-chip'
+  | 'crop'
+  | 'currency-convert'
+  | 'cursor'
+  | 'cursor-banner'
+  | 'cursor-option'
+  | 'data-presentation'
+  | 'data-table'
+  | 'database'
+  | 'database-add'
+  | 'database-connect'
+  | 'delete'
+  | 'delivered'
+  | 'delivery'
+  | 'desktop'
+  | 'disabled'
+  | 'disabled-filled'
+  | 'discount'
+  | 'discount-add'
+  | 'discount-automatic'
+  | 'discount-code'
+  | 'discount-remove'
+  | 'dns-settings'
+  | 'dock-floating'
+  | 'dock-side'
+  | 'domain'
+  | 'domain-landing-page'
+  | 'domain-new'
+  | 'domain-redirect'
+  | 'download'
+  | 'drag-drop'
+  | 'drag-handle'
+  | 'drawer'
+  | 'duplicate'
+  | 'edit'
+  | 'email'
+  | 'email-follow-up'
+  | 'email-newsletter'
+  | 'empty'
+  | 'enabled'
+  | 'enter'
+  | 'envelope'
+  | 'envelope-soft-pack'
+  | 'eraser'
+  | 'exchange'
+  | 'exit'
+  | 'export'
+  | 'external'
+  | 'eye-check-mark'
+  | 'eye-dropper'
+  | 'eye-dropper-list'
+  | 'eye-first'
+  | 'eyeglasses'
+  | 'fav'
+  | 'favicon'
+  | 'file'
+  | 'file-list'
+  | 'filter'
+  | 'filter-active'
+  | 'flag'
+  | 'flip-horizontal'
+  | 'flip-vertical'
+  | 'flower'
+  | 'folder'
+  | 'folder-add'
+  | 'folder-down'
+  | 'folder-remove'
+  | 'folder-up'
+  | 'food'
+  | 'foreground'
+  | 'forklift'
+  | 'forms'
+  | 'games'
+  | 'gauge'
+  | 'geolocation'
+  | 'gift'
+  | 'gift-card'
+  | 'git-branch'
+  | 'git-commit'
+  | 'git-repository'
+  | 'globe'
+  | 'globe-asia'
+  | 'globe-europe'
+  | 'globe-lines'
+  | 'globe-list'
+  | 'graduation-hat'
+  | 'grid'
+  | 'hashtag'
+  | 'hashtag-decimal'
+  | 'hashtag-list'
+  | 'heart'
+  | 'hide'
+  | 'hide-filled'
+  | 'home'
+  | 'home-filled'
+  | 'icons'
+  | 'identity-card'
+  | 'image'
+  | 'image-add'
+  | 'image-alt'
+  | 'image-explore'
+  | 'image-magic'
+  | 'image-none'
+  | 'image-with-text-overlay'
+  | 'images'
+  | 'import'
+  | 'in-progress'
+  | 'incentive'
+  | 'incoming'
+  | 'incomplete'
+  | 'info'
+  | 'info-filled'
+  | 'inheritance'
+  | 'inventory'
+  | 'inventory-edit'
+  | 'inventory-list'
+  | 'inventory-transfer'
+  | 'inventory-updated'
+  | 'iq'
+  | 'key'
+  | 'keyboard'
+  | 'keyboard-filled'
+  | 'keyboard-hide'
+  | 'keypad'
+  | 'label-printer'
+  | 'language'
+  | 'language-translate'
+  | 'layout-block'
+  | 'layout-buy-button'
+  | 'layout-buy-button-horizontal'
+  | 'layout-buy-button-vertical'
+  | 'layout-column-1'
+  | 'layout-columns-2'
+  | 'layout-columns-3'
+  | 'layout-footer'
+  | 'layout-header'
+  | 'layout-logo-block'
+  | 'layout-popup'
+  | 'layout-rows-2'
+  | 'layout-section'
+  | 'layout-sidebar-left'
+  | 'layout-sidebar-right'
+  | 'layer'
+  | 'lightbulb'
+  | 'link'
+  | 'link-list'
+  | 'list-bulleted'
+  | 'list-bulleted-filled'
+  | 'list-numbered'
+  | 'live'
+  | 'live-critical'
+  | 'live-none'
+  | 'location'
+  | 'location-none'
+  | 'lock'
+  | 'map'
+  | 'markets'
+  | 'markets-euro'
+  | 'markets-rupee'
+  | 'markets-yen'
+  | 'maximize'
+  | 'measurement-size'
+  | 'measurement-size-list'
+  | 'measurement-volume'
+  | 'measurement-volume-list'
+  | 'measurement-weight'
+  | 'measurement-weight-list'
+  | 'media-receiver'
+  | 'megaphone'
+  | 'mention'
+  | 'menu'
+  | 'menu-filled'
+  | 'menu-horizontal'
+  | 'menu-vertical'
+  | 'merge'
+  | 'metafields'
+  | 'metaobject'
+  | 'metaobject-list'
+  | 'metaobject-reference'
+  | 'microphone'
+  | 'microphone-muted'
+  | 'minimize'
+  | 'minus'
+  | 'minus-circle'
+  | 'mobile'
+  | 'money'
+  | 'money-none'
+  | 'money-split'
+  | 'moon'
+  | 'nature'
+  | 'note'
+  | 'note-add'
+  | 'notification'
+  | 'number-one'
+  | 'order'
+  | 'order-batches'
+  | 'order-draft'
+  | 'order-filled'
+  | 'order-first'
+  | 'order-fulfilled'
+  | 'order-repeat'
+  | 'order-unfulfilled'
+  | 'orders-status'
+  | 'organization'
+  | 'outdent'
+  | 'outgoing'
+  | 'package'
+  | 'package-cancel'
+  | 'package-fulfilled'
+  | 'package-on-hold'
+  | 'package-reassign'
+  | 'package-returned'
+  | 'page'
+  | 'page-add'
+  | 'page-attachment'
+  | 'page-clock'
+  | 'page-down'
+  | 'page-heart'
+  | 'page-list'
+  | 'page-reference'
+  | 'page-remove'
+  | 'page-report'
+  | 'page-up'
+  | 'pagination-end'
+  | 'pagination-start'
+  | 'paint-brush-flat'
+  | 'paint-brush-round'
+  | 'paper-check'
+  | 'partially-complete'
+  | 'passkey'
+  | 'paste'
+  | 'pause-circle'
+  | 'payment'
+  | 'payment-capture'
+  | 'payout'
+  | 'payout-dollar'
+  | 'payout-euro'
+  | 'payout-pound'
+  | 'payout-rupee'
+  | 'payout-yen'
+  | 'person'
+  | 'person-add'
+  | 'person-exit'
+  | 'person-filled'
+  | 'person-list'
+  | 'person-lock'
+  | 'person-remove'
+  | 'person-segment'
+  | 'personalized-text'
+  | 'phablet'
+  | 'phone'
+  | 'phone-down'
+  | 'phone-down-filled'
+  | 'phone-in'
+  | 'phone-out'
+  | 'pin'
+  | 'pin-remove'
+  | 'plan'
+  | 'play'
+  | 'play-circle'
+  | 'plus'
+  | 'plus-circle'
+  | 'plus-circle-down'
+  | 'plus-circle-filled'
+  | 'plus-circle-up'
+  | 'point-of-sale'
+  | 'point-of-sale-register'
+  | 'price-list'
+  | 'print'
+  | 'product'
+  | 'product-add'
+  | 'product-cost'
+  | 'product-filled'
+  | 'product-list'
+  | 'product-reference'
+  | 'product-remove'
+  | 'product-return'
+  | 'product-unavailable'
+  | 'profile'
+  | 'profile-filled'
+  | 'question-circle'
+  | 'question-circle-filled'
+  | 'radio-control'
+  | 'receipt'
+  | 'receipt-dollar'
+  | 'receipt-euro'
+  | 'receipt-folded'
+  | 'receipt-paid'
+  | 'receipt-pound'
+  | 'receipt-refund'
+  | 'receipt-rupee'
+  | 'receipt-yen'
+  | 'receivables'
+  | 'redo'
+  | 'referral-code'
+  | 'refresh'
+  | 'remove-background'
+  | 'reorder'
+  | 'replace'
+  | 'replay'
+  | 'reset'
+  | 'return'
+  | 'reward'
+  | 'rocket'
+  | 'rotate-left'
+  | 'rotate-right'
+  | 'sandbox'
+  | 'save'
+  | 'savings'
+  | 'scan-qr-code'
+  | 'search'
+  | 'search-add'
+  | 'search-list'
+  | 'search-recent'
+  | 'search-resource'
+  | 'select'
+  | 'send'
+  | 'settings'
+  | 'share'
+  | 'shield-check-mark'
+  | 'shield-none'
+  | 'shield-pending'
+  | 'shield-person'
+  | 'shipping-label'
+  | 'shipping-label-cancel'
+  | 'shopcodes'
+  | 'slideshow'
+  | 'smiley-happy'
+  | 'smiley-joy'
+  | 'smiley-neutral'
+  | 'smiley-sad'
+  | 'social-ad'
+  | 'social-post'
+  | 'sort'
+  | 'sort-ascending'
+  | 'sort-descending'
+  | 'sound'
+  | 'split'
+  | 'sports'
+  | 'star'
+  | 'star-circle'
+  | 'star-filled'
+  | 'star-half'
+  | 'star-list'
+  | 'status'
+  | 'status-active'
+  | 'stop-circle'
+  | 'store'
+  | 'store-import'
+  | 'store-managed'
+  | 'store-online'
+  | 'sun'
+  | 'table'
+  | 'table-masonry'
+  | 'tablet'
+  | 'target'
+  | 'tax'
+  | 'team'
+  | 'text'
+  | 'text-align-center'
+  | 'text-align-left'
+  | 'text-align-right'
+  | 'text-block'
+  | 'text-bold'
+  | 'text-color'
+  | 'text-font'
+  | 'text-font-list'
+  | 'text-grammar'
+  | 'text-in-columns'
+  | 'text-in-rows'
+  | 'text-indent'
+  | 'text-indent-remove'
+  | 'text-italic'
+  | 'text-quote'
+  | 'text-title'
+  | 'text-underline'
+  | 'text-with-image'
+  | 'theme'
+  | 'theme-cart'
+  | 'theme-edit'
+  | 'theme-store'
+  | 'theme-template'
+  | 'three-d-environment'
+  | 'thumbs-down'
+  | 'thumbs-up'
+  | 'tip-jar'
+  | 'toggle-off'
+  | 'toggle-on'
+  | 'transaction'
+  | 'transaction-fee-add'
+  | 'transaction-fee-dollar'
+  | 'transaction-fee-euro'
+  | 'transaction-fee-pound'
+  | 'transaction-fee-rupee'
+  | 'transaction-fee-yen'
+  | 'transfer'
+  | 'transfer-in'
+  | 'transfer-internal'
+  | 'transfer-out'
+  | 'truck'
+  | 'undo'
+  | 'unknown-device'
+  | 'unlock'
+  | 'upload'
+  | 'variant'
+  | 'variant-list'
+  | 'video'
+  | 'video-list'
+  | 'view'
+  | 'viewport-narrow'
+  | 'viewport-short'
+  | 'viewport-tall'
+  | 'viewport-wide'
+  | 'wallet'
+  | 'wand'
+  | 'watch'
+  | 'wifi'
+  | 'work'
+  | 'work-list'
+  | 'wrench'
+  | 'x'
+  | 'x-circle'
+  | 'x-circle-filled';
 /**
- * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
+ * A type-safe version of TypeScript's `Extract` utility that constrains the second type parameter to be assignable to the first. This provides compile-time validation that you're only extracting types that actually exist within the union, catching potential errors earlier in development.
  * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
 /**
- * Represents CSS shorthand properties that accept one to four values.
- * Supports specifying values for all four sides: top, right, bottom, and left.
+ * Represents CSS shorthand properties that accept one to four values. Supports specifying values for all four sides: top, right, bottom, and left.
  *
  * - `T`: Single value that applies to all four sides.
  * - `${T} ${T}`: Two values for block axis (top/bottom) and inline axis (left/right).
@@ -901,8 +922,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
 /**
- * Represents CSS shorthand properties that accept one or two values.
- * Supports specifying the same value for both dimensions or different values.
+ * Represents CSS shorthand properties that accept one or two values. Supports specifying the same value for both dimensions or different values.
  *
  * - `T`: Single value that applies to both dimensions.
  * - `${T} ${T}`: Two values for block axis (vertical) and inline axis (horizontal).
@@ -910,8 +930,7 @@ export type MaybeAllValuesShorthandProperty<T extends string> =
  */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
 /**
- * Makes a property responsive by allowing it to be set conditionally based on container query conditions.
- * The value can be either a base value or a container query string.
+ * Makes a property responsive by allowing it to be set conditionally based on container query conditions. The value can be either a base value or a container query string.
  *
  * - `T`: Base value that applies in all conditions.
  * - `@container${string}`: Container query string for conditional responsive styling based on container size.
@@ -919,7 +938,8 @@ export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
  */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
- * Prevents widening string literal types in a union to `string`.
+ * A utility type that enables autocomplete for specific string literals while still accepting any string value. By intersecting `string` with an empty object type, this prevents TypeScript from widening literal types, preserving IDE suggestions for known values while maintaining flexibility for custom strings.
+ *
  * @example
  * type PropName = 'foo' | 'bar' | string
  * //   ^? string
@@ -929,54 +949,606 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  */
 export type AnyString = string & {};
 /**
- * This is purely to give the ability
- * to have a space or not in the string literal types.
- *
- * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
+ * A utility type representing an optional space character for use in string literal type composition. Allows flexible formatting of compound values where spacing is a matter of preference rather than semantic difference.
  * @publicDocs
  */
 export type optionalSpace = '' | ' ';
 interface BadgeProps$1 extends GlobalProps {
   /**
-   * The text or elements displayed inside the badge component.
+   * The content of the Badge.
    */
   children?: ComponentChildren;
   /**
-   * The semantic meaning and color treatment of the component.
-   *
-   * - `auto`: Automatically determined based on context.
-   * - `neutral`: General information without specific intent.
-   * - `info`: Informational content or helpful tips.
-   * - `success`: Positive outcomes or successful states.
-   * - `caution`: Advisory notices that need attention.
-   * - `warning`: Important warnings about potential issues.
-   * - `critical`: Urgent problems or destructive actions.
+   * Sets the tone of the Badge, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Controls the visual weight and emphasis of the badge.
-   *
-   * - `base`: Standard weight with moderate emphasis, suitable for most use cases.
-   * - `strong`: Increased visual weight for higher emphasis and prominence.
+   * Modify the color to be more or less intense.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
   /**
-   * An icon displayed inside the badge to provide additional visual context or reinforce the badge's meaning.
-   * Accepts any icon name from the icon library or a custom string identifier.
+   * The type of icon to be displayed in the badge.
    *
    * @default ''
    */
-  icon?: IconType | AnyString;
+  icon?:
+    | (
+        | 'adjust'
+        | 'affiliate'
+        | 'airplane'
+        | 'alert-bubble'
+        | 'alert-circle'
+        | 'alert-diamond'
+        | 'alert-location'
+        | 'alert-octagon'
+        | 'alert-octagon-filled'
+        | 'alert-triangle'
+        | 'alert-triangle-filled'
+        | 'align-horizontal-centers'
+        | 'app-extension'
+        | 'apps'
+        | 'archive'
+        | 'arrow-down'
+        | 'arrow-down-circle'
+        | 'arrow-down-right'
+        | 'arrow-left'
+        | 'arrow-left-circle'
+        | 'arrow-right'
+        | 'arrow-right-circle'
+        | 'arrow-up'
+        | 'arrow-up-circle'
+        | 'arrow-up-right'
+        | 'arrows-in-horizontal'
+        | 'arrows-out-horizontal'
+        | 'asterisk'
+        | 'attachment'
+        | 'automation'
+        | 'backspace'
+        | 'bag'
+        | 'bank'
+        | 'barcode'
+        | 'battery-low'
+        | 'bill'
+        | 'blank'
+        | 'blog'
+        | 'bolt'
+        | 'bolt-filled'
+        | 'book'
+        | 'book-open'
+        | 'brain'
+        | 'broom'
+        | 'bug'
+        | 'bullet'
+        | 'business-entity'
+        | 'button'
+        | 'button-press'
+        | 'calculator'
+        | 'calendar'
+        | 'calendar-check'
+        | 'calendar-compare'
+        | 'calendar-list'
+        | 'calendar-time'
+        | 'camera'
+        | 'camera-flip'
+        | 'caret-down'
+        | 'caret-left'
+        | 'caret-right'
+        | 'caret-up'
+        | 'cart'
+        | 'cart-abandoned'
+        | 'cart-discount'
+        | 'cart-down'
+        | 'cart-filled'
+        | 'cart-sale'
+        | 'cart-send'
+        | 'cart-up'
+        | 'cash-dollar'
+        | 'cash-euro'
+        | 'cash-pound'
+        | 'cash-rupee'
+        | 'cash-yen'
+        | 'catalog-product'
+        | 'categories'
+        | 'channels'
+        | 'channels-filled'
+        | 'chart-cohort'
+        | 'chart-donut'
+        | 'chart-funnel'
+        | 'chart-histogram-first'
+        | 'chart-histogram-first-last'
+        | 'chart-histogram-flat'
+        | 'chart-histogram-full'
+        | 'chart-histogram-growth'
+        | 'chart-histogram-last'
+        | 'chart-histogram-second-last'
+        | 'chart-horizontal'
+        | 'chart-line'
+        | 'chart-popular'
+        | 'chart-stacked'
+        | 'chart-vertical'
+        | 'chat'
+        | 'chat-new'
+        | 'chat-referral'
+        | 'check'
+        | 'check-circle'
+        | 'check-circle-filled'
+        | 'checkbox'
+        | 'chevron-down'
+        | 'chevron-down-circle'
+        | 'chevron-left'
+        | 'chevron-left-circle'
+        | 'chevron-right'
+        | 'chevron-right-circle'
+        | 'chevron-up'
+        | 'chevron-up-circle'
+        | 'circle'
+        | 'circle-dashed'
+        | 'clipboard'
+        | 'clipboard-check'
+        | 'clipboard-checklist'
+        | 'clock'
+        | 'clock-list'
+        | 'clock-revert'
+        | 'code'
+        | 'code-add'
+        | 'collection'
+        | 'collection-featured'
+        | 'collection-list'
+        | 'collection-reference'
+        | 'color'
+        | 'color-none'
+        | 'compass'
+        | 'complete'
+        | 'compose'
+        | 'confetti'
+        | 'connect'
+        | 'content'
+        | 'contract'
+        | 'corner-pill'
+        | 'corner-round'
+        | 'corner-square'
+        | 'credit-card'
+        | 'credit-card-cancel'
+        | 'credit-card-percent'
+        | 'credit-card-reader'
+        | 'credit-card-reader-chip'
+        | 'credit-card-reader-tap'
+        | 'credit-card-secure'
+        | 'credit-card-tap-chip'
+        | 'crop'
+        | 'currency-convert'
+        | 'cursor'
+        | 'cursor-banner'
+        | 'cursor-option'
+        | 'data-presentation'
+        | 'data-table'
+        | 'database'
+        | 'database-add'
+        | 'database-connect'
+        | 'delete'
+        | 'delivered'
+        | 'delivery'
+        | 'desktop'
+        | 'disabled'
+        | 'disabled-filled'
+        | 'discount'
+        | 'discount-add'
+        | 'discount-automatic'
+        | 'discount-code'
+        | 'discount-remove'
+        | 'dns-settings'
+        | 'dock-floating'
+        | 'dock-side'
+        | 'domain'
+        | 'domain-landing-page'
+        | 'domain-new'
+        | 'domain-redirect'
+        | 'download'
+        | 'drag-drop'
+        | 'drag-handle'
+        | 'drawer'
+        | 'duplicate'
+        | 'edit'
+        | 'email'
+        | 'email-follow-up'
+        | 'email-newsletter'
+        | 'empty'
+        | 'enabled'
+        | 'enter'
+        | 'envelope'
+        | 'envelope-soft-pack'
+        | 'eraser'
+        | 'exchange'
+        | 'exit'
+        | 'export'
+        | 'external'
+        | 'eye-check-mark'
+        | 'eye-dropper'
+        | 'eye-dropper-list'
+        | 'eye-first'
+        | 'eyeglasses'
+        | 'fav'
+        | 'favicon'
+        | 'file'
+        | 'file-list'
+        | 'filter'
+        | 'filter-active'
+        | 'flag'
+        | 'flip-horizontal'
+        | 'flip-vertical'
+        | 'flower'
+        | 'folder'
+        | 'folder-add'
+        | 'folder-down'
+        | 'folder-remove'
+        | 'folder-up'
+        | 'food'
+        | 'foreground'
+        | 'forklift'
+        | 'forms'
+        | 'games'
+        | 'gauge'
+        | 'geolocation'
+        | 'gift'
+        | 'gift-card'
+        | 'git-branch'
+        | 'git-commit'
+        | 'git-repository'
+        | 'globe'
+        | 'globe-asia'
+        | 'globe-europe'
+        | 'globe-lines'
+        | 'globe-list'
+        | 'graduation-hat'
+        | 'grid'
+        | 'hashtag'
+        | 'hashtag-decimal'
+        | 'hashtag-list'
+        | 'heart'
+        | 'hide'
+        | 'hide-filled'
+        | 'home'
+        | 'home-filled'
+        | 'icons'
+        | 'identity-card'
+        | 'image'
+        | 'image-add'
+        | 'image-alt'
+        | 'image-explore'
+        | 'image-magic'
+        | 'image-none'
+        | 'image-with-text-overlay'
+        | 'images'
+        | 'import'
+        | 'in-progress'
+        | 'incentive'
+        | 'incoming'
+        | 'incomplete'
+        | 'info'
+        | 'info-filled'
+        | 'inheritance'
+        | 'inventory'
+        | 'inventory-edit'
+        | 'inventory-list'
+        | 'inventory-transfer'
+        | 'inventory-updated'
+        | 'iq'
+        | 'key'
+        | 'keyboard'
+        | 'keyboard-filled'
+        | 'keyboard-hide'
+        | 'keypad'
+        | 'label-printer'
+        | 'language'
+        | 'language-translate'
+        | 'layout-block'
+        | 'layout-buy-button'
+        | 'layout-buy-button-horizontal'
+        | 'layout-buy-button-vertical'
+        | 'layout-column-1'
+        | 'layout-columns-2'
+        | 'layout-columns-3'
+        | 'layout-footer'
+        | 'layout-header'
+        | 'layout-logo-block'
+        | 'layout-popup'
+        | 'layout-rows-2'
+        | 'layout-section'
+        | 'layout-sidebar-left'
+        | 'layout-sidebar-right'
+        | 'layer'
+        | 'lightbulb'
+        | 'link'
+        | 'link-list'
+        | 'list-bulleted'
+        | 'list-bulleted-filled'
+        | 'list-numbered'
+        | 'live'
+        | 'live-critical'
+        | 'live-none'
+        | 'location'
+        | 'location-none'
+        | 'lock'
+        | 'map'
+        | 'markets'
+        | 'markets-euro'
+        | 'markets-rupee'
+        | 'markets-yen'
+        | 'maximize'
+        | 'measurement-size'
+        | 'measurement-size-list'
+        | 'measurement-volume'
+        | 'measurement-volume-list'
+        | 'measurement-weight'
+        | 'measurement-weight-list'
+        | 'media-receiver'
+        | 'megaphone'
+        | 'mention'
+        | 'menu'
+        | 'menu-filled'
+        | 'menu-horizontal'
+        | 'menu-vertical'
+        | 'merge'
+        | 'metafields'
+        | 'metaobject'
+        | 'metaobject-list'
+        | 'metaobject-reference'
+        | 'microphone'
+        | 'microphone-muted'
+        | 'minimize'
+        | 'minus'
+        | 'minus-circle'
+        | 'mobile'
+        | 'money'
+        | 'money-none'
+        | 'money-split'
+        | 'moon'
+        | 'nature'
+        | 'note'
+        | 'note-add'
+        | 'notification'
+        | 'number-one'
+        | 'order'
+        | 'order-batches'
+        | 'order-draft'
+        | 'order-filled'
+        | 'order-first'
+        | 'order-fulfilled'
+        | 'order-repeat'
+        | 'order-unfulfilled'
+        | 'orders-status'
+        | 'organization'
+        | 'outdent'
+        | 'outgoing'
+        | 'package'
+        | 'package-cancel'
+        | 'package-fulfilled'
+        | 'package-on-hold'
+        | 'package-reassign'
+        | 'package-returned'
+        | 'page'
+        | 'page-add'
+        | 'page-attachment'
+        | 'page-clock'
+        | 'page-down'
+        | 'page-heart'
+        | 'page-list'
+        | 'page-reference'
+        | 'page-remove'
+        | 'page-report'
+        | 'page-up'
+        | 'pagination-end'
+        | 'pagination-start'
+        | 'paint-brush-flat'
+        | 'paint-brush-round'
+        | 'paper-check'
+        | 'partially-complete'
+        | 'passkey'
+        | 'paste'
+        | 'pause-circle'
+        | 'payment'
+        | 'payment-capture'
+        | 'payout'
+        | 'payout-dollar'
+        | 'payout-euro'
+        | 'payout-pound'
+        | 'payout-rupee'
+        | 'payout-yen'
+        | 'person'
+        | 'person-add'
+        | 'person-exit'
+        | 'person-filled'
+        | 'person-list'
+        | 'person-lock'
+        | 'person-remove'
+        | 'person-segment'
+        | 'personalized-text'
+        | 'phablet'
+        | 'phone'
+        | 'phone-down'
+        | 'phone-down-filled'
+        | 'phone-in'
+        | 'phone-out'
+        | 'pin'
+        | 'pin-remove'
+        | 'plan'
+        | 'play'
+        | 'play-circle'
+        | 'plus'
+        | 'plus-circle'
+        | 'plus-circle-down'
+        | 'plus-circle-filled'
+        | 'plus-circle-up'
+        | 'point-of-sale'
+        | 'point-of-sale-register'
+        | 'price-list'
+        | 'print'
+        | 'product'
+        | 'product-add'
+        | 'product-cost'
+        | 'product-filled'
+        | 'product-list'
+        | 'product-reference'
+        | 'product-remove'
+        | 'product-return'
+        | 'product-unavailable'
+        | 'profile'
+        | 'profile-filled'
+        | 'question-circle'
+        | 'question-circle-filled'
+        | 'radio-control'
+        | 'receipt'
+        | 'receipt-dollar'
+        | 'receipt-euro'
+        | 'receipt-folded'
+        | 'receipt-paid'
+        | 'receipt-pound'
+        | 'receipt-refund'
+        | 'receipt-rupee'
+        | 'receipt-yen'
+        | 'receivables'
+        | 'redo'
+        | 'referral-code'
+        | 'refresh'
+        | 'remove-background'
+        | 'reorder'
+        | 'replace'
+        | 'replay'
+        | 'reset'
+        | 'return'
+        | 'reward'
+        | 'rocket'
+        | 'rotate-left'
+        | 'rotate-right'
+        | 'sandbox'
+        | 'save'
+        | 'savings'
+        | 'scan-qr-code'
+        | 'search'
+        | 'search-add'
+        | 'search-list'
+        | 'search-recent'
+        | 'search-resource'
+        | 'select'
+        | 'send'
+        | 'settings'
+        | 'share'
+        | 'shield-check-mark'
+        | 'shield-none'
+        | 'shield-pending'
+        | 'shield-person'
+        | 'shipping-label'
+        | 'shipping-label-cancel'
+        | 'shopcodes'
+        | 'slideshow'
+        | 'smiley-happy'
+        | 'smiley-joy'
+        | 'smiley-neutral'
+        | 'smiley-sad'
+        | 'social-ad'
+        | 'social-post'
+        | 'sort'
+        | 'sort-ascending'
+        | 'sort-descending'
+        | 'sound'
+        | 'split'
+        | 'sports'
+        | 'star'
+        | 'star-circle'
+        | 'star-filled'
+        | 'star-half'
+        | 'star-list'
+        | 'status'
+        | 'status-active'
+        | 'stop-circle'
+        | 'store'
+        | 'store-import'
+        | 'store-managed'
+        | 'store-online'
+        | 'sun'
+        | 'table'
+        | 'table-masonry'
+        | 'tablet'
+        | 'target'
+        | 'tax'
+        | 'team'
+        | 'text'
+        | 'text-align-center'
+        | 'text-align-left'
+        | 'text-align-right'
+        | 'text-block'
+        | 'text-bold'
+        | 'text-color'
+        | 'text-font'
+        | 'text-font-list'
+        | 'text-grammar'
+        | 'text-in-columns'
+        | 'text-in-rows'
+        | 'text-indent'
+        | 'text-indent-remove'
+        | 'text-italic'
+        | 'text-quote'
+        | 'text-title'
+        | 'text-underline'
+        | 'text-with-image'
+        | 'theme'
+        | 'theme-cart'
+        | 'theme-edit'
+        | 'theme-store'
+        | 'theme-template'
+        | 'three-d-environment'
+        | 'thumbs-down'
+        | 'thumbs-up'
+        | 'tip-jar'
+        | 'toggle-off'
+        | 'toggle-on'
+        | 'transaction'
+        | 'transaction-fee-add'
+        | 'transaction-fee-dollar'
+        | 'transaction-fee-euro'
+        | 'transaction-fee-pound'
+        | 'transaction-fee-rupee'
+        | 'transaction-fee-yen'
+        | 'transfer'
+        | 'transfer-in'
+        | 'transfer-internal'
+        | 'transfer-out'
+        | 'truck'
+        | 'undo'
+        | 'unknown-device'
+        | 'unlock'
+        | 'upload'
+        | 'variant'
+        | 'variant-list'
+        | 'video'
+        | 'video-list'
+        | 'view'
+        | 'viewport-narrow'
+        | 'viewport-short'
+        | 'viewport-tall'
+        | 'viewport-wide'
+        | 'wallet'
+        | 'wand'
+        | 'watch'
+        | 'wifi'
+        | 'work'
+        | 'work-list'
+        | 'wrench'
+        | 'x'
+        | 'x-circle'
+        | 'x-circle-filled'
+      )
+    | AnyString;
   /**
-   * The position of the icon relative to the badge text. Use `start` to place the icon before the text, or `end` to place it after.
+   * The position of the icon in relation to the text.
    */
   iconPosition?: 'start' | 'end';
   /**
-   * The size of the badge. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default size.
+   * Adjusts the size.
    *
    * @default 'base'
    */
@@ -984,42 +1556,42 @@ interface BadgeProps$1 extends GlobalProps {
 }
 interface BannerProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The heading text displayed at the top of the banner to summarize the message or alert.
+   * The title of the banner.
    *
    * @default ''
    */
   heading?: string;
   /**
-   * The main content displayed within the banner component, typically descriptive text or other elements providing details about the message or alert.
+   * The content of the Banner.
    */
   children?: ComponentChildren;
   /**
-   * The semantic meaning and color treatment of the component. The banner is a live region and the type of status is dictated by the tone selected.
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
    *
-   * - `auto`: Automatically determined based on context.
-   * - `neutral`: General status information without emphasis.
-   * - `info`: Informational content or helpful tips.
-   * - `success`: Positive outcomes or successful states.
-   * - `caution`: Situations that need attention but aren't urgent.
-   * - `warning`: Important warnings about potential issues.
-   * - `critical`: Urgent problems or destructive actions.
+   * The banner is a live region and the type of status will be dictated by the Tone selected.
    *
-   * The `critical` tone creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/alert_role) that is announced by screen readers immediately. The `neutral`, `info`, `success`, `warning`, and `caution` tones create an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/status_role) that is announced by screen readers after the current message.
+   * - `critical` creates an [assertive live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role) that is announced by screen readers immediately.
+   * - `neutral`, `info`, `success`, `warning` and `caution` creates an [informative live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role) that is announced by screen readers after the current message.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/alert_role
+   * @see https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/status_role
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * Whether the banner content can be collapsed and expanded by the user. A collapsible banner conceals child elements initially, allowing the user to expand the banner to reveal them.
+   * Makes the content collapsible.
+   * A collapsible banner will conceal child elements initially, but allow the user to expand the banner to see them.
    *
    * @default false
    */
   collapsible?: boolean;
   /**
-   * Whether the banner displays a close button that allows users to dismiss it.
+   * Determines whether the close button of the banner is present.
    *
    * When the close button is pressed, the `dismiss` event will fire,
-   * then `hidden` will be set to `true`,
+   * then `hidden` will be true,
    * any animation will complete,
    * and the `afterhide` event will fire.
    *
@@ -1027,17 +1599,17 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   dismissible?: boolean;
   /**
-   * A callback that fires when the banner is dismissed by the user clicking the close button.
+   * Event handler when the banner is dismissed by the user.
    *
-   * This doesn't fire when setting `hidden` manually.
+   * This does not fire when setting `hidden` manually.
    *
-   * The `hidden` property is `false` when this event fires.
+   * The `hidden` property will be `false` when this event fires.
    */
   onDismiss?: (event: Event) => void;
   /**
-   * A callback that fires when the banner has fully hidden, including after any hide animations have completed.
+   * Event handler when the banner has fully hidden.
    *
-   * The `hidden` property is `true` when this event fires.
+   * The `hidden` property will be `true` when this event fires.
    *
    * @implementation If implementations animate the hiding of the banner,
    * this event must fire after the banner has fully hidden.
@@ -1045,12 +1617,13 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
    */
   onAfterHide?: (event: Event) => void;
   /**
-   * Controls whether the banner is visible or hidden.
+   * Determines whether the banner is hidden.
    *
-   * When using a controlled component pattern and the banner is `dismissible`,
-   * update this property to `true` when the `dismiss` event fires.
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the banner is `dismissible`,
+   * ensure you update app state for this property when the `dismiss` event fires.
    *
-   * You can hide the banner programmatically by setting this to `true` even if it's not `dismissible`.
+   * If the banner is not `dismissible`, it can still be hidden by setting this property.
    *
    * @default false
    */
@@ -1061,13 +1634,14 @@ interface BannerProps$1 extends GlobalProps, ActionSlots {
  */
 export interface DisplayProps {
   /**
-   * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
+   * The outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
    *
    * - `auto`: the component’s initial value. The actual value depends on the component and context.
    * - `none`: hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.
    *
    * Learn more about the [display property](https://developer.mozilla.org/en-US/docs/Web/CSS/display).
    *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/display
    * @default 'auto'
    */
   display?: MaybeResponsive<'auto' | 'none'>;
@@ -1077,9 +1651,7 @@ export interface DisplayProps {
  */
 export interface AccessibilityRoleProps {
   /**
-   * Sets the semantic meaning of the component’s content. When set,
-   * the role will be used by assistive technologies to help users
-   * navigate the page.
+   * The semantic meaning of the component’s content. When set, the role will be used by assistive technologies to help users navigate the page.
    *
    * @implementation Although, in HTML hosts, this property changes the element used,
    * changing this property must not impact the visual styling of inside or outside of the box.
@@ -1091,8 +1663,7 @@ export interface AccessibilityRoleProps {
 /**
  * Defines the semantic role of a component for assistive technologies like screen readers.
  *
- * Accessibility roles help users with disabilities understand the purpose and structure of content.
- * These roles map to HTML elements and ARIA roles, providing semantic meaning beyond visual presentation.
+ * Accessibility roles help users with disabilities understand the purpose and structure of content. These roles map to HTML elements and ARIA roles, providing semantic meaning beyond visual presentation.
  *
  * Use these roles to:
  * - Improve navigation for screen reader users
@@ -1143,13 +1714,21 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a heading or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
    *
    */
   | 'section'
+  /**
+   * Used to identify a perceivable section containing content that is relevant to a specific, author-specified purpose and sufficiently important that users will likely want to be able to navigate to the section easily.
+   *
+   * In an HTML host `region` will render as `<div role="region">`.
+   * A region **must** have an accessible name provided via the `accessibilityLabel` property.
+   * Learn more about the [`region` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
+   */
+  | 'region'
   /**
    * Used to designate a supporting section that relates to the main content.
    *
@@ -1234,12 +1813,9 @@ export type AccessibilityRole =
    * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
    */
   | 'none';
-/**
- * @publicDocs
- */
 export interface AccessibilityVisibilityProps {
   /**
-   * Controls the visibility of the element for both visual and assistive technology users.
+   * The visibility mode of the element for both visual and assistive technology users.
    *
    * - `visible`: The element is visible to all users (both sighted users and screen readers).
    * - `hidden`: The element is visually visible but hidden from screen readers. Use this for decorative elements that don't provide meaningful information.
@@ -1259,8 +1835,7 @@ export interface LabelAccessibilityVisibilityProps {
    * - `visible`: The label is shown to everyone (default).
    * - `exclusive`: The label is visually hidden but still announced by screen readers.
    *
-   * Use `exclusive` when the surrounding context makes the label redundant visually,
-   * but screen reader users still need it for clarity.
+   * Use `exclusive` when the surrounding context makes the label redundant visually, but screen reader users still need it for clarity.
    *
    * @default 'visible'
    */
@@ -1277,9 +1852,6 @@ export interface LabelAccessibilityVisibilityProps {
  * @publicDocs
  */
 export type PaddingKeyword = SizeKeyword | 'none';
-/**
- * @publicDocs
- */
 export interface PaddingProps {
   /**
    * The padding applied to all edges of the component.
@@ -1383,54 +1955,94 @@ export type SizeUnitsOrAuto = SizeUnits | 'auto';
  * @publicDocs
  */
 export type SizeUnitsOrNone = SizeUnits | 'none';
-/**
- * @publicDocs
- */
 export interface SizingProps {
   /**
-   * The block size of the element (height in horizontal writing modes). Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
+   * The vertical size of the element in standard layouts (height in left-to-right or right-to-left writing modes).
+   *
+   * Block size adjusts based on the writing direction: in horizontal layouts, it controls the height; in vertical layouts, it controls the width. This ensures consistent behavior across different text directions.
+   *
+   * Learn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).
    *
    * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
    * - `auto`: Automatically sizes based on content and layout constraints.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/block-size
    *
    * @default 'auto'
    */
   blockSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * The minimum block size of the element (minimum height in horizontal writing modes). Learn more about the [min-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   * The minimum vertical size of the element in standard layouts (min-height in left-to-right or right-to-left writing modes).
+   *
+   * Prevents the element from becoming smaller than this size along the block axis.
+   *
+   * Learn more about the [min-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
    *
    * @default '0'
    */
   minBlockSize?: MaybeResponsive<SizeUnits>;
   /**
-   * The maximum block size of the element (maximum height in horizontal writing modes). Learn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   * The maximum vertical size of the element in standard layouts (max-height in left-to-right or right-to-left writing modes).
+   *
+   * Prevents the element from becoming larger than this size along the block axis.
+   *
+   * Learn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
    *
    * @default 'none'
    */
   maxBlockSize?: MaybeResponsive<SizeUnitsOrNone>;
   /**
-   * The inline size of the element (width in horizontal writing modes). Learn more about the [inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
+   * The horizontal size of the element in standard layouts (width in left-to-right or right-to-left writing modes).
+   *
+   * Inline size adjusts based on the writing direction: in horizontal layouts, it controls the width; in vertical layouts, it controls the height. This ensures consistent behavior across different text directions.
+   *
+   * Learn more about the [inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).
    *
    * - `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.
    * - `auto`: Automatically sizes based on content and layout constraints.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
    *
    * @default 'auto'
    */
   inlineSize?: MaybeResponsive<SizeUnitsOrAuto>;
   /**
-   * The minimum inline size of the element (minimum width in horizontal writing modes). Learn more about the [min-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   * The minimum horizontal size of the element in standard layouts (min-width in left-to-right or right-to-left writing modes).
+   *
+   * Prevents the element from becoming smaller than this size along the inline axis.
+   *
+   * Learn more about the [min-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
    *
    * @default '0'
    */
   minInlineSize?: MaybeResponsive<SizeUnits>;
   /**
-   * The maximum inline size of the element (maximum width in horizontal writing modes). Learn more about the [max-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   * The maximum horizontal size of the element in standard layouts (max-width in left-to-right or right-to-left writing modes).
+   *
+   * Prevents the element from becoming larger than this size along the inline axis.
+   *
+   * Learn more about the [max-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
    *
    * @default 'none'
    */
   maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
 /**
+ * Defines the visual style of borders.
+ *
+ * - `none`: No border is displayed.
+ * - `solid`: A single solid line.
+ * - `dashed`: A series of short dashes.
+ * - `dotted`: A series of dots.
+ * - `auto`: Automatically determined based on context.
  * @publicDocs
  */
 export type BorderStyleKeyword =
@@ -1448,6 +2060,7 @@ export type BorderStyleKeyword =
  */
 export type BorderSizeKeyword = SizeKeyword | 'none';
 /**
+ * Defines the radius of rounded corners, using the standard size scale, `max` for fully rounded, or `none` for sharp corners.
  * @publicDocs
  */
 export type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
@@ -1459,15 +2072,11 @@ export type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
   | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
-/**
- * @publicDocs
- */
 export interface BorderProps {
   /**
-   * Applies a border using shorthand syntax to specify width, color, and style in a single property.
+   * A border applied using shorthand syntax to specify width, color, and style in a single property.
    *
-   * Accepts a size value, optionally followed by a color, optionally followed by a style.
-   * Omitted values use defaults: color defaults to `base`, style defaults to `auto`.
+   * Accepts a size value, optionally followed by a color, optionally followed by a style. Omitted values use defaults: color defaults to `base`, style defaults to `auto`.
    *
    * Individual properties (`borderWidth`, `borderStyle`, `borderColor`) can override values set here.
    *
@@ -1480,7 +2089,7 @@ export interface BorderProps {
    */
   border?: BorderShorthand;
   /**
-   * Controls the thickness of the border on all sides. When set, this overrides the width value specified in the `border` property.
+   * The thickness of the border on all sides. When set, this overrides the width value specified in the `border` property.
    *
    * - `small`: Thin border for subtle definition.
    * - `small-100`: Extra thin border for minimal emphasis.
@@ -1499,7 +2108,7 @@ export interface BorderProps {
    */
   borderWidth?: MaybeAllValuesShorthandProperty<BorderSizeKeyword> | '';
   /**
-   * Controls the visual style of the border on all sides, such as solid, dashed, or dotted.
+   * The visual style of the border on all sides, such as solid, dashed, or dotted.
    *
    * When set, this overrides the style value specified in the `border` property.
    *
@@ -1513,16 +2122,15 @@ export interface BorderProps {
    */
   borderStyle?: MaybeAllValuesShorthandProperty<BorderStyleKeyword> | '';
   /**
-   * Controls the color of the border using the design system's color scale.
+   * The color of the border using the design system's color scale.
    *
-   * When set, this overrides the color value specified in the `border` property.
-   * Choose from `subdued`, `base`, or `strong` to match the visual emphasis needed.
+   * When set, this overrides the color value specified in the `border` property. Choose from `subdued`, `base`, or `strong` to match the visual emphasis needed.
    *
    * @default '' - meaning no override
    */
   borderColor?: ColorKeyword | '';
   /**
-   * Controls the roundedness of the element's corners using the design system's radius scale.
+   * The roundedness of the element's corners using the design system's radius scale.
    *
    * Supports [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) using flow-relative values:
    * - One value: applies to all corners
@@ -1545,12 +2153,10 @@ export interface BorderProps {
  */
 export interface OverflowProps {
   /**
-   * Sets the overflow behavior of the element.
+   * The overflow behavior of the element.
    *
    * - `visible`: the content that extends beyond the element’s container is visible.
-   * - `hidden`: clips the content when it is larger than the element’s container.
-   * The element will not be scrollable and the users will not be able
-   * to access the clipped content by dragging or using a scroll wheel on a mouse.
+   * - `hidden`: clips the content when it is larger than the element’s container. The element will not be scrollable and the users will not be able to access the clipped content by dragging or using a scroll wheel on a mouse.
    *
    * @default 'visible'
    */
@@ -1568,7 +2174,7 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content of the box.
+   * The content displayed within the box component, which serves as a flexible container for organizing and styling other components.
    */
   children?: ComponentChildren;
   /**
@@ -1588,19 +2194,21 @@ interface BoxProps$1 extends BaseBoxPropsWithRole, GlobalProps {}
  */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavioral type of the button component, which determines what action it performs when activated.
+   * The behavior of the button component.
    *
-   * - `submit`: Submits the nearest containing form.
-   * - `button`: Performs no default action, relying on the `onClick` handler for behavior.
-   * - `reset`: Resets all fields in the nearest containing form to their default values.
+   * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
+   * - `reset`: Used to indicate the component acts as a reset button, meaning it resets the closest form (returning fields to their default values).
+   * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
    *
-   * This property is ignored if `href` or `commandFor`/`command` is set.
+   * This property is ignored if the component supports `href` or `commandFor`/`command` and one of them is set.
    *
    * @default 'button'
    */
   type?: 'submit' | 'button' | 'reset';
   /**
    * A callback fired when the button is activated, before performing the action indicated by `type`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
   /**
@@ -1610,7 +2218,9 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   disabled?: boolean;
   /**
-   * Whether the button is in a loading state, which replaces the button content with a loading indicator and disables interactions.
+   * Whether to replace the button content with a loading indicator while a background action is being performed.
+   *
+   * This also disables the button component.
    *
    * @default false
    */
@@ -1625,15 +2235,17 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   href?: string;
   /**
-   * Specifies where to display the linked URL.
-   *
-   * Learn more about the [target attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target).
+   * The browsing context where the linked URL should be displayed.
    *
    * - `auto`: The target is automatically determined based on the origin of the URL.
    * - `_blank`: Opens the URL in a new window or tab.
    * - `_self`: Opens the URL in the same browsing context as the current one.
    * - `_parent`: Opens the URL in the parent browsing context of the current one. If there is no parent, behaves as `_self`.
    * - `_top`: Opens the URL in the topmost browsing context (the highest ancestor of the current one). If there is no ancestor, behaves as `_self`.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#target
+   *
+   * 'auto': The target is automatically determined based on the origin of the URL.
    *
    * @implementation Surfaces can set specific rules on how they handle each URL.
    * @implementation It’s expected that the behavior of `auto` is as `_self` except in specific cases.
@@ -1643,11 +2255,19 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   target?: 'auto' | '_blank' | '_self' | '_parent' | '_top' | AnyString;
   /**
-   * A filename that causes the browser to treat the linked URL as a download. Downloads only work for same-origin URLs or the `blob:` and `data:` schemes. Learn more about the [download attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download).
+   * Prompts the browser to download the linked URL rather than navigate to it. When set, the value specifies the suggested filename for the downloaded file.
+   *
+   * The filename suggestion is only respected for same-origin URLs, `blob:`, and `data:` schemes. Cross-origin URLs can still trigger downloads, but browsers might ignore the suggested filename.
+   *
+   * Learn more about the [download attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/a#download
    */
   download?: string;
   /**
    * A callback fired when the link is activated, before navigating to the location specified by `href`. Learn more about the [click event](https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
 }
@@ -1657,20 +2277,24 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 export interface InteractionProps {
   /**
    * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [commandfor attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
    */
   commandFor?: string;
   /**
-   * The action that the `commandFor` target should take when this component is activated. The supported actions vary by target component type.
+   * The action that `commandFor` should take when this component is activated.
    *
-   * - `--auto`: Performs the default action appropriate for the target component.
-   * - `--show`: Displays the target component if it's currently hidden.
-   * - `--hide`: Conceals the target component from view.
-   * - `--toggle`: Alternates the target component between visible and hidden states.
-   * - `--copy`: Copies the content of the target `ClipboardItem` to the system clipboard.
+   * - `--auto`: A default action for the target component.
+   * - `--show`: Shows the target component.
+   * - `--hide`: Hides the target component.
+   * - `--toggle`: Toggles the visibility of the target component.
+   * - `--copy`: Copies the target `ClipboardItem`.
    *
    * Learn more about the [command attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
    *
    * @default '--auto'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
@@ -1686,65 +2310,630 @@ export interface BaseClickableProps
     LinkBehaviorProps {}
 interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
   /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
+   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
+   *
+   * Use this when using only an icon or the Button text is not enough context
+   * for users using assistive technologies.
    */
   accessibilityLabel?: string;
   /**
-   * The content displayed within the button component.
+   * The content of the Button.
    */
   children?: ComponentChildren;
   /**
-   * An icon displayed inside the button, typically positioned before the button text.
-   * Use icons to help users quickly identify the button's action or to improve scannability.
-   * Accepts any icon name from the icon library or a custom string identifier.
+   * The type of icon to be displayed in the Button.
    *
    * @default ''
    */
-  icon?: IconType | AnyString;
+  icon?:
+    | (
+        | 'adjust'
+        | 'affiliate'
+        | 'airplane'
+        | 'alert-bubble'
+        | 'alert-circle'
+        | 'alert-diamond'
+        | 'alert-location'
+        | 'alert-octagon'
+        | 'alert-octagon-filled'
+        | 'alert-triangle'
+        | 'alert-triangle-filled'
+        | 'align-horizontal-centers'
+        | 'app-extension'
+        | 'apps'
+        | 'archive'
+        | 'arrow-down'
+        | 'arrow-down-circle'
+        | 'arrow-down-right'
+        | 'arrow-left'
+        | 'arrow-left-circle'
+        | 'arrow-right'
+        | 'arrow-right-circle'
+        | 'arrow-up'
+        | 'arrow-up-circle'
+        | 'arrow-up-right'
+        | 'arrows-in-horizontal'
+        | 'arrows-out-horizontal'
+        | 'asterisk'
+        | 'attachment'
+        | 'automation'
+        | 'backspace'
+        | 'bag'
+        | 'bank'
+        | 'barcode'
+        | 'battery-low'
+        | 'bill'
+        | 'blank'
+        | 'blog'
+        | 'bolt'
+        | 'bolt-filled'
+        | 'book'
+        | 'book-open'
+        | 'brain'
+        | 'broom'
+        | 'bug'
+        | 'bullet'
+        | 'business-entity'
+        | 'button'
+        | 'button-press'
+        | 'calculator'
+        | 'calendar'
+        | 'calendar-check'
+        | 'calendar-compare'
+        | 'calendar-list'
+        | 'calendar-time'
+        | 'camera'
+        | 'camera-flip'
+        | 'caret-down'
+        | 'caret-left'
+        | 'caret-right'
+        | 'caret-up'
+        | 'cart'
+        | 'cart-abandoned'
+        | 'cart-discount'
+        | 'cart-down'
+        | 'cart-filled'
+        | 'cart-sale'
+        | 'cart-send'
+        | 'cart-up'
+        | 'cash-dollar'
+        | 'cash-euro'
+        | 'cash-pound'
+        | 'cash-rupee'
+        | 'cash-yen'
+        | 'catalog-product'
+        | 'categories'
+        | 'channels'
+        | 'channels-filled'
+        | 'chart-cohort'
+        | 'chart-donut'
+        | 'chart-funnel'
+        | 'chart-histogram-first'
+        | 'chart-histogram-first-last'
+        | 'chart-histogram-flat'
+        | 'chart-histogram-full'
+        | 'chart-histogram-growth'
+        | 'chart-histogram-last'
+        | 'chart-histogram-second-last'
+        | 'chart-horizontal'
+        | 'chart-line'
+        | 'chart-popular'
+        | 'chart-stacked'
+        | 'chart-vertical'
+        | 'chat'
+        | 'chat-new'
+        | 'chat-referral'
+        | 'check'
+        | 'check-circle'
+        | 'check-circle-filled'
+        | 'checkbox'
+        | 'chevron-down'
+        | 'chevron-down-circle'
+        | 'chevron-left'
+        | 'chevron-left-circle'
+        | 'chevron-right'
+        | 'chevron-right-circle'
+        | 'chevron-up'
+        | 'chevron-up-circle'
+        | 'circle'
+        | 'circle-dashed'
+        | 'clipboard'
+        | 'clipboard-check'
+        | 'clipboard-checklist'
+        | 'clock'
+        | 'clock-list'
+        | 'clock-revert'
+        | 'code'
+        | 'code-add'
+        | 'collection'
+        | 'collection-featured'
+        | 'collection-list'
+        | 'collection-reference'
+        | 'color'
+        | 'color-none'
+        | 'compass'
+        | 'complete'
+        | 'compose'
+        | 'confetti'
+        | 'connect'
+        | 'content'
+        | 'contract'
+        | 'corner-pill'
+        | 'corner-round'
+        | 'corner-square'
+        | 'credit-card'
+        | 'credit-card-cancel'
+        | 'credit-card-percent'
+        | 'credit-card-reader'
+        | 'credit-card-reader-chip'
+        | 'credit-card-reader-tap'
+        | 'credit-card-secure'
+        | 'credit-card-tap-chip'
+        | 'crop'
+        | 'currency-convert'
+        | 'cursor'
+        | 'cursor-banner'
+        | 'cursor-option'
+        | 'data-presentation'
+        | 'data-table'
+        | 'database'
+        | 'database-add'
+        | 'database-connect'
+        | 'delete'
+        | 'delivered'
+        | 'delivery'
+        | 'desktop'
+        | 'disabled'
+        | 'disabled-filled'
+        | 'discount'
+        | 'discount-add'
+        | 'discount-automatic'
+        | 'discount-code'
+        | 'discount-remove'
+        | 'dns-settings'
+        | 'dock-floating'
+        | 'dock-side'
+        | 'domain'
+        | 'domain-landing-page'
+        | 'domain-new'
+        | 'domain-redirect'
+        | 'download'
+        | 'drag-drop'
+        | 'drag-handle'
+        | 'drawer'
+        | 'duplicate'
+        | 'edit'
+        | 'email'
+        | 'email-follow-up'
+        | 'email-newsletter'
+        | 'empty'
+        | 'enabled'
+        | 'enter'
+        | 'envelope'
+        | 'envelope-soft-pack'
+        | 'eraser'
+        | 'exchange'
+        | 'exit'
+        | 'export'
+        | 'external'
+        | 'eye-check-mark'
+        | 'eye-dropper'
+        | 'eye-dropper-list'
+        | 'eye-first'
+        | 'eyeglasses'
+        | 'fav'
+        | 'favicon'
+        | 'file'
+        | 'file-list'
+        | 'filter'
+        | 'filter-active'
+        | 'flag'
+        | 'flip-horizontal'
+        | 'flip-vertical'
+        | 'flower'
+        | 'folder'
+        | 'folder-add'
+        | 'folder-down'
+        | 'folder-remove'
+        | 'folder-up'
+        | 'food'
+        | 'foreground'
+        | 'forklift'
+        | 'forms'
+        | 'games'
+        | 'gauge'
+        | 'geolocation'
+        | 'gift'
+        | 'gift-card'
+        | 'git-branch'
+        | 'git-commit'
+        | 'git-repository'
+        | 'globe'
+        | 'globe-asia'
+        | 'globe-europe'
+        | 'globe-lines'
+        | 'globe-list'
+        | 'graduation-hat'
+        | 'grid'
+        | 'hashtag'
+        | 'hashtag-decimal'
+        | 'hashtag-list'
+        | 'heart'
+        | 'hide'
+        | 'hide-filled'
+        | 'home'
+        | 'home-filled'
+        | 'icons'
+        | 'identity-card'
+        | 'image'
+        | 'image-add'
+        | 'image-alt'
+        | 'image-explore'
+        | 'image-magic'
+        | 'image-none'
+        | 'image-with-text-overlay'
+        | 'images'
+        | 'import'
+        | 'in-progress'
+        | 'incentive'
+        | 'incoming'
+        | 'incomplete'
+        | 'info'
+        | 'info-filled'
+        | 'inheritance'
+        | 'inventory'
+        | 'inventory-edit'
+        | 'inventory-list'
+        | 'inventory-transfer'
+        | 'inventory-updated'
+        | 'iq'
+        | 'key'
+        | 'keyboard'
+        | 'keyboard-filled'
+        | 'keyboard-hide'
+        | 'keypad'
+        | 'label-printer'
+        | 'language'
+        | 'language-translate'
+        | 'layout-block'
+        | 'layout-buy-button'
+        | 'layout-buy-button-horizontal'
+        | 'layout-buy-button-vertical'
+        | 'layout-column-1'
+        | 'layout-columns-2'
+        | 'layout-columns-3'
+        | 'layout-footer'
+        | 'layout-header'
+        | 'layout-logo-block'
+        | 'layout-popup'
+        | 'layout-rows-2'
+        | 'layout-section'
+        | 'layout-sidebar-left'
+        | 'layout-sidebar-right'
+        | 'layer'
+        | 'lightbulb'
+        | 'link'
+        | 'link-list'
+        | 'list-bulleted'
+        | 'list-bulleted-filled'
+        | 'list-numbered'
+        | 'live'
+        | 'live-critical'
+        | 'live-none'
+        | 'location'
+        | 'location-none'
+        | 'lock'
+        | 'map'
+        | 'markets'
+        | 'markets-euro'
+        | 'markets-rupee'
+        | 'markets-yen'
+        | 'maximize'
+        | 'measurement-size'
+        | 'measurement-size-list'
+        | 'measurement-volume'
+        | 'measurement-volume-list'
+        | 'measurement-weight'
+        | 'measurement-weight-list'
+        | 'media-receiver'
+        | 'megaphone'
+        | 'mention'
+        | 'menu'
+        | 'menu-filled'
+        | 'menu-horizontal'
+        | 'menu-vertical'
+        | 'merge'
+        | 'metafields'
+        | 'metaobject'
+        | 'metaobject-list'
+        | 'metaobject-reference'
+        | 'microphone'
+        | 'microphone-muted'
+        | 'minimize'
+        | 'minus'
+        | 'minus-circle'
+        | 'mobile'
+        | 'money'
+        | 'money-none'
+        | 'money-split'
+        | 'moon'
+        | 'nature'
+        | 'note'
+        | 'note-add'
+        | 'notification'
+        | 'number-one'
+        | 'order'
+        | 'order-batches'
+        | 'order-draft'
+        | 'order-filled'
+        | 'order-first'
+        | 'order-fulfilled'
+        | 'order-repeat'
+        | 'order-unfulfilled'
+        | 'orders-status'
+        | 'organization'
+        | 'outdent'
+        | 'outgoing'
+        | 'package'
+        | 'package-cancel'
+        | 'package-fulfilled'
+        | 'package-on-hold'
+        | 'package-reassign'
+        | 'package-returned'
+        | 'page'
+        | 'page-add'
+        | 'page-attachment'
+        | 'page-clock'
+        | 'page-down'
+        | 'page-heart'
+        | 'page-list'
+        | 'page-reference'
+        | 'page-remove'
+        | 'page-report'
+        | 'page-up'
+        | 'pagination-end'
+        | 'pagination-start'
+        | 'paint-brush-flat'
+        | 'paint-brush-round'
+        | 'paper-check'
+        | 'partially-complete'
+        | 'passkey'
+        | 'paste'
+        | 'pause-circle'
+        | 'payment'
+        | 'payment-capture'
+        | 'payout'
+        | 'payout-dollar'
+        | 'payout-euro'
+        | 'payout-pound'
+        | 'payout-rupee'
+        | 'payout-yen'
+        | 'person'
+        | 'person-add'
+        | 'person-exit'
+        | 'person-filled'
+        | 'person-list'
+        | 'person-lock'
+        | 'person-remove'
+        | 'person-segment'
+        | 'personalized-text'
+        | 'phablet'
+        | 'phone'
+        | 'phone-down'
+        | 'phone-down-filled'
+        | 'phone-in'
+        | 'phone-out'
+        | 'pin'
+        | 'pin-remove'
+        | 'plan'
+        | 'play'
+        | 'play-circle'
+        | 'plus'
+        | 'plus-circle'
+        | 'plus-circle-down'
+        | 'plus-circle-filled'
+        | 'plus-circle-up'
+        | 'point-of-sale'
+        | 'point-of-sale-register'
+        | 'price-list'
+        | 'print'
+        | 'product'
+        | 'product-add'
+        | 'product-cost'
+        | 'product-filled'
+        | 'product-list'
+        | 'product-reference'
+        | 'product-remove'
+        | 'product-return'
+        | 'product-unavailable'
+        | 'profile'
+        | 'profile-filled'
+        | 'question-circle'
+        | 'question-circle-filled'
+        | 'radio-control'
+        | 'receipt'
+        | 'receipt-dollar'
+        | 'receipt-euro'
+        | 'receipt-folded'
+        | 'receipt-paid'
+        | 'receipt-pound'
+        | 'receipt-refund'
+        | 'receipt-rupee'
+        | 'receipt-yen'
+        | 'receivables'
+        | 'redo'
+        | 'referral-code'
+        | 'refresh'
+        | 'remove-background'
+        | 'reorder'
+        | 'replace'
+        | 'replay'
+        | 'reset'
+        | 'return'
+        | 'reward'
+        | 'rocket'
+        | 'rotate-left'
+        | 'rotate-right'
+        | 'sandbox'
+        | 'save'
+        | 'savings'
+        | 'scan-qr-code'
+        | 'search'
+        | 'search-add'
+        | 'search-list'
+        | 'search-recent'
+        | 'search-resource'
+        | 'select'
+        | 'send'
+        | 'settings'
+        | 'share'
+        | 'shield-check-mark'
+        | 'shield-none'
+        | 'shield-pending'
+        | 'shield-person'
+        | 'shipping-label'
+        | 'shipping-label-cancel'
+        | 'shopcodes'
+        | 'slideshow'
+        | 'smiley-happy'
+        | 'smiley-joy'
+        | 'smiley-neutral'
+        | 'smiley-sad'
+        | 'social-ad'
+        | 'social-post'
+        | 'sort'
+        | 'sort-ascending'
+        | 'sort-descending'
+        | 'sound'
+        | 'split'
+        | 'sports'
+        | 'star'
+        | 'star-circle'
+        | 'star-filled'
+        | 'star-half'
+        | 'star-list'
+        | 'status'
+        | 'status-active'
+        | 'stop-circle'
+        | 'store'
+        | 'store-import'
+        | 'store-managed'
+        | 'store-online'
+        | 'sun'
+        | 'table'
+        | 'table-masonry'
+        | 'tablet'
+        | 'target'
+        | 'tax'
+        | 'team'
+        | 'text'
+        | 'text-align-center'
+        | 'text-align-left'
+        | 'text-align-right'
+        | 'text-block'
+        | 'text-bold'
+        | 'text-color'
+        | 'text-font'
+        | 'text-font-list'
+        | 'text-grammar'
+        | 'text-in-columns'
+        | 'text-in-rows'
+        | 'text-indent'
+        | 'text-indent-remove'
+        | 'text-italic'
+        | 'text-quote'
+        | 'text-title'
+        | 'text-underline'
+        | 'text-with-image'
+        | 'theme'
+        | 'theme-cart'
+        | 'theme-edit'
+        | 'theme-store'
+        | 'theme-template'
+        | 'three-d-environment'
+        | 'thumbs-down'
+        | 'thumbs-up'
+        | 'tip-jar'
+        | 'toggle-off'
+        | 'toggle-on'
+        | 'transaction'
+        | 'transaction-fee-add'
+        | 'transaction-fee-dollar'
+        | 'transaction-fee-euro'
+        | 'transaction-fee-pound'
+        | 'transaction-fee-rupee'
+        | 'transaction-fee-yen'
+        | 'transfer'
+        | 'transfer-in'
+        | 'transfer-internal'
+        | 'transfer-out'
+        | 'truck'
+        | 'undo'
+        | 'unknown-device'
+        | 'unlock'
+        | 'upload'
+        | 'variant'
+        | 'variant-list'
+        | 'video'
+        | 'video-list'
+        | 'view'
+        | 'viewport-narrow'
+        | 'viewport-short'
+        | 'viewport-tall'
+        | 'viewport-wide'
+        | 'wallet'
+        | 'wand'
+        | 'watch'
+        | 'wifi'
+        | 'work'
+        | 'work-list'
+        | 'wrench'
+        | 'x'
+        | 'x-circle'
+        | 'x-circle-filled'
+      )
+    | AnyString;
   /**
-   * The inline width (horizontal size) of the button component.
+   * The displayed inline width of the Button.
    *
-   * - `auto`: The button size depends on the surface and context.
-   * - `fill`: The button takes up 100% of the available inline space.
-   * - `fit-content`: The button takes up only the space needed to fit its content.
+   * - `auto`: the size of the button depends on the surface and context.
+   * - `fill`: the button will takes up 100% of the available inline size.
+   * - `fit-content`: the button will take up the minimum inline-size required to fit its content.
    *
    * @default 'auto'
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * The visual style variant of the button component, which controls its prominence and emphasis in the interface.
+   * Changes the visual appearance of the Button.
    *
-   * @default 'auto' - the variant is automatically determined by the button's context
+   * @default 'auto' - the variant is automatically determined by the Button's context
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * The semantic meaning and color treatment of the component.
-   *
-   * - `critical`: Urgent problems or destructive actions.
-   * - `auto`: Automatically determined based on context.
-   * - `neutral`: General information without specific intent.
+   * Sets the tone of the Button based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * The language of the button's text content. Use this when the button text is in a different language than the rest of the page, allowing assistive technologies such as screen readers to invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label).
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
    */
   lang?: string;
 }
 interface ButtonGroupProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the button group, typically a collection of button or link components.
+   * The content of the ButtonGroup.
    */
   children?: ComponentChildren;
   /**
-   * The spacing between button elements within the group.
-   *
+   * The gap between elements.
    * @default 'base'
    */
   gap?: 'base' | 'none';
   /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
+   * Label for the button group that describes the content of the group for screen reader users to understand what's included.
    *
    * @implementation Used as a hidden heading or an aria-label on the wrapping element.
    */
@@ -1771,18 +2960,22 @@ export interface BaseInputProps {
 export interface InputProps extends BaseInputProps {
   /**
    * A callback fired when the user has finished editing the field, such as when they blur the field or press Enter. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
   onChange?: (event: Event) => void;
   /**
    * A callback fired when the user makes any changes in the field, such as typing a character. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
   onInput?: (event: Event) => void;
   /**
-   * The current value in the field. When setting this property programmatically, it updates the field's display value. When reading it, you get the user's current input.
+   * The current value for the field. If omitted, the field will be empty.
    */
   value?: string;
   /**
-   * The initial value of the field when it first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. After the user starts typing, their input replaces it. Changing this property after the field has loaded has no effect. To update the field value, use `value` instead.
+   * The initial value of the field when it first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts typing, their input replaces it. Changing this property after the field has loaded has no effect. To update the field value at any time, use `value` instead.
    *
    * @implementation `defaultValue` reflects to the `value` attribute.
    */
@@ -1794,16 +2987,18 @@ export interface InputProps extends BaseInputProps {
 export interface MultipleInputProps extends BaseInputProps {
   /**
    * A callback fired when the user has selected one or more options. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
   onChange?: (event: Event) => void;
   /**
    * A callback fired when the user selects or deselects options. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
   onInput?: (event: Event) => void;
   /**
-   * An array of `value` attributes for the currently selected options.
-   *
-   * When provided, this property automatically sets the `selected` state on child Option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
+   * An array of `value` attributes for the currently selected options. When provided, this property automatically sets the `selected` state on child option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
    */
   values?: string[];
 }
@@ -1820,9 +3015,11 @@ export interface FileInputProps extends BaseInputProps {
    */
   onInput?: (event: Event) => void;
   /**
-   * A string that represents the path to the selected file(s). If no file is selected yet, the value is an empty string ("").
-   * When the user selected multiple files, the value represents the first file in the list of files they selected.
-   * The value is always the file's name prefixed with "C:\fakepath\", which isn't the real path of the file. Learn more about the [file input value](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value).
+   * A string that represents the path to the selected file(s). If no file is selected yet, the value is an empty string (""). When the user selected multiple files, the value represents the first file in the list of files they selected. The value is always the file's name prefixed with "C:\fakepath\", which isn't the real path of the file.
+   *
+   * Learn more about the [file input value](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file#value
    *
    * @default ''
    */
@@ -1842,9 +3039,15 @@ export interface FileInputProps extends BaseInputProps {
  */
 export interface FieldErrorProps {
   /**
-   * An error message to display to the user. When set, the field will be styled with error indicators to communicate problems that need to be resolved immediately.
+   * An error message displayed below the checkbox to indicate validation problems. When set, the checkbox is styled with error indicators and the message is announced to screen readers.
+   *
+   * @implementation (string) The error is a simple string that will be displayed to the user.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the error content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  error?: string;
+  error?: string | ComponentChildren;
 }
 /**
  * @publicDocs
@@ -1859,18 +3062,30 @@ export interface BasicFieldProps
    */
   required?: boolean;
   /**
-   * The text label displayed above or alongside the field to describe its purpose.
+   * The text displayed as the field label, which identifies the purpose of the field to users. This label is associated with the field for accessibility and helps users understand what information to provide.
+   *
+   * @implementation (string) The label is a simple string that will be displayed to the user.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  label?: string;
+  label?: string | ComponentChildren;
 }
 /**
  * @publicDocs
  */
 export interface FieldDetailsProps {
   /**
-   * Additional helpful text displayed alongside the field to provide context, guidance, or instructions to the user. This content is accessible to both visual and screen reader users.
+   * Supplementary text displayed below the checkbox to provide additional context, instructions, or help. Use this to explain what checking the box means or provide guidance to users. This text is announced to screen readers.
+   *
+   * @implementation (string) The details is a simple string that will be displayed to the user.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the details content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  details?: string;
+  details?: string | ComponentChildren;
 }
 /**
  * @publicDocs
@@ -1881,7 +3096,7 @@ export interface FieldProps
     FocusEventProps,
     FieldDetailsProps {
   /**
-   * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value. Unlike `defaultValue`, this is a temporary value that disappears after the user starts typing.
+   * The placeholder text displayed in the field when it's empty, providing a hint about the expected input format or value.
    */
   placeholder?: string;
 }
@@ -1917,15 +3132,581 @@ export interface FieldDecorationProps {
    */
   prefix?: string;
   /**
-   * The type of icon to be displayed in the field.
+   * An icon displayed inside the field to provide visual context about the expected input or field purpose. Commonly used for search fields, currency inputs, or to indicate field type. Accepts any icon name from the icon library or a custom string identifier.
    *
    * @default ''
    */
-  icon?: IconType | AnyString;
+  icon?:
+    | (
+        | 'adjust'
+        | 'affiliate'
+        | 'airplane'
+        | 'alert-bubble'
+        | 'alert-circle'
+        | 'alert-diamond'
+        | 'alert-location'
+        | 'alert-octagon'
+        | 'alert-octagon-filled'
+        | 'alert-triangle'
+        | 'alert-triangle-filled'
+        | 'align-horizontal-centers'
+        | 'app-extension'
+        | 'apps'
+        | 'archive'
+        | 'arrow-down'
+        | 'arrow-down-circle'
+        | 'arrow-down-right'
+        | 'arrow-left'
+        | 'arrow-left-circle'
+        | 'arrow-right'
+        | 'arrow-right-circle'
+        | 'arrow-up'
+        | 'arrow-up-circle'
+        | 'arrow-up-right'
+        | 'arrows-in-horizontal'
+        | 'arrows-out-horizontal'
+        | 'asterisk'
+        | 'attachment'
+        | 'automation'
+        | 'backspace'
+        | 'bag'
+        | 'bank'
+        | 'barcode'
+        | 'battery-low'
+        | 'bill'
+        | 'blank'
+        | 'blog'
+        | 'bolt'
+        | 'bolt-filled'
+        | 'book'
+        | 'book-open'
+        | 'brain'
+        | 'broom'
+        | 'bug'
+        | 'bullet'
+        | 'business-entity'
+        | 'button'
+        | 'button-press'
+        | 'calculator'
+        | 'calendar'
+        | 'calendar-check'
+        | 'calendar-compare'
+        | 'calendar-list'
+        | 'calendar-time'
+        | 'camera'
+        | 'camera-flip'
+        | 'caret-down'
+        | 'caret-left'
+        | 'caret-right'
+        | 'caret-up'
+        | 'cart'
+        | 'cart-abandoned'
+        | 'cart-discount'
+        | 'cart-down'
+        | 'cart-filled'
+        | 'cart-sale'
+        | 'cart-send'
+        | 'cart-up'
+        | 'cash-dollar'
+        | 'cash-euro'
+        | 'cash-pound'
+        | 'cash-rupee'
+        | 'cash-yen'
+        | 'catalog-product'
+        | 'categories'
+        | 'channels'
+        | 'channels-filled'
+        | 'chart-cohort'
+        | 'chart-donut'
+        | 'chart-funnel'
+        | 'chart-histogram-first'
+        | 'chart-histogram-first-last'
+        | 'chart-histogram-flat'
+        | 'chart-histogram-full'
+        | 'chart-histogram-growth'
+        | 'chart-histogram-last'
+        | 'chart-histogram-second-last'
+        | 'chart-horizontal'
+        | 'chart-line'
+        | 'chart-popular'
+        | 'chart-stacked'
+        | 'chart-vertical'
+        | 'chat'
+        | 'chat-new'
+        | 'chat-referral'
+        | 'check'
+        | 'check-circle'
+        | 'check-circle-filled'
+        | 'checkbox'
+        | 'chevron-down'
+        | 'chevron-down-circle'
+        | 'chevron-left'
+        | 'chevron-left-circle'
+        | 'chevron-right'
+        | 'chevron-right-circle'
+        | 'chevron-up'
+        | 'chevron-up-circle'
+        | 'circle'
+        | 'circle-dashed'
+        | 'clipboard'
+        | 'clipboard-check'
+        | 'clipboard-checklist'
+        | 'clock'
+        | 'clock-list'
+        | 'clock-revert'
+        | 'code'
+        | 'code-add'
+        | 'collection'
+        | 'collection-featured'
+        | 'collection-list'
+        | 'collection-reference'
+        | 'color'
+        | 'color-none'
+        | 'compass'
+        | 'complete'
+        | 'compose'
+        | 'confetti'
+        | 'connect'
+        | 'content'
+        | 'contract'
+        | 'corner-pill'
+        | 'corner-round'
+        | 'corner-square'
+        | 'credit-card'
+        | 'credit-card-cancel'
+        | 'credit-card-percent'
+        | 'credit-card-reader'
+        | 'credit-card-reader-chip'
+        | 'credit-card-reader-tap'
+        | 'credit-card-secure'
+        | 'credit-card-tap-chip'
+        | 'crop'
+        | 'currency-convert'
+        | 'cursor'
+        | 'cursor-banner'
+        | 'cursor-option'
+        | 'data-presentation'
+        | 'data-table'
+        | 'database'
+        | 'database-add'
+        | 'database-connect'
+        | 'delete'
+        | 'delivered'
+        | 'delivery'
+        | 'desktop'
+        | 'disabled'
+        | 'disabled-filled'
+        | 'discount'
+        | 'discount-add'
+        | 'discount-automatic'
+        | 'discount-code'
+        | 'discount-remove'
+        | 'dns-settings'
+        | 'dock-floating'
+        | 'dock-side'
+        | 'domain'
+        | 'domain-landing-page'
+        | 'domain-new'
+        | 'domain-redirect'
+        | 'download'
+        | 'drag-drop'
+        | 'drag-handle'
+        | 'drawer'
+        | 'duplicate'
+        | 'edit'
+        | 'email'
+        | 'email-follow-up'
+        | 'email-newsletter'
+        | 'empty'
+        | 'enabled'
+        | 'enter'
+        | 'envelope'
+        | 'envelope-soft-pack'
+        | 'eraser'
+        | 'exchange'
+        | 'exit'
+        | 'export'
+        | 'external'
+        | 'eye-check-mark'
+        | 'eye-dropper'
+        | 'eye-dropper-list'
+        | 'eye-first'
+        | 'eyeglasses'
+        | 'fav'
+        | 'favicon'
+        | 'file'
+        | 'file-list'
+        | 'filter'
+        | 'filter-active'
+        | 'flag'
+        | 'flip-horizontal'
+        | 'flip-vertical'
+        | 'flower'
+        | 'folder'
+        | 'folder-add'
+        | 'folder-down'
+        | 'folder-remove'
+        | 'folder-up'
+        | 'food'
+        | 'foreground'
+        | 'forklift'
+        | 'forms'
+        | 'games'
+        | 'gauge'
+        | 'geolocation'
+        | 'gift'
+        | 'gift-card'
+        | 'git-branch'
+        | 'git-commit'
+        | 'git-repository'
+        | 'globe'
+        | 'globe-asia'
+        | 'globe-europe'
+        | 'globe-lines'
+        | 'globe-list'
+        | 'graduation-hat'
+        | 'grid'
+        | 'hashtag'
+        | 'hashtag-decimal'
+        | 'hashtag-list'
+        | 'heart'
+        | 'hide'
+        | 'hide-filled'
+        | 'home'
+        | 'home-filled'
+        | 'icons'
+        | 'identity-card'
+        | 'image'
+        | 'image-add'
+        | 'image-alt'
+        | 'image-explore'
+        | 'image-magic'
+        | 'image-none'
+        | 'image-with-text-overlay'
+        | 'images'
+        | 'import'
+        | 'in-progress'
+        | 'incentive'
+        | 'incoming'
+        | 'incomplete'
+        | 'info'
+        | 'info-filled'
+        | 'inheritance'
+        | 'inventory'
+        | 'inventory-edit'
+        | 'inventory-list'
+        | 'inventory-transfer'
+        | 'inventory-updated'
+        | 'iq'
+        | 'key'
+        | 'keyboard'
+        | 'keyboard-filled'
+        | 'keyboard-hide'
+        | 'keypad'
+        | 'label-printer'
+        | 'language'
+        | 'language-translate'
+        | 'layout-block'
+        | 'layout-buy-button'
+        | 'layout-buy-button-horizontal'
+        | 'layout-buy-button-vertical'
+        | 'layout-column-1'
+        | 'layout-columns-2'
+        | 'layout-columns-3'
+        | 'layout-footer'
+        | 'layout-header'
+        | 'layout-logo-block'
+        | 'layout-popup'
+        | 'layout-rows-2'
+        | 'layout-section'
+        | 'layout-sidebar-left'
+        | 'layout-sidebar-right'
+        | 'layer'
+        | 'lightbulb'
+        | 'link'
+        | 'link-list'
+        | 'list-bulleted'
+        | 'list-bulleted-filled'
+        | 'list-numbered'
+        | 'live'
+        | 'live-critical'
+        | 'live-none'
+        | 'location'
+        | 'location-none'
+        | 'lock'
+        | 'map'
+        | 'markets'
+        | 'markets-euro'
+        | 'markets-rupee'
+        | 'markets-yen'
+        | 'maximize'
+        | 'measurement-size'
+        | 'measurement-size-list'
+        | 'measurement-volume'
+        | 'measurement-volume-list'
+        | 'measurement-weight'
+        | 'measurement-weight-list'
+        | 'media-receiver'
+        | 'megaphone'
+        | 'mention'
+        | 'menu'
+        | 'menu-filled'
+        | 'menu-horizontal'
+        | 'menu-vertical'
+        | 'merge'
+        | 'metafields'
+        | 'metaobject'
+        | 'metaobject-list'
+        | 'metaobject-reference'
+        | 'microphone'
+        | 'microphone-muted'
+        | 'minimize'
+        | 'minus'
+        | 'minus-circle'
+        | 'mobile'
+        | 'money'
+        | 'money-none'
+        | 'money-split'
+        | 'moon'
+        | 'nature'
+        | 'note'
+        | 'note-add'
+        | 'notification'
+        | 'number-one'
+        | 'order'
+        | 'order-batches'
+        | 'order-draft'
+        | 'order-filled'
+        | 'order-first'
+        | 'order-fulfilled'
+        | 'order-repeat'
+        | 'order-unfulfilled'
+        | 'orders-status'
+        | 'organization'
+        | 'outdent'
+        | 'outgoing'
+        | 'package'
+        | 'package-cancel'
+        | 'package-fulfilled'
+        | 'package-on-hold'
+        | 'package-reassign'
+        | 'package-returned'
+        | 'page'
+        | 'page-add'
+        | 'page-attachment'
+        | 'page-clock'
+        | 'page-down'
+        | 'page-heart'
+        | 'page-list'
+        | 'page-reference'
+        | 'page-remove'
+        | 'page-report'
+        | 'page-up'
+        | 'pagination-end'
+        | 'pagination-start'
+        | 'paint-brush-flat'
+        | 'paint-brush-round'
+        | 'paper-check'
+        | 'partially-complete'
+        | 'passkey'
+        | 'paste'
+        | 'pause-circle'
+        | 'payment'
+        | 'payment-capture'
+        | 'payout'
+        | 'payout-dollar'
+        | 'payout-euro'
+        | 'payout-pound'
+        | 'payout-rupee'
+        | 'payout-yen'
+        | 'person'
+        | 'person-add'
+        | 'person-exit'
+        | 'person-filled'
+        | 'person-list'
+        | 'person-lock'
+        | 'person-remove'
+        | 'person-segment'
+        | 'personalized-text'
+        | 'phablet'
+        | 'phone'
+        | 'phone-down'
+        | 'phone-down-filled'
+        | 'phone-in'
+        | 'phone-out'
+        | 'pin'
+        | 'pin-remove'
+        | 'plan'
+        | 'play'
+        | 'play-circle'
+        | 'plus'
+        | 'plus-circle'
+        | 'plus-circle-down'
+        | 'plus-circle-filled'
+        | 'plus-circle-up'
+        | 'point-of-sale'
+        | 'point-of-sale-register'
+        | 'price-list'
+        | 'print'
+        | 'product'
+        | 'product-add'
+        | 'product-cost'
+        | 'product-filled'
+        | 'product-list'
+        | 'product-reference'
+        | 'product-remove'
+        | 'product-return'
+        | 'product-unavailable'
+        | 'profile'
+        | 'profile-filled'
+        | 'question-circle'
+        | 'question-circle-filled'
+        | 'radio-control'
+        | 'receipt'
+        | 'receipt-dollar'
+        | 'receipt-euro'
+        | 'receipt-folded'
+        | 'receipt-paid'
+        | 'receipt-pound'
+        | 'receipt-refund'
+        | 'receipt-rupee'
+        | 'receipt-yen'
+        | 'receivables'
+        | 'redo'
+        | 'referral-code'
+        | 'refresh'
+        | 'remove-background'
+        | 'reorder'
+        | 'replace'
+        | 'replay'
+        | 'reset'
+        | 'return'
+        | 'reward'
+        | 'rocket'
+        | 'rotate-left'
+        | 'rotate-right'
+        | 'sandbox'
+        | 'save'
+        | 'savings'
+        | 'scan-qr-code'
+        | 'search'
+        | 'search-add'
+        | 'search-list'
+        | 'search-recent'
+        | 'search-resource'
+        | 'select'
+        | 'send'
+        | 'settings'
+        | 'share'
+        | 'shield-check-mark'
+        | 'shield-none'
+        | 'shield-pending'
+        | 'shield-person'
+        | 'shipping-label'
+        | 'shipping-label-cancel'
+        | 'shopcodes'
+        | 'slideshow'
+        | 'smiley-happy'
+        | 'smiley-joy'
+        | 'smiley-neutral'
+        | 'smiley-sad'
+        | 'social-ad'
+        | 'social-post'
+        | 'sort'
+        | 'sort-ascending'
+        | 'sort-descending'
+        | 'sound'
+        | 'split'
+        | 'sports'
+        | 'star'
+        | 'star-circle'
+        | 'star-filled'
+        | 'star-half'
+        | 'star-list'
+        | 'status'
+        | 'status-active'
+        | 'stop-circle'
+        | 'store'
+        | 'store-import'
+        | 'store-managed'
+        | 'store-online'
+        | 'sun'
+        | 'table'
+        | 'table-masonry'
+        | 'tablet'
+        | 'target'
+        | 'tax'
+        | 'team'
+        | 'text'
+        | 'text-align-center'
+        | 'text-align-left'
+        | 'text-align-right'
+        | 'text-block'
+        | 'text-bold'
+        | 'text-color'
+        | 'text-font'
+        | 'text-font-list'
+        | 'text-grammar'
+        | 'text-in-columns'
+        | 'text-in-rows'
+        | 'text-indent'
+        | 'text-indent-remove'
+        | 'text-italic'
+        | 'text-quote'
+        | 'text-title'
+        | 'text-underline'
+        | 'text-with-image'
+        | 'theme'
+        | 'theme-cart'
+        | 'theme-edit'
+        | 'theme-store'
+        | 'theme-template'
+        | 'three-d-environment'
+        | 'thumbs-down'
+        | 'thumbs-up'
+        | 'tip-jar'
+        | 'toggle-off'
+        | 'toggle-on'
+        | 'transaction'
+        | 'transaction-fee-add'
+        | 'transaction-fee-dollar'
+        | 'transaction-fee-euro'
+        | 'transaction-fee-pound'
+        | 'transaction-fee-rupee'
+        | 'transaction-fee-yen'
+        | 'transfer'
+        | 'transfer-in'
+        | 'transfer-internal'
+        | 'transfer-out'
+        | 'truck'
+        | 'undo'
+        | 'unknown-device'
+        | 'unlock'
+        | 'upload'
+        | 'variant'
+        | 'variant-list'
+        | 'video'
+        | 'video-list'
+        | 'view'
+        | 'viewport-narrow'
+        | 'viewport-short'
+        | 'viewport-tall'
+        | 'viewport-wide'
+        | 'wallet'
+        | 'wand'
+        | 'watch'
+        | 'wifi'
+        | 'work'
+        | 'work-list'
+        | 'wrench'
+        | 'x'
+        | 'x-circle'
+        | 'x-circle-filled'
+      )
+    | AnyString;
   /**
-   * Additional interactive content displayed within the field.
-   *
-   * Accepts Button and Clickable components with text content only. Commonly used for actions like clearing the field or opening additional information.
+   * Additional content to be displayed in the field.
+   * Commonly used to display an icon that activates a tooltip providing more information.
    */
   accessory?: ComponentChildren;
 }
@@ -1959,10 +3740,9 @@ export interface NumberConstraintsProps {
    */
   step?: number;
   /**
-   * Sets the type of controls displayed in the field.
+   * The type of controls displayed in the field.
    *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property.
-   * Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
+   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Appropriate mouse and [keyboard interactions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/spinbutton_role#keyboard_interactions) to control the value of the field are enabled.
    * - `none`: no controls are displayed and users must input the value manually. Arrow keys and scroll wheels can’t be used either to avoid accidental changes.
    * - `auto`: the presence of the controls depends on the surface and context.
    *
@@ -1996,13 +3776,13 @@ export interface BaseSelectableProps {
    */
   accessibilityLabel?: string;
   /**
-   * Whether the control is disabled, preventing any user interaction.
+   * Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * The value submitted with form data when the control is checked or selected.
+   * The value submitted with the form when this checkbox is checked. If not specified, the default value is "on".
    */
   value?: string;
 }
@@ -2011,13 +3791,13 @@ export interface BaseSelectableProps {
  */
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
-   * Whether the option is currently selected.
+   * Whether the option is currently selected. Use this for controlled components where you manage the selection state.
    *
    * @default false
    */
   selected?: boolean;
   /**
-   * Whether the option is selected by default when first rendered.
+   * The initial selected state for uncontrolled components. Use this when you want the option to start selected but don't need to control its state afterward.
    *
    * @implementation `defaultSelected` reflects to the `selected` attribute.
    *
@@ -2030,19 +3810,27 @@ export interface BaseOptionProps extends BaseSelectableProps {
  */
 export interface BaseCheckableProps
   extends BaseSelectableProps,
+    FocusEventProps,
+    LabelAccessibilityVisibilityProps,
     InteractionProps {
   /**
-   * The visual text label displayed alongside the control to describe its purpose.
+   * The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state.
+   *
+   * @implementation (string) The label is a simple string that will be displayed to the user.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
    */
-  label?: string;
+  label?: string | ComponentChildren;
   /**
-   * Whether the control is currently checked (for checkboxes) or toggled on (for switches).
+   * Whether the control is currently checked. Use this for controlled components where you manage the checked state.
    *
    * @default false
    */
   checked?: boolean;
   /**
-   * Whether the control is checked by default when first rendered.
+   * The initial checked state for uncontrolled components. Use this when you want the control to start checked but don't need to control its state afterward.
    *
    * @implementation `defaultChecked` reflects to the `checked` attribute.
    *
@@ -2050,15 +3838,19 @@ export interface BaseCheckableProps
    */
   defaultChecked?: boolean;
   /**
-   * The name attribute for the control, which must be unique within the nearest containing Form component. This name is used to identify the control's value when the form is submitted.
+   * The name used to identify this checkbox in form submissions. When the checkbox is checked, its `name` and `value` are included in the form data. Must be unique within the containing form.
    */
   name?: string;
   /**
-   * A callback fired when the control's value changes. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   * A callback that is run whenever the control is changed. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
   onChange?: (event: Event) => void;
   /**
-   * A callback fired when the control's value changes. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
+   * A callback that is run whenever the control is changed. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
   onInput?: (event: Event) => void;
 }
@@ -2068,21 +3860,22 @@ interface CheckboxProps$1
     FieldErrorProps,
     FieldDetailsProps {
   /**
-   * Whether the checkbox displays in an indeterminate state (neither checked nor unchecked), typically used to indicate partial selection in hierarchical lists.
+   * Whether to display the checkbox in an indeterminate state (neither checked or unchecked).
    *
-   * This visual state takes priority over the `checked` prop in appearance only.
-   * The form submission value is still determined by the `checked` prop.
+   * In terms of appearance, this takes priority over the `checked` prop.
+   * But this is purely a visual change.
+   * Whether the value is submitted along with a form is still down to the `checked` prop.
    *
-   * If `indeterminate` has not been explicitly set and hasn't been modified by user interaction,
-   * it returns the value of `defaultIndeterminate`.
+   * If `indeterminate` has not been explicitly set, and the `indeterminate` state hasn't been modified by the user (via clicking),
+   * then `indeterminate` returns the value of `defaultIndeterminate`.
    *
    * @implementation The `indeterminate` property doesn't reflect to any attribute.
    */
   indeterminate?: boolean;
   /**
-   * Whether the checkbox is in an indeterminate state by default when first rendered.
+   * Whether the checkbox is in an `indeterminate` state by default.
    *
-   * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is explicitly set or the user changes the checkbox state.
+   * Similar to `defaultValue` and `defaultChecked`, this value applies until `indeterminate` is set, or user changes the state of the checkbox.
    *
    * @implementation `defaultIndeterminate` reflects to the `indeterminate` attribute.
    *
@@ -2090,7 +3883,10 @@ interface CheckboxProps$1
    */
   defaultIndeterminate?: boolean;
   /**
-   * Whether the checkbox must be checked before form submission. This adds semantic meaning and typically displays a visual indicator, but does not automatically validate or show errors. Use the `error` property to display validation messages.
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
    *
    * @default false
    */
@@ -2101,11 +3897,11 @@ interface CheckboxProps$1
  */
 export interface ChipProps$1 extends GlobalProps {
   /**
-   * The text content displayed within the chip.
+   * The text label displayed within the chip component, typically representing a selected filter, tag, or removable item.
    */
   children?: ComponentChildren;
   /**
-   * The graphic element (typically an icon) displayed inside the chip.
+   * The graphic to display inside of the chip.
    *
    * @implementation Only `s-icon` is supported.
    */
@@ -2115,128 +3911,29 @@ export interface ChipProps$1 extends GlobalProps {
    */
   accessibilityLabel?: string;
   /**
-   * The color intensity of the chip. Use `subdued` for less intense, `base` for standard, or `strong` for more intense coloring.
+   * The color emphasis level that controls visual intensity.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
-}
-interface ChipProps$2 extends ChipProps$1, GlobalProps {}
-interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
   /**
-   * The content displayed as the choice label.
-   *
-   * @implementation (StringChildren) The label is produced by extracting and
-   * concatenating the text nodes from the provided content; any markup or
-   * element structure is ignored.
-   *
-   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
-   * are rendered as the label content (subject to surface constraints); there
-   * is no coercion to a string.
-   */
-  children?: ComponentChildren | StringChildren;
-  /**
-   * Additional helpful text displayed alongside the choice to provide context, guidance, or instructions to the user.
-   *
-   * @implementation this content should be linked to the input with an `aria-describedby` attribute.
-   */
-  details?: ComponentChildren;
-  /**
-   * Whether this choice should be associated with an error state from the parent ChoiceList.
-   *
-   * @default false
-   */
-  error?: boolean;
-  /**
-   * Secondary descriptive content displayed beneath the choice label.
-   */
-  secondaryContent?: ComponentChildren;
-  /**
-   * Content displayed when the choice is selected, useful for showing additional information or nested options related to this choice.
-   */
-  selectedContent?: ComponentChildren;
-}
-interface ChoiceListProps$1
-  extends GlobalProps,
-    Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
-    MultipleInputProps,
-    FieldDetailsProps {
-  /**
-   * Whether users can select multiple choices simultaneously (checkboxes) or only one choice at a time (radio buttons).
-   *
-   * @default false
-   */
-  multiple?: boolean;
-  /**
-   * The collection of Choice components that users can select from.
-   */
-  children?: ComponentChildren;
-  /**
-   * Whether the entire choice list is disabled, preventing any user interaction.
-   *
-   * When `true`, the `disabled` property on individual child Choice components is ignored.
-   *
-   * @default false
-   */
-  disabled?: MultipleInputProps['disabled'];
-  /**
-   * The layout variant for displaying the choices.
-   *
-   * - `auto`: The variant is automatically determined by the context.
-   * - `list`: The choices are displayed in a vertical list.
-   * - `inline`: The choices are arranged horizontally along the inline axis.
-   * - `block`: The choices are arranged vertically along the block axis.
-   * - `grid`: The choices are displayed in a grid layout.
-   *
-   * @implementation The `block`, `inline` and `grid` variants are more suitable for button-styled choices, but it's at the discretion of each surface.
-   *
-   * @default 'auto'
-   */
-  variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
-}
-interface ClickableProps$1
-  extends GlobalProps,
-    BaseBoxProps,
-    BaseClickableProps {
-  /**
-   * Whether the component is in a loading state, which indicates to assistive technology that an action is in progress and prevents interaction.
-   */
-  loading?: BaseClickableProps['loading'];
-  /**
-   * Whether the component is disabled, preventing clicks and focus. When disabled, the `click` event won't fire and click events from child elements stop propagating immediately. Interactive child elements can still receive focus and be interacted with. This doesn't apply visual styling by default. You should apply disabled styling as needed.
-   */
-  disabled?: BaseClickableProps['disabled'];
-  /**
-   * The language of the text content within the component. Useful when the text is in a different language than the rest of the page, allowing assistive technologies such as screen readers to invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label).
-   *
-   * @default ''
-   */
-  lang?: string;
-}
-interface ClickableChipProps$1
-  extends ChipProps$1,
-    GlobalProps,
-    InteractionProps {
-  /**
-   * A callback fired when the chip is clicked.
-   */
-  onClick?: (event: Event) => void;
-  /**
-   * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
-   */
-  href?: string;
-  /**
-   * Whether the chip displays a remove button for dismissal. When clicked, the `remove` callback fires.
+   * Whether the chip is removable.
    *
    * @default false
    */
   removable?: boolean;
   /**
-   * A callback fired when the chip's remove button is clicked.
+   * Callback when the chip is removed.
    */
   onRemove?: (event: Event) => void;
   /**
-   * Whether the chip is hidden from view. When using controlled component pattern with `removable` chips, update this property when the `remove` event fires. For non-removable chips, manually toggle this property to show or hide the chip.
+   * Determines whether the chip is hidden.
+   *
+   * If this property is being set on each framework render (as in 'controlled' usage),
+   * and the chip is `removable`,
+   * ensure you update app state for this property when the `remove` event fires.
+   *
+   * If the chip is not `removable`, it can still be hidden by setting this property.
    *
    * @default false
    */
@@ -2251,6 +3948,134 @@ interface ClickableChipProps$1
    * We can add an `onHide` event in future if we want to provide a hook for the start of the animation.
    */
   onAfterHide?: (event: Event) => void;
+}
+interface ChipProps$2 extends ChipProps$1, GlobalProps {}
+interface ChoiceProps$1 extends GlobalProps, BaseOptionProps {
+  /**
+   * Content to use as the choice label.
+   *
+   * @implementation (StringChildren) The label is produced by extracting and
+   * concatenating the text nodes from the provided content; any markup or
+   * element structure is ignored.
+   *
+   * @implementation (ComponentChildren) Behaves as a slot: any elements passed
+   * are rendered as the label content (subject to surface constraints); there
+   * is no coercion to a string.
+   */
+  children?: ComponentChildren | StringChildren;
+  /**
+   * Additional text to provide context or guidance for the input.
+   *
+   * This text is displayed along with the input and its label
+   * to offer more information or instructions to the user.
+   *
+   * @implementation this content should be linked to the input with an `aria-describedby` attribute.
+   */
+  details?: ComponentChildren;
+  /**
+   * Set to `true` to associate a choice with the error passed to `ChoiceList`
+   *
+   * @default false
+   */
+  error?: boolean;
+  /**
+   * Secondary content for a choice.
+   */
+  secondaryContent?: ComponentChildren;
+  /**
+   * Content to display when the option is selected.
+   *
+   * This can be used to provide additional information or options related to the choice.
+   */
+  selectedContent?: ComponentChildren;
+}
+interface ChoiceListProps$1
+  extends GlobalProps,
+    Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
+    MultipleInputProps,
+    FieldDetailsProps {
+  /**
+   * Whether multiple choices can be selected.
+   *
+   * @default false
+   */
+  multiple?: boolean;
+  /**
+   * The choices a user can select from.
+   *
+   * Accepts `Choice` components.
+   */
+  children?: ComponentChildren;
+  /**
+   * Disables the field, disallowing any interaction.
+   *
+   * `disabled` on any child choices is ignored when this is true.
+   *
+   * @default false
+   */
+  disabled?: MultipleInputProps['disabled'];
+  /**
+   * The variant of the choice grid.
+   *
+   * - `auto`: The variant is determined by the context.
+   * - `list`: The choices are displayed in a list.
+   * - `inline`: The choices are displayed on the inline axis.
+   * - `block`: The choices are displayed on the block axis.
+   * - `grid`: The choices are displayed in a grid.
+   *
+   * @implementation The `block`, `inline` and `grid` variants are more suitable for button looking choices, but it's at the
+   * discretion of each surface.
+   *
+   * @default 'auto'
+   */
+  variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
+}
+interface ClickableProps$1
+  extends GlobalProps,
+    BaseBoxProps,
+    BaseClickableProps {
+  /**
+   * Disables the clickable, and indicates to assistive technology that the loading is in progress.
+   *
+   * This also disables the clickable.
+   */
+  loading?: BaseClickableProps['loading'];
+  /**
+   * Disables the clickable, meaning it cannot be clicked or receive focus.
+   *
+   * In this state, onClick will not fire.
+   * If the click event originates from a child element, the event will immediately stop propagating from this element.
+   *
+   * However, items within the clickable can still receive focus and be interacted with.
+   *
+   * This has no impact on the visual state by default,
+   * but developers are encouraged to style the clickable accordingly.
+   */
+  disabled?: BaseClickableProps['disabled'];
+  /**
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   *
+   * @default ''
+   */
+  lang?: string;
+}
+interface ClickableChipProps$1
+  extends ChipProps$1,
+    GlobalProps,
+    InteractionProps {
+  /**
+   * Callback when the chip is clicked.
+   */
+  onClick?: (event: Event) => void;
+  /**
+   * The URL to link to.
+   *
+   * - If set, it will navigate to the location specified by `href` after executing the `click` event.
+   * - If a `commandFor` is set, the `command` will be executed instead of the navigation.
+   */
+  href?: string;
   /**
    * Disables the chip, disallowing any interaction.
    *
@@ -2258,37 +4083,45 @@ interface ClickableChipProps$1
    */
   disabled?: boolean;
 }
-interface ColorPickerProps$1
-  extends GlobalProps,
-    Omit<InputProps, 'value' | 'defaultValue'> {
+interface ColorPickerProps$1 extends GlobalProps, InputProps {
   /**
-   * Whether to enable alpha (transparency) channel selection in the color picker, allowing users to choose semi-transparent colors.
+   * Allow user to select an alpha value.
    *
    * @default false
    */
   alpha?: boolean;
   /**
-   * A callback that fires when the user finishes selecting a color. The value is always emitted in hexadecimal format: 8-value hex (`#RRGGBBAA`) when `alpha` is `true`, or 6-value hex (`#RRGGBB`) when `alpha` is `false`.
+   * This callback will emit the value in hex.
+   *
+   * If the `alpha` prop is `true`, `onChange` will emit an 8-value hex (#RRGGBBAA).
+   * If the `alpha` prop is `false`, `onChange` will emit a 6-value hex (#RRGGBB).
    */
   onChange?: InputProps['onChange'];
   /**
-   * A callback that fires when the user makes any change to the color selection. The value is always emitted in hexadecimal format: 8-value hex (`#RRGGBBAA`) when `alpha` is `true`, or 6-value hex (`#RRGGBB`) when `alpha` is `false`.
+   * This callback will emit the value in hex.
+   *
+   * If the `alpha` prop is `true`, `onInput` will emit an 8-value hex (#RRGGBBAA).
+   * If the `alpha` prop is `false`, `onInput` will emit a 6-value hex (#RRGGBB).
    */
   onInput?: InputProps['onChange'];
   /**
-   * The currently selected color value. Accepts multiple input formats:
+   * The currently selected color.
    *
-   * - Hex: `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA` (three, four, six, or eight digits)
-   * - RGB/RGBA: `rgb(255, 0, 0)` or `rgb(255 0 0)` (comma or space-separated)
-   * - HSL/HSLA: `hsl(0, 100%, 50%)` or `hsl(0 100% 50%)`
+   * Supported formats include:
+   * - HSL @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsl
+   * - HSLA @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hsla
+   * - RGB @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   * - RGBA @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   * - Hex (3-value, 4-value, 6-value, 8-value) @see https://developer.mozilla.org/en-US/docs/Web/CSS/hex-color
    *
-   * Returns an empty string if the value is invalid. The `onChange` handler always emits values in hex format.
+   * For RGB and RGBA, both the legacy syntax (comma-separated) and modern syntax (space-separate) are supported.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/rgb
+   *
+   * If the value is invalid, the component will return an empty string ''.
+   *
+   * Note that the `onChange` handler will emit the value in hex.
    */
-  value?: string;
-  /**
-   * The initial color value when the field first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts interacting, their input replaces it. Changing this property after the field has loaded has no effect. To update the field value at any time, use `value` instead.
-   */
-  defaultValue?: string;
+  value?: InputProps['value'];
 }
 /**
  * @publicDocs
@@ -2297,18 +4130,17 @@ export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {
   /**
-   * Controls browser autofill behavior for the field.
+   * A hint about the intended content of the field for browser autofill.
    *
-   * Basic values:
-   * - `on` - Enables autofill without specifying content type (default)
-   * - `off` - Disables autofill for sensitive data or one-time codes
+   * When set to `on` (the default), this property indicates that the field should support autofill, but you do not have any more semantic information on the intended contents.
    *
-   * Specific field values describe the expected data type. You can optionally prefix these with:
-   * - `section-${string}` - Scopes autofill to a specific form section (when multiple forms exist on the same page)
-   * - `shipping` or `billing` - Indicates whether the data is for shipping or billing purposes
-   * - Both section and group (for example, `section-primary shipping email`)
+   * When set to `off`, you are indicating that this field contains sensitive information, or contents that are never saved, like one-time codes.
    *
-   * Providing a specific autofill token helps browsers suggest more relevant saved data. Learn more about [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens).
+   * Alternatively, you can provide value which describes the specific data you would like to be entered into this field during autofill.
+   *
+   * Learn more about the set of [autocomplete values](https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens) supported in browsers.
+   *
+   * @see Learn more about the set of {@link https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill-detail-tokens|autocomplete values} supported in browsers.
    *
    * @default 'tel' for PhoneField
    * @default 'email' for EmailField
@@ -2324,11 +4156,9 @@ export interface AutocompleteProps<
     | 'off';
 }
 /**
- * The “section” scopes the autocomplete data that should be inserted
- * to a specific area of the page.
+ * The “section” scopes the autocomplete data that should be inserted to a specific area of the page.
  *
- * Commonly used when there are multiple fields with the same autocomplete needs
- * in the same page. For example: 2 shipping address forms in the same page.
+ * Commonly used when there are multiple fields with the same autocomplete needs in the same page. For example: 2 shipping address forms in the same page.
  * @publicDocs
  */
 export type AutocompleteSection = `section-${string}`;
@@ -2343,6 +4173,9 @@ export type AutocompleteGroup = 'shipping' | 'billing';
  */
 export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
 /**
+ * Represents all possible autocomplete field values as defined by the HTML autocomplete specification. These values help browsers provide appropriate autofill suggestions for form fields.
+ *
+ * Learn more about [autocomplete values](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete).
  * @publicDocs
  */
 export type AnyAutocompleteField =
@@ -2411,8 +4244,7 @@ export type AnyAutocompleteField =
   | `${AutocompleteAddressGroup} tel-local`
   | `${AutocompleteAddressGroup} tel-national`;
 /**
- * Represents autocomplete values that are valid for text input fields.
- * This is a subset of `AnyAutocompleteField` containing only fields suitable for text-based inputs.
+ * Represents autocomplete values that are valid for text input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for text-based inputs.
  *
  * Available values:
  * - `name` - Full name
@@ -2482,27 +4314,8 @@ export type TextAutocompleteField = ExtractStrict<
 >;
 interface ColorFieldProps$1
   extends GlobalProps,
-    Omit<BaseTextFieldProps, 'value' | 'defaultValue'> {
-  /**
-   * Whether to enable alpha (transparency) channel selection in the color picker, allowing users to choose semi-transparent colors.
-   *
-   * @default false
-   */
-  alpha?: boolean;
-  /**
-   * The currently selected color value. Accepts multiple input formats:
-   *
-   * - Hex: `#RGB`, `#RGBA`, `#RRGGBB`, `#RRGGBBAA` (three, four, six, or eight digits)
-   * - RGB/RGBA: `rgb(255, 0, 0)` or `rgb(255 0 0)` (comma or space-separated)
-   * - HSL/HSLA: `hsl(0, 100%, 50%)` or `hsl(0 100% 50%)`
-   *
-   * Returns an empty string if the value is invalid. The `onChange` handler always emits values in hex format.
-   */
-  value?: string;
-  /**
-   * The initial color value when the field first loads. Unlike `placeholder`, this is a real value that the user can edit and that gets submitted with the form. Once the user starts interacting, their input replaces it. Changing this property after the field has loaded has no effect. To update the field value at any time, use `value` instead.
-   */
-  defaultValue?: string;
+    BaseTextFieldProps,
+    Pick<ColorPickerProps$1, 'alpha' | 'value' | 'defaultValue'> {
   autocomplete?: Extract<
     AutocompleteProps<never>['autocomplete'],
     'on' | 'off'
@@ -2510,15 +4323,23 @@ interface ColorFieldProps$1
 }
 interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
   /**
-   * The default month to display in `YYYY-MM` format. Used until the `view` callback is set by user interaction or programmatically. Defaults to the current month in the user's locale.
+   * Default month to display in `YYYY-MM` format.
+   *
+   * This value is used until `view` is set, either directly or as a result of user interaction.
+   *
+   * Defaults to the current month in the user's locale.
    */
   defaultView?: string;
   /**
-   * The currently displayed month in `YYYY-MM` format. When changed, the `viewchange` callback is triggered. Defaults to `defaultView`.
+   * Displayed month in `YYYY-MM` format.
+   *
+   * `onViewChange` is called when this value changes.
+   *
+   * Defaults to `defaultView`.
    */
   view?: string;
   /**
-   * A callback fired whenever the displayed month changes in the calendar.
+   * Called whenever the month to display changes.
    *
    * @param view The new month to display in `YYYY-MM` format.
    */
@@ -2534,91 +4355,144 @@ interface DatePickerProps$1 extends GlobalProps, InputProps, FocusEventProps {
    */
   type?: 'single' | 'multiple' | 'range';
   /**
-   * Specifies which dates can be selected as a comma-separated list. An empty string (default) allows all dates.
+   * Dates that can be selected.
    *
-   * **Formats:**
-   * - `YYYY-MM-DD`: Single date
-   * - `YYYY-MM`: Whole month
-   * - `YYYY`: Whole year
-   * - `start--end`: Date range (inclusive, unbounded if start/end omitted)
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * **Examples:**
-   * - `2024-02--2025`: February 2024 through end of 2025
-   * - `2024-05-09, 2024-05-11`: Only May 9th and 11th, 2024
+   * The default `''` allows all dates.
+   *
+   * - Dates in `YYYY-MM-DD` format allow a single date.
+   * - Dates in `YYYY-MM` format allow a whole month.
+   * - Dates in `YYYY` format allow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
    *
    * @default ""
+   *
+   * @example
+   * `2024-02--2025` // allow any date from February 2024 to the end of 2025
+   * `2024-02--` // allow any date from February 2024 to the end of the month
+   * `2024-05-09, 2024-05-11` // allow only the 9th and 11th of May 2024
    */
   allow?: string;
   /**
-   * Specifies which dates can't be selected as a comma-separated list. These dates are excluded from those specified in `allow`. An empty string (default) has no effect.
+   * Dates that cannot be selected. These subtract from `allow`.
    *
-   * **Formats:**
-   * - `YYYY-MM-DD`: Single date
-   * - `YYYY-MM`: Whole month
-   * - `YYYY`: Whole year
-   * - `start--end`: Date range (inclusive, unbounded if start/end omitted)
+   * A comma-separated list of dates, date ranges. Whitespace is allowed after commas.
    *
-   * **Examples:**
-   * - `--2024-02`: All dates before February 2024
-   * - `2024-05-09, 2024-05-11`: May 9th and 11th, 2024
+   * The default `''` has no effect on `allow`.
+   *
+   * - Dates in `YYYY-MM-DD` format disallow a single date.
+   * - Dates in `YYYY-MM` format disallow a whole month.
+   * - Dates in `YYYY` format disallow a whole year.
+   * - Ranges are expressed as `start--end`.
+   *     - Ranges are inclusive.
+   *     - If either `start` or `end` is omitted, the range is unbounded in that direction.
+   *     - If parts of the date are omitted for `start`, they are assumed to be the minimum possible value.
+   *       So `2024--` is equivalent to `2024-01-01--`.
+   *     - If parts of the date are omitted for `end`, they are assumed to be the maximum possible value.
+   *       So `--2024` is equivalent to `--2024-12-31`.
+   *     - Whitespace is allowed either side of `--`.
    *
    * @default ""
+   *
+   * @example
+   * `--2024-02` // disallow any date before February 2024
+   * `2024-05-09, 2024-05-11` // disallow the 9th and 11th of May 2024
    */
   disallow?: string;
   /**
-   * Specifies which days of the week can be selected as a comma-separated list. Further restricts dates from `allow` and `disallow`. An empty string (default) has no effect.
+   * Days of the week that can be selected. These intersect with the result of `allow` and `disallow`.
    *
-   * **Valid days**: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
-   * **Example:** `saturday, sunday` (only weekends)
+   * The default `''` has no effect on the result of `allow` and `disallow`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
    * @default ""
+   *
+   * @example
+   * 'saturday, sunday' // allow only weekends within the result of `allow` and `disallow`.
    */
   allowDays?: string;
   /**
-   * Specifies which days of the week can't be selected as a comma-separated list. Excludes days from `allowDays` and intersects with `allow` and `disallow`. An empty string (default) has no effect.
+   * Days of the week that cannot be selected. This subtracts from `allowDays`, and intersects with the result of `allow` and `disallow`.
    *
-   * **Valid days**: `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`
+   * A comma-separated list of days. Whitespace is allowed after commas.
    *
-   * **Example:** `saturday, sunday` (no weekends)
+   * The default `''` has no effect on `allowDays`.
+   *
+   * Days are `sunday`, `monday`, `tuesday`, `wednesday`, `thursday`, `friday`, `saturday`.
    *
    * @default ""
+   *
+   * @example
+   * 'saturday, sunday' // disallow weekends within the result of `allow` and `disallow`.
    */
   disallowDays?: string;
   /**
-   * The initially selected date(s) when the component first renders. An empty string means no date is initially selected.
+   * Default selected value.
    *
-   * - Single date in `YYYY-MM-DD` format when `type` is set to `"single"`
-   * - Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive) when `type` is set to `"range"`
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
    * @default ""
    */
   defaultValue?: string;
   /**
-   * The currently selected date(s). An empty string means no date is selected.
+   * Current selected value.
    *
-   * - Single date in `YYYY-MM-DD` format when `type` is set to `"single"`
-   * - Date range in `YYYY-MM-DD--YYYY-MM-DD` format (inclusive) when `type` is set to `"range"`
+   * The default means no date is selected.
+   *
+   * If the provided value is invalid, no date is selected.
+   *
+   * Otherwise:
+   *
+   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
+   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
+   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
    *
    * @default ""
    */
   value?: string;
   /**
-   * A callback fired when any date is selected, before `onChange`. When `type` is set to `"range"`, also fires when the first date is selected with a partial value formatted as `YYYY-MM-DD--`.
+   * Callback when any date is selected.
+   *
+   * - If `type="single"`, fires when a date is selected and happens before `onChange`.
+   * - If `type="multiple"`, fires when a date is selected before `onChange`.
+   * - If `type="range"`, fires when a first date is selected (with the partial value formatted as `YYYY-MM-DD--`), and when the last date is selected before `onChange`.
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback fired when the date selection is committed and complete, after `onInput`. When `type` is set to `"range"`, fires only when the range is completed by selecting the end date.
+   * Callback when the value is committed.
+   *
+   * - If `type="single"`, fires when a date is selected after `onInput`.
+   * - If `type="multiple"`, fires when a date is selected after `onInput`.
+   * - If `type="range"`, fires when a range is completed by selecting the end date after `onInput`.
    */
   onChange?: (event: Event) => void;
 }
 interface DateFieldProps$1
   extends GlobalProps,
-    Omit<BaseTextFieldProps, 'value' | 'defaultValue'>,
+    BaseTextFieldProps,
     Pick<
       DatePickerProps$1,
       | 'view'
       | 'defaultView'
+      | 'value'
+      | 'defaultValue'
       | 'allow'
       | 'disallow'
       | 'allowDays'
@@ -2627,27 +4501,18 @@ interface DateFieldProps$1
     >,
     AutocompleteProps<DateAutocompleteField> {
   /**
-   * The initial date value when the field first renders, in `YYYY-MM-DD` format. An empty string means no date is initially selected.
-   *
-   * @default ""
-   */
-  defaultValue?: string;
-  /**
-   * The currently selected date in `YYYY-MM-DD` format. An empty string means no date is selected.
-   *
-   * @default ""
-   */
-  value?: string;
-  /**
-   * A callback fired when the user makes any changes in the field, including when selecting a date using the date picker popup. This fires before `onChange`.
+   * Callback when the user makes any changes in the field.
+   * Also triggered when a date is selected using the date picker popup before `onChange`.
    */
   onInput?: (event: Event) => void;
   /**
-   * A callback fired when the user has finished editing the field, such as when they blur the field or complete a date selection. This fires after `onInput`.
+   * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
+   * Also triggered when a date is selected using the date picker popup after `onInput`.
    */
   onChange?: (event: Event) => void;
   /**
-   * A callback fired when the field contains an invalid date, either because the typed date is malformed, doesn't exist (e.g., February 31st), or is disabled by the `allow`/`disallow` constraints.
+   * Callback when the field has an invalid date.
+   * This callback will be called, if the date typed is invalid or disabled.
    *
    * Dates that don’t exist or have formatting errors are considered invalid. Some examples of invalid dates are:
    * - 2021-02-31: February doesn’t have 31 days
@@ -2663,8 +4528,7 @@ interface DateFieldProps$1
   onInvalid?: (event: Event) => void;
 }
 /**
- * Represents autocomplete values that are valid for date input fields.
- * This is a subset of `AnyAutocompleteField` containing only fields suitable for date-based inputs.
+ * Represents autocomplete values that are valid for date input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for date-based inputs.
  *
  * Available values:
  * - `bday` - Complete birthday date
@@ -2688,19 +4552,13 @@ export type DateAutocompleteField = ExtractStrict<
 >;
 interface DividerProps$1 extends GlobalProps {
   /**
-   * The orientation of the divider line, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
-   *
-   * - `inline`: Horizontal divider for separating vertically stacked content
-   * - `block`: Vertical divider for separating horizontally arranged content
+   * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'inline'
    */
   direction?: 'inline' | 'block';
   /**
-   * The visual prominence of the divider line.
-   *
-   * - `base`: Standard divider for most separations (default)
-   * - `strong`: More prominent divider for major section breaks
+   * Modify the color to be more or less intense.
    *
    * @default 'base'
    */
@@ -2743,8 +4601,7 @@ interface EmailFieldProps$1
     MinMaxLengthProps,
     AutocompleteProps<EmailAutocompleteField> {}
 /**
- * Represents autocomplete values that are valid for email input fields.
- * This is a subset of `AnyAutocompleteField` containing only fields suitable for email inputs.
+ * Represents autocomplete values that are valid for email input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for email inputs.
  *
  * Available values:
  * - `email` - Primary email address
@@ -2758,13 +4615,27 @@ export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
+interface EmptyStateProps$1 extends GlobalProps, ActionSlots {
+  /**
+   * The heading of the EmptyState.
+   */
+  heading?: string;
+  /**
+   * The subheading of the EmptyState.
+   */
+  subheading?: ComponentChildren | StringChildren;
+  /**
+   * The graphic to display in the EmptyState. The only supported components are `Image` and `Icon`.
+   */
+  graphic?: ComponentChildren;
+}
 interface FormProps$1 extends GlobalProps {
   /**
-   * The form fields and content to be wrapped in the form element.
+   * The content of the form.
    */
   children?: ComponentChildren;
   /**
-   * Whether the form can be submitted.
+   * Whether the form is able to be submitted.
    *
    * When set to `true`, this will also disable the implicit submit behavior of the form.
    *
@@ -2775,14 +4646,14 @@ interface FormProps$1 extends GlobalProps {
    */
   disabled?: boolean;
   /**
-   * A callback fired when the form is submitted.
+   * A callback that is run when the form is submitted.
    *
-   * Use `event.waitUntil` to signal how long it takes to save the data
-   * and whether the operation was successful.
+   * Use `event.waitUntil` to signal how long it takes to save the data,
+   * and whether it was successful or not.
    */
   onSubmit?: (event: ExtendableEvent) => void;
   /**
-   * A callback fired when the form is reset, typically via a reset button.
+   * A callback that is run when the form is reset.
    */
   onReset?: (event: Event) => void;
 }
@@ -2810,56 +4681,72 @@ interface FunctionSettingsProps$1 extends GlobalProps, FormProps$1 {
   onError?: (event: AggregateErrorEvent<FunctionSettingsError>) => void;
 }
 /**
+ * Represents an error that occurs when saving function settings data.
+ *
+ * These errors are returned when the extension-provided data fails validation or causes issues during the commit process to Shopify's servers. Handle these errors in the `onError` callback to provide feedback to users about what went wrong.
  * @publicDocs
  */
 export interface FunctionSettingsError extends Error {
   /**
-   * A unique identifier describing the “class” of error. These will match
-   * the GraphQL error codes as closely as possible. For example the enums
-   * returned by the `metafieldsSet` mutation. Learn more about [MetafieldsSetUserErrorCode](https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode).
+   * A unique identifier describing the “class” of error. These will match the GraphQL error codes as closely as possible. For example the enums returned by the `metafieldsSet` mutation.
+   *
+   * Learn more about [MetafieldsSetUserErrorCode](/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode).
+   *
+   * @see https://shopify.dev/docs/api/admin-graphql/latest/enums/MetafieldsSetUserErrorCode
    */
   code: string;
+  /**
+   * The error type name, always set to `FunctionSettingsError`.
+   *
+   * This helps identify errors specific to function settings, distinguishing them from other error types.
+   */
   name: 'FunctionSettingsError';
 }
 /**
+ * Defines the spacing size between elements, using the standard size scale or `none` for no spacing.
  * @publicDocs
  */
 export type SpacingKeyword = SizeKeyword | 'none';
-/**
- * @publicDocs
- */
 export interface GapProps {
   /**
    * The spacing between child elements.
    *
-   * A single value applies to both axes.
-   * A pair of values (e.g., `large-100 large-500`) can be used to set the inline and block axes respectively.
+   * Accepts a single value to apply to both axes, or two space-separated values to set the row and column gaps independently. For example: `large-100 large-500` sets the row gap to `large-100` and column gap to `large-500`.
    *
    * @default 'none'
    */
   gap?: MaybeResponsive<MaybeTwoValuesShorthandProperty<SpacingKeyword>>;
   /**
-   * The spacing between elements along the block axis (vertical spacing in horizontal writing modes).
+   * The vertical spacing between elements (in horizontal writing modes).
    *
-   * This overrides the row value of `gap`.
+   * Sets the gap along the block axis. This overrides the row value specified in `gap`.
    *
    * @default '' - meaning no override
    */
   rowGap?: MaybeResponsive<SpacingKeyword | ''>;
   /**
-   * The spacing between elements along the inline axis (horizontal spacing in horizontal writing modes).
+   * The horizontal spacing between elements (in horizontal writing modes).
    *
-   * This overrides the column value of `gap`.
+   * Sets the gap along the inline axis. This overrides the column value specified in `gap`.
    *
    * @default '' - meaning no override
    */
   columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
 /**
+ * Represents baseline alignment positions used to align items relative to their baselines.
+ * - `baseline`: Aligns to the baseline of the parent.
+ * - `first baseline`: Aligns to the first baseline of the parent.
+ * - `last baseline`: Aligns to the last baseline of the parent.
  * @publicDocs
  */
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
 /**
+ * Defines how space is distributed between and around content items in flex and grid layouts.
+ * - `space-between`: Distributes items evenly with the first item at the start and last at the end.
+ * - `space-around`: Distributes items evenly with equal space around each item.
+ * - `space-evenly`: Distributes items evenly with equal space between them.
+ * - `stretch`: Stretches items to fill the container.
  * @publicDocs
  */
 export type ContentDistribution =
@@ -2868,17 +4755,26 @@ export type ContentDistribution =
   | 'space-evenly'
   | 'stretch';
 /**
+ * Defines the position of content along an axis.
+ * - `center`: Centers the content.
+ * - `start`: Aligns content to the start.
+ * - `end`: Aligns content to the end.
  * @publicDocs
  */
 export type ContentPosition = 'center' | 'start' | 'end';
 /**
+ * Represents content positioning with overflow behavior control. Use `safe` to prevent content from becoming inaccessible when it overflows, or `unsafe` to allow overflow regardless of accessibility.
  * @publicDocs
  */
 export type OverflowPosition =
   | `unsafe ${ContentPosition}`
   | `safe ${ContentPosition}`;
 /**
- * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis. Learn more about the [justify-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+ * Justify items defines the default justify-self for all items of the box, giving them all a default way of justifying each box along the appropriate axis.
+ *
+ * Learn more about the [justify-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
  * @publicDocs
  */
 export type JustifyItemsKeyword =
@@ -2888,7 +4784,11 @@ export type JustifyItemsKeyword =
   | OverflowPosition
   | ContentPosition;
 /**
- * Align items sets the align-self value on all direct children as a group. Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+ * Align items sets the align-self value on all direct children as a group.
+ *
+ * Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
  * @publicDocs
  */
 export type AlignItemsKeyword =
@@ -2898,7 +4798,11 @@ export type AlignItemsKeyword =
   | OverflowPosition
   | ContentPosition;
 /**
- * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container. Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+ * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
+ *
+ * Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
  * @publicDocs
  */
 export type JustifyContentKeyword =
@@ -2907,7 +4811,11 @@ export type JustifyContentKeyword =
   | OverflowPosition
   | ContentPosition;
 /**
- *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis. Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+ * Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
+ *
+ * Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
  * @publicDocs
  */
 export type AlignContentKeyword =
@@ -2918,60 +4826,68 @@ export type AlignContentKeyword =
   | ContentPosition;
 interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
   /**
-	  Define columns and specify their size. Learn more about the [grid-template-columns property](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns).
+	  Define columns and specify their size.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns
 	  @default 'none'
 	*/
   gridTemplateColumns?: MaybeResponsive<string>;
   /**
-	  Define rows and specify their size. Learn more about the [grid-template-rows property](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows).
+	  Define rows and specify their size.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows
 	  @default 'none'
 	*/
   gridTemplateRows?: MaybeResponsive<string>;
   /**
-	  Aligns the grid items along the inline (row) axis. Learn more about the [justify-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items).
+	  Aligns the grid items along the inline (row) axis.
   
 	  This overrides the inline value of `placeItems`.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-items
 	  @default '' - meaning no override
 	*/
   justifyItems?: MaybeResponsive<JustifyItemsKeyword | ''>;
   /**
-	  Aligns the grid items along the block (column) axis. Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+	  Aligns the grid items along the block (column) axis.
   
 	  This overrides the block value of `placeItems`.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
 	  @default '' - meaning no override
 	*/
   alignItems?: MaybeResponsive<AlignItemsKeyword | ''>;
   /**
-	  A shorthand property for `justify-items` and `align-items`. Learn more about the [place-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/place-items).
+	  A shorthand property for `justify-items` and `align-items`.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-items
 	  @default 'normal normal'
 	*/
   placeItems?: MaybeResponsive<
     `${AlignItemsKeyword} ${JustifyItemsKeyword}` | AlignItemsKeyword
   >;
   /**
-	  Aligns the grid along the inline (row) axis. Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+	  Aligns the grid along the inline (row) axis.
   
 	  This overrides the inline value of `placeContent`.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
 	  @default '' - meaning no override
 	*/
   justifyContent?: MaybeResponsive<JustifyContentKeyword | ''>;
   /**
-	  Aligns the grid along the block (column) axis. Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+	  Aligns the grid along the block (column) axis.
   
 	  This overrides the block value of `placeContent`.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
 	  @default '' - meaning no override
 	*/
   alignContent?: MaybeResponsive<AlignContentKeyword | ''>;
   /**
-	  A shorthand property for `justify-content` and `align-content`. Learn more about the [place-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/place-content).
+	  A shorthand property for `justify-content` and `align-content`.
   
+	  @see https://developer.mozilla.org/en-US/docs/Web/CSS/place-content
 	  @default 'normal normal'
 	*/
   placeContent?: MaybeResponsive<
@@ -2980,13 +4896,17 @@ interface GridProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
 }
 interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
   /**
-   * The number of grid columns this item spans across. Learn more about the [grid-column property](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column).
+   * Number of columns the item will span across
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column
    *
    * @default 'auto'
    */
   gridColumn?: `span ${number}` | 'auto';
   /**
-   * The number of grid rows this item spans across. Learn more about the [grid-row property](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row).
+   * Number of rows the item will span across
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/grid-row
    *
    * @default 'auto'
    */
@@ -2997,7 +4917,10 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
  */
 export interface BaseTypographyProps {
   /**
-   * The color intensity of the text. Use `subdued` for less intense, `base` for standard, or `strong` for more intense coloring.
+   * The color emphasis level that controls visual intensity.
+   *
+   * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+   * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
    *
    * @default 'base'
    */
@@ -3019,15 +4942,23 @@ export interface BaseTypographyProps {
    */
   tone?: ToneKeyword;
   /**
-   * Set the numeric properties of the font. Learn more about the [font-variant-numeric property](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric).
+   * The rendering style for numbers in the font.
+   *
+   * - `auto`: Inherits the setting from the parent element.
+   * - `normal`: Uses the font's default numeric glyphs.
+   * - `tabular-nums`: Uses fixed-width numeric glyphs, ensuring numbers align vertically in tables or lists.
+   *
+   * Learn more about the [font-variant-numeric property](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
    *
    * @default 'auto' - inherit from the parent element
    */
   fontVariantNumeric?: 'auto' | 'normal' | 'tabular-nums';
   /**
-   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
-   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
-   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
+   * The language of the text content. Use this when the text is in a different language than the rest of the page, allowing assistive technologies such as screen readers to invoke the correct pronunciation.
+   *
+   * The value should be a valid language subtag from the [IANA language subtag registry](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry).
    *
    * It is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.
    *
@@ -3044,6 +4975,8 @@ export interface BaseTypographyProps {
    *
    * Learn more about the [dir attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir).
    *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir
+   *
    * @default ''
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
@@ -3053,7 +4986,11 @@ export interface BaseTypographyProps {
  */
 export interface BlockTypographyProps {
   /**
-   * Truncates the text content to the specified number of lines. Learn more about the [-webkit-line-clamp property](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp).
+   * The maximum number of lines to display before truncating the text content.
+   *
+   * Learn more about the [-webkit-line-clamp property](https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/-webkit-line-clamp
    *
    * @default Infinity - no truncation is applied
    */
@@ -3064,7 +5001,7 @@ interface HeadingProps$1
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The content of the heading.
+   * The content of the Heading.
    */
   children?: ComponentChildren;
   /**
@@ -3092,35 +5029,591 @@ interface IconProps$1
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * The semantic meaning and color treatment of the component.
-   *
-   * - `auto`: Automatically determined based on context.
-   * - `neutral`: General information without specific intent.
-   * - `info`: Informational content or helpful tips.
-   * - `success`: Positive outcomes or successful states.
-   * - `caution`: Advisory notices that need attention.
-   * - `warning`: Important warnings about potential issues.
-   * - `critical`: Urgent problems or destructive actions.
+   * Sets the tone of the icon, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * The color intensity of the icon. Use `subdued` for less intense, `base` for standard, or `strong` for more intense coloring.
+   * Modify the color to be more or less intense.
    *
    * @default 'base'
    */
   color?: ColorKeyword;
   /**
-   * The size of the icon. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default size.
+   * Adjusts the size of the icon.
    *
    * @default 'base'
    */
   size?: SizeKeyword;
-  /**
-   * The icon to display. Can be any icon name from the icon library or a custom string identifier.
-   */
-  type?: IconType | AnyString;
+  type?:
+    | (
+        | 'adjust'
+        | 'affiliate'
+        | 'airplane'
+        | 'alert-bubble'
+        | 'alert-circle'
+        | 'alert-diamond'
+        | 'alert-location'
+        | 'alert-octagon'
+        | 'alert-octagon-filled'
+        | 'alert-triangle'
+        | 'alert-triangle-filled'
+        | 'align-horizontal-centers'
+        | 'app-extension'
+        | 'apps'
+        | 'archive'
+        | 'arrow-down'
+        | 'arrow-down-circle'
+        | 'arrow-down-right'
+        | 'arrow-left'
+        | 'arrow-left-circle'
+        | 'arrow-right'
+        | 'arrow-right-circle'
+        | 'arrow-up'
+        | 'arrow-up-circle'
+        | 'arrow-up-right'
+        | 'arrows-in-horizontal'
+        | 'arrows-out-horizontal'
+        | 'asterisk'
+        | 'attachment'
+        | 'automation'
+        | 'backspace'
+        | 'bag'
+        | 'bank'
+        | 'barcode'
+        | 'battery-low'
+        | 'bill'
+        | 'blank'
+        | 'blog'
+        | 'bolt'
+        | 'bolt-filled'
+        | 'book'
+        | 'book-open'
+        | 'brain'
+        | 'broom'
+        | 'bug'
+        | 'bullet'
+        | 'business-entity'
+        | 'button'
+        | 'button-press'
+        | 'calculator'
+        | 'calendar'
+        | 'calendar-check'
+        | 'calendar-compare'
+        | 'calendar-list'
+        | 'calendar-time'
+        | 'camera'
+        | 'camera-flip'
+        | 'caret-down'
+        | 'caret-left'
+        | 'caret-right'
+        | 'caret-up'
+        | 'cart'
+        | 'cart-abandoned'
+        | 'cart-discount'
+        | 'cart-down'
+        | 'cart-filled'
+        | 'cart-sale'
+        | 'cart-send'
+        | 'cart-up'
+        | 'cash-dollar'
+        | 'cash-euro'
+        | 'cash-pound'
+        | 'cash-rupee'
+        | 'cash-yen'
+        | 'catalog-product'
+        | 'categories'
+        | 'channels'
+        | 'channels-filled'
+        | 'chart-cohort'
+        | 'chart-donut'
+        | 'chart-funnel'
+        | 'chart-histogram-first'
+        | 'chart-histogram-first-last'
+        | 'chart-histogram-flat'
+        | 'chart-histogram-full'
+        | 'chart-histogram-growth'
+        | 'chart-histogram-last'
+        | 'chart-histogram-second-last'
+        | 'chart-horizontal'
+        | 'chart-line'
+        | 'chart-popular'
+        | 'chart-stacked'
+        | 'chart-vertical'
+        | 'chat'
+        | 'chat-new'
+        | 'chat-referral'
+        | 'check'
+        | 'check-circle'
+        | 'check-circle-filled'
+        | 'checkbox'
+        | 'chevron-down'
+        | 'chevron-down-circle'
+        | 'chevron-left'
+        | 'chevron-left-circle'
+        | 'chevron-right'
+        | 'chevron-right-circle'
+        | 'chevron-up'
+        | 'chevron-up-circle'
+        | 'circle'
+        | 'circle-dashed'
+        | 'clipboard'
+        | 'clipboard-check'
+        | 'clipboard-checklist'
+        | 'clock'
+        | 'clock-list'
+        | 'clock-revert'
+        | 'code'
+        | 'code-add'
+        | 'collection'
+        | 'collection-featured'
+        | 'collection-list'
+        | 'collection-reference'
+        | 'color'
+        | 'color-none'
+        | 'compass'
+        | 'complete'
+        | 'compose'
+        | 'confetti'
+        | 'connect'
+        | 'content'
+        | 'contract'
+        | 'corner-pill'
+        | 'corner-round'
+        | 'corner-square'
+        | 'credit-card'
+        | 'credit-card-cancel'
+        | 'credit-card-percent'
+        | 'credit-card-reader'
+        | 'credit-card-reader-chip'
+        | 'credit-card-reader-tap'
+        | 'credit-card-secure'
+        | 'credit-card-tap-chip'
+        | 'crop'
+        | 'currency-convert'
+        | 'cursor'
+        | 'cursor-banner'
+        | 'cursor-option'
+        | 'data-presentation'
+        | 'data-table'
+        | 'database'
+        | 'database-add'
+        | 'database-connect'
+        | 'delete'
+        | 'delivered'
+        | 'delivery'
+        | 'desktop'
+        | 'disabled'
+        | 'disabled-filled'
+        | 'discount'
+        | 'discount-add'
+        | 'discount-automatic'
+        | 'discount-code'
+        | 'discount-remove'
+        | 'dns-settings'
+        | 'dock-floating'
+        | 'dock-side'
+        | 'domain'
+        | 'domain-landing-page'
+        | 'domain-new'
+        | 'domain-redirect'
+        | 'download'
+        | 'drag-drop'
+        | 'drag-handle'
+        | 'drawer'
+        | 'duplicate'
+        | 'edit'
+        | 'email'
+        | 'email-follow-up'
+        | 'email-newsletter'
+        | 'empty'
+        | 'enabled'
+        | 'enter'
+        | 'envelope'
+        | 'envelope-soft-pack'
+        | 'eraser'
+        | 'exchange'
+        | 'exit'
+        | 'export'
+        | 'external'
+        | 'eye-check-mark'
+        | 'eye-dropper'
+        | 'eye-dropper-list'
+        | 'eye-first'
+        | 'eyeglasses'
+        | 'fav'
+        | 'favicon'
+        | 'file'
+        | 'file-list'
+        | 'filter'
+        | 'filter-active'
+        | 'flag'
+        | 'flip-horizontal'
+        | 'flip-vertical'
+        | 'flower'
+        | 'folder'
+        | 'folder-add'
+        | 'folder-down'
+        | 'folder-remove'
+        | 'folder-up'
+        | 'food'
+        | 'foreground'
+        | 'forklift'
+        | 'forms'
+        | 'games'
+        | 'gauge'
+        | 'geolocation'
+        | 'gift'
+        | 'gift-card'
+        | 'git-branch'
+        | 'git-commit'
+        | 'git-repository'
+        | 'globe'
+        | 'globe-asia'
+        | 'globe-europe'
+        | 'globe-lines'
+        | 'globe-list'
+        | 'graduation-hat'
+        | 'grid'
+        | 'hashtag'
+        | 'hashtag-decimal'
+        | 'hashtag-list'
+        | 'heart'
+        | 'hide'
+        | 'hide-filled'
+        | 'home'
+        | 'home-filled'
+        | 'icons'
+        | 'identity-card'
+        | 'image'
+        | 'image-add'
+        | 'image-alt'
+        | 'image-explore'
+        | 'image-magic'
+        | 'image-none'
+        | 'image-with-text-overlay'
+        | 'images'
+        | 'import'
+        | 'in-progress'
+        | 'incentive'
+        | 'incoming'
+        | 'incomplete'
+        | 'info'
+        | 'info-filled'
+        | 'inheritance'
+        | 'inventory'
+        | 'inventory-edit'
+        | 'inventory-list'
+        | 'inventory-transfer'
+        | 'inventory-updated'
+        | 'iq'
+        | 'key'
+        | 'keyboard'
+        | 'keyboard-filled'
+        | 'keyboard-hide'
+        | 'keypad'
+        | 'label-printer'
+        | 'language'
+        | 'language-translate'
+        | 'layout-block'
+        | 'layout-buy-button'
+        | 'layout-buy-button-horizontal'
+        | 'layout-buy-button-vertical'
+        | 'layout-column-1'
+        | 'layout-columns-2'
+        | 'layout-columns-3'
+        | 'layout-footer'
+        | 'layout-header'
+        | 'layout-logo-block'
+        | 'layout-popup'
+        | 'layout-rows-2'
+        | 'layout-section'
+        | 'layout-sidebar-left'
+        | 'layout-sidebar-right'
+        | 'layer'
+        | 'lightbulb'
+        | 'link'
+        | 'link-list'
+        | 'list-bulleted'
+        | 'list-bulleted-filled'
+        | 'list-numbered'
+        | 'live'
+        | 'live-critical'
+        | 'live-none'
+        | 'location'
+        | 'location-none'
+        | 'lock'
+        | 'map'
+        | 'markets'
+        | 'markets-euro'
+        | 'markets-rupee'
+        | 'markets-yen'
+        | 'maximize'
+        | 'measurement-size'
+        | 'measurement-size-list'
+        | 'measurement-volume'
+        | 'measurement-volume-list'
+        | 'measurement-weight'
+        | 'measurement-weight-list'
+        | 'media-receiver'
+        | 'megaphone'
+        | 'mention'
+        | 'menu'
+        | 'menu-filled'
+        | 'menu-horizontal'
+        | 'menu-vertical'
+        | 'merge'
+        | 'metafields'
+        | 'metaobject'
+        | 'metaobject-list'
+        | 'metaobject-reference'
+        | 'microphone'
+        | 'microphone-muted'
+        | 'minimize'
+        | 'minus'
+        | 'minus-circle'
+        | 'mobile'
+        | 'money'
+        | 'money-none'
+        | 'money-split'
+        | 'moon'
+        | 'nature'
+        | 'note'
+        | 'note-add'
+        | 'notification'
+        | 'number-one'
+        | 'order'
+        | 'order-batches'
+        | 'order-draft'
+        | 'order-filled'
+        | 'order-first'
+        | 'order-fulfilled'
+        | 'order-repeat'
+        | 'order-unfulfilled'
+        | 'orders-status'
+        | 'organization'
+        | 'outdent'
+        | 'outgoing'
+        | 'package'
+        | 'package-cancel'
+        | 'package-fulfilled'
+        | 'package-on-hold'
+        | 'package-reassign'
+        | 'package-returned'
+        | 'page'
+        | 'page-add'
+        | 'page-attachment'
+        | 'page-clock'
+        | 'page-down'
+        | 'page-heart'
+        | 'page-list'
+        | 'page-reference'
+        | 'page-remove'
+        | 'page-report'
+        | 'page-up'
+        | 'pagination-end'
+        | 'pagination-start'
+        | 'paint-brush-flat'
+        | 'paint-brush-round'
+        | 'paper-check'
+        | 'partially-complete'
+        | 'passkey'
+        | 'paste'
+        | 'pause-circle'
+        | 'payment'
+        | 'payment-capture'
+        | 'payout'
+        | 'payout-dollar'
+        | 'payout-euro'
+        | 'payout-pound'
+        | 'payout-rupee'
+        | 'payout-yen'
+        | 'person'
+        | 'person-add'
+        | 'person-exit'
+        | 'person-filled'
+        | 'person-list'
+        | 'person-lock'
+        | 'person-remove'
+        | 'person-segment'
+        | 'personalized-text'
+        | 'phablet'
+        | 'phone'
+        | 'phone-down'
+        | 'phone-down-filled'
+        | 'phone-in'
+        | 'phone-out'
+        | 'pin'
+        | 'pin-remove'
+        | 'plan'
+        | 'play'
+        | 'play-circle'
+        | 'plus'
+        | 'plus-circle'
+        | 'plus-circle-down'
+        | 'plus-circle-filled'
+        | 'plus-circle-up'
+        | 'point-of-sale'
+        | 'point-of-sale-register'
+        | 'price-list'
+        | 'print'
+        | 'product'
+        | 'product-add'
+        | 'product-cost'
+        | 'product-filled'
+        | 'product-list'
+        | 'product-reference'
+        | 'product-remove'
+        | 'product-return'
+        | 'product-unavailable'
+        | 'profile'
+        | 'profile-filled'
+        | 'question-circle'
+        | 'question-circle-filled'
+        | 'radio-control'
+        | 'receipt'
+        | 'receipt-dollar'
+        | 'receipt-euro'
+        | 'receipt-folded'
+        | 'receipt-paid'
+        | 'receipt-pound'
+        | 'receipt-refund'
+        | 'receipt-rupee'
+        | 'receipt-yen'
+        | 'receivables'
+        | 'redo'
+        | 'referral-code'
+        | 'refresh'
+        | 'remove-background'
+        | 'reorder'
+        | 'replace'
+        | 'replay'
+        | 'reset'
+        | 'return'
+        | 'reward'
+        | 'rocket'
+        | 'rotate-left'
+        | 'rotate-right'
+        | 'sandbox'
+        | 'save'
+        | 'savings'
+        | 'scan-qr-code'
+        | 'search'
+        | 'search-add'
+        | 'search-list'
+        | 'search-recent'
+        | 'search-resource'
+        | 'select'
+        | 'send'
+        | 'settings'
+        | 'share'
+        | 'shield-check-mark'
+        | 'shield-none'
+        | 'shield-pending'
+        | 'shield-person'
+        | 'shipping-label'
+        | 'shipping-label-cancel'
+        | 'shopcodes'
+        | 'slideshow'
+        | 'smiley-happy'
+        | 'smiley-joy'
+        | 'smiley-neutral'
+        | 'smiley-sad'
+        | 'social-ad'
+        | 'social-post'
+        | 'sort'
+        | 'sort-ascending'
+        | 'sort-descending'
+        | 'sound'
+        | 'split'
+        | 'sports'
+        | 'star'
+        | 'star-circle'
+        | 'star-filled'
+        | 'star-half'
+        | 'star-list'
+        | 'status'
+        | 'status-active'
+        | 'stop-circle'
+        | 'store'
+        | 'store-import'
+        | 'store-managed'
+        | 'store-online'
+        | 'sun'
+        | 'table'
+        | 'table-masonry'
+        | 'tablet'
+        | 'target'
+        | 'tax'
+        | 'team'
+        | 'text'
+        | 'text-align-center'
+        | 'text-align-left'
+        | 'text-align-right'
+        | 'text-block'
+        | 'text-bold'
+        | 'text-color'
+        | 'text-font'
+        | 'text-font-list'
+        | 'text-grammar'
+        | 'text-in-columns'
+        | 'text-in-rows'
+        | 'text-indent'
+        | 'text-indent-remove'
+        | 'text-italic'
+        | 'text-quote'
+        | 'text-title'
+        | 'text-underline'
+        | 'text-with-image'
+        | 'theme'
+        | 'theme-cart'
+        | 'theme-edit'
+        | 'theme-store'
+        | 'theme-template'
+        | 'three-d-environment'
+        | 'thumbs-down'
+        | 'thumbs-up'
+        | 'tip-jar'
+        | 'toggle-off'
+        | 'toggle-on'
+        | 'transaction'
+        | 'transaction-fee-add'
+        | 'transaction-fee-dollar'
+        | 'transaction-fee-euro'
+        | 'transaction-fee-pound'
+        | 'transaction-fee-rupee'
+        | 'transaction-fee-yen'
+        | 'transfer'
+        | 'transfer-in'
+        | 'transfer-internal'
+        | 'transfer-out'
+        | 'truck'
+        | 'undo'
+        | 'unknown-device'
+        | 'unlock'
+        | 'upload'
+        | 'variant'
+        | 'variant-list'
+        | 'video'
+        | 'video-list'
+        | 'view'
+        | 'viewport-narrow'
+        | 'viewport-short'
+        | 'viewport-tall'
+        | 'viewport-wide'
+        | 'wallet'
+        | 'wand'
+        | 'watch'
+        | 'wifi'
+        | 'work'
+        | 'work-list'
+        | 'wrench'
+        | 'x'
+        | 'x-circle'
+        | 'x-circle-filled'
+      )
+    | AnyString;
 }
 /**
  * @publicDocs
@@ -3129,22 +5622,22 @@ export interface BaseImageProps {
   /**
    * Alternative text that describes the image for accessibility.
    *
-   * Provides a text description of the image for users with assistive technology
-   * and serves as a fallback when the image fails to load. A well-written description
-   * enables people with visual impairments to understand non-text content.
+   * Provides a text description of the image for users with assistive technology and serves as a fallback when the image fails to load. A well-written description enables people with visual impairments to understand non-text content.
    *
-   * When a screen reader encounters an image, it reads this description aloud.
-   * When an image fails to load, this text displays on screen, helping all users
-   * understand what content was intended.
+   * When a screen reader encounters an image, it reads this description aloud. When an image fails to load, this text displays on screen, helping all users understand what content was intended.
    *
-   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4)
-   * and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
+   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4) and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
    *
-   * @default ''
+   * @default `''`
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
   alt?: string;
   /**
-   * A set of media conditions and their corresponding sizes. Learn more about the [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
+   * A set of media conditions and their corresponding sizes.
+   *
+   * Learn more about the [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
    */
   sizes?: string;
   /**
@@ -3153,11 +5646,17 @@ export interface BaseImageProps {
    * When the image is loading or no `src` is provided, a placeholder is rendered.
    *
    * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare. Learn more about the [src attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src).
+   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
   src?: string;
   /**
-   * A set of image sources and their width or pixel density descriptors. Learn more about the [srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset). This overrides the `src` property.
+   * A set of image sources and their width or pixel density descriptors. This overrides the `src` property.
+   *
+   * Learn more about the [srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
    */
   srcSet?: string;
 }
@@ -3166,10 +5665,6 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help users
    * navigate the page.
-   *
-   * - `img`: Identifies the element as an image that conveys meaningful information to users.
-   * - `presentation`: Removes semantic meaning, making the image purely decorative and ignored by screen readers.
-   * - `none`: Completely hides the element and its content from assistive technologies.
    *
    * @default 'img'
    *
@@ -3181,14 +5676,14 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
     | 'img'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
   /**
-   * The inline width (horizontal size) of the image.
+   * The displayed inline width of the image.
    *
-   * - `fill`: The image takes up 100% of the available inline space.
-   * - `auto`: The image is displayed at its natural size.
-   *
-   * Learn more about the [width attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width).
+   * - `fill`: the image will takes up 100% of the available inline size.
+   * - `auto`: the image will be displayed at its natural size.
    *
    * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
   inlineSize?: 'fill' | 'auto';
   /**
@@ -3202,18 +5697,20 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * For example, if the value is set as `50 / 100`, the getter returns `50 / 100`.
    * If the value is set as `0.5`, the getter returns `0.5 / 1`.
    *
-   * Learn more about the [aspect-ratio property](https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio).
-   *
    * @default '1/1'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio
    */
   aspectRatio?:
     | `${number}${optionalSpace}/${optionalSpace}${number}`
     | `${number}`;
   /**
    * Determines how the content of the image is resized to fit its container.
-   * The image is positioned in the center of the container. Learn more about the [object-fit property](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+   * The image is positioned in the center of the container.
    *
    * @default 'contain'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
    */
   objectFit?: 'contain' | 'cover';
   /**
@@ -3221,57 +5718,62 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
    * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
    *
-   * Learn more about the [loading attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading).
-   *
    * @default 'eager'
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
    */
   loading?: 'eager' | 'lazy';
   /**
-   * A callback fired when the image loads successfully. Learn more about the [load event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
+   * Invoked when load completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
   onLoad?: (event: Event) => void;
   /**
-   * A callback fired when the image fails to load. Learn more about the [error event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
+   * Invoked on load error.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
   onError?: (event: Event) => void;
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
   /**
-   * The text or elements displayed as the link's content.
+   * The content of the Link.
    */
   children?: ComponentChildren;
   /**
-   * The semantic meaning and color treatment of the component.
-   *
-   * - `critical`: Urgent problems or destructive actions.
-   * - `auto`: Automatically determined based on context.
-   * - `neutral`: General information without specific intent.
+   * Sets the tone of the Link, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
+   * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
+   *
+   * Use this when using only an icon or the content of the link is not enough context
+   * for users using assistive technologies.
    */
   accessibilityLabel?: string;
   /**
-   * The language of the link's text content. Use this when the link text is in a different language than the rest of the page, allowing assistive technologies such as screen readers to invoke the correct pronunciation. See the [reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label).
+   * Indicate the text language. Useful when the text is in a different language than the rest of the page.
+   * It will allow assistive technologies such as screen readers to invoke the correct pronunciation.
+   * [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) ("subtag" label)
    */
   lang?: string;
 }
 interface ListItemProps$1 extends GlobalProps {
   /**
-   * The content displayed within the list item.
+   * The content of the ListItem.
    */
   children?: ComponentChildren;
 }
 interface MenuProps$1 extends GlobalProps {
   /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
+   * A label that describes the purpose or contents of the element. When set,
+   * it will be announced using assistive technologies and provide additional context.
    */
   accessibilityLabel?: string;
   /**
-   * The collection of Button components displayed as menu actions. Only Button components are allowed as children, which can perform actions using `onClick` or link to other parts of the application using `href`. Any other component type will be ignored.
+   * The children define the actions to render inside the Menu. Only Button and SearchField components are allowed as children of a Menu, and these Buttons can perform actions (using `onClick`) or link to other parts of the application (using `to`/ `href`). Any other component placed here will be ignored.
    */
   children?: ComponentChildren;
 }
@@ -3289,41 +5791,220 @@ interface ModalProps$1
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the modal.
+   * A title that describes the content of the Modal.
    *
    */
   heading?: string;
   /**
-   * Adjust the padding around the modal content.
+   * Adjust the padding around the Modal content.
    *
    * `base`: applies padding that is appropriate for the element.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the modal need to span
-   * to the edge of the modal. For example, a full-width image. In this case, rely on box with a padding of 'base'
+   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
+   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the modal.
+   * Adjust the size of the Modal.
    *
-   * `max`: expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the modal.
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }
+
 interface MoneyFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
     NumberConstraintsProps,
-    AutocompleteProps<MoneyAutocompleteField> {}
+    AutocompleteProps<MoneyAutocompleteField> {
+  /**
+   * The currency code of the field.
+   *
+   * When set to 'auto', the field will display the currency code of the shop.
+   * If no currency code is set for the shop, resolve to 'XXX' the explicit non value.
+   *
+   * This value will match the global currency code of the shop, so if you need to know the currency code of the field,
+   * you can read the value from those APIs.
+   *
+   * @default 'auto'
+   */
+  currencyCode?:
+    | (
+        | 'USD'
+        | 'EUR'
+        | 'GBP'
+        | 'CAD'
+        | 'AFN'
+        | 'ALL'
+        | 'DZD'
+        | 'AOA'
+        | 'ARS'
+        | 'AMD'
+        | 'AWG'
+        | 'AUD'
+        | 'BBD'
+        | 'AZN'
+        | 'BDT'
+        | 'BSD'
+        | 'BHD'
+        | 'BIF'
+        | 'BZD'
+        | 'BMD'
+        | 'BTN'
+        | 'BAM'
+        | 'BRL'
+        | 'BOB'
+        | 'BWP'
+        | 'BND'
+        | 'BGN'
+        | 'MMK'
+        | 'KHR'
+        | 'CVE'
+        | 'KYD'
+        | 'XAF'
+        | 'CLP'
+        | 'CNY'
+        | 'COP'
+        | 'KMF'
+        | 'CDF'
+        | 'CRC'
+        | 'HRK'
+        | 'CZK'
+        | 'DKK'
+        | 'DOP'
+        | 'XCD'
+        | 'EGP'
+        | 'ETB'
+        | 'XPF'
+        | 'FJD'
+        | 'GMD'
+        | 'GHS'
+        | 'GTQ'
+        | 'GYD'
+        | 'GEL'
+        | 'HTG'
+        | 'HNL'
+        | 'HKD'
+        | 'HUF'
+        | 'ISK'
+        | 'INR'
+        | 'IDR'
+        | 'ILS'
+        | 'IQD'
+        | 'JMD'
+        | 'JPY'
+        | 'JEP'
+        | 'JOD'
+        | 'KZT'
+        | 'KES'
+        | 'KWD'
+        | 'KGS'
+        | 'LAK'
+        | 'LVL'
+        | 'LBP'
+        | 'LSL'
+        | 'LRD'
+        | 'LTL'
+        | 'MGA'
+        | 'MKD'
+        | 'MOP'
+        | 'MWK'
+        | 'MVR'
+        | 'MXN'
+        | 'MYR'
+        | 'MUR'
+        | 'MDL'
+        | 'MAD'
+        | 'MNT'
+        | 'MZN'
+        | 'NAD'
+        | 'NPR'
+        | 'ANG'
+        | 'NZD'
+        | 'NIO'
+        | 'NGN'
+        | 'NOK'
+        | 'OMR'
+        | 'PAB'
+        | 'PKR'
+        | 'PGK'
+        | 'PYG'
+        | 'PEN'
+        | 'PHP'
+        | 'PLN'
+        | 'QAR'
+        | 'RON'
+        | 'RUB'
+        | 'RWF'
+        | 'WST'
+        | 'SAR'
+        | 'RSD'
+        | 'SCR'
+        | 'SGD'
+        | 'SDG'
+        | 'SYP'
+        | 'ZAR'
+        | 'KRW'
+        | 'SSP'
+        | 'SBD'
+        | 'LKR'
+        | 'SRD'
+        | 'SZL'
+        | 'SEK'
+        | 'CHF'
+        | 'TWD'
+        | 'THB'
+        | 'TZS'
+        | 'TTD'
+        | 'TND'
+        | 'TRY'
+        | 'TMT'
+        | 'UGX'
+        | 'UAH'
+        | 'AED'
+        | 'UYU'
+        | 'UZS'
+        | 'VUV'
+        | 'VND'
+        | 'XOF'
+        | 'YER'
+        | 'ZMW'
+        | 'BYN'
+        | 'BYR'
+        | 'DJF'
+        | 'ERN'
+        | 'FKP'
+        | 'GIP'
+        | 'GNF'
+        | 'IRR'
+        | 'KID'
+        | 'LYD'
+        | 'MRU'
+        | 'SLL'
+        | 'SHP'
+        | 'SOS'
+        | 'STD'
+        | 'STN'
+        | 'TJS'
+        | 'TOP'
+        | 'VED'
+        | 'VEF'
+        | 'VES'
+        | 'XXX'
+      )
+    | 'auto';
+}
 /**
+ * Represents autocomplete values that are valid for money/currency input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for monetary inputs.
  * @publicDocs
  */
 export type MoneyAutocompleteField = ExtractStrict<
@@ -3337,24 +6018,30 @@ interface NumberFieldProps$1
     NumberConstraintsProps,
     FieldDecorationProps {
   /**
-   * Sets the virtual keyboard. Learn more about the [inputmode attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   * Sets the virtual keyboard.
    *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
    * @default 'decimal'
    */
   inputMode?: 'decimal' | 'numeric';
   /**
-   * Callback when the user has **finished editing** a field, such as when they blur the field after changing the value.
-   * Also fired after `onInput` on every step when using keyboard up and down arrows. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   * Callback when the user has **finished editing** a field, e.g. once they have blurred
+   * the field after changing the value.
+   * Also fired after `onInput` on every step when interacting with the controls or the keyboard up and down arrows.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event
    */
   onChange?: (event: Event) => void;
   /**
-   * A callback fired when the user makes any changes to the field value, including when using keyboard up/down arrows. This fires before `onChange`. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
+   * Callback when the user makes any changes in the field.
+   * Also fired before `onChange` on every step when interacting with the controls or the keyboard up and down arrows.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event
    */
   onInput?: (event: Event) => void;
 }
 /**
- * Represents autocomplete values that are valid for number input fields.
- * This is a subset of `AnyAutocompleteField` containing only fields suitable for numeric inputs.
+ * Represents autocomplete values that are valid for number input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for numeric inputs.
  *
  * Available values:
  * - `one-time-code` - One-time codes for authentication (OTP, 2FA codes)
@@ -3380,18 +6067,27 @@ interface OptionGroupProps$1 extends GlobalProps {
    */
   disabled?: boolean;
   /**
-   * The label text displayed for this group of related options.
+   * The user-facing label for this group of options.
    */
   label?: string;
   /**
-   * The collection of option components that users can select from within this group.
+   * The options a user can select from.
+   *
+   * Accepts `Option` components.
    */
   children?: ComponentChildren;
 }
-interface OrderedListProps$1 extends GlobalProps {}
+interface OrderedListProps$1 extends GlobalProps {
+  /**
+   * The content of the OrderededList.
+   *
+   * Accepts only `ListItem` components.
+   */
+  children?: ComponentChildren;
+}
 interface PageProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the page.
+   * The content of the Page.
    */
   children?: ComponentChildren;
   /**
@@ -3424,6 +6120,12 @@ interface PageProps$1 extends GlobalProps, ActionSlots {
    * @default 'base'
    */
   inlineSize?: SizeKeyword;
+  /**
+   * A slot for content that comes before the main content, such as an `s-banner`.
+   *
+   * @implementation surfaces could restrict the content of this slot to certain elements, such as only allowing an `s-banner`.
+   */
+  supplementalStart?: ComponentChildren;
 }
 interface ParagraphProps$1
   extends GlobalProps,
@@ -3431,13 +6133,13 @@ interface ParagraphProps$1
     BlockTypographyProps,
     AccessibilityVisibilityProps {
   /**
-   * The text or elements displayed within the paragraph.
+   * The content of the Paragraph.
    */
   children?: ComponentChildren;
   /**
-   * The semantic type of the paragraph, which provides meaning and default styling.
+   * Provide semantic meaning and default styling to the paragraph.
    *
-   * Other presentation properties on the paragraph can override the default styling.
+   * Other presentation properties on `s-paragraph` override the default styling.
    *
    * @default 'paragraph'
    */
@@ -3448,13 +6150,20 @@ interface ParagraphProps$1
  */
 export type ParagraphType =
   /**
-   * Indicates the text is a structural grouping of related content. In an HTML host, the text will be rendered in a `<p>` element. Learn more about the [p element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p).
+   * Indicate the text is a structural grouping of related content.
+   *
+   * In an HTML host, the text will be rendered in an `<p>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/p
    */
   | 'paragraph'
   /**
-   * Indicates the text is considered less important than the main content but is still necessary for understanding. This can be used for secondary content, disclaimers, terms and conditions, or legal information.
+   * Indicates the text is considered less important than the main content, but is still necessary for the reader to understand.
+   * It can be used for secondary content but also for disclaimers, terms and conditions, or legal information.
    *
-   * Surfaces should apply a smaller font size than the default. In an HTML host, the text will be rendered in a `<small>` element. Learn more about the [small element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small).
+   * Surfaces should apply a smaller font size than the default size.
+   *
+   * In an HTML host, the text will be rendered in a `<small>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
    */
   | 'small';
 interface PasswordFieldProps$1
@@ -3463,8 +6172,7 @@ interface PasswordFieldProps$1
     MinMaxLengthProps,
     AutocompleteProps<PasswordAutocompleteField> {}
 /**
- * Represents autocomplete values that are valid for password input fields.
- * This is a subset of `AnyAutocompleteField` containing only fields suitable for password inputs.
+ * Represents autocomplete values that are valid for password input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for password inputs.
  *
  * Available values:
  * - `current-password` - Existing password for login or authentication
@@ -3486,44 +6194,86 @@ interface PopoverProps$1
    */
   children?: ComponentChildren;
 }
+interface PressButtonProps$1
+  extends GlobalProps,
+    Pick<
+      ButtonProps$1,
+      | 'accessibilityLabel'
+      | 'children'
+      | 'icon'
+      | 'inlineSize'
+      | 'lang'
+      | 'tone'
+      | 'variant'
+      | 'disabled'
+      | 'loading'
+      | 'onClick'
+      | 'onBlur'
+      | 'onFocus'
+    > {
+  /**
+   * Whether the button is pressed.
+   *
+   * @default false
+   */
+  pressed?: boolean;
+  /**
+   * Whether the button is pressed by default.
+   *
+   * @default false
+   *
+   * @implementation `defaultPressed` reflects to the `pressed` attribute.
+   */
+  defaultPressed?: boolean;
+}
 interface QueryContainerProps$1 extends GlobalProps {
   /**
    * The content of the container.
    */
   children?: ComponentChildren;
   /**
-   * An identifier for this container that you can reference in CSS container queries to apply styles based on this specific container's size.
+   * The name of the container, which can be used in your container queries to target this container specifically.
    *
-   * All QueryContainer components automatically receive a container name of `s-default`. You can omit the container name in your queries, so `@container (inline-size <= 300px)` is equivalent to `@container s-default (inline-size <= 300px)`.
+   * We place the container name of `s-default` on every container. Because of this, it is not required to add a `containerName` identifier in your queries. For example, a `@container (inline-size <= 300px) none, auto` query is equivalent to `@container s-default (inline-size <= 300px) none, auto`.
    *
-   * When you provide a custom `containerName`, it's added alongside `s-default`. For example, `containerName="product-card"` results in `s-default product-card` being set on the `container-name` CSS property, allowing you to target this container with `@container product-card (inline-size <= 300px)`.
-   *
-   * Learn more about the [container-name property](https://developer.mozilla.org/en-US/docs/Web/CSS/container-name).
+   * Any value set in `containerName` will be set alongside alongside `s-default`. For example, `containerName="my-container-name"` will result in a value of `s-default my-container-name` set on the `container-name` CSS property of the rendered HTML.
    *
    * @default ''
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/container-name
    *
    * @implementation You must always have a CSS `container-name` of `s-default` for this component.
    */
   containerName?: string;
 }
+export type OverflowKeyword = 'auto' | 'hidden';
+export type ScrollSnapType = 'none' | 'mandatory' | 'proximity';
+export type ScrollAccessibilityRole = 'generic' | 'region';
 interface SectionProps$1 extends GlobalProps, ActionSlots {
   /**
-   * The content of the section.
+   * The content of the Section.
    */
   children?: ComponentChildren;
   /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
+   * A label used to describe the section that will be announced by assistive technologies.
+   *
+   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
+   * the right context to users.
    */
   accessibilityLabel?: string;
   /**
-   * The heading text displayed at the top of the section. This heading provides a title for the section's content and automatically uses the appropriate semantic heading level (h2, h3, h4) based on nesting depth to maintain proper document structure.
+   * A title that describes the content of the section.
    */
   heading?: string;
   /**
-   * The amount of padding applied to all edges of the section.
+   * Adjust the padding of all edges.
    *
-   * - `base`: Applies standard padding appropriate for the section. Note that this might result in no padding if that's the right design decision for the context.
-   * - `none`: Removes all padding, useful when content like images needs to extend to the section's edges. Use Box with `padding="base"` for individual content areas that need padding.
+   * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
+   * this is the right design decision in a particular context.
+   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
@@ -3536,61 +6286,76 @@ interface SelectProps$1
     Omit<FieldProps, 'defaultValue'>,
     FocusEventProps {
   /**
-   * The selectable options displayed in the dropdown list.
+   * The options a user can select from.
    *
-   * Accepts Option components for individual selectable items, and OptionGroup components to organize related options into logical groups with labels.
+   * Accepts `Option` and `OptionGroup` components.
    */
   children?: ComponentChildren;
 }
 interface SpinnerProps$1 extends GlobalProps {
   /**
-   * The size of the spinner icon. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default size.
+   * Adjusts the size of the spinner icon.
    *
    * @default 'base'
    */
   size?: SizeKeyword;
   /**
-   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
+   * A label that describes the purpose of the progress. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context. Providing an `accessibilityLabel` is
+   * recommended if there is no accompanying text describing that something
+   * is loading.
    */
   accessibilityLabel?: string;
 }
 interface StackProps$1 extends GlobalProps, BaseBoxPropsWithRole, GapProps {
   /**
-   * The elements arranged within the stack layout.
+   * The child elements displayed within the stack component, which are arranged vertically or horizontally with consistent spacing.
    */
   children?: ComponentChildren;
   /**
-   * The axis along which child elements are arranged, using [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * The direction in which children are arranged within the stack.
    *
-   * - `block`: Arranges children vertically (in horizontal writing modes). Content does not wrap.
-   * - `inline`: Arranges children horizontally (in horizontal writing modes). Content wraps to the next line if needed.
+   * - `block`: Arranges children vertically in a column (in horizontal writing modes). Children will not wrap.
+   * - `inline`: Arranges children horizontally in a row (in horizontal writing modes). Children will wrap to the next line if needed.
+   *
+   * This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values) to ensure proper behavior across different writing modes.
    *
    * @default 'block'
    *
-   * @implementation The content will wrap if the direction is 'inline', and not wrap if the direction is 'block'.
+   * @implementation the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
   direction?: MaybeResponsive<'block' | 'inline'>;
   /**
-   * Controls the distribution of children along the inline axis (horizontally in horizontal writing modes).
+   * The distribution of children along the stack component's main axis (the direction of stacking).
    *
-   * Use this to position items along the primary axis of the stack - horizontally for inline stacks or vertically for block stacks when wrapped into multiple lines. Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+   * For example, in a vertical stack (block direction), this controls vertical distribution. Use this to space out children or align them to the start, center, or end.
    *
+   * Learn more about the [justify-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
   justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
-   * Controls the alignment of children along the block axis (vertically in horizontal writing modes).
+   * The alignment of individual children along the stack component's cross axis (perpendicular to the stacking direction).
    *
-   * Use this to align items perpendicular to the stack direction - vertically for inline stacks or horizontally for block stacks. Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+   * For example, in a vertical stack (block direction), this controls horizontal alignment of each child.
    *
+   * Learn more about the [align-items property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
   alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
-   * Controls the distribution of lines along the block axis when content wraps into multiple lines.
+   * The alignment of multiple lines of content along the stack component's cross axis.
    *
-   * This property only affects stacks with wrapping content. For single-line stacks, use `alignItems` instead. Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+   * This only applies when content wraps to multiple lines (typically in inline direction).
    *
+   * Learn more about the [align-content property](https://developer.mozilla.org/en-US/docs/Web/CSS/align-content).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
    */
   alignContent?: MaybeResponsive<AlignContentKeyword>;
@@ -3632,62 +6397,62 @@ export interface PaginationProps {
    */
   hasPreviousPage?: boolean;
   /**
-   * Whether the table is in a loading state, such as during initial page load or when loading the next page in a paginated table.
-   * When `true`, the table might be in an inert state that prevents user interaction.
+   * Whether the table is in a loading state, such as during initial page load or when loading the next page in a paginated table. When `true`, the table might be in an inert state that prevents user interaction.
    *
    * @default false
    */
   loading?: boolean;
 }
+export type ComputedTableVariant = 'list' | 'table';
 interface TableProps$1 extends GlobalProps, PaginationProps {
   /**
-   * The table structure defining headers and data rows.
-   *
-   * Accepts table header row (for column headers) and table body (for data rows) components. Structure your table with a table header row first, followed by table body.
+   * The content of the Table.
    */
   children?: ComponentChildren;
   /**
-   * Filter controls displayed above the table.
-   *
-   * Accepts input components like search field or select for filtering table data. These controls appear in a dedicated area above the table content.
+   * Input elements, such as SearchField, used to search and filter the table.
    */
   filters?: ComponentChildren;
   /**
-   * The layout variant of the table.
+   * Sets the layout of the Table.
    *
-   * - `list`: Always displays as a list layout.
-   * - `table`: Always displays as a traditional table layout.
-   * - `auto`: Automatically displays as a table on wide screens and as a list on narrow screens.
+   * - `list`: The Table is displayed as a list.
+   * - `table`: The Table is displayed as a table.
+   * - `auto`: The Table is displayed as a table on wide devices and as a list on narrow devices.
    *
    * @default 'auto'
    */
-  variant?: 'list' | 'table' | 'auto';
+  variant?: ComputedTableVariant | 'auto';
+  /**
+   * The currently-used variant of the Table.
+   * This is only a getter; you cannot set it.
+   */
+  computedVariant?: ComputedTableVariant;
+  /**
+   * Event is emitted when the computed variant of the Table changes.
+   */
+  onComputedVariantChange?: (event: Event) => void;
 }
 interface TableBodyProps$1 extends GlobalProps {
   /**
-   * The data rows displayed in the table body.
-   *
-   * Accepts TableRow components, with each row representing a single record or entry in the table.
+   * The body of the table. May not have any semantic meaning in the Table's `list` variant.
    */
   children?: ComponentChildren;
 }
 interface TableCellProps$1 extends GlobalProps {
   /**
-   * The data value displayed in this cell.
-   *
-   * Accepts text content or inline components representing the cell's data value.
+   * The content of the table cell.
    */
   children?: ComponentChildren;
 }
 /**
- * Represents the content designation for table columns when displayed in list variant on mobile devices.
+ * Represents the semantic type of content slots within list items.
  *
- * Available values:
- * - `primary` - The most important content. Only one column can have this designation.
- * - `secondary` - Supporting content displayed below primary. Only one column can have this designation.
- * - `kicker` - Small label displayed above primary content with less visual prominence. Only one column can have this designation.
- * - `inline` - Content displayed inline with primary content.
- * - `labeled` - Each column displays as a heading-content pair.
+ * - `primary`: The main content or title of the list item.
+ * - `secondary`: Supporting or descriptive content below the primary content.
+ * - `kicker`: A small label or tag displayed above the primary content.
+ * - `inline`: Content displayed inline with the primary content.
+ * - `labeled`: Content with an associated label.
  * @publicDocs
  */
 export type ListSlotType =
@@ -3696,49 +6461,43 @@ export type ListSlotType =
   | 'kicker'
   | 'inline'
   | 'labeled';
-/**
- * Represents the format options for table headers that control styling and alignment of column content.
- *
- * Available values:
- * - `base`: Standard format for text columns
- * - `currency`: Right-aligned format for monetary values
- * - `numeric`: Right-aligned format for numeric values
- * @publicDocs
- */
-export type HeaderFormat = 'base' | 'currency' | 'numeric';
 interface TableHeaderProps$1 extends GlobalProps {
   /**
-   * The column heading text.
-   *
-   * This text labels the column in table variant and appears as a label for data in list variant.
+   * The heading of the column in the `table` variant, and the label of its data in `list` variant.
    */
   children?: ComponentChildren;
   /**
-   * The content designation for this column when the table displays in list variant on mobile devices.
+   * Content designation for the table's `list` variant.
+   *
+   * - `primary`: The most important content. Only one column can have this designation.
+   * - `secondary`: The secondary content. Only one column can have this designation.
+   * - `kicker`: Content that is displayed before primary and secondary content, but with less visual prominence. Only one column can have this designation.
+   * - `inline`: Content that is displayed inline.
+   * - `labeled`: Each column with this designation displays as a heading-content pair.
    *
    * @default 'labeled'
    */
   listSlot?: ListSlotType;
   /**
-   * The format of the column that controls styling and alignment of cell content.
+   * The format of the column. Will automatically apply styling and alignment to cell content based on the value.
+   *
+   * - `base`: The base format for columns.
+   * - `currency`: Formats the column as currency.
+   * - `numeric`: Formats the column as a number.
    *
    * @default 'base'
    */
-  format?: HeaderFormat;
+  format?: 'base' | 'currency' | 'numeric';
 }
 interface TableHeaderRowProps$1 extends GlobalProps {
   /**
-   * The column headers displayed in the table header row.
-   *
-   * Accepts TableHeader components, with each header defining a column and providing its label.
+   * Contents of the table heading row; children should be `TableHeading` components.
    */
   children?: ComponentChildren;
 }
 interface TableRowProps$1 extends GlobalProps {
   /**
-   * The data cells displayed in this table row.
-   *
-   * Accepts TableCell components, with each cell containing a data value for the corresponding column.
+   * The content of a TableRow, which should be `TableCell` components.
    */
   children?: ComponentChildren;
   /**
@@ -3749,7 +6508,7 @@ interface TableRowProps$1 extends GlobalProps {
    * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
    *
    * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
-   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, or a hover effect.
+   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, a hover effect, etc.
    */
   clickDelegate?: string;
 }
@@ -3760,11 +6519,11 @@ interface TextProps$1
     DisplayProps,
     Pick<InteractionProps, 'interestFor'> {
   /**
-   * The text content or inline elements displayed within the component.
+   * The content of the Text.
    */
   children?: ComponentChildren;
   /**
-   * The semantic type of the text, which provides meaning and default styling.
+   * Provide semantic meaning and default styling to the text.
    *
    * Other presentation properties on Text override the default styling.
    *
@@ -3773,6 +6532,7 @@ interface TextProps$1
   type?: TextType;
 }
 /**
+ * Defines the semantic type and styling treatment for text content. Each type maps to appropriate HTML elements and applies specific styling for different contexts.
  * @publicDocs
  */
 export type TextType =
@@ -3783,9 +6543,11 @@ export type TextType =
    *
    * Surfaces may apply styling to this type.
    *
-   * In an HTML host, the text will be rendered in an `<address>` element. Learn more about the [address element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address).
+   * In an HTML host, the text will be rendered in an `<address>` element.
    *
    * @implementation vertical alignment should be `baseline` (`vertical-align: baseline`)
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/address
    */
   | 'address'
   /**
@@ -3793,7 +6555,8 @@ export type TextType =
    *
    * Surfaces should apply styling to this type to suggest its content no longer applies.
    *
-   * In an HTML host, the text will be rendered in a `<s>` element. Learn more about the [s element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s).
+   * In an HTML host, the text will be rendered in a `<s>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/s
    */
   | 'redundant'
   /**
@@ -3802,7 +6565,8 @@ export type TextType =
    *
    * Surfaces should apply styling to this type to draw attention to the content.
    *
-   * In an HTML host, the text will be rendered in a `<mark>` element. Learn more about the [mark element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark).
+   * In an HTML host, the text will be rendered in a `<mark>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/mark
    */
   | 'mark'
   /**
@@ -3810,7 +6574,8 @@ export type TextType =
    *
    * Surfaces should apply styling to this type to distinguish it from surrounding text. Italicization is a common choice, but not required.
    *
-   * In an HTML host, the text will be rendered in an `<em>` element. Learn more about the [em element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em).
+   * In an HTML host, the text will be rendered in an `<em>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/em
    */
   | 'emphasis'
   /**
@@ -3820,7 +6585,8 @@ export type TextType =
    *
    * Surfaces should italicize this content by default.
    *
-   * In an HTML host, the text will be rendered in a `<i>` tag. Learn more about the [i element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i).
+   * In an HTML host, the text will be rendered in a `<i>` tag.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/i
    */
   | 'offset'
   /**
@@ -3828,7 +6594,8 @@ export type TextType =
    *
    * Surfaces should render this content bold by default.
    *
-   * In an HTML host, the text will be rendered in a `<strong>` tag. Learn more about the [strong element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong).
+   * In an HTML host, the text will be rendered in a `<strong>` tag.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/strong
    */
   | 'strong'
   /**
@@ -3837,7 +6604,8 @@ export type TextType =
    *
    * Surfaces should apply a smaller font size than the default size.
    *
-   * In an HTML host, the text will be rendered in a `<small>` element. Learn more about the [small element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small).
+   * In an HTML host, the text will be rendered in a `<small>` element.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/small
    */
   | 'small'
   /**
@@ -3845,7 +6613,8 @@ export type TextType =
    *
    * Surfaces must not apply any default styling to this type.
    *
-   * In an HTML host, the text will be rendered in a `<span>` tag. Learn more about the [span element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span).
+   * In an HTML host, the text will be rendered in a `<span>` tag.
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
    */
   | 'generic';
 interface TextAreaProps$1
@@ -3854,7 +6623,7 @@ interface TextAreaProps$1
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField> {
   /**
-   * The number of visible text lines displayed in the textarea, which controls its initial height.
+   * A number of visible text lines.
    *
    * @default 2
    */
@@ -3868,15 +6637,19 @@ interface TextFieldProps$1
     FieldDecorationProps {}
 interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
   /**
-   * A callback fired when the thumbnail image loads successfully. Learn more about the [load event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload).
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
    */
   onLoad?: (event: Event) => void;
   /**
-   * A callback fired when the thumbnail image fails to load. Learn more about the [error event](https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror).
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
    */
   onError?: (event: Event) => void;
   /**
-   * The size of the product thumbnail image. Available sizes range from `small-500` (smallest) to `large-500` (largest), with `base` providing the default size.
+   * Adjusts the size the product thumbnail image.
    *
    * @default 'base'
    */
@@ -3884,19 +6657,25 @@ interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
 }
 interface TooltipProps$1 extends GlobalProps {
   /**
-   * The text or elements displayed inside the tooltip popup.
+   * The content of the Tooltip.
    */
   children?: ComponentChildren;
 }
-interface UnorderedListProps$1 extends GlobalProps {}
+interface UnorderedListProps$1 extends GlobalProps {
+  /**
+   * The content of the UnorderededList.
+   *
+   * Accepts only `ListItem` components.
+   */
+  children?: ComponentChildren;
+}
 interface URLFieldProps$1
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<URLAutocompleteField> {}
 /**
- * Represents autocomplete values that are valid for URL input fields.
- * This is a subset of `AnyAutocompleteField` containing only fields suitable for URL inputs.
+ * Represents autocomplete values that are valid for URL input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for URL inputs.
  *
  * Available values:
  * - `url` - General URL or web address
@@ -3915,17 +6694,23 @@ export type URLAutocompleteField = ExtractStrict<
 //
 // Preact Virtual DOM
 // -----------------------------------
-/**
- * @publicDocs
- */
 export interface VNode<P = {}> {
+  /**
+   * The component type or HTML element tag name that this VNode represents.
+   */
   type: ComponentType<P> | string;
+  /**
+   * The properties passed to this component or element, including children.
+   */
   props: P & {
     children: ComponentChildren$1;
   };
+  /**
+   * A unique key used to identify this element in lists for efficient reconciliation.
+   */
   key: Key;
   /**
-   * The ref is not guaranteed by `React.ReactElement`. For compatibility with popular React libraries, this is defined as optional.
+   * A ref to the element, which is not guaranteed by React.ReactElement. For compatibility reasons with popular react libs we define it as optional too.
    */
   ref?: Ref<any> | null;
   /**
@@ -3945,24 +6730,25 @@ export interface VNode<P = {}> {
 // Preact Component interface
 // -----------------------------------
 /**
+ * Represents a unique key for identifying elements in lists. Can be a string, number, or any other value.
  * @publicDocs
  */
 export type Key = string | number | any;
-/**
- * @publicDocs
- */
 export interface RefObject<T> {
   current: T | null;
 }
 /**
+ * Represents a callback function that receives a reference to a DOM element or component instance. Called when the element is mounted or unmounted.
  * @publicDocs
  */
-export type RefCallback<T> = (instance: T | null) => void;
+export type RefCallback<T> = (instance: T | null) => void | (() => void);
 /**
+ * Represents a reference to a DOM element or component instance. Can be either a ref object, callback function, or null.
  * @publicDocs
  */
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
 /**
+ * Represents a single child element that can be rendered, including VNodes, primitives, or null/undefined values.
  * @publicDocs
  */
 export type ComponentChild =
@@ -3975,20 +6761,27 @@ export type ComponentChild =
   | null
   | undefined;
 type ComponentChildren$1 = ComponentChild[] | ComponentChild;
-/**
- * @publicDocs
- */
 export interface Attributes {
+  /**
+   * A unique key used to identify this element in lists for efficient reconciliation during re-renders.
+   */
   key?: Key | undefined;
+  /**
+   * An internal flag indicating whether this element was created using JSX syntax.
+   */
   jsx?: boolean | undefined;
 }
 /**
  * @publicDocs
  */
 export interface ErrorInfo {
+  /**
+   * A string representation of the component stack trace at the point where an error occurred. Useful for debugging to understand which components were rendering when the error happened.
+   */
   componentStack?: string;
 }
 /**
+ * Represents the props that can be rendered by a component, combining custom props with standard attributes like children and ref.
  * @publicDocs
  */
 export type RenderableProps<P, RefType = any> = P &
@@ -3999,15 +6792,19 @@ export type RenderableProps<P, RefType = any> = P &
     }
   >;
 /**
+ * Represents any valid component type, either a class component or a function component.
  * @publicDocs
  */
 export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
-/**
- * @publicDocs
- */
 export interface FunctionComponent<P = {}> {
   (props: RenderableProps<P>, context?: any): ComponentChildren$1;
+  /**
+   * A human-readable name for this component, used in debugging and dev tools.
+   */
   displayName?: string;
+  /**
+   * The default values for props that will be used when props are not explicitly provided.
+   */
   defaultProps?: Partial<P> | undefined;
 }
 /**
@@ -4015,8 +6812,17 @@ export interface FunctionComponent<P = {}> {
  */
 export interface ComponentClass<P = {}, S = {}> {
   new (props: P, context?: any): Component<P, S>;
+  /**
+   * A human-readable name for this component class, used in debugging and dev tools.
+   */
   displayName?: string;
+  /**
+   * The default values for props that will be used when props are not explicitly provided to component instances.
+   */
   defaultProps?: Partial<P>;
+  /**
+   * The context type this component can consume. When set, the component will have access to this context's value.
+   */
   contextType?: Context<any>;
   getDerivedStateFromProps?(
     props: Readonly<P>,
@@ -4068,9 +6874,21 @@ declare abstract class Component<P, S> {
   ): object | null;
 
   static getDerivedStateFromError?(error: any): object | null;
+  /**
+   * The current state of the component.
+   */
   state: Readonly<S>;
+  /**
+   * The props passed to this component.
+   */
   props: RenderableProps<P>;
+  /**
+   * The context value this component can access if a contextType is specified.
+   */
   context: any;
+  /**
+   * The underlying DOM element or text node that this component rendered.
+   */
   base?: Element | Text;
   // From https://github.com/DefinitelyTyped/DefinitelyTyped/blob/e836acc75a78cf0655b5dfdbe81d69fdd4d8a252/types/react/index.d.ts#L402
   // // We MUST keep setState() as a unified signature because it allows proper checking of the method return type.
@@ -4095,9 +6913,6 @@ declare abstract class Component<P, S> {
 //
 // Context
 // -----------------------------------
-/**
- * @publicDocs
- */
 export interface Consumer<T>
   extends FunctionComponent<{
     children: (value: T) => ComponentChildren$1;
@@ -4114,9 +6929,135 @@ export interface Provider<T>
  * @publicDocs
  */
 export interface Context<T> extends Provider<T> {
+  /**
+   * A component that consumes the context value and re-renders when it changes.
+   */
   Consumer: Consumer<T>;
+  /**
+   * A component that provides the context value to its descendants.
+   */
   Provider: Provider<T>;
+  /**
+   * A human-readable name for this context, used in debugging and dev tools.
+   */
   displayName?: string;
+}
+/**
+ * Represents CSS styles as a string, typically used for inline styles or style injection.
+ * @publicDocs
+ */
+export type Styles = string;
+declare const shadowRootSymbol: unique symbol;
+declare const flushRenderSymbol: unique symbol;
+/**
+ * Represents the implementation details for rendering components within a shadow DOM. Extends `ShadowRootInit` with a render function and optional styles.
+ * @publicDocs
+ */
+export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  ShadowRoot: (element: any) => ComponentChildren$1;
+  styles?: Styles;
+  /**
+   * Only needed once in the root element, to inject global shadow CSS for all components.
+   */
+  globalShadowCSS?: Styles;
+};
+export interface ActivationEventEsque {
+  /**
+   * Whether the Shift key was pressed when the event occurred.
+   */
+  shiftKey: boolean;
+  /**
+   * Whether the Meta/Command key (Mac) or Windows key was pressed when the event occurred.
+   */
+  metaKey: boolean;
+  /**
+   * Whether the Ctrl key was pressed when the event occurred.
+   */
+  ctrlKey: boolean;
+  /**
+   * The button number that was pressed on the mouse. 0 for left button, 1 for middle button, 2 for right button.
+   */
+  button: number;
+}
+/**
+ * @publicDocs
+ */
+export interface ClickOptions {
+  /**
+   * The event you want to influence the synthetic click.
+   */
+  sourceEvent?: ActivationEventEsque;
+}
+declare const BaseClass: {
+  new (): HTMLElement;
+  prototype: HTMLElement;
+};
+export declare abstract class PreactCustomElement extends BaseClass {
+  /** @private */
+  static get observedAttributes(): string[];
+  /** @private */
+  [shadowRootSymbol]: ShadowRoot | null;
+  /**
+   * A promise that resolves after the next render completes.
+   * Useful for non-React consumers who need to wait for the shadow DOM
+   * to be populated after setting properties.
+   * @private
+   */
+  get updateComplete(): Promise<void>;
+  constructor({
+    styles,
+    ShadowRoot: renderFunction,
+    delegatesFocus,
+    globalShadowCSS,
+    ...options
+  }: RenderImpl);
+
+  /**
+   * Flush any pending render synchronously.
+   *
+   * Called by reactWrap's useLayoutEffect after all props are set,
+   * ensuring the shadow DOM is populated before the consumer's
+   * useLayoutEffect fires. The version counter invalidates any
+   * pending microtask so the total render count stays at 1.
+   *
+   * Uses a Symbol key so this method is not callable by external
+   * consumers — only internal code that imports flushRenderSymbol
+   * can invoke it.
+   *
+   * Guarded by #hasPendingRender to avoid spurious Preact re-renders.
+   * React creates a new props object reference on every parent render,
+   * so reactWrap's useLayoutEffect (which depends on [props]) fires
+   * even when no prop *values* changed. Without the guard, every
+   * unrelated parent re-render would trigger a full Preact
+   * reconciliation — proportional to parent re-render frequency.
+   * @private
+   */
+  [flushRenderSymbol](): void;
+  /** @private */
+  setAttribute(name: string, value: string): void;
+  /** @private */
+  attributeChangedCallback(name: string): void;
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+  /**
+   * Queue a run of the render function.
+   * You shouldn't need to call this manually - it should be handled by changes to @property values.
+   * @private
+   */
+  queueRender(): void;
+  /**
+   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   *
+   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
+   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
+   * @private
+   * @param options
+   */
+  click({sourceEvent}?: ClickOptions): void;
 }
 type IconType$1 =
   | 'adjust'
@@ -4129,6 +7070,7 @@ type IconType$1 =
   | 'alert-octagon'
   | 'alert-octagon-filled'
   | 'alert-triangle'
+  | 'align-horizontal-centers'
   | 'app-extension'
   | 'apps'
   | 'archive'
@@ -4143,20 +7085,26 @@ type IconType$1 =
   | 'arrow-up-right'
   | 'arrows-in-horizontal'
   | 'arrows-out-horizontal'
+  | 'arrows-out-horizontal-filled'
   | 'asterisk'
   | 'attachment'
   | 'automation'
+  | 'automation-filled'
   | 'backspace'
   | 'bag'
   | 'bank'
   | 'barcode'
   | 'bill'
+  | 'bill-filled'
   | 'blank'
+  | 'blank-filled'
   | 'blog'
+  | 'blog-filled'
   | 'bolt'
   | 'bolt-filled'
   | 'book'
   | 'book-open'
+  | 'brain'
   | 'bug'
   | 'bullet'
   | 'business-entity'
@@ -4176,8 +7124,10 @@ type IconType$1 =
   | 'caret-up'
   | 'cart'
   | 'cart-abandoned'
+  | 'cart-abandoned-filled'
   | 'cart-discount'
   | 'cart-down'
+  | 'cart-down-filled'
   | 'cart-sale'
   | 'cart-up'
   | 'cash-dollar'
@@ -4230,6 +7180,7 @@ type IconType$1 =
   | 'code-add'
   | 'collection'
   | 'collection-featured'
+  | 'collection-filled'
   | 'collection-list'
   | 'collection-reference'
   | 'color'
@@ -4299,6 +7250,7 @@ type IconType$1 =
   | 'eyeglasses'
   | 'favicon'
   | 'file'
+  | 'file-filled'
   | 'file-list'
   | 'filter'
   | 'filter-active'
@@ -4317,13 +7269,19 @@ type IconType$1 =
   | 'forms'
   | 'games'
   | 'gauge'
+  | 'gauge-filled'
+  | 'generated-app'
+  | 'generated-app-filled'
   | 'gift-card'
   | 'git-branch'
   | 'git-commit'
   | 'git-repository'
   | 'globe'
   | 'globe-asia'
+  | 'globe-asia-filled'
   | 'globe-europe'
+  | 'globe-europe-filled'
+  | 'globe-filled'
   | 'globe-lines'
   | 'globe-list'
   | 'grid'
@@ -4336,6 +7294,7 @@ type IconType$1 =
   | 'home'
   | 'icons'
   | 'identity-card'
+  | 'identity-card-filled'
   | 'image'
   | 'image-add'
   | 'image-alt'
@@ -4352,6 +7311,7 @@ type IconType$1 =
   | 'info'
   | 'inheritance'
   | 'inventory'
+  | 'inventory-filled'
   | 'inventory-updated'
   | 'iq'
   | 'key'
@@ -4361,7 +7321,9 @@ type IconType$1 =
   | 'label-printer'
   | 'language'
   | 'language-translate'
+  | 'layer'
   | 'layout-block'
+  | 'layout-block-ai'
   | 'layout-buy-button'
   | 'layout-buy-button-horizontal'
   | 'layout-buy-button-vertical'
@@ -4380,16 +7342,23 @@ type IconType$1 =
   | 'link'
   | 'link-list'
   | 'list-bulleted'
+  | 'list-bulleted-filled'
   | 'list-numbered'
   | 'live'
+  | 'live-filled'
   | 'location'
   | 'location-none'
   | 'lock'
+  | 'logo-apple-tap-to-pay-filled'
+  | 'magic'
   | 'map'
   | 'markets'
   | 'markets-euro'
+  | 'markets-euro-filled'
   | 'markets-rupee'
+  | 'markets-rupee-filled'
   | 'markets-yen'
+  | 'markets-yen-filled'
   | 'maximize'
   | 'measurement-size'
   | 'measurement-size-list'
@@ -4399,6 +7368,7 @@ type IconType$1 =
   | 'measurement-weight-list'
   | 'media-receiver'
   | 'megaphone'
+  | 'megaphone-filled'
   | 'mention'
   | 'menu'
   | 'menu-horizontal'
@@ -4406,6 +7376,7 @@ type IconType$1 =
   | 'merge'
   | 'metafields'
   | 'metaobject'
+  | 'metaobject-filled'
   | 'metaobject-list'
   | 'metaobject-reference'
   | 'microphone'
@@ -4415,6 +7386,7 @@ type IconType$1 =
   | 'minus-circle'
   | 'mobile'
   | 'money'
+  | 'money-filled'
   | 'money-none'
   | 'moon'
   | 'nature'
@@ -4425,6 +7397,7 @@ type IconType$1 =
   | 'order'
   | 'order-batches'
   | 'order-draft'
+  | 'order-draft-filled'
   | 'order-first'
   | 'order-fulfilled'
   | 'order-repeat'
@@ -4454,6 +7427,7 @@ type IconType$1 =
   | 'paint-brush-round'
   | 'paper-check'
   | 'passkey'
+  | 'passkey-filled'
   | 'paste'
   | 'pause-circle'
   | 'payment'
@@ -4478,6 +7452,7 @@ type IconType$1 =
   | 'phone-in'
   | 'phone-out'
   | 'pin'
+  | 'pin-filled'
   | 'pin-remove'
   | 'plan'
   | 'play'
@@ -4489,6 +7464,7 @@ type IconType$1 =
   | 'plus-circle-up'
   | 'point-of-sale'
   | 'price-list'
+  | 'price-list-filled'
   | 'print'
   | 'product'
   | 'product-add'
@@ -4503,14 +7479,20 @@ type IconType$1 =
   | 'question-circle'
   | 'question-circle-filled'
   | 'radio-control'
+  | 'rank-bottom'
+  | 'rank-top'
   | 'receipt'
   | 'receipt-dollar'
   | 'receipt-euro'
+  | 'receipt-euro-filled'
   | 'receipt-paid'
   | 'receipt-pound'
+  | 'receipt-pound-filled'
   | 'receipt-refund'
   | 'receipt-rupee'
+  | 'receipt-rupee-filled'
   | 'receipt-yen'
+  | 'receipt-yen-filled'
   | 'receivables'
   | 'redo'
   | 'referral-code'
@@ -4536,10 +7518,12 @@ type IconType$1 =
   | 'settings'
   | 'share'
   | 'shield-check-mark'
+  | 'shield-network'
   | 'shield-none'
   | 'shield-pending'
   | 'shield-person'
   | 'shipping-label'
+  | 'shipping-label-filled'
   | 'shopcodes'
   | 'slideshow'
   | 'smiley-happy'
@@ -4552,6 +7536,7 @@ type IconType$1 =
   | 'sort-ascending'
   | 'sort-descending'
   | 'sound'
+  | 'split'
   | 'sports'
   | 'star'
   | 'star-filled'
@@ -4571,6 +7556,7 @@ type IconType$1 =
   | 'tax'
   | 'team'
   | 'text'
+  | 'text-ai'
   | 'text-align-center'
   | 'text-align-left'
   | 'text-align-right'
@@ -4582,6 +7568,7 @@ type IconType$1 =
   | 'text-grammar'
   | 'text-in-columns'
   | 'text-in-rows'
+  | 'text-in-rows-filled'
   | 'text-indent'
   | 'text-italic'
   | 'text-quote'
@@ -4589,6 +7576,7 @@ type IconType$1 =
   | 'text-underline'
   | 'text-with-image'
   | 'theme'
+  | 'theme-cart'
   | 'theme-edit'
   | 'theme-store'
   | 'theme-template'
@@ -4622,10 +7610,12 @@ type IconType$1 =
   | 'viewport-tall'
   | 'viewport-wide'
   | 'wallet'
+  | 'wallet-filled'
   | 'wand'
   | 'watch'
   | 'wifi'
   | 'work'
+  | 'work-filled'
   | 'work-list'
   | 'wrench'
   | 'x'

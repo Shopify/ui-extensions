@@ -1,14 +1,8 @@
 /** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
-/* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
@@ -140,6 +134,7 @@ declare class FunctionSettings
     typeof tagName,
     FunctionSettingsErrorEvent['error']['errors'][0]
   > | null;
+
   /**
    * A callback that is run when the function settings form is reset.
    */

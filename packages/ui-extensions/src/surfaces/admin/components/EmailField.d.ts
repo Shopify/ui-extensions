@@ -1,14 +1,9 @@
 /** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
@@ -45,7 +40,7 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-export type FieldReactProps<T extends keyof HTMLElementTagNameMap> = {
+export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   /**
    * A callback fired when the user makes changes to the field value. This fires before `onChange`.
    */
@@ -62,7 +57,7 @@ export type FieldReactProps<T extends keyof HTMLElementTagNameMap> = {
    * A callback fired when the field loses focus.
    */
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
-};
+}
 /**
  * Props for field slot content (label, error, details) that accept
  * either a string or JSX content in the React wrapper.
@@ -70,19 +65,19 @@ export type FieldReactProps<T extends keyof HTMLElementTagNameMap> = {
  * Internal use only — not exported publicly. External consumers receive
  * string-only types via FieldSlotPreactProps.
  */
-export type FieldSlotInternalReactProps = {
+export interface FieldSlotInternalReactProps {
   error?: preact.ComponentChildren;
   details?: preact.ComponentChildren;
-};
+}
 /**
  * Preact JSX string-only versions of field slot props.
  * Used in Preact module declarations after Omit-ing the ComponentChildren
  * versions (required by force-omit-react-slots lint rule).
  */
-export type FieldSlotPreactProps = {
+export interface FieldSlotPreactProps {
   error?: string;
   details?: string;
-};
+}
 /**
  * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs

@@ -1,14 +1,9 @@
 /** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-/* eslint-disable @typescript-eslint/ban-types */
+
 /* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable line-comment-position */
-/* eslint-disable @typescript-eslint/unified-signatures */
-/* eslint-disable no-var */
-/* eslint-disable import/no-deprecated */
-/* eslint-disable import/namespace */
-/* eslint-disable import/no-deprecated */
+
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
@@ -176,12 +171,14 @@ declare class ChoiceList extends BaseClass implements ChoiceListProps {
     callback: EventListenerOrEventListenerObject | null,
     options?: AddEventListenerOptions | boolean,
   ): void;
+
   /** @private */
   removeEventListener(
     type: string,
     callback: EventListenerOrEventListenerObject | null,
     options?: EventListenerOptions | boolean,
   ): void;
+
   accessor disabled: ChoiceListProps['disabled'];
   /**
    * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
