@@ -7,12 +7,15 @@
 /// <reference lib="DOM" />
 import type {
   ComponentChildren,
-  UnorderedListProps$1,
+  EmptyStateProps$1,
   PreactCustomElement,
   RenderImpl,
 } from './shared.d.ts';
 import * as preact$1 from 'preact';
 import {ReactNode, RefAttributes} from 'react';
+
+export interface EmptyStateProps
+  extends Required<Pick<EmptyStateProps$1, 'heading'>> {}
 
 export type ReactIntrinsicElementChildren<PreactProps extends object> =
   'children' extends keyof PreactProps
@@ -43,19 +46,6 @@ declare module 'react' {
   namespace JSX {
     interface IntrinsicElements extends ReactIntrinsicElements {}
   }
-}
-
-/**
- * Configure the following properties on the unordered list component.
- */
-export interface UnorderedListProps extends UnorderedListProps$1 {}
-
-declare class PolarisCustomElement extends PreactCustomElement {
-  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
 }
 
 /**
@@ -92,39 +82,63 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   children?: preact.ComponentChildren;
 }
 
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+}
+
 /**
- * Configure the following properties on the unordered list component.
+ * Configure the following properties on the empty state component.
  * @publicDocs
  */
-declare class UnorderedList
+declare class EmptyState
   extends PolarisCustomElement
-  implements UnorderedListProps
+  implements EmptyStateProps
 {
   constructor();
+  accessor heading: EmptyStateProps['heading'];
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: UnorderedList;
+    [tagName]: EmptyState;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: UnorderedListJSXProps &
-        PreactBaseElementPropsWithChildren<UnorderedList>;
+      [tagName]: Omit<
+        EmptyStateJSXProps,
+        'primaryAction' | 'secondaryActions' | 'graphic' | 'subheading'
+      > &
+        PreactBaseElementPropsWithChildren<EmptyState>;
     }
   }
 }
 
-declare const tagName = 's-unordered-list';
-export interface UnorderedListJSXProps
-  extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {
+declare const tagName = 's-empty-state';
+export interface EmptyStateJSXProps
+  extends Partial<EmptyStateProps>,
+    Pick<EmptyStateProps$1, 'id'> {
   /**
-   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
+   * The main call to action, rendered below the text content. Accepts a single `Button` with a `variant` of `primary`; anything else is ignored with a development warning.
    */
-  children?: ComponentChildren;
+  primaryAction?: ComponentChildren;
+  /**
+   * An alternative action, rendered beside the primary one. Accepts a single `Button` with a `variant` of `secondary` or `auto` — despite the plural name, only one is rendered.
+   */
+  secondaryActions?: ComponentChildren;
+  /**
+   * An illustration or symbol shown above the heading. Accepts a single `Image` or `Icon`, either directly or as the only child of a wrapping element.
+   */
+  graphic?: ComponentChildren;
+  /**
+   * Supporting text below the heading, explaining what's missing or what to do next. Accepts `Text` and `Link` components.
+   */
+  subheading?: ComponentChildren;
 }
 
-export {UnorderedList};
-export type {UnorderedListJSXProps};
+export {EmptyState};
+export type {EmptyStateJSXProps};

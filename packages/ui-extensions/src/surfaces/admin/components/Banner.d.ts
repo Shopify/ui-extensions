@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,20 +6,33 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, BannerProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  BannerProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * A callback event that's typed to a specific HTML element.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that currently has the event listener attached.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * An event listener for callback events, typed to a specific HTML element.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -28,43 +41,77 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
     })
   | null;
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
   /**
-   * The child elements to render inside this element.
+   * The child elements to be rendered within this component.
    */
   children?: preact.ComponentChildren;
 }
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
 /**
- * All properties for the banner component marked as required.
+ * Represents the banner component props with all properties marked as required.
  * @publicDocs
  */
 export type RequiredBannerProps = Required<BannerProps$1>;
 /**
- * The properties for the banner component. These properties define an important message or notification with visual styling that conveys its semantic meaning.
- * @publicDocs
+ * Configure the following properties on the banner component.
  */
 export interface BannerProps
   extends Pick<
@@ -72,7 +119,13 @@ export interface BannerProps
     'heading' | 'dismissible' | 'hidden' | 'tone'
   > {
   /**
-   * The color tone of the banner based on its semantic meaning.
+   * The semantic meaning and color treatment of the component.
+   *
+   * - `info`: Informational content or helpful tips.
+   * - `success`: Positive outcomes or successful states.
+   * - `warning`: Important warnings about potential issues.
+   * - `critical`: Urgent problems or destructive actions.
+   * - `auto`: Automatically determined based on context.
    *
    * @default 'auto'
    */
@@ -80,129 +133,52 @@ export interface BannerProps
     RequiredBannerProps['tone'],
     'auto' | 'critical' | 'warning' | 'success' | 'info'
   >;
+  /**
+   * The heading text displayed at the top of the banner.
+   *
+   * @default ''
+   */
+  heading: RequiredBannerProps['heading'];
+  /**
+   * Whether the banner displays a close button that allows users to dismiss it.
+   *
+   * When the close button is pressed, the `dismiss` event fires, then `hidden` is set to `true`,
+   * any animation completes, and the `afterhide` event fires.
+   *
+   * @default false
+   */
+  dismissible: RequiredBannerProps['dismissible'];
+  /**
+   * Controls whether the banner is visible or hidden.
+   *
+   * When using a controlled component pattern and the banner is `dismissible`,
+   * update this property to `true` when the `dismiss` event fires.
+   *
+   * You can hide the banner programmatically by setting this to `true` even if it's not `dismissible`.
+   *
+   * @default false
+   */
+  hidden: RequiredBannerProps['hidden'];
 }
 
-/**
- * A string containing CSS styles for the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the component's shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * Optional CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
-};
-/**
- * An event-like object that contains activation information for synthetic clicks.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during activation.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta key (Command on Mac, Windows key on Windows) was pressed during activation.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during activation.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during activation.
-   */
-  button: number;
-}
-/**
- * Options for customizing synthetic click behavior.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * A custom element for displaying important messages and notifications.
+ * Configure the following properties on the banner component.
+ * @publicDocs
  */
-declare class Banner extends PreactCustomElement implements BannerProps {
-  /**
-   * The heading text displayed at the top of the banner.
-   */
+declare class Banner extends PolarisCustomElement implements BannerProps {
   accessor heading: BannerProps['heading'];
-  /**
-   * The color tone of the banner based on its semantic meaning.
-   */
   accessor tone: BannerProps['tone'];
-  /**
-   * Whether the banner is hidden from view.
-   */
   accessor hidden: BannerProps['hidden'];
-  /**
-   * Whether the banner can be dismissed by the user.
-   */
   accessor dismissible: BannerProps['dismissible'];
-  /**
-   * A callback that's fired when the banner is dismissed.
-   */
   accessor ondismiss: CallbackEventListener<typeof tagName> | null;
-  /**
-   * A callback that's fired after the banner finishes hiding.
-   */
   accessor onafterhide: CallbackEventListener<typeof tagName> | null;
   constructor();
 }
@@ -221,27 +197,26 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-banner';
-/**
- * The JSX properties for the banner component. These properties define how a banner is rendered in Preact or JSX.
- * @publicDocs
- */
 export interface BannerJSXProps
   extends Partial<BannerProps>,
     Pick<BannerProps$1, 'id' | 'children'> {
   /**
-   * The content of the banner.
+   * The main message content displayed within the banner component, providing important information or guidance to users.
    */
   children?: ComponentChildren;
   /**
-   * The secondary actions to display at the bottom of the banner. Only buttons with the `variant` of `'secondary'` or `'auto'` are allowed. A maximum of two `s-button` components can be provided.
+   * Action buttons displayed at the bottom of the banner that let users respond to the message.
+   * Accepts up to two button components with `variant="secondary"` or `variant="auto"`.
    */
   secondaryActions?: ComponentChildren;
   /**
-   * A callback that's fired when the banner is dismissed.
+   * A callback fired when the user dismisses the banner by clicking the close button.
+   * Use this to update your app state and control the banner's visibility.
    */
   onDismiss?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's fired after the banner finishes hiding.
+   * A callback fired when the banner is completely hidden, after any hide animations have completed.
+   * Use this to perform cleanup or trigger subsequent actions after the banner is no longer visible.
    */
   onAfterHide?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

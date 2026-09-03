@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,20 +6,33 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, ChoiceListProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  ChoiceListProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * An event that includes a strongly-typed reference to the element that triggered it.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that the event handler was attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * A function that handles events for a specific element type, or null if no handler is set.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -27,32 +40,73 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. * @publicDocs
+/**
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
+/**
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
 /**
- * Properties for rendering a list of choices that lets users select one or more options using radio buttons or checkboxes.
- * @publicDocs
+ * Configure the following properties on the choice list component.
  */
 export interface ChoiceListProps
   extends Required<
@@ -67,159 +121,100 @@ export interface ChoiceListProps
       | 'name'
       | 'values'
     >
-  > {}
-
-/**
- * CSS styles that will be applied to the component's shadow DOM.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * Configuration for rendering a custom element with Preact and shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  > {
   /**
-   * A function that renders the component's content inside the shadow root.
+   * Whether the field is disabled, preventing any user interaction. When `true`, the `disabled` property on any child choices is ignored.
+   *
+   * @default false
    */
-  ShadowRoot: (element: any) => ComponentChildren;
+  disabled: Required<ChoiceListProps$1>['disabled'];
   /**
-   * CSS styles that will be applied to the shadow DOM.
+   * Whether multiple choices can be selected.
+   *
+   * @default false
    */
-  styles?: Styles;
-};
-/**
- * Information about modifier keys and mouse buttons that were active during an interaction.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was held down during the interaction.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was held down during the interaction.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the interaction.
-   */
-  button: number;
+  multiple: Required<ChoiceListProps$1>['multiple'];
 }
-/**
- * Options for influencing how a programmatic click behaves.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass$1: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass$1 {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare const internals: unique symbol;
-/**
- * Base class for form-associated custom elements.
- */
-declare class BaseClass extends PreactCustomElement {
-  /**
-   * Indicates that this element can participate in form submission.
-   */
+declare class BaseClass extends PolarisCustomElement {
   static formAssociated: boolean;
   constructor(renderImpl: RenderImpl);
   /** @private */
   [internals]: ElementInternals;
 }
 /**
- * A list of choices that lets users select one or more options using radio buttons or checkboxes.
+ * Configure the following properties on the choice list component.
+ * @publicDocs
  */
 declare class ChoiceList extends BaseClass implements ChoiceListProps {
   /**
-   * Whether all choices in the list are disabled and can't be selected.
+   * Wraps change and input event listeners so they only fire when the event
+   * was dispatched directly on this ChoiceList (event.eventPhase === Event.AT_TARGET).
+   *
+   * This prevents form events from elements inside secondary content (e.g.
+   * TextField, native <input>) from being mistakenly treated as ChoiceList
+   * value-change events, while still allowing those events to bubble normally
+   * through the DOM (preserving React's event delegation).
+   * @private
    */
+  addEventListener(
+    type: string,
+    callback: EventListenerOrEventListenerObject | null,
+    options?: AddEventListenerOptions | boolean,
+  ): void;
+
+  /** @private */
+  removeEventListener(
+    type: string,
+    callback: EventListenerOrEventListenerObject | null,
+    options?: EventListenerOptions | boolean,
+  ): void;
+
   accessor disabled: ChoiceListProps['disabled'];
   /**
-   * The name that identifies this choice list when the form is submitted.
+   * The name attribute for the field, used to identify the field's value when the form is submitted. Must be unique within the nearest containing form.
    */
   accessor name: ChoiceListProps['name'];
   /**
-   * An error message that's displayed below the choice list when validation fails.
+   * An error message displayed below the checkbox to indicate validation problems. When set, the checkbox is styled with error indicators and the message is announced to screen readers.
    */
   accessor error: ChoiceListProps['error'];
   /**
-   * Additional text to provide context or guidance for the choice list.
+   * Supplementary text displayed below the checkbox to provide additional context, instructions, or help. Use this to explain what checking the box means or provide guidance to users. This text is announced to screen readers.
    */
   accessor details: ChoiceListProps['details'];
-  /**
-   * Whether users can select more than one choice at a time.
-   */
   accessor multiple: ChoiceListProps['multiple'];
   /**
-   * The text that describes what the choice list is for.
+   * The text displayed as the field label, which identifies the purpose of the field to users. This label is associated with the field for accessibility and helps users understand what information to provide.
    */
   accessor label: ChoiceListProps['label'];
-  /**
-   * A callback that's triggered when the selected choices change and the choice list loses focus.
-   */
   accessor onchange: CallbackEventListener<typeof tagName> | null;
-  /**
-   * A callback that's triggered when the selected choices change.
-   */
   accessor oninput: CallbackEventListener<typeof tagName> | null;
   /**
    * Controls whether the label is visible to all users or only to screen readers.
+   *
+   * - `visible`: The label is shown to everyone (default).
+   * - `exclusive`: The label is visually hidden but still announced by screen readers.
+   *
+   * Use `exclusive` when the surrounding context makes the label redundant visually, but screen reader users still need it for clarity.
    */
   accessor labelAccessibilityVisibility: ChoiceListProps['labelAccessibilityVisibility'];
   /**
-   * The values of the currently selected choices.
+   * An array of `value` attributes for the currently selected options. When provided, this property automatically sets the `selected` state on child option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
    */
   get values(): ChoiceListProps['values'];
+  /**
+   * An array of `value` attributes for the currently selected options. When provided, this property automatically sets the `selected` state on child option components that have matching `value` attributes. Options with values included in this array will be marked as selected, while others will be unselected.
+   */
   set values(values: ChoiceListProps['values']);
   /** @private */
   formResetCallback(): void;
@@ -244,25 +239,21 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-choice-list';
-/**
- * Properties for using the choice list component in JSX with React-style event handlers.
- * @publicDocs
- */
 export interface ChoiceListJSXProps
   extends Partial<ChoiceListProps>,
     Pick<ChoiceListProps$1, 'id' | 'children'> {
   /**
-   * The choices that a user can select from, provided as Choice components.
+   * The choices a user can select from.
    *
-   * Accepts Choice components.
+   * Accepts choice components.
    */
   children?: ComponentChildren;
   /**
-   * A callback that's triggered when the selected choices change and the choice list loses focus.
+   * A callback fired when the user has finished changing the value.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's triggered when the selected choices change as the user interacts with them.
+   * A callback fired when the user makes any changes to the value.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }

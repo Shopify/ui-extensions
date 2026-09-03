@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,21 +9,30 @@
 import type {
   TextFieldProps,
   NumberFieldProps$1,
-  ComponentChildren,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * An event with a strongly-typed currentTarget property for a specific HTML element.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that the event listener is attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * A callback function that receives a strongly-typed event for a specific HTML element.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -31,189 +40,133 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/**
- * The React-style event callback props for form field components.
- * @publicDocs
- */
 export interface FieldReactProps<T extends keyof HTMLElementTagNameMap> {
   /**
-   * A callback that's invoked when the user makes any changes in the field. Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/input_event).
+   * A callback fired when the user makes changes to the field value. This fires before `onChange`.
    */
   onInput?: ((event: CallbackEvent<T>) => void) | null;
   /**
-   * A callback that's invoked when the user has finished editing the field, such as when they blur the field. Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
+   * A callback fired when the user has finished editing the field, such as when they blur the field.
    */
   onChange?: ((event: CallbackEvent<T>) => void) | null;
   /**
-   * A callback that's invoked when the field receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
+   * A callback fired when the field receives focus.
    */
   onFocus?: ((event: CallbackEvent<T>) => void) | null;
   /**
-   * A callback that's invoked when the field loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
+   * A callback fired when the field loses focus.
    */
   onBlur?: ((event: CallbackEvent<T>) => void) | null;
 }
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Props for field slot content (label, error, details) that accept
+ * either a string or JSX content in the React wrapper.
+ *
+ * Internal use only — not exported publicly. External consumers receive
+ * string-only types via FieldSlotPreactProps.
+ */
+export interface FieldSlotInternalReactProps {
+  error?: preact.ComponentChildren;
+  details?: preact.ComponentChildren;
+}
+/**
+ * Preact JSX string-only versions of field slot props.
+ * Used in Preact module declarations after Omit-ing the ComponentChildren
+ * versions (required by force-omit-react-slots lint rule).
+ */
+export interface FieldSlotPreactProps {
+  error?: string;
+  details?: string;
+}
+/**
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
-/**
- * A string containing CSS styles for the component's shadow DOM.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a Preact component in a shadow root.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the component's Preact elements into the shadow root.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
 };
-/**
- * The properties from an event that indicate how the user activated an element.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was held down when the event occurred.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on macOS) was held down when the event occurred.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was held down when the event occurred.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed when the event occurred. A value of 0 indicates the primary button (usually left), 1 indicates the middle button, and 2 indicates the secondary button (usually right).
-   */
-  button: number;
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
 }
-/**
- * The options for influencing a programmatic click event.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare const internals: unique symbol;
 /**
- * The base properties for an input element that participates in form submission.
+ * Represents the essential input props required for Preact-based input elements. Includes properties like `disabled`, `id`, `name`, and `value`.
  * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
-/** @private */
 declare class PreactInputElement
-  extends PreactCustomElement
+  extends PolarisCustomElement
   implements PreactInputProps
 {
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
-  /**
-   * A callback that's invoked when the user has finished editing the field, such as when they blur the field.
-   */
   accessor onchange: CallbackEventListener<'input'>;
-  /**
-   * A callback that's invoked when the user makes any changes in the field.
-   */
   accessor oninput: CallbackEventListener<'input'>;
-  /**
-   * Whether the field is disabled, disallowing any interaction.
-   *
-   * @default false
-   */
   accessor disabled: PreactInputProps['disabled'];
-  /**
-   * An identifier for the field.
-   */
   accessor id: PreactInputProps['id'];
-  /**
-   * An identifier for the field that's unique within the nearest containing form.
-   */
   accessor name: PreactInputProps['name'];
-  /**
-   * The current value for the field.
-   */
   get value(): PreactInputProps['value'];
   set value(value: PreactInputProps['value']);
   constructor(renderImpl: RenderImpl);
 }
 
 /**
- * The base properties for form field elements that support labels, validation, and autocomplete.
+ * Represents the props for Preact-based form field components with autocomplete support. The generic type parameter allows specifying the valid autocomplete values for the field.
  * @publicDocs
  */
 export type PreactFieldProps<Autocomplete extends string = string> =
@@ -235,10 +188,10 @@ export type PreactFieldProps<Autocomplete extends string = string> =
        * A hint as to the intended content of the field.
        *
        * When set to `on` (the default), this property indicates that the field should support
-       * autofill, but you don't have any more semantic information on the intended
+       * autofill, but you do not have any more semantic information on the intended
        * contents.
        *
-       * When set to `off`, you're indicating that this field contains sensitive
+       * When set to `off`, you are indicating that this field contains sensitive
        * information, or contents that are never saved, like one-time codes.
        *
        * Alternatively, you can provide value which describes the
@@ -253,58 +206,20 @@ export type PreactFieldProps<Autocomplete extends string = string> =
        */
       autocomplete: Autocomplete;
     };
-/** @private */
 declare class PreactFieldElement<Autocomplete extends string = string>
   extends PreactInputElement
   implements PreactFieldProps<Autocomplete>
 {
-  /**
-   * A callback that's invoked when the field loses focus.
-   */
   accessor onblur: CallbackEventListener<'input'>;
-  /**
-   * A callback that's invoked when the field receives focus.
-   */
   accessor onfocus: CallbackEventListener<'input'>;
-  /**
-   * A hint as to the intended content of the field for autocomplete purposes.
-   */
   accessor autocomplete: PreactFieldProps<Autocomplete>['autocomplete'];
-  /**
-   * The initial value for the field when it's first rendered.
-   */
   accessor defaultValue: PreactFieldProps['defaultValue'];
-  /**
-   * Additional descriptive text to display below the field that provides supplementary information.
-   */
   accessor details: PreactFieldProps['details'];
-  /**
-   * An error message to display below the field, indicating validation failure or other issues.
-   */
   accessor error: PreactFieldProps['error'];
-  /**
-   * The text label to display for the field, describing what the user should enter.
-   */
   accessor label: PreactFieldProps['label'];
-  /**
-   * Controls the visibility of the label for accessibility purposes.
-   */
   accessor labelAccessibilityVisibility: PreactFieldProps['labelAccessibilityVisibility'];
-  /**
-   * The placeholder text that's displayed inside the field when it's empty, providing a hint about expected input.
-   */
   accessor placeholder: PreactFieldProps['placeholder'];
-  /**
-   * Whether the field is read-only, preventing edits while still allowing focus and selection.
-   *
-   * @default false
-   */
   accessor readOnly: PreactFieldProps['readOnly'];
-  /**
-   * Whether the field must be filled out before form submission.
-   *
-   * @default false
-   */
   accessor required: PreactFieldProps['required'];
   /**
    * Global keyboard event handlers for things like key bindings typically
@@ -334,8 +249,7 @@ declare class PreactFieldElement<Autocomplete extends string = string>
 }
 
 /**
- * The properties for the number field component. These properties configure a specialized input field for entering numeric values with support for validation, formatting, range constraints, and optimized mobile input modes.
- * @publicDocs
+ * Configure the following properties on the number field component.
  */
 export interface NumberFieldProps
   extends Omit<
@@ -348,51 +262,44 @@ export interface NumberFieldProps
         'inputMode' | 'max' | 'min' | 'prefix' | 'step' | 'suffix'
       >
     > {
-  /**
-   * The current value for the field, represented as a string.
-   */
   value: Required<NumberFieldProps$1>['value'];
+  /**
+   * The type of virtual keyboard to display on mobile devices.
+   *
+   * - `decimal`: Shows a numeric keyboard with a decimal point, suitable for prices or measurements.
+   * - `numeric`: Shows a numeric keyboard without a decimal point, suitable for whole numbers like quantities.
+   *
+   * Learn more about the [inputmode attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode).
+   *
+   * @default 'decimal'
+   */
+  inputMode: Required<NumberFieldProps$1>['inputMode'];
+}
+
+declare abstract class NumberFieldBase
+  extends PreactFieldElement<NumberFieldProps['autocomplete']>
+  implements
+    Pick<
+      NumberFieldProps,
+      'inputMode' | 'step' | 'max' | 'min' | 'prefix' | 'suffix' | 'value'
+    >
+{
+  get value(): string;
+  set value(value: string);
+  accessor inputMode: NumberFieldProps['inputMode'];
+  accessor step: NumberFieldProps['step'];
+  accessor max: NumberFieldProps['max'];
+  accessor min: NumberFieldProps['min'];
+  accessor prefix: NumberFieldProps['prefix'];
+  accessor suffix: NumberFieldProps['suffix'];
+  constructor(renderImpl: RenderImpl);
 }
 
 /**
- * The number field custom element class that renders a numeric input field in the Shopify admin interface. This component allows merchants to enter numbers with automatic validation and prefix/suffix display.
+ * Configure the following properties on the number field component.
+ * @publicDocs
  */
-declare class NumberField
-  extends PreactFieldElement<NumberFieldProps['autocomplete']>
-  implements NumberFieldProps
-{
-  /**
-   * The current numeric value in the field as a string. When setting this property programmatically, it updates the field's display value. When reading it, you get the user's current input. The value should be a numeric string (decimal or integer).
-   */
-  get value(): string;
-  set value(value: string);
-  /**
-   * The input mode hint for mobile keyboards. Available values include:
-   * - `numeric`: Shows a numeric keypad optimized for entering numbers
-   * - `decimal`: Shows a numeric keypad with decimal point support
-   * - `tel`: Shows a telephone keypad
-   */
-  accessor inputMode: NumberFieldProps['inputMode'];
-  /**
-   * The granularity that the value must adhere to, or the keyword `any`. This controls the increment/decrement step size.
-   */
-  accessor step: NumberFieldProps['step'];
-  /**
-   * The maximum numeric value allowed in the field.
-   */
-  accessor max: NumberFieldProps['max'];
-  /**
-   * The minimum numeric value allowed in the field.
-   */
-  accessor min: NumberFieldProps['min'];
-  /**
-   * Text or content to display before the user's input, such as a currency symbol.
-   */
-  accessor prefix: NumberFieldProps['prefix'];
-  /**
-   * Text or content to display after the user's input, such as a unit of measurement.
-   */
-  accessor suffix: NumberFieldProps['suffix'];
+declare class NumberField extends NumberFieldBase implements NumberFieldProps {
   constructor();
 }
 declare global {
@@ -403,20 +310,19 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: NumberFieldJSXProps & PreactBaseElementProps<NumberField>;
+      [tagName]: Omit<NumberFieldJSXProps, 'error' | 'details'> &
+        FieldSlotPreactProps &
+        PreactBaseElementProps<NumberField>;
     }
   }
 }
 
 declare const tagName = 's-number-field';
-/**
- * The JSX props for the number field component. These properties extend `NumberFieldProps` with JSX-specific event callbacks for React-style event handling when used in Preact.
- * @publicDocs
- */
 export interface NumberFieldJSXProps
-  extends Partial<NumberFieldProps>,
+  extends Partial<Omit<NumberFieldProps, 'error' | 'details'>>,
     Pick<NumberFieldProps$1, 'id'>,
-    FieldReactProps<typeof tagName> {}
+    FieldReactProps<typeof tagName>,
+    FieldSlotInternalReactProps {}
 
 export {NumberField};
 export type {NumberFieldJSXProps};
