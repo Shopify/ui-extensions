@@ -6,6 +6,10 @@
     "@shopify/ui-extensions-tester": "2026.10.0-rc.0"
   },
   "changesets": [
+    "add-box-private-positioning-types",
+    "admin-component-type-drift",
+    "admin-number-empty-state-types",
+    "admin-section-header-slots",
     "deprecate-localization-market",
     "document-pos-image-border-radius",
     "empty-peas-hide",
