@@ -1,5 +1,19 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.9
+
+### Minor Changes
+
+- [#4666](https://github.com/Shopify/ui-extensions/pull/4666) [`6e1670f`](https://github.com/Shopify/ui-extensions/commit/6e1670f6fef3e46a7877b6008147fcdda11c764d) Thanks [@kyledurand](https://github.com/kyledurand)! - Regenerate the Admin per-component types so they match the components as shipped. Around 35 components gain properties that existed in the implementation but were missing from the types, including the whole of `DatePicker` (`allow`, `allowDays`, `defaultValue`, `defaultView`, `disallow`, `disallowDays`, `value`, `view`, `visibleMonths`), typography properties on `Text`, `Paragraph`, and `Heading` (`fontSize`, `fontWeight`, `fontVariantNumeric`), `Banner`'s `heading` and `dismissible`, `Button`'s `variant` and `accessibilityLabel`, and `ColorPicker`'s `alpha`, `value`, and `defaultValue`.
+
+- [#4666](https://github.com/Shopify/ui-extensions/pull/4666) [`644d6c0`](https://github.com/Shopify/ui-extensions/commit/644d6c083003b3d3d9cdaf4f4b59b22115e056ad) Thanks [@kyledurand](https://github.com/kyledurand)! - Add Admin `Number` and `EmptyState` types. `Number` exposes the `tone`, `color`, `fontSize`, and `fontWeight` properties; `EmptyState` exposes the `heading` property and the `graphic`, `subheading`, `primaryAction`, and `secondaryActions` slots.
+
+- [#4666](https://github.com/Shopify/ui-extensions/pull/4666) [`96cf66d`](https://github.com/Shopify/ui-extensions/commit/96cf66d43ed69da55a9cd393232010d6d415e477) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `subheading` property and the `primaryAction`, `secondaryActions`, `graphic`, `accessory`, and `supplemental` slots to Admin `Section`.
+
+### Patch Changes
+
+- [#4660](https://github.com/Shopify/ui-extensions/pull/4660) [`3106936`](https://github.com/Shopify/ui-extensions/commit/310693680f9037954deb89d8007c5fa42e400a3a) Thanks [@oliverigor](https://github.com/oliverigor)! - Add private positioning types (`position`, `insetBlock`, `insetInline`, `transform`) to the `s-box` checkout component.
+
 ## 2026.10.0-rc.8
 
 ### Minor Changes
