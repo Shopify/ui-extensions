@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -6,11 +6,60 @@
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, HeadingProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  HeadingProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
+
+declare const headingFontSizes: readonly [
+  'auto',
+  'small',
+  'base',
+  'large',
+  'large-100',
+  'large-200',
+  'large-300',
+  'large-400',
+];
+export type HeadingFontSize = (typeof headingFontSizes)[number];
 
 /**
- * The properties for the heading component. These properties define hierarchical section titles and headings with appropriate semantic meaning and visual hierarchy.
- * @publicDocs
+ * Configure the following properties on the heading component.
  */
 export interface HeadingProps
   extends Required<
@@ -18,146 +67,101 @@ export interface HeadingProps
       HeadingProps$1,
       'accessibilityRole' | 'accessibilityVisibility' | 'lineClamp'
     >
-  > {}
-
-/**
- * A string containing CSS styles.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with a shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  > {
   /**
-   * The function that renders the component's shadow DOM content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * Optional CSS styles to apply to the shadow DOM.
-   */
-  styles?: Styles;
-};
-/**
- * An object that represents the state of modifier keys and mouse button
- * during an activation event like a click.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta (Command on Mac, Windows key on PC) key was pressed.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
-}
-/**
- * Options for customizing click behavior on an element.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
+   * The font size of the heading. The named values also apply their matching
+   * line-height and letter-spacing:
    *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
+   * - 'small' maps to headingXs
+   * - 'base' maps to headingSm
+   * - 'large' / 'large-100' maps to headingMd
+   * - 'large-200' maps to headingLg
+   * - 'large-300' maps to headingXl
+   * - 'large-400' maps to heading2xl
+   *
+   * @default 'auto'
    */
-  click({sourceEvent}?: ClickOptions): void;
+  fontSize: HeadingFontSize;
+  /**
+   * The semantic meaning of the component’s content. When set,
+   * the role will be used by assistive technologies to help users
+   * navigate the page.
+   *
+   * - `heading`: Identifies the element as a heading for assistive technologies.
+   * - `none`: Removes semantic meaning from the heading element.
+   * - `presentation`: Removes semantic meaning from the heading element.
+   *
+   * @default 'heading'
+   *
+   * @implementation The `heading` role doesn't need to be applied if
+   * the host applies it for you; for example, an HTML host rendering
+   * an `<h2>` element should not apply the `heading` role.
+   */
+  accessibilityRole: Required<HeadingProps$1>['accessibilityRole'];
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
-/**
- * A custom element for displaying hierarchical section titles and headings with appropriate semantic meaning and visual styling. Use Heading to structure your content with proper heading levels for both visual hierarchy and accessibility.
- */
-declare class Heading extends PreactCustomElement implements HeadingProps {
-  /**
-   * The ARIA role for the heading. Set to `'heading'` (the default) for standard heading semantics, or `'presentation'` / `'none'` to remove heading semantics for decorative use.
-   */
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  adoptedCallback(): void;
+}
+
+declare abstract class HeadingBase
+  extends PolarisCustomElement
+  implements
+    Pick<
+      HeadingProps,
+      'accessibilityRole' | 'accessibilityVisibility' | 'fontSize' | 'lineClamp'
+    >
+{
+  accessor fontSize: HeadingProps['fontSize'];
   accessor accessibilityRole: HeadingProps['accessibilityRole'];
-  /**
-   * The maximum number of lines to display before the text is truncated with an ellipsis.
-   */
   accessor lineClamp: HeadingProps['lineClamp'];
-  /**
-   * The visibility of the element to assistive technologies.
-   */
   accessor accessibilityVisibility: HeadingProps['accessibilityVisibility'];
+  constructor(renderImpl: RenderImpl);
+}
+
+/**
+ * Configure the following properties on the heading component.
+ * @publicDocs
+ */
+declare class Heading extends HeadingBase implements HeadingProps {
   constructor();
 }
 declare global {
@@ -174,15 +178,11 @@ declare module 'preact' {
 }
 
 declare const tagName = 's-heading';
-/**
- * The JSX properties for the heading component. These properties define how a heading is rendered in Preact or JSX.
- * @publicDocs
- */
 export interface HeadingJSXProps
   extends Partial<HeadingProps>,
     Pick<HeadingProps$1, 'id' | 'children'> {
   /**
-   * The content of the heading.
+   * The heading text displayed within the heading component, which provides a title or section header for content.
    */
   children?: ComponentChildren;
 }

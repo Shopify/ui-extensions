@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -11,21 +11,31 @@ import type {
   TextFieldProps,
   IconProps$1,
   SelectProps$1,
+  PreactCustomElement,
+  RenderImpl,
   IconType,
 } from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * An event that includes a strongly-typed reference to the element that triggered it.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that the event handler was attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * A function that handles events for a specific element type, or null if no handler is set.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -33,205 +43,176 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. * @publicDocs
+/**
+ * Props for field slot content (label, error, details) that accept
+ * either a string or JSX content in the React wrapper.
+ *
+ * Internal use only — not exported publicly. External consumers receive
+ * string-only types via FieldSlotPreactProps.
+ */
+export interface FieldSlotInternalReactProps {
+  error?: preact.ComponentChildren;
+  details?: preact.ComponentChildren;
+}
+/**
+ * Preact JSX string-only versions of field slot props.
+ * Used in Preact module declarations after Omit-ing the ComponentChildren
+ * versions (required by force-omit-react-slots lint rule).
+ */
+export interface FieldSlotPreactProps {
+  error?: string;
+  details?: string;
+}
+/**
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
-/** Used when an element has children. * @publicDocs
+/**
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
+ * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
-/**
- * CSS styles that will be applied to the component's shadow DOM.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * Configuration for rendering a custom element with Preact and shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * A function that renders the component's content inside the shadow root.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * CSS styles that will be applied to the shadow DOM.
-   */
-  styles?: Styles;
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
 };
-/**
- * Information about modifier keys and mouse buttons that were active during an interaction.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was held down during the interaction.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was held down during the interaction.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the interaction.
-   */
-  button: number;
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
 }
-/**
- * Options for influencing how a programmatic click behaves.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare const internals: unique symbol;
 /**
- * The core properties that all input elements need to function within forms.
+ * Represents the essential input props required for Preact-based input elements. Includes properties like `disabled`, `id`, `name`, and `value`.
  * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
-/**
- * Base class for input elements that participate in form submission.
- */
 declare class PreactInputElement
-  extends PreactCustomElement
+  extends PolarisCustomElement
   implements PreactInputProps
 {
-  /**
-   * Indicates that this element can participate in form submission.
-   */
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
-  /**
-   * A callback that's triggered when the input's value changes and the field loses focus.
-   */
   accessor onchange: CallbackEventListener<'input'>;
-  /**
-   * A callback that's triggered when the input's value changes as the user types.
-   */
   accessor oninput: CallbackEventListener<'input'>;
-  /**
-   * Whether the input is disabled and can't be interacted with.
-   */
   accessor disabled: PreactInputProps['disabled'];
-  /**
-   * A unique identifier for the input element.
-   */
   accessor id: PreactInputProps['id'];
-  /**
-   * The name that identifies this input when the form is submitted.
-   */
   accessor name: PreactInputProps['name'];
-  /**
-   * The current value of the input.
-   */
   get value(): PreactInputProps['value'];
   set value(value: PreactInputProps['value']);
   constructor(renderImpl: RenderImpl);
 }
 
 /**
- * Properties for displaying an icon within a component.
- * @publicDocs
+ * Configure the following properties on the icon component.
  */
 export interface IconProps
-  extends Pick<
-    IconProps$1,
-    'type' | 'tone' | 'color' | 'size' | 'interestFor'
+  extends Required<
+    Pick<IconProps$1, 'type' | 'tone' | 'color' | 'size' | 'interestFor'>
   > {
   /**
-   * Specifies the type of icon that will be displayed.
+   * The icon to display from the icon library.
+   *
+   * Set to a valid icon name to display that icon. To hide the icon completely,
+   * use an empty string `''`. To reserve the icon's space without displaying an icon,
+   * use `'empty'`.
    */
   type: '' | IconType | 'empty';
   /**
-   * The semantic meaning of the icon, which affects its color.
+   * The semantic meaning and color treatment of the component.
+   *
+   * - `info`: Informational content or helpful tips.
+   * - `success`: Positive outcomes or successful states.
+   * - `warning`: Important warnings about potential issues.
+   * - `critical`: Urgent problems or destructive actions.
+   * - `auto`: Automatically determined based on context.
+   * - `neutral`: General information without specific intent.
+   * - `caution`: Advisory notices that need attention.
+   *
+   * @default 'auto'
    */
   tone: Extract<
     IconProps$1['tone'],
     'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
   >;
   /**
-   * The visual prominence of the icon.
+   * The color emphasis level that controls visual intensity.
+   *
+   * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+   * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+   *
+   * @default 'base'
    */
   color: Extract<IconProps$1['color'], 'base' | 'subdued'>;
   /**
    * The size of the icon.
+   *
+   * - `small`: Smaller icon suitable for inline use within text or compact UI elements.
+   * - `base`: Default size that works well for standalone icons and standard use cases.
    */
   size: Extract<IconProps$1['size'], 'small' | 'base'>;
 }
 
 /**
- * Properties for rendering a select dropdown that lets users choose one option from a list with optional icon and label customization.
- * @publicDocs
+ * Configure the following properties on the select component.
  */
 export interface SelectProps
   extends Omit<PreactInputProps, 'value'>,
@@ -249,59 +230,39 @@ export interface SelectProps
         | 'labelAccessibilityVisibility'
       >
     > {
-  /**
-   * The value of the currently selected option, matching one of the `value` properties from the available options.
-   */
   value: Required<SelectProps$1>['value'];
-  /**
-   * An icon that's displayed at the start of the select field to provide visual context for the selection.
-   */
   icon: IconProps['type'];
 }
 
 declare const usedFirstOptionSymbol: unique symbol;
 declare const hasInitialValueSymbol: unique symbol;
 
-/**
- * A select dropdown that lets users choose one option from a list.
- */
-declare class Select extends PreactInputElement implements SelectProps {
-  /**
-   * An icon that's displayed at the start of the select field.
-   */
+declare abstract class SelectBase
+  extends PreactInputElement
+  implements
+    Pick<
+      SelectProps,
+      | 'icon'
+      | 'details'
+      | 'error'
+      | 'label'
+      | 'placeholder'
+      | 'required'
+      | 'labelAccessibilityVisibility'
+    >
+{
   accessor icon: SelectProps['icon'];
-  /**
-   * Additional text to provide context or guidance for the select.
-   */
   accessor details: SelectProps['details'];
-  /**
-   * An error message that's displayed below the select when validation fails.
-   */
   accessor error: SelectProps['error'];
-  /**
-   * The text that describes what the select is for.
-   */
   accessor label: SelectProps['label'];
-  /**
-   * Text that appears in the select when no option is selected to provide a hint about what to choose.
-   */
   accessor placeholder: SelectProps['placeholder'];
-  /**
-   * Whether an option must be selected before the form can be submitted.
-   */
   accessor required: SelectProps['required'];
-  /**
-   * Controls whether the label is visible to all users or only to screen readers.
-   */
   accessor labelAccessibilityVisibility: SelectProps['labelAccessibilityVisibility'];
   /** @private */
   connectedCallback(): void;
-  /**
-   * A lifecycle callback that fires when the component is removed from the DOM. Performs cleanup operations.
-   * @private
-   */
+  /** @private */
   disconnectedCallback(): void;
-  constructor();
+  constructor(renderImpl: RenderImpl);
   /**
    * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
    *
@@ -313,13 +274,18 @@ declare class Select extends PreactInputElement implements SelectProps {
    * @private
    */
   [hasInitialValueSymbol]: boolean;
-  /**
-   * The value of the currently selected option. When setting this property programmatically, it updates which option appears selected in the dropdown. When reading it, you get the `value` attribute of the currently selected Option component.
-   */
   get value(): string;
   set value(value: string);
   /** @private */
   formResetCallback(): void;
+}
+
+/**
+ * Configure the following properties on the select component.
+ * @publicDocs
+ */
+declare class Select extends SelectBase implements SelectProps {
+  constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -329,40 +295,25 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: SelectJSXProps & PreactBaseElementPropsWithChildren<Select>;
+      [tagName]: Omit<SelectJSXProps, 'error' | 'details'> &
+        FieldSlotPreactProps &
+        PreactBaseElementPropsWithChildren<Select>;
     }
   }
 }
 
 declare const tagName = 's-select';
-/**
- * Properties for using the select component in JSX with React-style event handlers.
- * @publicDocs
- */
 export interface SelectJSXProps
-  extends Partial<SelectProps>,
-    Pick<SelectProps$1, 'id' | 'children'> {
+  extends Partial<Omit<SelectProps, 'error' | 'details'>>,
+    Pick<SelectProps$1, 'id' | 'children'>,
+    FieldSlotInternalReactProps {
   /**
-   * The selectable options displayed in the dropdown list.
-   *
-   * Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
+   * The selectable options displayed in the dropdown list. Accepts option components for individual selectable items, and option group components to organize related options into logical groups with labels.
    */
   children?: ComponentChildren;
-  /**
-   * A callback that's triggered when the selected option changes and the select loses focus.
-   */
   onChange?: (event: CallbackEvent<typeof tagName>) => void;
-  /**
-   * A callback that's triggered when the selected option changes as the user interacts with the dropdown.
-   */
   onInput?: (event: CallbackEvent<typeof tagName>) => void;
-  /**
-   * A callback that's triggered when the select loses focus after the user interacts with it.
-   */
   onBlur?: (event: CallbackEvent<typeof tagName>) => void;
-  /**
-   * A callback that's triggered when the select receives focus from the user.
-   */
   onFocus?: (event: CallbackEvent<typeof tagName>) => void;
 }
 

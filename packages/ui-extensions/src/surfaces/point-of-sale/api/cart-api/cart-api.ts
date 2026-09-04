@@ -139,6 +139,20 @@ export interface MutableCartApiContent {
   ): Promise<string>;
 
   /**
+   * Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.
+   *
+   * If POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.
+   *
+   * Only available on API version `2026-10` and later.
+   *
+   * @param uuid the UUID of the line item to update
+   * @param quantity the new absolute quantity; must be an integer of 1 or greater. To remove a line item, use `removeLineItem` instead.
+   * @returns A promise that resolves after the cart state reflects the change.
+   * @throws {Error} if the line item is not found, the `UUID` matches multiple split-line allocations, the quantity is invalid, the cart is not editable because it is a return or exchange, or the POS app version does not support this method.
+   */
+  updateLineItemQuantity(uuid: string, quantity: number): Promise<void>;
+
+  /**
    * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.
    *
    * @param uuid the uuid of the line item that should be removed

@@ -1,151 +1,129 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, TableRowProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  TableRowProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
 
 /**
- * The properties you can set on a table row component.
- * @publicDocs
+ * The table row component represents a single row of data within a table body. Use table row as a child of table body to structure individual records or entries in the table.
+ *
+ * Table row must contain table cell components, with each cell representing a data value for the corresponding column. The number of cells should match the number of headers in the table.
  */
 export interface TableRowProps
-  extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {}
-
-/**
- * A string that contains CSS styles to apply to the component.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The implementation details for rendering a Preact custom element with a shadow root.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
+  extends Pick<TableRowProps$1, 'children' | 'clickDelegate'> {
   /**
-   * The function that renders the component's shadow root content.
+   * The data cells displayed within this table row, with each cell containing content for its corresponding column.
+   * Only accepts table cell components as children.
    */
-  ShadowRoot: (element: any) => ComponentChildren;
+  children?: TableRowProps$1['children'];
   /**
-   * The CSS styles to apply to the component.
+   * The ID of an interactive element, such as `s-link`, in the row that will be the target of the click when the row is clicked.
+   * This is the primary action for the row; it should not be used for secondary actions.
+   *
+   * This is a click-only affordance, and does not introduce any keyboard or screen reader affordances.
+   * Which is why the target element must be in the table; so that keyboard and screen reader users can interact with it normally.
+   *
+   * @implementation no focus or keyboard affordances are introduced by this property. No aria attributes need to be added to the table row.
+   * @implementation the row and/or delegate should have some affordance that indicates it is clickable. This may be a background color, a border, or a hover effect
    */
-  styles?: Styles;
-};
-/**
- * An object that resembles an activation event, containing information about which modifier keys were pressed and which mouse button was used.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on Windows) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed. A value of `0` means the primary button (usually left), `1` means the middle button, and `2` means the secondary button (usually right).
-   */
-  button: number;
+  clickDelegate?: TableRowProps$1['clickDelegate'];
 }
-/**
- * The options for customizing how a synthetic click is performed.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 /**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
+declare const elementInternals: unique symbol;
+
 /**
- * A component that represents a single row in a table, which contains the data cells.
+ * The table row component represents a single row of data within a table body. Use table row as a child of table body to structure individual records or entries in the table.
+ *
+ * Table row must contain table cell components, with each cell representing a data value for the corresponding column. The number of cells should match the number of headers in the table.
+ * @publicDocs
  */
-declare class TableRow extends PreactCustomElement implements TableRowProps {
-  /**
-   * Creates a new TableRow instance.
-   */
+declare class TableRow extends PolarisCustomElement implements TableRowProps {
+  /** @private */
+  [elementInternals]: ElementInternals;
   constructor();
-  /**
-   * A CSS selector for a child element that should handle clicks on the entire row. When you set this property, clicking anywhere on the row will trigger a click on the element that matches the selector.
-   */
   accessor clickDelegate: string;
 }
 declare global {
@@ -162,19 +140,13 @@ declare module 'preact' {
   }
 }
 
-/**
- * The custom element tag name for the table row component.
- */
 declare const tagName = 's-table-row';
-/**
- * The JSX properties you can set on a table row component.
- * @publicDocs
- */
 export interface TableRowJSXProps
   extends Partial<TableRowProps>,
     Pick<TableRowProps$1, 'id' | 'children'> {
   /**
-   * The content to display inside the row, which should include table cell components.
+   * The data cells displayed within this table row, with each cell containing content for its corresponding column.
+   * Only accepts table cell components as children.
    */
   children?: ComponentChildren;
 }

@@ -1,13 +1,14 @@
 /** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
-
+/* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
+/* eslint-disable @typescript-eslint/member-ordering */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
   ComponentChildren,
-  UnorderedListProps$1,
+  TextProps,
   PreactCustomElement,
   RenderImpl,
 } from './shared.d.ts';
@@ -45,10 +46,69 @@ declare module 'react' {
   }
 }
 
-/**
- * Configure the following properties on the unordered list component.
- */
-export interface UnorderedListProps extends UnorderedListProps$1 {}
+declare const typographyFontWeights: readonly [
+  'auto',
+  'base',
+  'medium',
+  'semibold',
+  'bold',
+];
+export type TypographyFontWeight = (typeof typographyFontWeights)[number];
+declare const bodyFontSizes: readonly [
+  'auto',
+  'small-200',
+  'small-100',
+  'small',
+  'base',
+  'large',
+  'large-100',
+];
+export type BodyFontSize = (typeof bodyFontSizes)[number];
+
+export type NumberFontSize = BodyFontSize;
+export type NumberFontWeight = TypographyFontWeight;
+export interface NumberProps
+  extends Required<Pick<TextProps, 'accessibilityVisibility' | 'dir'>> {
+  /**
+   * The semantic tone that's applied to the number, which changes its color to convey meaning.
+   *
+   * - `info`: Informational content or helpful tips (blue).
+   * - `success`: Positive outcomes or successful states (green).
+   * - `warning`: Important warnings about potential issues (orange).
+   * - `critical`: Urgent problems or destructive actions (red).
+   * - `auto`: Automatically determined based on context.
+   * - `neutral`: General information without specific intent (gray).
+   * - `caution`: Advisory notices that need attention (yellow).
+   *
+   * @default 'auto'
+   */
+  tone: Extract<
+    TextProps['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'caution' | 'critical'
+  >;
+  /**
+   * The color emphasis applied to the number.
+   *
+   * - `base`: Standard emphasis for numeric content.
+   * - `subdued`: Deemphasized color for secondary or supporting numeric content.
+   *
+   * @default 'base'
+   */
+  color: Extract<TextProps['color'], 'base' | 'subdued'>;
+  /**
+   * Font size of the number. The named values also apply their matching
+   * line-height and letter-spacing.
+   *
+   * @default 'auto'
+   */
+  fontSize: NumberFontSize;
+  /**
+   * Font weight of the number.
+   *
+   * @default 'auto'
+   */
+  fontWeight: NumberFontWeight;
+}
 
 declare class PolarisCustomElement extends PreactCustomElement {
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
@@ -93,38 +153,41 @@ export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
 }
 
 /**
- * Configure the following properties on the unordered list component.
+ * Configure the following properties on the number component.
  * @publicDocs
  */
-declare class UnorderedList
-  extends PolarisCustomElement
-  implements UnorderedListProps
-{
+declare class Number extends PolarisCustomElement implements NumberProps {
+  accessor tone: NumberProps['tone'];
+  accessor color: NumberProps['color'];
+  accessor fontSize: NumberProps['fontSize'];
+  accessor fontWeight: NumberProps['fontWeight'];
+  accessor dir: NumberProps['dir'];
+  accessor accessibilityVisibility: NumberProps['accessibilityVisibility'];
   constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: UnorderedList;
+    [tagName]: Number;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: UnorderedListJSXProps &
-        PreactBaseElementPropsWithChildren<UnorderedList>;
+      [tagName]: NumberJSXProps & PreactBaseElementPropsWithChildren<Number>;
     }
   }
 }
 
-declare const tagName = 's-unordered-list';
-export interface UnorderedListJSXProps
-  extends Partial<UnorderedListProps>,
-    Pick<UnorderedListProps$1, 'id'> {
+declare const tagName = 's-number';
+
+export interface NumberJSXProps
+  extends Partial<NumberProps>,
+    Pick<TextProps, 'id' | 'lang' | 'children'> {
   /**
-   * The list entries displayed within the unordered list, where each item is marked with a bullet point. Only accepts list item components as children. Each list item represents a single bulleted entry in the list.
+   * The number to display. The component styles the value you pass in — typography, tone, and color — and renders it as given, so format and localize it yourself.
    */
   children?: ComponentChildren;
 }
 
-export {UnorderedList};
-export type {UnorderedListJSXProps};
+export {Number};
+export type {NumberJSXProps};

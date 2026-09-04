@@ -1,20 +1,57 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
 
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {ComponentChildren, SectionProps$1} from './shared.d.ts';
+import type {
+  ComponentChildren,
+  SectionProps$1,
+  PreactCustomElement,
+  RenderImpl,
+} from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
+
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
+};
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
+}
 
 /**
- * A version of the section properties with all fields required.
+ * Represents the section component props with all properties marked as required.
  * @publicDocs
  */
 export type RequiredSectionProps = Required<SectionProps$1>;
 /**
- * The properties for the section component. A section groups related content together with an optional heading, providing semantic structure and visual separation.
- * @publicDocs
+ * Configure the following properties on the section component.
  */
 export interface SectionProps
   extends Pick<
@@ -22,162 +59,97 @@ export interface SectionProps
     'accessibilityLabel' | 'heading' | 'padding'
   > {
   /**
-   * An accessibility label for screen readers that provides additional context when the heading isn't descriptive enough on its own.
+   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey the component's purpose.
    */
   accessibilityLabel: RequiredSectionProps['accessibilityLabel'];
   /**
-   * The heading text that appears at the top of the section, helping users understand what content the section contains.
+   * The heading text displayed at the top of the section. This heading provides a title for the section's content and automatically uses the appropriate semantic heading level (h2, h3, h4) based on nesting depth to maintain proper document structure.
    */
   heading: RequiredSectionProps['heading'];
   /**
-   * Whether the section has padding around its content. Set to `true` to add padding, or `false` to remove it.
+   * Supporting text that expands on the heading, rendered beneath it in a subdued treatment.
+   *
+   * This is not a heading: it adds no entry to the document outline, doesn't change the heading level of the section's children, and isn't announced as part of the heading. Keep whatever distinguishes this section from another in `heading`, since that is what someone navigating by heading hears.
+   */
+  subheading: string;
+  /**
+   * The padding applied to all edges of the element's content.
+   *
+   * - `base`: applies padding that is appropriate for the element. Note that it might result in no padding if
+   * this is the right design decision in a particular context.
+   * - `none`: removes all padding from the element's content. This can be useful when elements inside the section
+   * need to span to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a
+   * padding of 'base' to bring back the desired padding for the rest of the content. The `heading` and header
+   * actions keep their padding, so they can be combined with `none`.
+   *
+   * @default 'base'
    */
   padding: RequiredSectionProps['padding'];
 }
 
 /**
- * A string containing CSS styles for a custom element.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * The configuration for rendering a custom element with Preact.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * The function that renders the shadow root content.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * The optional CSS styles to apply to the shadow root.
-   */
-  styles?: Styles;
-};
-/**
- * An interface representing the properties of an activation event, such as a click or keypress.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the shift key was pressed during the event.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the meta key (Command on Mac, Windows key on PC) was pressed during the event.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the control key was pressed during the event.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed (0 for left, 1 for middle, 2 for right).
-   */
-  button: number;
-}
-/**
- * The options for triggering a synthetic click event.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * The base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-/**
- * An abstract base class for creating custom elements that render with Preact.
- */
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
-
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
-  /** @private */
-  adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
-}
-
-/**
- * The base properties for Preact elements that don't have children, providing essential attributes like keys and refs for component management.
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
  * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 /**
- * The base properties for Preact elements that have children, extending the base element properties to include child content.
+ * Base props for Preact custom elements with children support. Extends PreactBaseElementProps with the ability to render child elements.
  * @publicDocs
  */
 export interface PreactBaseElementPropsWithChildren<TClass extends HTMLElement>
   extends PreactBaseElementProps<TClass> {
+  /**
+   * The child elements to be rendered within this component.
+   */
   children?: preact.ComponentChildren;
 }
 
-/**
- * A section is a container that groups related content together with an optional heading.
- */
-declare class Section extends PreactCustomElement implements SectionProps {
-  constructor();
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
-  /**
-   * The accessibility label for screen readers.
-   */
+  /** @private */
+  adoptedCallback(): void;
+}
+
+declare abstract class SectionBase
+  extends PolarisCustomElement
+  implements SectionProps
+{
+  constructor(renderImpl: RenderImpl);
+  /** @private */
+  connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
   accessor accessibilityLabel: SectionProps['accessibilityLabel'];
-  /**
-   * The heading text for the section.
-   */
   accessor heading: SectionProps['heading'];
-  /**
-   * Whether the section has padding.
-   */
+  accessor subheading: SectionProps['subheading'];
   accessor padding: SectionProps['padding'];
+}
+
+/**
+ * Configure the following properties on the section component.
+ * @publicDocs
+ */
+declare class Section extends SectionBase implements SectionProps {
+  constructor();
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -187,23 +159,55 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: SectionJSXProps & PreactBaseElementPropsWithChildren<Section>;
+      [tagName]: Omit<
+        SectionJSXProps,
+        | 'primaryAction'
+        | 'secondaryActions'
+        | 'graphic'
+        | 'accessory'
+        | 'supplemental'
+      > &
+        PreactBaseElementPropsWithChildren<Section>;
     }
   }
 }
 
 declare const tagName = 's-section';
-/**
- * The properties for the section component when it's used in JSX.
- * @publicDocs
- */
 export interface SectionJSXProps
   extends Partial<SectionProps>,
     Pick<SectionProps$1, 'id' | 'children'> {
   /**
-   * The child elements to render inside the section.
+   * The content displayed within the section component, which groups related elements together in a logical unit with an optional heading.
    */
   children?: ComponentChildren;
+  /**
+   * The primary action button or link, representing the main or most important action available in this context. Typically displayed with higher visual prominence than secondary actions to establish clear hierarchy.
+   */
+  primaryAction?: ComponentChildren;
+  /**
+   * Additional action buttons or links that provide alternative or supporting actions. Visually de-emphasized compared to the primary action.
+   *
+   * A ButtonGroup holding an action and the icon-only activator for its Menu renders as one segmented group with a chevron activator. The group needs an `accessibilityLabel`, and must hold exactly one Button with text followed by one Button with no text that has an `accessibilityLabel` and a `commandFor` opening a Menu, both with a `variant` of `secondary` or `auto`.
+   */
+  secondaryActions?: ComponentChildren;
+  /**
+   * A decorative visual that reinforces the heading, rendered before it.
+   *
+   * Accepts a single icon-only Badge (`icon` set, no text content) with a `size` of `large`. The heading identifies the section, so this content is not announced by assistive technologies, and it is not rendered at all when the section has no `heading`.
+   */
+  graphic?: ComponentChildren;
+  /**
+   * Additional contextual information that qualifies the heading, rendered inline beside the heading text.
+   *
+   * Only accepts Badge, Icon, Button, Menu, Text, Avatar, and Thumbnail elements. Text must use `tone`, `fontSize`, and `fontWeight` of `auto`; Icon, Avatar, and Thumbnail must use `size="base"`; Badge must use `size="base"` and `color="base"`; Button must use `inlineSize="auto"`.
+   */
+  accessory?: ComponentChildren;
+  /**
+   * Status or metadata that describes the section as a whole rather than qualifying its heading, rendered at the inline-end of the header before any actions.
+   *
+   * This is not an action. Only accepts Badge, Avatar, Text, Icon, and Thumbnail elements, under the same prop constraints as `accessory`.
+   */
+  supplemental?: ComponentChildren;
 }
 
 export {Section};

@@ -17,6 +17,7 @@ describe('pos.cart.validations.resolution.render', () => {
 
     expect(api.cart.current).toBeDefined();
     expect(typeof api.cart.addLineItem).toBe('function');
+    expect(typeof api.cart.updateLineItemQuantity).toBe('function');
     expect(api.scanner).toBeDefined();
   });
 

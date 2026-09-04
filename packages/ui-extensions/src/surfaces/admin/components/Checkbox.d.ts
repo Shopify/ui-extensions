@@ -1,4 +1,4 @@
-/** VERSION: 1.25.0 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,21 +9,30 @@
 import type {
   TextFieldProps,
   CheckboxProps$1,
-  ComponentChildren,
+  PreactCustomElement,
+  RenderImpl,
 } from './shared.d.ts';
+import * as preact$1 from 'preact';
+import {ReactNode, RefAttributes} from 'react';
 
 /**
- * An event that includes a strongly-typed reference to the element that triggered it.
+ * An event object with a strongly-typed `currentTarget` property that references the specific HTML element that triggered the event.
+ *
+ * This type extends the standard DOM `Event` interface and ensures type safety when accessing the element that fired the event.
  * @publicDocs
  */
 export type CallbackEvent<T extends keyof HTMLElementTagNameMap> = Event & {
-  /**
-   * The element that the event handler was attached to.
-   */
   currentTarget: HTMLElementTagNameMap[T];
 };
 /**
- * A function that handles events for a specific element type, or null if no handler is set.
+ * A function that handles events from UI components.
+ *
+ * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -31,170 +40,113 @@ export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
       (event: CallbackEvent<T>): void;
     })
   | null;
-/** Used when an element does not have children. * @publicDocs
+/**
+ * Props for field slot content (label, error, details) that accept
+ * either a string or JSX content in the React wrapper.
+ *
+ * Internal use only — not exported publicly. External consumers receive
+ * string-only types via FieldSlotPreactProps.
+ */
+export interface FieldSlotInternalReactProps {
+  error?: preact.ComponentChildren;
+  details?: preact.ComponentChildren;
+}
+/**
+ * Preact JSX string-only versions of field slot props.
+ * Used in Preact module declarations after Omit-ing the ComponentChildren
+ * versions (required by force-omit-react-slots lint rule).
+ */
+export interface FieldSlotPreactProps {
+  error?: string;
+  details?: string;
+}
+/**
+ * Base props for Preact custom elements without children support. Includes common properties like key, ref, and slot for elements that don't accept child content.
+ * @publicDocs
  */
 export interface PreactBaseElementProps<TClass extends HTMLElement> {
   /**
-   * A unique identifier for this element within its parent. Preact uses keys to optimize rendering performance when lists change by tracking which items have been added, removed, or reordered.
+   * A unique identifier for this element, used by the virtual DOM to efficiently track and update elements in lists.
+   * Essential for maintaining component state and optimizing re-renders when lists change.
    */
   key?: preact.Key;
   /**
-   * A reference to the underlying DOM element, typically created using `useRef()`. This allows you to access and manipulate the DOM element directly in your component logic.
+   * A reference to access the underlying DOM element directly.
+   * Typically created using `useRef()` to interact with the element imperatively or measure its properties.
    */
   ref?: preact.Ref<TClass>;
   /**
-   * Assigns this element to a named slot in a parent component that uses shadow DOM or slot-based composition patterns.
+   * The named slot to which this element is assigned in the parent component's shadow DOM.
+   *
+   * Used for advanced component composition with web components.
    */
   slot?: Lowercase<string>;
 }
 
-/**
- * CSS styles that will be applied to the component's shadow DOM.
- * @publicDocs
- */
-export type Styles = string;
-/**
- * Configuration for rendering a custom element with Preact and shadow DOM.
- * @publicDocs
- */
-export type RenderImpl = Omit<ShadowRootInit, 'mode'> & {
-  /**
-   * A function that renders the component's content inside the shadow root.
-   */
-  ShadowRoot: (element: any) => ComponentChildren;
-  /**
-   * CSS styles that will be applied to the shadow DOM.
-   */
-  styles?: Styles;
+export type ReactIntrinsicElementChildren<PreactProps extends object> =
+  'children' extends keyof PreactProps
+    ? {
+        children?: ReactNode;
+      }
+    : Record<never, never>;
+export type ReactIntrinsicElementProps<
+  PreactProps extends object,
+  ElementType,
+> = Omit<PreactProps, 'children' | 'key' | 'ref' | 'slot'> &
+  ReactIntrinsicElementChildren<PreactProps> &
+  RefAttributes<ElementType> & {
+    slot?: Lowercase<string>;
+  };
+export type ReactIntrinsicElements = {
+  [Tag in Exclude<
+    Extract<keyof preact$1.createElement.JSX.IntrinsicElements, `s-${string}`>,
+    `s-test-${string}`
+  >]: ReactIntrinsicElementProps<
+    preact$1.createElement.JSX.IntrinsicElements[Tag],
+    Tag extends keyof HTMLElementTagNameMap
+      ? HTMLElementTagNameMap[Tag]
+      : HTMLElement
+  >;
 };
-/**
- * Information about modifier keys and mouse buttons that were active during an interaction.
- * @publicDocs
- */
-export interface ActivationEventEsque {
-  /**
-   * Whether the Shift key was held down during the interaction.
-   */
-  shiftKey: boolean;
-  /**
-   * Whether the Meta key (Command on Mac, Windows key on PC) was held down during the interaction.
-   */
-  metaKey: boolean;
-  /**
-   * Whether the Control key was held down during the interaction.
-   */
-  ctrlKey: boolean;
-  /**
-   * The mouse button that was pressed during the interaction.
-   */
-  button: number;
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements extends ReactIntrinsicElements {}
+  }
 }
-/**
- * Options for influencing how a programmatic click behaves.
- * @publicDocs
- */
-export interface ClickOptions {
-  /**
-   * The original user event (such as a click or keyboard event) that triggered this programmatic click. When provided, the component preserves important event properties like modifier keys (Ctrl, Shift, Alt, Meta) and mouse button states, enabling behaviors such as opening links in a new tab when middle-clicked or Ctrl+clicked.
-   */
-  sourceEvent?: ActivationEventEsque;
-}
-/**
- * Base class for creating custom elements with Preact.
- * While this class could be used in both Node and the browser, the constructor will only be used in the browser.
- * So we give it a type of HTMLElement to avoid typing issues later where it's used, which will only happen in the browser.
- */
-declare const BaseClass: typeof globalThis.HTMLElement;
-declare abstract class PreactCustomElement extends BaseClass {
-  /** @private */
-  static get observedAttributes(): string[];
-  constructor({
-    styles,
-    ShadowRoot: renderFunction,
-    delegatesFocus,
-    ...options
-  }: RenderImpl);
 
-  /** @private */
-  setAttribute(name: string, value: string): void;
-  /** @private */
-  attributeChangedCallback(name: string): void;
+declare class PolarisCustomElement extends PreactCustomElement {
+  constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
   /** @private */
   connectedCallback(): void;
   /** @private */
-  disconnectedCallback(): void;
-  /** @private */
   adoptedCallback(): void;
-  /**
-   * Queue a run of the render function.
-   * You shouldn't need to call this manually - it should be handled by changes to @property values.
-   * @private
-   */
-  queueRender(): void;
-  /**
-   * Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.
-   *
-   * For example, if the `sourceEvent` was a middle click, or has particular keys held down,
-   * components will attempt to produce the desired behavior on links, such as opening the page in the background tab.
-   * @private
-   * @param options
-   */
-  click({sourceEvent}?: ClickOptions): void;
 }
 
 declare const internals: unique symbol;
 /**
- * The core properties that all input elements need to function within forms.
+ * Represents the essential input props required for Preact-based input elements. Includes properties like `disabled`, `id`, `name`, and `value`.
  * @publicDocs
  */
 export type PreactInputProps = Required<
   Pick<TextFieldProps, 'disabled' | 'id' | 'name' | 'value'>
 >;
-/**
- * Base class for input elements that participate in form submission.
- */
 declare class PreactInputElement
-  extends PreactCustomElement
+  extends PolarisCustomElement
   implements PreactInputProps
 {
-  /**
-   * Indicates that this element can participate in form submission.
-   */
   static formAssociated: boolean;
   /** @private */
   [internals]: ElementInternals;
-  /**
-   * A callback that's triggered when the input's value changes and the field loses focus.
-   */
   accessor onchange: CallbackEventListener<'input'>;
-  /**
-   * A callback that's triggered when the input's value changes as the user types.
-   */
   accessor oninput: CallbackEventListener<'input'>;
-  /**
-   * Whether the input is disabled and can't be interacted with.
-   */
   accessor disabled: PreactInputProps['disabled'];
-  /**
-   * A unique identifier for the input element.
-   */
   accessor id: PreactInputProps['id'];
-  /**
-   * The name that identifies this input when the form is submitted.
-   */
   accessor name: PreactInputProps['name'];
-  /**
-   * The current value of the input.
-   */
   get value(): PreactInputProps['value'];
   set value(value: PreactInputProps['value']);
   constructor(renderImpl: RenderImpl);
 }
 
-/**
- * Properties that are common to checkbox-style components.
- * @publicDocs
- */
 export interface PreactCheckboxProps
   extends Required<
     Pick<
@@ -211,20 +163,15 @@ export interface PreactCheckboxProps
     >
   > {
   /**
-   * The value that's submitted with the form when the checkbox is checked.
+   * The value used in form data when the checkbox is checked.
    */
   value: Required<CheckboxProps$1>['value'];
 }
-/**
- * Base class for checkbox-style elements that can be toggled on and off.
- */
 declare class PreactCheckboxElement
   extends PreactInputElement
   implements PreactCheckboxProps
 {
-  /**
-   * Whether the checkbox is currently checked.
-   */
+  accessor onblur: CallbackEventListener<'input'>;
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
   /**
@@ -232,29 +179,11 @@ declare class PreactCheckboxElement
    */
   get value(): string;
   set value(value: string);
-  /**
-   * Whether the checkbox should be checked when it's first rendered.
-   */
   accessor defaultChecked: PreactCheckboxProps['defaultChecked'];
-  /**
-   * A label that's only visible to screen readers, used when the visual label isn't descriptive enough.
-   */
   accessor accessibilityLabel: PreactCheckboxProps['accessibilityLabel'];
-  /**
-   * Additional text to provide context or guidance for the checkbox.
-   */
   accessor details: PreactCheckboxProps['details'];
-  /**
-   * An error message that's displayed below the checkbox when validation fails.
-   */
   accessor error: PreactCheckboxProps['error'];
-  /**
-   * The text that describes what the checkbox is for.
-   */
   accessor label: PreactCheckboxProps['label'];
-  /**
-   * Whether the checkbox must be checked before the form can be submitted.
-   */
   accessor required: PreactCheckboxProps['required'];
   /** @private */
   formResetCallback(): void;
@@ -263,33 +192,69 @@ declare class PreactCheckboxElement
 }
 
 /**
- * Properties for rendering a checkbox that supports checked, unchecked, and indeterminate states for complex selection scenarios.
- * @publicDocs
+ * Configure the following properties on the checkbox component.
  */
 export interface CheckboxProps extends PreactCheckboxProps {
   /**
-   * Whether the checkbox is in an indeterminate state, showing a dash instead of a checkmark to represent a partial selection.
+   * Whether the checkbox displays in an indeterminate state (neither checked nor unchecked),
+   * typically used to indicate partial selection in hierarchical lists.
+   *
+   * This visual state takes priority over the `checked` prop in appearance only.
+   * The form submission value is still determined by the `checked` prop.
+   *
+   * If `indeterminate` has not been explicitly set and hasn't been modified by user interaction,
+   * it returns the value of `defaultIndeterminate`.
    */
   indeterminate: Required<CheckboxProps$1>['indeterminate'];
   /**
-   * Whether the checkbox should be in an indeterminate state when it's first rendered, useful for partial selection scenarios.
+   * The initial indeterminate state for uncontrolled components. Use this when you want the checkbox to start
+   * in an indeterminate state but don't need to control it afterward.
+   *
+   * This value applies until `indeterminate` is explicitly set or the user changes the checkbox state by clicking.
+   *
+   * @default false
    */
   defaultIndeterminate: Required<CheckboxProps$1>['defaultIndeterminate'];
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   *
+   * @default false
+   */
+  required: Required<CheckboxProps$1>['required'];
+  /**
+   * Changes the visibility of the component's label.
+   *
+   * - `visible`: the label is visible to all users.
+   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+   *
+   * @default 'visible'
+   */
+  labelAccessibilityVisibility: Required<CheckboxProps$1>['labelAccessibilityVisibility'];
+}
+
+declare abstract class CheckboxBase
+  extends PreactCheckboxElement
+  implements
+    Pick<
+      CheckboxProps,
+      'defaultIndeterminate' | 'indeterminate' | 'labelAccessibilityVisibility'
+    >
+{
+  get indeterminate(): CheckboxProps['indeterminate'];
+  set indeterminate(indeterminate: CheckboxProps['indeterminate']);
+  accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
+  accessor labelAccessibilityVisibility: CheckboxProps['labelAccessibilityVisibility'];
+  constructor(renderImpl: RenderImpl);
 }
 
 /**
- * A checkbox that lets users select or deselect an option, with support for an indeterminate state.
+ * Configure the following properties on the checkbox component.
+ * @publicDocs
  */
-declare class Checkbox extends PreactCheckboxElement implements CheckboxProps {
-  /**
-   * Whether the checkbox is in an indeterminate state, showing a dash instead of a checkmark.
-   */
-  get indeterminate(): CheckboxProps['indeterminate'];
-  set indeterminate(indeterminate: CheckboxProps['indeterminate']);
-  /**
-   * Whether the checkbox should be in an indeterminate state when it's first rendered.
-   */
-  accessor defaultIndeterminate: CheckboxProps['defaultIndeterminate'];
+declare class Checkbox extends CheckboxBase implements CheckboxProps {
   constructor();
 }
 declare global {
@@ -300,27 +265,27 @@ declare global {
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: CheckboxJSXProps & PreactBaseElementProps<Checkbox>;
+      [tagName]: Omit<CheckboxJSXProps, 'error' | 'details'> &
+        FieldSlotPreactProps &
+        PreactBaseElementProps<Checkbox>;
     }
   }
 }
 
 declare const tagName = 's-checkbox';
-/**
- * Props for using the checkbox component in JSX with React-style event handlers.
- * @publicDocs
- */
 export interface CheckboxJSXProps
-  extends Partial<CheckboxProps>,
-    Pick<CheckboxProps$1, 'id'> {
+  extends Partial<Omit<CheckboxProps, 'error' | 'details'>>,
+    Pick<CheckboxProps$1, 'id'>,
+    FieldSlotInternalReactProps {
   /**
-   * A callback that's triggered when the checkbox's checked state changes and it loses focus.
+   * A callback fired when the checkbox state changes and the user has finished interacting with it.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * A callback that's triggered when the checkbox's checked state changes.
+   * A callback fired when the checkbox state changes, including intermediate states during user interaction.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 
 export {Checkbox};

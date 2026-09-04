@@ -1,4 +1,4 @@
-/** VERSION: 2.19.1 **/
+/** VERSION: 2.23.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -44,6 +44,11 @@ export type CallbackToggleEvent<
  * A function that handles events from UI components.
  *
  * This type represents an event listener callback that receives a `CallbackEvent` with a strongly-typed `currentTarget`. Use this for component event handlers like `click`, `focus`, `blur`, and other DOM events.
+ *
+ * @example
+ * const handleClick: CallbackEventListener<'button'> = (event) => {
+ *   console.log('Button clicked:', event.currentTarget);
+ * };
  * @publicDocs
  */
 export type CallbackEventListener<T extends keyof HTMLElementTagNameMap> =
@@ -223,6 +228,19 @@ declare class PreactOverlayElement extends PolarisCustomElement {
 export type MakeResponsive<T> = T | `@container${string}`;
 /**
  * Makes a property's value potentially responsive.
+ *
+ * @example
+ * type Example = {
+ *   color: boolean;
+ *   margin: string;
+ *   padding: number;
+ * }
+ * type Result = MakeResponsivePick<Example, 'color' | 'margin' | 'padding'>;
+ * // Result = {
+ *   color: boolean | `@container${string}`;
+ *   margin: string | `@container${string}`;
+ *   padding: number | `@container${string}`;
+ * }
  * @publicDocs
  */
 export type MakeResponsivePick<TType, TProperty extends keyof TType> = {
@@ -370,7 +388,7 @@ export interface BoxProps
    *
    * **Examples:** `base`, `large none`, `base large-100 base small`
    *
-   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Use `auto` to inherit padding from the nearest container with removed padding. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default 'none'
    */
@@ -382,7 +400,7 @@ export interface BoxProps
    *
    * **Example:** `large none` applies `large` to the top and `none` to the bottom.
    *
-   * Overrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -390,7 +408,7 @@ export interface BoxProps
   /**
    * The block-start padding (top in horizontal writing modes).
    *
-   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-start value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -398,7 +416,7 @@ export interface BoxProps
   /**
    * The block-end padding (bottom in horizontal writing modes).
    *
-   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the block-end value from `paddingBlock`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -410,7 +428,7 @@ export interface BoxProps
    *
    * **Example:** `large none` applies `large` to the left and `none` to the right.
    *
-   * Overrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline value from `padding`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -418,7 +436,7 @@ export interface BoxProps
   /**
    * The inline-start padding (left in LTR writing modes, right in RTL).
    *
-   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-start value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
@@ -426,7 +444,7 @@ export interface BoxProps
   /**
    * The inline-end padding (right in LTR writing modes, left in RTL).
    *
-   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
+   * Overrides the inline-end value from `paddingInline`. Also accepts a [responsive value](/docs/api/polaris/using-polaris-web-components#responsive-values) string with the supported `PaddingKeyword` as a query value.
    *
    * @default '' - meaning no override
    */
