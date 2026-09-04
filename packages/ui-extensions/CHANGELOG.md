@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.10
+
+### Minor Changes
+
+- [#4672](https://github.com/Shopify/ui-extensions/pull/4672) [`432d2c9`](https://github.com/Shopify/ui-extensions/commit/432d2c963eb1d9d35bcdd1f660ceb757c764bcc6) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `cart.updateLineItemQuantity` to the POS Cart API for API version 2026-10. The method updates one line item's quantity while preserving its properties, discounts, and selling plans.
+
 ## 2026.10.0-rc.9
 
 ### Minor Changes
