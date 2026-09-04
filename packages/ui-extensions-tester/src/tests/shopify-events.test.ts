@@ -1,11 +1,23 @@
 import type {
   CashTrackingSessionStartEvent,
+  ScanEvent,
+  ShopifyEventMap,
   TransactionCompleteEvent,
 } from '@shopify/ui-extensions/point-of-sale';
 
 import {getExtension} from '../index';
+import type {EventMapForTarget} from '../targets';
 
 import {createTestSandbox, type TestSandbox} from './helpers';
+import {assertType, type Equals} from './type-assertions';
+
+// `extension.dispatch('scan', ...)` on the background target and
+// `shopify.addEventListener('scan', ...)` share the same guaranteed payload:
+// decoded `data` plus its normalized `source`.
+assertType<Equals<ShopifyEventMap['scan'], ScanEvent>>();
+assertType<
+  Equals<EventMapForTarget<'pos.app.ready.data'>['scan'], ScanEvent>
+>();
 
 function makeTransactionCompleteEvent(): TransactionCompleteEvent {
   return {
@@ -27,6 +39,13 @@ function makeCashTrackingSessionStartEvent(): CashTrackingSessionStartEvent {
   return {
     id: 1,
     openingTime: '2024-01-01T00:00:00Z',
+  };
+}
+
+function makeScanEvent(): Omit<ScanEvent, 'type'> {
+  return {
+    data: 'synthetic-test-value',
+    source: 'external',
   };
 }
 
@@ -57,6 +76,19 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     expect(typeof shopify.removeEventListener).toBe('function');
   });
 
+  it('delivers dispatched scan events to registered scan listeners', () => {
+    const extension = setUpExt();
+    const shopify = (globalThis as any).shopify;
+    const listener = jest.fn();
+    shopify.addEventListener('scan', listener);
+
+    const event = makeScanEvent();
+    extension.dispatch('scan', event);
+
+    expect(listener).toHaveBeenCalledTimes(1);
+    expect(listener).toHaveBeenCalledWith({...event, type: 'scan'});
+  });
+
   it('dispatches a registered listener with the provided event payload', () => {
     const extension = setUpExt();
     const shopify = (globalThis as any).shopify;
@@ -67,7 +99,10 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     extension.dispatch('transactioncomplete', event);
 
     expect(listener).toHaveBeenCalledTimes(1);
-    expect(listener).toHaveBeenCalledWith(event);
+    expect(listener).toHaveBeenCalledWith({
+      ...event,
+      type: 'transactioncomplete',
+    });
   });
 
   it('fires all listeners registered for the same event', () => {
@@ -81,8 +116,14 @@ describe('shopify.addEventListener / extension.dispatch', () => {
     const event = makeTransactionCompleteEvent();
     extension.dispatch('transactioncomplete', event);
 
-    expect(listenerA).toHaveBeenCalledWith(event);
-    expect(listenerB).toHaveBeenCalledWith(event);
+    expect(listenerA).toHaveBeenCalledWith({
+      ...event,
+      type: 'transactioncomplete',
+    });
+    expect(listenerB).toHaveBeenCalledWith({
+      ...event,
+      type: 'transactioncomplete',
+    });
   });
 
   it('does not fire other events when dispatching one', () => {

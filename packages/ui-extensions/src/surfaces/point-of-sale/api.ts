@@ -29,6 +29,7 @@ export type {
   TransactionCompleteEvent,
   CashTrackingSessionStartEvent,
   CashTrackingSessionCompleteEvent,
+  ScanEvent,
   ShopifyEventMap,
 } from './events';
 
