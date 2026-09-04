@@ -31580,7 +31580,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -32652,7 +32652,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -44273,7 +44273,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -44565,7 +44565,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -45862,7 +45862,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -89939,7 +89939,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -90974,7 +90974,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
@@ -92410,7 +92410,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs.\n\n- If set, it will navigate to the location specified by `href` after executing the `click` event.\n- If a `commandFor` is set, the `command` will be executed instead of the navigation.",
           "isOptional": true
         },
         {
