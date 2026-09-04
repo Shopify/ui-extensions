@@ -19,6 +19,7 @@
     "lovely-chairs-cross",
     "old-beds-cut",
     "pos-cart-money-v2",
+    "pos-cart-update-line-item-quantity",
     "pos-intercept-api",
     "pos-intercept-payment-validations",
     "pos-payment-validations-tender-confirm-docs",
