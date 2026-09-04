@@ -4571,23 +4571,374 @@
       "value": "interface TabListJSXProps extends Pick<TabListProps, 'children'> {\n  children?: ComponentChildren;\n}"
     }
   },
-  "LinkEvents": {
+  "POSListJSXProps": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
-      "name": "LinkEvents",
-      "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+      "name": "POSListJSXProps",
+      "description": "Displays structured rows with text, badges, images, and optional trailing content.",
       "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "click",
-          "value": "(event: CallbackEvent<\"s-link\">) => void",
-          "description": "Called when the link is activated.",
+          "name": "header",
+          "value": "ComponentChild",
+          "description": "Content displayed before the rows as part of the list's scrollable content.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "imageDisplayStrategy",
+          "value": "POSListImageDisplayStrategy",
+          "description": "Controls whether rows reserve space for images.\n\n- `auto`: Displays images or placeholders when a row includes an image source.\n- `always`: Displays images or placeholders for every row.\n- `never`: Displays rows without images or image placeholders.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loadingMore",
+          "value": "boolean",
+          "description": "Whether additional rows are being loaded.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onLoadMore",
+          "value": "((event: CallbackEvent<typeof posListTagName>) => void) | null",
+          "description": "Callback when more rows should be loaded.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rows",
+          "value": "POSListRow[]",
+          "description": "The rows displayed in the list.",
+          "isOptional": true,
+          "defaultValue": "[]"
+        }
+      ],
+      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list.\n   *\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * Controls whether rows reserve space for images.\n   *\n   * - `auto`: Displays images or placeholders when a row includes an image source.\n   * - `always`: Displays images or placeholders for every row.\n   * - `never`: Displays rows without images or image placeholders.\n   *\n   * @default 'auto'\n   */\n  imageDisplayStrategy?: POSListImageDisplayStrategy;\n  /**\n   * Whether additional rows are being loaded.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /** Callback when more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
+    }
+  },
+  "ComponentChild": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ComponentChild",
+      "value": "VNode<any> | object | string | number | bigint | boolean | null | undefined",
+      "description": ""
+    }
+  },
+  "VNode": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "VNode",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "endTime",
+          "value": "number",
+          "description": "The time that the rendering of this `vnode` was completed. Will only be set when the devtools are attached. Default value: `-1`",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "Key",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "props",
+          "value": "P & { children: ComponentChildren$1; }",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ref",
+          "value": "Ref<any> | null",
+          "description": "ref is not guaranteed by React.ReactElement, for compatibility reasons with popular react libs we define it as optional too",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "startTime",
+          "value": "number",
+          "description": "The time this `vnode` started rendering. Will only be set when the devtools are attached. Default value: `0`",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "ComponentType<P> | string",
+          "description": ""
+        }
+      ],
+      "value": "export interface VNode<P = {}> {\n  type: ComponentType<P> | string;\n  props: P & {\n    children: ComponentChildren$1;\n  };\n  key: Key;\n  /**\n   * ref is not guaranteed by React.ReactElement, for compatibility reasons\n   * with popular react libs we define it as optional too\n   */\n  ref?: Ref<any> | null;\n  /**\n   * The time this `vnode` started rendering. Will only be set when\n   * the devtools are attached.\n   * Default value: `0`\n   */\n  startTime?: number;\n  /**\n   * The time that the rendering of this `vnode` was completed. Will only be\n   * set when the devtools are attached.\n   * Default value: `-1`\n   */\n  endTime?: number;\n}"
+    }
+  },
+  "Key": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Key",
+      "value": "string | number | any",
+      "description": ""
+    }
+  },
+  "Ref": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Ref",
+      "value": "RefObject<T> | RefCallback<T> | null",
+      "description": ""
+    }
+  },
+  "RefObject": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "RefObject",
+      "value": "{\n  current: T | null;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "current",
+          "value": "T | null",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "RefCallback": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "RefCallback",
+      "description": "",
+      "params": [
+        {
+          "name": "instance",
+          "description": "",
+          "value": "T",
+          "filePath": "src/surfaces/point-of-sale/components.ts"
+        }
+      ],
+      "returns": {
+        "filePath": "src/surfaces/point-of-sale/components.ts",
+        "description": "",
+        "name": "void | (() => void)",
+        "value": "void | (() => void)"
+      },
+      "value": "(instance: T | null) => void | (() => void)"
+    }
+  },
+  "ComponentType": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ComponentType",
+      "value": "ComponentClass<P> | FunctionComponent<P>",
+      "description": ""
+    }
+  },
+  "ComponentClass": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ComponentClass",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "contextType",
+          "value": "Context<any>",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P>",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getDerivedStateFromError",
+          "value": "(error: any) => Partial<S>",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getDerivedStateFromProps",
+          "value": "(props: Readonly<P>, state: Readonly<S>) => Partial<S>",
+          "description": "",
           "isOptional": true
         }
       ],
-      "value": "interface LinkEvents {\n  /** Called when the link is activated. */\n  click?: (event: CallbackEvent<typeof tagName$a>) => void;\n}"
+      "value": "export interface ComponentClass<P = {}, S = {}> {\n  new (props: P, context?: any): Component<P, S>;\n  displayName?: string;\n  defaultProps?: Partial<P>;\n  contextType?: Context<any>;\n  getDerivedStateFromProps?(\n    props: Readonly<P>,\n    state: Readonly<S>,\n  ): Partial<S> | null;\n  getDerivedStateFromError?(error: any): Partial<S> | null;\n}"
+    }
+  },
+  "Context": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Context",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "Consumer",
+          "value": "Consumer<T>",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "Provider",
+          "value": "Provider<T>",
+          "description": ""
+        }
+      ],
+      "value": "export interface Context<T> extends Provider<T> {\n  Consumer: Consumer<T>;\n  Provider: Provider<T>;\n  displayName?: string;\n}"
+    }
+  },
+  "Consumer": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Consumer",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Consumer<T>\n  extends FunctionComponent<{\n    children: (value: T) => ComponentChildren$1;\n  }> {}"
+    }
+  },
+  "Provider": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Provider",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Provider<T>\n  extends FunctionComponent<{\n    value: T;\n    children?: ComponentChildren$1;\n  }> {}"
+    }
+  },
+  "FunctionComponent": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "FunctionComponent",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface FunctionComponent<P = {}> {\n  (props: RenderableProps<P>, context?: any): ComponentChildren$1;\n  displayName?: string;\n  defaultProps?: Partial<P> | undefined;\n}"
+    }
+  },
+  "POSListImageDisplayStrategy": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListImageDisplayStrategy",
+      "value": "'auto' | 'always' | 'never'",
+      "description": ""
     }
   },
   "CallbackEvent": {
@@ -4651,6 +5002,329 @@
         }
       ],
       "value": "interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {\n  currentTarget: HTMLElementTagNameMap[T];\n  bubbles?: boolean;\n  cancelable?: boolean;\n  composed?: boolean;\n  detail?: any;\n  eventPhase: number;\n  target: HTMLElementTagNameMap[T] | null;\n}"
+    }
+  },
+  "POSListRow": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRow",
+      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Callback invoked when the row is activated.\n   *\n   * When provided, the row is interactive.\n   */\n  onClick?: (event: CallbackEvent<typeof posListTagName>) => void;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "end",
+          "value": "POSListRowEnd",
+          "description": "Optional content displayed at the end of the row.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the row."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onClick",
+          "value": "(event: CallbackEvent<\"s-pos-list\">) => void",
+          "description": "Callback invoked when the row is activated.\n\nWhen provided, the row is interactive.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "start",
+          "value": "POSListRowStart",
+          "description": "The primary content displayed at the start of the row."
+        }
+      ]
+    }
+  },
+  "POSListRowEnd": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowEnd",
+      "value": "{\n  /** Supporting text displayed at the end of the row. */\n  label?: string;\n  /**\n   * Whether to display a chevron at the end of the row.\n   *\n   * @default false\n   */\n  showChevron?: boolean;\n  /** A toggle switch displayed at the end of the row. */\n  toggleSwitch?: POSListToggleSwitch;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "Supporting text displayed at the end of the row.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "showChevron",
+          "value": "boolean",
+          "description": "Whether to display a chevron at the end of the row.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "toggleSwitch",
+          "value": "POSListToggleSwitch",
+          "description": "A toggle switch displayed at the end of the row.",
+          "isOptional": true
+        }
+      ]
+    }
+  },
+  "POSListToggleSwitch": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListToggleSwitch",
+      "value": "{\n  /**\n   * The current state of the toggle switch.\n   *\n   * @default false\n   */\n  checked?: boolean;\n  /**\n   * Whether the toggle switch prevents interaction.\n   *\n   * @default false\n   */\n  disabled?: boolean;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "checked",
+          "value": "boolean",
+          "description": "The current state of the toggle switch.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Whether the toggle switch prevents interaction.",
+          "isOptional": true,
+          "defaultValue": "false"
+        }
+      ]
+    }
+  },
+  "POSListRowStart": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowStart",
+      "value": "{\n  /** The primary text for the row. */\n  label: string;\n  /** Up to three lines of supporting text displayed below the label. */\n  subtitles?: [POSListRowSubtitle, POSListRowSubtitle?, POSListRowSubtitle?];\n  /** Status or category badges displayed with the row content. */\n  badges?: POSListBadge[];\n  /** The image displayed at the start of the row. */\n  image?: POSListRowImage;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "badges",
+          "value": "POSListBadge[]",
+          "description": "Status or category badges displayed with the row content.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "image",
+          "value": "POSListRowImage",
+          "description": "The image displayed at the start of the row.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "The primary text for the row."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtitles",
+          "value": "[POSListRowSubtitle, POSListRowSubtitle?, POSListRowSubtitle?]",
+          "description": "Up to three lines of supporting text displayed below the label.",
+          "isOptional": true
+        }
+      ]
+    }
+  },
+  "POSListBadge": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListBadge",
+      "value": "{\n  /** The badge text. */\n  text: string;\n  /**\n   * The semantic appearance of the badge.\n   *\n   * @default 'neutral'\n   */\n  tone?: 'neutral' | 'critical' | 'warning' | 'success' | 'highlight';\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "text",
+          "value": "string",
+          "description": "The badge text."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "tone",
+          "value": "'neutral' | 'critical' | 'warning' | 'success' | 'highlight'",
+          "description": "The semantic appearance of the badge.",
+          "isOptional": true,
+          "defaultValue": "'neutral'"
+        }
+      ]
+    }
+  },
+  "POSListRowImage": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowImage",
+      "value": "{\n  /** The URL of the image displayed at the start of the row. */\n  src?: string;\n  /** A numeric badge displayed over the image. */\n  badge?: number;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "badge",
+          "value": "number",
+          "description": "A numeric badge displayed over the image.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "src",
+          "value": "string",
+          "description": "The URL of the image displayed at the start of the row.",
+          "isOptional": true
+        }
+      ]
+    }
+  },
+  "POSListRowSubtitle": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowSubtitle",
+      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /**\n       * The semantic color applied to the subtitle.\n       *\n       * @default 'neutral'\n       */\n      color?: POSListRowSubtitleColor;\n    }",
+      "description": ""
+    }
+  },
+  "POSListRowSubtitleColor": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowSubtitleColor",
+      "value": "'neutral' | 'subdued' | 'disabled' | 'warning' | 'critical' | 'success' | 'interactive' | 'highlight'",
+      "description": ""
+    }
+  },
+  "POSListEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListEvents",
+      "description": "Events emitted by the POS list.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loadmore",
+          "value": "(event: CallbackEvent<\"s-pos-list\">) => void",
+          "description": "Fired when more rows should be loaded.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface POSListEvents {\n  /** Fired when more rows should be loaded. */\n  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;\n}"
+    }
+  },
+  "POSListSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListSlots",
+      "description": "Content slots for the POS list.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "header",
+          "value": "HTMLElement",
+          "description": "Content displayed before the rows as part of the list's scrollable content.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface POSListSlots {\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: HTMLElement;\n}"
+    }
+  },
+  "POSList": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSList",
+      "description": "Displays structured rows with text, badges, images, and optional trailing content.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "imageDisplayStrategy",
+          "value": "POSListImageDisplayStrategy",
+          "description": "Controls whether rows reserve space for images.\n\n- `auto`: Displays images or placeholders when a row includes an image source.\n- `always`: Displays images or placeholders for every row.\n- `never`: Displays rows without images or image placeholders.",
+          "isOptional": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loadingMore",
+          "value": "boolean",
+          "description": "Whether additional rows are being loaded.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rows",
+          "value": "POSListRow[]",
+          "description": "The rows displayed in the list.",
+          "isOptional": true,
+          "defaultValue": "[]"
+        }
+      ],
+      "value": "interface POSList {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list.\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * Controls whether rows reserve space for images.\n   *\n   * - `auto`: Displays images or placeholders when a row includes an image source.\n   * - `always`: Displays images or placeholders for every row.\n   * - `never`: Displays rows without images or image placeholders.\n   * @default 'auto'\n   */\n  imageDisplayStrategy?: POSListImageDisplayStrategy;\n  /**\n   * Whether additional rows are being loaded.\n   * @default false\n   */\n  loadingMore?: boolean;\n}"
+    }
+  },
+  "LinkEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "LinkEvents",
+      "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "(event: CallbackEvent<\"s-link\">) => void",
+          "description": "Called when the link is activated.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface LinkEvents {\n  /** Called when the link is activated. */\n  click?: (event: CallbackEvent<typeof tagName$a>) => void;\n}"
     }
   },
   "Link": {
@@ -7737,7 +8411,7 @@
       "filePath": "src/surfaces/point-of-sale/components/targets/StandardComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StandardComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'POSList' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
       "description": "",
       "isPublicDocs": true
     }
@@ -7747,7 +8421,7 @@
       "filePath": "src/surfaces/point-of-sale/components/targets/BasicComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "BasicComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'POSList' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
       "description": "",
       "isPublicDocs": true
     }
@@ -9316,7 +9990,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentvalidations",
           "value": "PaymentValidationsEvent",
-          "description": "Dispatched when staff selects a payment method on the payments screen."
+          "description": "Dispatched when a tender is confirmed but not yet committed — after the amount is entered, before the payment is recorded. One event per tender attempt; split payments dispatch one event per tender, each carrying its own amount."
         }
       ],
       "value": "export interface ShopifyInterceptMap {\n  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationsEvent;\n  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationsEvent;\n}"
@@ -9501,7 +10175,7 @@
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
       "name": "PaymentValidationsEvent",
-      "description": "Dispatched when staff selects a payment method on the payments screen.",
+      "description": "Dispatched when a tender is confirmed but not yet committed — after the amount is entered, before the payment is recorded. One event per tender attempt; split payments dispatch one event per tender, each carrying its own amount.",
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -9729,10 +10403,10 @@
       "returns": {
         "filePath": "src/surfaces/point-of-sale/events.ts",
         "description": "",
-        "name": "InterceptResult",
-        "value": "InterceptResult"
+        "name": "InterceptResult<ValidationTargetFor<TEvent>>",
+        "value": "InterceptResult<ValidationTargetFor<TEvent>>"
       },
-      "value": "(\n  event: TEvent,\n) => InterceptResult"
+      "value": "(\n  event: TEvent,\n) => InterceptResult<ValidationTargetFor<TEvent>>"
     }
   },
   "InterceptResult": {
@@ -9745,11 +10419,11 @@
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "operations",
-          "value": "Operation[]",
+          "value": "Operation<TTarget>[]",
           "description": ""
         }
       ],
-      "value": "export interface InterceptResult {\n  operations: Operation[];\n}"
+      "value": "export interface InterceptResult<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  operations: Operation<TTarget>[];\n}"
     }
   },
   "Operation": {
@@ -9762,12 +10436,12 @@
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "validationAdd",
-          "value": "ValidationAdd",
-          "description": "Adds a validation to the workflow being intercepted.",
+          "value": "ValidationAdd<TTarget>",
+          "description": "",
           "isOptional": true
         }
       ],
-      "value": "export interface Operation {\n  validationAdd?: ValidationAdd;\n}"
+      "value": "export interface Operation<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  validationAdd?: ValidationAdd<TTarget>;\n}"
     }
   },
   "ValidationAdd": {
@@ -9781,7 +10455,7 @@
           "syntaxKind": "PropertySignature",
           "name": "handle",
           "value": "string",
-          "description": "Stable identifier for this validation."
+          "description": "Stable identifier for this validation. Handles are namespaced per extension and may repeat across targets: the same handle on two line items is two validations."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -9794,12 +10468,12 @@
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "target",
-          "value": "string",
-          "description": "JSON-path locator for where the validation applies.",
+          "value": "TTarget",
+          "description": "Locates the data the validation applies to; the host decides where it renders. Omitted or unrecognized targets fall back to the event's root scope (`$.cart` / `$.payment`) — the validation still applies, rendered less specifically.\n\nLine item uuids are only valid within the event that delivered them: use `lineItems[n].uuid` from this event's cart snapshot, don't cache uuids across events. Bundle components are not addressable; target their parent line.",
           "isOptional": true
         }
       ],
-      "value": "export interface ValidationAdd {\n  /** `ERROR` blocks the workflow. `WARNING` does not. */\n  level: ValidationLevel;\n\n  /** Stable identifier for this validation. */\n  handle: string;\n\n  /** JSON-path locator for where the validation applies. */\n  target?: string;\n}"
+      "value": "export interface ValidationAdd<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** `ERROR` blocks the workflow. `WARNING` does not. */\n  level: ValidationLevel;\n\n  /**\n   * Stable identifier for this validation. Handles are namespaced per\n   * extension and may repeat across targets: the same handle on two line\n   * items is two validations.\n   */\n  handle: string;\n\n  /**\n   * Locates the data the validation applies to; the host decides where it\n   * renders. Omitted or unrecognized targets fall back to the event's root\n   * scope (`$.cart` / `$.payment`) — the validation still applies, rendered\n   * less specifically.\n   *\n   * Line item uuids are only valid within the event that delivered them:\n   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache\n   * uuids across events. Bundle components are not addressable; target\n   * their parent line.\n   */\n  target?: TTarget;\n}"
     }
   },
   "ValidationLevel": {
@@ -9809,6 +10483,84 @@
       "name": "ValidationLevel",
       "value": "'WARNING' | 'ERROR'",
       "description": ""
+    }
+  },
+  "ValidationTargetFor": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ValidationTargetFor",
+      "value": "TEvent['type'] extends keyof ValidationTargetMap\n    ? ValidationTargetMap[TEvent['type']]\n    : ValidationTarget",
+      "description": "The validation targets valid for a given intercepted event."
+    }
+  },
+  "ValidationTargetMap": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ValidationTargetMap",
+      "description": "Maps POS interceptable workflow names to their valid validation targets.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartvalidations",
+          "value": "CartValidationTarget",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentvalidations",
+          "value": "PaymentValidationTarget",
+          "description": ""
+        }
+      ],
+      "value": "interface ValidationTargetMap {\n  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;\n  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;\n}"
+    }
+  },
+  "CartValidationTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartValidationTarget",
+      "value": "CartTarget | CartLineItemTarget",
+      "description": ""
+    }
+  },
+  "CartTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartTarget",
+      "value": "'$.cart'",
+      "description": "Targets the whole cart rather than a specific line item."
+    }
+  },
+  "CartLineItemTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartLineItemTarget",
+      "value": "`$.cart.lineItems['${string}']`",
+      "description": "Targets one cart line item by its `uuid` from this event's `cart` snapshot, for example `$.cart.lineItems['adfd6b06-4a24-4f5f-9f4b-ea21f4432dd4']`."
+    }
+  },
+  "PaymentValidationTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "PaymentValidationTarget",
+      "value": "\"$.payment\"",
+      "description": ""
+    }
+  },
+  "ValidationTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ValidationTarget",
+      "value": "CartValidationTarget | PaymentValidationTarget",
+      "description": "Where a validation applies, as an enumerated token. Targets are matched as exact strings, never evaluated as JSON paths."
     }
   },
   "Docs_AppBackgroundEventMethods": {
