@@ -1,5 +1,20 @@
 # @shopify/ui-extensions
 
+## 2026.2.0
+
+### Minor Changes
+
+- [#4528](https://github.com/Shopify/ui-extensions/pull/4528) [`0c173df`](https://github.com/Shopify/ui-extensions/commit/0c173df78340b256972f20b751c529f82b74989e) Thanks [@cpeddecord](https://github.com/cpeddecord)! - Release the `Chat` component (`s-chat`) to checkout UI extensions.
+
+### Patch Changes
+
+- [#4629](https://github.com/Shopify/ui-extensions/pull/4629) [`d2cea52`](https://github.com/Shopify/ui-extensions/commit/d2cea529fa55a4ed264d507dcbaf60f25196b571) Thanks [@henryStelle](https://github.com/henryStelle)! - Allow POS `s-button` components to explicitly use the default `auto` variant.
+
+- [#4648](https://github.com/Shopify/ui-extensions/pull/4648) [`60b407e`](https://github.com/Shopify/ui-extensions/commit/60b407e538b5c6becd129aa88fa0302ffa02d67d) Thanks [@henryStelle](https://github.com/henryStelle)! - Fix the preact entry points in package.json:
+
+  - Add a `typesVersions` entry for `@shopify/ui-extensions/preact` so its types resolve under TypeScript's legacy `moduleResolution: "node"` (node10), matching the existing entries for `checkout/preact` and `customer-account/preact`.
+  - Remove the dead `./point-of-sale/preact` entry from `exports`. Its source file was intentionally deleted right after it was introduced, but the `exports` entry was left behind, pointing at files that are never built or published — the import has never resolved in any released version. POS extensions should use the generic `@shopify/ui-extensions/preact` entry point.
+
 ## 2026.1.5
 
 ### Patch Changes
