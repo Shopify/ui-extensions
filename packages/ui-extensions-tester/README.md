@@ -227,6 +227,8 @@ test('it handles an empty order', async () => {
 });
 ```
 
+For `admin.metaobject-details.form.render`, the default mock provides `shopify.intents` as `{launchUrl: undefined}` without a fake `invoke()`, an empty `shopify.snapshot`, a successful `shopify.setFieldValue()`, and a no-op `shopify.setSaveHandler()`. It omits the unsupported incidental `data` object. See the [Admin helpers guide](./src/admin/README.md#-metaobject-form-mocks) for details.
+
 ### 🖱️ Triggering events
 
 To simulate how a user would interact with your UI extension, you can call [`dispatchEvent()`](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent) or use `fireEvent` from `@testing-library/preact`. When an event triggers an async state change (like a Preact re-render), wrap follow-up assertions in `await waitFor()` to wait for the DOM to settle:
