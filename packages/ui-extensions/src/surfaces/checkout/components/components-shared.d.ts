@@ -1384,7 +1384,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
 }
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
 	/**
-	 * The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
+	 * The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.
 	 */
 	href?: string;
 	/**
