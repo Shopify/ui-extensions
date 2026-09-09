@@ -109,6 +109,7 @@ export type {
   Customer,
   LineItem,
   LineItemComponent,
+  ProductCategory,
   Discount,
   SetLineItemPropertiesInput,
   SetLineItemDiscountInput,

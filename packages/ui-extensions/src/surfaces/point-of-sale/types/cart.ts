@@ -176,6 +176,39 @@ export interface LineItem {
    * Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.
    */
   components?: LineItemComponent[];
+  /**
+   * The product's category from Shopify's Standard Product Taxonomy.
+   *
+   * Resolved from the line item's product, so it's absent for line items with
+   * no underlying product (custom/quick sale items, gift cards) and for
+   * products that have no taxonomy category assigned.
+   */
+  productCategory?: ProductCategory;
+}
+
+/**
+ * A product's category in Shopify's Standard Product Taxonomy.
+ *
+ * The taxonomy is a static, versioned dataset, so `id` is a stable key that can
+ * be resolved against the published taxonomy without an additional API call.
+ */
+export interface ProductCategory {
+  /**
+   * The globally-unique identifier of the taxonomy category, for example
+   * `gid://shopify/TaxonomyCategory/aa-1-2-3`. Stable across taxonomy releases
+   * and safe to use as a mapping key.
+   */
+  id: string;
+  /**
+   * The name of the taxonomy category, without its ancestors. For example,
+   * `Shirts & Tops`.
+   */
+  name?: string;
+  /**
+   * The full path of the taxonomy category, including its ancestors. For
+   * example, `Apparel & Accessories > Clothing > Shirts & Tops`.
+   */
+  fullName?: string;
 }
 
 /**
