@@ -5418,44 +5418,45 @@ declare module 'preact' {
 
 declare const posListTagName = 's-pos-list';
 type POSListImageDisplayStrategy = 'auto' | 'always' | 'never';
-/** The semantic meaning of row text or a badge, as on `s-text` and `s-badge`. */
-type POSListTone =
-  | 'auto'
-  | 'neutral'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'critical'
-  | 'caution';
-/** The emphasis of row text, as on `s-text`. */
-type POSListTextColor = 'base' | 'strong' | 'subdued';
 type POSListRowSubtitle =
   | string
   | {
       /** The subtitle text. */
       content: string;
       /**
-       * The semantic meaning of the subtitle.
+       * The semantic meaning of the subtitle, as on `s-text`.
        *
        * @default 'auto'
        */
-      tone?: POSListTone;
+      tone?: Extract<
+        TextProps['tone'],
+        | 'auto'
+        | 'neutral'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'critical'
+        | 'caution'
+      >;
       /**
-       * The emphasis of the subtitle. A value other than `base` overrides `tone`.
+       * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.
        *
        * @default 'base'
        */
-      color?: POSListTextColor;
+      color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
     };
 type POSListBadge = {
   /** The badge text. */
   text: string;
   /**
-   * The semantic meaning of the badge.
+   * The semantic meaning of the badge, as on `s-badge`.
    *
    * @default 'auto'
    */
-  tone?: POSListTone;
+  tone?: Extract<
+    BadgeProps['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
+  >;
 };
 type POSListRowImage = {
   /** The URL of the image displayed at the start of the row. */

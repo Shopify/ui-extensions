@@ -8,7 +8,13 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {Key, Ref, ComponentChild} from './components-shared.d.ts';
+import type {
+  Key,
+  Ref,
+  ComponentChild,
+  BadgeProps,
+  TextProps,
+} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -45,44 +51,45 @@ export interface CallbackEvent<T extends string> {
 
 declare const tagName = 's-pos-list';
 export type POSListImageDisplayStrategy = 'auto' | 'always' | 'never';
-/** The semantic meaning of row text or a badge, as on `s-text` and `s-badge`. */
-export type POSListTone =
-  | 'auto'
-  | 'neutral'
-  | 'info'
-  | 'success'
-  | 'warning'
-  | 'critical'
-  | 'caution';
-/** The emphasis of row text, as on `s-text`. */
-export type POSListTextColor = 'base' | 'strong' | 'subdued';
 export type POSListRowSubtitle =
   | string
   | {
       /** The subtitle text. */
       content: string;
       /**
-       * The semantic meaning of the subtitle.
+       * The semantic meaning of the subtitle, as on `s-text`.
        *
        * @default 'auto'
        */
-      tone?: POSListTone;
+      tone?: Extract<
+        TextProps['tone'],
+        | 'auto'
+        | 'neutral'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'critical'
+        | 'caution'
+      >;
       /**
-       * The emphasis of the subtitle. A value other than `base` overrides `tone`.
+       * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.
        *
        * @default 'base'
        */
-      color?: POSListTextColor;
+      color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
     };
 export type POSListBadge = {
   /** The badge text. */
   text: string;
   /**
-   * The semantic meaning of the badge.
+   * The semantic meaning of the badge, as on `s-badge`.
    *
    * @default 'auto'
    */
-  tone?: POSListTone;
+  tone?: Extract<
+    BadgeProps['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
+  >;
 };
 export type POSListRowImage = {
   /** The URL of the image displayed at the start of the row. */
@@ -216,7 +223,5 @@ export type {
   POSListRowImage,
   POSListRowStart,
   POSListRowSubtitle,
-  POSListTextColor,
   POSListToggleSwitch,
-  POSListTone,
 };
