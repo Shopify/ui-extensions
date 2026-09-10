@@ -122,6 +122,15 @@ export type POSListRowEnd = {
    */
   toggleSwitch?: POSListToggleSwitch;
 };
+/**
+ * The event passed to a row's `onClick`.
+ *
+ * Rows are data rather than elements, so this is a plain object and not a DOM `Event`:
+ * it carries no `currentTarget` element and has no `preventDefault()`.
+ */
+export type POSListRowClickEvent = {
+  type: 'click';
+};
 export type POSListRow = {
   /** A unique identifier for the row. */
   id: string;
@@ -132,7 +141,7 @@ export type POSListRow = {
    *
    * When provided, the row is interactive.
    */
-  onClick?: (event: CallbackEvent<typeof tagName>) => void;
+  onClick?: (event: POSListRowClickEvent) => void;
   /** Optional content displayed at the end of the row. */
   end?: POSListRowEnd;
 };
@@ -192,6 +201,7 @@ export type {
   POSListImageDisplayStrategy,
   POSListJSXProps,
   POSListRow,
+  POSListRowClickEvent,
   POSListRowEnd,
   POSListRowImage,
   POSListRowStart,

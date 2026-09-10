@@ -5010,7 +5010,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRow",
-      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Callback invoked when the row is activated.\n   *\n   * When provided, the row is interactive.\n   */\n  onClick?: (event: CallbackEvent<typeof posListTagName>) => void;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
+      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * Callback invoked when the row is activated.\n   *\n   * When provided, the row is interactive.\n   */\n  onClick?: (event: POSListRowClickEvent) => void;\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
       "description": "",
       "members": [
         {
@@ -5032,7 +5032,7 @@
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "onClick",
-          "value": "(event: CallbackEvent<\"s-pos-list\">) => void",
+          "value": "(event: POSListRowClickEvent) => void",
           "description": "Callback invoked when the row is activated.\n\nWhen provided, the row is interactive.",
           "isOptional": true
         },
@@ -5107,6 +5107,24 @@
           "description": "Whether the toggle switch prevents interaction.",
           "isOptional": true,
           "defaultValue": "false"
+        }
+      ]
+    }
+  },
+  "POSListRowClickEvent": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowClickEvent",
+      "value": "{\n  type: 'click';\n}",
+      "description": "The event passed to a row's `onClick`.\n\nRows are data rather than elements, so this is a plain object and not a DOM `Event`: it carries no `currentTarget` element and has no `preventDefault()`.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'click'",
+          "description": ""
         }
       ]
     }
