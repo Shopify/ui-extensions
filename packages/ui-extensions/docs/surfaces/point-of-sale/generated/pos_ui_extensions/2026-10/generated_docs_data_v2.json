@@ -5051,7 +5051,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowEnd",
-      "value": "{\n  /** Supporting text displayed at the end of the row. */\n  label?: string;\n  /**\n   * Whether to display a chevron at the end of the row.\n   *\n   * @default false\n   */\n  showChevron?: boolean;\n  /** A toggle switch displayed at the end of the row. */\n  toggleSwitch?: POSListToggleSwitch;\n}",
+      "value": "{\n  /** Supporting text displayed at the end of the row. */\n  label?: string;\n  /**\n   * Whether to display a chevron at the end of the row.\n   *\n   * @default false\n   */\n  showChevron?: boolean;\n  /**\n   * A toggle switch displayed at the end of the row.\n   *\n   * When provided, the toggle switch replaces `label` and `showChevron`.\n   */\n  toggleSwitch?: POSListToggleSwitch;\n}",
       "description": "",
       "members": [
         {
@@ -5076,7 +5076,7 @@
           "syntaxKind": "PropertySignature",
           "name": "toggleSwitch",
           "value": "POSListToggleSwitch",
-          "description": "A toggle switch displayed at the end of the row.",
+          "description": "A toggle switch displayed at the end of the row.\n\nWhen provided, the toggle switch replaces `label` and `showChevron`.",
           "isOptional": true
         }
       ]

@@ -115,7 +115,11 @@ export type POSListRowEnd = {
    * @default false
    */
   showChevron?: boolean;
-  /** A toggle switch displayed at the end of the row. */
+  /**
+   * A toggle switch displayed at the end of the row.
+   *
+   * When provided, the toggle switch replaces `label` and `showChevron`.
+   */
   toggleSwitch?: POSListToggleSwitch;
 };
 export type POSListRow = {
