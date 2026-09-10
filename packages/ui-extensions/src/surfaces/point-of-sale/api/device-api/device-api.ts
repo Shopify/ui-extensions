@@ -12,11 +12,9 @@ export interface DeviceApiContent {
    */
   registerName: string;
   /**
-   * The Shopify-assigned fiscal register identifier for the device, such as Sweden's manufacturing number (tillverkningsnummer). Use it to identify the register on fiscal receipts, journals, and reports required by tax authorities. It's `undefined` when the device's location is in a country that doesn't require registering the device with the tax authority.
+   * The Shopify-assigned fiscal register identifier for the device, such as Sweden's manufacturing number (tillverkningsnummer). It's the same value as the `fiscalDeviceIdentifier` field on the [PointOfSaleDevice](https://shopify.dev/docs/api/admin-graphql/latest/objects/PointOfSaleDevice) object in the GraphQL Admin API, and it's available while the device is offline.
    *
-   * This is the same value as the `fiscalDeviceIdentifier` field on the [PointOfSaleDevice](https://shopify.dev/docs/api/admin-graphql/latest/objects/PointOfSaleDevice) object in the GraphQL Admin API, and it's available while the device is offline.
-   *
-   * Only available on API version `2026-10` and later.
+   * It's `undefined` when the device's location is in a country that doesn't require registering the device with the tax authority.
    *
    * @example "SH-9IX-7"
    */
