@@ -25,8 +25,8 @@ export type ResolutionSaveHandler = () => void | Promise<void>;
 export interface ResolutionApiContent<TEventData> {
   /**
    * The data of the intercepted event this resolution target was opened for.
-   * The `value` property provides the current data, and `subscribe` allows
-   * listening for host-owned revalidation updates.
+   * The `value` property provides the current data, and `subscribe` receives
+   * Shopify POS revalidation updates.
    */
   event: ReadonlySignalLike<TEventData>;
 
