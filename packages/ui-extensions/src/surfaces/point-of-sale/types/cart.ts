@@ -179,9 +179,12 @@ export interface LineItem {
   /**
    * The product's category from Shopify's Standard Product Taxonomy.
    *
-   * Resolved from the line item's product, so it's absent for line items with
-   * no underlying product (custom/quick sale items, gift cards) and for
-   * products that have no taxonomy category assigned.
+   * Only populated on order-backed receipt renders (the receipt header and
+   * footer block render targets, where the completed order is available). It is
+   * undefined in live cart contexts, which are not built from order data.
+   *
+   * Also absent for line items with no underlying product (custom/quick sale
+   * items, gift cards) and for products that have no taxonomy category assigned.
    */
   productCategory?: ProductCategory;
 }
