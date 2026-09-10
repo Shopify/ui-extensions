@@ -5537,7 +5537,7 @@ interface POSListJSXProps {
   /**
    * Controls whether rows reserve space for images.
    *
-   * - `auto`: Displays images or placeholders when a row includes an image source.
+   * - `auto`: Displays an image only on rows that include an image source; other rows reserve no space.
    * - `always`: Displays images or placeholders for every row.
    * - `never`: Displays rows without images or image placeholders.
    *
@@ -5645,7 +5645,7 @@ interface POSList {
   /**
    * Controls whether rows reserve space for images.
    *
-   * - `auto`: Displays images or placeholders when a row includes an image source.
+   * - `auto`: Displays an image only on rows that include an image source; other rows reserve no space.
    * - `always`: Displays images or placeholders for every row.
    * - `never`: Displays rows without images or image placeholders.
    * @default 'auto'
