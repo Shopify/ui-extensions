@@ -5,11 +5,8 @@
       id: 'graphic-tee',
       start: {
         label: 'Graphic tee',
-        subtitles: [
-          'Black / Medium',
-          {content: 'Low stock', color: 'critical'},
-        ],
-        badges: [{text: 'Sale', tone: 'highlight'}],
+        subtitles: ['Black / Medium', {content: 'Low stock', tone: 'critical'}],
+        badges: [{text: 'Sale', tone: 'info'}],
       },
       end: {label: '$29.00', showChevron: true},
       onClick: (event) => {

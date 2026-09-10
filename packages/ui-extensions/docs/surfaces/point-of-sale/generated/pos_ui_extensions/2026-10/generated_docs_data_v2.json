@@ -5176,7 +5176,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListBadge",
-      "value": "{\n  /** The badge text. */\n  text: string;\n  /**\n   * The semantic appearance of the badge.\n   *\n   * @default 'neutral'\n   */\n  tone?: 'neutral' | 'critical' | 'warning' | 'success' | 'highlight';\n}",
+      "value": "{\n  /** The badge text. */\n  text: string;\n  /**\n   * The semantic meaning of the badge.\n   *\n   * @default 'auto'\n   */\n  tone?: POSListTone;\n}",
       "description": "",
       "members": [
         {
@@ -5190,12 +5190,21 @@
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "tone",
-          "value": "'neutral' | 'critical' | 'warning' | 'success' | 'highlight'",
-          "description": "The semantic appearance of the badge.",
+          "value": "POSListTone",
+          "description": "The semantic meaning of the badge.",
           "isOptional": true,
-          "defaultValue": "'neutral'"
+          "defaultValue": "'auto'"
         }
       ]
+    }
+  },
+  "POSListTone": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListTone",
+      "value": "'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'",
+      "description": "The semantic meaning of row text or a badge, as on `s-text` and `s-badge`."
     }
   },
   "POSListRowImage": {
@@ -5230,17 +5239,17 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowSubtitle",
-      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /**\n       * The semantic color applied to the subtitle.\n       *\n       * @default 'neutral'\n       */\n      color?: POSListRowSubtitleColor;\n    }",
+      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /**\n       * The semantic meaning of the subtitle.\n       *\n       * @default 'auto'\n       */\n      tone?: POSListTone;\n      /**\n       * The emphasis of the subtitle. A value other than `base` overrides `tone`.\n       *\n       * @default 'base'\n       */\n      color?: POSListTextColor;\n    }",
       "description": ""
     }
   },
-  "POSListRowSubtitleColor": {
+  "POSListTextColor": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
-      "name": "POSListRowSubtitleColor",
-      "value": "'neutral' | 'subdued' | 'disabled' | 'warning' | 'critical' | 'success' | 'interactive' | 'highlight'",
-      "description": ""
+      "name": "POSListTextColor",
+      "value": "'base' | 'strong' | 'subdued'",
+      "description": "The emphasis of row text, as on `s-text`."
     }
   },
   "POSListEvents": {

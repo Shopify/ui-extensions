@@ -45,36 +45,44 @@ export interface CallbackEvent<T extends string> {
 
 declare const tagName = 's-pos-list';
 export type POSListImageDisplayStrategy = 'auto' | 'always' | 'never';
-export type POSListRowSubtitleColor =
+/** The semantic meaning of row text or a badge, as on `s-text` and `s-badge`. */
+export type POSListTone =
+  | 'auto'
   | 'neutral'
-  | 'subdued'
-  | 'disabled'
+  | 'info'
+  | 'success'
   | 'warning'
   | 'critical'
-  | 'success'
-  | 'interactive'
-  | 'highlight';
+  | 'caution';
+/** The emphasis of row text, as on `s-text`. */
+export type POSListTextColor = 'base' | 'strong' | 'subdued';
 export type POSListRowSubtitle =
   | string
   | {
       /** The subtitle text. */
       content: string;
       /**
-       * The semantic color applied to the subtitle.
+       * The semantic meaning of the subtitle.
        *
-       * @default 'neutral'
+       * @default 'auto'
        */
-      color?: POSListRowSubtitleColor;
+      tone?: POSListTone;
+      /**
+       * The emphasis of the subtitle. A value other than `base` overrides `tone`.
+       *
+       * @default 'base'
+       */
+      color?: POSListTextColor;
     };
 export type POSListBadge = {
   /** The badge text. */
   text: string;
   /**
-   * The semantic appearance of the badge.
+   * The semantic meaning of the badge.
    *
-   * @default 'neutral'
+   * @default 'auto'
    */
-  tone?: 'neutral' | 'critical' | 'warning' | 'success' | 'highlight';
+  tone?: POSListTone;
 };
 export type POSListRowImage = {
   /** The URL of the image displayed at the start of the row. */
@@ -208,6 +216,7 @@ export type {
   POSListRowImage,
   POSListRowStart,
   POSListRowSubtitle,
-  POSListRowSubtitleColor,
+  POSListTextColor,
   POSListToggleSwitch,
+  POSListTone,
 };
