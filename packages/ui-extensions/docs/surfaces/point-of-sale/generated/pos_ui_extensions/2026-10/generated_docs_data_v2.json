@@ -5087,7 +5087,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListToggleSwitch",
-      "value": "{\n  /**\n   * The current state of the toggle switch.\n   *\n   * @default false\n   */\n  checked?: boolean;\n  /**\n   * Whether the toggle switch prevents interaction.\n   *\n   * @default false\n   */\n  disabled?: boolean;\n}",
+      "value": "{\n  /**\n   * The current state of the toggle switch.\n   *\n   * @default false\n   */\n  checked?: boolean;\n  /**\n   * Whether the toggle switch is disabled.\n   *\n   * A disabled toggle switch also blocks activation of its row, so the row's `onClick` doesn't run.\n   *\n   * @default false\n   */\n  disabled?: boolean;\n}",
       "description": "",
       "members": [
         {
@@ -5104,7 +5104,7 @@
           "syntaxKind": "PropertySignature",
           "name": "disabled",
           "value": "boolean",
-          "description": "Whether the toggle switch prevents interaction.",
+          "description": "Whether the toggle switch is disabled.\n\nA disabled toggle switch also blocks activation of its row, so the row's `onClick` doesn't run.",
           "isOptional": true,
           "defaultValue": "false"
         }

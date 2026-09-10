@@ -90,7 +90,9 @@ export type POSListToggleSwitch = {
    */
   checked?: boolean;
   /**
-   * Whether the toggle switch prevents interaction.
+   * Whether the toggle switch is disabled.
+   *
+   * A disabled toggle switch also blocks activation of its row, so the row's `onClick` doesn't run.
    *
    * @default false
    */
