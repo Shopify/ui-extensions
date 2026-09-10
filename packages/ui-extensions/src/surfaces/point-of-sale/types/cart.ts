@@ -189,8 +189,9 @@ export interface LineItem {
 /**
  * A product's category in Shopify's Standard Product Taxonomy.
  *
- * The taxonomy is a static, versioned dataset, so `id` is a stable key that can
- * be resolved against the published taxonomy without an additional API call.
+ * When a line item exposes a `productCategory`, every field is populated: `id`
+ * is a stable mapping key, and `name` and `fullName` are provided for display,
+ * so extensions can use the category without a separate taxonomy lookup.
  */
 export interface ProductCategory {
   /**
@@ -203,12 +204,12 @@ export interface ProductCategory {
    * The name of the taxonomy category, without its ancestors. For example,
    * `Shirts & Tops`.
    */
-  name?: string;
+  name: string;
   /**
    * The full path of the taxonomy category, including its ancestors. For
    * example, `Apparel & Accessories > Clothing > Shirts & Tops`.
    */
-  fullName?: string;
+  fullName: string;
 }
 
 /**
