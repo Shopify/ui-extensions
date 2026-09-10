@@ -132,7 +132,7 @@ export interface PaymentValidationsEventData {
   /** The payment method staff selected. */
   readonly paymentMethod: InterceptedPaymentMethod;
 
-  /** The amount this tender would charge, in presentment currency. */
+  /** The cash amount received for this tender, in presentment currency. */
   readonly amount: MoneyV2;
 }
 
@@ -193,8 +193,9 @@ export type ShopifyInterceptor<K extends keyof ShopifyInterceptMap> = (
 ) => InterceptResult<ValidationTargetMap[K]>;
 
 /**
- * The result an interceptor returns. An empty `operations` list allows the
- * workflow; an `ERROR` validation blocks it.
+ * The result an interceptor returns. An empty `operations` list adds no
+ * findings from this interceptor and doesn't remove or override findings from
+ * other interceptors.
  *
  * @private
  */
@@ -226,7 +227,7 @@ export type ValidationLevel = 'WARNING' | 'ERROR';
 export interface ValidationAdd<
   TTarget extends ValidationTarget = ValidationTarget,
 > {
-  /** `ERROR` blocks the workflow. `WARNING` does not. */
+  /** `ERROR` creates a finding labeled `Required`. `WARNING` creates a finding labeled `Recommended`. */
   level: ValidationLevel;
 
   /**
