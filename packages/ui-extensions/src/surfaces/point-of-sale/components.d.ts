@@ -5428,22 +5428,20 @@ type POSListRowSubtitle =
        *
        * @default 'auto'
        */
-      tone?: Extract<
-        TextProps['tone'],
+      tone?:
         | 'auto'
         | 'neutral'
         | 'info'
         | 'success'
         | 'warning'
         | 'critical'
-        | 'caution'
-      >;
+        | 'caution';
       /**
        * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.
        *
        * @default 'base'
        */
-      color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
+      color?: 'base' | 'strong' | 'subdued';
     };
 type POSListBadge = {
   /** The badge text. */
@@ -5453,10 +5451,14 @@ type POSListBadge = {
    *
    * @default 'auto'
    */
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
-  >;
+  tone?:
+    | 'auto'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'critical'
+    | 'caution';
 };
 type POSListRowImage = {
   /** The URL of the image displayed at the start of the row. */

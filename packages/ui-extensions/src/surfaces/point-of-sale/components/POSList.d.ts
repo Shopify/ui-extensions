@@ -8,13 +8,7 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {
-  Key,
-  Ref,
-  ComponentChild,
-  BadgeProps,
-  TextProps,
-} from './components-shared.d.ts';
+import type {Key, Ref, ComponentChild} from './components-shared.d.ts';
 
 export type ComponentChildren = any;
 /**
@@ -61,22 +55,20 @@ export type POSListRowSubtitle =
        *
        * @default 'auto'
        */
-      tone?: Extract<
-        TextProps['tone'],
+      tone?:
         | 'auto'
         | 'neutral'
         | 'info'
         | 'success'
         | 'warning'
         | 'critical'
-        | 'caution'
-      >;
+        | 'caution';
       /**
        * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.
        *
        * @default 'base'
        */
-      color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;
+      color?: 'base' | 'strong' | 'subdued';
     };
 export type POSListBadge = {
   /** The badge text. */
@@ -86,10 +78,14 @@ export type POSListBadge = {
    *
    * @default 'auto'
    */
-  tone?: Extract<
-    BadgeProps['tone'],
-    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
-  >;
+  tone?:
+    | 'auto'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'critical'
+    | 'caution';
 };
 export type POSListRowImage = {
   /** The URL of the image displayed at the start of the row. */

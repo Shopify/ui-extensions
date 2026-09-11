@@ -5176,7 +5176,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListBadge",
-      "value": "{\n  /** The badge text. */\n  text: string;\n  /**\n   * The semantic meaning of the badge, as on `s-badge`.\n   *\n   * @default 'auto'\n   */\n  tone?: Extract<\n    BadgeProps['tone'],\n    'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'\n  >;\n}",
+      "value": "{\n  /** The badge text. */\n  text: string;\n  /**\n   * The semantic meaning of the badge, as on `s-badge`.\n   *\n   * @default 'auto'\n   */\n  tone?:\n    | 'auto'\n    | 'neutral'\n    | 'info'\n    | 'success'\n    | 'warning'\n    | 'critical'\n    | 'caution';\n}",
       "description": "",
       "members": [
         {
@@ -5190,7 +5190,7 @@
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "tone",
-          "value": "'info' | 'auto' | 'neutral' | 'success' | 'caution' | 'warning' | 'critical'",
+          "value": "| 'auto'\n    | 'neutral'\n    | 'info'\n    | 'success'\n    | 'warning'\n    | 'critical'\n    | 'caution'",
           "description": "The semantic meaning of the badge, as on `s-badge`.",
           "isOptional": true,
           "defaultValue": "'auto'"
@@ -5230,140 +5230,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowSubtitle",
-      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /**\n       * The semantic meaning of the subtitle, as on `s-text`.\n       *\n       * @default 'auto'\n       */\n      tone?: Extract<\n        TextProps['tone'],\n        | 'auto'\n        | 'neutral'\n        | 'info'\n        | 'success'\n        | 'warning'\n        | 'critical'\n        | 'caution'\n      >;\n      /**\n       * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.\n       *\n       * @default 'base'\n       */\n      color?: Extract<TextProps['color'], 'base' | 'strong' | 'subdued'>;\n    }",
-      "description": ""
-    }
-  },
-  "TextProps": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "name": "TextProps",
-      "description": "",
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityVisibility",
-          "value": "'visible' | 'hidden' | 'exclusive'",
-          "description": "Changes the visibility of the element.\n\n- `visible`: the element is visible to all users.\n- `hidden`: the element is removed from the accessibility tree but remains visible.\n- `exclusive`: the element is visually hidden but remains in the accessibility tree.",
-          "isOptional": true,
-          "defaultValue": "'visible'"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "children",
-          "value": "ComponentChildren",
-          "description": "The content of the Text.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "color",
-          "value": "ColorKeyword",
-          "description": "Modify the color to be more or less intense.",
-          "isOptional": true,
-          "defaultValue": "'base'"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "dir",
-          "value": "'ltr' | 'rtl' | 'auto' | ''",
-          "description": "Indicates the directionality of the element’s text.\n\n- `ltr`: languages written from left to right (e.g. English)\n- `rtl`: languages written from right to left (e.g. Arabic)\n- `auto`: the user agent determines the direction based on the content\n- `''`: direction is inherited from parent elements (equivalent to not setting the attribute)",
-          "isOptional": true,
-          "defaultValue": "''"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "display",
-          "value": "MaybeResponsive<'auto' | 'none'>",
-          "description": "Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).\n\n- `auto`: the component’s initial value. The actual value depends on the component and context.\n- `none`: hides the component from display and removes it from the accessibility tree, making it invisible to screen readers.",
-          "isOptional": true,
-          "defaultValue": "'auto'"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "fontVariantNumeric",
-          "value": "'auto' | 'normal' | 'tabular-nums'",
-          "description": "Set the numeric properties of the font.",
-          "isOptional": true,
-          "defaultValue": "'auto' - inherit from the parent element"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "A unique identifier for the element.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "interestFor",
-          "value": "string",
-          "description": "ID of a component that should respond to interest (e.g. hover and focus) on this component.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lang",
-          "value": "string",
-          "description": "Indicate the text language. Useful when the text is in a different language than the rest of the page. It will allow assistive technologies such as screen readers to invoke the correct pronunciation. [Reference of values](https://www.iana.org/assignments/language-subtag-registry/language-subtag-registry) (\"subtag\" label)\n\nIt is recommended to combine it with the `dir` attribute to ensure the text is rendered correctly if the surrounding content’s direction is different.",
-          "isOptional": true,
-          "defaultValue": "''"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "tone",
-          "value": "ToneKeyword",
-          "description": "Sets the tone of the component, based on the intention of the information being conveyed.",
-          "isOptional": true,
-          "defaultValue": "'auto'"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "TextType",
-          "description": "Provide semantic meaning and default styling to the text.\n\nOther presentation properties on Text override the default styling.",
-          "isOptional": true,
-          "defaultValue": "'generic'"
-        }
-      ],
-      "value": "export interface TextProps\n  extends GlobalProps,\n    AccessibilityVisibilityProps,\n    BaseTypographyProps,\n    DisplayProps,\n    Pick<InteractionProps, 'interestFor'> {\n  /**\n   * The content of the Text.\n   */\n  children?: ComponentChildren;\n  /**\n   * Provide semantic meaning and default styling to the text.\n   *\n   * Other presentation properties on Text override the default styling.\n   *\n   * @default 'generic'\n   */\n  type?: TextType;\n}"
-    }
-  },
-  "ColorKeyword": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ColorKeyword",
-      "value": "'subdued' | 'base' | 'strong'",
-      "description": ""
-    }
-  },
-  "ToneKeyword": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "ToneKeyword",
-      "value": "'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical' | 'accent' | 'custom'",
-      "description": "Tone is a property for defining the color treatment of a component.\n\nA tone can apply a grouping of colors to a component. For example, critical may have a specific text color and background color.\n\nIn some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component."
-    }
-  },
-  "TextType": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "TextType",
-      "value": "'address' | 'redundant' | 'mark' | 'emphasis' | 'offset' | 'strong' | 'small' | 'generic'",
+      "value": "string | {\n      /** The subtitle text. */\n      content: string;\n      /**\n       * The semantic meaning of the subtitle, as on `s-text`.\n       *\n       * @default 'auto'\n       */\n      tone?:\n        | 'auto'\n        | 'neutral'\n        | 'info'\n        | 'success'\n        | 'warning'\n        | 'critical'\n        | 'caution';\n      /**\n       * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.\n       *\n       * @default 'base'\n       */\n      color?: 'base' | 'strong' | 'subdued';\n    }",
       "description": ""
     }
   },
@@ -6347,6 +6214,15 @@
       "value": "interface Text {\n  /**\n   * Modify the color to be more or less intense.\n   * @default 'base'\n   */\n  color?: ColorKeyword;\n  /**\n   * Provide semantic meaning and default styling to the text.\n   *\n   * Other presentation properties on Text override the default styling.\n   * @default 'generic'\n   */\n  type?: 'strong' | 'small' | 'generic';\n  /**\n   * Sets the tone of the component, based on the intention of the information being conveyed.\n   * @default 'auto'\n   */\n  tone?:\n    | 'auto'\n    | 'neutral'\n    | 'info'\n    | 'success'\n    | 'caution'\n    | 'warning'\n    | 'critical';\n  /** A unique identifier for the element. */\n  id?: string;\n}"
     }
   },
+  "ColorKeyword": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ColorKeyword",
+      "value": "'subdued' | 'base' | 'strong'",
+      "description": ""
+    }
+  },
   "ScrollBox": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -6837,6 +6713,15 @@
         }
       ],
       "value": "interface Icon {\n  /**\n   * The type of icon to display.\n   * @default ''\n   */\n  type?: SupportedIconNames;\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * Sets the tone of the icon, based on the intention of the information being conveyed.\n   * @default 'auto'\n   */\n  tone?: ToneKeyword;\n  /**\n   * Modify the color to be more or less intense.\n   * @default 'base'\n   */\n  color?: ColorKeyword;\n  /**\n   * Adjusts the size of the icon.\n   * @default 'base'\n   */\n  size?: SizeKeyword;\n}"
+    }
+  },
+  "ToneKeyword": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ToneKeyword",
+      "value": "'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical' | 'accent' | 'custom'",
+      "description": "Tone is a property for defining the color treatment of a component.\n\nA tone can apply a grouping of colors to a component. For example, critical may have a specific text color and background color.\n\nIn some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component."
     }
   },
   "SupportedIconNames": {
