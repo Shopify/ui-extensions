@@ -9,6 +9,7 @@
     "add-box-private-positioning-types",
     "admin-component-type-drift",
     "admin-number-empty-state-types",
+    "admin-progress-component-definitions",
     "admin-section-header-slots",
     "bright-comets-rise",
     "deprecate-localization-market",
@@ -31,6 +32,7 @@
     "pos-storage-current-required",
     "pos-validation-target-grammar",
     "print-action-should-render-detail-targets",
+    "remove-pos-session-staff-member-id",
     "tidy-buttons-auto"
   ]
 }

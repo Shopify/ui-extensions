@@ -1,5 +1,18 @@
 # @shopify/ui-extensions-tester
 
+## 2026.10.0-rc.11
+
+### Minor Changes
+
+- [#4686](https://github.com/Shopify/ui-extensions/pull/4686) [`9c1c670`](https://github.com/Shopify/ui-extensions/commit/9c1c670b052a39518083c41a4e8bca36c8182722) Thanks [@IHu04](https://github.com/IHu04)! - Remove the deprecated `session.currentSession.staffMemberId` property from POS UI extensions in API version 2026-10. Use the reactive `session.staffMember` signal to access the staff member who is currently pinned in to POS.
+
+  This is a versioned breaking change. API versions 2026-07 and earlier retain their published types. The separate receipt event `session.staffMemberId` field is unchanged.
+
+### Patch Changes
+
+- Updated dependencies [[`eb63a47`](https://github.com/Shopify/ui-extensions/commit/eb63a47ef412cee1068db8679059f2d507453f40), [`9c1c670`](https://github.com/Shopify/ui-extensions/commit/9c1c670b052a39518083c41a4e8bca36c8182722)]:
+  - @shopify/ui-extensions@2026.10.0-rc.11
+
 ## 2026.10.0-rc.10
 
 ### Minor Changes
