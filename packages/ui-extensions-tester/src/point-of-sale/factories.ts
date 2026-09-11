@@ -59,7 +59,6 @@ function createSessionCurrentSession(): Session {
     userId: 1,
     shopDomain: 'mock-shop.myshopify.com',
     locationId: 1,
-    staffMemberId: 1,
     currency: 'USD',
     posVersion: '9.0.0',
   };
@@ -109,7 +108,10 @@ function createMockBaseEventData() {
     connectivity: createConnectivityApiContent(),
     device: {name: 'Mock POS Device', deviceId: 1, isTablet: false},
     locale: 'en-US',
-    session: createSessionCurrentSession(),
+    session: {
+      ...createSessionCurrentSession(),
+      staffMemberId: 1,
+    },
     storage: createStorage(),
   };
 }

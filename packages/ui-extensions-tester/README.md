@@ -401,6 +401,8 @@ Imports and executes the extension module's default export, rendering the extens
 
 A mock `shopify` global, typed correctly for the target under test. You can mutate any property.
 
+For POS targets using the Session API in 2026-10, mock the pinned-in staff member through `extension.shopify.session.staffMember.value`. The deprecated `session.currentSession.staffMemberId` is no longer exposed. Receipt targets retain their separate `session.staffMemberId` snapshot. See the [POS session guide](./src/point-of-sale/README.md#mocking-session-data).
+
 When testing `admin.app.home.render`, the mock `shopify` object also includes `toast`, `app`, `loading()`, `tools`, and `intents.request`.
 
 When testing `admin.app.intent.render`, the mock `shopify.intents` object also includes `response.ok()`, `response.error()`, and `response.closed()`.

@@ -1904,21 +1904,12 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/session.ts",
           "syntaxKind": "PropertySignature",
-          "name": "staffMemberId",
-          "value": "number",
-          "description": "The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.",
-          "isOptional": true,
-          "deprecationMessage": "Use `session.staffMember` on the Session API instead."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/session.ts",
-          "syntaxKind": "PropertySignature",
           "name": "userId",
           "value": "number",
           "description": "The user ID associated with the Shopify account currently authenticated on POS."
         }
       ],
-      "value": "export interface Session {\n  /**\n   * The shop ID associated with the shop currently logged into POS.\n   */\n  shopId: number;\n\n  /**\n   * The user ID associated with the Shopify account currently authenticated on POS.\n   */\n  userId: number;\n\n  /**\n   * The shop domain associated with the shop currently logged into POS.\n   */\n  shopDomain: string;\n\n  /**\n   * The location ID associated with the POS device's current location.\n   */\n  locationId: number;\n\n  /**\n   * The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.\n   *\n   * @deprecated Use `session.staffMember` on the Session API instead.\n   */\n  staffMemberId?: number;\n\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: CurrencyCode;\n\n  /**\n   * The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running.\n   */\n  posVersion: string;\n}"
+      "value": "export interface Session {\n  /**\n   * The shop ID associated with the shop currently logged into POS.\n   */\n  shopId: number;\n\n  /**\n   * The user ID associated with the Shopify account currently authenticated on POS.\n   */\n  userId: number;\n\n  /**\n   * The shop domain associated with the shop currently logged into POS.\n   */\n  shopDomain: string;\n\n  /**\n   * The location ID associated with the POS device's current location.\n   */\n  locationId: number;\n\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: CurrencyCode;\n\n  /**\n   * The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running.\n   */\n  posVersion: string;\n}"
     }
   },
   "CurrencyCode": {
@@ -1942,7 +1933,7 @@
           "syntaxKind": "PropertySignature",
           "name": "currentSession",
           "value": "Session",
-          "description": "Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change."
+          "description": "Provides information about the current POS session including shop details, user authentication, location data, currency settings, and POS version. Use `session.staffMember` to access the staff member currently pinned into POS and subscribe to staff member changes."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/session-api/session-api.ts",
@@ -1978,7 +1969,7 @@
           "description": "Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in."
         }
       ],
-      "value": "export interface SessionApiContent {\n  /**\n   * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.\n   */\n  currentSession: Session;\n  /**\n   * Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in.\n   */\n  staffMember: ReadonlySignalLike<StaffMember | undefined>;\n  /**\n   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.\n   */\n  getSessionToken: () => Promise<string | undefined>;\n  /**\n   * The numeric ID of the device running this session.\n   *\n   * Use this to construct a [GID](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.\n   *\n   * @example 123456\n   * @see [Global IDs documentation](/docs/api/usage/gids) for more about GID format and structure\n   * @see [device.getDeviceId()](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for physical device identifier (UUID format)\n   */\n  deviceId: number;\n}"
+      "value": "export interface SessionApiContent {\n  /**\n   * Provides information about the current POS session including shop details, user authentication, location data, currency settings, and POS version. Use `session.staffMember` to access the staff member currently pinned into POS and subscribe to staff member changes.\n   */\n  currentSession: Session;\n  /**\n   * Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in.\n   */\n  staffMember: ReadonlySignalLike<StaffMember | undefined>;\n  /**\n   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.\n   */\n  getSessionToken: () => Promise<string | undefined>;\n  /**\n   * The numeric ID of the device running this session.\n   *\n   * Use this to construct a [GID](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) to query device details via GraphQL Admin API.\n   *\n   * @example 123456\n   * @see [Global IDs documentation](/docs/api/usage/gids) for more about GID format and structure\n   * @see [device.getDeviceId()](/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for physical device identifier (UUID format)\n   */\n  deviceId: number;\n}"
     }
   },
   "SessionApi": {
@@ -7842,11 +7833,11 @@
           "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
           "syntaxKind": "PropertySignature",
           "name": "session",
-          "value": "Session",
+          "value": "ReceiptSessionSnapshot",
           "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
         }
       ],
-      "value": "export interface BaseData {\n  /**\n   * The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored.\n   */\n  connectivity: ConnectivityApiContent;\n  /**\n   * Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations.\n   */\n  device: Device;\n  /**\n   * The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings.\n   */\n  locale: string;\n  /**\n   * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.\n   */\n  session: Session;\n}"
+      "value": "export interface BaseData {\n  /**\n   * The current Internet connectivity state of the POS device. Indicates whether the device is connected to or disconnected from the Internet. This state updates in real-time as connectivity changes, allowing extensions to adapt behavior for offline scenarios, show connectivity warnings, or queue operations for when connectivity is restored.\n   */\n  connectivity: ConnectivityApiContent;\n  /**\n   * Comprehensive information about the physical POS device where the extension is currently running. Includes the device name, unique device ID, and form factor information (tablet vs other). This data is static for the session and helps extensions adapt to different device types, log device-specific information, or implement device-based configurations.\n   */\n  device: Device;\n  /**\n   * The [IETF BCP 47](https://en.wikipedia.org/wiki/IETF_language_tag) locale string for the current POS session (for example, `\"en-US\"`, `\"fr-CA\"`, `\"de-DE\"`). This indicates the merchant's language and regional preferences. Commonly used for internationalization (i18n), locale-specific date/time/number formatting, translating UI text, and providing localized content. The locale remains constant for the session and reflects the language selected in POS settings.\n   */\n  locale: string;\n  /**\n   * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.\n   */\n  session: ReceiptSessionSnapshot;\n}"
     }
   },
   "Device": {
@@ -8243,7 +8234,7 @@
           "filePath": "src/surfaces/point-of-sale/event/data/TransactionCompleteData.ts",
           "syntaxKind": "PropertySignature",
           "name": "session",
-          "value": "Session",
+          "value": "ReceiptSessionSnapshot",
           "description": "Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members."
         },
         {
@@ -9834,6 +9825,67 @@
         }
       ],
       "value": "export interface Docs_AppBackgroundEventMethods\n  extends Pick<\n    BackgroundShopifyGlobal,\n    'addEventListener' | 'removeEventListener'\n  > {}"
+    }
+  },
+  "ReceiptSessionSnapshot": {
+    "src/surfaces/point-of-sale/event/data/BaseData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+      "name": "ReceiptSessionSnapshot",
+      "description": "A snapshot of the POS session provided to receipt targets.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currency",
+          "value": "CurrencyCode",
+          "description": "The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locationId",
+          "value": "number",
+          "description": "The location ID associated with the POS device's current location."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "posVersion",
+          "value": "string",
+          "description": "The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shopDomain",
+          "value": "string",
+          "description": "The shop domain associated with the shop currently logged into POS."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shopId",
+          "value": "number",
+          "description": "The shop ID associated with the shop currently logged into POS."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "staffMemberId",
+          "value": "number",
+          "description": "The ID of the staff member pinned into POS for this receipt event. This snapshot is separate from the reactive `session.staffMember` on the Session API.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "userId",
+          "value": "number",
+          "description": "The user ID associated with the Shopify account currently authenticated on POS."
+        }
+      ],
+      "value": "export interface ReceiptSessionSnapshot extends Session {\n  /**\n   * The ID of the staff member pinned into POS for this receipt event. This\n   * snapshot is separate from the reactive `session.staffMember` on the Session API.\n   */\n  staffMemberId?: number;\n}"
     }
   }
 }
