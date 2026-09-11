@@ -4,13 +4,27 @@ import {createStorage} from '../point-of-sale';
 // The deprecated static staffMemberId was removed in 2026-10. Staff identity is
 // exposed reactively through session.staffMember instead.
 describe('POS session factory', () => {
-  it('does not expose currentSession.staffMemberId', () => {
-    const api = createMockPosTargetApi('pos.home.tile.render');
+  it.each([
+    'pos.home.tile.render',
+    'pos.home.modal.render',
+    'pos.app.ready.data',
+  ] as const)('%s does not expose currentSession.staffMemberId', (target) => {
+    const api = createMockPosTargetApi(target);
 
     expect(api.session.currentSession).not.toHaveProperty('staffMemberId');
     // @ts-expect-error Removed from the 2026-10 Session type.
     expect(api.session.currentSession.staffMemberId).toBeUndefined();
     expect(api.session.staffMember.value).toStrictEqual({id: 1});
+  });
+
+  it.each([
+    'pos.receipt-header.block.render',
+    'pos.receipt-footer.block.render',
+  ] as const)('%s preserves the receipt session.staffMemberId', (target) => {
+    const api = createMockPosTargetApi(target);
+
+    expect(api.session.staffMemberId).toBe(1);
+    expect(api.session).not.toHaveProperty('currentSession');
   });
 });
 

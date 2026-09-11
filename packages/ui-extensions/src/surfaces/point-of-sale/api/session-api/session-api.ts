@@ -7,7 +7,7 @@ import type {Session, StaffMember} from '../../types/session';
  */
 export interface SessionApiContent {
   /**
-   * Provides comprehensive information about the current POS session including shop details, user authentication, location data, staff member information, currency settings, and POS version. This data is static for the duration of the session and updates when users switch locations or staff members change.
+   * Provides information about the current POS session including shop details, user authentication, location data, currency settings, and POS version. Use `session.staffMember` to access the staff member currently pinned into POS and subscribe to staff member changes.
    */
   currentSession: Session;
   /**

@@ -24,5 +24,11 @@ export interface BaseData {
   /**
    * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.
    */
-  session: Session;
+  session: Session & {
+    /**
+     * The ID of the staff member pinned into POS for this event. This snapshot
+     * is separate from the reactive `session.staffMember` on the Session API.
+     */
+    staffMemberId?: number;
+  };
 }

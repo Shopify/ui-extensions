@@ -108,7 +108,10 @@ function createMockBaseEventData() {
     connectivity: createConnectivityApiContent(),
     device: {name: 'Mock POS Device', deviceId: 1, isTablet: false},
     locale: 'en-US',
-    session: createSessionCurrentSession(),
+    session: {
+      ...createSessionCurrentSession(),
+      staffMemberId: 1,
+    },
     storage: createStorage(),
   };
 }
