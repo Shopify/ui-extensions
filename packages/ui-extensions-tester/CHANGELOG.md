@@ -1,5 +1,18 @@
 # @shopify/ui-extensions-tester
 
+## 2026.10.0-rc.10
+
+### Minor Changes
+
+- [#4671](https://github.com/Shopify/ui-extensions/pull/4671) [`6d1cd69`](https://github.com/Shopify/ui-extensions/commit/6d1cd693a0b77c14a1d3f4f43a9677a78d01fb1e) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - `extension.dispatch()` now stamps the dispatched event with its `type`, matching what the POS runtime delivers to `shopify.addEventListener` listeners, and accepts the payload without `type`. Assertions that compared a listener's argument to the raw payload should now expect the added `type` field.
+
+### Patch Changes
+
+- [#4672](https://github.com/Shopify/ui-extensions/pull/4672) [`432d2c9`](https://github.com/Shopify/ui-extensions/commit/432d2c963eb1d9d35bcdd1f660ceb757c764bcc6) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `cart.updateLineItemQuantity` to the POS Cart API for API version 2026-10. The method updates one line item's quantity while preserving its properties, discounts, and selling plans.
+
+- Updated dependencies [[`0b0f4c0`](https://github.com/Shopify/ui-extensions/commit/0b0f4c0466dff17850f11b15d0175821bcc321ac), [`6d1cd69`](https://github.com/Shopify/ui-extensions/commit/6d1cd693a0b77c14a1d3f4f43a9677a78d01fb1e), [`432d2c9`](https://github.com/Shopify/ui-extensions/commit/432d2c963eb1d9d35bcdd1f660ceb757c764bcc6)]:
+  - @shopify/ui-extensions@2026.10.0-rc.10
+
 ## 2026.10.0-rc.9
 
 ### Patch Changes
