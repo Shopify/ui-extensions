@@ -5,6 +5,18 @@ import type {
 } from '../../../point-of-sale';
 
 /**
+ * A snapshot of the POS session provided to receipt targets.
+ * @publicDocs
+ */
+export interface BaseDataSession extends Session {
+  /**
+   * The ID of the staff member pinned into POS for this receipt event. This
+   * snapshot is separate from the reactive `session.staffMember` on the Session API.
+   */
+  staffMemberId?: number;
+}
+
+/**
  * Base data object provided to all extension targets containing device information, session context, and connectivity state. This data is available at extension initialization and provides essential context about the runtime environment.
  * @publicDocs
  */
@@ -24,5 +36,5 @@ export interface BaseData {
   /**
    * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.
    */
-  session: Session;
+  session: BaseDataSession;
 }

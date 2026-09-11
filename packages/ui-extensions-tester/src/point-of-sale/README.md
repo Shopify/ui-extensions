@@ -10,6 +10,12 @@ import {
 } from '@shopify/ui-extensions-tester/point-of-sale';
 ```
 
+## Mocking session data
+
+For targets using the Session API in 2026-10, the mock exposes `session.staffMember.value` with a default of `{id: 1}`. Set `extension.shopify.session.staffMember.value` before rendering to test a different pinned-in staff member, or set it to `undefined` to test when no staff member is pinned in.
+
+`session.currentSession.staffMemberId` is no longer exposed. Receipt header and footer targets retain their separate `session.staffMemberId` snapshot, which defaults to `1`.
+
 ## 🛒 Mocking cart line items
 
 Use `createCartLineItem()` to build POS cart line data, then assign it to the cart mock:
