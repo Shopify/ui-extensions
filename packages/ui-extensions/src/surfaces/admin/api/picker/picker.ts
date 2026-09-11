@@ -58,7 +58,10 @@ export type Tone = 'info' | 'success' | 'warning' | 'critical';
  * The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished.
  * @publicDocs
  */
-export type Progress = 'incomplete' | 'partiallyComplete' | 'complete';
+export type PickerBadgeProgress =
+  | 'incomplete'
+  | 'partiallyComplete'
+  | 'complete';
 
 /**
  * A single data point that can appear in a picker table cell. Can be text, a number, or undefined if the cell should be empty.
@@ -75,7 +78,7 @@ export interface PickerBadge {
   /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */
   tone?: Tone;
   /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */
-  progress?: Progress;
+  progress?: PickerBadgeProgress;
 }
 
 /**

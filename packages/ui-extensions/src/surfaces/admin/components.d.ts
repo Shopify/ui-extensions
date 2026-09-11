@@ -3617,6 +3617,43 @@ interface PopoverProps$1
    */
   children?: ComponentChildren;
 }
+interface ProgressProps$1 extends GlobalProps {
+  /**
+   * A label that describes the purpose of the progress. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context.
+   *
+   * Use it to provide context of what is progressing.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Sets the tone of the progress, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
+  tone?: ToneKeyword;
+  /**
+   * Specifies how much of the task has been completed.
+   *
+   * It must be a valid floating point number between `0` and `max`, or between `0` and `1` if `max` is omitted.
+   * If there is no value attribute, the progress bar is indeterminate;
+   * this indicates that an activity is ongoing with no indication of how long it is expected to take.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#progress_bar
+   */
+  value?: number;
+  /**
+   * This attribute describes how much work the task indicated by the progress element requires.
+   *
+   * The `max` attribute, if present, must have a value greater than `0` and be a valid floating point number.
+   *
+   * @default 1
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max
+   */
+  max?: number;
+}
 interface QueryContainerProps$1 extends GlobalProps {
   /**
    * The content displayed within the query container component, which enables container queries for responsive styling based on the container's size rather than the viewport.
@@ -8054,6 +8091,78 @@ export interface PopoverJSXProps
   onAfterToggle?: (event: CallbackToggleEvent<typeof tagName$p>) => void | null;
 }
 
+export interface ProgressProps
+  extends Pick<
+    ProgressProps$1,
+    'accessibilityLabel' | 'max' | 'tone' | 'value'
+  > {
+  /**
+   * A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey what is progressing.
+   */
+  accessibilityLabel: Required<ProgressProps$1>['accessibilityLabel'];
+  /**
+   * How much work the task requires in total. Must be greater than `0`.
+   *
+   * @default 1
+   */
+  max: Required<ProgressProps$1>['max'];
+  /**
+   * The semantic meaning and color treatment of the component.
+   *
+   * - `auto`: Automatically determined based on context.
+   * - `neutral`: General information without specific intent.
+   * - `info`: Informational content or helpful tips.
+   * - `success`: Positive outcomes or successful states.
+   * - `caution`: Advisory notices that need attention.
+   * - `warning`: Important warnings about potential issues.
+   * - `critical`: Urgent problems or destructive actions.
+   *
+   * @default 'auto'
+   */
+  tone: Extract<
+    ProgressProps$1['tone'],
+    'auto' | 'neutral' | 'info' | 'success' | 'caution' | 'warning' | 'critical'
+  >;
+  /**
+   * How much of the task has been completed, as a number between `0` and `max`.
+   *
+   * Without a `value` the progress is indeterminate: the task is ongoing with no
+   * indication of how long it is expected to take.
+   *
+   * @default 0
+   */
+  value: Required<ProgressProps$1>['value'];
+}
+
+/**
+ * Configure the following properties on the progress component.
+ * @publicDocs
+ */
+declare class Progress extends PreactCustomElement implements ProgressProps {
+  accessor accessibilityLabel: string;
+  accessor max: ProgressProps['max'];
+  accessor tone: ProgressProps['tone'];
+  accessor value: ProgressProps['value'];
+  constructor();
+}
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$progress]: Progress;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$progress]: ProgressJSXProps & PreactBaseElementProps<Progress>;
+    }
+  }
+}
+
+declare const tagName$progress = 's-progress';
+export interface ProgressJSXProps
+  extends Partial<ProgressProps>,
+    Pick<ProgressProps$1, 'id'> {}
+
 export interface QueryContainerProps
   extends Required<Pick<QueryContainerProps$1, 'id' | 'containerName'>> {}
 
@@ -9472,6 +9581,7 @@ export {
   Paragraph,
   PasswordField,
   Popover,
+  Progress,
   QueryContainer,
   SearchField,
   Section,
@@ -9536,6 +9646,7 @@ export type {
   ParagraphJSXProps,
   PasswordFieldJSXProps,
   PopoverJSXProps,
+  ProgressJSXProps,
   QueryContainerJSXProps,
   SearchFieldJSXProps,
   SectionJSXProps,
@@ -11398,6 +11509,20 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName$p]: PopoverJSXProps & ReactBaseElementPropsWithChildren<Popover>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$progress]: ProgressJSXProps & ReactBaseElementProps<Progress>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$progress]: ProgressJSXProps & ReactBaseElementProps<Progress>;
     }
   }
 }

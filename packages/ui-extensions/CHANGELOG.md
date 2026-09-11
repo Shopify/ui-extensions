@@ -1,5 +1,15 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.10
+
+### Minor Changes
+
+- [#4684](https://github.com/Shopify/ui-extensions/pull/4684) [`0b0f4c0`](https://github.com/Shopify/ui-extensions/commit/0b0f4c0466dff17850f11b15d0175821bcc321ac) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the Admin `Progress` component to all extension targets.
+
+- [#4671](https://github.com/Shopify/ui-extensions/pull/4671) [`6d1cd69`](https://github.com/Shopify/ui-extensions/commit/6d1cd693a0b77c14a1d3f4f43a9677a78d01fb1e) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add the POS background `scan` host event types: `POS_EVENT_NAMES.SCAN`, a public `ScanEvent` payload with guaranteed decoded `data` and normalized `source` (`camera`, `external`, or `embedded`), and the matching `ShopifyEventMap` entry so `pos.app.ready.data` extensions can register `shopify.addEventListener('scan', ...)`. The event is delivered after POS has finished handling the scan itself.
+
+- [#4672](https://github.com/Shopify/ui-extensions/pull/4672) [`432d2c9`](https://github.com/Shopify/ui-extensions/commit/432d2c963eb1d9d35bcdd1f660ceb757c764bcc6) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `cart.updateLineItemQuantity` to the POS Cart API for API version 2026-10. The method updates one line item's quantity while preserving its properties, discounts, and selling plans.
+
 ## 2026.10.0-rc.9
 
 ### Minor Changes
