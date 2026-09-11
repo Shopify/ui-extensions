@@ -5508,6 +5508,7 @@ type POSListRowEnd = {
 };
 /**
  * The event fired when a row is activated. `detail.id` is the `id` of the activated row.
+ * Errors thrown or promises rejected in the listener stay in the extension; POS does not report them.
  */
 type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
   detail: {id: string};
