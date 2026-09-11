@@ -107,7 +107,7 @@ export type POSListToggleSwitch = {
   /**
    * Whether the toggle switch is disabled.
    *
-   * A disabled toggle switch also blocks activation of its row, so the row's `onClick` doesn't run.
+   * A disabled toggle switch also blocks activation of its row, so the row doesn't fire `rowclick`.
    *
    * @default false
    */
@@ -140,13 +140,10 @@ export type POSListRowEnd = {
   toggleSwitch?: POSListToggleSwitch;
 };
 /**
- * The event passed to a row's `onClick`.
- *
- * Rows are data rather than elements, so this is a plain object and not a DOM `Event`:
- * it carries no `currentTarget` element and has no `preventDefault()`.
+ * The event fired when a row is activated. `detail.id` is the `id` of the activated row.
  */
-export type POSListRowClickEvent = {
-  type: 'click';
+export type POSListRowClickEvent = CallbackEvent<typeof tagName> & {
+  detail: {id: string};
 };
 export type POSListRow = {
   /** A unique identifier for the row. */
@@ -154,11 +151,15 @@ export type POSListRow = {
   /** The primary content displayed at the start of the row. */
   start: POSListRowStart;
   /**
-   * Callback invoked when the row is activated.
+   * What the row is.
    *
-   * When provided, the row is interactive.
+   * - `auto`: A button when the list handles `rowclick`, otherwise static text.
+   * - `text`: Static content that can't be activated.
+   * - `button`: Activating the row fires `rowclick`.
+   *
+   * @default 'auto'
    */
-  onClick?: (event: POSListRowClickEvent) => void;
+  type?: 'auto' | 'text' | 'button';
   /** Optional content displayed at the end of the row. */
   end?: POSListRowEnd;
 };
@@ -192,6 +193,8 @@ export interface POSListJSXProps {
    * @default false
    */
   loadingMore?: boolean;
+  /** Callback when a row is activated. `event.detail.id` identifies the row. */
+  onRowClick?: ((event: POSListRowClickEvent) => void) | null;
   /** Callback when more rows should be loaded. */
   onLoadMore?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /** Content displayed before the rows as part of the list's scrollable content. */
