@@ -37,6 +37,7 @@ export type StandardComponents =
   | 'Paragraph'
   | 'PasswordField'
   | 'Popover'
+  | 'Progress'
   | 'QueryContainer'
   | 'SearchField'
   | 'Section'
