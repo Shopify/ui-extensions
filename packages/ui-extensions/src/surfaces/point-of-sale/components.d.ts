@@ -5492,22 +5492,24 @@ type POSListRowStart = {
   /** The image displayed at the start of the row. */
   image?: POSListRowImage;
 };
-type POSListRowEnd = {
-  /** Supporting text displayed at the end of the row. */
-  label?: string;
-  /**
-   * Whether to display a chevron at the end of the row.
-   *
-   * @default false
-   */
-  showChevron?: boolean;
-  /**
-   * A toggle switch displayed at the end of the row.
-   *
-   * When provided, the toggle switch replaces `label` and `showChevron`.
-   */
-  toggleSwitch?: POSListToggleSwitch;
-};
+type POSListRowEnd =
+  | {
+      /** Supporting text displayed at the end of the row. */
+      label?: string;
+      /**
+       * Whether to display a chevron at the end of the row.
+       *
+       * @default false
+       */
+      showChevron?: boolean;
+      toggleSwitch?: never;
+    }
+  | {
+      label?: never;
+      showChevron?: never;
+      /** A toggle switch displayed at the end of the row, in place of trailing text and chevron. */
+      toggleSwitch: POSListToggleSwitch;
+    };
 /**
  * The event fired when a row is activated. `detail.id` is the `id` of the activated row.
  * Errors thrown or promises rejected in the listener stay in the extension; POS does not report them.

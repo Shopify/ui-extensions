@@ -5069,35 +5069,95 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowEnd",
-      "value": "{\n  /** Supporting text displayed at the end of the row. */\n  label?: string;\n  /**\n   * Whether to display a chevron at the end of the row.\n   *\n   * @default false\n   */\n  showChevron?: boolean;\n  /**\n   * A toggle switch displayed at the end of the row.\n   *\n   * When provided, the toggle switch replaces `label` and `showChevron`.\n   */\n  toggleSwitch?: POSListToggleSwitch;\n}",
-      "description": "",
+      "value": "{\n      /** Supporting text displayed at the end of the row. */\n      label?: string;\n      /**\n       * Whether to display a chevron at the end of the row.\n       *\n       * @default false\n       */\n      showChevron?: boolean;\n      toggleSwitch?: never;\n    } | {\n      label?: never;\n      showChevron?: never;\n      /** A toggle switch displayed at the end of the row, in place of trailing text and chevron. */\n      toggleSwitch: POSListToggleSwitch;\n    }",
+      "description": ""
+    }
+  },
+  "Switch": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Switch",
+      "description": "Allows merchants to toggle a setting on or off.",
+      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "label",
+          "name": "accessibilityLabel",
           "value": "string",
-          "description": "Supporting text displayed at the end of the row.",
+          "description": "A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced. This can also be used to display a control without a visual label, while still providing context to users using screen readers.",
           "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "showChevron",
+          "name": "checked",
           "value": "boolean",
-          "description": "Whether to display a chevron at the end of the row.",
+          "description": "Whether the control is active.",
           "isOptional": true,
           "defaultValue": "false"
         },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "toggleSwitch",
-          "value": "POSListToggleSwitch",
-          "description": "A toggle switch displayed at the end of the row.\n\nWhen provided, the toggle switch replaces `label` and `showChevron`.",
+          "name": "defaultChecked",
+          "value": "boolean",
+          "description": "Whether the control is active by default.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "details",
+          "value": "string",
+          "description": "Additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user.\n\nThis will also be exposed to screen reader users.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "disabled",
+          "value": "boolean",
+          "description": "Disables the control, disallowing any interaction.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "error",
+          "value": "string",
+          "description": "Indicate an error to the user. The field will be given a specific stylistic treatment to communicate problems that have to be resolved immediately.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "label",
+          "value": "string",
+          "description": "Visual content to use as the control label.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "labelAccessibilityVisibility",
+          "value": "'visible' | 'exclusive'",
+          "description": "Changes the visibility of the component's label.\n\n- `visible`: the label is visible to all users.\n- `exclusive`: the label is visually hidden but remains in the accessibility tree.",
+          "isOptional": true,
+          "defaultValue": "'visible'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The value used in form data when the control is checked.",
           "isOptional": true
         }
-      ]
+      ],
+      "value": "interface Switch {\n  /** The value used in form data when the control is checked. */\n  value?: string;\n  /**\n   * Whether the control is active by default.\n   * @implementation `defaultChecked` reflects to the `checked` attribute.\n   * @default false\n   */\n  defaultChecked?: boolean;\n  /**\n   * Disables the control, disallowing any interaction.\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.\n   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.\n   */\n  accessibilityLabel?: string;\n  /**\n   * Whether the control is active.\n   * @default false\n   */\n  checked?: boolean;\n  /** Visual content to use as the control label. */\n  label?: string;\n  /**\n   * Additional text to provide context or guidance for the field.\n   * This text is displayed along with the field and its label\n   * to offer more information or instructions to the user.\n   *\n   * This will also be exposed to screen reader users.\n   */\n  details?: string;\n  /**\n   * Indicate an error to the user. The field will be given a specific stylistic treatment\n   * to communicate problems that have to be resolved immediately.\n   */\n  error?: string;\n  /**\n   * Changes the visibility of the component's label.\n   *\n   * - `visible`: the label is visible to all users.\n   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.\n   * @default 'visible'\n   */\n  labelAccessibilityVisibility?: ExtractStrict<\n    'visible' | 'hidden' | 'exclusive',\n    'visible' | 'exclusive'\n  >;\n}"
     }
   },
   "POSListToggleSwitch": {
@@ -5620,93 +5680,6 @@
         }
       ],
       "value": "interface SwitchEvents {\n  input?: (event: CallbackEvent<typeof tagName$6>) => void;\n  change?: (event: CallbackEvent<typeof tagName$6>) => void;\n}"
-    }
-  },
-  "Switch": {
-    "src/surfaces/point-of-sale/components.ts": {
-      "filePath": "src/surfaces/point-of-sale/components.ts",
-      "name": "Switch",
-      "description": "Allows merchants to toggle a setting on or off.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "accessibilityLabel",
-          "value": "string",
-          "description": "A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced. This can also be used to display a control without a visual label, while still providing context to users using screen readers.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "checked",
-          "value": "boolean",
-          "description": "Whether the control is active.",
-          "isOptional": true,
-          "defaultValue": "false"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "defaultChecked",
-          "value": "boolean",
-          "description": "Whether the control is active by default.",
-          "isOptional": true,
-          "defaultValue": "false"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "details",
-          "value": "string",
-          "description": "Additional text to provide context or guidance for the field. This text is displayed along with the field and its label to offer more information or instructions to the user.\n\nThis will also be exposed to screen reader users.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "disabled",
-          "value": "boolean",
-          "description": "Disables the control, disallowing any interaction.",
-          "isOptional": true,
-          "defaultValue": "false"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "error",
-          "value": "string",
-          "description": "Indicate an error to the user. The field will be given a specific stylistic treatment to communicate problems that have to be resolved immediately.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "label",
-          "value": "string",
-          "description": "Visual content to use as the control label.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "labelAccessibilityVisibility",
-          "value": "'visible' | 'exclusive'",
-          "description": "Changes the visibility of the component's label.\n\n- `visible`: the label is visible to all users.\n- `exclusive`: the label is visually hidden but remains in the accessibility tree.",
-          "isOptional": true,
-          "defaultValue": "'visible'"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "value",
-          "value": "string",
-          "description": "The value used in form data when the control is checked.",
-          "isOptional": true
-        }
-      ],
-      "value": "interface Switch {\n  /** The value used in form data when the control is checked. */\n  value?: string;\n  /**\n   * Whether the control is active by default.\n   * @implementation `defaultChecked` reflects to the `checked` attribute.\n   * @default false\n   */\n  defaultChecked?: boolean;\n  /**\n   * Disables the control, disallowing any interaction.\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.\n   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.\n   */\n  accessibilityLabel?: string;\n  /**\n   * Whether the control is active.\n   * @default false\n   */\n  checked?: boolean;\n  /** Visual content to use as the control label. */\n  label?: string;\n  /**\n   * Additional text to provide context or guidance for the field.\n   * This text is displayed along with the field and its label\n   * to offer more information or instructions to the user.\n   *\n   * This will also be exposed to screen reader users.\n   */\n  details?: string;\n  /**\n   * Indicate an error to the user. The field will be given a specific stylistic treatment\n   * to communicate problems that have to be resolved immediately.\n   */\n  error?: string;\n  /**\n   * Changes the visibility of the component's label.\n   *\n   * - `visible`: the label is visible to all users.\n   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.\n   * @default 'visible'\n   */\n  labelAccessibilityVisibility?: ExtractStrict<\n    'visible' | 'hidden' | 'exclusive',\n    'visible' | 'exclusive'\n  >;\n}"
     }
   },
   "TabsEvents": {
