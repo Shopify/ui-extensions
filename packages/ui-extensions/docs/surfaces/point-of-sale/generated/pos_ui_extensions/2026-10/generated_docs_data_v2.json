@@ -5027,7 +5027,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRow",
-      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * What the row is.\n   *\n   * - `auto`: A button when the list handles `rowclick`, otherwise static text.\n   * - `text`: Static content that can't be activated.\n   * - `button`: Activating the row fires `rowclick`.\n   *\n   * @default 'auto'\n   */\n  type?: 'auto' | 'text' | 'button';\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
+      "value": "{\n  /** A unique identifier for the row. */\n  id: string;\n  /** The primary content displayed at the start of the row. */\n  start: POSListRowStart;\n  /**\n   * What the row is.\n   *\n   * - `button`: Activating the row fires `rowclick`.\n   * - `text`: Static content that can't be activated.\n   *\n   * @default 'button'\n   */\n  type?: 'text' | 'button';\n  /** Optional content displayed at the end of the row. */\n  end?: POSListRowEnd;\n}",
       "description": "",
       "members": [
         {
@@ -5056,10 +5056,10 @@
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "type",
-          "value": "'auto' | 'text' | 'button'",
-          "description": "What the row is.\n\n- `auto`: A button when the list handles `rowclick`, otherwise static text.\n- `text`: Static content that can't be activated.\n- `button`: Activating the row fires `rowclick`.",
+          "value": "'text' | 'button'",
+          "description": "What the row is.\n\n- `button`: Activating the row fires `rowclick`.\n- `text`: Static content that can't be activated.",
           "isOptional": true,
-          "defaultValue": "'auto'"
+          "defaultValue": "'button'"
         }
       ]
     }

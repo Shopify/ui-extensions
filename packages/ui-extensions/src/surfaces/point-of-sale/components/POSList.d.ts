@@ -150,13 +150,12 @@ export type POSListRow = {
   /**
    * What the row is.
    *
-   * - `auto`: A button when the list handles `rowclick`, otherwise static text.
-   * - `text`: Static content that can't be activated.
    * - `button`: Activating the row fires `rowclick`.
+   * - `text`: Static content that can't be activated.
    *
-   * @default 'auto'
+   * @default 'button'
    */
-  type?: 'auto' | 'text' | 'button';
+  type?: 'text' | 'button';
   /** Optional content displayed at the end of the row. */
   end?: POSListRowEnd;
 };
