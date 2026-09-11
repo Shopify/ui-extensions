@@ -5435,6 +5435,175 @@ declare module 'preact' {
   }
 }
 
+declare const posListTagName = 's-pos-list';
+type POSListImageDisplayStrategy = 'auto' | 'always' | 'never';
+type POSListRowSubtitle =
+  | string
+  | {
+      /** The subtitle text. */
+      content: string;
+      /**
+       * The semantic meaning of the subtitle, as on `s-text`.
+       *
+       * @default 'auto'
+       */
+      tone?:
+        | 'auto'
+        | 'neutral'
+        | 'info'
+        | 'success'
+        | 'warning'
+        | 'critical'
+        | 'caution';
+      /**
+       * The emphasis of the subtitle, as on `s-text`. A value other than `base` overrides `tone`.
+       *
+       * @default 'base'
+       */
+      color?: 'base' | 'strong' | 'subdued';
+    };
+type POSListBadge = {
+  /** The badge text. */
+  text: string;
+  /**
+   * The semantic meaning of the badge, as on `s-badge`.
+   *
+   * @default 'auto'
+   */
+  tone?:
+    | 'auto'
+    | 'neutral'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'critical'
+    | 'caution';
+};
+type POSListRowImage = {
+  /** The URL of the image displayed at the start of the row. */
+  src?: string;
+  /** A numeric badge displayed over the image. */
+  badge?: number;
+};
+type POSListToggleSwitch = {
+  /**
+   * The current state of the toggle switch.
+   *
+   * @default false
+   */
+  checked?: boolean;
+  /**
+   * Whether the toggle switch is disabled.
+   *
+   * A disabled toggle switch also blocks activation of its row, so the row doesn't fire `rowclick`.
+   *
+   * @default false
+   */
+  disabled?: boolean;
+};
+type POSListRowStart = {
+  /** The primary text for the row. */
+  label: string;
+  /** Up to three lines of supporting text displayed below the label. */
+  subtitles?: [POSListRowSubtitle, POSListRowSubtitle?, POSListRowSubtitle?];
+  /** Status or category badges displayed with the row content. */
+  badges?: POSListBadge[];
+  /** The image displayed at the start of the row. */
+  image?: POSListRowImage;
+};
+type POSListRowEnd =
+  | {
+      /** Supporting text displayed at the end of the row. */
+      label?: string;
+      /**
+       * Whether to display a chevron at the end of the row.
+       *
+       * @default false
+       */
+      showChevron?: boolean;
+      toggleSwitch?: never;
+    }
+  | {
+      label?: never;
+      showChevron?: never;
+      /** A toggle switch displayed at the end of the row, in place of trailing text and chevron. */
+      toggleSwitch: POSListToggleSwitch;
+    };
+/**
+ * The event fired when a row is activated. `detail.id` is the `id` of the activated row.
+ * Errors thrown or promises rejected in the listener stay in the extension; POS does not report them.
+ */
+type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
+  detail: {id: string};
+};
+type POSListRow = {
+  /** A unique identifier for the row. */
+  id: string;
+  /** The primary content displayed at the start of the row. */
+  start: POSListRowStart;
+  /**
+   * What the row is.
+   *
+   * - `button`: Activating the row fires `rowclick`.
+   * - `text`: Static content that can't be activated.
+   *
+   * @default 'button'
+   */
+  type?: 'text' | 'button';
+  /** Optional content displayed at the end of the row. */
+  end?: POSListRowEnd;
+};
+/**
+ * Displays structured rows with text, badges, images, and optional trailing content.
+ *
+ * @publicDocs
+ */
+interface POSListJSXProps {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * The rows displayed in the list.
+   *
+   * @default []
+   */
+  rows?: POSListRow[];
+  /**
+   * Controls whether rows reserve space for images.
+   *
+   * - `auto`: Displays an image only on rows that include an image source; other rows reserve no space.
+   * - `always`: Displays images or placeholders for every row.
+   * - `never`: Displays rows without images or image placeholders.
+   *
+   * @default 'auto'
+   */
+  imageDisplayStrategy?: POSListImageDisplayStrategy;
+  /**
+   * Whether additional rows are being loaded.
+   *
+   * @default false
+   */
+  loadingMore?: boolean;
+  /** Callback when a row is activated. `event.detail.id` identifies the row. */
+  onRowClick?: ((event: POSListRowClickEvent) => void) | null;
+  /** Callback when more rows should be loaded. */
+  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;
+  /** Content displayed before the rows as part of the list's scrollable content. */
+  header?: ComponentChild;
+}
+type POSListElementProps = Omit<POSListJSXProps, 'header'>;
+declare global {
+  interface HTMLElementTagNameMap {
+    [posListTagName]: HtmlElementTagNameProps<POSListElementProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
+    }
+  }
+}
+
 export type {
   BadgeJSXProps,
   BannerJSXProps,
@@ -5457,6 +5626,7 @@ export type {
   ModalJSXProps,
   NumberFieldJSXProps,
   PageJSXProps,
+  POSListJSXProps,
   PosBlockJSXProps,
   QrCodeJSXProps,
   ScrollBoxJSXProps,
@@ -5476,6 +5646,54 @@ export type {
   TimeFieldJSXProps,
   TimePickerJSXProps,
 };
+
+/**
+ * Events emitted by the POS list.
+ * @publicDocs
+ */
+interface POSListEvents {
+  /** Fired when a row is activated. `event.detail.id` identifies the row. */
+  rowclick?: (event: POSListRowClickEvent) => void;
+  /** Fired when more rows should be loaded. */
+  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;
+}
+
+/**
+ * Content slots for the POS list.
+ * @publicDocs
+ */
+interface POSListSlots {
+  /** Content displayed before the rows as part of the list's scrollable content. */
+  header?: HTMLElement;
+}
+
+/**
+ * Displays structured rows with text, badges, images, and optional trailing content.
+ * @publicDocs
+ */
+interface POSList {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * The rows displayed in the list.
+   * @default []
+   */
+  rows?: POSListRow[];
+  /**
+   * Controls whether rows reserve space for images.
+   *
+   * - `auto`: Displays an image only on rows that include an image source; other rows reserve no space.
+   * - `always`: Displays images or placeholders for every row.
+   * - `never`: Displays rows without images or image placeholders.
+   * @default 'auto'
+   */
+  imageDisplayStrategy?: POSListImageDisplayStrategy;
+  /**
+   * Whether additional rows are being loaded.
+   * @default false
+   */
+  loadingMore?: boolean;
+}
 
 /**
  * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
@@ -7806,6 +8024,21 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName]: IntrinsicElementProps<ElementProps>;
+    }
+  }
+}
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
     }
   }
 }
