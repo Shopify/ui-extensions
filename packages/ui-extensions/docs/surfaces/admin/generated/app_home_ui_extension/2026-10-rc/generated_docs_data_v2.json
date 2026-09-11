@@ -1209,7 +1209,7 @@
           "filePath": "src/surfaces/admin/api/picker/picker.ts",
           "syntaxKind": "PropertySignature",
           "name": "progress",
-          "value": "Progress",
+          "value": "PickerBadgeProgress",
           "description": "The progress indicator for the badge. Use this to show completion status for items that have progress states.",
           "isOptional": true
         },
@@ -1222,14 +1222,14 @@
           "isOptional": true
         }
       ],
-      "value": "export interface PickerBadge {\n  /** The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\"). */\n  content: string;\n  /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */\n  tone?: Tone;\n  /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */\n  progress?: Progress;\n}"
+      "value": "export interface PickerBadge {\n  /** The text content of the badge. Keep this short and descriptive (for example, \"Draft\", \"Active\", \"Incomplete\"). */\n  content: string;\n  /** The visual tone indicating status or importance. Choose a tone that matches the badge's meaning. */\n  tone?: Tone;\n  /** The progress indicator for the badge. Use this to show completion status for items that have progress states. */\n  progress?: PickerBadgeProgress;\n}"
     }
   },
-  "Progress": {
+  "PickerBadgeProgress": {
     "src/surfaces/admin/api/picker/picker.ts": {
       "filePath": "src/surfaces/admin/api/picker/picker.ts",
       "syntaxKind": "TypeAliasDeclaration",
-      "name": "Progress",
+      "name": "PickerBadgeProgress",
       "value": "'incomplete' | 'partiallyComplete' | 'complete'",
       "description": "The progress state for picker badges showing completion status. Use this to indicate how complete an item is: `'incomplete'` for not started, `'partiallyComplete'` for in progress, or `'complete'` for finished.",
       "isPublicDocs": true
@@ -1490,7 +1490,7 @@
       "filePath": "src/surfaces/admin/components/StandardComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StandardComponents",
-      "value": "'Avatar' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'ButtonGroup' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ColorField' | 'ColorPicker' | 'DateField' | 'DatePicker' | 'DropZone' | 'Divider' | 'EmailField' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Menu' | 'MoneyField' | 'NumberField' | 'Option' | 'OptionGroup' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'QueryContainer' | 'SearchField' | 'Section' | 'Select' | 'Spinner' | 'Stack' | 'Switch' | 'Table' | 'TableBody' | 'TableCell' | 'TableHeader' | 'TableHeaderRow' | 'TableRow' | 'Text' | 'TextArea' | 'TextField' | 'Thumbnail' | 'Tooltip' | 'UnorderedList' | 'URLField'",
+      "value": "'Avatar' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'ButtonGroup' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ColorField' | 'ColorPicker' | 'DateField' | 'DatePicker' | 'DropZone' | 'Divider' | 'EmailField' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Menu' | 'MoneyField' | 'NumberField' | 'Option' | 'OptionGroup' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'Popover' | 'Progress' | 'QueryContainer' | 'SearchField' | 'Section' | 'Select' | 'Spinner' | 'Stack' | 'Switch' | 'Table' | 'TableBody' | 'TableCell' | 'TableHeader' | 'TableHeaderRow' | 'TableRow' | 'Text' | 'TextArea' | 'TextField' | 'Thumbnail' | 'Tooltip' | 'UnorderedList' | 'URLField'",
       "description": "The standard set of UI components available in most admin extensions. These components provide the building blocks for creating extension interfaces including layout elements, form inputs, data display, navigation, and interactive controls. Use these components to build consistent, accessible UIs that match the Shopify admin design system."
     }
   },
@@ -2752,7 +2752,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -3137,7 +3137,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$3@2414",
+          "name": "__@internals$3@2447",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -3901,7 +3901,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4016,7 +4016,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$2@2515",
+          "name": "__@internals$2@2548",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4307,7 +4307,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4487,7 +4487,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dirtyStateSymbol@2559",
+          "name": "__@dirtyStateSymbol@2592",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -4496,7 +4496,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$1@2558",
+          "name": "__@internals$1@2591",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4683,7 +4683,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@setFiles@2594",
+          "name": "__@setFiles@2627",
           "value": "(files: File[]) => void",
           "description": "",
           "isPrivate": true,
@@ -4692,7 +4692,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@getFileInput@2596",
+          "name": "__@getFileInput@2629",
           "value": "() => HTMLInputElement",
           "description": "",
           "isPrivate": true,
@@ -4701,7 +4701,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals@2595",
+          "name": "__@internals@2628",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -5048,7 +5048,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -6617,7 +6617,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2730",
+          "name": "__@overlayHidden@2763",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -6626,7 +6626,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2731",
+          "name": "__@overlayActivator@2764",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -6635,7 +6635,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2732",
+          "name": "__@overlayHideFrameId@2765",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -6872,7 +6872,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7154,7 +7154,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7812,7 +7812,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7884,6 +7884,270 @@
       "value": "'current-password' | 'new-password'",
       "description": "Represents autocomplete values that are valid for password input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for password inputs.\n\nAvailable values:\n- `current-password` - Existing password for login or authentication\n- `new-password` - New password when creating an account or changing password",
       "isPublicDocs": true
+    }
+  },
+  "Popover": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "name": "Popover",
+      "description": "Configure the following properties on the popover component.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "blockSize",
+          "value": "SizeUnitsOrAuto",
+          "description": "The vertical size of the element in standard layouts (height in left-to-right or right-to-left writing modes).\n\nBlock size adjusts based on the writing direction: in horizontal layouts, it controls the height; in vertical layouts, it controls the width. This ensures consistent behavior across different text directions.\n\nLearn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).\n\n- `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.\n- `auto`: Automatically sizes based on content and layout constraints.",
+          "defaultValue": "'auto'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "minBlockSize",
+          "value": "SizeUnits",
+          "description": "The minimum vertical size of the element in standard layouts (min-height in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming smaller than this size along the block axis.\n\nLearn more about the [min-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).",
+          "defaultValue": "'0'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "maxBlockSize",
+          "value": "SizeUnitsOrNone",
+          "description": "The maximum vertical size of the element in standard layouts (max-height in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming larger than this size along the block axis.\n\nLearn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).",
+          "defaultValue": "'none'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "inlineSize",
+          "value": "SizeUnitsOrAuto",
+          "description": "The horizontal size of the element in standard layouts (width in left-to-right or right-to-left writing modes).\n\nInline size adjusts based on the writing direction: in horizontal layouts, it controls the width; in vertical layouts, it controls the height. This ensures consistent behavior across different text directions.\n\nLearn more about the [inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).\n\n- `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.\n- `auto`: Automatically sizes based on content and layout constraints.",
+          "defaultValue": "'auto'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "minInlineSize",
+          "value": "SizeUnits",
+          "description": "The minimum horizontal size of the element in standard layouts (min-width in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming smaller than this size along the inline axis.\n\nLearn more about the [min-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).",
+          "defaultValue": "'0'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "maxInlineSize",
+          "value": "SizeUnitsOrNone",
+          "description": "The maximum horizontal size of the element in standard layouts (max-width in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming larger than this size along the inline axis.\n\nLearn more about the [max-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).",
+          "defaultValue": "'none'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "__@overlayHidden@2763",
+          "value": "boolean",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "__@overlayActivator@2764",
+          "value": "HTMLElement",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "__@overlayHideFrameId@2765",
+          "value": "number",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "setAttribute",
+          "value": "(name: string, value: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "attributeChangedCallback",
+          "value": "(name: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "connectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "disconnectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "adoptedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "queueRender",
+          "value": "() => void",
+          "description": "A method that queues a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "click",
+          "value": "({ sourceEvent }?: ClickOptions) => void",
+          "description": "A method like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
+          "isPrivate": true,
+          "isOptional": true
+        }
+      ],
+      "value": "declare class Popover\n  extends PreactPopoverElement<typeof tagName$p>\n  implements PopoverProps\n{\n  constructor();\n}"
+    }
+  },
+  "Progress": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "name": "Progress",
+      "description": "Configure the following properties on the progress component.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "accessibilityLabel",
+          "value": "string",
+          "description": "A label that describes the purpose or content of the component for assistive technologies like screen readers. Use this to provide additional context when the visible content alone doesn't clearly convey what is progressing.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "max",
+          "value": "number",
+          "description": "How much work the task requires in total. Must be greater than `0`.",
+          "defaultValue": "1",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "tone",
+          "value": "\"info\" | \"success\" | \"warning\" | \"critical\" | \"auto\" | \"neutral\" | \"caution\"",
+          "description": "The semantic meaning and color treatment of the component.\n\n- `auto`: Automatically determined based on context.\n- `neutral`: General information without specific intent.\n- `info`: Informational content or helpful tips.\n- `success`: Positive outcomes or successful states.\n- `caution`: Advisory notices that need attention.\n- `warning`: Important warnings about potential issues.\n- `critical`: Urgent problems or destructive actions.",
+          "defaultValue": "'auto'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "value",
+          "value": "number",
+          "description": "How much of the task has been completed, as a number between `0` and `max`.\n\nWithout a `value` the progress is indeterminate: the task is ongoing with no indication of how long it is expected to take.",
+          "defaultValue": "0",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "setAttribute",
+          "value": "(name: string, value: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "attributeChangedCallback",
+          "value": "(name: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "connectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "disconnectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "adoptedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "queueRender",
+          "value": "() => void",
+          "description": "A method that queues a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "click",
+          "value": "({ sourceEvent }?: ClickOptions) => void",
+          "description": "A method like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
+          "isPrivate": true,
+          "isOptional": true
+        }
+      ],
+      "value": "declare class Progress extends PreactCustomElement implements ProgressProps {\n  accessor accessibilityLabel: string;\n  accessor max: ProgressProps['max'];\n  accessor tone: ProgressProps['tone'];\n  accessor value: ProgressProps['value'];\n  constructor();\n}"
     }
   },
   "QueryContainer": {
@@ -8151,7 +8415,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -8427,7 +8691,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@usedFirstOptionSymbol@3009",
+          "name": "__@usedFirstOptionSymbol@3053",
           "value": "boolean",
           "description": "A flag used to determine if no value or defaultValue was set, in which case the first non-disabled option was used.\n\nThis is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form.",
           "isPrivate": true,
@@ -8436,7 +8700,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@hasInitialValueSymbol@3010",
+          "name": "__@hasInitialValueSymbol@3054",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -8470,7 +8734,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -9100,7 +9364,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -9228,7 +9492,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@actualTableVariantSymbol@3085",
+          "name": "__@actualTableVariantSymbol@3129",
           "value": "AddedContext<ActualTableVariant>",
           "description": "",
           "isPrivate": true,
@@ -9237,7 +9501,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@tableHeadersSharedDataSymbol@3086",
+          "name": "__@tableHeadersSharedDataSymbol@3130",
           "value": "AddedContext<{ listSlot: ListSlotType; textContent: string; format: HeaderFormat; }[]>",
           "description": "",
           "isPrivate": true,
@@ -9462,7 +9726,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@headerFormatSymbol@3108",
+          "name": "__@headerFormatSymbol@3152",
           "value": "HeaderFormat",
           "description": "",
           "isPrivate": true,
@@ -10109,7 +10373,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10382,7 +10646,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10556,7 +10820,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2730",
+          "name": "__@overlayHidden@2763",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -10565,7 +10829,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2731",
+          "name": "__@overlayActivator@2764",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -10574,7 +10838,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2732",
+          "name": "__@overlayHideFrameId@2765",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -10903,7 +11167,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2361",
+          "name": "__@internals$4@2394",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -12049,7 +12313,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@abortController@2790",
+          "name": "__@abortController@2823",
           "value": "AbortController",
           "description": "",
           "isPrivate": true,
@@ -12058,7 +12322,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dialog@2784",
+          "name": "__@dialog@2817",
           "value": "HTMLDialogElement",
           "description": "",
           "isPrivate": true,
@@ -12067,7 +12331,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@focusedElement@2786",
+          "name": "__@focusedElement@2819",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -12076,7 +12340,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@nestedModals@2788",
+          "name": "__@nestedModals@2821",
           "value": "Map<Modal, boolean>",
           "description": "",
           "isPrivate": true,
@@ -12085,7 +12349,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@childrenRerenderObserver@2792",
+          "name": "__@childrenRerenderObserver@2825",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true,
@@ -12094,7 +12358,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowDomRerenderObserver@2793",
+          "name": "__@shadowDomRerenderObserver@2826",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true,
@@ -12103,7 +12367,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onEscape@2787",
+          "name": "__@onEscape@2820",
           "value": "(event: KeyboardEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -12112,7 +12376,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropClick@2789",
+          "name": "__@onBackdropClick@2822",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -12121,7 +12385,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onChildModalChange@2791",
+          "name": "__@onChildModalChange@2824",
           "value": "EventListenerOrEventListenerObject",
           "description": "",
           "isPrivate": true,
@@ -12130,7 +12394,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@isOpen@2783",
+          "name": "__@isOpen@2816",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12139,7 +12403,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@dismiss@2785",
+          "name": "__@dismiss@2818",
           "value": "() => void",
           "description": "",
           "isPrivate": true,
@@ -12148,7 +12412,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@hasOpenChildModal@2780",
+          "name": "__@hasOpenChildModal@2813",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12157,7 +12421,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@show@2781",
+          "name": "__@show@2814",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true,
@@ -12166,7 +12430,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@hide@2782",
+          "name": "__@hide@2815",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true,
@@ -12175,7 +12439,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2730",
+          "name": "__@overlayHidden@2763",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12184,7 +12448,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2731",
+          "name": "__@overlayActivator@2764",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -12193,7 +12457,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2732",
+          "name": "__@overlayHideFrameId@2765",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -20784,161 +21048,6 @@
       "value": "PreactFieldProps<\n  Required<PasswordFieldProps$1>['autocomplete']\n> & Required<\n    Pick<\n      PasswordFieldProps$1,\n      | 'defaultValue'\n      | 'details'\n      | 'disabled'\n      | 'error'\n      | 'labelAccessibilityVisibility'\n      | 'minLength'\n      | 'maxLength'\n      | 'label'\n      | 'name'\n      | 'placeholder'\n      | 'readOnly'\n      | 'required'\n      | 'value'\n    >\n  >",
       "description": "Represents the props for password input field components. Extends `PreactFieldProps` with autocomplete support for password-related fields.",
       "isPublicDocs": true
-    }
-  },
-  "Popover": {
-    "src/surfaces/admin/components.ts": {
-      "filePath": "src/surfaces/admin/components.ts",
-      "name": "Popover",
-      "description": "Configure the following properties on the popover component.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "blockSize",
-          "value": "SizeUnitsOrAuto",
-          "description": "The vertical size of the element in standard layouts (height in left-to-right or right-to-left writing modes).\n\nBlock size adjusts based on the writing direction: in horizontal layouts, it controls the height; in vertical layouts, it controls the width. This ensures consistent behavior across different text directions.\n\nLearn more about the [block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/block-size).\n\n- `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.\n- `auto`: Automatically sizes based on content and layout constraints.",
-          "defaultValue": "'auto'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "minBlockSize",
-          "value": "SizeUnits",
-          "description": "The minimum vertical size of the element in standard layouts (min-height in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming smaller than this size along the block axis.\n\nLearn more about the [min-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size).",
-          "defaultValue": "'0'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "maxBlockSize",
-          "value": "SizeUnitsOrNone",
-          "description": "The maximum vertical size of the element in standard layouts (max-height in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming larger than this size along the block axis.\n\nLearn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).",
-          "defaultValue": "'none'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "inlineSize",
-          "value": "SizeUnitsOrAuto",
-          "description": "The horizontal size of the element in standard layouts (width in left-to-right or right-to-left writing modes).\n\nInline size adjusts based on the writing direction: in horizontal layouts, it controls the width; in vertical layouts, it controls the height. This ensures consistent behavior across different text directions.\n\nLearn more about the [inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size).\n\n- `SizeUnits`: Specific size values in pixels, percentages, or zero for precise control.\n- `auto`: Automatically sizes based on content and layout constraints.",
-          "defaultValue": "'auto'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "minInlineSize",
-          "value": "SizeUnits",
-          "description": "The minimum horizontal size of the element in standard layouts (min-width in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming smaller than this size along the inline axis.\n\nLearn more about the [min-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size).",
-          "defaultValue": "'0'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "maxInlineSize",
-          "value": "SizeUnitsOrNone",
-          "description": "The maximum horizontal size of the element in standard layouts (max-width in left-to-right or right-to-left writing modes).\n\nPrevents the element from becoming larger than this size along the inline axis.\n\nLearn more about the [max-inline-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size).",
-          "defaultValue": "'none'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2730",
-          "value": "boolean",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2731",
-          "value": "HTMLElement",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2732",
-          "value": "number",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "setAttribute",
-          "value": "(name: string, value: string) => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "attributeChangedCallback",
-          "value": "(name: string) => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "connectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "disconnectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "adoptedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "queueRender",
-          "value": "() => void",
-          "description": "A method that queues a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "click",
-          "value": "({ sourceEvent }?: ClickOptions) => void",
-          "description": "A method like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
-          "isPrivate": true,
-          "isOptional": true
-        }
-      ],
-      "value": "declare class Popover\n  extends PreactPopoverElement<typeof tagName$p>\n  implements PopoverProps\n{\n  constructor();\n}"
     }
   },
   "SearchFieldProps": {
