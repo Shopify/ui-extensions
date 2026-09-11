@@ -8,7 +8,7 @@ import type {
  * A snapshot of the POS session provided to receipt targets.
  * @publicDocs
  */
-export interface ReceiptSessionSnapshot extends Session {
+export interface BaseDataSession extends Session {
   /**
    * The ID of the staff member pinned into POS for this receipt event. This
    * snapshot is separate from the reactive `session.staffMember` on the Session API.
@@ -36,5 +36,5 @@ export interface BaseData {
   /**
    * Comprehensive information about the current POS session including shop ID and domain, authenticated user, pinned staff member, active location, currency settings, and POS version. This session data remains constant for the session duration and provides critical context for business logic, permissions, API authentication, and transaction processing. Session data updates when users switch locations or change pinned staff members.
    */
-  session: ReceiptSessionSnapshot;
+  session: BaseDataSession;
 }
