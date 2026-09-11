@@ -1,4 +1,4 @@
-/** VERSION: 2.23.0 **/
+/** VERSION: 2.26.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -134,6 +134,12 @@ declare abstract class SectionBase
   implements SectionProps
 {
   constructor(renderImpl: RenderImpl);
+  /**
+   * The element the section currently renders as its graphic, which sizes a
+   * Badge inside it.
+   * @private
+   */
+  setGraphicNode(node: Element | null): void;
   /** @private */
   connectedCallback(): void;
   /** @private */
@@ -193,13 +199,15 @@ export interface SectionJSXProps
   /**
    * A decorative visual that reinforces the heading, rendered before it.
    *
-   * Accepts a single icon-only Badge (`icon` set, no text content) with a `size` of `large`. The heading identifies the section, so this content is not announced by assistive technologies, and it is not rendered at all when the section has no `heading`.
+   * Accepts a single Icon with a `size` of `base`, or an icon-only Badge (`icon` set, no text content) with a `size` of `large`. The heading identifies the section, so this content is not announced by assistive technologies, and it is not rendered at all when the section has no `heading`.
    */
   graphic?: ComponentChildren;
   /**
    * Additional contextual information that qualifies the heading, rendered inline beside the heading text.
    *
-   * Only accepts Badge, Icon, Button, Menu, Text, Avatar, and Thumbnail elements. Text must use `tone`, `fontSize`, and `fontWeight` of `auto`; Icon, Avatar, and Thumbnail must use `size="base"`; Badge must use `size="base"` and `color="base"`; Button must use `inlineSize="auto"`.
+   * Only accepts Badge, Icon, Button, Menu, Text, Avatar, Thumbnail, and Tooltip elements. Text must use `tone`, `fontSize`, and `fontWeight` of `auto`; Icon, Avatar, and Thumbnail must use `size="base"`; Badge must use `size="base"` and `color="base"`; Button must use `inlineSize="auto"`.
+   *
+   * A Tooltip an accessory element's `interestFor` points at can be slotted here beside it.
    */
   accessory?: ComponentChildren;
   /**

@@ -1,4 +1,4 @@
-/** VERSION: 2.23.0 **/
+/** VERSION: 2.26.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -3039,7 +3039,7 @@ export interface FileInputProps extends BaseInputProps {
  */
 export interface FieldErrorProps {
   /**
-   * An error message displayed below the checkbox to indicate validation problems. When set, the checkbox is styled with error indicators and the message is announced to screen readers.
+   * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators and the message is announced to screen readers.
    *
    * @implementation (string) The error is a simple string that will be displayed to the user.
    *
@@ -3077,7 +3077,7 @@ export interface BasicFieldProps
  */
 export interface FieldDetailsProps {
   /**
-   * Supplementary text displayed below the checkbox to provide additional context, instructions, or help. Use this to explain what checking the box means or provide guidance to users. This text is announced to screen readers.
+   * Supplementary text displayed below the field to provide additional context, instructions, or help. Use this to clarify the expected input or provide guidance to users. This text is announced to screen readers.
    *
    * @implementation (string) The details is a simple string that will be displayed to the user.
    *
@@ -3776,13 +3776,13 @@ export interface BaseSelectableProps {
    */
   accessibilityLabel?: string;
   /**
-   * Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.
+   * Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * The value submitted with the form when this checkbox is checked. If not specified, the default value is "on".
+   * The value submitted with the form when this control is selected. If not specified, the default value is "on".
    */
   value?: string;
 }
@@ -3814,7 +3814,7 @@ export interface BaseCheckableProps
     LabelAccessibilityVisibilityProps,
     InteractionProps {
   /**
-   * The text label displayed next to the checkbox that describes what the checkbox controls. Clicking the label will also toggle the checkbox state.
+   * The text label displayed next to the control that describes what it does. Clicking the label will also toggle the control state.
    *
    * @implementation (string) The label is a simple string that will be displayed to the user.
    *
@@ -3838,7 +3838,7 @@ export interface BaseCheckableProps
    */
   defaultChecked?: boolean;
   /**
-   * The name used to identify this checkbox in form submissions. When the checkbox is checked, its `name` and `value` are included in the form data. Must be unique within the containing form.
+   * The name used to identify this control in form submissions. When the control is checked, its `name` and `value` are included in the form data. Must be unique within the containing form.
    */
   name?: string;
   /**
@@ -6225,6 +6225,46 @@ interface PressButtonProps$1
    * @implementation `defaultPressed` reflects to the `pressed` attribute.
    */
   defaultPressed?: boolean;
+}
+interface ProgressProps$1 extends GlobalProps {
+  /**
+   * A label that describes the purpose of the progress. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context.
+   *
+   * Use it to provide context of what is progressing.
+   */
+  accessibilityLabel?: string;
+  /**
+   * Sets the tone of the progress, based on the intention of the information being conveyed.
+   *
+   * @default 'auto'
+   */
+  tone?: ToneKeyword;
+  /**
+   * Specifies how much of the task has been completed.
+   *
+   * It must be a valid floating point number between 0 and `max`, or between 0 and 1 if `max` is omitted.
+   * If there is no value attribute, the progress bar is indeterminate;
+   * this indicates that an activity is ongoing with no indication of how long it is expected to take.
+   *
+   * @implementation Surfaces should apply styling to cover that indeterminate state.
+   * @implementation In a HTML host, you can customize the progress animation via the :indeterminate pseudo-class.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#value
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/:indeterminate#progress_bar
+   */
+  value?: number;
+  /**
+   * This attribute describes how much work the task indicated by the progress element requires.
+   *
+   * The `max` attribute, if present, must have a value greater than 0 and be a valid floating point number.
+   *
+   * @default 1
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress#max
+   */
+  max?: number;
 }
 interface QueryContainerProps$1 extends GlobalProps {
   /**
