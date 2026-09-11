@@ -1,4 +1,18 @@
+import {createMockPosTargetApi} from '../point-of-sale/factories';
 import {createStorage} from '../point-of-sale';
+
+// The deprecated static staffMemberId was removed in 2026-10. Staff identity is
+// exposed reactively through session.staffMember instead.
+describe('POS session factory', () => {
+  it('does not expose currentSession.staffMemberId', () => {
+    const api = createMockPosTargetApi('pos.home.tile.render');
+
+    expect(api.session.currentSession).not.toHaveProperty('staffMemberId');
+    // @ts-expect-error Removed from the 2026-10 Session type.
+    expect(api.session.currentSession.staffMemberId).toBeUndefined();
+    expect(api.session.staffMember.value).toStrictEqual({id: 1});
+  });
+});
 
 describe('createStorage', () => {
   it('set and get round-trips a value', async () => {

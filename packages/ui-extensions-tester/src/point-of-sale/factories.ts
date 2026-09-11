@@ -59,7 +59,6 @@ function createSessionCurrentSession(): Session {
     userId: 1,
     shopDomain: 'mock-shop.myshopify.com',
     locationId: 1,
-    staffMemberId: 1,
     currency: 'USD',
     posVersion: '9.0.0',
   };

@@ -1904,21 +1904,12 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/session.ts",
           "syntaxKind": "PropertySignature",
-          "name": "staffMemberId",
-          "value": "number",
-          "description": "The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.",
-          "isOptional": true,
-          "deprecationMessage": "Use `session.staffMember` on the Session API instead."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/session.ts",
-          "syntaxKind": "PropertySignature",
           "name": "userId",
           "value": "number",
           "description": "The user ID associated with the Shopify account currently authenticated on POS."
         }
       ],
-      "value": "export interface Session {\n  /**\n   * The shop ID associated with the shop currently logged into POS.\n   */\n  shopId: number;\n\n  /**\n   * The user ID associated with the Shopify account currently authenticated on POS.\n   */\n  userId: number;\n\n  /**\n   * The shop domain associated with the shop currently logged into POS.\n   */\n  shopDomain: string;\n\n  /**\n   * The location ID associated with the POS device's current location.\n   */\n  locationId: number;\n\n  /**\n   * The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.\n   *\n   * @deprecated Use `session.staffMember` on the Session API instead.\n   */\n  staffMemberId?: number;\n\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: CurrencyCode;\n\n  /**\n   * The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running.\n   */\n  posVersion: string;\n}"
+      "value": "export interface Session {\n  /**\n   * The shop ID associated with the shop currently logged into POS.\n   */\n  shopId: number;\n\n  /**\n   * The user ID associated with the Shopify account currently authenticated on POS.\n   */\n  userId: number;\n\n  /**\n   * The shop domain associated with the shop currently logged into POS.\n   */\n  shopDomain: string;\n\n  /**\n   * The location ID associated with the POS device's current location.\n   */\n  locationId: number;\n\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: CurrencyCode;\n\n  /**\n   * The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running.\n   */\n  posVersion: string;\n}"
     }
   },
   "CurrencyCode": {
