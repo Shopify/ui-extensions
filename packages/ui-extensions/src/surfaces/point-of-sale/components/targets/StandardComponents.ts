@@ -24,6 +24,7 @@ export type StandardComponents =
   | 'NumberField'
   | 'Page'
   | 'POSBlock'
+  | 'POSList'
   | 'PosBlock' // Case is important in 2025-10
   | 'Route'
   | 'Router'
