@@ -56,6 +56,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -137,6 +138,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -257,6 +259,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -379,6 +382,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -501,6 +505,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -623,6 +628,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -745,6 +751,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -827,6 +834,7 @@
       "Modal",
       "NumberField",
       "POSBlock",
+      "POSList",
       "Page",
       "PosBlock",
       "Route",
@@ -1642,6 +1650,18 @@
       "pos.purchase.post.block.render",
       "pos.register-details.action.render",
       "pos.register-details.block.render"
+    ]
+  },
+  "POSList": {
+    "targets": [
+      "pos.cart.line-item-details.action.render",
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.register-details.action.render"
     ]
   },
   "Page": {

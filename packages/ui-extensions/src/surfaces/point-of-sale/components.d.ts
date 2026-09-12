@@ -5435,6 +5435,146 @@ declare module 'preact' {
   }
 }
 
+/**
+ * The serialized template AST carried by `s-pos-list`'s `itemTemplates`
+ * property.
+ *
+ * Templates are authored in the extension sandbox with the `posListTemplate`
+ * tagged template, compiled once into this plain-JSON shape, and shipped
+ * across the bridge as a single property. The host hydrates the AST per
+ * visible row, so no RemoteDOM nodes exist for template content and no
+ * extension code runs while scrolling.
+ */
+/** A literal string piece or a row-field lookup within interpolated text. */
+type POSListTemplateSegment =
+  | string
+  | {
+      path: string;
+    };
+type POSListTemplateProp =
+  /** A static value. Web component attributes yield strings, or `true` when valueless. */
+  | {
+      kind: 'literal';
+      value: string | boolean;
+    }
+  /** The row field at `path`, passed through with its original type (`bind:prop="path"`). */
+  | {
+      kind: 'field';
+      path: string;
+    }
+  /** A string built from literal pieces and `{{path}}` lookups. */
+  | {
+      kind: 'segments';
+      segments: POSListTemplateSegment[];
+    };
+type POSListTemplateNode =
+  | {
+      kind: 'element';
+      tag: string;
+      props?: Record<string, POSListTemplateProp>;
+      children?: POSListTemplateNode[];
+    }
+  /** Literal text, possibly interpolated with `{{path}}` lookups. */
+  | {
+      kind: 'text';
+      segments: POSListTemplateSegment[];
+    }
+  /** `{{#if path}}…{{/if}}`: children render only when the field is truthy. */
+  | {
+      kind: 'if';
+      path: string;
+      children: POSListTemplateNode[];
+    };
+/** One `<s-pos-list-item templateId="…">` root. */
+interface POSListItemTemplate {
+  templateId: string;
+  /** `button` rows fire `rowclick`; `text` rows are static content. */
+  type: 'button' | 'text';
+  children: POSListTemplateNode[];
+}
+interface POSListTemplates {
+  version: 1;
+  templates: POSListItemTemplate[];
+}
+
+declare const posListTagName = 's-pos-list';
+/**
+ * A row supplied to `s-pos-list`. Rows are plain data; every member other than `id` and
+ * `templateFor` is available to the row's item template through `{{path}}`, `bind:prop`,
+ * and `{{#if path}}` bindings.
+ */
+interface POSListRow {
+  /** A unique identifier for the row. Keys virtualization and identity across incremental loads. */
+  id: string;
+  /** The `templateId` of the item template that renders this row. */
+  templateFor: string;
+  /** Any additional data the row's template reads. */
+  [field: string]: unknown;
+}
+/**
+ * The event fired when a `button` row is activated. `detail.item` is the activated row and
+ * `detail.index` its position in `rows`.
+ */
+type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
+  detail: {
+    item: POSListRow;
+    index: number;
+  };
+};
+/**
+ * Displays a virtualized list of rows rendered from plain data and item templates compiled with
+ * `posListTemplate`.
+ *
+ * @publicDocs
+ */
+interface POSListJSXProps {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * The rows displayed in the list. Each row names the item template that renders it through
+   * `templateFor`.
+   *
+   * @default []
+   */
+  rows?: POSListRow[];
+  /**
+   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
+   * A row whose `templateFor` matches no template renders nothing.
+   */
+  itemTemplates?: {
+    version: POSListTemplates['version'];
+    templates: POSListTemplates['templates'];
+  };
+  /**
+   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   *
+   * @default false
+   */
+  loadingMore?: boolean;
+  /**
+   * Callback when a `button` row is activated. `event.detail.item` is the row and
+   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.
+   */
+  onRowClick?: ((event: POSListRowClickEvent) => void) | null;
+  /** Callback when the list has scrolled near its end and more rows should be loaded. */
+  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;
+  /** Content displayed before the rows as part of the list's scrollable content. */
+  header?: ComponentChild;
+}
+type POSListElementProps = Omit<POSListJSXProps, 'header'>;
+declare global {
+  interface HTMLElementTagNameMap {
+    [posListTagName]: HtmlElementTagNameProps<POSListElementProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
+    }
+  }
+}
+
 export type {
   BadgeJSXProps,
   BannerJSXProps,
@@ -5457,6 +5597,7 @@ export type {
   ModalJSXProps,
   NumberFieldJSXProps,
   PageJSXProps,
+  POSListJSXProps,
   PosBlockJSXProps,
   QrCodeJSXProps,
   ScrollBoxJSXProps,
@@ -5476,6 +5617,58 @@ export type {
   TimeFieldJSXProps,
   TimePickerJSXProps,
 };
+
+/**
+ * The POS list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface POSListEvents {
+  /**
+   * Callback when a `button` row is activated. `event.detail.item` is the row and
+   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.
+   */
+  rowclick?: (event: POSListRowClickEvent) => void;
+  /** Callback when the list has scrolled near its end and more rows should be loaded. */
+  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;
+}
+
+/**
+ * Content slots for the POS list.
+ * @publicDocs
+ */
+interface POSListSlots {
+  /** Content displayed before the rows as part of the list's scrollable content. */
+  header?: HTMLElement;
+}
+
+/**
+ * Displays a virtualized list of rows rendered from plain data and item templates compiled with
+ * `posListTemplate`.
+ * @publicDocs
+ */
+interface POSList {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * The rows displayed in the list. Each row names the item template that renders it through
+   * `templateFor`.
+   * @default []
+   */
+  rows?: POSListRow[];
+  /**
+   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
+   * A row whose `templateFor` matches no template renders nothing.
+   */
+  itemTemplates?: {
+    version: POSListTemplates['version'];
+    templates: POSListTemplates['templates'];
+  };
+  /**
+   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   * @default false
+   */
+  loadingMore?: boolean;
+}
 
 /**
  * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
@@ -7806,6 +7999,21 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName]: IntrinsicElementProps<ElementProps>;
+    }
+  }
+}
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
     }
   }
 }

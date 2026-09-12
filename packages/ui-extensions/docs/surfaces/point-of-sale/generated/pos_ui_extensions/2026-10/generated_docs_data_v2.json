@@ -157,6 +157,13 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
+          "name": "currency",
+          "value": "string",
+          "description": "The ISO 4217 currency code for this cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
           "name": "customer",
           "value": "Customer",
           "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
@@ -214,7 +221,7 @@
           "description": "The total tax amount for the cart, formatted as a currency string."
         }
       ],
-      "value": "export interface Cart {\n  /**\n   * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.\n   */\n  editable?: boolean;\n  /**\n   * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.\n   */\n  subtotal: string;\n  /**\n   * The total tax amount for the cart, formatted as a currency string.\n   */\n  taxTotal: string;\n  /**\n   * The final total amount including all items, taxes, and discounts, formatted as a currency string.\n   */\n  grandTotal: string;\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+      "value": "export interface Cart {\n  /**\n   * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.\n   */\n  editable?: boolean;\n  /**\n   * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.\n   */\n  subtotal: string;\n  /**\n   * The total tax amount for the cart, formatted as a currency string.\n   */\n  taxTotal: string;\n  /**\n   * The final total amount including all items, taxes, and discounts, formatted as a currency string.\n   */\n  grandTotal: string;\n  /**\n   * The ISO 4217 currency code for this cart.\n   */\n  currency: string;\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
     }
   },
   "Discount": {
@@ -1111,6 +1118,13 @@
           "name": "updateDefaultAddress",
           "value": "(addressId: number) => Promise<void>",
           "description": "Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "updateLineItemQuantity",
+          "value": "(uuid: string, quantity: number) => Promise<void>",
+          "description": "Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n\nIf POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n\nOnly available on API version `2026-10` and later."
         }
       ],
       "value": "export interface CartApiContent\n  extends ReadonlyCartApiContent,\n    MutableCartApiContent {}"
@@ -1384,9 +1398,16 @@
           "name": "updateDefaultAddress",
           "value": "(addressId: number) => Promise<void>",
           "description": "Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "updateLineItemQuantity",
+          "value": "(uuid: string, quantity: number) => Promise<void>",
+          "description": "Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n\nIf POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n\nOnly available on API version `2026-10` and later."
         }
       ],
-      "value": "export interface MutableCartApiContent {\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @param options optional line-item properties to apply to the new line item in the same operation\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(\n    variantId: number,\n    quantity: number,\n    options?: AddLineItemOptions,\n  ): Promise<string>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
+      "value": "export interface MutableCartApiContent {\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @param options optional line-item properties to apply to the new line item in the same operation\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(\n    variantId: number,\n    quantity: number,\n    options?: AddLineItemOptions,\n  ): Promise<string>;\n\n  /**\n   * Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n   *\n   * If POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n   *\n   * Only available on API version `2026-10` and later.\n   *\n   * @param uuid the UUID of the line item to update\n   * @param quantity the new absolute quantity; must be an integer of 1 or greater. To remove a line item, use `removeLineItem` instead.\n   * @returns A promise that resolves after the cart state reflects the change.\n   * @throws {Error} if the line item is not found, the `UUID` matches multiple split-line allocations, the quantity is invalid, the cart is not editable because it is a return or exchange, or the POS app version does not support this method.\n   */\n  updateLineItemQuantity(uuid: string, quantity: number): Promise<void>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
     }
   },
   "CartLineItemApi": {
@@ -4002,6 +4023,38 @@
       "value": "export interface CashTrackingSessionCompleteEvent\n  extends CashTrackingSessionEvent {\n  /** ISO 8601 timestamp when the session was closed. */\n  readonly closingTime: string;\n}"
     }
   },
+  "ScanEvent": {
+    "src/surfaces/point-of-sale/events/scan-event.ts": {
+      "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
+      "name": "ScanEvent",
+      "description": "Dispatched once for each successful scan captured by a camera, external, or embedded scanner. Every event carries a decoded `data` value and its `source`; no event is dispatched for initial or empty scanner state.\n\nThe event is delivered only after POS has finished handling the scan itself.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "data",
+          "value": "string",
+          "description": "The decoded string captured by the scan. Contains the scanned barcode, QR code, or other scannable data. Always present: an event is only dispatched for a successful scan."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "source",
+          "value": "ScannerSource",
+          "description": "The scanner source that captured the scan. One of the following scanner types:\n\n• `'camera'` - Built-in device camera used for scanning • `'external'` - External scanner hardware connected to the device • `'embedded'` - Embedded scanner hardware built into the device"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'scan'",
+          "description": "The event name."
+        }
+      ],
+      "value": "export interface ScanEvent {\n  /** The event name. */\n  readonly type: 'scan';\n  /**\n   * The decoded string captured by the scan. Contains the scanned barcode, QR code, or other scannable data. Always present: an event is only dispatched for a successful scan.\n   */\n  readonly data: string;\n  /**\n   * The scanner source that captured the scan. One of the following scanner types:\n   *\n   * • `'camera'` - Built-in device camera used for scanning\n   * • `'external'` - External scanner hardware connected to the device\n   * • `'embedded'` - Embedded scanner hardware built into the device\n   */\n  readonly source: ScannerSource;\n}"
+    }
+  },
   "ShopifyEventMap": {
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -4026,12 +4079,19 @@
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
+          "name": "scan",
+          "value": "ScanEvent",
+          "description": "Dispatched once for each successful scan captured by a camera, external, or embedded scanner, after POS has finished handling the scan itself. Every event carries decoded `data` and its `source`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
           "name": "transactioncomplete",
           "value": "TransactionCompleteEvent",
           "description": "Dispatched when a sale, return, or exchange transaction completes. Narrow on `transactionType` to access per-type fields."
         }
       ],
-      "value": "export interface ShopifyEventMap {\n  /**\n   * Dispatched when a sale, return, or exchange transaction completes.\n   * Narrow on `transactionType` to access per-type fields.\n   */\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  /** Dispatched when a cash tracking session opens. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  /** Dispatched when a cash tracking session closes after reconciliation. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n}"
+      "value": "export interface ShopifyEventMap {\n  /**\n   * Dispatched when a sale, return, or exchange transaction completes.\n   * Narrow on `transactionType` to access per-type fields.\n   */\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  /** Dispatched when a cash tracking session opens. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  /** Dispatched when a cash tracking session closes after reconciliation. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n  /**\n   * Dispatched once for each successful scan captured by a camera, external,\n   * or embedded scanner, after POS has finished handling the scan itself.\n   * Every event carries decoded `data` and its `source`.\n   */\n  [POS_EVENT_NAMES.SCAN]: ScanEvent;\n}"
     }
   },
   "CustomerApi": {
@@ -4562,23 +4622,430 @@
       "value": "interface TabListJSXProps extends Pick<TabListProps, 'children'> {\n  children?: ComponentChildren;\n}"
     }
   },
-  "LinkEvents": {
+  "POSListJSXProps": {
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
-      "name": "LinkEvents",
-      "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+      "name": "POSListJSXProps",
+      "description": "Displays a virtualized list of rows rendered from plain data and item templates compiled with `posListTemplate`.",
       "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "click",
-          "value": "(event: CallbackEvent<\"s-link\">) => void",
-          "description": "Called when the link is activated.",
+          "name": "header",
+          "value": "ComponentChild",
+          "description": "Content displayed before the rows as part of the list's scrollable content.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "itemTemplates",
+          "value": "{ version: 1; templates: POSListItemTemplate[]; }",
+          "description": "The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`. A row whose `templateFor` matches no template renders nothing.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loadingMore",
+          "value": "boolean",
+          "description": "Whether additional rows are being loaded. Renders a progress indicator after the last row.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onLoadMore",
+          "value": "((event: CallbackEvent<typeof posListTagName>) => void) | null",
+          "description": "Callback when the list has scrolled near its end and more rows should be loaded.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "onRowClick",
+          "value": "((event: POSListRowClickEvent) => void) | null",
+          "description": "Callback when a `button` row is activated. `event.detail.item` is the row and `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rows",
+          "value": "POSListRow[]",
+          "description": "The rows displayed in the list. Each row names the item template that renders it through `templateFor`.",
+          "isOptional": true,
+          "defaultValue": "[]"
+        }
+      ],
+      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list. Each row names the item template that renders it through\n   * `templateFor`.\n   *\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.\n   * A row whose `templateFor` matches no template renders nothing.\n   */\n  itemTemplates?: {\n    version: POSListTemplates['version'];\n    templates: POSListTemplates['templates'];\n  };\n  /**\n   * Whether additional rows are being loaded. Renders a progress indicator after the last row.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /**\n   * Callback when a `button` row is activated. `event.detail.item` is the row and\n   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.\n   */\n  onRowClick?: ((event: POSListRowClickEvent) => void) | null;\n  /** Callback when the list has scrolled near its end and more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
+    }
+  },
+  "ComponentChild": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ComponentChild",
+      "value": "VNode<any> | object | string | number | bigint | boolean | null | undefined",
+      "description": ""
+    }
+  },
+  "VNode": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "VNode",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "endTime",
+          "value": "number",
+          "description": "The time that the rendering of this `vnode` was completed. Will only be set when the devtools are attached. Default value: `-1`",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "Key",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "props",
+          "value": "P & { children: ComponentChildren$1; }",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "ref",
+          "value": "Ref<any> | null",
+          "description": "ref is not guaranteed by React.ReactElement, for compatibility reasons with popular react libs we define it as optional too",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "startTime",
+          "value": "number",
+          "description": "The time this `vnode` started rendering. Will only be set when the devtools are attached. Default value: `0`",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "ComponentType<P> | string",
+          "description": ""
+        }
+      ],
+      "value": "export interface VNode<P = {}> {\n  type: ComponentType<P> | string;\n  props: P & {\n    children: ComponentChildren$1;\n  };\n  key: Key;\n  /**\n   * ref is not guaranteed by React.ReactElement, for compatibility reasons\n   * with popular react libs we define it as optional too\n   */\n  ref?: Ref<any> | null;\n  /**\n   * The time this `vnode` started rendering. Will only be set when\n   * the devtools are attached.\n   * Default value: `0`\n   */\n  startTime?: number;\n  /**\n   * The time that the rendering of this `vnode` was completed. Will only be\n   * set when the devtools are attached.\n   * Default value: `-1`\n   */\n  endTime?: number;\n}"
+    }
+  },
+  "Key": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Key",
+      "value": "string | number | any",
+      "description": ""
+    }
+  },
+  "Ref": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Ref",
+      "value": "RefObject<T> | RefCallback<T> | null",
+      "description": ""
+    }
+  },
+  "RefObject": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "RefObject",
+      "value": "{\n  current: T | null;\n}",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "current",
+          "value": "T | null",
+          "description": ""
+        }
+      ]
+    }
+  },
+  "RefCallback": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "RefCallback",
+      "description": "",
+      "params": [
+        {
+          "name": "instance",
+          "description": "",
+          "value": "T",
+          "filePath": "src/surfaces/point-of-sale/components.ts"
+        }
+      ],
+      "returns": {
+        "filePath": "src/surfaces/point-of-sale/components.ts",
+        "description": "",
+        "name": "void | (() => void)",
+        "value": "void | (() => void)"
+      },
+      "value": "(instance: T | null) => void | (() => void)"
+    }
+  },
+  "ComponentType": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ComponentType",
+      "value": "ComponentClass<P> | FunctionComponent<P>",
+      "description": ""
+    }
+  },
+  "ComponentClass": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "ComponentClass",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "contextType",
+          "value": "Context<any>",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P>",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getDerivedStateFromError",
+          "value": "(error: any) => Partial<S>",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "getDerivedStateFromProps",
+          "value": "(props: Readonly<P>, state: Readonly<S>) => Partial<S>",
+          "description": "",
           "isOptional": true
         }
       ],
-      "value": "interface LinkEvents {\n  /** Called when the link is activated. */\n  click?: (event: CallbackEvent<typeof tagName$a>) => void;\n}"
+      "value": "export interface ComponentClass<P = {}, S = {}> {\n  new (props: P, context?: any): Component<P, S>;\n  displayName?: string;\n  defaultProps?: Partial<P>;\n  contextType?: Context<any>;\n  getDerivedStateFromProps?(\n    props: Readonly<P>,\n    state: Readonly<S>,\n  ): Partial<S> | null;\n  getDerivedStateFromError?(error: any): Partial<S> | null;\n}"
+    }
+  },
+  "Context": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Context",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "Consumer",
+          "value": "Consumer<T>",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "Provider",
+          "value": "Provider<T>",
+          "description": ""
+        }
+      ],
+      "value": "export interface Context<T> extends Provider<T> {\n  Consumer: Consumer<T>;\n  Provider: Provider<T>;\n  displayName?: string;\n}"
+    }
+  },
+  "Consumer": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Consumer",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Consumer<T>\n  extends FunctionComponent<{\n    children: (value: T) => ComponentChildren$1;\n  }> {}"
+    }
+  },
+  "Provider": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "Provider",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Provider<T>\n  extends FunctionComponent<{\n    value: T;\n    children?: ComponentChildren$1;\n  }> {}"
+    }
+  },
+  "FunctionComponent": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "FunctionComponent",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "defaultProps",
+          "value": "Partial<P> | undefined",
+          "description": "Make all properties in T optional",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "displayName",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface FunctionComponent<P = {}> {\n  (props: RenderableProps<P>, context?: any): ComponentChildren$1;\n  displayName?: string;\n  defaultProps?: Partial<P> | undefined;\n}"
+    }
+  },
+  "POSListItemTemplate": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListItemTemplate",
+      "description": "One `<s-pos-list-item templateId=\"…\">` root.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "children",
+          "value": "POSListTemplateNode[]",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "templateId",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'button' | 'text'",
+          "description": "`button` rows fire `rowclick`; `text` rows are static content."
+        }
+      ],
+      "value": "interface POSListItemTemplate {\n  templateId: string;\n  /** `button` rows fire `rowclick`; `text` rows are static content. */\n  type: 'button' | 'text';\n  children: POSListTemplateNode[];\n}"
+    }
+  },
+  "POSListTemplateNode": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListTemplateNode",
+      "value": "{\n      kind: 'element';\n      tag: string;\n      props?: Record<string, POSListTemplateProp>;\n      children?: POSListTemplateNode[];\n    } | {\n      kind: 'text';\n      segments: POSListTemplateSegment[];\n    } | {\n      kind: 'if';\n      path: string;\n      children: POSListTemplateNode[];\n    }",
+      "description": ""
+    }
+  },
+  "POSListTemplateProp": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListTemplateProp",
+      "value": "{\n      kind: 'literal';\n      value: string | boolean;\n    } | {\n      kind: 'field';\n      path: string;\n    } | {\n      kind: 'segments';\n      segments: POSListTemplateSegment[];\n    }",
+      "description": ""
+    }
+  },
+  "POSListTemplateSegment": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListTemplateSegment",
+      "value": "string | {\n      path: string;\n    }",
+      "description": "A literal string piece or a row-field lookup within interpolated text."
     }
   },
   "CallbackEvent": {
@@ -4642,6 +5109,154 @@
         }
       ],
       "value": "interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {\n  currentTarget: HTMLElementTagNameMap[T];\n  bubbles?: boolean;\n  cancelable?: boolean;\n  composed?: boolean;\n  detail?: any;\n  eventPhase: number;\n  target: HTMLElementTagNameMap[T] | null;\n}"
+    }
+  },
+  "POSListRowClickEvent": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "POSListRowClickEvent",
+      "value": "CallbackEvent<typeof posListTagName> & {\n  detail: {\n    item: POSListRow;\n    index: number;\n  };\n}",
+      "description": "The event fired when a `button` row is activated. `detail.item` is the activated row and `detail.index` its position in `rows`."
+    }
+  },
+  "POSListRow": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListRow",
+      "description": "A row supplied to `s-pos-list`. Rows are plain data; every member other than `id` and `templateFor` is available to the row's item template through `{{path}}`, `bind:prop`, and `{{#if path}}` bindings.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "name": "[field: string]",
+          "value": "unknown"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the row. Keys virtualization and identity across incremental loads."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "templateFor",
+          "value": "string",
+          "description": "The `templateId` of the item template that renders this row."
+        }
+      ],
+      "value": "interface POSListRow {\n  /** A unique identifier for the row. Keys virtualization and identity across incremental loads. */\n  id: string;\n  /** The `templateId` of the item template that renders this row. */\n  templateFor: string;\n  /** Any additional data the row's template reads. */\n  [field: string]: unknown;\n}"
+    }
+  },
+  "POSListEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListEvents",
+      "description": "The POS list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loadmore",
+          "value": "(event: CallbackEvent<\"s-pos-list\">) => void",
+          "description": "Callback when the list has scrolled near its end and more rows should be loaded.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rowclick",
+          "value": "(event: POSListRowClickEvent) => void",
+          "description": "Callback when a `button` row is activated. `event.detail.item` is the row and `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface POSListEvents {\n  /**\n   * Callback when a `button` row is activated. `event.detail.item` is the row and\n   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.\n   */\n  rowclick?: (event: POSListRowClickEvent) => void;\n  /** Callback when the list has scrolled near its end and more rows should be loaded. */\n  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;\n}"
+    }
+  },
+  "POSListSlots": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListSlots",
+      "description": "Content slots for the POS list.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "header",
+          "value": "HTMLElement",
+          "description": "Content displayed before the rows as part of the list's scrollable content.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface POSListSlots {\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: HTMLElement;\n}"
+    }
+  },
+  "POSList": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSList",
+      "description": "Displays a virtualized list of rows rendered from plain data and item templates compiled with `posListTemplate`.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "A unique identifier for the element.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "itemTemplates",
+          "value": "{ version: 1; templates: POSListItemTemplate[]; }",
+          "description": "The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`. A row whose `templateFor` matches no template renders nothing.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "loadingMore",
+          "value": "boolean",
+          "description": "Whether additional rows are being loaded. Renders a progress indicator after the last row.",
+          "isOptional": true,
+          "defaultValue": "false"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "rows",
+          "value": "POSListRow[]",
+          "description": "The rows displayed in the list. Each row names the item template that renders it through `templateFor`.",
+          "isOptional": true,
+          "defaultValue": "[]"
+        }
+      ],
+      "value": "interface POSList {\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * The rows displayed in the list. Each row names the item template that renders it through\n   * `templateFor`.\n   * @default []\n   */\n  rows?: POSListRow[];\n  /**\n   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.\n   * A row whose `templateFor` matches no template renders nothing.\n   */\n  itemTemplates?: {\n    version: POSListTemplates['version'];\n    templates: POSListTemplates['templates'];\n  };\n  /**\n   * Whether additional rows are being loaded. Renders a progress indicator after the last row.\n   * @default false\n   */\n  loadingMore?: boolean;\n}"
+    }
+  },
+  "LinkEvents": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "LinkEvents",
+      "description": "The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "click",
+          "value": "(event: CallbackEvent<\"s-link\">) => void",
+          "description": "Called when the link is activated.",
+          "isOptional": true
+        }
+      ],
+      "value": "interface LinkEvents {\n  /** Called when the link is activated. */\n  click?: (event: CallbackEvent<typeof tagName$a>) => void;\n}"
     }
   },
   "Link": {
@@ -7494,6 +8109,15 @@
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
+          "name": "borderRadius",
+          "value": "MaybeAllValuesShorthandProperty<BorderRadiusKeyword>",
+          "description": "Border radius for the image corners.\n\n[1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is supported. Note that, contrary to CSS, it uses flow-relative values and the order is:\n\n- 4 values: `start-start start-end end-end end-start`\n- 3 values: `start-start (start-end & end-start) end-end`\n- 2 values: `(start-start & end-end) (start-end & end-start)`\n\nFor example:\n- `base` means all corners have `base` radius\n- `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`\n- `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`\n- `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`",
+          "isOptional": true,
+          "defaultValue": "'none'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "string",
           "description": "A unique identifier for the element.",
@@ -7526,7 +8150,16 @@
           "isOptional": true
         }
       ],
-      "value": "interface Image {\n  /**\n   * The displayed inline width of the image.\n   *\n   * - `fill`: the image will takes up 100% of the available inline size.\n   * - `auto`: the image will be displayed at its natural size.\n   *\n   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.\n   * ScrollViews on mobile have a dynamic height, which can cause images to appear\n   * inconsistently without defined dimensions.\n   * @default 'fill'\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width\n   */\n  inlineSize?: 'fill' | 'auto';\n  /**\n   * The image source, which should be a remote URL.\n   *\n   * When the image is loading or no `src` is provided, a placeholder will be rendered.\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src\n   */\n  src?: string;\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * Determines how the content of the image is resized to fit its container.\n   * The image is positioned in the center of the container.\n   * @default 'contain'\n   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/object-fit\n   */\n  objectFit?: 'contain' | 'cover';\n  /**\n   * An alternative text description that describe the image for the reader to\n   * understand what it is about. It is extremely useful for both users using\n   * assistive technology and sighted users. A well written description\n   * provides people with visual impairments the ability to participate in\n   * consuming non-text content. When a screen readers encounters an `s-image`,\n   * the description is read and announced aloud. If an image fails to load,\n   * potentially due to a poor connection, the `alt` is displayed on\n   * screen instead. This has the benefit of letting a sighted buyer know an\n   * image was meant to load here, but as an alternative, they’re still able to\n   * consume the text content. Read\n   * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)\n   * to learn more.\n   * @default `''`\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt\n   */\n  alt?: string;\n}"
+      "value": "interface Image {\n  /**\n   * The displayed inline width of the image.\n   *\n   * - `fill`: the image will takes up 100% of the available inline size.\n   * - `auto`: the image will be displayed at its natural size.\n   *\n   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.\n   * ScrollViews on mobile have a dynamic height, which can cause images to appear\n   * inconsistently without defined dimensions.\n   * @default 'fill'\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width\n   */\n  inlineSize?: 'fill' | 'auto';\n  /**\n   * The image source, which should be a remote URL.\n   *\n   * When the image is loading or no `src` is provided, a placeholder will be rendered.\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src\n   */\n  src?: string;\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * Determines how the content of the image is resized to fit its container.\n   * The image is positioned in the center of the container.\n   * @default 'contain'\n   * @see ://developer.mozilla.org/en-US/docs/Web/CSS/object-fit\n   */\n  objectFit?: 'contain' | 'cover';\n  /**\n   * An alternative text description that describe the image for the reader to\n   * understand what it is about. It is extremely useful for both users using\n   * assistive technology and sighted users. A well written description\n   * provides people with visual impairments the ability to participate in\n   * consuming non-text content. When a screen readers encounters an `s-image`,\n   * the description is read and announced aloud. If an image fails to load,\n   * potentially due to a poor connection, the `alt` is displayed on\n   * screen instead. This has the benefit of letting a sighted buyer know an\n   * image was meant to load here, but as an alternative, they’re still able to\n   * consume the text content. Read\n   * [considerations when writing alternative text](https://www.shopify.com/ca/blog/image-alt-text#4)\n   * to learn more.\n   * @default `''`\n   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt\n   */\n  alt?: string;\n  /**\n   * Border radius for the image corners.\n   *\n   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is\n   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:\n   *\n   * - 4 values: `start-start start-end end-end end-start`\n   * - 3 values: `start-start (start-end & end-start) end-end`\n   * - 2 values: `(start-start & end-end) (start-end & end-start)`\n   *\n   * For example:\n   * - `base` means all corners have `base` radius\n   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`\n   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`\n   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`\n   *\n   * @default 'none'\n   */\n  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;\n}"
+    }
+  },
+  "BorderRadiusKeyword": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "BorderRadiusKeyword",
+      "value": "SizeKeyword | 'max' | 'none'",
+      "description": ""
     }
   },
   "PageSlots": {
@@ -7728,7 +8361,7 @@
       "filePath": "src/surfaces/point-of-sale/components/targets/StandardComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StandardComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'POSList' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'Tile' | 'TimeField' | 'TimePicker'",
       "description": "",
       "isPublicDocs": true
     }
@@ -7738,7 +8371,7 @@
       "filePath": "src/surfaces/point-of-sale/components/targets/BasicComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "BasicComponents",
-      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'Page' | 'POSBlock' | 'POSList' | 'PosBlock' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
       "description": "",
       "isPublicDocs": true
     }
@@ -7799,6 +8432,120 @@
         }
       ],
       "value": "interface ExtensionError extends Error {\n  /**\n   * The severity level of this error:\n   * - `'error'`: A critical error that prevents the extension from completing successfully. Errors typically block the user workflow and require resolution before proceeding.\n   * - `'warning'`: A non-critical issue that doesn't prevent extension execution but indicates a problem or unexpected condition. Warnings allow the workflow to continue but should be logged or displayed to users.\n   */\n  level: 'error' | 'warning';\n  /**\n   * The human-readable error message describing what went wrong. This message should be clear and actionable, helping merchants understand the issue and how to resolve it (for example, \"Product not found\", \"Invalid discount code\", \"Insufficient inventory\"). The message may be displayed to users in the POS interface depending on the error severity and context.\n   */\n  message: string;\n}"
+    }
+  },
+  "POSListTemplateTag": {
+    "src/surfaces/point-of-sale/pos-list-template.ts": {
+      "filePath": "src/surfaces/point-of-sale/pos-list-template.ts",
+      "name": "POSListTemplateTag",
+      "description": "The tagged template that compiles `<s-pos-list-item>` markup into the `itemTemplates` value `<s-pos-list>` accepts. Templates are static: the result contains no functions and compiles once, at build time of the extension bundle.",
+      "isPublicDocs": true,
+      "params": [
+        {
+          "name": "strings",
+          "description": "",
+          "value": "TemplateStringsArray",
+          "filePath": "src/surfaces/point-of-sale/pos-list-template.ts"
+        },
+        {
+          "name": "values",
+          "description": "",
+          "value": "never[]",
+          "filePath": "src/surfaces/point-of-sale/pos-list-template.ts"
+        }
+      ],
+      "returns": {
+        "filePath": "src/surfaces/point-of-sale/pos-list-template.ts",
+        "description": "",
+        "name": "POSListTemplates",
+        "value": "POSListTemplates"
+      },
+      "value": "(\n  strings: TemplateStringsArray,\n  ...values: never[]\n) => POSListTemplates"
+    }
+  },
+  "POSListTemplates": {
+    "src/surfaces/point-of-sale/components.ts": {
+      "filePath": "src/surfaces/point-of-sale/components.ts",
+      "name": "POSListTemplates",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "templates",
+          "value": "POSListItemTemplate[]",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "version",
+          "value": "1",
+          "description": ""
+        }
+      ],
+      "value": "interface POSListTemplates {\n  version: 1;\n  templates: POSListItemTemplate[];\n}"
+    }
+  },
+  "BaseDataSession": {
+    "src/surfaces/point-of-sale/event/data/BaseData.ts": {
+      "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+      "name": "BaseDataSession",
+      "description": "A snapshot of the POS session provided to receipt targets.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currency",
+          "value": "CurrencyCode",
+          "description": "The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "locationId",
+          "value": "number",
+          "description": "The location ID associated with the POS device's current location."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "posVersion",
+          "value": "string",
+          "description": "The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shopDomain",
+          "value": "string",
+          "description": "The shop domain associated with the shop currently logged into POS."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shopId",
+          "value": "number",
+          "description": "The shop ID associated with the shop currently logged into POS."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "staffMemberId",
+          "value": "number",
+          "description": "The ID of the staff member pinned into POS for this receipt event. This snapshot is separate from the reactive `session.staffMember` on the Session API.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "userId",
+          "value": "number",
+          "description": "The user ID associated with the Shopify account currently authenticated on POS."
+        }
+      ],
+      "value": "export interface BaseDataSession extends Session {\n  /**\n   * The ID of the staff member pinned into POS for this receipt event. This\n   * snapshot is separate from the reactive `session.staffMember` on the Session API.\n   */\n  staffMemberId?: number;\n}"
     }
   },
   "BaseData": {
@@ -7967,6 +8714,14 @@
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
+          "name": "pos.cart.validations.resolution.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >",
+          "description": "Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.action.menu-item.render",
           "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n\nExtensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows."
@@ -8064,6 +8819,14 @@
           "name": "pos.order-details.block.render",
           "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.payment.validations.resolution.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.payment.validations.resolution.render'> &\n      ScannerApi &\n      ReadonlyCartApi &\n      ResolutionApi<PaymentValidationsEventData>,\n    ResolutionComponents\n  >",
+          "description": "Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
@@ -8169,7 +8932,7 @@
           "isPrivate": true
         }
       ],
-      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   *\n   * @private\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   *\n   * @private\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   *\n   * @private\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n}"
+      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   *\n   * @private\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   *\n   * @private\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   *\n   * @private\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.\n   *\n   * @private\n   */\n  'pos.cart.validations.resolution.render': RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >;\n  /**\n   * Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.\n   *\n   * @private\n   */\n  'pos.payment.validations.resolution.render': RenderExtension<\n    StandardApi<'pos.payment.validations.resolution.render'> &\n      ScannerApi &\n      ReadonlyCartApi &\n      ResolutionApi<PaymentValidationsEventData>,\n    ResolutionComponents\n  >;\n}"
     }
   },
   "RenderExtension": {
@@ -8201,6 +8964,124 @@
         }
       ],
       "value": "export interface RenderExtension<Api, ComponentsSet extends string> {\n  /**\n   * The API object providing access to extension capabilities, data, and methods. The specific API type depends on the extension target and determines what functionality is available to your extension, such as authentication, storage, data access, and GraphQL querying.\n   */\n  api: Api;\n  /**\n   * The set of UI components available for rendering your extension. This defines which Polaris components and custom components can be used to build your extension's interface. The available components vary by extension target.\n   */\n  components: ComponentsSet;\n  /**\n   * The render function output. Your extension's render function should return void or a Promise that resolves to void. Use this to perform any necessary setup, rendering, or async operations when your extension loads.\n   */\n  output: void | Promise<void>;\n}"
+    }
+  },
+  "ResolutionApi": {
+    "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts",
+      "name": "ResolutionApi",
+      "description": "The `ResolutionApi` object gives a validation resolution target access to the data of the intercepted event it was opened to resolve. Access it through `shopify.resolution`.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "resolution",
+          "value": "ResolutionApiContent<TEventData>",
+          "description": ""
+        }
+      ],
+      "value": "export interface ResolutionApi<TEventData> {\n  resolution: ResolutionApiContent<TEventData>;\n}"
+    }
+  },
+  "ResolutionApiContent": {
+    "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts",
+      "name": "ResolutionApiContent",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "event",
+          "value": "ReadonlySignalLike<TEventData>",
+          "description": "The data of the intercepted event this resolution target was opened for. The `value` property provides the current data, and `subscribe` allows listening for host-owned revalidation updates."
+        }
+      ],
+      "value": "export interface ResolutionApiContent<TEventData> {\n  /**\n   * The data of the intercepted event this resolution target was opened for.\n   * The `value` property provides the current data, and `subscribe` allows\n   * listening for host-owned revalidation updates.\n   */\n  event: ReadonlySignalLike<TEventData>;\n}"
+    }
+  },
+  "CartValidationsEventData": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "CartValidationsEventData",
+      "description": "The data carried by a `cartvalidations` event.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cart",
+          "value": "Cart",
+          "description": "A snapshot of the POS cart taken when the event was produced."
+        }
+      ],
+      "value": "export interface CartValidationsEventData {\n  /** A snapshot of the POS cart taken when the event was produced. */\n  readonly cart: Cart;\n}"
+    }
+  },
+  "ResolutionComponents": {
+    "src/surfaces/point-of-sale/components/targets/ResolutionComponents.ts": {
+      "filePath": "src/surfaces/point-of-sale/components/targets/ResolutionComponents.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ResolutionComponents",
+      "value": "'Badge' | 'Banner' | 'Box' | 'Button' | 'Choice' | 'ChoiceList' | 'Clickable' | 'DateField' | 'DatePicker' | 'DateSpinner' | 'Divider' | 'EmailField' | 'Embed' | 'EmptyState' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'Modal' | 'NumberField' | 'POSList' | 'Route' | 'Router' | 'ScrollBox' | 'SearchField' | 'Section' | 'Spinner' | 'Stack' | 'Switch' | 'Tab' | 'TabList' | 'TabPanel' | 'Tabs' | 'Text' | 'TextArea' | 'TextField' | 'TimeField' | 'TimePicker'",
+      "description": "Components available on validation resolution targets. Resolution UI renders inside a POS-owned flow step, so page-level and block-level containers are excluded, along with the smart-grid-only `Tile`."
+    }
+  },
+  "PaymentValidationsEventData": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "PaymentValidationsEventData",
+      "description": "The data carried by a `paymentvalidations` event.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "amount",
+          "value": "MoneyV2",
+          "description": "The amount this tender would charge, in presentment currency."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentMethod",
+          "value": "InterceptedPaymentMethod",
+          "description": "The payment method staff selected."
+        }
+      ],
+      "value": "export interface PaymentValidationsEventData {\n  /** The payment method staff selected. */\n  readonly paymentMethod: InterceptedPaymentMethod;\n\n  /** The amount this tender would charge, in presentment currency. */\n  readonly amount: MoneyV2;\n}"
+    }
+  },
+  "InterceptedPaymentMethod": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "InterceptedPaymentMethod",
+      "description": "Identifies the payment method being attempted.\n\n`type` alone identifies singleton methods (for example `cash`). `identifier` disambiguates method types a shop can have several of (for example custom payment methods) as they become interceptable.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "identifier",
+          "value": "string",
+          "description": "Present when `type` alone is ambiguous. Matching is exact on the pair.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "InterceptedPaymentMethodType",
+          "description": "The kind of payment method being attempted."
+        }
+      ],
+      "value": "export interface InterceptedPaymentMethod {\n  readonly type: InterceptedPaymentMethodType;\n\n  /** Present when `type` alone is ambiguous. Matching is exact on the pair. */\n  readonly identifier?: string;\n}"
+    }
+  },
+  "InterceptedPaymentMethodType": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "InterceptedPaymentMethodType",
+      "value": "'cash'",
+      "description": "The kind of payment method being attempted."
     }
   },
   "TransactionCompleteWithReprintData": {
@@ -8878,6 +9759,14 @@
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
+          "name": "pos.cart.validations.resolution.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >",
+          "description": "Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.",
+          "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.action.menu-item.render",
           "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n\nExtensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows."
@@ -8975,6 +9864,14 @@
           "name": "pos.order-details.block.render",
           "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "pos.payment.validations.resolution.render",
+          "value": "RenderExtension<\n    StandardApi<'pos.payment.validations.resolution.render'> &\n      ScannerApi &\n      ReadonlyCartApi &\n      ResolutionApi<PaymentValidationsEventData>,\n    ResolutionComponents\n  >",
+          "description": "Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.",
+          "isPrivate": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
@@ -9274,7 +10171,7 @@
           "filePath": "src/surfaces/point-of-sale/globals.ts",
           "syntaxKind": "MethodSignature",
           "name": "intercept",
-          "value": "<K extends keyof ShopifyInterceptMap>(type: K, interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>) => () => void",
+          "value": "<K extends keyof ShopifyInterceptMap>(type: K, interceptor: ShopifyInterceptor<K>) => () => void",
           "description": "Register an interceptor for a POS host workflow that can be blocked. Returns a function that unregisters the interceptor.",
           "isPrivate": true
         },
@@ -9286,7 +10183,7 @@
           "description": "Remove a listener previously registered with `addEventListener`. The `listener` reference must match the one used to register."
         }
       ],
-      "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Register an interceptor for a POS host workflow that can be blocked.\n   * Returns a function that unregisters the interceptor.\n   *\n   * @private\n   */\n  intercept<K extends keyof ShopifyInterceptMap>(\n    type: K,\n    interceptor: ShopifyInterceptor<ShopifyInterceptMap[K]>,\n  ): () => void;\n}"
+      "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Register an interceptor for a POS host workflow that can be blocked.\n   * Returns a function that unregisters the interceptor.\n   *\n   * @private\n   */\n  intercept<K extends keyof ShopifyInterceptMap>(\n    type: K,\n    interceptor: ShopifyInterceptor<K>,\n  ): () => void;\n}"
     }
   },
   "ShopifyInterceptMap": {
@@ -9300,14 +10197,14 @@
           "syntaxKind": "PropertySignature",
           "name": "cartvalidations",
           "value": "CartValidationsEvent",
-          "description": "Dispatched when staff attempts to leave the active cart for checkout."
+          "description": "The event a `cartvalidations` interceptor receives. Carries a snapshot of the POS cart taken when the event was produced."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "paymentvalidations",
           "value": "PaymentValidationsEvent",
-          "description": "Dispatched when staff selects a payment method on the payments screen."
+          "description": "The event a `paymentvalidations` interceptor receives. Carries the tender attempt's payment method and amount; split payments produce one event per tender, each with its own amount."
         }
       ],
       "value": "export interface ShopifyInterceptMap {\n  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationsEvent;\n  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationsEvent;\n}"
@@ -9317,182 +10214,31 @@
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
       "name": "CartValidationsEvent",
-      "description": "Dispatched when staff attempts to leave the active cart for checkout.",
+      "description": "The event a `cartvalidations` interceptor receives. Carries a snapshot of the POS cart taken when the event was produced.",
       "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
-        },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "cart",
           "value": "Cart",
-          "description": "The POS cart at the point checkout was requested."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
+          "description": "A snapshot of the POS cart taken when the event was produced."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'cartvalidations'",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
+          "description": ""
         }
       ],
-      "value": "export interface CartValidationsEvent extends Event {\n  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;\n  /** The POS cart at the point checkout was requested. */\n  readonly cart: Cart;\n}"
+      "value": "export interface CartValidationsEvent extends CartValidationsEventData {\n  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;\n}"
     }
   },
   "PaymentValidationsEvent": {
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
       "name": "PaymentValidationsEvent",
-      "description": "Dispatched when staff selects a payment method on the payments screen.",
+      "description": "The event a `paymentvalidations` interceptor receives. Carries the tender attempt's payment method and amount; split payments produce one event per tender, each with its own amount.",
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -9504,226 +10250,41 @@
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
-          "name": "AT_TARGET",
-          "value": "2",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "bubbles",
-          "value": "boolean",
-          "description": "The **`bubbles`** read-only property of the Event interface indicates whether the event bubbles up through the DOM tree or not.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/bubbles)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "BUBBLING_PHASE",
-          "value": "3",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelable",
-          "value": "boolean",
-          "description": "The **`cancelable`** read-only property of the Event interface indicates whether the event can be canceled, and therefore prevented as if the event never happened.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelable)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cancelBubble",
-          "value": "boolean",
-          "description": "The **`cancelBubble`** property of the Event interface is deprecated.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/cancelBubble)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "CAPTURING_PHASE",
-          "value": "1",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "composed",
-          "value": "boolean",
-          "description": "The read-only **`composed`** property of the or not the event will propagate across the shadow DOM boundary into the standard DOM.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composed)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "composedPath",
-          "value": "() => EventTarget[]",
-          "description": "The **`composedPath()`** method of the Event interface returns the event's path which is an array of the objects on which listeners will be invoked.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/composedPath)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentTarget",
-          "value": "EventTarget | null",
-          "description": "The **`currentTarget`** read-only property of the Event interface identifies the element to which the event handler has been attached.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/currentTarget)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "defaultPrevented",
-          "value": "boolean",
-          "description": "The **`defaultPrevented`** read-only property of the Event interface returns a boolean value indicating whether or not the call to Event.preventDefault() canceled the event.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/defaultPrevented)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "eventPhase",
-          "value": "number",
-          "description": "The **`eventPhase`** read-only property of the being evaluated.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/eventPhase)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "initEvent",
-          "value": "(type: string, bubbles?: boolean, cancelable?: boolean) => void",
-          "description": "The **`Event.initEvent()`** method is used to initialize the value of an event created using Document.createEvent().",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/initEvent)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isTrusted",
-          "value": "boolean",
-          "description": "The **`isTrusted`** read-only property of the when the event was generated by the user agent (including via user actions and programmatic methods such as HTMLElement.focus()), and `false` when the event was dispatched via The only exception is the `click` event, which initializes the `isTrusted` property to `false` in user agents.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/isTrusted)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "NONE",
-          "value": "0",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
           "name": "paymentMethod",
           "value": "InterceptedPaymentMethod",
           "description": "The payment method staff selected."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "preventDefault",
-          "value": "() => void",
-          "description": "The **`preventDefault()`** method of the Event interface tells the user agent that if the event does not get explicitly handled, its default action should not be taken as it normally would be.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/preventDefault)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "returnValue",
-          "value": "boolean",
-          "description": "The Event property **`returnValue`** indicates whether the default action for this event has been prevented or not.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/returnValue)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "srcElement",
-          "value": "EventTarget | null",
-          "description": "The deprecated **`Event.srcElement`** is an alias for the Event.target property.",
-          "deprecationMessage": "[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/srcElement)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopImmediatePropagation",
-          "value": "() => void",
-          "description": "The **`stopImmediatePropagation()`** method of the If several listeners are attached to the same element for the same event type, they are called in the order in which they were added.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopImmediatePropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "stopPropagation",
-          "value": "() => void",
-          "description": "The **`stopPropagation()`** method of the Event interface prevents further propagation of the current event in the capturing and bubbling phases.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/stopPropagation)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "target",
-          "value": "EventTarget | null",
-          "description": "The read-only **`target`** property of the dispatched.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/target)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "timeStamp",
-          "value": "DOMHighResTimeStamp",
-          "description": "The **`timeStamp`** read-only property of the Event interface returns the time (in milliseconds) at which the event was created.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/timeStamp)"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'paymentvalidations'",
-          "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
+          "description": ""
         }
       ],
-      "value": "export interface PaymentValidationsEvent extends Event {\n  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;\n\n  /** The payment method staff selected. */\n  readonly paymentMethod: InterceptedPaymentMethod;\n\n  /** The amount this tender would charge, in presentment currency. */\n  readonly amount: MoneyV2;\n}"
-    }
-  },
-  "InterceptedPaymentMethod": {
-    "src/surfaces/point-of-sale/events.ts": {
-      "filePath": "src/surfaces/point-of-sale/events.ts",
-      "name": "InterceptedPaymentMethod",
-      "description": "Identifies the payment method being attempted.\n\n`type` alone identifies singleton methods (for example `cash`). `identifier` disambiguates method types a shop can have several of (for example custom payment methods) as they become interceptable.",
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "identifier",
-          "value": "string",
-          "description": "Present when `type` alone is ambiguous. Matching is exact on the pair.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "InterceptedPaymentMethodType",
-          "description": "The kind of payment method being attempted."
-        }
-      ],
-      "value": "export interface InterceptedPaymentMethod {\n  readonly type: InterceptedPaymentMethodType;\n\n  /** Present when `type` alone is ambiguous. Matching is exact on the pair. */\n  readonly identifier?: string;\n}"
-    }
-  },
-  "InterceptedPaymentMethodType": {
-    "src/surfaces/point-of-sale/events.ts": {
-      "filePath": "src/surfaces/point-of-sale/events.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "InterceptedPaymentMethodType",
-      "value": "'cash'",
-      "description": "The kind of payment method being attempted."
+      "value": "export interface PaymentValidationsEvent extends PaymentValidationsEventData {\n  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;\n}"
     }
   },
   "ShopifyInterceptor": {
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
       "name": "ShopifyInterceptor",
-      "description": "",
+      "description": "The interceptor callback for a POS interceptable workflow, keyed by the workflow name so the event and its valid validation targets stay paired.",
       "params": [
         {
           "name": "event",
           "description": "",
-          "value": "TEvent",
+          "value": "ShopifyInterceptMap[K]",
           "filePath": "src/surfaces/point-of-sale/events.ts"
         }
       ],
       "returns": {
         "filePath": "src/surfaces/point-of-sale/events.ts",
         "description": "",
-        "name": "InterceptResult",
-        "value": "InterceptResult"
+        "name": "InterceptResult<ValidationTargetMap[K]>",
+        "value": "InterceptResult<ValidationTargetMap[K]>"
       },
-      "value": "(\n  event: TEvent,\n) => InterceptResult"
+      "value": "(\n  event: ShopifyInterceptMap[K],\n) => InterceptResult<ValidationTargetMap[K]>"
     }
   },
   "InterceptResult": {
@@ -9736,11 +10297,11 @@
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "operations",
-          "value": "Operation[]",
+          "value": "Operation<TTarget>[]",
           "description": ""
         }
       ],
-      "value": "export interface InterceptResult {\n  operations: Operation[];\n}"
+      "value": "export interface InterceptResult<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  operations: Operation<TTarget>[];\n}"
     }
   },
   "Operation": {
@@ -9753,12 +10314,12 @@
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "validationAdd",
-          "value": "ValidationAdd",
-          "description": "Adds a validation to the workflow being intercepted.",
+          "value": "ValidationAdd<TTarget>",
+          "description": "",
           "isOptional": true
         }
       ],
-      "value": "export interface Operation {\n  validationAdd?: ValidationAdd;\n}"
+      "value": "export interface Operation<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  validationAdd?: ValidationAdd<TTarget>;\n}"
     }
   },
   "ValidationAdd": {
@@ -9772,7 +10333,7 @@
           "syntaxKind": "PropertySignature",
           "name": "handle",
           "value": "string",
-          "description": "Stable identifier for this validation."
+          "description": "Stable identifier for this validation. Handles are namespaced per extension and may repeat across targets: the same handle on two line items is two validations."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -9785,12 +10346,12 @@
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "target",
-          "value": "string",
-          "description": "JSON-path locator for where the validation applies.",
+          "value": "TTarget",
+          "description": "Locates the data the validation applies to; the host decides where it renders. Omitted or unrecognized targets fall back to the event's root scope (`$.cart` / `$.payment`) — the validation still applies, rendered less specifically.\n\nLine item uuids are only valid within the event that delivered them: use `lineItems[n].uuid` from this event's cart snapshot, don't cache uuids across events. Bundle components are not addressable; target their parent line.",
           "isOptional": true
         }
       ],
-      "value": "export interface ValidationAdd {\n  /** `ERROR` blocks the workflow. `WARNING` does not. */\n  level: ValidationLevel;\n\n  /** Stable identifier for this validation. */\n  handle: string;\n\n  /** JSON-path locator for where the validation applies. */\n  target?: string;\n}"
+      "value": "export interface ValidationAdd<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** `ERROR` blocks the workflow. `WARNING` does not. */\n  level: ValidationLevel;\n\n  /**\n   * Stable identifier for this validation. Handles are namespaced per\n   * extension and may repeat across targets: the same handle on two line\n   * items is two validations.\n   */\n  handle: string;\n\n  /**\n   * Locates the data the validation applies to; the host decides where it\n   * renders. Omitted or unrecognized targets fall back to the event's root\n   * scope (`$.cart` / `$.payment`) — the validation still applies, rendered\n   * less specifically.\n   *\n   * Line item uuids are only valid within the event that delivered them:\n   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache\n   * uuids across events. Bundle components are not addressable; target\n   * their parent line.\n   */\n  target?: TTarget;\n}"
     }
   },
   "ValidationLevel": {
@@ -9799,6 +10360,66 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ValidationLevel",
       "value": "'WARNING' | 'ERROR'",
+      "description": ""
+    }
+  },
+  "ValidationTargetMap": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "name": "ValidationTargetMap",
+      "description": "Maps POS interceptable workflow names to their valid validation targets.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartvalidations",
+          "value": "CartValidationTarget",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "paymentvalidations",
+          "value": "PaymentValidationTarget",
+          "description": ""
+        }
+      ],
+      "value": "interface ValidationTargetMap {\n  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;\n  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;\n}"
+    }
+  },
+  "CartValidationTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartValidationTarget",
+      "value": "CartTarget | CartLineItemTarget",
+      "description": ""
+    }
+  },
+  "CartTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartTarget",
+      "value": "'$.cart'",
+      "description": "Targets the whole cart rather than a specific line item."
+    }
+  },
+  "CartLineItemTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartLineItemTarget",
+      "value": "`$.cart.lineItems['${string}']`",
+      "description": "Targets one cart line item by its `uuid` from this event's `cart` snapshot, for example `$.cart.lineItems['adfd6b06-4a24-4f5f-9f4b-ea21f4432dd4']`."
+    }
+  },
+  "PaymentValidationTarget": {
+    "src/surfaces/point-of-sale/events.ts": {
+      "filePath": "src/surfaces/point-of-sale/events.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "PaymentValidationTarget",
+      "value": "\"$.payment\"",
       "description": ""
     }
   },
@@ -9825,67 +10446,6 @@
         }
       ],
       "value": "export interface Docs_AppBackgroundEventMethods\n  extends Pick<\n    BackgroundShopifyGlobal,\n    'addEventListener' | 'removeEventListener'\n  > {}"
-    }
-  },
-  "BaseDataSession": {
-    "src/surfaces/point-of-sale/event/data/BaseData.ts": {
-      "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-      "name": "BaseDataSession",
-      "description": "A snapshot of the POS session provided to receipt targets.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currency",
-          "value": "CurrencyCode",
-          "description": "The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "locationId",
-          "value": "number",
-          "description": "The location ID associated with the POS device's current location."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "posVersion",
-          "value": "string",
-          "description": "The version of [the POS app](https://apps.shopify.com/shopify-pos) currently running."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shopDomain",
-          "value": "string",
-          "description": "The shop domain associated with the shop currently logged into POS."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "shopId",
-          "value": "number",
-          "description": "The shop ID associated with the shop currently logged into POS."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "staffMemberId",
-          "value": "number",
-          "description": "The ID of the staff member pinned into POS for this receipt event. This snapshot is separate from the reactive `session.staffMember` on the Session API.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/event/data/BaseData.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "userId",
-          "value": "number",
-          "description": "The user ID associated with the Shopify account currently authenticated on POS."
-        }
-      ],
-      "value": "export interface BaseDataSession extends Session {\n  /**\n   * The ID of the staff member pinned into POS for this receipt event. This\n   * snapshot is separate from the reactive `session.staffMember` on the Session API.\n   */\n  staffMemberId?: number;\n}"
     }
   }
 }
