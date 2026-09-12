@@ -55,6 +55,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -133,6 +134,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -246,6 +248,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -361,6 +364,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -476,6 +480,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -591,6 +596,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -706,6 +712,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -785,6 +792,7 @@
       "Link",
       "Modal",
       "NumberField",
+      "POSList",
       "Page",
       "PosBlock",
       "ScrollBox",
@@ -1567,6 +1575,18 @@
     ]
   },
   "NumberField": {
+    "targets": [
+      "pos.cart.line-item-details.action.render",
+      "pos.customer-details.action.render",
+      "pos.draft-order-details.action.render",
+      "pos.home.modal.render",
+      "pos.order-details.action.render",
+      "pos.product-details.action.render",
+      "pos.purchase.post.action.render",
+      "pos.register-details.action.render"
+    ]
+  },
+  "POSList": {
     "targets": [
       "pos.cart.line-item-details.action.render",
       "pos.customer-details.action.render",
