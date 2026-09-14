@@ -88,6 +88,51 @@ const markAdminWebComponentMembersOptional = async (filePaths) => {
   }
 };
 
+// Sentinel members that only exist on the native DOM base classes
+// (HTMLElement/Element/Node). No authored admin component declares these, so
+// if any appears as a public member the base-class neutralization above has
+// failed and the whole DOM surface has leaked into every component. Fail the
+// build rather than silently shipping a ~10x payload of bogus props.
+const DOM_SURFACE_SENTINELS = [
+  'addEventListener',
+  'querySelector',
+  'appendChild',
+  'accessKey',
+];
+
+const assertNoDomSurfaceLeak = async (filePaths) => {
+  for (const filePath of filePaths) {
+    const docsData = JSON.parse(await fs.readFile(filePath, 'utf8'));
+    const offenders = [];
+
+    for (const [entryName, entry] of Object.entries(docsData)) {
+      const declaration = Object.values(entry)[0];
+      if (!isPublicAdminComponentClass(declaration)) {
+        continue;
+      }
+      const leaked = declaration.members
+        .filter(
+          (member) =>
+            !member.isPrivate && DOM_SURFACE_SENTINELS.includes(member.name),
+        )
+        .map((member) => member.name);
+      if (leaked.length > 0) {
+        offenders.push(`${entryName}: ${leaked.join(', ')}`);
+      }
+    }
+
+    if (offenders.length > 0) {
+      throw new Error(
+        `DOM base-class surface leaked into ${offenders.length} admin component(s) in ` +
+          `${path.basename(filePath)}. The base-class neutralization in build-docs.mjs ` +
+          `did not match the base class form emitted by the definitions build. ` +
+          `Update the neutralization regexes to cover the new form.\n` +
+          `Offenders (first 5): ${offenders.slice(0, 5).join(' | ')}`,
+      );
+    }
+  }
+};
+
 const generateExtensionsDocs = async () => {
   console.log(
     `Building Admin UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
@@ -154,10 +199,24 @@ try {
     await fs.rm(generatedDocsPath, {recursive: true});
   }
   await fs.copyFile(componentDefs, tempComponentDefs);
+  // Neutralize the web-component base class so the doc generator does not
+  // flatten the entire `HTMLElement`/`Element`/`Node` DOM surface into every
+  // component. The definitions build has emitted this base in two forms over
+  // time, so we handle both:
+  //   1. `... : typeof globalThis.HTMLElement`
+  //   2. `declare const <Name>: { new (): HTMLElement; prototype: HTMLElement };`
+  // Both are rewritten to `any` so no DOM members are enumerated. If the
+  // definitions build starts emitting a third form, the post-generation
+  // assertion below (assertNoDomSurfaceLeak) fails the build loudly.
   await replaceFileContent({
     filePaths: tempComponentDefs,
     searchValue: /typeof globalThis\.HTMLElement/g,
     replaceValue: 'any',
+  });
+  await replaceFileContent({
+    filePaths: tempComponentDefs,
+    searchValue: /declare const (\w+): \{[^{}]*\bHTMLElement\b[^{}]*\};/g,
+    replaceValue: 'declare const $1: any;',
   });
   await generateExtensionsDocs();
   await generateAppBridgeDocs();
@@ -184,6 +243,11 @@ try {
   );
 
   await markAdminWebComponentMembersOptional([
+    generatedDocsDataV2Path,
+    appHomeGeneratedDocsDataV2Path,
+  ]);
+
+  await assertNoDomSurfaceLeak([
     generatedDocsDataV2Path,
     appHomeGeneratedDocsDataV2Path,
   ]);
