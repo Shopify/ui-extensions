@@ -37,13 +37,6 @@ export interface Session {
   locationId: number;
 
   /**
-   * The staff ID of the staff member pinned into POS when the extension started. This may differ from the user ID if the pinned staff member is different from the logged in user.
-   *
-   * @deprecated Use `session.staffMember` on the Session API instead.
-   */
-  staffMemberId?: number;
-
-  /**
    * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.
    */
   currency: CurrencyCode;
