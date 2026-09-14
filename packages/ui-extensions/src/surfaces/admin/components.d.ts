@@ -211,7 +211,10 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-interface AggregateError$1<T extends Error> extends Error {
+/**
+ * @publicDocs
+ */
+interface AggregateError<T extends Error> extends Error {
   errors: T[];
 }
 /**
@@ -221,7 +224,7 @@ export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   /**
    * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.
    */
-  error: AggregateError$1<T>;
+  error: AggregateError<T>;
 }
 /**
  * Defines component sizes using a consistent scale from extra small to extra large.

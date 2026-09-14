@@ -17499,6 +17499,46 @@
       "value": "export interface ExtendableEvent extends Event {\n  /**\n   * A method that accepts a promise signaling the duration and eventual success or failure of event-related actions.\n   *\n   * Can be called multiple times to add promises to the event, but must be called synchronously during event dispatch. Cannot be called after a `setTimeout` or within a microtask.\n   */\n  waitUntil?: (promise: Promise<void>) => void;\n}"
     }
   },
+  "AggregateError": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "name": "AggregateError",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "errors",
+          "value": "T[]",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "message",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": ""
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "stack",
+          "value": "string",
+          "description": "",
+          "isOptional": true
+        }
+      ],
+      "value": "interface AggregateError<T extends Error> extends Error {\n  errors: T[];\n}"
+    }
+  },
   "AggregateErrorEvent": {
     "src/surfaces/admin/components.ts": {
       "filePath": "src/surfaces/admin/components.ts",
@@ -17588,7 +17628,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "error",
-          "value": "AggregateError$1<T>",
+          "value": "AggregateError<T>",
           "description": "The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances."
         },
         {
@@ -17700,7 +17740,7 @@
           "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
-      "value": "export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {\n  /**\n   * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.\n   */\n  error: AggregateError$1<T>;\n}"
+      "value": "export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {\n  /**\n   * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.\n   */\n  error: AggregateError<T>;\n}"
     }
   },
   "ToneKeyword": {
