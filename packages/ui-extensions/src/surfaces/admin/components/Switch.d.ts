@@ -1,4 +1,4 @@
-/** VERSION: 2.23.0 **/
+/** VERSION: 2.26.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -144,7 +144,7 @@ export interface PreactCheckboxProps
     >
   > {
   /**
-   * The value used in form data when the checkbox is checked.
+   * The value used in form data when the control is checked.
    */
   value: Required<CheckboxProps>['value'];
 }
@@ -156,7 +156,7 @@ declare class PreactCheckboxElement
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
   /**
-   * The value used in form data when the checkbox is checked.
+   * The value used in form data when the control is checked.
    */
   get value(): string;
   set value(value: string);

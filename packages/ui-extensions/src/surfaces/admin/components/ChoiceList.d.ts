@@ -1,4 +1,4 @@
-/** VERSION: 2.23.0 **/
+/** VERSION: 2.26.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -185,11 +185,11 @@ declare class ChoiceList extends BaseClass implements ChoiceListProps {
    */
   accessor name: ChoiceListProps['name'];
   /**
-   * An error message displayed below the checkbox to indicate validation problems. When set, the checkbox is styled with error indicators and the message is announced to screen readers.
+   * An error message displayed below the field to indicate validation problems. When set, the field is styled with error indicators and the message is announced to screen readers.
    */
   accessor error: ChoiceListProps['error'];
   /**
-   * Supplementary text displayed below the checkbox to provide additional context, instructions, or help. Use this to explain what checking the box means or provide guidance to users. This text is announced to screen readers.
+   * Supplementary text displayed below the field to provide additional context, instructions, or help. Use this to clarify the expected input or provide guidance to users. This text is announced to screen readers.
    */
   accessor details: ChoiceListProps['details'];
   accessor multiple: ChoiceListProps['multiple'];

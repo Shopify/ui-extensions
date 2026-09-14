@@ -1,4 +1,4 @@
-/** VERSION: 2.23.0 **/
+/** VERSION: 2.26.0 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -110,11 +110,11 @@ declare class Option extends PolarisCustomElement implements OptionProps {
    */
   accessor defaultSelected: OptionProps['defaultSelected'];
   /**
-   * The value submitted with the form when this checkbox is checked. If not specified, the default value is "on".
+   * The value submitted with the form when this control is selected. If not specified, the default value is "on".
    */
   accessor value: OptionProps['value'];
   /**
-   * Whether the checkbox is disabled, preventing user interaction. Disabled checkboxes appear dimmed and their values aren't submitted with forms.
+   * Whether the control is disabled, preventing user interaction. Disabled controls appear dimmed and their values aren't submitted with forms.
    */
   accessor disabled: OptionProps['disabled'];
   constructor();
