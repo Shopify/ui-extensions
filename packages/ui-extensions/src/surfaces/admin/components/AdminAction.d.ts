@@ -1,4 +1,4 @@
-/** VERSION: 2.26.0 **/
+/** VERSION: 2.26.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -26,7 +26,7 @@ export interface AdminActionProps
    *
    * @default false
    */
-  loading: AdminActionProps$1['loading'];
+  loading?: AdminActionProps$1['loading'];
 }
 
 export type ReactIntrinsicElementChildren<PreactProps extends object> =

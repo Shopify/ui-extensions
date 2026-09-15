@@ -17499,46 +17499,6 @@
       "value": "export interface ExtendableEvent extends Event {\n  /**\n   * A method that accepts a promise signaling the duration and eventual success or failure of event-related actions.\n   *\n   * Can be called multiple times to add promises to the event, but must be called synchronously during event dispatch. Cannot be called after a `setTimeout` or within a microtask.\n   */\n  waitUntil?: (promise: Promise<void>) => void;\n}"
     }
   },
-  "AggregateError": {
-    "src/surfaces/admin/components.ts": {
-      "filePath": "src/surfaces/admin/components.ts",
-      "name": "AggregateError",
-      "description": "",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "errors",
-          "value": "T[]",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "message",
-          "value": "string",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": ""
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "stack",
-          "value": "string",
-          "description": "",
-          "isOptional": true
-        }
-      ],
-      "value": "interface AggregateError<T extends Error> extends Error {\n  errors: T[];\n}"
-    }
-  },
   "AggregateErrorEvent": {
     "src/surfaces/admin/components.ts": {
       "filePath": "src/surfaces/admin/components.ts",
@@ -17628,7 +17588,7 @@
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "error",
-          "value": "AggregateError<T>",
+          "value": "AggregateError$1<T>",
           "description": "The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances."
         },
         {
@@ -17740,7 +17700,7 @@
           "description": "The **`type`** read-only property of the Event interface returns a string containing the event's type.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Event/type)"
         }
       ],
-      "value": "export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {\n  /**\n   * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.\n   */\n  error: AggregateError<T>;\n}"
+      "value": "export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {\n  /**\n   * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.\n   */\n  error: AggregateError$1<T>;\n}"
     }
   },
   "ToneKeyword": {
@@ -23751,10 +23711,11 @@
           "name": "loading",
           "value": "boolean",
           "description": "Whether the action is in a loading state, such as during initial page load or when the action is being opened. When `true`, the action is in an inert state that prevents user interaction.",
+          "isOptional": true,
           "defaultValue": "false"
         }
       ],
-      "value": "export interface AdminActionProps\n  extends Pick<AdminActionProps$1, 'heading' | 'loading'> {\n  /**\n   * Whether the action is in a loading state, such as during initial page load or when the action is being opened.\n   * When `true`, the action is in an inert state that prevents user interaction.\n   *\n   * @default false\n   */\n  loading: AdminActionProps$1['loading'];\n}"
+      "value": "export interface AdminActionProps\n  extends Pick<AdminActionProps$1, 'heading' | 'loading'> {\n  /**\n   * Whether the action is in a loading state, such as during initial page load or when the action is being opened.\n   * When `true`, the action is in an inert state that prevents user interaction.\n   *\n   * @default false\n   */\n  loading?: AdminActionProps$1['loading'];\n}"
     }
   },
   "AdminBlockProps": {
@@ -23769,17 +23730,19 @@
           "syntaxKind": "PropertySignature",
           "name": "collapsedSummary",
           "value": "string",
-          "description": "The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated."
+          "description": "The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertySignature",
           "name": "heading",
           "value": "string",
-          "description": "The text displayed as the block's title in the header. If not provided, the extension name will be used."
+          "description": "The text displayed as the block's title in the header. If not provided, the extension name will be used.",
+          "isOptional": true
         }
       ],
-      "value": "export interface AdminBlockProps\n  extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {\n  /**\n   * The text displayed as the block's title in the header. If not provided, the extension name will be used.\n   */\n  heading: AdminBlockProps$1['heading'];\n  /**\n   * The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated.\n   */\n  collapsedSummary: AdminBlockProps$1['collapsedSummary'];\n}"
+      "value": "export interface AdminBlockProps\n  extends Pick<AdminBlockProps$1, 'heading' | 'collapsedSummary'> {\n  /**\n   * The text displayed as the block's title in the header. If not provided, the extension name will be used.\n   */\n  heading?: AdminBlockProps$1['heading'];\n  /**\n   * The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated.\n   */\n  collapsedSummary?: AdminBlockProps$1['collapsedSummary'];\n}"
     }
   },
   "AdminPrintActionProps": {
@@ -23794,10 +23757,11 @@
           "syntaxKind": "PropertySignature",
           "name": "src",
           "value": "string",
-          "description": "The URL of the document to preview and print. Supports HTML, PDF, and image formats. If not provided, the preview will show an empty state and the print button will be disabled."
+          "description": "The URL of the document to preview and print. Supports HTML, PDF, and image formats. If not provided, the preview will show an empty state and the print button will be disabled.",
+          "isOptional": true
         }
       ],
-      "value": "export interface AdminPrintActionProps\n  extends Pick<AdminPrintActionProps$1, 'src'> {\n  /**\n   * The URL of the document to preview and print. Supports HTML, PDF, and image formats.\n   * If not provided, the preview will show an empty state and the print button will be disabled.\n   */\n  src: AdminPrintActionProps$1['src'];\n}"
+      "value": "export interface AdminPrintActionProps\n  extends Pick<AdminPrintActionProps$1, 'src'> {\n  /**\n   * The URL of the document to preview and print. Supports HTML, PDF, and image formats.\n   * If not provided, the preview will show an empty state and the print button will be disabled.\n   */\n  src?: AdminPrintActionProps$1['src'];\n}"
     }
   },
   "FunctionSettingsErrorEvent": {

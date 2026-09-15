@@ -1,4 +1,4 @@
-/** VERSION: 2.26.0 **/
+/** VERSION: 2.26.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -211,10 +211,7 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-/**
- * @publicDocs
- */
-interface AggregateError<T extends Error> extends Error {
+interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
 /**
@@ -224,7 +221,7 @@ export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   /**
    * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.
    */
-  error: AggregateError<T>;
+  error: AggregateError$1<T>;
 }
 /**
  * Defines component sizes using a consistent scale from extra small to extra large.
@@ -14431,7 +14428,7 @@ export interface AdminActionProps
    *
    * @default false
    */
-  loading: AdminActionProps$1['loading'];
+  loading?: AdminActionProps$1['loading'];
 }
 
 declare const tagName$5 = 's-admin-action';
@@ -14495,11 +14492,11 @@ export interface AdminBlockProps
   /**
    * The text displayed as the block's title in the header. If not provided, the extension name will be used.
    */
-  heading: AdminBlockProps$1['heading'];
+  heading?: AdminBlockProps$1['heading'];
   /**
    * The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated.
    */
-  collapsedSummary: AdminBlockProps$1['collapsedSummary'];
+  collapsedSummary?: AdminBlockProps$1['collapsedSummary'];
 }
 
 declare const tagName$4 = 's-admin-block';
@@ -14544,7 +14541,7 @@ export interface AdminPrintActionProps
    * The URL of the document to preview and print. Supports HTML, PDF, and image formats.
    * If not provided, the preview will show an empty state and the print button will be disabled.
    */
-  src: AdminPrintActionProps$1['src'];
+  src?: AdminPrintActionProps$1['src'];
 }
 
 declare const tagName$3 = 's-admin-print-action';

@@ -1,4 +1,4 @@
-/** VERSION: 2.26.0 **/
+/** VERSION: 2.26.1 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 
@@ -206,10 +206,7 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-/**
- * @publicDocs
- */
-interface AggregateError<T extends Error> extends Error {
+interface AggregateError$1<T extends Error> extends Error {
   errors: T[];
 }
 /**
@@ -219,7 +216,7 @@ export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   /**
    * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.
    */
-  error: AggregateError<T>;
+  error: AggregateError$1<T>;
 }
 /**
  * Defines component sizes using a consistent scale from extra small to extra large.

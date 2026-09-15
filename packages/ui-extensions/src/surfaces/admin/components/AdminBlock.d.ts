@@ -1,4 +1,4 @@
-/** VERSION: 2.26.0 **/
+/** VERSION: 2.26.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -20,11 +20,11 @@ export interface AdminBlockProps
   /**
    * The text displayed as the block's title in the header. If not provided, the extension name will be used.
    */
-  heading: AdminBlockProps$1['heading'];
+  heading?: AdminBlockProps$1['heading'];
   /**
    * The summary text displayed when the app block is collapsed. Summaries longer than 30 characters will be truncated.
    */
-  collapsedSummary: AdminBlockProps$1['collapsedSummary'];
+  collapsedSummary?: AdminBlockProps$1['collapsedSummary'];
 }
 
 declare const tagName = 's-admin-block';
