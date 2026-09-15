@@ -1,4 +1,4 @@
-/** VERSION: 2.26.0 **/
+/** VERSION: 2.26.1 **/
 /* eslint-disable import/extensions */
 
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -21,7 +21,7 @@ export interface AdminPrintActionProps
    * The URL of the document to preview and print. Supports HTML, PDF, and image formats.
    * If not provided, the preview will show an empty state and the print button will be disabled.
    */
-  src: AdminPrintActionProps$1['src'];
+  src?: AdminPrintActionProps$1['src'];
 }
 
 declare const tagName = 's-admin-print-action';
