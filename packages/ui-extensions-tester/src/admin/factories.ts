@@ -170,6 +170,21 @@ function createMockBlockApi<T extends ExtensionTarget>(target: T) {
   };
 }
 
+function createMetaobjectFormMock<T extends ExtensionTarget>(target: T) {
+  const {extension} = createMockStandardApi(target);
+
+  // A generic Admin Host might expose an incidental empty `data`, but the
+  // supported target contract and its public mock intentionally omit it.
+  return {
+    extension,
+    intents: {launchUrl: undefined},
+    navigation: createNavigation(),
+    snapshot: createReadonlySignalLike({fields: []}),
+    setFieldValue: async () => ({status: 'SUCCESS' as const}),
+    setSaveHandler: () => {},
+  };
+}
+
 function createMockActionApi<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardRenderingApi(target),
@@ -327,6 +342,9 @@ const adminMockFactories: AdminMockFactory = {
   // App render targets
   'admin.app.home.render': createAppHomeMock,
   'admin.app.intent.render': createAppIntentRenderMock,
+
+  // Form targets
+  'admin.metaobject-details.form.render': createMetaobjectFormMock,
 
   // Block targets
   'admin.product-details.block.render': createMockBlockApi,
