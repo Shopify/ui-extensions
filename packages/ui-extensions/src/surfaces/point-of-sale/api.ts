@@ -24,6 +24,7 @@ export type {DataTargetApi} from './api/data-target-api/data-target-api';
 export type {
   ResolutionApi,
   ResolutionApiContent,
+  ResolutionSaveHandler,
 } from './api/resolution-api/resolution-api';
 export type {
   TransactionCompleteEvent,
