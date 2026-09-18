@@ -11,11 +11,13 @@ export interface SessionApiContent {
    */
   currentSession: Session;
   /**
-   * Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in.
+   * Provides read-only access to the staff member currently pinned into POS and allows subscribing to staff member changes. The value is `undefined` when no staff member is pinned in, or while the pinned staff member is still loading.
    */
   staffMember: ReadonlySignalLike<StaffMember | undefined>;
   /**
-   * Generates a fresh session token for secure communication with your app's backend service. Returns `undefined` when the authenticated user lacks proper app permissions. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.
+   * Generates a fresh session token for secure communication with your app's backend service. The token is a Shopify OpenID Connect ID Token that should be used in `Authorization` headers for backend API calls. This is based on the authenticated user, not the pinned staff member.
+   *
+   * Returns `undefined` when the token can't be minted, such as when the authenticated user lacks proper app permissions, the token service returns an empty response, or the request times out or fails. The promise can still reject on transport or lifecycle errors. Treat any falsy resolved value as a failure.
    */
   getSessionToken: () => Promise<string | undefined>;
   /**
@@ -25,7 +27,7 @@ export interface SessionApiContent {
    *
    * @example 123456
    * @see [Global IDs documentation](https://shopify.dev/docs/api/usage/gids) for more about GID format and structure
-   * @see [device.getDeviceId()](https://shopify.dev/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for physical device identifier (UUID format)
+   * @see [device.getDeviceId()](https://shopify.dev/docs/api/pos-ui-extensions/latest/target-apis/platform-apis/device-api) for the physical device identifier string
    */
   deviceId: number;
 }

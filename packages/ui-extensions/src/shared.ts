@@ -976,6 +976,8 @@ export interface ReadonlySignalLike<T> {
   readonly value: T;
   /**
    * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.
+   *
+   * Read `value` when you need the initial snapshot. A subscription callback can also receive the current value during subscription setup, particularly when you use the `@shopify/ui-extensions/preact` integration, so a callback firing isn't proof that a new host event occurred. Save the returned unsubscribe function and call it during component cleanup.
    */
   subscribe(fn: (value: T) => void): () => void;
 }
