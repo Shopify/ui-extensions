@@ -46,7 +46,8 @@ export interface MoneyFieldElementEvents {
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * A callback fired when the money field value changes.
+     * A callback fired when the money field value is committed on blur or after pressing Enter.
+     * Also fired on each step when using the Up Arrow and Down Arrow keys.
      *
      * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
@@ -59,6 +60,7 @@ export interface MoneyFieldElementEvents {
     focus?: CallbackEventListener<typeof tagName>;
     /**
      * A callback fired when the user inputs data into the money field.
+     * Also fired on each step when using the Up Arrow and Down Arrow keys.
      *
      * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
