@@ -25,6 +25,7 @@ export type StandardComponents =
   | 'Page'
   | 'POSBlock'
   | 'PosBlock' // Case is important in 2025-10
+  | 'POSList'
   | 'Route'
   | 'Router'
   | 'ScrollBox'
