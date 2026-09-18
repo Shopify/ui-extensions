@@ -47,12 +47,16 @@ export type LineItemDiscountType = 'Percentage' | 'FixedAmount';
 export interface ReadonlyCartApiContent {
   /**
    * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.
+   *
+   * While POS is in a return, exchange, or refund flow, this signal exposes an empty, non-editable cart (`editable: false`). The lines being returned or exchanged aren't exposed through this signal.
    */
   current: ReadonlySignalLike<Cart>;
 }
 
 /**
  * Cart and line item write operations.
+ *
+ * Each mutation returns a promise that resolves once POS has processed the operation. On API version 2026-10 and later, most mutations reject the promise when POS refuses the write or can't confirm that it succeeded. On earlier API versions, the promise can resolve even when POS refuses or fails the write. Some methods resolve without confirming the write on every API version: `removeCartDiscount`, `clearCart`, `addCartProperties`, `removeCartProperties`, `setAttributedStaff`, and `setAttributedStaffToLineItem`. After a mutation, read `shopify.cart.current` to confirm the cart state changed.
  * @publicDocs
  */
 export interface MutableCartApiContent {
@@ -65,11 +69,13 @@ export interface MutableCartApiContent {
   bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;
 
   /**
-   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.
+   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount.
+   *
+   * For type `'Code'`, pass the discount code itself as `title` (it must be non-empty) and omit `amount`. For validated code redemption with availability checks, use `addCartCodeDiscount` instead. For `'Percentage'` and `'FixedAmount'`, `amount` is required; omitting it submits a zero-value discount that POS doesn't apply.
    *
    * @param type the type of discount applied (example: 'Percentage')
-   * @param title the title attributed with the discount
-   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.
+   * @param title the title attributed with the discount. For type `'Code'`, the discount code to redeem
+   * @param amount the percentage or fixed monetary amount deducted with the discount. Required for `'Percentage'` and `'FixedAmount'`; pass `undefined` for discount codes
    */
   applyCartDiscount(
     type: CartDiscountType,
@@ -78,7 +84,9 @@ export interface MutableCartApiContent {
   ): Promise<void>;
 
   /**
-   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.
+   * Apply a discount code to the cart. POS validates the code against the shop's discount rules and applies the appropriate discount if the code is valid and applicable to the current cart contents.
+   *
+   * On API version 2026-10 and later, the returned promise rejects if the code is invalid or can't be applied. On earlier API versions, an invalid or inapplicable code can fail without rejecting the promise; check `shopify.cart.current` to confirm the discount was applied.
    *
    * @param code the code for the discount to add to the cart
    */
@@ -122,14 +130,14 @@ export interface MutableCartApiContent {
   addCustomSale(customSale: CustomSale): Promise<string>;
 
   /**
-   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.
+   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the new line item, or the `UUID` of the existing line item if POS merged the quantity into a matching line. Throws an error if the variant can't be found or POS fails to add the line item.
    *
-   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call.
+   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call. The `'RFID Tag'` property key is reserved and isn't applied to the line item.
    *
    * @param variantId the product variant's numeric ID to add to the cart
-   * @param quantity the number of this variant to add to the cart
+   * @param quantity the number of this variant to add to the cart; must be a positive integer
    * @param options optional line-item properties to apply to the new line item in the same operation
-   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal
+   * @returns {string} the UUID of the line item added or merged into
    * @throws {Error} if POS fails to add the line item
    */
   addLineItem(
@@ -176,7 +184,7 @@ export interface MutableCartApiContent {
   /**
    * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.
    *
-   * @param uuid the uuid of the line item to which the properties should be stringd
+   * @param uuid the uuid of the line item to which the properties should be added
    * @param properties the custom key to value object to attribute to the line item
    */
   addLineItemProperties(
@@ -204,10 +212,12 @@ export interface MutableCartApiContent {
   /**
    * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.
    *
+   * On API versions earlier than 2026-07, `FixedAmount` amounts apply to the whole line instead: POS divides the total across the line's quantity, which can introduce a one-cent rounding difference (for example, `'2.00'` on a quantity of 3 becomes `'0.67'` per unit).
+   *
    * @param uuid the uuid of the line item that should receive a discount
    * @param type the type of discount applied (example: 'Percentage')
    * @param title the title attributed with the discount
-   * @param amount the percentage or fixed monetary amount deducted with the discout
+   * @param amount the percentage or fixed monetary amount deducted with the discount
    */
   setLineItemDiscount(
     uuid: string,
@@ -219,14 +229,16 @@ export interface MutableCartApiContent {
   /**
    * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.
    *
-   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.
+   * On API versions earlier than 2026-07, `FixedAmount` amounts apply to the whole line instead: POS divides the total across the line's quantity, which can introduce a one-cent rounding difference (for example, `'2.00'` on a quantity of 3 becomes `'0.67'` per unit).
+   *
+   * @param lineItemDiscounts an array of discount inputs to apply. Each entry pairs the target line item's `UUID` (`lineItemUuid`) with the discount to apply to it (`lineItemDiscount`).
    */
   bulkSetLineItemDiscounts(
     lineItemDiscounts: SetLineItemDiscountInput[],
   ): Promise<void>;
 
   /**
-   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.
+   * Set the attributed staff member for all line items in the cart using the staff `ID`. Gift card line items are excluded from staff attribution and keep their current attribution. Pass `undefined` to clear staff attribution from all line items.
    *
    * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.
    */
@@ -272,10 +284,9 @@ export interface MutableCartApiContent {
   updateDefaultAddress(addressId: number): Promise<void>;
 
   /**
-   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.
+   * Add a selling plan to a line item in the cart.
    *
-   * @param uuid the uuid of the line item that should receive the selling plan
-   * @param sellingPlanId the ID of the selling plan to add to the line item
+   * @param input the selling plan assignment, containing the target line item's `UUID` (`lineItemUuid`), the selling plan `ID` (`sellingPlanId`), and an optional display name (`sellingPlanName`)
    */
   addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;
 

@@ -9,6 +9,8 @@ import {DiscountAllocation} from './discount-allocation';
 export interface Cart {
   /**
    * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.
+   *
+   * `editable` is `false` while POS is in a return, exchange, or refund flow. In those flows the cart signal exposes an empty cart, not the lines being returned or exchanged. `editable` remains `true` during the payment flow, where POS refuses cart mutations.
    */
   editable?: boolean;
   /**
@@ -28,27 +30,27 @@ export interface Cart {
    */
   currency: string;
   /**
-   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.
+   * The current cart note, or `undefined` if no note is set.
    */
   note?: string;
   /**
-   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.
+   * The cart-level discount currently applied to the cart: the first manual (percentage or fixed amount) discount, or the first discount code if no manual discount exists. `undefined` if the cart has no discount.
    */
   cartDiscount?: Discount;
   /**
-   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.
+   * The discounts currently applied to the cart. Empty array if the cart has no discounts.
    */
   cartDiscounts: Discount[];
   /**
-   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.
+   * The customer currently associated with the cart, or `undefined` for a guest cart.
    */
   customer?: Customer;
   /**
-   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.
+   * The line items currently in the cart.
    */
   lineItems: LineItem[];
   /**
-   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
+   * The custom key-value properties currently set on the cart. Empty object if no properties are set.
    */
   properties: Record<string, string>;
 }
@@ -79,7 +81,7 @@ export interface CartUpdateInput {
    */
   lineItems: LineItem[];
   /**
-   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
+   * The custom key-value properties to apply to the cart. Merged with existing properties—duplicate keys overwrite existing values.
    */
   properties: Record<string, string>;
 }
@@ -113,7 +115,7 @@ export interface LineItem {
    */
   quantity: number;
   /**
-   * The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.
+   * The display title of the line item. For catalog products, this is the product title; the variant title isn't included, so use `sku` or `variantId` to distinguish between variants of the same product. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.
    */
   title?: string;
   /**
@@ -161,11 +163,11 @@ export interface LineItem {
    */
   attributedUserId?: number;
   /**
-   * Determines whether this line item requires a selling plan (subscription) to be purchased. Returns 'undefined' if selling plan information is unavailable. Use for implementing subscription-based product handling.
+   * Determines whether this line item requires a selling plan (subscription) to be purchased. Always present as a boolean on POS cart state. Use for implementing subscription-based product handling.
    */
   requiresSellingPlan?: boolean;
   /**
-   * Determines whether this line item has selling plan groups (subscription options) available. Returns 'undefined' if selling plan information is unavailable. Use for displaying subscription options.
+   * Determines whether this line item has selling plan groups (subscription options) available. Always present as a boolean on POS cart state. Use for displaying subscription options.
    */
   hasSellingPlanGroups?: boolean;
   /**
@@ -184,19 +186,19 @@ export interface LineItem {
  */
 export interface LineItemComponent {
   /**
-   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.
+   * The display title of this bundle component.
    */
   title?: string;
   /**
-   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.
+   * The quantity of this component in each bundle line item.
    */
   quantity: number;
   /**
-   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.
+   * The total price of this component within the bundle line, as a number.
    */
   price?: number;
   /**
-   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.
+   * Determines whether this component is subject to tax calculations.
    */
   taxable: boolean;
   /**
@@ -204,7 +206,7 @@ export interface LineItemComponent {
    */
   taxLines: TaxLine[];
   /**
-   * An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.
+   * An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Empty array if no allocations exist.
    */
   discountAllocations?: DiscountAllocation[];
   /**
@@ -227,15 +229,15 @@ export interface SellingPlan {
    */
   id: number;
   /**
-   * The name of the POS device.
+   * The display name of the selling plan.
    */
   name: string;
   /**
-   * The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.
+   * The fingerprint of the applied selling plan within this cart session. Not currently populated by POS on cart state; always `undefined`.
    */
   digest?: string;
   /**
-   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).
+   * The delivery interval of the selling plan: `'Day'`, `'Week'`, `'Month'`, or `'Year'`. `undefined` if POS can't map the plan's interval.
    */
   deliveryInterval?: string;
   /**
@@ -254,7 +256,7 @@ export interface Discount {
    */
   amount: number;
   /**
-   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.
+   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code for the discount. Not currently populated on POS cart state; always `undefined`. Use `Cart.currency` for the cart's currency code.
    */
   currency?: string;
   /**
@@ -273,7 +275,7 @@ export interface Discount {
  */
 export interface AddLineItemOptions {
   /**
-   * Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.
+   * Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation. The `'RFID Tag'` property key is reserved and isn't applied to the line item.
    */
   properties?: Record<string, string>;
 }
@@ -284,7 +286,7 @@ export interface AddLineItemOptions {
  */
 export interface SetLineItemPropertiesInput {
   /**
-   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.
+   * The `UUID` of the line item to update. Must match an existing line item in the cart.
    */
   lineItemUuid: string;
   /**
@@ -299,7 +301,7 @@ export interface SetLineItemPropertiesInput {
  */
 export interface SetLineItemDiscountInput {
   /**
-   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.
+   * The `UUID` of the line item to discount. Must match an existing line item in the cart.
    */
   lineItemUuid: string;
   /**
@@ -314,7 +316,7 @@ export interface SetLineItemDiscountInput {
  */
 export interface LineItemDiscount {
   /**
-   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.
+   * The display title of the discount. Appears on receipts and in cart displays.
    */
   title: string;
   /**
