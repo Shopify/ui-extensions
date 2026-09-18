@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.12
+
+### Minor Changes
+
+- [#4692](https://github.com/Shopify/ui-extensions/pull/4692) [`2903675`](https://github.com/Shopify/ui-extensions/commit/2903675c5eb3246c46b8a4ff66ddbdc656cbed0a) Thanks [@kyledurand](https://github.com/kyledurand)! - Expose `EmptyState` and `Number` to Admin UI extension targets that support standard components, including `admin.app.home.render`.
+
 ## 2026.10.0-rc.11
 
 ### Minor Changes

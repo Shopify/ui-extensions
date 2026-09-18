@@ -8,6 +8,7 @@
   "changesets": [
     "add-box-private-positioning-types",
     "admin-component-type-drift",
+    "admin-empty-state-number-target-support",
     "admin-number-empty-state-types",
     "admin-progress-component-definitions",
     "admin-regenerate-full-component-definitions",
