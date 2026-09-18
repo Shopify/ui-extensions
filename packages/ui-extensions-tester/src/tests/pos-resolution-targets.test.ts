@@ -28,6 +28,17 @@ describe('pos.cart.validations.resolution.render', () => {
 
     expect(api).not.toHaveProperty('action');
   });
+
+  it('exposes onSave, which returns an unregister function', () => {
+    const api = createMockPosTargetApi(
+      'pos.cart.validations.resolution.render',
+    );
+
+    expect(typeof api.resolution.onSave).toBe('function');
+
+    const unregister = api.resolution.onSave(() => {});
+    expect(typeof unregister).toBe('function');
+  });
 });
 
 describe('pos.payment.validations.resolution.render', () => {
@@ -56,5 +67,16 @@ describe('pos.payment.validations.resolution.render', () => {
     );
 
     expect(api).not.toHaveProperty('action');
+  });
+
+  it('exposes onSave, which returns an unregister function', () => {
+    const api = createMockPosTargetApi(
+      'pos.payment.validations.resolution.render',
+    );
+
+    expect(typeof api.resolution.onSave).toBe('function');
+
+    const unregister = api.resolution.onSave(async () => {});
+    expect(typeof unregister).toBe('function');
   });
 });
