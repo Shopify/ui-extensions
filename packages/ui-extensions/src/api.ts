@@ -5,6 +5,10 @@ export interface I18nTranslate {
   /**
    * Returns a translated string matching a key in a locale file. Use this to display localized text in your extension based on the merchant's language preferences. Supports interpolation with replacement values and pluralization with the `count` option. Returns a string when replacements are primitives, or an array when replacements include UI components.
    *
+   * In POS extensions, translation lookup doesn't expose a separate success or error result. A missing key, a missing required plural form, or a missing pluralization count can produce diagnostic text as the return value, along with a console warning. A missing interpolation value leaves the unresolved placeholder in the returned text and emits a warning. Check the development console and test each locale, plural category, and interpolation key before displaying translated content. Don't rely on diagnostic message wording as a stable API contract.
+   *
+   * In POS extensions, pass the `count` option as a number for a pluralized translation key. Zero is a valid count. A numeric string doesn't select a plural form, and omitting the count or passing `undefined` produces a missing-count diagnostic for a pluralized key.
+   *
    * @param key - The translation key from your locale file (for example, "banner.title")
    * @param options - Optional replacement values for interpolation or the special `count` property for pluralization
    *
@@ -38,7 +42,9 @@ export interface I18n {
   /**
    * Returns a localized currency value formatted according to the user's locale and currency conventions. Use this to display prices, totals, or financial amounts in the appropriate format for the merchant's region. This function behaves like the standard `Intl.NumberFormat()` with a style of `currency` applied. Uses the current user's locale by default.
    *
-   * @param number - The currency amount to format
+   * In POS extensions, pass an amount in major currency units and provide `options.currency` as an [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code. For example, `formatCurrency(10, {currency: 'CAD'})` formats ten Canadian dollars. The function doesn't convert currencies or divide an integer minor-unit amount. Omitting the currency while using the currency style throws synchronously. Formatting errors from invalid Intl options are synchronous exceptions, not rejected promises.
+   *
+   * @param number - The currency amount to format, in major currency units
    * @param options.inExtensionLocale - If true, use the extension's default locale instead of the user's locale
    * @param options - Additional Intl.NumberFormatOptions for customizing the currency format, such as the currency code
    */
