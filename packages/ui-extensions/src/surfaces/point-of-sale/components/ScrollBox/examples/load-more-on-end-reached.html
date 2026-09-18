@@ -1,0 +1,14 @@
+<s-scroll-box
+  blockSize="400px"
+  onEndReached={() => {
+    // Fires once each time the user scrolls near the end, and again after the
+    // content grows. Append the next page of rows to the stack here.
+    loadNextPage();
+  }}
+>
+  <s-stack direction="block">
+    <s-text>True Twin board</s-text>
+    <s-text>Directional board</s-text>
+    <s-text>Volume shifted board</s-text>
+  </s-stack>
+</s-scroll-box>

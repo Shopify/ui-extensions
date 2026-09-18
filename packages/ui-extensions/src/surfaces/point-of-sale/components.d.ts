@@ -4574,6 +4574,14 @@ interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
    */
   paddingInlineEnd?: PaddingKeyword$1 | '';
   /**
+   * Callback when the user scrolls to the end of the content.
+   *
+   * Fires when the scroll position comes within 20% of the visible height of the end of the content.
+   * It fires once per approach: it fires again after the content grows, or after the user scrolls
+   * away from the end and back. Use it to load and append the next page of content.
+   */
+  onEndReached?: (event: CallbackEvent<typeof tagName$k>) => void;
+  /**
    * The content of the scroll box.
    */
   children?: ComponentChildren;
@@ -5982,6 +5990,21 @@ interface Text {
     | 'critical';
   /** A unique identifier for the element. */
   id?: string;
+}
+
+/**
+ * The scroll box component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface ScrollBoxEvents {
+  /**
+   * Callback when the user scrolls to the end of the content.
+   *
+   * Fires when the scroll position comes within 20% of the visible height of the end of the content.
+   * It fires once per approach: it fires again after the content grows, or after the user scrolls
+   * away from the end and back. Use it to load and append the next page of content.
+   */
+  endreached?: (event: CallbackEvent<typeof tagName$k>) => void;
 }
 
 /**
