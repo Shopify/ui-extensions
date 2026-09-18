@@ -4,7 +4,7 @@
  */
 export interface DeviceApiContent {
   /**
-   * The name of the device as configured by the merchant or system. Use for displaying device information in interfaces, logging, or support contexts where device identification is helpful.
+   * The operating system device name (for example, the iPad name set in system settings), or the device model name when no name was set. For the merchant-assigned register name configured in POS settings, use `registerName`.
    */
   name: string;
   /**
@@ -13,6 +13,9 @@ export interface DeviceApiContent {
   registerName: string;
   /**
    * Retrieves the unique string identifier for the device. Returns a promise that resolves to the device ID. Use for device-specific data storage, analytics tracking, or implementing device-based permissions and configurations.
+   *
+   * This identifier differs from the numeric device ID available as `shopify.session.deviceId` and as `device.deviceId` on event data.
+   *
    * Note: While Shopify POS attempts to maintain a stable identifier, it is not guaranteed to be permanent and may change.
    */
   getDeviceId(): Promise<string>;

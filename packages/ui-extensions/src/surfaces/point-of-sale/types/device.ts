@@ -8,7 +8,7 @@ export interface Device {
    */
   name: string;
   /**
-   * The unique identifier for the POS device.
+   * The numeric Shopify POS device ID (the same value as `shopify.session.deviceId`). This differs from the string returned by `shopify.device.getDeviceId()`.
    */
   deviceId: number;
   /**
