@@ -26,6 +26,8 @@ export interface MockReadonlySignalLike<T> {
 
 /**
  * Creates a mock `ReadonlySignalLike` that wraps a static value.
+ * The `subscribe` callback is never invoked and does not replay the
+ * current value — assign a new value and render once per state.
  */
 export function createReadonlySignalLike<T>(
   value: T,

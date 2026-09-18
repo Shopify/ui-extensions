@@ -6,7 +6,7 @@ This testing library provides strongly typed mocks of the extension API--like th
 
 ## 📋 Requirements
 
-- **API version `2025-10` or later** in your `shopify.extension.toml`
+- **Matching API version** — the `api_version` in your `shopify.extension.toml` must exactly match the API version of your installed `@shopify/ui-extensions-tester` package (for example, tester `2026.7.x` pairs with `api_version = "2026-07"`). If they differ, install the tester version that matches your extension's API version, or update `api_version`.
 - **Node.js v20.20.0** or later
 - **a mock DOM** such as [`environment: 'jsdom'`](https://vitest.dev/config/environment.html) in [`vitest`](https://vitest.dev/)
 - **Test isolation** — extensions rely on the `shopify` global, so each test file must run in its own environment. We recommend [`vitest`](https://vitest.dev/) in [isolate mode](https://vitest.dev/config/isolate.html#isolate) (enabled by default).
@@ -258,6 +258,8 @@ test('it handles date field changes', async () => {
 });
 ```
 
+These are DOM events inside the mock DOM environment: they simulate user interaction with the rendered component tree, not native host behavior. POS extensions can also receive events dispatched by the POS host itself — those are simulated with [`extension.dispatch()`](#extensiondispatchtype-event) and are covered in the [Point of Sale guide](./src/point-of-sale/README.md#simulating-pos-host-events).
+
 ### 🔒 Safely mocking mutation functions
 
 When mocking without strict typing, like with [`vitest` mocks](https://vitest.dev/api/vi.html#mocking-functions-and-objects), you can use a surface-specific `createResult()` helper to return type-safe values:
@@ -441,6 +443,12 @@ extension.navigation.currentEntry =
 ```
 
 Assigning to `extension.navigation` also updates `globalThis.navigation`, so extension code that calls `navigation.navigate()` directly will use the mock.
+
+#### `extension.dispatch(type, event)`
+
+Simulates a host event: synchronously calls every listener registered through the mock `shopify.addEventListener(type, listener)` with the given payload. Listener return values are ignored, and a throwing listener doesn't prevent the remaining listeners from running.
+
+Host events exist only on POS targets. The payload you pass omits `type`; listeners receive the event with a `type` field matching the event name added. This describes the `2026-10` tester; the published `2026.7.4` tester passes the supplied payload through unchanged. Use the documentation matching your installed tester version. In the POS app these events are delivered only to the background target (`pos.app.ready.data`) — see [Simulating POS host events](./src/point-of-sale/README.md#simulating-pos-host-events) for a complete example.
 
 ### `getExtension(target, options?)`
 

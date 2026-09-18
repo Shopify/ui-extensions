@@ -32,6 +32,9 @@ export function createCartLineItem(overrides?: Partial<LineItem>): LineItem {
  * Creates a mock `Storage` instance.
  *
  * Optionally accepts a `Record<string, unknown>` of initial entries.
+ *
+ * The mock is backed by an in-memory map. It doesn't enforce the
+ * documented POS storage limits and never throws `StorageError`.
  */
 export function createStorage<
   T extends Record<string, unknown> = Record<string, unknown>,

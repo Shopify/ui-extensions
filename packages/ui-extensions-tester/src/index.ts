@@ -101,6 +101,9 @@ interface BaseExtensionHarness<T extends AnyExtensionTarget> {
    * Fires a host event at every listener registered via
    * `shopify.addEventListener(name, listener)`.
    *
+   * Host events exist only on POS targets, and in the POS app they are
+   * delivered only to the background target (`pos.app.ready.data`).
+   *
    * Matches the `shopify.addEventListener` contract: listener return values
    * are ignored, and thrown errors are caught per-listener so one bad
    * listener doesn't block the others.
