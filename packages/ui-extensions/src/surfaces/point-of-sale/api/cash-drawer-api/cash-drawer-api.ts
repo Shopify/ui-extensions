@@ -6,6 +6,8 @@ export interface CashDrawerApiContent {
   /**
    * Opens the connected cash drawer device. The drawer will automatically open if a compatible cash drawer is connected to the POS device. Use for manual cash drawer operations, implementing custom payment workflows, or providing explicit cash drawer access in register management interfaces.
    *
+   * The returned promise doesn't confirm that the drawer physically opened.
+   *
    * @returns Void
    */
   open(): Promise<void>;

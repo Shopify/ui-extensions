@@ -11,18 +11,18 @@ export interface CameraMediaOptions {
    */
   facingMode?: 'user' | 'environment';
   /**
-   * The maximum width (1 to 1920) of the image in pixels. Resizes the image to this width if it is larger.
+   * The requested maximum width of the captured image in pixels. Resizes the image to this width if it's larger. Values below 1 are clamped to 1, and values above 1920 are clamped to 1920 before capture. The `width` on the returned `CameraMediaResponse` is the actual captured image width.
    * @defaultValue 1080
    */
   maxWidth?: number;
   /**
-   * The maximum height (1 to 1920) of the image in pixels. Resizes the image to this height if it is larger.
+   * The requested maximum height of the captured image in pixels. Resizes the image to this height if it's larger. Values below 1 are clamped to 1, and values above 1920 are clamped to 1920 before capture. The `height` on the returned `CameraMediaResponse` is the actual captured image height.
    * @defaultValue 1080
    */
   maxHeight?: number;
   /**
    * The quality of the image returned.
-   * Percentile value between 0 (lowest quality/highest compression) and 1 (highest quality/lowest compression).
+   * A value between 0 (lowest quality, highest compression) and 1 (highest quality, lowest compression). Values outside this range throw an error.
    * @defaultValue 0.9
    */
   quality?: number;
