@@ -47,7 +47,7 @@ export interface Storage<
   current: SubscribableStorage<BaseStorageTypes>;
 
   /**
-   * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
+   * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable, and the promise rejects with a `StorageError` when storage limits are exceeded. Values are JSON-serialized on write: `undefined` properties are dropped, `NaN` and `Infinity` become `null`, and `Date` objects become ISO strings. Keys are limited to 1024 UTF-16 code units, and values to 1,048,576 code units of their JSON serialization. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
    *
    * @param key - The key to set the value for.
    * @param value - The value to set for the key.
