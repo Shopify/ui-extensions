@@ -88,37 +88,27 @@ export interface NumberFieldEvents extends Pick<NumberFieldProps$1, 'onBlur' | '
 /** @publicDocs */
 export interface NumberFieldElementEvents {
     /**
-<<<<<<< HEAD
-     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
-=======
      * A callback fired when the number field loses focus.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-<<<<<<< HEAD
-     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
-=======
-     * A callback fired when the number field value changes.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
+     * A callback fired when the number field value is committed on blur or after pressing Enter.
+     * Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.
      *
      * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
-<<<<<<< HEAD
-     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
-=======
      * A callback fired when the number field receives focus.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
     focus?: CallbackEventListener<typeof tagName>;
     /**
      * A callback fired when the user inputs data into the number field.
+     * Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.
      *
      * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
