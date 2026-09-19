@@ -12,7 +12,7 @@ export interface DeviceApiContent {
    */
   registerName: string;
   /**
-   * The Shopify-assigned fiscal register identifier for the device, such as Sweden's manufacturing number (tillverkningsnummer). It's the same value as the `fiscalDeviceIdentifier` field on `PointOfSaleDevice`.
+   * The Shopify-assigned fiscal register identifier for the device, such as Sweden's manufacturing number (tillverkningsnummer).
    */
   fiscalDeviceIdentifier?: string;
   /**
