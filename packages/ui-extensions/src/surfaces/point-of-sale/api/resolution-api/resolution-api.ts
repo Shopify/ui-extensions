@@ -38,10 +38,11 @@ export interface ResolutionApiContent<TEventData> {
    * A rejected promise does not stop the flow; POS still re-runs validation and
    * the interceptor result decides what happens next.
    *
-   * Only the most recent handler is kept. Returns a promise that resolves to a
-   * function that unregisters the handler.
+   * Only the most recent handler is kept.
    *
+   * @returns A promise that resolves to an async cleanup function that
+   * unregisters the handler.
    * @private
    */
-  onSave(handler: ResolutionSaveHandler): Promise<() => void>;
+  onSave(handler: ResolutionSaveHandler): Promise<() => Promise<void>>;
 }
