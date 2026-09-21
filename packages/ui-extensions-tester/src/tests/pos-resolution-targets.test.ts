@@ -29,14 +29,17 @@ describe('pos.cart.validations.resolution.render', () => {
     expect(api).not.toHaveProperty('action');
   });
 
-  it('exposes onSave, which returns an unregister function', () => {
+  it('exposes onSave, which resolves to an unregister function', async () => {
     const api = createMockPosTargetApi(
       'pos.cart.validations.resolution.render',
     );
 
     expect(typeof api.resolution.onSave).toBe('function');
 
-    const unregister = api.resolution.onSave(() => {});
+    const unregisterPromise = api.resolution.onSave(() => {});
+    expect(unregisterPromise).toBeInstanceOf(Promise);
+
+    const unregister = await unregisterPromise;
     expect(typeof unregister).toBe('function');
   });
 });
@@ -69,14 +72,17 @@ describe('pos.payment.validations.resolution.render', () => {
     expect(api).not.toHaveProperty('action');
   });
 
-  it('exposes onSave, which returns an unregister function', () => {
+  it('exposes onSave, which resolves to an unregister function', async () => {
     const api = createMockPosTargetApi(
       'pos.payment.validations.resolution.render',
     );
 
     expect(typeof api.resolution.onSave).toBe('function');
 
-    const unregister = api.resolution.onSave(async () => {});
+    const unregisterPromise = api.resolution.onSave(async () => {});
+    expect(unregisterPromise).toBeInstanceOf(Promise);
+
+    const unregister = await unregisterPromise;
     expect(typeof unregister).toBe('function');
   });
 });

@@ -55,6 +55,28 @@ extension.shopify.storage = createStorage({
 });
 ```
 
+## 💾 Mocking resolution saves
+
+For cart and payment validation resolution targets, `resolution.onSave()`
+returns a promise that resolves to the cleanup function:
+
+```ts
+const cleanup =
+  await extension.shopify.resolution.onSave(
+    async () => {
+      await extension.shopify.storage.set(
+        'resolution-saved',
+        true,
+      );
+    },
+  );
+
+cleanup();
+```
+
+The default mock does not invoke the registered handler. Replace `onSave`
+with a spy or mock when you need to capture and invoke it.
+
 ## 🔒 Mocking cart mutations
 
 The target API mock includes asynchronous stubs for Cart API mutations, including `updateLineItemQuantity`. Replace a stub with a spy when you need to verify a call:
