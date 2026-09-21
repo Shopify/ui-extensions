@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.13
+
+### Minor Changes
+
+- [#4682](https://github.com/Shopify/ui-extensions/pull/4682) [`a7ddd4f`](https://github.com/Shopify/ui-extensions/commit/a7ddd4f56348be504a4b8db0d3b4a9ad7c98c9ba) Thanks [@shopifyzach](https://github.com/shopifyzach)! - Add `fiscalDeviceIdentifier` to the POS Device API. `shopify.device.fiscalDeviceIdentifier` is the Shopify-assigned fiscal register identifier for the device (such as Sweden's manufacturing number), matching the `fiscalDeviceIdentifier` field on the `PointOfSaleDevice` object in the GraphQL Admin API. It's `undefined` when the device's location doesn't require fiscal device registration.
+
+- [#4713](https://github.com/Shopify/ui-extensions/pull/4713) [`1c9845c`](https://github.com/Shopify/ui-extensions/commit/1c9845c08b47b58b47b4a301af6862ad0c20d4b8) Thanks [@henryStelle](https://github.com/henryStelle)! - Add `shopify.resolution.onSave` to the POS validation resolution targets so an extension can commit pending work before POS re-runs the intercepted validation. Registering a handler asynchronously returns an async cleanup function.
+
 ## 2026.10.0-rc.12
 
 ### Minor Changes
