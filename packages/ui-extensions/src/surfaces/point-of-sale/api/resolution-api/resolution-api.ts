@@ -15,12 +15,12 @@ export interface ResolutionApi<TEventData> {
  * Runs when staff advance the resolution flow. Return a promise to have POS
  * wait for pending work to finish before it re-runs validation.
  *
- * @private
+ * @publicDocs
  */
 export type ResolutionSaveHandler = () => void | Promise<void>;
 
 /**
- * @private
+ * @publicDocs
  */
 export interface ResolutionApiContent<TEventData> {
   /**
@@ -42,7 +42,6 @@ export interface ResolutionApiContent<TEventData> {
    *
    * @returns A promise that resolves to an async cleanup function that
    * unregisters the handler.
-   * @private
    */
   onSave(handler: ResolutionSaveHandler): Promise<() => Promise<void>>;
 }
