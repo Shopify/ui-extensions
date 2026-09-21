@@ -44,8 +44,6 @@ export interface BackgroundShopifyGlobal extends ShopifyGlobal {
   /**
    * Register an interceptor for a POS host workflow that can be blocked.
    * Returns a function that unregisters the interceptor.
-   *
-   * @private
    */
   intercept<K extends keyof ShopifyInterceptMap>(
     type: K,
