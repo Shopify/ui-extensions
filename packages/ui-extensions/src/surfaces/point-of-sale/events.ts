@@ -62,7 +62,7 @@ export interface ShopifyEventMap {
  *
  * Used as the generic type parameter for `shopify.intercept`.
  *
- * @private
+ * @publicDocs
  */
 export interface ShopifyInterceptMap {
   [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationsEvent;
@@ -72,7 +72,7 @@ export interface ShopifyInterceptMap {
 /**
  * The data carried by a `cartvalidations` event.
  *
- * @private
+ * @publicDocs
  */
 export interface CartValidationsEventData {
   /** A snapshot of the POS cart taken when the event was produced. */
@@ -83,7 +83,7 @@ export interface CartValidationsEventData {
  * The event a `cartvalidations` interceptor receives. Carries a snapshot of
  * the POS cart taken when the event was produced.
  *
- * @private
+ * @publicDocs
  */
 export interface CartValidationsEvent extends CartValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
@@ -92,7 +92,7 @@ export interface CartValidationsEvent extends CartValidationsEventData {
 /**
  * The kind of payment method being attempted.
  *
- * @private
+ * @publicDocs
  */
 export type InterceptedPaymentMethodType = 'cash';
 
@@ -103,7 +103,7 @@ export type InterceptedPaymentMethodType = 'cash';
  * disambiguates method types a shop can have several of (for example custom
  * payment methods) as they become interceptable.
  *
- * @private
+ * @publicDocs
  */
 export interface InterceptedPaymentMethod {
   readonly type: InterceptedPaymentMethodType;
@@ -117,7 +117,7 @@ export interface InterceptedPaymentMethod {
  * attempt's payment method and amount; split payments produce one event per
  * tender, each with its own amount.
  *
- * @private
+ * @publicDocs
  */
 export interface PaymentValidationsEvent extends PaymentValidationsEventData {
   readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;
@@ -126,7 +126,7 @@ export interface PaymentValidationsEvent extends PaymentValidationsEventData {
 /**
  * The data carried by a `paymentvalidations` event.
  *
- * @private
+ * @publicDocs
  */
 export interface PaymentValidationsEventData {
   /** The payment method staff selected. */
@@ -139,7 +139,7 @@ export interface PaymentValidationsEventData {
 /**
  * Targets the whole cart rather than a specific line item.
  *
- * @private
+ * @publicDocs
  */
 export type CartTarget = '$.cart';
 
@@ -147,35 +147,35 @@ export type CartTarget = '$.cart';
  * Targets one cart line item by its `uuid` from this event's `cart` snapshot,
  * for example `$.cart.lineItems['adfd6b06-4a24-4f5f-9f4b-ea21f4432dd4']`.
  *
- * @private
+ * @publicDocs
  */
 export type CartLineItemTarget = `$.cart.lineItems['${string}']`;
 
-/** @private */
+/** @publicDocs */
 export type CartValidationTarget = CartTarget | CartLineItemTarget;
 
 /**
  * Targets the payment attempt being intercepted.
  *
- * @private
+ * @publicDocs
  */
 export type PaymentTarget = '$.payment';
 
-/** @private */
+/** @publicDocs */
 export type PaymentValidationTarget = PaymentTarget;
 
 /**
  * Where a validation applies, as an enumerated token. Targets are matched
  * as exact strings, never evaluated as JSON paths.
  *
- * @private
+ * @publicDocs
  */
 export type ValidationTarget = CartValidationTarget | PaymentValidationTarget;
 
 /**
  * Maps POS interceptable workflow names to their valid validation targets.
  *
- * @private
+ * @publicDocs
  */
 interface ValidationTargetMap {
   [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;
@@ -186,7 +186,7 @@ interface ValidationTargetMap {
  * The interceptor callback for a POS interceptable workflow, keyed by the
  * workflow name so the event and its valid validation targets stay paired.
  *
- * @private
+ * @publicDocs
  */
 export type ShopifyInterceptor<K extends keyof ShopifyInterceptMap> = (
   event: ShopifyInterceptMap[K],
@@ -197,7 +197,7 @@ export type ShopifyInterceptor<K extends keyof ShopifyInterceptMap> = (
  * findings from this interceptor and doesn't remove or override findings from
  * other interceptors.
  *
- * @private
+ * @publicDocs
  */
 export interface InterceptResult<
   TTarget extends ValidationTarget = ValidationTarget,
@@ -208,7 +208,7 @@ export interface InterceptResult<
 /**
  * A single host operation produced by an interceptor.
  *
- * @private
+ * @publicDocs
  */
 export interface Operation<
   TTarget extends ValidationTarget = ValidationTarget,
@@ -216,13 +216,13 @@ export interface Operation<
   validationAdd?: ValidationAdd<TTarget>;
 }
 
-/** @private */
+/** @publicDocs */
 export type ValidationLevel = 'WARNING' | 'ERROR';
 
 /**
  * Adds a validation to the workflow being intercepted.
  *
- * @private
+ * @publicDocs
  */
 export interface ValidationAdd<
   TTarget extends ValidationTarget = ValidationTarget,
