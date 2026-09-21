@@ -28,6 +28,24 @@ describe('pos.cart.validations.resolution.render', () => {
 
     expect(api).not.toHaveProperty('action');
   });
+
+  it('exposes onSave, which resolves to an async cleanup function', async () => {
+    const api = createMockPosTargetApi(
+      'pos.cart.validations.resolution.render',
+    );
+
+    expect(typeof api.resolution.onSave).toBe('function');
+
+    const cleanupPromise = api.resolution.onSave(() => {});
+    expect(cleanupPromise).toBeInstanceOf(Promise);
+
+    const cleanup = await cleanupPromise;
+    expect(typeof cleanup).toBe('function');
+
+    const cleanupResult = cleanup();
+    expect(cleanupResult).toBeInstanceOf(Promise);
+    await cleanupResult;
+  });
 });
 
 describe('pos.payment.validations.resolution.render', () => {
@@ -56,5 +74,23 @@ describe('pos.payment.validations.resolution.render', () => {
     );
 
     expect(api).not.toHaveProperty('action');
+  });
+
+  it('exposes onSave, which resolves to an async cleanup function', async () => {
+    const api = createMockPosTargetApi(
+      'pos.payment.validations.resolution.render',
+    );
+
+    expect(typeof api.resolution.onSave).toBe('function');
+
+    const cleanupPromise = api.resolution.onSave(async () => {});
+    expect(cleanupPromise).toBeInstanceOf(Promise);
+
+    const cleanup = await cleanupPromise;
+    expect(typeof cleanup).toBe('function');
+
+    const cleanupResult = cleanup();
+    expect(cleanupResult).toBeInstanceOf(Promise);
+    await cleanupResult;
   });
 });

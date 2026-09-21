@@ -476,6 +476,7 @@ function createCartValidationsResolutionMock<T extends RenderExtensionTarget>(
     ...createMockCartApi(),
     resolution: {
       event: createReadonlySignalLike({cart: createPosCart()}),
+      onSave: async () => async () => {},
     },
   };
 }
@@ -498,6 +499,7 @@ function createPaymentValidationsResolutionMock<
         paymentMethod: {type: 'cash' as const},
         amount: {amount: '10.00', currencyCode: 'USD'},
       }),
+      onSave: async () => async () => {},
     },
   };
 }
