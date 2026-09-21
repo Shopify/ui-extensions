@@ -1,5 +1,16 @@
 # @shopify/ui-extensions-tester
 
+## 2026.10.0-rc.13
+
+### Minor Changes
+
+- [#4713](https://github.com/Shopify/ui-extensions/pull/4713) [`1c9845c`](https://github.com/Shopify/ui-extensions/commit/1c9845c08b47b58b47b4a301af6862ad0c20d4b8) Thanks [@henryStelle](https://github.com/henryStelle)! - Add `shopify.resolution.onSave` to the POS validation resolution targets so an extension can commit pending work before POS re-runs the intercepted validation. Registering a handler asynchronously returns an async cleanup function.
+
+### Patch Changes
+
+- Updated dependencies [[`a7ddd4f`](https://github.com/Shopify/ui-extensions/commit/a7ddd4f56348be504a4b8db0d3b4a9ad7c98c9ba), [`1c9845c`](https://github.com/Shopify/ui-extensions/commit/1c9845c08b47b58b47b4a301af6862ad0c20d4b8)]:
+  - @shopify/ui-extensions@2026.10.0-rc.13
+
 ## 2026.10.0-rc.12
 
 ### Patch Changes
