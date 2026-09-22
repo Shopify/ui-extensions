@@ -5546,7 +5546,11 @@ interface POSListJSXProps {
   rows?: POSListRow[];
   /**
    * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * A row whose `templateFor` matches no template renders nothing.
+   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
+   * are reported. The header and loading indicator can still render. When templates are supplied,
+   * a row whose `templateFor` matches no template renders nothing.
+   *
+   * @default undefined
    */
   itemTemplates?: POSListTemplates;
   /**
@@ -5661,7 +5665,10 @@ interface POSList {
   rows?: POSListRow[];
   /**
    * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * A row whose `templateFor` matches no template renders nothing.
+   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
+   * are reported. The header and loading indicator can still render. When templates are supplied,
+   * a row whose `templateFor` matches no template renders nothing.
+   * @default undefined
    */
   itemTemplates?: POSListTemplates;
   /**
