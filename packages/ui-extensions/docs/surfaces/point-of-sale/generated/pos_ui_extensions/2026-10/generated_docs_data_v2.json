@@ -5716,7 +5716,7 @@
           "syntaxKind": "PropertySignature",
           "name": "heading",
           "value": "string",
-          "description": "A title that describes the content of the tile.",
+          "description": "A title that describes the content of the tile. Keep it short so it stays readable on smaller POS devices.",
           "isOptional": true,
           "defaultValue": "''"
         },
@@ -5755,7 +5755,7 @@
           "defaultValue": "'auto'"
         }
       ],
-      "value": "interface Tile {\n  /**\n   * Disables the tile meaning it cannot be clicked or receive focus.\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * A title that describes the content of the tile.\n   * @default ''\n   */\n  heading?: string;\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * A numeric indicator rendered within the tile (for example, a count or a step number).\n   *\n   * - When provided, the indicator is displayed inside the tile.\n   * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.\n   */\n  itemCount?: number;\n  /**\n   * Sets the tone of the tile, based on the intention of the information being conveyed.\n   * @default 'auto'\n   */\n  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;\n  /**\n   * Supporting text displayed below the heading.\n   * @default ''\n   */\n  subheading?: string;\n}"
+      "value": "interface Tile {\n  /**\n   * Disables the tile meaning it cannot be clicked or receive focus.\n   * @default false\n   */\n  disabled?: boolean;\n  /**\n   * A title that describes the content of the tile. Keep it short so it stays readable on smaller POS devices.\n   * @default ''\n   */\n  heading?: string;\n  /** A unique identifier for the element. */\n  id?: string;\n  /**\n   * A numeric indicator rendered within the tile (for example, a count or a step number).\n   *\n   * - When provided, the indicator is displayed inside the tile.\n   * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.\n   */\n  itemCount?: number;\n  /**\n   * Sets the tone of the tile, based on the intention of the information being conveyed.\n   * @default 'auto'\n   */\n  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;\n  /**\n   * Supporting text displayed below the heading.\n   * @default ''\n   */\n  subheading?: string;\n}"
     }
   },
   "BannerSlots": {
@@ -6615,7 +6615,7 @@
           "syntaxKind": "PropertySignature",
           "name": "heading",
           "value": "string",
-          "description": "A title that describes the content of the modal.",
+          "description": "A title that describes the content of the modal. Shown in the modal header.",
           "isOptional": true
         },
         {
@@ -6627,7 +6627,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface Modal {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** A title that describes the content of the modal. */\n  heading?: string;\n}"
+      "value": "interface Modal {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** A title that describes the content of the modal. Shown in the modal header. */\n  heading?: string;\n}"
     }
   },
   "TextFieldEvents": {
