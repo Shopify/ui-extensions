@@ -9,16 +9,12 @@
 # This replaces the old workflow that dispatched `templated-api-docs-sync`
 # events to shop/world. Nothing here talks to shop/world anymore.
 #
-# `pull_request_target` runs the trusted copy of this file from the base branch
-# with a writable token, so previews work for pull requests from forks. It never
-# checks out or runs pull request code.
-#
 # To stop labeling a surface, remove its line from `paths` below.
 
 name: Shopify Dev preview label
 
 on:
-  pull_request_target:
+  pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - 'packages/ui-extensions/docs/surfaces/admin/generated/**/*.json'
