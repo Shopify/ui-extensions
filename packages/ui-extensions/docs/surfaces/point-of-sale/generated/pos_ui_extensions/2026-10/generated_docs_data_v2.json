@@ -1676,7 +1676,7 @@
     "src/surfaces/point-of-sale/api/device-api/device-api.ts": {
       "filePath": "src/surfaces/point-of-sale/api/device-api/device-api.ts",
       "name": "DeviceApiContent",
-      "description": "The `DeviceApi` object provides device details and capabilities.",
+      "description": "The `DeviceApi` object provides device details and capabilities for the POS device running the extension.",
       "isPublicDocs": true,
       "members": [
         {
@@ -1723,7 +1723,7 @@
           "syntaxKind": "PropertySignature",
           "name": "device",
           "value": "DeviceApiContent",
-          "description": "The `DeviceApi` object provides device details and capabilities."
+          "description": "The `DeviceApi` object provides device details and capabilities for the POS device running the extension."
         }
       ],
       "value": "export interface DeviceApi {\n  device: DeviceApiContent;\n}"
@@ -1809,7 +1809,7 @@
     "src/surfaces/point-of-sale/api/locale-api/locale-api.ts": {
       "filePath": "src/surfaces/point-of-sale/api/locale-api/locale-api.ts",
       "name": "LocaleApiContent",
-      "description": "The `LocaleApi` object provides the current locale and locale updates.",
+      "description": "The `LocaleApi` object provides the current locale and subscribes to locale updates.",
       "isPublicDocs": true,
       "members": [
         {
@@ -1835,7 +1835,7 @@
           "syntaxKind": "PropertySignature",
           "name": "locale",
           "value": "LocaleApiContent",
-          "description": "The `LocaleApi` object provides the current locale and locale updates."
+          "description": "The `LocaleApi` object provides the current locale and subscribes to locale updates."
         }
       ],
       "value": "export interface LocaleApi {\n  locale: LocaleApiContent;\n}"

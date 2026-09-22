@@ -12,7 +12,7 @@ export interface ProductVariant {
   id: string;
   /** The Stock Keeping Unit (SKU) identifier for inventory tracking. */
   sku: string;
-  /** The barcode, UPC, or ISBN number for the variant. */
+  /** The barcode, UPC, or ISBN number for the product variant. */
   barcode: string;
   /** The display name showing only the variant's option values (for example, "Medium / Blue"). */
   title: string;

@@ -202,7 +202,7 @@ export interface Collection extends Resource {
 export interface ProductVariant extends Resource {
   /** Whether the variant is currently available for purchase. When `false`, the variant can't be added to orders even if inventory exists. Use this to check if customers can buy this variant. */
   availableForSale: boolean;
-  /** The barcode, UPC, or ISBN number for the variant. Use this to scan products, integrate with inventory systems, or match physical products to Shopify data. */
+  /** The barcode, UPC, or ISBN number for the product variant. Use this to scan products, integrate with inventory systems, or match physical products to Shopify data. */
   barcode?: string | null;
   /** The original price before any discounts or markdowns. When present, indicates the variant is on sale and can be displayed as a "compare at" or "was" price to show savings. */
   compareAtPrice?: Money | null;

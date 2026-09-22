@@ -15955,7 +15955,7 @@
           "syntaxKind": "PropertySignature",
           "name": "barcode",
           "value": "string",
-          "description": "The barcode, UPC, or ISBN number for the variant."
+          "description": "The barcode, UPC, or ISBN number for the product variant."
         },
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
@@ -16035,7 +16035,7 @@
           "description": "The physical weight of the variant as a number."
         }
       ],
-      "value": "export interface ProductVariant {\n  /** The variant's unique global identifier (GID). */\n  id: string;\n  /** The Stock Keeping Unit (SKU) identifier for inventory tracking. */\n  sku: string;\n  /** The barcode, UPC, or ISBN number for the variant. */\n  barcode: string;\n  /** The display name showing only the variant's option values (for example, \"Medium / Blue\"). */\n  title: string;\n  /** A human-readable display name that combines the product title with the variant's option values (for example, \"T-Shirt - Medium / Blue\"). */\n  displayName: string;\n  /** The current selling price for this variant. */\n  price: string;\n  /** The original price before any discounts or markdowns. */\n  compareAtPrice: string;\n  /** Whether this variant is subject to taxes. When `true`, applicable taxes are calculated at checkout. */\n  taxable: boolean;\n  /** The harmonized system (HS) tax code for international shipping and customs. */\n  taxCode: string;\n  /** The physical weight of the variant as a number. */\n  weight: number;\n  /** The option values that define this specific variant with name and value pairs (for example, Size: Large, Color: Blue). */\n  selectedOptions: {\n    name: string;\n    value: string;\n  }[];\n  /** An array of component variants that make up this bundle variant. Each component represents a product variant included in the bundle. */\n  productVariantComponents: ProductVariantComponent[];\n}"
+      "value": "export interface ProductVariant {\n  /** The variant's unique global identifier (GID). */\n  id: string;\n  /** The Stock Keeping Unit (SKU) identifier for inventory tracking. */\n  sku: string;\n  /** The barcode, UPC, or ISBN number for the product variant. */\n  barcode: string;\n  /** The display name showing only the variant's option values (for example, \"Medium / Blue\"). */\n  title: string;\n  /** A human-readable display name that combines the product title with the variant's option values (for example, \"T-Shirt - Medium / Blue\"). */\n  displayName: string;\n  /** The current selling price for this variant. */\n  price: string;\n  /** The original price before any discounts or markdowns. */\n  compareAtPrice: string;\n  /** Whether this variant is subject to taxes. When `true`, applicable taxes are calculated at checkout. */\n  taxable: boolean;\n  /** The harmonized system (HS) tax code for international shipping and customs. */\n  taxCode: string;\n  /** The physical weight of the variant as a number. */\n  weight: number;\n  /** The option values that define this specific variant with name and value pairs (for example, Size: Large, Color: Blue). */\n  selectedOptions: {\n    name: string;\n    value: string;\n  }[];\n  /** An array of component variants that make up this bundle variant. Each component represents a product variant included in the bundle. */\n  productVariantComponents: ProductVariantComponent[];\n}"
     }
   },
   "ProductVariantComponent": {
