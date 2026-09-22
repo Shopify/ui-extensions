@@ -1,0 +1,52 @@
+# Labels a pull request with `shopify.dev preview` when it changes generated
+# docs for a UI extension surface.
+#
+# The label is the switch. shopify-dev polls labeled pull requests every 30
+# minutes and opens, updates, and closes a preview pull request in shop/world
+# that renders the changed docs. Removing the label pauses updates; closing the
+# generated preview does not, because the label still asks for one.
+#
+# This replaces the old workflow that dispatched `templated-api-docs-sync`
+# events to shop/world. Nothing here talks to shop/world anymore.
+#
+# `pull_request_target` runs the trusted copy of this file from the base branch
+# with a writable token, so previews work for pull requests from forks. It never
+# checks out or runs pull request code.
+#
+# To stop labeling a surface, remove its line from `paths` below.
+
+name: Shopify Dev preview label
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened, ready_for_review]
+    paths:
+      - 'packages/ui-extensions/docs/surfaces/admin/generated/**/*.json'
+      - 'packages/ui-extensions/docs/surfaces/checkout/generated/**/*.json'
+      - 'packages/ui-extensions/docs/surfaces/customer-account/generated/**/*.json'
+      - 'packages/ui-extensions/docs/surfaces/point-of-sale/generated/**/*.json'
+
+concurrency:
+  group: shopify-dev-preview-label-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+permissions:
+  pull-requests: write
+
+jobs:
+  label:
+    name: Add the shopify.dev preview label
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: github.repository_owner == 'Shopify'
+    steps:
+      - name: Add the label
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          # The label is sticky, so adding it again on a later push is a no-op
+          # and the scan keeps the preview up to date on its own.
+          gh pr edit "$PR_NUMBER" \
+            --repo "$GITHUB_REPOSITORY" \
+            --add-label 'shopify.dev preview'
