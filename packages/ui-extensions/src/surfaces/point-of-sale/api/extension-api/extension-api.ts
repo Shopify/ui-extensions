@@ -7,15 +7,16 @@ import type {ApiVersion} from '../../../../shared';
  * multiple targets. Access these properties through `shopify.extension`.
  *
  * @example
- * <caption>Read the API version and active target</caption>
- * <description>Display the configured API version and the active extension target. Use `shopify.extension.apiVersion` for version-aware logic and `shopify.extension.target` when a single module handles multiple targets.</description>
+ * <caption>Read the API version, published version, and active target</caption>
+ * <description>Display the configured API version, the published app version this build was deployed in, and the active extension target. Use `shopify.extension.apiVersion` for version-aware logic, `shopify.extension.version` to report which build a merchant is running, and `shopify.extension.target` when a single module handles multiple targets.</description>
  * ```jsx
  * const Extension = () => {
- *   const {apiVersion, target} = shopify.extension;
+ *   const {apiVersion, version, target} = shopify.extension;
  *   return (
  *     <s-page heading="Extension Info">
  *       <s-stack direction="block">
  *         <s-text>API Version: {apiVersion}</s-text>
+ *         <s-text>Version: {version ?? 'development build'}</s-text>
  *         <s-text>Target: {target}</s-text>
  *       </s-stack>
  *     </s-page>
@@ -38,12 +39,31 @@ export interface ExtensionApiContent<T> {
    * @example 'pos.home.tile.render', 'pos.home.modal.render'
    */
   target: T;
+  /**
+   * The name of the published app version that this extension was deployed in.
+   * This is the same name shown on the Versions page of your dev dashboard, and
+   * the name you choose when you run `shopify app deploy`.
+   *
+   * Use it to tell which build of your extension a merchant is running. POS
+   * caches extension bundles and runs them offline, so a device can stay on an
+   * older version for some time after you deploy a new one.
+   *
+   * This is an opaque name, not a version number. Compare it for equality; don't
+   * sort it or read parts out of it.
+   *
+   * `undefined` when the extension runs from a local development server, because
+   * a build that hasn't been deployed has no published version.
+   *
+   * @example 'restaurant-table-manager-2', 'casa-loyalty-493'
+   */
+  version?: string;
 }
 
 /**
  * The `ExtensionApi` object provides metadata about the currently running
- * extension, including the configured API version and the active extension
- * target. Access these properties through `shopify.extension`.
+ * extension, including the configured API version, the published app version it
+ * was deployed in, and the active extension target. Access these properties
+ * through `shopify.extension`.
  * @publicDocs
  */
 export interface ExtensionApi<T> {
