@@ -53,31 +53,19 @@ export interface EmailFieldEvents extends Pick<EmailFieldProps$1, 'onBlur' | 'on
 /** @publicDocs */
 export interface EmailFieldElementEvents {
     /**
-<<<<<<< HEAD
-     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
-=======
      * A callback fired when the email field loses focus.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-<<<<<<< HEAD
-     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
-=======
      * A callback fired when the email field value changes.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
-<<<<<<< HEAD
-     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
-=======
      * A callback fired when the email field receives focus.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */

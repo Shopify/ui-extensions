@@ -46,31 +46,19 @@ export interface TextAreaEvents extends Pick<TextAreaProps$1, 'onBlur' | 'onChan
 /** @publicDocs */
 export interface TextAreaElementEvents {
     /**
-<<<<<<< HEAD
-     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
-=======
      * A callback fired when the text area loses focus.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-<<<<<<< HEAD
-     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.
-=======
      * A callback fired when the text area value changes.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
     change?: CallbackEventListener<typeof tagName>;
     /**
-<<<<<<< HEAD
-     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
-=======
      * A callback fired when the text area receives focus.
->>>>>>> eb0f07393 (Improve Forms component descriptions to match admin quality)
      *
      * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).
      */
