@@ -63935,7 +63935,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "<<<<<<< HEAD      A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n\nA callback fired when the email field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
+          "description": "A callback fired when the email field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -63943,7 +63943,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n\nA callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event). ======= A callback fired when the email field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the email field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -63959,11 +63959,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the email field. >>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the email field.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface EmailFieldElementEvents {\n    /**\n<<<<<<< HEAD\n     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n=======\n     * A callback fired when the email field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the email field.\n>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the email field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the email field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface EmailFieldElementEvents {\n    /**\n     * A callback fired when the email field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the email field.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the email field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the email field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "EmailFieldElementSlots": {
@@ -106265,7 +106265,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "<<<<<<< HEAD      A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n\nA callback fired when the password field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
+          "description": "A callback fired when the password field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -106273,7 +106273,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n\nA callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event). ======= A callback fired when the password field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the password field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -106289,11 +106289,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the password field. >>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the password field.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface PasswordFieldElementEvents {\n    /**\n<<<<<<< HEAD\n     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n=======\n     * A callback fired when the password field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the password field.\n>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the password field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the password field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface PasswordFieldElementEvents {\n    /**\n     * A callback fired when the password field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the password field.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the password field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the password field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "PasswordFieldElementSlots": {
@@ -111249,7 +111249,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "<<<<<<< HEAD      A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n\nA callback fired when the phone field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
+          "description": "A callback fired when the phone field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -111257,7 +111257,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n\nA callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event). ======= A callback fired when the phone field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the phone field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -111273,11 +111273,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the phone field. >>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the phone field.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface PhoneFieldElementEvents {\n    /**\n<<<<<<< HEAD\n     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n=======\n     * A callback fired when the phone field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the phone field.\n>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the phone field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the phone field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface PhoneFieldElementEvents {\n    /**\n     * A callback fired when the phone field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the phone field.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the phone field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the phone field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "PhoneFieldElementSlots": {
@@ -131319,7 +131319,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "<<<<<<< HEAD      A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n\nA callback fired when the select loses focus. >>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
+          "description": "A callback fired when the select loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -131327,7 +131327,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n\nA callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event). ======= A callback fired when the select value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the select value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -131339,7 +131339,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface SelectElementEvents {\n    /**\n<<<<<<< HEAD\n     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n=======\n     * A callback fired when the select value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the select loses focus.\n>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the select receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface SelectElementEvents {\n    /**\n     * A callback fired when the select value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the select loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the select receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "SelectElement": {
@@ -151439,7 +151439,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "<<<<<<< HEAD      A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n\nA callback fired when the text area loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
+          "description": "A callback fired when the text area loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -151447,7 +151447,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n\nA callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event). ======= A callback fired when the text area value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the text area value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -151463,11 +151463,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the text area. >>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the text area.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface TextAreaElementEvents {\n    /**\n<<<<<<< HEAD\n     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n=======\n     * A callback fired when the text area value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the text area.\n>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text area loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text area receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface TextAreaElementEvents {\n    /**\n     * A callback fired when the text area value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the text area.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text area loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text area receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "TextAreaElement": {
@@ -154266,7 +154266,7 @@
           "syntaxKind": "PropertySignature",
           "name": "blur",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "<<<<<<< HEAD      A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n\nA callback fired when the text field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
+          "description": "A callback fired when the text field loses focus.\n\nLearn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).",
           "isOptional": true
         },
         {
@@ -154274,7 +154274,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n\nA callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event). ======= A callback fired when the text field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the text field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -154290,11 +154290,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the text field. >>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the text field.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface TextFieldElementEvents {\n    /**\n<<<<<<< HEAD\n     * A callback fired when the element loses focus. Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * Callback when the user has **finished editing** a field, for example, once they have blurred the field.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the element receives focus. Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n=======\n     * A callback fired when the text field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the text field.\n>>>>>>> 8763c703b (Improve Forms component descriptions to match admin quality)\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface TextFieldElementEvents {\n    /**\n     * A callback fired when the text field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the text field.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the text field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "TextFieldElementSlots": {
