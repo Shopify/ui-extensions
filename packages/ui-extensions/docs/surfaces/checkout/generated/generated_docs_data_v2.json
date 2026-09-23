@@ -97274,7 +97274,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the money field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the money field value is committed on blur or after pressing Enter. Also fired on each step when using the Up Arrow and Down Arrow keys.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -97290,11 +97290,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the money field.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the money field. Also fired on each step when using the Up Arrow and Down Arrow keys.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface MoneyFieldElementEvents {\n    /**\n     * A callback fired when the money field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the money field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the money field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the money field.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface MoneyFieldElementEvents {\n    /**\n     * A callback fired when the money field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the money field value is committed on blur or after pressing Enter.\n     * Also fired on each step when using the Up Arrow and Down Arrow keys.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the money field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the money field.\n     * Also fired on each step when using the Up Arrow and Down Arrow keys.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "MoneyFieldElement": {
@@ -97865,7 +97865,7 @@
           "syntaxKind": "PropertySignature",
           "name": "change",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the number field value changes.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
+          "description": "A callback fired when the number field value is committed on blur or after pressing Enter. Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.\n\nLearn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).",
           "isOptional": true
         },
         {
@@ -97881,11 +97881,11 @@
           "syntaxKind": "PropertySignature",
           "name": "input",
           "value": "CallbackEventListener<typeof tagName>",
-          "description": "A callback fired when the user inputs data into the number field.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
+          "description": "A callback fired when the user inputs data into the number field. Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.\n\nLearn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).",
           "isOptional": true
         }
       ],
-      "value": "export interface NumberFieldElementEvents {\n    /**\n     * A callback fired when the number field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the number field value changes.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the number field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the number field.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n}"
+      "value": "export interface NumberFieldElementEvents {\n    /**\n     * A callback fired when the number field loses focus.\n     *\n     * Learn more about the [blur event](https://developer.mozilla.org/en-US/docs/Web/API/Element/blur_event).\n     */\n    blur?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the number field value is committed on blur or after pressing Enter.\n     * Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.\n     *\n     * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).\n     */\n    change?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the number field receives focus.\n     *\n     * Learn more about the [focus event](https://developer.mozilla.org/en-US/docs/Web/API/Element/focus_event).\n     */\n    focus?: CallbackEventListener<typeof tagName>;\n    /**\n     * A callback fired when the user inputs data into the number field.\n     * Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.\n     *\n     * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).\n     */\n    input?: CallbackEventListener<typeof tagName>;\n}"
     }
   },
   "NumberFieldElementSlots": {
