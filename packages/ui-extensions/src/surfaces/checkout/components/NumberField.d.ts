@@ -88,7 +88,8 @@ export interface NumberFieldElementEvents {
      */
     blur?: CallbackEventListener<typeof tagName>;
     /**
-     * A callback fired when the number field value changes.
+     * A callback fired when the number field value is committed on blur or after pressing Enter.
+     * Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.
      *
      * Learn more about the [change event](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/change_event).
      */
@@ -101,6 +102,7 @@ export interface NumberFieldElementEvents {
     focus?: CallbackEventListener<typeof tagName>;
     /**
      * A callback fired when the user inputs data into the number field.
+     * Also fired on each step when using the increment/decrement controls or the Up Arrow and Down Arrow keys.
      *
      * Learn more about the [input event](https://developer.mozilla.org/en-US/docs/Web/API/Element/input_event).
      */
