@@ -240,7 +240,7 @@ export interface ValidationAdd<
   /**
    * Locates the data the validation applies to; the host decides where it
    * renders. Omitted or unrecognized targets fall back to the event's root
-   * scope (`$.cart` / `$.payment`) — the validation still applies, rendered
+   * scope (`$.cart` / `$.payment`). The validation still applies, rendered
    * less specifically.
    *
    * Line item uuids are only valid within the event that delivered them:
