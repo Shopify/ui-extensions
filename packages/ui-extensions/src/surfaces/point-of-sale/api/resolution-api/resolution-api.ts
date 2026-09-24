@@ -31,8 +31,8 @@ export interface ResolutionApiContent<TEventData> {
   event: ReadonlySignalLike<TEventData>;
 
   /**
-   * Registers a handler that runs when staff advance the resolution flow
-   * (Save, Next, or Done). POS awaits the handler before it re-runs the
+   * Registers a handler that runs when staff tap Done in the resolution
+   * flow. POS awaits the handler before it re-runs the
    * intercepted validation, so use it to commit any pending work, for example
    * cart updates or storage writes, and `await` those calls inside the handler.
    * A rejected promise does not stop the flow; POS still re-runs validation and
