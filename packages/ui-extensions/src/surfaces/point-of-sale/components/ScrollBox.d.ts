@@ -53,6 +53,40 @@ export interface BaseElementPropsWithChildren<TClass = HTMLElement>
 }
 /** @publicDocs */
 export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
+/**
+ * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
+ * @publicDocs
+ */
+export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
+  /**
+   * The element that the event listener is attached to.
+   */
+  currentTarget: HTMLElementTagNameMap[T];
+  /**
+   * Whether the event bubbles up through the DOM tree.
+   */
+  bubbles?: boolean;
+  /**
+   * Whether the event can be canceled.
+   */
+  cancelable?: boolean;
+  /**
+   * Whether the event will trigger listeners outside of a shadow root.
+   */
+  composed?: boolean;
+  /**
+   * Additional data associated with the event.
+   */
+  detail?: any;
+  /**
+   * The current phase of the event flow. Returns a number indicating which phase the event is in: 1 (capturing phase), 2 (at target), or 3 (bubbling phase). This helps determine how the event is propagating through the DOM hierarchy.
+   */
+  eventPhase: number;
+  /**
+   * The element that triggered the event.
+   */
+  target: HTMLElementTagNameMap[T] | null;
+}
 
 /**
  * Defines the available padding size options using a semantic scale. Provides consistent spacing values that align with the POS design system.
@@ -153,6 +187,15 @@ export interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
    * @default '' - meaning no override
    */
   paddingInlineEnd?: PaddingKeyword | '';
+  /**
+   * Callback when the user scrolls to the end of the content.
+   *
+   * Fires when the end of the content comes within 20% of the visible height, including when the
+   * content is shorter than the scroll box. It fires again only after elements are added to or
+   * removed from the content, such as when the next page is appended; scrolling away from the end and
+   * back does not fire it again. Use it to load and append the next page of content.
+   */
+  onEndReached?: (event: CallbackEvent<typeof tagName>) => void;
   /**
    * The child elements to render within this component.
    */
