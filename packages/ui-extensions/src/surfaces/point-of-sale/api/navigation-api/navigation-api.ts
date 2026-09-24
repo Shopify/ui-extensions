@@ -45,7 +45,7 @@ export interface NavigationCurrentEntryChangeEvent {
  */
 export interface Navigation {
   /**
-   * Navigates to a specific URL, updating any provided state in the history entries list. Returns a promise that resolves when navigation is complete. Use for programmatic navigation between screens, implementing custom navigation controls, or deep-linking to specific modal states.
+   * Navigates to a specific URL, updating any provided state in the history entries list. The promise does not wait for the native screen transition to finish; listen for `navigatesuccess` on the screen that becomes active to know when it has finished appearing. Use for programmatic navigation between screens, implementing custom navigation controls, or deep-linking to specific modal states.
    */
   navigate: (url: string, options?: NavigationNavigateOptions) => Promise<void>;
   /**
@@ -57,22 +57,37 @@ export interface Navigation {
    */
   back(): void;
   /**
-   * Registers an event listener for navigation events. The `currententrychange` event fires when the `currentEntry` property changes, such as when the user navigates to a different screen within the extension modal. Use to track navigation changes, update UI state based on the current location, or implement analytics for navigation patterns.
-   * @param type - The event type to listen for. Currently only `'currententrychange'` is supported.
-   * @param cb - The callback function invoked when the event fires. Receives a `NavigationCurrentEntryChangeEvent` containing the previous entry that was navigated away from.
+   * Registers a listener for `currententrychange`, which fires when the active history entry changes. This can happen before the screen finishes appearing.
+   * @param type - The event type to listen for.
+   * @param cb - Receives the previous history entry in `event.from`.
    */
   addEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
   ): void;
   /**
-   * Removes a previously registered event listener. The callback reference must match the one passed to `addEventListener`. Use to clean up event listeners when they are no longer needed, such as when a component unmounts or navigation tracking should be disabled.
-   * @param type - The event type to remove the listener for. Currently only `'currententrychange'` is supported.
-   * @param cb - The callback function to remove. Must be the same function reference that was passed to `addEventListener`.
+   * Registers a listener for `navigatesuccess`, which fires after the extension screen becomes active and finishes its native transition. The callback receives a standard `Event`, not a history entry. When navigating back, register the listener on the screen that will reappear: the departing screen is removed and cannot receive the completion event. Older POS builds without support for this event do not emit it.
+   * @param type - The event type to listen for.
+   * @param cb - Called after the screen finishes appearing.
+   */
+  addEventListener(type: 'navigatesuccess', cb: (event: Event) => void): void;
+  /**
+   * Removes a `currententrychange` listener. Pass the same callback reference used with `addEventListener`.
+   * @param type - The event type to stop listening for.
+   * @param cb - The previously registered callback.
    */
   removeEventListener(
     type: 'currententrychange',
     cb: (event: NavigationCurrentEntryChangeEvent) => void,
+  ): void;
+  /**
+   * Removes a `navigatesuccess` listener. Pass the same callback reference used with `addEventListener`.
+   * @param type - The event type to stop listening for.
+   * @param cb - The previously registered callback.
+   */
+  removeEventListener(
+    type: 'navigatesuccess',
+    cb: (event: Event) => void,
   ): void;
 }
 
