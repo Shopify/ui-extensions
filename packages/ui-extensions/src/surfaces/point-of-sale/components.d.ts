@@ -4577,9 +4577,9 @@ interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
    * Callback when the user scrolls to the end of the content.
    *
    * Fires when the end of the content comes within 20% of the visible height, including when the
-   * content is shorter than the scroll box. It fires again only after elements are added to or
-   * removed from the content, such as when the next page is appended; scrolling away from the end and
-   * back does not fire it again. Use it to load and append the next page of content.
+   * content is shorter than the scroll box. It fires again once the content changes, such as when
+   * the next page is appended; scrolling away from the end and back does not fire it again. Use it
+   * to load and append the next page of content.
    */
   onEndReached?: (event: CallbackEvent<typeof tagName$k>) => void;
   /**
@@ -5998,7 +5998,7 @@ interface Text {
  * @publicDocs
  */
 interface ScrollBoxEvents {
-  /** Callback when the user scrolls to the end of the content. It fires when the end of the content comes within 20% of the visible height, and fires again only after elements are added to or removed from the content. */
+  /** Callback when the user scrolls to the end of the content. It fires when the end of the content comes within 20% of the visible height, and fires again once the content changes. */
   endreached?: (event: CallbackEvent<typeof tagName$k>) => void;
 }
 
