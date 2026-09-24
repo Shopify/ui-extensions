@@ -12,6 +12,8 @@ import type {
   DiscountFunctionSettingsApi,
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
+  MetafieldOptionsApi,
+  MetafieldOptionsOutput,
   StandardApi,
   IntentRenderApi,
   AppHomeApi,
@@ -38,6 +40,15 @@ export interface ExtensionTargets {
   'admin.customers.segmentation-templates.data': RunnableExtension<
     CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,
     {templates: CustomerSegmentTemplate[]}
+  >;
+
+  /**
+   * A runnable target that supplies presentation-only options for your app's own [metafield](/docs/apps/build/custom-data) definitions in the admin's native metafield editors. Use this target when the values a merchant should choose from are dynamic or come from an external system, so they don't belong in a persisted `choices` validation. The admin only sends you definitions your app owns, it renders and saves the field itself, and the options you return never change save-time validation.
+   * @private
+   */
+  'admin.metafields.options.data': RunnableExtension<
+    MetafieldOptionsApi<'admin.metafields.options.data'>,
+    MetafieldOptionsOutput
   >;
 
   // Blocks

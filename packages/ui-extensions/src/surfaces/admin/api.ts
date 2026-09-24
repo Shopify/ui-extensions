@@ -25,6 +25,15 @@ export type {
   CustomerSegmentTemplateApi,
   CustomerSegmentTemplate,
 } from './api/customer-segment-template/customer-segment-template';
+export type {
+  MetafieldOptionsApi,
+  MetafieldOptions,
+  MetafieldOptionsData,
+  MetafieldOptionsDefinition,
+  MetafieldOptionsOutput,
+  MetafieldOptionsOwner,
+  MetafieldOptionsSupportedType,
+} from './api/metafield-options/metafield-options';
 export type {ActionExtensionApi} from './api/action/action';
 export type {BlockExtensionApi} from './api/block/block';
 export type {PrintActionExtensionApi} from './api/print-action/print-action';
