@@ -5994,6 +5994,15 @@ interface Text {
 }
 
 /**
+ * The scroll box component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface ScrollBoxEvents {
+  /** Callback when the user scrolls to the end of the content. It fires when the end of the content comes within 20% of the visible height, and fires again only after elements are added to or removed from the content. */
+  endreached?: (event: CallbackEvent<typeof tagName$k>) => void;
+}
+
+/**
  * Provides a scrollable container for overflowing content.
  * @publicDocs
  */
