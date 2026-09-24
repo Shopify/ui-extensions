@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.14
+
+### Minor Changes
+
+- [#4715](https://github.com/Shopify/ui-extensions/pull/4715) [`e34b5a7`](https://github.com/Shopify/ui-extensions/commit/e34b5a78c8ce7344d9d99e43d2b231312b811bb7) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `version` to the POS Extension API. `shopify.extension.version` is the name of the published app version that the running extension was deployed in — the same name shown on the Versions page of the dev dashboard, and the name chosen when running `shopify app deploy`. Use it to tell which build of an extension a merchant is running, which POS can cache and run offline for some time after a newer version is deployed. It's an opaque name rather than a version number, so compare it for equality. It's `undefined` when the extension runs from a local development server, because a build that hasn't been deployed has no published version.
+
+- [#4724](https://github.com/Shopify/ui-extensions/pull/4724) [`9f5ad67`](https://github.com/Shopify/ui-extensions/commit/9f5ad67dc13f3a4d4916cb4c7f7f4b0ee9e3e419) Thanks [@js-goupil](https://github.com/js-goupil)! - Add the POS `navigation` `navigatesuccess` event type and documentation for listening after a screen finishes appearing.
+
+### Patch Changes
+
+- [#4727](https://github.com/Shopify/ui-extensions/pull/4727) [`8ee0082`](https://github.com/Shopify/ui-extensions/commit/8ee00826034869051bbc10dd8eae9305d5c028a8) Thanks [@henryStelle](https://github.com/henryStelle)! - Remove stale POS component names from the component availability metadata for 2026-10 targets.
+
 ## 2026.10.0-rc.13
 
 ### Minor Changes
