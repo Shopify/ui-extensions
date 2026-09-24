@@ -1,6 +1,4 @@
-import {posListTemplate} from '@shopify/ui-extensions/point-of-sale';
-
-const itemTemplates = posListTemplate`
+const itemTemplates = `
   <s-pos-list-item templateId="section-header" type="text">
     <s-heading>{{title}}</s-heading>
   </s-pos-list-item>
@@ -52,5 +50,5 @@ const itemTemplates = posListTemplate`
     );
   }}
 >
-  <s-search-field slot="header" label="Search products" />
+  <s-search-field slot="header" placeholder="Search products" />
 </s-pos-list>;

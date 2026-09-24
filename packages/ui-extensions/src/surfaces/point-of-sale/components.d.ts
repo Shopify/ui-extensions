@@ -5435,72 +5435,6 @@ declare module 'preact' {
   }
 }
 
-/**
- * The serialized template AST carried by `s-pos-list`'s `itemTemplates`
- * property.
- *
- * Templates are authored in the extension sandbox with the `posListTemplate`
- * tagged template, compiled once into this plain-JSON shape, and shipped
- * across the bridge as a single property. The host hydrates the AST per
- * visible row, so no RemoteDOM nodes exist for template content and no
- * extension code runs while scrolling.
- */
-/** A literal string piece or a row-field lookup within interpolated text. */
-type POSListTemplateSegment =
-  | string
-  | {
-      path: string;
-    };
-type POSListTemplateProp =
-  /** A static value. Web component attributes yield strings, or `true` when valueless. */
-  | {
-      kind: 'literal';
-      value: string | boolean;
-    }
-  /** The row field at `path`, passed through with its original type (`bind:prop="path"`). */
-  | {
-      kind: 'field';
-      path: string;
-    }
-  /** A string built from literal pieces and `{{path}}` lookups. */
-  | {
-      kind: 'segments';
-      segments: POSListTemplateSegment[];
-    };
-type POSListTemplateNode =
-  | {
-      kind: 'element';
-      tag: string;
-      props?: Record<string, POSListTemplateProp>;
-      children?: POSListTemplateNode[];
-    }
-  /** Literal text, possibly interpolated with `{{path}}` lookups. */
-  | {
-      kind: 'text';
-      segments: POSListTemplateSegment[];
-    }
-  /** `{{#if path}}…{{/if}}`: children render only when the field is truthy. */
-  | {
-      kind: 'if';
-      path: string;
-      children: POSListTemplateNode[];
-    };
-/** One `<s-pos-list-item templateId="…">` root. */
-interface POSListItemTemplate {
-  templateId: string;
-  /** `button` rows fire `rowclick`; `text` rows are static content. */
-  type: 'button' | 'text';
-  children: POSListTemplateNode[];
-}
-interface POSListTemplates {
-  /**
-   * The API version whose `posListTemplate` compiled these templates, e.g. `'2026-10'`. The host
-   * renders them only for an extension declaring the same API version.
-   */
-  version: `${number}-${number}` | 'unstable';
-  templates: POSListItemTemplate[];
-}
-
 declare const posListTagName = 's-pos-list';
 /**
  * A row supplied to `s-pos-list`. Rows are plain data; every member other than `id` and
@@ -5529,8 +5463,8 @@ type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
   };
 };
 /**
- * Displays a virtualized list of rows rendered from plain data and item templates compiled with
- * `posListTemplate`.
+ * Displays a virtualized list of rows rendered from plain data and raw item-template markup
+ * parsed and compiled in POS.
  *
  * @publicDocs
  */
@@ -5545,14 +5479,16 @@ interface POSListJSXProps {
    */
   rows?: POSListRow[];
   /**
-   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
-   * are reported. The header and loading indicator can still render. When templates are supplied,
-   * a row whose `templateFor` matches no template renders nothing.
+   * Raw `<s-pos-list-item>` markup parsed in POS, not an extension-compiled AST.
+   * Omitted, cleared, empty, or whitespace-only source renders no rows and reports no missing
+   * templates. The header and loading indicator can still render. Invalid source is reported
+   * through POS extension-error handling after transport, not as a synchronous SDK exception.
+   * POS caches compiled templates while the source and component definitions are unchanged.
+   * The source may contain at most 65,536 UTF-16 code units, 64 element levels, and 2,048 markup nodes.
    *
    * @default undefined
    */
-  itemTemplates?: POSListTemplates;
+  itemTemplates?: string;
   /**
    * Whether additional rows are being loaded. Renders a progress indicator after the last row.
    *
@@ -5650,8 +5586,9 @@ interface POSListSlots {
 }
 
 /**
- * Displays a virtualized list of rows rendered from plain data and item templates compiled with
- * `posListTemplate`.
+ * Displays a virtualized list of rows rendered from plain data and raw item-template markup
+ * parsed and compiled in POS.
+ *
  * @publicDocs
  */
 interface POSList {
@@ -5664,13 +5601,15 @@ interface POSList {
    */
   rows?: POSListRow[];
   /**
-   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
-   * are reported. The header and loading indicator can still render. When templates are supplied,
-   * a row whose `templateFor` matches no template renders nothing.
+   * Raw `<s-pos-list-item>` markup parsed in POS, not an extension-compiled AST.
+   * Omitted, cleared, empty, or whitespace-only source renders no rows and reports no missing
+   * templates. The header and loading indicator can still render. Invalid source is reported
+   * through POS extension-error handling after transport, not as a synchronous SDK exception.
+   * POS caches compiled templates while the source and component definitions are unchanged.
+   * The source may contain at most 65,536 UTF-16 code units, 64 element levels, and 2,048 markup nodes.
    * @default undefined
    */
-  itemTemplates?: POSListTemplates;
+  itemTemplates?: string;
   /**
    * Whether additional rows are being loaded. Renders a progress indicator after the last row.
    * @default false
