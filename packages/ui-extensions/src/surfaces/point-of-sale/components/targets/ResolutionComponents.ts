@@ -9,5 +9,5 @@ import type {StandardComponents} from './StandardComponents';
  */
 export type ResolutionComponents = Exclude<
   StandardComponents,
-  'Page' | 'POSBlock' | 'PosBlock' | 'Tile'
+  'Page' | 'PosBlock' | 'Tile'
 >;
