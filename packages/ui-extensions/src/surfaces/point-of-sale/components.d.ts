@@ -5435,6 +5435,90 @@ declare module 'preact' {
   }
 }
 
+declare const posListTagName = 's-pos-list';
+/**
+ * A row supplied to `s-pos-list`. Rows are plain data; every member other than `id` and
+ * `templateFor` is available to the row's item template through `{{path}}`, `bind:prop`,
+ * and `{{#if path}}` bindings.
+ */
+interface POSListRow {
+  /** A unique identifier for the row. Keys virtualization and identity across incremental loads. */
+  id: string;
+  /** The `templateId` of the item template that renders this row. */
+  templateFor: string;
+  /** Any additional data the row's template reads. */
+  [field: string]: unknown;
+}
+/**
+ * The event fired when a `button` row is activated. `detail.item` is the activated row and
+ * `detail.index` its position in `rows`. POS delivers the row data in `detail` because its
+ * RemoteDOM bridge forwards only `detail` when dispatching an event to the extension; the shared
+ * `POSListRowClickEvent` contract declares `item` and `index` on the event, which POS exposes once
+ * the bridge forwards custom event properties.
+ */
+type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
+  detail: {
+    item: POSListRow;
+    index: number;
+  };
+};
+/**
+ * Displays a virtualized list of rows rendered from plain data and raw item-template markup
+ * parsed and compiled in POS.
+ *
+ * @publicDocs
+ */
+interface POSListJSXProps {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * The rows displayed in the list. Each row names the item template that renders it through
+   * `templateFor`.
+   *
+   * @default []
+   */
+  rows?: POSListRow[];
+  /**
+   * Raw `<s-pos-list-item>` markup parsed in POS, not an extension-compiled AST.
+   * Omitted, cleared, empty, or whitespace-only source renders no rows and reports no missing
+   * templates. The header and loading indicator can still render.
+   * Invalid template markup is reported by the POS app after it receives the string.
+   * POS caches compiled templates while the source and component definitions are unchanged.
+   * The source may contain at most 65,536 UTF-16 code units, 64 element levels, and 2,048 markup nodes.
+   *
+   * @default undefined
+   */
+  itemTemplates?: string;
+  /**
+   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   *
+   * @default false
+   */
+  loadingMore?: boolean;
+  /**
+   * Callback when a `button` row is activated. `event.detail.item` is the row and
+   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.
+   */
+  onRowClick?: ((event: POSListRowClickEvent) => void) | null;
+  /** Callback when the list has scrolled near its end and more rows should be loaded. */
+  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;
+  /** Content displayed before the rows as part of the list's scrollable content. */
+  header?: ComponentChild;
+}
+type POSListElementProps = Omit<POSListJSXProps, 'header'>;
+declare global {
+  interface HTMLElementTagNameMap {
+    [posListTagName]: HtmlElementTagNameProps<POSListElementProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
+    }
+  }
+}
+
 export type {
   BadgeJSXProps,
   BannerJSXProps,
@@ -5457,6 +5541,7 @@ export type {
   ModalJSXProps,
   NumberFieldJSXProps,
   PageJSXProps,
+  POSListJSXProps,
   PosBlockJSXProps,
   QrCodeJSXProps,
   ScrollBoxJSXProps,
@@ -5476,6 +5561,61 @@ export type {
   TimeFieldJSXProps,
   TimePickerJSXProps,
 };
+
+/**
+ * The POS list component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface POSListEvents {
+  /**
+   * Callback when a `button` row is activated. `event.detail.item` is the row and
+   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.
+   */
+  rowclick?: (event: POSListRowClickEvent) => void;
+  /** Callback when the list has scrolled near its end and more rows should be loaded. */
+  loadmore?: (event: CallbackEvent<typeof posListTagName>) => void;
+}
+
+/**
+ * Content slots for the POS list.
+ * @publicDocs
+ */
+interface POSListSlots {
+  /** Content displayed before the rows as part of the list's scrollable content. */
+  header?: HTMLElement;
+}
+
+/**
+ * Displays a virtualized list of rows rendered from plain data and raw item-template markup
+ * parsed and compiled in POS.
+ *
+ * @publicDocs
+ */
+interface POSList {
+  /** A unique identifier for the element. */
+  id?: string;
+  /**
+   * The rows displayed in the list. Each row names the item template that renders it through
+   * `templateFor`.
+   * @default []
+   */
+  rows?: POSListRow[];
+  /**
+   * Raw `<s-pos-list-item>` markup parsed in POS, not an extension-compiled AST.
+   * Omitted, cleared, empty, or whitespace-only source renders no rows and reports no missing
+   * templates. The header and loading indicator can still render.
+   * Invalid template markup is reported by the POS app after it receives the string.
+   * POS caches compiled templates while the source and component definitions are unchanged.
+   * The source may contain at most 65,536 UTF-16 code units, 64 element levels, and 2,048 markup nodes.
+   * @default undefined
+   */
+  itemTemplates?: string;
+  /**
+   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   * @default false
+   */
+  loadingMore?: boolean;
+}
 
 /**
  * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
@@ -7806,6 +7946,21 @@ declare global {
   namespace JSX {
     interface IntrinsicElements {
       [tagName]: IntrinsicElementProps<ElementProps>;
+    }
+  }
+}
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [posListTagName]: IntrinsicElementProps<POSListElementProps>;
     }
   }
 }
