@@ -89,8 +89,8 @@ export interface POSListJSXProps {
   /**
    * Raw `<s-pos-list-item>` markup parsed in POS, not an extension-compiled AST.
    * Omitted, cleared, empty, or whitespace-only source renders no rows and reports no missing
-   * templates. The header and loading indicator can still render. Invalid source is reported
-   * through POS extension-error handling after transport, not as a synchronous SDK exception.
+   * templates. The header and loading indicator can still render.
+   * Invalid template markup is reported by the POS app after it receives the string.
    * POS caches compiled templates while the source and component definitions are unchanged.
    * The source may contain at most 65,536 UTF-16 code units, 64 element levels, and 2,048 markup nodes.
    *
