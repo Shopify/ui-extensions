@@ -103,39 +103,25 @@ echo "  Checkout UI extensions: $PWD/$DOCS_PATH/generated"
 echo "  targets.json: $PWD/$DOCS_PATH/generated/targets.json"
 echo ""
 
-copy_generated_docs_to_shopify_dev() {
-# Copy the generated docs to shopify-dev
-if [ -d $SHOPIFY_DEV_PATH ]; then
-  SHOPIFY_DEV_DEST=$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION
-  mkdir -p $SHOPIFY_DEV_DEST
-  cp ./$DOCS_PATH/generated/* $SHOPIFY_DEV_DEST
-
-  # Replace 'latest' with the exact API version in relative doc links
-  run_sed \
-    "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
-    "$SHOPIFY_DEV_DEST/generated_docs_data_v2.json"
-  sed_exit=$?
-  if [ $sed_exit -ne 0 ]; then
-    fail_and_exit $sed_exit
-  fi
-
-  echo "Docs: https://shopify-dev.shop.dev/docs/api/checkout-ui-extensions"
-else
-  echo "Not copying docs to shopify-dev because it was not found at $SHOPIFY_DEV_PATH."
+# Resolve shopify-dev using the same worktree-aware logic as the other docs scripts.
+# SHOPIFY_DEV_PATH and WORLD_PATH take precedence over the default world worktree.
+SHOPIFY_DEV_PATH=$(node ./$DOCS_PATH/build-docs-resolve-shopify-dev-path.mjs)
+resolve_exit=$?
+if [ $resolve_exit -ne 0 ]; then
+  fail_and_exit $resolve_exit
 fi
-}
 
-# Try candidate paths for shopify-dev / world repo in order of preference
-for SHOPIFY_DEV_PATH in \
-  "$HOME/world/trees/root/src" \
-  "../../../shopify-dev" \
-  "$HOME/src/github.com/Shopify/shopify-dev"; do
-  if [ -d "$SHOPIFY_DEV_PATH" ]; then
-    copy_generated_docs_to_shopify_dev
-    break
-  fi
-done
+SHOPIFY_DEV_DEST="$SHOPIFY_DEV_PATH/areas/platforms/shopify-dev/db/data/docs/templated_apis/checkout_extensions/$API_VERSION"
+mkdir -p "$SHOPIFY_DEV_DEST"
+cp ./$DOCS_PATH/generated/* "$SHOPIFY_DEV_DEST"
 
-if [ ! -d "$SHOPIFY_DEV_PATH" ]; then
-  echo "Not copying docs to shopify-dev because no repo was found."
+# Replace 'latest' with the exact API version in relative doc links
+run_sed \
+  "s/\/docs\/api\/checkout-ui-extensions\/latest/\/docs\/api\/checkout-ui-extensions\/$API_VERSION/gi" \
+  "$SHOPIFY_DEV_DEST/generated_docs_data_v2.json"
+sed_exit=$?
+if [ $sed_exit -ne 0 ]; then
+  fail_and_exit $sed_exit
 fi
+
+echo "Docs: https://shopify-dev.shop.dev/docs/api/checkout-ui-extensions"
