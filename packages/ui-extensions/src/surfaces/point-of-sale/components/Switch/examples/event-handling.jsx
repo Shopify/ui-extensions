@@ -1,0 +1,7 @@
+<s-switch
+  label="Enable email notifications"
+  defaultChecked
+  onChange={(event) =>
+    console.log('Switch toggled:', event.currentTarget.checked)
+  }
+/>;

@@ -4,7 +4,9 @@
   </s-button>
   <s-time-picker
     id="time-picker"
-    value="14:30"
-    onChange={(event) => console.log('Time selected:', event.currentTarget.value)}
+    value="14:30:00"
+    onChange={(event) =>
+      console.log('Time selected:', event.currentTarget.value)
+    }
   />
 </>;
