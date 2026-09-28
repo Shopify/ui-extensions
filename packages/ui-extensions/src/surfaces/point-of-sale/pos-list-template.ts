@@ -36,7 +36,7 @@ export type POSListTemplateTag = (
 const ITEM_TAG = 's-pos-list-item';
 const LIST_TAG = 's-pos-list';
 const PATH_PATTERN = /^[\w.]+$/;
-const EVENT_PROP_PATTERN = /^on[A-Z]/;
+const EVENT_PROP_PATTERN = /^on/i;
 const BIND_PREFIX = 'bind:';
 /** `{{#if path}}`, `{{/if}}`, or `{{path}}`; anything else inside `{{ }}` is unsupported. */
 const EXPRESSION_PATTERN = /\{\{\s*(?:#if\s+([\w.]+)|(\/if)|([\w.]+))\s*\}\}/g;

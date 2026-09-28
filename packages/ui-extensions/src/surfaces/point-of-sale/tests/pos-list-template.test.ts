@@ -269,16 +269,19 @@ describe('posListTemplate', () => {
       });
     });
 
-    it('rejects event handler attributes', () => {
-      expect(() => compileItem('<s-button onClick="x">Go</s-button>')).toThrow(
+    it.each([
+      'onClick="x"',
+      'onclick="x"',
+      'ONCLICK="{{handler}}"',
+      'OnClick="x"',
+      'bind:onClick="handler"',
+      'bind:onclick="handler"',
+      'bind:ONCLICK="handler"',
+      'bind:OnClick="handler"',
+    ])('rejects the event handler attribute %s', (attribute) => {
+      expect(() => compileItem(`<s-button ${attribute}>Go</s-button>`)).toThrow(
         'posListTemplate: event handlers are not supported in templates; use onRowClick on <s-pos-list>',
       );
-    });
-
-    it('rejects event handlers supplied through bind:', () => {
-      expect(() =>
-        compileItem('<s-button bind:onClick="handler">Go</s-button>'),
-      ).toThrow(/event handlers are not supported/);
     });
 
     it('rejects a bind: attribute that collides with a plain attribute or names an invalid path', () => {
