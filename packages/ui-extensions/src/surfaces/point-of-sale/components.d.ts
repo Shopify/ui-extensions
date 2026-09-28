@@ -20,11 +20,6 @@ export interface GlobalProps {
    */
   id?: string;
 }
-
-/**
- * Components with ActionSlots support passing primary and secondary action content.
- * @publicDocs
- */
 export interface ActionSlots {
   /**
    * The primary action to perform, provided as a button or link type element.
@@ -700,22 +695,17 @@ declare const privateIconArray: readonly [
   'x-circle',
   'x-circle-filled',
 ];
-/** @publicDocs */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
- * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
-/** @publicDocs */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
   | `${T} ${T}`
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
-/** @publicDocs */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
-/** @publicDocs */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -724,7 +714,6 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * //   ^? string
  * type PropName = 'foo' | 'bar' | (string & {})
  * //   ^? 'foo' | 'bar' | (string & {})
- * @publicDocs
  */
 export type AnyString = string & {};
 /**
@@ -732,16 +721,15 @@ export type AnyString = string & {};
  * to have a space or not in the string literal types.
  *
  * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
- * @publicDocs
  */
 export type optionalSpace = '' | ' ';
 export interface BadgeProps extends GlobalProps {
   /**
-   * The content of the badge.
+   * The content of the Badge.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the badge, based on the intention of the information being conveyed.
+   * Sets the tone of the Badge, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -777,11 +765,11 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   heading?: string;
   /**
-   * The content of the banner.
+   * The content of the Banner.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the banner, based on the intention of the information being conveyed.
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
    *
    * The banner is a live region and the type of status will be dictated by the Tone selected.
    *
@@ -893,7 +881,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a heading or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -1264,7 +1252,7 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content of the box.
+   * The content of the Box.
    */
   children?: ComponentChildren;
   /**
@@ -1280,7 +1268,7 @@ export interface BaseBoxPropsWithRole
     AccessibilityRoleProps {}
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the button.
+   * The behavior of the Button.
    *
    * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
    * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
@@ -1292,14 +1280,14 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * Callback when the button is activated.
+   * Callback when the Button is activated.
    * This will be called before the action indicated by `type`.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
   /**
-   * Disables the button meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
@@ -1307,7 +1295,7 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the button.
+   * This also disables the Button.
    *
    * @default false
    */
@@ -1384,24 +1372,24 @@ export interface BaseClickableProps
     LinkBehaviorProps {}
 export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
-   * A label that describes the purpose or contents of the button. It will be read to users using assistive technologies such as screen readers.
+   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
-   * Use this when using only an icon or the button text is not enough context
+   * Use this when using only an icon or the Button text is not enough context
    * for users using assistive technologies.
    */
   accessibilityLabel?: string;
   /**
-   * The content of the button.
+   * The content of the Button.
    */
   children?: ComponentChildren;
   /**
-   * The type of icon to be displayed in the button.
+   * The type of icon to be displayed in the Button.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the button.
+   * The displayed inline width of the Button.
    *
    * - `auto`: the size of the button depends on the surface and context.
    * - `fill`: the button will takes up 100% of the available inline size.
@@ -1411,13 +1399,13 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * Changes the visual appearance of the button.
+   * Changes the visual appearance of the Button.
    *
-   * @default 'auto'
+   * @default 'auto' - the variant is automatically determined by the Button's context
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the button based on the intention of the information being conveyed.
+   * Sets the tone of the Button based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -1727,7 +1715,7 @@ export interface ChoiceProps extends GlobalProps, BaseOptionProps {
    */
   details?: ComponentChildren;
   /**
-   * Set to `true` to associate a choice with the error passed to ChoiceList
+   * Set to `true` to associate a choice with the error passed to `ChoiceList`
    *
    * @default false
    */
@@ -1757,7 +1745,7 @@ export interface ChoiceListProps
   /**
    * The choices a user can select from.
    *
-   * Accepts choice components.
+   * Accepts `Choice` components.
    */
   children?: ComponentChildren;
   /**
@@ -2263,7 +2251,7 @@ export interface EmbedProps extends GlobalProps, SizingProps {
    */
   src?: string;
   /**
-   * A label that describes the purpose or contents of the embed. It will be read to users
+   * A label that describes the purpose or contents of the Embed. It will be read to users
    * using assistive technologies such as screen readers.
    *
    * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute
@@ -2272,15 +2260,15 @@ export interface EmbedProps extends GlobalProps, SizingProps {
 }
 export interface EmptyStateProps extends GlobalProps, ActionSlots {
   /**
-   * The heading of the empty state.
+   * The heading of the EmptyState.
    */
   heading?: string;
   /**
-   * The subheading of the empty state.
+   * The subheading of the EmptyState.
    */
   subheading?: ComponentChildren | StringChildren;
   /**
-   * The graphic to display in the empty state. The only supported components are Image and Icon.
+   * The graphic to display in the EmptyState. The only supported components are `Image` and `Icon`.
    */
   graphic?: ComponentChildren;
 }
@@ -2414,7 +2402,7 @@ export interface HeadingProps
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The content of the heading.
+   * The content of the Heading.
    */
   children?: ComponentChildren;
   /**
@@ -2583,17 +2571,17 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
 }
 export interface LinkProps extends GlobalProps, LinkBehaviorProps {
   /**
-   * The content of the link.
+   * The content of the Link.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the link, based on the intention of the information being conveyed.
+   * Sets the tone of the Link, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.
+   * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
    *
    * Use this when using only an icon or the content of the link is not enough context
    * for users using assistive technologies.
@@ -2620,32 +2608,32 @@ export interface ModalProps
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the modal.
+   * A title that describes the content of the Modal.
    *
    */
   heading?: string;
   /**
-   * Adjust the padding around the modal content.
+   * Adjust the padding around the Modal content.
    *
    * `base`: applies padding that is appropriate for the element.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the modal need to span
-   * to the edge of the modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
+   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
+   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the modal.
+   * Adjust the size of the Modal.
    *
-   * `max`: expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the modal.
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }
@@ -2684,7 +2672,7 @@ export type NumberAutocompleteField = ExtractStrict<
 >;
 export interface PageProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the page.
+   * The content of the Page.
    */
   children?: ComponentChildren;
   /**
@@ -2850,14 +2838,14 @@ export interface SearchFieldProps
 export type SearchAutocompleteField = TextAutocompleteField;
 export interface SectionProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the section.
+   * The content of the Section.
    */
   children?: ComponentChildren;
   /**
    * A label used to describe the section that will be announced by assistive technologies.
    *
-   * When no `heading` property is provided or included as a children of the section, you **must** provide an
-   * `accessibilityLabel` to describe the section. This is important as it allows assistive technologies to provide
+   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
    * the right context to users.
    */
   accessibilityLabel?: string;
@@ -2870,8 +2858,8 @@ export interface SectionProps extends GlobalProps, ActionSlots {
    *
    * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
    * this is the right design decision in a particular context.
-   * - `none`: removes all padding from the element. This can be useful when elements inside the section need to span
-   * to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
@@ -2899,11 +2887,11 @@ export interface StackProps
     BaseBoxPropsWithRole,
     GapProps {
   /**
-   * The content of the stack.
+   * The content of the Stack.
    */
   children?: ComponentChildren;
   /**
-   * Sets how the children are placed within the stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'block'
    *
@@ -2911,21 +2899,21 @@ export interface StackProps
    */
   direction?: MaybeResponsive<'block' | 'inline'>;
   /**
-   * Aligns the stack along the main axis.
+   * Aligns the Stack along the main axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
   justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
-   * Aligns the stack's children along the cross axis.
+   * Aligns the Stack's children along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
   alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
-   * Aligns the stack along the cross axis.
+   * Aligns the Stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
@@ -2940,7 +2928,7 @@ export interface SwitchProps
     FieldErrorProps {}
 export interface TabProps extends GlobalProps {
   /**
-   * Corresponds to the `id` property of the tab panel component that will be displayed when selected
+   * Corresponds to the `id` property of the TabPanel component that will be displayed when selected
    */
   controls?: string;
   /**
@@ -2964,18 +2952,18 @@ export interface TabProps extends GlobalProps {
 }
 export interface TabListProps extends GlobalProps {
   /**
-   * Accepts only tabs components.
+   * Accepts only `Tabs` components.
    */
   children?: ComponentChildren;
 }
 export interface TabPanelProps extends GlobalProps {
   /**
-   * The id of the tab panel used for identification in the tabs component.
-   * Must match the `controls` prop of the corresponding tab component.
+   * The id of the TabPanel used for identification in the Tabs component.
+   * Must match the `controls` prop of the corresponding Tab component.
    */
   id?: string;
   /**
-   * The content of the tab panel.
+   * The content of the TabPanel.
    */
   children?: ComponentChildren;
 }
@@ -2988,20 +2976,20 @@ export interface TabsProps
    */
   accessibilityLabel?: string;
   /**
-   * Accepts only tab list and tab panel components.
+   * Accepts only `TabList` and `TabPanel` components.
    */
   children?: ComponentChildren;
   /**
    * The value of the selected tab.
    *
-   * This should match the `id` prop of one of the tab panel components.
+   * This should match the `id` prop of one of the TabPanel components.
    * If not provided, the first tab will be selected by default.
    */
   value?: string;
   /**
    * The default value of the selected tab.
    *
-   * This should match the `id` prop of one of the tab panel components.
+   * This should match the `id` prop of one of the TabPanel components.
    * If not provided, the first tab will be selected by default.
    *
    * Reflects to the `value` attribute
@@ -3141,7 +3129,7 @@ export interface TileProps
   extends GlobalProps,
     Pick<BaseClickableProps, 'onClick' | 'disabled'> {
   /**
-   * A title that describes the content of the tile.
+   * A title that describes the content of the Tile.
    *
    * @default ''
    */
@@ -3153,7 +3141,7 @@ export interface TileProps
    */
   subheading?: string;
   /**
-   * A numeric indicator rendered within the tile (for example, a count or a step number).
+   * A numeric indicator rendered within the Tile (for example, a count or a step number).
    *
    * - When provided, the indicator is displayed inside the tile.
    * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
@@ -3161,7 +3149,7 @@ export interface TileProps
    */
   itemCount?: number;
   /**
-   * Sets the tone of the tile, based on the intention of the information being conveyed.
+   * Sets the tone of the Tile, based on the intention of the information being conveyed.
    * @default 'auto'
    */
   tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
@@ -3489,20 +3477,26 @@ interface BaseElementPropsWithChildren<TClass = HTMLElement>
 type IntrinsicElementProps<T> = T &
   BaseElementPropsWithChildren<T & HTMLElement>;
 type HtmlElementTagNameProps<T> = T & HTMLElement;
-interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  currentTarget: HTMLElementTagNameMap[T];
+type ElementForTag<T extends string> = T extends keyof HTMLElementTagNameMap
+  ? HTMLElementTagNameMap[T]
+  : HTMLElement;
+interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
   bubbles?: boolean;
   cancelable?: boolean;
   composed?: boolean;
   detail?: any;
   eventPhase: number;
-  target: HTMLElementTagNameMap[T] | null;
+  target: ElementForTag<T> | null;
 }
 
-declare const tagName$E = 's-badge';
+declare const tagName$K = 's-badge';
+/**
+ * Displays compact status text with optional semantic tone.
+ */
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
-   * Sets the tone of the badge, based on the intention of the information being conveyed.
+   * Sets the tone of the Badge, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -3511,24 +3505,27 @@ interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
     'auto' | 'neutral' | 'info' | 'success' | 'warning' | 'critical' | 'caution'
   >;
   /**
-   * The content of the badge.
+   * The content of the Badge.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$E]: HtmlElementTagNameProps<BadgeJSXProps>;
+    [tagName$K]: HtmlElementTagNameProps<BadgeJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$E]: IntrinsicElementProps<BadgeJSXProps>;
+      [tagName$K]: IntrinsicElementProps<BadgeJSXProps>;
     }
   }
 }
 
-declare const tagName$D = 's-banner';
+declare const tagName$J = 's-banner';
+/**
+ * Shows prominent status and messaging content with optional actions.
+ */
 interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
   /**
    * Determines whether the banner is hidden.
@@ -3537,7 +3534,7 @@ interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
    */
   hidden?: BannerProps['hidden'];
   /**
-   * Sets the tone of the banner, based on the intention of the information being conveyed.
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -3546,30 +3543,38 @@ interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
     'auto' | 'success' | 'info' | 'warning' | 'critical'
   >;
   /**
-   * The action taken when the banner is pressed.
+   * The primary action for the banner, provided as a button element in the `primary-action` slot.
+   *
+   * The POS renderer displays the action only when the slotted button has both text content and an
+   * `onClick` handler; otherwise the action is dropped.
    */
   primaryAction?: ComponentChild;
   /**
-   * The content of the banner.
+   * The content of the Banner.
+   *
+   * The POS renderer currently doesn't render banner children; use `heading` for the message text.
    */
   children?: ComponentChildren;
 }
-type ElementProps$c = Omit<BannerJSXProps, 'primaryAction'>;
+type ElementProps$9 = Omit<BannerJSXProps, 'primaryAction'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$D]: HtmlElementTagNameProps<ElementProps$c>;
+    [tagName$J]: HtmlElementTagNameProps<ElementProps$9>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$D]: IntrinsicElementProps<ElementProps$c>;
+      [tagName$J]: IntrinsicElementProps<ElementProps$9>;
     }
   }
 }
 
-declare const tagName$C = 's-box';
+declare const tagName$I = 's-box';
 type PaddingKeyword$2 = SizeKeyword | 'none';
+/**
+ * Provides a generic layout container with sizing and spacing controls.
+ */
 interface BoxJSXProps {
   /**
    * A unique identifier for the element.
@@ -3627,8 +3632,6 @@ interface BoxJSXProps {
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
-   *
    * @default 'none'
    */
   padding?: MaybeAllValuesShorthandProperty<PaddingKeyword$2>;
@@ -3685,24 +3688,27 @@ interface BoxJSXProps {
    */
   paddingInlineEnd?: PaddingKeyword$2 | '';
   /**
-   * The content of the box.
+   * The content of the Box.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$C]: HtmlElementTagNameProps<BoxJSXProps>;
+    [tagName$I]: HtmlElementTagNameProps<BoxJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$C]: IntrinsicElementProps<BoxJSXProps>;
+      [tagName$I]: IntrinsicElementProps<BoxJSXProps>;
     }
   }
 }
 
-declare const tagName$B = 's-button';
+declare const tagName$H = 's-button';
+/**
+ * Triggers actions when selected by the merchant.
+ */
 interface ButtonJSXProps
   extends Pick<
     ButtonProps,
@@ -3727,7 +3733,7 @@ interface ButtonJSXProps
     '--auto' | '--show' | '--hide' | '--toggle'
   >;
   /**
-   * Sets the tone of the button, based on the intention of the information being conveyed.
+   * Sets the tone of the Button, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -3736,7 +3742,7 @@ interface ButtonJSXProps
     'auto' | 'critical' | 'neutral' | 'warning' | 'caution'
   >;
   /**
-   * Changes the visual appearance of the button.
+   * Changes the visual appearance of the Button.
    *
    * @default 'auto'
    */
@@ -3744,213 +3750,326 @@ interface ButtonJSXProps
   /**
    * Called when the button is activated.
    */
-  onClick?: (event: CallbackEvent<typeof tagName$B>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$H>) => void;
   /**
-   * The content of the button.
+   * The content of the Button.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$B]: HtmlElementTagNameProps<ButtonJSXProps>;
+    [tagName$H]: HtmlElementTagNameProps<ButtonJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$B]: IntrinsicElementProps<ButtonJSXProps>;
+      [tagName$H]: IntrinsicElementProps<ButtonJSXProps>;
     }
   }
 }
 
-declare const tagName$A = 's-choice';
+declare const tagName$G = 's-choice';
+/**
+ * Represents a selectable option within a choice list.
+ */
 interface ChoiceJSXProps
   extends Pick<ChoiceProps, 'id' | 'value' | 'disabled' | 'selected'> {
+  /**
+   * The value that identifies this choice in the `ChoiceList` `values` prop and
+   * in selection events.
+   *
+   * A choice needs a `value` to be selectable. Use a unique value for each choice
+   * in the list; choices that share a value can't be selected independently.
+   */
+  value?: ChoiceProps['value'];
+  /**
+   * Whether the choice is selected.
+   *
+   * Selection can also be set with the `values` prop on the `ChoiceList`; the two
+   * are combined.
+   *
+   * @default false
+   */
+  selected?: ChoiceProps['selected'];
+  /**
+   * The content of the choice.
+   */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$A]: HtmlElementTagNameProps<ChoiceJSXProps>;
+    [tagName$G]: HtmlElementTagNameProps<ChoiceJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$A]: IntrinsicElementProps<ChoiceJSXProps>;
+      [tagName$G]: IntrinsicElementProps<ChoiceJSXProps>;
     }
   }
 }
 
-declare const tagName$z = 's-choice-list';
+declare const tagName$F = 's-choice-list';
+/**
+ * Groups one or more selectable choices.
+ */
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
   /**
-   * Callback when the user changes a choice. Fires simultaneously with onChange.
+   * The values of the selected choices.
+   *
+   * When `values` is set, update it from `onChange` or `onInput` to control the
+   * selection. When `values` is not set, the list manages its own state, starting
+   * from choices that have `selected` set. Selections from `values` and from
+   * `selected` choices are combined.
+   *
+   * Use a unique `value` for each choice. Choices that share a value can't be
+   * selected independently.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
+  values?: ChoiceListProps['values'];
+  /**
+   * Callback when the user changes a choice. Fires simultaneously with onChange.
+   * The event's `currentTarget.values` is always an array of selected choice
+   * values, even when `multiple` is `false`.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
   /**
    * Callback when the user changes a choice. Fires simultaneously with onInput.
+   * The event's `currentTarget.values` is always an array of selected choice
+   * values; in single-selection mode, only the first entry is rendered as selected.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$F>) => void) | null;
   /**
-   * The content of the choice list. Should be one or more choice elements.
+   * The content of the ChoiceList. Should be one or more Choice elements.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$z]: HtmlElementTagNameProps<ChoiceListJSXProps>;
+    [tagName$F]: HtmlElementTagNameProps<ChoiceListJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$z]: IntrinsicElementProps<ChoiceListJSXProps>;
+      [tagName$F]: IntrinsicElementProps<ChoiceListJSXProps>;
     }
   }
 }
 
-declare const tagName$y = 's-clickable';
+declare const tagName$E = 's-clickable';
+/**
+ * Makes contained content interactive and clickable.
+ */
 interface ClickableJSXProps extends Pick<ClickableProps, 'id' | 'disabled'> {
   /**
    * Callback when the element is activated.
    */
-  onClick?: (event: CallbackEvent<typeof tagName$y>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$E>) => void;
   /**
-   * The content of the clickable.
+   * The content of the Clickable.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$y]: HtmlElementTagNameProps<ClickableJSXProps>;
+    [tagName$E]: HtmlElementTagNameProps<ClickableJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$y]: IntrinsicElementProps<ClickableJSXProps>;
+      [tagName$E]: IntrinsicElementProps<ClickableJSXProps>;
     }
   }
 }
 
-declare const tagName$x = 's-date-field';
+declare const tagName$D = 's-date-field';
+/**
+ * Collects date input as text.
+ */
 interface DateFieldJSXProps
   extends Pick<
     DateFieldProps,
     'id' | 'label' | 'details' | 'value' | 'disabled' | 'error' | 'required'
   > {
   /**
-   * Callback when the user makes any changes in the field.
+   * The current value for the field, as a date in `YYYY-MM-DD` format (for
+   * example, `"2024-05-15"`). If omitted or empty, the field is empty.
+   *
+   * Values are interpreted in the device's local timezone. Out-of-range calendar
+   * dates (for example, `2024-02-30`) currently roll over to a valid date instead
+   * of being rejected.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+  value?: DateFieldProps['value'];
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback when the user confirms a date in the picker. Fires together with
+   * `onChange` at selection time.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
   /**
-   * Callback when the element loses focus.
+   * Callback when the user confirms a date in the picker. Fires together with
+   * `onInput` at selection time, not on blur.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
+  /**
+   * Callback when the element loses focus. Also fires right after a picker
+   * selection is confirmed, and when the picker is dismissed without a selection.
+   */
+  onBlur?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$x>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$D>) => void) | null;
 }
-type ElementProps$b = Omit<DateFieldJSXProps, 'accessory'>;
+type ElementProps$8 = Omit<DateFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$x]: HtmlElementTagNameProps<ElementProps$b>;
+    [tagName$D]: HtmlElementTagNameProps<ElementProps$8>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$x]: IntrinsicElementProps<ElementProps$b>;
+      [tagName$D]: IntrinsicElementProps<ElementProps$8>;
     }
   }
 }
 
-declare const tagName$w = 's-date-picker';
+declare const tagName$C = 's-date-picker';
+/**
+ * Lets merchants select a date from a calendar.
+ */
 interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
   /**
-   * Callback when the user selects a date from the picker.
+   * A unique identifier for the element.
+   *
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
    */
-  onInput?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  id?: DatePickerProps['id'];
   /**
-   * Callback when the user selects a date from the picker that is different to the current value.
+   * The current selected value.
+   *
+   * The default `''` means no date is selected.
+   *
+   * The value must be a date in `YYYY-MM-DD` format. Values are interpreted in
+   * the device's local timezone. Values that can't be parsed as a date are
+   * treated as no selection; out-of-range calendar dates (for example,
+   * `2024-02-30`) currently roll over to a valid date instead of being rejected.
+   *
+   * @default ""
    */
-  onChange?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  value?: DatePickerProps['value'];
+  /**
+   * Callback when the user selects a date from the picker. Fires after `onChange`.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
+  /**
+   * Callback when the user selects a date from the picker that is different to the current value. Fires before `onInput`.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
   /**
    * Callback when the date picker is dismissed.
    */
-  onBlur?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
   /**
    * Callback when the date picker is revealed.
    */
-  onFocus?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$C>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$w]: HtmlElementTagNameProps<DatePickerJSXProps>;
+    [tagName$C]: HtmlElementTagNameProps<DatePickerJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$w]: IntrinsicElementProps<DatePickerJSXProps>;
+      [tagName$C]: IntrinsicElementProps<DatePickerJSXProps>;
     }
   }
 }
 
-declare const tagName$v = 's-date-spinner';
+declare const tagName$B = 's-date-spinner';
+/**
+ * Lets merchants select a date using spinner controls.
+ */
 interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**
-   * Callback when the user makes a selection.
+   * A unique identifier for the element.
+   *
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
    */
-  onInput?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  id?: DateSpinnerProps['id'];
   /**
-   * Callback when the value changes. Only called when a different value is selected.
+   * The current selected value for the spinner, as a date in `YYYY-MM-DD` format.
+   *
+   * The default `''` means no date is selected. Values are interpreted in the
+   * device's local timezone. Out-of-range calendar dates (for example,
+   * `2024-02-30`) currently roll over to a valid date instead of being rejected.
+   *
+   * @default ""
    */
-  onChange?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  value?: DateSpinnerProps['value'];
+  /**
+   * Callback when the user makes a selection. Fires after `onChange`.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$B>) => void) | null;
+  /**
+   * Callback when the value changes. Only called when a different value is selected. Fires before `onInput`.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$B>) => void) | null;
   /**
    * Callback when the date spinner is dismissed.
    */
-  onBlur?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$B>) => void) | null;
   /**
    * Callback when the date spinner is revealed.
    */
-  onFocus?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$B>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$v]: HtmlElementTagNameProps<DateSpinnerJSXProps>;
+    [tagName$B]: HtmlElementTagNameProps<DateSpinnerJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$v]: IntrinsicElementProps<DateSpinnerJSXProps>;
+      [tagName$B]: IntrinsicElementProps<DateSpinnerJSXProps>;
     }
   }
 }
 
-declare const tagName$u = 's-divider';
+declare const tagName$A = 's-divider';
+/**
+ * Displays a visual separator between content sections.
+ */
 interface DividerJSXProps extends Pick<DividerProps, 'id' | 'direction'> {}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$u]: HtmlElementTagNameProps<DividerJSXProps>;
+    [tagName$A]: HtmlElementTagNameProps<DividerJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$u]: IntrinsicElementProps<DividerJSXProps>;
+      [tagName$A]: IntrinsicElementProps<DividerJSXProps>;
     }
   }
 }
 
-declare const tagName$t = 's-email-field';
+declare const tagName$z = 's-email-field';
+/**
+ * Collects email address input.
+ */
 interface EmailFieldJSXProps$1
   extends Pick<
     EmailFieldProps,
@@ -3965,61 +4084,71 @@ interface EmailFieldJSXProps$1
     | 'details'
   > {
   /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: EmailFieldProps['value'];
+  /**
    * Callback when the user makes any changes in the field.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
   /**
    * Callback when the element loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$t>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$z>) => void) | null;
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
    */
   accessory?: ComponentChild;
 }
-type ElementProps$a = Omit<EmailFieldJSXProps$1, 'accessory'>;
+type ElementProps$7 = Omit<EmailFieldJSXProps$1, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$t]: HtmlElementTagNameProps<ElementProps$a>;
+    [tagName$z]: HtmlElementTagNameProps<ElementProps$7>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$t]: IntrinsicElementProps<ElementProps$a>;
+      [tagName$z]: IntrinsicElementProps<ElementProps$7>;
     }
   }
 }
 
-declare const tagName$s = 's-heading';
+declare const tagName$y = 's-heading';
+/**
+ * Displays heading text for grouping and hierarchy.
+ */
 interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
   /**
-   * The content of the heading.
+   * The content of the Heading.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$s]: HtmlElementTagNameProps<HeadingJSXProps>;
+    [tagName$y]: HtmlElementTagNameProps<HeadingJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$s]: IntrinsicElementProps<HeadingJSXProps>;
+      [tagName$y]: IntrinsicElementProps<HeadingJSXProps>;
     }
   }
 }
 
-declare const tagName$r = 's-icon';
+declare const tagName$x = 's-icon';
 type SupportedIconNames = Extract<
   IconProps['type'],
   | 'alert-circle'
@@ -4148,6 +4277,9 @@ type SupportedIconNames = Extract<
   | 'x'
   | 'x-circle'
 >;
+/**
+ * Displays a predefined icon glyph.
+ */
 interface IconJSXProps
   extends Pick<IconProps, 'id' | 'tone' | 'color' | 'size'> {
   /**
@@ -4159,19 +4291,22 @@ interface IconJSXProps
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$r]: HtmlElementTagNameProps<IconJSXProps>;
+    [tagName$x]: HtmlElementTagNameProps<IconJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$r]: IntrinsicElementProps<IconJSXProps>;
+      [tagName$x]: IntrinsicElementProps<IconJSXProps>;
     }
   }
 }
 
-declare const tagName$q = 's-image';
-interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
+declare const tagName$w = 's-image';
+/**
+ * Displays an image with sizing and fit controls.
+ */
+interface ImageJSXProps$1 extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**
    * The displayed inline width of the image.
    *
@@ -4195,81 +4330,78 @@ interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
   src?: ImageProps['src'];
-  /**
-   * Border radius for the image corners.
-   *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
-   *
-   * - 4 values: `start-start start-end end-end end-start`
-   * - 3 values: `start-start (start-end & end-start) end-end`
-   * - 2 values: `(start-start & end-end) (start-end & end-start)`
-   *
-   * For example:
-   * - `base` means all corners have `base` radius
-   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
-   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
-   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
-   *
-   * @default 'none'
-   */
-  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$q]: HtmlElementTagNameProps<ImageJSXProps>;
+    [tagName$w]: HtmlElementTagNameProps<ImageJSXProps$1>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$q]: IntrinsicElementProps<ImageJSXProps>;
+      [tagName$w]: IntrinsicElementProps<ImageJSXProps$1>;
     }
   }
 }
 
-declare const tagName$p = 's-modal';
+declare const tagName$v = 's-modal';
+/**
+ * The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.
+ *
+ * Modals block interaction with the underlying interface until the merchant resolves the modal content.
+ *
+ * Modals don't automatically handle state management or persistence, so control visibility programmatically with the `command` and `commandFor` attributes. The events notify your code when the modal starts to show or hide.
+ */
 interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   /**
-   * Callback when the modal is hidden.
+   * A unique identifier for the element.
+   *
+   * Required to control visibility: a button or link with `commandFor` set to this `id` shows, hides, or toggles the modal.
    */
-  onHide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
+  id?: string;
   /**
-   * Callback when the modal is shown.
+   * Callback when the modal starts to hide. Fired when a `commandFor` command requests the modal to close, before the closing transition completes.
    */
-  onShow?: (event: CallbackEvent<typeof tagName$p>) => void | null;
+  onHide?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  /**
+   * Callback when the modal starts to show. Fired when a `commandFor` command requests the modal to open, before the opening transition completes.
+   */
+  onShow?: (event: CallbackEvent<typeof tagName$v>) => void | null;
   /**
    * The primary action button displayed in the modal.
    *
-   * The tone of the button is used to define the tone of the modal.
+   * Setting the button's tone to `critical` presents the modal with destructive styling for irreversible actions; other tones don't change the modal's appearance.
    *
-   * If omitted, the modal will default to an 'info' tone, and show an 'OK' button, translated according to the user's locale.
+   * If omitted, the modal uses the default tone and shows a 'Close' button, translated according to the user's locale.
    */
   primaryAction?: ComponentChild;
   /**
-   * The secondary action buttons displayed in the modal.
+   * The secondary action buttons displayed in the modal. At most two secondary actions are rendered.
    */
   secondaryActions?: ComponentChild;
   /**
-   * The content of the modal.
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }
-type ElementProps$9 = Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
+type ElementProps$6 = Omit<ModalJSXProps, 'primaryAction' | 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$p]: HtmlElementTagNameProps<ElementProps$9>;
+    [tagName$v]: HtmlElementTagNameProps<ElementProps$6>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$p]: IntrinsicElementProps<ElementProps$9>;
+      [tagName$v]: IntrinsicElementProps<ElementProps$6>;
     }
   }
 }
 
-declare const tagName$o = 's-number-field';
+declare const tagName$u = 's-number-field';
+/**
+ * Collects numeric input with optional stepper controls.
+ */
 interface NumberFieldJSXProps
   extends Pick<
     NumberFieldProps,
@@ -4285,6 +4417,32 @@ interface NumberFieldJSXProps
     | 'min'
     | 'controls'
   > {
+  /**
+   * The current value for the field, as a string. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   * In stepper mode the field is always populated: an empty or unparsable value is
+   * treated as `0`.
+   */
+  value?: NumberFieldProps['value'];
+  /**
+   * The highest value accepted for the field.
+   *
+   * In text mode, the field clamps an out-of-bounds value to `max` when editing
+   * finishes and delivers the clamped value through `onInput`.
+   *
+   * @default Infinity
+   */
+  max?: NumberFieldProps['max'];
+  /**
+   * The lowest value accepted for the field.
+   *
+   * In text mode, the field clamps an out-of-bounds value to `min` when editing
+   * finishes and delivers the clamped value through `onInput`.
+   *
+   * @default -Infinity
+   */
+  min?: NumberFieldProps['min'];
   /**
    * Content to use as the field label.
    *
@@ -4307,9 +4465,9 @@ interface NumberFieldJSXProps
    * If you want to present an error when this field is empty, you can do
    * so with the `error` property.
    *
-   * @default false
-   *
    * Required is not supported when using Stepper controls
+   *
+   * @default false
    */
   required?: NumberFieldProps['required'];
   /**
@@ -4343,46 +4501,54 @@ interface NumberFieldJSXProps
   /**
    * Sets the type of controls displayed for the field.
    *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Note that in POS
+   * - `stepper`: displays buttons to increase or decrease the value of the field in steps of 1. Note that in POS
    *   adding stepper controls simplifies the behaviour of the Number Field itself. The field supports only integer values, is always-populated and automatically
    *   validates the value to be within the min and max bounds. Validation, label, details and placeholder are not supported when using Stepper controls.
    *
    * - `none`: no controls are displayed and users must input the value manually.
    * - `auto`: the presence of the controls depends on the surface and context.
+   *
+   * @default 'auto'
    */
   controls?: NumberFieldProps['controls'];
   /**
-   * Callback when the user makes any changes in the field.
+   * Callback when the user makes any changes in the field. In stepper mode, fires
+   * on every stepper button tap, together with `onChange`.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$o>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus. In stepper mode, fires on every stepper
+   * button tap, together with `onInput`.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$o>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
   /**
    * Callback when the element loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$o>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$o>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$u>) => void) | null;
 }
-type ElementProps$8 = Omit<NumberFieldJSXProps, 'accessory'>;
+type ElementProps$5 = Omit<NumberFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$o]: HtmlElementTagNameProps<ElementProps$8>;
+    [tagName$u]: HtmlElementTagNameProps<ElementProps$5>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$o]: IntrinsicElementProps<ElementProps$8>;
+      [tagName$u]: IntrinsicElementProps<ElementProps$5>;
     }
   }
 }
 
-declare const tagName$n = 's-page';
+declare const tagName$t = 's-page';
+/**
+ * Provides the top-level page layout for extension content.
+ */
 interface PageJSXProps extends Pick<PageProps, 'id'> {
   /**
    * The main page heading, displayed in the action bar at the top of the page.
@@ -4403,25 +4569,28 @@ interface PageJSXProps extends Pick<PageProps, 'id'> {
    */
   aside?: ComponentChild;
   /**
-   * The content of the page.
+   * The content of the Page.
    */
   children?: ComponentChildren;
 }
-type ElementProps$7 = Omit<PageJSXProps, 'secondaryActions' | 'aside'>;
+type ElementProps$4 = Omit<PageJSXProps, 'secondaryActions' | 'aside'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$n]: HtmlElementTagNameProps<ElementProps$7>;
+    [tagName$t]: HtmlElementTagNameProps<ElementProps$4>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$n]: IntrinsicElementProps<ElementProps$7>;
+      [tagName$t]: IntrinsicElementProps<ElementProps$4>;
     }
   }
 }
 
-declare const tagName$m = 's-pos-block';
+declare const tagName$s = 's-pos-block';
+/**
+ * Displays content in a POS block container with optional heading.
+ */
 interface PosBlockJSXProps extends Pick<POSBlockProps, 'id' | 'heading'> {
   /**
    * The secondary actions to perform, provided as button or link type elements.
@@ -4432,37 +4601,41 @@ interface PosBlockJSXProps extends Pick<POSBlockProps, 'id' | 'heading'> {
    */
   children?: ComponentChildren;
 }
-type ElementProps$6 = Omit<PosBlockJSXProps, 'secondaryActions'>;
+type ElementProps$3 = Omit<PosBlockJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$m]: HtmlElementTagNameProps<ElementProps$6>;
+    [tagName$s]: HtmlElementTagNameProps<ElementProps$3>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$m]: IntrinsicElementProps<ElementProps$6>;
+      [tagName$s]: IntrinsicElementProps<ElementProps$3>;
     }
   }
 }
 
-declare const tagName$l = 's-qr-code';
+declare const tagName$r = 's-qr-code';
+/** @private */
 interface QrCodeJSXProps extends Pick<QRCodeProps, 'id' | 'content'> {}
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$l]: HtmlElementTagNameProps<QrCodeJSXProps>;
+    [tagName$r]: HtmlElementTagNameProps<QrCodeJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$l]: IntrinsicElementProps<QrCodeJSXProps>;
+      [tagName$r]: IntrinsicElementProps<QrCodeJSXProps>;
     }
   }
 }
 
 type PaddingKeyword$1 = SizeKeyword | 'none';
-declare const tagName$k = 's-scroll-box';
+declare const tagName$q = 's-scroll-box';
+/**
+ * Provides a scrollable container for overflowing content.
+ */
 interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   /**
    * Adjust the block size.
@@ -4515,8 +4688,6 @@ interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
    * @default 'none'
    */
@@ -4574,57 +4745,71 @@ interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
    */
   paddingInlineEnd?: PaddingKeyword$1 | '';
   /**
-   * The content of the scroll box.
+   * The content of the ScrollBox.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$k]: HtmlElementTagNameProps<ScrollBoxJSXProps>;
+    [tagName$q]: HtmlElementTagNameProps<ScrollBoxJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$k]: IntrinsicElementProps<ScrollBoxJSXProps>;
+      [tagName$q]: IntrinsicElementProps<ScrollBoxJSXProps>;
     }
   }
 }
 
-declare const tagName$j = 's-search-field';
+declare const tagName$p = 's-search-field';
+/**
+ * Collects search queries for filtering and lookup workflows.
+ */
 interface SearchFieldJSXProps
   extends Pick<SearchFieldProps, 'id' | 'disabled' | 'placeholder' | 'value'> {
   /**
-   * Callback when the user changes the value in the field.
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$j>) => void) | null;
+  value?: SearchFieldProps['value'];
+  /**
+   * Callback when the user changes the value in the field. Also fires with an empty
+   * string when the user clears the field with the clear button; clearing the field
+   * doesn't fire `onChange`.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
   /**
    * Callback when the field loses focus after the user changes the value in the field.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$j>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
   /**
    * Callback when the field loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$j>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
   /**
    * Callback when the field is focused.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$j>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$p>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$j]: HtmlElementTagNameProps<SearchFieldJSXProps>;
+    [tagName$p]: HtmlElementTagNameProps<SearchFieldJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$j]: IntrinsicElementProps<SearchFieldJSXProps>;
+      [tagName$p]: IntrinsicElementProps<SearchFieldJSXProps>;
     }
   }
 }
 
-declare const tagName$i = 's-section';
+declare const tagName$o = 's-section';
+/**
+ * Groups related content into a titled section.
+ */
 interface SectionJSXProps extends Pick<SectionProps, 'id'> {
   /**
    * A title that describes the content of the section.
@@ -4637,25 +4822,25 @@ interface SectionJSXProps extends Pick<SectionProps, 'id'> {
    */
   secondaryActions?: ComponentChild;
   /**
-   * The content of the section.
+   * The content of the Section.
    */
   children?: ComponentChildren;
 }
-type ElementProps$5 = Omit<SectionJSXProps, 'secondaryActions'>;
+type ElementProps$2 = Omit<SectionJSXProps, 'secondaryActions'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$i]: HtmlElementTagNameProps<ElementProps$5>;
+    [tagName$o]: HtmlElementTagNameProps<ElementProps$2>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$i]: IntrinsicElementProps<ElementProps$5>;
+      [tagName$o]: IntrinsicElementProps<ElementProps$2>;
     }
   }
 }
 
-declare const tagName$h = 's-stack';
+declare const tagName$n = 's-stack';
 type PaddingKeyword = SizeKeyword | 'none';
 type PickedProps = Pick<
   StackProps,
@@ -4674,6 +4859,9 @@ type PickedProps = Pick<
   | 'justifyContent'
   | 'rowGap'
 >;
+/**
+ * Arranges children in a horizontal or vertical stack.
+ */
 interface StackJSXProps extends PickedProps {
   /**
    * Adjust the padding of all edges.
@@ -4690,8 +4878,6 @@ interface StackJSXProps extends PickedProps {
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    *
    * @default 'none'
    */
@@ -4794,16 +4980,16 @@ interface StackJSXProps extends PickedProps {
    */
   minInlineSize?: SizeUnits;
   /**
-   * Aligns the stack's children along the cross axis.
+   * Aligns the Stack's children along the cross axis.
    */
   alignItems?: AlignItemsKeyword;
   /**
-   * Aligns the stack along the cross axis.
+   * Aligns the Stack along the cross axis.
    */
   alignContent?: AlignContentKeyword;
   /**
    * Adjust spacing between elements.
-   * A single value applies to both axes. A pair of values (eg large-100 large-500) can be used to set the inline and block axes respectively.
+   * A single value applies to both axes. A pair of values (for example, `large-100 large-500`) sets the block (row) and inline (column) axes respectively, matching the CSS `gap` shorthand order.
    *
    * @default 'none'
    */
@@ -4815,7 +5001,7 @@ interface StackJSXProps extends PickedProps {
    */
   columnGap?: SpacingKeyword | '';
   /**
-   * Sets how the children are placed within the stack. This uses logical properties.
+   * Sets how the children are placed within the Stack. This uses logical properties.
    *
    * @default 'block'
    * @implementation - the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
@@ -4829,7 +5015,7 @@ interface StackJSXProps extends PickedProps {
    */
   inlineSize?: SizeUnitsOrAuto;
   /**
-   * Aligns the stack along the main axis.
+   * Aligns the Stack along the main axis.
    * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    *
    * @default 'normal'
@@ -4842,24 +5028,27 @@ interface StackJSXProps extends PickedProps {
    */
   rowGap?: SpacingKeyword | '';
   /**
-   * The content of the stack.
+   * The content of the Stack.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$h]: HtmlElementTagNameProps<StackJSXProps>;
+    [tagName$n]: HtmlElementTagNameProps<StackJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$h]: IntrinsicElementProps<StackJSXProps>;
+      [tagName$n]: IntrinsicElementProps<StackJSXProps>;
     }
   }
 }
 
-declare const tagName$g = 's-text';
+declare const tagName$m = 's-text';
+/**
+ * Renders styled textual content.
+ */
 interface TextJSXProps extends Pick<TextProps, 'id'> {
   /**
    * Modify the color to be more or less intense.
@@ -4891,18 +5080,21 @@ interface TextJSXProps extends Pick<TextProps, 'id'> {
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$g]: HtmlElementTagNameProps<TextJSXProps>;
+    [tagName$m]: HtmlElementTagNameProps<TextJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$g]: IntrinsicElementProps<TextJSXProps>;
+      [tagName$m]: IntrinsicElementProps<TextJSXProps>;
     }
   }
 }
 
-declare const tagName$f = 's-text-area';
+declare const tagName$l = 's-text-area';
+/**
+ * Collects multi-line text input from the merchant.
+ */
 interface TextAreaJSXProps$1
   extends Pick<
     TextAreaProps,
@@ -4918,41 +5110,60 @@ interface TextAreaJSXProps$1
     | 'rows'
   > {
   /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: TextAreaProps['value'];
+  /**
+   * A number of visible text lines.
+   *
+   * Sets the visible height of the field only; it doesn't limit how many lines of
+   * text can be entered. Values are clamped between 1 and 8.
+   *
+   * @default 2
+   */
+  rows?: TextAreaProps['rows'];
+  /**
    * Callback when the user makes any changes in the field.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$l>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback after editing completes, on blur. Fires only when the value
+   * changed since the field received focus.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$l>) => void) | null;
   /**
    * Callback when the element loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$l>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$l>) => void) | null;
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
    */
   accessory?: ComponentChild;
 }
-type ElementProps$4 = Omit<TextAreaJSXProps$1, 'accessory'>;
+type ElementProps$1 = Omit<TextAreaJSXProps$1, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$f]: HtmlElementTagNameProps<ElementProps$4>;
+    [tagName$l]: HtmlElementTagNameProps<ElementProps$1>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$f]: IntrinsicElementProps<ElementProps$4>;
+      [tagName$l]: IntrinsicElementProps<ElementProps$1>;
     }
   }
 }
 
-declare const tagName$e = 's-text-field';
+declare const tagName$k = 's-text-field';
+/**
+ * Collects single-line text input.
+ */
 interface TextFieldJSXProps
   extends Pick<
     TextFieldProps,
@@ -4967,139 +5178,195 @@ interface TextFieldJSXProps
     | 'maxLength'
   > {
   /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: TextFieldProps['value'];
+  /**
    * Callback when the user makes any changes in the field.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   /**
    * Callback when the element loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$k>) => void) | null;
   /**
    * Additional content to be displayed in the field. Commonly used to display clickable text.
    */
   accessory?: ComponentChild;
 }
-type ElementProps$3 = Omit<TextFieldJSXProps, 'accessory'>;
+type ElementProps = Omit<TextFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$e]: HtmlElementTagNameProps<ElementProps$3>;
+    [tagName$k]: HtmlElementTagNameProps<ElementProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$e]: IntrinsicElementProps<ElementProps$3>;
+      [tagName$k]: IntrinsicElementProps<ElementProps>;
     }
   }
 }
 
-declare const tagName$d = 's-tile';
+declare const tagName$j = 's-tile';
+/**
+ * Displays tappable content in a compact tile layout.
+ */
 interface TileJSXProps
   extends Pick<
     TileProps,
     'heading' | 'id' | 'itemCount' | 'tone' | 'subheading'
   > {
   /**
-   * Disables the tile meaning it cannot be clicked or receive focus.
+   * Disables the Tile meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
   disabled?: TileProps['disabled'];
   /**
-   * Callback when the tile is activated.
+   * Callback when the Tile is activated.
    */
-  onClick?: (event: CallbackEvent<typeof tagName$d>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$j>) => void;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$d]: HtmlElementTagNameProps<TileJSXProps>;
+    [tagName$j]: HtmlElementTagNameProps<TileJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$d]: IntrinsicElementProps<TileJSXProps>;
+      [tagName$j]: IntrinsicElementProps<TileJSXProps>;
     }
   }
 }
 
-declare const tagName$c = 's-time-field';
+declare const tagName$i = 's-time-field';
+/**
+ * Collects a time value.
+ */
 interface TimeFieldJSXProps
   extends Pick<
     TimeFieldProps,
     'id' | 'label' | 'disabled' | 'value' | 'error' | 'details' | 'required'
   > {
   /**
-   * Callback when the user makes any changes in the field.
+   * The current value for the field, as a 24-hour time in `HH:mm:ss` format with
+   * leading zeros (for example, `"09:05:00"`). If omitted or empty, the field is
+   * empty.
+   *
+   * Seconds aren't captured: emitted values always end in `:00`, and seconds in a
+   * provided value are ignored. Values are interpreted in the device's local
+   * timezone. The field displays times in 12-hour AM/PM format.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  value?: TimeFieldProps['value'];
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback when the user confirms a time in the picker. Fires together with
+   * `onChange` at selection time.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
   /**
-   * Callback when the element loses focus.
+   * Callback when the user confirms a time in the picker. Fires together with
+   * `onInput` at selection time, not on blur.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
+  /**
+   * Callback when the element loses focus. Also fires right after a picker
+   * selection is confirmed, and when the picker is dismissed without a selection.
+   */
+  onBlur?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$i>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$c]: HtmlElementTagNameProps<TimeFieldJSXProps>;
+    [tagName$i]: HtmlElementTagNameProps<TimeFieldJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$c]: IntrinsicElementProps<TimeFieldJSXProps>;
+      [tagName$i]: IntrinsicElementProps<TimeFieldJSXProps>;
     }
   }
 }
 
-declare const tagName$b = 's-time-picker';
+declare const tagName$h = 's-time-picker';
+/**
+ * Lets merchants select a time from a picker.
+ */
 interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
   /**
-   * Callback when the user selects a time from the picker.
+   * A unique identifier for the element.
+   *
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
    */
-  onInput?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  id?: TimePickerProps['id'];
   /**
-   * Callback when the user selects a time from the picker that is different to the current value.
+   * The current selected value.
+   *
+   * The default `''` means no time is selected.
+   *
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros
+   * (for example, `"09:05:00"`). Seconds aren't captured: emitted values always
+   * end in `:00`, and seconds in a provided value are ignored. Values are
+   * interpreted in the device's local timezone.
+   *
+   * @default ''
    */
-  onChange?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  value?: TimePickerProps['value'];
+  /**
+   * Callback when the user selects a time from the picker. Fires after `onChange`.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
+  /**
+   * Callback when the user selects a time from the picker that is different to the current value. Fires before `onInput`.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
    * Callback when the time picker is dismissed.
    */
-  onBlur?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
   /**
    * Callback when the time picker is revealed.
    */
-  onFocus?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName$b]: HtmlElementTagNameProps<TimePickerJSXProps>;
+    [tagName$h]: HtmlElementTagNameProps<TimePickerJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName$b]: IntrinsicElementProps<TimePickerJSXProps>;
+      [tagName$h]: IntrinsicElementProps<TimePickerJSXProps>;
     }
   }
 }
 
-declare const tagName$a = 's-link';
+declare const tagName$g = 's-link';
+/**
+ * The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.
+ *
+ * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.
+ */
 interface LinkJSXProps
   extends Pick<
     LinkProps,
@@ -5108,29 +5375,19 @@ interface LinkJSXProps
   /**
    * Called when the link is activated.
    */
-  onClick?: (event: CallbackEvent<typeof tagName$a>) => void;
+  onClick?: (event: CallbackEvent<typeof tagName$g>) => void;
   /**
-   * The link content.
+   * The Link content.
    */
   children?: ComponentChildren;
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$a]: HtmlElementTagNameProps<LinkJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$a]: IntrinsicElementProps<LinkJSXProps>;
-    }
-  }
-}
 
-declare const tagName$9 = 's-empty-state';
+/**
+ * Displays an empty-state message with optional actions and supporting graphics.
+ */
 interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
   /**
-   * The subheading of the empty state.
+   * The subheading of the EmptyState.
    */
   subheading?: string;
   /**
@@ -5142,28 +5399,24 @@ interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
    */
   secondaryActions?: ComponentChild;
   /**
-   * The graphic to display in the empty state. The only supported components is Icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`.
+   * The graphic to display in the EmptyState. The only supported component is `Icon`, with a type of `alert-circle`, `search`, or `info`.
    */
   graphic?: ComponentChild;
 }
-type ElementProps$2 = Omit<
-  EmptyStateJSXProps,
-  'primaryAction' | 'secondaryActions' | 'graphic'
->;
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$9]: HtmlElementTagNameProps<ElementProps$2>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$9]: IntrinsicElementProps<ElementProps$2>;
-    }
-  }
-}
 
-declare const tagName$8 = 's-embed';
+/**
+ * The embed component displays a preview of printable content from a specified source URL. Use it to show merchants what will be printed before triggering the actual print operation.
+ *
+ * Embed works in conjunction with the Print API to provide complete print functionality from preview to execution.
+ *
+ * The supported document types are the content types accepted by the `type` property:
+ *
+ * - **HTML documents** (`text/html`) - Receipts, invoices, and formatted reports with CSS styling and embedded images.
+ * - **Text files** (`text/plain`) - Plain text content such as simple receipts and data exports.
+ * - **PDF files** (`application/pdf`) - Complex documents and compliance requirements. On Android, the component shows a placeholder instead of a PDF preview.
+ *
+ * [Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).
+ */
 interface EmbedJSXProps
   extends Pick<
     EmbedProps,
@@ -5214,36 +5467,17 @@ interface EmbedJSXProps
    */
   maxInlineSize?: SizeUnitsOrNone;
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$8]: HtmlElementTagNameProps<EmbedJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$8]: IntrinsicElementProps<EmbedJSXProps>;
-    }
-  }
-}
 
-declare const tagName$7 = 's-spinner';
+/**
+ * Displays a loading indicator while content or actions are in progress.
+ */
 interface SpinnerJSXProps
   extends Pick<SpinnerProps, 'id' | 'accessibilityLabel'> {}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$7]: HtmlElementTagNameProps<SpinnerJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$7]: IntrinsicElementProps<SpinnerJSXProps>;
-    }
-  }
-}
 
-declare const tagName$6 = 's-switch';
+declare const tagName$f = 's-switch';
+/**
+ * Allows merchants to toggle a setting on or off.
+ */
 interface SwitchJSXProps
   extends Pick<
     SwitchProps,
@@ -5257,94 +5491,99 @@ interface SwitchJSXProps
     | 'error'
     | 'labelAccessibilityVisibility'
   > {
-  onInput?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
-  onChange?: ((event: CallbackEvent<typeof tagName$6>) => void) | null;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$6]: HtmlElementTagNameProps<SwitchJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$6]: IntrinsicElementProps<SwitchJSXProps>;
-    }
-  }
+  /**
+   * A string value attached to the element.
+   *
+   * Use `checked` for the switch state. A string `value` stays attached to the
+   * element and can be read back in event callbacks; it doesn't affect the switch
+   * state and isn't submitted with any form.
+   */
+  value?: SwitchProps['value'];
+  /**
+   * Whether the switch is on.
+   *
+   * When `checked` is set, update it from `onChange` or `onInput` to keep the
+   * switch controlled. When `checked` isn't set, the switch manages its own
+   * state, starting from `defaultChecked`.
+   *
+   * @default false
+   */
+  checked?: SwitchProps['checked'];
+  /**
+   * Whether the switch is on when it first renders.
+   *
+   * Applies only to the initial render; later changes to `defaultChecked` are
+   * ignored. Use `checked` to control the state after the first render.
+   *
+   * @default false
+   */
+  defaultChecked?: SwitchProps['defaultChecked'];
+  /**
+   * Callback when the user toggles the switch. Fires together with `onChange`,
+   * after it. Read the new state from `event.currentTarget.checked`.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
+  /**
+   * Callback when the user toggles the switch. Fires together with `onInput`;
+   * `onChange` fires first. Read the new state from `event.currentTarget.checked`.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$f>) => void) | null;
 }
 
-declare const tagName$5 = 's-tabs';
+declare const tagName$e = 's-tabs';
+/**
+ * Groups related content into selectable tabbed views.
+ */
 interface TabsJSXProps
   extends Pick<TabsProps, 'value' | 'defaultValue' | 'disabled'> {
+  /**
+   * The value of the selected tab.
+   *
+   * This should match the `id` prop of one of the TabPanel components.
+   * When neither `value` nor `defaultValue` is provided, the first rendered tab panel is selected.
+   */
+  value?: string;
+  /**
+   * The default value of the selected tab.
+   *
+   * This should match the `id` prop of one of the TabPanel components.
+   * Sets the initial selected tab in uncontrolled usage. Setting `value` afterwards overrides it.
+   */
+  defaultValue?: string;
   children?: ComponentChildren;
-  onChange?: ((event: CallbackEvent<typeof tagName$5>) => void) | null;
-}
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$5]: HtmlElementTagNameProps<TabsJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$5]: IntrinsicElementProps<TabsJSXProps>;
-    }
-  }
+  /**
+   * Callback fired when the selected tab changes.
+   *
+   * Fires on every tab selection, including when the current tab is selected again.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$e>) => void) | null;
 }
 
-declare const tagName$4 = 's-tab-list';
-/** @publicDocs */
+/**
+ * Presents the list of selectable tabs within a tabs component. Accepts only tab components as children.
+ */
 interface TabListJSXProps extends Pick<TabListProps, 'children'> {
   children?: ComponentChildren;
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$4]: HtmlElementTagNameProps<TabListJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$4]: IntrinsicElementProps<TabListJSXProps>;
-    }
-  }
-}
 
-declare const tagName$3 = 's-tab';
+/**
+ * Represents an individual tab inside a tabs component.
+ */
 interface TabJSXProps extends Pick<TabProps, 'controls' | 'disabled'> {
   children?: StringChildren;
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$3]: HtmlElementTagNameProps<TabJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$3]: IntrinsicElementProps<TabJSXProps>;
-    }
-  }
-}
 
-declare const tagName$2 = 's-tab-panel';
+/**
+ * Represents content associated with a selected tab.
+ */
 interface TabPanelJSXProps extends Pick<TabPanelProps, 'id'> {
   children?: ComponentChildren;
 }
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$2]: HtmlElementTagNameProps<TabPanelJSXProps>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$2]: IntrinsicElementProps<TabPanelJSXProps>;
-    }
-  }
-}
 
-declare const tagName$1 = 's-text-area';
+declare const tagName$d = 's-text-area';
+/**
+ * Collects multi-line text input from the merchant.
+ */
 interface TextAreaJSXProps
   extends Pick<
     TextAreaProps,
@@ -5360,37 +5599,43 @@ interface TextAreaJSXProps
     | 'rows'
   > {
   /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: TextAreaProps['value'];
+  /**
+   * A number of visible text lines.
+   *
+   * Sets the visible height of the field only; it doesn't limit how many lines of
+   * text can be entered. Values are clamped between 1 and 8.
+   *
+   * @default 2
+   */
+  rows?: TextAreaProps['rows'];
+  /**
    * Callback when the user makes any changes in the field.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback after editing completes, on blur. Fires only when the value
+   * changed since the field received focus.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
    * Callback when the element loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
-}
-type ElementProps$1 = Omit<TextAreaJSXProps, 'accessory'>;
-declare global {
-  interface HTMLElementTagNameMap {
-    [tagName$1]: HtmlElementTagNameProps<ElementProps$1>;
-  }
-}
-declare module 'preact' {
-  namespace createElement.JSX {
-    interface IntrinsicElements {
-      [tagName$1]: IntrinsicElementProps<ElementProps$1>;
-    }
-  }
+  onFocus?: ((event: CallbackEvent<typeof tagName$d>) => void) | null;
 }
 
-declare const tagName = 's-email-field';
+declare const tagName$c = 's-email-field';
+/**
+ * Collects email address input.
+ */
 interface EmailFieldJSXProps
   extends Pick<
     EmailFieldProps,
@@ -5405,32 +5650,247 @@ interface EmailFieldJSXProps
     | 'details'
   > {
   /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: EmailFieldProps['value'];
+  /**
    * Callback when the user makes any changes in the field.
    */
-  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onInput?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
   /**
-   * Callback after editing completes (typically on blur).
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus.
    */
-  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onChange?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
   /**
    * Callback when the element loses focus.
    */
-  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onBlur?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
   /**
    * Callback when the element receives focus.
    */
-  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onFocus?: ((event: CallbackEvent<typeof tagName$c>) => void) | null;
 }
-type ElementProps = EmailFieldJSXProps;
+
+/**
+ * Displays an image with sizing and fit controls.
+ */
+interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
+  /**
+   * The displayed inline width of the image.
+   *
+   * - `fill`: the image will take up 100% of the available inline size.
+   * - `auto`: the image is displayed in a square (1:1 aspect ratio) container at the full available
+   *   inline size. The POS translator doesn't render the image at its natural size.
+   *
+   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
+   * ScrollViews on mobile have a dynamic height, which can cause images to appear
+   * inconsistently without defined dimensions.
+   *
+   * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
+   */
+  inlineSize?: ImageProps['inlineSize'];
+  /**
+   * The image source, which should be a remote URL.
+   *
+   * When no `src` is provided or the image fails to load, a placeholder is rendered.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   */
+  src?: ImageProps['src'];
+  /**
+   * Border radius for the image corners.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `start-start inline-end end-end inline-start`
+   * - 3 values: `start-start inline end-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `base` means all corners have `base` radius
+   * - `base none` means start-start and end-end corners are `base`, inline-end and inline-start corners are `none`
+   * - `base none large` means start-start is `base`, inline-end and inline-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, inline-end is `none`, end-end is `large`, inline-start is `small`
+   *
+   * Supports size keywords from the design system scale:
+   * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
+   * - Special values: `max`, `none`
+   *
+   * @default 'none'
+   */
+  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
+}
+
+declare const tagName$b = 's-image';
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: HtmlElementTagNameProps<ElementProps>;
+    [tagName$b]: HtmlElementTagNameProps<ImageJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: IntrinsicElementProps<ElementProps>;
+      [tagName$b]: IntrinsicElementProps<ImageJSXProps>;
+    }
+  }
+}
+
+declare const tagName$a = 's-link';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$a]: HtmlElementTagNameProps<LinkJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$a]: IntrinsicElementProps<LinkJSXProps>;
+    }
+  }
+}
+
+declare const tagName$9 = 's-empty-state';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$9]: HtmlElementTagNameProps<EmptyStateJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$9]: IntrinsicElementProps<EmptyStateJSXProps>;
+    }
+  }
+}
+
+declare const tagName$8 = 's-embed';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$8]: HtmlElementTagNameProps<EmbedJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$8]: IntrinsicElementProps<EmbedJSXProps>;
+    }
+  }
+}
+
+declare const tagName$7 = 's-spinner';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$7]: HtmlElementTagNameProps<SpinnerJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$7]: IntrinsicElementProps<SpinnerJSXProps>;
+    }
+  }
+}
+
+declare const tagName$6 = 's-switch';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$6]: HtmlElementTagNameProps<SwitchJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$6]: IntrinsicElementProps<SwitchJSXProps>;
+    }
+  }
+}
+
+declare const tagName$5 = 's-tabs';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$5]: HtmlElementTagNameProps<TabsJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$5]: IntrinsicElementProps<TabsJSXProps>;
+    }
+  }
+}
+
+declare const tagName$4 = 's-tab-list';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$4]: HtmlElementTagNameProps<TabListJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$4]: IntrinsicElementProps<TabListJSXProps>;
+    }
+  }
+}
+
+declare const tagName$3 = 's-tab';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$3]: HtmlElementTagNameProps<TabJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$3]: IntrinsicElementProps<TabJSXProps>;
+    }
+  }
+}
+
+declare const tagName$2 = 's-tab-panel';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$2]: HtmlElementTagNameProps<TabPanelJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$2]: IntrinsicElementProps<TabPanelJSXProps>;
+    }
+  }
+}
+
+declare const tagName$1 = 's-text-area';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName$1]: HtmlElementTagNameProps<TextAreaJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName$1]: IntrinsicElementProps<TextAreaJSXProps>;
+    }
+  }
+}
+
+declare const tagName = 's-email-field';
+declare global {
+  interface HTMLElementTagNameMap {
+    [tagName]: HtmlElementTagNameProps<EmailFieldJSXProps>;
+  }
+}
+declare module 'preact' {
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: IntrinsicElementProps<EmailFieldJSXProps>;
     }
   }
 }
@@ -5478,426 +5938,12 @@ export type {
 };
 
 /**
- * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
-interface LinkEvents {
-  /** Called when the link is activated. */
-  click?: (event: CallbackEvent<typeof tagName$a>) => void;
-}
-
-/**
- * The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.
- *
- * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/actions/button) instead.
- * @publicDocs
- */
-interface Link {
-  /** A unique identifier for the element. */
-  id?: string;
-  /**
-   * ID of a component that should respond to activations (e.g. clicks) on this component.
-   *
-   * See `command` for how to control the behavior of the target.
-   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
-   */
-  commandFor?: string;
-  /**
-   * Sets the action the `commandFor` should take when this clickable is activated.
-   *
-   * See the documentation of particular components for the actions they support.
-   *
-   * - `--auto`: a default action for the target component.
-   * - `--show`: shows the target component.
-   * - `--hide`: hides the target component.
-   * - `--toggle`: toggles the target component.
-   * - `--copy`: copies the target ClipboardItem.
-   * @default '--auto'
-   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
-   */
-  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
-  /**
-   * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.
-   *
-   * Use this when using only an icon or the content of the link is not enough context
-   * for users using assistive technologies.
-   */
-  accessibilityLabel?: string;
-}
-
-/**
- * The empty state component supports slots for adding graphics and actions. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
- * @publicDocs
- */
-interface EmptyStateSlots {
-  /** The primary action to perform, provided as a button or link type element. */
-  'primary-action'?: HTMLElement;
-  /** The secondary actions to perform, provided as button or link type elements. */
-  'secondary-actions'?: HTMLElement;
-  /** The graphic to display in the empty state. The only supported components is Icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`. */
-  graphic?: HTMLElement;
-}
-
-/**
- * Displays an empty-state message with optional actions and supporting graphics.
- * @publicDocs
- */
-interface EmptyState {
-  /** The subheading of the empty state. */
-  subheading?: string;
-  /** The heading of the empty state. */
-  heading?: string;
-}
-
-/**
- * The embed component displays a preview of printable content from a specified source URL. Use it to show users what will be printed before triggering the actual print operation.
- *
- * Embed works in conjunction with the Print API to provide complete print functionality from preview to execution.
- *
- * Supported document types:
- *
- * - **HTML documents** (`.html`, `.htm`) - Best printing experience with full CSS styling, embedded images, and complex layouts. Use for receipts, invoices, and formatted reports.
- *
- * - **Text files** (`.txt`, `.csv`) - Plain text with basic content and tabular data support. Use for simple receipts and data exports.
- *
- * - **PDF files** (`.pdf`) - Behavior varies by platform: prints directly on iOS/desktop, but downloads to external viewer on Android. Use for complex documents and compliance requirements.
- *
- * [Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).
- * @publicDocs
- */
-interface Embed {
-  /**
-   * Adjust the block size.
-   * @default 'auto'
-   */
-  blockSize?: SizeUnitsOrAuto;
-  /**
-   * Adjust the minimum block size.
-   * @default '0'
-   */
-  minBlockSize?: SizeUnits;
-  /**
-   * Adjust the maximum block size.
-   * @default 'none'
-   */
-  maxBlockSize?: SizeUnitsOrNone;
-  /**
-   * Adjust the inline size.
-   * @default 'auto'
-   */
-  inlineSize?: SizeUnitsOrAuto;
-  /**
-   * Adjust the minimum inline size.
-   * @default '0'
-   */
-  minInlineSize?: SizeUnits;
-  /**
-   * Adjust the maximum inline size.
-   * @default 'none'
-   */
-  maxInlineSize?: SizeUnitsOrNone;
-  /**
-   * The content type of the file to display.
-   * @default 'text/html'
-   */
-  type?: 'text/html' | 'text/plain' | 'application/pdf';
-  /**
-   * The source of the file to preview.
-   *
-   * The value must be either:
-   * - A relative path that will be appended to your app's `application_url`.
-   * - A full URL to your app's backend that will be used to return the file.
-   *
-   * Supported file types:
-   * - HTML files
-   * - Text files
-   * - PDF files
-   * @implementation If this value is omitted, the component should render an empty state or nothing.
-   */
-  src?: string;
-  /**
-   * A label that describes the purpose or contents of the embed. It will be read to users
-   * using assistive technologies such as screen readers.
-   * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute
-   */
-  accessibilityLabel?: string;
-}
-
-/**
- * Displays a loading indicator while content or actions are in progress.
- * @publicDocs
- */
-interface Spinner {
-  /** A unique identifier for the element. */
-  id?: string;
-  /**
-   * A label that describes the purpose of the progress. When set,
-   * it will be announced to users using assistive technologies and will
-   * provide them with more context. Providing an `accessibilityLabel` is
-   * recommended if there is no accompanying text describing that something
-   * is loading.
-   */
-  accessibilityLabel?: string;
-}
-
-/**
- * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
-interface SwitchEvents {
-  input?: (event: CallbackEvent<typeof tagName$6>) => void;
-  change?: (event: CallbackEvent<typeof tagName$6>) => void;
-}
-
-/**
- * Allows merchants to toggle a setting on or off.
- * @publicDocs
- */
-interface Switch {
-  /** The value used in form data when the control is checked. */
-  value?: string;
-  /**
-   * Whether the control is active by default.
-   * @implementation `defaultChecked` reflects to the `checked` attribute.
-   * @default false
-   */
-  defaultChecked?: boolean;
-  /**
-   * Disables the control, disallowing any interaction.
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
-   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
-   */
-  accessibilityLabel?: string;
-  /**
-   * Whether the control is active.
-   * @default false
-   */
-  checked?: boolean;
-  /** Visual content to use as the control label. */
-  label?: string;
-  /**
-   * Additional text to provide context or guidance for the field.
-   * This text is displayed along with the field and its label
-   * to offer more information or instructions to the user.
-   *
-   * This will also be exposed to screen reader users.
-   */
-  details?: string;
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Changes the visibility of the component's label.
-   *
-   * - `visible`: the label is visible to all users.
-   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
-   * @default 'visible'
-   */
-  labelAccessibilityVisibility?: ExtractStrict<
-    'visible' | 'hidden' | 'exclusive',
-    'visible' | 'exclusive'
-  >;
-}
-
-/**
- * The tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
-interface TabsEvents {
-  change?: (event: CallbackEvent<typeof tagName$5>) => void;
-}
-
-/**
- * Groups related content into selectable tabbed views.
- * @publicDocs
- */
-interface Tabs {
-  /**
-   * The value of the selected tab.
-   *
-   * This should match the `id` prop of one of the tab panel components.
-   * If not provided, the first tab will be selected by default.
-   */
-  value?: string;
-  /**
-   * The default value of the selected tab.
-   *
-   * This should match the `id` prop of one of the tab panel components.
-   * If not provided, the first tab will be selected by default.
-   *
-   * Reflects to the `value` attribute
-   */
-  defaultValue?: string;
-  /** Disables all tabs and prevents user interaction. */
-  disabled?: boolean;
-}
-
-/**
- * Represents an individual tab inside a tabs component.
- * @publicDocs
- */
-interface Tab {
-  /** Corresponds to the `id` property of the tab panel component that will be displayed when selected */
-  controls?: string;
-  /**
-   * Disables the control, disallowing any interaction.
-   * @default false
-   */
-  disabled?: boolean;
-}
-
-/**
- * Represents content associated with a selected tab.
- * @publicDocs
- */
-interface TabPanel {
-  /**
-   * The id of the tab panel used for identification in the tabs component.
-   * Must match the `controls` prop of the corresponding tab component.
-   */
-  id?: string;
-}
-
-/**
- * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
-interface TextAreaEvents {
-  /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$f>) => void;
-  /** Callback after editing completes (typically on blur). */
-  change?: (event: CallbackEvent<typeof tagName$f>) => void;
-  /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$f>) => void;
-  /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$f>) => void;
-}
-
-/**
- * Collects multi-line text input from the merchant.
- * @publicDocs
- */
-interface TextArea {
-  /** A unique identifier for the element. */
-  id?: string;
-  /** Content to use as the field label. */
-  label?: string;
-  /**
-   * Additional text to provide context or guidance for the field.
-   * This text is displayed along with the field and its label
-   * to offer more information or instructions to the user.
-   *
-   * This will also be exposed to screen reader users.
-   */
-  details?: string;
-  /** The current value for the field. If omitted, the field will be empty. */
-  value?: string;
-  /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
-  /**
-   * Disables the field, disallowing any interaction.
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` property.
-   * @default false
-   */
-  required?: boolean;
-  /**
-   * Specifies the maximum number of characters allowed.
-   * @default Infinity
-   */
-  maxLength?: number;
-  /**
-   * A number of visible text lines.
-   * @default 2
-   */
-  rows?: number;
-}
-
-/**
- * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
- * @publicDocs
- */
-interface EmailFieldEvents {
-  /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$t>) => void;
-  /** Callback after editing completes (typically on blur). */
-  change?: (event: CallbackEvent<typeof tagName$t>) => void;
-  /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$t>) => void;
-  /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$t>) => void;
-}
-
-/**
- * Collects and validates email address input.
- * @publicDocs
- */
-interface EmailField {
-  /** A unique identifier for the element. */
-  id?: string;
-  /** Content to use as the field label. */
-  label?: string;
-  /** The current value for the field. If omitted, the field will be empty. */
-  value?: string;
-  /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
-  /**
-   * Disables the field, disallowing any interaction.
-   * @default false
-   */
-  disabled?: boolean;
-  /**
-   * Indicate an error to the user. The field will be given a specific stylistic treatment
-   * to communicate problems that have to be resolved immediately.
-   */
-  error?: string;
-  /**
-   * Whether the field needs a value. This requirement adds semantic value
-   * to the field, but it will not cause an error to appear automatically.
-   * If you want to present an error when this field is empty, you can do
-   * so with the `error` property.
-   * @default false
-   */
-  required?: boolean;
-  /**
-   * Specifies the maximum number of characters allowed.
-   * @default Infinity
-   */
-  maxLength?: number;
-  /**
-   * Additional text to provide context or guidance for the field.
-   * This text is displayed along with the field and its label
-   * to offer more information or instructions to the user.
-   *
-   * This will also be exposed to screen reader users.
-   */
-  details?: string;
-}
-
-/**
  * The button component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
  * @publicDocs
  */
 interface ButtonEvents {
   /** Called when the button is activated. */
-  click?: (event: CallbackEvent<typeof tagName$B>) => void;
+  click?: ((event: CallbackEvent<typeof tagName$H>) => void) | undefined;
 }
 
 /**
@@ -5917,38 +5963,38 @@ interface Button {
    * @default '--auto'
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
-  command?: '--auto' | '--show' | '--hide' | '--toggle';
+  command?: '--auto' | '--show' | '--hide' | '--toggle' | undefined;
   /**
-   * Sets the tone of the button, based on the intention of the information being conveyed.
+   * Sets the tone of the Button, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
+  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical' | undefined;
   /**
-   * Changes the visual appearance of the button.
+   * Changes the visual appearance of the Button.
    * @default 'auto'
    */
-  variant?: 'auto' | 'primary' | 'secondary';
+  variant?: 'auto' | 'primary' | 'secondary' | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
-   * Disables the button meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * ID of a component that should respond to activations (e.g. clicks) on this component.
    *
    * See `command` for how to control the behavior of the target.
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
    */
-  commandFor?: string;
+  commandFor?: string | undefined;
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the button.
+   * This also disables the Button.
    * @default false
    */
-  loading?: boolean;
+  loading?: boolean | undefined;
 }
 
 /**
@@ -5960,14 +6006,14 @@ interface Text {
    * Modify the color to be more or less intense.
    * @default 'base'
    */
-  color?: ColorKeyword;
+  color?: ColorKeyword | undefined;
   /**
    * Provide semantic meaning and default styling to the text.
    *
    * Other presentation properties on Text override the default styling.
    * @default 'generic'
    */
-  type?: 'strong' | 'small' | 'generic';
+  type?: 'strong' | 'small' | 'generic' | undefined;
   /**
    * Sets the tone of the component, based on the intention of the information being conveyed.
    * @default 'auto'
@@ -5979,9 +6025,10 @@ interface Text {
     | 'success'
     | 'caution'
     | 'warning'
-    | 'critical';
+    | 'critical'
+    | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -5993,32 +6040,32 @@ interface ScrollBox {
    * Adjust the block size.
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the inline size.
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the maximum block size.
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the maximum inline size.
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the minimum block size.
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the minimum inline size.
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: SizeUnits | undefined;
   /**
    * Adjust the padding of all edges.
    *
@@ -6034,11 +6081,9 @@ interface ScrollBox {
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword> | undefined;
   /**
    * Adjust the block-padding.
    *
@@ -6047,21 +6092,24 @@ interface ScrollBox {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingBlock?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | PaddingKeyword;
+  paddingBlockStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | PaddingKeyword;
+  paddingBlockEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline padding.
    *
@@ -6070,23 +6118,26 @@ interface ScrollBox {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingInline?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | PaddingKeyword;
+  paddingInlineStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | PaddingKeyword;
+  paddingInlineEnd?: '' | PaddingKeyword | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6094,8 +6145,8 @@ interface ScrollBox {
  * @publicDocs
  */
 interface TileEvents {
-  /** Callback when the tile is activated. */
-  click?: (event: CallbackEvent<typeof tagName$d>) => void;
+  /** Callback when the Tile is activated. */
+  click?: ((event: CallbackEvent<typeof tagName$j>) => void) | undefined;
 }
 
 /**
@@ -6104,34 +6155,34 @@ interface TileEvents {
  */
 interface Tile {
   /**
-   * Disables the tile meaning it cannot be clicked or receive focus.
+   * Disables the Tile meaning it cannot be clicked or receive focus.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
-   * A title that describes the content of the tile.
+   * A title that describes the content of the Tile.
    * @default ''
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
-   * A numeric indicator rendered within the tile (for example, a count or a step number).
+   * A numeric indicator rendered within the Tile (for example, a count or a step number).
    *
    * - When provided, the indicator is displayed inside the tile.
    * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
    */
-  itemCount?: number;
+  itemCount?: number | undefined;
   /**
-   * Sets the tone of the tile, based on the intention of the information being conveyed.
+   * Sets the tone of the Tile, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
+  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'> | undefined;
   /**
    * Supporting text displayed below the heading.
    * @default ''
    */
-  subheading?: string;
+  subheading?: string | undefined;
 }
 
 /**
@@ -6139,7 +6190,12 @@ interface Tile {
  * @publicDocs
  */
 interface BannerSlots {
-  /** The action taken when the banner is pressed. */
+  /**
+   * The primary action for the banner, provided as a button element in the `primary-action` slot.
+   *
+   * The POS renderer displays the action only when the slotted button has both text content and an
+   * `onClick` handler; otherwise the action is dropped.
+   */
   'primary-action'?: HTMLElement;
 }
 
@@ -6152,19 +6208,19 @@ interface Banner {
    * Determines whether the banner is hidden.
    * @default false
    */
-  hidden?: boolean;
+  hidden?: boolean | undefined;
   /**
-   * Sets the tone of the banner, based on the intention of the information being conveyed.
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: 'auto' | 'info' | 'success' | 'warning' | 'critical';
+  tone?: 'auto' | 'info' | 'success' | 'warning' | 'critical' | undefined;
   /**
    * The title of the banner.
    * @default ''
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6173,37 +6229,37 @@ interface Banner {
  */
 interface Box {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Adjust the block size.
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the inline size.
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the maximum block size.
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the maximum inline size.
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the minimum block size.
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the minimum inline size.
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: SizeUnits | undefined;
   /**
    * Adjust the padding of all edges.
    *
@@ -6219,11 +6275,9 @@ interface Box {
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword> | undefined;
   /**
    * Adjust the block-padding.
    *
@@ -6232,21 +6286,24 @@ interface Box {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingBlock?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | PaddingKeyword;
+  paddingBlockStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | PaddingKeyword;
+  paddingBlockEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline padding.
    *
@@ -6255,21 +6312,24 @@ interface Box {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingInline?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | PaddingKeyword;
+  paddingInlineStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | PaddingKeyword;
+  paddingInlineEnd?: '' | PaddingKeyword | undefined;
 }
 
 /**
@@ -6281,24 +6341,24 @@ interface Icon {
    * The type of icon to display.
    * @default ''
    */
-  type?: SupportedIconNames;
+  type?: SupportedIconNames | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Sets the tone of the icon, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: ToneKeyword;
+  tone?: ToneKeyword | undefined;
   /**
    * Modify the color to be more or less intense.
    * @default 'base'
    */
-  color?: ColorKeyword;
+  color?: ColorKeyword | undefined;
   /**
    * Adjusts the size of the icon.
    * @default 'base'
    */
-  size?: SizeKeyword;
+  size?: SizeKeyword | undefined;
 }
 
 /**
@@ -6321,11 +6381,9 @@ interface Stack {
    * - `large none` means block-start and block-end paddings are `large`, inline-start and inline-end paddings are `none`.
    * - `large none large` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `none`.
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
-   *
-   * A padding value of `auto` will use the default padding for the closest container that has had its usual padding removed.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword> | undefined;
   /**
    * Adjust the block-padding.
    *
@@ -6334,21 +6392,23 @@ interface Stack {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingBlock?:
+    | MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>
+    | undefined;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | PaddingKeyword;
+  paddingBlockStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | PaddingKeyword;
+  paddingBlockEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline padding.
    *
@@ -6357,96 +6417,98 @@ interface Stack {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingInline?:
+    | MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>
+    | undefined;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | PaddingKeyword;
+  paddingInlineStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | PaddingKeyword;
+  paddingInlineEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the maximum block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the maximum inline size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the minimum block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the minimum inline size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
-  /** Aligns the stack's children along the cross axis. */
-  alignItems?: AlignItemsKeyword;
-  /** Aligns the stack along the cross axis. */
-  alignContent?: AlignContentKeyword;
+  minInlineSize?: SizeUnits | undefined;
+  /** Aligns the Stack's children along the cross axis. */
+  alignItems?: AlignItemsKeyword | undefined;
+  /** Aligns the Stack along the cross axis. */
+  alignContent?: AlignContentKeyword | undefined;
   /**
    * Adjust spacing between elements.
-   * A single value applies to both axes. A pair of values (eg large-100 large-500) can be used to set the inline and block axes respectively.
+   * A single value applies to both axes. A pair of values (for example, `large-100 large-500`) sets the block (row) and inline (column) axes respectively, matching the CSS `gap` shorthand order.
    * @default 'none'
    */
-  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
+  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword> | undefined;
   /**
    * Adjust spacing between elements in the inline axis. This overrides the column value of gap.
    * @default '' - meaning no override
    */
-  columnGap?: '' | SpacingKeyword;
+  columnGap?: '' | SpacingKeyword | undefined;
   /**
-   * Sets how the children are placed within the stack. This uses logical properties.
+   * Sets how the children are placed within the Stack. This uses logical properties.
    * @default 'block'
    * @implementation - the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
-  direction?: 'block' | 'inline';
+  direction?: 'block' | 'inline' | undefined;
   /**
    * Adjust the inline size.
    * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
-   * Aligns the stack along the main axis.
+   * Aligns the Stack along the main axis.
    * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
-  justifyContent?: JustifyContentKeyword;
+  justifyContent?: JustifyContentKeyword | undefined;
   /**
    * Adjust spacing between elements in the block axis. This overrides the row value of gap.
    * @default '' - meaning no override
    */
-  rowGap?: '' | SpacingKeyword;
+  rowGap?: '' | SpacingKeyword | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6455,7 +6517,7 @@ interface Stack {
  */
 interface Badge {
   /**
-   * Sets the tone of the badge, based on the intention of the information being conveyed.
+   * Sets the tone of the Badge, based on the intention of the information being conveyed.
    * @default 'auto'
    */
   tone?:
@@ -6465,9 +6527,10 @@ interface Badge {
     | 'success'
     | 'caution'
     | 'warning'
-    | 'critical';
+    | 'critical'
+    | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6475,10 +6538,21 @@ interface Badge {
  * @publicDocs
  */
 interface ChoiceListEvents {
-  /** Callback when the user changes a choice. Fires simultaneously with onChange. */
-  input?: (event: CallbackEvent<typeof tagName$z>) => void;
-  /** Callback when the user changes a choice. Fires simultaneously with onInput. */
-  change?: (event: CallbackEvent<typeof tagName$z>) => void;
+  /**
+   * Callback when the user changes a choice. Fires simultaneously with onChange.
+   * The event's `currentTarget.values` is always an array of selected choice
+   * values, even when `multiple` is `false`.
+   */
+  input?: ((event: CallbackEvent<typeof tagName$F>) => void) | null | undefined;
+  /**
+   * Callback when the user changes a choice. Fires simultaneously with onInput.
+   * The event's `currentTarget.values` is always an array of selected choice
+   * values; in single-selection mode, only the first entry is rendered as selected.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$F>) => void)
+    | null
+    | undefined;
 }
 
 /**
@@ -6486,19 +6560,25 @@ interface ChoiceListEvents {
  * @publicDocs
  */
 interface ChoiceList {
-  /** A unique identifier for the element. */
-  id?: string;
   /**
-   * An array of the `value`s of the selected options.
+   * The values of the selected choices.
    *
-   * This is a convenience prop for setting the `selected` prop on child options.
+   * When `values` is set, update it from `onChange` or `onInput` to control the
+   * selection. When `values` is not set, the list manages its own state, starting
+   * from choices that have `selected` set. Selections from `values` and from
+   * `selected` choices are combined.
+   *
+   * Use a unique `value` for each choice. Choices that share a value can't be
+   * selected independently.
    */
-  values?: string[];
+  values?: string[] | undefined;
+  /** A unique identifier for the element. */
+  id?: string | undefined;
   /**
    * Whether multiple choices can be selected.
    * @default false
    */
-  multiple?: boolean;
+  multiple?: boolean | undefined;
 }
 
 /**
@@ -6506,20 +6586,29 @@ interface ChoiceList {
  * @publicDocs
  */
 interface Choice {
+  /**
+   * The value that identifies this choice in the `ChoiceList` `values` prop and
+   * in selection events.
+   *
+   * A choice needs a `value` to be selectable. Use a unique value for each choice
+   * in the list; choices that share a value can't be selected independently.
+   */
+  value?: string | undefined;
+  /**
+   * Whether the choice is selected.
+   *
+   * Selection can also be set with the `values` prop on the `ChoiceList`; the two
+   * are combined.
+   * @default false
+   */
+  selected?: boolean | undefined;
   /** A unique identifier for the element. */
-  id?: string;
-  /** The value used in form data when the control is checked. */
-  value?: string;
+  id?: string | undefined;
   /**
    * Disables the control, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
-  /**
-   * Whether the control is active.
-   * @default false
-   */
-  selected?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -6527,14 +6616,26 @@ interface Choice {
  * @publicDocs
  */
 interface DateFieldEvents {
-  /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$x>) => void;
-  /** Callback after editing completes (typically on blur). */
-  change?: (event: CallbackEvent<typeof tagName$x>) => void;
-  /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$x>) => void;
+  /**
+   * Callback when the user confirms a date in the picker. Fires together with
+   * `onChange` at selection time.
+   */
+  input?: ((event: CallbackEvent<typeof tagName$D>) => void) | null | undefined;
+  /**
+   * Callback when the user confirms a date in the picker. Fires together with
+   * `onInput` at selection time, not on blur.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$D>) => void)
+    | null
+    | undefined;
+  /**
+   * Callback when the element loses focus. Also fires right after a picker
+   * selection is confirmed, and when the picker is dismissed without a selection.
+   */
+  blur?: ((event: CallbackEvent<typeof tagName$D>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$x>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$D>) => void) | null | undefined;
 }
 
 /**
@@ -6542,10 +6643,19 @@ interface DateFieldEvents {
  * @publicDocs
  */
 interface DateField {
+  /**
+   * The current value for the field, as a date in `YYYY-MM-DD` format (for
+   * example, `"2024-05-15"`). If omitted or empty, the field is empty.
+   *
+   * Values are interpreted in the device's local timezone. Out-of-range calendar
+   * dates (for example, `2024-02-30`) currently roll over to a valid date instead
+   * of being rejected.
+   */
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6553,19 +6663,17 @@ interface DateField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
-  /** The current value for the field. If omitted, the field will be empty. */
-  value?: string;
+  details?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -6573,7 +6681,7 @@ interface DateField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
 }
 
 /**
@@ -6581,10 +6689,10 @@ interface DateField {
  * @publicDocs
  */
 interface ModalEvents {
-  /** Callback when the modal is hidden. */
-  hide?: (event: CallbackEvent<typeof tagName$p>) => void | null;
-  /** Callback when the modal is shown. */
-  show?: (event: CallbackEvent<typeof tagName$p>) => void | null;
+  /** Callback when the modal starts to hide. Fired when a `commandFor` command requests the modal to close, before the closing transition completes. */
+  hide?: ((event: CallbackEvent<typeof tagName$v>) => void | null) | undefined;
+  /** Callback when the modal starts to show. Fired when a `commandFor` command requests the modal to open, before the opening transition completes. */
+  show?: ((event: CallbackEvent<typeof tagName$v>) => void | null) | undefined;
 }
 
 /**
@@ -6595,12 +6703,12 @@ interface ModalSlots {
   /**
    * The primary action button displayed in the modal.
    *
-   * The tone of the button is used to define the tone of the modal.
+   * Setting the button's tone to `critical` presents the modal with destructive styling for irreversible actions; other tones don't change the modal's appearance.
    *
-   * If omitted, the modal will default to an 'info' tone, and show an 'OK' button, translated according to the user's locale.
+   * If omitted, the modal uses the default tone and shows a 'Close' button, translated according to the user's locale.
    */
   'primary-action'?: HTMLElement;
-  /** The secondary action buttons displayed in the modal. */
+  /** The secondary action buttons displayed in the modal. At most two secondary actions are rendered. */
   'secondary-actions'?: HTMLElement;
 }
 
@@ -6609,14 +6717,18 @@ interface ModalSlots {
  *
  * Modals block interaction with the underlying interface until the merchant resolves the modal content.
  *
- * Modals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/polaris-web-components/feedback-and-status-indicators/modal#events).
+ * Modals don't automatically handle state management or persistence, so control visibility programmatically with the `command` and `commandFor` attributes. The events notify your code when the modal starts to show or hide.
  * @publicDocs
  */
 interface Modal {
-  /** A unique identifier for the element. */
-  id?: string;
-  /** A title that describes the content of the modal. */
-  heading?: string;
+  /**
+   * A unique identifier for the element.
+   *
+   * Required to control visibility: a button or link with `commandFor` set to this `id` shows, hides, or toggles the modal.
+   */
+  id?: string | undefined;
+  /** A title that describes the content of the Modal. */
+  heading?: string | undefined;
 }
 
 /**
@@ -6625,17 +6737,23 @@ interface Modal {
  */
 interface TextFieldEvents {
   /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$e>) => void;
-  /** Callback after editing completes (typically on blur). */
-  change?: (event: CallbackEvent<typeof tagName$e>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$k>) => void) | null | undefined;
+  /**
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$k>) => void)
+    | null
+    | undefined;
   /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$e>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$k>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$e>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$k>) => void) | null | undefined;
 }
 
 /**
- * The text field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The text field component supports slots for additional content placement within the text field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface TextFieldSlots {
@@ -6648,10 +6766,16 @@ interface TextFieldSlots {
  * @publicDocs
  */
 interface TextField {
+  /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6659,21 +6783,19 @@ interface TextField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
-  /** The current value for the field. If omitted, the field will be empty. */
-  value?: string;
+  details?: string | undefined;
   /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
+  placeholder?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -6681,12 +6803,12 @@ interface TextField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Specifies the maximum number of characters allowed.
    * @default Infinity
    */
-  maxLength?: number;
+  maxLength?: number | undefined;
 }
 
 /**
@@ -6694,14 +6816,21 @@ interface TextField {
  * @publicDocs
  */
 interface SearchFieldEvents {
-  /** Callback when the user changes the value in the field. */
-  input?: (event: CallbackEvent<typeof tagName$j>) => void;
+  /**
+   * Callback when the user changes the value in the field. Also fires with an empty
+   * string when the user clears the field with the clear button; clearing the field
+   * doesn't fire `onChange`.
+   */
+  input?: ((event: CallbackEvent<typeof tagName$p>) => void) | null | undefined;
   /** Callback when the field loses focus after the user changes the value in the field. */
-  change?: (event: CallbackEvent<typeof tagName$j>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$p>) => void)
+    | null
+    | undefined;
   /** Callback when the field loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$j>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$p>) => void) | null | undefined;
   /** Callback when the field is focused. */
-  focus?: (event: CallbackEvent<typeof tagName$j>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$p>) => void) | null | undefined;
 }
 
 /**
@@ -6709,17 +6838,21 @@ interface SearchFieldEvents {
  * @publicDocs
  */
 interface SearchField {
+  /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
-  /** The current value for the field. If omitted, the field will be empty. */
-  value?: string;
+  placeholder?: string | undefined;
 }
 
 /**
@@ -6728,7 +6861,7 @@ interface SearchField {
  */
 interface ClickableEvents {
   /** Callback when the element is activated. */
-  click?: (event: CallbackEvent<typeof tagName$y>) => void;
+  click?: ((event: CallbackEvent<typeof tagName$E>) => void) | undefined;
 }
 
 /**
@@ -6737,7 +6870,7 @@ interface ClickableEvents {
  */
 interface Clickable {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the clickable, meaning it cannot be clicked or receive focus.
    *
@@ -6749,7 +6882,7 @@ interface Clickable {
    * This has no impact on the visual state by default,
    * but developers are encouraged to style the clickable accordingly.
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -6757,14 +6890,26 @@ interface Clickable {
  * @publicDocs
  */
 interface TimeFieldEvents {
-  /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$c>) => void;
-  /** Callback after editing completes (typically on blur). */
-  change?: (event: CallbackEvent<typeof tagName$c>) => void;
-  /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$c>) => void;
+  /**
+   * Callback when the user confirms a time in the picker. Fires together with
+   * `onChange` at selection time.
+   */
+  input?: ((event: CallbackEvent<typeof tagName$i>) => void) | null | undefined;
+  /**
+   * Callback when the user confirms a time in the picker. Fires together with
+   * `onInput` at selection time, not on blur.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$i>) => void)
+    | null
+    | undefined;
+  /**
+   * Callback when the element loses focus. Also fires right after a picker
+   * selection is confirmed, and when the picker is dismissed without a selection.
+   */
+  blur?: ((event: CallbackEvent<typeof tagName$i>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$c>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$i>) => void) | null | undefined;
 }
 
 /**
@@ -6772,35 +6917,30 @@ interface TimeFieldEvents {
  * @publicDocs
  */
 interface TimeField {
+  /**
+   * The current value for the field, as a 24-hour time in `HH:mm:ss` format with
+   * leading zeros (for example, `"09:05:00"`). If omitted or empty, the field is
+   * empty.
+   *
+   * Seconds aren't captured: emitted values always end in `:00`, and seconds in a
+   * provided value are ignored. Values are interpreted in the device's local
+   * timezone. The field displays times in 12-hour AM/PM format.
+   */
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
-  /**
-   * Current selected value.
-   *
-   * The default, `''`, means no time is selected.
-   *
-   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
-   *
-   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
-   *
-   * This follows the HTML time input value format, which is always 24-hour with
-   * leading zeros regardless of UI presentation.
-   *
-   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
-   */
-  value?: string;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6808,7 +6948,7 @@ interface TimeField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -6816,7 +6956,7 @@ interface TimeField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
 }
 
 /**
@@ -6824,18 +6964,28 @@ interface TimeField {
  * @publicDocs
  */
 interface NumberFieldEvents {
-  /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$o>) => void;
-  /** Callback after editing completes (typically on blur). */
-  change?: (event: CallbackEvent<typeof tagName$o>) => void;
+  /**
+   * Callback when the user makes any changes in the field. In stepper mode, fires
+   * on every stepper button tap, together with `onChange`.
+   */
+  input?: ((event: CallbackEvent<typeof tagName$u>) => void) | null | undefined;
+  /**
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus. In stepper mode, fires on every stepper
+   * button tap, together with `onInput`.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$u>) => void)
+    | null
+    | undefined;
   /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$o>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$u>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$o>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$u>) => void) | null | undefined;
 }
 
 /**
- * The number field component supports slots for additional content placement within the field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The number field component supports slots for additional content placement within the number field. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface NumberFieldSlots {
@@ -6853,11 +7003,35 @@ interface NumberFieldSlots {
  */
 interface NumberField {
   /**
+   * The current value for the field, as a string. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   * In stepper mode the field is always populated: an empty or unparsable value is
+   * treated as `0`.
+   */
+  value?: string | undefined;
+  /**
+   * The highest value accepted for the field.
+   *
+   * In text mode, the field clamps an out-of-bounds value to `max` when editing
+   * finishes and delivers the clamped value through `onInput`.
+   * @default Infinity
+   */
+  max?: number | undefined;
+  /**
+   * The lowest value accepted for the field.
+   *
+   * In text mode, the field clamps an out-of-bounds value to `min` when editing
+   * finishes and delivers the clamped value through `onInput`.
+   * @default -Infinity
+   */
+  min?: number | undefined;
+  /**
    * Content to use as the field label.
    *
    * Label is not supported when using Stepper controls
    */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6867,24 +7041,24 @@ interface NumberField {
    *
    * Details are not supported when using Stepper controls
    */
-  details?: string;
+  details?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
    * If you want to present an error when this field is empty, you can do
    * so with the `error` property.
-   * @default false
    *
    * Required is not supported when using Stepper controls
+   * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    *
    * Error is not supported when using Stepper controls
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Sets the virtual keyboard.
    *
@@ -6892,51 +7066,32 @@ interface NumberField {
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
    * @default 'decimal'
    */
-  inputMode?: 'decimal' | 'numeric';
+  inputMode?: 'decimal' | 'numeric' | undefined;
   /**
    * A short hint that describes the expected value of the field.
    *
    * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
   /**
    * Sets the type of controls displayed for the field.
    *
-   * - `stepper`: displays buttons to increase or decrease the value of the field by the stepping interval defined in the `step` property. Note that in POS
+   * - `stepper`: displays buttons to increase or decrease the value of the field in steps of 1. Note that in POS
    *   adding stepper controls simplifies the behaviour of the Number Field itself. The field supports only integer values, is always-populated and automatically
    *   validates the value to be within the min and max bounds. Validation, label, details and placeholder are not supported when using Stepper controls.
    *
    * - `none`: no controls are displayed and users must input the value manually.
    * - `auto`: the presence of the controls depends on the surface and context.
+   * @default 'auto'
    */
-  controls?: 'auto' | 'stepper' | 'none';
+  controls?: 'auto' | 'stepper' | 'none' | undefined;
   /** A unique identifier for the element. */
-  id?: string;
-  /** The current value for the field. If omitted, the field will be empty. */
-  value?: string;
+  id?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
-  /**
-   * The highest decimal or integer to be accepted for the field.
-   * When used with `step` the value will round down to the max number.
-   *
-   * Note: a user will still be able to use the keyboard to input a number higher than
-   * the max. It is up to the developer to add appropriate validation.
-   * @default Infinity
-   */
-  max?: number;
-  /**
-   * The lowest decimal or integer to be accepted for the field.
-   * When used with `step` the value will round up to the min number.
-   *
-   * Note: a user will still be able to use the keyboard to input a number lower than
-   * the min. It is up to the developer to add appropriate validation.
-   * @default -Infinity
-   */
-  min?: number;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -6944,38 +7099,45 @@ interface NumberField {
  * @publicDocs
  */
 interface DatePickerEvents {
-  /** Callback when the user selects a date from the picker. */
-  input?: (event: CallbackEvent<typeof tagName$w>) => void | null;
-  /** Callback when the user selects a date from the picker that is different to the current value. */
-  change?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  /** Callback when the user selects a date from the picker. Fires after `onChange`. */
+  input?: ((event: CallbackEvent<typeof tagName$C>) => void) | null | undefined;
+  /** Callback when the user selects a date from the picker that is different to the current value. Fires before `onInput`. */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$C>) => void)
+    | null
+    | undefined;
   /** Callback when the date picker is dismissed. */
-  blur?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  blur?: ((event: CallbackEvent<typeof tagName$C>) => void) | null | undefined;
   /** Callback when the date picker is revealed. */
-  focus?: (event: CallbackEvent<typeof tagName$w>) => void | null;
+  focus?: ((event: CallbackEvent<typeof tagName$C>) => void) | null | undefined;
 }
 
 /**
- * Lets merchants select one or more dates from a calendar.
+ * Lets merchants select a date from a calendar.
  * @publicDocs
  */
 interface DatePicker {
-  /** A unique identifier for the element. */
-  id?: string;
   /**
-   * Current selected value.
+   * A unique identifier for the element.
    *
-   * The default means no date is selected.
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
+   */
+  id?: string | undefined;
+  /**
+   * The current selected value.
    *
-   * If the provided value is invalid, no date is selected.
+   * The default `''` means no date is selected.
    *
-   * Otherwise:
-   *
-   * - If `type="single"`, this is a date in `YYYY-MM-DD` format.
-   * - If `type="multiple"`, this is a comma-separated list of dates in `YYYY-MM-DD` format.
-   * - If `type="range"`, this is a range in `YYYY-MM-DD--YYYY-MM-DD` format. The range is inclusive.
+   * The value must be a date in `YYYY-MM-DD` format. Values are interpreted in
+   * the device's local timezone. Values that can't be parsed as a date are
+   * treated as no selection; out-of-range calendar dates (for example,
+   * `2024-02-30`) currently roll over to a valid date instead of being rejected.
    * @default ""
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 /**
@@ -6983,14 +7145,17 @@ interface DatePicker {
  * @publicDocs
  */
 interface DateSpinnerEvents {
-  /** Callback when the user makes a selection. */
-  input?: (event: CallbackEvent<typeof tagName$v>) => void | null;
-  /** Callback when the value changes. Only called when a different value is selected. */
-  change?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  /** Callback when the user makes a selection. Fires after `onChange`. */
+  input?: ((event: CallbackEvent<typeof tagName$B>) => void) | null | undefined;
+  /** Callback when the value changes. Only called when a different value is selected. Fires before `onInput`. */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$B>) => void)
+    | null
+    | undefined;
   /** Callback when the date spinner is dismissed. */
-  blur?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  blur?: ((event: CallbackEvent<typeof tagName$B>) => void) | null | undefined;
   /** Callback when the date spinner is revealed. */
-  focus?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  focus?: ((event: CallbackEvent<typeof tagName$B>) => void) | null | undefined;
 }
 
 /**
@@ -6998,15 +7163,24 @@ interface DateSpinnerEvents {
  * @publicDocs
  */
 interface DateSpinner {
-  /** A unique identifier for the element. */
-  id?: string;
   /**
-   * Current selected value for the spinner.
+   * A unique identifier for the element.
    *
-   * This uses a date in `YYYY-MM-DD` format.
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
+   */
+  id?: string | undefined;
+  /**
+   * The current selected value for the spinner, as a date in `YYYY-MM-DD` format.
+   *
+   * The default `''` means no date is selected. Values are interpreted in the
+   * device's local timezone. Out-of-range calendar dates (for example,
+   * `2024-02-30`) currently roll over to a valid date instead of being rejected.
    * @default ""
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 /**
@@ -7028,9 +7202,9 @@ interface Section {
    *
    * If omitted, and no secondaryActions are provided, the section will be rendered without a header.
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -7039,7 +7213,7 @@ interface Section {
  */
 interface Heading {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -7047,14 +7221,17 @@ interface Heading {
  * @publicDocs
  */
 interface TimePickerEvents {
-  /** Callback when the user selects a time from the picker. */
-  input?: (event: CallbackEvent<typeof tagName$b>) => void | null;
-  /** Callback when the user selects a time from the picker that is different to the current value. */
-  change?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  /** Callback when the user selects a time from the picker. Fires after `onChange`. */
+  input?: ((event: CallbackEvent<typeof tagName$h>) => void) | null | undefined;
+  /** Callback when the user selects a time from the picker that is different to the current value. Fires before `onInput`. */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$h>) => void)
+    | null
+    | undefined;
   /** Callback when the time picker is dismissed. */
-  blur?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  blur?: ((event: CallbackEvent<typeof tagName$h>) => void) | null | undefined;
   /** Callback when the time picker is revealed. */
-  focus?: (event: CallbackEvent<typeof tagName$b>) => void | null;
+  focus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null | undefined;
 }
 
 /**
@@ -7062,26 +7239,27 @@ interface TimePickerEvents {
  * @publicDocs
  */
 interface TimePicker {
-  /** A unique identifier for the element. */
-  id?: string;
   /**
-   * Current selected value.
+   * A unique identifier for the element.
    *
-   * The default, `''`, means no time is selected.
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
+   */
+  id?: string | undefined;
+  /**
+   * The current selected value.
    *
-   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros.
+   * The default `''` means no time is selected.
    *
-   * Examples: `"00:00:00"`, `"09:05:00"`, `"23:59:00"`, `"14:03:30"`.
-   *
-   * This follows the HTML time input value format, which is always 24-hour with
-   * leading zeros regardless of UI presentation.
-   *
-   * See: https://developer.mozilla.org/docs/Web/HTML/Element/input/time
-   *
-   * If the provided value is invalid, '' is used as the value.
+   * The value must be a 24-hour time in `HH:mm:ss` format, with leading zeros
+   * (for example, `"09:05:00"`). Seconds aren't captured: emitted values always
+   * end in `:00`, and seconds in a provided value are ignored. Values are
+   * interpreted in the device's local timezone.
    * @default ''
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 /**
@@ -7092,8 +7270,9 @@ interface Image {
   /**
    * The displayed inline width of the image.
    *
-   * - `fill`: the image will takes up 100% of the available inline size.
-   * - `auto`: the image will be displayed at its natural size.
+   * - `fill`: the image will take up 100% of the available inline size.
+   * - `auto`: the image is displayed in a square (1:1 aspect ratio) container at the full available
+   *   inline size. The POS translator doesn't render the image at its natural size.
    *
    * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
    * ScrollViews on mobile have a dynamic height, which can cause images to appear
@@ -7101,23 +7280,47 @@ interface Image {
    * @default 'fill'
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
-  inlineSize?: 'fill' | 'auto';
+  inlineSize?: 'fill' | 'auto' | undefined;
   /**
    * The image source, which should be a remote URL.
    *
-   * When the image is loading or no `src` is provided, a placeholder will be rendered.
+   * When no `src` is provided or the image fails to load, a placeholder is rendered.
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
-  src?: string;
+  src?: string | undefined;
+  /**
+   * Border radius for the image corners.
+   *
+   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
+   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
+   *
+   * - 4 values: `start-start inline-end end-end inline-start`
+   * - 3 values: `start-start inline end-end`
+   * - 2 values: `block inline`
+   *
+   * For example:
+   * - `base` means all corners have `base` radius
+   * - `base none` means start-start and end-end corners are `base`, inline-end and inline-start corners are `none`
+   * - `base none large` means start-start is `base`, inline-end and inline-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, inline-end is `none`, end-end is `large`, inline-start is `small`
+   *
+   * Supports size keywords from the design system scale:
+   * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
+   * - Special values: `max`, `none`
+   * @default 'none'
+   */
+  borderRadius?:
+    | MaybeAllValuesShorthandProperty<BorderRadiusKeyword>
+    | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Determines how the content of the image is resized to fit its container.
    * The image is positioned in the center of the container.
    * @default 'contain'
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
    */
-  objectFit?: 'contain' | 'cover';
+  objectFit?: 'contain' | 'cover' | undefined;
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
@@ -7134,26 +7337,7 @@ interface Image {
    * @default `''`
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
-  alt?: string;
-  /**
-   * Border radius for the image corners.
-   *
-   * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
-   * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
-   *
-   * - 4 values: `start-start start-end end-end end-start`
-   * - 3 values: `start-start (start-end & end-start) end-end`
-   * - 2 values: `(start-start & end-end) (start-end & end-start)`
-   *
-   * For example:
-   * - `base` means all corners have `base` radius
-   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
-   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
-   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
-   *
-   * @default 'none'
-   */
-  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
+  alt?: string | undefined;
 }
 
 /**
@@ -7176,15 +7360,15 @@ interface Page {
    * The main page heading, displayed in the action bar at the top of the page.
    * @default : ''
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A secondary page heading, displayed under the main heading in the action bar. */
-  subheading?: string;
+  subheading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
- * The POS block component supports slots for additional content placement within the block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * The pos block component supports slots for additional content placement within the pos block. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
  * @publicDocs
  */
 interface PosBlockSlots {
@@ -7198,28 +7382,25 @@ interface PosBlockSlots {
  */
 interface PosBlock {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * The heading to display within the POSBlock.
    *
    * If not provided, the description of the extension will be used when a heading is appropriate.
    */
-  heading?: string;
+  heading?: string | undefined;
 }
 
-/**
- * Renders a QR code from provided content.
- * @publicDocs
- */
+/** @private */
 interface QrCode {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
    * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
    * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
    */
-  content?: string;
+  content?: string | undefined;
 }
 
 /**
@@ -7228,430 +7409,916 @@ interface QrCode {
  */
 interface Divider {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    * @default 'inline'
    */
-  direction?: 'inline' | 'block';
+  direction?: 'inline' | 'block' | undefined;
+}
+
+/**
+ * The link component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface LinkEvents {
+  /** Called when the link is activated. */
+  click?: ((event: CallbackEvent<typeof tagName$g>) => void) | undefined;
+}
+
+/**
+ * The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.
+ *
+ * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.
+ * @publicDocs
+ */
+interface Link {
+  /** A unique identifier for the element. */
+  id?: string | undefined;
+  /**
+   * ID of a component that should respond to activations (e.g. clicks) on this component.
+   *
+   * See `command` for how to control the behavior of the target.
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
+   */
+  commandFor?: string | undefined;
+  /**
+   * Sets the action the `commandFor` should take when this clickable is activated.
+   *
+   * See the documentation of particular components for the actions they support.
+   *
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   * - `--copy`: copies the target ClipboardItem.
+   * @default '--auto'
+   * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
+   */
+  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy' | undefined;
+  /**
+   * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
+   *
+   * Use this when using only an icon or the content of the link is not enough context
+   * for users using assistive technologies.
+   */
+  accessibilityLabel?: string | undefined;
+}
+
+/**
+ * The empty state component supports slots for additional content placement within the empty state. Learn more about [using slots](/docs/api/polaris/using-polaris-web-components#slots).
+ * @publicDocs
+ */
+interface EmptyStateSlots {
+  /** The primary action to perform, provided as a button or link type element. */
+  'primary-action'?: HTMLElement;
+  /** The secondary actions to perform, provided as button or link type elements. */
+  'secondary-actions'?: HTMLElement;
+  /** The graphic to display in the EmptyState. The only supported component is `Icon`, with a type of `alert-circle`, `search`, or `info`. */
+  graphic?: HTMLElement;
+}
+
+/**
+ * Displays an empty-state message with optional actions and supporting graphics.
+ * @publicDocs
+ */
+interface EmptyState {
+  /** The subheading of the EmptyState. */
+  subheading?: string | undefined;
+  /** The heading of the EmptyState. */
+  heading?: string | undefined;
+}
+
+/**
+ * The embed component displays a preview of printable content from a specified source URL. Use it to show merchants what will be printed before triggering the actual print operation.
+ *
+ * Embed works in conjunction with the Print API to provide complete print functionality from preview to execution.
+ *
+ * The supported document types are the content types accepted by the `type` property:
+ *
+ * - **HTML documents** (`text/html`) - Receipts, invoices, and formatted reports with CSS styling and embedded images.
+ * - **Text files** (`text/plain`) - Plain text content such as simple receipts and data exports.
+ * - **PDF files** (`application/pdf`) - Complex documents and compliance requirements. On Android, the component shows a placeholder instead of a PDF preview.
+ *
+ * [Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).
+ * @publicDocs
+ */
+interface Embed {
+  /**
+   * Adjust the block size.
+   * @default 'auto'
+   */
+  blockSize?: SizeUnitsOrAuto | undefined;
+  /**
+   * Adjust the minimum block size.
+   * @default '0'
+   */
+  minBlockSize?: SizeUnits | undefined;
+  /**
+   * Adjust the maximum block size.
+   * @default 'none'
+   */
+  maxBlockSize?: SizeUnitsOrNone | undefined;
+  /**
+   * Adjust the inline size.
+   * @default 'auto'
+   */
+  inlineSize?: SizeUnitsOrAuto | undefined;
+  /**
+   * Adjust the minimum inline size.
+   * @default '0'
+   */
+  minInlineSize?: SizeUnits | undefined;
+  /**
+   * Adjust the maximum inline size.
+   * @default 'none'
+   */
+  maxInlineSize?: SizeUnitsOrNone | undefined;
+  /**
+   * The content type of the file to display.
+   * @default 'text/html'
+   */
+  type?: 'text/html' | 'text/plain' | 'application/pdf' | undefined;
+  /**
+   * The source of the file to preview.
+   *
+   * The value must be either:
+   * - A relative path that will be appended to your app's `application_url`.
+   * - A full URL to your app's backend that will be used to return the file.
+   *
+   * Supported file types:
+   * - HTML files
+   * - Text files
+   * - PDF files
+   * @implementation If this value is omitted, the component should render an empty state or nothing.
+   */
+  src?: string | undefined;
+  /**
+   * A label that describes the purpose or contents of the Embed. It will be read to users
+   * using assistive technologies such as screen readers.
+   * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute
+   */
+  accessibilityLabel?: string | undefined;
+}
+
+/**
+ * Displays a loading indicator while content or actions are in progress.
+ * @publicDocs
+ */
+interface Spinner {
+  /** A unique identifier for the element. */
+  id?: string | undefined;
+  /**
+   * A label that describes the purpose of the progress. When set,
+   * it will be announced to users using assistive technologies and will
+   * provide them with more context. Providing an `accessibilityLabel` is
+   * recommended if there is no accompanying text describing that something
+   * is loading.
+   */
+  accessibilityLabel?: string | undefined;
+}
+
+/**
+ * The switch component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface SwitchEvents {
+  /**
+   * Callback when the user toggles the switch. Fires together with `onChange`,
+   * after it. Read the new state from `event.currentTarget.checked`.
+   */
+  input?: ((event: CallbackEvent<typeof tagName$f>) => void) | null | undefined;
+  /**
+   * Callback when the user toggles the switch. Fires together with `onInput`;
+   * `onChange` fires first. Read the new state from `event.currentTarget.checked`.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$f>) => void)
+    | null
+    | undefined;
+}
+
+/**
+ * Allows merchants to toggle a setting on or off.
+ * @publicDocs
+ */
+interface Switch {
+  /**
+   * A string value attached to the element.
+   *
+   * Use `checked` for the switch state. A string `value` stays attached to the
+   * element and can be read back in event callbacks; it doesn't affect the switch
+   * state and isn't submitted with any form.
+   */
+  value?: string | undefined;
+  /**
+   * Whether the switch is on.
+   *
+   * When `checked` is set, update it from `onChange` or `onInput` to keep the
+   * switch controlled. When `checked` isn't set, the switch manages its own
+   * state, starting from `defaultChecked`.
+   * @default false
+   */
+  checked?: boolean | undefined;
+  /**
+   * Whether the switch is on when it first renders.
+   *
+   * Applies only to the initial render; later changes to `defaultChecked` are
+   * ignored. Use `checked` to control the state after the first render.
+   * @default false
+   */
+  defaultChecked?: boolean | undefined;
+  /**
+   * Disables the control, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean | undefined;
+  /**
+   * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
+   * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
+   */
+  accessibilityLabel?: string | undefined;
+  /** Visual content to use as the control label. */
+  label?: string | undefined;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string | undefined;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string | undefined;
+  /**
+   * Changes the visibility of the component's label.
+   *
+   * - `visible`: the label is visible to all users.
+   * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
+   * @default 'visible'
+   */
+  labelAccessibilityVisibility?:
+    | ExtractStrict<
+        'visible' | 'hidden' | 'exclusive' | undefined,
+        'visible' | 'exclusive'
+      >
+    | undefined;
+}
+
+/**
+ * The tabs component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface TabsEvents {
+  /**
+   * Callback fired when the selected tab changes.
+   *
+   * Fires on every tab selection, including when the current tab is selected again.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$e>) => void)
+    | null
+    | undefined;
+}
+
+/**
+ * Groups related content into selectable tabbed views.
+ * @publicDocs
+ */
+interface Tabs {
+  /**
+   * The value of the selected tab.
+   *
+   * This should match the `id` prop of one of the TabPanel components.
+   * When neither `value` nor `defaultValue` is provided, the first rendered tab panel is selected.
+   */
+  value?: string | undefined;
+  /**
+   * The default value of the selected tab.
+   *
+   * This should match the `id` prop of one of the TabPanel components.
+   * Sets the initial selected tab in uncontrolled usage. Setting `value` afterwards overrides it.
+   */
+  defaultValue?: string | undefined;
+  /** Disables all tabs and prevents user interaction. */
+  disabled?: boolean | undefined;
+}
+
+/**
+ * Presents the list of selectable tabs within a tabs component. Accepts only tab components as children.
+ * @publicDocs
+ */
+interface TabList {}
+
+/**
+ * Represents an individual tab inside a tabs component.
+ * @publicDocs
+ */
+interface Tab {
+  /** Corresponds to the `id` property of the TabPanel component that will be displayed when selected */
+  controls?: string | undefined;
+  /**
+   * Disables the control, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean | undefined;
+}
+
+/**
+ * Represents content associated with a selected tab.
+ * @publicDocs
+ */
+interface TabPanel {
+  /**
+   * The id of the TabPanel used for identification in the Tabs component.
+   * Must match the `controls` prop of the corresponding Tab component.
+   */
+  id?: string | undefined;
+}
+
+/**
+ * The text area component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface TextAreaEvents {
+  /** Callback when the user makes any changes in the field. */
+  input?: ((event: CallbackEvent<typeof tagName$l>) => void) | null | undefined;
+  /**
+   * Callback after editing completes, on blur. Fires only when the value
+   * changed since the field received focus.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$l>) => void)
+    | null
+    | undefined;
+  /** Callback when the element loses focus. */
+  blur?: ((event: CallbackEvent<typeof tagName$l>) => void) | null | undefined;
+  /** Callback when the element receives focus. */
+  focus?: ((event: CallbackEvent<typeof tagName$l>) => void) | null | undefined;
+}
+
+/**
+ * Collects multi-line text input from the merchant.
+ * @publicDocs
+ */
+interface TextArea {
+  /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: string | undefined;
+  /**
+   * A number of visible text lines.
+   *
+   * Sets the visible height of the field only; it doesn't limit how many lines of
+   * text can be entered. Values are clamped between 1 and 8.
+   * @default 2
+   */
+  rows?: number | undefined;
+  /** A unique identifier for the element. */
+  id?: string | undefined;
+  /** Content to use as the field label. */
+  label?: string | undefined;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string | undefined;
+  /** A short hint that describes the expected value of the field. */
+  placeholder?: string | undefined;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean | undefined;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string | undefined;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean | undefined;
+  /**
+   * Specifies the maximum number of characters allowed.
+   * @default Infinity
+   */
+  maxLength?: number | undefined;
+}
+
+/**
+ * The email field component provides event callbacks for handling user interactions. Learn more about [handling events](/docs/api/polaris/using-polaris-web-components#handling-events).
+ * @publicDocs
+ */
+interface EmailFieldEvents {
+  /** Callback when the user makes any changes in the field. */
+  input?: ((event: CallbackEvent<typeof tagName$z>) => void) | null | undefined;
+  /**
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus.
+   */
+  change?:
+    | ((event: CallbackEvent<typeof tagName$z>) => void)
+    | null
+    | undefined;
+  /** Callback when the element loses focus. */
+  blur?: ((event: CallbackEvent<typeof tagName$z>) => void) | null | undefined;
+  /** Callback when the element receives focus. */
+  focus?: ((event: CallbackEvent<typeof tagName$z>) => void) | null | undefined;
+}
+
+/**
+ * Collects email address input.
+ * @publicDocs
+ */
+interface EmailField {
+  /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: string | undefined;
+  /** A unique identifier for the element. */
+  id?: string | undefined;
+  /** Content to use as the field label. */
+  label?: string | undefined;
+  /** A short hint that describes the expected value of the field. */
+  placeholder?: string | undefined;
+  /**
+   * Disables the field, disallowing any interaction.
+   * @default false
+   */
+  disabled?: boolean | undefined;
+  /**
+   * Indicate an error to the user. The field will be given a specific stylistic treatment
+   * to communicate problems that have to be resolved immediately.
+   */
+  error?: string | undefined;
+  /**
+   * Whether the field needs a value. This requirement adds semantic value
+   * to the field, but it will not cause an error to appear automatically.
+   * If you want to present an error when this field is empty, you can do
+   * so with the `error` property.
+   * @default false
+   */
+  required?: boolean | undefined;
+  /**
+   * Specifies the maximum number of characters allowed.
+   * @default Infinity
+   */
+  maxLength?: number | undefined;
+  /**
+   * Additional text to provide context or guidance for the field.
+   * This text is displayed along with the field and its label
+   * to offer more information or instructions to the user.
+   *
+   * This will also be exposed to screen reader users.
+   */
+  details?: string | undefined;
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$E]: IntrinsicElementProps<BadgeJSXProps>;
+      [tagName$K]: IntrinsicElementProps<BadgeJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$E]: IntrinsicElementProps<BadgeJSXProps>;
+      [tagName$K]: IntrinsicElementProps<BadgeJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$D]: IntrinsicElementProps<ElementProps$c>;
+      [tagName$J]: IntrinsicElementProps<ElementProps$9>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$D]: IntrinsicElementProps<ElementProps$c>;
+      [tagName$J]: IntrinsicElementProps<ElementProps$9>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$C]: IntrinsicElementProps<BoxJSXProps>;
+      [tagName$I]: IntrinsicElementProps<BoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$C]: IntrinsicElementProps<BoxJSXProps>;
+      [tagName$I]: IntrinsicElementProps<BoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$B]: IntrinsicElementProps<ButtonJSXProps>;
+      [tagName$H]: IntrinsicElementProps<ButtonJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$B]: IntrinsicElementProps<ButtonJSXProps>;
+      [tagName$H]: IntrinsicElementProps<ButtonJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$A]: IntrinsicElementProps<ChoiceJSXProps>;
+      [tagName$G]: IntrinsicElementProps<ChoiceJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$A]: IntrinsicElementProps<ChoiceJSXProps>;
+      [tagName$G]: IntrinsicElementProps<ChoiceJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: IntrinsicElementProps<ChoiceListJSXProps>;
+      [tagName$F]: IntrinsicElementProps<ChoiceListJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$z]: IntrinsicElementProps<ChoiceListJSXProps>;
+      [tagName$F]: IntrinsicElementProps<ChoiceListJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: IntrinsicElementProps<ClickableJSXProps>;
+      [tagName$E]: IntrinsicElementProps<ClickableJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$y]: IntrinsicElementProps<ClickableJSXProps>;
+      [tagName$E]: IntrinsicElementProps<ClickableJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$x]: IntrinsicElementProps<ElementProps$b>;
+      [tagName$D]: IntrinsicElementProps<ElementProps$8>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$x]: IntrinsicElementProps<ElementProps$b>;
+      [tagName$D]: IntrinsicElementProps<ElementProps$8>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$w]: IntrinsicElementProps<DatePickerJSXProps>;
+      [tagName$C]: IntrinsicElementProps<DatePickerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$w]: IntrinsicElementProps<DatePickerJSXProps>;
+      [tagName$C]: IntrinsicElementProps<DatePickerJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$v]: IntrinsicElementProps<DateSpinnerJSXProps>;
+      [tagName$B]: IntrinsicElementProps<DateSpinnerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$v]: IntrinsicElementProps<DateSpinnerJSXProps>;
+      [tagName$B]: IntrinsicElementProps<DateSpinnerJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$u]: IntrinsicElementProps<DividerJSXProps>;
+      [tagName$A]: IntrinsicElementProps<DividerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$u]: IntrinsicElementProps<DividerJSXProps>;
+      [tagName$A]: IntrinsicElementProps<DividerJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: IntrinsicElementProps<ElementProps$a>;
+      [tagName$z]: IntrinsicElementProps<ElementProps$7>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$t]: IntrinsicElementProps<ElementProps$a>;
+      [tagName$z]: IntrinsicElementProps<ElementProps$7>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: IntrinsicElementProps<HeadingJSXProps>;
+      [tagName$y]: IntrinsicElementProps<HeadingJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$s]: IntrinsicElementProps<HeadingJSXProps>;
+      [tagName$y]: IntrinsicElementProps<HeadingJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: IntrinsicElementProps<IconJSXProps>;
+      [tagName$x]: IntrinsicElementProps<IconJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$r]: IntrinsicElementProps<IconJSXProps>;
+      [tagName$x]: IntrinsicElementProps<IconJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: IntrinsicElementProps<ImageJSXProps>;
+      [tagName$w]: IntrinsicElementProps<ImageJSXProps$1>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$q]: IntrinsicElementProps<ImageJSXProps>;
+      [tagName$w]: IntrinsicElementProps<ImageJSXProps$1>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: IntrinsicElementProps<ElementProps$9>;
+      [tagName$v]: IntrinsicElementProps<ElementProps$6>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$p]: IntrinsicElementProps<ElementProps$9>;
+      [tagName$v]: IntrinsicElementProps<ElementProps$6>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: IntrinsicElementProps<ElementProps$8>;
+      [tagName$u]: IntrinsicElementProps<ElementProps$5>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$o]: IntrinsicElementProps<ElementProps$8>;
+      [tagName$u]: IntrinsicElementProps<ElementProps$5>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: IntrinsicElementProps<ElementProps$7>;
+      [tagName$t]: IntrinsicElementProps<ElementProps$4>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$n]: IntrinsicElementProps<ElementProps$7>;
+      [tagName$t]: IntrinsicElementProps<ElementProps$4>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: IntrinsicElementProps<ElementProps$6>;
+      [tagName$s]: IntrinsicElementProps<ElementProps$3>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$m]: IntrinsicElementProps<ElementProps$6>;
+      [tagName$s]: IntrinsicElementProps<ElementProps$3>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: IntrinsicElementProps<QrCodeJSXProps>;
+      [tagName$r]: IntrinsicElementProps<QrCodeJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$l]: IntrinsicElementProps<QrCodeJSXProps>;
+      [tagName$r]: IntrinsicElementProps<QrCodeJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: IntrinsicElementProps<ScrollBoxJSXProps>;
+      [tagName$q]: IntrinsicElementProps<ScrollBoxJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$k]: IntrinsicElementProps<ScrollBoxJSXProps>;
+      [tagName$q]: IntrinsicElementProps<ScrollBoxJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: IntrinsicElementProps<SearchFieldJSXProps>;
+      [tagName$p]: IntrinsicElementProps<SearchFieldJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$j]: IntrinsicElementProps<SearchFieldJSXProps>;
+      [tagName$p]: IntrinsicElementProps<SearchFieldJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: IntrinsicElementProps<ElementProps$5>;
+      [tagName$o]: IntrinsicElementProps<ElementProps$2>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$i]: IntrinsicElementProps<ElementProps$5>;
+      [tagName$o]: IntrinsicElementProps<ElementProps$2>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: IntrinsicElementProps<StackJSXProps>;
+      [tagName$n]: IntrinsicElementProps<StackJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$h]: IntrinsicElementProps<StackJSXProps>;
+      [tagName$n]: IntrinsicElementProps<StackJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: IntrinsicElementProps<TextJSXProps>;
+      [tagName$m]: IntrinsicElementProps<TextJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$g]: IntrinsicElementProps<TextJSXProps>;
+      [tagName$m]: IntrinsicElementProps<TextJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: IntrinsicElementProps<ElementProps$4>;
+      [tagName$l]: IntrinsicElementProps<ElementProps$1>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$f]: IntrinsicElementProps<ElementProps$4>;
+      [tagName$l]: IntrinsicElementProps<ElementProps$1>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: IntrinsicElementProps<ElementProps$3>;
+      [tagName$k]: IntrinsicElementProps<ElementProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$e]: IntrinsicElementProps<ElementProps$3>;
+      [tagName$k]: IntrinsicElementProps<ElementProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: IntrinsicElementProps<TileJSXProps>;
+      [tagName$j]: IntrinsicElementProps<TileJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$d]: IntrinsicElementProps<TileJSXProps>;
+      [tagName$j]: IntrinsicElementProps<TileJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: IntrinsicElementProps<TimeFieldJSXProps>;
+      [tagName$i]: IntrinsicElementProps<TimeFieldJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$c]: IntrinsicElementProps<TimeFieldJSXProps>;
+      [tagName$i]: IntrinsicElementProps<TimeFieldJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: IntrinsicElementProps<TimePickerJSXProps>;
+      [tagName$h]: IntrinsicElementProps<TimePickerJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$b]: IntrinsicElementProps<TimePickerJSXProps>;
+      [tagName$h]: IntrinsicElementProps<TimePickerJSXProps>;
+    }
+  }
+}
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$b]: IntrinsicElementProps<ImageJSXProps>;
+    }
+  }
+}
+declare global {
+  namespace JSX {
+    interface IntrinsicElements {
+      [tagName$b]: IntrinsicElementProps<ImageJSXProps>;
     }
   }
 }
@@ -7672,14 +8339,14 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: IntrinsicElementProps<ElementProps$2>;
+      [tagName$9]: IntrinsicElementProps<EmptyStateJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$9]: IntrinsicElementProps<ElementProps$2>;
+      [tagName$9]: IntrinsicElementProps<EmptyStateJSXProps>;
     }
   }
 }
@@ -7784,28 +8451,28 @@ declare global {
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: IntrinsicElementProps<ElementProps$1>;
+      [tagName$1]: IntrinsicElementProps<TextAreaJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName$1]: IntrinsicElementProps<ElementProps$1>;
+      [tagName$1]: IntrinsicElementProps<TextAreaJSXProps>;
     }
   }
 }
 declare module 'react' {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: IntrinsicElementProps<ElementProps>;
+      [tagName]: IntrinsicElementProps<EmailFieldJSXProps>;
     }
   }
 }
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      [tagName]: IntrinsicElementProps<ElementProps>;
+      [tagName]: IntrinsicElementProps<EmailFieldJSXProps>;
     }
   }
 }

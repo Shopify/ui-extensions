@@ -9,19 +9,15 @@
 /**
  * TODO: Update `any` type here after this is resolved
  * https://github.com/Shopify/ui-api-design/issues/139
- * @publicDocs
  */
 export type ComponentChildren = any;
-/** @publicDocs */
 export type StringChildren = string;
-/** @publicDocs */
 export interface GlobalProps {
   /**
    * A unique identifier for the element.
    */
   id?: string;
 }
-/** @publicDocs */
 export interface ActionSlots {
   /**
    * The primary action to perform, provided as a button or link type element.
@@ -32,7 +28,6 @@ export interface ActionSlots {
    */
   secondaryActions?: ComponentChildren;
 }
-/** @publicDocs */
 export interface BaseOverlayProps {
   /**
    * Callback fired after the overlay is shown.
@@ -58,7 +53,6 @@ export interface BaseOverlayProps {
  * - Components implementing this interface must provide all methods
  * - Unlike props/attributes, methods are not rendered in HTML but are JavaScript APIs
  * - Consumers expect these methods to be consistently available on all instances
- * @publicDocs
  */
 export interface BaseOverlayMethods {
   /**
@@ -80,7 +74,6 @@ export interface BaseOverlayMethods {
    */
   toggleOverlay: () => void;
 }
-/** @publicDocs */
 export interface FocusEventProps {
   /**
    * Callback when the element loses focus.
@@ -95,7 +88,6 @@ export interface FocusEventProps {
    */
   onFocus?: (event: FocusEvent) => void;
 }
-/** @publicDocs */
 export type SizeKeyword =
   | 'small-500'
   | 'small-400'
@@ -110,11 +102,8 @@ export type SizeKeyword =
   | 'large-300'
   | 'large-400'
   | 'large-500';
-/** @publicDocs */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
-/** @publicDocs */
 export type BackgroundColorKeyword = 'transparent' | ColorKeyword;
-/** @publicDocs */
 export interface BackgroundProps {
   /**
    * Adjust the background of the element.
@@ -132,7 +121,6 @@ export interface BackgroundProps {
  * In some cases, like for Banner, the tone may also affect the semantic and accessibility treatment of the component.
  *
  * @default 'auto'
- * @publicDocs
  */
 export type ToneKeyword =
   | 'auto'
@@ -705,22 +693,17 @@ declare const privateIconArray: readonly [
   'x-circle',
   'x-circle-filled',
 ];
-/** @publicDocs */
 export type IconType = (typeof privateIconArray)[number];
 /**
  * Like `Extract`, but ensures that the extracted type is a strict subtype of the input type.
- * @publicDocs
  */
 export type ExtractStrict<T, U extends T> = Extract<T, U>;
-/** @publicDocs */
 export type MaybeAllValuesShorthandProperty<T extends string> =
   | T
   | `${T} ${T}`
   | `${T} ${T} ${T}`
   | `${T} ${T} ${T} ${T}`;
-/** @publicDocs */
 export type MaybeTwoValuesShorthandProperty<T extends string> = T | `${T} ${T}`;
-/** @publicDocs */
 export type MaybeResponsive<T> = T | `@container${string}`;
 /**
  * Prevents widening string literal types in a union to `string`.
@@ -729,7 +712,6 @@ export type MaybeResponsive<T> = T | `@container${string}`;
  * //   ^? string
  * type PropName = 'foo' | 'bar' | (string & {})
  * //   ^? 'foo' | 'bar' | (string & {})
- * @publicDocs
  */
 export type AnyString = string & {};
 /**
@@ -737,17 +719,15 @@ export type AnyString = string & {};
  * to have a space or not in the string literal types.
  *
  * For example in the `aspectRatio` property, `16/9` and `16 / 9` are both valid.
- * @publicDocs
  */
 export type optionalSpace = '' | ' ';
-/** @publicDocs */
 export interface BadgeProps extends GlobalProps {
   /**
-   * The content of the badge.
+   * The content of the Badge.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the badge, based on the intention of the information being conveyed.
+   * Sets the tone of the Badge, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -775,7 +755,6 @@ export interface BadgeProps extends GlobalProps {
    */
   size?: SizeKeyword;
 }
-/** @publicDocs */
 export interface BannerProps extends GlobalProps, ActionSlots {
   /**
    * The title of the banner.
@@ -784,11 +763,11 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   heading?: string;
   /**
-   * The content of the banner.
+   * The content of the Banner.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the banner, based on the intention of the information being conveyed.
+   * Sets the tone of the Banner, based on the intention of the information being conveyed.
    *
    * The banner is a live region and the type of status will be dictated by the Tone selected.
    *
@@ -851,7 +830,6 @@ export interface BannerProps extends GlobalProps, ActionSlots {
    */
   hidden?: boolean;
 }
-/** @publicDocs */
 export interface DisplayProps {
   /**
    * Sets the outer display type of the component. The outer type sets a component’s participation in [flow layout](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_flow_layout).
@@ -864,7 +842,6 @@ export interface DisplayProps {
    */
   display?: MaybeResponsive<'auto' | 'none'>;
 }
-/** @publicDocs */
 export interface AccessibilityRoleProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -878,7 +855,6 @@ export interface AccessibilityRoleProps {
    */
   accessibilityRole?: AccessibilityRole;
 }
-/** @publicDocs */
 export type AccessibilityRole =
   /**
    * Used to indicate the primary content.
@@ -903,7 +879,7 @@ export type AccessibilityRole =
   | 'footer'
   /**
    * Used to indicate a generic section.
-   * Sections should always have a heading or an accessible name provided in the `accessibilityLabel` property.
+   * Sections should always have a `Heading` or an accessible name provided in the `accessibilityLabel` property.
    *
    * In an HTML host `section` will render a `<section>` element.
    * Learn more about the [`<section>` element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/section) and its [implicit role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/region_role) in the MDN web docs.
@@ -994,7 +970,6 @@ export type AccessibilityRole =
    * Learn more about the [`none` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/none_role) in the MDN web docs.
    */
   | 'none';
-/** @publicDocs */
 export interface AccessibilityVisibilityProps {
   /**
    * Changes the visibility of the element.
@@ -1007,7 +982,6 @@ export interface AccessibilityVisibilityProps {
    */
   accessibilityVisibility?: 'visible' | 'hidden' | 'exclusive';
 }
-/** @publicDocs */
 export interface LabelAccessibilityVisibilityProps {
   /**
    * Changes the visibility of the component's label.
@@ -1022,9 +996,7 @@ export interface LabelAccessibilityVisibilityProps {
     'visible' | 'exclusive'
   >;
 }
-/** @publicDocs */
 export type PaddingKeyword = SizeKeyword | 'none';
-/** @publicDocs */
 export interface PaddingProps {
   /**
    * Adjust the padding of all edges.
@@ -1104,13 +1076,9 @@ export interface PaddingProps {
    */
   paddingInlineEnd?: MaybeResponsive<PaddingKeyword | ''>;
 }
-/** @publicDocs */
 export type SizeUnits = `${number}px` | `${number}%` | `0`;
-/** @publicDocs */
 export type SizeUnitsOrAuto = SizeUnits | 'auto';
-/** @publicDocs */
 export type SizeUnitsOrNone = SizeUnits | 'none';
-/** @publicDocs */
 export interface SizingProps {
   /**
    * Adjust the block size.
@@ -1161,26 +1129,21 @@ export interface SizingProps {
    */
   maxInlineSize?: MaybeResponsive<SizeUnitsOrNone>;
 }
-/** @publicDocs */
 export type BorderStyleKeyword =
   | 'none'
   | 'solid'
   | 'dashed'
   | 'dotted'
   | 'auto';
-/** @publicDocs */
 export type BorderSizeKeyword = SizeKeyword | 'none';
-/** @publicDocs */
 export type BorderRadiusKeyword = SizeKeyword | 'max' | 'none';
 /**
  * Represents a shorthand for defining a border. It can be a combination of size, optionally followed by color, optionally followed by style.
- * @publicDocs
  */
 export type BorderShorthand =
   | BorderSizeKeyword
   | `${BorderSizeKeyword} ${ColorKeyword}`
   | `${BorderSizeKeyword} ${ColorKeyword} ${BorderStyleKeyword}`;
-/** @publicDocs */
 export interface BorderProps {
   /**
    * Set the border via the shorthand property.
@@ -1265,7 +1228,6 @@ export interface BorderProps {
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
-/** @publicDocs */
 export interface OverflowProps {
   /**
    * Sets the overflow behavior of the element.
@@ -1279,7 +1241,6 @@ export interface OverflowProps {
    */
   overflow?: 'hidden' | 'visible';
 }
-/** @publicDocs */
 export interface BaseBoxProps
   extends AccessibilityVisibilityProps,
     BackgroundProps,
@@ -1289,7 +1250,7 @@ export interface BaseBoxProps
     BorderProps,
     OverflowProps {
   /**
-   * The content of the box.
+   * The content of the Box.
    */
   children?: ComponentChildren;
   /**
@@ -1300,14 +1261,12 @@ export interface BaseBoxProps
    */
   accessibilityLabel?: string;
 }
-/** @publicDocs */
 export interface BaseBoxPropsWithRole
   extends BaseBoxProps,
     AccessibilityRoleProps {}
-/** @publicDocs */
 export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
-   * The behavior of the button.
+   * The behavior of the Button.
    *
    * - `submit`: Used to indicate the component acts as a submit button, meaning it submits the closest form.
    * - `button`: Used to indicate the component acts as a button, meaning it has no default action.
@@ -1319,14 +1278,14 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
    */
   type?: 'submit' | 'button' | 'reset';
   /**
-   * Callback when the button is activated.
+   * Callback when the Button is activated.
    * This will be called before the action indicated by `type`.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event
    */
   onClick?: (event: Event) => void;
   /**
-   * Disables the button meaning it cannot be clicked or receive focus.
+   * Disables the Button meaning it cannot be clicked or receive focus.
    *
    * @default false
    */
@@ -1334,13 +1293,12 @@ export interface ButtonBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
-   * This also disables the button.
+   * This also disables the Button.
    *
    * @default false
    */
   loading?: boolean;
 }
-/** @publicDocs */
 export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
   /**
    * The URL to link to.
@@ -1377,24 +1335,29 @@ export interface LinkBehaviorProps extends InteractionProps, FocusEventProps {
    */
   onClick?: (event: Event) => void;
 }
-/** @publicDocs */
 export interface InteractionProps {
   /**
-   * The ID of the component to control when this component is activated. Pair with the `command` property to specify what action to perform on the target component. Learn more about the [`commandFor` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor).
+   * ID of a component that should respond to activations (e.g. clicks) on this component.
+   *
+   * See `command` for how to control the behavior of the target.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
    */
   commandFor?: string;
   /**
-   * Sets the action the `commandFor` target should take when this component is activated. Available options:
+   * Sets the action the `commandFor` should take when this clickable is activated.
    *
-   * - `'--auto'`: Performs the default action appropriate for the target component.
-   * - `'--show'`: Displays the target component if it's currently hidden.
-   * - `'--hide'`: Conceals the target component from view.
-   * - `'--toggle'`: Alternates the target component between visible and hidden states.
-   * - `'--copy'`: Copies the target clipboard item.
+   * See the documentation of particular components for the actions they support.
    *
-   * The supported actions vary by target component type. Learn more about the [`command` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command).
+   * - `--auto`: a default action for the target component.
+   * - `--show`: shows the target component.
+   * - `--hide`: hides the target component.
+   * - `--toggle`: toggles the target component.
+   * - `--copy`: copies the target ClipboardItem.
    *
    * @default '--auto'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
   command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
   /**
@@ -1402,31 +1365,29 @@ export interface InteractionProps {
    */
   interestFor?: string;
 }
-/** @publicDocs */
 export interface BaseClickableProps
   extends ButtonBehaviorProps,
     LinkBehaviorProps {}
-/** @publicDocs */
 export interface ButtonProps extends GlobalProps, BaseClickableProps {
   /**
-   * A label that describes the purpose or contents of the button. It will be read to users using assistive technologies such as screen readers.
+   * A label that describes the purpose or contents of the Button. It will be read to users using assistive technologies such as screen readers.
    *
-   * Use this when using only an icon or the button text is not enough context
+   * Use this when using only an icon or the Button text is not enough context
    * for users using assistive technologies.
    */
   accessibilityLabel?: string;
   /**
-   * The content of the button.
+   * The content of the Button.
    */
   children?: ComponentChildren;
   /**
-   * The type of icon to be displayed in the button.
+   * The type of icon to be displayed in the Button.
    *
    * @default ''
    */
   icon?: IconType | AnyString;
   /**
-   * The displayed inline width of the button.
+   * The displayed inline width of the Button.
    *
    * - `auto`: the size of the button depends on the surface and context.
    * - `fill`: the button will takes up 100% of the available inline size.
@@ -1436,13 +1397,13 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   inlineSize?: 'auto' | 'fill' | 'fit-content';
   /**
-   * Changes the visual appearance of the button.
+   * Changes the visual appearance of the Button.
    *
-   * @default 'auto'
+   * @default 'auto' - the variant is automatically determined by the Button's context
    */
   variant?: 'auto' | 'primary' | 'secondary' | 'tertiary';
   /**
-   * Sets the tone of the button based on the intention of the information being conveyed.
+   * Sets the tone of the Button based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
@@ -1454,7 +1415,6 @@ export interface ButtonProps extends GlobalProps, BaseClickableProps {
    */
   lang?: string;
 }
-/** @publicDocs */
 export interface BaseInputProps {
   /**
    * An identifier for the field that is unique within the nearest containing form.
@@ -1467,7 +1427,6 @@ export interface BaseInputProps {
    */
   disabled?: boolean;
 }
-/** @publicDocs */
 export interface InputProps extends BaseInputProps {
   /**
    * Callback when the user has **finished editing** a field, e.g. once they have blurred the field.
@@ -1492,7 +1451,6 @@ export interface InputProps extends BaseInputProps {
    */
   defaultValue?: string;
 }
-/** @publicDocs */
 export interface MultipleInputProps extends BaseInputProps {
   /**
    * Callback when the user has selected option(s).
@@ -1513,7 +1471,6 @@ export interface MultipleInputProps extends BaseInputProps {
    */
   values?: string[];
 }
-/** @publicDocs */
 export interface FieldErrorProps {
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
@@ -1521,7 +1478,6 @@ export interface FieldErrorProps {
    */
   error?: string;
 }
-/** @publicDocs */
 export interface BasicFieldProps
   extends FieldErrorProps,
     LabelAccessibilityVisibilityProps {
@@ -1539,7 +1495,6 @@ export interface BasicFieldProps
    */
   label?: string;
 }
-/** @publicDocs */
 export interface FieldDetailsProps {
   /**
    * Additional text to provide context or guidance for the field.
@@ -1550,7 +1505,6 @@ export interface FieldDetailsProps {
    */
   details?: string;
 }
-/** @publicDocs */
 export interface FieldProps
   extends BasicFieldProps,
     InputProps,
@@ -1561,7 +1515,6 @@ export interface FieldProps
    */
   placeholder?: string;
 }
-/** @publicDocs */
 export interface BaseTextFieldProps extends FieldProps {
   /**
    * The field cannot be edited by the user. It is focusable will be announced by screen readers.
@@ -1570,7 +1523,6 @@ export interface BaseTextFieldProps extends FieldProps {
    */
   readOnly?: boolean;
 }
-/** @publicDocs */
 export interface FieldDecorationProps {
   /**
    * A value to be displayed immediately after the editable portion of the field.
@@ -1610,7 +1562,6 @@ export interface FieldDecorationProps {
    */
   accessory?: ComponentChildren;
 }
-/** @publicDocs */
 export interface NumberConstraintsProps {
   /**
    * The highest decimal or integer to be accepted for the field.
@@ -1653,7 +1604,6 @@ export interface NumberConstraintsProps {
    */
   controls?: 'auto' | 'stepper' | 'none';
 }
-/** @publicDocs */
 export interface MinMaxLengthProps {
   /**
    * Specifies the maximum number of characters allowed.
@@ -1668,7 +1618,6 @@ export interface MinMaxLengthProps {
    */
   minLength?: number;
 }
-/** @publicDocs */
 export interface BaseSelectableProps {
   /**
    * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
@@ -1686,7 +1635,6 @@ export interface BaseSelectableProps {
    */
   value?: string;
 }
-/** @publicDocs */
 export interface BaseOptionProps extends BaseSelectableProps {
   /**
    * Whether the control is active.
@@ -1703,7 +1651,6 @@ export interface BaseOptionProps extends BaseSelectableProps {
    */
   defaultSelected?: boolean;
 }
-/** @publicDocs */
 export interface BaseCheckableProps
   extends BaseSelectableProps,
     InteractionProps {
@@ -1743,7 +1690,6 @@ export interface BaseCheckableProps
    */
   onInput?: (event: Event) => void;
 }
-/** @publicDocs */
 export interface ChoiceProps extends GlobalProps, BaseOptionProps {
   /**
    * Content to use as the choice label.
@@ -1767,7 +1713,7 @@ export interface ChoiceProps extends GlobalProps, BaseOptionProps {
    */
   details?: ComponentChildren;
   /**
-   * Set to `true` to associate a choice with the error passed to ChoiceList
+   * Set to `true` to associate a choice with the error passed to `ChoiceList`
    *
    * @default false
    */
@@ -1783,7 +1729,6 @@ export interface ChoiceProps extends GlobalProps, BaseOptionProps {
    */
   selectedContent?: ComponentChildren;
 }
-/** @publicDocs */
 export interface ChoiceListProps
   extends GlobalProps,
     Pick<BasicFieldProps, 'label' | 'labelAccessibilityVisibility' | 'error'>,
@@ -1798,7 +1743,7 @@ export interface ChoiceListProps
   /**
    * The choices a user can select from.
    *
-   * Accepts choice components.
+   * Accepts `Choice` components.
    */
   children?: ComponentChildren;
   /**
@@ -1825,7 +1770,6 @@ export interface ChoiceListProps
    */
   variant?: 'auto' | 'list' | 'inline' | 'block' | 'grid';
 }
-/** @publicDocs */
 export interface ClickableProps
   extends GlobalProps,
     BaseBoxProps,
@@ -1857,7 +1801,6 @@ export interface ClickableProps
    */
   lang?: string;
 }
-/** @publicDocs */
 export interface AutocompleteProps<
   AutocompleteField extends AnyAutocompleteField,
 > {
@@ -1895,20 +1838,16 @@ export interface AutocompleteProps<
  *
  * Commonly used when there are multiple fields with the same autocomplete needs
  * in the same page. For example: 2 shipping address forms in the same page.
- * @publicDocs
  */
 export type AutocompleteSection = `section-${string}`;
 /**
  * The contact information group the autocomplete data should be sourced from.
- * @publicDocs
  */
 export type AutocompleteGroup = 'shipping' | 'billing';
 /**
  * The contact information subgroup the autocomplete data should be sourced from.
- * @publicDocs
  */
 export type AutocompleteAddressGroup = 'fax' | 'home' | 'mobile' | 'pager';
-/** @publicDocs */
 export type AnyAutocompleteField =
   | 'additional-name'
   | 'address-level1'
@@ -1974,7 +1913,6 @@ export type AnyAutocompleteField =
   | `${AutocompleteAddressGroup} tel-local-suffix`
   | `${AutocompleteAddressGroup} tel-local`
   | `${AutocompleteAddressGroup} tel-national`;
-/** @publicDocs */
 export type TextAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'additional-name'
@@ -2008,7 +1946,6 @@ export type TextAutocompleteField = ExtractStrict<
   | 'cc-family-name'
   | 'cc-type'
 >;
-/** @publicDocs */
 export interface DatePickerProps
   extends GlobalProps,
     InputProps,
@@ -2175,7 +2112,6 @@ export interface DatePickerProps
    */
   onChange?: (event: Event) => void;
 }
-/** @publicDocs */
 export interface DateFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2219,7 +2155,6 @@ export interface DateFieldProps
    */
   onInvalid?: (event: Event) => void;
 }
-/** @publicDocs */
 export type DateAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   | 'bday'
@@ -2230,7 +2165,6 @@ export type DateAutocompleteField = ExtractStrict<
   | 'cc-expiry-month'
   | 'cc-expiry-year'
 >;
-/** @publicDocs */
 export interface DateSpinnerProps
   extends GlobalProps,
     Pick<
@@ -2269,7 +2203,6 @@ export interface DateSpinnerProps
    */
   onChange?: (event: Event) => void;
 }
-/** @publicDocs */
 export interface DividerProps extends GlobalProps {
   /**
    * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
@@ -2284,18 +2217,15 @@ export interface DividerProps extends GlobalProps {
    */
   color?: ColorKeyword;
 }
-/** @publicDocs */
 export interface EmailFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<EmailAutocompleteField> {}
-/** @publicDocs */
 export type EmailAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'email' | `${AutocompleteAddressGroup} email`
 >;
-/** @publicDocs */
 export interface EmbedProps extends GlobalProps, SizingProps {
   /**
    * The content type of the file to display.
@@ -2319,31 +2249,28 @@ export interface EmbedProps extends GlobalProps, SizingProps {
    */
   src?: string;
   /**
-   * A label that describes the purpose or contents of the embed. It will be read to users
+   * A label that describes the purpose or contents of the Embed. It will be read to users
    * using assistive technologies such as screen readers.
    *
    * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute
    */
   accessibilityLabel?: string;
 }
-/** @publicDocs */
 export interface EmptyStateProps extends GlobalProps, ActionSlots {
   /**
-   * The heading of the empty state.
+   * The heading of the EmptyState.
    */
   heading?: string;
   /**
-   * The subheading of the empty state.
+   * The subheading of the EmptyState.
    */
   subheading?: ComponentChildren | StringChildren;
   /**
-   * The graphic to display in the empty state. The only supported components are image and icon.
+   * The graphic to display in the EmptyState. The only supported components are `Image` and `Icon`.
    */
   graphic?: ComponentChildren;
 }
-/** @publicDocs */
 export type SpacingKeyword = SizeKeyword | 'none';
-/** @publicDocs */
 export interface GapProps {
   /**
    * Adjust spacing between elements.
@@ -2371,17 +2298,13 @@ export interface GapProps {
    */
   columnGap?: MaybeResponsive<SpacingKeyword | ''>;
 }
-/** @publicDocs */
 export type BaselinePosition = 'baseline' | 'first baseline' | 'last baseline';
-/** @publicDocs */
 export type ContentDistribution =
   | 'space-between'
   | 'space-around'
   | 'space-evenly'
   | 'stretch';
-/** @publicDocs */
 export type ContentPosition = 'center' | 'start' | 'end';
-/** @publicDocs */
 export type OverflowPosition =
   | `unsafe ${ContentPosition}`
   | `safe ${ContentPosition}`;
@@ -2389,7 +2312,6 @@ export type OverflowPosition =
  * Align items sets the align-self value on all direct children as a group.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
- * @publicDocs
  */
 export type AlignItemsKeyword =
   | 'normal'
@@ -2401,7 +2323,6 @@ export type AlignItemsKeyword =
  * Justify content defines how the browser distributes space between and around content items along the main-axis of a flex container, and the inline axis of a grid container.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
- * @publicDocs
  */
 export type JustifyContentKeyword =
   | 'normal'
@@ -2412,7 +2333,6 @@ export type JustifyContentKeyword =
  *Align content sets the distribution of space between and around content items along a flexbox's cross axis, or a grid or block-level element's block axis.
  *
  * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
- * @publicDocs
  */
 export type AlignContentKeyword =
   | 'normal'
@@ -2420,7 +2340,6 @@ export type AlignContentKeyword =
   | ContentDistribution
   | OverflowPosition
   | ContentPosition;
-/** @publicDocs */
 export interface BaseTypographyProps {
   /**
    * Modify the color to be more or less intense.
@@ -2466,7 +2385,6 @@ export interface BaseTypographyProps {
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
 }
-/** @publicDocs */
 export interface BlockTypographyProps {
   /**
    * Truncates the text content to the specified number of lines.
@@ -2477,13 +2395,12 @@ export interface BlockTypographyProps {
    */
   lineClamp?: number;
 }
-/** @publicDocs */
 export interface HeadingProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
     BlockTypographyProps {
   /**
-   * The content of the heading.
+   * The content of the Heading.
    */
   children?: ComponentChildren;
   /**
@@ -2507,7 +2424,6 @@ export interface HeadingProps
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
 }
-/** @publicDocs */
 export interface IconProps
   extends GlobalProps,
     Pick<InteractionProps, 'interestFor'> {
@@ -2531,7 +2447,6 @@ export interface IconProps
   size?: SizeKeyword;
   type?: IconType | AnyString;
 }
-/** @publicDocs */
 export interface BaseImageProps {
   /**
    * An alternative text description that describe the image for the reader to
@@ -2577,7 +2492,6 @@ export interface BaseImageProps {
    */
   srcSet?: string;
 }
-/** @publicDocs */
 export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
@@ -2653,20 +2567,19 @@ export interface ImageProps extends GlobalProps, BaseImageProps, BorderProps {
    */
   onError?: (event: Event) => void;
 }
-/** @publicDocs */
 export interface LinkProps extends GlobalProps, LinkBehaviorProps {
   /**
-   * The content of the link.
+   * The content of the Link.
    */
   children?: ComponentChildren;
   /**
-   * Sets the tone of the link, based on the intention of the information being conveyed.
+   * Sets the tone of the Link, based on the intention of the information being conveyed.
    *
    * @default 'auto'
    */
   tone?: ToneKeyword;
   /**
-   * A label that describes the purpose or contents of the link. It will be read to users using assistive technologies such as screen readers.
+   * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
    *
    * Use this when using only an icon or the content of the link is not enough context
    * for users using assistive technologies.
@@ -2679,7 +2592,6 @@ export interface LinkProps extends GlobalProps, LinkBehaviorProps {
    */
   lang?: string;
 }
-/** @publicDocs */
 export interface ModalProps
   extends GlobalProps,
     BaseOverlayProps,
@@ -2694,36 +2606,35 @@ export interface ModalProps
    */
   accessibilityLabel?: string;
   /**
-   * A title that describes the content of the modal.
+   * A title that describes the content of the Modal.
    *
    */
   heading?: string;
   /**
-   * Adjust the padding around the modal content.
+   * Adjust the padding around the Modal content.
    *
    * `base`: applies padding that is appropriate for the element.
    *
-   * `none`: removes all padding from the element. This can be useful when elements inside the modal need to span
-   * to the edge of the modal. For example, a full-width image. In this case, rely on Box with a padding of 'base'
+   * `none`: removes all padding from the element. This can be useful when elements inside the Modal need to span
+   * to the edge of the Modal. For example, a full-width image. In this case, rely on `Box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
   /**
-   * Adjust the size of the modal.
+   * Adjust the size of the Modal.
    *
-   * `max`: expands the modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
+   * `max`: expands the Modal to its maximum size as defined by the host application, on both the horizontal and vertical axes.
    *
    * @default 'base'
    */
   size?: SizeKeyword | 'max';
   /**
-   * The content of the modal.
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }
-/** @publicDocs */
 export interface NumberFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -2753,15 +2664,13 @@ export interface NumberFieldProps
    */
   onInput?: (event: Event) => void;
 }
-/** @publicDocs */
 export type NumberAutocompleteField = ExtractStrict<
   AnyAutocompleteField,
   'one-time-code' | 'cc-number' | 'cc-csc'
 >;
-/** @publicDocs */
 export interface PageProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the page.
+   * The content of the Page.
    */
   children?: ComponentChildren;
   /**
@@ -2795,7 +2704,6 @@ export interface PageProps extends GlobalProps, ActionSlots {
    */
   inlineSize?: SizeKeyword;
 }
-/** @publicDocs */
 export interface POSBlockProps
   extends GlobalProps,
     Pick<ActionSlots, 'secondaryActions'> {
@@ -2814,7 +2722,6 @@ export interface POSBlockProps
    */
   secondaryActions?: ComponentChildren;
 }
-/** @private */
 export interface QRCodeProps extends GlobalProps {
   /**
    * Set the border of the QR code.
@@ -2860,7 +2767,6 @@ export interface QRCodeProps extends GlobalProps {
    */
   logo?: string;
 }
-/** @publicDocs */
 export interface ScrollEventProps {
   /**
    * Callback when the scroll position reaches any edge.
@@ -2901,9 +2807,7 @@ export interface ScrollEventProps {
    */
   scrollMargin?: MaybeAllValuesShorthandProperty<SizeUnits>;
 }
-/** @publicDocs */
 export type OverflowKeyword = 'auto' | 'hidden';
-/** @publicDocs */
 export interface ScrollBoxProps
   extends GlobalProps,
     ScrollEventProps,
@@ -2924,25 +2828,22 @@ export interface ScrollBoxProps
    */
   overflow?: OverflowKeyword | `${OverflowKeyword} ${OverflowKeyword}`;
 }
-/** @publicDocs */
 export interface SearchFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<SearchAutocompleteField> {}
-/** @publicDocs */
 export type SearchAutocompleteField = TextAutocompleteField;
-/** @publicDocs */
 export interface SectionProps extends GlobalProps, ActionSlots {
   /**
-   * The content of the section.
+   * The content of the Section.
    */
   children?: ComponentChildren;
   /**
    * A label used to describe the section that will be announced by assistive technologies.
    *
-   * When no `heading` property is provided or included as a children of the section, you **must** provide an
-   * `accessibilityLabel` to describe the section. This is important as it allows assistive technologies to provide
+   * When no `heading` property is provided or included as a children of the Section, you **must** provide an
+   * `accessibilityLabel` to describe the Section. This is important as it allows assistive technologies to provide
    * the right context to users.
    */
   accessibilityLabel?: string;
@@ -2955,15 +2856,14 @@ export interface SectionProps extends GlobalProps, ActionSlots {
    *
    * - `base`: applies padding that is appropriate for the element. Note that it may result in no padding if
    * this is the right design decision in a particular context.
-   * - `none`: removes all padding from the element. This can be useful when elements inside the section need to span
-   * to the edge of the section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
+   * - `none`: removes all padding from the element. This can be useful when elements inside the Section need to span
+   * to the edge of the Section. For example, a full-width image. In this case, rely on `s-box` with a padding of 'base'
    * to bring back the desired padding for the rest of the content.
    *
    * @default 'base'
    */
   padding?: 'base' | 'none';
 }
-/** @publicDocs */
 export interface SpinnerProps extends GlobalProps {
   /**
    * Adjusts the size of the spinner icon.
@@ -2980,17 +2880,16 @@ export interface SpinnerProps extends GlobalProps {
    */
   accessibilityLabel?: string;
 }
-/** @publicDocs */
 export interface StackProps
   extends GlobalProps,
     BaseBoxPropsWithRole,
     GapProps {
   /**
-   * The content of the stack.
+   * The content of the Stack.
    */
   children?: ComponentChildren;
   /**
-   * Sets how the children are placed within the stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
+   * Sets how the children are placed within the Stack. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    *
    * @default 'block'
    *
@@ -2998,38 +2897,36 @@ export interface StackProps
    */
   direction?: MaybeResponsive<'block' | 'inline'>;
   /**
-   * Aligns the stack along the main axis.
+   * Aligns the Stack along the main axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
   justifyContent?: MaybeResponsive<JustifyContentKeyword>;
   /**
-   * Aligns the stack's children along the cross axis.
+   * Aligns the Stack's children along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-items
    * @default 'normal'
    */
   alignItems?: MaybeResponsive<AlignItemsKeyword>;
   /**
-   * Aligns the stack along the cross axis.
+   * Aligns the Stack along the cross axis.
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/align-content
    * @default 'normal'
    */
   alignContent?: MaybeResponsive<AlignContentKeyword>;
 }
-/** @publicDocs */
 export interface SwitchProps
   extends GlobalProps,
     BaseCheckableProps,
     BasicFieldProps,
     FieldDetailsProps,
     FieldErrorProps {}
-/** @publicDocs */
 export interface TabProps extends GlobalProps {
   /**
-   * Corresponds to the `id` property of the tab panel component that will be displayed when selected
+   * Corresponds to the `id` property of the TabPanel component that will be displayed when selected
    */
   controls?: string;
   /**
@@ -3051,26 +2948,23 @@ export interface TabProps extends GlobalProps {
    */
   children?: StringChildren;
 }
-/** @publicDocs */
 export interface TabListProps extends GlobalProps {
   /**
-   * Accepts only tabs components.
+   * Accepts only `Tabs` components.
    */
   children?: ComponentChildren;
 }
-/** @publicDocs */
 export interface TabPanelProps extends GlobalProps {
   /**
-   * The id of the tab panel used for identification in the tabs component.
-   * Must match the `controls` prop of the corresponding tab component.
+   * The id of the TabPanel used for identification in the Tabs component.
+   * Must match the `controls` prop of the corresponding Tab component.
    */
   id?: string;
   /**
-   * The content of the tab panel.
+   * The content of the TabPanel.
    */
   children?: ComponentChildren;
 }
-/** @publicDocs */
 export interface TabsProps
   extends GlobalProps,
     Pick<InputProps, 'disabled' | 'onChange' | 'value' | 'defaultValue'> {
@@ -3080,20 +2974,20 @@ export interface TabsProps
    */
   accessibilityLabel?: string;
   /**
-   * Accepts only tab list and tab panel components.
+   * Accepts only `TabList` and `TabPanel` components.
    */
   children?: ComponentChildren;
   /**
    * The value of the selected tab.
    *
-   * This should match the `id` prop of one of the tab panel components.
+   * This should match the `id` prop of one of the TabPanel components.
    * If not provided, the first tab will be selected by default.
    */
   value?: string;
   /**
    * The default value of the selected tab.
    *
-   * This should match the `id` prop of one of the tab panel components.
+   * This should match the `id` prop of one of the TabPanel components.
    * If not provided, the first tab will be selected by default.
    *
    * Reflects to the `value` attribute
@@ -3110,7 +3004,6 @@ export interface TabsProps
    */
   onChange?: (event: Event) => void;
 }
-/** @publicDocs */
 export interface TextProps
   extends GlobalProps,
     AccessibilityVisibilityProps,
@@ -3130,7 +3023,6 @@ export interface TextProps
    */
   type?: TextType;
 }
-/** @publicDocs */
 export type TextType =
   /**
    * Indicate the text is contact information. Typically used for addresses.
@@ -3213,7 +3105,6 @@ export type TextType =
    * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/span
    */
   | 'generic';
-/** @publicDocs */
 export interface TextAreaProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -3226,19 +3117,17 @@ export interface TextAreaProps
    */
   rows?: number;
 }
-/** @publicDocs */
 export interface TextFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
-/** @publicDocs */
 export interface TileProps
   extends GlobalProps,
     Pick<BaseClickableProps, 'onClick' | 'disabled'> {
   /**
-   * A title that describes the content of the tile.
+   * A title that describes the content of the Tile.
    *
    * @default ''
    */
@@ -3250,7 +3139,7 @@ export interface TileProps
    */
   subheading?: string;
   /**
-   * A numeric indicator rendered within the tile (for example, a count or a step number).
+   * A numeric indicator rendered within the Tile (for example, a count or a step number).
    *
    * - When provided, the indicator is displayed inside the tile.
    * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
@@ -3258,12 +3147,11 @@ export interface TileProps
    */
   itemCount?: number;
   /**
-   * Sets the tone of the tile, based on the intention of the information being conveyed.
+   * Sets the tone of the Tile, based on the intention of the information being conveyed.
    * @default 'auto'
    */
   tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
 }
-/** @publicDocs */
 export interface TimePickerProps
   extends GlobalProps,
     InputProps,
@@ -3356,7 +3244,6 @@ export interface TimePickerProps
    */
   step?: number;
 }
-/** @publicDocs */
 export interface TimeFieldProps
   extends GlobalProps,
     BaseTextFieldProps,
@@ -3414,7 +3301,6 @@ export interface TimeFieldProps
 //
 // Preact Virtual DOM
 // -----------------------------------
-/** @publicDocs */
 export interface VNode<P = {}> {
   type: ComponentType<P> | string;
   props: P & {
@@ -3442,17 +3328,12 @@ export interface VNode<P = {}> {
 //
 // Preact Component interface
 // -----------------------------------
-/** @publicDocs */
 export type Key = string | number | any;
-/** @publicDocs */
 export type RefObject<T> = {
   current: T | null;
 };
-/** @publicDocs */
 export type RefCallback<T> = (instance: T | null) => void | (() => void);
-/** @publicDocs */
 export type Ref<T> = RefObject<T> | RefCallback<T> | null;
-/** @publicDocs */
 export type ComponentChild =
   | VNode<any>
   | object
@@ -3463,16 +3344,13 @@ export type ComponentChild =
   | null
   | undefined;
 type ComponentChildren$1 = ComponentChild[] | ComponentChild;
-/** @publicDocs */
 export interface Attributes {
   key?: Key | undefined;
   jsx?: boolean | undefined;
 }
-/** @publicDocs */
 export interface ErrorInfo {
   componentStack?: string;
 }
-/** @publicDocs */
 export type RenderableProps<P, RefType = any> = P &
   Readonly<
     Attributes & {
@@ -3480,15 +3358,12 @@ export type RenderableProps<P, RefType = any> = P &
       ref?: Ref<RefType>;
     }
   >;
-/** @publicDocs */
 export type ComponentType<P = {}> = ComponentClass<P> | FunctionComponent<P>;
-/** @publicDocs */
 export interface FunctionComponent<P = {}> {
   (props: RenderableProps<P>, context?: any): ComponentChildren$1;
   displayName?: string;
   defaultProps?: Partial<P> | undefined;
 }
-/** @publicDocs */
 export interface ComponentClass<P = {}, S = {}> {
   new (props: P, context?: any): Component<P, S>;
   displayName?: string;
@@ -3500,7 +3375,6 @@ export interface ComponentClass<P = {}, S = {}> {
   ): Partial<S> | null;
   getDerivedStateFromError?(error: any): Partial<S> | null;
 }
-/** @publicDocs */
 export interface Component<P = {}, S = {}> {
   componentWillMount?(): void;
   componentDidMount?(): void;
@@ -3567,18 +3441,15 @@ declare abstract class Component<P, S> {
 //
 // Context
 // -----------------------------------
-/** @publicDocs */
 export interface Consumer<T>
   extends FunctionComponent<{
     children: (value: T) => ComponentChildren$1;
   }> {}
-/** @publicDocs */
 export interface Provider<T>
   extends FunctionComponent<{
     value: T;
     children?: ComponentChildren$1;
   }> {}
-/** @publicDocs */
 export interface Context<T> extends Provider<T> {
   Consumer: Consumer<T>;
   Provider: Provider<T>;

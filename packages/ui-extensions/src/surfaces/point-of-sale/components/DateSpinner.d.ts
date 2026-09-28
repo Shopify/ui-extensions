@@ -10,98 +10,85 @@
 /// <reference lib="DOM" />
 import type {DateSpinnerProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
- * @publicDocs
+ * Used when an element does not have children.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-  /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
   key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
   ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
   slot?: Lowercase<string>;
 }
 /**
- * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
+ * Used when an element has children.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: ComponentChildren;
 }
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/**
- * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
- * @publicDocs
- */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  /**
-   * The element that the event listener is attached to.
-   */
-  currentTarget: HTMLElementTagNameMap[T];
-  /**
-   * Whether the event bubbles up through the DOM tree.
-   */
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
   bubbles?: boolean;
-  /**
-   * Whether the event can be canceled.
-   */
   cancelable?: boolean;
-  /**
-   * Whether the event will trigger listeners outside of a shadow root.
-   */
   composed?: boolean;
-  /**
-   * Additional data associated with the event.
-   */
   detail?: any;
-  /**
-   * The current phase of the event flow.
-   */
   eventPhase: number;
-  /**
-   * The element that triggered the event.
-   */
-  target: HTMLElementTagNameMap[T] | null;
+  target: ElementForTag<T> | null;
 }
 
 declare const tagName = 's-date-spinner';
-/** @publicDocs */
+/**
+ * Lets merchants select a date using spinner controls.
+ * @publicDocs
+ */
 export interface DateSpinnerJSXProps
   extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**
-   * Called when the user makes a selection in the spinner.
+   * A unique identifier for the element.
+   *
+   * An `id` is required to open or close the picker with the command system (for
+   * example, a Button with `command="--show"` and `commandFor` set to this `id`)
+   * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
+   * be shown.
    */
-  onInput?: (event: CallbackEvent<typeof tagName>) => void | null;
+  id?: DateSpinnerProps['id'];
   /**
-   * Called when the value changes. Only called when a different value is selected.
+   * The current selected value for the spinner, as a date in `YYYY-MM-DD` format.
+   *
+   * The default `''` means no date is selected. Values are interpreted in the
+   * device's local timezone. Out-of-range calendar dates (for example,
+   * `2024-02-30`) currently roll over to a valid date instead of being rejected.
+   *
+   * @default ""
    */
-  onChange?: (event: CallbackEvent<typeof tagName>) => void | null;
+  value?: DateSpinnerProps['value'];
   /**
-   * Called when the date spinner is dismissed or closed.
+   * Callback when the user makes a selection. Fires after `onChange`.
    */
-  onBlur?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Called when the date spinner is revealed or opened.
+   * Callback when the value changes. Only called when a different value is selected. Fires before `onInput`.
    */
-  onFocus?: (event: CallbackEvent<typeof tagName>) => void | null;
+  onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * Callback when the date spinner is dismissed.
+   */
+  onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  /**
+   * Callback when the date spinner is revealed.
+   */
+  onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: DateSpinnerJSXProps & HTMLElement;
+    [tagName]: HtmlElementTagNameProps<DateSpinnerJSXProps>;
   }
 }
 declare module 'preact' {

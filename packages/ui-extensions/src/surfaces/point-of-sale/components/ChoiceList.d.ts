@@ -10,94 +10,78 @@
 /// <reference lib="DOM" />
 import type {ChoiceListProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
- * @publicDocs
+ * Used when an element does not have children.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-  /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
   key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
   ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
   slot?: Lowercase<string>;
 }
 /**
- * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
+ * Used when an element has children.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: ComponentChildren;
 }
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/**
- * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
- * @publicDocs
- */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  /**
-   * The element that the event listener is attached to.
-   */
-  currentTarget: HTMLElementTagNameMap[T];
-  /**
-   * Whether the event bubbles up through the DOM tree.
-   */
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
   bubbles?: boolean;
-  /**
-   * Whether the event can be canceled.
-   */
   cancelable?: boolean;
-  /**
-   * Whether the event will trigger listeners outside of a shadow root.
-   */
   composed?: boolean;
-  /**
-   * Additional data associated with the event.
-   */
   detail?: any;
-  /**
-   * The current phase of the event flow.
-   */
   eventPhase: number;
-  /**
-   * The element that triggered the event.
-   */
-  target: HTMLElementTagNameMap[T] | null;
+  target: ElementForTag<T> | null;
 }
 
 declare const tagName = 's-choice-list';
-/** @publicDocs */
+/**
+ * Groups one or more selectable choices.
+ * @publicDocs
+ */
 export interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
   /**
-   * Called when the user changes a choice. Fires simultaneously with `onChange`.
+   * The values of the selected choices.
+   *
+   * When `values` is set, update it from `onChange` or `onInput` to control the
+   * selection. When `values` is not set, the list manages its own state, starting
+   * from choices that have `selected` set. Selections from `values` and from
+   * `selected` choices are combined.
+   *
+   * Use a unique `value` for each choice. Choices that share a value can't be
+   * selected independently.
+   */
+  values?: ChoiceListProps['values'];
+  /**
+   * Callback when the user changes a choice. Fires simultaneously with onChange.
+   * The event's `currentTarget.values` is always an array of selected choice
+   * values, even when `multiple` is `false`.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Called when the user changes a choice. Fires simultaneously with `onInput`.
+   * Callback when the user changes a choice. Fires simultaneously with onInput.
+   * The event's `currentTarget.values` is always an array of selected choice
+   * values; in single-selection mode, only the first entry is rendered as selected.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * The child elements to render within this component. Should be one or more choice elements.
+   * The content of the ChoiceList. Should be one or more Choice elements.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ChoiceListJSXProps & HTMLElement;
+    [tagName]: HtmlElementTagNameProps<ChoiceListJSXProps>;
   }
 }
 declare module 'preact' {

@@ -47,15 +47,16 @@ export interface Storage<
   current: SubscribableStorage<BaseStorageTypes>;
 
   /**
-   * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
+   * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable, and the promise rejects with an error named `'StorageError'` when storage validation or limits fail. Values are JSON-serialized on write: `undefined` properties are dropped, `NaN` and `Infinity` become `null`, and `Date` objects become ISO strings. Keys are limited to 1024 UTF-16 code units, and values to 1,048,576 code units of their JSON serialization. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.
    *
    * @param key - The key to set the value for.
    * @param value - The value to set for the key.
-   * @throws StorageError when:
-   * - Maximum number of records is exceeded (`code: 'RecordsCount'`)
-   * - Individual record size exceeds the limit (`code: 'RecordSize'`)
-   * - Key is not a string (`code: 'KeyType'`)
-   * - Key size exceeds the limit (`code: 'KeySize'`)
+   * @throws an error with `name` set to `'StorageError'` when:
+   * - Maximum number of records is exceeded
+   * - Individual record size exceeds the limit
+   * - Key is not a string
+   * - Key size exceeds the limit
+   * The rejection preserves the error's `name` and `message`, but not its `code` property. Match on `name`, not on `code` or `instanceof`, and treat the `message` as diagnostic text rather than a stable contract. Other storage or native failures can reject with a different error name.
    */
   set<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,

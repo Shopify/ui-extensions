@@ -12,6 +12,8 @@ export interface PinPadApiContent {
    *
    * • **When rejected**: Displays the optional `errorMessage` and keeps the modal open.
    *
+   * An uncaught error from `onSubmit` rejects the PIN with the raw error text shown to the merchant. Catch errors inside `onSubmit` and return `{result: 'reject', errorMessage}` with a message that's safe to display.
+   *
    * Use for implementing secure authentication workflows, access control, or PIN-based verification systems.
    */
   showPinPad(

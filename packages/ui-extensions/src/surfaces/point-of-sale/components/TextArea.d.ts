@@ -8,75 +8,107 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {TextAreaProps,Key, Ref} from './components-shared.d.ts';
+import type {TextAreaProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
- * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-    key?: Key;
-    ref?: Ref<TClass>;
-    slot?: Lowercase<string>;
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
 }
 /**
  * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: ElementForTag<T> | null;
+}
+
+declare const tagName$1 = 's-text-area';
+/**
+ * Collects multi-line text input from the merchant.
  * @publicDocs
  */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
-    children?: ComponentChildren;
-}
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/** @publicDocs */
-export type HtmlElementTagNameProps<T> = T & HTMLElement;
-/** @publicDocs */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-    currentTarget: HTMLElementTagNameMap[T];
-    bubbles?: boolean;
-    cancelable?: boolean;
-    composed?: boolean;
-    detail?: any;
-    eventPhase: number;
-    target: HTMLElementTagNameMap[T] | null;
+export interface TextAreaJSXProps
+  extends Pick<
+    TextAreaProps,
+    | 'id'
+    | 'label'
+    | 'details'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'rows'
+  > {
+  /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: TextAreaProps['value'];
+  /**
+   * A number of visible text lines.
+   *
+   * Sets the visible height of the field only; it doesn't limit how many lines of
+   * text can be entered. Values are clamped between 1 and 8.
+   *
+   * @default 2
+   */
+  rows?: TextAreaProps['rows'];
+  /**
+   * Callback when the user makes any changes in the field.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  /**
+   * Callback after editing completes, on blur. Fires only when the value
+   * changed since the field received focus.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  /**
+   * Callback when the element loses focus.
+   */
+  onBlur?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  /**
+   * Callback when the element receives focus.
+   */
+  onFocus?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
 }
 
-declare const tagName = "s-text-area";
-/** @publicDocs */
-export interface TextAreaJSXProps extends Pick<TextAreaProps, 'id' | 'label' | 'details' | 'value' | 'placeholder' | 'disabled' | 'error' | 'required' | 'maxLength' | 'rows'> {
-    /**
-     * Callback when the user makes any changes in the field.
-     */
-    onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback after editing completes (typically on blur).
-     */
-    onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element loses focus.
-     */
-    onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element receives focus.
-     */
-    onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-/** @publicDocs */
-export type ElementProps = Omit<TextAreaJSXProps, 'accessory'>;
+declare const tagName = 's-text-area';
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: HtmlElementTagNameProps<ElementProps>;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: HtmlElementTagNameProps<TextAreaJSXProps>;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: IntrinsicElementProps<ElementProps>;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: IntrinsicElementProps<TextAreaJSXProps>;
     }
+  }
 }
 
-export { tagName };
-export type { TextAreaJSXProps };
+export {tagName};
+export type {TextAreaJSXProps};

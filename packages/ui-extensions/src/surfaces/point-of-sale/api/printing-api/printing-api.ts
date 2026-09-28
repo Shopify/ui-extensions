@@ -23,6 +23,8 @@ export interface PrintingApiContent {
    * When no hardware printers are available, returns an empty array.
    * The system print dialog is not included in this list — it is the
    * default behavior when no `printer` option is provided to `print()`.
+   * POS currently exposes at most one hardware printer: the default
+   * connected receipt printer.
    *
    * @see {@link https://github.com/WICG/web-printing | WICG Web Printing}
    *   for the emerging web standard this aligns with.
@@ -36,27 +38,37 @@ export interface PrintingApiContent {
    * When called without a `printer` option, opens the device's system
    * print dialog (e.g., AirPrint on iOS, Android print service). When
    * a `printer` reference is provided (from `getPrinters()`), sends
-   * the content directly to that printer without showing a dialog.
+   * the content directly to the current default receipt printer without
+   * showing a dialog. POS doesn't validate the specific printer identity.
    *
    * The `src` parameter accepts either:
    * - A relative path that will be appended to your app's [`application_url`](/docs/apps/build/cli-for-apps/app-configuration)
-   * - A full URL to your app's backend
+   * - A full URL to your app's backend. The URL must be an `https:` URL on the same origin as your app's `application_url` (Shopify-developed apps can also use `https://cdn.shopify.com`)
    *
    * The content at the URL is fetched with the extension's session token
    * for authentication. HTML, PDFs, and images are supported content types.
-   * PDFs can only be printed via the system print dialog: selecting a
+   * PDFs are handled per platform: on iOS they print through the system
+   * print dialog; on Android, POS downloads the PDF without showing a
+   * print dialog and the promise resolves without printing. Selecting a
    * `printer` with a PDF `src` throws, because hardware (receipt) printers
    * render HTML and image content only.
+   *
+   * A new print job replaces a previous job that's still being prepared,
+   * and the replaced job's promise rejects. Content preparation is
+   * asynchronous, so jobs aren't necessarily replaced in the order
+   * `print()` was called. Serialize `print()` calls when print order
+   * matters.
    *
    * @param src the source URL of the content to print.
    * @param options optional configuration for the print operation.
    * @returns A promise that resolves when the print job has been
-   *   successfully sent. For hardware printers, this means the rasterized
-   *   content has been dispatched — it does not wait for physical printing
+   *   successfully sent. For hardware printers, this means the content has
+   *   been sent to the printer bridge — it does not wait for physical printing
    *   to complete. For the system print dialog, this resolves when the
-   *   content is ready and the dialog appears.
+   *   content is ready and the dialog appears. On Android, a PDF source
+   *   resolves after the file downloads, without a print dialog.
    * @throws {Error} when the content cannot be fetched from `src`.
-   * @throws {Error} when the specified `printer` is not connected.
+   * @throws {Error} when a `printer` is selected but no receipt printer is connected.
    * @throws {Error} when `src` is a PDF and a `printer` is selected, since
    *   receipt printers render HTML and image content only.
    */
@@ -70,8 +82,10 @@ export interface PrintingApiContent {
 export interface PrintOptions {
   /**
    * A printer reference obtained from `getPrinters()`. When provided,
-   * the print job is sent directly to this printer without showing
-   * a system print dialog.
+   * the print job is sent directly to the current default receipt printer
+   * without showing a system print dialog. POS doesn't validate the
+   * printer's identity; the job fails if no receipt printer is connected
+   * when it runs.
    *
    * When omitted, the system print dialog is shown, allowing the
    * user to select a printer and configure print settings.

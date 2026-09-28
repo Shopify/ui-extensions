@@ -1,5 +1,10 @@
 /**
  * The available payment method types for POS transactions.
+ *
+ * Not every value is produced in every context. `Unknown` is returned only for
+ * sale transactions whose payment details can't be classified. On return and
+ * exchange transactions, unrecognized payment gateways are returned as
+ * `Custom`. `CardPresentRefund` isn't currently returned by POS.
  * @publicDocs
  */
 export type PaymentMethod =

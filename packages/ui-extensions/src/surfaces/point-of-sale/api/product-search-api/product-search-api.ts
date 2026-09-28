@@ -47,7 +47,9 @@ export interface ProductSearchParams extends PaginationParams {
  */
 export interface ProductSearchApiContent {
   /**
-   * Searches for products on the POS device using text queries and sorting options. Returns paginated results with up to 50 products per page. When a query string is provided, results are sorted by relevance. Use for implementing custom search interfaces, product discovery features, or filtered product listings.
+   * Searches for products using text queries and sorting options. Returns paginated results with up to 50 products per page. When a query string is provided, results are sorted by relevance. Use for implementing custom search interfaces, product discovery features, or filtered product listings.
+   *
+   * POS reads from the catalog source it selects. When POS reads from the local catalog, results are limited to products synchronized to the device; remote reads can access the remote catalog. When POS uses the remote catalog source, a failed search can resolve as an empty page, so an empty result isn't proof that the read succeeded. The returned promise can also reject, for example when arguments have the wrong type or a local read fails. Handle rejections around your calls.
    *
    * @param searchParams The parameters for the product search.
    */
@@ -56,7 +58,7 @@ export interface ProductSearchApiContent {
   ): Promise<PaginatedResult<Product>>;
 
   /**
-   * Retrieves detailed information for a single product by its ID. Returns `undefined` if the product doesn't exist or isn't available on the POS device. Use for displaying product details, validating product availability, or building product-specific workflows.
+   * Retrieves detailed information for a single product by its ID. Returns `undefined` if the product doesn't exist or isn't available in the catalog source POS reads from. Use for displaying product details, validating product availability, or building product-specific workflows.
    *
    * @param productId The ID of the product to lookup.
    */

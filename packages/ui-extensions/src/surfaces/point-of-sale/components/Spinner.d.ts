@@ -8,47 +8,48 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {SpinnerProps,Key, Ref} from './components-shared.d.ts';
+import type {SpinnerProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
+/**
+ * Displays a loading indicator while content or actions are in progress.
+ * @publicDocs
+ */
+export interface SpinnerJSXProps
+  extends Pick<SpinnerProps, 'id' | 'accessibilityLabel'> {}
+
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
- * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-    key?: Key;
-    ref?: Ref<TClass>;
-    slot?: Lowercase<string>;
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
 }
 /**
  * Used when an element has children.
- * @publicDocs
  */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
-    children?: ComponentChildren;
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
 }
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/** @publicDocs */
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
 export type HtmlElementTagNameProps<T> = T & HTMLElement;
 
-declare const tagName = "s-spinner";
-/** @publicDocs */
-export interface SpinnerJSXProps extends Pick<SpinnerProps, 'id' | 'accessibilityLabel'> {
-}
+declare const tagName = 's-spinner';
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: HtmlElementTagNameProps<SpinnerJSXProps>;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: HtmlElementTagNameProps<SpinnerJSXProps>;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: IntrinsicElementProps<SpinnerJSXProps>;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: IntrinsicElementProps<SpinnerJSXProps>;
     }
+  }
 }
 
-export { tagName };
-export type { SpinnerJSXProps };
+export {tagName};
+export type {SpinnerJSXProps};
