@@ -23,6 +23,7 @@ export type StandardComponents =
   | 'Modal'
   | 'NumberField'
   | 'Page'
+  | 'POSList'
   | 'PosBlock' // Case is important in 2025-10
   | 'ScrollBox'
   | 'SearchField'
