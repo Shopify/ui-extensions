@@ -3493,7 +3493,6 @@ interface CallbackEvent<T extends string> {
 declare const tagName$K = 's-badge';
 /**
  * Displays compact status text with optional semantic tone.
- * @publicDocs
  */
 interface BadgeJSXProps extends Pick<BadgeProps, 'id'> {
   /**
@@ -3526,7 +3525,6 @@ declare module 'preact' {
 declare const tagName$J = 's-banner';
 /**
  * Shows prominent status and messaging content with optional actions.
- * @publicDocs
  */
 interface BannerJSXProps extends Pick<BannerProps, 'heading' | 'id'> {
   /**
@@ -3576,7 +3574,6 @@ declare const tagName$I = 's-box';
 type PaddingKeyword$2 = SizeKeyword | 'none';
 /**
  * Provides a generic layout container with sizing and spacing controls.
- * @publicDocs
  */
 interface BoxJSXProps {
   /**
@@ -3711,7 +3708,6 @@ declare module 'preact' {
 declare const tagName$H = 's-button';
 /**
  * Triggers actions when selected by the merchant.
- * @publicDocs
  */
 interface ButtonJSXProps
   extends Pick<
@@ -3776,7 +3772,6 @@ declare module 'preact' {
 declare const tagName$G = 's-choice';
 /**
  * Represents a selectable option within a choice list.
- * @publicDocs
  */
 interface ChoiceJSXProps
   extends Pick<ChoiceProps, 'id' | 'value' | 'disabled' | 'selected'> {
@@ -3818,7 +3813,6 @@ declare module 'preact' {
 declare const tagName$F = 's-choice-list';
 /**
  * Groups one or more selectable choices.
- * @publicDocs
  */
 interface ChoiceListJSXProps
   extends Pick<ChoiceListProps, 'id' | 'values' | 'multiple'> {
@@ -3867,7 +3861,6 @@ declare module 'preact' {
 declare const tagName$E = 's-clickable';
 /**
  * Makes contained content interactive and clickable.
- * @publicDocs
  */
 interface ClickableJSXProps extends Pick<ClickableProps, 'id' | 'disabled'> {
   /**
@@ -3895,7 +3888,6 @@ declare module 'preact' {
 declare const tagName$D = 's-date-field';
 /**
  * Collects date input as text.
- * @publicDocs
  */
 interface DateFieldJSXProps
   extends Pick<
@@ -3947,8 +3939,7 @@ declare module 'preact' {
 
 declare const tagName$C = 's-date-picker';
 /**
- * Lets merchants select one or more dates from a calendar.
- * @publicDocs
+ * Lets merchants select a date from a calendar.
  */
 interface DatePickerJSXProps extends Pick<DatePickerProps, 'id' | 'value'> {
   /**
@@ -4006,7 +3997,6 @@ declare module 'preact' {
 declare const tagName$B = 's-date-spinner';
 /**
  * Lets merchants select a date using spinner controls.
- * @publicDocs
  */
 interface DateSpinnerJSXProps extends Pick<DateSpinnerProps, 'id' | 'value'> {
   /**
@@ -4061,7 +4051,6 @@ declare module 'preact' {
 declare const tagName$A = 's-divider';
 /**
  * Displays a visual separator between content sections.
- * @publicDocs
  */
 interface DividerJSXProps extends Pick<DividerProps, 'id' | 'direction'> {}
 declare global {
@@ -4079,8 +4068,7 @@ declare module 'preact' {
 
 declare const tagName$z = 's-email-field';
 /**
- * Collects and validates email address input.
- * @publicDocs
+ * Collects email address input.
  */
 interface EmailFieldJSXProps$1
   extends Pick<
@@ -4140,7 +4128,6 @@ declare module 'preact' {
 declare const tagName$y = 's-heading';
 /**
  * Displays heading text for grouping and hierarchy.
- * @publicDocs
  */
 interface HeadingJSXProps extends Pick<HeadingProps, 'id'> {
   /**
@@ -4292,7 +4279,6 @@ type SupportedIconNames = Extract<
 >;
 /**
  * Displays a predefined icon glyph.
- * @publicDocs
  */
 interface IconJSXProps
   extends Pick<IconProps, 'id' | 'tone' | 'color' | 'size'> {
@@ -4319,7 +4305,6 @@ declare module 'preact' {
 declare const tagName$w = 's-image';
 /**
  * Displays an image with sizing and fit controls.
- * @publicDocs
  */
 interface ImageJSXProps$1 extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**
@@ -4365,8 +4350,7 @@ declare const tagName$v = 's-modal';
  *
  * Modals block interaction with the underlying interface until the merchant resolves the modal content.
  *
- * Modals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/modal#events).
- * @publicDocs
+ * Modals don't automatically handle state management or persistence, so control visibility programmatically with the `command` and `commandFor` attributes. The events notify your code when the modal starts to show or hide.
  */
 interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   /**
@@ -4386,7 +4370,7 @@ interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   /**
    * The primary action button displayed in the modal.
    *
-   * The tone of the button is used to define the tone of the modal.
+   * Setting the button's tone to `critical` presents the modal with destructive styling for irreversible actions; other tones don't change the modal's appearance.
    *
    * If omitted, the modal uses the default tone and shows a 'Close' button, translated according to the user's locale.
    */
@@ -4417,7 +4401,6 @@ declare module 'preact' {
 declare const tagName$u = 's-number-field';
 /**
  * Collects numeric input with optional stepper controls.
- * @publicDocs
  */
 interface NumberFieldJSXProps
   extends Pick<
@@ -4565,7 +4548,6 @@ declare module 'preact' {
 declare const tagName$t = 's-page';
 /**
  * Provides the top-level page layout for extension content.
- * @publicDocs
  */
 interface PageJSXProps extends Pick<PageProps, 'id'> {
   /**
@@ -4608,7 +4590,6 @@ declare module 'preact' {
 declare const tagName$s = 's-pos-block';
 /**
  * Displays content in a POS block container with optional heading.
- * @publicDocs
  */
 interface PosBlockJSXProps extends Pick<POSBlockProps, 'id' | 'heading'> {
   /**
@@ -4654,7 +4635,6 @@ type PaddingKeyword$1 = SizeKeyword | 'none';
 declare const tagName$q = 's-scroll-box';
 /**
  * Provides a scrollable container for overflowing content.
- * @publicDocs
  */
 interface ScrollBoxJSXProps extends Pick<ScrollBoxProps, 'id'> {
   /**
@@ -4785,7 +4765,6 @@ declare module 'preact' {
 declare const tagName$p = 's-search-field';
 /**
  * Collects search queries for filtering and lookup workflows.
- * @publicDocs
  */
 interface SearchFieldJSXProps
   extends Pick<SearchFieldProps, 'id' | 'disabled' | 'placeholder' | 'value'> {
@@ -4830,7 +4809,6 @@ declare module 'preact' {
 declare const tagName$o = 's-section';
 /**
  * Groups related content into a titled section.
- * @publicDocs
  */
 interface SectionJSXProps extends Pick<SectionProps, 'id'> {
   /**
@@ -4883,7 +4861,6 @@ type PickedProps = Pick<
 >;
 /**
  * Arranges children in a horizontal or vertical stack.
- * @publicDocs
  */
 interface StackJSXProps extends PickedProps {
   /**
@@ -5071,7 +5048,6 @@ declare module 'preact' {
 declare const tagName$m = 's-text';
 /**
  * Renders styled textual content.
- * @publicDocs
  */
 interface TextJSXProps extends Pick<TextProps, 'id'> {
   /**
@@ -5118,7 +5094,6 @@ declare module 'preact' {
 declare const tagName$l = 's-text-area';
 /**
  * Collects multi-line text input from the merchant.
- * @publicDocs
  */
 interface TextAreaJSXProps$1
   extends Pick<
@@ -5188,7 +5163,6 @@ declare module 'preact' {
 declare const tagName$k = 's-text-field';
 /**
  * Collects single-line text input.
- * @publicDocs
  */
 interface TextFieldJSXProps
   extends Pick<
@@ -5248,7 +5222,6 @@ declare module 'preact' {
 declare const tagName$j = 's-tile';
 /**
  * Displays tappable content in a compact tile layout.
- * @publicDocs
  */
 interface TileJSXProps
   extends Pick<
@@ -5282,7 +5255,6 @@ declare module 'preact' {
 declare const tagName$i = 's-time-field';
 /**
  * Collects a time value.
- * @publicDocs
  */
 interface TimeFieldJSXProps
   extends Pick<
@@ -5335,7 +5307,6 @@ declare module 'preact' {
 declare const tagName$h = 's-time-picker';
 /**
  * Lets merchants select a time from a picker.
- * @publicDocs
  */
 interface TimePickerJSXProps extends Pick<TimePickerProps, 'id' | 'value'> {
   /**
@@ -5395,7 +5366,6 @@ declare const tagName$g = 's-link';
  * The link component makes text interactive, allowing users to trigger actions through tappable text. Use it for lightweight interactions, navigation triggers, or actions embedded within text content.
  *
  * Links support the command system for controlling other components declaratively. Use `command` and `commandFor` to show, hide, or toggle modals and other targetable elements. For primary actions like submitting forms or triggering operations, use [button](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/actions/button) instead.
- * @publicDocs
  */
 interface LinkJSXProps
   extends Pick<
@@ -5414,7 +5384,6 @@ interface LinkJSXProps
 
 /**
  * Displays an empty-state message with optional actions and supporting graphics.
- * @publicDocs
  */
 interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
   /**
@@ -5444,10 +5413,9 @@ interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
  *
  * - **HTML documents** (`text/html`) - Receipts, invoices, and formatted reports with CSS styling and embedded images.
  * - **Text files** (`text/plain`) - Plain text content such as simple receipts and data exports.
- * - **PDF files** (`application/pdf`) - Complex documents and compliance requirements. PDF handling varies by platform; on Android, PDF content is downloaded and opened in an external viewer.
+ * - **PDF files** (`application/pdf`) - Complex documents and compliance requirements. On Android, the component shows a placeholder instead of a PDF preview.
  *
  * [Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).
- * @publicDocs
  */
 interface EmbedJSXProps
   extends Pick<
@@ -5502,7 +5470,6 @@ interface EmbedJSXProps
 
 /**
  * Displays a loading indicator while content or actions are in progress.
- * @publicDocs
  */
 interface SpinnerJSXProps
   extends Pick<SpinnerProps, 'id' | 'accessibilityLabel'> {}
@@ -5510,7 +5477,6 @@ interface SpinnerJSXProps
 declare const tagName$f = 's-switch';
 /**
  * Allows merchants to toggle a setting on or off.
- * @publicDocs
  */
 interface SwitchJSXProps
   extends Pick<
@@ -5567,7 +5533,6 @@ interface SwitchJSXProps
 declare const tagName$e = 's-tabs';
 /**
  * Groups related content into selectable tabbed views.
- * @publicDocs
  */
 interface TabsJSXProps
   extends Pick<TabsProps, 'value' | 'defaultValue' | 'disabled'> {
@@ -5596,7 +5561,6 @@ interface TabsJSXProps
 
 /**
  * Presents the list of selectable tabs within a tabs component. Accepts only tab components as children.
- * @publicDocs
  */
 interface TabListJSXProps extends Pick<TabListProps, 'children'> {
   children?: ComponentChildren;
@@ -5604,7 +5568,6 @@ interface TabListJSXProps extends Pick<TabListProps, 'children'> {
 
 /**
  * Represents an individual tab inside a tabs component.
- * @publicDocs
  */
 interface TabJSXProps extends Pick<TabProps, 'controls' | 'disabled'> {
   children?: StringChildren;
@@ -5612,7 +5575,6 @@ interface TabJSXProps extends Pick<TabProps, 'controls' | 'disabled'> {
 
 /**
  * Represents content associated with a selected tab.
- * @publicDocs
  */
 interface TabPanelJSXProps extends Pick<TabPanelProps, 'id'> {
   children?: ComponentChildren;
@@ -5621,7 +5583,6 @@ interface TabPanelJSXProps extends Pick<TabPanelProps, 'id'> {
 declare const tagName$d = 's-text-area';
 /**
  * Collects multi-line text input from the merchant.
- * @publicDocs
  */
 interface TextAreaJSXProps
   extends Pick<
@@ -5673,8 +5634,7 @@ interface TextAreaJSXProps
 
 declare const tagName$c = 's-email-field';
 /**
- * Collects and validates email address input.
- * @publicDocs
+ * Collects email address input.
  */
 interface EmailFieldJSXProps
   extends Pick<
@@ -5716,7 +5676,6 @@ interface EmailFieldJSXProps
 
 /**
  * Displays an image with sizing and fit controls.
- * @publicDocs
  */
 interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**
@@ -5984,7 +5943,7 @@ export type {
  */
 interface ButtonEvents {
   /** Called when the button is activated. */
-  click?: (event: CallbackEvent<typeof tagName$H>) => void;
+  click?: ((event: CallbackEvent<typeof tagName$H>) => void) | undefined;
 }
 
 /**
@@ -6004,38 +5963,38 @@ interface Button {
    * @default '--auto'
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
-  command?: '--auto' | '--show' | '--hide' | '--toggle';
+  command?: '--auto' | '--show' | '--hide' | '--toggle' | undefined;
   /**
    * Sets the tone of the Button, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical';
+  tone?: 'auto' | 'neutral' | 'caution' | 'warning' | 'critical' | undefined;
   /**
    * Changes the visual appearance of the Button.
    * @default 'auto'
    */
-  variant?: 'auto' | 'primary' | 'secondary';
+  variant?: 'auto' | 'primary' | 'secondary' | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the Button meaning it cannot be clicked or receive focus.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * ID of a component that should respond to activations (e.g. clicks) on this component.
    *
    * See `command` for how to control the behavior of the target.
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
    */
-  commandFor?: string;
+  commandFor?: string | undefined;
   /**
    * Replaces content with a loading indicator while a background action is being performed.
    *
    * This also disables the Button.
    * @default false
    */
-  loading?: boolean;
+  loading?: boolean | undefined;
 }
 
 /**
@@ -6047,14 +6006,14 @@ interface Text {
    * Modify the color to be more or less intense.
    * @default 'base'
    */
-  color?: ColorKeyword;
+  color?: ColorKeyword | undefined;
   /**
    * Provide semantic meaning and default styling to the text.
    *
    * Other presentation properties on Text override the default styling.
    * @default 'generic'
    */
-  type?: 'strong' | 'small' | 'generic';
+  type?: 'strong' | 'small' | 'generic' | undefined;
   /**
    * Sets the tone of the component, based on the intention of the information being conveyed.
    * @default 'auto'
@@ -6066,9 +6025,10 @@ interface Text {
     | 'success'
     | 'caution'
     | 'warning'
-    | 'critical';
+    | 'critical'
+    | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6080,32 +6040,32 @@ interface ScrollBox {
    * Adjust the block size.
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the inline size.
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the maximum block size.
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the maximum inline size.
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the minimum block size.
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the minimum inline size.
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: SizeUnits | undefined;
   /**
    * Adjust the padding of all edges.
    *
@@ -6123,7 +6083,7 @@ interface ScrollBox {
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword> | undefined;
   /**
    * Adjust the block-padding.
    *
@@ -6132,21 +6092,24 @@ interface ScrollBox {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingBlock?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | PaddingKeyword;
+  paddingBlockStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | PaddingKeyword;
+  paddingBlockEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline padding.
    *
@@ -6155,23 +6118,26 @@ interface ScrollBox {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingInline?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | PaddingKeyword;
+  paddingInlineStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | PaddingKeyword;
+  paddingInlineEnd?: '' | PaddingKeyword | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6180,7 +6146,7 @@ interface ScrollBox {
  */
 interface TileEvents {
   /** Callback when the Tile is activated. */
-  click?: (event: CallbackEvent<typeof tagName$j>) => void;
+  click?: ((event: CallbackEvent<typeof tagName$j>) => void) | undefined;
 }
 
 /**
@@ -6192,31 +6158,31 @@ interface Tile {
    * Disables the Tile meaning it cannot be clicked or receive focus.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * A title that describes the content of the Tile.
    * @default ''
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * A numeric indicator rendered within the Tile (for example, a count or a step number).
    *
    * - When provided, the indicator is displayed inside the tile.
    * - Intended for small integers. It may clamp, truncate, or abbreviate larger values.
    */
-  itemCount?: number;
+  itemCount?: number | undefined;
   /**
    * Sets the tone of the Tile, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'>;
+  tone?: ExtractStrict<ToneKeyword, 'auto' | 'neutral' | 'accent'> | undefined;
   /**
    * Supporting text displayed below the heading.
    * @default ''
    */
-  subheading?: string;
+  subheading?: string | undefined;
 }
 
 /**
@@ -6242,19 +6208,19 @@ interface Banner {
    * Determines whether the banner is hidden.
    * @default false
    */
-  hidden?: boolean;
+  hidden?: boolean | undefined;
   /**
    * Sets the tone of the Banner, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: 'auto' | 'info' | 'success' | 'warning' | 'critical';
+  tone?: 'auto' | 'info' | 'success' | 'warning' | 'critical' | undefined;
   /**
    * The title of the banner.
    * @default ''
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6263,37 +6229,37 @@ interface Banner {
  */
 interface Box {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Adjust the block size.
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the inline size.
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the maximum block size.
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the maximum inline size.
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the minimum block size.
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the minimum inline size.
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: SizeUnits | undefined;
   /**
    * Adjust the padding of all edges.
    *
@@ -6311,7 +6277,7 @@ interface Box {
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword> | undefined;
   /**
    * Adjust the block-padding.
    *
@@ -6320,21 +6286,24 @@ interface Box {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingBlock?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | PaddingKeyword;
+  paddingBlockStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | PaddingKeyword;
+  paddingBlockEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline padding.
    *
@@ -6343,21 +6312,24 @@ interface Box {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: '' | MaybeTwoValuesShorthandProperty<PaddingKeyword>;
+  paddingInline?:
+    | ''
+    | MaybeTwoValuesShorthandProperty<PaddingKeyword>
+    | undefined;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | PaddingKeyword;
+  paddingInlineStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | PaddingKeyword;
+  paddingInlineEnd?: '' | PaddingKeyword | undefined;
 }
 
 /**
@@ -6369,24 +6341,24 @@ interface Icon {
    * The type of icon to display.
    * @default ''
    */
-  type?: SupportedIconNames;
+  type?: SupportedIconNames | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Sets the tone of the icon, based on the intention of the information being conveyed.
    * @default 'auto'
    */
-  tone?: ToneKeyword;
+  tone?: ToneKeyword | undefined;
   /**
    * Modify the color to be more or less intense.
    * @default 'base'
    */
-  color?: ColorKeyword;
+  color?: ColorKeyword | undefined;
   /**
    * Adjusts the size of the icon.
    * @default 'base'
    */
-  size?: SizeKeyword;
+  size?: SizeKeyword | undefined;
 }
 
 /**
@@ -6411,7 +6383,7 @@ interface Stack {
    * - `large none large small` means block-start padding is `large`, inline-end padding is `none`, block-end padding is `large` and inline-start padding is `small`.
    * @default 'none'
    */
-  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword>;
+  padding?: MaybeAllValuesShorthandProperty<PaddingKeyword> | undefined;
   /**
    * Adjust the block-padding.
    *
@@ -6420,21 +6392,23 @@ interface Stack {
    * This overrides the block value of `padding`.
    * @default '' - meaning no override
    */
-  paddingBlock?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingBlock?:
+    | MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>
+    | undefined;
   /**
    * Adjust the block-start padding.
    *
    * This overrides the block-start value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockStart?: '' | PaddingKeyword;
+  paddingBlockStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block-end padding.
    *
    * This overrides the block-end value of `paddingBlock`.
    * @default '' - meaning no override
    */
-  paddingBlockEnd?: '' | PaddingKeyword;
+  paddingBlockEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline padding.
    *
@@ -6443,96 +6417,98 @@ interface Stack {
    * This overrides the inline value of `padding`.
    * @default '' - meaning no override
    */
-  paddingInline?: MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>;
+  paddingInline?:
+    | MaybeTwoValuesShorthandProperty<'' | PaddingKeyword>
+    | undefined;
   /**
    * Adjust the inline-start padding.
    *
    * This overrides the inline-start value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineStart?: '' | PaddingKeyword;
+  paddingInlineStart?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the inline-end padding.
    *
    * This overrides the inline-end value of `paddingInline`.
    * @default '' - meaning no override
    */
-  paddingInlineEnd?: '' | PaddingKeyword;
+  paddingInlineEnd?: '' | PaddingKeyword | undefined;
   /**
    * Adjust the block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/block-size
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the maximum block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the maximum inline size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/max-inline-size
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the minimum block size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-block-size
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the minimum inline size.
    * **Mobile surfaces:** Avoid using percentage-based sizes. They do not behave as expected when placed within a scrollable container.
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/min-inline-size
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: SizeUnits | undefined;
   /** Aligns the Stack's children along the cross axis. */
-  alignItems?: AlignItemsKeyword;
+  alignItems?: AlignItemsKeyword | undefined;
   /** Aligns the Stack along the cross axis. */
-  alignContent?: AlignContentKeyword;
+  alignContent?: AlignContentKeyword | undefined;
   /**
    * Adjust spacing between elements.
    * A single value applies to both axes. A pair of values (for example, `large-100 large-500`) sets the block (row) and inline (column) axes respectively, matching the CSS `gap` shorthand order.
    * @default 'none'
    */
-  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword>;
+  gap?: MaybeTwoValuesShorthandProperty<SpacingKeyword> | undefined;
   /**
    * Adjust spacing between elements in the inline axis. This overrides the column value of gap.
    * @default '' - meaning no override
    */
-  columnGap?: '' | SpacingKeyword;
+  columnGap?: '' | SpacingKeyword | undefined;
   /**
    * Sets how the children are placed within the Stack. This uses logical properties.
    * @default 'block'
    * @implementation - the content will wrap if the direction is 'inline', and not wrap if the direction is 'block'
    */
-  direction?: 'block' | 'inline';
+  direction?: 'block' | 'inline' | undefined;
   /**
    * Adjust the inline size.
    * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/inline-size
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
    * Aligns the Stack along the main axis.
    * @see — https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content
    * @default 'normal'
    */
-  justifyContent?: JustifyContentKeyword;
+  justifyContent?: JustifyContentKeyword | undefined;
   /**
    * Adjust spacing between elements in the block axis. This overrides the row value of gap.
    * @default '' - meaning no override
    */
-  rowGap?: '' | SpacingKeyword;
+  rowGap?: '' | SpacingKeyword | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6551,9 +6527,10 @@ interface Badge {
     | 'success'
     | 'caution'
     | 'warning'
-    | 'critical';
+    | 'critical'
+    | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -6566,13 +6543,16 @@ interface ChoiceListEvents {
    * The event's `currentTarget.values` is always an array of selected choice
    * values, even when `multiple` is `false`.
    */
-  input?: (event: CallbackEvent<typeof tagName$F>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$F>) => void) | null | undefined;
   /**
    * Callback when the user changes a choice. Fires simultaneously with onInput.
    * The event's `currentTarget.values` is always an array of selected choice
    * values; in single-selection mode, only the first entry is rendered as selected.
    */
-  change?: (event: CallbackEvent<typeof tagName$F>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$F>) => void)
+    | null
+    | undefined;
 }
 
 /**
@@ -6591,14 +6571,14 @@ interface ChoiceList {
    * Use a unique `value` for each choice. Choices that share a value can't be
    * selected independently.
    */
-  values?: string[];
+  values?: string[] | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Whether multiple choices can be selected.
    * @default false
    */
-  multiple?: boolean;
+  multiple?: boolean | undefined;
 }
 
 /**
@@ -6613,7 +6593,7 @@ interface Choice {
    * A choice needs a `value` to be selectable. Use a unique value for each choice
    * in the list; choices that share a value can't be selected independently.
    */
-  value?: string;
+  value?: string | undefined;
   /**
    * Whether the choice is selected.
    *
@@ -6621,14 +6601,14 @@ interface Choice {
    * are combined.
    * @default false
    */
-  selected?: boolean;
+  selected?: boolean | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the control, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -6640,19 +6620,22 @@ interface DateFieldEvents {
    * Callback when the user confirms a date in the picker. Fires together with
    * `onChange` at selection time.
    */
-  input?: (event: CallbackEvent<typeof tagName$D>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$D>) => void) | null | undefined;
   /**
    * Callback when the user confirms a date in the picker. Fires together with
    * `onInput` at selection time, not on blur.
    */
-  change?: (event: CallbackEvent<typeof tagName$D>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$D>) => void)
+    | null
+    | undefined;
   /**
    * Callback when the element loses focus. Also fires right after a picker
    * selection is confirmed, and when the picker is dismissed without a selection.
    */
-  blur?: (event: CallbackEvent<typeof tagName$D>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$D>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$D>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$D>) => void) | null | undefined;
 }
 
 /**
@@ -6668,11 +6651,11 @@ interface DateField {
    * dates (for example, `2024-02-30`) currently roll over to a valid date instead
    * of being rejected.
    */
-  value?: string;
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6680,17 +6663,17 @@ interface DateField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -6698,7 +6681,7 @@ interface DateField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
 }
 
 /**
@@ -6707,9 +6690,9 @@ interface DateField {
  */
 interface ModalEvents {
   /** Callback when the modal starts to hide. Fired when a `commandFor` command requests the modal to close, before the closing transition completes. */
-  hide?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  hide?: ((event: CallbackEvent<typeof tagName$v>) => void | null) | undefined;
   /** Callback when the modal starts to show. Fired when a `commandFor` command requests the modal to open, before the opening transition completes. */
-  show?: (event: CallbackEvent<typeof tagName$v>) => void | null;
+  show?: ((event: CallbackEvent<typeof tagName$v>) => void | null) | undefined;
 }
 
 /**
@@ -6720,7 +6703,7 @@ interface ModalSlots {
   /**
    * The primary action button displayed in the modal.
    *
-   * The tone of the button is used to define the tone of the modal.
+   * Setting the button's tone to `critical` presents the modal with destructive styling for irreversible actions; other tones don't change the modal's appearance.
    *
    * If omitted, the modal uses the default tone and shows a 'Close' button, translated according to the user's locale.
    */
@@ -6734,7 +6717,7 @@ interface ModalSlots {
  *
  * Modals block interaction with the underlying interface until the merchant resolves the modal content.
  *
- * Modals don't automatically handle state management or persistence, so manage visibility and lifecycle programmatically through [events](/docs/api/pos-ui-extensions/{API_VERSION}/web-components/feedback-and-status-indicators/modal#events).
+ * Modals don't automatically handle state management or persistence, so control visibility programmatically with the `command` and `commandFor` attributes. The events notify your code when the modal starts to show or hide.
  * @publicDocs
  */
 interface Modal {
@@ -6743,9 +6726,9 @@ interface Modal {
    *
    * Required to control visibility: a button or link with `commandFor` set to this `id` shows, hides, or toggles the modal.
    */
-  id?: string;
+  id?: string | undefined;
   /** A title that describes the content of the Modal. */
-  heading?: string;
+  heading?: string | undefined;
 }
 
 /**
@@ -6754,16 +6737,19 @@ interface Modal {
  */
 interface TextFieldEvents {
   /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$k>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$k>) => void) | null | undefined;
   /**
    * Callback after editing completes, on blur or submit. Fires only when the value
    * changed since the field received focus.
    */
-  change?: (event: CallbackEvent<typeof tagName$k>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$k>) => void)
+    | null
+    | undefined;
   /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$k>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$k>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$k>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$k>) => void) | null | undefined;
 }
 
 /**
@@ -6785,11 +6771,11 @@ interface TextField {
    *
    * Set `value` and update it from `onInput` or `onChange` to control the field.
    */
-  value?: string;
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6797,19 +6783,19 @@ interface TextField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
   /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
+  placeholder?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -6817,12 +6803,12 @@ interface TextField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Specifies the maximum number of characters allowed.
    * @default Infinity
    */
-  maxLength?: number;
+  maxLength?: number | undefined;
 }
 
 /**
@@ -6835,13 +6821,16 @@ interface SearchFieldEvents {
    * string when the user clears the field with the clear button; clearing the field
    * doesn't fire `onChange`.
    */
-  input?: (event: CallbackEvent<typeof tagName$p>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$p>) => void) | null | undefined;
   /** Callback when the field loses focus after the user changes the value in the field. */
-  change?: (event: CallbackEvent<typeof tagName$p>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$p>) => void)
+    | null
+    | undefined;
   /** Callback when the field loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$p>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$p>) => void) | null | undefined;
   /** Callback when the field is focused. */
-  focus?: (event: CallbackEvent<typeof tagName$p>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$p>) => void) | null | undefined;
 }
 
 /**
@@ -6854,16 +6843,16 @@ interface SearchField {
    *
    * Set `value` and update it from `onInput` or `onChange` to control the field.
    */
-  value?: string;
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
+  placeholder?: string | undefined;
 }
 
 /**
@@ -6872,7 +6861,7 @@ interface SearchField {
  */
 interface ClickableEvents {
   /** Callback when the element is activated. */
-  click?: (event: CallbackEvent<typeof tagName$E>) => void;
+  click?: ((event: CallbackEvent<typeof tagName$E>) => void) | undefined;
 }
 
 /**
@@ -6881,7 +6870,7 @@ interface ClickableEvents {
  */
 interface Clickable {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the clickable, meaning it cannot be clicked or receive focus.
    *
@@ -6893,7 +6882,7 @@ interface Clickable {
    * This has no impact on the visual state by default,
    * but developers are encouraged to style the clickable accordingly.
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -6905,19 +6894,22 @@ interface TimeFieldEvents {
    * Callback when the user confirms a time in the picker. Fires together with
    * `onChange` at selection time.
    */
-  input?: (event: CallbackEvent<typeof tagName$i>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$i>) => void) | null | undefined;
   /**
    * Callback when the user confirms a time in the picker. Fires together with
    * `onInput` at selection time, not on blur.
    */
-  change?: (event: CallbackEvent<typeof tagName$i>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$i>) => void)
+    | null
+    | undefined;
   /**
    * Callback when the element loses focus. Also fires right after a picker
    * selection is confirmed, and when the picker is dismissed without a selection.
    */
-  blur?: (event: CallbackEvent<typeof tagName$i>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$i>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$i>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$i>) => void) | null | undefined;
 }
 
 /**
@@ -6934,21 +6926,21 @@ interface TimeField {
    * provided value are ignored. Values are interpreted in the device's local
    * timezone. The field displays times in 12-hour AM/PM format.
    */
-  value?: string;
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -6956,7 +6948,7 @@ interface TimeField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -6964,7 +6956,7 @@ interface TimeField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
 }
 
 /**
@@ -6976,17 +6968,20 @@ interface NumberFieldEvents {
    * Callback when the user makes any changes in the field. In stepper mode, fires
    * on every stepper button tap, together with `onChange`.
    */
-  input?: (event: CallbackEvent<typeof tagName$u>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$u>) => void) | null | undefined;
   /**
    * Callback after editing completes, on blur or submit. Fires only when the value
    * changed since the field received focus. In stepper mode, fires on every stepper
    * button tap, together with `onInput`.
    */
-  change?: (event: CallbackEvent<typeof tagName$u>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$u>) => void)
+    | null
+    | undefined;
   /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$u>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$u>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$u>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$u>) => void) | null | undefined;
 }
 
 /**
@@ -7014,7 +7009,7 @@ interface NumberField {
    * In stepper mode the field is always populated: an empty or unparsable value is
    * treated as `0`.
    */
-  value?: string;
+  value?: string | undefined;
   /**
    * The highest value accepted for the field.
    *
@@ -7022,7 +7017,7 @@ interface NumberField {
    * finishes and delivers the clamped value through `onInput`.
    * @default Infinity
    */
-  max?: number;
+  max?: number | undefined;
   /**
    * The lowest value accepted for the field.
    *
@@ -7030,13 +7025,13 @@ interface NumberField {
    * finishes and delivers the clamped value through `onInput`.
    * @default -Infinity
    */
-  min?: number;
+  min?: number | undefined;
   /**
    * Content to use as the field label.
    *
    * Label is not supported when using Stepper controls
    */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -7046,7 +7041,7 @@ interface NumberField {
    *
    * Details are not supported when using Stepper controls
    */
-  details?: string;
+  details?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -7056,14 +7051,14 @@ interface NumberField {
    * Required is not supported when using Stepper controls
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    *
    * Error is not supported when using Stepper controls
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Sets the virtual keyboard.
    *
@@ -7071,13 +7066,13 @@ interface NumberField {
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/inputmode
    * @default 'decimal'
    */
-  inputMode?: 'decimal' | 'numeric';
+  inputMode?: 'decimal' | 'numeric' | undefined;
   /**
    * A short hint that describes the expected value of the field.
    *
    * Placeholder text is not supported when using Stepper controls due to constrained space for the number field, especially on phones.
    */
-  placeholder?: string;
+  placeholder?: string | undefined;
   /**
    * Sets the type of controls displayed for the field.
    *
@@ -7089,14 +7084,14 @@ interface NumberField {
    * - `auto`: the presence of the controls depends on the surface and context.
    * @default 'auto'
    */
-  controls?: 'auto' | 'stepper' | 'none';
+  controls?: 'auto' | 'stepper' | 'none' | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -7105,17 +7100,20 @@ interface NumberField {
  */
 interface DatePickerEvents {
   /** Callback when the user selects a date from the picker. Fires after `onChange`. */
-  input?: (event: CallbackEvent<typeof tagName$C>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$C>) => void) | null | undefined;
   /** Callback when the user selects a date from the picker that is different to the current value. Fires before `onInput`. */
-  change?: (event: CallbackEvent<typeof tagName$C>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$C>) => void)
+    | null
+    | undefined;
   /** Callback when the date picker is dismissed. */
-  blur?: (event: CallbackEvent<typeof tagName$C>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$C>) => void) | null | undefined;
   /** Callback when the date picker is revealed. */
-  focus?: (event: CallbackEvent<typeof tagName$C>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$C>) => void) | null | undefined;
 }
 
 /**
- * Lets merchants select one or more dates from a calendar.
+ * Lets merchants select a date from a calendar.
  * @publicDocs
  */
 interface DatePicker {
@@ -7127,7 +7125,7 @@ interface DatePicker {
    * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
    * be shown.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * The current selected value.
    *
@@ -7139,7 +7137,7 @@ interface DatePicker {
    * `2024-02-30`) currently roll over to a valid date instead of being rejected.
    * @default ""
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 /**
@@ -7148,13 +7146,16 @@ interface DatePicker {
  */
 interface DateSpinnerEvents {
   /** Callback when the user makes a selection. Fires after `onChange`. */
-  input?: (event: CallbackEvent<typeof tagName$B>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$B>) => void) | null | undefined;
   /** Callback when the value changes. Only called when a different value is selected. Fires before `onInput`. */
-  change?: (event: CallbackEvent<typeof tagName$B>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$B>) => void)
+    | null
+    | undefined;
   /** Callback when the date spinner is dismissed. */
-  blur?: (event: CallbackEvent<typeof tagName$B>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$B>) => void) | null | undefined;
   /** Callback when the date spinner is revealed. */
-  focus?: (event: CallbackEvent<typeof tagName$B>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$B>) => void) | null | undefined;
 }
 
 /**
@@ -7170,7 +7171,7 @@ interface DateSpinner {
    * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
    * be shown.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * The current selected value for the spinner, as a date in `YYYY-MM-DD` format.
    *
@@ -7179,7 +7180,7 @@ interface DateSpinner {
    * `2024-02-30`) currently roll over to a valid date instead of being rejected.
    * @default ""
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 /**
@@ -7201,9 +7202,9 @@ interface Section {
    *
    * If omitted, and no secondaryActions are provided, the section will be rendered without a header.
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -7212,7 +7213,7 @@ interface Section {
  */
 interface Heading {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -7221,13 +7222,16 @@ interface Heading {
  */
 interface TimePickerEvents {
   /** Callback when the user selects a time from the picker. Fires after `onChange`. */
-  input?: (event: CallbackEvent<typeof tagName$h>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$h>) => void) | null | undefined;
   /** Callback when the user selects a time from the picker that is different to the current value. Fires before `onInput`. */
-  change?: (event: CallbackEvent<typeof tagName$h>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$h>) => void)
+    | null
+    | undefined;
   /** Callback when the time picker is dismissed. */
-  blur?: (event: CallbackEvent<typeof tagName$h>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$h>) => void) | null | undefined;
   /** Callback when the time picker is revealed. */
-  focus?: (event: CallbackEvent<typeof tagName$h>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$h>) => void) | null | undefined;
 }
 
 /**
@@ -7243,7 +7247,7 @@ interface TimePicker {
    * and to receive `onFocus` and `onBlur` events. A picker without an `id` can't
    * be shown.
    */
-  id?: string;
+  id?: string | undefined;
   /**
    * The current selected value.
    *
@@ -7255,7 +7259,7 @@ interface TimePicker {
    * interpreted in the device's local timezone.
    * @default ''
    */
-  value?: string;
+  value?: string | undefined;
 }
 
 /**
@@ -7276,14 +7280,14 @@ interface Image {
    * @default 'fill'
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
-  inlineSize?: 'fill' | 'auto';
+  inlineSize?: 'fill' | 'auto' | undefined;
   /**
    * The image source, which should be a remote URL.
    *
    * When no `src` is provided or the image fails to load, a placeholder is rendered.
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
-  src?: string;
+  src?: string | undefined;
   /**
    * Border radius for the image corners.
    *
@@ -7305,16 +7309,18 @@ interface Image {
    * - Special values: `max`, `none`
    * @default 'none'
    */
-  borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
+  borderRadius?:
+    | MaybeAllValuesShorthandProperty<BorderRadiusKeyword>
+    | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Determines how the content of the image is resized to fit its container.
    * The image is positioned in the center of the container.
    * @default 'contain'
    * @see ://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
    */
-  objectFit?: 'contain' | 'cover';
+  objectFit?: 'contain' | 'cover' | undefined;
   /**
    * An alternative text description that describe the image for the reader to
    * understand what it is about. It is extremely useful for both users using
@@ -7331,7 +7337,7 @@ interface Image {
    * @default `''`
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
    */
-  alt?: string;
+  alt?: string | undefined;
 }
 
 /**
@@ -7354,11 +7360,11 @@ interface Page {
    * The main page heading, displayed in the action bar at the top of the page.
    * @default : ''
    */
-  heading?: string;
+  heading?: string | undefined;
   /** A secondary page heading, displayed under the main heading in the action bar. */
-  subheading?: string;
+  subheading?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -7376,25 +7382,25 @@ interface PosBlockSlots {
  */
 interface PosBlock {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * The heading to display within the POSBlock.
    *
    * If not provided, the description of the extension will be used when a heading is appropriate.
    */
-  heading?: string;
+  heading?: string | undefined;
 }
 
 /** @private */
 interface QrCode {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * The content to be encoded in the QR code, which can be any string such as a URL, email address, plain text, etc.
    * Specific string formatting can trigger actions on the user's device when scanned, like opening geolocation
    * coordinates on a map, opening a preferred app or app store entry, preparing an email, text message, and more.
    */
-  content?: string;
+  content?: string | undefined;
 }
 
 /**
@@ -7403,12 +7409,12 @@ interface QrCode {
  */
 interface Divider {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * Specify the direction of the divider. This uses [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values).
    * @default 'inline'
    */
-  direction?: 'inline' | 'block';
+  direction?: 'inline' | 'block' | undefined;
 }
 
 /**
@@ -7417,7 +7423,7 @@ interface Divider {
  */
 interface LinkEvents {
   /** Called when the link is activated. */
-  click?: (event: CallbackEvent<typeof tagName$g>) => void;
+  click?: ((event: CallbackEvent<typeof tagName$g>) => void) | undefined;
 }
 
 /**
@@ -7428,14 +7434,14 @@ interface LinkEvents {
  */
 interface Link {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * ID of a component that should respond to activations (e.g. clicks) on this component.
    *
    * See `command` for how to control the behavior of the target.
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#commandfor
    */
-  commandFor?: string;
+  commandFor?: string | undefined;
   /**
    * Sets the action the `commandFor` should take when this clickable is activated.
    *
@@ -7449,14 +7455,14 @@ interface Link {
    * @default '--auto'
    * @see ://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#command
    */
-  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy';
+  command?: '--auto' | '--show' | '--hide' | '--toggle' | '--copy' | undefined;
   /**
    * A label that describes the purpose or contents of the Link. It will be read to users using assistive technologies such as screen readers.
    *
    * Use this when using only an icon or the content of the link is not enough context
    * for users using assistive technologies.
    */
-  accessibilityLabel?: string;
+  accessibilityLabel?: string | undefined;
 }
 
 /**
@@ -7478,9 +7484,9 @@ interface EmptyStateSlots {
  */
 interface EmptyState {
   /** The subheading of the EmptyState. */
-  subheading?: string;
+  subheading?: string | undefined;
   /** The heading of the EmptyState. */
-  heading?: string;
+  heading?: string | undefined;
 }
 
 /**
@@ -7492,7 +7498,7 @@ interface EmptyState {
  *
  * - **HTML documents** (`text/html`) - Receipts, invoices, and formatted reports with CSS styling and embedded images.
  * - **Text files** (`text/plain`) - Plain text content such as simple receipts and data exports.
- * - **PDF files** (`application/pdf`) - Complex documents and compliance requirements. PDF handling varies by platform; on Android, PDF content is downloaded and opened in an external viewer.
+ * - **PDF files** (`application/pdf`) - Complex documents and compliance requirements. On Android, the component shows a placeholder instead of a PDF preview.
  *
  * [Learn how to build a print extension in POS](/docs/apps/build/pos/build-print-extension).
  * @publicDocs
@@ -7502,37 +7508,37 @@ interface Embed {
    * Adjust the block size.
    * @default 'auto'
    */
-  blockSize?: SizeUnitsOrAuto;
+  blockSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the minimum block size.
    * @default '0'
    */
-  minBlockSize?: SizeUnits;
+  minBlockSize?: SizeUnits | undefined;
   /**
    * Adjust the maximum block size.
    * @default 'none'
    */
-  maxBlockSize?: SizeUnitsOrNone;
+  maxBlockSize?: SizeUnitsOrNone | undefined;
   /**
    * Adjust the inline size.
    * @default 'auto'
    */
-  inlineSize?: SizeUnitsOrAuto;
+  inlineSize?: SizeUnitsOrAuto | undefined;
   /**
    * Adjust the minimum inline size.
    * @default '0'
    */
-  minInlineSize?: SizeUnits;
+  minInlineSize?: SizeUnits | undefined;
   /**
    * Adjust the maximum inline size.
    * @default 'none'
    */
-  maxInlineSize?: SizeUnitsOrNone;
+  maxInlineSize?: SizeUnitsOrNone | undefined;
   /**
    * The content type of the file to display.
    * @default 'text/html'
    */
-  type?: 'text/html' | 'text/plain' | 'application/pdf';
+  type?: 'text/html' | 'text/plain' | 'application/pdf' | undefined;
   /**
    * The source of the file to preview.
    *
@@ -7546,13 +7552,13 @@ interface Embed {
    * - PDF files
    * @implementation If this value is omitted, the component should render an empty state or nothing.
    */
-  src?: string;
+  src?: string | undefined;
   /**
    * A label that describes the purpose or contents of the Embed. It will be read to users
    * using assistive technologies such as screen readers.
    * @implementation for web-based implementations, this should map to the [title](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/title) attribute
    */
-  accessibilityLabel?: string;
+  accessibilityLabel?: string | undefined;
 }
 
 /**
@@ -7561,7 +7567,7 @@ interface Embed {
  */
 interface Spinner {
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /**
    * A label that describes the purpose of the progress. When set,
    * it will be announced to users using assistive technologies and will
@@ -7569,7 +7575,7 @@ interface Spinner {
    * recommended if there is no accompanying text describing that something
    * is loading.
    */
-  accessibilityLabel?: string;
+  accessibilityLabel?: string | undefined;
 }
 
 /**
@@ -7581,12 +7587,15 @@ interface SwitchEvents {
    * Callback when the user toggles the switch. Fires together with `onChange`,
    * after it. Read the new state from `event.currentTarget.checked`.
    */
-  input?: (event: CallbackEvent<typeof tagName$f>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$f>) => void) | null | undefined;
   /**
    * Callback when the user toggles the switch. Fires together with `onInput`;
    * `onChange` fires first. Read the new state from `event.currentTarget.checked`.
    */
-  change?: (event: CallbackEvent<typeof tagName$f>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$f>) => void)
+    | null
+    | undefined;
 }
 
 /**
@@ -7601,7 +7610,7 @@ interface Switch {
    * element and can be read back in event callbacks; it doesn't affect the switch
    * state and isn't submitted with any form.
    */
-  value?: string;
+  value?: string | undefined;
   /**
    * Whether the switch is on.
    *
@@ -7610,7 +7619,7 @@ interface Switch {
    * state, starting from `defaultChecked`.
    * @default false
    */
-  checked?: boolean;
+  checked?: boolean | undefined;
   /**
    * Whether the switch is on when it first renders.
    *
@@ -7618,19 +7627,19 @@ interface Switch {
    * ignored. Use `checked` to control the state after the first render.
    * @default false
    */
-  defaultChecked?: boolean;
+  defaultChecked?: boolean | undefined;
   /**
    * Disables the control, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * A label used for users using assistive technologies like screen readers. When set, any children or `label` supplied will not be announced.
    * This can also be used to display a control without a visual label, while still providing context to users using screen readers.
    */
-  accessibilityLabel?: string;
+  accessibilityLabel?: string | undefined;
   /** Visual content to use as the control label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -7638,12 +7647,12 @@ interface Switch {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Changes the visibility of the component's label.
    *
@@ -7651,10 +7660,12 @@ interface Switch {
    * - `exclusive`: the label is visually hidden but remains in the accessibility tree.
    * @default 'visible'
    */
-  labelAccessibilityVisibility?: ExtractStrict<
-    'visible' | 'hidden' | 'exclusive',
-    'visible' | 'exclusive'
-  >;
+  labelAccessibilityVisibility?:
+    | ExtractStrict<
+        'visible' | 'hidden' | 'exclusive' | undefined,
+        'visible' | 'exclusive'
+      >
+    | undefined;
 }
 
 /**
@@ -7667,7 +7678,10 @@ interface TabsEvents {
    *
    * Fires on every tab selection, including when the current tab is selected again.
    */
-  change?: (event: CallbackEvent<typeof tagName$e>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$e>) => void)
+    | null
+    | undefined;
 }
 
 /**
@@ -7681,16 +7695,16 @@ interface Tabs {
    * This should match the `id` prop of one of the TabPanel components.
    * When neither `value` nor `defaultValue` is provided, the first rendered tab panel is selected.
    */
-  value?: string;
+  value?: string | undefined;
   /**
    * The default value of the selected tab.
    *
    * This should match the `id` prop of one of the TabPanel components.
    * Sets the initial selected tab in uncontrolled usage. Setting `value` afterwards overrides it.
    */
-  defaultValue?: string;
+  defaultValue?: string | undefined;
   /** Disables all tabs and prevents user interaction. */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -7705,12 +7719,12 @@ interface TabList {}
  */
 interface Tab {
   /** Corresponds to the `id` property of the TabPanel component that will be displayed when selected */
-  controls?: string;
+  controls?: string | undefined;
   /**
    * Disables the control, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**
@@ -7722,7 +7736,7 @@ interface TabPanel {
    * The id of the TabPanel used for identification in the Tabs component.
    * Must match the `controls` prop of the corresponding Tab component.
    */
-  id?: string;
+  id?: string | undefined;
 }
 
 /**
@@ -7731,16 +7745,19 @@ interface TabPanel {
  */
 interface TextAreaEvents {
   /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$l>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$l>) => void) | null | undefined;
   /**
    * Callback after editing completes, on blur. Fires only when the value
    * changed since the field received focus.
    */
-  change?: (event: CallbackEvent<typeof tagName$l>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$l>) => void)
+    | null
+    | undefined;
   /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$l>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$l>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$l>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$l>) => void) | null | undefined;
 }
 
 /**
@@ -7753,7 +7770,7 @@ interface TextArea {
    *
    * Set `value` and update it from `onInput` or `onChange` to control the field.
    */
-  value?: string;
+  value?: string | undefined;
   /**
    * A number of visible text lines.
    *
@@ -7761,11 +7778,11 @@ interface TextArea {
    * text can be entered. Values are clamped between 1 and 8.
    * @default 2
    */
-  rows?: number;
+  rows?: number | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -7773,19 +7790,19 @@ interface TextArea {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
   /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
+  placeholder?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -7793,12 +7810,12 @@ interface TextArea {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Specifies the maximum number of characters allowed.
    * @default Infinity
    */
-  maxLength?: number;
+  maxLength?: number | undefined;
 }
 
 /**
@@ -7807,20 +7824,23 @@ interface TextArea {
  */
 interface EmailFieldEvents {
   /** Callback when the user makes any changes in the field. */
-  input?: (event: CallbackEvent<typeof tagName$z>) => void;
+  input?: ((event: CallbackEvent<typeof tagName$z>) => void) | null | undefined;
   /**
    * Callback after editing completes, on blur or submit. Fires only when the value
    * changed since the field received focus.
    */
-  change?: (event: CallbackEvent<typeof tagName$z>) => void;
+  change?:
+    | ((event: CallbackEvent<typeof tagName$z>) => void)
+    | null
+    | undefined;
   /** Callback when the element loses focus. */
-  blur?: (event: CallbackEvent<typeof tagName$z>) => void;
+  blur?: ((event: CallbackEvent<typeof tagName$z>) => void) | null | undefined;
   /** Callback when the element receives focus. */
-  focus?: (event: CallbackEvent<typeof tagName$z>) => void;
+  focus?: ((event: CallbackEvent<typeof tagName$z>) => void) | null | undefined;
 }
 
 /**
- * Collects and validates email address input.
+ * Collects email address input.
  * @publicDocs
  */
 interface EmailField {
@@ -7829,23 +7849,23 @@ interface EmailField {
    *
    * Set `value` and update it from `onInput` or `onChange` to control the field.
    */
-  value?: string;
+  value?: string | undefined;
   /** A unique identifier for the element. */
-  id?: string;
+  id?: string | undefined;
   /** Content to use as the field label. */
-  label?: string;
+  label?: string | undefined;
   /** A short hint that describes the expected value of the field. */
-  placeholder?: string;
+  placeholder?: string | undefined;
   /**
    * Disables the field, disallowing any interaction.
    * @default false
    */
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   /**
    * Indicate an error to the user. The field will be given a specific stylistic treatment
    * to communicate problems that have to be resolved immediately.
    */
-  error?: string;
+  error?: string | undefined;
   /**
    * Whether the field needs a value. This requirement adds semantic value
    * to the field, but it will not cause an error to appear automatically.
@@ -7853,12 +7873,12 @@ interface EmailField {
    * so with the `error` property.
    * @default false
    */
-  required?: boolean;
+  required?: boolean | undefined;
   /**
    * Specifies the maximum number of characters allowed.
    * @default Infinity
    */
-  maxLength?: number;
+  maxLength?: number | undefined;
   /**
    * Additional text to provide context or guidance for the field.
    * This text is displayed along with the field and its label
@@ -7866,7 +7886,7 @@ interface EmailField {
    *
    * This will also be exposed to screen reader users.
    */
-  details?: string;
+  details?: string | undefined;
 }
 declare module 'react' {
   namespace JSX {

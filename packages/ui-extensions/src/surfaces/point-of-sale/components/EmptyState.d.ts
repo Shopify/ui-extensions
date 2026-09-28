@@ -10,41 +10,18 @@
 /// <reference lib="DOM" />
 import type {
   EmptyStateProps,
+  ComponentChild,
   Key,
   Ref,
-  ComponentChild,
 } from './components-shared.d.ts';
 
-/** @publicDocs */
-export type ComponentChildren = any;
 /**
- * Used when an element does not have children.
+ * Displays an empty-state message with optional actions and supporting graphics.
  * @publicDocs
  */
-export interface BaseElementProps<TClass = HTMLElement> {
-  key?: Key;
-  ref?: Ref<TClass>;
-  slot?: Lowercase<string>;
-}
-/**
- * Used when an element has children.
- * @publicDocs
- */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement>
-  extends BaseElementProps<TClass> {
-  children?: ComponentChildren;
-}
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T &
-  BaseElementPropsWithChildren<T & HTMLElement>;
-/** @publicDocs */
-export type HtmlElementTagNameProps<T> = T & HTMLElement;
-
-declare const tagName = 's-empty-state';
-/** @publicDocs */
 export interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
   /**
-   * The subheading of the empty state.
+   * The subheading of the EmptyState.
    */
   subheading?: string;
   /**
@@ -56,24 +33,41 @@ export interface EmptyStateJSXProps extends Pick<EmptyStateProps, 'heading'> {
    */
   secondaryActions?: ComponentChild;
   /**
-   * The graphic to display in the empty state. The only supported components is icon, with a type of `alert-circle`, `search`, `info`, or `circle-info`.
+   * The graphic to display in the EmptyState. The only supported component is `Icon`, with a type of `alert-circle`, `search`, or `info`.
    */
   graphic?: ComponentChild;
 }
-/** @publicDocs */
-export type ElementProps = Omit<
-  EmptyStateJSXProps,
-  'primaryAction' | 'secondaryActions' | 'graphic'
->;
+
+export type ComponentChildren = any;
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+
+declare const tagName = 's-empty-state';
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: HtmlElementTagNameProps<ElementProps>;
+    [tagName]: HtmlElementTagNameProps<EmptyStateJSXProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: IntrinsicElementProps<ElementProps>;
+      [tagName]: IntrinsicElementProps<EmptyStateJSXProps>;
     }
   }
 }

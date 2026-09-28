@@ -15,106 +15,87 @@ import type {
   ComponentChild,
 } from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
- * @publicDocs
+ * Used when an element does not have children.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-  /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
   key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
   ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
   slot?: Lowercase<string>;
 }
 /**
- * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
+ * Used when an element has children.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: ComponentChildren;
 }
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/**
- * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
- * @publicDocs
- */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  /**
-   * The element that the event listener is attached to.
-   */
-  currentTarget: HTMLElementTagNameMap[T];
-  /**
-   * Whether the event bubbles up through the DOM tree.
-   */
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
   bubbles?: boolean;
-  /**
-   * Whether the event can be canceled.
-   */
   cancelable?: boolean;
-  /**
-   * Whether the event will trigger listeners outside of a shadow root.
-   */
   composed?: boolean;
-  /**
-   * Additional data associated with the event.
-   */
   detail?: any;
-  /**
-   * The current phase of the event flow.
-   */
   eventPhase: number;
-  /**
-   * The element that triggered the event.
-   */
-  target: HTMLElementTagNameMap[T] | null;
+  target: ElementForTag<T> | null;
 }
 
 declare const tagName = 's-modal';
-/** @publicDocs */
+/**
+ * The modal component displays content in an overlay that requires merchant attention. Use modals to present critical information, confirmations, or focused tasks while maintaining page context.
+ *
+ * Modals block interaction with the underlying interface until the merchant resolves the modal content.
+ *
+ * Modals don't automatically handle state management or persistence, so control visibility programmatically with the `command` and `commandFor` attributes. The events notify your code when the modal starts to show or hide.
+ * @publicDocs
+ */
 export interface ModalJSXProps extends Pick<ModalProps, 'id' | 'heading'> {
   /**
-   * The callback when the modal is hidden. Use this event to perform cleanup tasks, update application state, or trigger other actions when the modal is dismissed or closed.
+   * A unique identifier for the element.
+   *
+   * Required to control visibility: a button or link with `commandFor` set to this `id` shows, hides, or toggles the modal.
+   */
+  id?: string;
+  /**
+   * Callback when the modal starts to hide. Fired when a `commandFor` command requests the modal to close, before the closing transition completes.
    */
   onHide?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * The callback when the modal is shown. Use this event to initialize modal content, focus specific elements, or perform setup tasks when the modal becomes visible.
+   * Callback when the modal starts to show. Fired when a `commandFor` command requests the modal to open, before the opening transition completes.
    */
   onShow?: (event: CallbackEvent<typeof tagName>) => void | null;
   /**
-   * The primary action button displayed in the modal. The tone of the button is used to define the tone of the modal. If omitted, the modal will default to an `'info'` tone, and show an OK button, translated according to the user's locale.
+   * The primary action button displayed in the modal.
+   *
+   * Setting the button's tone to `critical` presents the modal with destructive styling for irreversible actions; other tones don't change the modal's appearance.
+   *
+   * If omitted, the modal uses the default tone and shows a 'Close' button, translated according to the user's locale.
    */
   primaryAction?: ComponentChild;
   /**
-   * The secondary action buttons displayed in the modal. Use this slot to provide alternative actions or cancel options that give users flexibility in how they respond to the modal.
+   * The secondary action buttons displayed in the modal. At most two secondary actions are rendered.
    */
   secondaryActions?: ComponentChild;
   /**
-   * The child elements to render within this component.
+   * The content of the Modal.
    */
   children?: ComponentChildren;
 }
-/** @publicDocs */
 export type ElementProps = Omit<
   ModalJSXProps,
   'primaryAction' | 'secondaryActions'
 >;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps & HTMLElement;
+    [tagName]: HtmlElementTagNameProps<ElementProps>;
   }
 }
 declare module 'preact' {

@@ -6,7 +6,7 @@ import type {ReadonlySignalLike} from '../../../../shared';
  */
 export interface LocaleApiContent {
   /**
-   * Provides read-only access to the current IETF-formatted locale and allows subscribing to locale changes. The `value` property provides the current locale, and `subscribe` allows listening to changes. Use for internationalization, locale-specific formatting, and reactive updates when merchants change language settings.
+   * Provides read-only access to the current IETF-formatted locale and allows subscribing to locale changes. The `value` property provides the current locale, and `subscribe` allows listening to changes. Use for internationalization, locale-specific formatting, and reactive updates when merchants change language settings. At cold start, the value can briefly reflect the device locale before the POS app locale is applied.
    */
   current: ReadonlySignalLike<string>;
 }

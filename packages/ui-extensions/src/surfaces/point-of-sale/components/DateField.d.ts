@@ -10,103 +10,82 @@
 /// <reference lib="DOM" />
 import type {DateFieldProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
- * @publicDocs
+ * Used when an element does not have children.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-  /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
   key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
   ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
   slot?: Lowercase<string>;
 }
 /**
- * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
+ * Used when an element has children.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: ComponentChildren;
 }
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/**
- * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
- * @publicDocs
- */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  /**
-   * The element that the event listener is attached to.
-   */
-  currentTarget: HTMLElementTagNameMap[T];
-  /**
-   * Whether the event bubbles up through the DOM tree.
-   */
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
   bubbles?: boolean;
-  /**
-   * Whether the event can be canceled.
-   */
   cancelable?: boolean;
-  /**
-   * Whether the event will trigger listeners outside of a shadow root.
-   */
   composed?: boolean;
-  /**
-   * Additional data associated with the event.
-   */
   detail?: any;
-  /**
-   * The current phase of the event flow.
-   */
   eventPhase: number;
-  /**
-   * The element that triggered the event.
-   */
-  target: HTMLElementTagNameMap[T] | null;
+  target: ElementForTag<T> | null;
 }
 
 declare const tagName = 's-date-field';
-/** @publicDocs */
+/**
+ * Collects date input as text.
+ * @publicDocs
+ */
 export interface DateFieldJSXProps
   extends Pick<
     DateFieldProps,
-    'id' | 'label' | 'details' | 'value' | 'disabled' | 'error'
+    'id' | 'label' | 'details' | 'value' | 'disabled' | 'error' | 'required'
   > {
   /**
-   * Called when the user makes any changes in the field.
+   * The current value for the field, as a date in `YYYY-MM-DD` format (for
+   * example, `"2024-05-15"`). If omitted or empty, the field is empty.
+   *
+   * Values are interpreted in the device's local timezone. Out-of-range calendar
+   * dates (for example, `2024-02-30`) currently roll over to a valid date instead
+   * of being rejected.
+   */
+  value?: DateFieldProps['value'];
+  /**
+   * Callback when the user confirms a date in the picker. Fires together with
+   * `onChange` at selection time.
    */
   onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Called after editing completes, typically on blur.
+   * Callback when the user confirms a date in the picker. Fires together with
+   * `onInput` at selection time, not on blur.
    */
   onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Called when the element loses focus.
+   * Callback when the element loses focus. Also fires right after a picker
+   * selection is confirmed, and when the picker is dismissed without a selection.
    */
   onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
   /**
-   * Called when the element receives focus.
+   * Callback when the element receives focus.
    */
   onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
 }
-/** @publicDocs */
 export type ElementProps = Omit<DateFieldJSXProps, 'accessory'>;
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ElementProps & HTMLElement;
+    [tagName]: HtmlElementTagNameProps<ElementProps>;
   }
 }
 declare module 'preact' {

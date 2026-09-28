@@ -10,90 +10,58 @@
 /// <reference lib="DOM" />
 import type {ClickableProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
- * @publicDocs
+ * Used when an element does not have children.
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-  /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
   key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
   ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
   slot?: Lowercase<string>;
 }
 /**
- * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
+ * Used when an element has children.
  */
 export interface BaseElementPropsWithChildren<TClass = HTMLElement>
   extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
   children?: ComponentChildren;
 }
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/**
- * Represents the event object passed to callback functions when interactive events occur. Contains metadata about the event, including the target element, event phase, and propagation behavior.
- * @publicDocs
- */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-  /**
-   * The element that the event listener is attached to.
-   */
-  currentTarget: HTMLElementTagNameMap[T];
-  /**
-   * Whether the event bubbles up through the DOM tree.
-   */
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
   bubbles?: boolean;
-  /**
-   * Whether the event can be canceled.
-   */
   cancelable?: boolean;
-  /**
-   * Whether the event will trigger listeners outside of a shadow root.
-   */
   composed?: boolean;
-  /**
-   * Additional data associated with the event.
-   */
   detail?: any;
-  /**
-   * The current phase of the event flow. Returns a number indicating which phase the event is in: 1 (capturing phase), 2 (at target), or 3 (bubbling phase). This helps determine how the event is propagating through the DOM hierarchy.
-   */
   eventPhase: number;
-  /**
-   * The element that triggered the event.
-   */
-  target: HTMLElementTagNameMap[T] | null;
+  target: ElementForTag<T> | null;
 }
 
 declare const tagName = 's-clickable';
-/** @publicDocs */
+/**
+ * Makes contained content interactive and clickable.
+ * @publicDocs
+ */
 export interface ClickableJSXProps
   extends Pick<ClickableProps, 'id' | 'disabled'> {
   /**
-   * The callback when the element is activated.
+   * Callback when the element is activated.
    */
   onClick?: (event: CallbackEvent<typeof tagName>) => void;
   /**
-   * The child elements to render within this component.
+   * The content of the Clickable.
    */
   children?: ComponentChildren;
 }
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ClickableJSXProps & HTMLElement;
+    [tagName]: HtmlElementTagNameProps<ClickableJSXProps>;
   }
 }
 declare module 'preact' {

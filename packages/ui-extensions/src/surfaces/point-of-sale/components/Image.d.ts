@@ -9,61 +9,41 @@
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
 import type {
-  BorderRadiusKeyword,
   ImageProps,
-  Key,
+  BorderRadiusKeyword,
   MaybeAllValuesShorthandProperty,
+  Key,
   Ref,
 } from './components-shared.d.ts';
 
-/** @publicDocs */
-export type ComponentChildren = any;
 /**
- * The base props for elements without children, providing key, ref, and slot properties.
+ * Displays an image with sizing and fit controls.
  * @publicDocs
  */
-export interface BaseElementProps<TClass = HTMLElement> {
+export interface ImageJSXProps
+  extends Pick<ImageProps, 'id' | 'objectFit' | 'alt'> {
   /**
-   * A unique identifier for the element in lists. Used by Preact for efficient rendering and reconciliation.
-   */
-  key?: Key;
-  /**
-   * A reference to the underlying DOM element. Commonly used to access the element directly for imperative operations.
-   */
-  ref?: Ref<TClass>;
-  /**
-   * The named [slot](/docs/api/polaris/using-polaris-web-components#slots) this element should be placed in when used within a web component.
-   */
-  slot?: Lowercase<string>;
-}
-/**
- * The base props for elements with children, extending `BaseElementProps` with children support.
- * @publicDocs
- */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement>
-  extends BaseElementProps<TClass> {
-  /**
-   * The child elements to render within this component.
-   */
-  children?: ComponentChildren;
-}
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-
-declare const tagName = 's-image';
-/** @publicDocs */
-export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
-  /**
-   * Controls the displayed width of the image. Choose based on your layout requirements. For mobile interfaces, consider using `'fill'` with defined container dimensions to ensure consistent image display, as dynamic container heights can cause layout inconsistencies in scrollable views.
+   * The displayed inline width of the image.
    *
-   * - `'auto'` - Displays the image at its natural size. The image will not render until it has loaded, and the aspect ratio will be ignored. Use for images where maintaining original dimensions is important.
-   * - `'fill'` - Makes the image take up 100% of the available inline size. The aspect ratio will be respected and the image will take the necessary space. Use for responsive layouts and flexible image containers.
+   * - `fill`: the image will take up 100% of the available inline size.
+   * - `auto`: the image is displayed in a square (1:1 aspect ratio) container at the full available
+   *   inline size. The POS translator doesn't render the image at its natural size.
+   *
+   * **Mobile surfaces:** Always wrap your image in a box with a set width and height.
+   * ScrollViews on mobile have a dynamic height, which can cause images to appear
+   * inconsistently without defined dimensions.
    *
    * @default 'fill'
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#width
    */
   inlineSize?: ImageProps['inlineSize'];
   /**
-   * The image source URL (remote URL or local file resource). When loading or no src is provided, a placeholder is rendered. Ensure URLs are properly formatted and properly formatted.
+   * The image source, which should be a remote URL.
+   *
+   * When no `src` is provided or the image fails to load, a placeholder is rendered.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
    */
   src?: ImageProps['src'];
   /**
@@ -72,23 +52,49 @@ export interface ImageJSXProps extends Pick<ImageProps, 'id' | 'objectFit'> {
    * [1-to-4-value syntax](https://developer.mozilla.org/en-US/docs/Web/CSS/Shorthand_properties#edges_of_a_box) is
    * supported. Note that, contrary to CSS, it uses flow-relative values and the order is:
    *
-   * - 4 values: `start-start start-end end-end end-start`
-   * - 3 values: `start-start (start-end & end-start) end-end`
-   * - 2 values: `(start-start & end-end) (start-end & end-start)`
+   * - 4 values: `start-start inline-end end-end inline-start`
+   * - 3 values: `start-start inline end-end`
+   * - 2 values: `block inline`
    *
    * For example:
    * - `base` means all corners have `base` radius
-   * - `base none` means start-start and end-end corners are `base`, start-end and end-start corners are `none`
-   * - `base none large` means start-start is `base`, start-end and end-start are `none`, end-end is `large`
-   * - `base none large small` means start-start is `base`, start-end is `none`, end-end is `large`, end-start is `small`
+   * - `base none` means start-start and end-end corners are `base`, inline-end and inline-start corners are `none`
+   * - `base none large` means start-start is `base`, inline-end and inline-start are `none`, end-end is `large`
+   * - `base none large small` means start-start is `base`, inline-end is `none`, end-end is `large`, inline-start is `small`
+   *
+   * Supports size keywords from the design system scale:
+   * - Size scale: `small-500`, `small-400`, `small-300`, `small-200`, `small-100`, `small`, `base`, `large`, `large-100`, `large-200`, `large-300`, `large-400`, `large-500`
+   * - Special values: `max`, `none`
    *
    * @default 'none'
    */
   borderRadius?: MaybeAllValuesShorthandProperty<BorderRadiusKeyword>;
 }
+
+export type ComponentChildren = any;
+/**
+ * Used when an element does not have children.
+ */
+export interface BaseElementProps<TClass = HTMLElement> {
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
+}
+/**
+ * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+
+declare const tagName = 's-image';
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: ImageJSXProps & HTMLElement;
+    [tagName]: HtmlElementTagNameProps<ImageJSXProps>;
   }
 }
 declare module 'preact' {

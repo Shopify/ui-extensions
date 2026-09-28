@@ -8,75 +8,97 @@
 /* eslint-disable import-x/namespace */
 // eslint-disable-next-line @typescript-eslint/triple-slash-reference, spaced-comment
 /// <reference lib="DOM" />
-import type {EmailFieldProps,Key, Ref} from './components-shared.d.ts';
+import type {EmailFieldProps, Key, Ref} from './components-shared.d.ts';
 
-/** @publicDocs */
 export type ComponentChildren = any;
 /**
  * Used when an element does not have children.
- * @publicDocs
  */
 export interface BaseElementProps<TClass = HTMLElement> {
-    key?: Key;
-    ref?: Ref<TClass>;
-    slot?: Lowercase<string>;
+  key?: Key;
+  ref?: Ref<TClass>;
+  slot?: Lowercase<string>;
 }
 /**
  * Used when an element has children.
+ */
+export interface BaseElementPropsWithChildren<TClass = HTMLElement>
+  extends BaseElementProps<TClass> {
+  children?: ComponentChildren;
+}
+export type IntrinsicElementProps<T> = T &
+  BaseElementPropsWithChildren<T & HTMLElement>;
+export type HtmlElementTagNameProps<T> = T & HTMLElement;
+export type ElementForTag<T extends string> =
+  T extends keyof HTMLElementTagNameMap
+    ? HTMLElementTagNameMap[T]
+    : HTMLElement;
+export interface CallbackEvent<T extends string> {
+  currentTarget: ElementForTag<T>;
+  bubbles?: boolean;
+  cancelable?: boolean;
+  composed?: boolean;
+  detail?: any;
+  eventPhase: number;
+  target: ElementForTag<T> | null;
+}
+
+declare const tagName$1 = 's-email-field';
+/**
+ * Collects email address input.
  * @publicDocs
  */
-export interface BaseElementPropsWithChildren<TClass = HTMLElement> extends BaseElementProps<TClass> {
-    children?: ComponentChildren;
-}
-/** @publicDocs */
-export type IntrinsicElementProps<T> = T & BaseElementPropsWithChildren<T & HTMLElement>;
-/** @publicDocs */
-export type HtmlElementTagNameProps<T> = T & HTMLElement;
-/** @publicDocs */
-export interface CallbackEvent<T extends keyof HTMLElementTagNameMap> {
-    currentTarget: HTMLElementTagNameMap[T];
-    bubbles?: boolean;
-    cancelable?: boolean;
-    composed?: boolean;
-    detail?: any;
-    eventPhase: number;
-    target: HTMLElementTagNameMap[T] | null;
+export interface EmailFieldJSXProps
+  extends Pick<
+    EmailFieldProps,
+    | 'id'
+    | 'label'
+    | 'value'
+    | 'placeholder'
+    | 'disabled'
+    | 'error'
+    | 'required'
+    | 'maxLength'
+    | 'details'
+  > {
+  /**
+   * The current value for the field. If omitted, the field manages its own state.
+   *
+   * Set `value` and update it from `onInput` or `onChange` to control the field.
+   */
+  value?: EmailFieldProps['value'];
+  /**
+   * Callback when the user makes any changes in the field.
+   */
+  onInput?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  /**
+   * Callback after editing completes, on blur or submit. Fires only when the value
+   * changed since the field received focus.
+   */
+  onChange?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  /**
+   * Callback when the element loses focus.
+   */
+  onBlur?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
+  /**
+   * Callback when the element receives focus.
+   */
+  onFocus?: ((event: CallbackEvent<typeof tagName$1>) => void) | null;
 }
 
-declare const tagName = "s-email-field";
-/** @publicDocs */
-export interface EmailFieldJSXProps extends Pick<EmailFieldProps, 'id' | 'label' | 'value' | 'placeholder' | 'disabled' | 'error' | 'required' | 'maxLength' | 'details'> {
-    /**
-     * Callback when the user makes any changes in the field.
-     */
-    onInput?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback after editing completes (typically on blur).
-     */
-    onChange?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element loses focus.
-     */
-    onBlur?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-    /**
-     * Callback when the element receives focus.
-     */
-    onFocus?: ((event: CallbackEvent<typeof tagName>) => void) | null;
-}
-/** @publicDocs */
-export type ElementProps = EmailFieldJSXProps;
+declare const tagName = 's-email-field';
 declare global {
-    interface HTMLElementTagNameMap {
-        [tagName]: HtmlElementTagNameProps<ElementProps>;
-    }
+  interface HTMLElementTagNameMap {
+    [tagName]: HtmlElementTagNameProps<EmailFieldJSXProps>;
+  }
 }
 declare module 'preact' {
-    namespace createElement.JSX {
-        interface IntrinsicElements {
-            [tagName]: IntrinsicElementProps<ElementProps>;
-        }
+  namespace createElement.JSX {
+    interface IntrinsicElements {
+      [tagName]: IntrinsicElementProps<EmailFieldJSXProps>;
     }
+  }
 }
 
-export { tagName };
-export type { EmailFieldJSXProps };
+export {tagName};
+export type {EmailFieldJSXProps};

@@ -35,7 +35,7 @@ export type PinLength = 4 | 5 | 6 | 7 | 8 | 9 | 10;
  */
 export interface PinPadActionType {
   /**
-   * The content for the prompt on the pin pad. Use to provide clear instructions or context about what the PIN is being used for.
+   * The label of the custom action button shown between the entry view and the keypad.
    */
   label: string;
   /**

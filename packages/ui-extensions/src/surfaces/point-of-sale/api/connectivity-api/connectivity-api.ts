@@ -11,7 +11,7 @@ export type ConnectivityStateSeverity = 'Connected' | 'Disconnected';
  */
 export interface ConnectivityState {
   /**
-   * The Internet connection status of the POS device.
+   * The Internet connection status of the POS device. The state defaults to `'Connected'` until POS has confirmed connectivity, and a confirmed outage is required before `'Disconnected'` is reported.
    */
   internetConnected: ConnectivityStateSeverity;
 }
@@ -22,7 +22,7 @@ export interface ConnectivityState {
  */
 export interface ConnectivityApiContent {
   /**
-   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling.
+   * Provides read-only access to the current connectivity state and allows subscribing to connectivity changes. Use for implementing connectivity-aware functionality and reactive connectivity handling. The state defaults to `Connected` until POS has confirmed connectivity, so an initial `Connected` value doesn't guarantee that the device is online.
    */
   current: ReadonlySignalLike<ConnectivityState>;
 }
