@@ -33,13 +33,6 @@ export type POSListTemplateTag = (
   ...values: never[]
 ) => POSListTemplates;
 
-/**
- * The API version this package compiles templates for. POS renders templates only for an
- * extension declaring the same API version, so a mismatch between the bundled package and
- * the extension's `api_version` is reported instead of rendering unexpectedly.
- */
-const API_VERSION = '2026-10';
-
 const ITEM_TAG = 's-pos-list-item';
 const LIST_TAG = 's-pos-list';
 const PATH_PATTERN = /^[\w.]+$/;
@@ -354,5 +347,5 @@ export const posListTemplate: POSListTemplateTag = (strings, ...values) => {
   const templates = roots
     .filter((root) => !(typeof root === 'string' && root.trim().length === 0))
     .map((root) => compileRoot(root, seen));
-  return {version: API_VERSION, templates};
+  return {templates};
 };

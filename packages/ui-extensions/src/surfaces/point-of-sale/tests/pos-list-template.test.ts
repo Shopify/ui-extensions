@@ -25,7 +25,6 @@ describe('posListTemplate', () => {
       const result = posListTemplate`<s-pos-list-item templateId="p"><s-text>Hi {{name}}</s-text></s-pos-list-item>`;
 
       expect(result).toStrictEqual({
-        version: '2026-10',
         templates: [
           {
             templateId: 'p',

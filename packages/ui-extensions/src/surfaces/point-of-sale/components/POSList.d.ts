@@ -101,11 +101,6 @@ export interface POSListItemTemplate {
   children: POSListTemplateNode[];
 }
 export interface POSListTemplates {
-  /**
-   * The API version whose `posListTemplate` compiled these templates, e.g. `'2026-10'`. The host
-   * renders them only for an extension declaring the same API version.
-   */
-  version: `${number}-${number}` | 'unstable';
   templates: POSListItemTemplate[];
 }
 

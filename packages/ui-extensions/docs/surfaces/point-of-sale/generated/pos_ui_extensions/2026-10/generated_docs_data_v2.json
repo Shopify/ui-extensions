@@ -10278,16 +10278,9 @@
           "name": "templates",
           "value": "POSListItemTemplate[]",
           "description": ""
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "version",
-          "value": "`${number}-${number}` | 'unstable'",
-          "description": "The API version whose `posListTemplate` compiled these templates, e.g. `'2026-10'`. The host renders them only for an extension declaring the same API version."
         }
       ],
-      "value": "interface POSListTemplates {\n  /**\n   * The API version whose `posListTemplate` compiled these templates, e.g. `'2026-10'`. The host\n   * renders them only for an extension declaring the same API version.\n   */\n  version: `${number}-${number}` | 'unstable';\n  templates: POSListItemTemplate[];\n}"
+      "value": "interface POSListTemplates {\n  templates: POSListItemTemplate[];\n}"
     }
   },
   "POSListItemTemplate": {
