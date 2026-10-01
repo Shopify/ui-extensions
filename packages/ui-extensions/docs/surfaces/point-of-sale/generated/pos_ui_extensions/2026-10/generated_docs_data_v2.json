@@ -9933,7 +9933,7 @@
           "syntaxKind": "PropertySignature",
           "name": "loadingMore",
           "value": "boolean",
-          "description": "Whether more data is being loaded. Set to `true` when paginating and fetching additional data for the list. Shows a progress indicator after the last row.",
+          "description": "Whether more data is being loaded. Set to `true` when paginating and fetching additional data for the list. POS shows a progress indicator after the last row.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -9962,7 +9962,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** An array of POSListRow objects that define the content of each row in the list. */\n  rows?: POSListRow[];\n  /**\n   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.\n   * Create this value with `posListTemplate`, not manually.\n   */\n  itemTemplates?: POSListTemplates;\n  /**\n   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data\n   * for the list. Shows a progress indicator after the last row.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /**\n   * Callback when a `button` row is activated. `event.detail.item` is the row and\n   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.\n   */\n  onRowClick?: ((event: POSListRowClickEvent) => void) | null;\n  /** Callback when the list has scrolled near its end and more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
+      "value": "interface POSListJSXProps {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** An array of POSListRow objects that define the content of each row in the list. */\n  rows?: POSListRow[];\n  /**\n   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.\n   * Create this value with `posListTemplate`, not manually.\n   */\n  itemTemplates?: POSListTemplates;\n  /**\n   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data\n   * for the list. POS shows a progress indicator after the last row.\n   *\n   * @default false\n   */\n  loadingMore?: boolean;\n  /**\n   * Callback when a `button` row is activated. `event.detail.item` is the row and\n   * `event.detail.index` its position in `rows`. Rows rendered by a `text` template never fire it.\n   */\n  onRowClick?: ((event: POSListRowClickEvent) => void) | null;\n  /** Callback when the list has scrolled near its end and more rows should be loaded. */\n  onLoadMore?: ((event: CallbackEvent<typeof posListTagName>) => void) | null;\n  /** Content displayed before the rows as part of the list's scrollable content. */\n  header?: ComponentChild;\n}"
     }
   },
   "ComponentChild": {
@@ -10451,7 +10451,7 @@
           "syntaxKind": "PropertySignature",
           "name": "loadingMore",
           "value": "boolean",
-          "description": "Whether more data is being loaded. Set to `true` when paginating and fetching additional data for the list. Shows a progress indicator after the last row.",
+          "description": "Whether more data is being loaded. Set to `true` when paginating and fetching additional data for the list. POS shows a progress indicator after the last row.",
           "isOptional": true,
           "defaultValue": "false"
         },
@@ -10464,7 +10464,7 @@
           "isOptional": true
         }
       ],
-      "value": "interface POSList {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** An array of POSListRow objects that define the content of each row in the list. */\n  rows?: POSListRow[];\n  /**\n   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.\n   * Create this value with `posListTemplate`, not manually.\n   */\n  itemTemplates?: POSListTemplates;\n  /**\n   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data\n   * for the list. Shows a progress indicator after the last row.\n   * @default false\n   */\n  loadingMore?: boolean;\n}"
+      "value": "interface POSList {\n  /** A unique identifier for the element. */\n  id?: string;\n  /** An array of POSListRow objects that define the content of each row in the list. */\n  rows?: POSListRow[];\n  /**\n   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.\n   * Create this value with `posListTemplate`, not manually.\n   */\n  itemTemplates?: POSListTemplates;\n  /**\n   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data\n   * for the list. POS shows a progress indicator after the last row.\n   * @default false\n   */\n  loadingMore?: boolean;\n}"
     }
   },
   "POSListTemplateTag": {

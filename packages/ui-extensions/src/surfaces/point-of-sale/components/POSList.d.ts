@@ -146,7 +146,7 @@ export interface POSListJSXProps {
   itemTemplates?: POSListTemplates;
   /**
    * Whether more data is being loaded. Set to `true` when paginating and fetching additional data
-   * for the list. Shows a progress indicator after the last row.
+   * for the list. POS shows a progress indicator after the last row.
    *
    * @default false
    */
