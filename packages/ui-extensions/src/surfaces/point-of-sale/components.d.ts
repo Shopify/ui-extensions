@@ -5503,7 +5503,10 @@ declare const posListTagName = 's-pos-list';
  * and `{{#if path}}` bindings.
  */
 interface POSListRow {
-  /** A unique identifier for the row. Keys virtualization and identity across incremental loads. */
+  /**
+   * A unique identifier for the row. Keys virtualization and identity across incremental loads.
+   * A row whose `id` repeats another row's may not render; development extensions get a warning.
+   */
   id: string;
   /** The `templateId` of the item template that renders this row. */
   templateFor: string;
@@ -5517,7 +5520,10 @@ interface POSListRow {
  * `POSListRowClickEvent` contract declares `item` and `index` on the event, which POS exposes once
  * the bridge forwards custom event properties.
  */
-type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
+type POSListRowClickEvent = Omit<
+  CallbackEvent<typeof posListTagName>,
+  'detail'
+> & {
   detail: {
     item: POSListRow;
     index: number;

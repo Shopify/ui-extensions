@@ -10346,7 +10346,7 @@
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "POSListRowClickEvent",
-      "value": "CallbackEvent<typeof posListTagName> & {\n  detail: {\n    item: POSListRow;\n    index: number;\n  };\n}",
+      "value": "Omit<\n  CallbackEvent<typeof posListTagName>,\n  'detail'\n> & {\n  detail: {\n    item: POSListRow;\n    index: number;\n  };\n}",
       "description": "The event fired when a `button` row is activated. `detail.item` is the activated row and `detail.index` its position in `rows`. POS delivers the row data in `detail` because its RemoteDOM bridge forwards only `detail` when dispatching an event to the extension; the shared `POSListRowClickEvent` contract declares `item` and `index` on the event, which POS exposes once the bridge forwards custom event properties."
     }
   },
@@ -10366,7 +10366,7 @@
           "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "string",
-          "description": "A unique identifier for the row. Keys virtualization and identity across incremental loads."
+          "description": "A unique identifier for the row. Keys virtualization and identity across incremental loads. A row whose `id` repeats another row's may not render; development extensions get a warning."
         },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10376,7 +10376,7 @@
           "description": "The `templateId` of the item template that renders this row."
         }
       ],
-      "value": "interface POSListRow {\n  /** A unique identifier for the row. Keys virtualization and identity across incremental loads. */\n  id: string;\n  /** The `templateId` of the item template that renders this row. */\n  templateFor: string;\n  /** Any additional data the row's template reads. */\n  [field: string]: unknown;\n}"
+      "value": "interface POSListRow {\n  /**\n   * A unique identifier for the row. Keys virtualization and identity across incremental loads.\n   * A row whose `id` repeats another row's may not render; development extensions get a warning.\n   */\n  id: string;\n  /** The `templateId` of the item template that renders this row. */\n  templateFor: string;\n  /** Any additional data the row's template reads. */\n  [field: string]: unknown;\n}"
     }
   },
   "POSListEvents": {

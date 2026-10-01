@@ -79,6 +79,49 @@ describe('posListTemplate', () => {
       ).toThrow('posListTemplate: duplicate templateId "p"');
     });
 
+    it('rejects a templateId that contains a placeholder', () => {
+      expect(() =>
+        compileItem('<s-text>x</s-text>', 'templateId="{{id}}"'),
+      ).toThrow(
+        `posListTemplate: <s-pos-list-item> templateId must be literal text; {{…}} placeholders aren't allowed in it, got "{{id}}"`,
+      );
+    });
+
+    it('names the template an error was raised in', () => {
+      expect(
+        () => posListTemplate`
+          <s-pos-list-item templateId="header"><s-text>ok</s-text></s-pos-list-item>
+          <s-pos-list-item templateId="product"><s-text>{{a + b}}</s-text></s-pos-list-item>
+        `,
+      ).toThrow(
+        'posListTemplate: unsupported template expression "{{a + b}}" (in <s-pos-list-item templateId="product">)',
+      );
+      expect(() =>
+        compileItem('<s-text>x</s-text>', 'templateId="product" type="link"'),
+      ).toThrow(
+        'posListTemplate: <s-pos-list-item> type must be "button" or "text", got "link" (in <s-pos-list-item templateId="product">)',
+      );
+    });
+
+    it('reports a duplicate templateId without repeating it as the location', () => {
+      expect(
+        () => posListTemplate`
+          <s-pos-list-item templateId="p"><s-text>a</s-text></s-pos-list-item>
+          <s-pos-list-item templateId="p"><s-text>b</s-text></s-pos-list-item>
+        `,
+      ).toThrow(/^posListTemplate: duplicate templateId "p"$/);
+    });
+
+    it('rejects being called as a function instead of a tagged template', () => {
+      const callAsFunction = posListTemplate as unknown as (
+        markup: string,
+      ) => unknown;
+
+      expect(() => callAsFunction(item('<s-text>x</s-text>'))).toThrow(
+        'posListTemplate: use posListTemplate as a tagged template',
+      );
+    });
+
     it('rejects other root attributes, non-item roots, and nested items', () => {
       expect(() =>
         compileItem('<s-text>x</s-text>', 'templateId="p" id="x"'),
@@ -233,6 +276,32 @@ describe('posListTemplate', () => {
       expect(() => compileItem('<s-text>{{a + b}}</s-text>')).toThrow(
         'posListTemplate: unsupported template expression "{{a + b}}"',
       );
+    });
+
+    it.each([
+      [
+        '{{else}} between blocks',
+        '<s-stack>{{#if a}}<s-text>x</s-text>{{else}}<s-text>y</s-text>{{/if}}</s-stack>',
+      ],
+      ['{{ else }} with spaces', '<s-text>{{ else }}</s-text>'],
+      [
+        '{{else if b}}',
+        '<s-stack>{{#if a}}<s-text>x</s-text>{{else if b}}<s-text>y</s-text>{{/if}}</s-stack>',
+      ],
+      ['{{else}} in an attribute', '<s-text tone="{{else}}">x</s-text>'],
+    ])('rejects %s', (_label, markup) => {
+      expect(() => compileItem(markup)).toThrow(
+        'posListTemplate: {{else}} is not supported; add a row field for the opposite case and use a second {{#if}}',
+      );
+    });
+
+    it('still accepts a field path that starts with else', () => {
+      expect(firstChild('<s-text>{{else.label}}</s-text>')).toStrictEqual({
+        kind: 'element',
+        tag: 's-text',
+        props: {},
+        children: [{kind: 'text', segments: [{path: 'else.label'}]}],
+      });
     });
   });
 

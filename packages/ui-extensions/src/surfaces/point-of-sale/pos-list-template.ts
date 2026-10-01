@@ -41,6 +41,10 @@ const BIND_PREFIX = 'bind:';
 /** `{{#if path}}`, `{{/if}}`, or `{{path}}`; anything else inside `{{ }}` is unsupported. */
 const EXPRESSION_PATTERN = /\{\{\s*(?:#if\s+([\w.]+)|(\/if)|([\w.]+))\s*\}\}/g;
 const ANY_EXPRESSION_PATTERN = /\{\{([\s\S]*?)\}\}/g;
+const ELSE_PATTERN = /^else\b/;
+const ERROR_PREFIX = 'posListTemplate: ';
+const ELSE_MESSAGE =
+  '{{else}} is not supported; add a row field for the opposite case and use a second {{#if}}';
 
 interface RawElement {
   tag: string;
@@ -56,7 +60,15 @@ type Token =
   | {kind: 'element'; element: RawElement};
 
 function fail(message: string): never {
-  throw new Error(`posListTemplate: ${message}`);
+  throw new Error(`${ERROR_PREFIX}${message}`);
+}
+
+/** `{{else}}`, `{{ else }}`, or `{{else if …}}`, but not a field path such as `{{else.label}}`. */
+function isElseExpression(expression: string): boolean {
+  const inner = expression.trim();
+  return (
+    inner === 'else' || (ELSE_PATTERN.test(inner) && !PATH_PATTERN.test(inner))
+  );
 }
 
 function isRawElement(value: unknown): value is RawElement {
@@ -91,6 +103,9 @@ function parseSegments(value: string): POSListTemplateSegment[] {
   let lastIndex = 0;
   for (const match of value.matchAll(ANY_EXPRESSION_PATTERN)) {
     const expression = match[1]!.trim();
+    if (isElseExpression(expression)) {
+      fail(ELSE_MESSAGE);
+    }
     if (!PATH_PATTERN.test(expression)) {
       if (expression.startsWith('#if') || expression === '/if') {
         fail(
@@ -120,6 +135,9 @@ function tokenizeText(value: string, tokens: Token[]): void {
       tokens.push({kind: 'text', value: value.slice(lastIndex, index)});
     }
     EXPRESSION_PATTERN.lastIndex = 0;
+    if (isElseExpression(match[1]!)) {
+      fail(ELSE_MESSAGE);
+    }
     const expression = EXPRESSION_PATTERN.exec(match[0]);
     if (expression === null || expression[0].length !== match[0].length) {
       fail(`unsupported template expression "${match[0]}"`);
@@ -285,12 +303,43 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
   if (!isRawElement(root) || root.tag !== ITEM_TAG) {
     fail(`every template root must be an <${ITEM_TAG} templateId="…"> element`);
   }
+  const label = root.props.templateId;
+  let template: POSListItemTemplate;
+  try {
+    template = compileTemplate(root);
+  } catch (error) {
+    if (
+      typeof label === 'string' &&
+      label.length > 0 &&
+      !label.includes('{{') &&
+      error instanceof Error &&
+      error.message.startsWith(ERROR_PREFIX)
+    ) {
+      throw new Error(
+        `${error.message} (in <${ITEM_TAG} templateId="${label}">)`,
+      );
+    }
+    throw error;
+  }
+  if (seen.has(template.templateId)) {
+    fail(`duplicate templateId "${template.templateId}"`);
+  }
+  seen.add(template.templateId);
+  return template;
+}
+
+function compileTemplate(root: RawElement): POSListItemTemplate {
   let templateId: string | undefined;
   let type: POSListItemTemplate['type'] = 'button';
   for (const [name, value] of Object.entries(root.props)) {
     if (name === 'templateId') {
       if (typeof value !== 'string' || value.length === 0) {
         fail(`<${ITEM_TAG}> requires a literal, non-empty templateId`);
+      }
+      if (value.includes('{{')) {
+        fail(
+          `<${ITEM_TAG}> templateId must be literal text; {{…}} placeholders aren't allowed in it, got "${value}"`,
+        );
       }
       templateId = value;
     } else if (name === 'type') {
@@ -311,10 +360,6 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
   if (templateId === undefined) {
     fail(`<${ITEM_TAG}> requires a literal, non-empty templateId`);
   }
-  if (seen.has(templateId)) {
-    fail(`duplicate templateId "${templateId}"`);
-  }
-  seen.add(templateId);
   return {templateId, type, children: compileChildren(root.children, true)};
 }
 
@@ -332,12 +377,18 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
  * Inside a template, `{{path}}` interpolates a row field as text, `bind:prop="path"`
  * passes a row field to a component prop with its own type, and
  * `{{#if path}}…{{/if}}` renders its content only when the field is truthy.
- * Event handlers, interpolated values, and any other `{{…}}` expression are
- * rejected when the template is compiled.
+ * Event handlers, interpolated values, `{{else}}`, and any other `{{…}}`
+ * expression are rejected when the template is compiled. Errors raised inside
+ * a template name its `templateId`.
  *
  * @publicDocs
  */
 export const posListTemplate: POSListTemplateTag = (strings, ...values) => {
+  if (!Array.isArray(strings)) {
+    fail(
+      'use posListTemplate as a tagged template, for example posListTemplate`<s-pos-list-item templateId="row">…</s-pos-list-item>`, not as a function call',
+    );
+  }
   if (values.length > 0) {
     fail('interpolated values are not supported; templates must be static');
   }
