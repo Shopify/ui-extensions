@@ -5505,7 +5505,7 @@ declare const posListTagName = 's-pos-list';
 interface POSListRow {
   /**
    * A unique identifier for the row. Keys virtualization and identity across incremental loads.
-   * A row whose `id` repeats another row's may not render; development extensions get a warning.
+   * Must be unique: a row whose `id` repeats another row's may not render.
    */
   id: string;
   /** The `templateId` of the item template that renders this row. */

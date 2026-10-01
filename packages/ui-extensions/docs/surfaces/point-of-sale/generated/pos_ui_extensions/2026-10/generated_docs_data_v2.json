@@ -10366,7 +10366,7 @@
           "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "string",
-          "description": "A unique identifier for the row. Keys virtualization and identity across incremental loads. A row whose `id` repeats another row's may not render; development extensions get a warning."
+          "description": "A unique identifier for the row. Keys virtualization and identity across incremental loads. Must be unique: a row whose `id` repeats another row's may not render."
         },
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
@@ -10376,7 +10376,7 @@
           "description": "The `templateId` of the item template that renders this row."
         }
       ],
-      "value": "interface POSListRow {\n  /**\n   * A unique identifier for the row. Keys virtualization and identity across incremental loads.\n   * A row whose `id` repeats another row's may not render; development extensions get a warning.\n   */\n  id: string;\n  /** The `templateId` of the item template that renders this row. */\n  templateFor: string;\n  /** Any additional data the row's template reads. */\n  [field: string]: unknown;\n}"
+      "value": "interface POSListRow {\n  /**\n   * A unique identifier for the row. Keys virtualization and identity across incremental loads.\n   * Must be unique: a row whose `id` repeats another row's may not render.\n   */\n  id: string;\n  /** The `templateId` of the item template that renders this row. */\n  templateFor: string;\n  /** Any additional data the row's template reads. */\n  [field: string]: unknown;\n}"
     }
   },
   "POSListEvents": {
