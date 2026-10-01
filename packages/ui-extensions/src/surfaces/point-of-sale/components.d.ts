@@ -5533,7 +5533,7 @@ interface POSListJSXProps {
   rows?: POSListRow[];
   /**
    * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.
-   * Create this value with `posListTemplate`, not by hand.
+   * Create this value with `posListTemplate`, not manually.
    */
   itemTemplates?: POSListTemplates;
   /**
@@ -5645,7 +5645,7 @@ interface POSList {
   rows?: POSListRow[];
   /**
    * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.
-   * Create this value with `posListTemplate`, not by hand.
+   * Create this value with `posListTemplate`, not manually.
    */
   itemTemplates?: POSListTemplates;
   /**
