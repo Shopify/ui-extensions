@@ -140,24 +140,13 @@ export type POSListRowClickEvent = CallbackEvent<typeof tagName> & {
 export interface POSListJSXProps {
   /** A unique identifier for the element. */
   id?: string;
-  /**
-   * The rows displayed in the list. Each row names the item template that renders it through
-   * `templateFor`.
-   *
-   * @default []
-   */
+  /** An array of POSListRow objects that define the content of each row in the list. */
   rows?: POSListRow[];
-  /**
-   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
-   * are reported. The header and loading indicator can still render. When templates are supplied,
-   * a row whose `templateFor` matches no template renders nothing.
-   *
-   * @default undefined
-   */
+  /** The item templates, compiled with `posListTemplate`, that define the structure of rows in the list. */
   itemTemplates?: POSListTemplates;
   /**
-   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data
+   * for the list. Shows a progress indicator after the last row.
    *
    * @default false
    */
