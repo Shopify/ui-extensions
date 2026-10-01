@@ -5511,13 +5511,10 @@ interface POSListRow {
   [field: string]: unknown;
 }
 /**
- * The event fired when a `button` row is activated. `detail.item` is the activated row and
- * `detail.index` its position in `rows`. POS delivers the row data in `detail` because its
- * RemoteDOM bridge forwards only `detail` when dispatching an event to the extension; the shared
- * `POSListRowClickEvent` contract declares `item` and `index` on the event, which POS exposes once
- * the bridge forwards custom event properties.
+ * The event fired when a `button` row is activated. `event.detail.item` is the activated row, and
+ * `event.detail.index` is its position in `rows`.
  */
-type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
+type POSListRowClickEvent = CallbackEvent<'s-pos-list'> & {
   detail: {
     item: POSListRow;
     index: number;
