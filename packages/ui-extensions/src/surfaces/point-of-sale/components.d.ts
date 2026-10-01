@@ -5534,7 +5534,10 @@ interface POSListJSXProps {
   id?: string;
   /** An array of POSListRow objects that define the content of each row in the list. */
   rows?: POSListRow[];
-  /** The item templates, compiled with `posListTemplate`, that define the structure of rows in the list. */
+  /**
+   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.
+   * Create this value with `posListTemplate`, not by hand.
+   */
   itemTemplates?: POSListTemplates;
   /**
    * Whether more data is being loaded. Set to `true` when paginating and fetching additional data
@@ -5643,7 +5646,10 @@ interface POSList {
   id?: string;
   /** An array of POSListRow objects that define the content of each row in the list. */
   rows?: POSListRow[];
-  /** The item templates, compiled with `posListTemplate`, that define the structure of rows in the list. */
+  /**
+   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.
+   * Create this value with `posListTemplate`, not by hand.
+   */
   itemTemplates?: POSListTemplates;
   /**
    * Whether more data is being loaded. Set to `true` when paginating and fetching additional data
