@@ -140,8 +140,8 @@ export interface POSListJSXProps {
   /** An array of POSListRow objects that define the content of each row in the list. */
   rows?: POSListRow[];
   /**
-   * The item templates, compiled with `posListTemplate`, that define the structure of rows in the list.
-   * Create this value with `posListTemplate`, not manually.
+   * Reusable templates that define the layout of list rows. Use `posListTemplate` to define one or
+   * more `<s-pos-list-item>` templates.
    */
   itemTemplates?: POSListTemplates;
   /**
