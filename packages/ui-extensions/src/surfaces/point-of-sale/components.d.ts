@@ -5511,13 +5511,10 @@ interface POSListRow {
   [field: string]: unknown;
 }
 /**
- * The event fired when a `button` row is activated. `detail.item` is the activated row and
- * `detail.index` its position in `rows`. POS delivers the row data in `detail` because its
- * RemoteDOM bridge forwards only `detail` when dispatching an event to the extension; the shared
- * `POSListRowClickEvent` contract declares `item` and `index` on the event, which POS exposes once
- * the bridge forwards custom event properties.
+ * The event fired when a `button` row is activated. `event.detail.item` is the activated row, and
+ * `event.detail.index` is its position in `rows`.
  */
-type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
+type POSListRowClickEvent = CallbackEvent<'s-pos-list'> & {
   detail: {
     item: POSListRow;
     index: number;
@@ -5532,24 +5529,16 @@ type POSListRowClickEvent = CallbackEvent<typeof posListTagName> & {
 interface POSListJSXProps {
   /** A unique identifier for the element. */
   id?: string;
-  /**
-   * The rows displayed in the list. Each row names the item template that renders it through
-   * `templateFor`.
-   *
-   * @default []
-   */
+  /** An array of POSListRow objects that define the content of each row in the list. */
   rows?: POSListRow[];
   /**
-   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
-   * are reported. The header and loading indicator can still render. When templates are supplied,
-   * a row whose `templateFor` matches no template renders nothing.
-   *
-   * @default undefined
+   * Reusable templates that define the layout of list rows. Use `posListTemplate` to define one or
+   * more `<s-pos-list-item>` templates.
    */
   itemTemplates?: POSListTemplates;
   /**
-   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data
+   * for the list. POS shows a progress indicator after the last row.
    *
    * @default false
    */
@@ -5652,22 +5641,16 @@ interface POSListSlots {
 interface POSList {
   /** A unique identifier for the element. */
   id?: string;
-  /**
-   * The rows displayed in the list. Each row names the item template that renders it through
-   * `templateFor`.
-   * @default []
-   */
+  /** An array of POSListRow objects that define the content of each row in the list. */
   rows?: POSListRow[];
   /**
-   * The compiled item templates, one per `<s-pos-list-item>`, produced by `posListTemplate`.
-   * When omitted or cleared, no rows are rendered and no missing-template errors or warnings
-   * are reported. The header and loading indicator can still render. When templates are supplied,
-   * a row whose `templateFor` matches no template renders nothing.
-   * @default undefined
+   * Reusable templates that define the layout of list rows. Use `posListTemplate` to define one or
+   * more `<s-pos-list-item>` templates.
    */
   itemTemplates?: POSListTemplates;
   /**
-   * Whether additional rows are being loaded. Renders a progress indicator after the last row.
+   * Whether more data is being loaded. Set to `true` when paginating and fetching additional data
+   * for the list. POS shows a progress indicator after the last row.
    * @default false
    */
   loadingMore?: boolean;
