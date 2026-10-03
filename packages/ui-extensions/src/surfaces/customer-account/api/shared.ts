@@ -351,16 +351,16 @@ export interface AuthenticatedAccount {
 }
 
 /**
- * The authenticated customer's account, identified by a globally-unique ID.
+ * The authenticated customer's account, identified by a numeric customer ID represented as a string.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  * @publicDocs
  */
 export interface Customer {
   /**
-   * A globally-unique identifier for the customer in the format `gid://shopify/Customer/<id>`.
+   * The customer's numeric ID represented as a string.
    *
-   * @example 'gid://shopify/Customer/123'
+   * @example '123'
    */
   id: string;
 }
