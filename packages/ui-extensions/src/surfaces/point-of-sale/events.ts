@@ -227,7 +227,7 @@ export type ValidationLevel = 'WARNING' | 'ERROR';
 export interface ValidationAdd<
   TTarget extends ValidationTarget = ValidationTarget,
 > {
-  /** `ERROR` creates a finding labeled `Required`. `WARNING` creates a finding labeled `Recommended`. */
+  /** `ERROR` creates a finding labeled `Required` only when blocking is declared and allowed by the store. Otherwise, it creates a finding labeled `Recommended`. `WARNING` always creates a finding labeled `Recommended`. */
   level: ValidationLevel;
 
   /**

@@ -4488,7 +4488,7 @@
           "syntaxKind": "PropertySignature",
           "name": "level",
           "value": "ValidationLevel",
-          "description": "`ERROR` creates a finding labeled `Required`. `WARNING` creates a finding labeled `Recommended`."
+          "description": "`ERROR` creates a finding labeled `Required` only when blocking is declared and allowed by the store. Otherwise, it creates a finding labeled `Recommended`. `WARNING` always creates a finding labeled `Recommended`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -4499,7 +4499,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface ValidationAdd<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** `ERROR` creates a finding labeled `Required`. `WARNING` creates a finding labeled `Recommended`. */\n  level: ValidationLevel;\n\n  /**\n   * Stable identifier for this validation. Handles are namespaced per\n   * extension and may repeat across targets: the same handle on two line\n   * items is two validations.\n   */\n  handle: string;\n\n  /**\n   * Locates the data the validation applies to; the host decides where it\n   * renders. Omitted or unrecognized targets fall back to the event's root\n   * scope (`$.cart` / `$.payment`). The validation still applies, rendered\n   * less specifically.\n   *\n   * Line item uuids are only valid within the event that delivered them:\n   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache\n   * uuids across events. Bundle components are not addressable; target\n   * their parent line.\n   */\n  target?: TTarget;\n}"
+      "value": "export interface ValidationAdd<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** `ERROR` creates a finding labeled `Required` only when blocking is declared and allowed by the store. Otherwise, it creates a finding labeled `Recommended`. `WARNING` always creates a finding labeled `Recommended`. */\n  level: ValidationLevel;\n\n  /**\n   * Stable identifier for this validation. Handles are namespaced per\n   * extension and may repeat across targets: the same handle on two line\n   * items is two validations.\n   */\n  handle: string;\n\n  /**\n   * Locates the data the validation applies to; the host decides where it\n   * renders. Omitted or unrecognized targets fall back to the event's root\n   * scope (`$.cart` / `$.payment`). The validation still applies, rendered\n   * less specifically.\n   *\n   * Line item uuids are only valid within the event that delivered them:\n   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache\n   * uuids across events. Bundle components are not addressable; target\n   * their parent line.\n   */\n  target?: TTarget;\n}"
     }
   },
   "ValidationLevel": {
