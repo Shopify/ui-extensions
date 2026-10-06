@@ -9,3 +9,11 @@ export interface Docs_AppBackgroundEventMethods
     BackgroundShopifyGlobal,
     'addEventListener' | 'removeEventListener'
   > {}
+
+/**
+ * Validation interceptor method available on the `shopify` global for app
+ * background extensions.
+ * @publicDocs
+ */
+export interface Docs_AppBackgroundInterceptMethods
+  extends Pick<BackgroundShopifyGlobal, 'intercept'> {}

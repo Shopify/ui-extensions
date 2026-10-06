@@ -15,18 +15,18 @@ export interface ResolutionApi<TEventData> {
  * Runs when staff advance the resolution flow. Return a promise to have POS
  * wait for pending work to finish before it re-runs validation.
  *
- * @private
+ * @publicDocs
  */
 export type ResolutionSaveHandler = () => void | Promise<void>;
 
 /**
- * @private
+ * @publicDocs
  */
 export interface ResolutionApiContent<TEventData> {
   /**
    * The data of the intercepted event this resolution target was opened for.
-   * The `value` property provides the current data, and `subscribe` allows
-   * listening for host-owned revalidation updates.
+   * The `value` property provides the current data, and `subscribe` receives
+   * Shopify POS revalidation updates.
    */
   event: ReadonlySignalLike<TEventData>;
 
@@ -42,7 +42,6 @@ export interface ResolutionApiContent<TEventData> {
    *
    * @returns A promise that resolves to an async cleanup function that
    * unregisters the handler.
-   * @private
    */
   onSave(handler: ResolutionSaveHandler): Promise<() => Promise<void>>;
 }
