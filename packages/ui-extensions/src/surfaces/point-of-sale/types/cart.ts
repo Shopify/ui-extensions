@@ -51,6 +51,10 @@ export interface Cart {
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
   properties: Record<string, string>;
+  /**
+   * An array of line items being returned while the cart is in return mode. Returns `undefined` outside return mode. Return line items with a quantity of 0 are not included.
+   */
+  returnLineItems?: ReturnLineItem[];
 }
 
 /**
@@ -242,6 +246,85 @@ export interface SellingPlan {
    * The number of intervals between deliveries.
    */
   deliveryIntervalCount?: number;
+}
+
+/**
+ * Represents a line item that is being returned while the cart is in return mode. Fields shared with `LineItem` have the same names, types, and meaning, and describe the original order line item.
+ * @publicDocs
+ */
+export interface ReturnLineItem {
+  /**
+   * The unique identifier for this return line item within the cart.
+   */
+  uuid: string;
+  /**
+   * The unit price of the original order line item, before line item discounts.
+   */
+  price?: number;
+  /**
+   * The number of units selected for return. Always a positive integer.
+   */
+  quantity: number;
+  /**
+   * The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.
+   */
+  title?: string;
+  /**
+   * The product variant 'ID' this line item represents. Not yet populated in return mode: always `undefined`.
+   */
+  variantId?: number;
+  /**
+   * The product 'ID' this line item represents. Not yet populated in return mode: always `undefined`.
+   */
+  productId?: number;
+  /**
+   * An array of tax lines applied to the original order line item, containing tax amounts and rates.
+   */
+  taxLines: TaxLine[];
+  /**
+   * The Stock Keeping Unit (SKU) identifier for this line item. Not yet populated in return mode: always `undefined`.
+   */
+  sku?: string;
+  /**
+   * The vendor or brand name for this line item. Not yet populated in return mode: always `undefined`.
+   */
+  vendor?: string;
+  /**
+   * The custom key-value properties attached to the original order line item. Empty object if no properties are set.
+   */
+  properties: {[key: string]: string};
+  /**
+   * Determines whether this line item is a gift card.
+   */
+  isGiftCard: boolean;
+  /**
+   * The 'ID' of the order that the item is returned from.
+   */
+  orderId: number;
+  /**
+   * The 'ID' of the order line item that is returned.
+   */
+  orderLineItemId: number;
+  /**
+   * The unit price of the original order line item, after line item discounts.
+   */
+  discountedUnitPrice: number;
+  /**
+   * The 'ID' of the return reason definition that staff selected. Returns `undefined` if no return reason is selected.
+   */
+  returnReasonDefinitionId?: number;
+  /**
+   * The note that staff entered for the return reason. Returns `undefined` if no note is entered.
+   */
+  returnReasonNote?: string;
+  /**
+   * Determines whether staff chose to restock the returned units.
+   */
+  shouldRestock: boolean;
+  /**
+   * The 'ID' of the location where the returned units are restocked. Returns `undefined` when `shouldRestock` is `false`.
+   */
+  restockLocationId?: number;
 }
 
 /**
