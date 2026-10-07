@@ -1,17 +1,17 @@
 import type {RenderExtensionTarget} from '../extension-targets';
-import type {Customer, PurchasingCompany} from '../api';
+import type {AuthenticatedAccountCustomer, PurchasingCompany} from '../api';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';
 
 /**
- * Returns the current authenticated `Customer`.
+ * Returns the current `AuthenticatedAccountCustomer`.
  *
  * The value is `undefined` if the customer isn't authenticated.
  */
 export function useAuthenticatedAccountCustomer<
   Target extends RenderExtensionTarget,
->(): Customer | undefined {
+>(): AuthenticatedAccountCustomer | undefined {
   const account = useApi<Target>().authenticatedAccount;
 
   return useSubscription(account.customer);

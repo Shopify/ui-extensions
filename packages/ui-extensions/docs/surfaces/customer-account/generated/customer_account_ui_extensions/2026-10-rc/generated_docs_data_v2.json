@@ -8549,7 +8549,7 @@
           "filePath": "src/surfaces/customer-account/api/shared.ts",
           "syntaxKind": "PropertySignature",
           "name": "customer",
-          "value": "SubscribableSignalLike<Customer | undefined>",
+          "value": "SubscribableSignalLike<AuthenticatedAccountCustomer | undefined>",
           "description": "The authenticated customer's account information. The value is `undefined` if the customer isn't logged in."
         },
         {
@@ -8560,7 +8560,37 @@
           "description": "The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer."
         }
       ],
-      "value": "export interface AuthenticatedAccount {\n  /**\n   * The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer.\n   */\n  purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;\n  /**\n   * The authenticated customer's account information. The value is `undefined` if the customer isn't logged in.\n   */\n  customer: SubscribableSignalLike<Customer | undefined>;\n}"
+      "value": "export interface AuthenticatedAccount {\n  /**\n   * The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer.\n   */\n  purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;\n  /**\n   * The authenticated customer's account information. The value is `undefined` if the customer isn't logged in.\n   */\n  customer: SubscribableSignalLike<AuthenticatedAccountCustomer | undefined>;\n}"
+    }
+  },
+  "AuthenticatedAccountCustomer": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "AuthenticatedAccountCustomer",
+      "description": "The authenticated customer's account, identified by a numeric customer ID represented as a string.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "The customer's numeric ID represented as a string.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'123'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface AuthenticatedAccountCustomer extends Customer {}"
     }
   },
   "ToastApiResult": {
@@ -26412,66 +26442,11 @@
           "filePath": "src/surfaces/customer-account/api/docs.ts",
           "syntaxKind": "PropertySignature",
           "name": "authenticatedAccount",
-          "value": "AuthenticatedAccountDocs",
+          "value": "AuthenticatedAccount",
           "description": "The logged-in customer's account information, including their customer ID and B2B company details. Use this to personalize your extension based on who is viewing the page."
         }
       ],
-      "value": "export interface Docs_Standard_AuthenticatedAccountApi\n  extends Pick<StandardApi<any>, 'authenticatedAccount'> {\n  authenticatedAccount: AuthenticatedAccountDocs;\n}"
-    }
-  },
-  "AuthenticatedAccountDocs": {
-    "src/surfaces/customer-account/api/docs.ts": {
-      "filePath": "src/surfaces/customer-account/api/docs.ts",
-      "name": "AuthenticatedAccountDocs",
-      "description": "",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "SubscribableSignalLike<\n    AuthenticatedAccountCustomerDocs | undefined\n  >",
-          "description": "The authenticated customer's account information. The value is `undefined` if the customer isn't logged in."
-        },
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "purchasingCompany",
-          "value": "SubscribableSignalLike<PurchasingCompany | undefined>",
-          "description": "The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer."
-        }
-      ],
-      "value": "export interface AuthenticatedAccountDocs extends AuthenticatedAccount {\n  customer: SubscribableSignalLike<\n    AuthenticatedAccountCustomerDocs | undefined\n  >;\n}"
-    }
-  },
-  "AuthenticatedAccountCustomerDocs": {
-    "src/surfaces/customer-account/api/docs.ts": {
-      "filePath": "src/surfaces/customer-account/api/docs.ts",
-      "name": "AuthenticatedAccountCustomerDocs",
-      "description": "The authenticated customer's account, identified by a numeric customer ID represented as a string.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/customer-account/api/docs.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "string",
-          "description": "The customer's numeric ID represented as a string.",
-          "examples": [
-            {
-              "title": "Example",
-              "description": "",
-              "tabs": [
-                {
-                  "code": "'123'",
-                  "title": "Example"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "value": "export interface AuthenticatedAccountCustomerDocs extends Customer {}"
+      "value": "export interface Docs_Standard_AuthenticatedAccountApi\n  extends Pick<StandardApi<any>, 'authenticatedAccount'> {}"
     }
   },
   "Docs_Standard_VersionApi": {

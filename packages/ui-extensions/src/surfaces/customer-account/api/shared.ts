@@ -347,14 +347,14 @@ export interface AuthenticatedAccount {
   /**
    * The authenticated customer's account information. The value is `undefined` if the customer isn't logged in.
    */
-  customer: SubscribableSignalLike<Customer | undefined>;
+  customer: SubscribableSignalLike<AuthenticatedAccountCustomer | undefined>;
 }
 
 /**
  * The authenticated customer's account, identified by a numeric customer ID represented as a string.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
- * @publicDocs
+ * @deprecated Use `AuthenticatedAccountCustomer` instead.
  */
 export interface Customer {
   /**
@@ -364,6 +364,14 @@ export interface Customer {
    */
   id: string;
 }
+
+/**
+ * The authenticated customer's account, identified by a numeric customer ID represented as a string.
+ *
+ * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ * @publicDocs
+ */
+export interface AuthenticatedAccountCustomer extends Customer {}
 
 /**
  * @publicDocs

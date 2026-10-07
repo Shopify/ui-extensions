@@ -1,11 +1,6 @@
 import {OrderStatusApi} from './order-status/order-status';
 import {StandardApi} from './standard-api/standard-api';
 import {CartLineItemApi} from './cart-line/cart-line-item';
-import type {
-  AuthenticatedAccount,
-  Customer,
-  SubscribableSignalLike,
-} from './shared';
 
 /**
  * An event type that narrows the `currentTarget` to the specific HTML element associated with the custom element tag. This provides type-safe event handling in callback listeners.
@@ -250,26 +245,7 @@ export interface Docs_Standard_ExtensionApi
  * @publicDocs
  */
 export interface Docs_Standard_AuthenticatedAccountApi
-  extends Pick<StandardApi<any>, 'authenticatedAccount'> {
-  authenticatedAccount: AuthenticatedAccountDocs;
-}
-
-/**
- * @publicDocs
- */
-export interface AuthenticatedAccountDocs extends AuthenticatedAccount {
-  customer: SubscribableSignalLike<
-    AuthenticatedAccountCustomerDocs | undefined
-  >;
-}
-
-/**
- * The authenticated customer's account, identified by a numeric customer ID represented as a string.
- *
- * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
- * @publicDocs
- */
-export interface AuthenticatedAccountCustomerDocs extends Customer {}
+  extends Pick<StandardApi<any>, 'authenticatedAccount'> {}
 
 /**
  * The base API object provided to all `customer-account` extension targets for retrieving the renderer version.
