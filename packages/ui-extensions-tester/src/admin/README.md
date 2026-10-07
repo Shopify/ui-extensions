@@ -78,6 +78,10 @@ extension.shopify.discounts.updateRecurringCycleLimit =
     .mockReturnValue(
       createResult('updateRecurringCycleLimit'),
     );
+
+extension.shopify.discounts.updateTags = vi
+  .fn()
+  .mockReturnValue(createResult('updateTags'));
 ```
 
 ## 📂 Example
@@ -102,3 +106,4 @@ Supported mutations:
 | `'updateDiscountClasses'`     | `{success: true, value: []}`                  |
 | `'updatePurchaseType'`        | `{success: true, value: 'one_time_purchase'}` |
 | `'updateRecurringCycleLimit'` | `{success: true, value: null}`                |
+| `'updateTags'`                | `{success: true, value: []}`                  |

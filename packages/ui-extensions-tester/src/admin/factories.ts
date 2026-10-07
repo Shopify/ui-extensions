@@ -265,6 +265,8 @@ function createDiscountFunctionSettingsMock<T extends ExtensionTarget>(
       recurringCycleLimit: createReadonlySignalLike(null),
       updateRecurringCycleLimit: () =>
         createResult('updateRecurringCycleLimit'),
+      tags: createReadonlySignalLike<string[]>([]),
+      updateTags: () => createResult('updateTags'),
     },
   };
 }

@@ -84,4 +84,12 @@ export interface DiscountsApi {
    * A function that updates the recurring cycle limit for subscription purchases. Pass a positive integer to limit the number of billing cycles, `0` or `null` to remove the limit.
    */
   updateRecurringCycleLimit: UpdateSignalFunction<number | null>;
+  /**
+   * A signal that contains the discount's current tags, including unsaved changes. `undefined` when the host doesn't expose tags for this discount.
+   */
+  tags?: ReadonlySignalLike<string[]>;
+  /**
+   * A function that replaces the discount's tags. Each tag is trimmed. The update is rejected if any tag is blank, longer than 255 characters, or contains a comma, if tags repeat ignoring case, or if there are more than 5 tags. A successful update changes unsaved form state; tags persist when the merchant saves the discount. `undefined` when the host doesn't support updating tags for this discount.
+   */
+  updateTags?: UpdateSignalFunction<string[]>;
 }

@@ -62,6 +62,7 @@ export interface AdminMutationResults {
   updateRecurringCycleLimit: ReturnType<
     DiscountsApi['updateRecurringCycleLimit']
   >;
+  updateTags: ReturnType<NonNullable<DiscountsApi['updateTags']>>;
 }
 
 const adminMutationDefaults: {
@@ -74,6 +75,7 @@ const adminMutationDefaults: {
     value: 'one_time_purchase' as const,
   }),
   updateRecurringCycleLimit: () => ({success: true as const, value: null}),
+  updateTags: () => ({success: true as const, value: []}),
 };
 
 /**
