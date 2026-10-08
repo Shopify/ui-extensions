@@ -31,6 +31,18 @@ The `admin.app.home.render` target mock includes `shopify.toast`, `shopify.app`,
 
 The `admin.app.intent.render` target mock includes `shopify.intents.response.ok()`, `.error()`, and `.closed()`.
 
+## 🧩 Metaobject form mocks
+
+The `admin.metaobject-details.form.render` target mock matches the target's narrow supported runtime API. Its `intents` is `{launchUrl: undefined}` with no fake `invoke()`, its `snapshot` starts with no fields, `setFieldValue()` resolves to `{status: 'SUCCESS'}`, and `setSaveHandler()` is a no-op that you can replace with a spy when testing pending writes. The mock intentionally omits `data`. A generic Admin Host might expose an incidental empty `data: {}`, but it isn't part of the supported target contract.
+
+```ts
+const setFieldValue = vi.fn().mockResolvedValue({
+  status: 'ERROR',
+  code: 'INVALID_VALUE',
+});
+extension.shopify.setFieldValue = setFieldValue;
+```
+
 ## 🔒 Mocking mutation return values
 
 Replace mutation functions with `vi.fn()` and use `createResult()` to build typed return values. The first argument is the mutation name; the second is an optional result override.
