@@ -1,5 +1,5 @@
 import type {RenderExtensionTarget} from '../extension-targets';
-import type {Country} from '../../../shared';
+import type {Country} from '../api/shared';
 
 import {useApi} from './api';
 import {useSubscription} from './subscription';

@@ -14,10 +14,9 @@ import type {
   Storage,
   Version,
 } from '../standard/standard';
-import type {Attribute, MailingAddress} from '../shared';
+import type {Attribute, Country, MailingAddress} from '../shared';
 import type {
   ApiVersion,
-  Country,
   GraphQLError,
   StorefrontApiVersion,
   Timezone,

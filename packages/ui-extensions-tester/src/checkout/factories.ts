@@ -24,6 +24,8 @@ import {
   createPickupLocationOption,
   createStorage,
   createResult,
+  createAcceptedAddressInputFieldsForCountry,
+  FLAT_ADDRESS_INPUT_FIELDS,
 } from './index';
 
 function createLanguage(): Language {
@@ -104,7 +106,12 @@ function createMockStandardApi<T extends ExtensionTarget>(
       timezone: createSubscribableSignalLike('America/New_York' as const),
       language: createSubscribableSignalLike(createLanguage()),
       extensionLanguage: createSubscribableSignalLike(createLanguage()),
-      country: createSubscribableSignalLike({isoCode: 'US' as const}),
+      country: createSubscribableSignalLike({
+        isoCode: 'US' as const,
+        acceptedAddressInputFields: [...FLAT_ADDRESS_INPUT_FIELDS],
+      }),
+      acceptedAddressInputFieldsForCountry:
+        createAcceptedAddressInputFieldsForCountry(),
       market: createSubscribableSignalLike(undefined),
     },
     note: createSubscribableSignalLike(undefined),
@@ -282,7 +289,11 @@ function createAddressAutocompleteSuggestMock<T extends ExtensionTarget>(
   return {
     ...createMockAddressAutocompleteStandardApi(target),
     signal: new AbortController().signal,
-    target: {value: '', field: 'address1' as const},
+    target: {
+      value: '',
+      field: 'address1' as const,
+      acceptedAddressInputFields: [...FLAT_ADDRESS_INPUT_FIELDS],
+    },
   } as ApiForExtension<T>;
 }
 
@@ -291,7 +302,10 @@ function createAddressAutocompleteFormatSuggestionMock<
 >(target: T): ApiForExtension<T> {
   return {
     ...createMockAddressAutocompleteStandardApi(target),
-    target: {selectedSuggestion: {label: ''}},
+    target: {
+      selectedSuggestion: {label: ''},
+      acceptedAddressInputFields: [...FLAT_ADDRESS_INPUT_FIELDS],
+    },
   } as ApiForExtension<T>;
 }
 

@@ -1,9 +1,5 @@
-import type {
-  Attribute,
-  SellingPlan,
-  MailingAddress,
-  ShippingAddress,
-} from '../shared';
+import type {AcceptedAddressInputField} from '../../../../shared';
+import type {Attribute, SellingPlan, ShippingAddress} from '../shared';
 
 /**
  * Clears the buyer's note from the checkout. Pass this to `applyNoteChange()` to remove any existing note.
@@ -578,7 +574,11 @@ export interface ShippingAddressUpdateChange {
   /**
    * Fields to update in the shipping address. You only need to provide
    * values for the fields you want to update. Any fields you don't list
-   * keep their current values.
+   * keep their current values. Address line components are written nested
+   * under `addressLineComponents`, the same shape they're read.
+   *
+   * @example
+   * {countryCode: 'BR', addressLineComponents: {streetName: 'Avenida Paulista', streetNumber: '1578'}}
    */
   address: Partial<ShippingAddress>;
 }
@@ -607,14 +607,24 @@ export interface ShippingAddressChangeResultSuccess {
 }
 
 /**
+ * The input a shipping address change failed on: an accepted input, `'name'`,
+ * or `'addressLineComponents'` when the components object itself is invalid.
+ * @publicDocs
+ */
+export type ShippingAddressChangeErrorField =
+  | AcceptedAddressInputField
+  | 'addressLineComponents'
+  | 'name';
+
+/**
  * An error corresponding to a particular field from a given change. Use the `field` property to determine which address field caused the error.
  * @publicDocs
  */
 export interface ShippingAddressChangeFieldError {
   /**
-   * The `MailingAddress` field that caused the error, such as `'countryCode'` or `'zip'`. The value is `undefined` if the error isn't specific to a single field.
+   * The address input that caused the error, such as `'countryCode'` or `'zip'`, or an address line component such as `'streetName'`. The value is `undefined` if the error isn't specific to a single input.
    */
-  field?: keyof MailingAddress;
+  field?: ShippingAddressChangeErrorField;
 
   /**
    * A message that explains the error. This message is useful for debugging.

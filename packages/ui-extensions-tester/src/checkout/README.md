@@ -74,6 +74,28 @@ extension.shopify.storage = createStorage({
 });
 ```
 
+## 🏠 Mocking accepted address input fields
+
+By default, `localization.acceptedAddressInputFieldsForCountry()` resolves the flat address input fields for every country, and `localization.country` carries the same list. The address autocomplete `suggest` and `format-suggestion` targets also carry it as `target.acceptedAddressInputFields`. Use `createAcceptedAddressInputFieldsForCountry()` to model countries with extended address fields:
+
+```ts
+import {
+  createAcceptedAddressInputFieldsForCountry,
+  FLAT_ADDRESS_INPUT_FIELDS,
+} from '@shopify/ui-extensions-tester/checkout';
+
+extension.shopify.localization.acceptedAddressInputFieldsForCountry =
+  createAcceptedAddressInputFieldsForCountry({
+    BR: [
+      ...FLAT_ADDRESS_INPUT_FIELDS,
+      'streetName',
+      'streetNumber',
+    ],
+    // Excluded by shipping restrictions
+    CU: [],
+  });
+```
+
 ## 🔒 Mocking mutation return values
 
 Replace any mutation function with a `vi.fn()` and use `createResult()` to build a typed return value. The first argument is the mutation API name; the second is an optional result override (defaults to `{type: 'success'}`).
@@ -132,6 +154,14 @@ Creates a mock `PickupLocationOption` with sensible defaults.
 ### `createStorage(initialEntries?)`
 
 Creates a mock `Storage` instance. Optionally accepts a `Record<string, unknown>` of initial entries.
+
+### `createAcceptedAddressInputFieldsForCountry(overrides?)`
+
+Creates a mock `localization.acceptedAddressInputFieldsForCountry`. It resolves `FLAT_ADDRESS_INPUT_FIELDS` for every country unless `overrides` maps the country code to another list. An empty list models a country that shipping restrictions exclude.
+
+### `FLAT_ADDRESS_INPUT_FIELDS`
+
+The default accepted address input fields: `firstName`, `lastName`, `company`, `address1`, `address2`, `city`, `provinceCode`, `zip`, `countryCode` and `phone`.
 
 ### `createResult(mutation, result?)`
 

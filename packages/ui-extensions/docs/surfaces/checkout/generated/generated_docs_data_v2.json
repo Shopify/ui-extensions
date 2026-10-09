@@ -38,6 +38,62 @@
       "value": "interface ValidationError {\n  type: 'error';\n  /**\n   * A message describing the error.\n   */\n  message: string;\n  /**\n   * A code identifier for the error.\n   */\n  code: string;\n  /**\n   * Field-level validation issues\n   */\n  issues?: {\n    message: string;\n    path: string[];\n  }[];\n}"
     }
   },
+  "Country": {
+    "src/surfaces/checkout/api/shared.ts": {
+      "filePath": "src/surfaces/checkout/api/shared.ts",
+      "name": "Country",
+      "description": "A buyer's country, identified by its ISO country code.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "acceptedAddressInputFields",
+          "value": "AcceptedAddressInputField[]",
+          "description": "The address inputs this country's format carries, as guidance for what to write: `applyShippingAddressChange` does not validate a change against this list. A country that carries a line component lists the flat line too, so either can be written. Listed inputs may be optional or hidden from the buyer. `undefined` until the address format loads.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isoCode",
+          "value": "CountryCode",
+          "description": "The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'CA' for Canada, 'US' for United States.",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface Country {\n  /**\n   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.\n   *\n   * @example 'CA' for Canada, 'US' for United States.\n   */\n  isoCode: CountryCode;\n  /**\n   * The address inputs this country's format carries, as guidance for what to\n   * write: `applyShippingAddressChange` does not validate a change against\n   * this list. A country that carries a line component lists the flat line\n   * too, so either can be written. Listed inputs may be optional or hidden\n   * from the buyer. `undefined` until the address format loads.\n   */\n  acceptedAddressInputFields?: AcceptedAddressInputField[];\n}"
+    }
+  },
+  "AcceptedAddressInputField": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AcceptedAddressInputField",
+      "value": "'additionalInformation' | 'address1' | 'address2' | 'addressCode' | 'city' | 'company' | 'countryCode' | 'district' | 'firstName' | 'lastName' | 'phone' | 'provinceCode' | 'streetName' | 'streetNumber' | 'subdistrict' | 'zip'",
+      "description": "An address input a country's address format carries. Flat fields (`address1`, `city`, `zip`, …) are written on the change's `address`; line components (`streetName`, `streetNumber`, `additionalInformation`, `district`, `subdistrict`) are written inside `addressLineComponents`, and are rejected as unknown properties if sent at the top level."
+    }
+  },
+  "CountryCode": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CountryCode",
+      "value": "'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AM' | 'AN' | 'AO' | 'AR' | 'AT' | 'AU' | 'AW' | 'AX' | 'AZ' | 'BA' | 'BB' | 'BD' | 'BE' | 'BF' | 'BG' | 'BH' | 'BI' | 'BJ' | 'BL' | 'BM' | 'BN' | 'BO' | 'BQ' | 'BR' | 'BS' | 'BT' | 'BV' | 'BW' | 'BY' | 'BZ' | 'CA' | 'CC' | 'CD' | 'CF' | 'CG' | 'CH' | 'CI' | 'CK' | 'CL' | 'CM' | 'CN' | 'CO' | 'CR' | 'CU' | 'CV' | 'CW' | 'CX' | 'CY' | 'CZ' | 'DE' | 'DJ' | 'DK' | 'DM' | 'DO' | 'DZ' | 'EC' | 'EE' | 'EG' | 'EH' | 'ER' | 'ES' | 'ET' | 'FI' | 'FJ' | 'FK' | 'FO' | 'FR' | 'GA' | 'GB' | 'GD' | 'GE' | 'GF' | 'GG' | 'GH' | 'GI' | 'GL' | 'GM' | 'GN' | 'GP' | 'GQ' | 'GR' | 'GS' | 'GT' | 'GW' | 'GY' | 'HK' | 'HM' | 'HN' | 'HR' | 'HT' | 'HU' | 'ID' | 'IE' | 'IL' | 'IM' | 'IN' | 'IO' | 'IQ' | 'IR' | 'IS' | 'IT' | 'JE' | 'JM' | 'JO' | 'JP' | 'KE' | 'KG' | 'KH' | 'KI' | 'KM' | 'KN' | 'KP' | 'KR' | 'KW' | 'KY' | 'KZ' | 'LA' | 'LB' | 'LC' | 'LI' | 'LK' | 'LR' | 'LS' | 'LT' | 'LU' | 'LV' | 'LY' | 'MA' | 'MC' | 'MD' | 'ME' | 'MF' | 'MG' | 'MK' | 'ML' | 'MM' | 'MN' | 'MO' | 'MQ' | 'MR' | 'MS' | 'MT' | 'MU' | 'MV' | 'MW' | 'MX' | 'MY' | 'MZ' | 'NA' | 'NC' | 'NE' | 'NF' | 'NG' | 'NI' | 'NL' | 'NO' | 'NP' | 'NR' | 'NU' | 'NZ' | 'OM' | 'PA' | 'PE' | 'PF' | 'PG' | 'PH' | 'PK' | 'PL' | 'PM' | 'PN' | 'PS' | 'PT' | 'PY' | 'QA' | 'RE' | 'RO' | 'RS' | 'RU' | 'RW' | 'SA' | 'SB' | 'SC' | 'SD' | 'SE' | 'SG' | 'SH' | 'SI' | 'SJ' | 'SK' | 'SL' | 'SM' | 'SN' | 'SO' | 'SR' | 'SS' | 'ST' | 'SV' | 'SX' | 'SY' | 'SZ' | 'TA' | 'TC' | 'TD' | 'TF' | 'TG' | 'TH' | 'TJ' | 'TK' | 'TL' | 'TM' | 'TN' | 'TO' | 'TR' | 'TT' | 'TV' | 'TW' | 'TZ' | 'UA' | 'UG' | 'UM' | 'US' | 'UY' | 'UZ' | 'VA' | 'VC' | 'VE' | 'VG' | 'VN' | 'VU' | 'WF' | 'WS' | 'XK' | 'YE' | 'YT' | 'ZA' | 'ZM' | 'ZW' | 'ZZ'",
+      "description": ""
+    }
+  },
   "SellingPlan": {
     "src/surfaces/checkout/api/shared.ts": {
       "filePath": "src/surfaces/checkout/api/shared.ts",
@@ -124,6 +180,117 @@
       "value": "export interface Attribute {\n  /**\n   * The identifier for the attribute. Each key must be unique within the\n   * set of attributes on the cart or checkout. If you call\n   * `applyAttributeChange()` with a key that already exists, then the\n   * existing value is replaced.\n   *\n   * @example 'gift_wrapping'\n   */\n  key: string;\n\n  /**\n   * The value associated with the attribute key. This is a freeform string\n   * that can store any information the buyer or app provides.\n   *\n   * Attribute values are always strings. To store structured data, serialize\n   * it to JSON and parse it when reading.\n   *\n   * @example 'Please use red wrapping paper'\n   */\n  value: string;\n}"
     }
   },
+  "AddressLineComponents": {
+    "src/surfaces/checkout/api/shared.ts": {
+      "filePath": "src/surfaces/checkout/api/shared.ts",
+      "name": "AddressLineComponents",
+      "description": "Components of the `address1`/`address2` lines on a `MailingAddress`, for countries whose address format accepts them.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "additionalInformation",
+          "value": "string",
+          "description": "Additional address information (e.g. apartment, suite, or unit).\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'Apto 42'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "district",
+          "value": "string",
+          "description": "A regional or city subdivision (e.g. county, metropolitan region, neighborhood, ward).\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'Bela Vista'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "streetName",
+          "value": "string",
+          "description": "The street name, without the number.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'Avenida Paulista'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "streetNumber",
+          "value": "string",
+          "description": "The house or building number.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'1578'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subdistrict",
+          "value": "string",
+          "description": "A finer subdivision within `district`, when the country uses both.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'Kelurahan Menteng'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface AddressLineComponents {\n  /**\n   * The street name, without the number.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Avenida Paulista'\n   */\n  streetName?: string;\n\n  /**\n   * The house or building number.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example '1578'\n   */\n  streetNumber?: string;\n\n  /**\n   * Additional address information (e.g. apartment, suite, or unit).\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Apto 42'\n   */\n  additionalInformation?: string;\n\n  /**\n   * A regional or city subdivision (e.g. county, metropolitan region,\n   * neighborhood, ward).\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Bela Vista'\n   */\n  district?: string;\n\n  /**\n   * A finer subdivision within `district`, when the country uses both.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Kelurahan Menteng'\n   */\n  subdistrict?: string;\n}"
+    }
+  },
   "MailingAddress": {
     "src/surfaces/checkout/api/shared.ts": {
       "filePath": "src/surfaces/checkout/api/shared.ts",
@@ -165,6 +332,46 @@
               "tabs": [
                 {
                   "code": "'Ground floor'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "addressCode",
+          "value": "string",
+          "description": "A postal or national address code that identifies the address independently of its street lines, used by countries such as Saudi Arabia. The value is `undefined` if the country doesn't use one or it hasn't been provided.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'RRRR1234'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "addressLineComponents",
+          "value": "AddressLineComponents",
+          "description": "The components of `address1`/`address2`. `undefined` when the country's address layout doesn't store components or none have been entered. The flat lines are published alongside them.\n\nWritable through `applyShippingAddressChange`, which does not validate a change against `Country.acceptedAddressInputFields`. Sent alongside a flat line, the components win and recompose it. Where a country accepts components without storing them, the write composes the flat line and only the line is published.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "{\n  streetName: 'Avenida Paulista',\n  streetNumber: '1578',\n  additionalInformation: 'Apto 42',\n  district: 'Bela Vista'\n}",
                   "title": "Example"
                 }
               ]
@@ -352,16 +559,7 @@
           ]
         }
       ],
-      "value": "export interface MailingAddress {\n  /**\n   * The buyer's full name, typically a combination of first and last name.\n   * The value is `undefined` if the buyer didn't provide a name.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'John Doe'\n   */\n  name?: string;\n\n  /**\n   * The buyer's first name. Use this alongside `lastName` when you need to\n   * display or process name parts separately. The value is `undefined` if\n   * the buyer didn't provide a first name or the store doesn't collect\n   * split names.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'John'\n   */\n  firstName?: string;\n\n  /**\n   * The buyer's last name. Use this alongside `firstName` when you need to\n   * display or process name parts separately. The value is `undefined` if\n   * the buyer didn't provide a last name or the store doesn't collect\n   * split names.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Doe'\n   */\n  lastName?: string;\n\n  /**\n   * The buyer's company name. The value is `undefined` if the buyer didn't\n   * enter a company or the store doesn't collect company names.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Shopify'\n   */\n  company?: string;\n\n  /**\n   * The first line of the street address, including the street number and\n   * name. The value is `undefined` if the buyer hasn't entered an address yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example '151 O'Connor Street'\n   */\n  address1?: string;\n\n  /**\n   * The second line of the buyer's address, such as apartment number, suite,\n   * or unit. The value is `undefined` if the buyer didn't provide a second\n   * address line.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Ground floor'\n   */\n  address2?: string;\n\n  /**\n   * The city, town, or village of the address. The value is `undefined` if\n   * the buyer hasn't entered a city yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Ottawa'\n   */\n  city?: string;\n\n  /**\n   * The postal code or ZIP code of the address, used for mail sorting and\n   * delivery routing. The value is `undefined` if the buyer hasn't entered\n   * one yet or the country doesn't use postal codes.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'K2P 2L8'\n   */\n  zip?: string;\n\n  /**\n   * The two-letter country code in [ISO 3166 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\n   * format. The value is `undefined` if the buyer hasn't selected a country\n   * yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'CA' for Canada.\n   */\n  countryCode?: CountryCode;\n\n  /**\n   * The province, state, prefecture, or region code of the address. The\n   * format varies by country. The value is `undefined` if the buyer hasn't\n   * selected one yet or the country doesn't have provinces.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'ON' for Ontario.\n   */\n  provinceCode?: string;\n\n  /**\n   * The phone number associated with the address, typically in international\n   * format. The value is `undefined` if the buyer didn't provide a phone\n   * number or the store doesn't collect phone numbers.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example '+1 613 111 2222'\n   */\n  phone?: string;\n}"
-    }
-  },
-  "CountryCode": {
-    "src/shared.ts": {
-      "filePath": "src/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CountryCode",
-      "value": "'AC' | 'AD' | 'AE' | 'AF' | 'AG' | 'AI' | 'AL' | 'AM' | 'AN' | 'AO' | 'AR' | 'AT' | 'AU' | 'AW' | 'AX' | 'AZ' | 'BA' | 'BB' | 'BD' | 'BE' | 'BF' | 'BG' | 'BH' | 'BI' | 'BJ' | 'BL' | 'BM' | 'BN' | 'BO' | 'BQ' | 'BR' | 'BS' | 'BT' | 'BV' | 'BW' | 'BY' | 'BZ' | 'CA' | 'CC' | 'CD' | 'CF' | 'CG' | 'CH' | 'CI' | 'CK' | 'CL' | 'CM' | 'CN' | 'CO' | 'CR' | 'CU' | 'CV' | 'CW' | 'CX' | 'CY' | 'CZ' | 'DE' | 'DJ' | 'DK' | 'DM' | 'DO' | 'DZ' | 'EC' | 'EE' | 'EG' | 'EH' | 'ER' | 'ES' | 'ET' | 'FI' | 'FJ' | 'FK' | 'FO' | 'FR' | 'GA' | 'GB' | 'GD' | 'GE' | 'GF' | 'GG' | 'GH' | 'GI' | 'GL' | 'GM' | 'GN' | 'GP' | 'GQ' | 'GR' | 'GS' | 'GT' | 'GW' | 'GY' | 'HK' | 'HM' | 'HN' | 'HR' | 'HT' | 'HU' | 'ID' | 'IE' | 'IL' | 'IM' | 'IN' | 'IO' | 'IQ' | 'IR' | 'IS' | 'IT' | 'JE' | 'JM' | 'JO' | 'JP' | 'KE' | 'KG' | 'KH' | 'KI' | 'KM' | 'KN' | 'KP' | 'KR' | 'KW' | 'KY' | 'KZ' | 'LA' | 'LB' | 'LC' | 'LI' | 'LK' | 'LR' | 'LS' | 'LT' | 'LU' | 'LV' | 'LY' | 'MA' | 'MC' | 'MD' | 'ME' | 'MF' | 'MG' | 'MK' | 'ML' | 'MM' | 'MN' | 'MO' | 'MQ' | 'MR' | 'MS' | 'MT' | 'MU' | 'MV' | 'MW' | 'MX' | 'MY' | 'MZ' | 'NA' | 'NC' | 'NE' | 'NF' | 'NG' | 'NI' | 'NL' | 'NO' | 'NP' | 'NR' | 'NU' | 'NZ' | 'OM' | 'PA' | 'PE' | 'PF' | 'PG' | 'PH' | 'PK' | 'PL' | 'PM' | 'PN' | 'PS' | 'PT' | 'PY' | 'QA' | 'RE' | 'RO' | 'RS' | 'RU' | 'RW' | 'SA' | 'SB' | 'SC' | 'SD' | 'SE' | 'SG' | 'SH' | 'SI' | 'SJ' | 'SK' | 'SL' | 'SM' | 'SN' | 'SO' | 'SR' | 'SS' | 'ST' | 'SV' | 'SX' | 'SY' | 'SZ' | 'TA' | 'TC' | 'TD' | 'TF' | 'TG' | 'TH' | 'TJ' | 'TK' | 'TL' | 'TM' | 'TN' | 'TO' | 'TR' | 'TT' | 'TV' | 'TW' | 'TZ' | 'UA' | 'UG' | 'UM' | 'US' | 'UY' | 'UZ' | 'VA' | 'VC' | 'VE' | 'VG' | 'VN' | 'VU' | 'WF' | 'WS' | 'XK' | 'YE' | 'YT' | 'ZA' | 'ZM' | 'ZW' | 'ZZ'",
-      "description": ""
+      "value": "export interface MailingAddress {\n  /**\n   * The buyer's full name, typically a combination of first and last name.\n   * The value is `undefined` if the buyer didn't provide a name.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'John Doe'\n   */\n  name?: string;\n\n  /**\n   * The buyer's first name. Use this alongside `lastName` when you need to\n   * display or process name parts separately. The value is `undefined` if\n   * the buyer didn't provide a first name or the store doesn't collect\n   * split names.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'John'\n   */\n  firstName?: string;\n\n  /**\n   * The buyer's last name. Use this alongside `firstName` when you need to\n   * display or process name parts separately. The value is `undefined` if\n   * the buyer didn't provide a last name or the store doesn't collect\n   * split names.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Doe'\n   */\n  lastName?: string;\n\n  /**\n   * The buyer's company name. The value is `undefined` if the buyer didn't\n   * enter a company or the store doesn't collect company names.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Shopify'\n   */\n  company?: string;\n\n  /**\n   * The first line of the street address, including the street number and\n   * name. The value is `undefined` if the buyer hasn't entered an address yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example '151 O'Connor Street'\n   */\n  address1?: string;\n\n  /**\n   * The second line of the buyer's address, such as apartment number, suite,\n   * or unit. The value is `undefined` if the buyer didn't provide a second\n   * address line.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Ground floor'\n   */\n  address2?: string;\n\n  /**\n   * The components of `address1`/`address2`. `undefined` when the country's\n   * address layout doesn't store components or none have been entered. The\n   * flat lines are published alongside them.\n   *\n   * Writable through `applyShippingAddressChange`, which does not validate a\n   * change against `Country.acceptedAddressInputFields`. Sent alongside a flat\n   * line, the components win and recompose it. Where a country accepts\n   * components without storing them, the write composes the flat line and only\n   * the line is published.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example\n   * {\n   *   streetName: 'Avenida Paulista',\n   *   streetNumber: '1578',\n   *   additionalInformation: 'Apto 42',\n   *   district: 'Bela Vista'\n   * }\n   */\n  addressLineComponents?: AddressLineComponents;\n\n  /**\n   * A postal or national address code that identifies the address\n   * independently of its street lines, used by countries such as Saudi\n   * Arabia. The value is `undefined` if the country doesn't use one or it\n   * hasn't been provided.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'RRRR1234'\n   */\n  addressCode?: string;\n\n  /**\n   * The city, town, or village of the address. The value is `undefined` if\n   * the buyer hasn't entered a city yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'Ottawa'\n   */\n  city?: string;\n\n  /**\n   * The postal code or ZIP code of the address, used for mail sorting and\n   * delivery routing. The value is `undefined` if the buyer hasn't entered\n   * one yet or the country doesn't use postal codes.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'K2P 2L8'\n   */\n  zip?: string;\n\n  /**\n   * The two-letter country code in [ISO 3166 Alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)\n   * format. The value is `undefined` if the buyer hasn't selected a country\n   * yet.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'CA' for Canada.\n   */\n  countryCode?: CountryCode;\n\n  /**\n   * The province, state, prefecture, or region code of the address. The\n   * format varies by country. The value is `undefined` if the buyer hasn't\n   * selected one yet or the country doesn't have provinces.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 'ON' for Ontario.\n   */\n  provinceCode?: string;\n\n  /**\n   * The phone number associated with the address, typically in international\n   * format. The value is `undefined` if the buyer didn't provide a phone\n   * number or the store doesn't collect phone numbers.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example '+1 613 111 2222'\n   */\n  phone?: string;\n}"
     }
   },
   "ShippingAddress": {
@@ -405,6 +603,46 @@
               "tabs": [
                 {
                   "code": "'Ground floor'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "addressCode",
+          "value": "string",
+          "description": "A postal or national address code that identifies the address independently of its street lines, used by countries such as Saudi Arabia. The value is `undefined` if the country doesn't use one or it hasn't been provided.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'RRRR1234'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "addressLineComponents",
+          "value": "AddressLineComponents",
+          "description": "The components of `address1`/`address2`. `undefined` when the country's address layout doesn't store components or none have been entered. The flat lines are published alongside them.\n\nWritable through `applyShippingAddressChange`, which does not validate a change against `Country.acceptedAddressInputFields`. Sent alongside a flat line, the components win and recompose it. Where a country accepts components without storing them, the write composes the flat line and only the line is published.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "{\n  streetName: 'Avenida Paulista',\n  streetNumber: '1578',\n  additionalInformation: 'Apto 42',\n  district: 'Bela Vista'\n}",
                   "title": "Example"
                 }
               ]
@@ -3989,6 +4227,13 @@
       "members": [
         {
           "filePath": "src/surfaces/checkout/api/standard/standard.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "acceptedAddressInputFieldsForCountry",
+          "value": "(countryCode: CountryCode) => Promise<AcceptedAddressInputField[]>",
+          "description": "The inputs `applyShippingAddressChange` accepts for `countryCode`. Resolves to an empty array if shipping restrictions exclude the country. Rejects if the address format cannot be loaded."
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/standard/standard.ts",
           "syntaxKind": "PropertySignature",
           "name": "country",
           "value": "SubscribableSignalLike<Country | undefined>",
@@ -4020,8 +4265,8 @@
           "syntaxKind": "PropertySignature",
           "name": "market",
           "value": "SubscribableSignalLike<Market | undefined>",
-          "description": "The [market](/docs/apps/build/markets) context of the checkout, carried over from the cart context. Markets group countries and regions with shared pricing, languages, and domains. The market context updates when the buyer changes the country of their shipping address. The value is `undefined` if the market is unknown.",
-          "deprecationMessage": "Merchants now manage which extensions load for each\nmarket, so extensions no longer need to check this value."
+          "description": "The [market](/docs/apps/build/markets) context of the checkout, carried over from the cart context. Markets group countries and regions with shared pricing, languages, and domains. In cases where multiple markets match, this returns the most narrowly scoped country region market. The market context updates when the buyer changes the country of their shipping address. The value is `undefined` if the market is unknown.\n\n> Caution: This `market` field is deprecated and will be removed in a future version of the API.",
+          "deprecationMessage": "This `market` field will be removed in a future version of the API."
         },
         {
           "filePath": "src/surfaces/checkout/api/standard/standard.ts",
@@ -4031,46 +4276,7 @@
           "description": "The buyer's time zone, based on their browser or account settings. Use this value to format dates and times relative to the buyer's local time."
         }
       ],
-      "value": "export interface Localization {\n  /**\n   * The currency that the buyer sees for money amounts in the checkout. Use this value to format prices and totals in the buyer's expected currency.\n   */\n  currency: SubscribableSignalLike<Currency>;\n\n  /**\n   * The buyer's time zone, based on their browser or account settings. Use this value to format dates and times relative to the buyer's local time.\n   */\n  timezone: SubscribableSignalLike<Timezone>;\n\n  /**\n   * The language the buyer sees in the checkout. This reflects the language selected by the buyer or determined by their browser settings, and might differ from the languages your extension supports.\n   */\n  language: SubscribableSignalLike<Language>;\n\n  /**\n   * The best available language match for your extension based on the buyer's language. If the buyer's language is `'fr-CA'` but your extension supports only `'fr'`, this returns `'fr'`. If your extension doesn't support any variant of the buyer's language, this falls back to your extension's default locale (the `.default.json` translation file). Use this value to load the correct translation file for your extension.\n   */\n  extensionLanguage: SubscribableSignalLike<Language>;\n\n  /**\n   * The country context of the checkout, carried over from the cart. It updates when the buyer changes their shipping address country. Use this value to display region-specific content such as local support information or regional policies. The value is `undefined` if the buyer's country is unknown.\n   *\n   * Derived from the buyer's shipping address. Returns `undefined` until the\n   * buyer enters a shipping address.\n   */\n  country: SubscribableSignalLike<Country | undefined>;\n\n  /**\n   * The [market](/docs/apps/build/markets) context of the checkout,\n   * carried over from the cart context. Markets group countries and\n   * regions with shared pricing, languages, and domains. The market\n   * context updates when the buyer changes the country of their\n   * shipping address. The value is `undefined` if the market is unknown.\n   *\n   * @deprecated Merchants now manage which extensions load for each\n   * market, so extensions no longer need to check this value.\n   */\n  market: SubscribableSignalLike<Market | undefined>;\n}"
-    }
-  },
-  "Country": {
-    "src/shared.ts": {
-      "filePath": "src/shared.ts",
-      "name": "Country",
-      "description": "A buyer's country, identified by its ISO country code.",
-      "members": [
-        {
-          "filePath": "src/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isoCode",
-          "value": "CountryCode",
-          "description": "The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.",
-          "examples": [
-            {
-              "title": "Example",
-              "description": "",
-              "tabs": [
-                {
-                  "code": "'CA' for Canada, 'US' for United States.",
-                  "title": "Example"
-                }
-              ]
-            },
-            {
-              "title": "Example",
-              "description": "",
-              "tabs": [
-                {
-                  "code": "'CA' for Canada, 'US' for United States.",
-                  "title": "Example"
-                }
-              ]
-            }
-          ]
-        }
-      ],
-      "value": "export interface Country {\n  /**\n   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.\n   *\n   * @example 'CA' for Canada, 'US' for United States.\n   */\n  isoCode: CountryCode;\n}"
+      "value": "export interface Localization {\n  /**\n   * The currency that the buyer sees for money amounts in the checkout. Use this value to format prices and totals in the buyer's expected currency.\n   */\n  currency: SubscribableSignalLike<Currency>;\n\n  /**\n   * The buyer's time zone, based on their browser or account settings. Use this value to format dates and times relative to the buyer's local time.\n   */\n  timezone: SubscribableSignalLike<Timezone>;\n\n  /**\n   * The language the buyer sees in the checkout. This reflects the language selected by the buyer or determined by their browser settings, and might differ from the languages your extension supports.\n   */\n  language: SubscribableSignalLike<Language>;\n\n  /**\n   * The best available language match for your extension based on the buyer's language. If the buyer's language is `'fr-CA'` but your extension supports only `'fr'`, this returns `'fr'`. If your extension doesn't support any variant of the buyer's language, this falls back to your extension's default locale (the `.default.json` translation file). Use this value to load the correct translation file for your extension.\n   */\n  extensionLanguage: SubscribableSignalLike<Language>;\n\n  /**\n   * The country context of the checkout, carried over from the cart. It updates when the buyer changes their shipping address country. Use this value to display region-specific content such as local support information or regional policies. The value is `undefined` if the buyer's country is unknown.\n   *\n   * Derived from the buyer's shipping address. Returns `undefined` until the\n   * buyer enters a shipping address.\n   */\n  country: SubscribableSignalLike<Country | undefined>;\n\n  /**\n   * The inputs `applyShippingAddressChange` accepts for `countryCode`. Resolves\n   * to an empty array if shipping restrictions exclude the country. Rejects if\n   * the address format cannot be loaded.\n   */\n  acceptedAddressInputFieldsForCountry(\n    countryCode: CountryCode,\n  ): Promise<AcceptedAddressInputField[]>;\n\n  /**\n   * The [market](/docs/apps/build/markets) context of the checkout,\n   * carried over from the cart context. Markets group countries and\n   * regions with shared pricing, languages, and domains. In cases where\n   * multiple markets match, this returns the most narrowly scoped\n   * country region market. The market context updates when the buyer\n   * changes the country of their shipping address. The value is\n   * `undefined` if the market is unknown.\n   *\n   * > Caution: This `market` field is deprecated and will be removed in a future version of the API.\n   *\n   * @deprecated This `market` field will be removed in a future version of the API.\n   */\n  market: SubscribableSignalLike<Market | undefined>;\n}"
     }
   },
   "Timezone": {
@@ -5509,7 +5715,19 @@
           "syntaxKind": "PropertySignature",
           "name": "address",
           "value": "Partial<ShippingAddress>",
-          "description": "Fields to update in the shipping address. You only need to provide values for the fields you want to update. Any fields you don't list keep their current values."
+          "description": "Fields to update in the shipping address. You only need to provide values for the fields you want to update. Any fields you don't list keep their current values. Address line components are written nested under `addressLineComponents`, the same shape they're read.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "{countryCode: 'BR', addressLineComponents: {streetName: 'Avenida Paulista', streetNumber: '1578'}}",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
         },
         {
           "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
@@ -5519,7 +5737,7 @@
           "description": "Identifies this as a shipping address update. This is the only supported change type for `applyShippingAddressChange()`."
         }
       ],
-      "value": "export interface ShippingAddressUpdateChange {\n  /**\n   * Identifies this as a shipping address update. This is the only supported change type for `applyShippingAddressChange()`.\n   */\n  type: 'updateShippingAddress';\n\n  /**\n   * Fields to update in the shipping address. You only need to provide\n   * values for the fields you want to update. Any fields you don't list\n   * keep their current values.\n   */\n  address: Partial<ShippingAddress>;\n}"
+      "value": "export interface ShippingAddressUpdateChange {\n  /**\n   * Identifies this as a shipping address update. This is the only supported change type for `applyShippingAddressChange()`.\n   */\n  type: 'updateShippingAddress';\n\n  /**\n   * Fields to update in the shipping address. You only need to provide\n   * values for the fields you want to update. Any fields you don't list\n   * keep their current values. Address line components are written nested\n   * under `addressLineComponents`, the same shape they're read.\n   *\n   * @example\n   * {countryCode: 'BR', addressLineComponents: {streetName: 'Avenida Paulista', streetNumber: '1578'}}\n   */\n  address: Partial<ShippingAddress>;\n}"
     }
   },
   "ShippingAddressChange": {
@@ -5536,7 +5754,19 @@
           "syntaxKind": "PropertySignature",
           "name": "address",
           "value": "Partial<ShippingAddress>",
-          "description": "Fields to update in the shipping address. You only need to provide values for the fields you want to update. Any fields you don't list keep their current values."
+          "description": "Fields to update in the shipping address. You only need to provide values for the fields you want to update. Any fields you don't list keep their current values. Address line components are written nested under `addressLineComponents`, the same shape they're read.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "{countryCode: 'BR', addressLineComponents: {streetName: 'Avenida Paulista', streetNumber: '1578'}}",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
         },
         {
           "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
@@ -5573,6 +5803,16 @@
       "value": "export interface ShippingAddressChangeResultSuccess {\n  /**\n   * Indicates that the shipping address change was applied successfully.\n   */\n  type: 'success';\n\n  /**\n   * Always `null` for a successful address change. Present so that you can\n   * check `result.errors` without narrowing the union type first.\n   */\n  errors: null;\n}"
     }
   },
+  "ShippingAddressChangeErrorField": {
+    "src/surfaces/checkout/api/checkout/checkout.ts": {
+      "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "ShippingAddressChangeErrorField",
+      "value": "AcceptedAddressInputField | 'addressLineComponents' | 'name'",
+      "description": "The input a shipping address change failed on: an accepted input, `'name'`, or `'addressLineComponents'` when the components object itself is invalid.",
+      "isPublicDocs": true
+    }
+  },
   "ShippingAddressChangeFieldError": {
     "src/surfaces/checkout/api/checkout/checkout.ts": {
       "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
@@ -5584,8 +5824,8 @@
           "filePath": "src/surfaces/checkout/api/checkout/checkout.ts",
           "syntaxKind": "PropertySignature",
           "name": "field",
-          "value": "keyof MailingAddress",
-          "description": "The `MailingAddress` field that caused the error, such as `'countryCode'` or `'zip'`. The value is `undefined` if the error isn't specific to a single field.",
+          "value": "ShippingAddressChangeErrorField",
+          "description": "The address input that caused the error, such as `'countryCode'` or `'zip'`, or an address line component such as `'streetName'`. The value is `undefined` if the error isn't specific to a single input.",
           "isOptional": true
         },
         {
@@ -5596,7 +5836,7 @@
           "description": "A message that explains the error. This message is useful for debugging. It isn't localized and shouldn't be displayed to the buyer."
         }
       ],
-      "value": "export interface ShippingAddressChangeFieldError {\n  /**\n   * The `MailingAddress` field that caused the error, such as `'countryCode'` or `'zip'`. The value is `undefined` if the error isn't specific to a single field.\n   */\n  field?: keyof MailingAddress;\n\n  /**\n   * A message that explains the error. This message is useful for debugging.\n   * It isn't localized and shouldn't be displayed to the buyer.\n   */\n  message: string;\n}"
+      "value": "export interface ShippingAddressChangeFieldError {\n  /**\n   * The address input that caused the error, such as `'countryCode'` or `'zip'`, or an address line component such as `'streetName'`. The value is `undefined` if the error isn't specific to a single input.\n   */\n  field?: ShippingAddressChangeErrorField;\n\n  /**\n   * A message that explains the error. This message is useful for debugging.\n   * It isn't localized and shouldn't be displayed to the buyer.\n   */\n  message: string;\n}"
     }
   },
   "ShippingAddressChangeResultError": {
@@ -6040,6 +6280,34 @@
         {
           "filePath": "src/surfaces/checkout/api/address-autocomplete/shared.ts",
           "syntaxKind": "PropertySignature",
+          "name": "addressCode",
+          "value": "string",
+          "description": "A postal or national address code that identifies the address independently of its street lines, used by countries such as Saudi Arabia. The value is `undefined` if the country doesn't use one or it hasn't been provided.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'RRRR1234'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/address-autocomplete/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "addressLineComponents",
+          "value": "AddressLineComponents",
+          "description": "Components of `address1`/`address2`. Always send the flat lines as well: a form without component inputs ignores the components, so a components-only suggestion clears both lines in that form.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/address-autocomplete/shared.ts",
+          "syntaxKind": "PropertySignature",
           "name": "city",
           "value": "string",
           "description": "The city, town, or village of the address. The value is `undefined` if the buyer hasn't entered a city yet.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
@@ -6178,7 +6446,7 @@
           ]
         }
       ],
-      "value": "export interface AutocompleteAddress\n  extends Pick<\n    MailingAddress,\n    | 'address1'\n    | 'address2'\n    | 'city'\n    | 'company'\n    | 'countryCode'\n    | 'provinceCode'\n    | 'zip'\n  > {\n  /**\n   * The latitude coordinates of the buyer.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 43.6556377\n   */\n  latitude?: number;\n\n  /**\n   * The longitude coordinates of the buyer.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example -79.38681079999999\n   */\n  longitude?: number;\n}"
+      "value": "export interface AutocompleteAddress\n  extends Pick<\n    MailingAddress,\n    | 'address1'\n    | 'address2'\n    | 'addressCode'\n    | 'city'\n    | 'company'\n    | 'countryCode'\n    | 'provinceCode'\n    | 'zip'\n  > {\n  /**\n   * Components of `address1`/`address2`. Always send the flat lines as well: a\n   * form without component inputs ignores the components, so a components-only\n   * suggestion clears both lines in that form.\n   */\n  addressLineComponents?: AddressLineComponents;\n\n  /**\n   * The latitude coordinates of the buyer.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example 43.6556377\n   */\n  latitude?: number;\n\n  /**\n   * The longitude coordinates of the buyer.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   *\n   * @example -79.38681079999999\n   */\n  longitude?: number;\n}"
     }
   },
   "AddressAutocompleteSuggestion": {
@@ -6311,12 +6579,20 @@
         {
           "filePath": "src/surfaces/checkout/api/address-autocomplete/format-suggestion.ts",
           "syntaxKind": "PropertySignature",
+          "name": "acceptedAddressInputFields",
+          "value": "AcceptedAddressInputField[]",
+          "description": "The inputs the address form being populated accepts. Use it to decide which fields to fill; the output isn't validated against it. `undefined` until the address format loads.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/checkout/api/address-autocomplete/format-suggestion.ts",
+          "syntaxKind": "PropertySignature",
           "name": "selectedSuggestion",
           "value": "AddressAutocompleteSuggestion",
           "description": ""
         }
       ],
-      "value": "interface Target {\n  selectedSuggestion: AddressAutocompleteSuggestion;\n}"
+      "value": "interface Target {\n  selectedSuggestion: AddressAutocompleteSuggestion;\n\n  /**\n   * The inputs the address form being populated accepts. Use it to decide\n   * which fields to fill; the output isn't validated against it. `undefined`\n   * until the address format loads.\n   */\n  acceptedAddressInputFields?: AcceptedAddressInputField[];\n}"
     }
   },
   "AddressAutocompleteFormatSuggestionOutput": {
@@ -18956,6 +19232,26 @@
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
           "syntaxKind": "PropertySignature",
+          "name": "insetBlock",
+          "value": "`auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto'",
+          "description": "Sets the box's block position by specifying offsets from the box's default position, following the CSS `inset-block` shorthand: a block-start offset followed by a block-end offset, where only one of the two can be a size so each axis is only offset once.\n\nWhen `position` is set to `absolute`, offsets are insets from the nearest positioned ancestor. A percentage value refers to the block size of that ancestor.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "insetInline",
+          "value": "`auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto'",
+          "description": "Sets the box's inline position by specifying offsets from the box's default position, following the CSS `inset-inline` shorthand: an inline-start offset followed by an inline-end offset, where only one of the two can be a size so each axis is only offset once.\n\nWhen `position` is set to `absolute`, offsets are insets from the nearest positioned ancestor. A percentage value refers to the inline size of that ancestor.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
           "name": "maxBlockSize",
           "value": "MaybeResponsive<SizeUnitsOrNone>",
           "description": "The maximum block size of the element (maximum height in horizontal writing modes). Learn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).",
@@ -19060,9 +19356,29 @@
           "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`.",
           "isOptional": true,
           "defaultValue": "'' - meaning no override"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "position",
+          "value": "'absolute' | 'relative'",
+          "description": "Changes how the box is positioned.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'relative'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transform",
+          "value": "`translate(${SizeUnits})` | `translate(${SizeUnits}, ${SizeUnits})` | `translate(${SizeUnits},${SizeUnits})` | 'none'",
+          "description": "Specifies a transformation of the box.\n\nOnly two-dimensional translations are supported. The first value translates along the inline axis and the second along the block axis; inline translations are flipped in right-to-left writing modes. A percentage value refers to the corresponding size of the box itself.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'none'"
         }
       ],
-      "value": "export interface BoxElementProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {\n    /**\n     * The background color of the box.\n     *\n     * - `base`: The standard background color for general content areas.\n     * - `subdued`: A muted background for secondary or supporting content.\n     * - `transparent`: No background color (the default).\n     *\n     * @default 'transparent'\n     */\n    background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;\n    /**\n     * A shorthand for setting the border width, color, and style in a single property. Individual border properties (`borderWidth`, `borderStyle`) can override values set here.\n     *\n     * @default 'none'\n     */\n    border?: BorderShorthand;\n    /**\n     * The thickness of the border on all sides. Supports 1-to-4-value shorthand syntax for specifying different widths per side. Overrides the width value set by `border`.\n     *\n     * @default '' - meaning no override\n     */\n    borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';\n    /**\n     * The roundedness of the box's corners.\n     *\n     * - `none`: Sharp corners with no rounding.\n     * - `small-100` / `small`: Subtle rounding for compact elements.\n     * - `base`: Standard rounding for most use cases.\n     * - `large` / `large-100`: More pronounced rounding for prominent containers.\n     * - `max`: Maximum rounding, creating a pill or circular shape.\n     *\n     * Supports 1-to-4-value shorthand syntax for specifying different radii per corner.\n     *\n     * @default 'none'\n     */\n    borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;\n}"
+      "value": "export interface BoxElementProps extends Pick<BoxProps$1, 'accessibilityLabel' | 'accessibilityRole' | 'accessibilityVisibility' | 'background' | 'blockSize' | 'border' | 'borderRadius' | 'borderStyle' | 'borderWidth' | 'display' | 'id' | 'inlineSize' | 'maxBlockSize' | 'maxInlineSize' | 'minBlockSize' | 'minInlineSize' | 'overflow' | 'padding' | 'paddingBlock' | 'paddingBlockEnd' | 'paddingBlockStart' | 'paddingInline' | 'paddingInlineEnd' | 'paddingInlineStart'> {\n    /**\n     * The background color of the box.\n     *\n     * - `base`: The standard background color for general content areas.\n     * - `subdued`: A muted background for secondary or supporting content.\n     * - `transparent`: No background color (the default).\n     *\n     * @default 'transparent'\n     */\n    background?: Extract<BoxProps$1['background'], 'transparent' | 'subdued' | 'base'>;\n    /**\n     * A shorthand for setting the border width, color, and style in a single property. Individual border properties (`borderWidth`, `borderStyle`) can override values set here.\n     *\n     * @default 'none'\n     */\n    border?: BorderShorthand;\n    /**\n     * The thickness of the border on all sides. Supports 1-to-4-value shorthand syntax for specifying different widths per side. Overrides the width value set by `border`.\n     *\n     * @default '' - meaning no override\n     */\n    borderWidth?: MaybeAllValuesShorthandProperty<ReducedBorderSizeKeyword> | '';\n    /**\n     * The roundedness of the box's corners.\n     *\n     * - `none`: Sharp corners with no rounding.\n     * - `small-100` / `small`: Subtle rounding for compact elements.\n     * - `base`: Standard rounding for most use cases.\n     * - `large` / `large-100`: More pronounced rounding for prominent containers.\n     * - `max`: Maximum rounding, creating a pill or circular shape.\n     *\n     * Supports 1-to-4-value shorthand syntax for specifying different radii per corner.\n     *\n     * @default 'none'\n     */\n    borderRadius?: MaybeAllValuesShorthandProperty<Extract<BoxProps$1['borderRadius'], 'none' | 'small-100' | 'small' | 'base' | 'large' | 'large-100' | 'max'>>;\n    /**\n     * Sets the box's block position by specifying offsets from the box's\n     * default position, following the CSS `inset-block` shorthand:\n     * a block-start offset followed by a block-end offset, where only one\n     * of the two can be a size so each axis is only offset once.\n     *\n     * When `position` is set to `absolute`, offsets are insets from the\n     * nearest positioned ancestor. A percentage value refers to the block\n     * size of that ancestor.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inset-block\n     *\n     * @default 'auto'\n     * @private\n     */\n    insetBlock?: `auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto';\n    /**\n     * Sets the box's inline position by specifying offsets from the box's\n     * default position, following the CSS `inset-inline` shorthand:\n     * an inline-start offset followed by an inline-end offset, where only\n     * one of the two can be a size so each axis is only offset once.\n     *\n     * When `position` is set to `absolute`, offsets are insets from the\n     * nearest positioned ancestor. A percentage value refers to the inline\n     * size of that ancestor.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/inset-inline\n     *\n     * @default 'auto'\n     * @private\n     */\n    insetInline?: `auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto';\n    /**\n     * Changes how the box is positioned.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/position\n     *\n     * @default 'relative'\n     * @private\n     */\n    position?: 'absolute' | 'relative';\n    /**\n     * Specifies a transformation of the box.\n     *\n     * Only two-dimensional translations are supported. The first value\n     * translates along the inline axis and the second along the block axis;\n     * inline translations are flipped in right-to-left writing modes.\n     * A percentage value refers to the corresponding size of the box itself.\n     *\n     * @see https://developer.mozilla.org/en-US/docs/Web/CSS/transform\n     *\n     * @default 'none'\n     * @private\n     */\n    transform?: `translate(${SizeUnits})` | `translate(${SizeUnits}, ${SizeUnits})` | `translate(${SizeUnits},${SizeUnits})` | 'none';\n}"
     }
   },
   "AccessibilityRole": {
@@ -19225,6 +19541,26 @@
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
           "syntaxKind": "PropertySignature",
+          "name": "insetBlock",
+          "value": "`auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto'",
+          "description": "Sets the box's block position by specifying offsets from the box's default position, following the CSS `inset-block` shorthand: a block-start offset followed by a block-end offset, where only one of the two can be a size so each axis is only offset once.\n\nWhen `position` is set to `absolute`, offsets are insets from the nearest positioned ancestor. A percentage value refers to the block size of that ancestor.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "insetInline",
+          "value": "`auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto'",
+          "description": "Sets the box's inline position by specifying offsets from the box's default position, following the CSS `inset-inline` shorthand: an inline-start offset followed by an inline-end offset, where only one of the two can be a size so each axis is only offset once.\n\nWhen `position` is set to `absolute`, offsets are insets from the nearest positioned ancestor. A percentage value refers to the inline size of that ancestor.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
           "name": "maxBlockSize",
           "value": "MaybeResponsive<SizeUnitsOrNone>",
           "description": "The maximum block size of the element (maximum height in horizontal writing modes). Learn more about the [max-block-size property](https://developer.mozilla.org/en-US/docs/Web/CSS/max-block-size).",
@@ -19329,6 +19665,26 @@
           "description": "The inline-start padding (left in LTR writing modes, right in RTL).\n\nOverrides the inline-start value from `paddingInline`.",
           "isOptional": true,
           "defaultValue": "'' - meaning no override"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "position",
+          "value": "'absolute' | 'relative'",
+          "description": "Changes how the box is positioned.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'relative'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "transform",
+          "value": "`translate(${SizeUnits})` | `translate(${SizeUnits}, ${SizeUnits})` | `translate(${SizeUnits},${SizeUnits})` | 'none'",
+          "description": "Specifies a transformation of the box.\n\nOnly two-dimensional translations are supported. The first value translates along the inline axis and the second along the block axis; inline translations are flipped in right-to-left writing modes. A percentage value refers to the corresponding size of the box itself.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'none'"
         }
       ],
       "value": "export interface BoxProps extends BoxElementProps {\n}"
@@ -20452,6 +20808,26 @@
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
           "syntaxKind": "PropertySignature",
+          "name": "insetBlock",
+          "value": "`auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto'",
+          "description": "Sets the box's block position by specifying offsets from the box's default position, following the CSS `inset-block` shorthand: a block-start offset followed by a block-end offset, where only one of the two can be a size so each axis is only offset once.\n\nWhen `position` is set to `absolute`, offsets are insets from the nearest positioned ancestor. A percentage value refers to the block size of that ancestor.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "insetInline",
+          "value": "`auto ${SizeUnits}` | `${SizeUnits} auto` | 'auto'",
+          "description": "Sets the box's inline position by specifying offsets from the box's default position, following the CSS `inset-inline` shorthand: an inline-start offset followed by an inline-end offset, where only one of the two can be a size so each axis is only offset once.\n\nWhen `position` is set to `absolute`, offsets are insets from the nearest positioned ancestor. A percentage value refers to the inline size of that ancestor.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'auto'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
           "name": "isConnected",
           "value": "boolean",
           "description": "The read-only **`isConnected`** property of the Node interface returns a boolean indicating whether the node is connected (directly or indirectly) to a Document object.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Node/isConnected)"
@@ -21515,6 +21891,16 @@
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
           "syntaxKind": "PropertySignature",
+          "name": "position",
+          "value": "'absolute' | 'relative'",
+          "description": "Changes how the box is positioned.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'relative'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
           "name": "prefix",
           "value": "string | null",
           "description": "The **`Element.prefix`** read-only property returns the namespace prefix of the specified element, or `null` if no prefix is specified.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/Element/prefix)"
@@ -21839,6 +22225,16 @@
         {
           "filePath": "src/surfaces/checkout/components/Box.ts",
           "syntaxKind": "PropertySignature",
+          "name": "transform",
+          "value": "`translate(${SizeUnits})` | `translate(${SizeUnits}, ${SizeUnits})` | `translate(${SizeUnits},${SizeUnits})` | 'none'",
+          "description": "Specifies a transformation of the box.\n\nOnly two-dimensional translations are supported. The first value translates along the inline axis and the second along the block axis; inline translations are flipped in right-to-left writing modes. A percentage value refers to the corresponding size of the box itself.",
+          "isOptional": true,
+          "isPrivate": true,
+          "defaultValue": "'none'"
+        },
+        {
+          "filePath": "src/surfaces/checkout/components/Box.ts",
+          "syntaxKind": "PropertySignature",
           "name": "translate",
           "value": "boolean",
           "description": "The **`translate`** property of the HTMLElement interface indicates whether an element's attribute values and the values of its Text node children are to be translated when the page is localized, or whether to leave them unchanged.\n\n[MDN Reference](https://developer.mozilla.org/docs/Web/API/HTMLElement/translate)"
@@ -21908,7 +22304,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -22978,7 +23374,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -24457,7 +24853,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -37210,7 +37606,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -37501,7 +37897,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -38796,7 +39192,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -83641,7 +84037,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -84674,7 +85070,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -86109,7 +86505,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -167135,7 +167531,7 @@
           "filePath": "src/surfaces/checkout/preact/app-metafields.ts",
           "syntaxKind": "PropertySignature",
           "name": "type",
-          "value": "'customer' | 'product' | 'shop' | 'shopUser' | 'variant' | 'company' | 'companyLocation' | 'cart'",
+          "value": "'company' | 'customer' | 'product' | 'shop' | 'shopUser' | 'variant' | 'companyLocation' | 'cart'",
           "description": "",
           "isOptional": true
         }
@@ -167910,7 +168306,7 @@
     "src/surfaces/checkout/preact/market.ts": {
       "filePath": "src/surfaces/checkout/preact/market.ts",
       "name": "UseLocalizationMarketGeneratedType",
-      "description": "Returns the market of the checkout, and automatically re-renders your component if it changes.",
+      "description": "Returns the market of the checkout, carried over from the cart context. In cases where multiple markets match, this returns the most narrowly scoped country region market. Automatically re-renders your component if it changes.\n\n> Caution: This hook is deprecated and will be removed in a future version of the API.",
       "isPublicDocs": true,
       "params": [],
       "returns": {

@@ -1,4 +1,5 @@
 import type {MailingAddress} from '../../../checkout';
+import type {AddressLineComponents} from '../shared';
 
 /**
  * An address object used to auto-populate the address form fields.
@@ -11,12 +12,20 @@ export interface AutocompleteAddress
     MailingAddress,
     | 'address1'
     | 'address2'
+    | 'addressCode'
     | 'city'
     | 'company'
     | 'countryCode'
     | 'provinceCode'
     | 'zip'
   > {
+  /**
+   * Components of `address1`/`address2`. Always send the flat lines as well: a
+   * form without component inputs ignores the components, so a components-only
+   * suggestion clears both lines in that form.
+   */
+  addressLineComponents?: AddressLineComponents;
+
   /**
    * The latitude coordinates of the buyer.
    *
