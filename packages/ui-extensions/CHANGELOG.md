@@ -1,5 +1,35 @@
 # @shopify/ui-extensions
 
+## 2026.10.0-rc.14
+
+### Minor Changes
+
+- [#4739](https://github.com/Shopify/ui-extensions/pull/4739) [`8692912`](https://github.com/Shopify/ui-extensions/commit/869291238f242d1d15f5dfef4a142871e0a7741b) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Expose extended address fields to checkout UI extensions:
+
+  - `Country.acceptedAddressInputFields` (the buyer's current country; on checkout's `Country` only, not customer accounts') and `localization.acceptedAddressInputFieldsForCountry(countryCode)` (any country) list the address inputs a country's format carries, typed by the new `AcceptedAddressInputField`. They're guidance: `applyShippingAddressChange` doesn't reject a write because it includes fields outside the list. It still rejects unknown properties, wrong value types, missing approval scopes, a malformed `addressLineComponents`, components for a country without a component layout, and any `addressCode` write.
+  - `MailingAddress` gains `addressLineComponents` (new `AddressLineComponents` type: `streetName`, `streetNumber`, `additionalInformation`, `district`, `subdistrict`) and `addressCode`.
+  - `applyShippingAddressChange` accepts writes nested under `addressLineComponents`. `ShippingAddressChangeFieldError.field` is now `ShippingAddressChangeErrorField`, which widens `keyof MailingAddress` to include line component names and `'addressLineComponents'`.
+  - The address autocomplete `suggest` and `format-suggestion` targets receive `target.acceptedAddressInputFields`. `AutocompleteAddress` accepts `addressLineComponents` and `addressCode`.
+  - `@shopify/ui-extensions-tester`: the checkout mock's `localization.acceptedAddressInputFieldsForCountry()` resolves the flat address input fields, and `localization.country` carries the same list. The new `createAcceptedAddressInputFieldsForCountry(overrides?)` helper and `FLAT_ADDRESS_INPUT_FIELDS` model countries with extended fields.
+
+  Breaking for custom implementations: `Localization` has a new required method, and exhaustive checks on `ShippingAddressChangeFieldError.field` need the new members.
+
+- [#4715](https://github.com/Shopify/ui-extensions/pull/4715) [`e34b5a7`](https://github.com/Shopify/ui-extensions/commit/e34b5a78c8ce7344d9d99e43d2b231312b811bb7) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `version` to the POS Extension API. `shopify.extension.version` is the name of the published app version that the running extension was deployed in — the same name shown on the Versions page of the dev dashboard, and the name chosen when running `shopify app deploy`. Use it to tell which build of an extension a merchant is running, which POS can cache and run offline for some time after a newer version is deployed. It's an opaque name rather than a version number, so compare it for equality. It's `undefined` when the extension runs from a local development server, because a build that hasn't been deployed has no published version.
+
+- [#4690](https://github.com/Shopify/ui-extensions/pull/4690) [`3703a5b`](https://github.com/Shopify/ui-extensions/commit/3703a5b595263033025847f3b32cf2fd1a85614c) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Add the `s-pos-list` web component for POS and the `posListTemplate` tagged template that compiles its `<s-pos-list-item>` row markup.
+
+- [#4724](https://github.com/Shopify/ui-extensions/pull/4724) [`9f5ad67`](https://github.com/Shopify/ui-extensions/commit/9f5ad67dc13f3a4d4916cb4c7f7f4b0ee9e3e419) Thanks [@js-goupil](https://github.com/js-goupil)! - Add the POS `navigation` `navigatesuccess` event type and documentation for listening after a screen finishes appearing.
+
+### Patch Changes
+
+- [#4737](https://github.com/Shopify/ui-extensions/pull/4737) [`9d07293`](https://github.com/Shopify/ui-extensions/commit/9d07293b74769379590be3ae22d2e09fa576bf6e) Thanks [@ChemsCode](https://github.com/ChemsCode)! - Expose `AuthenticatedAccountCustomer` for the Authenticated Account API and its Preact hook, retaining `Customer` as a deprecated compatibility interface. Correct the customer ID documentation to describe a numeric string and use the public type names in the generated documentation.
+
+- [#4727](https://github.com/Shopify/ui-extensions/pull/4727) [`8ee0082`](https://github.com/Shopify/ui-extensions/commit/8ee00826034869051bbc10dd8eae9305d5c028a8) Thanks [@henryStelle](https://github.com/henryStelle)! - Remove stale POS component names from the component availability metadata for 2026-10 targets.
+
+- [#4683](https://github.com/Shopify/ui-extensions/pull/4683) [`8ebe439`](https://github.com/Shopify/ui-extensions/commit/8ebe4394d09019d059a5cf33fe83cde47ae6cd4b) Thanks [@vctrchu](https://github.com/vctrchu)! - Clarify POS validation interceptor and resolution event semantics, including cash amounts, empty results, revalidation updates, and generated interceptor and Resolution API documentation.
+
+- [#4735](https://github.com/Shopify/ui-extensions/pull/4735) [`565c318`](https://github.com/Shopify/ui-extensions/commit/565c318a25d7837aaf4e329da463f3d477606e63) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Shorten the `s-pos-list` property descriptions for `rows`, `itemTemplates`, and `loadingMore`, and stop listing defaults for `rows` and `itemTemplates`.
+
 ## 2026.10.0-rc.13
 
 ### Minor Changes

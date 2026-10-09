@@ -1,5 +1,22 @@
 # @shopify/ui-extensions-tester
 
+## 2026.10.0-rc.14
+
+### Patch Changes
+
+- [#4739](https://github.com/Shopify/ui-extensions/pull/4739) [`8692912`](https://github.com/Shopify/ui-extensions/commit/869291238f242d1d15f5dfef4a142871e0a7741b) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Expose extended address fields to checkout UI extensions:
+
+  - `Country.acceptedAddressInputFields` (the buyer's current country; on checkout's `Country` only, not customer accounts') and `localization.acceptedAddressInputFieldsForCountry(countryCode)` (any country) list the address inputs a country's format carries, typed by the new `AcceptedAddressInputField`. They're guidance: `applyShippingAddressChange` doesn't reject a write because it includes fields outside the list. It still rejects unknown properties, wrong value types, missing approval scopes, a malformed `addressLineComponents`, components for a country without a component layout, and any `addressCode` write.
+  - `MailingAddress` gains `addressLineComponents` (new `AddressLineComponents` type: `streetName`, `streetNumber`, `additionalInformation`, `district`, `subdistrict`) and `addressCode`.
+  - `applyShippingAddressChange` accepts writes nested under `addressLineComponents`. `ShippingAddressChangeFieldError.field` is now `ShippingAddressChangeErrorField`, which widens `keyof MailingAddress` to include line component names and `'addressLineComponents'`.
+  - The address autocomplete `suggest` and `format-suggestion` targets receive `target.acceptedAddressInputFields`. `AutocompleteAddress` accepts `addressLineComponents` and `addressCode`.
+  - `@shopify/ui-extensions-tester`: the checkout mock's `localization.acceptedAddressInputFieldsForCountry()` resolves the flat address input fields, and `localization.country` carries the same list. The new `createAcceptedAddressInputFieldsForCountry(overrides?)` helper and `FLAT_ADDRESS_INPUT_FIELDS` model countries with extended fields.
+
+  Breaking for custom implementations: `Localization` has a new required method, and exhaustive checks on `ShippingAddressChangeFieldError.field` need the new members.
+
+- Updated dependencies [[`9d07293`](https://github.com/Shopify/ui-extensions/commit/9d07293b74769379590be3ae22d2e09fa576bf6e), [`8692912`](https://github.com/Shopify/ui-extensions/commit/869291238f242d1d15f5dfef4a142871e0a7741b), [`8ee0082`](https://github.com/Shopify/ui-extensions/commit/8ee00826034869051bbc10dd8eae9305d5c028a8), [`e34b5a7`](https://github.com/Shopify/ui-extensions/commit/e34b5a78c8ce7344d9d99e43d2b231312b811bb7), [`8ebe439`](https://github.com/Shopify/ui-extensions/commit/8ebe4394d09019d059a5cf33fe83cde47ae6cd4b), [`565c318`](https://github.com/Shopify/ui-extensions/commit/565c318a25d7837aaf4e329da463f3d477606e63), [`3703a5b`](https://github.com/Shopify/ui-extensions/commit/3703a5b595263033025847f3b32cf2fd1a85614c), [`9f5ad67`](https://github.com/Shopify/ui-extensions/commit/9f5ad67dc13f3a4d4916cb4c7f7f4b0ee9e3e419)]:
+  - @shopify/ui-extensions@2026.10.0-rc.14
+
 ## 2026.10.0-rc.13
 
 ### Minor Changes
