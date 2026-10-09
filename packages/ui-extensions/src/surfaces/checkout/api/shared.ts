@@ -1,4 +1,25 @@
-import type {CountryCode} from '../../../shared';
+import type {AcceptedAddressInputField, CountryCode} from '../../../shared';
+
+/**
+ * A buyer's country, identified by its ISO country code.
+ * @publicDocs
+ */
+export interface Country {
+  /**
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
+   *
+   * @example 'CA' for Canada, 'US' for United States.
+   */
+  isoCode: CountryCode;
+  /**
+   * The address inputs this country's format carries, as guidance for what to
+   * write: `applyShippingAddressChange` does not validate a change against
+   * this list. A country that carries a line component lists the flat line
+   * too, so either can be written. Listed inputs may be optional or hidden
+   * from the buyer. `undefined` until the address format loads.
+   */
+  acceptedAddressInputFields?: AcceptedAddressInputField[];
+}
 
 /** @publicDocs */
 export interface ValidationError {
@@ -67,6 +88,59 @@ export interface Attribute {
   value: string;
 }
 
+/**
+ * Components of the `address1`/`address2` lines on a `MailingAddress`, for
+ * countries whose address format accepts them.
+ * @publicDocs
+ */
+export interface AddressLineComponents {
+  /**
+   * The street name, without the number.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Avenida Paulista'
+   */
+  streetName?: string;
+
+  /**
+   * The house or building number.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example '1578'
+   */
+  streetNumber?: string;
+
+  /**
+   * Additional address information (e.g. apartment, suite, or unit).
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Apto 42'
+   */
+  additionalInformation?: string;
+
+  /**
+   * A regional or city subdivision (e.g. county, metropolitan region,
+   * neighborhood, ward).
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Bela Vista'
+   */
+  district?: string;
+
+  /**
+   * A finer subdivision within `district`, when the country uses both.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'Kelurahan Menteng'
+   */
+  subdistrict?: string;
+}
+
 /** @publicDocs */
 export interface MailingAddress {
   /**
@@ -133,6 +207,41 @@ export interface MailingAddress {
    * @example 'Ground floor'
    */
   address2?: string;
+
+  /**
+   * The components of `address1`/`address2`. `undefined` when the country's
+   * address layout doesn't store components or none have been entered. The
+   * flat lines are published alongside them.
+   *
+   * Writable through `applyShippingAddressChange`, which does not validate a
+   * change against `Country.acceptedAddressInputFields`. Sent alongside a flat
+   * line, the components win and recompose it. Where a country accepts
+   * components without storing them, the write composes the flat line and only
+   * the line is published.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example
+   * {
+   *   streetName: 'Avenida Paulista',
+   *   streetNumber: '1578',
+   *   additionalInformation: 'Apto 42',
+   *   district: 'Bela Vista'
+   * }
+   */
+  addressLineComponents?: AddressLineComponents;
+
+  /**
+   * A postal or national address code that identifies the address
+   * independently of its street lines, used by countries such as Saudi
+   * Arabia. The value is `undefined` if the country doesn't use one or it
+   * hasn't been provided.
+   *
+   * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
+   *
+   * @example 'RRRR1234'
+   */
+  addressCode?: string;
 
   /**
    * The city, town, or village of the address. The value is `undefined` if

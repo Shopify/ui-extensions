@@ -1,3 +1,5 @@
+import type {AcceptedAddressInputField} from '../../../../shared';
+
 import type {
   AddressAutocompleteSuggestion,
   AutocompleteAddress,
@@ -15,6 +17,13 @@ export interface AddressAutocompleteFormatSuggestionApi {
 
 interface Target {
   selectedSuggestion: AddressAutocompleteSuggestion;
+
+  /**
+   * The inputs the address form being populated accepts. Use it to decide
+   * which fields to fill; the output isn't validated against it. `undefined`
+   * until the address format loads.
+   */
+  acceptedAddressInputFields?: AcceptedAddressInputField[];
 }
 
 /** @publicDocs */

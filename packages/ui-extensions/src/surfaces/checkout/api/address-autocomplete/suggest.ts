@@ -1,3 +1,4 @@
+import type {AcceptedAddressInputField} from '../../../../shared';
 import type {CountryCode} from '../../../checkout';
 
 import type {AddressAutocompleteSuggestion} from './shared';
@@ -50,6 +51,13 @@ interface Target {
    * @example 'CA' for Canada.
    */
   selectedCountryCode?: CountryCode;
+
+  /**
+   * The inputs the address form accepts for `selectedCountryCode`. Use it to
+   * decide which fields to suggest; suggestions aren't validated against it.
+   * `undefined` until the address format loads.
+   */
+  acceptedAddressInputFields?: AcceptedAddressInputField[];
 }
 
 /** @publicDocs */

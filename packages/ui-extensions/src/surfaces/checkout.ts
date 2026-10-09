@@ -79,7 +79,9 @@ export type {
 } from './checkout/api/standard/standard';
 
 export type {
+  AddressLineComponents,
   Attribute,
+  Country,
   SellingPlan,
   ValidationError,
   MailingAddress,
@@ -134,6 +136,7 @@ export type {
   NoteChangeResultError,
   ShippingAddressChange,
   ShippingAddressChangeFieldError,
+  ShippingAddressChangeErrorField,
   ShippingAddressChangeResult,
   ShippingAddressChangeResultError,
   ShippingAddressChangeResultSuccess,

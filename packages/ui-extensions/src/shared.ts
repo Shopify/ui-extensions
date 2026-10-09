@@ -853,16 +853,29 @@ export type CountryCode =
   | 'ZZ';
 
 /**
- * A buyer's country, identified by its ISO country code.
+ * An address input a country's address format carries. Flat fields
+ * (`address1`, `city`, `zip`, …) are written on the change's `address`; line
+ * components (`streetName`, `streetNumber`, `additionalInformation`,
+ * `district`, `subdistrict`) are written inside `addressLineComponents`, and
+ * are rejected as unknown properties if sent at the top level.
  */
-export interface Country {
-  /**
-   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
-   *
-   * @example 'CA' for Canada, 'US' for United States.
-   */
-  isoCode: CountryCode;
-}
+export type AcceptedAddressInputField =
+  | 'additionalInformation'
+  | 'address1'
+  | 'address2'
+  | 'addressCode'
+  | 'city'
+  | 'company'
+  | 'countryCode'
+  | 'district'
+  | 'firstName'
+  | 'lastName'
+  | 'phone'
+  | 'provinceCode'
+  | 'streetName'
+  | 'streetNumber'
+  | 'subdistrict'
+  | 'zip';
 
 // For instructions on how to update this list see: https://github.com/Shopify/checkout-web/pull/39534
 /**
@@ -930,18 +943,6 @@ export type StorefrontApiVersion =
   | '2026-04'
   | '2026-07'
   | '2026-10';
-
-/**
- * A buyer's country, identified by its ISO country code.
- */
-export interface Country {
-  /**
-   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
-   *
-   * @example 'CA' for Canada, 'US' for United States.
-   */
-  isoCode: CountryCode;
-}
 
 /**
  * An error returned by the Storefront GraphQL API. Contains a human-readable `message` and an `extensions` object with the request ID and error code for debugging.

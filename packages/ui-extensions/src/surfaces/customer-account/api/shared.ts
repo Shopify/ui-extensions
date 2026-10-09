@@ -5,7 +5,6 @@ import type {
   Capability,
   CurrencyCode,
   Timezone,
-  Country,
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
@@ -18,12 +17,23 @@ export {
   Capability,
   CurrencyCode,
   Timezone,
-  Country,
   CountryCode,
   GraphQLError,
   StorefrontApiVersion,
   SubscribableSignalLike,
 };
+
+/**
+ * A buyer's country, identified by its ISO country code.
+ */
+export interface Country {
+  /**
+   * The two-letter country code in [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) format.
+   *
+   * @example 'CA' for Canada, 'US' for United States.
+   */
+  isoCode: CountryCode;
+}
 
 /**
  * Persists key-value data across customer sessions for a specific extension target. Use storage to save preferences, dismiss states, or cached data that should survive page reloads without requiring a backend call.

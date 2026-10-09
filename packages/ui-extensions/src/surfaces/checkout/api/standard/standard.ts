@@ -2,15 +2,16 @@ import type {
   ValidationError,
   SellingPlan,
   Attribute,
+  Country,
   MailingAddress,
   ShippingAddress,
 } from '../shared';
 import type {ExtensionTarget} from '../../extension-targets';
 import type {
+  AcceptedAddressInputField,
   ApiVersion,
   Capability,
   CurrencyCode,
-  Country,
   CountryCode,
   Timezone,
   GraphQLError,
@@ -432,6 +433,15 @@ export interface Localization {
    * buyer enters a shipping address.
    */
   country: SubscribableSignalLike<Country | undefined>;
+
+  /**
+   * The inputs `applyShippingAddressChange` accepts for `countryCode`. Resolves
+   * to an empty array if shipping restrictions exclude the country. Rejects if
+   * the address format cannot be loaded.
+   */
+  acceptedAddressInputFieldsForCountry(
+    countryCode: CountryCode,
+  ): Promise<AcceptedAddressInputField[]>;
 
   /**
    * The [market](/docs/apps/build/markets) context of the checkout,

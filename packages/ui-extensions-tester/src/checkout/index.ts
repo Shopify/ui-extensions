@@ -1,4 +1,7 @@
 import type {
+  AcceptedAddressInputField,
+  CountryCode,
+  Localization,
   CartLine,
   Storage,
   ShippingOption,
@@ -110,6 +113,39 @@ export function createStorage(
       delete store[key];
     },
   };
+}
+
+/**
+ * The address inputs of a country without address line components or an
+ * address code.
+ */
+export const FLAT_ADDRESS_INPUT_FIELDS: ReadonlyArray<AcceptedAddressInputField> =
+  [
+    'firstName',
+    'lastName',
+    'company',
+    'address1',
+    'address2',
+    'city',
+    'provinceCode',
+    'zip',
+    'countryCode',
+    'phone',
+  ];
+
+/**
+ * Creates a mock `localization.acceptedAddressInputFieldsForCountry`.
+ *
+ * Resolves the flat address input fields for every country unless
+ * `overrides` lists other fields for it. An empty list models a country
+ * that shipping restrictions exclude.
+ */
+export function createAcceptedAddressInputFieldsForCountry(
+  overrides?: Partial<Record<CountryCode, AcceptedAddressInputField[]>>,
+): Localization['acceptedAddressInputFieldsForCountry'] {
+  return async (countryCode) => [
+    ...(overrides?.[countryCode] ?? FLAT_ADDRESS_INPUT_FIELDS),
+  ];
 }
 
 /**
