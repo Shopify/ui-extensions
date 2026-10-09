@@ -8549,7 +8549,7 @@
           "filePath": "src/surfaces/customer-account/api/shared.ts",
           "syntaxKind": "PropertySignature",
           "name": "customer",
-          "value": "SubscribableSignalLike<Customer | undefined>",
+          "value": "SubscribableSignalLike<AuthenticatedAccountCustomer | undefined>",
           "description": "The authenticated customer's account information. The value is `undefined` if the customer isn't logged in."
         },
         {
@@ -8560,7 +8560,37 @@
           "description": "The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer."
         }
       ],
-      "value": "export interface AuthenticatedAccount {\n  /**\n   * The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer.\n   */\n  purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;\n  /**\n   * The authenticated customer's account information. The value is `undefined` if the customer isn't logged in.\n   */\n  customer: SubscribableSignalLike<Customer | undefined>;\n}"
+      "value": "export interface AuthenticatedAccount {\n  /**\n   * The company that the authenticated B2B customer belongs to, including the company ID and location. The value is `undefined` if the customer isn't authenticated or isn't a B2B customer.\n   */\n  purchasingCompany: SubscribableSignalLike<PurchasingCompany | undefined>;\n  /**\n   * The authenticated customer's account information. The value is `undefined` if the customer isn't logged in.\n   */\n  customer: SubscribableSignalLike<AuthenticatedAccountCustomer | undefined>;\n}"
+    }
+  },
+  "AuthenticatedAccountCustomer": {
+    "src/surfaces/customer-account/api/shared.ts": {
+      "filePath": "src/surfaces/customer-account/api/shared.ts",
+      "name": "AuthenticatedAccountCustomer",
+      "description": "The authenticated customer's account, identified by a numeric customer ID represented as a string.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/shared.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "string",
+          "description": "The customer's numeric ID represented as a string.",
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'123'",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "value": "export interface AuthenticatedAccountCustomer extends Customer {}"
     }
   },
   "ToastApiResult": {

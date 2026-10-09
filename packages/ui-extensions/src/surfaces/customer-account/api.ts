@@ -61,6 +61,7 @@ export type {
   Language,
   Storage,
   AuthenticatedAccount,
+  AuthenticatedAccountCustomer,
   PurchasingCompany,
   Company,
   Customer,

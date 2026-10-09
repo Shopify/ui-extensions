@@ -347,23 +347,31 @@ export interface AuthenticatedAccount {
   /**
    * The authenticated customer's account information. The value is `undefined` if the customer isn't logged in.
    */
-  customer: SubscribableSignalLike<Customer | undefined>;
+  customer: SubscribableSignalLike<AuthenticatedAccountCustomer | undefined>;
 }
 
 /**
- * The authenticated customer's account, identified by a globally-unique ID.
+ * The authenticated customer's account, identified by a numeric customer ID represented as a string.
+ *
+ * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
+ * @deprecated Use `AuthenticatedAccountCustomer` instead.
+ */
+export interface Customer {
+  /**
+   * The customer's numeric ID represented as a string.
+   *
+   * @example '123'
+   */
+  id: string;
+}
+
+/**
+ * The authenticated customer's account, identified by a numeric customer ID represented as a string.
  *
  * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).
  * @publicDocs
  */
-export interface Customer {
-  /**
-   * A globally-unique identifier for the customer in the format `gid://shopify/Customer/<id>`.
-   *
-   * @example 'gid://shopify/Customer/123'
-   */
-  id: string;
-}
+export interface AuthenticatedAccountCustomer extends Customer {}
 
 /**
  * @publicDocs
