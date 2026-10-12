@@ -6,7 +6,10 @@ import path from 'path';
 import readline from 'readline/promises';
 import process, {stdin as input, stdout as output} from 'process';
 
-export const resolveShopifyDevPath = async (rootPath) => {
+export const resolveShopifyDevPath = async (
+  rootPath,
+  {promptInput = input, promptOutput = output} = {},
+) => {
   const normalizeShopifyDevSourceRoot = (candidatePath) => {
     if (!candidatePath) return null;
 
@@ -25,7 +28,9 @@ export const resolveShopifyDevPath = async (rootPath) => {
     // Candidate might be the zone path itself (.../areas/platforms/shopify-dev)
     if (absolutePath.endsWith(path.normalize('areas/platforms/shopify-dev'))) {
       const sourceRootPath = path.resolve(absolutePath, '../../..');
-      if (existsSync(path.join(sourceRootPath, 'areas/platforms/shopify-dev'))) {
+      if (
+        existsSync(path.join(sourceRootPath, 'areas/platforms/shopify-dev'))
+      ) {
         return sourceRootPath;
       }
     }
@@ -48,7 +53,10 @@ export const resolveShopifyDevPath = async (rootPath) => {
 
   const defaultPath = path.resolve(rootPath, '../../../world');
 
-  const rl = readline.createInterface({input, output});
+  const rl = readline.createInterface({
+    input: promptInput,
+    output: promptOutput,
+  });
   const answer = (
     await rl.question(
       `\n\x1b[33m⚠️  Could not find a world/shopify-dev repo near:\x1b[0m \x1b[1m${defaultPath}\x1b[0m\n\x1b[32mPlease provide the absolute path to your world repo, shopify-dev repo, source root, or areas/platforms/shopify-dev folder:\x1b[0m `,
