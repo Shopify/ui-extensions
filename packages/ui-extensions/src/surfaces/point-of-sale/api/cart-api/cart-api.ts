@@ -98,6 +98,8 @@ export interface MutableCartApiContent {
 
   /**
    * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.
+   *
+   * In a `'Return'` or `'Exchange'` cart, it ends the return or exchange and leaves an empty `'Checkout'` cart. It doesn't close the return screen.
    */
   clearCart(): Promise<void>;
 
@@ -148,7 +150,7 @@ export interface MutableCartApiContent {
    * @param uuid the UUID of the line item to update
    * @param quantity the new absolute quantity; must be an integer of 1 or greater. To remove a line item, use `removeLineItem` instead.
    * @returns A promise that resolves after the cart state reflects the change.
-   * @throws {Error} if the line item is not found, the `UUID` matches multiple split-line allocations, the quantity is invalid, the cart is not editable because it is a return or exchange, or the POS app version does not support this method.
+   * @throws {Error} if the line item is not found, the `UUID` matches multiple split-line allocations, the quantity is invalid, the method is unavailable (see `cart.capabilities`), or the POS app version does not support this method.
    */
   updateLineItemQuantity(uuid: string, quantity: number): Promise<void>;
 

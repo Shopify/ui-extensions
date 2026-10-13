@@ -2,6 +2,7 @@ import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
 import {DiscountAllocation} from './discount-allocation';
 import type {Order} from './order';
+import type {MutableCartApiContent} from '../api/cart-api/cart-api';
 
 /**
  * The properties that every cart has.
@@ -9,8 +10,15 @@ import type {Order} from './order';
 interface CartBase {
   /**
    * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.
+   *
+   * It's `false` for `Return` and `Exchange` carts.
+   * @deprecated Use `capabilities` when it's present.
    */
   editable?: boolean;
+  /**
+   * Which Cart API methods are available right now. If it's missing, for example on an older POS version, use `editable` instead.
+   */
+  capabilities?: CartCapabilities;
   /**
    * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.
    */
@@ -154,6 +162,53 @@ export interface ReturnReason {
    */
   name: string;
 }
+
+/**
+ * The name of a Cart API method that changes the cart, such as `addLineItem`.
+ * @publicDocs
+ */
+export type CartCapabilityMethod = keyof MutableCartApiContent;
+
+/**
+ * Whether each Cart API method that changes the cart is available, by method name.
+ * @publicDocs
+ */
+export type CartCapabilities = {
+  [Method in CartCapabilityMethod]: CartMethodCapability;
+};
+
+/**
+ * Whether a Cart API method is available. When it isn't, `reason` says why. An available method can still fail, for example with invalid input.
+ * @publicDocs
+ */
+export type CartMethodCapability =
+  | {
+      /** The method is available. */
+      isAvailable: true;
+    }
+  | {
+      /** The method isn't available. */
+      isAvailable: false;
+      /** Why the method isn't available. */
+      reason: CartCapabilityReason;
+    };
+
+/**
+ * Why a Cart API method isn't available.
+ *
+ * - `'POS_OUTDATED'`: The method needs a newer POS version.
+ * - `'UNSUPPORTED_IN_CART'`: This type of cart doesn't support the method, such as `bulkCartUpdate` in a return.
+ * - `'ORDER_NOT_EXCHANGEABLE'`: The original order can't be exchanged.
+ * - `'CART_LOCKED'`: POS has locked this change, for example while it processes a payment or refund.
+ * - `'UNKNOWN'`: Any other reason.
+ * @publicDocs
+ */
+export type CartCapabilityReason =
+  | 'POS_OUTDATED'
+  | 'UNSUPPORTED_IN_CART'
+  | 'ORDER_NOT_EXCHANGEABLE'
+  | 'CART_LOCKED'
+  | 'UNKNOWN';
 
 /**
  * Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.
