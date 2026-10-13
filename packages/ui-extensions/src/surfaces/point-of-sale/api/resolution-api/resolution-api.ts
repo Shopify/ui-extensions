@@ -8,6 +8,7 @@ import type {ReadonlySignalLike} from '../../../../shared';
  * @private
  */
 export interface ResolutionApi<TEventData> {
+  /** The intercepted event data and save handler for the active resolution target. */
   resolution: ResolutionApiContent<TEventData>;
 }
 
@@ -20,6 +21,9 @@ export interface ResolutionApi<TEventData> {
 export type ResolutionSaveHandler = () => void | Promise<void>;
 
 /**
+ * The intercepted event data and save handler available to a validation
+ * resolution target through `shopify.resolution`.
+ *
  * @publicDocs
  */
 export interface ResolutionApiContent<TEventData> {

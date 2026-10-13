@@ -3404,7 +3404,7 @@
     "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts": {
       "filePath": "src/surfaces/point-of-sale/api/resolution-api/resolution-api.ts",
       "name": "ResolutionApiContent",
-      "description": "",
+      "description": "The intercepted event data and save handler available to a validation resolution target through `shopify.resolution`.",
       "isPublicDocs": true,
       "members": [
         {
@@ -4207,10 +4207,10 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'cartvalidations'",
-          "description": ""
+          "description": "The event name, always `'cartvalidations'`."
         }
       ],
-      "value": "export interface CartValidationsEvent extends CartValidationsEventData {\n  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;\n}"
+      "value": "export interface CartValidationsEvent extends CartValidationsEventData {\n  /** The event name, always `'cartvalidations'`. */\n  readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;\n}"
     }
   },
   "PaymentValidationsEvent": {
@@ -4239,10 +4239,10 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "'paymentvalidations'",
-          "description": ""
+          "description": "The event name, always `'paymentvalidations'`."
         }
       ],
-      "value": "export interface PaymentValidationsEvent extends PaymentValidationsEventData {\n  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;\n}"
+      "value": "export interface PaymentValidationsEvent extends PaymentValidationsEventData {\n  /** The event name, always `'paymentvalidations'`. */\n  readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;\n}"
     }
   },
   "InterceptedPaymentMethod": {
@@ -4350,7 +4350,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "CartValidationTarget",
       "value": "CartTarget | CartLineItemTarget",
-      "description": "",
+      "description": "A target that a `cartvalidations` interceptor can use: the whole cart or one cart line item.",
       "isPublicDocs": true
     }
   },
@@ -4370,7 +4370,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "PaymentValidationTarget",
       "value": "\"$.payment\"",
-      "description": "",
+      "description": "A target that a `paymentvalidations` interceptor can use. The only supported target is the payment attempt.",
       "isPublicDocs": true
     }
   },
@@ -4396,17 +4396,17 @@
           "syntaxKind": "PropertySignature",
           "name": "cartvalidations",
           "value": "CartValidationTarget",
-          "description": ""
+          "description": "The targets that a `cartvalidations` interceptor can return."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
           "name": "paymentvalidations",
           "value": "PaymentValidationTarget",
-          "description": ""
+          "description": "The targets that a `paymentvalidations` interceptor can return."
         }
       ],
-      "value": "interface ValidationTargetMap {\n  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;\n  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;\n}"
+      "value": "interface ValidationTargetMap {\n  /** The targets that a `cartvalidations` interceptor can return. */\n  [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;\n  /** The targets that a `paymentvalidations` interceptor can return. */\n  [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;\n}"
     }
   },
   "ShopifyInterceptor": {
@@ -4444,10 +4444,10 @@
           "syntaxKind": "PropertySignature",
           "name": "operations",
           "value": "Operation<TTarget>[]",
-          "description": ""
+          "description": "The operations to apply. Each operation can add one validation finding."
         }
       ],
-      "value": "export interface InterceptResult<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  operations: Operation<TTarget>[];\n}"
+      "value": "export interface InterceptResult<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** The operations to apply. Each operation can add one validation finding. */\n  operations: Operation<TTarget>[];\n}"
     }
   },
   "Operation": {
@@ -4481,7 +4481,7 @@
           "syntaxKind": "PropertySignature",
           "name": "handle",
           "value": "string",
-          "description": "Stable identifier for this validation. Handles are namespaced per extension and may repeat across targets: the same handle on two line items is two validations."
+          "description": "Stable identifier for this validation, namespaced per extension. Each handle must be unique within one `operations` array, even across different targets. A result that repeats a handle is rejected. To flag several line items, include the line item `uuid` in each handle."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -4499,7 +4499,7 @@
           "isOptional": true
         }
       ],
-      "value": "export interface ValidationAdd<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** `ERROR` creates a finding labeled `Required` only when blocking is declared and allowed by the store. Otherwise, it creates a finding labeled `Recommended`. `WARNING` always creates a finding labeled `Recommended`. */\n  level: ValidationLevel;\n\n  /**\n   * Stable identifier for this validation. Handles are namespaced per\n   * extension and may repeat across targets: the same handle on two line\n   * items is two validations.\n   */\n  handle: string;\n\n  /**\n   * Locates the data the validation applies to; the host decides where it\n   * renders. Omitted or unrecognized targets fall back to the event's root\n   * scope (`$.cart` / `$.payment`). The validation still applies, rendered\n   * less specifically.\n   *\n   * Line item uuids are only valid within the event that delivered them:\n   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache\n   * uuids across events. Bundle components are not addressable; target\n   * their parent line.\n   */\n  target?: TTarget;\n}"
+      "value": "export interface ValidationAdd<\n  TTarget extends ValidationTarget = ValidationTarget,\n> {\n  /** `ERROR` creates a finding labeled `Required` only when blocking is declared and allowed by the store. Otherwise, it creates a finding labeled `Recommended`. `WARNING` always creates a finding labeled `Recommended`. */\n  level: ValidationLevel;\n\n  /**\n   * Stable identifier for this validation, namespaced per extension. Each\n   * handle must be unique within one `operations` array, even across\n   * different targets. A result that repeats a handle is rejected. To flag\n   * several line items, include the line item `uuid` in each handle.\n   */\n  handle: string;\n\n  /**\n   * Locates the data the validation applies to; the host decides where it\n   * renders. Omitted or unrecognized targets fall back to the event's root\n   * scope (`$.cart` / `$.payment`). The validation still applies, rendered\n   * less specifically.\n   *\n   * Line item uuids are only valid within the event that delivered them:\n   * use `lineItems[n].uuid` from this event's cart snapshot, don't cache\n   * uuids across events. Bundle components are not addressable; target\n   * their parent line.\n   */\n  target?: TTarget;\n}"
     }
   },
   "ValidationLevel": {
@@ -4508,7 +4508,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ValidationLevel",
       "value": "'WARNING' | 'ERROR'",
-      "description": "",
+      "description": "The severity of a validation. `ERROR` can block the workflow when blocking is declared and allowed by the store. `WARNING` never blocks.",
       "isPublicDocs": true
     }
   },
@@ -9386,10 +9386,10 @@
           "syntaxKind": "PropertySignature",
           "name": "resolution",
           "value": "ResolutionApiContent<TEventData>",
-          "description": ""
+          "description": "The intercepted event data and save handler for the active resolution target."
         }
       ],
-      "value": "export interface ResolutionApi<TEventData> {\n  resolution: ResolutionApiContent<TEventData>;\n}"
+      "value": "export interface ResolutionApi<TEventData> {\n  /** The intercepted event data and save handler for the active resolution target. */\n  resolution: ResolutionApiContent<TEventData>;\n}"
     }
   },
   "ResolutionComponents": {

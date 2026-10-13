@@ -86,6 +86,7 @@ export interface CartValidationsEventData {
  * @publicDocs
  */
 export interface CartValidationsEvent extends CartValidationsEventData {
+  /** The event name, always `'cartvalidations'`. */
   readonly type: typeof POS_INTERCEPT_NAMES.CART_VALIDATIONS;
 }
 
@@ -120,6 +121,7 @@ export interface InterceptedPaymentMethod {
  * @publicDocs
  */
 export interface PaymentValidationsEvent extends PaymentValidationsEventData {
+  /** The event name, always `'paymentvalidations'`. */
   readonly type: typeof POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS;
 }
 
@@ -151,7 +153,12 @@ export type CartTarget = '$.cart';
  */
 export type CartLineItemTarget = `$.cart.lineItems['${string}']`;
 
-/** @publicDocs */
+/**
+ * A target that a `cartvalidations` interceptor can use: the whole cart or
+ * one cart line item.
+ *
+ * @publicDocs
+ */
 export type CartValidationTarget = CartTarget | CartLineItemTarget;
 
 /**
@@ -161,7 +168,12 @@ export type CartValidationTarget = CartTarget | CartLineItemTarget;
  */
 export type PaymentTarget = '$.payment';
 
-/** @publicDocs */
+/**
+ * A target that a `paymentvalidations` interceptor can use. The only
+ * supported target is the payment attempt.
+ *
+ * @publicDocs
+ */
 export type PaymentValidationTarget = PaymentTarget;
 
 /**
@@ -178,7 +190,9 @@ export type ValidationTarget = CartValidationTarget | PaymentValidationTarget;
  * @publicDocs
  */
 interface ValidationTargetMap {
+  /** The targets that a `cartvalidations` interceptor can return. */
   [POS_INTERCEPT_NAMES.CART_VALIDATIONS]: CartValidationTarget;
+  /** The targets that a `paymentvalidations` interceptor can return. */
   [POS_INTERCEPT_NAMES.PAYMENT_VALIDATIONS]: PaymentValidationTarget;
 }
 
@@ -202,6 +216,7 @@ export type ShopifyInterceptor<K extends keyof ShopifyInterceptMap> = (
 export interface InterceptResult<
   TTarget extends ValidationTarget = ValidationTarget,
 > {
+  /** The operations to apply. Each operation can add one validation finding. */
   operations: Operation<TTarget>[];
 }
 
@@ -216,7 +231,12 @@ export interface Operation<
   validationAdd?: ValidationAdd<TTarget>;
 }
 
-/** @publicDocs */
+/**
+ * The severity of a validation. `ERROR` can block the workflow when blocking
+ * is declared and allowed by the store. `WARNING` never blocks.
+ *
+ * @publicDocs
+ */
 export type ValidationLevel = 'WARNING' | 'ERROR';
 
 /**
@@ -231,9 +251,10 @@ export interface ValidationAdd<
   level: ValidationLevel;
 
   /**
-   * Stable identifier for this validation. Handles are namespaced per
-   * extension and may repeat across targets: the same handle on two line
-   * items is two validations.
+   * Stable identifier for this validation, namespaced per extension. Each
+   * handle must be unique within one `operations` array, even across
+   * different targets. A result that repeats a handle is rejected. To flag
+   * several line items, include the line item `uuid` in each handle.
    */
   handle: string;
 
