@@ -15,6 +15,7 @@ import type {
   StandardApi,
   IntentRenderApi,
   AppHomeApi,
+  MetaobjectFormApi,
 } from './api';
 import {
   ShouldRenderApi,
@@ -25,6 +26,7 @@ import type {ActionExtensionComponents} from './components/ActionExtensionCompon
 import type {PrintActionExtensionComponents} from './components/PrintActionExtensionComponents';
 import type {FunctionSettingsComponents} from './components/FunctionSettingsComponents';
 import type {FormExtensionComponents} from './components/FormExtensionComponents';
+import type {MetaobjectFormComponents} from './components/MetaobjectFormComponents';
 
 /**
  * Maps extension target identifiers to their corresponding extension types. Each target represents a specific location or context in the Shopify admin where extensions can render or execute. Use these targets to define where your extension appears and what capabilities it has access to.
@@ -38,6 +40,16 @@ export interface ExtensionTargets {
   'admin.customers.segmentation-templates.data': RunnableExtension<
     CustomerSegmentTemplateApi<'admin.customers.segmentation-templates.data'>,
     {templates: CustomerSegmentTemplate[]}
+  >;
+
+  /**
+   * A form target that replaces the default layout of a metaobject details form. Use this target to arrange native metaobject fields and provide custom field editors while preserving Admin's existing save flow.
+   *
+   * Admin launches this custom form only for definitions with at most 40 trusted form fields, so `snapshot.fields` is complete whenever the target launches.
+   */
+  'admin.metaobject-details.form.render': RenderExtension<
+    MetaobjectFormApi<'admin.metaobject-details.form.render'>,
+    MetaobjectFormComponents
   >;
 
   // Blocks
