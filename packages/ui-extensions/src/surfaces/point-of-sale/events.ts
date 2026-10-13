@@ -251,9 +251,10 @@ export interface ValidationAdd<
   level: ValidationLevel;
 
   /**
-   * Stable identifier for this validation. Handles are namespaced per
-   * extension and may repeat across targets: the same handle on two line
-   * items is two validations.
+   * Stable identifier for this validation, namespaced per extension. Each
+   * handle must be unique within one `operations` array, even across
+   * different targets. A result that repeats a handle is rejected. To flag
+   * several line items, include the line item `uuid` in each handle.
    */
   handle: string;
 
