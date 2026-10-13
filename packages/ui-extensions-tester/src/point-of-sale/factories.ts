@@ -275,24 +275,26 @@ function createMockCashDrawerApi(): CashDrawerApi {
 // Group factory functions — each composes the correct API for a target group
 // ---------------------------------------------------------------------------
 
-// Group A: StandardApi + ActionApi + CartApi
-function createStandardActionCartMock<T extends RenderExtensionTarget>(
-  target: T,
-): StandardApi<T> & ActionApi & CartApi {
+// Group A: StandardApi + ActionApi + CartApi + CashDrawerApi
+function createStandardActionCartCashDrawerMock<
+  T extends RenderExtensionTarget,
+>(target: T): StandardApi<T> & ActionApi & CartApi & CashDrawerApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockCashDrawerApi(),
   };
 }
 
-// Group B: ActionTargetApi + CartApi
-function createActionTargetCartMock<T extends RenderExtensionTarget>(
+// Group B: ActionTargetApi + CartApi + CashDrawerApi
+function createActionTargetCartCashDrawerMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & CartApi {
+): ActionTargetApi<T> & CartApi & CashDrawerApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
+    ...createMockCashDrawerApi(),
   };
 }
 
@@ -563,11 +565,11 @@ type PosMockFactory = {
 };
 
 const posMockFactories: PosMockFactory = {
-  // Group A: StandardApi + ActionApi + CartApi
-  'pos.home.tile.render': createStandardActionCartMock,
+  // Group A: StandardApi + ActionApi + CartApi + CashDrawerApi
+  'pos.home.tile.render': createStandardActionCartCashDrawerMock,
 
-  // Group B: ActionTargetApi + CartApi
-  'pos.home.modal.render': createActionTargetCartMock,
+  // Group B: ActionTargetApi + CartApi + CashDrawerApi
+  'pos.home.modal.render': createActionTargetCartCashDrawerMock,
 
   // Group C: StandardApi + ActionApi + OrderApi
   'pos.return.post.action.menu-item.render': createStandardActionOrderMock,

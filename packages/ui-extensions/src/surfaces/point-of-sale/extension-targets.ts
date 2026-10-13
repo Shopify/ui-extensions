@@ -52,19 +52,19 @@ export interface RenderExtensionTargets {
   /**
    * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.
    *
-   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.
+   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows. Tiles can also open the connected cash drawer through the Cash Drawer API.
    */
   'pos.home.tile.render': RenderExtension<
-    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi,
+    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi & CashDrawerApi,
     SmartGridComponents
   >;
   /**
    * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.
    *
-   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows.
+   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows, and can open the connected cash drawer through the Cash Drawer API.
    */
   'pos.home.modal.render': RenderExtension<
-    ActionTargetApi<'pos.home.modal.render'> & CartApi,
+    ActionTargetApi<'pos.home.modal.render'> & CartApi & CashDrawerApi,
     BasicComponents
   >;
   /**
