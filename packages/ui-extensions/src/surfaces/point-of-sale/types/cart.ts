@@ -2,6 +2,7 @@ import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
 import {DiscountAllocation} from './discount-allocation';
 import type {OrderApiContent} from '../api/order-api/order-api';
+import type {MutableCartApiContent} from '../api/cart-api/cart-api';
 
 /**
  * The properties shared by every cart view. `Cart` combines them with the `cartType` discriminant and, for return and exchange carts, the `return` property.
@@ -9,8 +10,17 @@ import type {OrderApiContent} from '../api/order-api/order-api';
 interface CartBase {
   /**
    * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.
+   *
+   * In the returns and exchanges pilot, the value is `true` for `Checkout` carts and `false` for `Return`, `Exchange`, and `Unsupported` carts. Older checkout snapshots can leave it `undefined`, which still means `true`. A missing `capabilities` property isn't evidence that a write is allowed.
+   * @deprecated Use `cartType` and `capabilities` when they're available. `editable` keeps its existing meaning and remains the fallback when `capabilities` is absent.
    */
   editable?: boolean;
+  /**
+   * Whether each Cart API method is currently available on this cart. Present on supported current-cart views that the returns and exchanges pilot provides, and absent on other cart snapshots, such as event snapshots and carts from older POS versions. Check that it's present before reading the availability of a method, and fall back to `editable` when it's absent. A missing `capabilities` property doesn't mean that a method is available.
+   *
+   * Availability describes the cart, not your extension's target, so read-only targets such as `pos.app.ready.data` see the same map but still can't call these methods. Availability doesn't validate the arguments of a call or guarantee that it succeeds.
+   */
+  capabilities?: CartCapabilities;
   /**
    * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.
    */
@@ -67,7 +77,7 @@ interface CartBase {
  * - The app is enrolled in the returns and exchanges pilot.
  * - The POS app version supports it.
  *
- * When any of these isn't true, the cart keeps the shape and behavior it had before return and exchange support: `cartType` can be `'Checkout'`, `'Unsupported'`, or `undefined` (older POS versions don't provide it), `return` is absent, the returned items aren't included, and the optional `metafields` properties are `undefined`.
+ * When any of these isn't true, the cart keeps the shape and behavior it had before return and exchange support: `cartType` can be `'Checkout'`, `'Unsupported'`, or `undefined` (older POS versions don't provide it), `return` is absent, the returned items aren't included, and the optional `capabilities` and `metafields` properties are `undefined`.
  *
  * Consumers must handle the absence of these properties. Absence means the information isn't available; it doesn't mean that nothing was returned or that the cart has no metafields.
  * @publicDocs
@@ -177,6 +187,57 @@ export interface ReturnReason {
    */
   name: string;
 }
+
+/**
+ * The name of a method in the Cart API that can change the cart, such as `addLineItem` or `clearCart`. Each name has an entry in `CartCapabilities`.
+ * @publicDocs
+ */
+export type CartCapabilityMethod = keyof MutableCartApiContent;
+
+/**
+ * The current availability of every Cart API method that can change the cart, keyed by method name. Availability describes the cart as a whole, so read-only targets get the same map as other targets. Check `capabilities` on the cart before reading it, because it's absent on cart snapshots that don't provide it.
+ * @publicDocs
+ */
+export type CartCapabilities = {
+  [Method in CartCapabilityMethod]: CartMethodCapability;
+};
+
+/**
+ * Whether one Cart API method is currently available. When `isAvailable` is `false`, `reason` explains why. Availability permits an attempt only: it doesn't validate arguments, field access, or the state of the cart when the call runs, so a call can still reject.
+ * @publicDocs
+ */
+export type CartMethodCapability =
+  | {
+      /** The method is currently available. */
+      isAvailable: true;
+    }
+  | {
+      /** The method is currently unavailable. */
+      isAvailable: false;
+      /** Why the method is unavailable. */
+      reason: CartCapabilityReason;
+    };
+
+/**
+ * Why a Cart API method is unavailable. Each unavailable method has one reason. Reasons that last come before reasons that clear on their own. More values can be added later, so treat an unknown value as unavailable.
+ *
+ * - `'REQUIRES_NEWER_POS'`: The running POS version doesn't support this method for the cart.
+ * - `'UNSUPPORTED_IN_CART'`: This method isn't supported for this type of cart.
+ * - `'ORDER_NOT_EXCHANGEABLE'`: The original order can't be exchanged.
+ * - `'CART_LOCKED'`: The cart is locked and can't be changed right now.
+ * - `'LOADING'`: The cart is still loading.
+ * - `'UNKNOWN'`: POS can't determine why the method is unavailable.
+ *
+ * Staff permissions aren't a reason: availability doesn't reflect them.
+ * @publicDocs
+ */
+export type CartCapabilityReason =
+  | 'REQUIRES_NEWER_POS'
+  | 'UNSUPPORTED_IN_CART'
+  | 'ORDER_NOT_EXCHANGEABLE'
+  | 'CART_LOCKED'
+  | 'LOADING'
+  | 'UNKNOWN';
 
 /**
  * A typed metafield. The same shape is used wherever a cart exposes metafields: on the cart, on a cart line item, and on the original order line item of a returned item.
