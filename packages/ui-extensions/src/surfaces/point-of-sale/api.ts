@@ -106,6 +106,7 @@ export type {ToastApiContent, ToastApi} from './api/toast-api/toast-api';
 export type {
   AddLineItemOptions,
   Cart,
+  CartType,
   CartUpdateInput,
   Customer,
   LineItem,
@@ -118,6 +119,10 @@ export type {
   Address,
   SellingPlan,
   SetLineItemSellingPlanInput,
+  OriginalOrder,
+  ReturnLineItem,
+  ReturnReason,
+  Metafield,
 } from './types/cart';
 
 export type {OrderLineItem, LineItemRefund} from './types/order';

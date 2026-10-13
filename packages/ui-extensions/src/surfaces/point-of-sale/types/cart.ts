@@ -1,12 +1,12 @@
 import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
 import {DiscountAllocation} from './discount-allocation';
+import type {OrderApiContent} from '../api/order-api/order-api';
 
 /**
- * Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.
- * @publicDocs
+ * The properties shared by every cart view. `Cart` combines them with the `cartType` discriminant and, for return and exchange carts, the `return` property.
  */
-export interface Cart {
+interface CartBase {
   /**
    * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.
    */
@@ -44,13 +44,155 @@ export interface Cart {
    */
   customer?: Customer;
   /**
-   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.
+   * The line items in the cart. In a `Checkout` cart, these are the items being sold. In a `Return` or `Exchange` cart, these are only the exchange line items that the customer is buying in place of the returned items; the returned items are listed in `cart.return.lineItems` instead. An `Unsupported` cart that the returns and exchanges pilot provides has no line items.
    */
   lineItems: LineItem[];
   /**
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
   properties: Record<string, string>;
+  /**
+   * The metafields on the cart for the current sale. Checkout only: this array is empty in `Return`, `Exchange`, and `Unsupported` carts, and it never contains the original order's metafields (to read those, use the Admin API with `cart.return.order.id` once it's defined). In the returns and exchanges pilot it's always an empty array until the supporting read data exists, so an empty array doesn't mean that the cart has no metafields. It's `undefined` when the extension isn't enrolled in the pilot or the running POS version doesn't provide it.
+   */
+  metafields?: Metafield[];
+}
+
+/**
+ * Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.
+ *
+ * The `cartType` property identifies what the cart represents. Check it to narrow the type: when `cartType` is `'Return'` or `'Exchange'`, the `return` property is available and lists the items selected for return.
+ *
+ * Return and exchange carts are available only when all of the following are true:
+ * - The extension runs on API version `2027-01` or later.
+ * - The app is enrolled in the returns and exchanges pilot.
+ * - The POS app version supports it.
+ *
+ * When any of these isn't true, the cart keeps the shape and behavior it had before return and exchange support: `cartType` can be `'Checkout'`, `'Unsupported'`, or `undefined` (older POS versions don't provide it), `return` is absent, the returned items aren't included, and the optional `metafields` properties are `undefined`.
+ *
+ * Consumers must handle the absence of these properties. Absence means the information isn't available; it doesn't mean that nothing was returned or that the cart has no metafields.
+ * @publicDocs
+ */
+export type Cart = CartBase &
+  (
+    | {
+        /**
+         * The kind of cart this is. `undefined` when the running POS version doesn't provide it, and on cart snapshots in events that don't include it.
+         */
+        cartType?: 'Checkout' | 'Unsupported';
+      }
+    | {
+        /**
+         * The kind of cart this is. `'Return'` or `'Exchange'` while native POS has a return or exchange in progress.
+         */
+        cartType: 'Return' | 'Exchange';
+        /**
+         * The original order and the items selected for return. Only present when `cartType` is `'Return'` or `'Exchange'`.
+         */
+        return: {
+          /** The original order being returned against. Its `id` and `name` can each be `undefined` when POS doesn't know them. */
+          order: OriginalOrder;
+          /** The items selected for return in native POS. Staff choose which items and how many to return in native POS; extensions can read the selection but can't change it. */
+          lineItems: ReturnLineItem[];
+        };
+      }
+  );
+
+/**
+ * The kind of cart that a `Cart` represents.
+ *
+ * - `'Checkout'`: A regular sale.
+ * - `'Return'`: A return that native POS started. The items selected for return are in `cart.return.lineItems`.
+ * - `'Exchange'`: A return that has at least one exchange line item. A return becomes an exchange when its first exchange line item is added, and becomes a return again when the last one is removed. The exchange line items are in `cart.lineItems`.
+ * - `'Unsupported'`: A native flow that doesn't expose its contents to extensions, such as a refund-only return, removing unfulfilled items, or a return without a verified original order. The cart is read-only and has no `return` property.
+ *
+ * `CartType` never includes `undefined`. `Cart['cartType']` does, because older POS versions and some event snapshots don't provide it.
+ * @publicDocs
+ */
+export type CartType = NonNullable<Cart['cartType']>;
+
+/**
+ * The original order reference available during a return or exchange. Contains the order `id` and `name`. Each can be `undefined` when POS doesn't know it, for example while POS is still loading the order, or `name` on a return that POS restored from older data stored on the device. Check each before using it.
+ * @publicDocs
+ */
+export type OriginalOrder = Partial<Pick<OrderApiContent, 'id' | 'name'>>;
+
+/**
+ * An item selected for return in native POS. This is a read-only snapshot: staff choose which items and how many to return in native POS, and the reason, note, and restock values are read from native POS. Returned items are listed separately from `cart.lineItems`, and their `uuid` values don't identify exchange line items.
+ * @publicDocs
+ */
+export interface ReturnLineItem {
+  /**
+   * Identifies the returned item. It's not the `uuid` of an exchange line item in `cart.lineItems`.
+   */
+  uuid: string;
+  /**
+   * The ID of the original order line item that this item returns.
+   */
+  orderLineItemId: number;
+  /**
+   * The quantity selected for return. This is the selected quantity, not the original ordered quantity (see `lineItem.quantity`) and not the quantity that remains refundable.
+   */
+  quantity: number;
+  /**
+   * The return reason that's selected in native POS. `undefined` when no reason is selected.
+   */
+  returnReason?: ReturnReason;
+  /**
+   * The note for the return reason that's entered in native POS. An empty string when there's no note.
+   */
+  returnReasonNote: string;
+  /**
+   * Whether native POS has the item set to be restocked when the return is processed.
+   */
+  shouldRestock: boolean;
+  /**
+   * Whether the item can be restocked.
+   */
+  canRestock: boolean;
+  /**
+   * A read-only snapshot of the original order line item, including its variant and product IDs, SKU, and properties when POS has them. Its `metafields` are an empty array in the returns and exchanges pilot until the supporting read data exists.
+   *
+   * `lineItem.quantity` is the quantity ordered on the original order line. It's `undefined` when POS doesn't know it, for example on a return that POS restored from older data stored on the device. It's never the selected quantity and never the quantity that remains refundable, so check for `undefined` before using it.
+   */
+  lineItem: Omit<LineItem, 'quantity'> & {quantity?: number};
+}
+
+/**
+ * A return reason that's selected in native POS.
+ * @publicDocs
+ */
+export interface ReturnReason {
+  /**
+   * The ID of the return reason definition.
+   */
+  id: number;
+  /**
+   * The display name of the return reason.
+   */
+  name: string;
+}
+
+/**
+ * A typed metafield. The same shape is used wherever a cart exposes metafields: on the cart, on a cart line item, and on the original order line item of a returned item.
+ * @publicDocs
+ */
+export interface Metafield {
+  /**
+   * The namespace of the metafield.
+   */
+  namespace: string;
+  /**
+   * The key of the metafield within its namespace.
+   */
+  key: string;
+  /**
+   * The metafield type, such as `single_line_text_field`.
+   */
+  type: string;
+  /**
+   * The value of the metafield, serialized as a string according to its type.
+   */
+  value: string;
 }
 
 /**
@@ -75,9 +217,9 @@ export interface CartUpdateInput {
    */
   customer?: Customer;
   /**
-   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.
+   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones. Line items in this input can't carry `metafields`.
    */
-  lineItems: LineItem[];
+  lineItems: Omit<LineItem, 'metafields'>[];
   /**
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
@@ -176,6 +318,10 @@ export interface LineItem {
    * Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.
    */
   components?: LineItemComponent[];
+  /**
+   * The metafields on this line item that are visible to the calling app in this snapshot. In the returns and exchanges pilot it's always an empty array until the supporting read data exists, so an empty array doesn't mean that the line item has no metafields. `undefined` when the data isn't available, such as outside the pilot and on the line items of transactions.
+   */
+  metafields?: Metafield[];
 }
 
 /**

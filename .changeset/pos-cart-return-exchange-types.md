@@ -1,0 +1,9 @@
+---
+'@shopify/ui-extensions': minor
+---
+
+Add read types for POS returns and exchanges to the Cart API. `cart.current` can now report `cartType` (`'Checkout'`, `'Return'`, `'Exchange'` or `'Unsupported'`) and, for `'Return'` and `'Exchange'` carts, `cart.return` with the original order and the items selected for return in native POS. These fields are read-only. Returned-item selection, reason, note and restock values come from native POS and extensions can't change them. The new `CartType`, `OriginalOrder`, `ReturnLineItem`, `ReturnReason` and `Metafield` types are exported from `@shopify/ui-extensions/point-of-sale`.
+
+The new data is available only on API version 2027-01 or later, on POS versions that support it, and to apps enrolled in the returns and exchanges pilot. Everywhere else the cart keeps its existing shape: `cartType`, `cart.return` and the new `metafields` properties on `Cart` and `LineItem` are optional and can be `undefined`, so existing carts, event snapshots, transaction line items and test defaults stay valid. Check `cartType` to narrow to `'Return'` or `'Exchange'` before reading `cart.return`. `cart.return.order.id` and `cart.return.order.name` can each be `undefined` when POS doesn't know them, so check each before use. `cart.lineItems` contains only exchange line items in a return or exchange; returned items are in `cart.return.lineItems`. In `cart.return.lineItems`, the nested `lineItem.quantity` is the originally ordered quantity and is `undefined` when POS doesn't know it, so check for `undefined`. Metafield arrays are empty in the pilot until the supporting read data exists.
+
+`Cart` is now a type alias for a union that is discriminated by `cartType`, instead of an interface. Interfaces that `extend Cart` must be rewritten, for example as a type alias that intersects `Cart`. Line items that you pass to `bulkCartUpdate` as fresh object literals can't include `metafields`; this release adds no metafield writes.
