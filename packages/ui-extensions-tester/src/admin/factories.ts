@@ -310,6 +310,16 @@ function createCustomerSegmentTemplateMock<T extends ExtensionTarget>(
   };
 }
 
+function createMetafieldOptionsMock<T extends ExtensionTarget>(target: T) {
+  return {
+    ...createMockStandardApi(target),
+    data: {
+      owner: {id: 'gid://shopify/Product/1', type: 'PRODUCT'},
+      metafields: [],
+    },
+  };
+}
+
 // ---------------------------------------------------------------------------
 // Factory map — TypeScript verifies each entry against ApiForTarget<K>
 // ---------------------------------------------------------------------------
@@ -322,6 +332,7 @@ const adminMockFactories: AdminMockFactory = {
   // Runnable targets
   'admin.customers.segmentation-templates.data':
     createCustomerSegmentTemplateMock,
+  'admin.metafields.options.data': createMetafieldOptionsMock,
   'admin.app.tools.data': createMockStandardApi,
 
   // App render targets

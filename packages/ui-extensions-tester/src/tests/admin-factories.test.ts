@@ -40,6 +40,17 @@ describe('createMockAdminTargetApi', () => {
     expect(api).not.toHaveProperty('resourcePicker');
   });
 
+  it('creates a metafield options api with owner and definitions data', () => {
+    const api = createMockAdminTargetApi('admin.metafields.options.data');
+
+    expect(api.extension.target).toBe('admin.metafields.options.data');
+    expect(api.data.owner).toStrictEqual({
+      id: 'gid://shopify/Product/1',
+      type: 'PRODUCT',
+    });
+    expect(api.data.metafields).toStrictEqual([]);
+  });
+
   it('creates an app home api with loading controls', () => {
     const api = createMockAdminTargetApi('admin.app.home.render');
 
