@@ -1,5 +1,110 @@
 # @shopify/ui-extensions
 
+## 2026.10.0
+
+### Minor Changes
+
+- [#4666](https://github.com/Shopify/ui-extensions/pull/4666) [`6e1670f`](https://github.com/Shopify/ui-extensions/commit/6e1670f6fef3e46a7877b6008147fcdda11c764d) Thanks [@kyledurand](https://github.com/kyledurand)! - Regenerate the Admin per-component types so they match the components as shipped. Around 35 components gain properties that existed in the implementation but were missing from the types, including the whole of `DatePicker` (`allow`, `allowDays`, `defaultValue`, `defaultView`, `disallow`, `disallowDays`, `value`, `view`, `visibleMonths`), typography properties on `Text`, `Paragraph`, and `Heading` (`fontSize`, `fontWeight`, `fontVariantNumeric`), `Banner`'s `heading` and `dismissible`, `Button`'s `variant` and `accessibilityLabel`, and `ColorPicker`'s `alpha`, `value`, and `defaultValue`.
+
+- [#4692](https://github.com/Shopify/ui-extensions/pull/4692) [`2903675`](https://github.com/Shopify/ui-extensions/commit/2903675c5eb3246c46b8a4ff66ddbdc656cbed0a) Thanks [@kyledurand](https://github.com/kyledurand)! - Expose `EmptyState` and `Number` to Admin UI extension targets that support standard components, including `admin.app.home.render`.
+
+- [#4666](https://github.com/Shopify/ui-extensions/pull/4666) [`644d6c0`](https://github.com/Shopify/ui-extensions/commit/644d6c083003b3d3d9cdaf4f4b59b22115e056ad) Thanks [@kyledurand](https://github.com/kyledurand)! - Add Admin `Number` and `EmptyState` types. `Number` exposes the `tone`, `color`, `fontSize`, and `fontWeight` properties; `EmptyState` exposes the `heading` property and the `graphic`, `subheading`, `primaryAction`, and `secondaryActions` slots.
+
+- [#4687](https://github.com/Shopify/ui-extensions/pull/4687) [`eb63a47`](https://github.com/Shopify/ui-extensions/commit/eb63a47ef412cee1068db8679059f2d507453f40) Thanks [@davejcameron](https://github.com/davejcameron)! - Added `s-progress` to the Admin component definitions, so the `Progress` component now has a generated docs entity alongside the other Admin components.
+
+- [#4689](https://github.com/Shopify/ui-extensions/pull/4689) [`e54c7cc`](https://github.com/Shopify/ui-extensions/commit/e54c7cce9d67e64909103f857415e127da9bb080) Thanks [@davejcameron](https://github.com/davejcameron)! - Fix the Admin `Progress` component types by declaring `ProgressProps` in shared definitions. `Section` now documents an `Icon` in its `graphic` slot and a `Tooltip` among its accessories. Regenerates the Admin docs payload from Polaris 2.26.0.
+
+- [#4666](https://github.com/Shopify/ui-extensions/pull/4666) [`96cf66d`](https://github.com/Shopify/ui-extensions/commit/96cf66d43ed69da55a9cd393232010d6d415e477) Thanks [@kyledurand](https://github.com/kyledurand)! - Added `subheading` property and the `primaryAction`, `secondaryActions`, `graphic`, `accessory`, and `supplemental` slots to Admin `Section`.
+
+- [#4684](https://github.com/Shopify/ui-extensions/pull/4684) [`0b0f4c0`](https://github.com/Shopify/ui-extensions/commit/0b0f4c0466dff17850f11b15d0175821bcc321ac) Thanks [@kyledurand](https://github.com/kyledurand)! - Added the Admin `Progress` component to all extension targets.
+
+- [#4739](https://github.com/Shopify/ui-extensions/pull/4739) [`8692912`](https://github.com/Shopify/ui-extensions/commit/869291238f242d1d15f5dfef4a142871e0a7741b) Thanks [@rcaplanshopify](https://github.com/rcaplanshopify)! - Expose regional address components to checkout UI extensions:
+
+  - `Country.acceptedAddressInputFields` (the buyer's current country; on checkout's `Country` only, not customer accounts') and `localization.acceptedAddressInputFieldsForCountry(countryCode)` (any country) list the address inputs a country's format carries, typed by the new `AcceptedAddressInputField`. They're guidance: `applyShippingAddressChange` doesn't reject a write because it includes fields outside the list. It still rejects unknown properties, wrong value types, missing approval scopes, a malformed `addressLineComponents`, components for a country without a component layout, and any `addressCode` write.
+  - `MailingAddress` gains `addressLineComponents` (new `AddressLineComponents` type: `streetName`, `streetNumber`, `additionalInformation`, `district`, `subdistrict`) and `addressCode`.
+  - `applyShippingAddressChange` accepts writes nested under `addressLineComponents`. `ShippingAddressChangeFieldError.field` is now `ShippingAddressChangeErrorField`, which widens `keyof MailingAddress` to include line component names and `'addressLineComponents'`.
+  - The address autocomplete `suggest` and `format-suggestion` targets receive `target.acceptedAddressInputFields`. `AutocompleteAddress` accepts `addressLineComponents` and `addressCode`.
+  - `@shopify/ui-extensions-tester`: the checkout mock's `localization.acceptedAddressInputFieldsForCountry()` resolves the flat address input fields, and `localization.country` carries the same list. The new `createAcceptedAddressInputFieldsForCountry(overrides?)` helper and `FLAT_ADDRESS_INPUT_FIELDS` model countries with regional address components.
+
+  Breaking for custom implementations: `Localization` has a new required method, and exhaustive checks on `ShippingAddressChangeFieldError.field` need the new members.
+
+- [#4235](https://github.com/Shopify/ui-extensions/pull/4235) [`54b934a`](https://github.com/Shopify/ui-extensions/commit/54b934a59bd2709c7976d85d8210d7d8d42d2e56) Thanks [@vctrchu](https://github.com/vctrchu)! - Add Subscribable Storage to the POS Storage interface for reactive cross-target communication.
+
+- [#4658](https://github.com/Shopify/ui-extensions/pull/4658) [`6ed2ff9`](https://github.com/Shopify/ui-extensions/commit/6ed2ff9dbce77c52a3e8e76baeccf64d525ef2e0) Thanks [@Fionoble](https://github.com/Fionoble)! - Expose the Popover component in all Admin UI extension targets.
+
+- [#4600](https://github.com/Shopify/ui-extensions/pull/4600) [`54c52f0`](https://github.com/Shopify/ui-extensions/commit/54c52f0a2731a48e7c1745cad4787c85fd9b04e1) Thanks [@one20](https://github.com/one20)! - Add Product Configuration should-render targets
+
+- [`8152f17`](https://github.com/Shopify/ui-extensions/commit/8152f17ff00eb87e09b3189a59223fb65405007a) Thanks [@andrewmcgov](https://github.com/andrewmcgov)! - 2026-10-rc release
+
+- [#4671](https://github.com/Shopify/ui-extensions/pull/4671) [`6d1cd69`](https://github.com/Shopify/ui-extensions/commit/6d1cd693a0b77c14a1d3f4f43a9677a78d01fb1e) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add the POS background `scan` host event types: `POS_EVENT_NAMES.SCAN`, a public `ScanEvent` payload with guaranteed decoded `data` and normalized `source` (`camera`, `external`, or `embedded`), and the matching `ShopifyEventMap` entry so `pos.app.ready.data` extensions can register `shopify.addEventListener('scan', ...)`. The event is delivered after POS has finished handling the scan itself.
+
+- [#4672](https://github.com/Shopify/ui-extensions/pull/4672) [`432d2c9`](https://github.com/Shopify/ui-extensions/commit/432d2c963eb1d9d35bcdd1f660ceb757c764bcc6) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `cart.updateLineItemQuantity` to the POS Cart API for API version 2026-10. The method updates one line item's quantity while preserving its properties, discounts, and selling plans.
+
+- [#4744](https://github.com/Shopify/ui-extensions/pull/4744) [`42d1588`](https://github.com/Shopify/ui-extensions/commit/42d1588881ea9e8d5606177883bcfebb4174d43e) Thanks [@IHu04](https://github.com/IHu04)! - Add the POS Cash Drawer API (`shopify.cashDrawer`) to the `pos.home.tile.render` and `pos.home.modal.render` target types. POS already exposes the API on these targets at runtime, so the types now match what extensions can call.
+
+- [#4682](https://github.com/Shopify/ui-extensions/pull/4682) [`a7ddd4f`](https://github.com/Shopify/ui-extensions/commit/a7ddd4f56348be504a4b8db0d3b4a9ad7c98c9ba) Thanks [@shopifyzach](https://github.com/shopifyzach)! - Add `fiscalDeviceIdentifier` to the POS Device API. `shopify.device.fiscalDeviceIdentifier` is the Shopify-assigned fiscal register identifier for the device (such as Sweden's manufacturing number), matching the `fiscalDeviceIdentifier` field on the `PointOfSaleDevice` object in the GraphQL Admin API. It's `undefined` when the device's location doesn't require fiscal device registration.
+
+- [#4715](https://github.com/Shopify/ui-extensions/pull/4715) [`e34b5a7`](https://github.com/Shopify/ui-extensions/commit/e34b5a78c8ce7344d9d99e43d2b231312b811bb7) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `version` to the POS Extension API. `shopify.extension.version` is the name of the published app version that the running extension was deployed in — the same name shown on the Versions page of the dev dashboard, and the name chosen when running `shopify app deploy`. Use it to tell which build of an extension a merchant is running, which POS can cache and run offline for some time after a newer version is deployed. It's an opaque name rather than a version number, so compare it for equality. It's `undefined` when the extension runs from a local development server, because a build that hasn't been deployed has no published version.
+
+- [#4520](https://github.com/Shopify/ui-extensions/pull/4520) [`72e6b9d`](https://github.com/Shopify/ui-extensions/commit/72e6b9d54806606ef60f9634c1efa60e6894e36d) Thanks [@vctrchu](https://github.com/vctrchu)! - Add `shopify.intercept()` types for POS blocking workflows.
+
+- [#4611](https://github.com/Shopify/ui-extensions/pull/4611) [`d8b03c9`](https://github.com/Shopify/ui-extensions/commit/d8b03c99ac71e227d55743a5da657b94575e31b7) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add `paymentvalidations` intercept types for POS payment blocking workflows, and rename the `beforecheckout` intercept to `cartvalidations` so both interceptable workflows follow one naming scheme.
+
+- [#4690](https://github.com/Shopify/ui-extensions/pull/4690) [`3703a5b`](https://github.com/Shopify/ui-extensions/commit/3703a5b595263033025847f3b32cf2fd1a85614c) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Add the `s-pos-list` web component for POS and the `posListTemplate` tagged template that compiles its `<s-pos-list-item>` row markup.
+
+- [#4724](https://github.com/Shopify/ui-extensions/pull/4724) [`9f5ad67`](https://github.com/Shopify/ui-extensions/commit/9f5ad67dc13f3a4d4916cb4c7f7f4b0ee9e3e419) Thanks [@js-goupil](https://github.com/js-goupil)! - Add the POS `navigation` `navigatesuccess` event type and documentation for listening after a screen finishes appearing.
+
+- [#4612](https://github.com/Shopify/ui-extensions/pull/4612) [`8e59844`](https://github.com/Shopify/ui-extensions/commit/8e59844f885f3df4e409964b5df370e5a58c7f21) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Remove the POS Action API (`shopify.action.presentModal()`) from action render targets (`*.action.render`).
+
+  Action render targets are themselves the modal destination that `presentModal()` opens, so exposing the Action API there had no meaningful destination — calling `shopify.action.presentModal()` from `pos.cart.line-item-details.action.render` (the one action render target that still exposed it) pushed another instance of the same target onto the navigation stack, rendering a duplicate modal on top of the already-open one.
+
+  Action render targets now expose only `ActionTargetApi` plus their contextual APIs, matching every other `*.action.render` target. Extensions that need in-workflow navigation should use the Navigation API (`shopify.navigation`). This is a versioned breaking change: the surface is removed for API versions `2026-10` and later; older API versions keep their published types.
+
+- [#4713](https://github.com/Shopify/ui-extensions/pull/4713) [`1c9845c`](https://github.com/Shopify/ui-extensions/commit/1c9845c08b47b58b47b4a301af6862ad0c20d4b8) Thanks [@henryStelle](https://github.com/henryStelle)! - Add `shopify.resolution.onSave` to the POS validation resolution targets so an extension can commit pending work before POS re-runs the intercepted validation. Registering a handler asynchronously returns an async cleanup function.
+
+- [#4641](https://github.com/Shopify/ui-extensions/pull/4641) [`7ef321c`](https://github.com/Shopify/ui-extensions/commit/7ef321ce027bd60f744c1243d978a791fd26bb70) Thanks [@vctrchu](https://github.com/vctrchu)! - Add types for the POS validation resolution targets (`pos.cart.validations.resolution.render`, `pos.payment.validations.resolution.render`) and the target-scoped `shopify.resolution` API. Intercept event types now match their runtime payloads: plain objects carrying `type` and the event's data, no longer extending DOM `Event`.
+
+- [#4642](https://github.com/Shopify/ui-extensions/pull/4642) [`6f11a9d`](https://github.com/Shopify/ui-extensions/commit/6f11a9de30d5b55c48894ef5e57253bd763bd4a6) Thanks [@henryStelle](https://github.com/henryStelle)! - Make the POS `Storage.current` property required. It is always populated by the host, so marking it optional forced consumers to handle a `possibly undefined` case that can never occur.
+
+- [#4634](https://github.com/Shopify/ui-extensions/pull/4634) [`2ff93b3`](https://github.com/Shopify/ui-extensions/commit/2ff93b334fdd7332bd3cb938ab31b0b20f336236) Thanks [@vctrchu](https://github.com/vctrchu)! - Add types for POS intercept `ValidationAdd.target` values (`$.cart`, `$.cart.lineItems['<uuid>']`, `$.payment`), narrowed per intercepted event.
+
+- [#4686](https://github.com/Shopify/ui-extensions/pull/4686) [`9c1c670`](https://github.com/Shopify/ui-extensions/commit/9c1c670b052a39518083c41a4e8bca36c8182722) Thanks [@IHu04](https://github.com/IHu04)! - Remove the deprecated `session.currentSession.staffMemberId` property from POS UI extensions in API version 2026-10. Use the reactive `session.staffMember` signal to access the staff member who is currently pinned in to POS.
+
+  This is a versioned breaking change. API versions 2026-07 and earlier retain their published types. The separate receipt event `session.staffMemberId` field is unchanged.
+
+### Patch Changes
+
+- [#4660](https://github.com/Shopify/ui-extensions/pull/4660) [`3106936`](https://github.com/Shopify/ui-extensions/commit/310693680f9037954deb89d8007c5fa42e400a3a) Thanks [@oliverigor](https://github.com/oliverigor)! - Add private positioning types (`position`, `insetBlock`, `insetInline`, `transform`) to the `s-box` checkout component.
+
+- [#4737](https://github.com/Shopify/ui-extensions/pull/4737) [`9d07293`](https://github.com/Shopify/ui-extensions/commit/9d07293b74769379590be3ae22d2e09fa576bf6e) Thanks [@ChemsCode](https://github.com/ChemsCode)! - Expose `AuthenticatedAccountCustomer` for the Authenticated Account API and its Preact hook, retaining `Customer` as a deprecated compatibility interface. Correct the customer ID documentation to describe a numeric string and use the public type names in the generated documentation.
+
+- [#4727](https://github.com/Shopify/ui-extensions/pull/4727) [`8ee0082`](https://github.com/Shopify/ui-extensions/commit/8ee00826034869051bbc10dd8eae9305d5c028a8) Thanks [@henryStelle](https://github.com/henryStelle)! - Remove stale POS component names from the component availability metadata for 2026-10 targets.
+
+- [#4618](https://github.com/Shopify/ui-extensions/pull/4618) [`e4768fe`](https://github.com/Shopify/ui-extensions/commit/e4768fef3efc4139e9a55091ce1c58813b3f8592) Thanks [@SyndicateGit](https://github.com/SyndicateGit)! - Deprecate `useLocalizationMarket` and `localization.market` on both checkout and customer-account surfaces. These will be removed in a future version of the API.
+
+- [#4639](https://github.com/Shopify/ui-extensions/pull/4639) [`5f16688`](https://github.com/Shopify/ui-extensions/commit/5f1668883bf621e0bf8154e4d9eb9a478db6570c) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Document the `borderRadius` prop on the POS `s-image` component.
+
+- [#4645](https://github.com/Shopify/ui-extensions/pull/4645) [`acbaf2d`](https://github.com/Shopify/ui-extensions/commit/acbaf2d819151fb0e45c419cd311eacde34641d4) Thanks [@henryStelle](https://github.com/henryStelle)! - Fix the preact entry points in package.json:
+
+  - Add a `typesVersions` entry for `@shopify/ui-extensions/preact` so its types resolve under TypeScript's legacy `moduleResolution: "node"` (node10), matching the existing entries for `checkout/preact` and `customer-account/preact`.
+  - Remove the dead `./point-of-sale/preact` entry from `exports`. Its source file was intentionally deleted right after it was introduced, but the `exports` entry was left behind, pointing at files that are never built or published — the import has never resolved in any released version. POS extensions should use the generic `@shopify/ui-extensions/preact` entry point.
+
+- [#4583](https://github.com/Shopify/ui-extensions/pull/4583) [`ae2cd13`](https://github.com/Shopify/ui-extensions/commit/ae2cd13acee575bef8ed5e6049cdb59da433f427) Thanks [@sylvhama](https://github.com/sylvhama)! - Hide the `tertiary` button variant from the generated `s-button` documentation while preserving the existing public type.
+
+- [#4631](https://github.com/Shopify/ui-extensions/pull/4631) [`67fd45b`](https://github.com/Shopify/ui-extensions/commit/67fd45b43b9d33d37498af336ff4ffd7a98e143d) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Add `currency` to the POS Cart API so extensions can read the cart presentment currency.
+
+- [#4683](https://github.com/Shopify/ui-extensions/pull/4683) [`8ebe439`](https://github.com/Shopify/ui-extensions/commit/8ebe4394d09019d059a5cf33fe83cde47ae6cd4b) Thanks [@vctrchu](https://github.com/vctrchu)! - Clarify POS validation interceptor and resolution event semantics, including cash amounts, empty results, revalidation updates, and generated interceptor and Resolution API documentation.
+
+- [#4741](https://github.com/Shopify/ui-extensions/pull/4741) [`37919de`](https://github.com/Shopify/ui-extensions/commit/37919def152fc8f6686c4abb40793fe57ef528ff) Thanks [@vctrchu](https://github.com/vctrchu)! - Add descriptions to POS intercept and resolution types that rendered blank in generated docs, including `InterceptResult.operations`, `ValidationLevel`, the validation target types, and `ResolutionApiContent`.
+
+- [#4735](https://github.com/Shopify/ui-extensions/pull/4735) [`565c318`](https://github.com/Shopify/ui-extensions/commit/565c318a25d7837aaf4e329da463f3d477606e63) Thanks [@ajanth-u](https://github.com/ajanth-u)! - Shorten the `s-pos-list` property descriptions for `rows`, `itemTemplates`, and `loadingMore`, and stop listing defaults for `rows` and `itemTemplates`.
+
+- [#4632](https://github.com/Shopify/ui-extensions/pull/4632) [`3001369`](https://github.com/Shopify/ui-extensions/commit/3001369d03fe3f12d8750ce73ad3e544392e6289) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Document `paymentvalidations` dispatch timing: fires when a tender is confirmed but not yet committed, once per tender attempt (split payments dispatch per tender).
+
+- [#4655](https://github.com/Shopify/ui-extensions/pull/4655) [`3c4ff34`](https://github.com/Shopify/ui-extensions/commit/3c4ff345efb2628661e24cfeebf20620fb2c8d92) Thanks [@melissaluu](https://github.com/melissaluu)! - Remove unsupported bulk print action `shouldRender` targets from Admin UI extension types and generated docs.
+
+- [#4625](https://github.com/Shopify/ui-extensions/pull/4625) [`bfe153f`](https://github.com/Shopify/ui-extensions/commit/bfe153f855cd64985ebad152c3a5fa5ae0f2fdc0) Thanks [@henryStelle](https://github.com/henryStelle)! - Allow POS `s-button` components to explicitly use the default `auto` variant.
+
 ## 2026.10.0-rc.13
 
 ### Minor Changes
