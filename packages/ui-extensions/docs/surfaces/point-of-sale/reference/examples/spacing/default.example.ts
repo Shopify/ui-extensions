@@ -1,2 +1,0 @@
-VerticalSpacing.ExtraSmall;
-HorizontalSpacing.ExtraSmall;
