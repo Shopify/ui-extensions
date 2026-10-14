@@ -20,6 +20,7 @@
       "ActionApi",
       "CameraApi",
       "CartApi",
+      "CashDrawerApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -77,6 +78,7 @@
     "apis": [
       "CameraApi",
       "CartApi",
+      "CashDrawerApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -1120,6 +1122,15 @@
       "pos.product-details.block.render"
     ]
   },
+  "CashDrawerApi": {
+    "targets": [
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.register-details.action.menu-item.render",
+      "pos.register-details.action.render",
+      "pos.register-details.block.render"
+    ]
+  },
   "PinPadApi": {
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
@@ -1271,13 +1282,6 @@
     "targets": [
       "pos.cart.line-item-details.action.menu-item.render",
       "pos.cart.line-item-details.action.render"
-    ]
-  },
-  "CashDrawerApi": {
-    "targets": [
-      "pos.register-details.action.menu-item.render",
-      "pos.register-details.action.render",
-      "pos.register-details.block.render"
     ]
   },
   "Tile": {
