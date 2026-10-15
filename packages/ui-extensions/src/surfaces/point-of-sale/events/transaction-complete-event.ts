@@ -18,6 +18,10 @@ interface BaseTransactionCompleteEvent {
    */
   readonly orderId?: number;
   /**
+   * The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.
+   */
+  readonly sourceIdentifier?: string;
+  /**
    * The customer information if this transaction is associated with a customer account. Contains the customer ID for linking to customer records. Returns `undefined` for guest transactions where no customer was selected or when the transaction doesn't support customer association.
    */
   readonly customer?: Customer;
@@ -29,6 +33,10 @@ interface BaseTransactionCompleteEvent {
    * The total tax amount charged on this transaction as a `Money` object. This is the sum of all tax lines and represents the combined tax from all applicable tax jurisdictions and rules. Tax calculations are based on the location, products, customer, and tax settings configured in Shopify.
    */
   readonly taxTotal: Money;
+  /**
+   * Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.
+   */
+  readonly taxesIncluded?: boolean;
   /**
    * The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations.
    */
