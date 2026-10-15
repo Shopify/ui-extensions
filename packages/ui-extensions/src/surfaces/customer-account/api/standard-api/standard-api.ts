@@ -80,7 +80,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   sessionToken: SessionToken;
 
   /**
-   * Reports app events to Shopify for this app with `emit()`.
+   * Reports events to Shopify for this app.
    */
   appEvents?: AppEventsApi;
 

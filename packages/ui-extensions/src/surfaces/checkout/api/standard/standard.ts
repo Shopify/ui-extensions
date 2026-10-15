@@ -587,7 +587,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   analytics: Analytics;
 
   /**
-   * Reports app events to Shopify for this app with `emit()`.
+   * Reports events to Shopify for this app.
    */
   appEvents?: AppEventsApi;
 
@@ -1699,13 +1699,13 @@ export interface Analytics {
 }
 
 /**
- * A scalar value attached to an app event.
+ * A value attached to an app event.
  * @publicDocs
  */
 export type AppEventAttributeValue = string | number | boolean;
 
 /**
- * Scalar attributes describing one occurrence of an app event.
+ * Attributes related to an app event.
  * @publicDocs
  */
 export type AppEventAttributes = Record<string, AppEventAttributeValue>;
@@ -1721,7 +1721,7 @@ export interface AppEvent {
   eventHandle: string;
 
   /**
-   * Scalar attributes of this occurrence.
+   * Attributes related to this event.
    */
   attributes?: AppEventAttributes;
 }
@@ -1739,7 +1739,7 @@ export type AppEventEmitResult =
   | {readonly success: false; readonly error: string};
 
 /**
- * Reports app events to Shopify for this app.
+ * Reports events to Shopify for this app.
  * @publicDocs
  */
 export interface AppEventsApi {
@@ -1747,7 +1747,7 @@ export interface AppEventsApi {
    * Reports one occurrence of an app-defined event.
    *
    * @param eventHandle The app-defined event name.
-   * @param attributes Scalar attributes of this occurrence.
+   * @param attributes Attributes related to this event.
    *   @default {}
    * @returns A promise that resolves with the outcome once the host has
    *   handled the call.

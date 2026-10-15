@@ -50,7 +50,7 @@ export interface AddressAutocompleteStandardApi<
   analytics: Analytics;
 
   /**
-   * Reports app events to Shopify for this app. See `StandardApi.appEvents`.
+   * Reports events to Shopify for this app.
    */
   appEvents?: AppEventsApi;
 
