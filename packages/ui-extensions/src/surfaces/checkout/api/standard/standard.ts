@@ -587,6 +587,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   analytics: Analytics;
 
   /**
+   * Reports app events to Shopify for this app with `emit()`.
+   */
+  appEvents?: AppEventsApi;
+
+  /**
    * The gift cards that have been applied to the checkout. Each entry includes
    * the last four characters of the gift card code, the amount used at
    * checkout, and the card's remaining balance.
@@ -1692,6 +1697,67 @@ export interface Analytics {
    */
   visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
 }
+
+/**
+ * A scalar value attached to an app event.
+ * @publicDocs
+ */
+export type AppEventAttributeValue = string | number | boolean;
+
+/**
+ * Scalar attributes describing one occurrence of an app event.
+ * @publicDocs
+ */
+export type AppEventAttributes = Record<string, AppEventAttributeValue>;
+
+/**
+ * An app-defined event and its attributes.
+ * @publicDocs
+ */
+export interface AppEvent {
+  /**
+   * The app-defined event name.
+   */
+  eventHandle: string;
+
+  /**
+   * Scalar attributes of this occurrence.
+   */
+  attributes?: AppEventAttributes;
+}
+
+/**
+ * The outcome of an `emit` call.
+ *
+ * `success: true` means the host accepted the event. It does not confirm delivery.
+ *
+ * `success: false` means the event was not sent. `error` describes why.
+ * @publicDocs
+ */
+export type AppEventEmitResult =
+  | {readonly success: true}
+  | {readonly success: false; readonly error: string};
+
+/**
+ * Reports app events to Shopify for this app.
+ * @publicDocs
+ */
+export interface AppEventsApi {
+  /**
+   * Reports one occurrence of an app-defined event.
+   *
+   * @param eventHandle The app-defined event name.
+   * @param attributes Scalar attributes of this occurrence.
+   *   @default {}
+   * @returns A promise that resolves with the outcome once the host has
+   *   handled the call.
+   */
+  emit(
+    eventHandle: string,
+    attributes?: AppEventAttributes,
+  ): Promise<AppEventEmitResult>;
+}
+
 /**
  * Represents a visitor result.
  * @publicDocs

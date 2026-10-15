@@ -1,5 +1,6 @@
 import type {
   Analytics,
+  AppEventsApi,
   AppMetafieldEntry,
   Capability,
   CheckoutToken,
@@ -47,6 +48,11 @@ export interface AddressAutocompleteStandardApi<
    * The methods for interacting with [Web Pixels](https://shopify.dev/docs/apps/marketing), such as emitting an event.
    */
   analytics: Analytics;
+
+  /**
+   * Reports app events to Shopify for this app. See `StandardApi.appEvents`.
+   */
+  appEvents?: AppEventsApi;
 
   /**
    * The custom attributes left by the customer to the merchant, either in their cart or during checkout.

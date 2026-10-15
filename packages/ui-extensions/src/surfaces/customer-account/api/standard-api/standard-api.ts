@@ -14,6 +14,7 @@ import {
   ToastApi,
   Intents,
   SubscribableSignalLike,
+  AppEventsApi,
 } from '../shared';
 
 import type {ExtensionTarget} from '../../extension-targets';
@@ -77,6 +78,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * Authenticates requests between your extension and your app backend. Call `get()` to retrieve a signed JWT containing the customer ID, shop domain, and expiration time, then verify it server-side. For more information, refer to the [Session Token API](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/session-token-api).
    */
   sessionToken: SessionToken;
+
+  /**
+   * Reports app events to Shopify for this app with `emit()`.
+   */
+  appEvents?: AppEventsApi;
 
   /**
    * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use `publish()` to emit events and `visitor()` to submit visitor data.
