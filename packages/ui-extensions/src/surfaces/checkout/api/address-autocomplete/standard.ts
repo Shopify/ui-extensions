@@ -52,7 +52,7 @@ export interface AddressAutocompleteStandardApi<
   /**
    * Reports events to Shopify for this app.
    */
-  appEvents?: AppEventsApi;
+  appEvents: AppEventsApi;
 
   /**
    * The custom attributes left by the customer to the merchant, either in their cart or during checkout.

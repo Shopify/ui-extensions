@@ -82,7 +82,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Reports events to Shopify for this app.
    */
-  appEvents?: AppEventsApi;
+  appEvents: AppEventsApi;
 
   /**
    * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use `publish()` to emit events and `visitor()` to submit visitor data.

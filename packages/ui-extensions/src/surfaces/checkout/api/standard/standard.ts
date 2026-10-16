@@ -589,7 +589,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Reports events to Shopify for this app.
    */
-  appEvents?: AppEventsApi;
+  appEvents: AppEventsApi;
 
   /**
    * The gift cards that have been applied to the checkout. Each entry includes
