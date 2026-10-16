@@ -51,6 +51,7 @@ function createStandardApiProperties<T extends ExtensionTarget>(target: T) {
     },
     i18n: createMockI18n(),
     storage: createStorage(),
+    appEvents: {emit: async () => ({success: true as const})},
     sessionToken: {get: async () => 'mock-session-token'},
     analytics: {
       publish: async () => true,

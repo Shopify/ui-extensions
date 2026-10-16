@@ -39,6 +39,7 @@ function createSharedApiMocks() {
       visitor: async () => ({type: 'success' as const}),
     },
     i18n: createMockI18n(),
+    appEvents: {emit: async () => ({success: true as const})},
     sessionToken: {get: async () => 'mock-session-token'},
     shop: {
       id: 'gid://shopify/Shop/1',

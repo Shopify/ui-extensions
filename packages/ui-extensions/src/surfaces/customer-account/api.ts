@@ -79,6 +79,11 @@ export type {
   VisitorSuccess,
   VisitorError,
   SubscribableSignalLike,
+  AppEvent,
+  AppEventAttributeValue,
+  AppEventAttributes,
+  AppEventEmitResult,
+  AppEventsApi,
 } from './api/shared';
 
 export type {CartLineItemApi} from './api/cart-line/cart-line-item';
