@@ -113,7 +113,7 @@ export interface AddressLineComponents {
   streetNumber?: string;
 
   /**
-   * Additional address information (e.g. apartment, suite, or unit).
+   * Additional address information, for example an apartment, suite, or unit.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
@@ -122,7 +122,7 @@ export interface AddressLineComponents {
   additionalInformation?: string;
 
   /**
-   * A regional or city subdivision (e.g. county, metropolitan region,
+   * A regional or city subdivision (for example, county, metropolitan region,
    * neighborhood, ward).
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
@@ -214,10 +214,10 @@ export interface MailingAddress {
    * flat lines are published alongside them.
    *
    * Writable through `applyShippingAddressChange`, which does not validate a
-   * change against `Country.acceptedAddressInputFields`. Sent alongside a flat
-   * line, the components win and recompose it. Where a country accepts
-   * components without storing them, the write composes the flat line and only
-   * the line is published.
+   * change against `Country.acceptedAddressInputFields`. When sent alongside a
+   * flat line, the components take precedence and recompose the flat line.
+   * Where a country accepts components without storing them, the write
+   * composes the flat line and only the line is published.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *

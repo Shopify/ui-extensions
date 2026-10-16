@@ -452,8 +452,6 @@ export interface Localization {
    * changes the country of their shipping address. The value is
    * `undefined` if the market is unknown.
    *
-   * > Caution: This `market` field is deprecated and will be removed in a future version of the API.
-   *
    * @deprecated This `market` field will be removed in a future version of the API.
    */
   market: SubscribableSignalLike<Market | undefined>;
