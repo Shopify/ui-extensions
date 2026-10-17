@@ -1032,7 +1032,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language, such as "Net 30" or "Due on receipt". See [localization.language](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api#properties-propertydetail-language).
+   * The name of the payment terms translated to the buyer's current language, such as "Net 30" or "Due on receipt". See [localization.language](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api#docsstandardlocalizationapi-propertydetail-localization).
    */
   name: string;
   /**
