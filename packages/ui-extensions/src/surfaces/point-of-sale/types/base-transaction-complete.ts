@@ -48,11 +48,11 @@ export interface BaseTransactionComplete {
    */
   grandTotal: Money;
   /**
-   * An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`.
+   * An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`.
    */
   paymentMethods: Payment[];
   /**
-   * The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: "USD"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts.
+   * The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: "USD"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change.
    */
   balanceDue: Money;
   /**
@@ -72,7 +72,7 @@ export interface BaseTransactionComplete {
    */
   tipAmount?: Money;
   /**
-   * The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.
+   * The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.
    */
   cashRoundingAdjustment?: Money;
 }

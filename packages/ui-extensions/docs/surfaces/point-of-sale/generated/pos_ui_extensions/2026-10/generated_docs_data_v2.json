@@ -3447,7 +3447,7 @@
           "syntaxKind": "PropertySignature",
           "name": "amount",
           "value": "number",
-          "description": "The payment amount."
+          "description": "The payment amount. For cash payments on `Sale` transactions in POS 11.16.0 and later, this is the cash the customer handed over, including any change given back. For other payment methods, other transaction types, and cash in earlier POS versions, it's the amount recorded on the payment transaction."
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/payment.ts",
@@ -3464,7 +3464,7 @@
           "description": "The payment method type."
         }
       ],
-      "value": "export interface Payment {\n  /**\n   * The payment amount.\n   */\n  amount: number;\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: string;\n  /**\n   * The payment method type.\n   */\n  type: PaymentMethod;\n}"
+      "value": "export interface Payment {\n  /**\n   * The payment amount. For cash payments on `Sale` transactions in POS 11.16.0 and later, this is the cash the customer handed over, including any change given back. For other payment methods, other transaction types, and cash in earlier POS versions, it's the amount recorded on the payment transaction.\n   */\n  amount: number;\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency: string;\n  /**\n   * The payment method type.\n   */\n  type: PaymentMethod;\n}"
     }
   },
   "ShippingLine": {
@@ -3635,14 +3635,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -3702,7 +3702,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3778,14 +3778,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -3845,7 +3845,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3937,14 +3937,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically zero for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -4010,7 +4010,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -9512,14 +9512,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -9580,7 +9580,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
@@ -9658,14 +9658,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -9726,7 +9726,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
@@ -9820,14 +9820,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -9895,7 +9895,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
@@ -9981,14 +9981,14 @@
           "syntaxKind": "PropertySignature",
           "name": "balanceDue",
           "value": "Money",
-          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: grandTotal minus sum of all payment amounts."
+          "description": "The remaining balance still owed on this transaction as a `Money` object. Typically `{amount: 0, currency: \"USD\"}` for fully paid transactions. A positive balance indicates partial payment or layaway scenarios. A negative balance indicates overpayment, where change should be returned to the customer. Calculated as: `grandTotal` plus any `cashRoundingAdjustment`, minus the sum of all payment amounts. In a split payment where an earlier cash payment already gave change, a balance that is still unpaid is reported as a positive amount without subtracting that change."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
           "syntaxKind": "PropertySignature",
           "name": "cashRoundingAdjustment",
           "value": "Money",
-          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Returns `undefined` when no cash rounding adjustment was applied.",
+          "description": "The cash rounding adjustment applied to this transaction as a `Money` object. Positive when the cash total was rounded up and negative when it was rounded down. Returns `undefined` when no cash rounding adjustment was applied.",
           "isOptional": true
         },
         {
@@ -10065,7 +10065,7 @@
           "syntaxKind": "PropertySignature",
           "name": "paymentMethods",
           "value": "Payment[]",
-          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount tendered, and currency. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal`."
+          "description": "An array of all payment methods used to complete this transaction. Each payment entry specifies the payment type (for example, cash, credit card), amount, and currency. For cash payments on sales, the amount is the cash the customer handed over, so it can exceed the amount owed. Multiple entries indicate split payments where the customer paid using multiple methods (for example, part cash, part credit card). The sum of all payment amounts should equal or exceed the `grandTotal` plus any `cashRoundingAdjustment`."
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
