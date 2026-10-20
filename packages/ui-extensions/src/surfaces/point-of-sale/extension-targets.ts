@@ -1,3 +1,4 @@
+import type {CapabilitiesApi} from './api/capabilities-api/capabilities-api';
 import type {RenderExtension, RunnableExtension} from '../../extension';
 
 import type {DataTargetApi} from './api/data-target-api/data-target-api';
@@ -333,7 +334,9 @@ export interface RenderExtensionTargets {
    * @private
    */
   'pos.receipt-footer.block.render': RenderExtension<
-    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
+    {[key: string]: any} & CapabilitiesApi &
+      StorageApi &
+      TransactionCompleteWithReprintData,
     ReceiptComponents
   >;
   /**
@@ -344,7 +347,9 @@ export interface RenderExtensionTargets {
    * @private
    */
   'pos.receipt-header.block.render': RenderExtension<
-    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,
+    {[key: string]: any} & CapabilitiesApi &
+      StorageApi &
+      TransactionCompleteWithReprintData,
     ReceiptComponents
   >;
   /**

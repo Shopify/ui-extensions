@@ -1,10 +1,15 @@
 import {render} from 'preact';
+import {useCapabilities} from './useCapabilities';
 
 export default async () => {
   render(<Extension />, document.body);
 };
 
 function Extension() {
+  const signal = 'capabilities' in shopify ? shopify.capabilities : undefined;
+  const capabilities = useCapabilities(signal);
+  const requiresSetup =
+    capabilities !== undefined && !capabilities.includes('block_progress');
   const cart = shopify.cart.current.value;
   const lineItems = cart ? cart.lineItems : [];
   const itemCount = lineItems.length;
@@ -27,7 +32,9 @@ function Extension() {
   return (
     <s-tile
       heading="Cart summary"
-      subheading={`${itemCount} item(s)`}
+      subheading={
+        requiresSetup ? 'Checkout setup needed' : `${itemCount} item(s)`
+      }
       onClick={handleClick}
     >
       <s-button onClick={handleAddQuantity}>Increment all quantities</s-button>

@@ -16,6 +16,21 @@ For targets using the Session API in 2026-10, the mock exposes `session.staffMem
 
 `session.currentSession.staffMemberId` is no longer exposed. Receipt header and footer targets retain their separate `session.staffMemberId` snapshot, which defaults to `1`.
 
+## Mocking merchant capabilities
+
+All POS targets expose `shopify.capabilities`. The mock starts with `undefined`, meaning that the merchant's synchronized settings are not yet known. Set `[]` to simulate a disabled or never-configured permission, or `['block_progress']` to simulate an enabled **Allow app to block checkout** permission for this extension.
+
+```ts
+extension.shopify.capabilities.value = [];
+await extension.render();
+
+extension.shopify.capabilities.value = [
+  'block_progress',
+];
+```
+
+Assigning `value` notifies subscribers, so changes after rendering exercise reactive onboarding. Production extension code cannot assign these read-only values. Each extension harness has independent mock state; it does not simulate synchronization between devices or extension registrations.
+
 ## 🛒 Mocking cart line items
 
 Use `createCartLineItem()` to build POS cart line data, then assign it to the cart mock:

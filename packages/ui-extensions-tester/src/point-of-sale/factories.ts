@@ -3,6 +3,8 @@ import type {
   ExtensionTargets,
   RenderExtensionTarget,
   StandardApi,
+  CapabilitiesApi,
+  PosCapability,
   ActionTargetApi,
   DataTargetApi,
   ActionApi,
@@ -29,7 +31,10 @@ import type {
   PaymentValidationsEventData,
 } from '@shopify/ui-extensions/point-of-sale';
 
-import {createReadonlySignalLike} from '../mocks/signals';
+import {
+  createReadonlySignalLike,
+  createReactiveReadonlySignalLike,
+} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
 import {createCartLineItem, createStorage, createResult} from './index';
 
@@ -120,6 +125,9 @@ function createMockStandardApi<T extends RenderExtensionTarget>(
   target: T,
 ): StandardApi<T> {
   return {
+    capabilities: createReactiveReadonlySignalLike<
+      ReadonlyArray<PosCapability> | undefined
+    >(undefined),
     extensionPoint: target,
     extension: {
       apiVersion: '2026-04',
@@ -437,8 +445,13 @@ function createActionTargetCartLineItemMock<T extends RenderExtensionTarget>(
 // Group O: Receipt targets
 function createReceiptMock<T extends RenderExtensionTarget>(
   _target: T,
-): {[key: string]: unknown} & StorageApi & TransactionCompleteWithReprintData {
+): {[key: string]: unknown} & CapabilitiesApi &
+  StorageApi &
+  TransactionCompleteWithReprintData {
   return {
+    capabilities: createReactiveReadonlySignalLike<
+      ReadonlyArray<PosCapability> | undefined
+    >(undefined),
     ...createMockBaseEventData(),
     transaction: createTransaction(),
   };
@@ -511,6 +524,9 @@ function createDataTargetMock<T extends ExtensionTarget>(
   target: T,
 ): DataTargetApi<T> {
   return {
+    capabilities: createReactiveReadonlySignalLike<
+      ReadonlyArray<PosCapability> | undefined
+    >(undefined),
     extensionPoint: target,
     extension: {
       apiVersion: '2026-04',

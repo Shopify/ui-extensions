@@ -465,3 +465,7 @@ Creates a [`NavigationHistoryEntry`](https://developer.mozilla.org/en-US/docs/We
 - `url` — URL of the history entry (default `''`)
 - `key` — key of the history entry (default `''`)
 - `state` — developer-defined state retrieved via `getState()` (default `undefined`). Each `getState()` call returns a structured clone, matching real browser behaviour.
+
+## POS merchant capability changes
+
+POS extensions can test merchant permission onboarding with `extension.shopify.capabilities.value`. It defaults to `undefined` (unknown). Use `[]` for disabled or never-configured checkout blocking permission and `['block_progress']` for enabled permission. Assigning the capability signal's `value` notifies its subscribers, including after rendering. See [Mocking merchant capabilities](src/point-of-sale/README.md#mocking-merchant-capabilities) and the [tile/modal example](../../examples/testing/point-of-sale-testing-example).

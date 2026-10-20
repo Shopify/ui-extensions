@@ -1,3 +1,4 @@
+import {CapabilitiesApi} from '../capabilities-api/capabilities-api';
 import {ReadonlyCartApi} from '../cart-api/cart-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
@@ -18,7 +19,8 @@ export type DataTargetApi<T> = {
    */
   extensionPoint: T;
   i18n: I18n;
-} & ExtensionApi<T> &
+} & CapabilitiesApi &
+  ExtensionApi<T> &
   SessionApi &
   StorageApi &
   LocaleApi &

@@ -1,4 +1,9 @@
 export type {
+  PosCapability,
+  CapabilitiesApi,
+} from './api/capabilities-api/capabilities-api';
+
+export type {
   CartApi,
   CartDiscountType,
   CartApiContent,
