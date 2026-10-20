@@ -113,7 +113,7 @@ export interface AddressLineComponents {
   streetNumber?: string;
 
   /**
-   * Additional address information (e.g. apartment, suite, or unit).
+   * Additional address information, for example an apartment, suite, or unit.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
@@ -122,7 +122,7 @@ export interface AddressLineComponents {
   additionalInformation?: string;
 
   /**
-   * A regional or city subdivision (e.g. county, metropolitan region,
+   * A regional or city subdivision (for example, county, metropolitan region,
    * neighborhood, ward).
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
@@ -209,15 +209,21 @@ export interface MailingAddress {
   address2?: string;
 
   /**
-   * The components of `address1`/`address2`. `undefined` when the country's
-   * address layout doesn't store components or none have been entered. The
-   * flat lines are published alongside them.
+   * The parts of `address1` and `address2`, such as street name, street
+   * number and apartment. The value is `undefined` if the country doesn't
+   * store address components or none have been entered. `address1` and
+   * `address2` are still provided alongside them.
    *
-   * Writable through `applyShippingAddressChange`, which does not validate a
-   * change against `Country.acceptedAddressInputFields`. Sent alongside a flat
-   * line, the components win and recompose it. Where a country accepts
-   * components without storing them, the write composes the flat line and only
-   * the line is published.
+   * Writable through `applyShippingAddressChange`, which doesn't check the
+   * components against `Country.acceptedAddressInputFields`. For each street
+   * line, changed components always win over the line, and the line is
+   * rebuilt from them. Components that match the current address count as
+   * unchanged. In countries that store components, an edited line wins over
+   * unchanged components, so an extension can spread the address it read and
+   * correct only `address1`. If the country accepts components but doesn't
+   * store them, the line is built from the components and only the line is
+   * saved. If the country's address format has no components, a change that
+   * includes them is rejected.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
