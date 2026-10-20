@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.1
+
+### Patch Changes
+
+- [#4757](https://github.com/Shopify/ui-extensions/pull/4757) [`4fea8a7`](https://github.com/Shopify/ui-extensions/commit/4fea8a7e1c0e64ed83c01c48f8590418077a363a) Thanks [@fatbattk](https://github.com/fatbattk)! - Add optional `sourceIdentifier` and `taxesIncluded` to POS transaction-complete payload types.
+
 ## 2026.10.0
 
 ### Minor Changes
