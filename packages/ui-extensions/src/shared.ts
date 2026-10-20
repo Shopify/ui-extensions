@@ -17,7 +17,8 @@ export type ApiVersion =
   | '2026-01'
   | '2026-04'
   | '2026-07'
-  | '2026-10';
+  | '2026-10'
+  | '2027-01';
 
 /**
  * The capabilities an extension has access to.
@@ -942,7 +943,8 @@ export type StorefrontApiVersion =
   | '2026-01'
   | '2026-04'
   | '2026-07'
-  | '2026-10';
+  | '2026-10'
+  | '2027-01';
 
 /**
  * An error returned by the Storefront GraphQL API. Contains a human-readable `message` and an `extensions` object with the request ID and error code for debugging.
