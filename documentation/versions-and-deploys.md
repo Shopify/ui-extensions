@@ -57,7 +57,7 @@ To create a new stable version, you will need to follow these steps:
    > Note: do not update the root-level `package.json`.
 1. Push your new changes, and make sure you get the PR reviewed by one other member of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards).
 1. Update the [`LATEST_STABLE_VERSION`](https://github.com/Shopify/ui-extensions/settings/variables/actions) repository variable to your stable version (i.e. `2025-04`). This ensures it will be marked with a `latest` npm dist-tag on NPM.
-   > Note: the GitHub action step that applies the `latest` dist-tag is [known to fail under OIDC authentication](https://github.com/npm/cli/issues/8547). If it does, ask #help-eng-infrastructure to set the `latest` tag manually.
+   > Note: the GitHub action step that applies the `latest` dist-tag is [known to fail under OIDC authentication](https://github.com/npm/cli/issues/8547). If it does, ask #ai-operations-oncall (working hours only) to set the `latest` tag manually.
 1. Merge the PR, and let robots release the new versions to NPM and tag it appropriately.
 1. Verify that the packages were actually published. The NPM dashboard serves stale data, so check from the command line instead: `npm info --userconfig=/dev/null @shopify/ui-extensions`. Confirm that both the new version and the `latest` tag are what you expect.
 1. Update the surface templates in the [`extensions-templates`](https://github.com/Shopify/extensions-templates) repo to point at the new version.
@@ -74,7 +74,8 @@ Once the new stable version has been released, create the RC branch for the next
 1. Update the `@shopify/ui-extensions` dependency in `packages/ui-extensions-tester/package.json` to match (for example, `2025.7.0-rc.0`).
 1. Add the new version to the `ApiVersion` and `StorefrontApiVersion` unions in `packages/ui-extensions/src/shared.ts`.
 1. Update `api_version` in each `examples/testing/*/extensions/*/shopify.extension.toml` to the new version. Run `npm run test:example-suites` to test that the examples work and update the lockfiles.
-1. Run `yarn changeset`, select all packages, choose `major`, and use the description `2025-07-rc release`. Without a changeset the GitHub action has nothing to publish.
+1. Run `yarn changeset`, select all packages, choose `minor`, and use the description `2025-07-rc release`. Without a changeset the GitHub action has nothing to publish.
+   > Note: never choose `major`. Versions are calver, so a `major` bump rolls the year when the stable branch later exits pre mode: `2026.10.0-rc.N` becomes `2027.0.0` instead of `2026.10.0`. This happened for `2026-07` ([#4571](https://github.com/Shopify/ui-extensions/pull/4571)) and `2026-10` ([#4748](https://github.com/Shopify/ui-extensions/pull/4748)).
 1. Commit your changes and push your new branch to GitHub. This will trigger the GitHub action that creates the release PR, the same way it does for stable branches.
 1. Double-check the changes in the generated PR, push any adjustments to that branch, and merge it to publish the first RC version to NPM.
 1. Update the public documentation on `shopify.dev`.
