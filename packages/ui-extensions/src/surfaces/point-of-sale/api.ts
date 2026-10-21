@@ -126,7 +126,6 @@ export type {
   OriginalOrder,
   ReturnLineItem,
   ReturnReason,
-  Metafield,
 } from './types/cart';
 
 export type {OrderLineItem, LineItemRefund} from './types/order';

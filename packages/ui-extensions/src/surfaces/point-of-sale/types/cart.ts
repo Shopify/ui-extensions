@@ -61,10 +61,6 @@ interface CartBase {
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
   properties: Record<string, string>;
-  /**
-   * The metafields on the cart for the current sale. Checkout only: this array is empty in `Return`, `Exchange`, and `Unsupported` carts, and it never contains the original order's metafields (to read those, use the Admin API with `cart.return.order.id` once it's defined). In the returns and exchanges pilot it's always an empty array until the supporting read data exists, so an empty array doesn't mean that the cart has no metafields. It's `undefined` when the extension isn't enrolled in the pilot or the running POS version doesn't provide it.
-   */
-  metafields?: Metafield[];
 }
 
 /**
@@ -77,9 +73,9 @@ interface CartBase {
  * - The app is enrolled in the returns and exchanges pilot.
  * - The POS app version supports it.
  *
- * When any of these isn't true, the cart keeps the shape and behavior it had before return and exchange support: `cartType` can be `'Checkout'`, `'Unsupported'`, or `undefined` (older POS versions don't provide it), `return` is absent, the returned items aren't included, and the optional `capabilities` and `metafields` properties are `undefined`.
+ * When any of these isn't true, the cart keeps the shape and behavior it had before return and exchange support: `cartType` can be `'Checkout'`, `'Unsupported'`, or `undefined` (older POS versions don't provide it), `return` is absent, the returned items aren't included, and the optional `capabilities` property is `undefined`.
  *
- * Consumers must handle the absence of these properties. Absence means the information isn't available; it doesn't mean that nothing was returned or that the cart has no metafields.
+ * Consumers must handle the absence of these properties. Absence means the information isn't available; it doesn't mean that nothing was returned.
  * @publicDocs
  */
 export type Cart = CartBase &
@@ -160,7 +156,7 @@ export interface ReturnLineItem {
    */
   canRestock: boolean;
   /**
-   * A read-only snapshot of the original order line item, including its variant and product IDs, SKU, and properties when POS has them. Its `metafields` are an empty array in the returns and exchanges pilot until the supporting read data exists.
+   * A read-only snapshot of the original order line item, including its variant and product IDs, SKU, and properties when POS has them.
    *
    * `lineItem.quantity` is the quantity ordered on the original order line. It's `undefined` when POS doesn't know it, for example on a return that POS restored from older data stored on the device. It's never the selected quantity and never the quantity that remains refundable, so check for `undefined` before using it.
    *
@@ -238,29 +234,6 @@ export type CartCapabilityReason =
   | 'UNKNOWN';
 
 /**
- * A typed metafield. The same shape is used wherever a cart exposes metafields: on the cart, on a cart line item, and on the original order line item of a returned item.
- * @publicDocs
- */
-export interface Metafield {
-  /**
-   * The namespace of the metafield.
-   */
-  namespace: string;
-  /**
-   * The key of the metafield within its namespace.
-   */
-  key: string;
-  /**
-   * The metafield type, such as `single_line_text_field`.
-   */
-  type: string;
-  /**
-   * The value of the metafield, serialized as a string according to its type.
-   */
-  value: string;
-}
-
-/**
  * Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.
  * @publicDocs
  */
@@ -282,9 +255,9 @@ export interface CartUpdateInput {
    */
   customer?: Customer;
   /**
-   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones. Line items in this input can't carry `metafields`.
+   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.
    */
-  lineItems: Omit<LineItem, 'metafields'>[];
+  lineItems: LineItem[];
   /**
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
@@ -383,10 +356,6 @@ export interface LineItem {
    * Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.
    */
   components?: LineItemComponent[];
-  /**
-   * The metafields on this line item that are visible to the calling app in this snapshot. In the returns and exchanges pilot it's always an empty array until the supporting read data exists, so an empty array doesn't mean that the line item has no metafields. `undefined` when the data isn't available, such as outside the pilot and on the line items of transactions.
-   */
-  metafields?: Metafield[];
 }
 
 /**
