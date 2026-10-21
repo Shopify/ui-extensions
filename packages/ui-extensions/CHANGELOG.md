@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.2
+
+### Patch Changes
+
+- [#4756](https://github.com/Shopify/ui-extensions/pull/4756) [`18efa19`](https://github.com/Shopify/ui-extensions/commit/18efa191b9232a8b466b734cc41a23ad606a2b4b) Thanks [@fatbattk](https://github.com/fatbattk)! - Clarify POS transaction payload docs for cash payments: `paymentMethods[].amount` is the cash handed over, and `balanceDue` and the payment total account for `cashRoundingAdjustment`.
+
 ## 2026.10.1
 
 ### Patch Changes
