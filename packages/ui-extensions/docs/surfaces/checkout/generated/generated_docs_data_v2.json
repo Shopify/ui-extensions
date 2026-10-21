@@ -1,41 +1,40 @@
 {
   "ValidationError": {
-    "src/shared.ts": {
-      "filePath": "src/shared.ts",
+    "src/surfaces/checkout/api/shared.ts": {
+      "filePath": "src/surfaces/checkout/api/shared.ts",
       "name": "ValidationError",
-      "description": "A validation error object that is returned when an operation fails.",
+      "description": "",
+      "isPublicDocs": true,
       "members": [
         {
-          "filePath": "src/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "code",
-          "value": "string",
-          "description": "A code identifier for the error."
-        },
-        {
-          "filePath": "src/shared.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "issues",
-          "value": "{ message: string; path: string[]; }[]",
-          "description": "Field-level validation issues",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/shared.ts",
+          "filePath": "src/surfaces/checkout/api/shared.ts",
           "syntaxKind": "PropertySignature",
           "name": "message",
           "value": "string",
-          "description": "A message describing the error."
+          "description": "The error message to display to the buyer. Use this to explain what went wrong and how to fix it."
         },
         {
-          "filePath": "src/shared.ts",
+          "filePath": "src/surfaces/checkout/api/shared.ts",
           "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "'error'",
-          "description": ""
+          "name": "target",
+          "value": "string",
+          "description": "The checkout UI field that the error is associated with. When provided, checkout highlights the matching field so the buyer knows where to fix the issue. The value is `undefined` if the error isn't tied to a specific field.",
+          "isOptional": true,
+          "examples": [
+            {
+              "title": "Example",
+              "description": "",
+              "tabs": [
+                {
+                  "code": "'$.cart.deliveryGroups[0].deliveryAddress.countryCode'\n\nSee the [supported targets](/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)\nfor more information.",
+                  "title": "Example"
+                }
+              ]
+            }
+          ]
         }
       ],
-      "value": "interface ValidationError {\n  type: 'error';\n  /**\n   * A message describing the error.\n   */\n  message: string;\n  /**\n   * A code identifier for the error.\n   */\n  code: string;\n  /**\n   * Field-level validation issues\n   */\n  issues?: {\n    message: string;\n    path: string[];\n  }[];\n}"
+      "value": "export interface ValidationError {\n  /**\n   * The error message to display to the buyer. Use this to explain what\n   * went wrong and how to fix it.\n   */\n  message: string;\n  /**\n   * The checkout UI field that the error is associated with. When provided,\n   * checkout highlights the matching field so the buyer knows where to fix\n   * the issue. The value is `undefined` if the error isn't tied to a\n   * specific field.\n   *\n   * @example '$.cart.deliveryGroups[0].deliveryAddress.countryCode'\n   *\n   * See the [supported targets](/docs/api/functions/reference/cart-checkout-validation/graphql#supported-targets)\n   * for more information.\n   */\n  target?: string;\n}"
     }
   },
   "Country": {
@@ -3577,7 +3576,7 @@
       "filePath": "src/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ApiVersion",
-      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10'",
+      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10' | '2027-01'",
       "description": "The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice."
     }
   },
@@ -4293,7 +4292,7 @@
       "filePath": "src/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StorefrontApiVersion",
-      "value": "'2022-04' | '2022-07' | '2022-10' | '2023-01' | '2023-04' | '2023-07' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10'",
+      "value": "'2022-04' | '2022-07' | '2022-10' | '2023-01' | '2023-04' | '2023-07' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10' | '2027-01'",
       "description": "The supported Storefront API versions. Pass one of these values to `query()` to target a specific API version when querying the Storefront GraphQL API."
     }
   },
