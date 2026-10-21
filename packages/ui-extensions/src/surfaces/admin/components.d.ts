@@ -1,4 +1,4 @@
-/** VERSION: 2.26.1 **/
+/** VERSION: 2.39.0 **/
 
 /* eslint-disable @typescript-eslint/ban-types */
 /* eslint-disable @typescript-eslint/no-namespace */
@@ -9,6 +9,7 @@
 import * as preact$1 from 'preact';
 import {ReactNode, RefAttributes} from 'react';
 import * as _shopify_admin_web_component_foundations from '@shopify/admin-web-component-foundations';
+import * as _shopify_admin_web_component_foundations_context from '@shopify/admin-web-component-foundations/context';
 /**
  * Represents any valid children that can be rendered within a component, including elements, strings, numbers, or arrays of these types. This is an alias for Preact's `ComponentChildren` type.
  * @publicDocs
@@ -211,7 +212,10 @@ export interface ExtendableEvent extends Event {
    */
   waitUntil?: (promise: Promise<void>) => void;
 }
-interface AggregateError$1<T extends Error> extends Error {
+/**
+ * @publicDocs
+ */
+interface AggregateError<T extends Error> extends Error {
   errors: T[];
 }
 /**
@@ -221,7 +225,77 @@ export interface AggregateErrorEvent<T extends Error> extends ErrorEvent {
   /**
    * The aggregated error object containing multiple individual errors. Access the `errors` property to retrieve the array of individual error instances.
    */
-  error: AggregateError$1<T>;
+  error: AggregateError<T>;
+}
+/**
+ * @publicDocs
+ */
+export interface BaseImageProps {
+  /**
+   * Alternative text that describes the image for accessibility.
+   *
+   * Provides a text description of the image for users with assistive technology and serves as a fallback when the image fails to load. A well-written description enables people with visual impairments to understand non-text content.
+   *
+   * When a screen reader encounters an image, it reads this description aloud. When an image fails to load, this text displays on screen, helping all users understand what content was intended.
+   *
+   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4) and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
+   *
+   * @default `''`
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
+   */
+  alt?: string;
+  /**
+   * A set of media conditions and their corresponding sizes.
+   *
+   * Learn more about the [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
+   */
+  sizes?: string;
+  /**
+   * The image source (either a remote URL or a local file resource).
+   *
+   * When the image is loading or no `src` is provided, a placeholder is rendered.
+   *
+   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
+   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
+   */
+  src?: string;
+  /**
+   * A set of image sources and their width or pixel density descriptors. This overrides the `src` property.
+   *
+   * Learn more about the [srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset).
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
+   */
+  srcSet?: string;
+}
+export interface ImageLoadingProps {
+  /**
+   * Determines the loading behavior of the image:
+   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
+   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
+   *
+   * @default 'eager'
+   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
+   */
+  loading?: 'eager' | 'lazy';
+}
+export interface ImageLoadEventProps {
+  /**
+   * Invoked when load of provided image completes successfully.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
+   */
+  onLoad?: (event: Event) => void;
+  /**
+   * Invoked on load error of provided image.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
+   */
+  onError?: (event: Event) => void;
 }
 /**
  * Defines component sizes using a consistent scale from extra small to extra large.
@@ -256,7 +330,7 @@ export type SizeKeyword =
  * @publicDocs
  */
 export type ColorKeyword = 'subdued' | 'base' | 'strong';
-interface AvatarProps$1 extends GlobalProps {
+interface AvatarProps$1 extends GlobalProps, ImageLoadEventProps {
   /**
    * Initials to display in the avatar.
    */
@@ -267,18 +341,6 @@ interface AvatarProps$1 extends GlobalProps {
    * Initials will be rendered as a fallback if `src` is not provided, fails to load or does not load quickly
    */
   src?: string;
-  /**
-   * Invoked when load of provided image completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-   */
-  onLoad?: (event: Event) => void;
-  /**
-   * Invoked on load error of provided image.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
-   */
-  onError?: (event: Event) => void;
   /**
    * Size of the avatar.
    *
@@ -356,6 +418,7 @@ export type IconType =
   | 'alert-triangle-filled'
   | 'align-horizontal-centers'
   | 'app-extension'
+  | 'app-generated-filled'
   | 'apps'
   | 'archive'
   | 'arrow-down'
@@ -370,17 +433,22 @@ export type IconType =
   | 'arrow-up-right'
   | 'arrows-in-horizontal'
   | 'arrows-out-horizontal'
+  | 'arrows-out-horizontal-filled'
   | 'asterisk'
   | 'attachment'
   | 'automation'
+  | 'automation-filled'
   | 'backspace'
   | 'bag'
   | 'bank'
   | 'barcode'
   | 'battery-low'
   | 'bill'
+  | 'bill-filled'
   | 'blank'
+  | 'blank-filled'
   | 'blog'
+  | 'blog-filled'
   | 'bolt'
   | 'bolt-filled'
   | 'book'
@@ -406,8 +474,10 @@ export type IconType =
   | 'caret-up'
   | 'cart'
   | 'cart-abandoned'
+  | 'cart-abandoned-filled'
   | 'cart-discount'
   | 'cart-down'
+  | 'cart-down-filled'
   | 'cart-filled'
   | 'cart-sale'
   | 'cart-send'
@@ -463,6 +533,7 @@ export type IconType =
   | 'code-add'
   | 'collection'
   | 'collection-featured'
+  | 'collection-filled'
   | 'collection-list'
   | 'collection-reference'
   | 'color'
@@ -540,6 +611,7 @@ export type IconType =
   | 'fav'
   | 'favicon'
   | 'file'
+  | 'file-filled'
   | 'file-list'
   | 'filter'
   | 'filter-active'
@@ -558,6 +630,7 @@ export type IconType =
   | 'forms'
   | 'games'
   | 'gauge'
+  | 'generated-app'
   | 'geolocation'
   | 'gift'
   | 'gift-card'
@@ -566,7 +639,10 @@ export type IconType =
   | 'git-repository'
   | 'globe'
   | 'globe-asia'
+  | 'globe-asia-filled'
   | 'globe-europe'
+  | 'globe-europe-filled'
+  | 'globe-filled'
   | 'globe-lines'
   | 'globe-list'
   | 'graduation-hat'
@@ -581,6 +657,7 @@ export type IconType =
   | 'home-filled'
   | 'icons'
   | 'identity-card'
+  | 'identity-card-filled'
   | 'image'
   | 'image-add'
   | 'image-alt'
@@ -599,6 +676,7 @@ export type IconType =
   | 'inheritance'
   | 'inventory'
   | 'inventory-edit'
+  | 'inventory-filled'
   | 'inventory-list'
   | 'inventory-transfer'
   | 'inventory-updated'
@@ -612,6 +690,7 @@ export type IconType =
   | 'language'
   | 'language-translate'
   | 'layout-block'
+  | 'layout-block-magic'
   | 'layout-buy-button'
   | 'layout-buy-button-horizontal'
   | 'layout-buy-button-vertical'
@@ -635,15 +714,20 @@ export type IconType =
   | 'list-numbered'
   | 'live'
   | 'live-critical'
+  | 'live-filled'
   | 'live-none'
   | 'location'
   | 'location-none'
   | 'lock'
+  | 'magic'
   | 'map'
   | 'markets'
   | 'markets-euro'
+  | 'markets-euro-filled'
   | 'markets-rupee'
+  | 'markets-rupee-filled'
   | 'markets-yen'
+  | 'markets-yen-filled'
   | 'maximize'
   | 'measurement-size'
   | 'measurement-size-list'
@@ -653,6 +737,7 @@ export type IconType =
   | 'measurement-weight-list'
   | 'media-receiver'
   | 'megaphone'
+  | 'megaphone-filled'
   | 'mention'
   | 'menu'
   | 'menu-filled'
@@ -661,6 +746,7 @@ export type IconType =
   | 'merge'
   | 'metafields'
   | 'metaobject'
+  | 'metaobject-filled'
   | 'metaobject-list'
   | 'metaobject-reference'
   | 'microphone'
@@ -670,6 +756,7 @@ export type IconType =
   | 'minus-circle'
   | 'mobile'
   | 'money'
+  | 'money-filled'
   | 'money-none'
   | 'money-split'
   | 'moon'
@@ -681,6 +768,7 @@ export type IconType =
   | 'order'
   | 'order-batches'
   | 'order-draft'
+  | 'order-draft-filled'
   | 'order-filled'
   | 'order-first'
   | 'order-fulfilled'
@@ -714,6 +802,7 @@ export type IconType =
   | 'paper-check'
   | 'partially-complete'
   | 'passkey'
+  | 'passkey-filled'
   | 'paste'
   | 'pause-circle'
   | 'payment'
@@ -740,6 +829,7 @@ export type IconType =
   | 'phone-in'
   | 'phone-out'
   | 'pin'
+  | 'pin-filled'
   | 'pin-remove'
   | 'plan'
   | 'play'
@@ -752,6 +842,7 @@ export type IconType =
   | 'point-of-sale'
   | 'point-of-sale-register'
   | 'price-list'
+  | 'price-list-filled'
   | 'print'
   | 'product'
   | 'product-add'
@@ -767,15 +858,21 @@ export type IconType =
   | 'question-circle'
   | 'question-circle-filled'
   | 'radio-control'
+  | 'rank-bottom'
+  | 'rank-top'
   | 'receipt'
   | 'receipt-dollar'
   | 'receipt-euro'
+  | 'receipt-euro-filled'
   | 'receipt-folded'
   | 'receipt-paid'
   | 'receipt-pound'
+  | 'receipt-pound-filled'
   | 'receipt-refund'
   | 'receipt-rupee'
+  | 'receipt-rupee-filled'
   | 'receipt-yen'
+  | 'receipt-yen-filled'
   | 'receivables'
   | 'redo'
   | 'referral-code'
@@ -804,11 +901,13 @@ export type IconType =
   | 'settings'
   | 'share'
   | 'shield-check-mark'
+  | 'shield-network'
   | 'shield-none'
   | 'shield-pending'
   | 'shield-person'
   | 'shipping-label'
   | 'shipping-label-cancel'
+  | 'shipping-label-filled'
   | 'shopcodes'
   | 'slideshow'
   | 'smiley-happy'
@@ -854,9 +953,11 @@ export type IconType =
   | 'text-grammar'
   | 'text-in-columns'
   | 'text-in-rows'
+  | 'text-in-rows-filled'
   | 'text-indent'
   | 'text-indent-remove'
   | 'text-italic'
+  | 'text-magic'
   | 'text-quote'
   | 'text-title'
   | 'text-underline'
@@ -898,10 +999,12 @@ export type IconType =
   | 'viewport-tall'
   | 'viewport-wide'
   | 'wallet'
+  | 'wallet-filled'
   | 'wand'
   | 'watch'
   | 'wifi'
   | 'work'
+  | 'work-filled'
   | 'work-list'
   | 'wrench'
   | 'x'
@@ -995,6 +1098,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'alert-triangle-filled'
         | 'align-horizontal-centers'
         | 'app-extension'
+        | 'app-generated-filled'
         | 'apps'
         | 'archive'
         | 'arrow-down'
@@ -1009,17 +1113,22 @@ interface BadgeProps$1 extends GlobalProps {
         | 'arrow-up-right'
         | 'arrows-in-horizontal'
         | 'arrows-out-horizontal'
+        | 'arrows-out-horizontal-filled'
         | 'asterisk'
         | 'attachment'
         | 'automation'
+        | 'automation-filled'
         | 'backspace'
         | 'bag'
         | 'bank'
         | 'barcode'
         | 'battery-low'
         | 'bill'
+        | 'bill-filled'
         | 'blank'
+        | 'blank-filled'
         | 'blog'
+        | 'blog-filled'
         | 'bolt'
         | 'bolt-filled'
         | 'book'
@@ -1045,8 +1154,10 @@ interface BadgeProps$1 extends GlobalProps {
         | 'caret-up'
         | 'cart'
         | 'cart-abandoned'
+        | 'cart-abandoned-filled'
         | 'cart-discount'
         | 'cart-down'
+        | 'cart-down-filled'
         | 'cart-filled'
         | 'cart-sale'
         | 'cart-send'
@@ -1102,6 +1213,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'code-add'
         | 'collection'
         | 'collection-featured'
+        | 'collection-filled'
         | 'collection-list'
         | 'collection-reference'
         | 'color'
@@ -1179,6 +1291,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'fav'
         | 'favicon'
         | 'file'
+        | 'file-filled'
         | 'file-list'
         | 'filter'
         | 'filter-active'
@@ -1197,6 +1310,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'forms'
         | 'games'
         | 'gauge'
+        | 'generated-app'
         | 'geolocation'
         | 'gift'
         | 'gift-card'
@@ -1205,7 +1319,10 @@ interface BadgeProps$1 extends GlobalProps {
         | 'git-repository'
         | 'globe'
         | 'globe-asia'
+        | 'globe-asia-filled'
         | 'globe-europe'
+        | 'globe-europe-filled'
+        | 'globe-filled'
         | 'globe-lines'
         | 'globe-list'
         | 'graduation-hat'
@@ -1220,6 +1337,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'home-filled'
         | 'icons'
         | 'identity-card'
+        | 'identity-card-filled'
         | 'image'
         | 'image-add'
         | 'image-alt'
@@ -1238,6 +1356,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'inheritance'
         | 'inventory'
         | 'inventory-edit'
+        | 'inventory-filled'
         | 'inventory-list'
         | 'inventory-transfer'
         | 'inventory-updated'
@@ -1251,6 +1370,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'language'
         | 'language-translate'
         | 'layout-block'
+        | 'layout-block-magic'
         | 'layout-buy-button'
         | 'layout-buy-button-horizontal'
         | 'layout-buy-button-vertical'
@@ -1274,15 +1394,20 @@ interface BadgeProps$1 extends GlobalProps {
         | 'list-numbered'
         | 'live'
         | 'live-critical'
+        | 'live-filled'
         | 'live-none'
         | 'location'
         | 'location-none'
         | 'lock'
+        | 'magic'
         | 'map'
         | 'markets'
         | 'markets-euro'
+        | 'markets-euro-filled'
         | 'markets-rupee'
+        | 'markets-rupee-filled'
         | 'markets-yen'
+        | 'markets-yen-filled'
         | 'maximize'
         | 'measurement-size'
         | 'measurement-size-list'
@@ -1292,6 +1417,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'measurement-weight-list'
         | 'media-receiver'
         | 'megaphone'
+        | 'megaphone-filled'
         | 'mention'
         | 'menu'
         | 'menu-filled'
@@ -1300,6 +1426,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'merge'
         | 'metafields'
         | 'metaobject'
+        | 'metaobject-filled'
         | 'metaobject-list'
         | 'metaobject-reference'
         | 'microphone'
@@ -1309,6 +1436,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'minus-circle'
         | 'mobile'
         | 'money'
+        | 'money-filled'
         | 'money-none'
         | 'money-split'
         | 'moon'
@@ -1320,6 +1448,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'order'
         | 'order-batches'
         | 'order-draft'
+        | 'order-draft-filled'
         | 'order-filled'
         | 'order-first'
         | 'order-fulfilled'
@@ -1353,6 +1482,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'paper-check'
         | 'partially-complete'
         | 'passkey'
+        | 'passkey-filled'
         | 'paste'
         | 'pause-circle'
         | 'payment'
@@ -1379,6 +1509,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'phone-in'
         | 'phone-out'
         | 'pin'
+        | 'pin-filled'
         | 'pin-remove'
         | 'plan'
         | 'play'
@@ -1391,6 +1522,7 @@ interface BadgeProps$1 extends GlobalProps {
         | 'point-of-sale'
         | 'point-of-sale-register'
         | 'price-list'
+        | 'price-list-filled'
         | 'print'
         | 'product'
         | 'product-add'
@@ -1406,15 +1538,21 @@ interface BadgeProps$1 extends GlobalProps {
         | 'question-circle'
         | 'question-circle-filled'
         | 'radio-control'
+        | 'rank-bottom'
+        | 'rank-top'
         | 'receipt'
         | 'receipt-dollar'
         | 'receipt-euro'
+        | 'receipt-euro-filled'
         | 'receipt-folded'
         | 'receipt-paid'
         | 'receipt-pound'
+        | 'receipt-pound-filled'
         | 'receipt-refund'
         | 'receipt-rupee'
+        | 'receipt-rupee-filled'
         | 'receipt-yen'
+        | 'receipt-yen-filled'
         | 'receivables'
         | 'redo'
         | 'referral-code'
@@ -1443,11 +1581,13 @@ interface BadgeProps$1 extends GlobalProps {
         | 'settings'
         | 'share'
         | 'shield-check-mark'
+        | 'shield-network'
         | 'shield-none'
         | 'shield-pending'
         | 'shield-person'
         | 'shipping-label'
         | 'shipping-label-cancel'
+        | 'shipping-label-filled'
         | 'shopcodes'
         | 'slideshow'
         | 'smiley-happy'
@@ -1493,9 +1633,11 @@ interface BadgeProps$1 extends GlobalProps {
         | 'text-grammar'
         | 'text-in-columns'
         | 'text-in-rows'
+        | 'text-in-rows-filled'
         | 'text-indent'
         | 'text-indent-remove'
         | 'text-italic'
+        | 'text-magic'
         | 'text-quote'
         | 'text-title'
         | 'text-underline'
@@ -1537,10 +1679,12 @@ interface BadgeProps$1 extends GlobalProps {
         | 'viewport-tall'
         | 'viewport-wide'
         | 'wallet'
+        | 'wallet-filled'
         | 'wand'
         | 'watch'
         | 'wifi'
         | 'work'
+        | 'work-filled'
         | 'work-list'
         | 'wrench'
         | 'x'
@@ -2345,6 +2489,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'alert-triangle-filled'
         | 'align-horizontal-centers'
         | 'app-extension'
+        | 'app-generated-filled'
         | 'apps'
         | 'archive'
         | 'arrow-down'
@@ -2359,17 +2504,22 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'arrow-up-right'
         | 'arrows-in-horizontal'
         | 'arrows-out-horizontal'
+        | 'arrows-out-horizontal-filled'
         | 'asterisk'
         | 'attachment'
         | 'automation'
+        | 'automation-filled'
         | 'backspace'
         | 'bag'
         | 'bank'
         | 'barcode'
         | 'battery-low'
         | 'bill'
+        | 'bill-filled'
         | 'blank'
+        | 'blank-filled'
         | 'blog'
+        | 'blog-filled'
         | 'bolt'
         | 'bolt-filled'
         | 'book'
@@ -2395,8 +2545,10 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'caret-up'
         | 'cart'
         | 'cart-abandoned'
+        | 'cart-abandoned-filled'
         | 'cart-discount'
         | 'cart-down'
+        | 'cart-down-filled'
         | 'cart-filled'
         | 'cart-sale'
         | 'cart-send'
@@ -2452,6 +2604,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'code-add'
         | 'collection'
         | 'collection-featured'
+        | 'collection-filled'
         | 'collection-list'
         | 'collection-reference'
         | 'color'
@@ -2529,6 +2682,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'fav'
         | 'favicon'
         | 'file'
+        | 'file-filled'
         | 'file-list'
         | 'filter'
         | 'filter-active'
@@ -2547,6 +2701,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'forms'
         | 'games'
         | 'gauge'
+        | 'generated-app'
         | 'geolocation'
         | 'gift'
         | 'gift-card'
@@ -2555,7 +2710,10 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'git-repository'
         | 'globe'
         | 'globe-asia'
+        | 'globe-asia-filled'
         | 'globe-europe'
+        | 'globe-europe-filled'
+        | 'globe-filled'
         | 'globe-lines'
         | 'globe-list'
         | 'graduation-hat'
@@ -2570,6 +2728,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'home-filled'
         | 'icons'
         | 'identity-card'
+        | 'identity-card-filled'
         | 'image'
         | 'image-add'
         | 'image-alt'
@@ -2588,6 +2747,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'inheritance'
         | 'inventory'
         | 'inventory-edit'
+        | 'inventory-filled'
         | 'inventory-list'
         | 'inventory-transfer'
         | 'inventory-updated'
@@ -2601,6 +2761,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'language'
         | 'language-translate'
         | 'layout-block'
+        | 'layout-block-magic'
         | 'layout-buy-button'
         | 'layout-buy-button-horizontal'
         | 'layout-buy-button-vertical'
@@ -2624,15 +2785,20 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'list-numbered'
         | 'live'
         | 'live-critical'
+        | 'live-filled'
         | 'live-none'
         | 'location'
         | 'location-none'
         | 'lock'
+        | 'magic'
         | 'map'
         | 'markets'
         | 'markets-euro'
+        | 'markets-euro-filled'
         | 'markets-rupee'
+        | 'markets-rupee-filled'
         | 'markets-yen'
+        | 'markets-yen-filled'
         | 'maximize'
         | 'measurement-size'
         | 'measurement-size-list'
@@ -2642,6 +2808,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'measurement-weight-list'
         | 'media-receiver'
         | 'megaphone'
+        | 'megaphone-filled'
         | 'mention'
         | 'menu'
         | 'menu-filled'
@@ -2650,6 +2817,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'merge'
         | 'metafields'
         | 'metaobject'
+        | 'metaobject-filled'
         | 'metaobject-list'
         | 'metaobject-reference'
         | 'microphone'
@@ -2659,6 +2827,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'minus-circle'
         | 'mobile'
         | 'money'
+        | 'money-filled'
         | 'money-none'
         | 'money-split'
         | 'moon'
@@ -2670,6 +2839,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'order'
         | 'order-batches'
         | 'order-draft'
+        | 'order-draft-filled'
         | 'order-filled'
         | 'order-first'
         | 'order-fulfilled'
@@ -2703,6 +2873,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'paper-check'
         | 'partially-complete'
         | 'passkey'
+        | 'passkey-filled'
         | 'paste'
         | 'pause-circle'
         | 'payment'
@@ -2729,6 +2900,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'phone-in'
         | 'phone-out'
         | 'pin'
+        | 'pin-filled'
         | 'pin-remove'
         | 'plan'
         | 'play'
@@ -2741,6 +2913,7 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'point-of-sale'
         | 'point-of-sale-register'
         | 'price-list'
+        | 'price-list-filled'
         | 'print'
         | 'product'
         | 'product-add'
@@ -2756,15 +2929,21 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'question-circle'
         | 'question-circle-filled'
         | 'radio-control'
+        | 'rank-bottom'
+        | 'rank-top'
         | 'receipt'
         | 'receipt-dollar'
         | 'receipt-euro'
+        | 'receipt-euro-filled'
         | 'receipt-folded'
         | 'receipt-paid'
         | 'receipt-pound'
+        | 'receipt-pound-filled'
         | 'receipt-refund'
         | 'receipt-rupee'
+        | 'receipt-rupee-filled'
         | 'receipt-yen'
+        | 'receipt-yen-filled'
         | 'receivables'
         | 'redo'
         | 'referral-code'
@@ -2793,11 +2972,13 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'settings'
         | 'share'
         | 'shield-check-mark'
+        | 'shield-network'
         | 'shield-none'
         | 'shield-pending'
         | 'shield-person'
         | 'shipping-label'
         | 'shipping-label-cancel'
+        | 'shipping-label-filled'
         | 'shopcodes'
         | 'slideshow'
         | 'smiley-happy'
@@ -2843,9 +3024,11 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'text-grammar'
         | 'text-in-columns'
         | 'text-in-rows'
+        | 'text-in-rows-filled'
         | 'text-indent'
         | 'text-indent-remove'
         | 'text-italic'
+        | 'text-magic'
         | 'text-quote'
         | 'text-title'
         | 'text-underline'
@@ -2887,10 +3070,12 @@ interface ButtonProps$1 extends GlobalProps, BaseClickableProps {
         | 'viewport-tall'
         | 'viewport-wide'
         | 'wallet'
+        | 'wallet-filled'
         | 'wand'
         | 'watch'
         | 'wifi'
         | 'work'
+        | 'work-filled'
         | 'work-list'
         | 'wrench'
         | 'x'
@@ -3156,6 +3341,7 @@ export interface FieldDecorationProps {
         | 'alert-triangle-filled'
         | 'align-horizontal-centers'
         | 'app-extension'
+        | 'app-generated-filled'
         | 'apps'
         | 'archive'
         | 'arrow-down'
@@ -3170,17 +3356,22 @@ export interface FieldDecorationProps {
         | 'arrow-up-right'
         | 'arrows-in-horizontal'
         | 'arrows-out-horizontal'
+        | 'arrows-out-horizontal-filled'
         | 'asterisk'
         | 'attachment'
         | 'automation'
+        | 'automation-filled'
         | 'backspace'
         | 'bag'
         | 'bank'
         | 'barcode'
         | 'battery-low'
         | 'bill'
+        | 'bill-filled'
         | 'blank'
+        | 'blank-filled'
         | 'blog'
+        | 'blog-filled'
         | 'bolt'
         | 'bolt-filled'
         | 'book'
@@ -3206,8 +3397,10 @@ export interface FieldDecorationProps {
         | 'caret-up'
         | 'cart'
         | 'cart-abandoned'
+        | 'cart-abandoned-filled'
         | 'cart-discount'
         | 'cart-down'
+        | 'cart-down-filled'
         | 'cart-filled'
         | 'cart-sale'
         | 'cart-send'
@@ -3263,6 +3456,7 @@ export interface FieldDecorationProps {
         | 'code-add'
         | 'collection'
         | 'collection-featured'
+        | 'collection-filled'
         | 'collection-list'
         | 'collection-reference'
         | 'color'
@@ -3340,6 +3534,7 @@ export interface FieldDecorationProps {
         | 'fav'
         | 'favicon'
         | 'file'
+        | 'file-filled'
         | 'file-list'
         | 'filter'
         | 'filter-active'
@@ -3358,6 +3553,7 @@ export interface FieldDecorationProps {
         | 'forms'
         | 'games'
         | 'gauge'
+        | 'generated-app'
         | 'geolocation'
         | 'gift'
         | 'gift-card'
@@ -3366,7 +3562,10 @@ export interface FieldDecorationProps {
         | 'git-repository'
         | 'globe'
         | 'globe-asia'
+        | 'globe-asia-filled'
         | 'globe-europe'
+        | 'globe-europe-filled'
+        | 'globe-filled'
         | 'globe-lines'
         | 'globe-list'
         | 'graduation-hat'
@@ -3381,6 +3580,7 @@ export interface FieldDecorationProps {
         | 'home-filled'
         | 'icons'
         | 'identity-card'
+        | 'identity-card-filled'
         | 'image'
         | 'image-add'
         | 'image-alt'
@@ -3399,6 +3599,7 @@ export interface FieldDecorationProps {
         | 'inheritance'
         | 'inventory'
         | 'inventory-edit'
+        | 'inventory-filled'
         | 'inventory-list'
         | 'inventory-transfer'
         | 'inventory-updated'
@@ -3412,6 +3613,7 @@ export interface FieldDecorationProps {
         | 'language'
         | 'language-translate'
         | 'layout-block'
+        | 'layout-block-magic'
         | 'layout-buy-button'
         | 'layout-buy-button-horizontal'
         | 'layout-buy-button-vertical'
@@ -3435,15 +3637,20 @@ export interface FieldDecorationProps {
         | 'list-numbered'
         | 'live'
         | 'live-critical'
+        | 'live-filled'
         | 'live-none'
         | 'location'
         | 'location-none'
         | 'lock'
+        | 'magic'
         | 'map'
         | 'markets'
         | 'markets-euro'
+        | 'markets-euro-filled'
         | 'markets-rupee'
+        | 'markets-rupee-filled'
         | 'markets-yen'
+        | 'markets-yen-filled'
         | 'maximize'
         | 'measurement-size'
         | 'measurement-size-list'
@@ -3453,6 +3660,7 @@ export interface FieldDecorationProps {
         | 'measurement-weight-list'
         | 'media-receiver'
         | 'megaphone'
+        | 'megaphone-filled'
         | 'mention'
         | 'menu'
         | 'menu-filled'
@@ -3461,6 +3669,7 @@ export interface FieldDecorationProps {
         | 'merge'
         | 'metafields'
         | 'metaobject'
+        | 'metaobject-filled'
         | 'metaobject-list'
         | 'metaobject-reference'
         | 'microphone'
@@ -3470,6 +3679,7 @@ export interface FieldDecorationProps {
         | 'minus-circle'
         | 'mobile'
         | 'money'
+        | 'money-filled'
         | 'money-none'
         | 'money-split'
         | 'moon'
@@ -3481,6 +3691,7 @@ export interface FieldDecorationProps {
         | 'order'
         | 'order-batches'
         | 'order-draft'
+        | 'order-draft-filled'
         | 'order-filled'
         | 'order-first'
         | 'order-fulfilled'
@@ -3514,6 +3725,7 @@ export interface FieldDecorationProps {
         | 'paper-check'
         | 'partially-complete'
         | 'passkey'
+        | 'passkey-filled'
         | 'paste'
         | 'pause-circle'
         | 'payment'
@@ -3540,6 +3752,7 @@ export interface FieldDecorationProps {
         | 'phone-in'
         | 'phone-out'
         | 'pin'
+        | 'pin-filled'
         | 'pin-remove'
         | 'plan'
         | 'play'
@@ -3552,6 +3765,7 @@ export interface FieldDecorationProps {
         | 'point-of-sale'
         | 'point-of-sale-register'
         | 'price-list'
+        | 'price-list-filled'
         | 'print'
         | 'product'
         | 'product-add'
@@ -3567,15 +3781,21 @@ export interface FieldDecorationProps {
         | 'question-circle'
         | 'question-circle-filled'
         | 'radio-control'
+        | 'rank-bottom'
+        | 'rank-top'
         | 'receipt'
         | 'receipt-dollar'
         | 'receipt-euro'
+        | 'receipt-euro-filled'
         | 'receipt-folded'
         | 'receipt-paid'
         | 'receipt-pound'
+        | 'receipt-pound-filled'
         | 'receipt-refund'
         | 'receipt-rupee'
+        | 'receipt-rupee-filled'
         | 'receipt-yen'
+        | 'receipt-yen-filled'
         | 'receivables'
         | 'redo'
         | 'referral-code'
@@ -3604,11 +3824,13 @@ export interface FieldDecorationProps {
         | 'settings'
         | 'share'
         | 'shield-check-mark'
+        | 'shield-network'
         | 'shield-none'
         | 'shield-pending'
         | 'shield-person'
         | 'shipping-label'
         | 'shipping-label-cancel'
+        | 'shipping-label-filled'
         | 'shopcodes'
         | 'slideshow'
         | 'smiley-happy'
@@ -3654,9 +3876,11 @@ export interface FieldDecorationProps {
         | 'text-grammar'
         | 'text-in-columns'
         | 'text-in-rows'
+        | 'text-in-rows-filled'
         | 'text-indent'
         | 'text-indent-remove'
         | 'text-italic'
+        | 'text-magic'
         | 'text-quote'
         | 'text-title'
         | 'text-underline'
@@ -3698,10 +3922,12 @@ export interface FieldDecorationProps {
         | 'viewport-tall'
         | 'viewport-wide'
         | 'wallet'
+        | 'wallet-filled'
         | 'wand'
         | 'watch'
         | 'wifi'
         | 'work'
+        | 'work-filled'
         | 'work-list'
         | 'wrench'
         | 'x'
@@ -4907,7 +5133,7 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
    *
    * @default 'auto'
    */
-  gridColumn?: `span ${number}` | 'auto';
+  gridColumn?: MaybeResponsive<`span ${number}` | 'auto'>;
   /**
    * Number of rows the item will span across
    *
@@ -4915,8 +5141,14 @@ interface GridItemProps$1 extends GlobalProps, BaseBoxPropsWithRole {
    *
    * @default 'auto'
    */
-  gridRow?: `span ${number}` | 'auto';
+  gridRow?: MaybeResponsive<`span ${number}` | 'auto'>;
 }
+/**
+ * Common weight name mapping based on the CSS font-weight specification.
+ *
+ * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+ */
+export type FontWeightKeyword = 'base' | 'medium' | 'semibold' | 'bold';
 /**
  * @publicDocs
  */
@@ -4957,6 +5189,7 @@ export interface BaseTypographyProps {
    *
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric
    *
+   * @deprecated Wrap the numeric value in a `Number` component instead — it applies tabular numerals to the digits alone, so the variant does not have to be set at the call site. For time values use `Time`. Deprecated in v3.2.0
    * @default 'auto' - inherit from the parent element
    */
   fontVariantNumeric?: 'auto' | 'normal' | 'tabular-nums';
@@ -4985,6 +5218,30 @@ export interface BaseTypographyProps {
    * @default ''
    */
   dir?: 'ltr' | 'rtl' | 'auto' | '';
+  /**
+   * The font weight of the text.
+   *
+   * Font weight is an absolute value. When both a parent and child set
+   * `fontWeight`, the child's value takes precedence.
+   * When only the parent sets `fontWeight`, the child inherits the parent's value.
+   *
+   * @implementation The surface decides how to handle how child inheritance is set. We recommend that fontWeight set explicitly by a child always wins except when it's within a Heading.
+   *
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight#common_weight_name_mapping
+   * @default 'auto'
+   */
+  fontWeight?: FontWeightKeyword | 'auto';
+  /**
+   * The font size of the text.
+   *
+   * When both a parent and child set `fontSize`, the child's value takes precedence.
+   * When only the parent sets `fontSize`, the child inherits the parent's value.
+   *
+   * @implementation The surface decides how to handle how child inheritance is set. We recommend that fontSize set explicitly by a child always wins except when it's within a Heading.
+   *
+   * @default 'auto'
+   */
+  fontSize?: SizeKeyword | 'auto';
 }
 /**
  * @publicDocs
@@ -5029,6 +5286,17 @@ interface HeadingProps$1
   accessibilityRole?:
     | 'heading'
     | ExtractStrict<AccessibilityRole, 'presentation' | 'none'>;
+  /**
+   * The visual size of the heading.
+   *
+   * This controls the visual appearance only — it does not affect the
+   * semantic heading level.
+   *
+   * @implementation Surfaces can decide on the inheritance behavior for Text or Paragraph children of Heading. We recommend they inherit the fontSize from Heading regardless of the fontSize they set explicitly.
+   *
+   * @default 'auto'
+   */
+  fontSize?: SizeKeyword | 'auto';
 }
 interface IconProps$1
   extends GlobalProps,
@@ -5066,6 +5334,7 @@ interface IconProps$1
         | 'alert-triangle-filled'
         | 'align-horizontal-centers'
         | 'app-extension'
+        | 'app-generated-filled'
         | 'apps'
         | 'archive'
         | 'arrow-down'
@@ -5080,17 +5349,22 @@ interface IconProps$1
         | 'arrow-up-right'
         | 'arrows-in-horizontal'
         | 'arrows-out-horizontal'
+        | 'arrows-out-horizontal-filled'
         | 'asterisk'
         | 'attachment'
         | 'automation'
+        | 'automation-filled'
         | 'backspace'
         | 'bag'
         | 'bank'
         | 'barcode'
         | 'battery-low'
         | 'bill'
+        | 'bill-filled'
         | 'blank'
+        | 'blank-filled'
         | 'blog'
+        | 'blog-filled'
         | 'bolt'
         | 'bolt-filled'
         | 'book'
@@ -5116,8 +5390,10 @@ interface IconProps$1
         | 'caret-up'
         | 'cart'
         | 'cart-abandoned'
+        | 'cart-abandoned-filled'
         | 'cart-discount'
         | 'cart-down'
+        | 'cart-down-filled'
         | 'cart-filled'
         | 'cart-sale'
         | 'cart-send'
@@ -5173,6 +5449,7 @@ interface IconProps$1
         | 'code-add'
         | 'collection'
         | 'collection-featured'
+        | 'collection-filled'
         | 'collection-list'
         | 'collection-reference'
         | 'color'
@@ -5250,6 +5527,7 @@ interface IconProps$1
         | 'fav'
         | 'favicon'
         | 'file'
+        | 'file-filled'
         | 'file-list'
         | 'filter'
         | 'filter-active'
@@ -5268,6 +5546,7 @@ interface IconProps$1
         | 'forms'
         | 'games'
         | 'gauge'
+        | 'generated-app'
         | 'geolocation'
         | 'gift'
         | 'gift-card'
@@ -5276,7 +5555,10 @@ interface IconProps$1
         | 'git-repository'
         | 'globe'
         | 'globe-asia'
+        | 'globe-asia-filled'
         | 'globe-europe'
+        | 'globe-europe-filled'
+        | 'globe-filled'
         | 'globe-lines'
         | 'globe-list'
         | 'graduation-hat'
@@ -5291,6 +5573,7 @@ interface IconProps$1
         | 'home-filled'
         | 'icons'
         | 'identity-card'
+        | 'identity-card-filled'
         | 'image'
         | 'image-add'
         | 'image-alt'
@@ -5309,6 +5592,7 @@ interface IconProps$1
         | 'inheritance'
         | 'inventory'
         | 'inventory-edit'
+        | 'inventory-filled'
         | 'inventory-list'
         | 'inventory-transfer'
         | 'inventory-updated'
@@ -5322,6 +5606,7 @@ interface IconProps$1
         | 'language'
         | 'language-translate'
         | 'layout-block'
+        | 'layout-block-magic'
         | 'layout-buy-button'
         | 'layout-buy-button-horizontal'
         | 'layout-buy-button-vertical'
@@ -5345,15 +5630,20 @@ interface IconProps$1
         | 'list-numbered'
         | 'live'
         | 'live-critical'
+        | 'live-filled'
         | 'live-none'
         | 'location'
         | 'location-none'
         | 'lock'
+        | 'magic'
         | 'map'
         | 'markets'
         | 'markets-euro'
+        | 'markets-euro-filled'
         | 'markets-rupee'
+        | 'markets-rupee-filled'
         | 'markets-yen'
+        | 'markets-yen-filled'
         | 'maximize'
         | 'measurement-size'
         | 'measurement-size-list'
@@ -5363,6 +5653,7 @@ interface IconProps$1
         | 'measurement-weight-list'
         | 'media-receiver'
         | 'megaphone'
+        | 'megaphone-filled'
         | 'mention'
         | 'menu'
         | 'menu-filled'
@@ -5371,6 +5662,7 @@ interface IconProps$1
         | 'merge'
         | 'metafields'
         | 'metaobject'
+        | 'metaobject-filled'
         | 'metaobject-list'
         | 'metaobject-reference'
         | 'microphone'
@@ -5380,6 +5672,7 @@ interface IconProps$1
         | 'minus-circle'
         | 'mobile'
         | 'money'
+        | 'money-filled'
         | 'money-none'
         | 'money-split'
         | 'moon'
@@ -5391,6 +5684,7 @@ interface IconProps$1
         | 'order'
         | 'order-batches'
         | 'order-draft'
+        | 'order-draft-filled'
         | 'order-filled'
         | 'order-first'
         | 'order-fulfilled'
@@ -5424,6 +5718,7 @@ interface IconProps$1
         | 'paper-check'
         | 'partially-complete'
         | 'passkey'
+        | 'passkey-filled'
         | 'paste'
         | 'pause-circle'
         | 'payment'
@@ -5450,6 +5745,7 @@ interface IconProps$1
         | 'phone-in'
         | 'phone-out'
         | 'pin'
+        | 'pin-filled'
         | 'pin-remove'
         | 'plan'
         | 'play'
@@ -5462,6 +5758,7 @@ interface IconProps$1
         | 'point-of-sale'
         | 'point-of-sale-register'
         | 'price-list'
+        | 'price-list-filled'
         | 'print'
         | 'product'
         | 'product-add'
@@ -5477,15 +5774,21 @@ interface IconProps$1
         | 'question-circle'
         | 'question-circle-filled'
         | 'radio-control'
+        | 'rank-bottom'
+        | 'rank-top'
         | 'receipt'
         | 'receipt-dollar'
         | 'receipt-euro'
+        | 'receipt-euro-filled'
         | 'receipt-folded'
         | 'receipt-paid'
         | 'receipt-pound'
+        | 'receipt-pound-filled'
         | 'receipt-refund'
         | 'receipt-rupee'
+        | 'receipt-rupee-filled'
         | 'receipt-yen'
+        | 'receipt-yen-filled'
         | 'receivables'
         | 'redo'
         | 'referral-code'
@@ -5514,11 +5817,13 @@ interface IconProps$1
         | 'settings'
         | 'share'
         | 'shield-check-mark'
+        | 'shield-network'
         | 'shield-none'
         | 'shield-pending'
         | 'shield-person'
         | 'shipping-label'
         | 'shipping-label-cancel'
+        | 'shipping-label-filled'
         | 'shopcodes'
         | 'slideshow'
         | 'smiley-happy'
@@ -5564,9 +5869,11 @@ interface IconProps$1
         | 'text-grammar'
         | 'text-in-columns'
         | 'text-in-rows'
+        | 'text-in-rows-filled'
         | 'text-indent'
         | 'text-indent-remove'
         | 'text-italic'
+        | 'text-magic'
         | 'text-quote'
         | 'text-title'
         | 'text-underline'
@@ -5608,10 +5915,12 @@ interface IconProps$1
         | 'viewport-tall'
         | 'viewport-wide'
         | 'wallet'
+        | 'wallet-filled'
         | 'wand'
         | 'watch'
         | 'wifi'
         | 'work'
+        | 'work-filled'
         | 'work-list'
         | 'wrench'
         | 'x'
@@ -5620,52 +5929,12 @@ interface IconProps$1
       )
     | AnyString;
 }
-/**
- * @publicDocs
- */
-export interface BaseImageProps {
-  /**
-   * Alternative text that describes the image for accessibility.
-   *
-   * Provides a text description of the image for users with assistive technology and serves as a fallback when the image fails to load. A well-written description enables people with visual impairments to understand non-text content.
-   *
-   * When a screen reader encounters an image, it reads this description aloud. When an image fails to load, this text displays on screen, helping all users understand what content was intended.
-   *
-   * Learn more about [writing effective alt text](https://www.shopify.com/ca/blog/image-alt-text#4) and the [alt attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt).
-   *
-   * @default `''`
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#alt
-   */
-  alt?: string;
-  /**
-   * A set of media conditions and their corresponding sizes.
-   *
-   * Learn more about the [sizes attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes).
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#sizes
-   */
-  sizes?: string;
-  /**
-   * The image source (either a remote URL or a local file resource).
-   *
-   * When the image is loading or no `src` is provided, a placeholder is rendered.
-   *
-   * @implementation Surfaces may choose the style of the placeholder, but the space the image occupies should be
-   * reserved, except in cases where the image area does not have a contextual inline or block size, which should be rare.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#src
-   */
-  src?: string;
-  /**
-   * A set of image sources and their width or pixel density descriptors. This overrides the `src` property.
-   *
-   * Learn more about the [srcset attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset).
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#srcset
-   */
-  srcSet?: string;
-}
-interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
+interface ImageProps$1
+  extends GlobalProps,
+    BaseImageProps,
+    ImageLoadingProps,
+    ImageLoadEventProps,
+    BorderProps {
   /**
    * Sets the semantic meaning of the component’s content. When set,
    * the role will be used by assistive technologies to help users
@@ -5718,27 +5987,6 @@ interface ImageProps$1 extends GlobalProps, BaseImageProps, BorderProps {
    * @see https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit
    */
   objectFit?: 'contain' | 'cover';
-  /**
-   * Determines the loading behavior of the image:
-   * - `eager`: Immediately loads the image, irrespective of its position within the visible viewport.
-   * - `lazy`: Delays loading the image until it approaches a specified distance from the viewport.
-   *
-   * @default 'eager'
-   * @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#loading
-   */
-  loading?: 'eager' | 'lazy';
-  /**
-   * Invoked when load completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-   */
-  onLoad?: (event: Event) => void;
-  /**
-   * Invoked on load error.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
-   */
-  onError?: (event: Event) => void;
 }
 interface LinkProps$1 extends GlobalProps, LinkBehaviorProps {
   /**
@@ -5771,7 +6019,7 @@ interface ListItemProps$1 extends GlobalProps {
    */
   children?: ComponentChildren;
 }
-interface MenuProps$1 extends GlobalProps {
+interface MenuProps$1 extends GlobalProps, BaseOverlayProps {
   /**
    * A label that describes the purpose or contents of the element. When set,
    * it will be announced using assistive technologies and provide additional context.
@@ -6149,6 +6397,13 @@ interface ParagraphProps$1
    * @default 'paragraph'
    */
   type?: ParagraphType;
+  /**
+   * Sets the alignment of the text.
+   * @see https://developer.mozilla.org/en-US/docs/Web/CSS/text-align
+   *
+   * @default 'auto'
+   */
+  textAlign?: 'start' | 'end' | 'center' | 'auto';
 }
 /**
  * @publicDocs
@@ -6253,6 +6508,8 @@ interface ProgressProps$1 extends GlobalProps {
    * If there is no value attribute, the progress bar is indeterminate;
    * this indicates that an activity is ongoing with no indication of how long it is expected to take.
    *
+   * @default 0
+   *
    * @implementation Surfaces should apply styling to cover that indeterminate state.
    * @implementation In a HTML host, you can customize the progress animation via the :indeterminate pseudo-class.
    *
@@ -6311,6 +6568,54 @@ interface SectionProps$1 extends GlobalProps, ActionSlots {
    * A title that describes the content of the section.
    */
   heading?: string;
+  /**
+   * Supporting text that expands on the heading.
+   *
+   * This is not a heading: it adds no entry to the document outline, doesn't change the heading
+   * level of the section's children, and isn't announced as part of the heading.
+   *
+   * @implementation surfaces must not render this as a heading element. A lower-rank heading under
+   * the section's own heading would put non-navigational prose into heading navigation and invent
+   * an outline level the content doesn't have.
+   *
+   * @implementation surfaces built on top of the web platform should render this as a paragraph
+   * adjacent to the heading. When nothing else shares the heading's line, the pair can be grouped
+   * with [`<hgroup>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hgroup);
+   * `hgroup` permits only `<p>` and a single `h1`-`h6`, so a surface that also renders `graphic` or
+   * `accessory` should keep the paragraph as a sibling of the heading instead.
+   */
+  subheading?: string;
+  /**
+   * A decorative visual that reinforces the heading.
+   *
+   * The heading identifies the section, so this content is decorative and is not announced by
+   * assistive technologies. If no `heading` is provided, this content is not rendered - including
+   * when the section is labelled by `accessibilityLabel` alone.
+   *
+   * @implementation surfaces could restrict the content of this slot to certain elements, such as
+   * only allowing a single decorative element like an `s-icon`, `s-avatar`, or `s-thumbnail`.
+   *
+   * @implementation surfaces built on top of the web platform should hide this from assistive
+   * technologies, for example with `aria-hidden`.
+   */
+  graphic?: ComponentChildren;
+  /**
+   * Additional contextual information that qualifies the heading.
+   *
+   * @implementation surfaces could restrict the content of this slot to certain elements, such as only
+   * allowing an `s-badge`, `s-icon`, `s-text`, `s-avatar`, `s-thumbnail`, `s-button`, or `s-menu`.
+   */
+  accessory?: ComponentChildren;
+  /**
+   * Status or metadata that describes the section as a whole, rather than qualifying its heading.
+   *
+   * Unlike `accessory`, which annotates the heading, this content reports the current state of the
+   * section. It is not an action, and it is not interactive.
+   *
+   * @implementation surfaces could restrict the content of this slot to certain elements, such as only
+   * allowing an `s-badge`, `s-text`, `s-avatar`, `s-icon`, or `s-thumbnail`.
+   */
+  supplemental?: ComponentChildren;
   /**
    * Adjust the padding of all edges.
    *
@@ -6680,19 +6985,11 @@ interface TextFieldProps$1
     MinMaxLengthProps,
     AutocompleteProps<TextAutocompleteField>,
     FieldDecorationProps {}
-interface ThumbnailProps$1 extends GlobalProps, BaseImageProps {
-  /**
-   * Invoked when load of provided image completes successfully.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onload
-   */
-  onLoad?: (event: Event) => void;
-  /**
-   * Invoked on load error of provided image.
-   *
-   * @see https://developer.mozilla.org/en-US/docs/Web/API/GlobalEventHandlers/onerror
-   */
-  onError?: (event: Event) => void;
+interface ThumbnailProps$1
+  extends GlobalProps,
+    BaseImageProps,
+    ImageLoadingProps,
+    ImageLoadEventProps {
   /**
    * Adjusts the size the product thumbnail image.
    *
@@ -7755,10 +8052,69 @@ export interface AvatarProps
   initials: Required<AvatarProps$1>['initials'];
 }
 
+/**
+ * What a component wants to hear about its own light DOM.
+ *
+ * Structure — children added, removed or moved — is always observed. The
+ * `attributes` list is the part worth thinking about: the observer is a
+ * `subtree` one, so every entry makes every descendant's writes to that
+ * attribute wake this component up. List the attributes the component
+ * actually reads off its children and nothing else.
+ */
+export interface LightDomObservation {
+  /**
+   * Descendant attributes that should call {@link lightDomChanged}. Omit it to
+   * hear about structure only.
+   *
+   * `'all'` observes every attribute on every descendant, which is only right
+   * for a component that mirrors arbitrary child markup it cannot enumerate:
+   * Menu copies an item's `innerHTML`, and the quick picker field clones the
+   * elements slotted into an option. Anything else should list its attributes.
+   */
+  attributes?: ReadonlyArray<string> | 'all';
+}
+/**
+ * The observer installed for {@link observeLightDom}. Deliberately not
+ * exported: nothing outside this module can name the symbol, so nothing
+ * outside this module can reach the observer.
+ */
+declare const lightDomObserver: unique symbol;
+/**
+ * Static opt-in to light-DOM observation — see {@link LightDomObservation}.
+ *
+ * ```ts
+ * static [observeLightDom]: LightDomObservation = { attributes: ['selected'] };
+ * ```
+ *
+ * A Symbol key keeps this off the element's public API (and out of the
+ * generated docs and definitions) while still letting subclasses in other
+ * files declare it.
+ */
+declare const observeLightDom: unique symbol;
+/**
+ * Called once per batch of light-DOM mutations a component opted into with
+ * {@link observeLightDom}. Defaults to a re-render; override it with a Symbol
+ * key, the same way the opt-in is declared, to do more.
+ */
+declare const lightDomChanged: unique symbol;
 declare class PolarisCustomElement extends PreactCustomElement {
+  /**
+   * Opt in to light-DOM observation. Undefined means no observer is created.
+   * @private
+   */
+  static [observeLightDom]?: LightDomObservation;
+  /** @private */
+  [lightDomObserver]?: MutationObserver;
   constructor(renderImpl: Omit<RenderImpl, 'globalShadowCSS'>);
+  /**
+   * Runs when the light DOM this component opted into observing changes.
+   * @private
+   */
+  [lightDomChanged](): void;
   /** @private */
   connectedCallback(): void;
+  /** @private */
+  disconnectedCallback(): void;
   /** @private */
   adoptedCallback(): void;
 }
@@ -7969,6 +8325,7 @@ export interface IconProps
         | 'alert-triangle-filled'
         | 'align-horizontal-centers'
         | 'app-extension'
+        | 'app-generated-filled'
         | 'apps'
         | 'archive'
         | 'arrow-down'
@@ -7983,17 +8340,22 @@ export interface IconProps
         | 'arrow-up-right'
         | 'arrows-in-horizontal'
         | 'arrows-out-horizontal'
+        | 'arrows-out-horizontal-filled'
         | 'asterisk'
         | 'attachment'
         | 'automation'
+        | 'automation-filled'
         | 'backspace'
         | 'bag'
         | 'bank'
         | 'barcode'
         | 'battery-low'
         | 'bill'
+        | 'bill-filled'
         | 'blank'
+        | 'blank-filled'
         | 'blog'
+        | 'blog-filled'
         | 'bolt'
         | 'bolt-filled'
         | 'book'
@@ -8019,8 +8381,10 @@ export interface IconProps
         | 'caret-up'
         | 'cart'
         | 'cart-abandoned'
+        | 'cart-abandoned-filled'
         | 'cart-discount'
         | 'cart-down'
+        | 'cart-down-filled'
         | 'cart-filled'
         | 'cart-sale'
         | 'cart-send'
@@ -8076,6 +8440,7 @@ export interface IconProps
         | 'code-add'
         | 'collection'
         | 'collection-featured'
+        | 'collection-filled'
         | 'collection-list'
         | 'collection-reference'
         | 'color'
@@ -8153,6 +8518,7 @@ export interface IconProps
         | 'fav'
         | 'favicon'
         | 'file'
+        | 'file-filled'
         | 'file-list'
         | 'filter'
         | 'filter-active'
@@ -8171,6 +8537,7 @@ export interface IconProps
         | 'forms'
         | 'games'
         | 'gauge'
+        | 'generated-app'
         | 'geolocation'
         | 'gift'
         | 'gift-card'
@@ -8179,7 +8546,10 @@ export interface IconProps
         | 'git-repository'
         | 'globe'
         | 'globe-asia'
+        | 'globe-asia-filled'
         | 'globe-europe'
+        | 'globe-europe-filled'
+        | 'globe-filled'
         | 'globe-lines'
         | 'globe-list'
         | 'graduation-hat'
@@ -8194,6 +8564,7 @@ export interface IconProps
         | 'home-filled'
         | 'icons'
         | 'identity-card'
+        | 'identity-card-filled'
         | 'image'
         | 'image-add'
         | 'image-alt'
@@ -8212,6 +8583,7 @@ export interface IconProps
         | 'inheritance'
         | 'inventory'
         | 'inventory-edit'
+        | 'inventory-filled'
         | 'inventory-list'
         | 'inventory-transfer'
         | 'inventory-updated'
@@ -8225,6 +8597,7 @@ export interface IconProps
         | 'language'
         | 'language-translate'
         | 'layout-block'
+        | 'layout-block-magic'
         | 'layout-buy-button'
         | 'layout-buy-button-horizontal'
         | 'layout-buy-button-vertical'
@@ -8248,15 +8621,20 @@ export interface IconProps
         | 'list-numbered'
         | 'live'
         | 'live-critical'
+        | 'live-filled'
         | 'live-none'
         | 'location'
         | 'location-none'
         | 'lock'
+        | 'magic'
         | 'map'
         | 'markets'
         | 'markets-euro'
+        | 'markets-euro-filled'
         | 'markets-rupee'
+        | 'markets-rupee-filled'
         | 'markets-yen'
+        | 'markets-yen-filled'
         | 'maximize'
         | 'measurement-size'
         | 'measurement-size-list'
@@ -8266,6 +8644,7 @@ export interface IconProps
         | 'measurement-weight-list'
         | 'media-receiver'
         | 'megaphone'
+        | 'megaphone-filled'
         | 'mention'
         | 'menu'
         | 'menu-filled'
@@ -8274,6 +8653,7 @@ export interface IconProps
         | 'merge'
         | 'metafields'
         | 'metaobject'
+        | 'metaobject-filled'
         | 'metaobject-list'
         | 'metaobject-reference'
         | 'microphone'
@@ -8283,6 +8663,7 @@ export interface IconProps
         | 'minus-circle'
         | 'mobile'
         | 'money'
+        | 'money-filled'
         | 'money-none'
         | 'money-split'
         | 'moon'
@@ -8294,6 +8675,7 @@ export interface IconProps
         | 'order'
         | 'order-batches'
         | 'order-draft'
+        | 'order-draft-filled'
         | 'order-filled'
         | 'order-first'
         | 'order-fulfilled'
@@ -8327,6 +8709,7 @@ export interface IconProps
         | 'paper-check'
         | 'partially-complete'
         | 'passkey'
+        | 'passkey-filled'
         | 'paste'
         | 'pause-circle'
         | 'payment'
@@ -8353,6 +8736,7 @@ export interface IconProps
         | 'phone-in'
         | 'phone-out'
         | 'pin'
+        | 'pin-filled'
         | 'pin-remove'
         | 'plan'
         | 'play'
@@ -8365,6 +8749,7 @@ export interface IconProps
         | 'point-of-sale'
         | 'point-of-sale-register'
         | 'price-list'
+        | 'price-list-filled'
         | 'print'
         | 'product'
         | 'product-add'
@@ -8380,15 +8765,21 @@ export interface IconProps
         | 'question-circle'
         | 'question-circle-filled'
         | 'radio-control'
+        | 'rank-bottom'
+        | 'rank-top'
         | 'receipt'
         | 'receipt-dollar'
         | 'receipt-euro'
+        | 'receipt-euro-filled'
         | 'receipt-folded'
         | 'receipt-paid'
         | 'receipt-pound'
+        | 'receipt-pound-filled'
         | 'receipt-refund'
         | 'receipt-rupee'
+        | 'receipt-rupee-filled'
         | 'receipt-yen'
+        | 'receipt-yen-filled'
         | 'receivables'
         | 'redo'
         | 'referral-code'
@@ -8417,11 +8808,13 @@ export interface IconProps
         | 'settings'
         | 'share'
         | 'shield-check-mark'
+        | 'shield-network'
         | 'shield-none'
         | 'shield-pending'
         | 'shield-person'
         | 'shipping-label'
         | 'shipping-label-cancel'
+        | 'shipping-label-filled'
         | 'shopcodes'
         | 'slideshow'
         | 'smiley-happy'
@@ -8467,9 +8860,11 @@ export interface IconProps
         | 'text-grammar'
         | 'text-in-columns'
         | 'text-in-rows'
+        | 'text-in-rows-filled'
         | 'text-indent'
         | 'text-indent-remove'
         | 'text-italic'
+        | 'text-magic'
         | 'text-quote'
         | 'text-title'
         | 'text-underline'
@@ -8511,10 +8906,12 @@ export interface IconProps
         | 'viewport-tall'
         | 'viewport-wide'
         | 'wallet'
+        | 'wallet-filled'
         | 'wand'
         | 'watch'
         | 'wifi'
         | 'work'
+        | 'work-filled'
         | 'work-list'
         | 'wrench'
         | 'x'
@@ -9211,7 +9608,10 @@ export interface PreactOverlayControlProps
 declare const ButtonBase_base: (abstract new (
   renderImpl: Omit<RenderImpl, 'globalShadowCSS'>,
 ) => PolarisCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+  Pick<
+    typeof PolarisCustomElement,
+    typeof observeLightDom | 'prototype' | 'observedAttributes'
+  >;
 declare abstract class ButtonBase<TTagName extends keyof HTMLElementTagNameMap>
   extends ButtonBase_base
   implements
@@ -9324,8 +9724,6 @@ declare abstract class ButtonGroupBase
    * @private
    */
   setInertActions(actions: ReadonlyArray<Element>): void;
-  /** @private */
-  disconnectedCallback(): void;
 }
 
 /**
@@ -9738,6 +10136,14 @@ declare class BaseClass$1 extends PolarisCustomElement {
  */
 declare class ChoiceList extends BaseClass$1 implements ChoiceListProps {
   /**
+   * Choices arrive one at a time from the HTML parser, and the list renders
+   * from their attributes: `selected` for the value, `disabled`, `value` and
+   * `accessibilitylabel` for the control it draws for each one. Text and
+   * slotted details reach us as a `choice-change` event from Choice instead.
+   * @private
+   */
+  static [observeLightDom]: LightDomObservation;
+  /**
    * Wraps change and input event listeners so they only fire when the event
    * was dispatched directly on this ChoiceList (event.eventPhase === Event.AT_TARGET).
    *
@@ -9798,6 +10204,8 @@ declare class ChoiceList extends BaseClass$1 implements ChoiceListProps {
   /** @private */
   formResetCallback(): void;
   constructor();
+  /** @private */
+  [lightDomChanged](): void;
   /** @private */
   connectedCallback(): void;
   /** @private */
@@ -9885,7 +10293,10 @@ export interface ClickableProps extends Required<BoxProps>, ClickableBaseProps {
 declare const Clickable_base: (abstract new (
   renderImpl: _shopify_admin_web_component_foundations.RenderImpl,
 ) => BoxElement & PreactOverlayControlProps) &
-  Pick<typeof BoxElement, 'prototype' | 'observedAttributes'>;
+  Pick<
+    typeof BoxElement,
+    typeof observeLightDom | 'prototype' | 'observedAttributes'
+  >;
 /**
  * Configure the following properties on the clickable component.
  * @publicDocs
@@ -10008,7 +10419,10 @@ export interface ClickableChipProps
 declare const ClickableChipBase_base: (abstract new (
   renderImpl: Omit<RenderImpl, 'globalShadowCSS'>,
 ) => PolarisCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+  Pick<
+    typeof PolarisCustomElement,
+    typeof observeLightDom | 'prototype' | 'observedAttributes'
+  >;
 declare abstract class ClickableChipBase<
     TTagName extends keyof HTMLElementTagNameMap,
   >
@@ -11056,11 +11470,7 @@ export interface GridJSXProps
   children?: ComponentChildren;
 }
 
-/**
- * Represents the grid item component props with all properties marked as required.
- * @publicDocs
- */
-export type RequiredGridItemProps = Required<GridItemProps$1>;
+export type GridSpan = `span ${number}` | 'auto';
 /**
  * The grid item component represents a single cell within a grid layout, allowing you to control how content is positioned and sized within the grid. Use grid item as a child of grid to specify column span, row span, and positioning for individual content areas.
  *
@@ -11076,7 +11486,7 @@ export interface GridItemProps
    *
    * @default 'auto'
    */
-  gridColumn: RequiredGridItemProps['gridColumn'];
+  gridColumn: GridSpan;
   /**
    * The number of rows the item will span across.
    *
@@ -11084,7 +11494,7 @@ export interface GridItemProps
    *
    * @default 'auto'
    */
-  gridRow: RequiredGridItemProps['gridRow'];
+  gridRow: GridSpan;
 }
 
 /**
@@ -11513,7 +11923,10 @@ export interface LinkProps extends LinkBaseProps {
 declare const LinkBase_base: (abstract new (
   renderImpl: Omit<RenderImpl, 'globalShadowCSS'>,
 ) => PolarisCustomElement & PreactOverlayControlProps) &
-  Pick<typeof PolarisCustomElement, 'prototype' | 'observedAttributes'>;
+  Pick<
+    typeof PolarisCustomElement,
+    typeof observeLightDom | 'prototype' | 'observedAttributes'
+  >;
 declare abstract class LinkBase<TTagName extends keyof HTMLElementTagNameMap>
   extends LinkBase_base
   implements
@@ -11685,12 +12098,15 @@ declare class PreactOverlayElement extends PolarisCustomElement {
  * @publicDocs
  */
 declare class Menu extends PreactOverlayElement implements MenuProps {
+  /**
+   * Menu renders proxies of its items rather than slotting them — a button's
+   * content is copied with `innerHTML` — so any attribute on any descendant
+   * can change what the shadow root shows, and there is no list to filter to.
+   * @private
+   */
+  static [observeLightDom]: LightDomObservation;
   accessibilityLabel: string;
   constructor();
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -11787,16 +12203,23 @@ declare const backdropMouseDownOnDialog: unique symbol;
 declare const backdropMouseUpOnDialog: unique symbol;
 declare const abortController: unique symbol;
 declare const onChildModalChange: unique symbol;
-declare const childrenRerenderObserver: unique symbol;
 declare const shadowDomRerenderObserver: unique symbol;
 declare const focusTrapController: unique symbol;
-declare const escapeKeyUpController: unique symbol;
 declare const ensureDialogRef: unique symbol;
 declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   extends PreactOverlayElement
   implements
     Pick<ModalProps, 'accessibilityLabel' | 'heading' | 'padding' | 'size'>
 {
+  /**
+   * A nested modal can only arrive as an element, so structure is all this
+   * needs. It used to observe every attribute below it too, which ran the
+   * `querySelectorAll` in `#bindNestedModals` over the whole modal body
+   * whenever anything in it flipped an attribute — a field's `error`, an
+   * `aria-expanded` — and could never find a modal that way.
+   * @private
+   */
+  static [observeLightDom]: LightDomObservation;
   accessibilityLabel: ModalProps['accessibilityLabel'];
   heading: ModalProps['heading'];
   padding: ModalProps['padding'];
@@ -11811,8 +12234,6 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   [rootActivator]: HTMLElement | null;
   /** @private */
   [nestedModals]: Map<HTMLElement, boolean>;
-  /** @private */
-  [childrenRerenderObserver]: MutationObserver;
   /** @private */
   [shadowDomRerenderObserver]: MutationObserver;
   /**
@@ -11835,12 +12256,6 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
    * @private
    */
   [focusTrapController]: AbortController | null;
-  /**
-   * Holds the in-flight document keyup suppressor below so a second Escape
-   * close replaces it instead of stacking another one.
-   * @private
-   */
-  [escapeKeyUpController]: AbortController | null;
   /** @private */
   [onEscape]: (event: KeyboardEvent) => void;
   /** @private */
@@ -11893,6 +12308,8 @@ declare abstract class ModalBase<TTagName extends keyof HTMLElementTagNameMap>
   toggleOverlay(): void;
   /** @private */
   connectedCallback(): void;
+  /** @private */
+  [lightDomChanged](): void;
   /** @private */
   disconnectedCallback(): void;
   constructor(renderImpl: RenderImpl);
@@ -13246,7 +13663,7 @@ export interface SectionJSXProps
   /**
    * Status or metadata that describes the section as a whole rather than qualifying its heading, rendered at the inline-end of the header before any actions.
    *
-   * This is not an action. Only accepts Badge, Avatar, Text, Icon, and Thumbnail elements, under the same prop constraints as `accessory`.
+   * This is not an action. Only accepts Badge, Avatar, Text, Icon, Thumbnail, and Tooltip elements, under the same prop constraints as `accessory`.
    */
   supplemental?: ComponentChildren;
 }
@@ -13291,6 +13708,13 @@ declare abstract class SelectBase
       | 'labelAccessibilityVisibility'
     >
 {
+  /**
+   * The native `<select>` is rebuilt from the options in the light DOM:
+   * `value`, `selected` and `disabled` from each option, `label` and
+   * `disabled` from each group.
+   * @private
+   */
+  static [observeLightDom]: LightDomObservation;
   icon: SelectProps['icon'];
   details: SelectProps['details'];
   error: SelectProps['error'];
@@ -13298,10 +13722,6 @@ declare abstract class SelectBase
   placeholder: SelectProps['placeholder'];
   required: SelectProps['required'];
   labelAccessibilityVisibility: SelectProps['labelAccessibilityVisibility'];
-  /** @private */
-  connectedCallback(): void;
-  /** @private */
-  disconnectedCallback(): void;
   constructor(renderImpl: RenderImpl);
   /**
    * used to determine if no value or defaultValue was set, in which case the first non-disabled option was used
@@ -13650,6 +14070,7 @@ declare const tableHeadersSharedDataSymbol: unique symbol;
  * @publicDocs
  */
 export type ActualTableVariant = 'table' | 'list';
+declare const tableLoadingSymbol: unique symbol;
 declare const elementInternals: unique symbol;
 
 /**
@@ -13671,9 +14092,9 @@ declare class Table extends PolarisCustomElement implements TableProps {
    * @private
    * The actual table variant, which is either 'table' or 'list'.
    */
-  [actualTableVariantSymbol]: _shopify_admin_web_component_foundations.AddedContext<ActualTableVariant>;
+  [actualTableVariantSymbol]: _shopify_admin_web_component_foundations_context.ContextProvider<ActualTableVariant>;
   /** @private */
-  [tableHeadersSharedDataSymbol]: _shopify_admin_web_component_foundations.AddedContext<
+  [tableHeadersSharedDataSymbol]: _shopify_admin_web_component_foundations_context.ContextProvider<
     {
       listSlot: TableHeaderProps['listSlot'];
       textContent: string;
@@ -13681,6 +14102,8 @@ declare class Table extends PolarisCustomElement implements TableProps {
     }[]
   >;
 
+  /** @private */
+  [tableLoadingSymbol]: _shopify_admin_web_component_foundations_context.ContextProvider<boolean>;
   constructor();
 }
 declare global {
@@ -13773,6 +14196,7 @@ export interface TableCellProps extends TableCellProps$1 {
 }
 
 declare const headerFormatSymbol: unique symbol;
+declare const primaryCellSymbol: unique symbol;
 
 /**
  * The table cell component represents a single data cell within a table row. Use table cell as a child of table row to display individual data values, with each cell corresponding to a column in the table.
@@ -13788,6 +14212,10 @@ declare class TableCell extends PolarisCustomElement implements TableCellProps {
   get [headerFormatSymbol](): HeaderFormat;
   /** @private */
   set [headerFormatSymbol](format: HeaderFormat);
+  /** @private */
+  get [primaryCellSymbol](): boolean;
+  /** @private */
+  set [primaryCellSymbol](primary: boolean);
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -13934,6 +14362,8 @@ export interface TableRowProps
   clickDelegate?: TableRowProps$1['clickDelegate'];
 }
 
+declare const afterHoveredRowSymbol: unique symbol;
+
 /**
  * The table row component represents a single row of data within a table body. Use table row as a child of table body to structure individual records or entries in the table.
  *
@@ -13945,6 +14375,10 @@ declare class TableRow extends PolarisCustomElement implements TableRowProps {
   [elementInternals]: ElementInternals;
   constructor();
   clickDelegate: string;
+  /** @private */
+  get [afterHoveredRowSymbol](): boolean;
+  /** @private */
+  set [afterHoveredRowSymbol](afterHoveredRow: boolean);
 }
 declare global {
   interface HTMLElementTagNameMap {
@@ -14053,7 +14487,6 @@ declare abstract class TextBase
       | 'fontVariantNumeric'
       | 'fontSize'
       | 'fontWeight'
-      | 'color'
       | 'type'
       | 'dir'
       | 'accessibilityVisibility'
@@ -14066,12 +14499,12 @@ declare abstract class TextBase
    * @deprecated Use `Number` for inline numeric values instead.
    */
   fontVariantNumeric: TextProps['fontVariantNumeric'];
-  color: TextProps['color'];
   type: TextProps['type'];
   dir: TextProps['dir'];
   accessibilityVisibility: TextProps['accessibilityVisibility'];
   interestFor: string;
   abstract tone: string;
+  abstract color: string;
   constructor(renderImpl: RenderImpl);
 }
 
@@ -14081,6 +14514,13 @@ declare abstract class TextBase
  */
 declare class Text extends TextBase implements TextProps {
   tone: TextProps['tone'];
+  /**
+   * The color emphasis level that controls visual intensity.
+   *
+   * - `base`: Primary color for body text, standard UI elements, and general content with good readability.
+   * - `subdued`: Deemphasized color for secondary text, supporting labels, and less critical interface elements.
+   */
+  color: TextProps['color'];
   constructor();
 }
 declare global {
@@ -14223,7 +14663,7 @@ export interface TextFieldJSXProps
  * Configure the following properties on the thumbnail component.
  */
 export interface ThumbnailProps
-  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size'>> {
+  extends Required<Pick<ThumbnailProps$1, 'src' | 'alt' | 'size' | 'loading'>> {
   /**
    * The size of the product thumbnail image.
    *
@@ -14262,6 +14702,7 @@ declare class Thumbnail extends PolarisCustomElement implements ThumbnailProps {
    */
   alt: ThumbnailProps['alt'];
   size: ThumbnailProps['size'];
+  loading: ThumbnailProps['loading'];
   constructor();
 }
 declare global {
@@ -15848,7 +16289,7 @@ export interface SectionSlots {
   /**
    * Status or metadata that describes the section as a whole rather than qualifying its heading, rendered at the inline-end of the header before any actions.
    *
-   * This is not an action. Only accepts Badge, Avatar, Text, Icon, and Thumbnail elements, under the same prop constraints as `accessory`.
+   * This is not an action. Only accepts Badge, Avatar, Text, Icon, Thumbnail, and Tooltip elements, under the same prop constraints as `accessory`.
    */
   supplemental?: HTMLElement;
 }
