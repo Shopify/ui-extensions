@@ -585,6 +585,11 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   analytics: Analytics;
 
   /**
+   * Reports events to Shopify for this app.
+   */
+  appEvents: AppEvents;
+
+  /**
    * The gift cards that have been applied to the checkout. Each entry includes
    * the last four characters of the gift card code, the amount used at
    * checkout, and the card's remaining balance.
@@ -1690,6 +1695,51 @@ export interface Analytics {
    */
   visitor(data: {email?: string; phone?: string}): Promise<VisitorResult>;
 }
+
+/**
+ * A value attached to an app event.
+ * @publicDocs
+ */
+export type AppEventAttributeValue = string | number | boolean;
+
+/**
+ * Attributes related to an app event.
+ * @publicDocs
+ */
+export type AppEventAttributes = Record<string, AppEventAttributeValue>;
+
+/**
+ * The outcome of an `emit` call.
+ *
+ * `success: true` means the host accepted the event. It does not confirm delivery.
+ *
+ * `success: false` means the event was not sent. `error` describes why.
+ * @publicDocs
+ */
+export type AppEventEmitResult =
+  | {readonly success: true}
+  | {readonly success: false; readonly error: string};
+
+/**
+ * Reports events to Shopify for this app.
+ * @publicDocs
+ */
+export interface AppEvents {
+  /**
+   * Reports one occurrence of an app-defined event.
+   *
+   * @param eventHandle The app-defined event name.
+   * @param attributes Attributes related to this event.
+   *   @default {}
+   * @returns A promise that resolves with the outcome once the host has
+   *   handled the call.
+   */
+  emit(
+    eventHandle: string,
+    attributes?: AppEventAttributes,
+  ): Promise<AppEventEmitResult>;
+}
+
 /**
  * Represents a visitor result.
  * @publicDocs
