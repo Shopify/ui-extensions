@@ -1,5 +1,16 @@
 # @shopify/ui-extensions-tester
 
+## 2027.1.0-rc.1
+
+### Minor Changes
+
+- [#4753](https://github.com/Shopify/ui-extensions/pull/4753) [`ee50e20`](https://github.com/Shopify/ui-extensions/commit/ee50e202ac825dc8b187151f3861846e02ee0407) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - 2027-01-rc release
+
+### Patch Changes
+
+- Updated dependencies [[`61f1b65`](https://github.com/Shopify/ui-extensions/commit/61f1b65cbcd9d5d987ab309cd35a9eba758f695c), [`5c55af7`](https://github.com/Shopify/ui-extensions/commit/5c55af76da97a30d33a431df2425c22849462370), [`ee50e20`](https://github.com/Shopify/ui-extensions/commit/ee50e202ac825dc8b187151f3861846e02ee0407)]:
+  - @shopify/ui-extensions@2027.1.0-rc.1
+
 ## 2026.10.0
 
 ### Minor Changes
