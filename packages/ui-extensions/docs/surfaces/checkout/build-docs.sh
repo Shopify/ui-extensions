@@ -37,7 +37,7 @@ fi
 echo "Cleaning ./$DOCS_PATH/generated..."
 rm -rf ./$DOCS_PATH/generated
 
-COMPILE_DOCS="yarn generate-docs --overridePath ./$DOCS_PATH/typeOverride.json --input ./$SRC_PATH --output ./$DOCS_PATH/generated"
+COMPILE_DOCS="yarn generate-docs --strictInput --overridePath ./$DOCS_PATH/typeOverride.json --input ./$SRC_PATH --output ./$DOCS_PATH/generated"
 
 # Copy all .d.ts files in components directory to .ts files so they can be picked up by the generate-docs tool
 echo "Copying .d.ts files to temporary .ts files..."

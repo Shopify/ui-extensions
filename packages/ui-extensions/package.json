@@ -130,7 +130,7 @@
     "@preact/signals": "^2.3.x",
     "@quilted/react-testing": "^0.6.11",
     "@remote-ui/async-subscription": "^2.1.16",
-    "@shopify/generate-docs": "1.2.2",
+    "@shopify/generate-docs": "1.3.0",
     "preact": "^10.10.x",
     "publint": "^0.3.23",
     "typescript": "^4.9.0"
