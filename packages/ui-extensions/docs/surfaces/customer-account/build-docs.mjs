@@ -85,7 +85,7 @@ const generateExtensionsDocs = async () => {
 
   const overridePath = `./${docsRelativePath}/typeOverride.json`;
   await execAsync(
-    `yarn generate-docs --overridePath ${overridePath} --input ./${srcRelativePath} ./${checkoutComponentsRelativePath} --output ./${outputDir}`,
+    `yarn generate-docs --strictInput --overridePath ${overridePath} --input ./${srcRelativePath} ./${checkoutComponentsRelativePath} --output ./${outputDir}`,
     {maxBuffer},
   );
 
