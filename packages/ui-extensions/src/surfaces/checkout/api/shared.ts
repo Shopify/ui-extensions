@@ -210,20 +210,11 @@ export interface MailingAddress {
 
   /**
    * The parts of `address1` and `address2`, such as street name, street
-   * number and apartment. The value is `undefined` if the country doesn't
-   * store address components or none have been entered. `address1` and
-   * `address2` are still provided alongside them.
+   * number, and apartment, for countries whose address format uses them.
+   * `address1` and `address2` are always provided alongside them. The value
+   * is `undefined` if no components have been entered.
    *
-   * Writable through `applyShippingAddressChange`, which doesn't check the
-   * components against `Country.acceptedAddressInputFields`. For each street
-   * line, changed components always win over the line, and the line is
-   * rebuilt from them. Components that match the current address count as
-   * unchanged. In countries that store components, an edited line wins over
-   * unchanged components, so an extension can spread the address it read and
-   * correct only `address1`. If the country accepts components but doesn't
-   * store them, the line is built from the components and only the line is
-   * saved. If the country's address format has no components, a change that
-   * includes them is rejected.
+   * See [Regional address components](https://shopify.dev/docs/apps/build/checkout/delivery-shipping/regional-address-components) for read and write details.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
