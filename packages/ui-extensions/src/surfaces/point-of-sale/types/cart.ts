@@ -12,13 +12,13 @@ interface CartBase {
    * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.
    *
    * It's `false` for `Return` and `Exchange` carts.
-   * @deprecated Use `capabilities` when it's present.
+   * @deprecated Use `capabilities` instead.
    */
   editable?: boolean;
   /**
-   * Which Cart API methods are available right now. If it's missing, for example on an older POS version, use `editable` instead.
+   * Which Cart API methods are available right now.
    */
-  capabilities?: CartCapabilities;
+  capabilities: CartCapabilities;
   /**
    * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.
    */
@@ -66,16 +66,16 @@ interface CartBase {
  *
  * Check `cartType` to tell a sale from a return or exchange. Return and exchange carts also have `return`, with the original order and the returned items.
  *
- * Return and exchange carts are available as of POS version 12.0.0.
+ * `cartType`, `capabilities`, and return and exchange carts are available as of POS version 12.0.0.
  * @publicDocs
  */
 export type Cart = CartBase &
   (
     | {
         /**
-         * The kind of cart. Can be `undefined`, for example on an older POS version.
+         * The kind of cart.
          */
-        cartType?: 'Checkout' | 'Unsupported';
+        cartType: 'Checkout' | 'Unsupported';
       }
     | {
         /**
@@ -103,7 +103,7 @@ export type Cart = CartBase &
  * - `'Unsupported'`: A POS flow that extensions don't support. Extensions can't change the cart and shouldn't rely on its contents.
  * @publicDocs
  */
-export type CartType = NonNullable<Cart['cartType']>;
+export type CartType = Cart['cartType'];
 
 /**
  * An item selected for return. Staff choose the items, quantities, reasons and restocking in POS, so extensions can only read them.

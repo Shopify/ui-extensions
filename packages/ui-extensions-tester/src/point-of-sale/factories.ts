@@ -31,7 +31,12 @@ import type {
 
 import {createReadonlySignalLike} from '../mocks/signals';
 import {createMockI18n} from '../mocks/i18n';
-import {createCartLineItem, createStorage, createResult} from './index';
+import {
+  createCartCapabilities,
+  createCartLineItem,
+  createStorage,
+  createResult,
+} from './index';
 
 /**
  * Extracts the API type for a given POS extension target directly from the
@@ -79,6 +84,8 @@ function createPosCart(): Cart {
     cartDiscounts: [],
     lineItems: [],
     properties: {},
+    capabilities: createCartCapabilities(),
+    cartType: 'Checkout',
   };
 }
 
