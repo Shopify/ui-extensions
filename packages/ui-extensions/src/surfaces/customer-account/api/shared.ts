@@ -11,6 +11,12 @@ import type {
 } from '../../../shared';
 
 import type {SubscribableSignalLike} from '../../checkout/shared';
+import type {
+  AppEventAttributeValue,
+  AppEventAttributes,
+  AppEventEmitResult,
+  AppEvents,
+} from '../../checkout/api/standard/standard';
 
 export {
   ApiVersion,
@@ -21,6 +27,10 @@ export {
   GraphQLError,
   StorefrontApiVersion,
   SubscribableSignalLike,
+  AppEventAttributeValue,
+  AppEventAttributes,
+  AppEventEmitResult,
+  AppEvents,
 };
 
 /**
