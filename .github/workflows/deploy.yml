@@ -181,10 +181,15 @@ jobs:
         run: |
           yarn changeset:exit-pre-mode
           yarn changeset version --snapshot snapshot
+          # With no changesets, `changeset version` succeeds without bumping, and publish would ship the current version under the snapshot tag.
+          VERSIONS=$(for pkg in packages/*/package.json; do jq -c 'select((.private | not) and (.version | contains("-snapshot-"))) | {(.name): .version}' "$pkg"; done | jq -sc 'add // {}')
+          if [ "$VERSIONS" = '{}' ]; then
+            echo "::error::No snapshot versions were generated. Add a changeset to the PR, then post /snapit again."
+            exit 1
+          fi
+          echo "versions=$VERSIONS" >> "$GITHUB_OUTPUT"
           yarn build
           yarn changeset publish --no-git-tags --snapshot --tag snapshot
-          VERSIONS=$(for pkg in packages/*/package.json; do jq -c 'select((.private | not) and (.version | contains("-snapshot-"))) | {(.name): .version}' "$pkg"; done | jq -sc 'add // {}')
-          echo "versions=$VERSIONS" >> "$GITHUB_OUTPUT"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # Used by @changesets/changelog-github
           NPM_TOKEN: '' # Forces OIDC authentication
