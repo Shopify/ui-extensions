@@ -35,3 +35,31 @@ export function createReadonlySignalLike<T>(
     subscribe: () => () => {},
   };
 }
+
+/**
+ * Creates a mock signal that notifies subscribers when its `value` is replaced
+ * through the test harness.
+ */
+export function createReactiveReadonlySignalLike<T>(
+  initialValue: T,
+): MockReadonlySignalLike<T> {
+  let value = initialValue;
+  const listeners = new Set<(value: T) => void>();
+
+  return {
+    get value() {
+      return value;
+    },
+    set value(nextValue: T) {
+      if (Object.is(value, nextValue)) return;
+      value = nextValue;
+      for (const listener of listeners) listener(value);
+    },
+    subscribe(listener) {
+      listeners.add(listener);
+      return () => {
+        listeners.delete(listener);
+      };
+    },
+  };
+}
