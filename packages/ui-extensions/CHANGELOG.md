@@ -1,5 +1,19 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.1
+
+### Minor Changes
+
+- [#4749](https://github.com/Shopify/ui-extensions/pull/4749) [`61f1b65`](https://github.com/Shopify/ui-extensions/commit/61f1b65cbcd9d5d987ab309cd35a9eba758f695c) Thanks [@haozhi-liao](https://github.com/haozhi-liao)! - `appEvents`: add `shopify.appEvents.emit(eventHandle, attributes?)` to the Checkout standard and address-autocomplete APIs and the Customer Account standard API, for reporting app events to Shopify
+
+- [#4753](https://github.com/Shopify/ui-extensions/pull/4753) [`ee50e20`](https://github.com/Shopify/ui-extensions/commit/ee50e202ac825dc8b187151f3861846e02ee0407) Thanks [@shopify-github-actions-access](https://github.com/apps/shopify-github-actions-access)! - 2027-01-rc release
+
+### Patch Changes
+
+- [#4760](https://github.com/Shopify/ui-extensions/pull/4760) [`5c55af7`](https://github.com/Shopify/ui-extensions/commit/5c55af76da97a30d33a431df2425c22849462370) Thanks [@fatbattk](https://github.com/fatbattk)! - Clarify POS transaction payload docs for cash payments: `paymentMethods[].amount` is the cash handed over, and `balanceDue` and the payment total account for `cashRoundingAdjustment`.
+
+- [#4769](https://github.com/Shopify/ui-extensions/pull/4769) [`6df1771`](https://github.com/Shopify/ui-extensions/commit/6df1771bc1b87b5d663adc0cb63995a426faf8f9) Thanks [@IHu04](https://github.com/IHu04)! - Add `ReadOnlyKey` to POS `StorageError` codes for API version 2027-01, where storage is shared across the app's extensions and data from earlier API versions is read-only.
+
 ## 2026.10.0
 
 ### Minor Changes

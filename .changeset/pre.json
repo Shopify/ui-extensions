@@ -5,5 +5,10 @@
     "@shopify/ui-extensions": "2027.1.0-rc.0",
     "@shopify/ui-extensions-tester": "2027.1.0-rc.0"
   },
-  "changesets": []
+  "changesets": [
+    "app-events-checkout-customer-account",
+    "pos-cash-tendered-docs",
+    "pos-storage-read-only-key",
+    "rc-2027-01-release"
+  ]
 }
