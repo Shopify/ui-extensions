@@ -425,6 +425,7 @@ function getNestedApis(apiName) {
 const COMPOSITE_API_DECOMPOSITION = {
   StandardApi: [
     'AnalyticsApi',
+    'AppEventsApi',
     'AuthenticatedAccountApi',
     'CustomerAccountApi',
     'CustomerPrivacyApi',

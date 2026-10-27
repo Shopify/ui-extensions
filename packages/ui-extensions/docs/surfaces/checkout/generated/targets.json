@@ -67,6 +67,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -159,6 +160,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -251,6 +253,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -344,6 +347,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -436,6 +440,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -528,6 +533,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -620,6 +626,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -712,6 +719,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -805,6 +813,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -899,6 +908,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -992,6 +1002,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1085,6 +1096,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1177,6 +1189,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1269,6 +1282,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1361,6 +1375,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1453,6 +1468,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1546,6 +1562,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1639,6 +1656,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1732,6 +1750,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1825,6 +1844,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -1918,6 +1938,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2011,6 +2032,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2104,6 +2126,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2197,6 +2220,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2290,6 +2314,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2382,6 +2407,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2413,6 +2439,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2505,6 +2532,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2598,6 +2626,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2630,6 +2659,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2724,6 +2754,7 @@
     "apis": [
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "BuyerIdentityApi",
       "BuyerJourneyApi",
@@ -2755,6 +2786,7 @@
       "AddressAutocompleteSuggestApi",
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "CheckoutTokenApi",
       "ExtensionApi",
@@ -2773,6 +2805,7 @@
       "AddressAutocompleteFormatSuggestionApi",
       "AddressesApi",
       "AnalyticsApi",
+      "AppEventsApi",
       "AttributesApi",
       "CheckoutTokenApi",
       "ExtensionApi",
@@ -2823,6 +2856,43 @@
     ]
   },
   "AnalyticsApi": {
+    "targets": [
+      "purchase.address-autocomplete.format-suggestion",
+      "purchase.address-autocomplete.suggest",
+      "purchase.checkout.actions.render-before",
+      "purchase.checkout.block.render",
+      "purchase.checkout.cart-line-item.render-after",
+      "purchase.checkout.cart-line-list.render-after",
+      "purchase.checkout.chat.render",
+      "purchase.checkout.contact.render-after",
+      "purchase.checkout.delivery-address.render-after",
+      "purchase.checkout.delivery-address.render-before",
+      "purchase.checkout.footer.render-after",
+      "purchase.checkout.header.render-after",
+      "purchase.checkout.payment-method-list.render-after",
+      "purchase.checkout.payment-method-list.render-before",
+      "purchase.checkout.pickup-location-list.render-after",
+      "purchase.checkout.pickup-location-list.render-before",
+      "purchase.checkout.pickup-location-option-item.render-after",
+      "purchase.checkout.pickup-point-list.render-after",
+      "purchase.checkout.pickup-point-list.render-before",
+      "purchase.checkout.reductions.render-after",
+      "purchase.checkout.reductions.render-before",
+      "purchase.checkout.shipping-option-item.details.render",
+      "purchase.checkout.shipping-option-item.render-after",
+      "purchase.checkout.shipping-option-list.render-after",
+      "purchase.checkout.shipping-option-list.render-before",
+      "purchase.thank-you.announcement.render",
+      "purchase.thank-you.block.render",
+      "purchase.thank-you.cart-line-item.render-after",
+      "purchase.thank-you.cart-line-list.render-after",
+      "purchase.thank-you.chat.render",
+      "purchase.thank-you.customer-information.render-after",
+      "purchase.thank-you.footer.render-after",
+      "purchase.thank-you.header.render-after"
+    ]
+  },
+  "AppEventsApi": {
     "targets": [
       "purchase.address-autocomplete.format-suggestion",
       "purchase.address-autocomplete.suggest",

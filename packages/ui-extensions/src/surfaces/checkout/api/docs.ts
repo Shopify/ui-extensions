@@ -131,5 +131,9 @@ export interface Docs_Standard_AnalyticsApi
   extends Pick<StandardApi, 'analytics'> {}
 
 /** @publicDocs */
+export interface Docs_Standard_AppEventsApi
+  extends Pick<StandardApi, 'appEvents'> {}
+
+/** @publicDocs */
 export interface Docs_Standard_CustomerPrivacyApi
   extends Pick<StandardApi, 'customerPrivacy' | 'applyTrackingConsentChange'> {}
