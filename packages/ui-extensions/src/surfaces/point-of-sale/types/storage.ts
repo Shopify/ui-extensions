@@ -6,7 +6,12 @@ import type {ReadonlySignalLike} from '../../../shared';
 export class StorageError extends Error {
   public name = 'StorageError';
   constructor(
-    public code: 'RecordsCount' | 'RecordSize' | 'KeyType' | 'KeySize',
+    public code:
+      | 'RecordsCount'
+      | 'RecordSize'
+      | 'KeyType'
+      | 'KeySize'
+      | 'ReadOnlyKey',
     message: string,
   ) {
     super(message);
@@ -14,6 +19,8 @@ export class StorageError extends Error {
 }
 /**
  * Defines the storage interface for persisting extension data across sessions.
+ *
+ * From API version 2027-01, storage is shared by all extensions of the app on the device. Data written on an earlier API version is readable but read-only; write it under a new key to share it.
  * @publicDocs
  */
 export interface Storage<
@@ -56,6 +63,7 @@ export interface Storage<
    * - Individual record size exceeds the limit (`code: 'RecordSize'`)
    * - Key is not a string (`code: 'KeyType'`)
    * - Key size exceeds the limit (`code: 'KeySize'`)
+   * - Key holds data from an API version before 2027-01 (`code: 'ReadOnlyKey'`)
    */
   set<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,
