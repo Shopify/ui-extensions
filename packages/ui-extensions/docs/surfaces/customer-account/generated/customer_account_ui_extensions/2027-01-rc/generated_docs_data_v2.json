@@ -1103,6 +1103,13 @@
         {
           "filePath": "src/surfaces/customer-account/api/standard-api/standard-api.ts",
           "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events to Shopify for this app."
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/standard-api/standard-api.ts",
+          "syntaxKind": "PropertySignature",
           "name": "applyTrackingConsentChange",
           "value": "ApplyTrackingConsentChangeType",
           "description": "Applies updated tracking consent preferences for the buyer, including their decisions for analytics, marketing, and data sale, along with any custom tracking consent [metafields](/docs/apps/build/custom-data/metafields). Returns a promise that resolves with the result of the consent update.\n\n{% include /apps/checkout/privacy-icon.md %} Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data)."
@@ -1224,7 +1231,7 @@
           ]
         }
       ],
-      "value": "export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {\n  /**\n   * The identifier that specifies where in Shopify’s UI your code is being\n   * injected. This will be one of the [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#targets) you have included in your\n   * extension’s configuration file. For more information, refer to the [extension targets overview](/docs/api/customer-account-ui-extensions/{API_VERSION}/extension-targets-overview).\n   *\n   * @example 'customer-account.order-status.block.render'\n   *\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: Target;\n\n  /**\n   * Metadata about the extension, including its target, version, and editor context. Use this to conditionally render content based on where the extension is running.\n   */\n  extension: Extension;\n\n  /**\n   * The logged-in customer's account information, including their customer ID and B2B company details. Use this to personalize your extension based on who is viewing the page.\n   */\n  authenticatedAccount: AuthenticatedAccount;\n\n  /**\n   * The API version your extension is running against. Use this to conditionally enable features or handle breaking changes when your extension supports multiple API versions.\n   *\n   * @example 'unstable'\n   */\n  version: Version;\n\n  /**\n   * The buyer's language, country, and locale context. Use this to adapt your extension to the buyer's region and display localized content.\n   */\n  localization: Localization;\n\n  /**\n   * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Use this alongside `localization` to build fully localized extensions.\n   */\n  i18n: I18n;\n\n  /**\n   * Key-value storage that persists across customer sessions for this extension target. Use this to store preferences, dismiss states, or cached data without requiring a backend call.\n   */\n  storage: Storage;\n\n  /**\n   * Authenticates requests between your extension and your app backend. Call `get()` to retrieve a signed JWT containing the customer ID, shop domain, and expiration time, then verify it server-side. For more information, refer to the [Session Token API](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/session-token-api).\n   */\n  sessionToken: SessionToken;\n\n  /**\n   * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use `publish()` to emit events and `visitor()` to submit visitor data.\n   *\n   * > Note: Requires [connecting a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.\n   */\n  analytics: Analytics;\n\n  /**\n   * Invokes built-in Shopify workflows for managing customer account resources. Use intents to trigger native modals and flows, such as replacing a payment method on a subscription contract, without building the UI yourself.\n   */\n  intents: Intents;\n\n  /**\n   * Merchant-defined configuration values for your extension, as specified in the [settings definition](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#settings-definition) of your `shopify.extension.toml` file. Settings update in real time as merchants edit them in the extension editor. The value is empty until a merchant sets it.\n   */\n  settings: SubscribableSignalLike<ExtensionSettings>;\n\n  /**\n   * Displays brief, non-blocking messages at the bottom of the page to confirm actions or report errors. Use noun + past tense verb format (for example, `Changes saved`). For persistent messages, use a [Banner](/docs/api/customer-account-ui-extensions/{API_VERSION}/ui-components/feedback-and-status-indicators/banner) component instead.\n   */\n  toast: ToastApi;\n\n  /**\n   * Queries the [Storefront GraphQL API](/docs/api/storefront) directly from your extension using a prefetched token. Use this to fetch product data, collection details, or other storefront information without routing requests through your app backend.\n   *\n   * Requires the [`api_access` capability](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access).\n   */\n  query: <Data = unknown, Variables = {[key: string]: unknown}>(\n    query: string,\n    options?: {variables?: Variables; version?: StorefrontApiVersion},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n\n  /**\n   * The buyer's current privacy consent settings, including their consent decisions for analytics, marketing, and data sale, whether a consent banner should be displayed, and whether the buyer is in a region that requires specific opt-out controls. Use this to read the buyer's consent state and determine how to display privacy-related UI.\n   */\n  customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;\n\n  /**\n   * Applies updated tracking consent preferences for the buyer, including their decisions for analytics, marketing, and data sale, along with any custom tracking consent [metafields](/docs/apps/build/custom-data/metafields). Returns a promise that resolves with the result of the consent update.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  applyTrackingConsentChange: ApplyTrackingConsentChangeType;\n}"
+      "value": "export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {\n  /**\n   * The identifier that specifies where in Shopify’s UI your code is being\n   * injected. This will be one of the [targets](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#targets) you have included in your\n   * extension’s configuration file. For more information, refer to the [extension targets overview](/docs/api/customer-account-ui-extensions/{API_VERSION}/extension-targets-overview).\n   *\n   * @example 'customer-account.order-status.block.render'\n   *\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: Target;\n\n  /**\n   * Metadata about the extension, including its target, version, and editor context. Use this to conditionally render content based on where the extension is running.\n   */\n  extension: Extension;\n\n  /**\n   * The logged-in customer's account information, including their customer ID and B2B company details. Use this to personalize your extension based on who is viewing the page.\n   */\n  authenticatedAccount: AuthenticatedAccount;\n\n  /**\n   * The API version your extension is running against. Use this to conditionally enable features or handle breaking changes when your extension supports multiple API versions.\n   *\n   * @example 'unstable'\n   */\n  version: Version;\n\n  /**\n   * The buyer's language, country, and locale context. Use this to adapt your extension to the buyer's region and display localized content.\n   */\n  localization: Localization;\n\n  /**\n   * Utilities for translating strings, formatting currencies, numbers, and dates according to the buyer's locale. Use this alongside `localization` to build fully localized extensions.\n   */\n  i18n: I18n;\n\n  /**\n   * Key-value storage that persists across customer sessions for this extension target. Use this to store preferences, dismiss states, or cached data without requiring a backend call.\n   */\n  storage: Storage;\n\n  /**\n   * Authenticates requests between your extension and your app backend. Call `get()` to retrieve a signed JWT containing the customer ID, shop domain, and expiration time, then verify it server-side. For more information, refer to the [Session Token API](/docs/api/customer-account-ui-extensions/{API_VERSION}/target-apis/platform-apis/session-token-api).\n   */\n  sessionToken: SessionToken;\n\n  /**\n   * Reports events to Shopify for this app.\n   */\n  appEvents: AppEvents;\n\n  /**\n   * Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use `publish()` to emit events and `visitor()` to submit visitor data.\n   *\n   * > Note: Requires [connecting a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages.\n   */\n  analytics: Analytics;\n\n  /**\n   * Invokes built-in Shopify workflows for managing customer account resources. Use intents to trigger native modals and flows, such as replacing a payment method on a subscription contract, without building the UI yourself.\n   */\n  intents: Intents;\n\n  /**\n   * Merchant-defined configuration values for your extension, as specified in the [settings definition](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#settings-definition) of your `shopify.extension.toml` file. Settings update in real time as merchants edit them in the extension editor. The value is empty until a merchant sets it.\n   */\n  settings: SubscribableSignalLike<ExtensionSettings>;\n\n  /**\n   * Displays brief, non-blocking messages at the bottom of the page to confirm actions or report errors. Use noun + past tense verb format (for example, `Changes saved`). For persistent messages, use a [Banner](/docs/api/customer-account-ui-extensions/{API_VERSION}/ui-components/feedback-and-status-indicators/banner) component instead.\n   */\n  toast: ToastApi;\n\n  /**\n   * Queries the [Storefront GraphQL API](/docs/api/storefront) directly from your extension using a prefetched token. Use this to fetch product data, collection details, or other storefront information without routing requests through your app backend.\n   *\n   * Requires the [`api_access` capability](/docs/api/customer-account-ui-extensions/{API_VERSION}/configuration#api-access).\n   */\n  query: <Data = unknown, Variables = {[key: string]: unknown}>(\n    query: string,\n    options?: {variables?: Variables; version?: StorefrontApiVersion},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n\n  /**\n   * The buyer's current privacy consent settings, including their consent decisions for analytics, marketing, and data sale, whether a consent banner should be displayed, and whether the buyer is in a region that requires specific opt-out controls. Use this to read the buyer's consent state and determine how to display privacy-related UI.\n   */\n  customerPrivacy: SubscribableSignalLike<CustomerPrivacy>;\n\n  /**\n   * Applies updated tracking consent preferences for the buyer, including their decisions for analytics, marketing, and data sale, along with any custom tracking consent [metafields](/docs/apps/build/custom-data/metafields). Returns a promise that resolves with the result of the consent update.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires the [`collect_buyer_consent` capability](/docs/apps/build/customer-accounts/capabilities#collect-buyer-consent) and access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data).\n   */\n  applyTrackingConsentChange: ApplyTrackingConsentChangeType;\n}"
     }
   },
   "Analytics": {
@@ -1303,6 +1310,46 @@
         }
       ],
       "value": "export interface VisitorError {\n  /**\n   * Indicates that the visitor information is invalid and wasn't submitted.\n   * Examples are using the wrong data type or missing a required property.\n   */\n  type: 'error';\n\n  /**\n   * A message that explains the error. This message is useful for debugging.\n   * It's not localized, and therefore shouldn't be presented directly\n   * to the buyer.\n   */\n  message: string;\n}"
+    }
+  },
+  "AppEvents": {
+    "src/surfaces/checkout/api/standard/standard.ts": {
+      "filePath": "src/surfaces/checkout/api/standard/standard.ts",
+      "name": "AppEvents",
+      "description": "Reports events to Shopify for this app.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/api/standard/standard.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "emit",
+          "value": "(eventHandle: string, attributes?: AppEventAttributes) => Promise<AppEventEmitResult>",
+          "description": "Reports one occurrence of an app-defined event.",
+          "defaultValue": "{}"
+        }
+      ],
+      "value": "export interface AppEvents {\n  /**\n   * Reports one occurrence of an app-defined event.\n   *\n   * @param eventHandle The app-defined event name.\n   * @param attributes Attributes related to this event.\n   *   @default {}\n   * @returns A promise that resolves with the outcome once the host has\n   *   handled the call.\n   */\n  emit(\n    eventHandle: string,\n    attributes?: AppEventAttributes,\n  ): Promise<AppEventEmitResult>;\n}"
+    }
+  },
+  "AppEventAttributes": {
+    "src/surfaces/checkout/api/standard/standard.ts": {
+      "filePath": "src/surfaces/checkout/api/standard/standard.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventAttributes",
+      "value": "Record<string, AppEventAttributeValue>",
+      "description": "Attributes related to an app event.",
+      "isPublicDocs": true,
+      "members": []
+    }
+  },
+  "AppEventEmitResult": {
+    "src/surfaces/checkout/api/standard/standard.ts": {
+      "filePath": "src/surfaces/checkout/api/standard/standard.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventEmitResult",
+      "value": "{readonly success: true} | {readonly success: false; readonly error: string}",
+      "description": "The outcome of an `emit` call.\n\n`success: true` means the host accepted the event. It does not confirm delivery.\n\n`success: false` means the event was not sent. `error` describes why.",
+      "isPublicDocs": true
     }
   },
   "ApplyTrackingConsentChangeType": {
@@ -21667,6 +21714,24 @@
       "value": "export interface Docs_Standard_AnalyticsApi\n  extends Pick<StandardApi<any>, 'analytics'> {}"
     }
   },
+  "Docs_Standard_AppEventsApi": {
+    "src/surfaces/customer-account/api/docs.ts": {
+      "filePath": "src/surfaces/customer-account/api/docs.ts",
+      "name": "Docs_Standard_AppEventsApi",
+      "description": "The base API object provided to all `customer-account` extension targets for reporting app events.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events to Shopify for this app."
+        }
+      ],
+      "value": "export interface Docs_Standard_AppEventsApi\n  extends Pick<StandardApi<any>, 'appEvents'> {}"
+    }
+  },
   "Docs_Standard_SettingsApi": {
     "src/surfaces/customer-account/api/docs.ts": {
       "filePath": "src/surfaces/customer-account/api/docs.ts",
@@ -21777,6 +21842,13 @@
           "name": "analytics",
           "value": "Analytics",
           "description": "Tracks custom events and sends visitor information to [web pixels](/docs/apps/build/marketing-analytics/pixels). Use `publish()` to emit events and `visitor()` to submit visitor data.\n\n> Note: Requires [connecting a third-party domain](https://help.shopify.com/en/manual/domains/add-a-domain/connecting-domains/connect-domain-customer-account) to Shopify for your customer account pages."
+        },
+        {
+          "filePath": "src/surfaces/customer-account/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events to Shopify for this app."
         },
         {
           "filePath": "src/surfaces/customer-account/api/docs.ts",

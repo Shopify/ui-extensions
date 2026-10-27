@@ -276,6 +276,13 @@ export interface Docs_Standard_AnalyticsApi
   extends Pick<StandardApi<any>, 'analytics'> {}
 
 /**
+ * The base API object provided to all `customer-account` extension targets for reporting app events.
+ * @publicDocs
+ */
+export interface Docs_Standard_AppEventsApi
+  extends Pick<StandardApi<any>, 'appEvents'> {}
+
+/**
  * The base API object provided to all `customer-account` extension targets for interacting with extension settings.
  * @publicDocs
  */

@@ -335,6 +335,7 @@ const COMPOSITE_API_DECOMPOSITION = {
   StandardApi: [
     'AddressesApi',
     'AnalyticsApi',
+    'AppEventsApi',
     'AttributesApi',
     'BuyerIdentityApi',
     'BuyerJourneyApi',
@@ -370,6 +371,7 @@ const COMPOSITE_API_DECOMPOSITION = {
   AddressAutocompleteStandardApi: [
     'AddressesApi',
     'AnalyticsApi',
+    'AppEventsApi',
     'AttributesApi',
     'CheckoutTokenApi',
     'ExtensionApi',
