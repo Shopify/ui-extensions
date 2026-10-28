@@ -205,7 +205,7 @@ export interface ProductVariant {
  */
 export interface ProductVariantBarcode {
   /**
-   * The barcode value as a string.
+   * The barcode value.
    */
   value: string;
 }
