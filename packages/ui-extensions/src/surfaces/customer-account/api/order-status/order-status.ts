@@ -89,6 +89,7 @@ export interface AppMetafieldEntryTarget {
    * - `'company'`: A B2B company associated with the order.
    * - `'companyLocation'`: A location belonging to a B2B company.
    * - `'cart'`: The cart associated with the order.
+   * - `'order'`: The order.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company`, or `companyLocation`.
    */
