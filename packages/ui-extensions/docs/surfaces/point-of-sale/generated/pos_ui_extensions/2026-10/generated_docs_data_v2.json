@@ -4140,38 +4140,6 @@
       "value": "export interface CashTrackingSessionCompleteEvent\n  extends CashTrackingSessionEvent {\n  /** ISO 8601 timestamp when the session was closed. */\n  readonly closingTime: string;\n}"
     }
   },
-  "ScanEvent": {
-    "src/surfaces/point-of-sale/events/scan-event.ts": {
-      "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
-      "name": "ScanEvent",
-      "description": "Dispatched once for each successful scan captured by a camera, external, or embedded scanner. Every event carries a decoded `data` value and its `source`; no event is dispatched for initial or empty scanner state.\n\nThe event is delivered only after POS has finished handling the scan itself.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "data",
-          "value": "string",
-          "description": "The decoded string captured by the scan. Contains the scanned barcode, QR code, or other scannable data. Always present: an event is only dispatched for a successful scan."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "source",
-          "value": "ScannerSource",
-          "description": "The scanner source that captured the scan. One of the following scanner types:\n\n• `'camera'` - Built-in device camera used for scanning • `'external'` - External scanner hardware connected to the device • `'embedded'` - Embedded scanner hardware built into the device"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events/scan-event.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "type",
-          "value": "'scan'",
-          "description": "The event name."
-        }
-      ],
-      "value": "export interface ScanEvent {\n  /** The event name. */\n  readonly type: 'scan';\n  /**\n   * The decoded string captured by the scan. Contains the scanned barcode, QR code, or other scannable data. Always present: an event is only dispatched for a successful scan.\n   */\n  readonly data: string;\n  /**\n   * The scanner source that captured the scan. One of the following scanner types:\n   *\n   * • `'camera'` - Built-in device camera used for scanning\n   * • `'external'` - External scanner hardware connected to the device\n   * • `'embedded'` - Embedded scanner hardware built into the device\n   */\n  readonly source: ScannerSource;\n}"
-    }
-  },
   "ShopifyEventMap": {
     "src/surfaces/point-of-sale/events.ts": {
       "filePath": "src/surfaces/point-of-sale/events.ts",
@@ -4196,19 +4164,12 @@
         {
           "filePath": "src/surfaces/point-of-sale/events.ts",
           "syntaxKind": "PropertySignature",
-          "name": "scan",
-          "value": "ScanEvent",
-          "description": "Dispatched once for each successful scan captured by a camera, external, or embedded scanner, after POS has finished handling the scan itself. Every event carries decoded `data` and its `source`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/events.ts",
-          "syntaxKind": "PropertySignature",
           "name": "transactioncomplete",
           "value": "TransactionCompleteEvent",
           "description": "Dispatched when a sale, return, or exchange transaction completes. Narrow on `transactionType` to access per-type fields."
         }
       ],
-      "value": "export interface ShopifyEventMap {\n  /**\n   * Dispatched when a sale, return, or exchange transaction completes.\n   * Narrow on `transactionType` to access per-type fields.\n   */\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  /** Dispatched when a cash tracking session opens. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  /** Dispatched when a cash tracking session closes after reconciliation. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n  /**\n   * Dispatched once for each successful scan captured by a camera, external,\n   * or embedded scanner, after POS has finished handling the scan itself.\n   * Every event carries decoded `data` and its `source`.\n   */\n  [POS_EVENT_NAMES.SCAN]: ScanEvent;\n}"
+      "value": "export interface ShopifyEventMap {\n  /**\n   * Dispatched when a sale, return, or exchange transaction completes.\n   * Narrow on `transactionType` to access per-type fields.\n   */\n  [POS_EVENT_NAMES.TRANSACTION_COMPLETE]: TransactionCompleteEvent;\n  /** Dispatched when a cash tracking session opens. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_START]: CashTrackingSessionStartEvent;\n  /** Dispatched when a cash tracking session closes after reconciliation. */\n  [POS_EVENT_NAMES.CASH_TRACKING_SESSION_COMPLETE]: CashTrackingSessionCompleteEvent;\n}"
     }
   },
   "ShopifyInterceptMap": {
