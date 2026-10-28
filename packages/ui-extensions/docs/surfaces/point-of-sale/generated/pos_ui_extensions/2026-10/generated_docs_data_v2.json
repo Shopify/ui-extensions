@@ -3714,9 +3714,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3857,9 +3873,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -3998,9 +4030,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/events/transaction-complete-event.ts",
@@ -9545,9 +9593,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/SaleTransactionData.ts",
@@ -9691,9 +9755,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReturnTransactionData.ts",
@@ -9836,9 +9916,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ExchangeTransactionData.ts",
@@ -9998,9 +10094,25 @@
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
           "syntaxKind": "PropertySignature",
+          "name": "sourceIdentifier",
+          "value": "string",
+          "description": "The source identifier POS assigned to this transaction. Matches the `sourceIdentifier` of the order this transaction belongs to. Returns `undefined` when POS didn't assign one.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
           "name": "subtotal",
           "value": "Money",
           "description": "The subtotal amount before taxes and after discounts are applied, as a `Money` object. This represents the sum of all line item prices (quantity × unit price) minus any discounts, but before tax is added. This is the taxable base amount for most tax calculations."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxesIncluded",
+          "value": "boolean",
+          "description": "Whether the prices in this transaction include taxes (tax-inclusive pricing), rather than taxes being added on top. Matches the `taxesIncluded` field on the `Order` object in the GraphQL Admin API. Returns `undefined` when this information isn't available.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/event/data/ReprintReceiptData.ts",
