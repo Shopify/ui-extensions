@@ -149,7 +149,7 @@ export interface ProductVariant {
   barcode?: string;
   /**
    * All barcodes assigned to the variant, up to 20 values. The primary barcode is first when present, followed by the remaining values sorted case-insensitively. Empty values and case-insensitive duplicates are excluded. Returns an empty array when the variant has no barcodes.
-   * @example [{value: '012345678905'}, {value: 'SECONDARY'}]
+   * @example [{value: '012345678905'}, {value: 'ADDITIONAL'}]
    */
   barcodes: ProductVariantBarcode[];
   /**
