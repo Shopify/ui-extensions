@@ -32,7 +32,7 @@ export interface PaginationParams {
  */
 export interface ProductSearchParams extends PaginationParams {
   /**
-   * The search term to be used to search for POS products.
+   * Matches product text and all barcodes assigned to a variant.
    */
   queryString?: string;
   /**
