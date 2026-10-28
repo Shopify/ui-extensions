@@ -8,7 +8,9 @@
   "changesets": [
     "app-events-checkout-customer-account",
     "pos-cash-tendered-docs",
+    "pos-product-variant-barcodes",
     "pos-storage-read-only-key",
+    "pos-transaction-source-identifier-taxes-included",
     "rc-2027-01-release"
   ]
 }
