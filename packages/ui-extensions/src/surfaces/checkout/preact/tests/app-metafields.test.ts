@@ -59,6 +59,24 @@ describe('useAppMetafields', () => {
     expect(value).toMatchObject([productEntry]);
   });
 
+  it('returns filtered app metafield entries for an order', () => {
+    const orderEntry = {
+      target: {id: 'gid://shopify/Order/123', type: 'order' as const},
+      metafield: createMetafield(),
+    };
+    setupGlobalShopifyMock({
+      appMetafields: createMockSubscribableSignalLike([
+        productEntry,
+        orderEntry,
+        variantEntry,
+      ]),
+    });
+
+    const {value} = mount.hook(() => useAppMetafields({type: 'order'}));
+
+    expect(value).toMatchObject([orderEntry]);
+  });
+
   it('returns filtered app metafield entry based on id', () => {
     const testId = faker.string.uuid();
     const newEntry = {
