@@ -143,6 +143,7 @@ export type {PaginatedResult} from './types/paginated-result';
 export type {
   Product,
   ProductVariant,
+  ProductVariantBarcode,
   ProductVariantOption,
   ProductVariantInventoryPolicy,
   ProductOption,

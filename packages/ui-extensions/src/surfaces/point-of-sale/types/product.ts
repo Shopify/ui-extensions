@@ -143,9 +143,15 @@ export interface ProductVariant {
    */
   sku?: string;
   /**
-   * The variant's barcode identifier, if configured. Returns `undefined` when no barcode is set. Use for barcode scanning functionality, inventory tracking, or integration with barcode-based systems.
+   * The variant's primary barcode, if configured. Returns `undefined` when no primary barcode is set.
+   * @deprecated As of API version 2027-01. Use `barcodes` instead to access all barcodes assigned to the variant.
    */
   barcode?: string;
+  /**
+   * All barcodes assigned to the variant, up to 20 values. The primary barcode is first when present, followed by the remaining values sorted case-insensitively. Empty values and case-insensitive duplicates are excluded. Returns an empty array when the variant has no barcodes.
+   * @example [{value: '012345678905'}, {value: 'SECONDARY'}]
+   */
+  barcodes: ProductVariantBarcode[];
   /**
    * The variant's formatted display name for user interfaces. This may differ from the title and is optimized for display purposes. Use for customer-facing variant names in product listings, cart items, or receipt displays.
    */
@@ -190,6 +196,17 @@ export interface ProductVariant {
    * The variant's position order within the product's variant list. Use for maintaining consistent variant ordering in selection interfaces or implementing custom variant sorting logic.
    */
   position: number;
+}
+
+/**
+ * Represents a barcode assigned to a product variant.
+ * @publicDocs
+ */
+export interface ProductVariantBarcode {
+  /**
+   * The barcode value as a string. Leading zeros are preserved.
+   */
+  value: string;
 }
 
 /**
