@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.2
+
+### Minor Changes
+
+- [#4775](https://github.com/Shopify/ui-extensions/pull/4775) [`ab3b9c1`](https://github.com/Shopify/ui-extensions/commit/ab3b9c13274af22610610f93ac62e26fadc763ce) Thanks [@vctrchu](https://github.com/vctrchu)! - Add `ProductVariant.barcodes` to the POS Product Search API and deprecate `barcode`. Product search matches primary and additional barcodes.
+
+- [#4776](https://github.com/Shopify/ui-extensions/pull/4776) [`b246415`](https://github.com/Shopify/ui-extensions/commit/b246415ee31f677a2b6864b7102454c370c72877) Thanks [@vctrchu](https://github.com/vctrchu)! - Add optional `sourceIdentifier` and `taxesIncluded` to POS transaction-complete payload types.
+
 ## 2027.1.0-rc.1
 
 ### Minor Changes
