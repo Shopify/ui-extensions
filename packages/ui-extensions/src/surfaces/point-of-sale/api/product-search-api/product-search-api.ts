@@ -32,7 +32,7 @@ export interface PaginationParams {
  */
 export interface ProductSearchParams extends PaginationParams {
   /**
-   * The search term used to find POS products. Matches product text and primary or additional variant barcodes.
+   * Matches product text and all barcodes assigned to a variant.
    */
   queryString?: string;
   /**
@@ -48,7 +48,6 @@ export interface ProductSearchParams extends PaginationParams {
 export interface ProductSearchApiContent {
   /**
    * Searches for products on the POS device using text queries and sorting options. Returns paginated results with up to 50 products per page. When a query string is provided, results are sorted by relevance. Use for implementing custom search interfaces, product discovery features, or filtered product listings.
-   * Barcode queries can match any barcode assigned to a product variant, including additional barcodes.
    *
    * @param searchParams The parameters for the product search.
    */
