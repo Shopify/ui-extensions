@@ -248,11 +248,11 @@ export interface AppMetafieldEntryTarget {
    * - `'customer'`: The customer who placed the order.
    * - `'product'`: A product in the merchant's catalog.
    * - `'shop'`: The merchant's shop.
-   * - `'shopUser'`: A staff member or collaborator account on the shop.
    * - `'variant'`: A specific variant of a product.
    * - `'company'`: A [B2B](https://shopify.dev/docs/apps/build/b2b) company associated with the order.
    * - `'companyLocation'`: A location belonging to a [B2B](https://shopify.dev/docs/apps/build/b2b) company.
    * - `'cart'`: The cart associated with the checkout.
+   * - `'order'`: The order.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
@@ -264,7 +264,8 @@ export interface AppMetafieldEntryTarget {
     | 'variant'
     | 'company'
     | 'companyLocation'
-    | 'cart';
+    | 'cart'
+    | 'order';
 
   /**
    * The globally-unique identifier of the Shopify resource, in [GID](https://shopify.dev/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the [Storefront API](https://shopify.dev/docs/api/storefront).
@@ -615,8 +616,8 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The metafields requested in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration)
-   * file. These metafields are updated when there's a change in the merchandise items
-   * being purchased by the customer.
+   * file. These metafields update reactively when the merchandise items
+   * in the cart change.
    *
    * App owned metafields are supported and are returned using the `$app` format. The fully qualified reserved namespace format such as `app--{your-app-id}[--{optional-namespace}]` isn't supported. See [app owned metafields](https://shopify.dev/docs/apps/build/custom-data/ownership#reserved-prefixes) for more information.
    *
