@@ -153,6 +153,8 @@ export interface ReturnLineItem {
    * A read-only snapshot of the original order line item, including its variant and product IDs, SKU, and properties when POS has them. Its `metafields` are an empty array in the returns and exchanges pilot until the supporting read data exists.
    *
    * `lineItem.quantity` is the quantity ordered on the original order line. It's `undefined` when POS doesn't know it, for example on a return that POS restored from older data stored on the device. It's never the selected quantity and never the quantity that remains refundable, so check for `undefined` before using it.
+   *
+   * `lineItem.price` is the original unit price after the line's line-level discounts, and `lineItem.discounts` lists those discounts for information only. They're already included in `price`, so don't subtract them again. A `'FixedAmount'` discount's `amount` is per unit: multiply it by a quantity, such as `quantity`, and round to the currency's precision to get a total. The exception is a discount code: it's listed in `lineItem.discounts`, but `price` doesn't include it. Order-level discounts aren't exposed. `lineItem.discounts` is also empty on a return that POS restored from data that an older POS version saved, so an empty array doesn't always mean that the line had no discounts.
    */
   lineItem: Omit<LineItem, 'quantity'> & {quantity?: number};
 }
