@@ -158,7 +158,7 @@ export interface ReturnLineItem {
 }
 
 /**
- * A return reason that's selected in native POS.
+ * A return reason that's selected in native POS, from Shopify's return reason library.
  * @publicDocs
  */
 export interface ReturnReason {
@@ -166,6 +166,10 @@ export interface ReturnReason {
    * The ID of the return reason definition.
    */
   id: number;
+  /**
+   * The handle of the return reason definition, such as `damaged-or-defective`: the reason's stable key in Shopify's return reason library. An empty string when POS couldn't resolve the reason, on a cart that an older POS version saved or when looking up the reason failed while POS restored a saved cart.
+   */
+  handle: string;
   /**
    * The display name of the return reason.
    */
