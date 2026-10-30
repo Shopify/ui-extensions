@@ -222,11 +222,10 @@ export type CartMethodCapability =
  * Why a Cart API method is unavailable. Each unavailable method has one reason. Reasons that last come before reasons that clear on their own. More values can be added later, so treat an unknown value as unavailable.
  *
  * - `'REQUIRES_NEWER_POS'`: The running POS version doesn't support this method for the cart.
- * - `'UNSUPPORTED_IN_CART'`: This method isn't supported for this type of cart.
- * - `'ORDER_NOT_EXCHANGEABLE'`: The original order can't be exchanged.
- * - `'CART_LOCKED'`: The cart is locked and can't be changed right now.
- * - `'LOADING'`: The cart is still loading.
- * - `'UNKNOWN'`: POS can't determine why the method is unavailable.
+ * - `'UNSUPPORTED_IN_CART'`: This type of cart doesn't support the method, such as a method that only a `'Checkout'` cart supports, like `bulkCartUpdate`, in a return or exchange, or a method for exchange line items, like `removeLineItem`, in a `'Return'`. Every method reports it in an `'Unsupported'` cart while native POS is in a flow that extensions can't read or edit.
+ * - `'ORDER_NOT_EXCHANGEABLE'`: The original order can't be exchanged. Only `addLineItem` and `addCustomSale` report it.
+ * - `'CART_LOCKED'`: The return or exchange can't be changed right now, because POS is processing its payment or refund or the sale is complete. `setCustomer` and `removeCustomer` also report it when the cart's customer comes from the original order, which can't be replaced or removed. A call that's made while POS restores a saved cart is rejected as `CART_LOCKED` too.
+ * - `'UNKNOWN'`: POS can't determine whether the method is available, or why it isn't. For example, `addLineItem` and `addCustomSale` report it when POS doesn't know whether the original order can be exchanged.
  *
  * Staff permissions aren't a reason: availability doesn't reflect them.
  * @publicDocs
@@ -236,7 +235,6 @@ export type CartCapabilityReason =
   | 'UNSUPPORTED_IN_CART'
   | 'ORDER_NOT_EXCHANGEABLE'
   | 'CART_LOCKED'
-  | 'LOADING'
   | 'UNKNOWN';
 
 /**
