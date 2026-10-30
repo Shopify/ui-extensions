@@ -89,7 +89,7 @@ export type Cart = CartBase &
          * The original order and the items selected for return. Only present when `cartType` is `'Return'` or `'Exchange'`.
          */
         return: {
-          /** The original order being returned against. Its `id` and `name` can each be `undefined` when POS doesn't know them. */
+          /** The original order being returned against. Its `name` is an empty string when POS doesn't know it. */
           order: OriginalOrder;
           /** The items selected for return in native POS. Staff choose which items and how many to return in native POS; extensions can read the selection but can't change it. */
           lineItems: ReturnLineItem[];
@@ -111,10 +111,10 @@ export type Cart = CartBase &
 export type CartType = NonNullable<Cart['cartType']>;
 
 /**
- * The original order reference available during a return or exchange. Contains the order `id` and `name`. Each can be `undefined` when POS doesn't know it, for example while POS is still loading the order, or `name` on a return that POS restored from older data stored on the device. Check each before using it.
+ * The original order reference available during a return or exchange. Contains the order `id` and `name`. `name` is an empty string when POS doesn't know it, for example on a return that POS restored from older data stored on the device.
  * @publicDocs
  */
-export type OriginalOrder = Partial<Pick<OrderApiContent, 'id' | 'name'>>;
+export type OriginalOrder = Pick<OrderApiContent, 'id' | 'name'>;
 
 /**
  * An item selected for return in native POS. This is a read-only snapshot: staff choose which items and how many to return in native POS, and the reason, note, and restock values are read from native POS. Returned items are listed separately from `cart.lineItems`, and their `uuid` values don't identify exchange line items.
