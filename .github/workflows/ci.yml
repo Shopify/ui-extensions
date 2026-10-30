@@ -95,3 +95,9 @@ jobs:
       - id: test-build
         name: Build docs locally to ensure they can be built in CI
         run: yarn docs:admin
+
+      - name: Build and validate Customer Account docs
+        run: |
+          docs_root="$(mktemp -d "${RUNNER_TEMP}/customer-account-docs.XXXXXX")"
+          mkdir -p "$docs_root/areas/platforms/shopify-dev"
+          SHOPIFY_DEV_PATH="$docs_root" yarn docs:customer-account
