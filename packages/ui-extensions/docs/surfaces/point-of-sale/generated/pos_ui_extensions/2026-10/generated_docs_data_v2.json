@@ -8674,7 +8674,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "Page",
-      "description": "Provides the top-level page layout for extension content.",
+      "description": "Provides the top-level page layout for extension content.\n\nAs of API version `2027-01`, the page insets its content so that it lines up with the rest of the POS interface. Earlier versions render content flush to the edges of the page.",
       "isPublicDocs": true,
       "members": [
         {
@@ -8697,22 +8697,13 @@
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
-          "name": "padding",
-          "value": "'base' | 'none'",
-          "description": "Adjust the padding of the page content.\n\n- `base`: applies the default page padding.\n- `none`: removes the padding so content can span to the edges of the page.",
-          "isOptional": true,
-          "defaultValue": "'base'"
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/components.ts",
-          "syntaxKind": "PropertySignature",
           "name": "subheading",
           "value": "string",
           "description": "A secondary page heading, displayed under the main heading in the action bar.",
           "isOptional": true
         }
       ],
-      "value": "interface Page {\n  /**\n   * The main page heading, displayed in the action bar at the top of the page.\n   * @default : ''\n   */\n  heading?: string;\n  /** A secondary page heading, displayed under the main heading in the action bar. */\n  subheading?: string;\n  /**\n   * Adjust the padding of the page content.\n   *\n   * - `base`: applies the default page padding.\n   * - `none`: removes the padding so content can span to the edges of the page.\n   * @default 'base'\n   */\n  padding?: 'base' | 'none';\n  /** A unique identifier for the element. */\n  id?: string;\n}"
+      "value": "interface Page {\n  /**\n   * The main page heading, displayed in the action bar at the top of the page.\n   * @default : ''\n   */\n  heading?: string;\n  /** A secondary page heading, displayed under the main heading in the action bar. */\n  subheading?: string;\n  /** A unique identifier for the element. */\n  id?: string;\n}"
     }
   },
   "PosBlockSlots": {

@@ -1,5 +1,5 @@
 ---
-'@shopify/ui-extensions': minor
+'@shopify/ui-extensions': patch
 ---
 
-Add an optional `padding` prop (`'base' | 'none'`, default `'base'`) to the POS `s-page` component types.
+Document that the POS `s-page` component insets its content as of API version `2027-01`.

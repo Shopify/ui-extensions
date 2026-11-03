@@ -4395,15 +4395,6 @@ interface PageJSXProps extends Pick<PageProps, 'id'> {
    */
   subheading?: PageProps['subheading'];
   /**
-   * Adjust the padding of the page content.
-   *
-   * - `base`: applies the default page padding.
-   * - `none`: removes the padding so content can span to the edges of the page.
-   *
-   * @default 'base'
-   */
-  padding?: 'base' | 'none';
-  /**
    * Button element to display in the action bar. Only a single button is supported.
    */
   secondaryActions?: ComponentChild;
@@ -7357,6 +7348,9 @@ interface PageSlots {
 
 /**
  * Provides the top-level page layout for extension content.
+ *
+ * As of API version `2027-01`, the page insets its content so that it lines up with the rest of
+ * the POS interface. Earlier versions render content flush to the edges of the page.
  * @publicDocs
  */
 interface Page {
@@ -7367,14 +7361,6 @@ interface Page {
   heading?: string;
   /** A secondary page heading, displayed under the main heading in the action bar. */
   subheading?: string;
-  /**
-   * Adjust the padding of the page content.
-   *
-   * - `base`: applies the default page padding.
-   * - `none`: removes the padding so content can span to the edges of the page.
-   * @default 'base'
-   */
-  padding?: 'base' | 'none';
   /** A unique identifier for the element. */
   id?: string;
 }
