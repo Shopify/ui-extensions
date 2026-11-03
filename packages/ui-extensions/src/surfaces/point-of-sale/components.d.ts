@@ -4395,6 +4395,15 @@ interface PageJSXProps extends Pick<PageProps, 'id'> {
    */
   subheading?: PageProps['subheading'];
   /**
+   * Adjust the padding of the page content.
+   *
+   * - `base`: applies the default page padding.
+   * - `none`: removes the padding so content can span to the edges of the page.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
+  /**
    * Button element to display in the action bar. Only a single button is supported.
    */
   secondaryActions?: ComponentChild;
@@ -7358,6 +7367,14 @@ interface Page {
   heading?: string;
   /** A secondary page heading, displayed under the main heading in the action bar. */
   subheading?: string;
+  /**
+   * Adjust the padding of the page content.
+   *
+   * - `base`: applies the default page padding.
+   * - `none`: removes the padding so content can span to the edges of the page.
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
   /** A unique identifier for the element. */
   id?: string;
 }

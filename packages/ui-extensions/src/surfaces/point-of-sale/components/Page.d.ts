@@ -63,6 +63,15 @@ export interface PageJSXProps extends Pick<PageProps, 'id'> {
    */
   subheading?: PageProps['subheading'];
   /**
+   * Adjust the padding of the page content.
+   *
+   * - `base`: applies the default page padding.
+   * - `none`: removes the padding so content can span to the edges of the page.
+   *
+   * @default 'base'
+   */
+  padding?: 'base' | 'none';
+  /**
    * A button element to display in the action bar. Only a single button is supported. Use the `slot="secondary-actions"` attribute to place content in this area.
    */
   secondaryActions?: ComponentChild;
