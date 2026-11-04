@@ -7348,6 +7348,9 @@ interface PageSlots {
 
 /**
  * Provides the top-level page layout for extension content.
+ *
+ * As of API version `2027-01`, the page insets its content so that it lines up with the rest of
+ * the POS interface. Earlier versions render content flush to the edges of the page.
  * @publicDocs
  */
 interface Page {

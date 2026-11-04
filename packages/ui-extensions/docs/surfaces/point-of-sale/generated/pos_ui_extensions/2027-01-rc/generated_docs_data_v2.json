@@ -8712,7 +8712,7 @@
     "src/surfaces/point-of-sale/components.ts": {
       "filePath": "src/surfaces/point-of-sale/components.ts",
       "name": "Page",
-      "description": "Provides the top-level page layout for extension content.",
+      "description": "Provides the top-level page layout for extension content.\n\nAs of API version `2027-01`, the page insets its content so that it lines up with the rest of the POS interface. Earlier versions render content flush to the edges of the page.",
       "isPublicDocs": true,
       "members": [
         {
