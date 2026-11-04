@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.10.3
+
+### Patch Changes
+
+- [#4771](https://github.com/Shopify/ui-extensions/pull/4771) [`2e47423`](https://github.com/Shopify/ui-extensions/commit/2e4742323640940dd29650754cb4e0e14dd2d6c5) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Remove the POS background `scan` event from 2026-10. POS doesn't dispatch it in this version, so `POS_EVENT_NAMES.SCAN`, `ScanEvent` and the `scan` entry in `ShopifyEventMap` are removed. The event is planned for 2027-01.
+
 ## 2026.10.2
 
 ### Patch Changes
