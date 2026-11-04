@@ -21,7 +21,7 @@ jobs:
             ${{ runner.os }}-typescript-v1-
 
       - name: Type check
-        run: yarn type-check
+        run: pnpm type-check
 
   lint:
     runs-on: ubuntu-latest
@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-eslint-v1-
 
       - name: Lint
-        run: yarn lint
+        run: pnpm lint
 
   test:
     runs-on: ubuntu-latest
@@ -50,7 +50,7 @@ jobs:
       - uses: ./.github/workflows/actions/prepare
 
       - name: Build packages
-        run: yarn build
+        run: pnpm build
 
       # publint checks that every package.json entry point resolves to files
       # that actually ship in the npm tarball; attw checks that types resolve
@@ -60,14 +60,14 @@ jobs:
       # which is pre-existing and harmless for bundled extension code.
       - name: Validate ui-extensions package entry points
         run: |
-          yarn workspace @shopify/ui-extensions package:publint
-          yarn workspace @shopify/ui-extensions package:attw
+          pnpm --filter @shopify/ui-extensions package:publint
+          pnpm --filter @shopify/ui-extensions package:attw
 
       - name: Typecheck ui-extensions-tester (including tests)
-        run: npx tsc --project packages/ui-extensions-tester/tsconfig.typecheck.json
+        run: pnpm exec tsc --project packages/ui-extensions-tester/tsconfig.typecheck.json
 
       - name: Test ui-extensions-tester
-        run: npx loom test --no-watch packages/ui-extensions-tester/
+        run: pnpm test packages/ui-extensions-tester/
 
       - name: Testing example (checkout)
         run: npm install && npm run typecheck && npm test
@@ -94,4 +94,4 @@ jobs:
 
       - id: test-build
         name: Build docs locally to ensure they can be built in CI
-        run: yarn docs:admin
+        run: pnpm docs:admin

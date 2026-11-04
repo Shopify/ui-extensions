@@ -140,7 +140,7 @@ const generateExtensionsDocs = async () => {
 
   if (EXTENSIONS_API_VERSION === 'unstable') {
     console.log(
-      "You can add a calver version argument (e.g. 'yarn docs:admin 2023-07') to generate the docs for a stable version.",
+      "You can add a calver version argument (e.g. 'pnpm docs:admin 2023-07') to generate the docs for a stable version.",
     );
   }
   if (SHOPIFY_DEV_EXTENSIONS_FOLDER) {
@@ -152,7 +152,7 @@ const generateExtensionsDocs = async () => {
   const outputDir = `${docsGeneratedRelativePath}/admin_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn generate-docs --input ./${srcRelativePath} --output ./${outputDir}`,
+    `pnpm exec generate-docs --input ./${srcRelativePath} --output ./${outputDir}`,
   ];
 
   await generateFiles({

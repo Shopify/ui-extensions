@@ -10,10 +10,20 @@ Shopifolk looking to contribute fixes and new features to our UI extension APIs 
 
 ## Development
 
+Use the Node.js version in `.nvmrc` and pnpm pinned in `package.json`. Shopifolk can run `dev up` to set up the toolchain. Otherwise, use `corepack enable` to enable pnpm.
+
+Install dependencies:
+
+```sh
+pnpm install --frozen-lockfile
+```
+
+Commit `pnpm-lock.yaml` when changing dependencies. CI uses frozen installs, so it must stay in sync with the workspace manifests.
+
 Build all libraries:
 
 ```
-yarn build
+pnpm build
 ```
 
 ## Development on ui-extensions-tester
@@ -21,11 +31,11 @@ yarn build
 Run all tests:
 
 ```
-yarn test -- packages/ui-extensions-tester/
+pnpm test packages/ui-extensions-tester/
 ```
 
 For integration, run all example test suites:
 
 ```
-yarn test:example-suites
+pnpm test:example-suites
 ```

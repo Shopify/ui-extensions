@@ -1,0 +1,12 @@
+packages:
+  - 'packages/*'
+
+# Preserve Yarn's linking of matching local workspace dependencies.
+linkWorkspacePackages: true
+
+# Preserve the predeploy hooks used by release and snapshot scripts.
+enablePrePostScripts: true
+
+# core-js only prints a donation banner during postinstall.
+ignoredBuiltDependencies:
+  - core-js

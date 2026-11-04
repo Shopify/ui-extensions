@@ -108,7 +108,7 @@ const generateExtensionsDocs = async () => {
   const outputDir = `${docsGeneratedRelativePath}/pos_ui_extensions/${EXTENSIONS_API_VERSION}`;
 
   const scripts = [
-    `yarn generate-docs --overridePath ./${docsRelativePath}/typeOverride.json --input ./${srcRelativePath} --output ./${outputDir}`,
+    `pnpm exec generate-docs --overridePath ./${docsRelativePath}/typeOverride.json --input ./${srcRelativePath} --output ./${outputDir}`,
   ];
 
   await generateFiles({
