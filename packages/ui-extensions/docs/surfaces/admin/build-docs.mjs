@@ -178,22 +178,6 @@ const generateExtensionsDocs = async () => {
   });
 };
 
-const generateAppBridgeDocs = async () => {
-  console.log('Building App Home docs');
-
-  const outputDir = `${docsGeneratedRelativePath}/app_home`;
-  const scripts = [
-    `yarn generate-docs --input ./${srcRelativePath} --output ./${outputDir}`,
-  ];
-
-  await generateFiles({
-    scripts,
-    outputDir,
-    rootPath,
-    generatedDocsDataV2File,
-  });
-};
-
 try {
   if (existsSync(generatedDocsPath)) {
     await fs.rm(generatedDocsPath, {recursive: true});
@@ -219,7 +203,6 @@ try {
     replaceValue: 'declare const $1: any;',
   });
   await generateExtensionsDocs();
-  await generateAppBridgeDocs();
 
   const adminExtensionsOutput = path.join(
     rootPath,
@@ -227,30 +210,15 @@ try {
     'admin_extensions',
     EXTENSIONS_API_VERSION,
   );
-  const appHomeOutput = path.join(
-    rootPath,
-    docsGeneratedRelativePath,
-    'app_home',
-  );
   const targetsJsonPath = path.join(adminExtensionsOutput, 'targets.json');
   const generatedDocsDataV2Path = path.join(
     adminExtensionsOutput,
     generatedDocsDataV2File,
   );
-  const appHomeGeneratedDocsDataV2Path = path.join(
-    appHomeOutput,
-    generatedDocsDataV2File,
-  );
 
-  await markAdminWebComponentMembersOptional([
-    generatedDocsDataV2Path,
-    appHomeGeneratedDocsDataV2Path,
-  ]);
+  await markAdminWebComponentMembersOptional([generatedDocsDataV2Path]);
 
-  await assertNoDomSurfaceLeak([
-    generatedDocsDataV2Path,
-    appHomeGeneratedDocsDataV2Path,
-  ]);
+  await assertNoDomSurfaceLeak([generatedDocsDataV2Path]);
 
   const appHomeUiExtensionOutput = path.join(
     rootPath,
@@ -270,7 +238,6 @@ try {
   console.log('  Admin extensions:', adminExtensionsOutput);
   console.log('  targets.json:', targetsJsonPath);
   console.log('  generated_docs_data_v2.json:', generatedDocsDataV2Path);
-  console.log('  App Home:', appHomeOutput);
   console.log('  App Home UI extensions:', appHomeUiExtensionOutput);
 
   await copyGeneratedToShopifyDev({
