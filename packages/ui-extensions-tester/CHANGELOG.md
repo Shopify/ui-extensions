@@ -1,5 +1,16 @@
 # @shopify/ui-extensions-tester
 
+## 2027.1.0-rc.3
+
+### Minor Changes
+
+- [#4782](https://github.com/Shopify/ui-extensions/pull/4782) [`9ad9ab0`](https://github.com/Shopify/ui-extensions/commit/9ad9ab0abde705b0e461fde685c064a9522fcb39) Thanks [@fatbattk](https://github.com/fatbattk)! - Add `cart.capabilities` to the POS Cart API so extensions can check which cart methods are available, and deprecate `Cart.editable`. Add `createCartCapabilities` to `@shopify/ui-extensions-tester`.
+
+### Patch Changes
+
+- Updated dependencies [[`9ad9ab0`](https://github.com/Shopify/ui-extensions/commit/9ad9ab0abde705b0e461fde685c064a9522fcb39), [`267fb43`](https://github.com/Shopify/ui-extensions/commit/267fb43e92bd609c1e59159e86e7757a97184c06), [`85257a7`](https://github.com/Shopify/ui-extensions/commit/85257a7224b979531bd56f7e5daa597b118e9ca0)]:
+  - @shopify/ui-extensions@2027.1.0-rc.3
+
 ## 2027.1.0-rc.2
 
 ### Patch Changes

@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.3
+
+### Minor Changes
+
+- [#4782](https://github.com/Shopify/ui-extensions/pull/4782) [`9ad9ab0`](https://github.com/Shopify/ui-extensions/commit/9ad9ab0abde705b0e461fde685c064a9522fcb39) Thanks [@fatbattk](https://github.com/fatbattk)! - Add `cart.capabilities` to the POS Cart API so extensions can check which cart methods are available, and deprecate `Cart.editable`. Add `createCartCapabilities` to `@shopify/ui-extensions-tester`.
+
+- [#4781](https://github.com/Shopify/ui-extensions/pull/4781) [`267fb43`](https://github.com/Shopify/ui-extensions/commit/267fb43e92bd609c1e59159e86e7757a97184c06) Thanks [@fatbattk](https://github.com/fatbattk)! - Add return and exchange carts to the POS Cart API: `cartType`, `cart.return`, and the `CartType`, `Order`, `ReturnLineItem` and `ReturnReason` types. `Cart` is now a union type discriminated by `cartType`. `OrderApiContent` and `DraftOrderApiContent` now extend `Order`.
+
+### Patch Changes
+
+- [#4780](https://github.com/Shopify/ui-extensions/pull/4780) [`85257a7`](https://github.com/Shopify/ui-extensions/commit/85257a7224b979531bd56f7e5daa597b118e9ca0) Thanks [@fatbattk](https://github.com/fatbattk)! - Document that the POS `s-page` component insets its content as of API version `2027-01`.
+
 ## 2027.1.0-rc.2
 
 ### Minor Changes
