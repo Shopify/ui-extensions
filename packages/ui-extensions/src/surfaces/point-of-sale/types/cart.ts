@@ -1,12 +1,12 @@
 import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
 import {DiscountAllocation} from './discount-allocation';
+import type {Order} from './order';
 
 /**
- * Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.
- * @publicDocs
+ * The properties that every cart has.
  */
-export interface Cart {
+interface CartBase {
   /**
    * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.
    */
@@ -44,13 +44,115 @@ export interface Cart {
    */
   customer?: Customer;
   /**
-   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.
+   * The line items in the cart. In a `Return` or `Exchange` cart, these are only the new items in the exchange. The returned items are in `cart.return.lineItems`.
    */
   lineItems: LineItem[];
   /**
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
   properties: Record<string, string>;
+}
+
+/**
+ * Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.
+ *
+ * Check `cartType` to tell a sale from a return or exchange. Return and exchange carts also have `return`, with the original order and the returned items.
+ *
+ * Return and exchange carts are available as of POS version 12.0.0.
+ * @publicDocs
+ */
+export type Cart = CartBase &
+  (
+    | {
+        /**
+         * The kind of cart. Can be `undefined`, for example on an older POS version.
+         */
+        cartType?: 'Checkout' | 'Unsupported';
+      }
+    | {
+        /**
+         * The kind of cart.
+         */
+        cartType: 'Return' | 'Exchange';
+        /**
+         * The original order and the items selected for return.
+         */
+        return: {
+          /** The order that's being returned. Its `name` is empty when POS doesn't know it. */
+          order: Order;
+          /** The items selected for return. */
+          lineItems: ReturnLineItem[];
+        };
+      }
+  );
+
+/**
+ * The kind of cart that a `Cart` represents.
+ *
+ * - `'Checkout'`: A regular sale.
+ * - `'Return'`: A return. The returned items are in `cart.return.lineItems`.
+ * - `'Exchange'`: A return with new items in exchange. The new items are in `cart.lineItems`.
+ * - `'Unsupported'`: A POS flow that extensions don't support. Extensions can't change the cart and shouldn't rely on its contents.
+ * @publicDocs
+ */
+export type CartType = NonNullable<Cart['cartType']>;
+
+/**
+ * An item selected for return. Staff choose the items, quantities, reasons and restocking in POS, so extensions can only read them.
+ * @publicDocs
+ */
+export interface ReturnLineItem {
+  /**
+   * Identifies the returned item.
+   */
+  uuid: string;
+  /**
+   * The ID of the original order line item.
+   */
+  orderLineItemId: number;
+  /**
+   * The quantity selected for return.
+   */
+  quantity: number;
+  /**
+   * The return reason, if one is selected.
+   */
+  returnReason?: ReturnReason;
+  /**
+   * The note for the return reason. Empty when there's no note.
+   */
+  returnReasonNote: string;
+  /**
+   * Whether the item will be restocked.
+   */
+  shouldRestock: boolean;
+  /**
+   * Whether the item can be restocked.
+   */
+  canRestock: boolean;
+  /**
+   * The original order line item. Its `quantity` is the quantity originally ordered, when POS knows it. Its `price` already includes the line's discounts, except discount codes, and `discounts` lists them all.
+   */
+  lineItem: Omit<LineItem, 'quantity'> & {quantity?: number};
+}
+
+/**
+ * A return reason from Shopify's return reason library.
+ * @publicDocs
+ */
+export interface ReturnReason {
+  /**
+   * The ID of the return reason.
+   */
+  id: number;
+  /**
+   * The reason's stable key, such as `damaged-or-defective`. Empty when POS couldn't look up the reason.
+   */
+  handle: string;
+  /**
+   * The display name of the return reason.
+   */
+  name: string;
 }
 
 /**

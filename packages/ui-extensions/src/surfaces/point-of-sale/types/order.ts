@@ -1,6 +1,21 @@
 import {LineItem} from './cart';
 
 /**
+ * The ID and name of an order or draft order.
+ * @publicDocs
+ */
+export interface Order {
+  /**
+   * The unique identifier for the order or draft order.
+   */
+  id: number;
+  /**
+   * The name of the order or draft order as configured by the merchant.
+   */
+  name: string;
+}
+
+/**
  * Represents a refund applied to a line item, including when it was created and the quantity refunded.
  * @publicDocs
  */

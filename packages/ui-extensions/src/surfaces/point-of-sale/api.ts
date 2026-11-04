@@ -106,6 +106,7 @@ export type {ToastApiContent, ToastApi} from './api/toast-api/toast-api';
 export type {
   AddLineItemOptions,
   Cart,
+  CartType,
   CartUpdateInput,
   Customer,
   LineItem,
@@ -118,9 +119,11 @@ export type {
   Address,
   SellingPlan,
   SetLineItemSellingPlanInput,
+  ReturnLineItem,
+  ReturnReason,
 } from './types/cart';
 
-export type {OrderLineItem, LineItemRefund} from './types/order';
+export type {Order, OrderLineItem, LineItemRefund} from './types/order';
 
 export type {DirectApiRequestBody} from './types/direct-api-request-body';
 
