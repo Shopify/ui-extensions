@@ -1,4 +1,5 @@
 import type {
+  CartCapabilities,
   LineItem,
   Storage,
   SubscribableStorage,
@@ -24,6 +25,46 @@ export function createCartLineItem(overrides?: Partial<LineItem>): LineItem {
     vendor: 'Mock Vendor',
     properties: {},
     isGiftCard: false,
+    ...overrides,
+  };
+}
+
+/**
+ * Creates mock POS `CartCapabilities` for a checkout cart: every method is
+ * available. Pass a partial override to customize methods.
+ */
+export function createCartCapabilities(
+  overrides?: Partial<CartCapabilities>,
+): CartCapabilities {
+  const available = {isAvailable: true} as const;
+  return {
+    bulkCartUpdate: available,
+    applyCartDiscount: available,
+    addCartCodeDiscount: available,
+    removeCartDiscount: available,
+    removeAllDiscounts: available,
+    clearCart: available,
+    setCustomer: available,
+    removeCustomer: available,
+    addCustomSale: available,
+    addLineItem: available,
+    updateLineItemQuantity: available,
+    removeLineItem: available,
+    addCartProperties: available,
+    removeCartProperties: available,
+    addLineItemProperties: available,
+    bulkAddLineItemProperties: available,
+    removeLineItemProperties: available,
+    setLineItemDiscount: available,
+    bulkSetLineItemDiscounts: available,
+    setAttributedStaff: available,
+    setAttributedStaffToLineItem: available,
+    removeLineItemDiscount: available,
+    addAddress: available,
+    deleteAddress: available,
+    updateDefaultAddress: available,
+    addLineItemSellingPlan: available,
+    removeLineItemSellingPlan: available,
     ...overrides,
   };
 }
@@ -116,6 +157,8 @@ const posMutationDefaults: {
     cartDiscounts: [],
     lineItems: [],
     properties: {},
+    capabilities: createCartCapabilities(),
+    cartType: 'Checkout',
   }),
 };
 
