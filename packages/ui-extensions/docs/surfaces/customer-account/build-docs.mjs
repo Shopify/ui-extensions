@@ -68,6 +68,68 @@ const cleanupTempFiles = async (tempFiles) => {
   );
 };
 
+// These names appear in the public type tables. Keep this scoped to the
+// authenticated-account reference chain; other docs-only types are intentional.
+function assertAuthenticatedAccountPublicNames(docsData) {
+  function getDeclaration(typeName) {
+    const declarations = Object.values(docsData[typeName] ?? {});
+    if (declarations.length !== 1) {
+      throw new Error(
+        `Authenticated Account docs expected one ${typeName} declaration, found ${declarations.length}.`,
+      );
+    }
+    return declarations[0];
+  }
+
+  function getMember(declaration, memberName) {
+    const members = Array.isArray(declaration.members)
+      ? declaration.members.filter((member) => member.name === memberName)
+      : [];
+    if (members.length !== 1) {
+      throw new Error(
+        `Authenticated Account docs expected one ${declaration.name}.${memberName} member, found ${members.length}.`,
+      );
+    }
+    return members[0];
+  }
+
+  function getPublicDeclaration(referenceName, expectedName) {
+    if (referenceName !== expectedName) {
+      throw new Error(
+        `Authenticated Account docs expected public type ${expectedName}, found ${referenceName}.`,
+      );
+    }
+    const declaration = getDeclaration(referenceName);
+    if (declaration.name !== expectedName) {
+      throw new Error(
+        `Authenticated Account docs expected table name ${expectedName}, found ${declaration.name}.`,
+      );
+    }
+    return declaration;
+  }
+
+  const facade = getDeclaration('Docs_Standard_AuthenticatedAccountApi');
+  const accountReference = getMember(facade, 'authenticatedAccount').value;
+  const account = getPublicDeclaration(
+    accountReference,
+    'AuthenticatedAccount',
+  );
+  const customerReference = getMember(account, 'customer').value;
+  const customerMatch =
+    typeof customerReference === 'string'
+      ? customerReference
+          .replace(/\s+/g, '')
+          .match(/^SubscribableSignalLike<(\w+)\|undefined>$/)
+      : null;
+
+  if (!customerMatch) {
+    throw new Error(
+      `Authenticated Account docs expected an optional customer signal, found ${customerReference}.`,
+    );
+  }
+  getPublicDeclaration(customerMatch[1], 'AuthenticatedAccountCustomer');
+}
+
 const generateExtensionsDocs = async () => {
   console.log(
     `Building Customer Account UI Extensions docs for ${EXTENSIONS_API_VERSION} version`,
@@ -104,6 +166,10 @@ const generateExtensionsDocs = async () => {
     searchValue: '/docs/api//unstable/',
     replaceValue: `/docs/api/customer-account-ui-extensions/${EXTENSIONS_API_VERSION}`,
   });
+
+  assertAuthenticatedAccountPublicNames(
+    JSON.parse(await fs.readFile(generatedFiles[0], 'utf8')),
+  );
 };
 
 let checkoutTempFiles = [];
@@ -126,10 +192,16 @@ try {
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
     console.warn(
