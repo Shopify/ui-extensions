@@ -19,7 +19,7 @@ Most code added to this repo will be added to the latest RC branch, which captur
 To start adding code, branch off of the latest RC branch (or the branch for the version you’re working on) to create a feature branch. Make your changes as you normally would. Before creating a PR for your work, though, you will need to run a command to generate a [changeset](https://github.com/changesets/changesets):
 
 ```bash
-yarn changeset
+pnpm changeset
 ```
 
 This command will ask you what packages you have updated, and what kind of changes you have made. Select the appropriate packages, and determine if your changes are `minor` or a `patch`.
@@ -35,7 +35,7 @@ Commit your changeset file alongside the rest of the changes you are making —�
 
 ## Deploying new versions to NPM
 
-When changeset files are detected on any of the stable version or RC branches, a GitHub action will create a new PR that merges all the unpublished changesets together into a single changelog, and increments the version number on updated packages. This PR on stable branches should be reviewed and merged by a member of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards). Once it is merged, the new package versions will automatically be published to NPM, with a tag corresponding to their API version (for example, `yarn add @shopify/ui-extensions@2023-01` will install the latest package version for the `2023-01` API version).
+When changeset files are detected on any of the stable version or RC branches, a GitHub action will create a new PR that merges all the unpublished changesets together into a single changelog, and increments the version number on updated packages. This PR on stable branches should be reviewed and merged by a member of the [UI Extension Stewards GitHub team](https://github.com/orgs/Shopify/teams/ui-extension-stewards). Once it is merged, the new package versions will automatically be published to NPM, with a tag corresponding to their API version (for example, `pnpm add @shopify/ui-extensions@2023-01` will install the latest package version for the `2023-01` API version).
 
 ## Creating new stable versions
 
@@ -51,7 +51,7 @@ Before you start, make sure the latest RC branch contains everything that should
 To create a new stable version, you will need to follow these steps:
 
 1. Create a new branch for the calver version. This branch should be named with the format `YYYY-MM` where the month should be `01`, `04`, `07`, or `10` (we release quarterly). You will branch off of `YYYY-MM-rc` to create this branch. For example, if you're release `2025-04` you should branch off of `2025-04-rc`.
-1. Exit changeset pre mode by running `yarn changeset pre exit`, and commit the result. RC branches keep changesets in “pre” mode (the `mode` field in `.changeset/pre.json`), which is what produces the `{{SEMVER}}-rc.{{VERSION}}` version numbers. If you skip this step, the release will be published as another RC version instead of a stable one.
+1. Exit changeset pre mode by running `pnpm changeset pre exit`, and commit the result. RC branches keep changesets in “pre” mode (the `mode` field in `.changeset/pre.json`), which is what produces the `{{SEMVER}}-rc.{{VERSION}}` version numbers. If you skip this step, the release will be published as another RC version instead of a stable one.
 1. Push your new branch to GitHub. This will trigger the GitHub action that creates a new PR to consume all the changesets you copied over from `2025-04-rc` into your new version.
 1. Pull down the branch that was created by the GitHub action (it should have the name `changeset-release/{{BRANCH_NAME}}`) and check the versions it generated. Exiting pre mode should collapse the RC version into the first patch release of the new version range — for example, `2025.4.0-rc.7` becomes `2025.4.0`. If the versions don't look like that, update the version of all packages manually to be the first patch release of a new version range. Apply this change to `packages/ui-extensions/package.json`, `packages/ui-extensions/CHANGELOG.md`, `packages/ui-extensions-tester/package.json`, and `packages/ui-extensions-tester/CHANGELOG.md`.
    > Note: do not update the root-level `package.json`.
@@ -68,13 +68,13 @@ To create a new stable version, you will need to follow these steps:
 Once the new stable version has been released, create the RC branch for the next stable version:
 
 1. Branch off of the stable version you just released. For example, if you released `2025-04` you should create a new branch `2025-07-rc` off of `2025-04`.
-1. Enter changeset pre mode by running `yarn changeset pre enter rc`.
+1. Enter changeset pre mode by running `pnpm changeset pre enter rc`.
 1. Check the `.changeset/pre.json` file the command generated. It should have `"tag": "rc"`, and the `initialVersions` for every package should be the first RC of the new version range (for example, `2025.7.0-rc.0`). Correct it by hand if it isn't.
 1. Update the `version` in `packages/ui-extensions/package.json` and `packages/ui-extensions-tester/package.json` to match (for example, `2025.7.0-rc.0`).
 1. Update the `@shopify/ui-extensions` dependency in `packages/ui-extensions-tester/package.json` to match (for example, `2025.7.0-rc.0`).
 1. Add the new version to the `ApiVersion` and `StorefrontApiVersion` unions in `packages/ui-extensions/src/shared.ts`.
 1. Update `api_version` in each `examples/testing/*/extensions/*/shopify.extension.toml` to the new version. Run `npm run test:example-suites` to test that the examples work and update the lockfiles.
-1. Run `yarn changeset`, select all packages, choose `minor`, and use the description `2025-07-rc release`. Without a changeset the GitHub action has nothing to publish.
+1. Run `pnpm changeset`, select all packages, choose `minor`, and use the description `2025-07-rc release`. Without a changeset the GitHub action has nothing to publish.
    > Note: never choose `major`. Versions are calver, so a `major` bump rolls the year when the stable branch later exits pre mode: `2026.10.0-rc.N` becomes `2027.0.0` instead of `2026.10.0`. This happened for `2026-07` ([#4571](https://github.com/Shopify/ui-extensions/pull/4571)) and `2026-10` ([#4748](https://github.com/Shopify/ui-extensions/pull/4748)).
 1. Commit your changes and push your new branch to GitHub. This will trigger the GitHub action that creates the release PR, the same way it does for stable branches.
 1. Double-check the changes in the generated PR, push any adjustments to that branch, and merge it to publish the first RC version to NPM.

@@ -168,7 +168,7 @@ function build_consumer {
   echo "💃 ${BOLD}Running build-consumer...${NORMAL}"
 
   set_globals
-  validate_project '`yarn build-consumer PROJECT_DIRECTORY`'
+  validate_project '`pnpm build-consumer PROJECT_DIRECTORY`'
   validate_package "$packageName"
 
   for package in "${packages[@]}"; do
@@ -182,7 +182,7 @@ function build_consumer {
 
       cd $packageDir
 
-      packCmd="yarn pack --filename $packageFile"
+      packCmd="pnpm pack --out $packageFile"
 
       if [[ $debug = 0 ]]; then
         buildCmd+=" > /dev/null"
@@ -226,7 +226,7 @@ function restore_consumer {
   echo "💃 ${BOLD}Running restore-consumer...${NORMAL}"
 
   set_globals
-  validate_project '`yarn restore-consumer PROJECT_DIRECTORY`'
+  validate_project '`pnpm restore-consumer PROJECT_DIRECTORY`'
 
   for package in "${AVAILABLE_PACKAGES[@]}"; do
     targetDir="$shopifyNodeModulesDir/$package"
