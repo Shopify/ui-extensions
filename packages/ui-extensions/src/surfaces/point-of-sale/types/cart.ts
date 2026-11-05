@@ -154,10 +154,6 @@ export interface ReturnReason {
    */
   id: number;
   /**
-   * The reason's stable key, such as `damaged-or-defective`. Empty when POS couldn't look up the reason.
-   */
-  handle: string;
-  /**
    * The display name of the return reason.
    */
   name: string;

@@ -132,96 +132,297 @@
       "value": "export interface DiscountAllocation {\n  /**\n   * The amount of discount allocated.\n   */\n  allocatedAmount: MoneyV2;\n}"
     }
   },
-  "Cart": {
+  "Order": {
+    "src/surfaces/point-of-sale/types/order.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/order.ts",
+      "name": "Order",
+      "description": "The ID and name of an order or draft order.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "number",
+          "description": "The unique identifier for the order or draft order."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "The name of the order or draft order as configured by the merchant."
+        }
+      ],
+      "value": "export interface Order {\n  /**\n   * The unique identifier for the order or draft order.\n   */\n  id: number;\n  /**\n   * The name of the order or draft order as configured by the merchant.\n   */\n  name: string;\n}"
+    }
+  },
+  "LineItemRefund": {
+    "src/surfaces/point-of-sale/types/order.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/order.ts",
+      "name": "LineItemRefund",
+      "description": "Represents a refund applied to a line item, including when it was created and the quantity refunded.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "createdAt",
+          "value": "string",
+          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time."
+        }
+      ],
+      "value": "export interface LineItemRefund {\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails.\n   */\n  createdAt: string;\n  /**\n   * The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time.\n   */\n  quantity: number;\n}"
+    }
+  },
+  "OrderLineItem": {
+    "src/surfaces/point-of-sale/types/order.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/order.ts",
+      "name": "OrderLineItem",
+      "description": "Represents a line item from an order, extending the base line item with current quantity and refund information.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "attributedUserId",
+          "value": "number",
+          "description": "The staff member 'ID' attributed to this line item. Returns 'undefined' if no staff attribution is set. Use for commission tracking and performance analytics.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "components",
+          "value": "LineItemComponent[]",
+          "description": "Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currentQuantity",
+          "value": "number",
+          "description": "The current quantity of items that remain with the customer after accounting for refunds. This is calculated as the original `quantity` minus any refunded quantities. For example, if 5 items were ordered and 2 were refunded, `currentQuantity` would be `3`. This value reflects the net quantity the customer kept from this line item."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discountAllocations",
+          "value": "DiscountAllocation[]",
+          "description": "An array of discount allocations applied to this line item, providing detailed breakdown of how discounts are distributed. Returns 'undefined' if no allocations exist. Use for enhanced discount tracking and reporting.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "discounts",
+          "value": "Discount[]",
+          "description": "An array of discounts applied to this line item. Empty array if no discounts are active. Use for displaying line item savings and discount details."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "hasSellingPlanGroups",
+          "value": "boolean",
+          "description": "Determines whether this line item has selling plan groups (subscription options) available. Returns 'undefined' if selling plan information is unavailable. Use for displaying subscription options.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "isGiftCard",
+          "value": "boolean",
+          "description": "Determines whether this line item is a gift card. Gift cards have special handling requirements and business logic. Use for implementing gift card-specific workflows."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "price",
+          "value": "number",
+          "description": "The unit price of the line item. Returns 'undefined' for custom sales without set prices. Use for pricing calculations and displays.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "productId",
+          "value": "number",
+          "description": "The product 'ID' this line item represents. Returns 'undefined' for custom sales or non-product items. Use for product-specific operations and linking to product details.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "{ [key: string]: string; }",
+          "description": "The custom key-value properties attached to this line item. Empty object if no properties are set. Use for metadata, customization options, or integration data."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The quantity of this item in the cart. Always a positive integer. Use for quantity displays, calculations, and inventory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "refunds",
+          "value": "LineItemRefund[]",
+          "description": "An array of all refund transactions applied to this line item, ordered chronologically. Each refund entry tracks when the refund occurred and how many units were refunded. Multiple entries indicate partial refunds processed over time. Returns `undefined` or empty array when no refunds have been applied to this line item.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "requiresSellingPlan",
+          "value": "boolean",
+          "description": "Determines whether this line item requires a selling plan (subscription) to be purchased. Returns 'undefined' if selling plan information is unavailable. Use for implementing subscription-based product handling.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sellingPlan",
+          "value": "SellingPlan",
+          "description": "The currently selected selling plan for this line item. Returns 'undefined' if no selling plan is applied. Contains selling plan details including 'ID', name, and delivery intervals. Use for subscription management and recurring purchase functionality.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sku",
+          "value": "string",
+          "description": "The Stock Keeping Unit (SKU) identifier for this line item. Returns 'undefined' if no SKU is configured. Use for inventory tracking and product identification.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxable",
+          "value": "boolean",
+          "description": "Determines whether this line item is subject to tax calculations. Use for tax computation, compliance, and pricing displays."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of tax lines applied to this line item, containing tax amounts and rates. Use for detailed tax reporting and compliance."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "uuid",
+          "value": "string",
+          "description": "The unique identifier for this line item within the cart. Use for line item-specific operations like updates, removals, or property modifications."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "variantId",
+          "value": "number",
+          "description": "The product variant 'ID' this line item represents. Returns 'undefined' for custom sales or non-variant items. Use for variant-specific operations and product details.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/order.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "vendor",
+          "value": "string",
+          "description": "The vendor or brand name for this line item. Returns 'undefined' if no vendor is set. Use for vendor-specific displays and organization.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface OrderLineItem extends LineItem {\n  /**\n   * The current quantity of items that remain with the customer after accounting for refunds. This is calculated as the original `quantity` minus any refunded quantities. For example, if 5 items were ordered and 2 were refunded, `currentQuantity` would be `3`. This value reflects the net quantity the customer kept from this line item.\n   */\n  currentQuantity: number;\n  /**\n   * An array of all refund transactions applied to this line item, ordered chronologically. Each refund entry tracks when the refund occurred and how many units were refunded. Multiple entries indicate partial refunds processed over time. Returns `undefined` or empty array when no refunds have been applied to this line item.\n   */\n  refunds?: LineItemRefund[];\n}"
+    }
+  },
+  "LineItemComponent": {
     "src/surfaces/point-of-sale/types/cart.ts": {
       "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "Cart",
-      "description": "Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.",
+      "name": "LineItemComponent",
+      "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
       "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "cartDiscount",
-          "value": "Discount",
-          "description": "The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.",
+          "name": "discountAllocations",
+          "value": "DiscountAllocation[]",
+          "description": "An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.",
           "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "cartDiscounts",
-          "value": "Discount[]",
-          "description": "An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currency",
-          "value": "string",
-          "description": "The ISO 4217 currency code for this cart."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
+          "name": "price",
+          "value": "number",
+          "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.",
           "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "editable",
+          "name": "productId",
+          "value": "number",
+          "description": "The unique numeric identifier for the product this component represents, if applicable.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxable",
           "value": "boolean",
-          "description": "Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.",
+          "description": "Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxLines",
+          "value": "TaxLine[]",
+          "description": "An array of tax lines applied to this component."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.",
           "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "grandTotal",
-          "value": "string",
-          "description": "The final total amount including all items, taxes, and discounts, formatted as a currency string."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItems",
-          "value": "LineItem[]",
-          "description": "An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "note",
-          "value": "string",
-          "description": "The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.",
+          "name": "variantId",
+          "value": "number",
+          "description": "The unique numeric identifier for the product variant this component represents, if applicable.",
           "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "properties",
-          "value": "Record<string, string>",
-          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "subtotal",
-          "value": "string",
-          "description": "The subtotal amount of the cart before taxes and discounts, formatted as a currency string."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxTotal",
-          "value": "string",
-          "description": "The total tax amount for the cart, formatted as a currency string."
         }
       ],
-      "value": "export interface Cart {\n  /**\n   * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.\n   */\n  editable?: boolean;\n  /**\n   * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.\n   */\n  subtotal: string;\n  /**\n   * The total tax amount for the cart, formatted as a currency string.\n   */\n  taxTotal: string;\n  /**\n   * The final total amount including all items, taxes, and discounts, formatted as a currency string.\n   */\n  grandTotal: string;\n  /**\n   * The ISO 4217 currency code for this cart.\n   */\n  currency: string;\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+      "value": "export interface LineItemComponent {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title?: string;\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price?: number;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this component.\n   */\n  taxLines: TaxLine[];\n  /**\n   * An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.\n   */\n  discountAllocations?: DiscountAllocation[];\n  /**\n   * The unique numeric identifier for the product variant this component represents, if applicable.\n   */\n  variantId?: number;\n  /**\n   * The unique numeric identifier for the product this component represents, if applicable.\n   */\n  productId?: number;\n}"
     }
   },
   "Discount": {
@@ -264,6 +465,681 @@
         }
       ],
       "value": "export interface Discount {\n  /**\n   * The discount value to apply. For `'Percentage'` type, this represents the percentage value (For example, \"10\" for 10% off). For `'FixedAmount'` type, this represents the fixed monetary amount to deduct from the line item price. Commonly used for discount calculations and displaying the discount value to merchants.\n   */\n  amount: number;\n  /**\n   * The [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) currency code associated with the location currently active on POS.\n   */\n  currency?: string;\n  /**\n   * A human-readable description of the discount shown to merchants and customers. This typically includes the discount name, promotion details, or discount code (for example, \"SUMMER2024\", \"10% off entire order\", \"Buy 2 Get 1 Free\"). Returns `undefined` when no description is provided.\n   */\n  discountDescription?: string;\n  /**\n   * The [discount type](https://help.shopify.com/en/manual/discounts/discount-types) applied to this line item. Can be either `'Percentage'` for percentage-based discounts or `'FixedAmount'` for fixed monetary amount discounts. This determines how the discount amount is calculated and displayed.\n   */\n  type?: string;\n}"
+    }
+  },
+  "SellingPlan": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SellingPlan",
+      "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "deliveryInterval",
+          "value": "string",
+          "description": "The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "deliveryIntervalCount",
+          "value": "number",
+          "description": "The number of intervals between deliveries.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "digest",
+          "value": "string",
+          "description": "The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "id",
+          "value": "number",
+          "description": "The unique identifier of the selling plan."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "The name of the POS device."
+        }
+      ],
+      "value": "export interface SellingPlan {\n  /**\n   * The unique identifier of the selling plan.\n   */\n  id: number;\n  /**\n   * The name of the POS device.\n   */\n  name: string;\n  /**\n   * The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.\n   */\n  digest?: string;\n  /**\n   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).\n   */\n  deliveryInterval?: string;\n  /**\n   * The number of intervals between deliveries.\n   */\n  deliveryIntervalCount?: number;\n}"
+    }
+  },
+  "Cart": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "Cart",
+      "value": "CartBase & (\n    | {\n        /**\n         * The kind of cart.\n         */\n        cartType: 'Checkout' | 'Unsupported';\n      }\n    | {\n        /**\n         * The kind of cart.\n         */\n        cartType: 'Return' | 'Exchange';\n        /**\n         * The original order and the items selected for return.\n         */\n        return: {\n          /** The order that's being returned. Its `name` is empty when POS doesn't know it. */\n          order: Order;\n          /** The items selected for return. */\n          lineItems: ReturnLineItem[];\n        };\n      }\n  )",
+      "description": "Represents the shopping cart state, including line items, pricing, customer information, and applied discounts. Provides comprehensive access to all cart data and operations.\n\nCheck `cartType` to tell a sale from a return or exchange. Return and exchange carts also have `return`, with the original order and the returned items.\n\n`cartType`, `capabilities`, and return and exchange carts are available as of POS version 12.0.0.",
+      "isPublicDocs": true
+    }
+  },
+  "CartBase": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "CartBase",
+      "description": "The properties that every cart has.",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "capabilities",
+          "value": "CartCapabilities",
+          "description": "Which Cart API methods are available right now."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscount",
+          "value": "Discount",
+          "description": "The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscounts",
+          "value": "Discount[]",
+          "description": "An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "currency",
+          "value": "string",
+          "description": "The ISO 4217 currency code for this cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "editable",
+          "value": "boolean",
+          "description": "Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.\n\nIt's `false` for `Return` and `Exchange` carts.",
+          "isOptional": true,
+          "deprecationMessage": "Use `capabilities` instead."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "grandTotal",
+          "value": "string",
+          "description": "The final total amount including all items, taxes, and discounts, formatted as a currency string."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "LineItem[]",
+          "description": "The line items in the cart. In a `Return` or `Exchange` cart, these are only the new items in the exchange. The returned items are in `cart.return.lineItems`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "note",
+          "value": "string",
+          "description": "The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "subtotal",
+          "value": "string",
+          "description": "The subtotal amount of the cart before taxes and discounts, formatted as a currency string."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxTotal",
+          "value": "string",
+          "description": "The total tax amount for the cart, formatted as a currency string."
+        }
+      ],
+      "value": "interface CartBase {\n  /**\n   * Indicates whether the cart is currently editable. An `undefined` value should be treated as `true` for backward compatibility. Use this to determine if cart modification operations are allowed.\n   *\n   * It's `false` for `Return` and `Exchange` carts.\n   * @deprecated Use `capabilities` instead.\n   */\n  editable?: boolean;\n  /**\n   * Which Cart API methods are available right now.\n   */\n  capabilities: CartCapabilities;\n  /**\n   * The subtotal amount of the cart before taxes and discounts, formatted as a currency string.\n   */\n  subtotal: string;\n  /**\n   * The total tax amount for the cart, formatted as a currency string.\n   */\n  taxTotal: string;\n  /**\n   * The final total amount including all items, taxes, and discounts, formatted as a currency string.\n   */\n  grandTotal: string;\n  /**\n   * The ISO 4217 currency code for this cart.\n   */\n  currency: string;\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * The line items in the cart. In a `Return` or `Exchange` cart, these are only the new items in the exchange. The returned items are in `cart.return.lineItems`.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+    }
+  },
+  "CartCapabilities": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartCapabilities",
+      "value": "{\n  [Method in CartCapabilityMethod]: CartMethodCapability;\n}",
+      "description": "Whether each Cart API method that changes the cart is available, by method name.",
+      "isPublicDocs": true
+    }
+  },
+  "CartCapabilityMethod": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartCapabilityMethod",
+      "value": "keyof MutableCartApiContent",
+      "description": "The name of a Cart API method that changes the cart, such as `addLineItem`.",
+      "isPublicDocs": true
+    }
+  },
+  "MutableCartApiContent": {
+    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+      "name": "MutableCartApiContent",
+      "description": "Cart and line item write operations.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addAddress",
+          "value": "(address: Address) => Promise<void>",
+          "description": "Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addCartCodeDiscount",
+          "value": "(code: string) => Promise<void>",
+          "description": "Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addCartProperties",
+          "value": "(properties: Record<string, string>) => Promise<void>",
+          "description": "Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addCustomSale",
+          "value": "(customSale: CustomSale) => Promise<string>",
+          "description": "Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addLineItem",
+          "value": "(variantId: number, quantity: number, options?: AddLineItemOptions) => Promise<string>",
+          "description": "Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n\nPass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addLineItemProperties",
+          "value": "(uuid: string, properties: Record<string, string>) => Promise<void>",
+          "description": "Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "addLineItemSellingPlan",
+          "value": "(input: SetLineItemSellingPlanInput) => Promise<void>",
+          "description": "Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "applyCartDiscount",
+          "value": "(type: CartDiscountType, title: string, amount?: string) => Promise<void>",
+          "description": "Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "bulkAddLineItemProperties",
+          "value": "(lineItemProperties: SetLineItemPropertiesInput[]) => Promise<void>",
+          "description": "Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "bulkCartUpdate",
+          "value": "(cartState: CartUpdateInput) => Promise<Cart>",
+          "description": "Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "bulkSetLineItemDiscounts",
+          "value": "(lineItemDiscounts: SetLineItemDiscountInput[]) => Promise<void>",
+          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "clearCart",
+          "value": "() => Promise<void>",
+          "description": "Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n\nIn a `'Return'` or `'Exchange'` cart, it ends the return or exchange and leaves an empty `'Checkout'` cart. It doesn't close the return screen."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "deleteAddress",
+          "value": "(addressId: number) => Promise<void>",
+          "description": "Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeAllDiscounts",
+          "value": "(disableAutomaticDiscounts: boolean) => Promise<void>",
+          "description": "Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeCartDiscount",
+          "value": "() => Promise<void>",
+          "description": "Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeCartProperties",
+          "value": "(keys: string[]) => Promise<void>",
+          "description": "Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeCustomer",
+          "value": "() => Promise<void>",
+          "description": "Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItem",
+          "value": "(uuid: string) => Promise<void>",
+          "description": "Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItemDiscount",
+          "value": "(uuid: string) => Promise<void>",
+          "description": "Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItemProperties",
+          "value": "(uuid: string, keys: string[]) => Promise<void>",
+          "description": "Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "removeLineItemSellingPlan",
+          "value": "(uuid: string) => Promise<void>",
+          "description": "Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributedStaff",
+          "value": "(staffId: number) => Promise<void>",
+          "description": "Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setAttributedStaffToLineItem",
+          "value": "(staffId: number, lineItemUuid: string) => Promise<void>",
+          "description": "Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setCustomer",
+          "value": "(customer: Customer) => Promise<void>",
+          "description": "Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "setLineItemDiscount",
+          "value": "(uuid: string, type: LineItemDiscountType, title: string, amount: string) => Promise<void>",
+          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "updateDefaultAddress",
+          "value": "(addressId: number) => Promise<void>",
+          "description": "Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "updateLineItemQuantity",
+          "value": "(uuid: string, quantity: number) => Promise<void>",
+          "description": "Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n\nIf POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n\nOnly available on API version `2026-10` and later."
+        }
+      ],
+      "value": "export interface MutableCartApiContent {\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   *\n   * In a `'Return'` or `'Exchange'` cart, it ends the return or exchange and leaves an empty `'Checkout'` cart. It doesn't close the return screen.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @param options optional line-item properties to apply to the new line item in the same operation\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(\n    variantId: number,\n    quantity: number,\n    options?: AddLineItemOptions,\n  ): Promise<string>;\n\n  /**\n   * Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n   *\n   * If POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n   *\n   * Only available on API version `2026-10` and later.\n   *\n   * @param uuid the UUID of the line item to update\n   * @param quantity the new absolute quantity; must be an integer of 1 or greater. To remove a line item, use `removeLineItem` instead.\n   * @returns A promise that resolves after the cart state reflects the change.\n   * @throws {Error} if the line item is not found, the `UUID` matches multiple split-line allocations, the quantity is invalid, the method is unavailable (see `cart.capabilities`), or the POS app version does not support this method.\n   */\n  updateLineItemQuantity(uuid: string, quantity: number): Promise<void>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
+    }
+  },
+  "Address": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "Address",
+      "description": "Represents physical address information for customer shipping and billing. Contains standard address fields including street, city, region, postal code, and country data.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "address1",
+          "value": "string",
+          "description": "The primary street address line. Required for most shipping and billing operations. Should contain street number and name.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "address2",
+          "value": "string",
+          "description": "The secondary address line for apartment, suite, or unit information. Optional field for additional address details.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "city",
+          "value": "string",
+          "description": "The city name for the address. Required for shipping calculations and location-based services.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "company",
+          "value": "string",
+          "description": "The company name associated with the address. Optional field for business customers and B2B transactions.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "country",
+          "value": "string",
+          "description": "The country name for the address. Required for international shipping, tax calculations, and compliance.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "countryCode",
+          "value": "CountryCode",
+          "description": "The standardized country code (ISO format). Use for precise country identification and international shipping operations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "firstName",
+          "value": "string",
+          "description": "The first name for the address contact. Used for personalized shipping labels and customer communication.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lastName",
+          "value": "string",
+          "description": "The last name for the address contact. Required for complete customer identification and shipping labels.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "name",
+          "value": "string",
+          "description": "The full name for the address contact. Use when first and last names are combined or unavailable as separate fields.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "phone",
+          "value": "string",
+          "description": "The phone number for the address contact. Used for delivery notifications, shipping updates, and customer communication.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "province",
+          "value": "string",
+          "description": "The province or state name for the address. Required for regional shipping rates and tax calculations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "provinceCode",
+          "value": "string",
+          "description": "The standardized province or state code. Use for precise regional identification and automated shipping calculations.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "zip",
+          "value": "string",
+          "description": "The postal or ZIP code for the address. Required for accurate shipping rates and location-based services.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface Address {\n  /**\n   * The primary street address line. Required for most shipping and billing operations. Should contain street number and name.\n   */\n  address1?: string;\n  /**\n   * The secondary address line for apartment, suite, or unit information. Optional field for additional address details.\n   */\n  address2?: string;\n  /**\n   * The city name for the address. Required for shipping calculations and location-based services.\n   */\n  city?: string;\n  /**\n   * The company name associated with the address. Optional field for business customers and B2B transactions.\n   */\n  company?: string;\n  /**\n   * The first name for the address contact. Used for personalized shipping labels and customer communication.\n   */\n  firstName?: string;\n  /**\n   * The last name for the address contact. Required for complete customer identification and shipping labels.\n   */\n  lastName?: string;\n  /**\n   * The phone number for the address contact. Used for delivery notifications, shipping updates, and customer communication.\n   */\n  phone?: string;\n  /**\n   * The province or state name for the address. Required for regional shipping rates and tax calculations.\n   */\n  province?: string;\n  /**\n   * The country name for the address. Required for international shipping, tax calculations, and compliance.\n   */\n  country?: string;\n  /**\n   * The postal or ZIP code for the address. Required for accurate shipping rates and location-based services.\n   */\n  zip?: string;\n  /**\n   * The full name for the address contact. Use when first and last names are combined or unavailable as separate fields.\n   */\n  name?: string;\n  /**\n   * The standardized province or state code. Use for precise regional identification and automated shipping calculations.\n   */\n  provinceCode?: string;\n  /**\n   * The standardized country code (ISO format). Use for precise country identification and international shipping operations.\n   */\n  countryCode?: CountryCode;\n}"
+    }
+  },
+  "CustomSale": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "CustomSale",
+      "description": "Represents a custom sale item that is not associated with a product in the catalog. Includes pricing, taxation, and descriptive information for manually created line items.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "price",
+          "value": "string",
+          "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "quantity",
+          "value": "number",
+          "description": "The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "taxable",
+          "value": "boolean",
+          "description": "Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "title",
+          "value": "string",
+          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly."
+        }
+      ],
+      "value": "export interface CustomSale {\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title: string;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price: string;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n}"
+    }
+  },
+  "AddLineItemOptions": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "AddLineItemOptions",
+      "description": "Optional configuration for `addLineItem`. Lets a single call create a line item and decorate it with line-item properties, avoiding the extra native call and cart sync of a separate `addLineItemProperties` call.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface AddLineItemOptions {\n  /**\n   * Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.\n   */\n  properties?: Record<string, string>;\n}"
+    }
+  },
+  "SetLineItemSellingPlanInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SetLineItemSellingPlanInput",
+      "description": "Specifies the parameters for assigning selling plans to line items. Used to add subscription or purchase option configurations to products.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sellingPlanId",
+          "value": "number",
+          "description": "The selling plan `ID` to apply to the line item. Must be a valid selling plan available for the product."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "sellingPlanName",
+          "value": "string",
+          "description": "The selling plan name for display purposes. Required for proper selling plan display in the cart.",
+          "isOptional": true
+        }
+      ],
+      "value": "export interface SetLineItemSellingPlanInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The selling plan `ID` to apply to the line item. Must be a valid selling plan available for the product.\n   */\n  sellingPlanId: number;\n  /**\n   * The selling plan name for display purposes. Required for proper selling plan display in the cart.\n   */\n  sellingPlanName?: string;\n}"
+    }
+  },
+  "CartDiscountType": {
+    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartDiscountType",
+      "value": "'Percentage' | 'FixedAmount' | 'Code'",
+      "description": "Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption.",
+      "isPublicDocs": true
+    }
+  },
+  "SetLineItemPropertiesInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "SetLineItemPropertiesInput",
+      "description": "Specifies the parameters for adding custom properties to line items. Properties are key-value pairs used for storing metadata, tracking information, or integration data.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
+        }
+      ],
+      "value": "export interface SetLineItemPropertiesInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
+    }
+  },
+  "CartUpdateInput": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "CartUpdateInput",
+      "description": "Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscount",
+          "value": "Discount",
+          "description": "The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "cartDiscounts",
+          "value": "Discount[]",
+          "description": "An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "customer",
+          "value": "Customer",
+          "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItems",
+          "value": "LineItem[]",
+          "description": "An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "note",
+          "value": "string",
+          "description": "The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "properties",
+          "value": "Record<string, string>",
+          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
+        }
+      ],
+      "value": "export interface CartUpdateInput {\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
     }
   },
   "Customer": {
@@ -440,227 +1316,6 @@
       "value": "export interface LineItem {\n  /**\n   * The unique identifier for this line item within the cart. Use for line item-specific operations like updates, removals, or property modifications.\n   */\n  uuid: string;\n  /**\n   * The unit price of the line item. Returns 'undefined' for custom sales without set prices. Use for pricing calculations and displays.\n   */\n  price?: number;\n  /**\n   * The quantity of this item in the cart. Always a positive integer. Use for quantity displays, calculations, and inventory management.\n   */\n  quantity: number;\n  /**\n   * The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.\n   */\n  title?: string;\n  /**\n   * The product variant 'ID' this line item represents. Returns 'undefined' for custom sales or non-variant items. Use for variant-specific operations and product details.\n   */\n  variantId?: number;\n  /**\n   * The product 'ID' this line item represents. Returns 'undefined' for custom sales or non-product items. Use for product-specific operations and linking to product details.\n   */\n  productId?: number;\n  /**\n   * An array of discounts applied to this line item. Empty array if no discounts are active. Use for displaying line item savings and discount details.\n   */\n  discounts: Discount[];\n  /**\n   * An array of discount allocations applied to this line item, providing detailed breakdown of how discounts are distributed. Returns 'undefined' if no allocations exist. Use for enhanced discount tracking and reporting.\n   */\n  discountAllocations?: DiscountAllocation[];\n  /**\n   * Determines whether this line item is subject to tax calculations. Use for tax computation, compliance, and pricing displays.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this line item, containing tax amounts and rates. Use for detailed tax reporting and compliance.\n   */\n  taxLines: TaxLine[];\n  /**\n   * The Stock Keeping Unit (SKU) identifier for this line item. Returns 'undefined' if no SKU is configured. Use for inventory tracking and product identification.\n   */\n  sku?: string;\n  /**\n   * The vendor or brand name for this line item. Returns 'undefined' if no vendor is set. Use for vendor-specific displays and organization.\n   */\n  vendor?: string;\n  /**\n   * The custom key-value properties attached to this line item. Empty object if no properties are set. Use for metadata, customization options, or integration data.\n   */\n  properties: {[key: string]: string};\n  /**\n   * Determines whether this line item is a gift card. Gift cards have special handling requirements and business logic. Use for implementing gift card-specific workflows.\n   */\n  isGiftCard: boolean;\n  /**\n   * The staff member 'ID' attributed to this line item. Returns 'undefined' if no staff attribution is set. Use for commission tracking and performance analytics.\n   */\n  attributedUserId?: number;\n  /**\n   * Determines whether this line item requires a selling plan (subscription) to be purchased. Returns 'undefined' if selling plan information is unavailable. Use for implementing subscription-based product handling.\n   */\n  requiresSellingPlan?: boolean;\n  /**\n   * Determines whether this line item has selling plan groups (subscription options) available. Returns 'undefined' if selling plan information is unavailable. Use for displaying subscription options.\n   */\n  hasSellingPlanGroups?: boolean;\n  /**\n   * The currently selected selling plan for this line item. Returns 'undefined' if no selling plan is applied. Contains selling plan details including 'ID', name, and delivery intervals. Use for subscription management and recurring purchase functionality.\n   */\n  sellingPlan?: SellingPlan;\n  /**\n   * Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.\n   */\n  components?: LineItemComponent[];\n}"
     }
   },
-  "LineItemComponent": {
-    "src/surfaces/point-of-sale/types/cart.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "LineItemComponent",
-      "description": "Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discountAllocations",
-          "value": "DiscountAllocation[]",
-          "description": "An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "price",
-          "value": "number",
-          "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "productId",
-          "value": "number",
-          "description": "The unique numeric identifier for the product this component represents, if applicable.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "quantity",
-          "value": "number",
-          "description": "The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxable",
-          "value": "boolean",
-          "description": "Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of tax lines applied to this component."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "title",
-          "value": "string",
-          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "variantId",
-          "value": "number",
-          "description": "The unique numeric identifier for the product variant this component represents, if applicable.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface LineItemComponent {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title?: string;\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price?: number;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n  /**\n   * An array of tax lines applied to this component.\n   */\n  taxLines: TaxLine[];\n  /**\n   * An array of discount allocations applied to this component, providing a detailed breakdown of how discounts are distributed across bundle components. Returns `undefined` if no allocations exist.\n   */\n  discountAllocations?: DiscountAllocation[];\n  /**\n   * The unique numeric identifier for the product variant this component represents, if applicable.\n   */\n  variantId?: number;\n  /**\n   * The unique numeric identifier for the product this component represents, if applicable.\n   */\n  productId?: number;\n}"
-    }
-  },
-  "SellingPlan": {
-    "src/surfaces/point-of-sale/types/cart.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "SellingPlan",
-      "description": "Represents a selling plan (subscription) associated with a line item, containing delivery schedule and plan identification details.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "deliveryInterval",
-          "value": "string",
-          "description": "The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "deliveryIntervalCount",
-          "value": "number",
-          "description": "The number of intervals between deliveries.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "digest",
-          "value": "string",
-          "description": "The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "id",
-          "value": "number",
-          "description": "The unique identifier of the selling plan."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "name",
-          "value": "string",
-          "description": "The name of the POS device."
-        }
-      ],
-      "value": "export interface SellingPlan {\n  /**\n   * The unique identifier of the selling plan.\n   */\n  id: number;\n  /**\n   * The name of the POS device.\n   */\n  name: string;\n  /**\n   * The fingerprint of the applied selling plan within this cart session. Provided by POS. Not available during refund / exchanges.\n   */\n  digest?: string;\n  /**\n   * The interval of the selling plan. (DAY, WEEK, MONTH, YEAR).\n   */\n  deliveryInterval?: string;\n  /**\n   * The number of intervals between deliveries.\n   */\n  deliveryIntervalCount?: number;\n}"
-    }
-  },
-  "CartUpdateInput": {
-    "src/surfaces/point-of-sale/types/cart.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "CartUpdateInput",
-      "description": "Specifies the parameters for updating cart information. Includes options for modifying customer data, notes, references, and other cart-level metadata.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cartDiscount",
-          "value": "Discount",
-          "description": "The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "cartDiscounts",
-          "value": "Discount[]",
-          "description": "An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "customer",
-          "value": "Customer",
-          "description": "The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItems",
-          "value": "LineItem[]",
-          "description": "An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "note",
-          "value": "string",
-          "description": "The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "properties",
-          "value": "Record<string, string>",
-          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
-        }
-      ],
-      "value": "export interface CartUpdateInput {\n  /**\n   * The cart note to set during bulk update. Replaces existing note or sets new note if none exists. Set to `undefined` to remove current note.\n   */\n  note?: string;\n  /**\n   * The cart-level discount to apply during bulk update. Replaces existing cart discount. Set to `undefined` to remove current discount.\n   */\n  cartDiscount?: Discount;\n  /**\n   * An array of cart-level discounts to apply during bulk update. Replaces all existing cart discounts with the provided array.\n   */\n  cartDiscounts: Discount[];\n  /**\n   * The customer to associate with the cart during bulk update. Replaces existing customer or converts guest cart to customer cart.\n   */\n  customer?: Customer;\n  /**\n   * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.\n   */\n  lineItems: LineItem[];\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
-    }
-  },
-  "AddLineItemOptions": {
-    "src/surfaces/point-of-sale/types/cart.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "AddLineItemOptions",
-      "description": "Optional configuration for `addLineItem`. Lets a single call create a line item and decorate it with line-item properties, avoiding the extra native call and cart sync of a separate `addLineItemProperties` call.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "properties",
-          "value": "Record<string, string>",
-          "description": "Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface AddLineItemOptions {\n  /**\n   * Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.\n   */\n  properties?: Record<string, string>;\n}"
-    }
-  },
-  "SetLineItemPropertiesInput": {
-    "src/surfaces/point-of-sale/types/cart.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "SetLineItemPropertiesInput",
-      "description": "Specifies the parameters for adding custom properties to line items. Properties are key-value pairs used for storing metadata, tracking information, or integration data.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItemUuid",
-          "value": "string",
-          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "properties",
-          "value": "Record<string, string>",
-          "description": "The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values."
-        }
-      ],
-      "value": "export interface SetLineItemPropertiesInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.\n   */\n  properties: Record<string, string>;\n}"
-    }
-  },
   "SetLineItemDiscountInput": {
     "src/surfaces/point-of-sale/types/cart.ts": {
       "filePath": "src/surfaces/point-of-sale/types/cart.ts",
@@ -718,191 +1373,137 @@
       "value": "export interface LineItemDiscount {\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title: string;\n  /**\n   * The discount type.\n   */\n  type: 'Percentage' | 'FixedAmount';\n  /**\n   * The percentage or fixed amount for the discount.\n   */\n  amount: string;\n}"
     }
   },
-  "CustomSale": {
+  "LineItemDiscountType": {
+    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "LineItemDiscountType",
+      "value": "'Percentage' | 'FixedAmount'",
+      "description": "Defines the type of discount applied to individual line items. Specifies whether the discount is percentage-based or a fixed amount reduction.",
+      "isPublicDocs": true
+    }
+  },
+  "CartMethodCapability": {
     "src/surfaces/point-of-sale/types/cart.ts": {
       "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "CustomSale",
-      "description": "Represents a custom sale item that is not associated with a product in the catalog. Includes pricing, taxation, and descriptive information for manually created line items.",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartMethodCapability",
+      "value": "{\n      /** The method is available. */\n      isAvailable: true;\n    } | {\n      /** The method isn't available. */\n      isAvailable: false;\n      /** Why the method isn't available. */\n      reason: CartCapabilityReason;\n    }",
+      "description": "Whether a Cart API method is available. When it isn't, `reason` says why. An available method can still fail, for example with invalid input.",
+      "isPublicDocs": true
+    }
+  },
+  "CartCapabilityReason": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartCapabilityReason",
+      "value": "'POS_OUTDATED' | 'UNSUPPORTED_IN_CART' | 'ORDER_NOT_EXCHANGEABLE' | 'CART_LOCKED' | 'UNKNOWN'",
+      "description": "Why a Cart API method isn't available.\n\n- `'POS_OUTDATED'`: The method needs a newer POS version.\n- `'UNSUPPORTED_IN_CART'`: This type of cart doesn't support the method, such as `bulkCartUpdate` in a return.\n- `'ORDER_NOT_EXCHANGEABLE'`: The original order can't be exchanged.\n- `'CART_LOCKED'`: POS has locked this change, for example while it processes a payment or refund.\n- `'UNKNOWN'`: Any other reason.",
+      "isPublicDocs": true
+    }
+  },
+  "ReturnLineItem": {
+    "src/surfaces/point-of-sale/types/cart.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+      "name": "ReturnLineItem",
+      "description": "An item selected for return. Staff choose the items, quantities, reasons and restocking in POS, so extensions can only read them.",
       "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "price",
-          "value": "string",
-          "description": "The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing."
+          "name": "canRestock",
+          "value": "boolean",
+          "description": "Whether the item can be restocked."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItem",
+          "value": "Omit<LineItem, \"quantity\"> & { quantity?: number; }",
+          "description": "The original order line item. Its `quantity` is the quantity originally ordered, when POS knows it. Its `price` already includes the line's discounts, except discount codes, and `discounts` lists them all."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "orderLineItemId",
+          "value": "number",
+          "description": "The ID of the original order line item."
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
           "name": "quantity",
           "value": "number",
-          "description": "The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management."
+          "description": "The quantity selected for return."
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "taxable",
-          "value": "boolean",
-          "description": "Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes."
+          "name": "returnReason",
+          "value": "ReturnReason",
+          "description": "The return reason, if one is selected.",
+          "isOptional": true
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "title",
+          "name": "returnReasonNote",
           "value": "string",
-          "description": "The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly."
+          "description": "The note for the return reason. Empty when there's no note."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "shouldRestock",
+          "value": "boolean",
+          "description": "Whether the item will be restocked."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "uuid",
+          "value": "string",
+          "description": "Identifies the returned item."
         }
       ],
-      "value": "export interface CustomSale {\n  /**\n   * The quantity of the custom sale item. Must be a positive integer. Use for quantity-based pricing and inventory management.\n   */\n  quantity: number;\n  /**\n   * The display name for the custom sale item. Appears on receipts and in cart displays. Should be descriptive and customer-friendly.\n   */\n  title: string;\n  /**\n   * The price for the custom sale item as currency string. Must be a valid positive amount. Use for non-catalog items and custom pricing.\n   */\n  price: string;\n  /**\n   * Determines whether the custom sale item is taxable. Set to `true` to apply tax calculations, `false` to exempt from taxes.\n   */\n  taxable: boolean;\n}"
+      "value": "export interface ReturnLineItem {\n  /**\n   * Identifies the returned item.\n   */\n  uuid: string;\n  /**\n   * The ID of the original order line item.\n   */\n  orderLineItemId: number;\n  /**\n   * The quantity selected for return.\n   */\n  quantity: number;\n  /**\n   * The return reason, if one is selected.\n   */\n  returnReason?: ReturnReason;\n  /**\n   * The note for the return reason. Empty when there's no note.\n   */\n  returnReasonNote: string;\n  /**\n   * Whether the item will be restocked.\n   */\n  shouldRestock: boolean;\n  /**\n   * Whether the item can be restocked.\n   */\n  canRestock: boolean;\n  /**\n   * The original order line item. Its `quantity` is the quantity originally ordered, when POS knows it. Its `price` already includes the line's discounts, except discount codes, and `discounts` lists them all.\n   */\n  lineItem: Omit<LineItem, 'quantity'> & {quantity?: number};\n}"
     }
   },
-  "Address": {
+  "ReturnReason": {
     "src/surfaces/point-of-sale/types/cart.ts": {
       "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "Address",
-      "description": "Represents physical address information for customer shipping and billing. Contains standard address fields including street, city, region, postal code, and country data.",
+      "name": "ReturnReason",
+      "description": "A return reason from Shopify's return reason library.",
       "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "address1",
-          "value": "string",
-          "description": "The primary street address line. Required for most shipping and billing operations. Should contain street number and name.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "address2",
-          "value": "string",
-          "description": "The secondary address line for apartment, suite, or unit information. Optional field for additional address details.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "city",
-          "value": "string",
-          "description": "The city name for the address. Required for shipping calculations and location-based services.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "company",
-          "value": "string",
-          "description": "The company name associated with the address. Optional field for business customers and B2B transactions.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "country",
-          "value": "string",
-          "description": "The country name for the address. Required for international shipping, tax calculations, and compliance.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "countryCode",
-          "value": "CountryCode",
-          "description": "The standardized country code (ISO format). Use for precise country identification and international shipping operations.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "firstName",
-          "value": "string",
-          "description": "The first name for the address contact. Used for personalized shipping labels and customer communication.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lastName",
-          "value": "string",
-          "description": "The last name for the address contact. Required for complete customer identification and shipping labels.",
-          "isOptional": true
+          "name": "id",
+          "value": "number",
+          "description": "The ID of the return reason."
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
           "name": "name",
           "value": "string",
-          "description": "The full name for the address contact. Use when first and last names are combined or unavailable as separate fields.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "phone",
-          "value": "string",
-          "description": "The phone number for the address contact. Used for delivery notifications, shipping updates, and customer communication.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "province",
-          "value": "string",
-          "description": "The province or state name for the address. Required for regional shipping rates and tax calculations.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "provinceCode",
-          "value": "string",
-          "description": "The standardized province or state code. Use for precise regional identification and automated shipping calculations.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "zip",
-          "value": "string",
-          "description": "The postal or ZIP code for the address. Required for accurate shipping rates and location-based services.",
-          "isOptional": true
+          "description": "The display name of the return reason."
         }
       ],
-      "value": "export interface Address {\n  /**\n   * The primary street address line. Required for most shipping and billing operations. Should contain street number and name.\n   */\n  address1?: string;\n  /**\n   * The secondary address line for apartment, suite, or unit information. Optional field for additional address details.\n   */\n  address2?: string;\n  /**\n   * The city name for the address. Required for shipping calculations and location-based services.\n   */\n  city?: string;\n  /**\n   * The company name associated with the address. Optional field for business customers and B2B transactions.\n   */\n  company?: string;\n  /**\n   * The first name for the address contact. Used for personalized shipping labels and customer communication.\n   */\n  firstName?: string;\n  /**\n   * The last name for the address contact. Required for complete customer identification and shipping labels.\n   */\n  lastName?: string;\n  /**\n   * The phone number for the address contact. Used for delivery notifications, shipping updates, and customer communication.\n   */\n  phone?: string;\n  /**\n   * The province or state name for the address. Required for regional shipping rates and tax calculations.\n   */\n  province?: string;\n  /**\n   * The country name for the address. Required for international shipping, tax calculations, and compliance.\n   */\n  country?: string;\n  /**\n   * The postal or ZIP code for the address. Required for accurate shipping rates and location-based services.\n   */\n  zip?: string;\n  /**\n   * The full name for the address contact. Use when first and last names are combined or unavailable as separate fields.\n   */\n  name?: string;\n  /**\n   * The standardized province or state code. Use for precise regional identification and automated shipping calculations.\n   */\n  provinceCode?: string;\n  /**\n   * The standardized country code (ISO format). Use for precise country identification and international shipping operations.\n   */\n  countryCode?: CountryCode;\n}"
+      "value": "export interface ReturnReason {\n  /**\n   * The ID of the return reason.\n   */\n  id: number;\n  /**\n   * The display name of the return reason.\n   */\n  name: string;\n}"
     }
   },
-  "SetLineItemSellingPlanInput": {
+  "CartType": {
     "src/surfaces/point-of-sale/types/cart.ts": {
       "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-      "name": "SetLineItemSellingPlanInput",
-      "description": "Specifies the parameters for assigning selling plans to line items. Used to add subscription or purchase option configurations to products.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "lineItemUuid",
-          "value": "string",
-          "description": "The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "sellingPlanId",
-          "value": "number",
-          "description": "The selling plan `ID` to apply to the line item. Must be a valid selling plan available for the product."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "sellingPlanName",
-          "value": "string",
-          "description": "The selling plan name for display purposes. Required for proper selling plan display in the cart.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface SetLineItemSellingPlanInput {\n  /**\n   * The target line item `UUID` for selling plan assignment. Must match an existing line item in the cart.\n   */\n  lineItemUuid: string;\n  /**\n   * The selling plan `ID` to apply to the line item. Must be a valid selling plan available for the product.\n   */\n  sellingPlanId: number;\n  /**\n   * The selling plan name for display purposes. Required for proper selling plan display in the cart.\n   */\n  sellingPlanName?: string;\n}"
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "CartType",
+      "value": "'Checkout' | 'Unsupported' | 'Return' | 'Exchange'",
+      "description": "The kind of cart that a `Cart` represents.\n\n- `'Checkout'`: A regular sale.\n- `'Return'`: A return. The returned items are in `cart.return.lineItems`.\n- `'Exchange'`: A return with new items in exchange. The new items are in `cart.lineItems`.\n- `'Unsupported'`: A POS flow that extensions don't support. Extensions can't change the cart and shouldn't rely on its contents.",
+      "isPublicDocs": true
     }
   },
   "CartApi": {
@@ -1012,7 +1613,7 @@
           "syntaxKind": "MethodSignature",
           "name": "clearCart",
           "value": "() => Promise<void>",
-          "description": "Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans."
+          "description": "Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n\nIn a `'Return'` or `'Exchange'` cart, it ends the return or exchange and leaves an empty `'Checkout'` cart. It doesn't close the return screen."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
@@ -1130,16 +1731,6 @@
       "value": "export interface CartApiContent\n  extends ReadonlyCartApiContent,\n    MutableCartApiContent {}"
     }
   },
-  "CartDiscountType": {
-    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
-      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "CartDiscountType",
-      "value": "'Percentage' | 'FixedAmount' | 'Code'",
-      "description": "Defines the type of discount applied at the cart level. Specifies whether the discount is percentage-based, fixed amount, or discount code redemption.",
-      "isPublicDocs": true
-    }
-  },
   "ReadonlySignalLike": {
     "src/shared.ts": {
       "filePath": "src/shared.ts",
@@ -1162,16 +1753,6 @@
         }
       ],
       "value": "export interface ReadonlySignalLike<T> {\n  /**\n   * The current value of the signal. This property provides immediate access to the current value without requiring subscription setup. Use for one-time value checks or initial setup.\n   */\n  readonly value: T;\n  /**\n   * Subscribes to value changes and calls the provided function whenever the value updates. Returns an unsubscribe function to clean up the subscription. Use to automatically react to changes in the signal's value.\n   */\n  subscribe(fn: (value: T) => void): () => void;\n}"
-    }
-  },
-  "LineItemDiscountType": {
-    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
-      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "LineItemDiscountType",
-      "value": "'Percentage' | 'FixedAmount'",
-      "description": "Defines the type of discount applied to individual line items. Specifies whether the discount is percentage-based or a fixed amount reduction.",
-      "isPublicDocs": true
     }
   },
   "ReadonlyCartApi": {
@@ -1208,206 +1789,6 @@
         }
       ],
       "value": "export interface ReadonlyCartApiContent {\n  /**\n   * Provides read-only access to the current cart state and allows subscribing to cart changes. The `value` property provides the current cart state, and `subscribe` allows listening to changes with improved performance and memory management.\n   */\n  current: ReadonlySignalLike<Cart>;\n}"
-    }
-  },
-  "MutableCartApiContent": {
-    "src/surfaces/point-of-sale/api/cart-api/cart-api.ts": {
-      "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-      "name": "MutableCartApiContent",
-      "description": "Cart and line item write operations.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addAddress",
-          "value": "(address: Address) => Promise<void>",
-          "description": "Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addCartCodeDiscount",
-          "value": "(code: string) => Promise<void>",
-          "description": "Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addCartProperties",
-          "value": "(properties: Record<string, string>) => Promise<void>",
-          "description": "Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addCustomSale",
-          "value": "(customSale: CustomSale) => Promise<string>",
-          "description": "Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addLineItem",
-          "value": "(variantId: number, quantity: number, options?: AddLineItemOptions) => Promise<string>",
-          "description": "Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n\nPass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addLineItemProperties",
-          "value": "(uuid: string, properties: Record<string, string>) => Promise<void>",
-          "description": "Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "addLineItemSellingPlan",
-          "value": "(input: SetLineItemSellingPlanInput) => Promise<void>",
-          "description": "Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "applyCartDiscount",
-          "value": "(type: CartDiscountType, title: string, amount?: string) => Promise<void>",
-          "description": "Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "bulkAddLineItemProperties",
-          "value": "(lineItemProperties: SetLineItemPropertiesInput[]) => Promise<void>",
-          "description": "Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "bulkCartUpdate",
-          "value": "(cartState: CartUpdateInput) => Promise<Cart>",
-          "description": "Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "bulkSetLineItemDiscounts",
-          "value": "(lineItemDiscounts: SetLineItemDiscountInput[]) => Promise<void>",
-          "description": "Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "clearCart",
-          "value": "() => Promise<void>",
-          "description": "Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "deleteAddress",
-          "value": "(addressId: number) => Promise<void>",
-          "description": "Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeAllDiscounts",
-          "value": "(disableAutomaticDiscounts: boolean) => Promise<void>",
-          "description": "Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeCartDiscount",
-          "value": "() => Promise<void>",
-          "description": "Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeCartProperties",
-          "value": "(keys: string[]) => Promise<void>",
-          "description": "Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeCustomer",
-          "value": "() => Promise<void>",
-          "description": "Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeLineItem",
-          "value": "(uuid: string) => Promise<void>",
-          "description": "Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeLineItemDiscount",
-          "value": "(uuid: string) => Promise<void>",
-          "description": "Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeLineItemProperties",
-          "value": "(uuid: string, keys: string[]) => Promise<void>",
-          "description": "Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "removeLineItemSellingPlan",
-          "value": "(uuid: string) => Promise<void>",
-          "description": "Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "setAttributedStaff",
-          "value": "(staffId: number) => Promise<void>",
-          "description": "Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "setAttributedStaffToLineItem",
-          "value": "(staffId: number, lineItemUuid: string) => Promise<void>",
-          "description": "Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "setCustomer",
-          "value": "(customer: Customer) => Promise<void>",
-          "description": "Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "setLineItemDiscount",
-          "value": "(uuid: string, type: LineItemDiscountType, title: string, amount: string) => Promise<void>",
-          "description": "Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "updateDefaultAddress",
-          "value": "(addressId: number) => Promise<void>",
-          "description": "Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/api/cart-api/cart-api.ts",
-          "syntaxKind": "MethodSignature",
-          "name": "updateLineItemQuantity",
-          "value": "(uuid: string, quantity: number) => Promise<void>",
-          "description": "Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n\nIf POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n\nOnly available on API version `2026-10` and later."
-        }
-      ],
-      "value": "export interface MutableCartApiContent {\n  /**\n   * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.\n   *\n   * @param cartState the cart state to set\n   * @returns the updated cart\n   */\n  bulkCartUpdate(cartState: CartUpdateInput): Promise<Cart>;\n\n  /**\n   * Apply a cart-level discount with the specified type (`'Percentage'`, `'FixedAmount'`, or `'Code'`), title, and optional amount. For discount codes, omit the `amount` parameter. Enhanced validation ensures proper discount application.\n   *\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discount. Pass in `undefined` if using discount codes.\n   */\n  applyCartDiscount(\n    type: CartDiscountType,\n    title: string,\n    amount?: string,\n  ): Promise<void>;\n\n  /**\n   * Apply a discount code to the cart. The system will validate the code and apply the appropriate discount if the code is valid and applicable to the current cart contents with improved error messaging.\n   *\n   * @param code the code for the discount to add to the cart\n   */\n  addCartCodeDiscount(code: string): Promise<void>;\n\n  /**\n   * Remove the current cart-level discount. This only affects cart-level discounts and does not impact line item discounts or automatic discount eligibility.\n   */\n  removeCartDiscount(): Promise<void>;\n\n  /**\n   * Remove all discounts from both the cart and individual line items. Set `disableAutomaticDiscounts` to `true` to prevent automatic discounts from being reapplied after removal with enhanced discount allocation handling.\n   *\n   * @param disableAutomaticDiscounts Whether or not automatic discounts should be enabled after removing the discounts.\n   */\n  removeAllDiscounts(disableAutomaticDiscounts: boolean): Promise<void>;\n\n  /**\n   * Remove all line items and reset the cart to an empty state. This action can't be undone and will clear all cart contents including line items, discounts, properties, and selling plans.\n   */\n  clearCart(): Promise<void>;\n\n  /**\n   * Associate a customer with the current cart using the customer object containing the customer `ID`. This enables customer-specific pricing, discounts, and checkout features with enhanced customer data validation.\n   *\n   * @param customer the customer object to add to the cart\n   */\n  setCustomer(customer: Customer): Promise<void>;\n\n  /**\n   * Remove the currently associated customer from the cart, converting it back to a guest cart without customer-specific benefits or information while preserving cart contents.\n   */\n  removeCustomer(): Promise<void>;\n\n  /**\n   * Add a custom sale item to the cart with specified quantity, title, price, and taxable status. Returns the `UUID` of the created line item for future operations and property management.\n   *\n   * @param customSale the custom sale object to add to the cart\n   * @returns {string} the UUID of the line item added\n   */\n  addCustomSale(customSale: CustomSale): Promise<string>;\n\n  /**\n   * Add a product variant to the cart by its numeric `ID` with the specified quantity. Returns the `UUID` of the newly added line item, or an empty string if the user dismissed an oversell guard modal. Throws an error if POS fails to add the line item due to validation or system errors.\n   *\n   * Pass `options` to attach line-item properties in the same operation, instead of following up with a separate `addLineItemProperties` call.\n   *\n   * @param variantId the product variant's numeric ID to add to the cart\n   * @param quantity the number of this variant to add to the cart\n   * @param options optional line-item properties to apply to the new line item in the same operation\n   * @returns {string} the UUID of the line item added, or the empty string if the user dismissed an oversell guard modal\n   * @throws {Error} if POS fails to add the line item\n   */\n  addLineItem(\n    variantId: number,\n    quantity: number,\n    options?: AddLineItemOptions,\n  ): Promise<string>;\n\n  /**\n   * Set the quantity of an existing line item identified by its `UUID`, preserving the line item's properties, discounts, and selling plans. This is equivalent to a merchant adjusting the quantity on the native cart line.\n   *\n   * If POS has split the line into multiple allocations that share the same `UUID` (for example, lines split across delivery methods), the target line is ambiguous and the call throws instead of guessing.\n   *\n   * Only available on API version `2026-10` and later.\n   *\n   * @param uuid the UUID of the line item to update\n   * @param quantity the new absolute quantity; must be an integer of 1 or greater. To remove a line item, use `removeLineItem` instead.\n   * @returns A promise that resolves after the cart state reflects the change.\n   * @throws {Error} if the line item is not found, the `UUID` matches multiple split-line allocations, the quantity is invalid, the cart is not editable because it is a return or exchange, or the POS app version does not support this method.\n   */\n  updateLineItemQuantity(uuid: string, quantity: number): Promise<void>;\n\n  /**\n   * Remove a specific line item from the cart using its `UUID`. The line item will be completely removed from the cart along with any associated discounts, properties, or selling plans.\n   *\n   * @param uuid the uuid of the line item that should be removed\n   */\n  removeLineItem(uuid: string): Promise<void>;\n\n  /**\n   * Add custom key-value properties to the cart for storing metadata, tracking information, or integration data. Properties are merged with existing cart properties with enhanced validation and conflict resolution.\n   *\n   * @param properties the custom key to value object to attribute to the cart\n   */\n  addCartProperties(properties: Record<string, string>): Promise<void>;\n\n  /**\n   * Remove specific cart properties by their keys. Only the specified property keys will be removed while other properties remain intact with improved error handling for non-existent keys.\n   *\n   * @param keys the collection of keys to be removed from the cart properties\n   */\n  removeCartProperties(keys: string[]): Promise<void>;\n\n  /**\n   * Add custom properties to a specific line item using its `UUID`. Properties are merged with existing line item properties for metadata storage and tracking with enhanced validation.\n   *\n   * @param uuid the uuid of the line item to which the properties should be stringd\n   * @param properties the custom key to value object to attribute to the line item\n   */\n  addLineItemProperties(\n    uuid: string,\n    properties: Record<string, string>,\n  ): Promise<void>;\n\n  /**\n   * Add properties to multiple line items simultaneously using an array of inputs containing line item `UUIDs` and their respective properties for efficient bulk operations with enhanced validation and error reporting.\n   *\n   * @param lineItemProperties the collection of custom line item properties to apply to their respective line items.\n   */\n  bulkAddLineItemProperties(\n    lineItemProperties: SetLineItemPropertiesInput[],\n  ): Promise<void>;\n\n  /**\n   * Remove specific properties from a line item by `UUID` and property keys. Only the specified keys will be removed while other properties remain intact with improved error handling.\n   *\n   * @param uuid the uuid of the line item to which the properties should be removed\n   * @param keys the collection of keys to be removed from the line item properties\n   */\n  removeLineItemProperties(uuid: string, keys: string[]): Promise<void>;\n\n  /**\n   * Apply a discount to a specific line item using its `UUID`. Specify the discount type (`'Percentage'` or `'FixedAmount'`), title, and amount value with improved discount allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param uuid the uuid of the line item that should receive a discount\n   * @param type the type of discount applied (example: 'Percentage')\n   * @param title the title attributed with the discount\n   * @param amount the percentage or fixed monetary amount deducted with the discout\n   */\n  setLineItemDiscount(\n    uuid: string,\n    type: LineItemDiscountType,\n    title: string,\n    amount: string,\n  ): Promise<void>;\n\n  /**\n   * Apply discounts to multiple line items simultaneously. Each input specifies the line item `UUID` and discount details for efficient bulk discount operations with enhanced validation and allocation tracking. `FixedAmount` discounts use per-unit amounts. For example, passing `'5.00'` on a line item with quantity 2 results in a $10.00 total discount.\n   *\n   * @param lineItemDiscounts a map of discounts to add. They key is the uuid of the line item you want to add the discount to. The value is the discount input.\n   */\n  bulkSetLineItemDiscounts(\n    lineItemDiscounts: SetLineItemDiscountInput[],\n  ): Promise<void>;\n\n  /**\n   * Set the attributed staff member for all line items in the cart using the staff `ID`. Pass `undefined` to clear staff attribution from all line items with enhanced staff validation and tracking.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff from all line items.\n   */\n  setAttributedStaff(staffId: number | undefined): Promise<void>;\n\n  /**\n   * Set the attributed staff member for a specific line item using the staff `ID` and line item `UUID`. Pass `undefined` as `staffId` to clear attribution from the line item with improved validation and error handling.\n   *\n   * @param staffId the ID of the staff. Providing undefined will clear the attributed staff on the line item.\n   * @param lineItemUuid the UUID of the line item.\n   */\n  setAttributedStaffToLineItem(\n    staffId: number | undefined,\n    lineItemUuid: string,\n  ): Promise<void>;\n\n  /**\n   * Remove all discounts from a specific line item identified by its `UUID`. This will clear any custom discounts applied to the line item while preserving discount allocation history.\n   *\n   * @param uuid the uuid of the line item whose discounts should be removed\n   */\n  removeLineItemDiscount(uuid: string): Promise<void>;\n\n  /**\n   * Add a new address to the customer associated with the cart. The customer must be present in the cart before adding addresses with enhanced address validation and formatting.\n   *\n   * @param address the address object to add to the customer in cart\n   */\n  addAddress(address: Address): Promise<void>;\n\n  /**\n   * Delete an existing address from the customer using the address `ID`. The customer must be present in the cart to perform this operation with improved error handling for invalid address `IDs`.\n   *\n   * @param addressId the address ID to delete\n   */\n  deleteAddress(addressId: number): Promise<void>;\n\n  /**\n   * Set a specific address as the default address for the customer using the address `ID`. The customer must be present in the cart to update the default address with enhanced validation.\n   *\n   * @param addressId the address ID to set as the default address\n   */\n  updateDefaultAddress(addressId: number): Promise<void>;\n\n  /**\n   * Add a selling plan to a line item in the cart using the line item `UUID`, selling plan `ID`, and selling plan name. Optionally provide delivery interval and interval count for improved performance, otherwise POS will fetch them after syncing the cart.\n   *\n   * @param uuid the uuid of the line item that should receive the selling plan\n   * @param sellingPlanId the ID of the selling plan to add to the line item\n   */\n  addLineItemSellingPlan(input: SetLineItemSellingPlanInput): Promise<void>;\n\n  /**\n   * Remove the selling plan from a line item in the cart using the line item `UUID`. This will clear any subscription or recurring purchase configuration from the line item.\n   *\n   * @param uuid the uuid of the line item whose selling plan should be removed\n   */\n  removeLineItemSellingPlan(uuid: string): Promise<void>;\n}"
     }
   },
   "CartLineItemApi": {
@@ -4672,17 +5053,17 @@
           "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "number",
-          "description": "The unique identifier for the order. Use for order lookups, implementing order-specific functionality, and integrating with external systems."
+          "description": "The unique identifier for the order or draft order."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/order-api/order-api.ts",
           "syntaxKind": "PropertySignature",
           "name": "name",
           "value": "string",
-          "description": "The name of the order as configured by the merchant. Use for order identification, displays, and customer-facing interfaces."
+          "description": "The name of the order or draft order as configured by the merchant."
         }
       ],
-      "value": "export interface OrderApiContent {\n  /**\n   * The unique identifier for the order. Use for order lookups, implementing order-specific functionality, and integrating with external systems.\n   */\n  id: number;\n\n  /**\n   * The name of the order as configured by the merchant. Use for order identification, displays, and customer-facing interfaces.\n   */\n  name: string;\n\n  /**\n   * The unique identifier of the customer associated with the order. Returns `undefined` if no customer is associated. Use for customer-specific functionality and personalized experiences.\n   */\n  customerId?: number;\n}"
+      "value": "export interface OrderApiContent extends Order {\n  /**\n   * The unique identifier of the customer associated with the order. Returns `undefined` if no customer is associated. Use for customer-specific functionality and personalized experiences.\n   */\n  customerId?: number;\n}"
     }
   },
   "ProductApi": {
@@ -4766,213 +5147,17 @@
           "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "number",
-          "description": "The unique identifier for the draft order. Use for draft order lookups, implementing order-specific functionality, and integrating with external systems."
+          "description": "The unique identifier for the order or draft order."
         },
         {
           "filePath": "src/surfaces/point-of-sale/api/draft-order-api/draft-order-api.ts",
           "syntaxKind": "PropertySignature",
           "name": "name",
           "value": "string",
-          "description": "The name of the draft order as configured by the merchant. Use for draft order identification, displays, and customer-facing interfaces."
+          "description": "The name of the order or draft order as configured by the merchant."
         }
       ],
-      "value": "export interface DraftOrderApiContent {\n  /**\n   * The unique identifier for the draft order. Use for draft order lookups, implementing order-specific functionality, and integrating with external systems.\n   */\n  id: number;\n\n  /**\n   * The name of the draft order as configured by the merchant. Use for draft order identification, displays, and customer-facing interfaces.\n   */\n  name: string;\n\n  /**\n   * The unique identifier of the customer associated with the draft order. Returns `undefined` if no customer is associated. Use for customer-specific functionality and personalized experiences.\n   */\n  customerId?: number;\n}"
-    }
-  },
-  "LineItemRefund": {
-    "src/surfaces/point-of-sale/types/order.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/order.ts",
-      "name": "LineItemRefund",
-      "description": "Represents a refund applied to a line item, including when it was created and the quantity refunded.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "createdAt",
-          "value": "string",
-          "description": "The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "quantity",
-          "value": "number",
-          "description": "The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time."
-        }
-      ],
-      "value": "export interface LineItemRefund {\n  /**\n   * The [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) timestamp when the refund was created and processed (for example, `\"2024-05-15T14:30:00Z\"`). This indicates when the refund was initiated and can be used for chronological sorting, refund history displays, or audit trails.\n   */\n  createdAt: string;\n  /**\n   * The number of units refunded in this refund transaction. This must be a positive integer representing how many items were returned to inventory or credited back to the customer. Multiple refunds can exist for the same line item if partial refunds were processed over time.\n   */\n  quantity: number;\n}"
-    }
-  },
-  "OrderLineItem": {
-    "src/surfaces/point-of-sale/types/order.ts": {
-      "filePath": "src/surfaces/point-of-sale/types/order.ts",
-      "name": "OrderLineItem",
-      "description": "Represents a line item from an order, extending the base line item with current quantity and refund information.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "attributedUserId",
-          "value": "number",
-          "description": "The staff member 'ID' attributed to this line item. Returns 'undefined' if no staff attribution is set. Use for commission tracking and performance analytics.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "components",
-          "value": "LineItemComponent[]",
-          "description": "Bundle components for this line item. Only present for [product bundles](/docs/apps/build/product-merchandising/bundles). Each component represents an individual item within the bundle with its own tax information.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "currentQuantity",
-          "value": "number",
-          "description": "The current quantity of items that remain with the customer after accounting for refunds. This is calculated as the original `quantity` minus any refunded quantities. For example, if 5 items were ordered and 2 were refunded, `currentQuantity` would be `3`. This value reflects the net quantity the customer kept from this line item."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discountAllocations",
-          "value": "DiscountAllocation[]",
-          "description": "An array of discount allocations applied to this line item, providing detailed breakdown of how discounts are distributed. Returns 'undefined' if no allocations exist. Use for enhanced discount tracking and reporting.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "discounts",
-          "value": "Discount[]",
-          "description": "An array of discounts applied to this line item. Empty array if no discounts are active. Use for displaying line item savings and discount details."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "hasSellingPlanGroups",
-          "value": "boolean",
-          "description": "Determines whether this line item has selling plan groups (subscription options) available. Returns 'undefined' if selling plan information is unavailable. Use for displaying subscription options.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "isGiftCard",
-          "value": "boolean",
-          "description": "Determines whether this line item is a gift card. Gift cards have special handling requirements and business logic. Use for implementing gift card-specific workflows."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "price",
-          "value": "number",
-          "description": "The unit price of the line item. Returns 'undefined' for custom sales without set prices. Use for pricing calculations and displays.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "productId",
-          "value": "number",
-          "description": "The product 'ID' this line item represents. Returns 'undefined' for custom sales or non-product items. Use for product-specific operations and linking to product details.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "properties",
-          "value": "{ [key: string]: string; }",
-          "description": "The custom key-value properties attached to this line item. Empty object if no properties are set. Use for metadata, customization options, or integration data."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "quantity",
-          "value": "number",
-          "description": "The quantity of this item in the cart. Always a positive integer. Use for quantity displays, calculations, and inventory management."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "refunds",
-          "value": "LineItemRefund[]",
-          "description": "An array of all refund transactions applied to this line item, ordered chronologically. Each refund entry tracks when the refund occurred and how many units were refunded. Multiple entries indicate partial refunds processed over time. Returns `undefined` or empty array when no refunds have been applied to this line item.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "requiresSellingPlan",
-          "value": "boolean",
-          "description": "Determines whether this line item requires a selling plan (subscription) to be purchased. Returns 'undefined' if selling plan information is unavailable. Use for implementing subscription-based product handling.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "sellingPlan",
-          "value": "SellingPlan",
-          "description": "The currently selected selling plan for this line item. Returns 'undefined' if no selling plan is applied. Contains selling plan details including 'ID', name, and delivery intervals. Use for subscription management and recurring purchase functionality.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "sku",
-          "value": "string",
-          "description": "The Stock Keeping Unit (SKU) identifier for this line item. Returns 'undefined' if no SKU is configured. Use for inventory tracking and product identification.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxable",
-          "value": "boolean",
-          "description": "Determines whether this line item is subject to tax calculations. Use for tax computation, compliance, and pricing displays."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "taxLines",
-          "value": "TaxLine[]",
-          "description": "An array of tax lines applied to this line item, containing tax amounts and rates. Use for detailed tax reporting and compliance."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "title",
-          "value": "string",
-          "description": "The display title of the line item. Returns 'undefined' for items without titles. Use for customer-facing displays and cart item identification.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "uuid",
-          "value": "string",
-          "description": "The unique identifier for this line item within the cart. Use for line item-specific operations like updates, removals, or property modifications."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "variantId",
-          "value": "number",
-          "description": "The product variant 'ID' this line item represents. Returns 'undefined' for custom sales or non-variant items. Use for variant-specific operations and product details.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/order.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "vendor",
-          "value": "string",
-          "description": "The vendor or brand name for this line item. Returns 'undefined' if no vendor is set. Use for vendor-specific displays and organization.",
-          "isOptional": true
-        }
-      ],
-      "value": "export interface OrderLineItem extends LineItem {\n  /**\n   * The current quantity of items that remain with the customer after accounting for refunds. This is calculated as the original `quantity` minus any refunded quantities. For example, if 5 items were ordered and 2 were refunded, `currentQuantity` would be `3`. This value reflects the net quantity the customer kept from this line item.\n   */\n  currentQuantity: number;\n  /**\n   * An array of all refund transactions applied to this line item, ordered chronologically. Each refund entry tracks when the refund occurred and how many units were refunded. Multiple entries indicate partial refunds processed over time. Returns `undefined` or empty array when no refunds have been applied to this line item.\n   */\n  refunds?: LineItemRefund[];\n}"
+      "value": "export interface DraftOrderApiContent extends Order {\n  /**\n   * The unique identifier of the customer associated with the draft order. Returns `undefined` if no customer is associated. Use for customer-specific functionality and personalized experiences.\n   */\n  customerId?: number;\n}"
     }
   },
   "DirectApiRequestBody": {
