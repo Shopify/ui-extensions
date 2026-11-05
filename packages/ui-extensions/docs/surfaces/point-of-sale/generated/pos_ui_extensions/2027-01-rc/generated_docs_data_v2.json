@@ -1481,13 +1481,6 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/cart.ts",
           "syntaxKind": "PropertySignature",
-          "name": "handle",
-          "value": "string",
-          "description": "The reason's stable key, such as `damaged-or-defective`. Empty when POS couldn't look up the reason."
-        },
-        {
-          "filePath": "src/surfaces/point-of-sale/types/cart.ts",
-          "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "number",
           "description": "The ID of the return reason."
@@ -1500,7 +1493,7 @@
           "description": "The display name of the return reason."
         }
       ],
-      "value": "export interface ReturnReason {\n  /**\n   * The ID of the return reason.\n   */\n  id: number;\n  /**\n   * The reason's stable key, such as `damaged-or-defective`. Empty when POS couldn't look up the reason.\n   */\n  handle: string;\n  /**\n   * The display name of the return reason.\n   */\n  name: string;\n}"
+      "value": "export interface ReturnReason {\n  /**\n   * The ID of the return reason.\n   */\n  id: number;\n  /**\n   * The display name of the return reason.\n   */\n  name: string;\n}"
     }
   },
   "CartType": {
