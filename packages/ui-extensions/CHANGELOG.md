@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.4
+
+### Patch Changes
+
+- [#4791](https://github.com/Shopify/ui-extensions/pull/4791) [`be426cc`](https://github.com/Shopify/ui-extensions/commit/be426ccf3195e05d12dcc302d7d59df6f0d32a77) Thanks [@fatbattk](https://github.com/fatbattk)! - Remove `handle` from the POS `ReturnReason` type. A return reason is `{id, name}`.
+
 ## 2027.1.0-rc.3
 
 ### Minor Changes
