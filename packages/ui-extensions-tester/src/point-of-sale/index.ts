@@ -1,16 +1,18 @@
 import type {
   CartCapabilities,
-  LineItem,
+  CartLineItem,
   Storage,
   SubscribableStorage,
   CartApiContent,
 } from '@shopify/ui-extensions/point-of-sale';
 
 /**
- * Creates a mock POS `LineItem` with sensible defaults.
+ * Creates a mock POS `CartLineItem` with sensible defaults and no metafields.
  * Pass a partial override to customize fields.
  */
-export function createCartLineItem(overrides?: Partial<LineItem>): LineItem {
+export function createCartLineItem(
+  overrides?: Partial<CartLineItem>,
+): CartLineItem {
   return {
     uuid: 'mock-line-item-uuid',
     price: 10,
@@ -25,6 +27,7 @@ export function createCartLineItem(overrides?: Partial<LineItem>): LineItem {
     vendor: 'Mock Vendor',
     properties: {},
     isGiftCard: false,
+    metafields: [],
     ...overrides,
   };
 }
@@ -156,6 +159,7 @@ const posMutationDefaults: {
     currency: 'USD',
     cartDiscounts: [],
     lineItems: [],
+    metafields: [],
     properties: {},
     capabilities: createCartCapabilities(),
     cartType: 'Checkout',

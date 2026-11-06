@@ -7,6 +7,7 @@ import type {
 } from '@shopify/ui-extensions/point-of-sale';
 
 import {createMockPosTargetApi} from '../point-of-sale/factories';
+import {createCartLineItem, createResult} from '../point-of-sale';
 
 const cartChange: MetafieldChange = {
   type: 'updateCartMetafield',
@@ -115,5 +116,44 @@ describe('applyMetafieldChange', () => {
     const results = await api.applyMetafieldChange([cartChange, lineChange]);
 
     expect(results).toStrictEqual([{type: 'success'}, {type: 'success'}]);
+  });
+});
+
+describe('cart metafields', () => {
+  it('starts with no cart metafields', () => {
+    const api = createMockPosTargetApi('pos.home.modal.render');
+
+    expect(api.cart.current.value.metafields).toStrictEqual([]);
+  });
+
+  it('creates line items with no metafields by default', () => {
+    expect(createCartLineItem().metafields).toStrictEqual([]);
+  });
+
+  it('creates line items with the given metafields', () => {
+    const metafields = [
+      {
+        namespace: 'custom',
+        key: 'event_date',
+        type: 'date',
+        value: '2027-03-14',
+      },
+    ];
+
+    expect(createCartLineItem({metafields}).metafields).toStrictEqual(
+      metafields,
+    );
+  });
+
+  it('gives the selected cart line item no metafields by default', () => {
+    const api = createMockPosTargetApi(
+      'pos.cart.line-item-details.action.render',
+    );
+
+    expect(api.cartLineItem.metafields).toStrictEqual([]);
+  });
+
+  it('resolves bulkCartUpdate with a cart that has no metafields', () => {
+    expect(createResult('bulkCartUpdate').metafields).toStrictEqual([]);
   });
 });

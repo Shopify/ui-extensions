@@ -2,6 +2,7 @@ import {CountryCode} from './country-code';
 import {TaxLine} from './tax-line';
 import {DiscountAllocation} from './discount-allocation';
 import type {Order} from './order';
+import type {CartMetafield, MetafieldInput} from './metafield';
 import type {MutableCartApiContent} from '../api/cart-api/cart-api';
 
 /**
@@ -54,7 +55,15 @@ interface CartBase {
   /**
    * The line items in the cart. In a `Return` or `Exchange` cart, these are only the new items in the exchange. The returned items are in `cart.return.lineItems`.
    */
-  lineItems: LineItem[];
+  lineItems: CartLineItem[];
+  /**
+   * The cart's [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields). Set them with `shopify.applyMetafieldChange()`, which is only available on the targets that have the Cart API. Targets with a read-only cart, such as `pos.app.ready.data`, can read metafields here but can't change them.
+   *
+   * Lists the metafields in shared namespaces, such as `custom`, and the metafields in the reserved namespace of the app that owns the extension. Metafields in other apps' reserved namespaces aren't included. Always empty in `'Return'` and `'Exchange'` carts, which can't have cart metafields.
+   *
+   * Only available on API version `2027-01` and later, on POS version 12.0.0 and later.
+   */
+  metafields: CartMetafield[];
   /**
    * The custom key-value properties to apply to the line item. Merged with existing properties—duplicate keys overwrite existing values.
    */
@@ -229,6 +238,8 @@ export interface CartUpdateInput {
   customer?: Customer;
   /**
    * An array of line items to set during bulk update. Completely replaces existing cart contents—removes all current items and adds the provided ones.
+   *
+   * Metafields aren't part of this input. A line item whose `uuid` is in the input keeps its metafields, and a line item left out of the input is removed with its metafields. To change metafields, use `shopify.applyMetafieldChange()`.
    */
   lineItems: LineItem[];
   /**
@@ -332,6 +343,21 @@ export interface LineItem {
 }
 
 /**
+ * A line item in the cart, with its [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields).
+ * @publicDocs
+ */
+export interface CartLineItem extends LineItem {
+  /**
+   * The line item's metafields. Set them with `shopify.applyMetafieldChange()` or with the `metafields` option of `addLineItem`, which are only available on the targets that have the Cart API. Targets with a read-only cart, such as `pos.app.ready.data`, can read metafields here but can't change them.
+   *
+   * Lists the metafields in shared namespaces, such as `custom`, and the metafields in the reserved namespace of the app that owns the extension. Metafields in other apps' reserved namespaces aren't included. A line item keeps its metafields when its quantity changes, and two line items with the same variant but different metafields are never merged.
+   *
+   * Only available on API version `2027-01` and later, on POS version 12.0.0 and later.
+   */
+  metafields: CartMetafield[];
+}
+
+/**
  * Represents a component of a [product bundle](/docs/apps/build/product-merchandising/bundles) line item. Bundle components contain the individual items that make up a bundle, each with their own pricing and tax information.
  * @publicDocs
  */
@@ -429,6 +455,15 @@ export interface AddLineItemOptions {
    * Custom key-value properties to attach to the newly created line item. Equivalent to calling `addLineItemProperties` with the returned `UUID`, but applied in the same operation.
    */
   properties?: Record<string, string>;
+
+  /**
+   * [Metafields](https://shopify.dev/docs/apps/build/custom-data/metafields) to set on the newly created line item, at most 25. Equivalent to calling `shopify.applyMetafieldChange()` with an `updateCartLineMetafield` change for each metafield, but applied in the same operation. A metafield without a `namespace` uses the app-reserved namespace (`$app`) of the app that owns the extension.
+   *
+   * If a metafield is invalid, the line item isn't added and `addLineItem` throws.
+   *
+   * Only available on API version `2027-01` and later, on POS version 12.0.0 and later.
+   */
+  metafields?: MetafieldInput[];
 }
 
 /**
