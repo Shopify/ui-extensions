@@ -11,7 +11,8 @@ export class StorageError extends Error {
       | 'RecordSize'
       | 'KeyType'
       | 'KeySize'
-      | 'ReadOnlyKey',
+      | 'ReadOnlyKey'
+      | 'PartitionSize',
     message: string,
   ) {
     super(message);
@@ -64,6 +65,7 @@ export interface Storage<
    * - Key is not a string (`code: 'KeyType'`)
    * - Key size exceeds the limit (`code: 'KeySize'`)
    * - Key holds data from an API version before 2027-01 (`code: 'ReadOnlyKey'`)
+   * - The partition's total stored size would exceed the limit (`code: 'PartitionSize'`)
    */
   set<
     StorageTypes extends BaseStorageTypes = BaseStorageTypes,
