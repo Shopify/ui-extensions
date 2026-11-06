@@ -279,6 +279,7 @@ function getNestedApis(apiName) {
     StorageApi: ['./api/storage-api/storage-api'],
     CartLineItemApi: ['./api/cart-line-item-api/cart-line-item-api'],
     CashDrawerApi: ['./api/cash-drawer-api/cash-drawer-api'],
+    MetafieldApi: ['./api/metafield-api/metafield-api'],
     PinPadApi: ['./api/pin-pad-api'],
     DataTargetApi: ['./api/data-target-api/data-target-api'],
   };

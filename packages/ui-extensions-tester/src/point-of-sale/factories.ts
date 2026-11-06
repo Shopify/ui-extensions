@@ -7,6 +7,9 @@ import type {
   DataTargetApi,
   ActionApi,
   CartApi,
+  MetafieldApi,
+  MetafieldChange,
+  MetafieldChangeResult,
   OrderApi,
   ProductApi,
   CustomerApi,
@@ -254,6 +257,23 @@ function createMockCartApi(): CartApi {
   };
 }
 
+function applyMockMetafieldChange(
+  change: MetafieldChange,
+): Promise<MetafieldChangeResult>;
+function applyMockMetafieldChange(
+  changes: MetafieldChange[],
+): Promise<MetafieldChangeResult[]>;
+async function applyMockMetafieldChange(
+  input: MetafieldChange | MetafieldChange[],
+): Promise<MetafieldChangeResult | MetafieldChangeResult[]> {
+  const success: MetafieldChangeResult = {type: 'success'};
+  return Array.isArray(input) ? input.map(() => ({...success})) : success;
+}
+
+function createMockMetafieldApi(): MetafieldApi {
+  return {applyMetafieldChange: applyMockMetafieldChange};
+}
+
 function createMockOrderApi(): OrderApi {
   return {order: {id: 1, name: '#1001', customerId: undefined}};
 }
@@ -282,25 +302,29 @@ function createMockCashDrawerApi(): CashDrawerApi {
 // Group factory functions — each composes the correct API for a target group
 // ---------------------------------------------------------------------------
 
-// Group A: StandardApi + ActionApi + CartApi + CashDrawerApi
+// Group A: StandardApi + ActionApi + CartApi + MetafieldApi + CashDrawerApi
 function createStandardActionCartCashDrawerMock<
   T extends RenderExtensionTarget,
->(target: T): StandardApi<T> & ActionApi & CartApi & CashDrawerApi {
+>(
+  target: T,
+): StandardApi<T> & ActionApi & CartApi & MetafieldApi & CashDrawerApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockCashDrawerApi(),
   };
 }
 
-// Group B: ActionTargetApi + CartApi + CashDrawerApi
+// Group B: ActionTargetApi + CartApi + MetafieldApi + CashDrawerApi
 function createActionTargetCartCashDrawerMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & CartApi & CashDrawerApi {
+): ActionTargetApi<T> & CartApi & MetafieldApi & CashDrawerApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockCashDrawerApi(),
   };
 }
@@ -326,117 +350,129 @@ function createActionTargetOrderMock<T extends RenderExtensionTarget>(
   };
 }
 
-// Group E: StandardApi + ActionApi + CartApi + ProductApi
+// Group E: StandardApi + ActionApi + CartApi + MetafieldApi + ProductApi
 function createStandardActionCartProductMock<T extends RenderExtensionTarget>(
   target: T,
-): StandardApi<T> & ActionApi & CartApi & ProductApi {
+): StandardApi<T> & ActionApi & CartApi & MetafieldApi & ProductApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockProductApi(),
   };
 }
 
-// Group F: ActionTargetApi + CartApi + ProductApi
+// Group F: ActionTargetApi + CartApi + MetafieldApi + ProductApi
 function createActionTargetCartProductMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & CartApi & ProductApi {
+): ActionTargetApi<T> & CartApi & MetafieldApi & ProductApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockProductApi(),
   };
 }
 
-// Group G: StandardApi + ActionApi + CartApi + OrderApi
+// Group G: StandardApi + ActionApi + CartApi + MetafieldApi + OrderApi
 function createStandardActionCartOrderMock<T extends RenderExtensionTarget>(
   target: T,
-): StandardApi<T> & ActionApi & CartApi & OrderApi {
+): StandardApi<T> & ActionApi & CartApi & MetafieldApi & OrderApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockOrderApi(),
   };
 }
 
-// Group H: ActionTargetApi + CartApi + OrderApi
+// Group H: ActionTargetApi + CartApi + MetafieldApi + OrderApi
 function createActionTargetCartOrderMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & CartApi & OrderApi {
+): ActionTargetApi<T> & CartApi & MetafieldApi & OrderApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockOrderApi(),
   };
 }
 
-// Group I: StandardApi + ActionApi + CartApi + DraftOrderApi
+// Group I: StandardApi + ActionApi + CartApi + MetafieldApi + DraftOrderApi
 function createStandardActionCartDraftOrderMock<
   T extends RenderExtensionTarget,
->(target: T): StandardApi<T> & ActionApi & CartApi & DraftOrderApi {
+>(
+  target: T,
+): StandardApi<T> & ActionApi & CartApi & MetafieldApi & DraftOrderApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockDraftOrderApi(),
   };
 }
 
-// Group J: ActionTargetApi + DraftOrderApi + CartApi
+// Group J: ActionTargetApi + DraftOrderApi + CartApi + MetafieldApi
 function createActionTargetDraftOrderCartMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & DraftOrderApi & CartApi {
+): ActionTargetApi<T> & DraftOrderApi & CartApi & MetafieldApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockDraftOrderApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
   };
 }
 
-// Group K: StandardApi + ActionApi + CartApi + CustomerApi
+// Group K: StandardApi + ActionApi + CartApi + MetafieldApi + CustomerApi
 function createStandardActionCartCustomerMock<T extends RenderExtensionTarget>(
   target: T,
-): StandardApi<T> & ActionApi & CartApi & CustomerApi {
+): StandardApi<T> & ActionApi & CartApi & MetafieldApi & CustomerApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockCustomerApi(),
   };
 }
 
-// Group L: ActionTargetApi + CartApi + CustomerApi
+// Group L: ActionTargetApi + CartApi + MetafieldApi + CustomerApi
 function createActionTargetCartCustomerMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & CartApi & CustomerApi {
+): ActionTargetApi<T> & CartApi & MetafieldApi & CustomerApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockCustomerApi(),
   };
 }
 
-// Group M: StandardApi + ActionApi + CartApi + CartLineItemApi
+// Group M: StandardApi + ActionApi + CartApi + MetafieldApi + CartLineItemApi
 function createStandardActionCartLineItemMock<T extends RenderExtensionTarget>(
   target: T,
-): StandardApi<T> & ActionApi & CartApi & CartLineItemApi {
+): StandardApi<T> & ActionApi & CartApi & MetafieldApi & CartLineItemApi {
   return {
     ...createMockStandardApi(target),
     ...createMockActionApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockCartLineItemApi(),
   };
 }
 
-// Group N: ActionTargetApi + CartApi + CartLineItemApi
+// Group N: ActionTargetApi + CartApi + MetafieldApi + CartLineItemApi
 function createActionTargetCartLineItemMock<T extends RenderExtensionTarget>(
   target: T,
-): ActionTargetApi<T> & CartApi & CartLineItemApi {
+): ActionTargetApi<T> & CartApi & MetafieldApi & CartLineItemApi {
   return {
     ...createMockActionTargetApi(target),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     ...createMockCartLineItemApi(),
   };
 }
@@ -472,17 +508,19 @@ function createActionTargetCashDrawerMock<T extends RenderExtensionTarget>(
   };
 }
 
-// Group R: StandardApi + ScannerApi + CartApi + ResolutionApi
+// Group R: StandardApi + ScannerApi + CartApi + MetafieldApi + ResolutionApi
 function createCartValidationsResolutionMock<T extends RenderExtensionTarget>(
   target: T,
 ): StandardApi<T> &
   ScannerApi &
   CartApi &
+  MetafieldApi &
   ResolutionApi<CartValidationsEventData> {
   return {
     ...createMockStandardApi(target),
     ...createMockScannerApi(),
     ...createMockCartApi(),
+    ...createMockMetafieldApi(),
     resolution: {
       event: createReadonlySignalLike({cart: createPosCart()}),
       onSave: async () => async () => {},
@@ -572,10 +610,10 @@ type PosMockFactory = {
 };
 
 const posMockFactories: PosMockFactory = {
-  // Group A: StandardApi + ActionApi + CartApi + CashDrawerApi
+  // Group A: StandardApi + ActionApi + CartApi + MetafieldApi + CashDrawerApi
   'pos.home.tile.render': createStandardActionCartCashDrawerMock,
 
-  // Group B: ActionTargetApi + CartApi + CashDrawerApi
+  // Group B: ActionTargetApi + CartApi + MetafieldApi + CashDrawerApi
   'pos.home.modal.render': createActionTargetCartCashDrawerMock,
 
   // Group C: StandardApi + ActionApi + OrderApi
@@ -591,44 +629,44 @@ const posMockFactories: PosMockFactory = {
   'pos.exchange.post.action.render': createActionTargetOrderMock,
   'pos.purchase.post.action.render': createActionTargetOrderMock,
 
-  // Group E: StandardApi + ActionApi + CartApi + ProductApi
+  // Group E: StandardApi + ActionApi + CartApi + MetafieldApi + ProductApi
   'pos.product-details.action.menu-item.render':
     createStandardActionCartProductMock,
   'pos.product-details.block.render': createStandardActionCartProductMock,
 
-  // Group F: ActionTargetApi + CartApi + ProductApi
+  // Group F: ActionTargetApi + CartApi + MetafieldApi + ProductApi
   'pos.product-details.action.render': createActionTargetCartProductMock,
 
-  // Group G: StandardApi + ActionApi + CartApi + OrderApi
+  // Group G: StandardApi + ActionApi + CartApi + MetafieldApi + OrderApi
   'pos.order-details.action.menu-item.render':
     createStandardActionCartOrderMock,
   'pos.order-details.block.render': createStandardActionCartOrderMock,
 
-  // Group H: ActionTargetApi + CartApi + OrderApi
+  // Group H: ActionTargetApi + CartApi + MetafieldApi + OrderApi
   'pos.order-details.action.render': createActionTargetCartOrderMock,
 
-  // Group I: StandardApi + ActionApi + CartApi + DraftOrderApi
+  // Group I: StandardApi + ActionApi + CartApi + MetafieldApi + DraftOrderApi
   'pos.draft-order-details.action.menu-item.render':
     createStandardActionCartDraftOrderMock,
   'pos.draft-order-details.block.render':
     createStandardActionCartDraftOrderMock,
 
-  // Group J: ActionTargetApi + DraftOrderApi + CartApi
+  // Group J: ActionTargetApi + DraftOrderApi + CartApi + MetafieldApi
   'pos.draft-order-details.action.render': createActionTargetDraftOrderCartMock,
 
-  // Group K: StandardApi + ActionApi + CartApi + CustomerApi
+  // Group K: StandardApi + ActionApi + CartApi + MetafieldApi + CustomerApi
   'pos.customer-details.action.menu-item.render':
     createStandardActionCartCustomerMock,
   'pos.customer-details.block.render': createStandardActionCartCustomerMock,
 
-  // Group L: ActionTargetApi + CartApi + CustomerApi
+  // Group L: ActionTargetApi + CartApi + MetafieldApi + CustomerApi
   'pos.customer-details.action.render': createActionTargetCartCustomerMock,
 
-  // Group M: StandardApi + ActionApi + CartApi + CartLineItemApi
+  // Group M: StandardApi + ActionApi + CartApi + MetafieldApi + CartLineItemApi
   'pos.cart.line-item-details.action.menu-item.render':
     createStandardActionCartLineItemMock,
 
-  // Group N: ActionTargetApi + CartApi + CartLineItemApi
+  // Group N: ActionTargetApi + CartApi + MetafieldApi + CartLineItemApi
   'pos.cart.line-item-details.action.render':
     createActionTargetCartLineItemMock,
 
@@ -644,7 +682,7 @@ const posMockFactories: PosMockFactory = {
   // Group Q: ActionTargetApi + CashDrawerApi
   'pos.register-details.action.render': createActionTargetCashDrawerMock,
 
-  // Group R: StandardApi + ScannerApi + CartApi + ResolutionApi
+  // Group R: StandardApi + ScannerApi + CartApi + MetafieldApi + ResolutionApi
   'pos.cart.validations.resolution.render': createCartValidationsResolutionMock,
 
   // Group S: StandardApi + ScannerApi + ReadonlyCartApi + ResolutionApi

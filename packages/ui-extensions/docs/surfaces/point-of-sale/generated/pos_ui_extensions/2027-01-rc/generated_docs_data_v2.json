@@ -1845,6 +1845,296 @@
       "value": "export interface CashDrawerApi {\n  /**\n   * The `CashDrawerApi` object provides methods for controlling cash drawer hardware. Access these methods through `shopify.cashDrawer` to trigger cash drawer operations.\n   */\n  cashDrawer: CashDrawerApiContent;\n}"
     }
   },
+  "CartMetafield": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "CartMetafield",
+      "description": "A [metafield](/docs/apps/build/custom-data/metafields) on the cart or on one of its line items.\n\nExtensions set cart and line item metafields using `applyMetafieldChange()`. Unlike line item properties, metafields are typed, belong to the app that set them when they use an app-reserved namespace, and can be copied to the order when it's created.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "string",
+          "description": "The key name of the metafield, such as `'gift_message'` or `'event_date'`. Together with `namespace`, this uniquely identifies the metafield on its owner (the cart or a line item)."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "namespace",
+          "value": "string",
+          "description": "The namespace of the metafield, such as `'custom'` or the app-reserved `'$app'`. Together with `key`, this uniquely identifies the metafield on its owner (the cart or a line item)."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "string",
+          "description": "The metafield's [type name](/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'`, `'date'`, or `'json'`."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The value stored in the metafield, always as a string. For example, a `number_integer` metafield stores `'42'`, and a `json` metafield stores a JSON string."
+        }
+      ],
+      "value": "export interface CartMetafield {\n  /**\n   * The key name of the metafield, such as `'gift_message'` or `'event_date'`. Together with `namespace`, this uniquely identifies the metafield on its owner (the cart or a line item).\n   */\n  key: string;\n\n  /**\n   * The namespace of the metafield, such as `'custom'` or the app-reserved `'$app'`. Together with `key`, this uniquely identifies the metafield on its owner (the cart or a line item).\n   */\n  namespace: string;\n\n  /**\n   * The value stored in the metafield, always as a string. For example, a `number_integer` metafield stores `'42'`, and a `json` metafield stores a JSON string.\n   */\n  value: string;\n\n  /**\n   * The metafield's [type name](/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'`, `'date'`, or `'json'`.\n   */\n  type: string;\n}"
+    }
+  },
+  "MetafieldInput": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldInput",
+      "description": "A [metafield](/docs/apps/build/custom-data/metafields) to create or update, such as with `applyMetafieldChange()`. Named after the Admin GraphQL API's [`MetafieldInput`](/docs/api/admin-graphql/latest/input-objects/MetafieldInput), with `key`, `value`, and `type` required.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "string",
+          "description": "The name of the metafield."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "namespace",
+          "value": "string",
+          "description": "The namespace of the metafield. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "string",
+          "description": "The metafield's information type. Required because POS checks the value against its type when the change is applied, including while offline. See the [metafield types documentation](/docs/apps/build/custom-data/metafields/list-of-data-types) for a list of supported types."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "value",
+          "value": "string",
+          "description": "The information to store in the metafield."
+        }
+      ],
+      "value": "export interface MetafieldInput {\n  /** The name of the metafield. */\n  key: string;\n\n  /**\n   * The namespace of the metafield. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.\n   */\n  namespace?: string;\n\n  /** The information to store in the metafield. */\n  value: string;\n\n  /**\n   * The metafield's information type. Required because POS checks the value against its type when the change is applied, including while offline.\n   * See the [metafield types documentation](/docs/apps/build/custom-data/metafields/list-of-data-types) for a list of supported types.\n   */\n  type: string;\n}"
+    }
+  },
+  "MetafieldUpdateCartChange": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldUpdateCartChange",
+      "description": "Creates or updates a cart [metafield](/docs/apps/build/custom-data/metafields). Pass this to `applyMetafieldChange()` to set a metafield value. If a metafield with the provided key and namespace doesn't already exist, then it gets created.\n\nOnly available in `'Checkout'` carts.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "metafield",
+          "value": "MetafieldInput",
+          "description": "The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'updateCartMetafield'",
+          "description": "Identifies this as a cart metafield creation or update. Set this when creating a change to set a metafield value."
+        }
+      ],
+      "value": "export interface MetafieldUpdateCartChange {\n  /**\n   * Identifies this as a cart metafield creation or update. Set this when creating a change to set a metafield value.\n   */\n  type: 'updateCartMetafield';\n\n  /**\n   * The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced.\n   */\n  metafield: MetafieldInput;\n}"
+    }
+  },
+  "MetafieldRemoveCartChange": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldRemoveCartChange",
+      "description": "Removes a cart [metafield](/docs/apps/build/custom-data/metafields). Pass this to `applyMetafieldChange()` to delete a metafield by key and namespace.\n\nOnly available in `'Checkout'` carts.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "string",
+          "description": "The name of the metafield to remove."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "namespace",
+          "value": "string",
+          "description": "The namespace of the metafield to remove. When omitted, the app-reserved namespace (`$app`) of the app that owns the extension is used.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'removeCartMetafield'",
+          "description": "Identifies this as a cart metafield removal. Set this when creating a change to delete an existing metafield by key and namespace."
+        }
+      ],
+      "value": "export interface MetafieldRemoveCartChange {\n  /**\n   * Identifies this as a cart metafield removal. Set this when creating a change to delete an existing metafield by key and namespace.\n   */\n  type: 'removeCartMetafield';\n\n  /**\n   * The name of the metafield to remove.\n   */\n  key: string;\n\n  /**\n   * The namespace of the metafield to remove. When omitted, the app-reserved namespace (`$app`) of the app that owns the extension is used.\n   */\n  namespace?: string;\n}"
+    }
+  },
+  "MetafieldUpdateCartLineChange": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldUpdateCartLineChange",
+      "description": "Creates or updates a [metafield](/docs/apps/build/custom-data/metafields) on one cart line item. Pass this to `applyMetafieldChange()` to set a line item metafield value. If a metafield with the provided key and namespace doesn't already exist on the line item, then it gets created.\n\nAvailable on line items being sold, including the new items of an exchange. Not available on line items being returned.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The `uuid` of the line item to change."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "metafield",
+          "value": "MetafieldInput",
+          "description": "The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'updateCartLineMetafield'",
+          "description": "Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item."
+        }
+      ],
+      "value": "export interface MetafieldUpdateCartLineChange {\n  /**\n   * Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item.\n   */\n  type: 'updateCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineItemUuid: string;\n\n  /**\n   * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.\n   */\n  metafield: MetafieldInput;\n}"
+    }
+  },
+  "MetafieldRemoveCartLineChange": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldRemoveCartLineChange",
+      "description": "Removes a [metafield](/docs/apps/build/custom-data/metafields) from one cart line item. Pass this to `applyMetafieldChange()` to delete a line item metafield by key and namespace.\n\nAvailable on line items being sold, including the new items of an exchange. Not available on line items being returned.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "key",
+          "value": "string",
+          "description": "The name of the metafield to remove."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "lineItemUuid",
+          "value": "string",
+          "description": "The `uuid` of the line item to change."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "namespace",
+          "value": "string",
+          "description": "The namespace of the metafield to remove. When omitted, the app-reserved namespace (`$app`) of the app that owns the extension is used.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'removeCartLineMetafield'",
+          "description": "Identifies this as a line item metafield removal. Set this when creating a change to delete an existing metafield from a line item."
+        }
+      ],
+      "value": "export interface MetafieldRemoveCartLineChange {\n  /**\n   * Identifies this as a line item metafield removal. Set this when creating a change to delete an existing metafield from a line item.\n   */\n  type: 'removeCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineItemUuid: string;\n\n  /**\n   * The name of the metafield to remove.\n   */\n  key: string;\n\n  /**\n   * The namespace of the metafield to remove. When omitted, the app-reserved namespace (`$app`) of the app that owns the extension is used.\n   */\n  namespace?: string;\n}"
+    }
+  },
+  "MetafieldChange": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "MetafieldChange",
+      "value": "MetafieldUpdateCartChange | MetafieldRemoveCartChange | MetafieldUpdateCartLineChange | MetafieldRemoveCartLineChange",
+      "description": "The input for `applyMetafieldChange()`. Use the `type` property to specify the operation.\n\n- `MetafieldUpdateCartChange` (`type: 'updateCartMetafield'`): Creates or updates a cart [metafield](/docs/apps/build/custom-data/metafields).\n- `MetafieldRemoveCartChange` (`type: 'removeCartMetafield'`): Removes a cart metafield.\n- `MetafieldUpdateCartLineChange` (`type: 'updateCartLineMetafield'`): Creates or updates a metafield on a line item.\n- `MetafieldRemoveCartLineChange` (`type: 'removeCartLineMetafield'`): Removes a metafield from a line item.",
+      "isPublicDocs": true
+    }
+  },
+  "MetafieldChangeResultSuccess": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldChangeResultSuccess",
+      "description": "The result of a successful metafield change. The `type` property is `'success'`.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'success'",
+          "description": "Indicates that the metafield change was applied successfully."
+        }
+      ],
+      "value": "export interface MetafieldChangeResultSuccess {\n  /**\n   * Indicates that the metafield change was applied successfully.\n   */\n  type: 'success';\n}"
+    }
+  },
+  "MetafieldChangeResultError": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "name": "MetafieldChangeResultError",
+      "description": "The result of a failed metafield change. Check the `message` property for details about what went wrong.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "message",
+          "value": "string",
+          "description": "A message that explains the error. This message is useful for debugging. It isn't localized and shouldn't be displayed to staff.\n\nRender your own localized error text rather than displaying this message to staff."
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "type",
+          "value": "'error'",
+          "description": "Indicates that the metafield change couldn't be applied. Check the `message` property for details."
+        }
+      ],
+      "value": "export interface MetafieldChangeResultError {\n  /**\n   * Indicates that the metafield change couldn't be applied. Check the `message` property for details.\n   */\n  type: 'error';\n\n  /**\n   * A message that explains the error. This message is useful for debugging.\n   * It isn't localized and shouldn't be displayed to staff.\n   *\n   * Render your own localized error text rather than displaying this message\n   * to staff.\n   */\n  message: string;\n}"
+    }
+  },
+  "MetafieldChangeResult": {
+    "src/surfaces/point-of-sale/types/metafield.ts": {
+      "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "MetafieldChangeResult",
+      "value": "MetafieldChangeResultSuccess | MetafieldChangeResultError",
+      "description": "The result of one change passed to `applyMetafieldChange()`. Use the `type` property to determine whether the change succeeded or failed.",
+      "isPublicDocs": true
+    }
+  },
+  "MetafieldApi": {
+    "src/surfaces/point-of-sale/api/metafield-api/metafield-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/metafield-api/metafield-api.ts",
+      "name": "MetafieldApi",
+      "description": "The `MetafieldApi` object provides methods for setting and removing [metafields](/docs/apps/build/custom-data/metafields) on the cart and its line items. Access these methods through `shopify.applyMetafieldChange()`.\n\nWhether `shopify.applyMetafieldChange()` exists depends on the extension target. It's available on exactly the targets that have the Cart API (`CartApi`), and on no other target:\n\n- `pos.home.tile.render`\n- `pos.home.modal.render`\n- `pos.product-details.action.menu-item.render`\n- `pos.product-details.action.render`\n- `pos.product-details.block.render`\n- `pos.order-details.action.menu-item.render`\n- `pos.order-details.action.render`\n- `pos.order-details.block.render`\n- `pos.draft-order-details.action.menu-item.render`\n- `pos.draft-order-details.action.render`\n- `pos.draft-order-details.block.render`\n- `pos.customer-details.action.menu-item.render`\n- `pos.customer-details.action.render`\n- `pos.customer-details.block.render`\n- `pos.cart.line-item-details.action.menu-item.render`\n- `pos.cart.line-item-details.action.render`\n\nTargets without the Cart API, such as the post-purchase, receipt, and register details targets, don't have it. Neither do targets with a read-only cart (`ReadonlyCartApi`), such as `pos.app.ready.data`: they can't change metafields.\n\nOnly available on API version `2027-01` and later, on POS version 12.0.0 and later.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/metafield-api/metafield-api.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "applyMetafieldChange",
+          "value": "{ (change: MetafieldChange): Promise<MetafieldChangeResult>; (changes: MetafieldChange[]): Promise<MetafieldChangeResult[]>; }",
+          "description": "Creates, updates, or removes one metafield on the cart or on one of its line items. Resolves with the result of the change. Only available on the targets that have the Cart API; see `MetafieldApi` for the list. This is the same method, with the same change and result types, as [`applyMetafieldChange()` in checkout UI extensions](/docs/api/checkout-ui-extensions/latest/apis/metafields).\n\n- A change without a `namespace` uses the app-reserved namespace (`$app`) of the app that owns the extension. Values in an app-reserved namespace are only visible to that app.\n- Line item changes (`updateCartLineMetafield`, `removeCartLineMetafield`) are available on line items being sold, including the new items of an exchange. They return an error for line items being returned.\n- Cart changes (`updateCartMetafield`, `removeCartMetafield`) are only available in `'Checkout'` carts. They return an error in `'Return'` and `'Exchange'` carts.\n- On a sale, a value is copied to the order or its line item only when a matching order or order line item metafield definition has the [cart to order copyable](/docs/apps/build/metafields/use-metafield-capabilities#cart-to-order-copyable) capability enabled. Other values stay on the cart, where [Shopify Functions](/docs/apps/build/functions) can read them during checkout.\n- On an exchange, the values of each new line item are always copied to the order line item it creates.\n\nThis method doesn't reject. A change that can't be applied resolves with an `error` result, and the cart is left unchanged.\n\nCreates, updates, or removes several metafields on the cart and its line items in one cart update. Resolves with one result per change, in the same order as `changes`. Cart and line item changes can be mixed in the same call. Only available on the targets that have the Cart API; see `MetafieldApi` for the list.\n\n- Each result is what `applyMetafieldChange()` would return for that change on its own.\n- Changes are applied in order. A change that fails is skipped, and the changes after it are still applied. When two changes target the same metafield (same owner, namespace, and key), the later successful change wins.\n- All successful changes are applied in one cart update, so `cart.current` subscribers are notified once.\n- A call accepts at most 25 changes. A longer list applies no change and resolves with an `error` result for every change.\n- Input that isn't a list of metafield changes applies no change and resolves with `error` results.\n\nThe rules for each change are the same as for a single change. This method doesn't reject."
+        }
+      ],
+      "value": "export interface MetafieldApi {\n  /**\n   * Creates, updates, or removes one metafield on the cart or on one of its line items. Resolves with the result of the change. Only available on the targets that have the Cart API; see `MetafieldApi` for the list. This is the same method, with the same change and result types, as [`applyMetafieldChange()` in checkout UI extensions](/docs/api/checkout-ui-extensions/latest/apis/metafields).\n   *\n   * - A change without a `namespace` uses the app-reserved namespace (`$app`) of the app that owns the extension. Values in an app-reserved namespace are only visible to that app.\n   * - Line item changes (`updateCartLineMetafield`, `removeCartLineMetafield`) are available on line items being sold, including the new items of an exchange. They return an error for line items being returned.\n   * - Cart changes (`updateCartMetafield`, `removeCartMetafield`) are only available in `'Checkout'` carts. They return an error in `'Return'` and `'Exchange'` carts.\n   * - On a sale, a value is copied to the order or its line item only when a matching order or order line item metafield definition has the [cart to order copyable](/docs/apps/build/metafields/use-metafield-capabilities#cart-to-order-copyable) capability enabled. Other values stay on the cart, where [Shopify Functions](/docs/apps/build/functions) can read them during checkout.\n   * - On an exchange, the values of each new line item are always copied to the order line item it creates.\n   *\n   * This method doesn't reject. A change that can't be applied resolves with an `error` result, and the cart is left unchanged.\n   *\n   * @param change the metafield change to apply\n   * @returns the result of the change\n   */\n  applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;\n\n  /**\n   * Creates, updates, or removes several metafields on the cart and its line items in one cart update. Resolves with one result per change, in the same order as `changes`. Cart and line item changes can be mixed in the same call. Only available on the targets that have the Cart API; see `MetafieldApi` for the list.\n   *\n   * - Each result is what `applyMetafieldChange()` would return for that change on its own.\n   * - Changes are applied in order. A change that fails is skipped, and the changes after it are still applied. When two changes target the same metafield (same owner, namespace, and key), the later successful change wins.\n   * - All successful changes are applied in one cart update, so `cart.current` subscribers are notified once.\n   * - A call accepts at most 25 changes. A longer list applies no change and resolves with an `error` result for every change.\n   * - Input that isn't a list of metafield changes applies no change and resolves with `error` results.\n   *\n   * The rules for each change are the same as for a single change. This method doesn't reject.\n   *\n   * @param changes the metafield changes to apply, at most 25\n   * @returns one result per change, in the same order as `changes`\n   */\n  applyMetafieldChange(\n    changes: MetafieldChange[],\n  ): Promise<MetafieldChangeResult[]>;\n}"
+    }
+  },
   "ActionApiContent": {
     "src/surfaces/point-of-sale/api/action-api/action-api.ts": {
       "filePath": "src/surfaces/point-of-sale/api/action-api/action-api.ts",
@@ -3284,7 +3574,7 @@
           "filePath": "src/surfaces/point-of-sale/types/storage.ts",
           "syntaxKind": "Parameter",
           "name": "code",
-          "value": "\"RecordsCount\" | \"RecordSize\" | \"KeyType\" | \"KeySize\" | \"ReadOnlyKey\"",
+          "value": "\"RecordsCount\" | \"RecordSize\" | \"KeyType\" | \"KeySize\" | \"ReadOnlyKey\" | \"PartitionSize\"",
           "description": ""
         },
         {
@@ -3303,7 +3593,7 @@
           "isOptional": true
         }
       ],
-      "value": "export class StorageError extends Error {\n  public name = 'StorageError';\n  constructor(\n    public code:\n      | 'RecordsCount'\n      | 'RecordSize'\n      | 'KeyType'\n      | 'KeySize'\n      | 'ReadOnlyKey',\n    message: string,\n  ) {\n    super(message);\n  }\n}"
+      "value": "export class StorageError extends Error {\n  public name = 'StorageError';\n  constructor(\n    public code:\n      | 'RecordsCount'\n      | 'RecordSize'\n      | 'KeyType'\n      | 'KeySize'\n      | 'ReadOnlyKey'\n      | 'PartitionSize',\n    message: string,\n  ) {\n    super(message);\n  }\n}"
     }
   },
   "Storage": {
@@ -3372,7 +3662,7 @@
           "description": "Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals."
         }
       ],
-      "value": "export interface Storage<\n  BaseStorageTypes extends Record<string, any> = Record<string, unknown>,\n> {\n  /**\n   * Reactive access to storage values as Subscribables.\n   *\n   * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling cross-target\n   * reactivity. One extension target can subscribe to a key and react when\n   * another target updates it via `set()` or `delete()`.\n   *\n   * The `value` property provides synchronous, reactive access to the current stored\n   * value. It is not preloaded: storage hydrates asynchronously, so `value` is\n   * `undefined` until the key has been loaded.\n   * The `subscribe()` method registers a callback that fires whenever the value\n   * changes, including changes made by other extension targets within the same app.\n   *\n   * @example Cross-target reactivity\n   * ```typescript\n   * // In one extension target:\n   * await shopify.storage.set('syncStatus', 'complete');\n   *\n   * // In another target:\n   * const status = shopify.storage.current.syncStatus.value; // 'complete'\n   * const unsubscribe = shopify.storage.current.syncStatus.subscribe((value) => {\n   *   // Reacts when another target updates this key\n   * });\n   * ```\n   */\n  current: SubscribableStorage<BaseStorageTypes>;\n\n  /**\n   * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.\n   *\n   * @param key - The key to set the value for.\n   * @param value - The value to set for the key.\n   * @throws StorageError when:\n   * - Maximum number of records is exceeded (`code: 'RecordsCount'`)\n   * - Individual record size exceeds the limit (`code: 'RecordSize'`)\n   * - Key is not a string (`code: 'KeyType'`)\n   * - Key size exceeds the limit (`code: 'KeySize'`)\n   * - Key holds data from an API version before 2027-01 (`code: 'ReadOnlyKey'`)\n   */\n  set<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n    value: StorageTypes[Keys],\n  ): Promise<void>;\n\n  /**\n   * Retrieves the value associated with a key, returning `undefined` if the key doesn't exist. Always handle the `undefined` case by providing fallback values or conditional logic. Commonly used for loading user preferences, retrieving cached data, or accessing contextual information passed between extension targets.\n   *\n   * @param key - The key to get the value for.\n   * @returns The value of the key.\n   * @throws StorageError when the key isn't a string or exceeds its allotted size.\n   */\n  get<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<StorageTypes[Keys] | undefined>;\n\n  /**\n   * Clears all data from storage, removing all key-value pairs.\n   */\n  clear: () => Promise<void>;\n\n  /**\n   * Deletes a specific key from storage and returns `true` if the key existed, `false` if it didn't exist. Returns `false` for non-existent keys rather than throwing an error. Commonly used for cleaning up temporary workflow data, removing expired cache entries, or handling user preference changes.\n   *\n   * @param key - The key to delete.\n   */\n  delete<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<boolean>;\n\n  /**\n   * Retrieves all stored key-value pairs as an array of tuples, preserving original data types. Returns all data at once which may impact memory usage with large datasets. Commonly used for debugging storage contents, implementing data export features, or performing bulk operations across stored data.\n   *\n   * @returns An array containing all the keys and values in the storage.\n   */\n  entries<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(): Promise<[Keys, StorageTypes[Keys]][]>;\n}"
+      "value": "export interface Storage<\n  BaseStorageTypes extends Record<string, any> = Record<string, unknown>,\n> {\n  /**\n   * Reactive access to storage values as Subscribables.\n   *\n   * Each key is exposed as a `ReadonlySignalLike<T | undefined>`, enabling cross-target\n   * reactivity. One extension target can subscribe to a key and react when\n   * another target updates it via `set()` or `delete()`.\n   *\n   * The `value` property provides synchronous, reactive access to the current stored\n   * value. It is not preloaded: storage hydrates asynchronously, so `value` is\n   * `undefined` until the key has been loaded.\n   * The `subscribe()` method registers a callback that fires whenever the value\n   * changes, including changes made by other extension targets within the same app.\n   *\n   * @example Cross-target reactivity\n   * ```typescript\n   * // In one extension target:\n   * await shopify.storage.set('syncStatus', 'complete');\n   *\n   * // In another target:\n   * const status = shopify.storage.current.syncStatus.value; // 'complete'\n   * const unsubscribe = shopify.storage.current.syncStatus.subscribe((value) => {\n   *   // Reacts when another target updates this key\n   * });\n   * ```\n   */\n  current: SubscribableStorage<BaseStorageTypes>;\n\n  /**\n   * Stores a value under the specified key, overwriting any existing value. Values must be JSON-serializable and return `StorageError` when storage limits are exceeded. Commonly used for storing user preferences, caching API responses, or passing contextual data from tiles to modals.\n   *\n   * @param key - The key to set the value for.\n   * @param value - The value to set for the key.\n   * @throws StorageError when:\n   * - Maximum number of records is exceeded (`code: 'RecordsCount'`)\n   * - Individual record size exceeds the limit (`code: 'RecordSize'`)\n   * - Key is not a string (`code: 'KeyType'`)\n   * - Key size exceeds the limit (`code: 'KeySize'`)\n   * - Key holds data from an API version before 2027-01 (`code: 'ReadOnlyKey'`)\n   * - The partition's total stored size would exceed the limit (`code: 'PartitionSize'`)\n   */\n  set<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n    value: StorageTypes[Keys],\n  ): Promise<void>;\n\n  /**\n   * Retrieves the value associated with a key, returning `undefined` if the key doesn't exist. Always handle the `undefined` case by providing fallback values or conditional logic. Commonly used for loading user preferences, retrieving cached data, or accessing contextual information passed between extension targets.\n   *\n   * @param key - The key to get the value for.\n   * @returns The value of the key.\n   * @throws StorageError when the key isn't a string or exceeds its allotted size.\n   */\n  get<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<StorageTypes[Keys] | undefined>;\n\n  /**\n   * Clears all data from storage, removing all key-value pairs.\n   */\n  clear: () => Promise<void>;\n\n  /**\n   * Deletes a specific key from storage and returns `true` if the key existed, `false` if it didn't exist. Returns `false` for non-existent keys rather than throwing an error. Commonly used for cleaning up temporary workflow data, removing expired cache entries, or handling user preference changes.\n   *\n   * @param key - The key to delete.\n   */\n  delete<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(\n    key: Keys,\n  ): Promise<boolean>;\n\n  /**\n   * Retrieves all stored key-value pairs as an array of tuples, preserving original data types. Returns all data at once which may impact memory usage with large datasets. Commonly used for debugging storage contents, implementing data export features, or performing bulk operations across stored data.\n   *\n   * @returns An array containing all the keys and values in the storage.\n   */\n  entries<\n    StorageTypes extends BaseStorageTypes = BaseStorageTypes,\n    Keys extends keyof StorageTypes = keyof StorageTypes,\n  >(): Promise<[Keys, StorageTypes[Keys]][]>;\n}"
     }
   },
   "SubscribableStorage": {
@@ -9381,21 +9671,21 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cart.line-item-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n\nExtensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cart.line-item-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cart.validations.resolution.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      MetafieldApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >",
           "description": "Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.",
           "isPrivate": true
         },
@@ -9403,42 +9693,42 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n\nExtensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      CustomerApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n\nExtensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.draft-order-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n\nExtensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.draft-order-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi &\n      MetafieldApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.draft-order-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n\nExtensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations."
         },
         {
@@ -9469,35 +9759,35 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.home.modal.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi & CashDrawerApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> &\n      CartApi &\n      MetafieldApi &\n      CashDrawerApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n\nExtensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows, and can open the connected cash drawer through the Cash Drawer API."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.home.tile.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi & CashDrawerApi,\n    SmartGridComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.home.tile.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CashDrawerApi,\n    SmartGridComponents\n  >",
           "description": "Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n\nExtensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows. Tiles can also open the connected cash drawer through the Cash Drawer API."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.order-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n\nExtensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.order-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      OrderApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.order-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations."
         },
         {
@@ -9512,21 +9802,21 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.product-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      ProductApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.product-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      ProductApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.product-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n\nExtensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations."
         },
         {
@@ -9612,7 +9902,7 @@
           "isPrivate": true
         }
       ],
-      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows. Tiles can also open the connected cash drawer through the Cash Drawer API.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi & CashDrawerApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows, and can open the connected cash drawer through the Cash Drawer API.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   *\n   * @private\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   *\n   * @private\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   *\n   * @private\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.\n   *\n   * @private\n   */\n  'pos.cart.validations.resolution.render': RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >;\n  /**\n   * Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.\n   *\n   * @private\n   */\n  'pos.payment.validations.resolution.render': RenderExtension<\n    StandardApi<'pos.payment.validations.resolution.render'> &\n      ScannerApi &\n      ReadonlyCartApi &\n      ResolutionApi<PaymentValidationsEventData>,\n    ResolutionComponents\n  >;\n}"
+      "value": "export interface RenderExtensionTargets {\n  /**\n   * Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n   *\n   * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows. Tiles can also open the connected cash drawer through the Cash Drawer API.\n   */\n  'pos.home.tile.render': RenderExtension<\n    StandardApi<'pos.home.tile.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CashDrawerApi,\n    SmartGridComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n   *\n   * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows, and can open the connected cash drawer through the Cash Drawer API.\n   */\n  'pos.home.modal.render': RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> &\n      CartApi &\n      MetafieldApi &\n      CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-return action menu. Use this target for post-return operations like generating return receipts, processing restocking workflows, or collecting return feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform return-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-return workflows.\n   *\n   * @private\n   */\n  'pos.return.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.return.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-return menu items. Use this target for complex post-return workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.return.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.return.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-return screen. Use this target for displaying supplementary return data like completion status, refund confirmations, or follow-up workflows alongside standard return details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-return interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-return operations.\n   *\n   * @private\n   */\n  'pos.return.post.block.render': RenderExtension<\n    StandardApi<'pos.return.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-exchange action menu. Use this target for post-exchange operations like generating exchange receipts, processing restocking workflows, or collecting exchange feedback.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform exchange-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-exchange workflows.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.exchange.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-exchange menu items. Use this target for complex post-exchange workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   *\n   * @private\n   */\n  'pos.exchange.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.exchange.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-exchange screen. Use this target for displaying supplementary exchange data like completion status, payment adjustments, or follow-up workflows alongside standard exchange details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-exchange interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-exchange operations.\n   *\n   * @private\n   */\n  'pos.exchange.post.block.render': RenderExtension<\n    StandardApi<'pos.exchange.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the post-purchase action menu. Use this target for post-purchase operations like sending receipts, collecting customer feedback, or launching follow-up workflows after completing a sale.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform purchase-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete post-purchase workflows.\n   */\n  'pos.purchase.post.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.purchase.post.action.menu-item.render'> &\n      ActionApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from post-purchase menu items. Use this target for complex post-purchase workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.purchase.post.action.render': RenderExtension<\n    ActionTargetApi<'pos.purchase.post.action.render'> & OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the post-purchase screen. Use this target for displaying supplementary purchase data like completion status, customer feedback prompts, or next-step workflows alongside standard purchase details.\n   *\n   * Extensions at this target appear as persistent blocks within the post-purchase interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex post-purchase operations.\n   */\n  'pos.purchase.post.block.render': RenderExtension<\n    StandardApi<'pos.purchase.post.block.render'> & OrderApi & ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n   *\n   * Extensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows.\n   */\n  'pos.product-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      ProductApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.product-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      ProductApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n   *\n   * Extensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations.\n   */\n  'pos.product-details.block.render': RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n   *\n   * Extensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows.\n   */\n  'pos.order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      OrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      OrderApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n   *\n   * Extensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations.\n   */\n  'pos.order-details.block.render': RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n   *\n   * Extensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows.\n   */\n  'pos.draft-order-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.draft-order-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi &\n      MetafieldApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n   *\n   * Extensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations.\n   */\n  'pos.draft-order-details.block.render': RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n   *\n   * Extensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows.\n   */\n  'pos.customer-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.customer-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      CustomerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n   *\n   * Extensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations.\n   */\n  'pos.customer-details.block.render': RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n   *\n   * Extensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows.\n   */\n  'pos.cart.line-item-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation.\n   */\n  'pos.cart.line-item-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      CartLineItemApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom section in the footer of printed receipts. Use this target for adding contact details, return policies, social media links, or customer engagement elements like survey links or marketing campaigns at the bottom of receipts.\n   *\n   * Extensions at this target appear in the receipt footer area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-footer.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a custom section in the header of printed receipts. Use this target for adding custom branding, logos, promotional messages, or store-specific information at the top of receipts.\n   *\n   * Extensions at this target appear in the receipt header area and support limited components optimized for print formatting, including text content for information display.\n   *\n   * @private\n   */\n  'pos.receipt-header.block.render': RenderExtension<\n    {[key: string]: any} & StorageApi & TransactionCompleteWithReprintData,\n    ReceiptComponents\n  >;\n  /**\n   * Renders a single interactive button component as a menu item in the register details action menu. Use this target for register-specific operations like cash drawer management, shift reports, or launching cash reconciliation workflows.\n   *\n   * Extensions at this target can access cash drawer functionality through the Cash Drawer API to perform register-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete register workflows.\n   */\n  'pos.register-details.action.menu-item.render': RenderExtension<\n    StandardApi<'pos.register-details.action.menu-item.render'> &\n      ActionApi &\n      CashDrawerApi,\n    ActionExtensionComponents\n  >;\n  /**\n   * Renders a full-screen modal interface launched from register details menu items. Use this target for complex register workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n   *\n   * Extensions at this target have access to cash drawer functionality through the Cash Drawer API and support workflows with multiple screens, navigation, and interactive components.\n   */\n  'pos.register-details.action.render': RenderExtension<\n    ActionTargetApi<'pos.register-details.action.render'> & CashDrawerApi,\n    BasicComponents\n  >;\n  /**\n   * Renders a custom information section within the register details screen. Use this target for displaying supplementary register data like cash drawer status, transaction summaries, or shift analytics alongside standard register details.\n   *\n   * Extensions at this target appear as persistent blocks within the register details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex register operations.\n   */\n  'pos.register-details.block.render': RenderExtension<\n    StandardApi<'pos.register-details.block.render'> &\n      ActionApi &\n      CashDrawerApi,\n    BlockExtensionComponents\n  >;\n  /**\n   * Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.\n   *\n   * @private\n   */\n  'pos.cart.validations.resolution.render': RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      MetafieldApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >;\n  /**\n   * Renders the remediation interface when a `paymentvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.\n   *\n   * @private\n   */\n  'pos.payment.validations.resolution.render': RenderExtension<\n    StandardApi<'pos.payment.validations.resolution.render'> &\n      ScannerApi &\n      ReadonlyCartApi &\n      ResolutionApi<PaymentValidationsEventData>,\n    ResolutionComponents\n  >;\n}"
     }
   },
   "RenderExtension": {
@@ -10398,21 +10688,21 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cart.line-item-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CartLineItemApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the cart line item action menu. Use this target for item-specific operations like applying discounts, adding custom properties, or launching verification workflows for individual cart items.\n\nExtensions at this target can access detailed line item information including title, quantity, price, discounts, properties, and product metadata through the Cart Line Item API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cart.line-item-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.cart.line-item-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      CartLineItemApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from cart line item menu items. Use this target for complex line item workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to detailed line item data through the Cart Line Item API and support workflows with multiple screens, navigation, and interactive components. Action render targets are themselves the modal destination, so the Action API (`shopify.action.presentModal()`) is not available here; use the Navigation API for in-workflow navigation."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.cart.validations.resolution.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.cart.validations.resolution.render'> &\n      ScannerApi &\n      CartApi &\n      MetafieldApi &\n      ResolutionApi<CartValidationsEventData>,\n    ResolutionComponents\n  >",
           "description": "Renders the remediation interface when a `cartvalidations` interceptor returns a validation. Use this target to resolve all of the app's findings for the event.",
           "isPrivate": true
         },
@@ -10420,42 +10710,42 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CustomerApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the customer details action menu. Use this target for customer-specific operations like applying customer discounts, processing loyalty redemptions, or launching profile update workflows.\n\nExtensions at this target can access the customer identifier through the Customer API to perform customer-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete customer workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      CustomerApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.customer-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      CustomerApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from customer details menu items. Use this target for complex customer workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to customer data through the Customer API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.customer-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.customer-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      CustomerApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the customer details screen. Use this target for displaying supplementary customer data like loyalty status, points balance, or personalized information alongside standard customer details.\n\nExtensions at this target appear as persistent blocks within the customer details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex customer operations."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.draft-order-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      DraftOrderApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the draft order details action menu. Use this target for draft order-specific operations like sending invoices, updating payment status, or launching custom workflow processes for pending orders.\n\nExtensions at this target can access draft order information including order ID, name, and associated customer through the Draft Order API. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete draft order workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.draft-order-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.draft-order-details.action.render'> &\n      DraftOrderApi &\n      CartApi &\n      MetafieldApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from draft order details menu items. Use this target for complex draft order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to draft order data through the Draft Order API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.draft-order-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.draft-order-details.block.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      DraftOrderApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the draft order details screen. Use this target for displaying supplementary order information like processing status, payment status, or workflow indicators alongside standard draft order details.\n\nExtensions at this target appear as persistent blocks within the draft order interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex draft order operations."
         },
         {
@@ -10486,35 +10776,35 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.home.modal.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> & CartApi & CashDrawerApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.home.modal.render'> &\n      CartApi &\n      MetafieldApi &\n      CashDrawerApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from smart grid tiles. The modal appears when users tap a companion tile. Use this target for complete workflow experiences that require more space and functionality than the tile interface provides, such as multi-step processes, detailed information displays, or complex user interactions.\n\nExtensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows, and can open the connected cash drawer through the Cash Drawer API."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.home.tile.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi & CashDrawerApi,\n    SmartGridComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.home.tile.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      CashDrawerApi,\n    SmartGridComponents\n  >",
           "description": "Renders a single interactive tile component on the POS home screen's smart grid. The tile appears once during home screen initialization and remains persistent until navigation occurs. Use this target for high-frequency actions, status displays, or entry points to workflows that merchants need daily.\n\nExtensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows. Tiles can also open the connected cash drawer through the Cash Drawer API."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.order-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.order-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      OrderApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the order details action menu. Use this target for order-specific operations like reprints, refunds, exchanges, or launching fulfillment workflows.\n\nExtensions at this target can access the order identifier through the Order API to perform order-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete order workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.order-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.order-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      OrderApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from order details menu items. Use this target for complex order workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.order-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.order-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      OrderApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the order details screen. Use this target for displaying supplementary order data like fulfillment status, tracking numbers, or custom order analytics alongside standard order details.\n\nExtensions at this target appear as persistent blocks within the order details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex order operations."
         },
         {
@@ -10529,21 +10819,21 @@
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.product-details.action.menu-item.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      ProductApi,\n    ActionExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.product-details.action.menu-item.render'> &\n      ActionApi &\n      CartApi &\n      MetafieldApi &\n      ProductApi,\n    ActionExtensionComponents\n  >",
           "description": "Renders a single interactive button component as a menu item in the product details action menu. Use this target for product-specific operations like inventory adjustments, product analytics, or integration with external product management systems.\n\nExtensions at this target can access the product identifier through the Product API to perform product-specific operations. Menu items typically invoke `shopify.action.presentModal()` to launch the companion modal for complete product workflows."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.product-details.action.render",
-          "value": "RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,\n    BasicComponents\n  >",
+          "value": "RenderExtension<\n    ActionTargetApi<'pos.product-details.action.render'> &\n      CartApi &\n      MetafieldApi &\n      ProductApi,\n    BasicComponents\n  >",
           "description": "Renders a full-screen modal interface launched from product details menu items. Use this target for complex product workflows that require forms, multi-step processes, or detailed information displays beyond what a simple button can provide.\n\nExtensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components."
         },
         {
           "filePath": "src/surfaces/point-of-sale/extension-targets.ts",
           "syntaxKind": "PropertySignature",
           "name": "pos.product-details.block.render",
-          "value": "RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
+          "value": "RenderExtension<\n    StandardApi<'pos.product-details.block.render'> &\n      CartApi &\n      MetafieldApi &\n      ProductApi &\n      ActionApi,\n    BlockExtensionComponents\n  >",
           "description": "Renders a custom information section within the product details screen. Use this target for displaying supplementary product data like detailed specifications, inventory status, or related product recommendations alongside standard product details.\n\nExtensions at this target appear as persistent blocks within the product details interface and support interactive elements that can launch modal workflows using `shopify.action.presentModal()` for more complex product operations."
         },
         {

@@ -99,6 +99,22 @@ extension.shopify.cart.bulkCartUpdate = vi
   );
 ```
 
+## 🏷️ Mocking metafield changes
+
+On targets that can change the cart, the target API mock includes `shopify.applyMetafieldChange()`. The stub resolves with `{type: 'success'}` for a single change, and with one success result per change for a list. Replace it with `vi.fn()` to return errors:
+
+```ts
+extension.shopify.applyMetafieldChange = vi
+  .fn()
+  .mockResolvedValue([
+    {type: 'success'},
+    {
+      type: 'error',
+      message: 'Invalid date value',
+    },
+  ]);
+```
+
 ## 📂 Example
 
 See the [point of sale example](../../../../examples/testing/point-of-sale-testing-example) for a fully working extension with a test suite.

@@ -12,6 +12,8 @@ export type {CartLineItemApi} from './api/cart-line-item-api/cart-line-item-api'
 
 export type {CashDrawerApi} from './api/cash-drawer-api/cash-drawer-api';
 
+export type {MetafieldApi} from './api/metafield-api/metafield-api';
+
 export type {ActionApi, ActionApiContent} from './api/action-api/action-api';
 
 export type {StandardApi} from './api/standard/standard-api';
@@ -126,6 +128,19 @@ export type {
   ReturnLineItem,
   ReturnReason,
 } from './types/cart';
+
+export type {
+  CartMetafield,
+  MetafieldInput,
+  MetafieldChange,
+  MetafieldUpdateCartChange,
+  MetafieldRemoveCartChange,
+  MetafieldUpdateCartLineChange,
+  MetafieldRemoveCartLineChange,
+  MetafieldChangeResult,
+  MetafieldChangeResultSuccess,
+  MetafieldChangeResultError,
+} from './types/metafield';
 
 export type {Order, OrderLineItem, LineItemRefund} from './types/order';
 
