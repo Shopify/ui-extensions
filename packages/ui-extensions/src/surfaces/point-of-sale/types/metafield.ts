@@ -105,7 +105,7 @@ export interface MetafieldUpdateCartLineChange {
   /**
    * The `uuid` of the line item to change.
    */
-  lineId: string;
+  lineItemUuid: string;
 
   /**
    * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.
@@ -128,7 +128,7 @@ export interface MetafieldRemoveCartLineChange {
   /**
    * The `uuid` of the line item to change.
    */
-  lineId: string;
+  lineItemUuid: string;
 
   /**
    * The name of the metafield to remove.

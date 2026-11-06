@@ -20,7 +20,7 @@ const cartChange: MetafieldChange = {
 
 const lineChange: MetafieldChange = {
   type: 'removeCartLineMetafield',
-  lineId: 'mock-line-item-uuid',
+  lineItemUuid: 'mock-line-item-uuid',
   key: 'event_date',
 };
 

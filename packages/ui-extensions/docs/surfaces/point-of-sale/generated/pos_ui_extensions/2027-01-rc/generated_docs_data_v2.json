@@ -1992,7 +1992,7 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
           "syntaxKind": "PropertySignature",
-          "name": "lineId",
+          "name": "lineItemUuid",
           "value": "string",
           "description": "The `uuid` of the line item to change."
         },
@@ -2011,7 +2011,7 @@
           "description": "Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item."
         }
       ],
-      "value": "export interface MetafieldUpdateCartLineChange {\n  /**\n   * Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item.\n   */\n  type: 'updateCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineId: string;\n\n  /**\n   * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.\n   */\n  metafield: MetafieldInput;\n}"
+      "value": "export interface MetafieldUpdateCartLineChange {\n  /**\n   * Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item.\n   */\n  type: 'updateCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineItemUuid: string;\n\n  /**\n   * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.\n   */\n  metafield: MetafieldInput;\n}"
     }
   },
   "MetafieldRemoveCartLineChange": {
@@ -2031,7 +2031,7 @@
         {
           "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
           "syntaxKind": "PropertySignature",
-          "name": "lineId",
+          "name": "lineItemUuid",
           "value": "string",
           "description": "The `uuid` of the line item to change."
         },
@@ -2051,7 +2051,7 @@
           "description": "Identifies this as a line item metafield removal. Set this when creating a change to delete an existing metafield from a line item."
         }
       ],
-      "value": "export interface MetafieldRemoveCartLineChange {\n  /**\n   * Identifies this as a line item metafield removal. Set this when creating a change to delete an existing metafield from a line item.\n   */\n  type: 'removeCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineId: string;\n\n  /**\n   * The name of the metafield to remove.\n   */\n  key: string;\n\n  /**\n   * The namespace of the metafield to remove. When omitted, the app-reserved namespace (`$app`) of the app that owns the extension is used.\n   */\n  namespace?: string;\n}"
+      "value": "export interface MetafieldRemoveCartLineChange {\n  /**\n   * Identifies this as a line item metafield removal. Set this when creating a change to delete an existing metafield from a line item.\n   */\n  type: 'removeCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineItemUuid: string;\n\n  /**\n   * The name of the metafield to remove.\n   */\n  key: string;\n\n  /**\n   * The namespace of the metafield to remove. When omitted, the app-reserved namespace (`$app`) of the app that owns the extension is used.\n   */\n  namespace?: string;\n}"
     }
   },
   "MetafieldChange": {
