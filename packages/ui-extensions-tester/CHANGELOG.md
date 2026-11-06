@@ -1,5 +1,18 @@
 # @shopify/ui-extensions-tester
 
+## 2027.1.0-rc.5
+
+### Minor Changes
+
+- [#4795](https://github.com/Shopify/ui-extensions/pull/4795) [`7f9b116`](https://github.com/Shopify/ui-extensions/commit/7f9b11643770152136011e99c47e4da0669788ed) Thanks [@js-goupil](https://github.com/js-goupil)! - Add `shopify.applyMetafieldChange()` to POS targets that can change the cart. It takes one metafield change, or a list of up to 25, and sets or removes metafields on the cart and its line items. It uses the change and result types of checkout UI extensions, plus two new line item change types: `updateCartLineMetafield` and `removeCartLineMetafield`. The tester's target mocks include a stub that resolves with success results.
+
+- [#4796](https://github.com/Shopify/ui-extensions/pull/4796) [`1eb7650`](https://github.com/Shopify/ui-extensions/commit/1eb765083064c96bc044d75683adae93bd5fb37a) Thanks [@js-goupil](https://github.com/js-goupil)! - Add metafields to the POS Cart API: `cart.current.metafields` for the cart, and `metafields` on each line item through the new `CartLineItem` type, which `cart.current.lineItems` and `shopify.cartLineItem` now use. `addLineItem` accepts `metafields` in its options. The tester's mock cart and `createCartLineItem()` start with no metafields.
+
+### Patch Changes
+
+- Updated dependencies [[`7f9b116`](https://github.com/Shopify/ui-extensions/commit/7f9b11643770152136011e99c47e4da0669788ed), [`1eb7650`](https://github.com/Shopify/ui-extensions/commit/1eb765083064c96bc044d75683adae93bd5fb37a), [`eaeda5e`](https://github.com/Shopify/ui-extensions/commit/eaeda5e88511d3b90ff797f2487e3733b1d3a3a1)]:
+  - @shopify/ui-extensions@2027.1.0-rc.5
+
 ## 2027.1.0-rc.4
 
 ### Patch Changes
