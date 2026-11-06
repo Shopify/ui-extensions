@@ -8,6 +8,7 @@ import type {
   ActionTargetApi,
   CartApi,
   CartLineItemApi,
+  MetafieldApi,
   CustomerApi,
   DraftOrderApi,
   ProductApi,
@@ -55,7 +56,11 @@ export interface RenderExtensionTargets {
    * Extensions at this target can dynamically update properties like enabled state and badge values in response to cart changes or device conditions. Tiles typically invoke `shopify.action.presentModal()` to launch the companion modal for complete workflows. Tiles can also open the connected cash drawer through the Cash Drawer API.
    */
   'pos.home.tile.render': RenderExtension<
-    StandardApi<'pos.home.tile.render'> & ActionApi & CartApi & CashDrawerApi,
+    StandardApi<'pos.home.tile.render'> &
+      ActionApi &
+      CartApi &
+      MetafieldApi &
+      CashDrawerApi,
     SmartGridComponents
   >;
   /**
@@ -64,7 +69,10 @@ export interface RenderExtensionTargets {
    * Extensions at this target support full navigation hierarchies with multiple screens, scroll views, and interactive components to handle sophisticated workflows, and can open the connected cash drawer through the Cash Drawer API.
    */
   'pos.home.modal.render': RenderExtension<
-    ActionTargetApi<'pos.home.modal.render'> & CartApi & CashDrawerApi,
+    ActionTargetApi<'pos.home.modal.render'> &
+      CartApi &
+      MetafieldApi &
+      CashDrawerApi,
     BasicComponents
   >;
   /**
@@ -175,6 +183,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.product-details.action.menu-item.render'> &
       ActionApi &
       CartApi &
+      MetafieldApi &
       ProductApi,
     ActionExtensionComponents
   >;
@@ -184,7 +193,10 @@ export interface RenderExtensionTargets {
    * Extensions at this target have access to product and cart data through the Product API and support workflows with multiple screens, navigation, and interactive components.
    */
   'pos.product-details.action.render': RenderExtension<
-    ActionTargetApi<'pos.product-details.action.render'> & CartApi & ProductApi,
+    ActionTargetApi<'pos.product-details.action.render'> &
+      CartApi &
+      MetafieldApi &
+      ProductApi,
     BasicComponents
   >;
   /**
@@ -195,6 +207,7 @@ export interface RenderExtensionTargets {
   'pos.product-details.block.render': RenderExtension<
     StandardApi<'pos.product-details.block.render'> &
       CartApi &
+      MetafieldApi &
       ProductApi &
       ActionApi,
     BlockExtensionComponents
@@ -208,6 +221,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.order-details.action.menu-item.render'> &
       ActionApi &
       CartApi &
+      MetafieldApi &
       OrderApi,
     ActionExtensionComponents
   >;
@@ -217,7 +231,10 @@ export interface RenderExtensionTargets {
    * Extensions at this target have access to order data through the Order API and support workflows with multiple screens, navigation, and interactive components.
    */
   'pos.order-details.action.render': RenderExtension<
-    ActionTargetApi<'pos.order-details.action.render'> & CartApi & OrderApi,
+    ActionTargetApi<'pos.order-details.action.render'> &
+      CartApi &
+      MetafieldApi &
+      OrderApi,
     BasicComponents
   >;
   /**
@@ -228,6 +245,7 @@ export interface RenderExtensionTargets {
   'pos.order-details.block.render': RenderExtension<
     StandardApi<'pos.order-details.block.render'> &
       CartApi &
+      MetafieldApi &
       OrderApi &
       ActionApi,
     BlockExtensionComponents
@@ -241,6 +259,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.draft-order-details.action.menu-item.render'> &
       ActionApi &
       CartApi &
+      MetafieldApi &
       DraftOrderApi,
     ActionExtensionComponents
   >;
@@ -252,7 +271,8 @@ export interface RenderExtensionTargets {
   'pos.draft-order-details.action.render': RenderExtension<
     ActionTargetApi<'pos.draft-order-details.action.render'> &
       DraftOrderApi &
-      CartApi,
+      CartApi &
+      MetafieldApi,
     BasicComponents
   >;
   /**
@@ -264,6 +284,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.draft-order-details.block.render'> &
       ActionApi &
       CartApi &
+      MetafieldApi &
       DraftOrderApi,
     BlockExtensionComponents
   >;
@@ -276,6 +297,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.customer-details.action.menu-item.render'> &
       ActionApi &
       CartApi &
+      MetafieldApi &
       CustomerApi,
     ActionExtensionComponents
   >;
@@ -287,6 +309,7 @@ export interface RenderExtensionTargets {
   'pos.customer-details.action.render': RenderExtension<
     ActionTargetApi<'pos.customer-details.action.render'> &
       CartApi &
+      MetafieldApi &
       CustomerApi,
     BasicComponents
   >;
@@ -298,6 +321,7 @@ export interface RenderExtensionTargets {
   'pos.customer-details.block.render': RenderExtension<
     StandardApi<'pos.customer-details.block.render'> &
       CartApi &
+      MetafieldApi &
       CustomerApi &
       ActionApi,
     BlockExtensionComponents
@@ -311,6 +335,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.cart.line-item-details.action.menu-item.render'> &
       ActionApi &
       CartApi &
+      MetafieldApi &
       CartLineItemApi,
     ActionExtensionComponents
   >;
@@ -322,6 +347,7 @@ export interface RenderExtensionTargets {
   'pos.cart.line-item-details.action.render': RenderExtension<
     ActionTargetApi<'pos.cart.line-item-details.action.render'> &
       CartApi &
+      MetafieldApi &
       CartLineItemApi,
     BasicComponents
   >;
@@ -387,6 +413,7 @@ export interface RenderExtensionTargets {
     StandardApi<'pos.cart.validations.resolution.render'> &
       ScannerApi &
       CartApi &
+      MetafieldApi &
       ResolutionApi<CartValidationsEventData>,
     ResolutionComponents
   >;
