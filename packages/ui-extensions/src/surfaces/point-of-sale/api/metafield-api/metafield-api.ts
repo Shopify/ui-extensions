@@ -4,14 +4,35 @@ import type {
 } from '../../types/metafield';
 
 /**
- * The `MetafieldApi` object provides methods for setting and removing [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields) on the cart and its line items. Access these methods through `shopify.applyMetafieldChange()`. It's available on the targets that can change the cart.
+ * The `MetafieldApi` object provides methods for setting and removing [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields) on the cart and its line items. Access these methods through `shopify.applyMetafieldChange()`.
+ *
+ * Whether `shopify.applyMetafieldChange()` exists depends on the extension target. It's available on exactly the targets that have the Cart API (`CartApi`), and on no other target:
+ *
+ * - `pos.home.tile.render`
+ * - `pos.home.modal.render`
+ * - `pos.product-details.action.menu-item.render`
+ * - `pos.product-details.action.render`
+ * - `pos.product-details.block.render`
+ * - `pos.order-details.action.menu-item.render`
+ * - `pos.order-details.action.render`
+ * - `pos.order-details.block.render`
+ * - `pos.draft-order-details.action.menu-item.render`
+ * - `pos.draft-order-details.action.render`
+ * - `pos.draft-order-details.block.render`
+ * - `pos.customer-details.action.menu-item.render`
+ * - `pos.customer-details.action.render`
+ * - `pos.customer-details.block.render`
+ * - `pos.cart.line-item-details.action.menu-item.render`
+ * - `pos.cart.line-item-details.action.render`
+ *
+ * Targets without the Cart API, such as the post-purchase, receipt, and register details targets, don't have it. Neither do targets with a read-only cart (`ReadonlyCartApi`), such as `pos.app.ready.data`: they can't change metafields.
  *
  * Only available on API version `2027-01` and later, on POS version 12.0.0 and later.
  * @publicDocs
  */
 export interface MetafieldApi {
   /**
-   * Creates, updates, or removes one metafield on the cart or on one of its line items. Resolves with the result of the change. This is the same method, with the same change and result types, as [`applyMetafieldChange()` in checkout UI extensions](https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/metafields).
+   * Creates, updates, or removes one metafield on the cart or on one of its line items. Resolves with the result of the change. Only available on the targets that have the Cart API; see `MetafieldApi` for the list. This is the same method, with the same change and result types, as [`applyMetafieldChange()` in checkout UI extensions](https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/metafields).
    *
    * - A change without a `namespace` uses the app-reserved namespace (`$app`) of the app that owns the extension. Values in an app-reserved namespace are only visible to that app.
    * - Line item changes (`updateCartLineMetafield`, `removeCartLineMetafield`) are available on line items being sold, including the new items of an exchange. They return an error for line items being returned.
@@ -27,7 +48,7 @@ export interface MetafieldApi {
   applyMetafieldChange(change: MetafieldChange): Promise<MetafieldChangeResult>;
 
   /**
-   * Creates, updates, or removes several metafields on the cart and its line items in one cart update. Resolves with one result per change, in the same order as `changes`. Cart and line item changes can be mixed in the same call.
+   * Creates, updates, or removes several metafields on the cart and its line items in one cart update. Resolves with one result per change, in the same order as `changes`. Cart and line item changes can be mixed in the same call. Only available on the targets that have the Cart API; see `MetafieldApi` for the list.
    *
    * - Each result is what `applyMetafieldChange()` would return for that change on its own.
    * - Changes are applied in order. A change that fails is skipped, and the changes after it are still applied. When two changes target the same metafield (same owner, namespace, and key), the later successful change wins.

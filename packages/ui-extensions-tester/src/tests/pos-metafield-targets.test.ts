@@ -1,4 +1,10 @@
-import type {MetafieldChange} from '@shopify/ui-extensions/point-of-sale';
+import type {
+  CartApi,
+  ExtensionTarget,
+  ExtensionTargets,
+  MetafieldApi,
+  MetafieldChange,
+} from '@shopify/ui-extensions/point-of-sale';
 
 import {createMockPosTargetApi} from '../point-of-sale/factories';
 
@@ -18,9 +24,46 @@ const lineChange: MetafieldChange = {
   key: 'event_date',
 };
 
-// `shopify.applyMetafieldChange()` is available wherever an extension can
-// change the cart.
+type ApiForTarget<T extends ExtensionTarget> = ExtensionTargets[T] extends {
+  api: infer Api;
+}
+  ? Api
+  : never;
+
+type TargetsWithApi<Api> = {
+  [T in ExtensionTarget]: ApiForTarget<T> extends Api ? T : never;
+}[ExtensionTarget];
+
+type IsSameUnion<A, B> = [A] extends [B]
+  ? [B] extends [A]
+    ? true
+    : false
+  : false;
+
+// `shopify.applyMetafieldChange()` is available on exactly the targets that
+// have the Cart API.
 describe('applyMetafieldChange', () => {
+  it('is declared on exactly the targets that declare the Cart API', () => {
+    const sameTargets: IsSameUnion<
+      TargetsWithApi<CartApi>,
+      TargetsWithApi<MetafieldApi>
+    > = true;
+
+    expect(sameTargets).toBe(true);
+  });
+
+  it('is declared on cart targets and not on targets without a cart', () => {
+    const cartTarget: TargetsWithApi<MetafieldApi> = 'pos.home.tile.render';
+    // @ts-expect-error Receipt targets don't have the Cart API.
+    const receiptTarget: TargetsWithApi<MetafieldApi> =
+      'pos.receipt-footer.block.render';
+    // @ts-expect-error A read-only cart can't change metafields.
+    const readonlyCartTarget: TargetsWithApi<MetafieldApi> =
+      'pos.app.ready.data';
+
+    expect([cartTarget, receiptTarget, readonlyCartTarget]).toHaveLength(3);
+  });
+
   it.each([
     'pos.home.tile.render',
     'pos.home.modal.render',
