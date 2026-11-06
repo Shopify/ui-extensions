@@ -1884,11 +1884,11 @@
       "value": "export interface CartMetafield {\n  /**\n   * The key name of the metafield, such as `'gift_message'` or `'event_date'`. Together with `namespace`, this uniquely identifies the metafield on its owner (the cart or a line item).\n   */\n  key: string;\n\n  /**\n   * The namespace of the metafield, such as `'custom'` or the app-reserved `'$app'`. Together with `key`, this uniquely identifies the metafield on its owner (the cart or a line item).\n   */\n  namespace: string;\n\n  /**\n   * The value stored in the metafield, always as a string. For example, a `number_integer` metafield stores `'42'`, and a `json` metafield stores a JSON string.\n   */\n  value: string;\n\n  /**\n   * The metafield's [type name](/docs/apps/build/custom-data/metafields/list-of-data-types), such as `'single_line_text_field'`, `'date'`, or `'json'`.\n   */\n  type: string;\n}"
     }
   },
-  "CartMetafieldInput": {
+  "MetafieldInput": {
     "src/surfaces/point-of-sale/types/metafield.ts": {
       "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
-      "name": "CartMetafieldInput",
-      "description": "The metafield to create or update with `applyMetafieldChange()`.",
+      "name": "MetafieldInput",
+      "description": "A [metafield](/docs/apps/build/custom-data/metafields) to create or update, such as with `applyMetafieldChange()`. Named after the Admin GraphQL API's [`MetafieldInput`](/docs/api/admin-graphql/latest/input-objects/MetafieldInput), with `key`, `value`, and `type` required.",
       "isPublicDocs": true,
       "members": [
         {
@@ -1896,14 +1896,14 @@
           "syntaxKind": "PropertySignature",
           "name": "key",
           "value": "string",
-          "description": "The name of the metafield to update."
+          "description": "The name of the metafield."
         },
         {
           "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
           "syntaxKind": "PropertySignature",
           "name": "namespace",
           "value": "string",
-          "description": "The namespace of the metafield to update. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.",
+          "description": "The namespace of the metafield. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.",
           "isOptional": true
         },
         {
@@ -1918,10 +1918,10 @@
           "syntaxKind": "PropertySignature",
           "name": "value",
           "value": "string",
-          "description": "The new information to store in the metafield."
+          "description": "The information to store in the metafield."
         }
       ],
-      "value": "export interface CartMetafieldInput {\n  /** The name of the metafield to update. */\n  key: string;\n\n  /**\n   * The namespace of the metafield to update. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.\n   */\n  namespace?: string;\n\n  /** The new information to store in the metafield. */\n  value: string;\n\n  /**\n   * The metafield's information type. Required because POS checks the value against its type when the change is applied, including while offline.\n   * See the [metafield types documentation](/docs/apps/build/custom-data/metafields/list-of-data-types) for a list of supported types.\n   */\n  type: string;\n}"
+      "value": "export interface MetafieldInput {\n  /** The name of the metafield. */\n  key: string;\n\n  /**\n   * The namespace of the metafield. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.\n   */\n  namespace?: string;\n\n  /** The information to store in the metafield. */\n  value: string;\n\n  /**\n   * The metafield's information type. Required because POS checks the value against its type when the change is applied, including while offline.\n   * See the [metafield types documentation](/docs/apps/build/custom-data/metafields/list-of-data-types) for a list of supported types.\n   */\n  type: string;\n}"
     }
   },
   "MetafieldUpdateCartChange": {
@@ -1935,7 +1935,7 @@
           "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
           "syntaxKind": "PropertySignature",
           "name": "metafield",
-          "value": "CartMetafieldInput",
+          "value": "MetafieldInput",
           "description": "The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced."
         },
         {
@@ -1946,7 +1946,7 @@
           "description": "Identifies this as a cart metafield creation or update. Set this when creating a change to set a metafield value."
         }
       ],
-      "value": "export interface MetafieldUpdateCartChange {\n  /**\n   * Identifies this as a cart metafield creation or update. Set this when creating a change to set a metafield value.\n   */\n  type: 'updateCartMetafield';\n\n  /**\n   * The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced.\n   */\n  metafield: CartMetafieldInput;\n}"
+      "value": "export interface MetafieldUpdateCartChange {\n  /**\n   * Identifies this as a cart metafield creation or update. Set this when creating a change to set a metafield value.\n   */\n  type: 'updateCartMetafield';\n\n  /**\n   * The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced.\n   */\n  metafield: MetafieldInput;\n}"
     }
   },
   "MetafieldRemoveCartChange": {
@@ -2000,7 +2000,7 @@
           "filePath": "src/surfaces/point-of-sale/types/metafield.ts",
           "syntaxKind": "PropertySignature",
           "name": "metafield",
-          "value": "CartMetafieldInput",
+          "value": "MetafieldInput",
           "description": "The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced."
         },
         {
@@ -2011,7 +2011,7 @@
           "description": "Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item."
         }
       ],
-      "value": "export interface MetafieldUpdateCartLineChange {\n  /**\n   * Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item.\n   */\n  type: 'updateCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineId: string;\n\n  /**\n   * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.\n   */\n  metafield: CartMetafieldInput;\n}"
+      "value": "export interface MetafieldUpdateCartLineChange {\n  /**\n   * Identifies this as a line item metafield creation or update. Set this when creating a change to set a metafield value on a line item.\n   */\n  type: 'updateCartLineMetafield';\n\n  /**\n   * The `uuid` of the line item to change.\n   */\n  lineId: string;\n\n  /**\n   * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.\n   */\n  metafield: MetafieldInput;\n}"
     }
   },
   "MetafieldRemoveCartLineChange": {

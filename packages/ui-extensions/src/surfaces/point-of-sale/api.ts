@@ -131,7 +131,7 @@ export type {
 
 export type {
   CartMetafield,
-  CartMetafieldInput,
+  MetafieldInput,
   MetafieldChange,
   MetafieldUpdateCartChange,
   MetafieldRemoveCartChange,

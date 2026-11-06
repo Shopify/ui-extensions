@@ -27,19 +27,19 @@ export interface CartMetafield {
 }
 
 /**
- * The metafield to create or update with `applyMetafieldChange()`.
+ * A [metafield](https://shopify.dev/docs/apps/build/custom-data/metafields) to create or update, such as with `applyMetafieldChange()`. Named after the Admin GraphQL API's [`MetafieldInput`](https://shopify.dev/docs/api/admin-graphql/latest/input-objects/MetafieldInput), with `key`, `value`, and `type` required.
  * @publicDocs
  */
-export interface CartMetafieldInput {
-  /** The name of the metafield to update. */
+export interface MetafieldInput {
+  /** The name of the metafield. */
   key: string;
 
   /**
-   * The namespace of the metafield to update. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.
+   * The namespace of the metafield. When omitted, the metafield is stored in the app-reserved namespace (`$app`) of the app that owns the extension.
    */
   namespace?: string;
 
-  /** The new information to store in the metafield. */
+  /** The information to store in the metafield. */
   value: string;
 
   /**
@@ -64,7 +64,7 @@ export interface MetafieldUpdateCartChange {
   /**
    * The metafield data to set on the cart. If a metafield with this key and namespace already exists, then its value is replaced.
    */
-  metafield: CartMetafieldInput;
+  metafield: MetafieldInput;
 }
 
 /**
@@ -110,7 +110,7 @@ export interface MetafieldUpdateCartLineChange {
   /**
    * The metafield data to set on the line item. If a metafield with this key and namespace already exists on the line item, then its value is replaced.
    */
-  metafield: CartMetafieldInput;
+  metafield: MetafieldInput;
 }
 
 /**
