@@ -59,6 +59,8 @@ export interface MutableCartApiContent {
   /**
    * Perform a bulk update of the entire cart state including note, discounts, customer, line items, and properties. Returns the updated cart object after the operation completes with enhanced validation and error handling.
    *
+   * `bulkCartUpdate` doesn't set or remove [metafields](https://shopify.dev/docs/apps/build/custom-data/metafields). The cart keeps its metafields, and each line item whose `uuid` is in `cartState.lineItems` keeps its metafields. Line items left out of `cartState.lineItems` are removed with their metafields. To change metafields, use `shopify.applyMetafieldChange()`.
+   *
    * @param cartState the cart state to set
    * @returns the updated cart
    */

@@ -99,7 +99,9 @@ extension.shopify.cart.bulkCartUpdate = vi
   );
 ```
 
-## 🏷️ Mocking metafield changes
+## 🏷️ Mocking metafields
+
+The mock cart and the line items from `createCartLineItem()` start with no metafields. Pass `metafields` to `createCartLineItem()`, or set `extension.shopify.cart.current.value.metafields`, to test how your extension reads them.
 
 On targets that can change the cart, the target API mock includes `shopify.applyMetafieldChange()`. The stub resolves with `{type: 'success'}` for a single change, and with one success result per change for a list. Replace it with `vi.fn()` to return errors:
 
@@ -123,7 +125,7 @@ See the [point of sale example](../../../../examples/testing/point-of-sale-testi
 
 ### `createCartLineItem(overrides?)`
 
-Creates a mock POS `LineItem` with sensible defaults. Pass a partial override to customize fields.
+Creates a mock POS `CartLineItem` with sensible defaults and no metafields. Pass a partial override to customize fields, including `metafields`.
 
 ### `createStorage(initialValues?)`
 

@@ -86,6 +86,7 @@ function createPosCart(): Cart {
     currency: 'USD',
     cartDiscounts: [],
     lineItems: [],
+    metafields: [],
     properties: {},
     capabilities: createCartCapabilities(),
     cartType: 'Checkout',
