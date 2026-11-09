@@ -602,7 +602,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * > Caution: Check cart instructions before calling select APIs, as
    * > some may not be available. See the
-   * > [Cart Instructions API](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/checkout-apis/cart-instructions-api#examples)
+   * > [Cart Instructions API](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/checkout-apis/cart-instructions-api#use-cases)
    * > for more information.
    *
    */
@@ -727,7 +727,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The buyer's language, country, currency, and timezone context. For
    * formatting and translation helpers, use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api#properties-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api#docsstandardlocalizationapi-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -774,7 +774,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The settings matching the settings definition written in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
    *
-   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/settings-api#examples) for more information.
+   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/settings-api#use-cases) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings are empty until
    * a merchant sets a value. In that case, this object updates in real time as a merchant fills in the settings.
