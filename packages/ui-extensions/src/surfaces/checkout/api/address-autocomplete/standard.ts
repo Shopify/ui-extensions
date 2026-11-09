@@ -78,10 +78,10 @@ export interface AddressAutocompleteStandardApi<
 
   /**
    * Utilities for translating content and formatting values according to the current
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization)
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api)
    * Type 'RunnableExtensionInstance<keyof RunnableExtensionTargets>' is not assignable to type 'ExtensionInstance<Target>'.
    *
-   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#examples)
+   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api)
    * for more information.
    */
   i18n: I18n;
@@ -89,7 +89,7 @@ export interface AddressAutocompleteStandardApi<
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api#docsstandardlocalizationapi-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -102,14 +102,14 @@ export interface AddressAutocompleteStandardApi<
    * persist for as long as the customer is working on this checkout.
    *
    * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   * [GraphQL Admin API](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.metafield)
    */
   metafields: Metafield[];
 
   /**
    * The method used to query the Storefront GraphQL API with a prefetched token.
    *
-   * Refer to [Storefront API access examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/storefront-api) for more information.
+   * Refer to [Storefront API access examples](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/storefront-api) for more information.
    */
   query: <Data = unknown, Variables = Record<string, unknown>>(
     query: string,
@@ -131,7 +131,7 @@ export interface AddressAutocompleteStandardApi<
    * The settings matching the settings definition written in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
-   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/settings#examples) for more information.
+   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/settings-api) for more information.
    *
    * > Note: The settings are empty when an extension is being installed in the [checkout editor](https://help.shopify.com/en/manual/checkout-settings/checkout-extensibility/checkout-editor).
 

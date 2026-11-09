@@ -12,10 +12,10 @@ import {ExtensionApiContext} from '../context';
  * Depending on the extension target, this object can contain different properties.
  *
  * For example, the `customer-account.order-status.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
- * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
+ * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis) object,
  * which contains a basic set of properties about the order.
  *
- * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/targets).
  */
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -36,10 +36,10 @@ export function useApi<
  * Depending on the extension target, this object can contain different properties.
  *
  * For example, the `customer-account.order-status.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
- * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
+ * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis) object,
  * which contains a basic set of properties about the order.
  *
- * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/targets).
  *
  * > Caution: This is deprecated, use `useApi` instead.
  *
