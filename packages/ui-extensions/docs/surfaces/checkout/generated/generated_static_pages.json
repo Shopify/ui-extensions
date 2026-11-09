@@ -121,7 +121,7 @@
           {
             "name": "API access examples",
             "subtitle": "See",
-            "url": "/docs/api/checkout-ui-extensions/apis/storefront-api#examples",
+            "url": "/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/storefront-api",
             "type": "blocks"
           }
         ],
@@ -132,7 +132,7 @@
           },
           {
             "title": "Methods for accessing the Storefront API",
-            "sectionContent": "Enabling the `api_access` capability allows you to use the Standard API [`query`](/docs/api/checkout-ui-extensions/apis/storefront-api) method and the global `fetch` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.\n\n`query` lets you request a single GraphQL response from the Storefront API.\n\nIf you prefer to construct GraphQL requests yourself or you would like to use a full-featured GraphQL client such as Apollo or urql, our custom `fetch` global automatically appends the required access tokens.\n\nThe GraphQL client of your choice shouldn’t use any DOM APIs, as they aren’t available in a checkout UI extension's Web Worker.\n\n> Note: Both `query` and `fetch` will work for calling the Storefront API with the `api_access` capability enabled. If you are using `fetch` to get data external to Shopify, refer to the [`network_access`](/api/checkout-ui-extensions/configuration#network-access) capability."
+            "sectionContent": "Enabling the `api_access` capability allows you to use the Standard API [`query`](/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/storefront-api) method and the global `fetch` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.\n\n`query` lets you request a single GraphQL response from the Storefront API.\n\nIf you prefer to construct GraphQL requests yourself or you would like to use a full-featured GraphQL client such as Apollo or urql, our custom `fetch` global automatically appends the required access tokens.\n\nThe GraphQL client of your choice shouldn’t use any DOM APIs, as they aren’t available in a checkout UI extension's Web Worker.\n\n> Note: Both `query` and `fetch` will work for calling the Storefront API with the `api_access` capability enabled. If you are using `fetch` to get data external to Shopify, refer to the [`network_access`](/api/checkout-ui-extensions/configuration#network-access) capability."
           },
           {
             "title": "Storefront API access scopes",
@@ -195,7 +195,7 @@
           {
             "name": "Blocking examples",
             "subtitle": "See",
-            "url": "/docs/api/checkout-ui-extensions/apis/buyer-journey#examples",
+            "url": "/docs/api/checkout-ui-extensions/2025-07/target-apis/checkout-apis/buyer-journey-api",
             "type": "blocks"
           }
         ],

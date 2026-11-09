@@ -155,7 +155,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         {
           name: 'API access examples',
           subtitle: 'See',
-          url: '/docs/api/checkout-ui-extensions/apis/storefront-api#examples',
+          url: '/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/storefront-api',
           type: 'blocks',
         },
       ],
@@ -170,7 +170,7 @@ Defines the [capabilities](/docs/api/checkout-ui-extensions/apis/standardapi#pro
         },
         {
           title: 'Methods for accessing the Storefront API',
-          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/apis/storefront-api) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
+          sectionContent: `Enabling the \`api_access\` capability allows you to use the Standard API [\`query\`](/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/storefront-api) method and the global \`fetch\` to retrieve data from the [Storefront API](/api/storefront) without manually managing token aquisition and refresh.
 
 \`query\` lets you request a single GraphQL response from the Storefront API.
 
@@ -291,7 +291,7 @@ The App Proxy doesn't handle all [HTTP request methods](https://developer.mozill
         {
           name: 'Blocking examples',
           subtitle: 'See',
-          url: '/docs/api/checkout-ui-extensions/apis/buyer-journey#examples',
+          url: '/docs/api/checkout-ui-extensions/2025-07/target-apis/checkout-apis/buyer-journey-api',
           type: 'blocks',
         },
       ],

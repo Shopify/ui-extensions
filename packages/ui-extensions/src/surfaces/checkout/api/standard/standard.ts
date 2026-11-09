@@ -501,7 +501,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * > Caution: Check cart instructions before calling select APIs, as
    * > some may not be available. See the
-   * > [Cart Instructions API](/docs/api/checkout-ui-extensions/apis/cart-instructions#examples)
+   * > [Cart Instructions API](/docs/api/checkout-ui-extensions/2025-07/target-apis/checkout-apis/cart-instructions-api)
    * > for more information.
    *
    */
@@ -544,7 +544,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Provides details on the buyer's progression through the checkout.
    *
-   * Refer to [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/apis/buyer-journey#examples)
+   * Refer to [buyer journey](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/checkout-apis/buyer-journey-api)
    * examples for more information.
    */
   buyerJourney: BuyerJourney;
@@ -602,10 +602,10 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
 
   /**
    * Utilities for translating content and formatting values according to the current
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization)
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api)
    * of the checkout.
    *
-   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#examples)
+   * Refer to [`localization` examples](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api)
    * for more information.
    */
   i18n: I18n;
@@ -618,7 +618,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The details about the location, language, and currency of the customer. For utilities to easily
    * format and translate content based on these details, you can use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api#docsstandardlocalizationapi-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -632,7 +632,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * persist for as long as the customer is working on this checkout.
    *
    * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   * [GraphQL Admin API](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.metafield)
    *
    * > Tip:
    * > Cart metafields are only available on carts created using the Storefront API.
@@ -676,7 +676,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The settings matching the settings definition written in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/configuration) file.
    *
-   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/apis/settings#examples) for more information.
+   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/settings-api) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings will be empty until
    * a merchant sets a value. In that case, this object will be updated in real time as a merchant fills in the settings.
@@ -1445,7 +1445,7 @@ export interface PaymentTermsTemplate {
    */
   id: string;
   /**
-   * The name of the payment terms translated to the buyer's current language. Refer to [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/apis/localization#standardapi-propertydetail-localization).
+   * The name of the payment terms translated to the buyer's current language. Refer to [localization.language](https://shopify.dev/docs/api/checkout-ui-extensions/2025-07/target-apis/platform-apis/localization-api#docsstandardlocalizationapi-propertydetail-localization).
    */
   name: string;
   /**
