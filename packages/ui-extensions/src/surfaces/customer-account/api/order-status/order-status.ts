@@ -285,7 +285,7 @@ export interface OrderStatusApi<Target extends ExtensionTarget> {
    * persist for as long as the customer is working on this checkout.
    *
    * Once the order is created, you can query these metafields using the
-   * [GraphQL Admin API](https://shopify.dev/docs/admin-api/graphql/reference/orders/order#metafield-2021-01)
+   * [GraphQL Admin API](https://shopify.dev/docs/api/admin-graphql/latest/objects/Order#field-Order.fields.metafield)
    */
   metafields: StatefulRemoteSubscribable<Metafield[]>;
 

@@ -11,11 +11,11 @@ import {ExtensionApiContext} from '../context';
  * Returns the full API object that was passed in to your extension when it was created.
  * Depending on the extension target, this object can contain different properties.
  *
- * For example, the `purchase.checkout.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
- * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
+ * For example, the `purchase.checkout.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/targets/checkout/order-summary) object.
+ * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/target-apis) object,
  * which contains a basic set of properties about the checkout.
  *
- * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/targets).
  */
 export function useApi<
   Target extends RenderExtensionTarget = RenderExtensionTarget,
@@ -34,11 +34,11 @@ export function useApi<
  * Returns the full API object that was passed in to your extension when it was created.
  * Depending on the extension target, this object can contain different properties.
  *
- * For example, the `purchase.checkout.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/cartlinedetailsapi) object.
- * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
+ * For example, the `purchase.checkout.cart-line-item.render-after` extension target will return the [CartLineDetailsApi](https://shopify.dev/docs/api/checkout-ui-extensions/targets/checkout/order-summary) object.
+ * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/target-apis) object,
  * which contains a basic set of properties about the checkout.
  *
- * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/targets).
  *
  * > Caution: This is deprecated, use `useApi` instead.
  *

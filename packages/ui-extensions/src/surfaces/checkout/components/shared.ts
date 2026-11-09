@@ -693,7 +693,7 @@ export interface InteractionProps {
    *
    * | Component     | Supported Actions | Default ('auto')  |
    * |---------------|-------------------|-------------------|
-   * | [`ClipboardItem`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/clipboarditem) | 'copy'            | 'copy'            |
+   * | [`ClipboardItem`](https://shopify.dev/docs/api/checkout-ui-extensions/latest/ui-components/actions/clipboarditem) | 'copy'            | 'copy'            |
    *
    * @default 'auto' - a default action for the target component.
    */
