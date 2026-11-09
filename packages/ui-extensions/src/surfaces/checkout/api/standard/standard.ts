@@ -603,7 +603,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    *
    * > Caution: Check cart instructions before calling select APIs, as
    * > some may not be available. See the
-   * > [Cart Instructions API](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/cart-instructions#examples)
+   * > [Cart Instructions API](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/checkout-apis/cart-instructions-api#use-cases)
    * > for more information.
    *
    */
@@ -715,7 +715,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * Utilities for translating strings, formatting currencies, numbers, and dates
    * according to the buyer's locale. Use alongside
-   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization)
+   * [`localization`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api)
    * to build fully localized extensions.
    */
   i18n: I18n;
@@ -728,7 +728,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
   /**
    * The buyer's language, country, currency, and timezone context. For
    * formatting and translation helpers, use the
-   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/localization#properties-propertydetail-i18n)
+   * [`i18n`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/localization-api#docsstandardlocalizationapi-propertydetail-i18n)
    * object instead.
    */
   localization: Localization;
@@ -775,7 +775,7 @@ export interface StandardApi<Target extends ExtensionTarget = ExtensionTarget> {
    * The settings matching the settings definition written in the
    * [`shopify.extension.toml`](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/configuration) file.
    *
-   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/apis/settings#examples) for more information.
+   *  Refer to [settings examples](https://shopify.dev/docs/api/checkout-ui-extensions/{API_VERSION}/target-apis/platform-apis/settings-api#use-cases) for more information.
    *
    * > Note: When an extension is being installed in the editor, the settings are empty until
    * a merchant sets a value. In that case, this object updates in real time as a merchant fills in the settings.
