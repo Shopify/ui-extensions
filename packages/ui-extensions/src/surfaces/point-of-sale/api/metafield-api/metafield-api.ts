@@ -32,7 +32,7 @@ import type {
  */
 export interface MetafieldApi {
   /**
-   * Creates, updates, or removes one metafield on the cart or on one of its line items. Resolves with the result of the change. Only available on the targets that have the Cart API; see `MetafieldApi` for the list. This is the same method, with the same change and result types, as [`applyMetafieldChange()` in checkout UI extensions](https://shopify.dev/docs/api/checkout-ui-extensions/latest/apis/metafields).
+   * Creates, updates, or removes one metafield on the cart or on one of its line items. Resolves with the result of the change. Only available on the targets that have the Cart API; see `MetafieldApi` for the list. This is the same method, with the same change and result types, as [`applyMetafieldChange()` in checkout UI extensions](https://shopify.dev/docs/api/checkout-ui-extensions/latest/target-apis/platform-apis/metafields-api#docscheckoutmetafieldsapi-propertydetail-applymetafieldchange).
    *
    * - A change without a `namespace` uses the app-reserved namespace (`$app`) of the app that owns the extension. Values in an app-reserved namespace are only visible to that app.
    * - Line item changes (`updateCartLineMetafield`, `removeCartLineMetafield`) are available on line items being sold, including the new items of an exchange. They return an error for line items being returned.
