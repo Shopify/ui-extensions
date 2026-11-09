@@ -13,7 +13,7 @@ import {CheckoutUIExtensionError} from './errors';
  * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
  * which contains a basic set of properties about the checkout.
  *
- * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/targets).
  *
  * > Note:
  * > As of version 2025-10, you no longer need this hook. The full API object is accessible via
@@ -41,7 +41,7 @@ export function useApi<
  * Other targets may only have access to the [StandardApi](https://shopify.dev/docs/api/checkout-ui-extensions/apis/standardapi) object,
  * which contains a basic set of properties about the checkout.
  *
- * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/apis/extensiontargets).
+ * For a full list of the API available to each extension target, see the [ExtensionTargets type](https://shopify.dev/docs/api/checkout-ui-extensions/targets).
  *
  * > Caution: This is deprecated, use `useApi` instead.
  *
