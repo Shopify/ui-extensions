@@ -608,18 +608,27 @@
       "filePath": "src/surfaces/checkout/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AnyComponent",
-      "value": "(typeof SUPPORTED_COMPONENTS)[number] | PrivateComponent",
+      "value": "'Abbreviation' | 'Announcement' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'Chat' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ClipboardItem' | 'ConsentCheckbox' | 'ConsentPhoneField' | 'DateField' | 'DatePicker' | 'Details' | 'Divider' | 'DropZone' | 'EmailField' | 'Form' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Map' | 'MapMarker' | 'Modal' | 'MoneyField' | 'NumberField' | 'Option' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'PaymentIcon' | 'PhoneField' | 'Popover' | 'PressButton' | 'ProductThumbnail' | 'Progress' | 'QueryContainer' | 'QRCode' | 'ScrollBox' | 'Section' | 'Select' | 'Sheet' | 'SkeletonParagraph' | 'Spinner' | 'Stack' | 'Summary' | 'Switch' | 'Text' | 'TextArea' | 'TextField' | 'Time' | 'Tooltip' | 'UnorderedList' | 'UrlField'",
       "description": "",
       "isPublicDocs": true
     }
   },
-  "PrivateComponent": {
-    "src/surfaces/checkout/shared.ts": {
-      "filePath": "src/surfaces/checkout/shared.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "PrivateComponent",
-      "value": "'LoginWithShop'",
-      "description": ""
+  "Announcement": {
+    "src/surfaces/checkout/api/announcement/announcement.ts": {
+      "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
+      "name": "Announcement",
+      "description": "",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "announcement",
+          "value": "{ close(): void; addEventListener(type: \"close\", cb: () => void): void; removeEventListener(type: \"close\", cb: () => void): void; }",
+          "description": ""
+        }
+      ],
+      "value": "export interface Announcement {\n  announcement: {\n    close(): void;\n    addEventListener(type: 'close', cb: () => void): void;\n    removeEventListener(type: 'close', cb: () => void): void;\n  };\n}"
     }
   },
   "Metafield": {
@@ -5747,24 +5756,6 @@
       "value": "export interface OrderConfirmationApi {\n  /**\n   * The order details available after the buyer completes checkout, including the order ID, order number, and whether it's the buyer's first purchase.\n   */\n  orderConfirmation: SubscribableSignalLike<OrderConfirmation>;\n}"
     }
   },
-  "Announcement": {
-    "src/surfaces/checkout/api/announcement/announcement.ts": {
-      "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
-      "name": "Announcement",
-      "description": "",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/checkout/api/announcement/announcement.ts",
-          "syntaxKind": "PropertySignature",
-          "name": "announcement",
-          "value": "{ close(): void; addEventListener(type: \"close\", cb: () => void): void; removeEventListener(type: \"close\", cb: () => void): void; }",
-          "description": ""
-        }
-      ],
-      "value": "export interface Announcement {\n  announcement: {\n    close(): void;\n    addEventListener(type: 'close', cb: () => void): void;\n    removeEventListener(type: 'close', cb: () => void): void;\n  };\n}"
-    }
-  },
   "CartLineItemApi": {
     "src/surfaces/checkout/api/cart-line/cart-line-item.ts": {
       "filePath": "src/surfaces/checkout/api/cart-line/cart-line-item.ts",
@@ -7615,7 +7606,7 @@
       "filePath": "src/surfaces/checkout/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AnyCheckoutComponent",
-      "value": "'Abbreviation' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'Chat' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ClipboardItem' | 'ConsentCheckbox' | 'ConsentPhoneField' | 'DateField' | 'DatePicker' | 'Details' | 'Divider' | 'DropZone' | 'EmailField' | 'Form' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Map' | 'MapMarker' | 'Modal' | 'MoneyField' | 'NumberField' | 'Option' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'PaymentIcon' | 'PhoneField' | 'Popover' | 'PressButton' | 'ProductThumbnail' | 'Progress' | 'QueryContainer' | 'QRCode' | 'ScrollBox' | 'Section' | 'Select' | 'Sheet' | 'SkeletonParagraph' | 'Spinner' | 'Stack' | 'Summary' | 'Switch' | 'Text' | 'TextArea' | 'TextField' | 'Time' | 'Tooltip' | 'UnorderedList' | 'UrlField' | 'LoginWithShop'",
+      "value": "'Abbreviation' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'Chat' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ClipboardItem' | 'ConsentCheckbox' | 'ConsentPhoneField' | 'DateField' | 'DatePicker' | 'Details' | 'Divider' | 'DropZone' | 'EmailField' | 'Form' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Map' | 'MapMarker' | 'Modal' | 'MoneyField' | 'NumberField' | 'Option' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'PaymentIcon' | 'PhoneField' | 'Popover' | 'PressButton' | 'ProductThumbnail' | 'Progress' | 'QueryContainer' | 'QRCode' | 'ScrollBox' | 'Section' | 'Select' | 'Sheet' | 'SkeletonParagraph' | 'Spinner' | 'Stack' | 'Summary' | 'Switch' | 'Text' | 'TextArea' | 'TextField' | 'Time' | 'Tooltip' | 'UnorderedList' | 'UrlField'",
       "description": "The list of supported components. As of October 1st, 2025, this is a subset of the components that will be available in the 2025-10 stable release."
     }
   },
@@ -7624,7 +7615,7 @@
       "filePath": "src/surfaces/checkout/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "AnyCheckoutComponentExcept",
-      "value": "'Abbreviation' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'Chat' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ClipboardItem' | 'ConsentCheckbox' | 'ConsentPhoneField' | 'DateField' | 'DatePicker' | 'Details' | 'Divider' | 'DropZone' | 'EmailField' | 'Form' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Map' | 'MapMarker' | 'Modal' | 'MoneyField' | 'NumberField' | 'Option' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'PaymentIcon' | 'PhoneField' | 'Popover' | 'PressButton' | 'ProductThumbnail' | 'Progress' | 'QueryContainer' | 'QRCode' | 'ScrollBox' | 'Section' | 'Select' | 'Sheet' | 'SkeletonParagraph' | 'Spinner' | 'Stack' | 'Summary' | 'Switch' | 'Text' | 'TextArea' | 'TextField' | 'Time' | 'Tooltip' | 'UnorderedList' | 'UrlField' | 'LoginWithShop'",
+      "value": "'Abbreviation' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'Chat' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ClipboardItem' | 'ConsentCheckbox' | 'ConsentPhoneField' | 'DateField' | 'DatePicker' | 'Details' | 'Divider' | 'DropZone' | 'EmailField' | 'Form' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Map' | 'MapMarker' | 'Modal' | 'MoneyField' | 'NumberField' | 'Option' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'PaymentIcon' | 'PhoneField' | 'Popover' | 'PressButton' | 'ProductThumbnail' | 'Progress' | 'QueryContainer' | 'QRCode' | 'ScrollBox' | 'Section' | 'Select' | 'Sheet' | 'SkeletonParagraph' | 'Spinner' | 'Stack' | 'Summary' | 'Switch' | 'Text' | 'TextArea' | 'TextField' | 'Time' | 'Tooltip' | 'UnorderedList' | 'UrlField'",
       "description": ""
     }
   },
@@ -21917,7 +21908,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -22987,7 +22978,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -24466,7 +24457,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -27085,7 +27076,6 @@
       "filePath": "src/surfaces/checkout/components/Checkbox.ts",
       "name": "CheckboxEvents",
       "description": "",
-      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/checkout/components/Checkbox.ts",
@@ -27123,7 +27113,6 @@
       "filePath": "src/surfaces/checkout/components/Checkbox.ts",
       "name": "CheckboxElement",
       "description": "",
-      "isPublicDocs": true,
       "members": [
         {
           "filePath": "src/surfaces/checkout/components/Checkbox.ts",
@@ -37219,7 +37208,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -37510,7 +37499,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -38805,7 +38794,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -83650,7 +83639,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -84683,7 +84672,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
@@ -86118,7 +86107,7 @@
           "syntaxKind": "PropertySignature",
           "name": "href",
           "value": "string",
-          "description": "The URL to navigate to when clicked, including `mailto:` and `tel:` URLs. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
+          "description": "The URL to navigate to when clicked. The `click` event fires first, then navigation occurs. If `commandFor` is also set, the command executes instead of navigation.",
           "isOptional": true
         },
         {
