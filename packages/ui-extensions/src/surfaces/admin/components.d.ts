@@ -2007,14 +2007,14 @@ export interface BaseSelectableProps {
    */
   accessibilityLabel?: string;
   /**
-   * Whether the checkbox is disabled, preventing user interaction.
-   * Disabled checkboxes appear dimmed and their values aren't submitted with forms.
+   * Whether the control is disabled, preventing user interaction.
+   * Disabled controls appear dimmed and their values aren't submitted with forms.
    *
    * @default false
    */
   disabled?: boolean;
   /**
-   * The value submitted with the form when this checkbox is checked.
+   * The value submitted with the form when this control is selected.
    * If not specified, the default value is "on".
    */
   value?: string;
@@ -2042,8 +2042,8 @@ export interface BaseCheckableProps
   extends BaseSelectableProps,
     InteractionProps {
   /**
-   * The text label displayed next to the checkbox that describes what the checkbox controls.
-   * Clicking the label will also toggle the checkbox state.
+   * The text label displayed next to the control that describes what it does.
+   * Clicking the label will also toggle the control state.
    */
   label?: string;
   /**
@@ -2062,8 +2062,8 @@ export interface BaseCheckableProps
    */
   defaultChecked?: boolean;
   /**
-   * The name used to identify this checkbox in form submissions.
-   * When the checkbox is checked, its `name` and `value` are included in the form data.
+   * The name used to identify this control in form submissions.
+   * When the control is checked, its `name` and `value` are included in the form data.
    * Must be unique within the containing form.
    */
   name?: string;
@@ -5829,7 +5829,7 @@ export interface PreactCheckboxProps
     >
   > {
   /**
-   * The value used in form data when the checkbox is checked.
+   * The value used in form data when the control is checked.
    */
   value: Required<CheckboxProps$1>['value'];
 }
@@ -5840,7 +5840,7 @@ declare class PreactCheckboxElement
   get checked(): boolean;
   set checked(checked: PreactCheckboxProps['checked']);
   /**
-   * The value used in form data when the checkbox is checked.
+   * The value used in form data when the control is checked.
    */
   get value(): string;
   set value(value: string);
