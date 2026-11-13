@@ -12,7 +12,7 @@ See it in action:
 Build the root package:
 
 ```
-yarn build
+pnpm build
 ```
 
 Change into this example package and run:

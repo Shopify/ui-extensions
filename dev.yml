@@ -5,5 +5,4 @@ minimum_dependency_age:
 up:
   - node:
       version: v20.20.0
-      yarn: 1.19.2
-      package_manager: yarn@1.19.2
+      package_manager: pnpm@10.34.5

@@ -75,7 +75,7 @@ const generateExtensionsDocs = async () => {
 
   if (EXTENSIONS_API_VERSION === 'unstable') {
     console.log(
-      "You can add a calver version argument (e.g. 'yarn docs:customer-account 2024-07') to generate the docs for a stable version.",
+      "You can add a calver version argument (e.g. 'pnpm docs:customer-account 2024-07') to generate the docs for a stable version.",
     );
   }
 
@@ -85,7 +85,7 @@ const generateExtensionsDocs = async () => {
 
   const overridePath = `./${docsRelativePath}/typeOverride.json`;
   await execAsync(
-    `yarn generate-docs --strictInput --overridePath ${overridePath} --input ./${srcRelativePath} ./${checkoutComponentsRelativePath} --output ./${outputDir}`,
+    `pnpm exec generate-docs --strictInput --overridePath ${overridePath} --input ./${srcRelativePath} ./${checkoutComponentsRelativePath} --output ./${outputDir}`,
     {maxBuffer},
   );
 

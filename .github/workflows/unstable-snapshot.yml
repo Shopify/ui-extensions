@@ -28,6 +28,6 @@ jobs:
           EOF
 
       - name: Deploy snapshot versions
-        run: yarn run deploy:unstable
+        run: pnpm run deploy:unstable
         env:
           GITHUB_TOKEN: ${{ secrets.SHOPIFY_GH_ACCESS_TOKEN }}
