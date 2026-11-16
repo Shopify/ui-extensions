@@ -1,4 +1,5 @@
 import type {
+  AppEvents,
   ExtensionTarget,
   ExtensionTargets,
   StandardApi,
@@ -80,6 +81,20 @@ function createIntentResponseApi(): IntentResponseApi {
   };
 }
 
+/**
+ * The `appEvents` of a target that cannot send, such as a should-render or
+ * data target. The host exposes a stub there that sends nothing and resolves
+ * this result.
+ */
+function createUnavailableAppEvents(): AppEvents {
+  return {
+    emit: async () => ({
+      success: false as const,
+      error: 'Emit is unavailable.',
+    }),
+  };
+}
+
 function createMockStandardApi<T extends ExtensionTarget>(
   target: T,
 ): StandardApi<T> {
@@ -94,6 +109,7 @@ function createMockStandardApi<T extends ExtensionTarget>(
       }),
     },
     storage: createStorage(),
+    appEvents: {emit: async () => ({success: true as const})},
     query: async () => ({data: undefined}),
   };
 }
@@ -192,6 +208,7 @@ function createPrintActionMock<T extends ExtensionTarget>(target: T) {
 function createShouldRenderMock<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardApi(target),
+    appEvents: createUnavailableAppEvents(),
     data: createData(),
   };
 }
@@ -302,11 +319,10 @@ function createPurchaseOptionsCardMock<T extends ExtensionTarget>(target: T) {
   };
 }
 
-function createCustomerSegmentTemplateMock<T extends ExtensionTarget>(
-  target: T,
-) {
+function createDataTargetMock<T extends ExtensionTarget>(target: T) {
   return {
     ...createMockStandardApi(target),
+    appEvents: createUnavailableAppEvents(),
   };
 }
 
@@ -320,9 +336,8 @@ type AdminMockFactory = {
 
 const adminMockFactories: AdminMockFactory = {
   // Runnable targets
-  'admin.customers.segmentation-templates.data':
-    createCustomerSegmentTemplateMock,
-  'admin.app.tools.data': createMockStandardApi,
+  'admin.customers.segmentation-templates.data': createDataTargetMock,
+  'admin.app.tools.data': createDataTargetMock,
 
   // App render targets
   'admin.app.home.render': createAppHomeMock,
@@ -435,6 +450,9 @@ const adminMockFactories: AdminMockFactory = {
   'admin.order-details.print-action.should-render': createShouldRenderMock,
   'admin.product-details.print-action.should-render': createShouldRenderMock,
 };
+
+/** The factory of each admin target, for the tester's own tests. */
+export {adminMockFactories};
 
 // ---------------------------------------------------------------------------
 // Main factory
