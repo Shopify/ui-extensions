@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.6
+
+### Minor Changes
+
+- [#4806](https://github.com/Shopify/ui-extensions/pull/4806) [`7c2226a`](https://github.com/Shopify/ui-extensions/commit/7c2226a584959af43feb8c981cb6c51a44e90445) Thanks [@kristianpd](https://github.com/kristianpd)! - `appEvents`: add `shopify.appEvents.emit(eventHandle, attributes?)` to the Admin standard API, for reporting app events to Shopify. Admin, Checkout and Customer Account now share one `AppEvents` type, and the Admin entry exports the app event types.
+
 ## 2027.1.0-rc.5
 
 ### Minor Changes
