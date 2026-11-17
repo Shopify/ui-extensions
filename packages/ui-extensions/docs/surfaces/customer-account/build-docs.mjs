@@ -11,6 +11,7 @@ import {
   replaceFileContent,
   resolveShopifyDevPath,
 } from '../build-doc-shared.mjs';
+import {assertAuthenticatedAccountPublicNames} from './assert-authenticated-account-public-names.mjs';
 
 const execAsync = promisify(execCb);
 
@@ -104,6 +105,10 @@ const generateExtensionsDocs = async () => {
     searchValue: '/docs/api//unstable/',
     replaceValue: `/docs/api/customer-account-ui-extensions/${EXTENSIONS_API_VERSION}`,
   });
+
+  assertAuthenticatedAccountPublicNames(
+    JSON.parse(await fs.readFile(generatedFiles[0], 'utf8')),
+  );
 };
 
 let checkoutTempFiles = [];
@@ -126,10 +131,16 @@ try {
   // Generate targets.json
   console.log('Generating targets.json...');
   try {
-    execSync(`node ${path.join(docsPath, 'build-docs-targets-json.mjs')} ${EXTENSIONS_API_VERSION}`, {
-      stdio: 'inherit',
-      cwd: rootPath,
-    });
+    execSync(
+      `node ${path.join(
+        docsPath,
+        'build-docs-targets-json.mjs',
+      )} ${EXTENSIONS_API_VERSION}`,
+      {
+        stdio: 'inherit',
+        cwd: rootPath,
+      },
+    );
     console.log('✅ Generated targets.json');
   } catch (targetsError) {
     console.warn(
