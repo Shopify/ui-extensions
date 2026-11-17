@@ -31,6 +31,10 @@ The `admin.app.home.render` target mock includes `shopify.toast`, `shopify.app`,
 
 The `admin.app.intent.render` target mock includes `shopify.intents.response.ok()`, `.error()`, and `.closed()`.
 
+## 📣 App events mocks
+
+Every target mock includes `shopify.appEvents.emit()`, which resolves `{success: true}`. On `should-render` and `data` targets it resolves `{success: false, error: 'Emit is unavailable.'}`, as the admin does.
+
 ## 🔒 Mocking mutation return values
 
 Replace mutation functions with `vi.fn()` and use `createResult()` to build typed return values. The first argument is the mutation name; the second is an optional result override.

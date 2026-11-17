@@ -1,5 +1,11 @@
 export type {I18n, I18nTranslate} from '../../api';
 export type {StandardApi, Intents} from './api/standard/standard';
+export type {
+  AppEventAttributeValue,
+  AppEventAttributes,
+  AppEventEmitResult,
+  AppEvents,
+} from '../../shared';
 export type {ToastApi, ToastOptions} from './api/toast/toast';
 export type {LoadingApi, LoadingOptions} from './api/loading/loading';
 export type {Tools, ToolHandler} from './api/tools/tools';

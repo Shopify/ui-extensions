@@ -1,5 +1,5 @@
 import type {I18n} from '../../../../api';
-import {ApiVersion} from '../../../../shared';
+import {ApiVersion, AppEvents} from '../../../../shared';
 import type {Storage} from './storage';
 import type {ExtensionTarget as AnyExtensionTarget} from '../../extension-targets';
 import type {Intents} from '../intents/intents';
@@ -68,6 +68,15 @@ export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {
    * Provides methods for persisting data in browser storage that is scoped to your extension. Use this to store user preferences, cache data, maintain state across sessions, or save temporary working data. Storage is persistent across page reloads and isolated per extension.
    */
   storage: Storage;
+
+  /**
+   * Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.
+   *
+   * Don't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.
+   *
+   * `emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`.
+   */
+  appEvents: AppEvents;
 
   /**
    * Executes GraphQL queries against the [GraphQL Admin API](/docs/api/admin-graphql). Use this to fetch shop data, manage resources, or perform mutations. Queries are automatically authenticated with the current user's permissions. Optionally specify GraphQL variables and API version for your query.
