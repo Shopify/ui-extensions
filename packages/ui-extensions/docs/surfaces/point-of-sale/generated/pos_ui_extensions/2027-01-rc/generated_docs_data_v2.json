@@ -6179,6 +6179,15 @@
         {
           "filePath": "src/surfaces/point-of-sale/components.ts",
           "syntaxKind": "PropertySignature",
+          "name": "position",
+          "value": "'static' | 'sticky'",
+          "description": "`sticky` rows pin to the top edge of the list when they reach it, and stay there until the next sticky row takes their place. `static` rows scroll with the list.",
+          "isOptional": true,
+          "defaultValue": "'static'"
+        },
+        {
+          "filePath": "src/surfaces/point-of-sale/components.ts",
+          "syntaxKind": "PropertySignature",
           "name": "templateId",
           "value": "string",
           "description": ""
@@ -6191,7 +6200,7 @@
           "description": "`button` rows fire `rowclick`; `text` rows are static content."
         }
       ],
-      "value": "interface POSListItemTemplate {\n  templateId: string;\n  /** `button` rows fire `rowclick`; `text` rows are static content. */\n  type: 'button' | 'text';\n  children: POSListTemplateNode[];\n}"
+      "value": "interface POSListItemTemplate {\n  templateId: string;\n  /** `button` rows fire `rowclick`; `text` rows are static content. */\n  type: 'button' | 'text';\n  /**\n   * `sticky` rows pin to the top edge of the list when they reach it, and stay there until the\n   * next sticky row takes their place. `static` rows scroll with the list.\n   *\n   * @default 'static'\n   */\n  position?: 'static' | 'sticky';\n  children: POSListTemplateNode[];\n}"
     }
   },
   "POSListTemplateNode": {

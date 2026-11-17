@@ -93,18 +93,25 @@ export type POSListTemplateNode =
       path: string;
       children: POSListTemplateNode[];
     };
+
 /** One `<s-pos-list-item templateId="…">` root. */
 export interface POSListItemTemplate {
   templateId: string;
   /** `button` rows fire `rowclick`; `text` rows are static content. */
   type: 'button' | 'text';
+  /**
+   * `sticky` rows pin to the top edge of the list when they reach it, and stay there until the
+   * next sticky row takes their place. `static` rows scroll with the list.
+   *
+   * @default 'static'
+   */
+  position?: 'static' | 'sticky';
   children: POSListTemplateNode[];
 }
 export interface POSListTemplates {
   templates: POSListItemTemplate[];
 }
 
-declare const tagName = 's-pos-list';
 /**
  * A row supplied to `s-pos-list`. Rows are plain data; every member other than `id` and
  * `templateFor` is available to the row's item template through `{{path}}`, `bind:prop`,
@@ -157,23 +164,30 @@ export interface POSListJSXProps {
    */
   onRowClick?: ((event: POSListRowClickEvent) => void) | null;
   /** Callback when the list has scrolled near its end and more rows should be loaded. */
-  onLoadMore?: ((event: CallbackEvent<typeof tagName>) => void) | null;
+  onLoadMore?: ((event: CallbackEvent<'s-pos-list'>) => void) | null;
   /** Content displayed before the rows as part of the list's scrollable content. */
   header?: ComponentChild;
 }
-export type ElementProps = Omit<POSListJSXProps, 'header'>;
+export type POSListElementProps = Omit<POSListJSXProps, 'header'>;
+
+declare const tagName = 's-pos-list';
 declare global {
   interface HTMLElementTagNameMap {
-    [tagName]: HtmlElementTagNameProps<ElementProps>;
+    [tagName]: HtmlElementTagNameProps<POSListElementProps>;
   }
 }
 declare module 'preact' {
   namespace createElement.JSX {
     interface IntrinsicElements {
-      [tagName]: IntrinsicElementProps<ElementProps>;
+      [tagName]: IntrinsicElementProps<POSListElementProps>;
     }
   }
 }
 
 export {tagName};
-export type {ElementProps, POSListJSXProps, POSListRow, POSListRowClickEvent};
+export type {
+  POSListElementProps,
+  POSListJSXProps,
+  POSListRow,
+  POSListRowClickEvent,
+};
