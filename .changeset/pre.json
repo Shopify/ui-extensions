@@ -6,6 +6,7 @@
     "@shopify/ui-extensions-tester": "2027.1.0-rc.0"
   },
   "changesets": [
+    "app-events-admin",
     "app-events-checkout-customer-account",
     "pos-apply-metafield-change",
     "pos-cart-capabilities-types",
