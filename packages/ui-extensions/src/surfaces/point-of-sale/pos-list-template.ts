@@ -287,6 +287,7 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
   }
   let templateId: string | undefined;
   let type: POSListItemTemplate['type'] = 'button';
+  let position: POSListItemTemplate['position'];
   for (const [name, value] of Object.entries(root.props)) {
     if (name === 'templateId') {
       if (typeof value !== 'string' || value.length === 0) {
@@ -302,9 +303,18 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
         );
       }
       type = value;
+    } else if (name === 'position') {
+      if (value !== 'static' && value !== 'sticky') {
+        fail(
+          `<${ITEM_TAG}> position must be "static" or "sticky", got ${JSON.stringify(
+            value,
+          )}`,
+        );
+      }
+      position = value;
     } else {
       fail(
-        `<${ITEM_TAG}> does not accept a "${name}" attribute; only templateId and type are allowed`,
+        `<${ITEM_TAG}> does not accept a "${name}" attribute; only templateId, type, and position are allowed`,
       );
     }
   }
@@ -315,7 +325,12 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
     fail(`duplicate templateId "${templateId}"`);
   }
   seen.add(templateId);
-  return {templateId, type, children: compileChildren(root.children, true)};
+  const children = compileChildren(root.children, true);
+  // Only sticky roots carry a position, so every other template compiles to
+  // the same value as before the attribute existed.
+  return position === 'sticky'
+    ? {templateId, type, position, children}
+    : {templateId, type, children};
 }
 
 /**
@@ -328,6 +343,11 @@ function compileRoot(root: unknown, seen: Set<string>): POSListItemTemplate {
  * Invalid templates throw synchronously and return no partial collection.
  * An uncaught module-scope exception aborts module evaluation; catch the helper
  * invocation to recover explicitly. There is no automatic list-only fallback.
+ *
+ * Each `<s-pos-list-item>` takes a `templateId`, an optional `type` (`button`
+ * or `text`), and an optional `position`. Rows rendered by a
+ * `position="sticky"` template pin to the top edge of the list when they reach
+ * it, until the next sticky row takes their place.
  *
  * Inside a template, `{{path}}` interpolates a row field as text, `bind:prop="path"`
  * passes a row field to a component prop with its own type, and

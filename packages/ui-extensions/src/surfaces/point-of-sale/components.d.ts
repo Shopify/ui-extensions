@@ -5490,6 +5490,13 @@ interface POSListItemTemplate {
   templateId: string;
   /** `button` rows fire `rowclick`; `text` rows are static content. */
   type: 'button' | 'text';
+  /**
+   * `sticky` rows pin to the top edge of the list when they reach it, and stay there until the
+   * next sticky row takes their place. `static` rows scroll with the list.
+   *
+   * @default 'static'
+   */
+  position?: 'static' | 'sticky';
   children: POSListTemplateNode[];
 }
 interface POSListTemplates {
