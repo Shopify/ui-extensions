@@ -209,12 +209,13 @@ export interface MailingAddress {
   address2?: string;
 
   /**
-   * The parts of `address1` and `address2`, such as street name, street
-   * number, and apartment, for countries whose address format uses them.
-   * `address1` and `address2` are always provided alongside them. The value
-   * is `undefined` if no components have been entered.
+   * Structured components of `address1` and `address2`, such as `streetName`,
+   * `streetNumber`, and `additionalInformation`, for supported countries.
+   * Checkout always includes `address1` and `address2` alongside them.
+   * Returns `undefined` when the buyer hasn't entered any components or when
+   * the address uses the standard layout.
    *
-   * See [Regional address components](https://shopify.dev/docs/apps/build/checkout/delivery-shipping/regional-address-components) for read and write details.
+   * For read and write details, refer to [About regional address components](https://shopify.dev/docs/apps/build/checkout/delivery-shipping/regional-address-components).
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires level 2 access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data).
    *
