@@ -1,3 +1,4 @@
+import type {AppEventsApi} from '../app-events-api/app-events-api';
 import {CameraApi} from '../camera-api/camera-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
@@ -34,4 +35,5 @@ export type StandardApi<T> = {[key: string]: any} & {
   ConnectivityApi &
   StorageApi &
   PinPadApi &
-  CameraApi;
+  CameraApi &
+  AppEventsApi;

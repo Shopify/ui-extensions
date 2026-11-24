@@ -1,3 +1,4 @@
+import type {AppEventsApi} from '../app-events-api/app-events-api';
 import {ReadonlyCartApi} from '../cart-api/cart-api';
 import {ConnectivityApi} from '../connectivity-api/connectivity-api';
 import {DeviceApi} from '../device-api/device-api';
@@ -25,4 +26,5 @@ export type DataTargetApi<T> = {
   ConnectivityApi &
   DeviceApi &
   ProductSearchApi &
-  ReadonlyCartApi;
+  ReadonlyCartApi &
+  AppEventsApi;

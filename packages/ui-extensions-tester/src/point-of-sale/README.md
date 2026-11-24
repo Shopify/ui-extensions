@@ -16,6 +16,10 @@ For targets using the Session API in 2026-10, the mock exposes `session.staffMem
 
 `session.currentSession.staffMemberId` is no longer exposed. Receipt header and footer targets retain their separate `session.staffMemberId` snapshot, which defaults to `1`.
 
+## Mocking app events
+
+The tester mocks `shopify.appEvents.emit()` for POS render and action targets and for `pos.app.ready.data`. It resolves with `{success: true}` without sending an event. Override `emit` to test an error result. Receipt targets have no `appEvents` mock.
+
 ## 🛒 Mocking cart line items
 
 Use `createCartLineItem()` to build POS cart line data, then assign it to the cart mock:
