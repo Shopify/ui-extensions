@@ -95,7 +95,17 @@ export interface CartValidationsEvent extends CartValidationsEventData {
  *
  * @publicDocs
  */
-export type InterceptedPaymentMethodType = 'cash';
+export type InterceptedPaymentMethodType =
+  | 'cash'
+  | VaultedCardPaymentMethodType;
+
+/**
+ * A payment attempt using a customer's saved card. Only sent to apps Shopify has
+ * individually approved; merchant consent doesn't grant it, and POS enforces it.
+ *
+ * @private
+ */
+export type VaultedCardPaymentMethodType = 'vaultedCard';
 
 /**
  * Identifies the payment method being attempted.
