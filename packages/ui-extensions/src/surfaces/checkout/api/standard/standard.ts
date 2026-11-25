@@ -238,7 +238,7 @@ export interface CartMetafield {
 }
 
 /**
- * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and globally-unique ID, so you can trace where the data comes from.
+ * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and ID, so you can trace where the data comes from.
  * @publicDocs
  */
 export interface AppMetafieldEntryTarget {
@@ -268,9 +268,13 @@ export interface AppMetafieldEntryTarget {
     | 'order';
 
   /**
-   * The globally-unique identifier of the Shopify resource, in [GID](https://shopify.dev/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the [Storefront API](https://shopify.dev/docs/api/storefront).
+   * The identifier of the resource that this metafield belongs to. Use it with `type` to match the metafield to a specific resource in your extension. The value isn't a [GID](https://shopify.dev/docs/api/usage/gids):
    *
-   * @example 'gid://shopify/Product/123'
+   * - For `'product'`, `'variant'`, `'shop'`, `'customer'`, `'company'`, and `'companyLocation'`, it's the numeric ID of the resource, such as `'123'`.
+   * - For `'cart'`, it's an opaque identifier. It isn't a Storefront API cart ID, so don't use it in Storefront API queries.
+   * - For other types, treat it as an opaque identifier.
+   *
+   * @example '123'
    */
   id: string;
 }
@@ -281,7 +285,7 @@ export interface AppMetafieldEntryTarget {
  */
 export interface AppMetafieldEntry {
   /**
-   * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its globally-unique ID.
+   * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its ID.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
