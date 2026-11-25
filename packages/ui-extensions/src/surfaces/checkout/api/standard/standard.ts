@@ -234,7 +234,7 @@ export interface CartMetafield {
 }
 
 /**
- * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and globally-unique ID, so you can trace where the data comes from.
+ * The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and ID, so you can trace where the data comes from.
  */
 export interface AppMetafieldEntryTarget {
   /**
@@ -243,7 +243,7 @@ export interface AppMetafieldEntryTarget {
    * - `'customer'`: The customer who placed the order.
    * - `'product'`: A product in the merchant's catalog.
    * - `'shop'`: The merchant's shop.
-   * - `'shopUser'`: A staff member or collaborator account on the shop.
+   * - `'shopUser'`: The buyer's Shop user account (their Shop Pay identity).
    * - `'variant'`: A specific variant of a product.
    * - `'company'`: A [B2B](https://shopify.dev/docs/apps/build/b2b) company associated with the order.
    * - `'companyLocation'`: A location belonging to a [B2B](https://shopify.dev/docs/apps/build/b2b) company.
@@ -262,9 +262,13 @@ export interface AppMetafieldEntryTarget {
     | 'cart';
 
   /**
-   * The globally-unique identifier of the Shopify resource, in [GID](https://shopify.dev/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the [Storefront API](https://shopify.dev/docs/api/storefront).
+   * The identifier of the resource that this metafield belongs to. Use it with `type` to match the metafield to a specific resource in your extension. The value isn't a [GID](https://shopify.dev/docs/api/usage/gids):
    *
-   * @example 'gid://shopify/Product/123'
+   * - For `'product'`, `'variant'`, `'shop'`, `'customer'`, `'company'`, and `'companyLocation'`, it's the numeric ID of the resource, such as `'123'`.
+   * - For `'cart'`, it's an opaque identifier. It isn't a Storefront API cart ID, so don't use it in Storefront API queries.
+   * - For other types, treat it as an opaque identifier.
+   *
+   * @example '123'
    */
   id: string;
 }
@@ -274,7 +278,7 @@ export interface AppMetafieldEntryTarget {
  */
 export interface AppMetafieldEntry {
   /**
-   * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its globally-unique ID.
+   * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its ID.
    *
    * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](https://shopify.dev/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.
    */
