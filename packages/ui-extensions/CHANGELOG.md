@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.7
+
+### Minor Changes
+
+- [#4809](https://github.com/Shopify/ui-extensions/pull/4809) [`32aafd8`](https://github.com/Shopify/ui-extensions/commit/32aafd8a5c76a5086cfa784955b5ee5e88c9101b) Thanks [@merkoyep](https://github.com/merkoyep)! - POS `paymentvalidations`: `InterceptedPaymentMethodType` adds a payment method type that only approved apps receive. Other apps keep receiving `cash`.
+
 ## 2027.1.0-rc.6
 
 ### Minor Changes
