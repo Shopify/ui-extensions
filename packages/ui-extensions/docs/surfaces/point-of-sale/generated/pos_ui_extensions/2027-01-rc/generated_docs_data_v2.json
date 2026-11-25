@@ -5257,22 +5257,12 @@
     }
   },
   "InterceptedPaymentMethodType": {
-    "src/surfaces/point-of-sale/events.ts": {
-      "filePath": "src/surfaces/point-of-sale/events.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "InterceptedPaymentMethodType",
-      "value": "'cash' | VaultedCardPaymentMethodType",
+    "unknown": {
       "description": "The kind of payment method being attempted.",
-      "isPublicDocs": true
-    }
-  },
-  "VaultedCardPaymentMethodType": {
-    "src/surfaces/point-of-sale/events.ts": {
-      "filePath": "src/surfaces/point-of-sale/events.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "VaultedCardPaymentMethodType",
-      "value": "'vaultedCard'",
-      "description": "A payment attempt using a customer's saved card. Only sent to apps Shopify has individually approved; merchant consent doesn't grant it, and POS enforces it."
+      "name": "InterceptedPaymentMethodType",
+      "value": "InterceptedPaymentMethodType",
+      "members": [],
+      "override": "`'cash'`"
     }
   },
   "CartValidationsEventData": {
