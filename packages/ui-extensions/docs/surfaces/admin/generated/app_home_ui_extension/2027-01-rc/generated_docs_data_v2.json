@@ -23,6 +23,56 @@
       "value": "export interface GraphQLError {\n  /**\n   * A human-readable description of the error.\n   */\n  message: string;\n  /**\n   * Additional error metadata including the request ID and error code.\n   */\n  extensions: {\n    /**\n     * The unique identifier for the API request, useful for debugging with Shopify support.\n     */\n    requestId: string;\n    /**\n     * A machine-readable error code identifying the type of error.\n     */\n    code: string;\n  };\n}"
     }
   },
+  "AppEventAttributeValue": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventAttributeValue",
+      "value": "string | number | boolean",
+      "description": "A value attached to an app event.",
+      "isPublicDocs": true
+    }
+  },
+  "AppEventAttributes": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventAttributes",
+      "value": "Record<string, AppEventAttributeValue>",
+      "description": "Attributes related to an app event. Each value is a string, a number, or a boolean.",
+      "isPublicDocs": true,
+      "members": []
+    }
+  },
+  "AppEventEmitResult": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventEmitResult",
+      "value": "{readonly success: true} | {readonly success: false; readonly error: string}",
+      "description": "The outcome of an `emit` call.\n\n`success: true` means the host accepted the event. It does not confirm delivery.\n\n`success: false` means the event was not sent. `error` describes why.",
+      "isPublicDocs": true
+    }
+  },
+  "AppEvents": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "name": "AppEvents",
+      "description": "Reports events to Shopify for this app.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/shared.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "emit",
+          "value": "(eventHandle: string, attributes?: AppEventAttributes) => Promise<AppEventEmitResult>",
+          "description": "Reports one occurrence of an app-defined event.",
+          "defaultValue": "{}"
+        }
+      ],
+      "value": "export interface AppEvents {\n  /**\n   * Reports one occurrence of an app-defined event.\n   *\n   * @param eventHandle The app-defined event name.\n   * @param attributes Attributes related to this event.\n   *   @default {}\n   * @returns A promise that resolves with the outcome once the host has\n   *   handled the call.\n   */\n  emit(\n    eventHandle: string,\n    attributes?: AppEventAttributes,\n  ): Promise<AppEventEmitResult>;\n}"
+    }
+  },
   "Storage": {
     "src/surfaces/admin/api/standard/storage.ts": {
       "filePath": "src/surfaces/admin/api/standard/storage.ts",
@@ -778,6 +828,13 @@
         {
           "filePath": "src/surfaces/admin/api/action/action.ts",
           "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/action/action.ts",
+          "syntaxKind": "PropertySignature",
           "name": "auth",
           "value": "Auth",
           "description": "Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations."
@@ -1278,7 +1335,7 @@
       "filePath": "src/shared.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ApiVersion",
-      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10'",
+      "value": "'2023-04' | '2023-07' | '2023-10' | '2024-01' | '2024-04' | '2024-07' | '2024-10' | '2025-01' | '2025-04' | 'unstable' | '2025-07' | '2025-10' | '2026-01' | '2026-04' | '2026-07' | '2026-10' | '2027-01'",
       "description": "The supported GraphQL Admin API versions. Use this to specify which API version your GraphQL queries should execute against. Each version includes specific features, bug fixes, and breaking changes. The `unstable` version provides access to the latest features but may change without notice."
     }
   },
@@ -1490,7 +1547,7 @@
       "filePath": "src/surfaces/admin/components/StandardComponents.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StandardComponents",
-      "value": "'Avatar' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'ButtonGroup' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ColorField' | 'ColorPicker' | 'DateField' | 'DatePicker' | 'DropZone' | 'Divider' | 'EmailField' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Menu' | 'MoneyField' | 'NumberField' | 'Option' | 'OptionGroup' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'Popover' | 'Progress' | 'QueryContainer' | 'SearchField' | 'Section' | 'Select' | 'Spinner' | 'Stack' | 'Switch' | 'Table' | 'TableBody' | 'TableCell' | 'TableHeader' | 'TableHeaderRow' | 'TableRow' | 'Text' | 'TextArea' | 'TextField' | 'Thumbnail' | 'Tooltip' | 'UnorderedList' | 'URLField'",
+      "value": "'Avatar' | 'Badge' | 'Banner' | 'Box' | 'Button' | 'ButtonGroup' | 'Checkbox' | 'Chip' | 'Choice' | 'ChoiceList' | 'Clickable' | 'ClickableChip' | 'ColorField' | 'ColorPicker' | 'DateField' | 'DatePicker' | 'DropZone' | 'Divider' | 'EmailField' | 'EmptyState' | 'Grid' | 'GridItem' | 'Heading' | 'Icon' | 'Image' | 'Link' | 'ListItem' | 'Menu' | 'MoneyField' | 'Number' | 'NumberField' | 'Option' | 'OptionGroup' | 'OrderedList' | 'Paragraph' | 'PasswordField' | 'Popover' | 'Progress' | 'QueryContainer' | 'SearchField' | 'Section' | 'Select' | 'Spinner' | 'Stack' | 'Switch' | 'Table' | 'TableBody' | 'TableCell' | 'TableHeader' | 'TableHeaderRow' | 'TableRow' | 'Text' | 'TextArea' | 'TextField' | 'Thumbnail' | 'Tooltip' | 'UnorderedList' | 'URLField'",
       "description": "The standard set of UI components available in most admin extensions. These components provide the building blocks for creating extension interfaces including layout elements, form inputs, data display, navigation, and interactive controls. Use these components to build consistent, accessible UIs that match the Shopify admin design system."
     }
   },
@@ -1609,7 +1666,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -1618,7 +1675,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -1803,7 +1860,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -1812,7 +1869,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -1940,7 +1997,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -1949,7 +2006,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -2256,7 +2313,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -2265,7 +2322,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -2613,7 +2670,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -2622,7 +2679,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -2775,7 +2832,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -2784,7 +2841,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -2931,7 +2988,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -3012,7 +3069,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -3021,7 +3078,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -3149,7 +3206,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -3158,7 +3215,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -3293,7 +3350,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -3302,7 +3359,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -3434,7 +3491,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$3@2530",
+          "name": "__@internals$3@2538",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -3497,7 +3554,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -3506,7 +3563,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -3863,7 +3920,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -3872,7 +3929,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -4041,7 +4098,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -4050,7 +4107,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -4267,7 +4324,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4339,7 +4396,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -4348,7 +4405,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -4676,7 +4733,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4748,7 +4805,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -4757,7 +4814,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -4892,7 +4949,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$1@2713",
+          "name": "__@internals$1@2721",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -4901,7 +4958,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dirtyStateSymbol@2714",
+          "name": "__@dirtyStateSymbol@2722",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -4982,7 +5039,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -4991,7 +5048,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -5115,7 +5172,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@setFiles@2754",
+          "name": "__@setFiles@2762",
           "value": "(files: File[]) => void",
           "description": "",
           "isPrivate": true,
@@ -5124,7 +5181,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@getFileInput@2756",
+          "name": "__@getFileInput@2764",
           "value": "() => HTMLInputElement",
           "description": "",
           "isPrivate": true,
@@ -5133,7 +5190,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals@2755",
+          "name": "__@internals@2763",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -5214,7 +5271,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -5223,7 +5280,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -5333,7 +5390,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -5342,7 +5399,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -5534,7 +5591,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -5606,7 +5663,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -5615,7 +5672,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -5633,6 +5690,115 @@
       "value": "'email' | 'home email' | 'mobile email' | 'fax email' | 'pager email'",
       "description": "Represents autocomplete values that are valid for email input fields. This is a subset of `AnyAutocompleteField` containing only fields suitable for email inputs.\n\nAvailable values:\n- `email` - Primary email address\n- `home email` - Home email address\n- `mobile email` - Mobile device email address\n- `fax email` - Fax machine email address\n- `pager email` - Pager device email address",
       "isPublicDocs": true
+    }
+  },
+  "EmptyState": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "name": "EmptyState",
+      "description": "Configure the following properties on the empty state component.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "heading",
+          "value": "string",
+          "description": "The heading of the EmptyState.",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "connectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "adoptedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "GetAccessor",
+          "name": "updateComplete",
+          "value": "Promise<void>",
+          "description": "A promise that resolves after the next render completes. Useful for non-React consumers who need to wait for the shadow DOM to be populated after setting properties.",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "setAttribute",
+          "value": "(name: string, value: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "attributeChangedCallback",
+          "value": "(name: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "disconnectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "queueRender",
+          "value": "() => void",
+          "description": "Queue a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "click",
+          "value": "({ sourceEvent }?: ClickOptions) => void",
+          "description": "Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "__@shadowRootSymbol@1824",
+          "value": "ShadowRoot",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "__@flushRenderSymbol@1825",
+          "value": "() => void",
+          "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
+          "isPrivate": true,
+          "isOptional": true
+        }
+      ],
+      "value": "declare class EmptyState\n  extends PolarisCustomElement\n  implements EmptyStateProps\n{\n  constructor();\n  heading: EmptyStateProps['heading'];\n}"
     }
   },
   "Grid": {
@@ -6031,7 +6197,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -6040,7 +6206,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -6455,7 +6621,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -6464,7 +6630,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -6592,7 +6758,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -6601,7 +6767,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -6736,7 +6902,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -6745,7 +6911,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -6960,7 +7126,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -6969,7 +7135,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -7111,7 +7277,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -7120,7 +7286,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -7237,7 +7403,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -7246,7 +7412,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -7292,7 +7458,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2925",
+          "name": "__@overlayHidden@2933",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -7301,7 +7467,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2926",
+          "name": "__@overlayActivator@2934",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -7310,7 +7476,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2927",
+          "name": "__@overlayHideFrameId@2935",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -7373,7 +7539,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -7382,7 +7548,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -7583,7 +7749,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7655,7 +7821,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -7664,7 +7830,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -7672,6 +7838,161 @@
         }
       ],
       "value": "declare class MoneyField extends MoneyFieldBase implements MoneyFieldProps {\n  constructor();\n}"
+    }
+  },
+  "Number": {
+    "src/surfaces/admin/components.ts": {
+      "filePath": "src/surfaces/admin/components.ts",
+      "name": "Number",
+      "description": "Configure the following properties on the number component.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "tone",
+          "value": "\"info\" | \"success\" | \"warning\" | \"critical\" | \"auto\" | \"neutral\" | \"caution\"",
+          "description": "The semantic tone that's applied to the number, which changes its color to convey meaning.\n\n- `info`: Informational content or helpful tips (blue).\n- `success`: Positive outcomes or successful states (green).\n- `warning`: Important warnings about potential issues (orange).\n- `critical`: Urgent problems or destructive actions (red).\n- `auto`: Automatically determined based on context.\n- `neutral`: General information without specific intent (gray).\n- `caution`: Advisory notices that need attention (yellow).",
+          "defaultValue": "'auto'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "color",
+          "value": "\"base\" | \"subdued\"",
+          "description": "The color emphasis applied to the number.\n\n- `base`: Standard emphasis for numeric content.\n- `subdued`: Deemphasized color for secondary or supporting numeric content.",
+          "defaultValue": "'base'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "fontSize",
+          "value": "\"small\" | \"small-200\" | \"small-100\" | \"base\" | \"large\" | \"large-100\" | \"auto\"",
+          "description": "Font size of the number. The named values also apply their matching line-height and letter-spacing.",
+          "defaultValue": "'auto'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "fontWeight",
+          "value": "\"bold\" | \"base\" | \"auto\" | \"medium\" | \"semibold\"",
+          "description": "Font weight of the number.",
+          "defaultValue": "'auto'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "dir",
+          "value": "\"\" | \"auto\" | \"ltr\" | \"rtl\"",
+          "description": "Indicates the directionality of the element’s text.\n\n- `\"\"`: The direction is inherited from parent elements (equivalent to not setting the attribute).\n- `auto`: The user agent determines the direction based on the content.\n- `ltr`: The languages written from left to right (such as English).\n- `rtl`: The languages written from right to left (such as Arabic).\n\nLearn more about the [dir attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir).",
+          "defaultValue": "''",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "accessibilityVisibility",
+          "value": "\"visible\" | \"hidden\" | \"exclusive\"",
+          "description": "The visibility mode of the element for both visual and assistive technology users.\n\n- `visible`: The element is visible to all users (both sighted users and screen readers).\n- `hidden`: The element is visually visible but hidden from screen readers. Use this for decorative elements that don't provide meaningful information.\n- `exclusive`: The element is visually hidden but announced by screen readers. Use this for screen-reader-only content like skip links or additional context.",
+          "defaultValue": "'visible'",
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "connectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "adoptedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "GetAccessor",
+          "name": "updateComplete",
+          "value": "Promise<void>",
+          "description": "A promise that resolves after the next render completes. Useful for non-React consumers who need to wait for the shadow DOM to be populated after setting properties.",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "setAttribute",
+          "value": "(name: string, value: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "attributeChangedCallback",
+          "value": "(name: string) => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "disconnectedCallback",
+          "value": "() => void",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "queueRender",
+          "value": "() => void",
+          "description": "Queue a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "click",
+          "value": "({ sourceEvent }?: ClickOptions) => void",
+          "description": "Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "PropertyDeclaration",
+          "name": "__@shadowRootSymbol@1824",
+          "value": "ShadowRoot",
+          "description": "",
+          "isPrivate": true,
+          "isOptional": true
+        },
+        {
+          "filePath": "src/surfaces/admin/components.ts",
+          "syntaxKind": "MethodDeclaration",
+          "name": "__@flushRenderSymbol@1825",
+          "value": "() => void",
+          "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
+          "isPrivate": true,
+          "isOptional": true
+        }
+      ],
+      "value": "declare class Number extends PolarisCustomElement implements NumberProps {\n  tone: NumberProps['tone'];\n  color: NumberProps['color'];\n  fontSize: NumberProps['fontSize'];\n  fontWeight: NumberProps['fontWeight'];\n  dir: NumberProps['dir'];\n  accessibilityVisibility: NumberProps['accessibilityVisibility'];\n  constructor();\n}"
     }
   },
   "NumberField": {
@@ -7892,7 +8213,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -7964,7 +8285,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -7973,7 +8294,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -8110,7 +8431,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -8119,7 +8440,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -8228,7 +8549,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -8237,7 +8558,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -8329,7 +8650,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -8338,7 +8659,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -8503,7 +8824,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -8512,7 +8833,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -8704,7 +9025,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -8776,7 +9097,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -8785,7 +9106,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -8878,7 +9199,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2925",
+          "name": "__@overlayHidden@2933",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -8887,7 +9208,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2926",
+          "name": "__@overlayActivator@2934",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -8896,7 +9217,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2927",
+          "name": "__@overlayHideFrameId@2935",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -8968,7 +9289,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -8977,7 +9298,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -9104,7 +9425,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -9113,7 +9434,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -9214,7 +9535,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -9223,7 +9544,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -9415,7 +9736,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -9487,7 +9808,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -9496,7 +9817,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -9640,7 +9961,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -9649,7 +9970,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -9762,7 +10083,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@usedFirstOptionSymbol@3330",
+          "name": "__@usedFirstOptionSymbol@3338",
           "value": "boolean",
           "description": "used to determine if no value or defaultValue was set, in which case the first non-disabled option was used\n\nthis is important because we need to use the placeholder in these situations, even though the first value will be submitted as part of the form",
           "isPrivate": true,
@@ -9771,7 +10092,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@hasInitialValueSymbol@3331",
+          "name": "__@hasInitialValueSymbol@3339",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -9805,7 +10126,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -9868,7 +10189,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -9877,7 +10198,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -9986,7 +10307,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -9995,7 +10316,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -10365,7 +10686,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -10374,7 +10695,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -10504,7 +10825,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10585,7 +10906,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -10594,7 +10915,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -10659,7 +10980,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@elementInternals@3413",
+          "name": "__@elementInternals@3421",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10668,7 +10989,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@actualTableVariantSymbol@3411",
+          "name": "__@actualTableVariantSymbol@3419",
           "value": "_shopify_admin_web_component_foundations.AddedContext<ActualTableVariant>",
           "description": "",
           "isPrivate": true,
@@ -10677,7 +10998,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@tableHeadersSharedDataSymbol@3412",
+          "name": "__@tableHeadersSharedDataSymbol@3420",
           "value": "_shopify_admin_web_component_foundations.AddedContext<{ listSlot: ListSlotType; textContent: string; format: HeaderFormat; }[]>",
           "description": "",
           "isPrivate": true,
@@ -10758,7 +11079,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -10767,7 +11088,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -10817,7 +11138,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@elementInternals@3413",
+          "name": "__@elementInternals@3421",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10898,7 +11219,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -10907,7 +11228,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -10927,7 +11248,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@elementInternals@3413",
+          "name": "__@elementInternals@3421",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -10936,7 +11257,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@headerFormatSymbol@3441",
+          "name": "__@headerFormatSymbol@3449",
           "value": "HeaderFormat",
           "description": "",
           "isPrivate": true,
@@ -11017,7 +11338,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -11026,7 +11347,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -11064,7 +11385,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@elementInternals@3413",
+          "name": "__@elementInternals@3421",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -11145,7 +11466,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -11154,7 +11475,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -11192,7 +11513,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@elementInternals@3413",
+          "name": "__@elementInternals@3421",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -11255,7 +11576,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -11264,7 +11585,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -11292,7 +11613,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@elementInternals@3413",
+          "name": "__@elementInternals@3421",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -11373,7 +11694,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -11382,7 +11703,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -11555,7 +11876,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -11564,7 +11885,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -11765,7 +12086,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -11837,7 +12158,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -11846,7 +12167,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12065,7 +12386,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -12137,7 +12458,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -12146,7 +12467,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12264,7 +12585,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -12273,7 +12594,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12302,7 +12623,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2925",
+          "name": "__@overlayHidden@2933",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -12311,7 +12632,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2926",
+          "name": "__@overlayActivator@2934",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -12320,7 +12641,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2927",
+          "name": "__@overlayHideFrameId@2935",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -12392,7 +12713,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -12401,7 +12722,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12493,7 +12814,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -12502,7 +12823,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12694,7 +13015,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@internals$4@2463",
+          "name": "__@internals$4@2471",
           "value": "ElementInternals",
           "description": "",
           "isPrivate": true,
@@ -12766,7 +13087,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -12775,7 +13096,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12884,7 +13205,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -12893,7 +13214,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -12933,6 +13254,13 @@
       "name": "ShouldRenderApi",
       "description": "The `ShouldRenderApi` object provides methods for controlling action extension visibility. Access the following properties on the `ShouldRenderApi` object to determine whether an associated action should appear based on the current context.",
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/should-render/should-render.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/should-render/should-render.ts",
           "syntaxKind": "PropertySignature",
@@ -13010,6 +13338,13 @@
       "description": "The `BlockExtensionApi` object provides methods for block extensions that render inline content on admin pages. Access the following properties on the `BlockExtensionApi` object to interact with the current context, navigate to other extensions, and display picker dialogs.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/block/block.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/block/block.ts",
           "syntaxKind": "PropertySignature",
@@ -13221,7 +13556,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -13230,7 +13565,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -13322,7 +13657,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -13331,7 +13666,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -13354,6 +13689,13 @@
           "name": "app",
           "value": "AppApi",
           "description": "Provides access to app-level data and functionality. Use this API to query information about extensions registered for the current app, including their activation status and target information."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/app-home/app-home.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
         },
         {
           "filePath": "src/surfaces/admin/api/app-home/app-home.ts",
@@ -13948,7 +14290,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@abortController@2961",
+          "name": "__@abortController@2969",
           "value": "AbortController",
           "description": "",
           "isPrivate": true,
@@ -13957,7 +14299,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@dialog@2949",
+          "name": "__@dialog@2957",
           "value": "HTMLDialogElement",
           "description": "",
           "isPrivate": true,
@@ -13966,7 +14308,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@focusedElement@2951",
+          "name": "__@focusedElement@2959",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -13975,7 +14317,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@rootActivator@2952",
+          "name": "__@rootActivator@2960",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -13984,7 +14326,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@nestedModals@2954",
+          "name": "__@nestedModals@2962",
           "value": "Map<HTMLElement, boolean>",
           "description": "",
           "isPrivate": true,
@@ -13993,7 +14335,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@childrenRerenderObserver@2963",
+          "name": "__@childrenRerenderObserver@2971",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true,
@@ -14002,7 +14344,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowDomRerenderObserver@2964",
+          "name": "__@shadowDomRerenderObserver@2972",
           "value": "MutationObserver",
           "description": "",
           "isPrivate": true,
@@ -14011,7 +14353,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@focusTrapController@2965",
+          "name": "__@focusTrapController@2973",
           "value": "AbortController",
           "description": "Focus trap keydown handler reference, stored for cleanup.\n\nThe focus trap is managed imperatively here in ModalBase rather than via a Preact useEffect in foundation.tsx. This is because aftershow (fired after CSS animations complete) and useEffect (fired after Preact's async effect scheduling) are independent async chains with no synchronization — the useEffect could run before or after aftershow, making tests non-deterministic.\n\nBy attaching the focus trap in the same .then() chain as aftershow, we guarantee it is active before aftershow dispatches.\n\nLifecycle (mirrors the old useEffect's isActiveModal dependency):\n- Attached: in aftershow chain, right before aftershow dispatches\n- Detached: on dismiss(), disconnectedCallback(), or child modal open\n- Re-attached: when all child modals close",
           "isPrivate": true,
@@ -14020,7 +14362,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@escapeKeyUpController@2966",
+          "name": "__@escapeKeyUpController@2974",
           "value": "AbortController",
           "description": "Holds the in-flight document keyup suppressor below so a second Escape close replaces it instead of stacking another one.",
           "isPrivate": true,
@@ -14029,7 +14371,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onEscape@2953",
+          "name": "__@onEscape@2961",
           "value": "(event: KeyboardEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -14038,7 +14380,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onKeyUp@2955",
+          "name": "__@onKeyUp@2963",
           "value": "(event: KeyboardEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -14047,7 +14389,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@backdropMouseDownOnDialog@2959",
+          "name": "__@backdropMouseDownOnDialog@2967",
           "value": "boolean",
           "description": "Whether the most recent mousedown / mouseup on the dialog landed on the backdrop area (the `<dialog>` element itself, outside its content box) rather than inside the modal content.\n\nUsed by [onBackdropClick] to distinguish a true backdrop click from a `click` event whose target is the dialog only because the user dragged across the content/backdrop boundary. Reset on every backdrop interaction (or when no click follows).",
           "isPrivate": true,
@@ -14056,7 +14398,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@backdropMouseUpOnDialog@2960",
+          "name": "__@backdropMouseUpOnDialog@2968",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -14065,7 +14407,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropMouseDown@2956",
+          "name": "__@onBackdropMouseDown@2964",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -14074,7 +14416,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropMouseUp@2957",
+          "name": "__@onBackdropMouseUp@2965",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -14083,7 +14425,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onBackdropClick@2958",
+          "name": "__@onBackdropClick@2966",
           "value": "(event: MouseEvent) => void",
           "description": "",
           "isPrivate": true,
@@ -14092,7 +14434,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@onChildModalChange@2962",
+          "name": "__@onChildModalChange@2970",
           "value": "EventListenerOrEventListenerObject",
           "description": "",
           "isPrivate": true,
@@ -14101,7 +14443,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@ensureDialogRef@2967",
+          "name": "__@ensureDialogRef@2975",
           "value": "() => void",
           "description": "Ensures `this[dialog]` is set by synchronously querying the shadow DOM and attaching event listeners if needed. Works around a Safari timing issue where the MutationObserver callback (which normally sets `this[dialog]`) may not have fired yet when `show()` / `dismiss()` run — especially when `heading` or `accessibilityLabel` adds child custom-elements whose own lifecycle microtasks can delay the observer.",
           "isPrivate": true,
@@ -14110,7 +14452,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@isOpen@2948",
+          "name": "__@isOpen@2956",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -14119,7 +14461,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@dismiss@2950",
+          "name": "__@dismiss@2958",
           "value": "() => void",
           "description": "",
           "isPrivate": true,
@@ -14128,7 +14470,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "GetAccessor",
-          "name": "__@hasOpenChildModal@2945",
+          "name": "__@hasOpenChildModal@2953",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -14137,7 +14479,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@show@2946",
+          "name": "__@show@2954",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true,
@@ -14146,7 +14488,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@hide@2947",
+          "name": "__@hide@2955",
           "value": "() => Promise<void>",
           "description": "",
           "isPrivate": true,
@@ -14155,7 +14497,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHidden@2925",
+          "name": "__@overlayHidden@2933",
           "value": "boolean",
           "description": "",
           "isPrivate": true,
@@ -14164,7 +14506,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayActivator@2926",
+          "name": "__@overlayActivator@2934",
           "value": "HTMLElement",
           "description": "",
           "isPrivate": true,
@@ -14173,7 +14515,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@overlayHideFrameId@2927",
+          "name": "__@overlayHideFrameId@2935",
           "value": "number",
           "description": "",
           "isPrivate": true,
@@ -14236,7 +14578,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -14245,7 +14587,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -14354,7 +14696,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -14363,7 +14705,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -14446,7 +14788,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true
@@ -14454,7 +14796,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true
@@ -14470,6 +14812,13 @@
       "description": "The `IntentRenderApi` object provides methods for extensions that render in response to an app intent. Access the intent data to determine what action the merchant requested and use `intents.response` to resolve the intent when complete.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/intents/intent-render.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/intents/intent-render.ts",
           "syntaxKind": "PropertySignature",
@@ -14558,6 +14907,13 @@
         {
           "filePath": "src/surfaces/admin/api/standard/standard.ts",
           "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard.ts",
+          "syntaxKind": "PropertySignature",
           "name": "auth",
           "value": "Auth",
           "description": "Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations."
@@ -14598,7 +14954,7 @@
           "description": "Provides methods for persisting data in browser storage that is scoped to your extension. Use this to store user preferences, cache data, maintain state across sessions, or save temporary working data. Storage is persistent across page reloads and isolated per extension."
         }
       ],
-      "value": "export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {\n  /**\n   * The identifier of the running extension target. Use this to determine which target your extension is rendering in and conditionally adjust functionality or UI based on the extension context.\n   */\n  extension: {\n    target: ExtensionTarget;\n  };\n\n  /**\n   * Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations.\n   */\n  auth: Auth;\n\n  /**\n   * Utilities for translating content according to the current localization of the admin. Use these methods to provide translated strings that match the merchant's language preferences, ensuring your extension is accessible to a global audience.\n   */\n  i18n: I18n;\n\n  /**\n   * Provides information to the receiver of an intent. Use this to access data passed from other extensions or parts of the admin when your extension is launched through intent-based navigation.\n   */\n  intents: Intents;\n\n  /**\n   * Provides methods for persisting data in browser storage that is scoped to your extension. Use this to store user preferences, cache data, maintain state across sessions, or save temporary working data. Storage is persistent across page reloads and isolated per extension.\n   */\n  storage: Storage;\n\n  /**\n   * Executes GraphQL queries against the [GraphQL Admin API](/docs/api/admin-graphql). Use this to fetch shop data, manage resources, or perform mutations. Queries are automatically authenticated with the current user's permissions. Optionally specify GraphQL variables and API version for your query.\n   */\n  query: <Data = unknown, Variables = {[key: string]: unknown}>(\n    query: string,\n    options?: {variables?: Variables; version?: Omit<ApiVersion, '2023-04'>},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n}"
+      "value": "export interface StandardApi<ExtensionTarget extends AnyExtensionTarget> {\n  /**\n   * The identifier of the running extension target. Use this to determine which target your extension is rendering in and conditionally adjust functionality or UI based on the extension context.\n   */\n  extension: {\n    target: ExtensionTarget;\n  };\n\n  /**\n   * Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations.\n   */\n  auth: Auth;\n\n  /**\n   * Utilities for translating content according to the current localization of the admin. Use these methods to provide translated strings that match the merchant's language preferences, ensuring your extension is accessible to a global audience.\n   */\n  i18n: I18n;\n\n  /**\n   * Provides information to the receiver of an intent. Use this to access data passed from other extensions or parts of the admin when your extension is launched through intent-based navigation.\n   */\n  intents: Intents;\n\n  /**\n   * Provides methods for persisting data in browser storage that is scoped to your extension. Use this to store user preferences, cache data, maintain state across sessions, or save temporary working data. Storage is persistent across page reloads and isolated per extension.\n   */\n  storage: Storage;\n\n  /**\n   * Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n   *\n   * Don't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n   *\n   * `emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`.\n   */\n  appEvents: AppEvents;\n\n  /**\n   * Executes GraphQL queries against the [GraphQL Admin API](/docs/api/admin-graphql). Use this to fetch shop data, manage resources, or perform mutations. Queries are automatically authenticated with the current user's permissions. Optionally specify GraphQL variables and API version for your query.\n   */\n  query: <Data = unknown, Variables = {[key: string]: unknown}>(\n    query: string,\n    options?: {variables?: Variables; version?: Omit<ApiVersion, '2023-04'>},\n  ) => Promise<{data?: Data; errors?: GraphQLError[]}>;\n}"
     }
   },
   "CustomerSegmentTemplateApi": {
@@ -14615,6 +14971,13 @@
           "value": "string[]",
           "description": "",
           "isPrivate": true
+        },
+        {
+          "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
         },
         {
           "filePath": "src/surfaces/admin/api/customer-segment-template/customer-segment-template.ts",
@@ -14723,6 +15086,13 @@
       "description": "The `DiscountFunctionSettingsApi` object provides methods for configuring discount functions. Access the following properties on the `DiscountFunctionSettingsApi` object to manage function settings and metafields.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/discount-function-settings/discount-function-settings.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/discount-function-settings/discount-function-settings.ts",
           "syntaxKind": "PropertySignature",
@@ -15331,7 +15701,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -15340,7 +15710,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -15357,6 +15727,13 @@
       "description": "The `PrintActionExtensionApi` object provides methods for print action extensions that generate custom printable documents. Access the following properties on the `PrintActionExtensionApi` object to access selected resources and display picker dialogs for print configuration.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/print-action/print-action.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/print-action/print-action.ts",
           "syntaxKind": "PropertySignature",
@@ -15523,7 +15900,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
+          "name": "__@shadowRootSymbol@1824",
           "value": "ShadowRoot",
           "description": "",
           "isPrivate": true,
@@ -15532,7 +15909,7 @@
         {
           "filePath": "src/surfaces/admin/components.ts",
           "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
+          "name": "__@flushRenderSymbol@1825",
           "value": "() => void",
           "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
           "isPrivate": true,
@@ -15549,6 +15926,13 @@
       "description": "The `ProductDetailsConfigurationApi` object provides methods for configuring product bundles and relationships. Access the following properties on the `ProductDetailsConfigurationApi` object to build product configuration interfaces.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-details-configuration.ts",
           "syntaxKind": "PropertySignature",
@@ -15791,6 +16175,13 @@
         {
           "filePath": "src/surfaces/admin/api/purchase-options-card-action.ts",
           "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/purchase-options-card-action.ts",
+          "syntaxKind": "PropertySignature",
           "name": "auth",
           "value": "Auth",
           "description": "Provides methods for authenticating calls to your app backend. Use the `idToken()` method to retrieve a signed JWT token that verifies the current user's identity for secure server-side operations."
@@ -15869,6 +16260,13 @@
       "description": "The `ProductVariantDetailsConfigurationApi` object provides methods for configuring product variant bundles and relationships. Access the following properties on the `ProductVariantDetailsConfigurationApi` object to build variant configuration interfaces.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/product-configuration/product-variant-details-configuration.ts",
           "syntaxKind": "PropertySignature",
@@ -16110,6 +16508,13 @@
         {
           "filePath": "src/surfaces/admin/api/order-routing-rule/order-routing-rule.ts",
           "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
+        {
+          "filePath": "src/surfaces/admin/api/order-routing-rule/order-routing-rule.ts",
+          "syntaxKind": "PropertySignature",
           "name": "applyMetafieldsChange",
           "value": "ApplyMetafieldsChange",
           "description": "Updates or removes [metafields](/docs/apps/build/metafields) that store order routing rule configuration."
@@ -16221,6 +16626,13 @@
       "description": "The `ValidationSettingsApi` object provides methods for configuring cart and checkout validation functions. Access the following properties on the `ValidationSettingsApi` object to manage validation settings and metafields.",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/checkout-rules/validation-settings.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/checkout-rules/validation-settings.ts",
           "syntaxKind": "PropertySignature",
@@ -17010,6 +17422,13 @@
       "description": "",
       "isPublicDocs": true,
       "members": [
+        {
+          "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports events about how merchants use your extension to Shopify. Call `emit()` with an event handle and optional attributes. Events that Shopify accepts are visible in the [Dev Dashboard](/docs/apps/build/dev-dashboard/monitoring-and-logs) logs, with the events that your app backend sends.\n\nDon't include any data in `attributes` that, alone or in combination with other data, could identify an individual. This includes names, email addresses, phone numbers, staff member IDs, and customer IDs.\n\n`emit()` never rejects. On `should-render` targets, on `data` targets, and while the feature is not enabled for the shop, `emit()` sends nothing and resolves `{success: false, error: 'Emit is unavailable.'}`."
+        },
         {
           "filePath": "src/surfaces/admin/api/standard/standard-rendering.ts",
           "syntaxKind": "PropertySignature",
@@ -21672,115 +22091,6 @@
       "isPublicDocs": true
     }
   },
-  "EmptyState": {
-    "src/surfaces/admin/components.ts": {
-      "filePath": "src/surfaces/admin/components.ts",
-      "name": "EmptyState",
-      "description": "Configure the following properties on the empty state component.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "heading",
-          "value": "string",
-          "description": "The heading of the EmptyState.",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "connectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "adoptedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "GetAccessor",
-          "name": "updateComplete",
-          "value": "Promise<void>",
-          "description": "A promise that resolves after the next render completes. Useful for non-React consumers who need to wait for the shadow DOM to be populated after setting properties.",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "setAttribute",
-          "value": "(name: string, value: string) => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "attributeChangedCallback",
-          "value": "(name: string) => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "disconnectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "queueRender",
-          "value": "() => void",
-          "description": "Queue a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "click",
-          "value": "({ sourceEvent }?: ClickOptions) => void",
-          "description": "Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
-          "value": "ShadowRoot",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
-          "value": "() => void",
-          "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
-          "isPrivate": true,
-          "isOptional": true
-        }
-      ],
-      "value": "declare class EmptyState\n  extends PolarisCustomElement\n  implements EmptyStateProps\n{\n  constructor();\n  heading: EmptyStateProps['heading'];\n}"
-    }
-  },
   "RequiredAlignedProps": {
     "src/surfaces/admin/components.ts": {
       "filePath": "src/surfaces/admin/components.ts",
@@ -23058,161 +23368,6 @@
           "isOptional": true
         }
       ]
-    }
-  },
-  "Number": {
-    "src/surfaces/admin/components.ts": {
-      "filePath": "src/surfaces/admin/components.ts",
-      "name": "Number",
-      "description": "Configure the following properties on the number component.",
-      "isPublicDocs": true,
-      "members": [
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "tone",
-          "value": "\"info\" | \"success\" | \"warning\" | \"critical\" | \"auto\" | \"neutral\" | \"caution\"",
-          "description": "The semantic tone that's applied to the number, which changes its color to convey meaning.\n\n- `info`: Informational content or helpful tips (blue).\n- `success`: Positive outcomes or successful states (green).\n- `warning`: Important warnings about potential issues (orange).\n- `critical`: Urgent problems or destructive actions (red).\n- `auto`: Automatically determined based on context.\n- `neutral`: General information without specific intent (gray).\n- `caution`: Advisory notices that need attention (yellow).",
-          "defaultValue": "'auto'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "color",
-          "value": "\"base\" | \"subdued\"",
-          "description": "The color emphasis applied to the number.\n\n- `base`: Standard emphasis for numeric content.\n- `subdued`: Deemphasized color for secondary or supporting numeric content.",
-          "defaultValue": "'base'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "fontSize",
-          "value": "\"small\" | \"small-200\" | \"small-100\" | \"base\" | \"large\" | \"large-100\" | \"auto\"",
-          "description": "Font size of the number. The named values also apply their matching line-height and letter-spacing.",
-          "defaultValue": "'auto'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "fontWeight",
-          "value": "\"bold\" | \"base\" | \"auto\" | \"medium\" | \"semibold\"",
-          "description": "Font weight of the number.",
-          "defaultValue": "'auto'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "dir",
-          "value": "\"\" | \"auto\" | \"ltr\" | \"rtl\"",
-          "description": "Indicates the directionality of the element’s text.\n\n- `\"\"`: The direction is inherited from parent elements (equivalent to not setting the attribute).\n- `auto`: The user agent determines the direction based on the content.\n- `ltr`: The languages written from left to right (such as English).\n- `rtl`: The languages written from right to left (such as Arabic).\n\nLearn more about the [dir attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir).",
-          "defaultValue": "''",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "accessibilityVisibility",
-          "value": "\"visible\" | \"hidden\" | \"exclusive\"",
-          "description": "The visibility mode of the element for both visual and assistive technology users.\n\n- `visible`: The element is visible to all users (both sighted users and screen readers).\n- `hidden`: The element is visually visible but hidden from screen readers. Use this for decorative elements that don't provide meaningful information.\n- `exclusive`: The element is visually hidden but announced by screen readers. Use this for screen-reader-only content like skip links or additional context.",
-          "defaultValue": "'visible'",
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "connectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "adoptedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "GetAccessor",
-          "name": "updateComplete",
-          "value": "Promise<void>",
-          "description": "A promise that resolves after the next render completes. Useful for non-React consumers who need to wait for the shadow DOM to be populated after setting properties.",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "setAttribute",
-          "value": "(name: string, value: string) => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "attributeChangedCallback",
-          "value": "(name: string) => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "disconnectedCallback",
-          "value": "() => void",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "queueRender",
-          "value": "() => void",
-          "description": "Queue a run of the render function. You shouldn't need to call this manually - it should be handled by changes to",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "click",
-          "value": "({ sourceEvent }?: ClickOptions) => void",
-          "description": "Like the standard `element.click()`, but you can influence the behavior with a `sourceEvent`.\n\nFor example, if the `sourceEvent` was a middle click, or has particular keys held down, components will attempt to produce the desired behavior on links, such as opening the page in the background tab.",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "PropertyDeclaration",
-          "name": "__@shadowRootSymbol@1816",
-          "value": "ShadowRoot",
-          "description": "",
-          "isPrivate": true,
-          "isOptional": true
-        },
-        {
-          "filePath": "src/surfaces/admin/components.ts",
-          "syntaxKind": "MethodDeclaration",
-          "name": "__@flushRenderSymbol@1817",
-          "value": "() => void",
-          "description": "Flush any pending render synchronously.\n\nCalled by reactWrap's useLayoutEffect after all props are set, ensuring the shadow DOM is populated before the consumer's useLayoutEffect fires. The version counter invalidates any pending microtask so the total render count stays at 1.\n\nUses a Symbol key so this method is not callable by external consumers — only internal code that imports flushRenderSymbol can invoke it.\n\nGuarded by #hasPendingRender to avoid spurious Preact re-renders. React creates a new props object reference on every parent render, so reactWrap's useLayoutEffect (which depends on [props]) fires even when no prop *values* changed. Without the guard, every unrelated parent re-render would trigger a full Preact reconciliation — proportional to parent re-render frequency.",
-          "isPrivate": true,
-          "isOptional": true
-        }
-      ],
-      "value": "declare class Number extends PolarisCustomElement implements NumberProps {\n  tone: NumberProps['tone'];\n  color: NumberProps['color'];\n  fontSize: NumberProps['fontSize'];\n  fontWeight: NumberProps['fontWeight'];\n  dir: NumberProps['dir'];\n  accessibilityVisibility: NumberProps['accessibilityVisibility'];\n  constructor();\n}"
     }
   },
   "PasswordFieldProps": {
