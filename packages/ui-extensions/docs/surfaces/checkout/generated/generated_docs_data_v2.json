@@ -783,7 +783,7 @@
     "src/surfaces/checkout/api/standard/standard.ts": {
       "filePath": "src/surfaces/checkout/api/standard/standard.ts",
       "name": "AppMetafieldEntryTarget",
-      "description": "The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and globally-unique ID, so you can trace where the data comes from.",
+      "description": "The Shopify resource that a metafield is attached to. Each entry identifies a specific resource by its type and ID, so you can trace where the data comes from.",
       "isPublicDocs": true,
       "members": [
         {
@@ -791,14 +791,14 @@
           "syntaxKind": "PropertySignature",
           "name": "id",
           "value": "string",
-          "description": "The globally-unique identifier of the Shopify resource, in [GID](/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the [Storefront API](/docs/api/storefront).",
+          "description": "The identifier of the resource that this metafield belongs to. Use it with `type` to match the metafield to a specific resource in your extension. The value isn't a [GID](/docs/api/usage/gids):\n\n- For `'product'`, `'variant'`, `'shop'`, `'customer'`, `'company'`, and `'companyLocation'`, it's the numeric ID of the resource, such as `'123'`.\n- For `'cart'`, it's an opaque identifier. It isn't a Storefront API cart ID, so don't use it in Storefront API queries.\n- For other types, treat it as an opaque identifier.",
           "examples": [
             {
               "title": "Example",
               "description": "",
               "tabs": [
                 {
-                  "code": "'gid://shopify/Product/123'",
+                  "code": "'123'",
                   "title": "Example"
                 }
               ]
@@ -810,10 +810,10 @@
           "syntaxKind": "PropertySignature",
           "name": "type",
           "value": "| 'customer'\n    | 'product'\n    | 'shop'\n    | 'shopUser'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart'",
-          "description": "The kind of Shopify resource this metafield belongs to:\n\n- `'customer'`: The customer who placed the order.\n- `'product'`: A product in the merchant's catalog.\n- `'shop'`: The merchant's shop.\n- `'shopUser'`: A staff member or collaborator account on the shop.\n- `'variant'`: A specific variant of a product.\n- `'company'`: A [B2B](/docs/apps/build/b2b) company associated with the order.\n- `'companyLocation'`: A location belonging to a [B2B](/docs/apps/build/b2b) company.\n- `'cart'`: The cart associated with the checkout.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
+          "description": "The kind of Shopify resource this metafield belongs to:\n\n- `'customer'`: The customer who placed the order.\n- `'product'`: A product in the merchant's catalog.\n- `'shop'`: The merchant's shop.\n- `'shopUser'`: The buyer's Shop user account (their Shop Pay identity).\n- `'variant'`: A specific variant of a product.\n- `'company'`: A [B2B](/docs/apps/build/b2b) company associated with the order.\n- `'companyLocation'`: A location belonging to a [B2B](/docs/apps/build/b2b) company.\n- `'cart'`: The cart associated with the checkout.\n\n{% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
         }
       ],
-      "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The kind of Shopify resource this metafield belongs to:\n   *\n   * - `'customer'`: The customer who placed the order.\n   * - `'product'`: A product in the merchant's catalog.\n   * - `'shop'`: The merchant's shop.\n   * - `'shopUser'`: A staff member or collaborator account on the shop.\n   * - `'variant'`: A specific variant of a product.\n   * - `'company'`: A [B2B](/docs/apps/build/b2b) company associated with the order.\n   * - `'companyLocation'`: A location belonging to a [B2B](/docs/apps/build/b2b) company.\n   * - `'cart'`: The cart associated with the checkout.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'shopUser'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /**\n   * The globally-unique identifier of the Shopify resource, in [GID](/docs/api/usage/gids) format. Use this value to match the metafield to a specific resource in your extension or when querying the [Storefront API](/docs/api/storefront).\n   *\n   * @example 'gid://shopify/Product/123'\n   */\n  id: string;\n}"
+      "value": "export interface AppMetafieldEntryTarget {\n  /**\n   * The kind of Shopify resource this metafield belongs to:\n   *\n   * - `'customer'`: The customer who placed the order.\n   * - `'product'`: A product in the merchant's catalog.\n   * - `'shop'`: The merchant's shop.\n   * - `'shopUser'`: The buyer's Shop user account (their Shop Pay identity).\n   * - `'variant'`: A specific variant of a product.\n   * - `'company'`: A [B2B](/docs/apps/build/b2b) company associated with the order.\n   * - `'companyLocation'`: A location belonging to a [B2B](/docs/apps/build/b2b) company.\n   * - `'cart'`: The cart associated with the checkout.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires level 1 access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  type:\n    | 'customer'\n    | 'product'\n    | 'shop'\n    | 'shopUser'\n    | 'variant'\n    | 'company'\n    | 'companyLocation'\n    | 'cart';\n\n  /**\n   * The identifier of the resource that this metafield belongs to. Use it with `type` to match the metafield to a specific resource in your extension. The value isn't a [GID](/docs/api/usage/gids):\n   *\n   * - For `'product'`, `'variant'`, `'shop'`, `'customer'`, `'company'`, and `'companyLocation'`, it's the numeric ID of the resource, such as `'123'`.\n   * - For `'cart'`, it's an opaque identifier. It isn't a Storefront API cart ID, so don't use it in Storefront API queries.\n   * - For other types, treat it as an opaque identifier.\n   *\n   * @example '123'\n   */\n  id: string;\n}"
     }
   },
   "AppMetafieldEntry": {
@@ -835,10 +835,10 @@
           "syntaxKind": "PropertySignature",
           "name": "target",
           "value": "AppMetafieldEntryTarget",
-          "description": "The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its globally-unique ID.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
+          "description": "The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its ID.\n\n{% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`."
         }
       ],
-      "value": "export interface AppMetafieldEntry {\n  /**\n   * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its globally-unique ID.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  target: AppMetafieldEntryTarget;\n\n  /**\n   * The metafield data, including the namespace, key, value, and content type. Use the `namespace` and `key` together to uniquely identify the metafield within its resource.\n   */\n  metafield: AppMetafield;\n}"
+      "value": "export interface AppMetafieldEntry {\n  /**\n   * The Shopify resource that this metafield is attached to, including the resource type (such as `'product'` or `'customer'`) and its ID.\n   *\n   * {% include /apps/checkout/privacy-icon.md %} Requires access to [protected customer data](/docs/apps/store/data-protection/protected-customer-data) when the type is `customer`, `company` or `companyLocation`.\n   */\n  target: AppMetafieldEntryTarget;\n\n  /**\n   * The metafield data, including the namespace, key, value, and content type. Use the `namespace` and `key` together to uniquely identify the metafield within its resource.\n   */\n  metafield: AppMetafield;\n}"
     }
   },
   "Version": {
