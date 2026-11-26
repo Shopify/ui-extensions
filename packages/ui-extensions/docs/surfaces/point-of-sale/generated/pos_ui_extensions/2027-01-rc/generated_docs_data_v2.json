@@ -8,6 +8,56 @@
       "description": ""
     }
   },
+  "AppEventAttributeValue": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventAttributeValue",
+      "value": "string | number | boolean",
+      "description": "A value attached to an app event.",
+      "isPublicDocs": true
+    }
+  },
+  "AppEventAttributes": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventAttributes",
+      "value": "Record<string, AppEventAttributeValue>",
+      "description": "Attributes related to an app event. Each value is a string, a number, or a boolean.",
+      "isPublicDocs": true,
+      "members": []
+    }
+  },
+  "AppEventEmitResult": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "syntaxKind": "TypeAliasDeclaration",
+      "name": "AppEventEmitResult",
+      "value": "{readonly success: true} | {readonly success: false; readonly error: string}",
+      "description": "The outcome of an `emit` call.\n\n`success: true` means the host accepted the event. It does not confirm delivery.\n\n`success: false` means the event was not sent. `error` describes why.",
+      "isPublicDocs": true
+    }
+  },
+  "AppEvents": {
+    "src/shared.ts": {
+      "filePath": "src/shared.ts",
+      "name": "AppEvents",
+      "description": "Reports events to Shopify for this app.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/shared.ts",
+          "syntaxKind": "MethodSignature",
+          "name": "emit",
+          "value": "(eventHandle: string, attributes?: AppEventAttributes) => Promise<AppEventEmitResult>",
+          "description": "Reports one occurrence of an app-defined event.",
+          "defaultValue": "{}"
+        }
+      ],
+      "value": "export interface AppEvents {\n  /**\n   * Reports one occurrence of an app-defined event.\n   *\n   * @param eventHandle The app-defined event name.\n   * @param attributes Attributes related to this event.\n   *   @default {}\n   * @returns A promise that resolves with the outcome once the host has\n   *   handled the call.\n   */\n  emit(\n    eventHandle: string,\n    attributes?: AppEventAttributes,\n  ): Promise<AppEventEmitResult>;\n}"
+    }
+  },
   "Money": {
     "src/surfaces/point-of-sale/types/money.ts": {
       "filePath": "src/surfaces/point-of-sale/types/money.ts",
@@ -5207,13 +5257,12 @@
     }
   },
   "InterceptedPaymentMethodType": {
-    "src/surfaces/point-of-sale/events.ts": {
-      "filePath": "src/surfaces/point-of-sale/events.ts",
-      "syntaxKind": "TypeAliasDeclaration",
-      "name": "InterceptedPaymentMethodType",
-      "value": "'cash'",
+    "unknown": {
       "description": "The kind of payment method being attempted.",
-      "isPublicDocs": true
+      "name": "InterceptedPaymentMethodType",
+      "value": "InterceptedPaymentMethodType",
+      "members": [],
+      "override": "`'cash'`"
     }
   },
   "CartValidationsEventData": {

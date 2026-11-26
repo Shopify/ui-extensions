@@ -1,3 +1,8 @@
+import type {
+  InterceptedPaymentMethodType,
+  PaymentValidationsEventData,
+} from '@shopify/ui-extensions/point-of-sale';
+
 import {createMockPosTargetApi} from '../point-of-sale/factories';
 
 // The payment target's cart is read-only: the cart is frozen during payment.
@@ -56,6 +61,22 @@ describe('pos.payment.validations.resolution.render', () => {
 
     expect(api.resolution.event.value.paymentMethod.type).toBe('cash');
     expect(api.resolution.event.value.amount.currencyCode).toBeDefined();
+  });
+
+  it('accepts vaultedCard in the resolution event data', () => {
+    const api = createMockPosTargetApi(
+      'pos.payment.validations.resolution.render',
+    );
+    const eventData: PaymentValidationsEventData = api.resolution.event.value;
+    const methodType: InterceptedPaymentMethodType =
+      api.resolution.event.value.paymentMethod.type;
+    const vaultedCardEvent: typeof api.resolution.event.value = {
+      paymentMethod: {type: 'vaultedCard'},
+      amount: {amount: '42.50', currencyCode: 'CAD'},
+    };
+
+    expect(eventData.paymentMethod.type).toBe(methodType);
+    expect(vaultedCardEvent.paymentMethod).toStrictEqual({type: 'vaultedCard'});
   });
 
   it('exposes a read-only cart (no mutation methods) and the scanner', () => {
