@@ -840,10 +840,10 @@
           "syntaxKind": "PropertySignature",
           "name": "idToken",
           "value": "() => Promise<string>",
-          "description": "Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved."
+          "description": "Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a JWT that contains user information. It's signed with your app's client secret using HS256, so verify the signature on your backend with that secret. For the claims to check, see [ID token claims](/docs/apps/build/authentication-authorization/id-tokens#id-token-claims). Returns `null` if the token can't be retrieved."
         }
       ],
-      "value": "export interface Auth {\n  /**\n   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved.\n   */\n  idToken: () => Promise<string | null>;\n}"
+      "value": "export interface Auth {\n  /**\n   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a JWT that contains user information. It's signed with your app's client secret using HS256, so verify the signature on your backend with that secret. For the claims to check, see [ID token claims](/docs/apps/build/authentication-authorization/id-tokens#id-token-claims). Returns `null` if the token can't be retrieved.\n   */\n  idToken: () => Promise<string | null>;\n}"
     }
   },
   "ExtensionTarget": {
@@ -9343,7 +9343,7 @@
       "syntaxKind": "TypeAliasDeclaration",
       "name": "ListSlotType",
       "value": "'primary' | 'secondary' | 'kicker' | 'inline' | 'labeled'",
-      "description": "Represents the semantic type of content slots within list items.\n\n- `primary`: The main content or title of the list item.\n- `secondary`: Supporting or descriptive content below the primary content.\n- `kicker`: A small label or tag displayed above the primary content.\n- `inline`: Content displayed inline with the primary content.\n- `labeled`: Content with an associated label.",
+      "description": "Represents the semantic type of content slots within list items.\n\n- `primary`: The main content or title of the list item.\n- `secondary`: Supporting or descriptive content displayed in the same row as the primary content, at the end of that row.\n- `kicker`: A small label or tag displayed above the primary content.\n- `inline`: Content displayed in its own row after the primary and secondary content. All `inline` columns share that row.\n- `labeled`: Content with an associated label.",
       "isPublicDocs": true
     }
   },
@@ -21112,7 +21112,7 @@
           "syntaxKind": "PropertySignature",
           "name": "children",
           "value": "HTMLElement",
-          "description": "The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.",
+          "description": "The buttons in the group. Each button must have a `slot` of `primary-action` or `secondary-actions`. The group renders only the buttons in these slots, so a child without a `slot` does not appear.",
           "isOptional": true
         },
         {
@@ -21120,7 +21120,7 @@
           "syntaxKind": "PropertySignature",
           "name": "primary-action",
           "value": "HTMLElement",
-          "description": "The main action for this group, displayed with high visual emphasis. Accepts a single button with `variant=\"primary\"`.\n\nUse this for the primary action you want users to take. This can't be used when `gap=\"none\"`.",
+          "description": "The main action for this group, displayed with high visual emphasis. Accepts a single button with `variant=\"primary\"` or `variant=\"auto\"`. A button with another variant does not appear, and the console shows a warning.\n\nUse this for the primary action you want users to take. This can't be used when `gap=\"none\"`.",
           "isOptional": true
         },
         {
@@ -21128,11 +21128,11 @@
           "syntaxKind": "PropertySignature",
           "name": "secondary-actions",
           "value": "HTMLElement",
-          "description": "Supporting actions displayed with less emphasis than the primary action. Accepts one or more button components with `variant=\"secondary\"` or `variant=\"auto\"`.\n\nUse these for alternative or less critical actions.",
+          "description": "Supporting actions displayed with less emphasis than the primary action. Accepts one or more button components with `variant=\"secondary\"` or `variant=\"auto\"`. A button with another variant, such as `variant=\"primary\"`, does not appear, and the console shows a warning.\n\nUse these for alternative or less critical actions.",
           "isOptional": true
         }
       ],
-      "value": "export interface ButtonGroupSlots {\n  /**\n   * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.\n   */\n  children?: HTMLElement;\n  /**\n   * The main action for this group, displayed with high visual emphasis.\n   * Accepts a single button with `variant=\"primary\"`.\n   *\n   * Use this for the primary action you want users to take. This can't be used when `gap=\"none\"`.\n   */\n  'primary-action'?: HTMLElement;\n  /**\n   * Supporting actions displayed with less emphasis than the primary action.\n   * Accepts one or more button components with `variant=\"secondary\"` or `variant=\"auto\"`.\n   *\n   * Use these for alternative or less critical actions.\n   */\n  'secondary-actions'?: HTMLElement;\n}"
+      "value": "export interface ButtonGroupSlots {\n  /**\n   * The buttons in the group. Each button must have a `slot` of `primary-action` or `secondary-actions`.\n   * The group renders only the buttons in these slots, so a child without a `slot` does not appear.\n   */\n  children?: HTMLElement;\n  /**\n   * The main action for this group, displayed with high visual emphasis.\n   * Accepts a single button with `variant=\"primary\"` or `variant=\"auto\"`.\n   * A button with another variant does not appear, and the console shows a warning.\n   *\n   * Use this for the primary action you want users to take. This can't be used when `gap=\"none\"`.\n   */\n  'primary-action'?: HTMLElement;\n  /**\n   * Supporting actions displayed with less emphasis than the primary action.\n   * Accepts one or more button components with `variant=\"secondary\"` or `variant=\"auto\"`.\n   * A button with another variant, such as `variant=\"primary\"`, does not appear, and the console shows a warning.\n   *\n   * Use these for alternative or less critical actions.\n   */\n  'secondary-actions'?: HTMLElement;\n}"
     }
   },
   "CheckboxEvents": {
