@@ -30,7 +30,7 @@ export interface GraphQLError {
  */
 interface Auth {
   /**
-   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a signed JWT that contains user information and can be validated using Shopify's public keys. Returns `null` if the token can't be retrieved.
+   * Retrieves a [Shopify OpenID Connect ID token](/docs/api/app-home/apis/id-token) for the current user. Use this token to authenticate requests to your app backend and verify the user's identity. The token is a JWT that contains user information. It's signed with your app's client secret using HS256, so verify the signature on your backend with that secret. For the claims to check, see [ID token claims](/docs/apps/build/authentication-authorization/id-tokens#id-token-claims). Returns `null` if the token can't be retrieved.
    */
   idToken: () => Promise<string | null>;
 }
