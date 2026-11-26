@@ -6489,9 +6489,9 @@ interface TableCellProps$1 extends GlobalProps {
  * Represents the semantic type of content slots within list items.
  *
  * - `primary`: The main content or title of the list item.
- * - `secondary`: Supporting or descriptive content below the primary content.
+ * - `secondary`: Supporting or descriptive content displayed in the same row as the primary content, at the end of that row.
  * - `kicker`: A small label or tag displayed above the primary content.
- * - `inline`: Content displayed inline with the primary content.
+ * - `inline`: Content displayed in its own row after the primary and secondary content. All `inline` columns share that row.
  * - `labeled`: Content with an associated label.
  * @publicDocs
  */
