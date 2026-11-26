@@ -1,5 +1,11 @@
 # @shopify/ui-extensions
 
+## 2026.7.5
+
+### Patch Changes
+
+- [#4822](https://github.com/Shopify/ui-extensions/pull/4822) [`050aae7`](https://github.com/Shopify/ui-extensions/commit/050aae77094e4b575afe16a3f25a48f43d1d8f22) Thanks [@mcvinci](https://github.com/mcvinci)! - Corrected three admin reference descriptions: the `s-button-group` slots (a child needs the `primary-action` or `secondary-actions` slot, and `primary-action` accepts `variant="primary"` or `variant="auto"`), the `ListSlotType` positions of `secondary` and `inline` content, and how to verify the token from `auth.idToken()` (HS256 with the app's client secret).
+
 ## 2026.7.4
 
 ### Patch Changes
