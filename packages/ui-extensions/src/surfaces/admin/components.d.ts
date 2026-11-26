@@ -3874,9 +3874,9 @@ interface TableCellProps$1 extends GlobalProps {
  * Represents the semantic type of content slots within list items.
  *
  * - `primary`: The main content or title of the list item.
- * - `secondary`: Supporting or descriptive content below the primary content.
+ * - `secondary`: Supporting or descriptive content displayed in the same row as the primary content, at the end of that row.
  * - `kicker`: A small label or tag displayed above the primary content.
- * - `inline`: Content displayed inline with the primary content.
+ * - `inline`: Content displayed in its own row after the primary and secondary content. All `inline` columns share that row.
  * - `labeled`: Content with an associated label.
  */
 export type ListSlotType =
@@ -5883,12 +5883,14 @@ export interface ButtonGroupJSXProps
   extends Partial<ButtonGroupProps>,
     Pick<ButtonGroupProps$1, 'id' | 'children'> {
   /**
-   * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
+   * The buttons in the group. Each button must have a `slot` of `primary-action` or `secondary-actions`.
+   * The group renders only the buttons in these slots, so a child without a `slot` does not appear.
    */
   children?: ComponentChildren;
   /**
    * The main action for this group, displayed with high visual emphasis.
-   * Accepts a single button with `variant="primary"`.
+   * Accepts a single button with `variant="primary"` or `variant="auto"`.
+   * A button with another variant does not appear, and the console shows a warning.
    *
    * Use this for the primary action you want users to take. This can't be used when `gap="none"`.
    */
@@ -5896,6 +5898,7 @@ export interface ButtonGroupJSXProps
   /**
    * Supporting actions displayed with less emphasis than the primary action.
    * Accepts one or more button components with `variant="secondary"` or `variant="auto"`.
+   * A button with another variant, such as `variant="primary"`, does not appear, and the console shows a warning.
    *
    * Use these for alternative or less critical actions.
    */
@@ -10078,12 +10081,14 @@ export interface ButtonSlots {
  */
 export interface ButtonGroupSlots {
   /**
-   * The buttons displayed within the button group component, which are arranged together as a cohesive set of related actions.
+   * The buttons in the group. Each button must have a `slot` of `primary-action` or `secondary-actions`.
+   * The group renders only the buttons in these slots, so a child without a `slot` does not appear.
    */
   children?: HTMLElement;
   /**
    * The main action for this group, displayed with high visual emphasis.
-   * Accepts a single button with `variant="primary"`.
+   * Accepts a single button with `variant="primary"` or `variant="auto"`.
+   * A button with another variant does not appear, and the console shows a warning.
    *
    * Use this for the primary action you want users to take. This can't be used when `gap="none"`.
    */
@@ -10091,6 +10096,7 @@ export interface ButtonGroupSlots {
   /**
    * Supporting actions displayed with less emphasis than the primary action.
    * Accepts one or more button components with `variant="secondary"` or `variant="auto"`.
+   * A button with another variant, such as `variant="primary"`, does not appear, and the console shows a warning.
    *
    * Use these for alternative or less critical actions.
    */
