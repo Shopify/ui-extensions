@@ -24,7 +24,7 @@ export async function extractIconList() {
   let icons = [];
 
   function visit(node) {
-    if (ts.isTypeAliasDeclaration(node) && node.name.text === 'IconType$1') {
+    if (ts.isTypeAliasDeclaration(node) && node.name.text === 'IconType') {
       if (ts.isUnionTypeNode(node.type)) {
         icons = node.type.types
           .filter((type) => ts.isLiteralTypeNode(type))
@@ -52,7 +52,7 @@ export async function extractIconList() {
   }
 
   throw new Error(
-    'Could not find IconType$1 type definition in components.d.ts',
+    'Could not find IconType type definition in components.d.ts',
   );
 }
 
