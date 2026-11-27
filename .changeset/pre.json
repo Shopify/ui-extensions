@@ -6,6 +6,7 @@
     "@shopify/ui-extensions-tester": "2027.1.0-rc.0"
   },
   "changesets": [
+    "admin-reference-description-fixes",
     "app-events-admin",
     "app-events-checkout-customer-account",
     "pos-apply-metafield-change",
@@ -20,6 +21,7 @@
     "pos-storage-partition-size-code",
     "pos-storage-read-only-key",
     "pos-transaction-source-identifier-taxes-included",
-    "rc-2027-01-release"
+    "rc-2027-01-release",
+    "ts-morph-dev-dependency-2027-01-rc"
   ]
 }
