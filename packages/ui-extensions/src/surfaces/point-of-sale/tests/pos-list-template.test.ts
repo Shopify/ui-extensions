@@ -64,6 +64,35 @@ describe('posListTemplate', () => {
       );
     });
 
+    it('carries position="sticky" on the root and leaves static roots as they were', () => {
+      const result = posListTemplate`
+        <s-pos-list-item templateId="section" type="text" position="sticky"><s-heading>{{title}}</s-heading></s-pos-list-item>
+        <s-pos-list-item templateId="product" position="static"><s-text>{{name}}</s-text></s-pos-list-item>
+        <s-pos-list-item templateId="note"><s-text>{{name}}</s-text></s-pos-list-item>
+      `;
+
+      expect(result.templates.map(({children, ...root}) => root)).toStrictEqual(
+        [
+          {templateId: 'section', type: 'text', position: 'sticky'},
+          {templateId: 'product', type: 'button'},
+          {templateId: 'note', type: 'button'},
+        ],
+      );
+    });
+
+    it('rejects an unknown or valueless position', () => {
+      expect(() =>
+        compileItem('<s-text>x</s-text>', 'templateId="p" position="fixed"'),
+      ).toThrow(
+        'posListTemplate: <s-pos-list-item> position must be "static" or "sticky", got "fixed"',
+      );
+      expect(() =>
+        compileItem('<s-text>x</s-text>', 'templateId="p" position'),
+      ).toThrow(
+        'posListTemplate: <s-pos-list-item> position must be "static" or "sticky", got true',
+      );
+    });
+
     it('rejects a missing, empty, or duplicate templateId', () => {
       expect(() => compileItem('<s-text>x</s-text>', 'type="text"')).toThrow(
         'posListTemplate: <s-pos-list-item> requires a literal, non-empty templateId',
@@ -83,7 +112,7 @@ describe('posListTemplate', () => {
       expect(() =>
         compileItem('<s-text>x</s-text>', 'templateId="p" id="x"'),
       ).toThrow(
-        'posListTemplate: <s-pos-list-item> does not accept a "id" attribute; only templateId and type are allowed',
+        'posListTemplate: <s-pos-list-item> does not accept a "id" attribute; only templateId, type, and position are allowed',
       );
       expect(() => posListTemplate`<s-text>loose</s-text>`).toThrow(
         'posListTemplate: every template root must be an <s-pos-list-item templateId="…"> element',
