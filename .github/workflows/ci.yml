@@ -95,3 +95,21 @@ jobs:
       - id: test-build
         name: Build docs locally to ensure they can be built in CI
         run: yarn docs:admin
+
+  test-customer-account-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0 # v7.0.0
+      - uses: ./.github/workflows/actions/prepare
+
+      - name: Test Customer Account documentation guard
+        run: yarn test packages/ui-extensions/docs/surfaces/customer-account/assert-authenticated-account-public-names.test.mjs
+
+      - name: Build and validate Customer Account docs
+        timeout-minutes: 10
+        run: |
+          # Provide a disposable shopify-dev tree to avoid prompting or copying into a real checkout.
+          docs_root="$(mktemp -d "${RUNNER_TEMP}/customer-account-docs.XXXXXX")"
+          mkdir -p "$docs_root/areas/platforms/shopify-dev"
+          SHOPIFY_DEV_PATH="$docs_root" yarn docs:customer-account </dev/null
