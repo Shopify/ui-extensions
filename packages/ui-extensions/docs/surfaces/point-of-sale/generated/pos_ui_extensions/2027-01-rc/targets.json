@@ -2,6 +2,7 @@
   "pos.app.ready.data": {
     "components": [],
     "apis": [
+      "AppEventsApi",
       "ConnectivityApi",
       "DeviceApi",
       "ExtensionApi",
@@ -18,6 +19,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "CashDrawerApi",
@@ -77,6 +79,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "CashDrawerApi",
@@ -101,6 +104,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -158,6 +162,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -193,6 +198,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "ConnectivityApi",
       "DeviceApi",
@@ -214,6 +220,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -273,6 +280,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -310,6 +318,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -333,6 +342,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -392,6 +402,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -429,6 +440,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -452,6 +464,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -511,6 +524,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -548,6 +562,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -571,6 +586,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -630,6 +646,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -667,6 +684,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "ConnectivityApi",
@@ -690,6 +708,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "CartLineItemApi",
@@ -749,6 +768,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CartApi",
       "CartLineItemApi",
@@ -773,6 +793,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CashDrawerApi",
       "ConnectivityApi",
@@ -830,6 +851,7 @@
       "TimePicker"
     ],
     "apis": [
+      "AppEventsApi",
       "CameraApi",
       "CashDrawerApi",
       "ConnectivityApi",
@@ -865,6 +887,7 @@
     ],
     "apis": [
       "ActionApi",
+      "AppEventsApi",
       "CameraApi",
       "CashDrawerApi",
       "ConnectivityApi",
@@ -878,6 +901,33 @@
       "SessionApi",
       "StorageApi",
       "ToastApi"
+    ]
+  },
+  "AppEventsApi": {
+    "targets": [
+      "pos.app.ready.data",
+      "pos.cart.line-item-details.action.menu-item.render",
+      "pos.cart.line-item-details.action.render",
+      "pos.customer-details.action.menu-item.render",
+      "pos.customer-details.action.render",
+      "pos.customer-details.block.render",
+      "pos.draft-order-details.action.menu-item.render",
+      "pos.draft-order-details.action.render",
+      "pos.draft-order-details.block.render",
+      "pos.home.modal.render",
+      "pos.home.tile.render",
+      "pos.order-details.action.menu-item.render",
+      "pos.order-details.action.render",
+      "pos.order-details.block.render",
+      "pos.product-details.action.menu-item.render",
+      "pos.product-details.action.render",
+      "pos.product-details.block.render",
+      "pos.purchase.post.action.menu-item.render",
+      "pos.purchase.post.action.render",
+      "pos.purchase.post.block.render",
+      "pos.register-details.action.menu-item.render",
+      "pos.register-details.action.render",
+      "pos.register-details.block.render"
     ]
   },
   "ConnectivityApi": {

@@ -28,6 +28,26 @@ describe('POS session factory', () => {
   });
 });
 
+describe('POS app events', () => {
+  it.each([
+    'pos.home.tile.render',
+    'pos.product-details.action.render',
+    'pos.app.ready.data',
+  ] as const)('%s accepts an app event by default', async (target) => {
+    const api = createMockPosTargetApi(target);
+
+    const result = await api.appEvents.emit('offer_shown', {offer_id: 1});
+    expect(result).toStrictEqual({success: true});
+  });
+
+  it.each([
+    'pos.receipt-header.block.render',
+    'pos.receipt-footer.block.render',
+  ] as const)('%s does not expose appEvents', (target) => {
+    expect(createMockPosTargetApi(target)).not.toHaveProperty('appEvents');
+  });
+});
+
 describe('createStorage', () => {
   it('set and get round-trips a value', async () => {
     const storage = createStorage();

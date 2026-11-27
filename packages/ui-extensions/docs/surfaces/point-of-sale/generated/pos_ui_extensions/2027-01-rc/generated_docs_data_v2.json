@@ -4119,7 +4119,7 @@
       "filePath": "src/surfaces/point-of-sale/api/standard/standard-api.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "StandardApi",
-      "value": "{[key: string]: any} & {\n  /**\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: T;\n  i18n: I18n;\n} & ExtensionApi<T> & LocaleApi & ToastApi & SessionApi & PrintApi & PrintingApi & ProductSearchApi & DeviceApi & ConnectivityApi & StorageApi & PinPadApi & CameraApi",
+      "value": "{[key: string]: any} & {\n  /**\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: T;\n  i18n: I18n;\n} & ExtensionApi<T> & LocaleApi & ToastApi & SessionApi & PrintApi & PrintingApi & ProductSearchApi & DeviceApi & ConnectivityApi & StorageApi & PinPadApi & CameraApi & AppEventsApi",
       "description": "",
       "isPublicDocs": true
     }
@@ -4169,6 +4169,23 @@
       "description": "The translation function signature for internationalization. Use this to translate string keys defined in your locale files into localized content for the current user's language.",
       "members": [],
       "value": "export interface I18nTranslate {\n  /**\n   * Returns a translated string matching a key in a locale file. Use this to display localized text in your extension based on the merchant's language preferences. Supports interpolation with replacement values and pluralization with the `count` option. Returns a string when replacements are primitives, or an array when replacements include UI components.\n   *\n   * @param key - The translation key from your locale file (for example, \"banner.title\")\n   * @param options - Optional replacement values for interpolation or the special `count` property for pluralization\n   *\n   * @example translate(\"banner.title\")\n   * @example translate(\"items.count\", { count: 5 })\n   */\n  <ReplacementType = string>(\n    key: string,\n    options?: Record<string, ReplacementType | string | number>,\n  ): ReplacementType extends string | number\n    ? string\n    : (string | ReplacementType)[];\n}"
+    }
+  },
+  "AppEventsApi": {
+    "src/surfaces/point-of-sale/api/app-events-api/app-events-api.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/app-events-api/app-events-api.ts",
+      "name": "AppEventsApi",
+      "description": "",
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/app-events-api/app-events-api.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports app-defined events to Shopify."
+        }
+      ],
+      "value": "export interface AppEventsApi {\n  /** Reports app-defined events to Shopify. */\n  appEvents: AppEvents;\n}"
     }
   },
   "ScannerSource": {
@@ -4316,7 +4333,7 @@
       "filePath": "src/surfaces/point-of-sale/api/data-target-api/data-target-api.ts",
       "syntaxKind": "TypeAliasDeclaration",
       "name": "DataTargetApi",
-      "value": "{\n  /**\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: T;\n  i18n: I18n;\n} & ExtensionApi<T> & SessionApi & StorageApi & LocaleApi & ConnectivityApi & DeviceApi & ProductSearchApi & ReadonlyCartApi",
+      "value": "{\n  /**\n   * @deprecated Use `extension.target` instead.\n   */\n  extensionPoint: T;\n  i18n: I18n;\n} & ExtensionApi<T> & SessionApi & StorageApi & LocaleApi & ConnectivityApi & DeviceApi & ProductSearchApi & ReadonlyCartApi & AppEventsApi",
       "description": "API surface for non-rendering data extension targets.",
       "isPublicDocs": true
     }
@@ -11352,6 +11369,24 @@
         }
       ],
       "value": "export interface BackgroundShopifyGlobal extends ShopifyGlobal {\n  /**\n   * Register a listener for a POS host event. Listeners are fire-and-forget:\n   * their return values are ignored, and their errors are caught without\n   * affecting the host or other listeners.\n   */\n  addEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Remove a listener previously registered with `addEventListener`. The\n   * `listener` reference must match the one used to register.\n   */\n  removeEventListener<K extends keyof ShopifyEventMap>(\n    type: K,\n    listener: (event: ShopifyEventMap[K]) => void,\n  ): void;\n\n  /**\n   * Register an interceptor for a POS host workflow that can be blocked.\n   * Returns a function that unregisters the interceptor.\n   */\n  intercept<K extends keyof ShopifyInterceptMap>(\n    type: K,\n    interceptor: ShopifyInterceptor<K>,\n  ): () => void;\n}"
+    }
+  },
+  "Docs_AppEventsApi": {
+    "src/surfaces/point-of-sale/api/docs.ts": {
+      "filePath": "src/surfaces/point-of-sale/api/docs.ts",
+      "name": "Docs_AppEventsApi",
+      "description": "Reports app-defined events from POS UI extensions to Shopify.",
+      "isPublicDocs": true,
+      "members": [
+        {
+          "filePath": "src/surfaces/point-of-sale/api/docs.ts",
+          "syntaxKind": "PropertySignature",
+          "name": "appEvents",
+          "value": "AppEvents",
+          "description": "Reports app-defined events to Shopify."
+        }
+      ],
+      "value": "export interface Docs_AppEventsApi extends AppEventsApi {}"
     }
   },
   "Docs_AppBackgroundEventMethods": {

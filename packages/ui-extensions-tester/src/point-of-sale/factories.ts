@@ -137,6 +137,7 @@ function createMockStandardApi<T extends RenderExtensionTarget>(
       target,
     },
     i18n: createMockI18n(),
+    appEvents: {emit: async () => ({success: true})},
     locale: {current: createReadonlySignalLike('en-US')},
     toast: {show: () => {}},
     session: {
@@ -563,6 +564,7 @@ function createDataTargetMock<T extends ExtensionTarget>(
       target,
     },
     i18n: createMockI18n(),
+    appEvents: {emit: async () => ({success: true})},
     session: {
       currentSession: createSessionCurrentSession(),
       staffMember: createReadonlySignalLike(createStaffMember()),

@@ -1,4 +1,11 @@
 export type {
+  AppEventAttributeValue,
+  AppEventAttributes,
+  AppEventEmitResult,
+  AppEvents,
+} from '../../shared';
+
+export type {
   CartApi,
   CartDiscountType,
   CartApiContent,
