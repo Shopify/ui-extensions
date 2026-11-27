@@ -1,5 +1,13 @@
 # @shopify/ui-extensions
 
+## 2027.1.0-rc.8
+
+### Patch Changes
+
+- [#4824](https://github.com/Shopify/ui-extensions/pull/4824) [`dcd0da6`](https://github.com/Shopify/ui-extensions/commit/dcd0da62714e117dfb397522cdadeb25138e4600) Thanks [@mcvinci](https://github.com/mcvinci)! - Corrected three admin reference descriptions: the `s-button-group` slots (a child needs the `primary-action` or `secondary-actions` slot, and `primary-action` accepts `variant="primary"` or `variant="auto"`), the `ListSlotType` positions of `secondary` and `inline` content, and how to verify the token from `auth.idToken()` (HS256 with the app's client secret).
+
+- [#4828](https://github.com/Shopify/ui-extensions/pull/4828) [`e1fe717`](https://github.com/Shopify/ui-extensions/commit/e1fe71716b5b3dcc932d04abfc1baf99feb50043) Thanks [@wes-shaw](https://github.com/wes-shaw)! - Move `ts-morph` from `dependencies` to `devDependencies`. It is used only by the package's build-time type generation (`packages/ui-extensions/buildTargetDts.ts`, called from `packages/ui-extensions/loom.config.ts`), so it is no longer installed for consumers, along with its transitive dependencies such as `@ts-morph/common`, `minimatch` and `fast-glob`.
+
 ## 2027.1.0-rc.7
 
 ### Minor Changes
