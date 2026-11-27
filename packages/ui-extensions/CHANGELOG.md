@@ -1,5 +1,17 @@
 # @shopify/ui-extensions
 
+## 2026.10.3
+
+### Patch Changes
+
+- [#4829](https://github.com/Shopify/ui-extensions/pull/4829) [`6a21417`](https://github.com/Shopify/ui-extensions/commit/6a21417b245a59fcc32ced2292dca4c0a6abf1fb) Thanks [@melissaluu](https://github.com/melissaluu)! - The admin `s-icon` `type` and the `icon` props of Badge, Button, Select and TextField now list only the public icons that `s-icon` draws. Names that draw an icon, such as `text-ai` and `live-filled`, now type-check. Names that draw nothing, such as `truck`, `gift`, `complete` and `live-critical`, are now type errors.
+
+- [#4823](https://github.com/Shopify/ui-extensions/pull/4823) [`2b6e109`](https://github.com/Shopify/ui-extensions/commit/2b6e109d4c667067f10a98c0cee8c1cfdc6d1848) Thanks [@mcvinci](https://github.com/mcvinci)! - Corrected three admin reference descriptions: the `s-button-group` slots (a child needs the `primary-action` or `secondary-actions` slot, and `primary-action` accepts `variant="primary"` or `variant="auto"`), the `ListSlotType` positions of `secondary` and `inline` content, and how to verify the token from `auth.idToken()` (HS256 with the app's client secret).
+
+- [#4771](https://github.com/Shopify/ui-extensions/pull/4771) [`2e47423`](https://github.com/Shopify/ui-extensions/commit/2e4742323640940dd29650754cb4e0e14dd2d6c5) Thanks [@aaronschubert0](https://github.com/aaronschubert0)! - Remove the POS background `scan` event from 2026-10. POS doesn't dispatch it in this version, so `POS_EVENT_NAMES.SCAN`, `ScanEvent` and the `scan` entry in `ShopifyEventMap` are removed. The event is planned for 2027-01.
+
+- [#4826](https://github.com/Shopify/ui-extensions/pull/4826) [`0f1e8df`](https://github.com/Shopify/ui-extensions/commit/0f1e8dff96eec4df7140cfee1034f330061bfa90) Thanks [@wes-shaw](https://github.com/wes-shaw)! - Move `ts-morph` from `dependencies` to `devDependencies`. It is used only by the package's build-time type generation (`packages/ui-extensions/buildTargetDts.ts`, called from `packages/ui-extensions/loom.config.ts`), so it is no longer installed for consumers, along with its transitive dependencies such as `@ts-morph/common`, `minimatch` and `fast-glob`.
+
 ## 2026.10.2
 
 ### Patch Changes
